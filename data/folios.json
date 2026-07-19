@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "catalogs": {
+    "huss-1976": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "pages": {}
+    }
+  }
+}

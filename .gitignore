@@ -1,0 +1,11 @@
+.DS_Store
+node_modules/
+dist/
+
+# Private preservation material never enters the public facts-only history.
+source-images/
+data/ocr/
+assets/catalog/
+assets/thumbs/
+private-archive/
+LOCAL_ARCHIVE.md

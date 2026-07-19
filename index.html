@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An independently structured factual index derived from pages 3-48 of the 1976 Huss Meteorite Collection catalog.">
+  <meta name="theme-color" content="#2d241b">
+  <title>The Meteorite Cabinet | 1976 Huss Collection Index</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css?v=20260719-9">
+  <script src="./app.js?v=20260719-9" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#catalog">Skip to catalog</a>
+
+  <header class="masthead">
+    <div class="masthead-rule" aria-hidden="true"><span>&#10022;</span></div>
+    <div class="masthead-inner">
+      <p class="kicker">A digital edition of historic meteorite collection catalogs.</p>
+      <h1><span>The</span> Meteorite Cabinet</h1>
+      <p class="deck">A searchable transcription of Historic Meteorite Collection catalogs</p>
+    </div>
+    <div class="orbit-mark" aria-hidden="true">
+      <span class="orbit orbit-one"></span>
+      <span class="orbit orbit-two"></span>
+      <span class="meteor"></span>
+    </div>
+  </header>
+
+  <main id="catalog" class="page-shell">
+    <section class="statistics" aria-label="Catalog statistics">
+      <div><strong id="stat-specimens">-</strong><span>specimens</span></div>
+      <div><strong id="stat-names">-</strong><span>recorded names</span></div>
+      <div><strong id="stat-pages">-</strong><span>catalog pages</span></div>
+      <div><strong id="stat-mass">-</strong><span>recorded mass</span></div>
+    </section>
+
+    <section class="edition-note" aria-labelledby="edition-heading">
+      <p class="eyebrow">Public edition</p>
+      <h2 id="edition-heading">Facts, arranged as an index</h2>
+      <p>This edition presents structured specimen facts from catalog pages 3-48. Huss page scans, raw OCR, verbatim notes, and page layout reproduction are intentionally not distributed. No public-domain or rights ownership claim is made for the source catalog.</p>
+    </section>
+
+    <section class="catalog-tools" aria-labelledby="catalog-heading">
+      <div class="section-heading">
+        <p>Index Rerum</p>
+        <h2 id="catalog-heading">Search the register</h2>
+      </div>
+
+      <form id="filter-form" class="filters" role="search">
+        <label class="search-field">
+          <span>Search all entries</span>
+          <span class="input-wrap search-wrap">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m15.5 15.5 5 5"></path></svg>
+            <input id="search" name="q" type="search" autocomplete="off" placeholder="Name, H27.20, class, place, or year">
+          </span>
+        </label>
+
+        <fieldset class="weight-range">
+          <legend>Specimen weight in grams</legend>
+          <label>
+            <span>Minimum</span>
+            <span class="input-wrap number-wrap"><input id="min-weight" name="min" type="number" min="0" step="any" inputmode="decimal" placeholder="0"><b>g</b></span>
+          </label>
+          <span class="range-rule" aria-hidden="true"></span>
+          <label>
+            <span>Maximum</span>
+            <span class="input-wrap number-wrap"><input id="max-weight" name="max" type="number" min="0" step="any" inputmode="decimal" placeholder="Any"><b>g</b></span>
+          </label>
+        </fieldset>
+
+        <label class="sort-field">
+          <span>Order the register</span>
+          <span class="select-wrap">
+            <select id="sort" name="sort">
+              <option value="designation-asc">Designation, ascending</option>
+              <option value="designation-desc">Designation, descending</option>
+              <option value="name-asc">Name, A-Z</option>
+              <option value="name-desc">Name, Z-A</option>
+              <option value="weight-asc">Weight, lightest first</option>
+              <option value="weight-desc">Weight, heaviest first</option>
+            </select>
+          </span>
+        </label>
+      </form>
+    </section>
+
+    <section class="results-section" aria-labelledby="results-heading">
+      <div class="results-bar">
+        <div>
+          <p class="eyebrow">Collection ledger</p>
+          <h2 id="results-heading"><span id="result-count">Loading</span> <small>entries</small></h2>
+        </div>
+        <button id="clear-filters" class="text-button" type="button" hidden>Clear filters</button>
+      </div>
+
+      <p id="status" class="status" role="status" aria-live="polite">Opening the factual index...</p>
+      <div id="results" class="catalog-grid" aria-busy="true"></div>
+      <div class="more-row"><button id="show-more" class="button secondary-button" type="button" hidden>Show more entries</button></div>
+
+      <div id="empty-state" class="empty-state" hidden>
+        <span aria-hidden="true">&#10022;</span>
+        <h3>No specimens answer that description</h3>
+        <p>Try a broader name, designation, classification, locality, year, or weight interval.</p>
+        <button class="button" type="button" data-clear-filters>Clear the search</button>
+      </div>
+
+      <div id="error-state" class="empty-state error-state" role="alert" hidden>
+        <span aria-hidden="true">!</span>
+        <h3 id="error-heading" tabindex="-1">The factual index could not be opened</h3>
+        <p id="error-message">The public catalog data is presently unavailable.</p>
+        <button id="retry" class="button" type="button">Try again</button>
+      </div>
+
+      <noscript><p class="empty-state">JavaScript is required to search and display this factual index.</p></noscript>
+    </section>
+  </main>
+
+  <footer>
+    <p><i aria-hidden="true"></i> Historical Meteorite Collection <i aria-hidden="true"></i></p>
+    <p>Independent facts-only index derived from pages 3-48 of the 1976 Huss Meteorite Collection catalog. Source rights remain unresolved; see <a href="./NOTICE.md">NOTICE</a>.</p>
+  </footer>
+
+  <template id="record-template">
+    <article class="record-card">
+      <header class="record-heading">
+        <div>
+          <p class="designation"></p>
+          <h3 class="record-name"></h3>
+        </div>
+        <p class="record-weight"><strong></strong><span>normalized mass</span></p>
+      </header>
+      <dl class="record-meta">
+        <div class="classification-row"><dt>Class</dt><dd></dd></div>
+        <div class="locality-row"><dt>Locality</dt><dd></dd></div>
+        <div class="year-row"><dt>Recorded year</dt><dd></dd></div>
+      </dl>
+      <footer class="record-footer">
+        <p class="catalog-reference"></p>
+        <p class="confidence"><i aria-hidden="true"></i><span></span></p>
+      </footer>
+    </article>
+  </template>
+
+  <dialog id="folio-dialog" aria-labelledby="folio-dialog-title">
+    <div class="dialog-frame">
+      <header>
+        <div>
+          <p id="folio-dialog-catalog"></p>
+          <h2 id="folio-dialog-title">Catalog folio</h2>
+        </div>
+        <button id="folio-dialog-close" class="dialog-close" type="button" aria-label="Close folio viewer">&times;</button>
+      </header>
+      <figure>
+        <div class="dialog-image-wrap">
+          <img id="folio-dialog-image" alt="">
+          <p id="folio-image-status" role="status" aria-live="polite"></p>
+        </div>
+        <figcaption id="folio-dialog-caption"></figcaption>
+      </figure>
+      <nav class="dialog-nav" aria-label="Catalog folio pages">
+        <button id="previous-folio" type="button">Previous folio</button>
+        <span id="folio-position" aria-live="polite"></span>
+        <button id="next-folio" type="button">Next folio</button>
+      </nav>
+    </div>
+  </dialog>
+</body>
+</html>
