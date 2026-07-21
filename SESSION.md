@@ -21,7 +21,7 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 - A separate private preservation archive retains the full scans, raw OCR, verbatim notes, and scan-linked site materials; operational coordinates are intentionally kept outside public history.
 - The original approximately 433 MB of source photographs remain in the ignored `source-images/`.
 - All three catalogs remain blocked/undetermined for folio display. Public output contains no scans, source filenames, raw OCR, verbatim notes, or private image paths.
-- The public GitHub Pages site is deployed; the 2026-07-21 three-catalog/retake update awaits commit and push.
+- The 2026-07-21 three-catalog/retake edition is deployed on GitHub Pages. Its 1,758-record data files were verified byte-for-byte against the release commit, CI passed, and direct private-path probes returned `404`.
 
 ## Preservation And Data Rules
 
@@ -69,9 +69,9 @@ Distinct specimens with the same meteorite name and similar mass must not be col
 
 ## Immediate Next Steps
 
-1. Run public data, search, responsive-layout, accessibility, and project-subpath validation.
-2. Commit and push the facts-only update.
-3. Verify GitHub Pages serves the 1,758-record dataset and no private material.
+1. Keep the public validator and runtime harness green for every release.
+2. Preserve the facts-only boundary and verify private paths remain unavailable after deployment.
+3. Require a separate catalog-specific rights review before enabling any folio display.
 
 ## Maintenance Rule
 
