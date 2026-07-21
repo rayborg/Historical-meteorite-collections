@@ -2,6 +2,7 @@
 
 const assert = require("node:assert/strict");
 const fixture = require("./test-multicatalog-fixture.json");
+const publicCatalog = require("../data/catalog.json");
 const app = require("../app.js");
 
 const RECORD_FIELDS = [
@@ -339,6 +340,35 @@ test("duplicate labels retain distinct disambiguation inputs and catalog IDs", (
   assert.equal(registry["museum-1890"].displayLabel, "Historical register (1890; museum-1890)");
   assert.equal(registry["university-1912"].displayLabel, "Historical register (1912; university-1912)");
   assert.notEqual(registry["museum-1890"].displayLabel, registry["university-1912"].displayLabel);
+});
+
+test("catalog selector orders public sources by publication year without changing source order", () => {
+  const sourceCatalogIds = publicCatalog.metadata.catalogs.map((catalog) => catalog.id);
+  const sourceRecordIds = publicCatalog.records.map((record) => record.id);
+  const registry = app.normalizeCatalogRegistry(publicCatalog.metadata);
+
+  assert.deepEqual(
+    app.catalogSelectorEntries(registry).map(([catalogId]) => catalogId),
+    ["nininger-1933", "huss-1976", "huss-1986"]
+  );
+  assert.deepEqual(publicCatalog.metadata.catalogs.map((catalog) => catalog.id), sourceCatalogIds);
+  assert.deepEqual(publicCatalog.records.map((record) => record.id), sourceRecordIds);
+  assert.deepEqual(app.catalogSummaryEntries(registry).map((catalog) => catalog.id), sourceCatalogIds);
+});
+
+test("catalog selector breaks publication-year ties by display label then catalog ID", () => {
+  const registry = {
+    "zeta-2000": { year: 2000, displayLabel: "Alpha" },
+    "beta-2000": { year: 2000, displayLabel: "Beta" },
+    "alpha-2000": { year: 2000, displayLabel: "Alpha" },
+    "early-1999": { year: 1999, displayLabel: "Zulu" }
+  };
+
+  assert.deepEqual(
+    app.catalogSelectorEntries(registry).map(([catalogId]) => catalogId),
+    ["early-1999", "alpha-2000", "zeta-2000", "beta-2000"]
+  );
+  assert.deepEqual(Object.keys(registry), ["zeta-2000", "beta-2000", "alpha-2000", "early-1999"]);
 });
 
 test("record preparation preserves catalog identity and page identity", () => {

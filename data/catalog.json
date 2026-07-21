@@ -70,11 +70,11 @@
         ],
         "sourcePageCount": 46,
         "recordCount": 1078,
-        "recordsWithDesignation": 1074,
+        "recordsWithDesignation": 1075,
         "recordsWithWeight": 1077,
         "confidenceCounts": {
-          "high": 1077,
-          "medium": 1,
+          "high": 1078,
+          "medium": 0,
           "low": 0
         },
         "folioDisplayPolicy": "blocked",
@@ -159,11 +159,11 @@
       }
     ],
     "recordCount": 1758,
-    "recordsWithDesignation": 1742,
+    "recordsWithDesignation": 1743,
     "recordsWithWeight": 1711,
     "confidenceCounts": {
-      "high": 1757,
-      "medium": 1,
+      "high": 1758,
+      "medium": 0,
       "low": 0
     }
   },
@@ -13693,6 +13693,20 @@
       "confidence": "high"
     },
     {
+      "id": "tocopilla-d1cdd4d89984",
+      "catalogId": "huss-1976",
+      "designation": "H46.1",
+      "name": "Tocopilla",
+      "weight": {
+        "grams": 230
+      },
+      "classification": "Iron. Hexahedrite",
+      "locality": "Antofagasta, Chile; 22° 40' S., 69° 50' W.",
+      "year": "1927",
+      "catalogPage": 42,
+      "confidence": "high"
+    },
+    {
       "id": "h46-1-cb1f870f52ee",
       "catalogId": "huss-1976",
       "designation": "H46.1",
@@ -24571,6 +24585,20 @@
       "confidence": "high"
     },
     {
+      "id": "obs-eadfdff1-b9b8-47e9-ad54-798e5fde0574",
+      "catalogId": "huss-1986",
+      "designation": null,
+      "name": "Canyon Diablo (a)",
+      "weight": {
+        "grams": 5656
+      },
+      "classification": "Iron. Coarse octahedrite (IA)",
+      "locality": "Coconino Co., Arizona; 35° 3' N., 111° 2' W.",
+      "year": "1891",
+      "catalogPage": 9,
+      "confidence": "high"
+    },
+    {
       "id": "obs-2e60183d-be27-41da-900c-06e0a603e4ce",
       "catalogId": "huss-1986",
       "designation": null,
@@ -24592,9 +24620,9 @@
       "weight": {
         "grams": 65.4
       },
-      "classification": "Stony-iron. Mesosiderite",
+      "classification": "Oxidized iron fragments and chips",
       "locality": "Western Australia, Australia; 27° 43' S., 117° 15' E.",
-      "year": "1923",
+      "year": null,
       "catalogPage": 11,
       "confidence": "high"
     },
@@ -24606,9 +24634,9 @@
       "weight": {
         "grams": 92.3
       },
-      "classification": "Stony-iron. Mesosiderite",
+      "classification": "Oxidized iron shale",
       "locality": "Western Australia, Australia; 27° 43' S., 117° 15' E.",
-      "year": "1923",
+      "year": null,
       "catalogPage": 11,
       "confidence": "high"
     },
@@ -24634,9 +24662,9 @@
       "weight": {
         "grams": null
       },
-      "classification": "Stony-iron. Mesosiderite",
+      "classification": "Granite and quartz samples",
       "locality": "Western Australia, Australia; 27° 43' S., 117° 15' E.",
-      "year": "1923",
+      "year": null,
       "catalogPage": 11,
       "confidence": "high"
     },
@@ -24648,9 +24676,9 @@
       "weight": {
         "grams": null
       },
-      "classification": "Stony-iron. Mesosiderite",
+      "classification": "Soil samples",
       "locality": "Western Australia, Australia; 27° 43' S., 117° 15' E.",
-      "year": "1923",
+      "year": null,
       "catalogPage": 11,
       "confidence": "high"
     },
@@ -24662,9 +24690,9 @@
       "weight": {
         "grams": null
       },
-      "classification": "Stony-iron. Mesosiderite",
+      "classification": "Laterite pebbles",
       "locality": "Western Australia, Australia; 27° 43' S., 117° 15' E.",
-      "year": "1923",
+      "year": null,
       "catalogPage": 11,
       "confidence": "high"
     },
@@ -24739,20 +24767,6 @@
       "confidence": "high"
     },
     {
-      "id": "tocopilla-d1cdd4d89984",
-      "catalogId": "huss-1976",
-      "designation": null,
-      "name": "Tocopilla",
-      "weight": {
-        "grams": 230
-      },
-      "classification": "Iron. Hexahedrite",
-      "locality": "Antofagasta, Chile; 22° 40' S., 69° 50' W.",
-      "year": "1927",
-      "catalogPage": 42,
-      "confidence": "high"
-    },
-    {
       "id": "unnamed-stony-meteorite-0b06ce6849db",
       "catalogId": "huss-1976",
       "designation": null,
@@ -24764,20 +24778,6 @@
       "locality": "Roosevelt Co., New Mexico",
       "year": null,
       "catalogPage": 48,
-      "confidence": "medium"
-    },
-    {
-      "id": "obs-eadfdff1-b9b8-47e9-ad54-798e5fde0574",
-      "catalogId": "huss-1986",
-      "designation": null,
-      "name": null,
-      "weight": {
-        "grams": 5656
-      },
-      "classification": null,
-      "locality": null,
-      "year": null,
-      "catalogPage": 9,
       "confidence": "high"
     }
   ]

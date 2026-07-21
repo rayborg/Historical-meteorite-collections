@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260721-4";
+const CACHE_VERSION = "20260721-5";
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "designation-asc";
 const VALID_SORTS = new Set([
@@ -753,9 +753,16 @@ function calculateStatistics(sourceRecords) {
   };
 }
 
+function catalogSelectorEntries(catalogs) {
+  return Object.entries(catalogs || {}).sort(([leftId, left], [rightId, right]) =>
+    left.year - right.year ||
+    collator.compare(catalogLabel(left, leftId), catalogLabel(right, rightId)) ||
+    collator.compare(leftId, rightId)
+  );
+}
+
 function populateCatalogFilter() {
-  const options = Object.entries(catalogRegistry)
-    .sort(([, left], [, right]) => collator.compare(catalogLabel(left), catalogLabel(right)))
+  const options = catalogSelectorEntries(catalogRegistry)
     .map(([catalogId, descriptor]) => {
       const option = document.createElement("option");
       option.value = catalogId;
@@ -840,7 +847,7 @@ function render() {
 
 function createRecordCard(record) {
   const card = elements.template.content.firstElementChild.cloneNode(true);
-  card.querySelector(".designation").textContent = record.designation || "Designation not recorded";
+  card.querySelector(".designation").textContent = record.designation || "No printed designation";
   card.querySelector(".record-name").textContent = record.name ? displayText(record.name) : "Name not recorded";
   card.querySelector(".record-weight strong").textContent = record.weight.grams === null
     ? "Not recorded"
@@ -1080,6 +1087,7 @@ if (typeof module !== "undefined" && module.exports) {
     DEFAULT_SORT,
     calculateStatistics,
     catalogLabel,
+    catalogSelectorEntries,
     catalogSummaryEntries,
     compareRecords,
     designationComponents,

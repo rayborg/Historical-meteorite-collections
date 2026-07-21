@@ -383,10 +383,10 @@ function validateLegacyMetadata(metadata, path) {
   assert(metadata.sourcePageRange.end === 48, `${path}.sourcePageRange.end must be 48`);
   assert(metadata.sourcePageCount === 46, `${path}.sourcePageCount must be 46`);
   assert(metadata.recordCount === 1078, `${path}.recordCount must be 1078`);
-  assert(metadata.recordsWithDesignation === 1074, `${path}.recordsWithDesignation must be 1074`);
+  assert(metadata.recordsWithDesignation === 1075, `${path}.recordsWithDesignation must be 1075`);
   assert(metadata.recordsWithWeight === 1077, `${path}.recordsWithWeight must be 1077`);
-  assert(metadata.confidenceCounts.high === 1077, `${path}.confidenceCounts.high must be 1077`);
-  assert(metadata.confidenceCounts.medium === 1, `${path}.confidenceCounts.medium must be 1`);
+  assert(metadata.confidenceCounts.high === 1078, `${path}.confidenceCounts.high must be 1078`);
+  assert(metadata.confidenceCounts.medium === 0, `${path}.confidenceCounts.medium must be 0`);
   assert(metadata.confidenceCounts.low === 0, `${path}.confidenceCounts.low must be 0`);
 
   const sourcePages = Array.from({ length: 46 }, (_, index) => index + 3);

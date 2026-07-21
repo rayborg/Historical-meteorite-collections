@@ -25,7 +25,7 @@ The JSON root contains `metadata` and `records`. Each record has only these fact
 
 - `id`: stable unique identifier for this observation.
 - `catalogId`: source catalog identifier: `huss-1976`, `huss-1986`, or `nininger-1933`.
-- `designation`: designation reported for the observation, or `null`.
+- `designation`: designation reported for the observation, or `null`. The printed `(2)` prefix in Huss 1986 identifies the Second Huss Collection namespace; it is part of the designation, not a quantity.
 - `name`: reported meteorite name, or `null`.
 - `weight.grams`: reported weight normalized to a numeric gram value, or `null` when no unambiguous numeric value is available.
 - `classification`: reported classification, or `null`.
