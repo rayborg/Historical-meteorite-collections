@@ -21,7 +21,7 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 - A separate private preservation archive retains the full scans, raw OCR, verbatim notes, and scan-linked site materials; operational coordinates are intentionally kept outside public history.
 - The original approximately 433 MB of source photographs remain in the ignored `source-images/`.
 - All three catalogs remain blocked/undetermined for folio display. Public output contains no scans, source filenames, raw OCR, verbatim notes, or private image paths.
-- The 2026-07-21 three-catalog/retake edition is deployed on GitHub Pages. Its 1,758-record data files are generated for the next deployment; CI and private-path checks remain required before release.
+- The source-audited 2026-07-21 three-catalog/retake edition is deployed on GitHub Pages with 1,758 facts-only records, chronological source selection, and corrected designationless observations. CI passes, and private source paths remain unavailable.
 
 ## Preservation And Data Rules
 
