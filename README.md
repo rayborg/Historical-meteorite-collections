@@ -1,8 +1,12 @@
 # Historical Meteorite Collection
 
-A dependency-free, facts-only public index derived from pages 3-48 of the 1976 Huss Meteorite Collection catalog. The source catalog is associated with Glenn Huss; this project does not make a broader claim about who compiled or published every part of it.
+A dependency-free, facts-only public index of 1,758 observations from three historical meteorite catalogs, built from 90 locally held original images.
 
-The site supports segment-aware H-designation search, full-text factual search, numeric gram ranges, six deterministic sort orders, URL-persisted filters, and incremental rendering for the 1,079-entry register. A separate, default-deny rights manifest can enable folio viewing for future catalogs whose source pages have a documented public-domain determination.
+A searchable transcription of the 1976 Huss Meteorite Collection catalog, compiled and published by Glenn Huss.
+
+The other configured source attributions identify compilers only: Glenn I. Huss for the 1986 catalog and H. H. Nininger for the 1933 catalog. No publisher is inferred for either source.
+
+The site supports catalog filtering, segment-aware H-designation search, full-text factual search, numeric gram ranges, six deterministic sort orders, URL-persisted filters, and incremental rendering. A separate, default-deny rights manifest can enable folio viewing for future catalogs whose source pages have a documented public-domain determination.
 
 ## Local Preview
 
@@ -16,10 +20,12 @@ Visit `http://localhost:8000/`. No installation or build step is required.
 
 ## GitHub Pages
 
-1. Push the repository to GitHub.
-2. Open **Settings > Pages**.
-3. Under **Build and deployment**, choose **Deploy from a branch**.
-4. Select the publishing branch, normally `main`, and the root (`/`) folder.
+1. Run `node scripts/validate-public-catalog.mjs`.
+2. Run `node scripts/test-multicatalog.cjs`.
+3. Push the repository to GitHub; the same checks run in `.github/workflows/validate.yml`.
+4. Open **Settings > Pages**.
+5. Under **Build and deployment**, choose **Deploy from a branch**.
+6. Select the publishing branch, normally `main`, and the root (`/`) folder.
 
 All runtime URLs are relative, so the site works at a GitHub Pages project subpath without configuration.
 
@@ -32,7 +38,18 @@ id, catalogId, designation, name, weight: { grams }, classification,
 locality, year, catalogPage, confidence
 ```
 
-The index presents structured specimen facts: designation, name, normalized mass, classification, locality, recorded year, 1976 catalog page, and transcription confidence. Null weights are excluded whenever a numeric weight filter is active.
+The release contains:
+
+| `catalogId` | Configured source | Observations | Original images | Import batches | Metadata source-page coverage | Pages cited by records |
+| --- | --- | ---: | ---: | ---: | --- | --- |
+| `huss-1976` | Huss Meteorite Collection catalog (1976) | 1,078 | 46 | 12 | 3-48 | 3-48 |
+| `huss-1986` | The Second Huss Collection of Meteorites (1986) | 544 | 25 | 7 | 3-23 | 3-23 |
+| `nininger-1933` | The Nininger Collection of Meteorites (1933) | 136 | 19 | 5 | 1-7 and 10-20 | 1-7 and 10-11 |
+| **Total** |  | **1,758** | **90** | **24** | **85 catalog-scoped pages** | **76 catalog-scoped pages** |
+
+`catalogId` identifies the source catalog for each record. The 85-page figure is metadata source-page coverage, not a claim that every covered page is cited. `catalogPage` is a printed-page citation within that source; records cite 76 distinct catalog-scoped pages, and the same page number in different catalogs denotes different pages. The index presents structured specimen facts: designation, name, normalized mass, classification, locality, recorded year, catalog page, and transcription confidence. Null weights are excluded whenever a numeric weight filter is active.
+
+For `nininger-1933`, pages 8-9 are absent from the local source set. Pages 12-20 are included in metadata source-page coverage but are narrative-only, contain no observations, and are not cited by records. One Nininger observation represents one numbered catalog item, not each visible row or holding. If an item lists multiple holdings, they remain one public observation; the complete holding-level `weightText` and notes are preserved only in private transcription data.
 
 ## Rights-Gated Folios
 
@@ -49,17 +66,17 @@ A folio control is created only when all of these conditions hold:
 - The entire manifest is present and valid with `schemaVersion: 1` and a nonempty `catalogs` object.
 - The record's `catalogId` has `displayPolicy: "display"`, which is structurally valid only with `rightsStatus: "public-domain"` based on a documented determination.
 - The record's catalog page contains exactly required `image` and `alt` keys, with an optional `thumbnail` key and no others.
-- `image` and any `thumbnail` are plain relative paths rooted exactly under `assets/folios/`, contain a filename, use only ASCII letters, digits, dots, underscores, and hyphens in each segment, and end in lowercase `.webp`, `.png`, `.jpg`, `.jpeg`, or `.avif`.
+- `image` and any `thumbnail` are plain relative paths rooted exactly under `assets/folios/<catalogId>/` for the authorized catalog, contain a filename, use only ASCII letters, digits, dots, underscores, and hyphens in each segment, and end in lowercase `.webp`, `.png`, `.jpg`, `.jpeg`, or `.avif`.
 - Paths contain no whitespace, scheme, leading slash, backslash, query, fragment, percent encoding, empty segment, duplicate slash, `.` segment, or `..` segment.
 - `alt` is nonempty NFC-normalized plain text with normalized whitespace, no HTML, backticks, Markdown link/image syntax, control characters, or invisible format characters, and no more than 160 Unicode characters.
 
 Every other condition denies display. An empty, missing, or malformed manifest, missing catalog or page, blocked policy with pages, `display` without `public-domain`, unsafe path, invalid alt text, wrong key, or extra key leaves the factual catalog working without a folio control. The folio button opens `image` directly; the interface does not need to request or render `thumbnail`. The client never infers eligibility from a catalog's publication year or apparent age.
 
-The 1976 Huss catalog is blocked by policy. Its scans remain private, no Huss folio controls or image requests are produced, and this project does not claim that source is in the public domain.
+All three current catalogs are blocked by policy with `rightsStatus: "undetermined"` and no page entries. All public source-image and display-derivative exports are blocked, no folio controls or image requests are produced, and this project does not claim that any source is in the public domain.
 
 ## Private Local Archive
 
-Huss page scans, raw OCR, verbatim notes, page-layout reproductions, source filenames, and working transcription material are intentionally excluded from the public edition. Any such material retained in a private local research archive is not a runtime dependency and should not be committed or deployed with the site.
+Original source images for all three catalogs are held locally and ignored by Git. Image filenames, raw OCR, verbatim notes, holding-level fields such as `weightText`, page-layout reproductions, and working transcription material are intentionally excluded from the public edition. Display derivatives may be tracked only in private history; none are part of the public repository or deployment while export remains blocked.
 
 The public client has no fallback loader for private material. If `catalog.json` is missing or does not match the facts-only schema, the interface shows an accessible error state. Failure of the optional folio manifest does not prevent factual records from loading.
 
@@ -68,7 +85,7 @@ The public client has no fallback loader for private material. If `catalog.json`
 - This is an independently structured factual index, not a facsimile or page-layout reproduction.
 - Transcription confidence describes the project transcription, not the scientific certainty of a classification or historical statement.
 - Historical names, classifications, localities, years, and masses may be incomplete, outdated, or erroneous in the source or transcription.
-- Source rights status is unresolved. No public-domain, copyright-ownership, endorsement, or comprehensive publication-history claim is made.
+- Source rights statuses are undetermined. No public-domain, copyright-ownership, endorsement, or comprehensive publication-history claim is made beyond the stated 1976 Huss attribution.
 - Folio display authorization is catalog-specific and page-specific. It is not a general legal conclusion or an automatic consequence of publication date.
 - Corrections and takedown requests may be submitted through the repository's GitHub issues.
 

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 1200 320" role="img" aria-labelledby="title desc">
+  <title id="title">Historical meteorite fragment on an archival specimen label</title>
+  <desc id="desc">A restrained, low-contrast header artifact showing an irregular dark meteorite fragment resting over a worn cream catalog label, with hand-drawn inventory lines and small brass pin and seal details on a transparent background.</desc>
+  <metadata>Produced by Raymond Borges Hink</metadata>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d8ccb0" stop-opacity="0.76"/>
+      <stop offset="0.52" stop-color="#cfc09f" stop-opacity="0.68"/>
+      <stop offset="1" stop-color="#b9aa8d" stop-opacity="0.62"/>
+    </linearGradient>
+    <linearGradient id="stone" x1="0.12" y1="0.08" x2="0.9" y2="0.92">
+      <stop offset="0" stop-color="#665f54" stop-opacity="0.88"/>
+      <stop offset="0.46" stop-color="#48453f" stop-opacity="0.92"/>
+      <stop offset="1" stop-color="#2f302e" stop-opacity="0.94"/>
+    </linearGradient>
+    <radialGradient id="brass" cx="0.35" cy="0.3" r="0.7">
+      <stop offset="0" stop-color="#d1b26d" stop-opacity="0.85"/>
+      <stop offset="0.55" stop-color="#a58243" stop-opacity="0.82"/>
+      <stop offset="1" stop-color="#6f5730" stop-opacity="0.8"/>
+    </radialGradient>
+    <filter id="softShadow" x="-20%" y="-30%" width="140%" height="170%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+    <filter id="paperTexture" x="-8%" y="-12%" width="116%" height="124%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035 0.12" numOctaves="2" seed="23" result="noise"/>
+      <feComposite in="noise" in2="SourceGraphic" operator="in" result="texture"/>
+      <feBlend in="SourceGraphic" in2="texture" mode="multiply"/>
+    </filter>
+    <clipPath id="labelClip">
+      <path d="M254 85 L905 64 L923 232 L887 241 L286 255 L245 237 Z"/>
+    </clipPath>
+  </defs>
+
+  <g transform="rotate(-1.7 585 166)">
+    <ellipse cx="584" cy="238" rx="365" ry="24" fill="#302d28" opacity="0.12" filter="url(#softShadow)"/>
+
+    <path d="M254 85 L905 64 L923 232 L887 241 L286 255 L245 237 Z" fill="url(#paper)" stroke="#756a58" stroke-opacity="0.42" stroke-width="1.5" filter="url(#paperTexture)"/>
+    <path d="M264 96 L894 76 L909 220 L881 229 L294 242 L258 227 Z" fill="none" stroke="#8a785d" stroke-opacity="0.27" stroke-width="1"/>
+    <path d="M277 119 C421 114 560 110 696 105 S836 97 888 98" fill="none" stroke="#8a745a" stroke-opacity="0.23" stroke-width="1"/>
+    <path d="M275 151 C427 146 572 142 714 137 S842 130 891 131" fill="none" stroke="#8a745a" stroke-opacity="0.2" stroke-width="1"/>
+    <path d="M274 185 C427 180 573 176 717 171 S844 164 895 165" fill="none" stroke="#8a745a" stroke-opacity="0.2" stroke-width="1"/>
+    <path d="M273 218 C430 214 584 208 731 204 S850 198 898 198" fill="none" stroke="#8a745a" stroke-opacity="0.19" stroke-width="1"/>
+
+    <g clip-path="url(#labelClip)" fill="none" stroke="#514b43" stroke-opacity="0.48" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M535 115 c7 -7 11 6 17 0 c5 -5 6 4 11 0 m5 0 c5 -8 7 7 13 0 c6 -6 10 4 16 -1 m7 0 c7 -7 11 4 18 -1 c6 -4 10 4 17 0 m6 -1 c5 -6 8 5 14 0 c5 -4 8 3 14 -1" stroke-width="2"/>
+      <path d="M527 146 c9 -6 13 6 21 0 c6 -5 8 4 14 0 m7 0 c6 -8 10 6 18 -1 c7 -5 12 5 20 -1 m8 0 c8 -6 14 4 22 -1 c7 -4 12 4 20 0 m7 -1 c7 -6 12 5 20 -1 c5 -4 9 2 15 -1" stroke-width="1.8"/>
+      <path d="M516 180 c6 -8 10 7 17 0 c6 -6 10 4 16 -1 m8 0 c8 -6 12 5 20 0 c7 -5 11 3 19 -1 m7 0 c5 -7 10 5 16 -1 c6 -4 11 4 18 0 m6 -1 c7 -6 13 5 21 -1 c8 -5 12 4 20 0" stroke-width="1.7"/>
+      <path d="M493 215 c8 -6 12 5 19 0 c6 -5 10 4 17 -1 m7 0 c5 -7 9 6 16 0 c6 -5 11 4 18 -1 m7 0 c8 -7 13 5 21 -1 c7 -4 11 4 19 0 m7 -1 c5 -6 10 4 16 -1" stroke-width="1.7"/>
+      <path d="M739 111 l5 5 l6 -10 m5 8 c4 -6 7 4 12 -1 c5 -4 7 3 12 0 m5 0 c4 -6 7 4 12 0 c4 -3 7 2 11 -1" stroke-width="1.5"/>
+      <path d="M760 145 c5 -7 9 5 15 -1 c6 -4 10 4 16 -1 m7 0 c6 -5 10 4 16 0 c5 -4 9 3 14 -1" stroke-width="1.5"/>
+      <path d="M751 179 c7 -5 12 4 19 0 c6 -4 10 3 16 -1 m7 0 c5 -6 9 4 15 0 c5 -3 9 3 14 -1" stroke-width="1.5"/>
+    </g>
+
+    <circle cx="875" cy="92" r="7.5" fill="url(#brass)" stroke="#69522f" stroke-opacity="0.6" stroke-width="1.2"/>
+    <circle cx="873" cy="90" r="2" fill="#ead59d" opacity="0.55"/>
+    <path d="M875 99 L877 130" stroke="#75603a" stroke-opacity="0.55" stroke-width="1.5"/>
+
+    <g transform="translate(844 202) rotate(4)">
+      <circle r="22" fill="#8b6b36" opacity="0.14"/>
+      <circle r="17" fill="none" stroke="#94723c" stroke-opacity="0.43" stroke-width="2"/>
+      <circle r="12" fill="none" stroke="#94723c" stroke-opacity="0.3" stroke-width="1"/>
+      <path d="M-7 1 L-2 -5 L2 2 L7 -5 M-8 6 C-3 3 3 8 8 4" fill="none" stroke="#806233" stroke-opacity="0.4" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/>
+    </g>
+
+    <path d="M304 220 C303 211 307 203 315 197 C326 188 333 174 332 159 C330 143 338 128 351 120 C365 111 377 94 393 91 C409 88 423 97 437 91 C452 84 468 87 478 98 C489 110 507 112 518 125 C530 139 526 154 536 165 C548 178 544 194 531 203 C519 212 512 228 495 233 C477 239 462 231 445 236 C426 242 411 232 396 235 C376 239 363 228 347 229 C330 231 315 230 304 220 Z" fill="#2b2926" opacity="0.16" filter="url(#softShadow)"/>
+    <path d="M294 204 C296 192 305 184 314 176 C325 166 326 150 334 137 C343 122 356 117 368 107 C382 95 393 81 411 80 C427 79 439 89 454 86 C470 83 486 89 494 102 C502 115 520 120 526 135 C532 150 525 162 534 174 C544 188 536 203 522 211 C508 219 501 234 484 237 C465 241 452 232 435 237 C418 242 403 232 387 233 C370 234 358 222 342 222 C323 222 305 219 294 204 Z" fill="url(#stone)" stroke="#292a28" stroke-opacity="0.8" stroke-width="2"/>
+
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M324 179 C344 174 352 156 350 139 C364 142 376 130 378 111 C391 123 408 118 419 98 C430 111 449 110 460 98 C464 116 480 124 500 124" stroke="#92897b" stroke-opacity="0.24" stroke-width="3"/>
+      <path d="M314 198 C336 206 353 198 362 183 C374 197 393 199 408 187 C418 202 439 207 455 195 C463 213 484 218 503 208" stroke="#171918" stroke-opacity="0.34" stroke-width="4"/>
+      <path d="M374 108 C367 126 374 139 390 145 C376 153 375 168 386 179 C397 190 414 184 417 169 C422 148 407 139 401 125" stroke="#202220" stroke-opacity="0.48" stroke-width="3"/>
+      <path d="M449 101 C442 117 449 132 463 139 C452 152 456 168 470 175 C483 181 496 172 497 157" stroke="#8d8578" stroke-opacity="0.18" stroke-width="2.5"/>
+      <path d="M336 181 C342 191 354 194 365 187 M428 118 C436 127 448 129 458 123 M475 205 C484 199 489 190 486 180" stroke="#a39a8b" stroke-opacity="0.2" stroke-width="2"/>
+    </g>
+
+    <g fill="#171918" opacity="0.35">
+      <ellipse cx="354" cy="158" rx="11" ry="8" transform="rotate(-25 354 158)"/>
+      <ellipse cx="424" cy="151" rx="13" ry="10" transform="rotate(18 424 151)"/>
+      <ellipse cx="469" cy="117" rx="8" ry="6" transform="rotate(28 469 117)"/>
+      <ellipse cx="474" cy="188" rx="10" ry="7" transform="rotate(-18 474 188)"/>
+      <ellipse cx="392" cy="211" rx="9" ry="5" transform="rotate(8 392 211)"/>
+    </g>
+    <g fill="#a69e90" opacity="0.18">
+      <ellipse cx="383" cy="101" rx="10" ry="4" transform="rotate(-31 383 101)"/>
+      <ellipse cx="442" cy="93" rx="9" ry="4" transform="rotate(12 442 93)"/>
+      <ellipse cx="507" cy="145" rx="7" ry="4" transform="rotate(42 507 145)"/>
+      <ellipse cx="331" cy="203" rx="8" ry="3" transform="rotate(17 331 203)"/>
+    </g>
+
+    <path d="M245 237 C249 230 254 227 258 227 M905 64 C900 70 896 73 894 76 M923 232 C916 226 912 223 909 220" fill="none" stroke="#eee3c9" stroke-opacity="0.28" stroke-width="2"/>
+  </g>
+</svg>

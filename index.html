@@ -3,12 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="An independently structured factual index derived from pages 3-48 of the 1976 Huss Meteorite Collection catalog.">
+  <meta name="description" content="An independently structured factual index of observations from historic meteorite collection catalogs.">
+  <meta name="author" content="Raymond Borges Hink">
   <meta name="theme-color" content="#2d241b">
-  <title>The Meteorite Cabinet | 1976 Huss Collection Index</title>
+  <title>The Meteorite Cabinet | Historical Collection Index</title>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=20260719-9">
-  <script src="./app.js?v=20260719-9" defer></script>
+  <link rel="stylesheet" href="./styles.css?v=20260721-1">
+  <script src="./app.js?v=20260721-1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#catalog">Skip to catalog</a>
@@ -20,25 +21,33 @@
       <h1><span>The</span> Meteorite Cabinet</h1>
       <p class="deck">A searchable transcription of Historic Meteorite Collection catalogs</p>
     </div>
-    <div class="orbit-mark" aria-hidden="true">
-      <span class="orbit orbit-one"></span>
-      <span class="orbit orbit-two"></span>
-      <span class="meteor"></span>
-    </div>
+    <img class="collector-artifact" src="./meteorite-collector-artifact-v1.svg" alt="" aria-hidden="true">
   </header>
 
-  <main id="catalog" class="page-shell">
-    <section class="statistics" aria-label="Catalog statistics">
-      <div><strong id="stat-specimens">-</strong><span>specimens</span></div>
-      <div><strong id="stat-names">-</strong><span>recorded names</span></div>
-      <div><strong id="stat-pages">-</strong><span>catalog pages</span></div>
-      <div><strong id="stat-mass">-</strong><span>recorded mass</span></div>
+  <main id="catalog" class="page-shell" tabindex="-1">
+    <section class="statistics" aria-label="Source observation statistics">
+      <div><strong id="stat-specimens">-</strong><span>source observations</span></div>
+      <div><strong id="stat-names">-</strong><span>distinct recorded names</span></div>
+      <div><strong id="stat-pages">-</strong><span>cited source pages</span></div>
+      <div><strong id="stat-mass">-</strong><span>sum of reported masses</span></div>
     </section>
 
     <section class="edition-note" aria-labelledby="edition-heading">
       <p class="eyebrow">Public edition</p>
       <h2 id="edition-heading">Facts, arranged as an index</h2>
-      <p>This edition presents structured specimen facts from catalog pages 3-48. Huss page scans, raw OCR, verbatim notes, and page layout reproduction are intentionally not distributed. No public-domain or rights ownership claim is made for the source catalog.</p>
+      <p id="catalog-attribution">A searchable transcription of the 1976 Huss Meteorite Collection catalog, compiled and published by Glenn Huss. Additional included catalogs are listed below.</p>
+      <p>This edition presents independently structured facts as source observations, not reconciled specimen identities. Source folios are shown only when a separate catalog-specific manifest records both display approval and an affirmative public-domain determination.</p>
+    </section>
+
+    <section class="source-summary" aria-labelledby="source-summary-heading">
+      <header>
+        <p class="eyebrow">Source register</p>
+        <h2 id="source-summary-heading">Catalogs in this edition</h2>
+        <p>Catalog observations remain attributed to their individual historical sources.</p>
+      </header>
+      <div id="catalog-summary" aria-busy="true">
+        <p class="catalog-summary-status" role="status">Reading catalog metadata...</p>
+      </div>
     </section>
 
     <section class="catalog-tools" aria-labelledby="catalog-heading">
@@ -49,15 +58,24 @@
 
       <form id="filter-form" class="filters" role="search">
         <label class="search-field">
-          <span>Search all entries</span>
+          <span>Search source observations</span>
           <span class="input-wrap search-wrap">
             <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m15.5 15.5 5 5"></path></svg>
-            <input id="search" name="q" type="search" autocomplete="off" placeholder="Name, H27.20, class, place, or year">
+            <input id="search" name="q" type="search" autocomplete="off" placeholder="Name, designation, class, place, or year">
+          </span>
+        </label>
+
+        <label class="catalog-field">
+          <span>Source catalog</span>
+          <span class="select-wrap">
+            <select id="catalog-filter" name="catalog">
+              <option value="">All source catalogs</option>
+            </select>
           </span>
         </label>
 
         <fieldset class="weight-range">
-          <legend>Specimen weight in grams</legend>
+          <legend>Reported mass in grams</legend>
           <label>
             <span>Minimum</span>
             <span class="input-wrap number-wrap"><input id="min-weight" name="min" type="number" min="0" step="any" inputmode="decimal" placeholder="0"><b>g</b></span>
@@ -88,20 +106,20 @@
     <section class="results-section" aria-labelledby="results-heading">
       <div class="results-bar">
         <div>
-          <p class="eyebrow">Collection ledger</p>
-          <h2 id="results-heading"><span id="result-count">Loading</span> <small>entries</small></h2>
+          <p class="eyebrow">Source ledger</p>
+          <h2 id="results-heading"><span id="result-count">Loading</span> <small id="result-unit">observations</small></h2>
         </div>
         <button id="clear-filters" class="text-button" type="button" hidden>Clear filters</button>
       </div>
 
       <p id="status" class="status" role="status" aria-live="polite">Opening the factual index...</p>
       <div id="results" class="catalog-grid" aria-busy="true"></div>
-      <div class="more-row"><button id="show-more" class="button secondary-button" type="button" hidden>Show more entries</button></div>
+      <div class="more-row"><button id="show-more" class="button secondary-button" type="button" hidden>Show more observations</button></div>
 
       <div id="empty-state" class="empty-state" hidden>
         <span aria-hidden="true">&#10022;</span>
-        <h3>No specimens answer that description</h3>
-        <p>Try a broader name, designation, classification, locality, year, or weight interval.</p>
+        <h3>No source observations answer that description</h3>
+        <p>Try a broader name, designation, classification, locality, year, catalog, or mass interval.</p>
         <button class="button" type="button" data-clear-filters>Clear the search</button>
       </div>
 
@@ -118,7 +136,8 @@
 
   <footer>
     <p><i aria-hidden="true"></i> Historical Meteorite Collection <i aria-hidden="true"></i></p>
-    <p>Independent facts-only index derived from pages 3-48 of the 1976 Huss Meteorite Collection catalog. Source rights remain unresolved; see <a href="./NOTICE.md">NOTICE</a>.</p>
+    <p>Independent facts-only index of catalog observations with source-level attribution. Source rights and folio eligibility are assessed catalog by catalog; see <a href="./NOTICE.md">NOTICE</a>.</p>
+    <p class="artifact-credit">Meteorite collector artifact produced by Raymond Borges Hink.</p>
   </footer>
 
   <template id="record-template">
@@ -128,7 +147,7 @@
           <p class="designation"></p>
           <h3 class="record-name"></h3>
         </div>
-        <p class="record-weight"><strong></strong><span>normalized mass</span></p>
+        <p class="record-weight"><strong></strong><span>reported mass</span></p>
       </header>
       <dl class="record-meta">
         <div class="classification-row"><dt>Class</dt><dd></dd></div>
