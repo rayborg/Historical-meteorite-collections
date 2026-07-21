@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260721-3";
+const CACHE_VERSION = "20260721-4";
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "designation-asc";
 const VALID_SORTS = new Set([
@@ -853,8 +853,12 @@ function createRecordCard(record) {
     ? `Source: ${sourceLabel} · page not recorded`
     : `Source: ${sourceLabel} · p. ${record.catalogPage}`;
   const confidence = card.querySelector(".confidence");
-  confidence.classList.add(record.confidence);
-  confidence.querySelector("span").textContent = `${capitalize(record.confidence)} transcription confidence`;
+  if (record.confidence === "high") {
+    confidence.remove();
+  } else {
+    confidence.classList.add(record.confidence);
+    confidence.querySelector("span").textContent = `${capitalize(record.confidence)} transcription confidence`;
+  }
   const folio = getAuthorizedFolio(folioManifest, record.catalogId, record.catalogPage, catalogRegistry);
   if (folio) {
     const button = document.createElement("button");
