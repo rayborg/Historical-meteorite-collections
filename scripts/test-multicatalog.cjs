@@ -286,14 +286,6 @@ test("runtime validation rejects non-string record catalog IDs", () => {
   assert.throws(() => app.validateCatalog(candidate), /facts-only schema/);
 });
 
-test("catalog attribution includes the Huss transcription credit", () => {
-  const attribution = app.formatCatalogAttribution(fixture.metadata.catalogs);
-  assert.equal(
-    attribution.includes("A searchable transcription of the 1976 Huss Meteorite Collection catalog, compiled and published by Glenn Huss."),
-    true
-  );
-});
-
 test("runtime validation rejects overlong and control-containing public text", () => {
   const candidates = [];
 

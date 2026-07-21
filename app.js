@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260721-1";
+const CACHE_VERSION = "20260721-2";
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "designation-asc";
 const VALID_SORTS = new Set([
@@ -89,7 +89,6 @@ const collator = new Intl.Collator("en", { sensitivity: "base", numeric: true })
 
 const elements = typeof document === "undefined" ? null : {
   form: document.querySelector("#filter-form"),
-  attribution: document.querySelector("#catalog-attribution"),
   catalogSummary: document.querySelector("#catalog-summary"),
   search: document.querySelector("#search"),
   catalog: document.querySelector("#catalog-filter"),
@@ -355,27 +354,6 @@ function catalogLabel(descriptor, catalogId = "") {
   const compiler = cleanText(descriptor?.compiler);
   const year = Number.isInteger(descriptor?.year) ? String(descriptor.year) : null;
   return compiler && year ? `${compiler} (${year})` : compiler || year || cleanText(catalogId) || "Catalog";
-}
-
-function formatCatalogAttribution(catalogs) {
-  const descriptors = Array.isArray(catalogs) ? catalogs : Object.values(catalogs || {});
-  const entries = descriptors.map((descriptor) => {
-    if (typeof descriptor === "string") return descriptor;
-    const label = catalogLabel(descriptor, descriptor.id);
-    const compiler = normalizedText(descriptor.compiler);
-    return descriptor.id !== "huss-1976" && compiler ? `${label}, compiled by ${compiler}` : label;
-  });
-  if (!entries.length) return "No catalogs are included in this edition.";
-
-  let list = entries[0];
-  const separator = entries.some((entry) => entry.includes(", compiled by ")) ? ";" : ",";
-  if (entries.length === 2) list = `${entries[0]}${separator === ";" ? ";" : ""} and ${entries[1]}`;
-  if (entries.length > 2) list = `${entries.slice(0, -1).join(`${separator} `)}${separator} and ${entries.at(-1)}`;
-  const introduction = entries.length === 1 ? "Included catalog" : "Included catalogs";
-  const hussAttribution = descriptors.some((descriptor) => descriptor?.id === "huss-1976")
-    ? " A searchable transcription of the 1976 Huss Meteorite Collection catalog, compiled and published by Glenn Huss."
-    : "";
-  return `${introduction}: ${list}.${hussAttribution}`;
 }
 
 function formatSourcePageCoverage(sourcePages) {
@@ -696,7 +674,6 @@ async function loadData() {
     if (!response.ok) throw new Error(`The public catalog request returned status ${response.status}.`);
     const catalog = validateCatalog(await response.json());
     catalogRegistry = normalizeCatalogRegistry(catalog.metadata);
-    elements.attribution.textContent = formatCatalogAttribution(catalogRegistry);
     renderCatalogSummary(catalogRegistry);
     records = catalog.records.map((record, index) => prepareRecord(record, index, catalogRegistry));
     if (!records.length) throw new Error("The public catalog contains no source observations.");
@@ -1111,7 +1088,6 @@ if (typeof module !== "undefined" && module.exports) {
     compareRecords,
     designationComponents,
     filterRecords,
-    formatCatalogAttribution,
     formatMass,
     formatSourcePageCoverage,
     getAuthorizedFolio,
