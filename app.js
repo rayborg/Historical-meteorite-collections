@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260721-2";
+const CACHE_VERSION = "20260721-3";
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "designation-asc";
 const VALID_SORTS = new Set([
@@ -384,8 +384,7 @@ function catalogSummaryEntries(catalogs) {
     year: descriptor.year,
     compiler: descriptor.compiler,
     pageCoverage: formatSourcePageCoverage(descriptor.sourcePages),
-    observationCount: descriptor.recordCount,
-    folioDisplayBlocked: descriptor.folioDisplayPolicy === "blocked"
+    observationCount: descriptor.recordCount
   }));
 }
 
@@ -414,13 +413,6 @@ function renderCatalogSummary(catalogs) {
       details.append(row);
     });
     item.append(heading, details);
-
-    if (summary.folioDisplayBlocked) {
-      const status = document.createElement("p");
-      status.className = "catalog-access-status";
-      status.textContent = "Facts-only access: source folio display is blocked for this catalog.";
-      item.append(status);
-    }
     list.append(item);
   });
 

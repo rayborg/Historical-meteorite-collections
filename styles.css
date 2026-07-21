@@ -179,7 +179,6 @@ button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible
 .catalog-summary-card dl div { min-width: 0; display: grid; grid-template-columns: minmax(7.5rem, .75fr) minmax(0, 1.25fr); gap: .75rem; padding: .3rem 0; border-bottom: 1px dotted rgba(64, 48, 31, .25); }
 .catalog-summary-card dt { color: var(--ink-soft); font-size: .62rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 .catalog-summary-card dd { min-width: 0; margin: 0; font-size: .82rem; line-height: 1.35; overflow-wrap: anywhere; }
-.catalog-access-status { position: relative; margin: .75rem 0 0; padding-top: .7rem; color: var(--oxblood-dark); border-top: 1px solid var(--rule); font-size: .72rem; font-weight: 700; letter-spacing: .035em; }
 .catalog-summary-status { margin: 0; padding: 1.5rem; color: var(--ink-soft); font-style: italic; text-align: center; border: 1px solid var(--rule); }
 
 .catalog-tools { margin-top: 4rem; padding-bottom: 3rem; border-bottom: 3px double var(--rule); }
