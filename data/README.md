@@ -13,7 +13,7 @@ The configured compiler is Glenn I. Huss for `huss-1986` and H. H. Nininger for 
 | `nininger-1933` | 136 | 19 | 5 | 1-7 and 10-20 | 1-7 and 10-11 |
 | **Total** | **1,758** | **90** | **24** | **85 catalog-scoped pages** | **76 catalog-scoped pages** |
 
-The 85-page figure is metadata source-page coverage, not a count of pages cited by records. Records cite 76 distinct catalog-scoped pages. For `nininger-1933`, pages 8-9 are absent from the local source set; pages 12-20 are included in source coverage but are narrative-only, contain no observations, and are not cited by records. Its observation unit is one numbered catalog item, not each visible row or holding. Multiple holdings listed under one item remain one public observation; their complete `weightText` and notes are preserved only in private transcription data.
+The 85-page figure is metadata source-page coverage, not a count of pages cited by records. Records cite 76 distinct catalog-scoped pages. For `nininger-1933`, pages 8-9 are absent from the local source set; pages 12-20 are included in source coverage but are narrative-only, contain no observations, and are not cited by records. Its observation unit is one numbered catalog item, not each visible row or holding. Multiple holdings listed under one item remain one public observation; structured holding facts are public in schema 3, while verbatim `weightText` and notes remain private.
 
 Original images are held locally and ignored by Git. Image and source filenames, raw OCR, verbatim notes, private fields such as `weightText`, and page-layout reproductions are excluded from the public release. Display derivatives may be tracked only in private history. No copyright status determination is made for the source catalogs or excluded material.
 
@@ -21,7 +21,9 @@ Original images are held locally and ignored by Git. Image and source filenames,
 
 ## Data model
 
-The JSON root contains `metadata` and `records`. Each record has only these factual fields:
+The JSON root contains `metadata` and `records`. Schema version 3 catalog descriptors add `recordModel`, either `specimen` or `catalog-item`.
+
+`specimen` records, used by both Huss catalogs, have exactly these fields:
 
 - `id`: stable unique identifier for this observation.
 - `catalogId`: source catalog identifier: `huss-1976`, `huss-1986`, or `nininger-1933`.
@@ -34,7 +36,11 @@ The JSON root contains `metadata` and `records`. Each record has only these fact
 - `catalogPage`: printed page number in the source identified by `catalogId`. Ranges vary by catalog as listed above; this is a catalog-scoped citation only and does not reproduce page layout or identify a scan file.
 - `confidence`: transcription confidence category: `high`, `medium`, or `low`.
 
-Strings are Unicode NFC-normalized, surrounding whitespace is removed, and internal whitespace is collapsed. Records are deterministically ordered by structural designation, then name, numeric weight, and ID; this order is independent of the source's page arrangement.
+`catalog-item` records, used by Nininger, have exactly `id`, `catalogId`, `catalogItem`, `holdings`, `name`, `classification`, `locality`, `year`, `catalogPage`, and `confidence`. `catalogItem` is a positive integer. Common nullable text, page, and confidence fields have the same meanings as above.
+
+Each holding has exactly `designation`, `kind`, `description`, `count`, and `weight`. The designation and concise description are strings or `null`; kind is `specimen`, `cast`, or `aggregate`; count is a positive integer or `null`; and `weight.grams` is a finite nonnegative number or `null`. A specimen holding requires nonnull designation and mass and has a null count. A cast requires a nonnull designation and has null count and mass. An aggregate requires a nonnull description and at least a nonnull count or mass; its designation may be null or printed. Holdings remain in source order, and the UI labels counts as `Count: N` without guessing what was counted.
+
+Strings are Unicode NFC-normalized, surrounding whitespace is removed, and internal whitespace is collapsed. Catalog-item numbers are unique and strictly increasing within each catalog; gaps are allowed, and distinct catalog-item catalogs have independent number spaces. Catalog-item deployment order is numeric item, nullable name, then ID, with no holding-mass tie breaker. Specimen order remains literal structural designation, nullable name, numeric mass, then ID. `recordsWithDesignation` counts a catalog item when any holding has a designation, and `recordsWithWeight` counts it when any holding has a mass.
 
 ## Folio display policy
 
@@ -52,6 +58,6 @@ This page-entry schema is documented for future reviewed catalogs only. `folios.
 
 The data may contain OCR or transcription errors. A `null` means the source did not provide a usable value or that a value could not be stated conservatively from the available transcription.
 
-Records are source observations, not canonical specimens. Multiple observations may concern the same specimen or meteorite, and the dataset does not reconcile identities, editions, or corrections across catalogs. Observation boundaries follow each catalog's structure; specifically, one Nininger observation is one numbered item even when that item lists multiple holdings.
+Records are source observations, not canonical specimens. Multiple observations may concern the same specimen or meteorite, and the dataset does not reconcile identities, editions, or corrections across catalogs. Observation boundaries follow each catalog's structure; specifically, one Nininger observation is one numbered item even when that item lists multiple holdings. Statistics count parent records as observations but sum every non-null holding mass once.
 
 Run `node scripts/validate-public-catalog.mjs` from the project root to validate both public files, catalog counts and ordering, policy coverage, folio path safety, and exclusion rules. The validator uses only Node.js built-in modules and tests the future display schema with in-memory synthetic fixtures that are not written to public data.

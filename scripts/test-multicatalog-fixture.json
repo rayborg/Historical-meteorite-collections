@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "schemaVersion": 2,
+    "schemaVersion": 3,
     "scope": "facts-only",
     "factualFields": [
       "id",
@@ -8,6 +8,12 @@
       "designation",
       "name",
       "weight.grams",
+      "catalogItem",
+      "holdings[].designation",
+      "holdings[].kind",
+      "holdings[].description",
+      "holdings[].count",
+      "holdings[].weight.grams",
       "classification",
       "locality",
       "year",
@@ -17,212 +23,258 @@
     "catalogs": [
       {
         "id": "huss-1976",
+        "recordModel": "specimen",
         "label": "Huss collection (1976)",
         "compiler": "Glenn Huss",
         "year": 1976,
-        "sourcePages": [27, 28, 29, 42],
-        "sourcePageCount": 4,
-        "recordCount": 4,
-        "recordsWithDesignation": 4,
-        "recordsWithWeight": 4,
-        "confidenceCounts": {
-          "high": 2,
-          "medium": 1,
-          "low": 1
-        },
+        "sourcePages": [27, 42],
+        "sourcePageCount": 2,
+        "recordCount": 2,
+        "recordsWithDesignation": 2,
+        "recordsWithWeight": 2,
+        "confidenceCounts": { "high": 2, "medium": 0, "low": 0 },
         "folioDisplayPolicy": "blocked",
         "rightsStatus": "undetermined"
       },
       {
-        "id": "museum-1890",
-        "label": "Historical register",
-        "compiler": "Example Museum",
-        "year": 1890,
-        "sourcePages": [7, 12, 27, 42],
-        "sourcePageCount": 4,
-        "recordCount": 4,
-        "recordsWithDesignation": 4,
-        "recordsWithWeight": 3,
-        "confidenceCounts": {
-          "high": 3,
-          "medium": 1,
-          "low": 0
-        },
-        "folioDisplayPolicy": "display",
-        "rightsStatus": "public-domain"
+        "id": "huss-1986",
+        "recordModel": "specimen",
+        "label": "Second Huss collection (1986)",
+        "compiler": "Glenn I. Huss",
+        "year": 1986,
+        "sourcePages": [19, 20],
+        "sourcePageCount": 2,
+        "recordCount": 2,
+        "recordsWithDesignation": 2,
+        "recordsWithWeight": 2,
+        "confidenceCounts": { "high": 1, "medium": 1, "low": 0 },
+        "folioDisplayPolicy": "blocked",
+        "rightsStatus": "undetermined"
       },
       {
-        "id": "university-1912",
-        "label": "Historical register",
-        "compiler": "Example University",
-        "year": 1912,
-        "sourcePages": [27, 30, 31, 42],
-        "sourcePageCount": 4,
-        "recordCount": 4,
+        "id": "nininger-1933",
+        "recordModel": "catalog-item",
+        "label": "Nininger collection (1933)",
+        "compiler": "H. H. Nininger",
+        "year": 1933,
+        "sourcePages": [1, 2, 3, 4, 5, 6],
+        "sourcePageCount": 6,
+        "recordCount": 6,
         "recordsWithDesignation": 3,
         "recordsWithWeight": 4,
-        "confidenceCounts": {
-          "high": 2,
-          "medium": 1,
-          "low": 1
-        },
-        "folioDisplayPolicy": "display",
-        "rightsStatus": "public-domain"
+        "confidenceCounts": { "high": 3, "medium": 2, "low": 1 },
+        "folioDisplayPolicy": "blocked",
+        "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 12,
-    "recordsWithDesignation": 11,
-    "recordsWithWeight": 11,
-    "confidenceCounts": {
-      "high": 7,
-      "medium": 3,
-      "low": 2
-    }
+    "recordCount": 10,
+    "recordsWithDesignation": 7,
+    "recordsWithWeight": 8,
+    "confidenceCounts": { "high": 6, "medium": 3, "low": 1 }
   },
   "records": [
     {
-      "id": "museum-a12",
-      "catalogId": "museum-1890",
-      "designation": "A12",
-      "name": "Non-H alpha",
-      "weight": { "grams": 12 },
+      "id": "nininger-item-1",
+      "catalogId": "nininger-1933",
+      "catalogItem": 1,
+      "holdings": [
+        {
+          "designation": "8a",
+          "kind": "specimen",
+          "description": "Individual",
+          "count": null,
+          "weight": { "grams": 100 }
+        }
+      ],
+      "name": "Normal stone",
+      "classification": "Chondrite",
+      "locality": "Kansas",
+      "year": "1890",
+      "catalogPage": 1,
+      "confidence": "high"
+    },
+    {
+      "id": "nininger-item-2",
+      "catalogId": "nininger-1933",
+      "catalogItem": 2,
+      "holdings": [
+        {
+          "designation": "168a",
+          "kind": "specimen",
+          "description": "Main mass",
+          "count": null,
+          "weight": { "grams": 12 }
+        },
+        {
+          "designation": "34jj",
+          "kind": "aggregate",
+          "description": "Paired fragments",
+          "count": 2,
+          "weight": { "grams": 3 }
+        }
+      ],
+      "name": "Multiple holdings",
+      "classification": "Iron",
+      "locality": "Arizona",
+      "year": "1912",
+      "catalogPage": 2,
+      "confidence": "high"
+    },
+    {
+      "id": "nininger-item-3",
+      "catalogId": "nininger-1933",
+      "catalogItem": 3,
+      "holdings": [
+        {
+          "designation": "8a",
+          "kind": "cast",
+          "description": "Plaster replica",
+          "count": null,
+          "weight": { "grams": null }
+        },
+        {
+          "designation": "34jja",
+          "kind": "cast",
+          "description": null,
+          "count": null,
+          "weight": { "grams": null }
+        },
+        {
+          "designation": "128aaa",
+          "kind": "cast",
+          "description": null,
+          "count": null,
+          "weight": { "grams": null }
+        },
+        {
+          "designation": "10L",
+          "kind": "cast",
+          "description": null,
+          "count": null,
+          "weight": { "grams": null }
+        },
+        {
+          "designation": "128 s",
+          "kind": "cast",
+          "description": null,
+          "count": null,
+          "weight": { "grams": null }
+        }
+      ],
+      "name": "Cast example",
+      "classification": null,
+      "locality": "Mexico",
+      "year": null,
+      "catalogPage": 3,
+      "confidence": "medium"
+    },
+    {
+      "id": "nininger-item-4",
+      "catalogId": "nininger-1933",
+      "catalogItem": 4,
+      "holdings": [
+        {
+          "designation": null,
+          "kind": "aggregate",
+          "description": "Small fragments",
+          "count": 4,
+          "weight": { "grams": null }
+        }
+      ],
+      "name": "Count only",
+      "classification": "Stone",
+      "locality": null,
+      "year": null,
+      "catalogPage": 4,
+      "confidence": "low"
+    },
+    {
+      "id": "nininger-item-5",
+      "catalogId": "nininger-1933",
+      "catalogItem": 105,
+      "holdings": [
+        {
+          "designation": null,
+          "kind": "aggregate",
+          "description": "Combined material",
+          "count": null,
+          "weight": { "grams": 25 }
+        }
+      ],
+      "name": "Aggregate example",
+      "classification": "Pallasite",
+      "locality": "Chile",
+      "year": "1925",
+      "catalogPage": 5,
+      "confidence": "medium"
+    },
+    {
+      "id": "nininger-item-6",
+      "catalogId": "nininger-1933",
+      "catalogItem": 142,
+      "holdings": [
+        {
+          "designation": null,
+          "kind": "aggregate",
+          "description": "Unnumbered individual",
+          "count": null,
+          "weight": { "grams": 1 }
+        }
+      ],
+      "name": "Unnumbered example",
       "classification": "Achondrite",
       "locality": "France",
       "year": "1841",
-      "catalogPage": 12,
+      "catalogPage": 6,
       "confidence": "high"
     },
     {
-      "id": "university-h2-7",
-      "catalogId": "university-1912",
-      "designation": "H2.7",
-      "name": "Segment boundary",
-      "weight": { "grams": 2.7 },
+      "id": "huss-second-h399-1",
+      "catalogId": "huss-1986",
+      "designation": "(2)H399.1",
+      "name": "Second collection decimal",
+      "weight": { "grams": 5 },
+      "classification": "L6",
+      "locality": "Colorado",
+      "year": "1933",
+      "catalogPage": 19,
+      "confidence": "high"
+    },
+    {
+      "id": "huss-second-h400",
+      "catalogId": "huss-1986",
+      "designation": "(2)H400",
+      "name": "Second collection scalar",
+      "weight": { "grams": 7 },
       "classification": "H6",
-      "locality": "Texas",
-      "year": "1910",
-      "catalogPage": 27,
-      "confidence": "medium"
-    },
-    {
-      "id": "huss-h27",
-      "catalogId": "huss-1976",
-      "designation": "H27",
-      "name": "Allegan",
-      "weight": { "grams": 10 },
-      "classification": "H5",
-      "locality": "Michigan",
-      "year": "1899",
-      "catalogPage": 27,
-      "confidence": "high"
-    },
-    {
-      "id": "museum-h27",
-      "catalogId": "museum-1890",
-      "designation": "H27",
-      "name": "Benares",
-      "weight": { "grams": 10 },
-      "classification": "Stone. LL4",
-      "locality": "India",
-      "year": "1798",
-      "catalogPage": 27,
-      "confidence": "high"
-    },
-    {
-      "id": "huss-h27-1",
-      "catalogId": "huss-1976",
-      "designation": "H27.1",
-      "name": "Allegan fragment",
-      "weight": { "grams": 2.5 },
-      "classification": "H5",
-      "locality": "Michigan",
-      "year": "1899",
-      "catalogPage": 28,
-      "confidence": "medium"
-    },
-    {
-      "id": "university-h27-20",
-      "catalogId": "university-1912",
-      "designation": "H27.20",
-      "name": "Nested specimen",
-      "weight": { "grams": 20 },
-      "classification": "H4",
-      "locality": "Kansas",
-      "year": "1903",
-      "catalogPage": 30,
-      "confidence": "high"
-    },
-    {
-      "id": "stable-first",
-      "catalogId": "huss-1976",
-      "designation": "H42",
-      "name": "Stable twin",
-      "weight": { "grams": 42 },
-      "classification": "H5",
-      "locality": "Test locality",
-      "year": "1900",
-      "catalogPage": 42,
-      "confidence": "high"
-    },
-    {
-      "id": "stable-second",
-      "catalogId": "museum-1890",
-      "designation": "H42",
-      "name": "Stable twin",
-      "weight": { "grams": 42 },
-      "classification": "H5",
-      "locality": "Test locality",
-      "year": "1900",
-      "catalogPage": 42,
-      "confidence": "high"
-    },
-    {
-      "id": "stable-third",
-      "catalogId": "university-1912",
-      "designation": "H42",
-      "name": "Stable twin",
-      "weight": { "grams": 42 },
-      "classification": "H5",
-      "locality": "Test locality",
-      "year": "1900",
-      "catalogPage": 42,
-      "confidence": "high"
-    },
-    {
-      "id": "huss-h270",
-      "catalogId": "huss-1976",
-      "designation": "H270",
-      "name": "Boundary specimen",
-      "weight": { "grams": 270 },
-      "classification": "Stone. Iron",
       "locality": null,
       "year": null,
-      "catalogPage": 29,
-      "confidence": "low"
-    },
-    {
-      "id": "museum-m7",
-      "catalogId": "museum-1890",
-      "designation": "M7",
-      "name": "Non-H hyphen",
-      "weight": { "grams": null },
-      "classification": "Mesosiderite",
-      "locality": "Chile",
-      "year": null,
-      "catalogPage": 7,
+      "catalogPage": 20,
       "confidence": "medium"
     },
     {
-      "id": "university-null",
-      "catalogId": "university-1912",
-      "designation": null,
-      "name": "Unnamed designation",
-      "weight": { "grams": 1 },
-      "classification": null,
-      "locality": "Unknown",
-      "year": null,
-      "catalogPage": 31,
-      "confidence": "low"
+      "id": "huss-h27-3",
+      "catalogId": "huss-1976",
+      "designation": "H27.3",
+      "name": "Huss decimal example",
+      "weight": { "grams": 10 },
+      "classification": "H5",
+      "locality": "Michigan",
+      "year": "1899",
+      "catalogPage": 27,
+      "confidence": "high"
+    },
+    {
+      "id": "huss-h42",
+      "catalogId": "huss-1976",
+      "designation": "H42",
+      "name": "Huss scalar example",
+      "weight": { "grams": 42 },
+      "classification": "Iron",
+      "locality": "Texas",
+      "year": "1900",
+      "catalogPage": 42,
+      "confidence": "high"
     }
   ]
 }

@@ -8,7 +8,7 @@ The release also indexes *The Second Huss Collection of Meteorites* (1986), conf
 
 ## Facts-Only Scope
 
-The public edition distributes 1,758 structured specimen records only: identifiers, designations, names, masses in grams, classifications, localities, recorded years, catalog page references, and transcription-confidence labels. They comprise 1,078 `huss-1976` records citing pages 3-48, 544 `huss-1986` records citing pages 3-23, and 136 `nininger-1933` records citing pages 1-7 and 10-11, for 76 distinct catalog-scoped pages cited by records. The metadata source-page coverage is 85 catalog-scoped pages; this is not a claim that all 85 are cited. Nininger pages 12-20 are included in that source coverage but are narrative-only, contain no observations, and are not cited by records. `catalogId` identifies each source; printed page ranges vary by catalog.
+The public edition distributes 1,758 structured source observations only. Schema version 3 represents the 1,078 `huss-1976` and 544 `huss-1986` observations as specimen records with scalar designation and mass fields. It represents the 136 `nininger-1933` observations as numbered catalog items with source-order holdings, including factual holding designation, kind, concise description, count, and normalized mass. Parent observations cite pages 3-48, 3-23, and 1-7 plus 10-11 respectively, for 76 distinct catalog-scoped pages cited by records. The metadata source-page coverage is 85 catalog-scoped pages; this is not a claim that all 85 are cited. Nininger pages 12-20 are included in that source coverage but are narrative-only, contain no observations, and are not cited by records. `catalogId` identifies each source; printed page ranges vary by catalog.
 
 No source images, image or source filenames, raw OCR, verbatim notes, or reproductions of catalog page layout are publicly distributed for any of the three catalogs. Such material remains private and blocked from folio display. Private local research or transcription archives are outside the public site and repository distribution.
 
@@ -28,4 +28,4 @@ Reference to the catalogs, their configured compilers, institutions, localities,
 
 ## Corrections And Takedown Requests
 
-Please use the repository's GitHub issues for factual corrections, attribution concerns, or takedown requests. Include the relevant `catalogId`, designation, catalog page, and a concise explanation where possible so the request can be reviewed.
+Please use the repository's GitHub issues for factual corrections, attribution concerns, or takedown requests. Include the relevant `catalogId`, designation or catalog item, catalog page, and a concise explanation where possible so the request can be reviewed.

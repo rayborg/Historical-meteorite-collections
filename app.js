@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260721-5";
+const CACHE_VERSION = "20260722-1";
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "designation-asc";
 const VALID_SORTS = new Set([
@@ -11,7 +11,7 @@ const VALID_SORTS = new Set([
   "weight-asc",
   "weight-desc"
 ]);
-const RECORD_FIELDS = new Set([
+const SPECIMEN_RECORD_FIELDS = new Set([
   "id",
   "catalogId",
   "designation",
@@ -23,12 +23,34 @@ const RECORD_FIELDS = new Set([
   "catalogPage",
   "confidence"
 ]);
+const CATALOG_ITEM_RECORD_FIELDS = new Set([
+  "id",
+  "catalogId",
+  "catalogItem",
+  "holdings",
+  "name",
+  "classification",
+  "locality",
+  "year",
+  "catalogPage",
+  "confidence"
+]);
+const HOLDING_FIELDS = new Set(["designation", "kind", "description", "count", "weight"]);
+const HOLDING_KINDS = new Set(["specimen", "cast", "aggregate"]);
+const RECORD_MODEL_ORDER = ["specimen", "catalog-item"];
+const RECORD_MODELS = new Set(RECORD_MODEL_ORDER);
 const FACTUAL_FIELDS = [
   "id",
   "catalogId",
   "designation",
   "name",
   "weight.grams",
+  "catalogItem",
+  "holdings[].designation",
+  "holdings[].kind",
+  "holdings[].description",
+  "holdings[].count",
+  "holdings[].weight.grams",
   "classification",
   "locality",
   "year",
@@ -37,18 +59,6 @@ const FACTUAL_FIELDS = [
 ];
 const CONFIDENCE_LEVELS = ["high", "medium", "low"];
 const CONFIDENCE_FIELDS = new Set(CONFIDENCE_LEVELS);
-const LEGACY_METADATA_FIELDS = new Set([
-  "catalog",
-  "scope",
-  "sourcePageRange",
-  "sourcePageCount",
-  "recordCount",
-  "factualFields",
-  "recordsWithDesignation",
-  "recordsWithWeight",
-  "confidenceCounts"
-]);
-const DEPLOYED_CATALOG_FIELDS = new Set(["id", "compiler", "year", "folioDisplayPolicy", "rightsStatus"]);
 const CANONICAL_METADATA_FIELDS = new Set([
   "schemaVersion",
   "scope",
@@ -61,6 +71,7 @@ const CANONICAL_METADATA_FIELDS = new Set([
 ]);
 const CANONICAL_CATALOG_FIELDS = new Set([
   "id",
+  "recordModel",
   "label",
   "compiler",
   "year",
@@ -83,6 +94,9 @@ const MAX_DESCRIPTOR_TEXT_LENGTH = 160;
 const LEAKAGE_MARKER = /\b(?:raw[\s_-]*ocr|raw[\s_-]*text|ocr[\s_-]*(?:output|text)|source[\s_-]*(?:image|file)(?:[\s_-]*name)?s?|scan(?:ned)?[\s_-]*(?:image|file|path|name)s?|verbatim[\s_-]*notes?|transcription[\s_-]*notes?)\b/iu;
 const IMAGE_OR_SOURCE_FILE = /\.(?:avif|bmp|gif|heic|heif|hocr|jpe?g|ocr|pdf|png|svg|tiff?|webp)(?=$|[^A-Za-z0-9])|\b(?:dscn?|img|pxl)[_-]?\d{3,}\b/iu;
 const PATH_LIKE_STRING = /(?:^|[\s"'(])(?:[A-Za-z][A-Za-z\d+.-]*:\/\/|\/{1,2}|\.{1,2}[\\/]|~[\\/]|[A-Za-z]:[\\/]|(?:assets?|files?|folios?|images?|scans?|source[\s_-]*images?)[\\/])|\\/iu;
+const HOLDING_PRIVATE_LANGUAGE = /\bocr\b|\b(?:review(?:er)?|research|transcript(?:ion)?|verbatim|working|private)[\s_-]+notes?\b|\bpage[\s_-]*(?:id|identifier)\b|\bpage[_-]\d+\b|\b(?:private[\s_-]*source|source[\s_-]*page)\b/iu;
+const HOLDING_PRIVATE_DOCUMENT = /(?:^|[\s"'(])(?:source|private|data)[\\/][^\s"')]+|\.(?:dat|csv|docx?|json|md|odt|rtf|txt|xlsx?|xml)(?=$|[^A-Za-z0-9])/iu;
+const HOLDING_WEIGHT_DISPLAY = /\b\d[\d,.]*\s+(?:g|grs?|grams?|kg|kgs?|kilograms?)\.?(?![A-Za-z0-9])/iu;
 const integerFormat = new Intl.NumberFormat("en-US");
 const massFormat = new Intl.NumberFormat("en-US", { maximumFractionDigits: 3 });
 const collator = new Intl.Collator("en", { sensitivity: "base", numeric: true });
@@ -180,24 +194,55 @@ function isDesignationQuery(value) {
   return designationComponents(value) !== null;
 }
 
+function numericLeadingHoldingCode(value) {
+  const normalized = String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLocaleLowerCase()
+    .replace(/\s+/g, "");
+  return /^\d+[a-z]+$/.test(normalized) ? normalized : null;
+}
+
 function matchesSearch(record, rawQuery) {
   const query = searchable(rawQuery);
   if (!query) return true;
 
+  const catalogItemQuery = query.match(/^catalog item (\d+)$/);
+  if (catalogItemQuery) return record.catalogItem === Number(catalogItemQuery[1]);
+  const holdingCodeQuery = numericLeadingHoldingCode(rawQuery);
+  if (holdingCodeQuery) {
+    return Array.isArray(record.holdings) && record.holdings.some(
+      (holding) => numericLeadingHoldingCode(holding.designation) === holdingCodeQuery
+    );
+  }
+  const compactQuery = query.replace(/ /g, "");
+  if (!designationComponents(rawQuery) && recordDesignations(record).some(
+    (designation) => searchable(designation).replace(/ /g, "") === compactQuery
+  )) return true;
+
   const numericQuery = String(rawQuery || "").trim();
   if (/^\d+$/.test(numericQuery)) {
     const yearTokens = searchable(record.year).split(/\s+/).filter(Boolean);
-    return String(record.designation || "").trim() === numericQuery || yearTokens.includes(numericQuery);
+    const holdingTokens = new Set(searchable((record.holdings || []).flatMap((holding) => [
+      holding.designation,
+      holding.description
+    ]).filter(Boolean).join(" ")).split(/\s+/).filter(Boolean));
+    return String(record.catalogItem || "") === numericQuery ||
+      recordDesignations(record).some((designation) => String(designation).trim() === numericQuery) ||
+      yearTokens.includes(numericQuery) || holdingTokens.has(numericQuery);
   }
 
   const parsedQuery = parseSearchQuery(rawQuery);
   if (parsedQuery.designations.length) {
-    const recordSegments = record.designationSegments || designationComponents(record.designation);
-    const designationMatches = Boolean(recordSegments) && parsedQuery.designations.every((querySegments) =>
-      querySegments.every((segment, index) => recordSegments[index] === segment)
-    );
+    const recordSegments = record.designationSegmentsList || recordDesignations(record)
+      .map(designationComponents)
+      .filter(Boolean);
+    const designationMatches = parsedQuery.designations.every((querySegments) => recordSegments.some((segments) =>
+      querySegments.every((segment, index) => segments[index] === segment)
+    ));
     const haystack = record.searchText || searchable([
-      record.designation,
+      ...recordDesignations(record),
+      record.catalogItem,
       record.name,
       record.classification,
       record.locality,
@@ -214,13 +259,17 @@ function matchesSearch(record, rawQuery) {
 
   const queryDesignation = genericDesignation(rawQuery);
   if (queryDesignation) {
-    const recordDesignation = record.designationKey || genericDesignation(record.designation);
-    const designationMatches = Boolean(recordDesignation) &&
+    const recordDesignationKeys = record.designationKeys || recordDesignations(record)
+      .map(genericDesignation)
+      .filter(Boolean);
+    const designationMatches = recordDesignationKeys.some((recordDesignation) =>
       queryDesignation.prefix === recordDesignation.prefix &&
-      queryDesignation.segments.every((segment, index) => recordDesignation.segments[index] === segment);
+      queryDesignation.segments.every((segment, index) => recordDesignation.segments[index] === segment)
+    );
     if (designationMatches) return true;
     const haystack = record.searchText || searchable([
-      record.designation,
+      ...recordDesignations(record),
+      record.catalogItem,
       record.name,
       record.classification,
       record.locality,
@@ -231,13 +280,21 @@ function matchesSearch(record, rawQuery) {
   }
 
   const haystack = record.searchText || searchable([
-    record.designation,
+    ...recordDesignations(record),
+    record.catalogItem,
     record.name,
     record.classification,
     record.locality,
     record.year
   ].filter(Boolean).join(" "));
   return query.split(/\s+/).every((term) => haystack.includes(term));
+}
+
+function recordDesignations(record) {
+  if (Array.isArray(record?.holdings)) {
+    return record.holdings.map((holding) => holding.designation).filter(Boolean);
+  }
+  return record?.designation ? [record.designation] : [];
 }
 
 function parseSearchQuery(value) {
@@ -285,6 +342,11 @@ function isLeakageSafeText(value) {
     !IMAGE_OR_SOURCE_FILE.test(value) && !PATH_LIKE_STRING.test(value);
 }
 
+function isLeakageSafeHoldingText(value) {
+  return isLeakageSafeText(value) && !HOLDING_PRIVATE_LANGUAGE.test(value) &&
+    !HOLDING_PRIVATE_DOCUMENT.test(value) && !HOLDING_WEIGHT_DISPLAY.test(value);
+}
+
 function isLeakageSafeTree(value) {
   if (typeof value === "string") return isLeakageSafeText(value);
   if (Array.isArray(value)) return value.every(isLeakageSafeTree);
@@ -308,6 +370,63 @@ function hasValidSummary(value) {
     Number.isInteger(value.recordsWithDesignation) && value.recordsWithDesignation >= 0 && value.recordsWithDesignation <= value.recordCount &&
     Number.isInteger(value.recordsWithWeight) && value.recordsWithWeight >= 0 && value.recordsWithWeight <= value.recordCount &&
     hasValidConfidenceCounts(value.confidenceCounts, value.recordCount);
+}
+
+function compareCanonicalText(left, right) {
+  if (left === right) return 0;
+  if (left === null) return 1;
+  if (right === null) return -1;
+  return left < right ? -1 : 1;
+}
+
+function canonicalDesignationParts(value) {
+  if (value === null) return null;
+  const prefix = value.match(/^[A-Za-z]*/u)?.[0] ?? "";
+  const numbers = value.match(/\d+/gu)?.map(Number);
+  requireSchema(numbers?.length);
+  return { prefix, numbers };
+}
+
+function compareCanonicalDesignation(left, right) {
+  const leftParts = canonicalDesignationParts(left);
+  const rightParts = canonicalDesignationParts(right);
+  if (leftParts === null || rightParts === null) {
+    if (leftParts === rightParts) return 0;
+    return leftParts === null ? 1 : -1;
+  }
+  const prefixOrder = compareCanonicalText(leftParts.prefix, rightParts.prefix);
+  if (prefixOrder) return prefixOrder;
+  const length = Math.min(leftParts.numbers.length, rightParts.numbers.length);
+  for (let index = 0; index < length; index += 1) {
+    const difference = leftParts.numbers[index] - rightParts.numbers[index];
+    if (difference) return difference;
+  }
+  return leftParts.numbers.length - rightParts.numbers.length;
+}
+
+function compareCanonicalNullableNumber(left, right) {
+  if (left === right) return 0;
+  if (left === null) return 1;
+  if (right === null) return -1;
+  return left - right;
+}
+
+function compareCanonicalRecords(left, right, registry) {
+  const leftModel = registry[left.catalogId].recordModel;
+  const rightModel = registry[right.catalogId].recordModel;
+  const modelOrder = RECORD_MODEL_ORDER.indexOf(rightModel) - RECORD_MODEL_ORDER.indexOf(leftModel);
+  if (modelOrder) return modelOrder;
+  if (leftModel === "catalog-item") {
+    return left.catalogItem - right.catalogItem ||
+      compareCanonicalText(left.name, right.name) || compareCanonicalText(left.id, right.id);
+  }
+  const identityOrder = compareCanonicalDesignation(left.designation, right.designation);
+  const leftMasses = recordMasses(left);
+  const rightMasses = recordMasses(right);
+  return identityOrder || compareCanonicalText(left.name, right.name) ||
+    compareCanonicalNullableNumber(leftMasses.length ? Math.min(...leftMasses) : null,
+      rightMasses.length ? Math.min(...rightMasses) : null) ||
+    compareCanonicalText(left.id, right.id);
 }
 
 function hasValidCatalogPolicy(descriptor) {
@@ -339,6 +458,7 @@ function hasValidSourcePages(value) {
 function validateCanonicalDescriptor(descriptor) {
   requireSchema(hasExactFields(descriptor, CANONICAL_CATALOG_FIELDS));
   requireSchema(hasValidCatalogId(descriptor.id));
+  requireSchema(RECORD_MODELS.has(descriptor.recordModel));
   requireSchema(hasValidDescriptorText(descriptor.label));
   requireSchema(hasValidDescriptorText(descriptor.compiler));
   requireSchema(Number.isInteger(descriptor.year) && descriptor.year > 0);
@@ -440,46 +560,18 @@ function createCatalogRegistry(descriptors) {
 
 function normalizeCatalogRegistry(metadata) {
   requireSchema(isPlainObject(metadata) && isLeakageSafeTree(metadata));
-
-  if (Object.hasOwn(metadata, "schemaVersion")) {
-    requireSchema(hasExactFields(metadata, CANONICAL_METADATA_FIELDS));
-    requireSchema(metadata.schemaVersion === 2 && metadata.scope === "facts-only" && hasFactualFields(metadata.factualFields));
-    requireSchema(Array.isArray(metadata.catalogs) && metadata.catalogs.length > 0 && hasValidSummary(metadata));
-    metadata.catalogs.forEach(validateCanonicalDescriptor);
-    requireSchema(new Set(metadata.catalogs.map((descriptor) => descriptor.id)).size === metadata.catalogs.length);
-    requireSchema(metadata.catalogs.reduce((sum, descriptor) => sum + descriptor.recordCount, 0) === metadata.recordCount);
-    requireSchema(metadata.catalogs.reduce((sum, descriptor) => sum + descriptor.recordsWithDesignation, 0) === metadata.recordsWithDesignation);
-    requireSchema(metadata.catalogs.reduce((sum, descriptor) => sum + descriptor.recordsWithWeight, 0) === metadata.recordsWithWeight);
-    CONFIDENCE_LEVELS.forEach((level) => requireSchema(
-      metadata.catalogs.reduce((sum, descriptor) => sum + descriptor.confidenceCounts[level], 0) === metadata.confidenceCounts[level]
-    ));
-    return createCatalogRegistry(metadata.catalogs);
-  }
-
-  requireSchema(hasExactFields(metadata, LEGACY_METADATA_FIELDS));
-  requireSchema(metadata.scope === "facts-only" && hasFactualFields(metadata.factualFields) && hasValidSummary(metadata));
-  requireSchema(hasExactFields(metadata.catalog, DEPLOYED_CATALOG_FIELDS));
-  requireSchema(hasValidCatalogId(metadata.catalog.id) && hasValidDescriptorText(metadata.catalog.compiler));
-  requireSchema(Number.isInteger(metadata.catalog.year) && metadata.catalog.year > 0 && hasValidCatalogPolicy(metadata.catalog));
-  requireSchema(hasExactFields(metadata.sourcePageRange, new Set(["start", "end"])));
-  const { start, end } = metadata.sourcePageRange;
-  requireSchema(Number.isInteger(start) && start > 0 && Number.isInteger(end) && end >= start);
-  requireSchema(metadata.sourcePageCount === end - start + 1);
-  const sourcePages = Array.from({ length: metadata.sourcePageCount }, (_, index) => start + index);
-  return createCatalogRegistry([{
-    id: metadata.catalog.id,
-    label: `${metadata.catalog.compiler} (${metadata.catalog.year})`,
-    compiler: metadata.catalog.compiler,
-    year: metadata.catalog.year,
-    sourcePages,
-    sourcePageCount: metadata.sourcePageCount,
-    recordCount: metadata.recordCount,
-    recordsWithDesignation: metadata.recordsWithDesignation,
-    recordsWithWeight: metadata.recordsWithWeight,
-    confidenceCounts: { ...metadata.confidenceCounts },
-    folioDisplayPolicy: metadata.catalog.folioDisplayPolicy,
-    rightsStatus: metadata.catalog.rightsStatus
-  }]);
+  requireSchema(hasExactFields(metadata, CANONICAL_METADATA_FIELDS));
+  requireSchema(metadata.schemaVersion === 3 && metadata.scope === "facts-only" && hasFactualFields(metadata.factualFields));
+  requireSchema(Array.isArray(metadata.catalogs) && metadata.catalogs.length > 0 && hasValidSummary(metadata));
+  metadata.catalogs.forEach(validateCanonicalDescriptor);
+  requireSchema(new Set(metadata.catalogs.map((descriptor) => descriptor.id)).size === metadata.catalogs.length);
+  requireSchema(metadata.catalogs.reduce((sum, descriptor) => sum + descriptor.recordCount, 0) === metadata.recordCount);
+  requireSchema(metadata.catalogs.reduce((sum, descriptor) => sum + descriptor.recordsWithDesignation, 0) === metadata.recordsWithDesignation);
+  requireSchema(metadata.catalogs.reduce((sum, descriptor) => sum + descriptor.recordsWithWeight, 0) === metadata.recordsWithWeight);
+  CONFIDENCE_LEVELS.forEach((level) => requireSchema(
+    metadata.catalogs.reduce((sum, descriptor) => sum + descriptor.confidenceCounts[level], 0) === metadata.confidenceCounts[level]
+  ));
+  return createCatalogRegistry(metadata.catalogs);
 }
 
 function emptyCatalogStatistics() {
@@ -496,33 +588,61 @@ function validateCatalog(catalog) {
   requireSchema(isLeakageSafeTree(catalog));
   const registry = normalizeCatalogRegistry(catalog.metadata);
   const ids = new Set();
+  const catalogItemNumbers = {};
+  const previousCatalogItems = {};
   const statistics = Object.fromEntries(Object.keys(registry).map((catalogId) => [catalogId, emptyCatalogStatistics()]));
 
-  catalog.records.forEach((record) => {
-    requireSchema(hasExactFields(record, RECORD_FIELDS) && hasExactFields(record.weight, new Set(["grams"])));
+  catalog.records.forEach((record, index) => {
     requireSchema(hasValidRecordId(record.id) && !ids.has(record.id));
     ids.add(record.id);
     requireSchema(hasValidCatalogId(record.catalogId) && Object.hasOwn(registry, record.catalogId));
-    ["designation", "name", "classification", "locality", "year"].forEach((field) =>
+    const recordModel = registry[record.catalogId].recordModel;
+    requireSchema(recordModel === "specimen"
+      ? hasExactFields(record, SPECIMEN_RECORD_FIELDS) && hasExactFields(record.weight, new Set(["grams"]))
+      : hasExactFields(record, CATALOG_ITEM_RECORD_FIELDS));
+    ["name", "classification", "locality", "year"].forEach((field) =>
       requireSchema(record[field] === null || (record[field] !== "" && isLeakageSafeText(record[field])))
     );
-    requireSchema(record.weight.grams === null || (Number.isFinite(record.weight.grams) && record.weight.grams >= 0));
-    requireSchema(
-      record.designation !== null ||
-      record.name !== null ||
-      record.weight.grams !== null ||
-      record.classification !== null ||
-      record.locality !== null ||
-      record.year !== null
-    );
+    if (recordModel === "specimen") {
+      requireSchema(record.designation === null || (record.designation !== "" && isLeakageSafeText(record.designation)));
+      requireSchema(record.weight.grams === null || (Number.isFinite(record.weight.grams) && record.weight.grams >= 0));
+      requireSchema(record.designation !== null || record.name !== null || record.weight.grams !== null ||
+        record.classification !== null || record.locality !== null || record.year !== null);
+    } else {
+      requireSchema(Number.isInteger(record.catalogItem) && record.catalogItem > 0);
+      const itemNumbers = catalogItemNumbers[record.catalogId] || new Set();
+      requireSchema(!itemNumbers.has(record.catalogItem));
+      requireSchema(previousCatalogItems[record.catalogId] === undefined ||
+        record.catalogItem > previousCatalogItems[record.catalogId]);
+      itemNumbers.add(record.catalogItem);
+      catalogItemNumbers[record.catalogId] = itemNumbers;
+      previousCatalogItems[record.catalogId] = record.catalogItem;
+      requireSchema(Array.isArray(record.holdings) && record.holdings.length > 0);
+      record.holdings.forEach((holding) => {
+        requireSchema(hasExactFields(holding, HOLDING_FIELDS) && hasExactFields(holding.weight, new Set(["grams"])));
+        requireSchema(holding.designation === null || (holding.designation !== "" && isLeakageSafeHoldingText(holding.designation)));
+        requireSchema(HOLDING_KINDS.has(holding.kind));
+        requireSchema(holding.description === null || (holding.description !== "" && isLeakageSafeHoldingText(holding.description)));
+        requireSchema(holding.count === null || (Number.isInteger(holding.count) && holding.count > 0));
+        requireSchema(holding.weight.grams === null || (Number.isFinite(holding.weight.grams) && holding.weight.grams >= 0));
+        if (holding.kind === "specimen") {
+          requireSchema(holding.designation !== null && holding.count === null && holding.weight.grams !== null);
+        } else if (holding.kind === "cast") {
+          requireSchema(holding.designation !== null && holding.count === null && holding.weight.grams === null);
+        } else {
+          requireSchema(holding.description !== null && (holding.count !== null || holding.weight.grams !== null));
+        }
+      });
+    }
     requireSchema(Number.isInteger(record.catalogPage) && registry[record.catalogId].sourcePages.includes(record.catalogPage));
     requireSchema(CONFIDENCE_LEVELS.includes(record.confidence));
+    if (index) requireSchema(compareCanonicalRecords(catalog.records[index - 1], record, registry) < 0);
 
     const summary = statistics[record.catalogId];
     summary.recordCount += 1;
     summary.confidenceCounts[record.confidence] += 1;
-    if (record.designation !== null) summary.recordsWithDesignation += 1;
-    if (record.weight.grams !== null) summary.recordsWithWeight += 1;
+    if (recordDesignations(record).length) summary.recordsWithDesignation += 1;
+    if (recordMasses(record).length) summary.recordsWithWeight += 1;
   });
 
   requireSchema(catalog.metadata.recordCount === catalog.records.length);
@@ -626,25 +746,41 @@ function normalizeConfidence(value) {
 }
 
 function prepareRecord(source, index, registry = catalogRegistry) {
-  const gramValue = source.weight.grams;
-  const grams = gramValue === null || gramValue === "" ? null : Number(gramValue);
-  const designation = cleanText(source.designation);
+  const recordModel = registry[cleanText(source.catalogId)]?.recordModel;
   const record = {
     id: cleanText(source.id),
     catalogId: cleanText(source.catalogId),
-    designation,
     name: cleanText(source.name),
-    weight: { grams: Number.isFinite(grams) ? grams : null },
     classification: cleanText(source.classification),
     locality: cleanText(source.locality),
     year: cleanText(source.year),
     catalogPage: source.catalogPage === null || source.catalogPage === "" ? null : Number(source.catalogPage),
     confidence: normalizeConfidence(source.confidence),
+    recordModel,
     catalogLabel: catalogLabel(registry[cleanText(source.catalogId)], cleanText(source.catalogId)),
     order: index
   };
+  if (recordModel === "catalog-item") {
+    record.catalogItem = Number(source.catalogItem);
+    record.holdings = source.holdings.map((holding) => ({
+      designation: cleanText(holding.designation),
+      kind: holding.kind,
+      description: cleanText(holding.description),
+      count: holding.count,
+      weight: { grams: holding.weight.grams === null ? null : Number(holding.weight.grams) }
+    }));
+  } else {
+    record.designation = cleanText(source.designation);
+    record.weight = { grams: source.weight.grams === null ? null : Number(source.weight.grams) };
+  }
   record.searchText = searchable([
-    record.designation,
+    record.catalogItem === undefined ? null : `catalog item ${record.catalogItem}`,
+    ...recordDesignations(record),
+    ...(record.holdings || []).flatMap((holding) => [
+      holding.description,
+      holding.kind === "specimen" ? null : holding.kind,
+      holding.count === null ? null : `count ${holding.count}`
+    ]),
     record.name,
     record.classification,
     record.locality,
@@ -652,8 +788,8 @@ function prepareRecord(source, index, registry = catalogRegistry) {
     record.catalogId,
     record.catalogLabel
   ].filter(Boolean).join(" "));
-  record.designationSegments = designationComponents(record.designation);
-  record.designationKey = genericDesignation(record.designation);
+  record.designationSegmentsList = recordDesignations(record).map(designationComponents).filter(Boolean);
+  record.designationKeys = recordDesignations(record).map(genericDesignation).filter(Boolean);
   return record;
 }
 
@@ -697,6 +833,7 @@ async function loadFolioManifest() {
 
 function setLoadingState() {
   elements.results.replaceChildren();
+  elements.results.classList.remove("single-result");
   elements.results.setAttribute("aria-busy", "true");
   elements.status.textContent = "Opening the factual index...";
   elements.count.textContent = "Loading";
@@ -714,6 +851,7 @@ function setLoadingState() {
 
 function showError(error) {
   elements.results.replaceChildren();
+  elements.results.classList.remove("single-result");
   elements.results.setAttribute("aria-busy", "false");
   elements.status.textContent = "The public catalog is unavailable.";
   elements.count.textContent = "0";
@@ -749,8 +887,27 @@ function calculateStatistics(sourceRecords) {
     specimens: sourceRecords.length,
     names: names.size,
     pages: pages.size,
-    grams: sourceRecords.reduce((sum, record) => sum + (record.weight.grams || 0), 0)
+    grams: sourceRecords.reduce((sum, record) =>
+      sum + recordMasses(record).reduce((recordSum, grams) => recordSum + grams, 0), 0)
   };
+}
+
+function recordMasses(record) {
+  if (Array.isArray(record?.holdings)) {
+    return record.holdings.map((holding) => holding.weight.grams).filter(Number.isFinite);
+  }
+  return Number.isFinite(record?.weight?.grams) ? [record.weight.grams] : [];
+}
+
+function designationSortValue(record) {
+  return record.recordModel === "catalog-item" || Number.isInteger(record.catalogItem)
+    ? record.catalogItem
+    : record.designation;
+}
+
+function weightSortValue(record, descending) {
+  const masses = recordMasses(record);
+  return masses.length ? (descending ? Math.max(...masses) : Math.min(...masses)) : null;
 }
 
 function catalogSelectorEntries(catalogs) {
@@ -793,11 +950,8 @@ function currentFilters() {
 
 function filterRecords(sourceRecords, filters) {
   return sourceRecords.filter((record) => {
-    const grams = record.weight.grams;
-    const weightMatches = (filters.min === null && filters.max === null) || (
-      grams !== null &&
-      (filters.min === null || grams >= filters.min) &&
-      (filters.max === null || grams <= filters.max)
+    const weightMatches = (filters.min === null && filters.max === null) || recordMasses(record).some((grams) =>
+      (filters.min === null || grams >= filters.min) && (filters.max === null || grams <= filters.max)
     );
     const catalogMatches = !filters.catalog || record.catalogId === filters.catalog;
     return catalogMatches && weightMatches && matchesSearch(record, filters.query);
@@ -814,15 +968,24 @@ function compareRecords(a, b, sort) {
   const descending = sort.endsWith("-desc") ? -1 : 1;
   let comparison = 0;
 
-  if (sort.startsWith("designation")) comparison = compareNullableText(a, b, "designation", descending);
+  if (sort.startsWith("designation")) {
+    const aValue = designationSortValue(a);
+    const bValue = designationSortValue(b);
+    if ((aValue === null || aValue === undefined) && bValue !== null && bValue !== undefined) return 1;
+    if (aValue !== null && aValue !== undefined && (bValue === null || bValue === undefined)) return -1;
+    if (Number.isInteger(aValue) && Number.isInteger(bValue)) comparison = descending * (aValue - bValue);
+    else comparison = descending * collator.compare(String(aValue || ""), String(bValue || ""));
+  }
   if (sort.startsWith("name")) comparison = compareNullableText(a, b, "name", descending);
   if (sort.startsWith("weight")) {
-    if (a.weight.grams === null && b.weight.grams !== null) return 1;
-    if (a.weight.grams !== null && b.weight.grams === null) return -1;
-    comparison = descending * ((a.weight.grams || 0) - (b.weight.grams || 0));
+    const aWeight = weightSortValue(a, descending === -1);
+    const bWeight = weightSortValue(b, descending === -1);
+    if (aWeight === null && bWeight !== null) return 1;
+    if (aWeight !== null && bWeight === null) return -1;
+    comparison = descending * ((aWeight || 0) - (bWeight || 0));
   }
 
-  return comparison || compareNullableText(a, b, "designation") || a.order - b.order;
+  return comparison || collator.compare(String(designationSortValue(a) || ""), String(designationSortValue(b) || "")) || a.order - b.order;
 }
 
 function render() {
@@ -831,6 +994,7 @@ function render() {
   const fragment = document.createDocumentFragment();
   visibleRecords.forEach((record) => fragment.append(createRecordCard(record)));
   elements.results.replaceChildren(fragment);
+  elements.results.classList.toggle("single-result", isSingleResultCount(matches.length));
   elements.results.setAttribute("aria-busy", "false");
   elements.count.textContent = integerFormat.format(matches.length);
   elements.countUnit.textContent = matches.length === 1 ? "observation" : "observations";
@@ -845,13 +1009,28 @@ function render() {
   updateUrl();
 }
 
+function isSingleResultCount(count) {
+  return count === 1;
+}
+
 function createRecordCard(record) {
   const card = elements.template.content.firstElementChild.cloneNode(true);
-  card.querySelector(".designation").textContent = record.designation || "No printed designation";
+  const catalogItem = record.recordModel === "catalog-item";
+  card.classList.toggle("catalog-item-card", catalogItem);
+  card.querySelector(".designation").textContent = catalogItem
+    ? `Catalog item ${record.catalogItem}`
+    : record.designation || "No printed designation";
   card.querySelector(".record-name").textContent = record.name ? displayText(record.name) : "Name not recorded";
-  card.querySelector(".record-weight strong").textContent = record.weight.grams === null
-    ? "Not recorded"
-    : formatMass(record.weight.grams);
+  const recordWeight = card.querySelector(".record-weight");
+  if (catalogItem) {
+    recordWeight.remove();
+    renderHoldings(card, record.holdings);
+  } else {
+    recordWeight.querySelector("strong").textContent = record.weight.grams === null
+      ? "Not recorded"
+      : formatMass(record.weight.grams);
+    card.querySelector(".record-holdings").remove();
+  }
   setMetaRow(card, ".classification-row", record.classification);
   setMetaRow(card, ".locality-row", record.locality);
   setMetaRow(card, ".year-row", record.year);
@@ -877,6 +1056,42 @@ function createRecordCard(record) {
     card.querySelector(".record-footer").append(button);
   }
   return card;
+}
+
+function holdingDetails(holding) {
+  const details = [];
+  if (holding.description) details.push(displayText(holding.description));
+  if (holding.count !== null) details.push(`Count: ${integerFormat.format(holding.count)}`);
+  if (holding.kind === "cast") details.push("Cast");
+  if (holding.kind === "aggregate") details.push("Aggregate");
+  return details;
+}
+
+function renderHoldings(card, holdings) {
+  const section = card.querySelector(".record-holdings");
+  const list = section.querySelector(".holdings-list");
+  holdings.forEach((holding) => {
+    const item = document.createElement("li");
+    const heading = document.createElement("div");
+    const designation = document.createElement("strong");
+    designation.textContent = holding.designation ? displayText(holding.designation) : "Unnumbered";
+    heading.append(designation);
+    if (holding.weight.grams !== null) {
+      const mass = document.createElement("span");
+      mass.className = "holding-mass";
+      mass.textContent = formatMass(holding.weight.grams);
+      heading.append(mass);
+    }
+    item.append(heading);
+    const details = holdingDetails(holding);
+    if (details.length) {
+      const description = document.createElement("p");
+      description.textContent = details.join(" · ");
+      item.append(description);
+    }
+    list.append(item);
+  });
+  section.hidden = false;
 }
 
 function setMetaRow(card, selector, value) {
@@ -1097,20 +1312,26 @@ if (typeof module !== "undefined" && module.exports) {
     getAuthorizedFolio,
     getAuthorizedFolioPages,
     genericDesignation,
+    holdingDetails,
     hasMatchingFolioPolicy,
     isDesignationQuery,
+    isSingleResultCount,
     isSafeFolioPath,
     isValidFolioAlt,
     matchesSearch,
     normalizeWeightRange,
     normalizeFolioAlt,
     normalizeDesignation,
+    numericLeadingHoldingCode,
     normalizeCatalogRegistry,
     parseUrlFilters,
     parseSearchQuery,
     prepareRecord,
+    recordDesignations,
+    recordMasses,
     searchable,
     serializeUrlFilters,
+    weightSortValue,
     validateCatalog,
     validateFolioManifest
   };

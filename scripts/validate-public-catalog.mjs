@@ -2,29 +2,42 @@ import { readFile } from "node:fs/promises";
 
 const CATALOG_URL = new URL("../data/catalog.json", import.meta.url);
 const FOLIOS_URL = new URL("../data/folios.json", import.meta.url);
-const RECORD_KEYS = [
-  "id",
-  "catalogId",
-  "designation",
-  "name",
-  "weight",
-  "classification",
-  "locality",
-  "year",
-  "catalogPage",
-  "confidence",
+const FIXTURE_URL = new URL("./test-multicatalog-fixture.json", import.meta.url);
+const SYNTHETIC_ONLY = process.argv.includes("--synthetic-only");
+const SPECIMEN_KEYS = [
+  "id", "catalogId", "designation", "name", "weight", "classification", "locality", "year", "catalogPage", "confidence",
 ];
+const CATALOG_ITEM_KEYS = [
+  "id", "catalogId", "catalogItem", "holdings", "name", "classification", "locality", "year", "catalogPage", "confidence",
+];
+const HOLDING_KEYS = ["designation", "kind", "description", "count", "weight"];
+const HOLDING_KINDS = ["specimen", "cast", "aggregate"];
+const RECORD_MODELS = ["specimen", "catalog-item"];
 const FACTUAL_FIELDS = [
   "id",
   "catalogId",
   "designation",
   "name",
   "weight.grams",
+  "catalogItem",
+  "holdings[].designation",
+  "holdings[].kind",
+  "holdings[].description",
+  "holdings[].count",
+  "holdings[].weight.grams",
   "classification",
   "locality",
   "year",
   "catalogPage",
   "confidence",
+];
+const METADATA_KEYS = [
+  "schemaVersion", "scope", "factualFields", "catalogs", "recordCount", "recordsWithDesignation",
+  "recordsWithWeight", "confidenceCounts",
+];
+const DESCRIPTOR_KEYS = [
+  "id", "recordModel", "label", "compiler", "year", "sourcePages", "sourcePageCount", "recordCount",
+  "recordsWithDesignation", "recordsWithWeight", "confidenceCounts", "folioDisplayPolicy", "rightsStatus",
 ];
 const CONFIDENCE_LEVELS = ["high", "medium", "low"];
 const DISPLAY_POLICIES = ["blocked", "display"];
@@ -35,48 +48,17 @@ const MAX_CATALOG_ID_LENGTH = 80;
 const MAX_CATALOG_TEXT_LENGTH = 160;
 const FOLIO_PATH_ROOT = "assets/folios/";
 const APPROVED_FOLIO_EXTENSION = /\.(?:webp|png|jpe?g|avif)$/u;
-const LEGACY_METADATA_KEYS = [
-  "catalog",
-  "scope",
-  "sourcePageRange",
-  "sourcePageCount",
-  "recordCount",
-  "factualFields",
-  "recordsWithDesignation",
-  "recordsWithWeight",
-  "confidenceCounts",
-];
-const LEGACY_CATALOG_METADATA_KEYS = ["id", "compiler", "year", "folioDisplayPolicy", "rightsStatus"];
-const METADATA_V2_KEYS = [
-  "schemaVersion",
-  "scope",
-  "factualFields",
-  "catalogs",
-  "recordCount",
-  "recordsWithDesignation",
-  "recordsWithWeight",
-  "confidenceCounts",
-];
-const CATALOG_V2_KEYS = [
-  "id",
-  "label",
-  "compiler",
-  "year",
-  "sourcePages",
-  "sourcePageCount",
-  "recordCount",
-  "recordsWithDesignation",
-  "recordsWithWeight",
-  "confidenceCounts",
-  "folioDisplayPolicy",
-  "rightsStatus",
-];
 const LEAKAGE_MARKER =
   /\b(?:raw[\s_-]*ocr|raw[\s_-]*text|ocr[\s_-]*(?:output|text)|source[\s_-]*(?:image|file)(?:[\s_-]*name)?s?|scan(?:ned)?[\s_-]*(?:image|file|path|name)s?|verbatim[\s_-]*notes?|transcription[\s_-]*notes?)\b/iu;
 const IMAGE_OR_SOURCE_FILE =
   /\.(?:avif|bmp|gif|heic|heif|hocr|jpe?g|ocr|pdf|png|svg|tiff?|webp)(?=$|[^A-Za-z0-9])|\b(?:dscn?|img|pxl)[_-]?\d{3,}\b/iu;
 const PATH_LIKE_STRING =
   /(?:^|[\s"'(])(?:[A-Za-z][A-Za-z\d+.-]*:\/\/|\/{1,2}|\.{1,2}[\\/]|~[\\/]|[A-Za-z]:[\\/]|(?:assets?|files?|folios?|images?|scans?|source[\s_-]*images?)[\\/])|\\/iu;
+const HOLDING_PRIVATE_LANGUAGE =
+  /\bocr\b|\b(?:review(?:er)?|research|transcript(?:ion)?|verbatim|working|private)[\s_-]+notes?\b|\bpage[\s_-]*(?:id|identifier)\b|\bpage[_-]\d+\b|\b(?:private[\s_-]*source|source[\s_-]*page)\b/iu;
+const HOLDING_PRIVATE_DOCUMENT =
+  /(?:^|[\s"'(])(?:source|private|data)[\\/][^\s"')]+|\.(?:dat|csv|docx?|json|md|odt|rtf|txt|xlsx?|xml)(?=$|[^A-Za-z0-9])/iu;
+const HOLDING_WEIGHT_DISPLAY = /\b\d[\d,.]*\s+(?:g|grs?|grams?|kg|kgs?|kilograms?)\.?(?![A-Za-z0-9])/iu;
 
 function assert(condition, message) {
   if (!condition) throw new Error(message);
@@ -107,8 +89,7 @@ function assertExactSet(actual, expected, path) {
   const actualValues = [...actual].sort();
   const expectedValues = [...expected].sort();
   assert(
-    actualValues.length === expectedValues.length &&
-      actualValues.every((value, index) => value === expectedValues[index]),
+    actualValues.length === expectedValues.length && actualValues.every((value, index) => value === expectedValues[index]),
     `${path} must match exactly (actual: ${actualValues.join(", ")}; expected: ${expectedValues.join(", ")})`,
   );
 }
@@ -125,9 +106,7 @@ function assertString(value, path, nullable = false) {
 
 function assertCatalogId(value, path) {
   assert(
-    typeof value === "string" &&
-      /^[a-z0-9]+(?:-[a-z0-9]+)*$/u.test(value) &&
-      value.length <= MAX_CATALOG_ID_LENGTH,
+    typeof value === "string" && /^[a-z0-9]+(?:-[a-z0-9]+)*$/u.test(value) && value.length <= MAX_CATALOG_ID_LENGTH,
     `${path} must be a lowercase catalog slug of at most ${MAX_CATALOG_ID_LENGTH} characters`,
   );
 }
@@ -137,54 +116,11 @@ function assertCatalogText(value, path) {
   assert(value.length <= MAX_CATALOG_TEXT_LENGTH, `${path} must be at most ${MAX_CATALOG_TEXT_LENGTH} characters`);
 }
 
-function compareText(left, right) {
-  if (left === right) return 0;
-  if (left === null) return 1;
-  if (right === null) return -1;
-  return left < right ? -1 : 1;
-}
-
-function designationParts(value) {
-  if (value === null) return null;
-  const prefix = value.match(/^[A-Za-z]*/u)?.[0];
-  const numbers = value.match(/\d+/gu)?.map(Number);
-  assert(numbers?.length, `designation cannot be structurally sorted: ${value}`);
-  return { prefix, numbers };
-}
-
-function compareDesignation(left, right) {
-  const leftParts = designationParts(left);
-  const rightParts = designationParts(right);
-  if (leftParts === null || rightParts === null) {
-    if (leftParts === rightParts) return 0;
-    return leftParts === null ? 1 : -1;
-  }
-
-  const prefixOrder = compareText(leftParts.prefix, rightParts.prefix);
-  if (prefixOrder !== 0) return prefixOrder;
-
-  const commonLength = Math.min(leftParts.numbers.length, rightParts.numbers.length);
-  for (let index = 0; index < commonLength; index += 1) {
-    const difference = leftParts.numbers[index] - rightParts.numbers[index];
-    if (difference !== 0) return difference;
-  }
-  return leftParts.numbers.length - rightParts.numbers.length;
-}
-
-function compareNumber(left, right) {
-  if (left === right) return 0;
-  if (left === null) return 1;
-  if (right === null) return -1;
-  return left - right;
-}
-
-function compareRecords(left, right) {
-  return (
-    compareDesignation(left.designation, right.designation) ||
-    compareText(left.name, right.name) ||
-    compareNumber(left.weight.grams, right.weight.grams) ||
-    compareText(left.id, right.id)
-  );
+function assertHoldingText(value, path) {
+  if (value === null) return;
+  assert(!HOLDING_PRIVATE_LANGUAGE.test(value), `${path} contains private holding language`);
+  assert(!HOLDING_PRIVATE_DOCUMENT.test(value), `${path} contains a private path or document extension`);
+  assert(!HOLDING_WEIGHT_DISPLAY.test(value), `${path} contains a private weight-display string`);
 }
 
 function rejectCatalogExcludedContent(value, path = "catalog") {
@@ -201,91 +137,7 @@ function rejectCatalogExcludedContent(value, path = "catalog") {
     return;
   }
   if (!isObject(value)) return;
-
-  for (const [key, child] of Object.entries(value)) {
-    rejectCatalogExcludedContent(child, `${path}.${key}`);
-  }
-}
-
-function assertSafeFolioPath(value, catalogId, path) {
-  assertString(value, path);
-  assert(!/\s/u.test(value), `${path} must not contain whitespace`);
-  assert(!value.startsWith("/"), `${path} must not be slash-rooted or protocol-relative`);
-  assert(!/^[A-Za-z][A-Za-z\d+.-]*:/u.test(value), `${path} must not use a URL scheme`);
-  assert(!value.includes("\\"), `${path} must not contain backslashes`);
-  assert(!/[?#]/u.test(value), `${path} must not contain a query or fragment`);
-  assert(!value.includes("%"), `${path} must not contain percent encoding`);
-  assert(!value.includes("//"), `${path} must not contain duplicate slashes`);
-  const catalogPathRoot = `${FOLIO_PATH_ROOT}${catalogId}/`;
-  assert(value.startsWith(catalogPathRoot), `${path} must be rooted under ${catalogPathRoot}`);
-
-  const relativePath = value.slice(catalogPathRoot.length);
-  assert(relativePath.length > 0, `${path} must contain a filename segment`);
-  assert(/^[A-Za-z0-9._/-]+$/u.test(relativePath), `${path} must be a plain relative path`);
-  const segments = relativePath.split("/");
-  assert(
-    segments.every((segment) => segment !== "" && segment !== "." && segment !== ".."),
-    `${path} contains an unsafe path segment`,
-  );
-  assert(APPROVED_FOLIO_EXTENSION.test(segments.at(-1)), `${path} does not use an approved image extension`);
-}
-
-function assertPlainAlt(value, path) {
-  assertString(value, path);
-  assert([...value].length <= MAX_ALT_LENGTH, `${path} must be at most ${MAX_ALT_LENGTH} characters`);
-  assert(!/[\p{Cc}\p{Cf}]/u.test(value), `${path} must not contain control or format characters`);
-  assert(!/[<>]/u.test(value), `${path} must not contain markup`);
-  assert(!/`|!?\[[^\]]*\]\([^)]*\)/u.test(value), `${path} must not contain markup`);
-}
-
-function validateFolioManifest(manifest, path) {
-  assertExactKeys(manifest, ["schemaVersion", "catalogs"], path);
-  assert(manifest.schemaVersion === 1, `${path}.schemaVersion must be 1`);
-  assert(isObject(manifest.catalogs), `${path}.catalogs must be an object`);
-  assert(Object.keys(manifest.catalogs).length > 0, `${path}.catalogs must not be empty`);
-
-  let pageEntryCount = 0;
-  for (const [catalogId, policy] of Object.entries(manifest.catalogs)) {
-    const policyPath = `${path}.catalogs.${catalogId}`;
-    assertCatalogId(catalogId, `${policyPath} catalog ID`);
-    assertExactKeys(policy, ["displayPolicy", "rightsStatus", "pages"], policyPath);
-    assert(DISPLAY_POLICIES.includes(policy.displayPolicy), `${policyPath}.displayPolicy is not a known value`);
-    assert(RIGHTS_STATUSES.includes(policy.rightsStatus), `${policyPath}.rightsStatus is not a known value`);
-    assert(isObject(policy.pages), `${policyPath}.pages must be an object`);
-
-    if (policy.displayPolicy === "display") {
-      assert(
-        policy.rightsStatus === "public-domain",
-        `${policyPath} may use display only after a public-domain determination`,
-      );
-    } else {
-      assert(Object.keys(policy.pages).length === 0, `${policyPath}.pages must be empty while display is blocked`);
-    }
-
-    for (const [pageNumber, entry] of Object.entries(policy.pages)) {
-      const entryPath = `${policyPath}.pages.${pageNumber}`;
-      assert(policy.displayPolicy === "display", `${entryPath} requires displayPolicy display`);
-      assert(/^[1-9]\d*$/u.test(pageNumber), `${entryPath} must use a positive printed page number`);
-      assertAllowedKeys(entry, PAGE_ENTRY_KEYS, ["image", "alt"], entryPath);
-      assertSafeFolioPath(entry.image, catalogId, `${entryPath}.image`);
-      if (Object.hasOwn(entry, "thumbnail")) {
-        assertSafeFolioPath(entry.thumbnail, catalogId, `${entryPath}.thumbnail`);
-      }
-      assertPlainAlt(entry.alt, `${entryPath}.alt`);
-      pageEntryCount += 1;
-    }
-  }
-
-  return { catalogCount: Object.keys(manifest.catalogs).length, pageEntryCount };
-}
-
-function assertFactualFields(value, path) {
-  assert(
-    Array.isArray(value) &&
-      value.length === FACTUAL_FIELDS.length &&
-      value.every((field, index) => field === FACTUAL_FIELDS[index]),
-    `${path} does not match the public record schema`,
-  );
+  Object.entries(value).forEach(([key, child]) => rejectCatalogExcludedContent(child, `${path}.${key}`));
 }
 
 function assertCountSummary(value, path) {
@@ -298,10 +150,8 @@ function assertCountSummary(value, path) {
   }
   assertExactKeys(value.confidenceCounts, CONFIDENCE_LEVELS, `${path}.confidenceCounts`);
   for (const level of CONFIDENCE_LEVELS) {
-    assert(
-      Number.isInteger(value.confidenceCounts[level]) && value.confidenceCounts[level] >= 0,
-      `${path}.confidenceCounts.${level} must be a nonnegative integer`,
-    );
+    assert(Number.isInteger(value.confidenceCounts[level]) && value.confidenceCounts[level] >= 0,
+      `${path}.confidenceCounts.${level} must be a nonnegative integer`);
   }
   assert(
     CONFIDENCE_LEVELS.reduce((sum, level) => sum + value.confidenceCounts[level], 0) === value.recordCount,
@@ -309,423 +159,306 @@ function assertCountSummary(value, path) {
   );
 }
 
-function validateCanonicalMetadata(metadata, path) {
-  assertExactKeys(metadata, METADATA_V2_KEYS, path);
-  assert(metadata.schemaVersion === 2, `${path}.schemaVersion must be 2`);
+function validateMetadata(metadata, path) {
+  assertExactKeys(metadata, METADATA_KEYS, path);
+  assert(metadata.schemaVersion === 3, `${path}.schemaVersion must be 3`);
   assert(metadata.scope === "facts-only", `${path}.scope must be facts-only`);
-  assertFactualFields(metadata.factualFields, `${path}.factualFields`);
+  assert(
+    Array.isArray(metadata.factualFields) && metadata.factualFields.length === FACTUAL_FIELDS.length &&
+      metadata.factualFields.every((field, index) => field === FACTUAL_FIELDS[index]),
+    `${path}.factualFields does not match the schema 3 public record models`,
+  );
   assertCountSummary(metadata, path);
   assert(Array.isArray(metadata.catalogs) && metadata.catalogs.length > 0, `${path}.catalogs must be a nonempty array`);
 
   const metadataByCatalog = new Map();
-  metadata.catalogs.forEach((entry, index) => {
-    const entryPath = `${path}.catalogs[${index}]`;
-    assertExactKeys(entry, CATALOG_V2_KEYS, entryPath);
-    assertCatalogId(entry.id, `${entryPath}.id`);
-    assert(!metadataByCatalog.has(entry.id), `${entryPath}.id is duplicated: ${entry.id}`);
-    assertCatalogText(entry.label, `${entryPath}.label`);
-    assertCatalogText(entry.compiler, `${entryPath}.compiler`);
-    assert(Number.isInteger(entry.year) && entry.year > 0, `${entryPath}.year must be a positive integer`);
-    assert(Array.isArray(entry.sourcePages) && entry.sourcePages.length > 0, `${entryPath}.sourcePages must be nonempty`);
-    entry.sourcePages.forEach((page, pageIndex) => {
-      assert(Number.isInteger(page) && page > 0, `${entryPath}.sourcePages[${pageIndex}] must be a positive integer`);
-      if (pageIndex > 0) {
-        assert(page > entry.sourcePages[pageIndex - 1], `${entryPath}.sourcePages must be sorted and unique`);
-      }
+  metadata.catalogs.forEach((descriptor, index) => {
+    const descriptorPath = `${path}.catalogs[${index}]`;
+    assertExactKeys(descriptor, DESCRIPTOR_KEYS, descriptorPath);
+    assertCatalogId(descriptor.id, `${descriptorPath}.id`);
+    assert(!metadataByCatalog.has(descriptor.id), `${descriptorPath}.id is duplicated: ${descriptor.id}`);
+    assert(RECORD_MODELS.includes(descriptor.recordModel), `${descriptorPath}.recordModel is invalid`);
+    assertCatalogText(descriptor.label, `${descriptorPath}.label`);
+    assertCatalogText(descriptor.compiler, `${descriptorPath}.compiler`);
+    assert(Number.isInteger(descriptor.year) && descriptor.year > 0, `${descriptorPath}.year must be a positive integer`);
+    assert(Array.isArray(descriptor.sourcePages) && descriptor.sourcePages.length > 0, `${descriptorPath}.sourcePages must be nonempty`);
+    descriptor.sourcePages.forEach((page, pageIndex) => {
+      assert(Number.isInteger(page) && page > 0, `${descriptorPath}.sourcePages[${pageIndex}] must be positive`);
+      if (pageIndex) assert(page > descriptor.sourcePages[pageIndex - 1], `${descriptorPath}.sourcePages must be sorted and unique`);
     });
-    assert(
-      entry.sourcePageCount === entry.sourcePages.length,
-      `${entryPath}.sourcePageCount must equal sourcePages.length`,
-    );
-    assertCountSummary(entry, entryPath);
-    assert(
-      DISPLAY_POLICIES.includes(entry.folioDisplayPolicy),
-      `${entryPath}.folioDisplayPolicy is not a known value`,
-    );
-    assert(RIGHTS_STATUSES.includes(entry.rightsStatus), `${entryPath}.rightsStatus is not a known value`);
-    metadataByCatalog.set(entry.id, {
-      entry,
-      path: entryPath,
-      policyPath: entryPath,
-      sourcePageSet: new Set(entry.sourcePages),
+    assert(descriptor.sourcePageCount === descriptor.sourcePages.length,
+      `${descriptorPath}.sourcePageCount must equal sourcePages.length`);
+    assertCountSummary(descriptor, descriptorPath);
+    assert(DISPLAY_POLICIES.includes(descriptor.folioDisplayPolicy), `${descriptorPath}.folioDisplayPolicy is invalid`);
+    assert(RIGHTS_STATUSES.includes(descriptor.rightsStatus), `${descriptorPath}.rightsStatus is invalid`);
+    assert(descriptor.folioDisplayPolicy !== "display" || descriptor.rightsStatus === "public-domain",
+      `${descriptorPath} may display folios only with public-domain status`);
+    metadataByCatalog.set(descriptor.id, {
+      descriptor,
+      path: descriptorPath,
+      sourcePages: new Set(descriptor.sourcePages),
     });
   });
 
   for (const field of ["recordCount", "recordsWithDesignation", "recordsWithWeight"]) {
-    const catalogTotal = metadata.catalogs.reduce((sum, entry) => sum + entry[field], 0);
-    assert(metadata[field] === catalogTotal, `${path}.${field} must equal the sum of catalog ${field} values`);
+    assert(metadata[field] === metadata.catalogs.reduce((sum, descriptor) => sum + descriptor[field], 0),
+      `${path}.${field} must equal the catalog total`);
   }
   for (const level of CONFIDENCE_LEVELS) {
-    const catalogTotal = metadata.catalogs.reduce((sum, entry) => sum + entry.confidenceCounts[level], 0);
-    assert(
-      metadata.confidenceCounts[level] === catalogTotal,
-      `${path}.confidenceCounts.${level} must equal the sum of catalog values`,
-    );
+    assert(metadata.confidenceCounts[level] === metadata.catalogs.reduce(
+      (sum, descriptor) => sum + descriptor.confidenceCounts[level], 0,
+    ), `${path}.confidenceCounts.${level} must equal the catalog total`);
   }
-
-  return { metadataByCatalog, totals: metadata, schemaVersion: 2 };
+  return metadataByCatalog;
 }
 
-function validateLegacyMetadata(metadata, path) {
-  assertExactKeys(metadata, LEGACY_METADATA_KEYS, path);
-  assertExactKeys(metadata.catalog, LEGACY_CATALOG_METADATA_KEYS, `${path}.catalog`);
-  assertExactKeys(metadata.sourcePageRange, ["start", "end"], `${path}.sourcePageRange`);
-  assertExactKeys(metadata.confidenceCounts, CONFIDENCE_LEVELS, `${path}.confidenceCounts`);
-  assertFactualFields(metadata.factualFields, `${path}.factualFields`);
-
-  assert(metadata.catalog.id === "huss-1976", `${path}.catalog.id must be huss-1976`);
-  assert(metadata.catalog.compiler === "Glenn Huss", `${path}.catalog.compiler must be Glenn Huss`);
-  assert(metadata.catalog.year === 1976, `${path}.catalog.year must be 1976`);
-  assert(metadata.catalog.folioDisplayPolicy === "blocked", `${path}.catalog.folioDisplayPolicy must be blocked`);
-  assert(metadata.catalog.rightsStatus === "undetermined", `${path}.catalog.rightsStatus must be undetermined`);
-  assert(metadata.scope === "facts-only", `${path}.scope must be facts-only`);
-  assert(metadata.sourcePageRange.start === 3, `${path}.sourcePageRange.start must be 3`);
-  assert(metadata.sourcePageRange.end === 48, `${path}.sourcePageRange.end must be 48`);
-  assert(metadata.sourcePageCount === 46, `${path}.sourcePageCount must be 46`);
-  assert(metadata.recordCount === 1078, `${path}.recordCount must be 1078`);
-  assert(metadata.recordsWithDesignation === 1075, `${path}.recordsWithDesignation must be 1075`);
-  assert(metadata.recordsWithWeight === 1077, `${path}.recordsWithWeight must be 1077`);
-  assert(metadata.confidenceCounts.high === 1078, `${path}.confidenceCounts.high must be 1078`);
-  assert(metadata.confidenceCounts.medium === 0, `${path}.confidenceCounts.medium must be 0`);
-  assert(metadata.confidenceCounts.low === 0, `${path}.confidenceCounts.low must be 0`);
-
-  const sourcePages = Array.from({ length: 46 }, (_, index) => index + 3);
-  const entry = {
-    ...metadata.catalog,
-    label: "Glenn Huss (1976)",
-    sourcePages,
-    sourcePageCount: metadata.sourcePageCount,
-    recordCount: metadata.recordCount,
-    recordsWithDesignation: metadata.recordsWithDesignation,
-    recordsWithWeight: metadata.recordsWithWeight,
-    confidenceCounts: metadata.confidenceCounts,
-  };
-  return {
-    metadataByCatalog: new Map([
-      [
-        entry.id,
-        {
-          entry,
-          path,
-          policyPath: `${path}.catalog`,
-          sourcePageSet: new Set(sourcePages),
-        },
-      ],
-    ]),
-    totals: metadata,
-    schemaVersion: 1,
-  };
+function recordDesignations(record, recordModel) {
+  return recordModel === "specimen"
+    ? (record.designation === null ? [] : [record.designation])
+    : record.holdings.map((holding) => holding.designation).filter((value) => value !== null);
 }
 
-function validateMetadata(metadata, path) {
-  assert(isObject(metadata), `${path} must be an object`);
-  if (Object.hasOwn(metadata, "schemaVersion") || Object.hasOwn(metadata, "catalogs")) {
-    return validateCanonicalMetadata(metadata, path);
+function recordMasses(record, recordModel) {
+  return recordModel === "specimen"
+    ? (record.weight.grams === null ? [] : [record.weight.grams])
+    : record.holdings.map((holding) => holding.weight.grams).filter((value) => value !== null);
+}
+
+function compareText(left, right) {
+  if (left === right) return 0;
+  if (left === null) return 1;
+  if (right === null) return -1;
+  return left < right ? -1 : 1;
+}
+
+function designationParts(value) {
+  if (value === null) return null;
+  const prefix = value.match(/^[A-Za-z]*/u)?.[0] ?? "";
+  const numbers = value.match(/\d+/gu)?.map(Number);
+  assert(numbers?.length, `designation cannot be structurally sorted: ${value}`);
+  return { prefix, numbers };
+}
+
+function compareDesignation(left, right) {
+  const leftParts = designationParts(left);
+  const rightParts = designationParts(right);
+  if (leftParts === null || rightParts === null) {
+    if (leftParts === rightParts) return 0;
+    return leftParts === null ? 1 : -1;
   }
-  return validateLegacyMetadata(metadata, path);
+  const prefixOrder = compareText(leftParts.prefix, rightParts.prefix);
+  if (prefixOrder) return prefixOrder;
+  const length = Math.min(leftParts.numbers.length, rightParts.numbers.length);
+  for (let index = 0; index < length; index += 1) {
+    const difference = leftParts.numbers[index] - rightParts.numbers[index];
+    if (difference) return difference;
+  }
+  return leftParts.numbers.length - rightParts.numbers.length;
+}
+
+function compareNullableNumber(left, right) {
+  if (left === right) return 0;
+  if (left === null) return 1;
+  if (right === null) return -1;
+  return left - right;
+}
+
+function compareRecords(left, right, metadataByCatalog) {
+  const leftModel = metadataByCatalog.get(left.catalogId).descriptor.recordModel;
+  const rightModel = metadataByCatalog.get(right.catalogId).descriptor.recordModel;
+  const modelOrder = RECORD_MODELS.indexOf(rightModel) - RECORD_MODELS.indexOf(leftModel);
+  if (modelOrder) return modelOrder;
+  if (leftModel === "catalog-item") {
+    return left.catalogItem - right.catalogItem || compareText(left.name, right.name) || compareText(left.id, right.id);
+  }
+  const identityOrder = compareDesignation(left.designation, right.designation);
+  const leftMasses = recordMasses(left, leftModel);
+  const rightMasses = recordMasses(right, rightModel);
+  return identityOrder || compareText(left.name, right.name) ||
+    compareNullableNumber(leftMasses.length ? Math.min(...leftMasses) : null, rightMasses.length ? Math.min(...rightMasses) : null) ||
+    compareText(left.id, right.id);
+}
+
+function validateHolding(holding, path) {
+  assertExactKeys(holding, HOLDING_KEYS, path);
+  assertString(holding.designation, `${path}.designation`, true);
+  assertHoldingText(holding.designation, `${path}.designation`);
+  assert(HOLDING_KINDS.includes(holding.kind), `${path}.kind is invalid`);
+  assertString(holding.description, `${path}.description`, true);
+  assertHoldingText(holding.description, `${path}.description`);
+  assert(holding.count === null || (Number.isInteger(holding.count) && holding.count > 0),
+    `${path}.count must be a positive integer or null`);
+  assertExactKeys(holding.weight, ["grams"], `${path}.weight`);
+  assert(holding.weight.grams === null || (Number.isFinite(holding.weight.grams) && holding.weight.grams >= 0),
+    `${path}.weight.grams must be a finite nonnegative number or null`);
+  if (holding.kind === "specimen") {
+    assert(holding.designation !== null, `${path}.designation must be nonnull for specimen holdings`);
+    assert(holding.count === null, `${path}.count must be null for specimen holdings`);
+    assert(holding.weight.grams !== null, `${path}.weight.grams must be nonnull for specimen holdings`);
+  } else if (holding.kind === "cast") {
+    assert(holding.designation !== null, `${path}.designation must be nonnull for cast holdings`);
+    assert(holding.count === null, `${path}.count must be null for cast holdings`);
+    assert(holding.weight.grams === null, `${path}.weight.grams must be null for cast holdings`);
+  } else {
+    assert(holding.description !== null, `${path}.description must be nonnull for aggregate holdings`);
+    assert(holding.count !== null || holding.weight.grams !== null,
+      `${path} aggregate must have a count or weight.grams`);
+  }
 }
 
 function validatePublicCatalog(data, folios, path = "catalog") {
   rejectCatalogExcludedContent(data, path);
   assertExactKeys(data, ["metadata", "records"], path);
-  const metadataValidation = validateMetadata(data.metadata, `${path}.metadata`);
-  const { metadataByCatalog } = metadataValidation;
-  assert(Array.isArray(data.records), `${path}.records must be an array`);
-  assert(data.records.length > 0, `${path}.records must not be empty`);
+  const metadataByCatalog = validateMetadata(data.metadata, `${path}.metadata`);
+  assert(Array.isArray(data.records) && data.records.length > 0, `${path}.records must be a nonempty array`);
   const folioStats = validateFolioManifest(folios, `${path} folios`);
-
-  const metadataIds = new Set(metadataByCatalog.keys());
-  const manifestIds = new Set(Object.keys(folios.catalogs));
-  const recordIds = new Set();
   const ids = new Set();
-  const statsByCatalog = new Map(
-    [...metadataIds].map((catalogId) => [
-      catalogId,
-      {
-        recordCount: 0,
-        recordsWithDesignation: 0,
-        recordsWithWeight: 0,
-        confidenceCounts: Object.fromEntries(CONFIDENCE_LEVELS.map((level) => [level, 0])),
-        pages: new Set(),
-      },
-    ]),
-  );
+  const catalogItemNumbers = new Map();
+  const previousCatalogItems = new Map();
+  const representedCatalogs = new Set();
+  const statsByCatalog = new Map([...metadataByCatalog].map(([catalogId]) => [catalogId, {
+    recordCount: 0,
+    recordsWithDesignation: 0,
+    recordsWithWeight: 0,
+    confidenceCounts: { high: 0, medium: 0, low: 0 },
+  }]));
 
   data.records.forEach((record, index) => {
     const recordPath = `${path}.records[${index}]`;
-    assertExactKeys(record, RECORD_KEYS, recordPath);
+    assert(isObject(record), `${recordPath} must be an object`);
+    assertCatalogId(record.catalogId, `${recordPath}.catalogId`);
+    const catalog = metadataByCatalog.get(record.catalogId);
+    assert(catalog, `${recordPath}.catalogId has no descriptor`);
+    const { recordModel } = catalog.descriptor;
+    assertExactKeys(record, recordModel === "specimen" ? SPECIMEN_KEYS : CATALOG_ITEM_KEYS, recordPath);
     assertString(record.id, `${recordPath}.id`);
     assert(!ids.has(record.id), `${recordPath}.id is duplicated: ${record.id}`);
     ids.add(record.id);
-
-    assertCatalogId(record.catalogId, `${recordPath}.catalogId`);
-    recordIds.add(record.catalogId);
-    const catalogMetadata = metadataByCatalog.get(record.catalogId);
-    assert(catalogMetadata, `${recordPath}.catalogId has no catalog metadata: ${record.catalogId}`);
-    assert(Object.hasOwn(folios.catalogs, record.catalogId), `${recordPath}.catalogId has no folio display policy`);
-    for (const field of ["designation", "name", "classification", "locality", "year"]) {
+    representedCatalogs.add(record.catalogId);
+    for (const field of ["name", "classification", "locality", "year"]) {
       assertString(record[field], `${recordPath}.${field}`, true);
     }
-
-    assertExactKeys(record.weight, ["grams"], `${recordPath}.weight`);
-    assert(
-      record.weight.grams === null || (Number.isFinite(record.weight.grams) && record.weight.grams >= 0),
-      `${recordPath}.weight.grams must be a finite nonnegative number or null`,
-    );
-    assert(
-      record.designation !== null ||
-        record.name !== null ||
-        record.weight.grams !== null ||
-        record.classification !== null ||
-        record.locality !== null ||
-        record.year !== null,
-      `${recordPath} must contain at least one substantive public fact`,
-    );
-    assert(
-      Number.isInteger(record.catalogPage) && catalogMetadata.sourcePageSet.has(record.catalogPage),
-      `${recordPath}.catalogPage must be one of the sourcePages for ${record.catalogId}`,
-    );
+    if (recordModel === "specimen") {
+      assertString(record.designation, `${recordPath}.designation`, true);
+      assertExactKeys(record.weight, ["grams"], `${recordPath}.weight`);
+      assert(record.weight.grams === null || (Number.isFinite(record.weight.grams) && record.weight.grams >= 0),
+        `${recordPath}.weight.grams must be a finite nonnegative number or null`);
+      assert(record.designation !== null || record.name !== null || record.weight.grams !== null ||
+        record.classification !== null || record.locality !== null || record.year !== null,
+      `${recordPath} must contain a substantive public fact`);
+    } else {
+      assert(Number.isInteger(record.catalogItem) && record.catalogItem > 0,
+        `${recordPath}.catalogItem must be a positive integer`);
+      const itemNumbers = catalogItemNumbers.get(record.catalogId) ?? new Set();
+      assert(!itemNumbers.has(record.catalogItem),
+        `${recordPath}.catalogItem is duplicated within ${record.catalogId}: ${record.catalogItem}`);
+      const previousCatalogItem = previousCatalogItems.get(record.catalogId);
+      assert(previousCatalogItem === undefined || record.catalogItem > previousCatalogItem,
+        `${recordPath}.catalogItem must increase within ${record.catalogId}`);
+      itemNumbers.add(record.catalogItem);
+      catalogItemNumbers.set(record.catalogId, itemNumbers);
+      previousCatalogItems.set(record.catalogId, record.catalogItem);
+      assert(Array.isArray(record.holdings) && record.holdings.length > 0, `${recordPath}.holdings must be nonempty`);
+      record.holdings.forEach((holding, holdingIndex) => validateHolding(holding, `${recordPath}.holdings[${holdingIndex}]`));
+    }
+    assert(Number.isInteger(record.catalogPage) && catalog.sourcePages.has(record.catalogPage),
+      `${recordPath}.catalogPage is outside its descriptor sourcePages`);
     assert(CONFIDENCE_LEVELS.includes(record.confidence), `${recordPath}.confidence is invalid`);
 
-    const catalogStats = statsByCatalog.get(record.catalogId);
-    catalogStats.recordCount += 1;
-    catalogStats.pages.add(record.catalogPage);
-    catalogStats.confidenceCounts[record.confidence] += 1;
-    if (record.designation !== null) catalogStats.recordsWithDesignation += 1;
-    if (record.weight.grams !== null) catalogStats.recordsWithWeight += 1;
-
-    if (index > 0) {
-      assert(compareRecords(data.records[index - 1], record) < 0, `${recordPath} violates deterministic independent sort order`);
-    }
+    const stats = statsByCatalog.get(record.catalogId);
+    stats.recordCount += 1;
+    stats.confidenceCounts[record.confidence] += 1;
+    if (recordDesignations(record, recordModel).length) stats.recordsWithDesignation += 1;
+    if (recordMasses(record, recordModel).length) stats.recordsWithWeight += 1;
+    if (index) assert(compareRecords(data.records[index - 1], record, metadataByCatalog) < 0,
+      `${recordPath} violates deterministic model-aware order`);
   });
 
-  assertExactSet(recordIds, metadataIds, `${path} record catalog IDs`);
-  assertExactSet(manifestIds, metadataIds, `${path} folio manifest catalog IDs`);
-
-  for (const [catalogId, { entry, path: metadataPath, policyPath, sourcePageSet }] of metadataByCatalog) {
-    const catalogStats = statsByCatalog.get(catalogId);
-    assert(
-      catalogStats.recordCount === entry.recordCount,
-      `${metadataPath}.recordCount does not match ${catalogId} records`,
-    );
-    assert(
-      catalogStats.recordsWithDesignation === entry.recordsWithDesignation,
-      `${metadataPath}.recordsWithDesignation does not match ${catalogId} records`,
-    );
-    assert(
-      catalogStats.recordsWithWeight === entry.recordsWithWeight,
-      `${metadataPath}.recordsWithWeight does not match ${catalogId} records`,
-    );
-    if (metadataValidation.schemaVersion === 1) {
-      assertExactSet(catalogStats.pages, sourcePageSet, `${metadataPath} represented page set`);
+  assertExactSet(representedCatalogs, metadataByCatalog.keys(), `${path} record catalog IDs`);
+  assertExactSet(Object.keys(folios.catalogs), metadataByCatalog.keys(), `${path} folio catalog IDs`);
+  assert(data.metadata.recordCount === data.records.length, `${path}.metadata.recordCount does not match records`);
+  for (const [catalogId, { descriptor, path: descriptorPath, sourcePages }] of metadataByCatalog) {
+    const stats = statsByCatalog.get(catalogId);
+    for (const field of ["recordCount", "recordsWithDesignation", "recordsWithWeight"]) {
+      assert(stats[field] === descriptor[field], `${descriptorPath}.${field} does not match records`);
     }
     for (const level of CONFIDENCE_LEVELS) {
-      assert(
-        catalogStats.confidenceCounts[level] === entry.confidenceCounts[level],
-        `${metadataPath}.confidenceCounts.${level} does not match ${catalogId} records`,
-      );
+      assert(stats.confidenceCounts[level] === descriptor.confidenceCounts[level],
+        `${descriptorPath}.confidenceCounts.${level} does not match records`);
     }
-
     const policy = folios.catalogs[catalogId];
-    assert(
-      policy.displayPolicy === entry.folioDisplayPolicy,
-      `${policyPath}.folioDisplayPolicy does not match the manifest`,
-    );
-    assert(
-      policy.rightsStatus === entry.rightsStatus,
-      `${policyPath}.rightsStatus does not match the manifest`,
-    );
-    for (const pageNumber of Object.keys(policy.pages)) {
-      assert(sourcePageSet.has(Number(pageNumber)), `folios.catalogs.${catalogId}.pages.${pageNumber} is outside sourcePages`);
-    }
+    assert(policy.displayPolicy === descriptor.folioDisplayPolicy, `${descriptorPath}.folioDisplayPolicy does not match folios`);
+    assert(policy.rightsStatus === descriptor.rightsStatus, `${descriptorPath}.rightsStatus does not match folios`);
+    Object.keys(policy.pages).forEach((page) => assert(sourcePages.has(Number(page)),
+      `folios.catalogs.${catalogId}.pages.${page} is outside sourcePages`));
   }
-
-  const globalStats = {
-    recordCount: data.records.length,
-    recordsWithDesignation: 0,
-    recordsWithWeight: 0,
-    confidenceCounts: Object.fromEntries(CONFIDENCE_LEVELS.map((level) => [level, 0])),
-  };
-  for (const catalogStats of statsByCatalog.values()) {
-    globalStats.recordsWithDesignation += catalogStats.recordsWithDesignation;
-    globalStats.recordsWithWeight += catalogStats.recordsWithWeight;
-    for (const level of CONFIDENCE_LEVELS) {
-      globalStats.confidenceCounts[level] += catalogStats.confidenceCounts[level];
-    }
-  }
-  for (const field of ["recordCount", "recordsWithDesignation", "recordsWithWeight"]) {
-    assert(
-      metadataValidation.totals[field] === globalStats[field],
-      `${path}.metadata.${field} does not match all records`,
-    );
-  }
-  for (const level of CONFIDENCE_LEVELS) {
-    assert(
-      metadataValidation.totals.confidenceCounts[level] === globalStats.confidenceCounts[level],
-      `${path}.metadata.confidenceCounts.${level} does not match all records`,
-    );
-  }
-
-  return {
-    catalogCount: metadataByCatalog.size,
-    recordCount: data.records.length,
-    folioStats,
-    metadataByCatalog,
-    statsByCatalog,
-    schemaVersion: metadataValidation.schemaVersion,
-  };
+  return { catalogCount: metadataByCatalog.size, recordCount: data.records.length, statsByCatalog, metadataByCatalog, folioStats };
 }
 
-function syntheticManifest({
-  rightsStatus = "public-domain",
-  image = "assets/folios/reviewed-example/page-3.webp",
-  thumbnail = "assets/folios/reviewed-example/page-3-thumbnail.webp",
-  alt = "Reviewed catalog page 3",
-  pageEntry,
-} = {}) {
-  const entry = pageEntry ?? {
-    image,
-    alt,
-    ...(thumbnail === null ? {} : { thumbnail }),
-  };
+function assertSafeFolioPath(value, catalogId, path) {
+  assertString(value, path);
+  assert(!/\s/u.test(value), `${path} must not contain whitespace`);
+  assert(!value.startsWith("/") && !/^[A-Za-z][A-Za-z\d+.-]*:/u.test(value), `${path} must be relative`);
+  assert(!/[\\?#%]/u.test(value) && !value.includes("//"), `${path} contains an unsafe URL or path form`);
+  const root = `${FOLIO_PATH_ROOT}${catalogId}/`;
+  assert(value.startsWith(root), `${path} must be rooted under ${root}`);
+  const segments = value.slice(root.length).split("/");
+  assert(segments.length && segments.every((segment) => segment && segment !== "." && segment !== ".."),
+    `${path} contains an unsafe segment`);
+  assert(segments.every((segment) => /^[A-Za-z0-9._-]+$/u.test(segment)), `${path} must use plain ASCII segments`);
+  assert(APPROVED_FOLIO_EXTENSION.test(segments.at(-1)), `${path} has an unapproved extension`);
+}
+
+function assertPlainAlt(value, path) {
+  assertString(value, path);
+  assert([...value].length <= MAX_ALT_LENGTH, `${path} must be at most ${MAX_ALT_LENGTH} characters`);
+  assert(!/[\p{Cc}\p{Cf}<>]/u.test(value) && !/`|!?\[[^\]]*\]\([^)]*\)/u.test(value), `${path} must be plain text`);
+}
+
+function validateFolioManifest(manifest, path) {
+  assertExactKeys(manifest, ["schemaVersion", "catalogs"], path);
+  assert(manifest.schemaVersion === 1, `${path}.schemaVersion must be 1`);
+  assert(isObject(manifest.catalogs) && Object.keys(manifest.catalogs).length > 0, `${path}.catalogs must be nonempty`);
+  let pageEntryCount = 0;
+  for (const [catalogId, policy] of Object.entries(manifest.catalogs)) {
+    const policyPath = `${path}.catalogs.${catalogId}`;
+    assertCatalogId(catalogId, `${policyPath} ID`);
+    assertExactKeys(policy, ["displayPolicy", "rightsStatus", "pages"], policyPath);
+    assert(DISPLAY_POLICIES.includes(policy.displayPolicy), `${policyPath}.displayPolicy is invalid`);
+    assert(RIGHTS_STATUSES.includes(policy.rightsStatus), `${policyPath}.rightsStatus is invalid`);
+    assert(isObject(policy.pages), `${policyPath}.pages must be an object`);
+    if (policy.displayPolicy === "display") assert(policy.rightsStatus === "public-domain",
+      `${policyPath} may display only with public-domain status`);
+    else assert(Object.keys(policy.pages).length === 0, `${policyPath}.pages must be empty while blocked`);
+    for (const [page, entry] of Object.entries(policy.pages)) {
+      const entryPath = `${policyPath}.pages.${page}`;
+      assert(/^[1-9]\d*$/u.test(page), `${entryPath} must use a positive page number`);
+      assertAllowedKeys(entry, PAGE_ENTRY_KEYS, ["image", "alt"], entryPath);
+      assertSafeFolioPath(entry.image, catalogId, `${entryPath}.image`);
+      if (Object.hasOwn(entry, "thumbnail")) assertSafeFolioPath(entry.thumbnail, catalogId, `${entryPath}.thumbnail`);
+      assertPlainAlt(entry.alt, `${entryPath}.alt`);
+      pageEntryCount += 1;
+    }
+  }
+  return { catalogCount: Object.keys(manifest.catalogs).length, pageEntryCount };
+}
+
+function clone(value) {
+  return JSON.parse(JSON.stringify(value));
+}
+
+function blockedFolios(metadata) {
   return {
     schemaVersion: 1,
-    catalogs: {
-      "reviewed-example": {
-        displayPolicy: "display",
-        rightsStatus,
-        pages: {
-          3: entry,
-        },
-      },
-    },
+    catalogs: Object.fromEntries(metadata.catalogs.map(({ id }) => [id, {
+      displayPolicy: "blocked", rightsStatus: "undetermined", pages: {},
+    }])),
   };
-}
-
-let syntheticAllowCount = 0;
-let syntheticRejectionCount = 0;
-
-function assertSyntheticAllow(manifest, description) {
-  const stats = validateFolioManifest(manifest, `synthetic ${description}`);
-  assert(stats.pageEntryCount === 1, `synthetic ${description} must contain one page`);
-  syntheticAllowCount += 1;
-}
-
-function assertSyntheticRejection(manifest, description) {
-  let rejected = false;
-  try {
-    validateFolioManifest(manifest, `synthetic ${description}`);
-  } catch {
-    rejected = true;
-  }
-  assert(rejected, `synthetic fixture must reject ${description}`);
-  syntheticRejectionCount += 1;
-}
-
-const [data, folios] = await Promise.all(
-  [CATALOG_URL, FOLIOS_URL].map(async (url) => JSON.parse(await readFile(url, "utf8"))),
-);
-rejectCatalogExcludedContent(data);
-const folioStats = validateFolioManifest(folios, "folios");
-
-for (const extension of ["webp", "png", "jpg", "jpeg", "avif"]) {
-  assertSyntheticAllow(
-    syntheticManifest({
-      image: `assets/folios/reviewed-example/page-3.${extension}`,
-      thumbnail: `assets/folios/reviewed-example/page-3-thumbnail.${extension}`,
-    }),
-    `approved .${extension} paths`,
-  );
-}
-assertSyntheticAllow(syntheticManifest({ thumbnail: null }), "optional thumbnail omission");
-
-assertSyntheticRejection(syntheticManifest({ rightsStatus: "undetermined" }), "display with undetermined rights");
-assertSyntheticRejection(syntheticManifest({ rightsStatus: "unknown" }), "unknown rights status");
-
-for (const [description, catalogId] of [
-  ["uppercase catalog ID", "Reviewed-Example"],
-  ["underscore catalog ID", "reviewed_example"],
-  ["whitespace catalog ID", "reviewed example"],
-  ["overlong catalog ID", "a".repeat(MAX_CATALOG_ID_LENGTH + 1)],
-]) {
-  const manifest = syntheticManifest();
-  manifest.catalogs[catalogId] = manifest.catalogs["reviewed-example"];
-  delete manifest.catalogs["reviewed-example"];
-  assertSyntheticRejection(manifest, description);
-}
-
-const malformedPaths = [
-  ["empty path", ""],
-  ["whitespace", "assets/folios/reviewed-example/page 3.webp"],
-  ["slash-rooted", "/assets/folios/reviewed-example/page-3.webp"],
-  ["scheme", "https://example.test/page-3.webp"],
-  ["protocol-relative", "//example.test/page-3.webp"],
-  ["backslash", "assets\\folios\\reviewed-example\\page-3.webp"],
-  ["query suffix", "assets/folios/reviewed-example/page-3.webp?download=1"],
-  ["query-only", "?download=1"],
-  ["fragment suffix", "assets/folios/reviewed-example/page-3.webp#page"],
-  ["fragment-only", "#page"],
-  ["current segment", "assets/folios/reviewed-example/./page-3.webp"],
-  ["parent segment", "assets/folios/reviewed-example/../page-3.webp"],
-  ["missing filename segment", "assets/folios/reviewed-example/"],
-  ["duplicate slash empty segment", "assets/folios/reviewed-example//page-3.webp"],
-  ["outside root", "assets/images/reviewed-example/page-3.webp"],
-  ["lookalike root", "assets/folios-other/reviewed-example/page-3.webp"],
-  ["wrong catalog directory", "assets/folios/other-catalog/page-3.webp"],
-  ["percent-encoded whitespace", "assets/folios/reviewed-example/page%203.webp"],
-  ["encoded traversal", "assets/folios/reviewed-example/%2e%2e/page-3.webp"],
-  ["repeated-encoded traversal", "assets/folios/reviewed-example/%252e%252e/page-3.webp"],
-  ["encoded external form", "assets/folios/reviewed-example/https%3A%2F%2Fevil.test/page-3.webp"],
-  ["repeated-encoded external form", "assets/folios/reviewed-example/https%253A%252F%252Fevil.test/page-3.webp"],
-  ["unsafe .svg extension", "assets/folios/reviewed-example/page-3.svg"],
-  ["unsafe .gif extension", "assets/folios/reviewed-example/page-3.gif"],
-  ["unsafe .pdf extension", "assets/folios/reviewed-example/page-3.pdf"],
-  ["missing extension", "assets/folios/reviewed-example/page-3"],
-  ["unapproved uppercase extension", "assets/folios/reviewed-example/page-3.WEBP"],
-];
-
-for (const field of ["image", "thumbnail"]) {
-  for (const [description, value] of malformedPaths) {
-    assertSyntheticRejection(syntheticManifest({ [field]: value }), `${field} ${description}`);
-  }
-}
-
-assertSyntheticRejection(
-  syntheticManifest({
-    pageEntry: {
-      full: "assets/folios/reviewed-example/page-3.webp",
-      alt: "Reviewed catalog page 3",
-    },
-  }),
-  "wrong full key",
-);
-assertSyntheticRejection(
-  syntheticManifest({
-    pageEntry: {
-      image: "assets/folios/reviewed-example/page-3.webp",
-      alt: "Reviewed catalog page 3",
-      caption: "Unexpected field",
-    },
-  }),
-  "extra page-entry key",
-);
-
-for (const [description, alt] of [
-  ["empty alt", ""],
-  ["whitespace-only alt", "   "],
-  ["non-NFC alt", "Cafe\u0301 catalog page"],
-  ["non-normalized alt whitespace", "Catalog  page 3"],
-  ["HTML markup alt", "<em>Catalog page 3</em>"],
-  ["Markdown markup alt", "[Catalog page 3](https://example.test)"],
-  ["control-character alt", "Catalog page\u0000 3"],
-  ["format-character alt", "Catalog page\u200B 3"],
-  ["overlong alt", "x".repeat(MAX_ALT_LENGTH + 1)],
-]) {
-  assertSyntheticRejection(syntheticManifest({ alt }), description);
 }
 
 function fixtureCatalog({
   id,
+  recordModel = "specimen",
   label = "Shared catalog label",
   compiler,
   year,
@@ -739,6 +472,7 @@ function fixtureCatalog({
 }) {
   return {
     id,
+    recordModel,
     label,
     compiler,
     year,
@@ -757,7 +491,7 @@ function multiCatalogFixture() {
   return {
     data: {
       metadata: {
-        schemaVersion: 2,
+        schemaVersion: 3,
         scope: "facts-only",
         factualFields: [...FACTUAL_FIELDS],
         catalogs: [
@@ -793,40 +527,19 @@ function multiCatalogFixture() {
       },
       records: [
         {
-          id: "alpha-a1",
-          catalogId: "alpha-1901",
-          designation: "A1",
-          name: "Alpha",
-          weight: { grams: 1 },
-          classification: "Iron",
-          locality: "Alpha County",
-          year: "1900",
-          catalogPage: 1,
-          confidence: "high",
+          id: "alpha-a1", catalogId: "alpha-1901", designation: "A1", name: "Alpha",
+          weight: { grams: 1 }, classification: "Iron", locality: "Alpha County", year: "1900",
+          catalogPage: 1, confidence: "high",
         },
         {
-          id: "beta-b1",
-          catalogId: "beta-1888",
-          designation: "B1",
-          name: "Beta",
-          weight: { grams: 2 },
-          classification: "Stone",
-          locality: "Beta County",
-          year: "1887",
-          catalogPage: 7,
-          confidence: "low",
+          id: "beta-b1", catalogId: "beta-1888", designation: "B1", name: "Beta",
+          weight: { grams: 2 }, classification: "Stone", locality: "Beta County", year: "1887",
+          catalogPage: 7, confidence: "low",
         },
         {
-          id: "alpha-c1",
-          catalogId: "alpha-1901",
-          designation: "C1",
-          name: "Gamma",
-          weight: { grams: null },
-          classification: null,
-          locality: null,
-          year: null,
-          catalogPage: 2,
-          confidence: "medium",
+          id: "alpha-c1", catalogId: "alpha-1901", designation: "C1", name: "Gamma",
+          weight: { grams: null }, classification: null, locality: null, year: null,
+          catalogPage: 2, confidence: "medium",
         },
       ],
     },
@@ -850,27 +563,6 @@ function multiCatalogFixture() {
   };
 }
 
-let catalogAllowCount = 0;
-let catalogRejectionCount = 0;
-
-function assertCatalogAllow(fixture, description) {
-  validatePublicCatalog(fixture.data, fixture.folios, `synthetic ${description}`);
-  catalogAllowCount += 1;
-}
-
-function assertCatalogRejection(mutate, description) {
-  const fixture = multiCatalogFixture();
-  mutate(fixture);
-  let rejected = false;
-  try {
-    validatePublicCatalog(fixture.data, fixture.folios, `synthetic ${description}`);
-  } catch {
-    rejected = true;
-  }
-  assert(rejected, `synthetic catalog fixture must reject ${description}`);
-  catalogRejectionCount += 1;
-}
-
 function renameFixtureCatalog(fixture, currentId, nextId) {
   const descriptor = fixture.data.metadata.catalogs.find((catalog) => catalog.id === currentId);
   descriptor.id = nextId;
@@ -881,264 +573,435 @@ function renameFixtureCatalog(fixture, currentId, nextId) {
   delete fixture.folios.catalogs[currentId];
 }
 
-assertCatalogAllow(multiCatalogFixture(), "valid multi-catalog data");
-const runtimeBoundaryFixture = multiCatalogFixture();
-renameFixtureCatalog(runtimeBoundaryFixture, "alpha-1901", "a".repeat(MAX_CATALOG_ID_LENGTH));
-runtimeBoundaryFixture.data.metadata.catalogs[0].label = "L".repeat(MAX_CATALOG_TEXT_LENGTH);
-runtimeBoundaryFixture.data.metadata.catalogs[0].compiler = "C".repeat(MAX_CATALOG_TEXT_LENGTH);
-runtimeBoundaryFixture.data.records[0].id = "record:alpha";
-runtimeBoundaryFixture.data.records[0].name = "scan";
-runtimeBoundaryFixture.data.records[0].classification = "image";
-runtimeBoundaryFixture.data.records[0].locality = "notes";
-assertCatalogAllow(runtimeBoundaryFixture, "runtime boundary and leakage-safe values");
+function runSyntheticCatalogTests(modelFixture) {
+  let baselineAllowCount = 0;
+  let baselineRejectionCount = 0;
+  let modelAllowCount = 0;
+  let modelOrderingAllowCount = 0;
+  let holdingPrivacyAllowCount = 0;
+  let modelRejectionCount = 0;
+  const assertCatalogAllow = (fixture, description) => {
+    validatePublicCatalog(fixture.data, fixture.folios, `synthetic ${description}`);
+    baselineAllowCount += 1;
+  };
+  const assertCatalogRejection = (mutate, description) => {
+    const fixture = multiCatalogFixture();
+    mutate(fixture);
+    let rejected = false;
+    try {
+      validatePublicCatalog(fixture.data, fixture.folios, `synthetic ${description}`);
+    } catch {
+      rejected = true;
+    }
+    assert(rejected, `synthetic catalog fixture must reject ${description}`);
+    baselineRejectionCount += 1;
+  };
 
-for (const [description, catalogId] of [
-  ["empty catalog slug", ""],
-  ["uppercase catalog slug", "Alpha-1901"],
-  ["underscore catalog slug", "alpha_1901"],
-  ["leading-hyphen catalog slug", "-alpha"],
-  ["trailing-hyphen catalog slug", "alpha-"],
-  ["duplicate-hyphen catalog slug", "alpha--1901"],
-  ["overlong catalog slug", "a".repeat(MAX_CATALOG_ID_LENGTH + 1)],
-]) {
-  assertCatalogRejection(
-    (fixture) => renameFixtureCatalog(fixture, "alpha-1901", catalogId),
-    description,
-  );
-}
-for (const [description, field, value] of [
-  ["empty catalog label", "label", ""],
-  ["empty catalog compiler", "compiler", ""],
-  ["overlong catalog label", "label", "L".repeat(MAX_CATALOG_TEXT_LENGTH + 1)],
-  ["overlong catalog compiler", "compiler", "C".repeat(MAX_CATALOG_TEXT_LENGTH + 1)],
-  ["non-normalized catalog label whitespace", "label", "Catalog  label"],
-  ["non-NFC catalog compiler", "compiler", "Cafe\u0301"],
-  ["catalog label control character", "label", "Catalog\u0000label"],
-  ["catalog compiler format character", "compiler", "Catalog\u200Bcompiler"],
-]) {
-  assertCatalogRejection(
-    ({ data: fixtureData }) => {
-      fixtureData.metadata.catalogs[0][field] = value;
-    },
-    description,
-  );
-}
-for (const [description, recordId] of [
-  ["empty record ID", ""],
-  ["non-normalized record ID whitespace", "record  id"],
-  ["non-NFC record ID", "record-e\u0301"],
-  ["record ID control character", "record\u0000id"],
-  ["record ID format character", "record\u200Bid"],
-  ["record ID leakage marker", "raw OCR output"],
-  ["record ID path", "../private/record"],
-]) {
-  assertCatalogRejection(
-    ({ data: fixtureData }) => {
-      fixtureData.records[0].id = recordId;
-    },
-    description,
-  );
-}
-assertCatalogRejection(
-  ({ data: fixtureData }) => {
-    fixtureData.records[0].locality = "Alpha\u0000County";
-  },
-  "record value control character",
-);
-assertCatalogRejection(
-  ({ data: fixtureData }) => {
-    fixtureData.records[0].locality = "Alpha\u200BCounty";
-  },
-  "record value format character",
-);
-assertCatalogRejection(
-  ({ data: fixtureData }) => {
-    Object.assign(fixtureData.records[0], {
-      designation: null,
-      name: null,
-      weight: { grams: null },
-      classification: null,
-      locality: null,
-      year: null,
-    });
-  },
-  "record without substantive public facts",
-);
-assertCatalogRejection(
-  ({ data: fixtureData }) => fixtureData.metadata.catalogs.push({ ...fixtureData.metadata.catalogs[0] }),
-  "duplicate metadata catalog ID",
-);
-assertCatalogRejection(
-  ({ data: fixtureData }) => fixtureData.metadata.catalogs.pop(),
-  "metadata missing a catalog ID",
-);
-assertCatalogRejection(
-  ({ data: fixtureData }) => fixtureData.records.splice(1, 1),
-  "records missing a catalog ID",
-);
-assertCatalogRejection(({ folios: fixtureFolios }) => delete fixtureFolios.catalogs["beta-1888"], "manifest missing a catalog ID");
-assertCatalogRejection(
-  ({ folios: fixtureFolios }) => {
-    fixtureFolios.catalogs["extra-1900"] = { displayPolicy: "blocked", rightsStatus: "undetermined", pages: {} };
-  },
-  "manifest with an extra catalog ID",
-);
-assertCatalogRejection(
-  ({ data: fixtureData }) => {
-    Object.assign(fixtureData.metadata.catalogs[0], {
-      recordCount: 1,
-      recordsWithDesignation: 1,
-      recordsWithWeight: 0,
+  assertCatalogAllow(multiCatalogFixture(), "valid multi-catalog data");
+  const boundary = multiCatalogFixture();
+  renameFixtureCatalog(boundary, "alpha-1901", "a".repeat(MAX_CATALOG_ID_LENGTH));
+  boundary.data.metadata.catalogs[0].label = "L".repeat(MAX_CATALOG_TEXT_LENGTH);
+  boundary.data.metadata.catalogs[0].compiler = "C".repeat(MAX_CATALOG_TEXT_LENGTH);
+  boundary.data.records[0].id = "record:alpha";
+  boundary.data.records[0].name = "scan";
+  boundary.data.records[0].classification = "image";
+  boundary.data.records[0].locality = "notes";
+  assertCatalogAllow(boundary, "runtime boundary and leakage-safe values");
+
+  for (const [description, catalogId] of [
+    ["empty catalog slug", ""],
+    ["uppercase catalog slug", "Alpha-1901"],
+    ["underscore catalog slug", "alpha_1901"],
+    ["leading-hyphen catalog slug", "-alpha"],
+    ["trailing-hyphen catalog slug", "alpha-"],
+    ["duplicate-hyphen catalog slug", "alpha--1901"],
+    ["overlong catalog slug", "a".repeat(MAX_CATALOG_ID_LENGTH + 1)],
+  ]) assertCatalogRejection((fixture) => renameFixtureCatalog(fixture, "alpha-1901", catalogId), description);
+
+  for (const [description, field, value] of [
+    ["empty catalog label", "label", ""],
+    ["empty catalog compiler", "compiler", ""],
+    ["overlong catalog label", "label", "L".repeat(MAX_CATALOG_TEXT_LENGTH + 1)],
+    ["overlong catalog compiler", "compiler", "C".repeat(MAX_CATALOG_TEXT_LENGTH + 1)],
+    ["non-normalized catalog label whitespace", "label", "Catalog  label"],
+    ["non-NFC catalog compiler", "compiler", "Cafe\u0301"],
+    ["catalog label control character", "label", "Catalog\u0000label"],
+    ["catalog compiler format character", "compiler", "Catalog\u200Bcompiler"],
+  ]) assertCatalogRejection(({ data }) => { data.metadata.catalogs[0][field] = value; }, description);
+
+  for (const [description, recordId] of [
+    ["empty record ID", ""],
+    ["non-normalized record ID whitespace", "record  id"],
+    ["non-NFC record ID", "record-e\u0301"],
+    ["record ID control character", "record\u0000id"],
+    ["record ID format character", "record\u200Bid"],
+    ["record ID leakage marker", "raw OCR output"],
+    ["record ID path", "../private/record"],
+  ]) assertCatalogRejection(({ data }) => { data.records[0].id = recordId; }, description);
+
+  assertCatalogRejection(({ data }) => { data.records[0].locality = "Alpha\u0000County"; }, "record value control character");
+  assertCatalogRejection(({ data }) => { data.records[0].locality = "Alpha\u200BCounty"; }, "record value format character");
+  assertCatalogRejection(({ data }) => Object.assign(data.records[0], {
+    designation: null, name: null, weight: { grams: null }, classification: null, locality: null, year: null,
+  }), "record without substantive public facts");
+  assertCatalogRejection(({ data }) => data.metadata.catalogs.push({ ...data.metadata.catalogs[0] }), "duplicate metadata catalog ID");
+  assertCatalogRejection(({ data }) => data.metadata.catalogs.pop(), "metadata missing a catalog ID");
+  assertCatalogRejection(({ data }) => data.records.splice(1, 1), "records missing a catalog ID");
+  assertCatalogRejection(({ folios }) => delete folios.catalogs["beta-1888"], "manifest missing a catalog ID");
+  assertCatalogRejection(({ folios }) => {
+    folios.catalogs["extra-1900"] = { displayPolicy: "blocked", rightsStatus: "undetermined", pages: {} };
+  }, "manifest with an extra catalog ID");
+  assertCatalogRejection(({ data }) => {
+    Object.assign(data.metadata.catalogs[0], {
+      recordCount: 1, recordsWithDesignation: 1, recordsWithWeight: 0,
       confidenceCounts: { high: 0, medium: 1, low: 0 },
     });
-    Object.assign(fixtureData.metadata.catalogs[1], {
-      recordCount: 2,
-      recordsWithDesignation: 2,
-      recordsWithWeight: 2,
+    Object.assign(data.metadata.catalogs[1], {
+      recordCount: 2, recordsWithDesignation: 2, recordsWithWeight: 2,
       confidenceCounts: { high: 1, medium: 0, low: 1 },
     });
-  },
-  "per-catalog totals mismatch with unchanged global totals",
-);
-assertCatalogRejection(
-  ({ data: fixtureData }) => {
-    fixtureData.records[2].catalogPage = 4;
-  },
-  "record page outside its catalog sourcePages",
-);
-assertCatalogRejection(
-  ({ data: fixtureData }) => {
-    fixtureData.metadata.catalogs[0].confidenceCounts = { high: 1, medium: 0, low: 1 };
-    fixtureData.metadata.catalogs[1].confidenceCounts = { high: 0, medium: 1, low: 0 };
-  },
-  "per-catalog confidence mismatch with unchanged global totals",
-);
-assertCatalogRejection(
-  ({ data: fixtureData }) => {
-    fixtureData.metadata.catalogs[0].rightsStatus = "public-domain";
-  },
-  "metadata and manifest rights mismatch",
-);
-assertCatalogRejection(
-  ({ data: fixtureData }) => {
-    fixtureData.metadata.recordsWithDesignation = 2;
-  },
-  "global designation total mismatch",
-);
-assertCatalogRejection(
-  ({ data: fixtureData }) => {
-    fixtureData.metadata.confidenceCounts = { high: 0, medium: 2, low: 1 };
-  },
-  "global confidence total mismatch",
-);
-assertCatalogRejection(
-  ({ data: fixtureData }) => {
-    fixtureData.metadata.catalogs[0].sourcePages = [2, 1, 3];
-  },
-  "unsorted sourcePages",
-);
-assertCatalogRejection(
-  ({ data: fixtureData }) => {
-    fixtureData.metadata.catalogs[0].sourcePages = [1, 2, 2];
-  },
-  "duplicate sourcePages",
-);
-assertCatalogRejection(
-  ({ data: fixtureData }) => {
-    fixtureData.metadata.schemaVersion = 1;
-  },
-  "wrong canonical metadata schema version",
-);
-assertCatalogRejection(
-  ({ data: fixtureData }) => {
-    fixtureData.metadata.generatedAt = "2026-07-19";
-  },
-  "extra canonical metadata root key",
-);
-assertCatalogRejection(
-  ({ data: fixtureData }) => {
-    fixtureData.metadata.catalogs[0].edition = "First";
-  },
-  "extra catalog descriptor key",
-);
-assertCatalogRejection(
-  ({ data: fixtureData }) => {
-    fixtureData.metadata.catalogs[0].sourcePageCount = 2;
-  },
-  "sourcePageCount mismatch",
-);
-assertCatalogRejection(
-  ({ data: fixtureData }) => {
-    fixtureData.metadata.catalogs[0].label = "../private/catalog-scan.pdf";
-  },
-  "catalog label leakage",
-);
-assertCatalogRejection(
-  ({ folios: fixtureFolios }) => {
-    fixtureFolios.catalogs["beta-1888"].pages[8] = {
-      image: "assets/folios/beta-1888/page-8.webp",
-      alt: "Beta catalog page 8",
+  }, "per-catalog totals mismatch with unchanged global totals");
+  assertCatalogRejection(({ data }) => { data.records[2].catalogPage = 4; }, "record page outside its catalog sourcePages");
+  assertCatalogRejection(({ data }) => {
+    data.metadata.catalogs[0].confidenceCounts = { high: 1, medium: 0, low: 1 };
+    data.metadata.catalogs[1].confidenceCounts = { high: 0, medium: 1, low: 0 };
+  }, "per-catalog confidence mismatch with unchanged global totals");
+  assertCatalogRejection(({ data }) => { data.metadata.catalogs[0].rightsStatus = "public-domain"; }, "metadata and manifest rights mismatch");
+  assertCatalogRejection(({ data }) => { data.metadata.recordsWithDesignation = 2; }, "global designation total mismatch");
+  assertCatalogRejection(({ data }) => { data.metadata.confidenceCounts = { high: 0, medium: 2, low: 1 }; }, "global confidence total mismatch");
+  assertCatalogRejection(({ data }) => { data.metadata.catalogs[0].sourcePages = [2, 1, 3]; }, "unsorted sourcePages");
+  assertCatalogRejection(({ data }) => { data.metadata.catalogs[0].sourcePages = [1, 2, 2]; }, "duplicate sourcePages");
+  assertCatalogRejection(({ data }) => { data.metadata.schemaVersion = 2; }, "wrong canonical metadata schema version");
+  assertCatalogRejection(({ data }) => { data.metadata.generatedAt = "2026-07-19"; }, "extra canonical metadata root key");
+  assertCatalogRejection(({ data }) => { data.metadata.catalogs[0].edition = "First"; }, "extra catalog descriptor key");
+  assertCatalogRejection(({ data }) => { data.metadata.catalogs[0].sourcePageCount = 2; }, "sourcePageCount mismatch");
+  assertCatalogRejection(({ data }) => { data.metadata.catalogs[0].label = "../private/catalog-scan.pdf"; }, "catalog label leakage");
+  assertCatalogRejection(({ folios }) => {
+    folios.catalogs["beta-1888"].pages[8] = {
+      image: "assets/folios/beta-1888/page-8.webp", alt: "Beta catalog page 8",
     };
-  },
-  "folio page outside its catalog source page set",
-);
+  }, "folio page outside its catalog source page set");
 
-for (const [description, value] of [
-  ["raw OCR marker", "Raw OCR output for line 4"],
-  ["source filename marker", "Source filename IMG_0042"],
-  ["scan marker", "Scan file number 42"],
-  ["notes marker", "Transcription notes for review"],
-  ["path-like string", "../private/page-0042"],
-  ["scheme path without an extension", "https://private.example/source"],
-  ["image extension before punctuation", "folio-0042.TIFF,"],
-  ["source document filename", "page-0042.PDF"],
-  ["camera-style image filename", "DSC_0042"],
-]) {
-  assertCatalogRejection(
-    ({ data: fixtureData }) => {
-      fixtureData.records[0].locality = value;
+  for (const [description, value] of [
+    ["raw OCR marker", "Raw OCR output for line 4"],
+    ["source filename marker", "Source filename IMG_0042"],
+    ["scan marker", "Scan file number 42"],
+    ["notes marker", "Transcription notes for review"],
+    ["path-like string", "../private/page-0042"],
+    ["scheme path without an extension", "https://private.example/source"],
+    ["image extension before punctuation", "folio-0042.TIFF,"],
+    ["source document filename", "page-0042.PDF"],
+    ["camera-style image filename", "DSC_0042"],
+  ]) assertCatalogRejection(({ data }) => { data.records[0].locality = value; }, description);
+  assertCatalogRejection(({ data }) => { data.records[0].rawOcr = "unpublished text"; }, "raw OCR key");
+  assertCatalogRejection(({ data }) => { data.metadata.catalogs[0].sourceFilename = "page-1.dat"; }, "source filename key");
+  assert(baselineAllowCount === 2, `expected 2 baseline catalog allows, got ${baselineAllowCount}`);
+  assert(baselineRejectionCount === 55, `expected 55 baseline catalog rejections, got ${baselineRejectionCount}`);
+
+  const modelFolios = blockedFolios(modelFixture.metadata);
+  validatePublicCatalog(modelFixture, modelFolios, "synthetic valid model-aware fixture");
+  modelAllowCount += 1;
+
+  const independentNumbering = clone(modelFixture);
+  independentNumbering.metadata.catalogs.find(({ id }) => id === "huss-1986").recordModel = "catalog-item";
+  const firstIndependent = independentNumbering.records.find(({ id }) => id === "huss-second-h399-1");
+  const secondIndependent = independentNumbering.records.find(({ id }) => id === "huss-second-h400");
+  for (const [record, catalogItem] of [[firstIndependent, 1], [secondIndependent, 200]]) {
+    const holding = {
+      designation: record.designation,
+      kind: "specimen",
+      description: null,
+      count: null,
+      weight: record.weight,
+    };
+    delete record.designation;
+    delete record.weight;
+    record.catalogItem = catalogItem;
+    record.holdings = [holding];
+  }
+  firstIndependent.name = "Normal stone";
+  firstIndependent.holdings[0].weight.grams = 200;
+  independentNumbering.records = [
+    firstIndependent,
+    independentNumbering.records.find(({ id }) => id === "nininger-item-1"),
+    ...independentNumbering.records.filter(({ id }) => [
+      "nininger-item-2", "nininger-item-3", "nininger-item-4", "nininger-item-5", "nininger-item-6"
+    ].includes(id)),
+    secondIndependent,
+    ...independentNumbering.records.filter(({ catalogId }) => catalogId === "huss-1976"),
+  ];
+  validatePublicCatalog(independentNumbering, modelFolios,
+    "synthetic independent numbering and catalog-item ID tie breaker");
+  modelOrderingAllowCount += 1;
+
+  const holdingPrivacyBoundary = clone(modelFixture);
+  holdingPrivacyBoundary.records.find(({ id }) => id === "nininger-item-1").holdings[0].description = "found in 1932";
+  holdingPrivacyBoundary.records.find(({ id }) => id === "nininger-item-1").holdings[0].designation = "134g";
+  holdingPrivacyBoundary.records.find(({ id }) => id === "nininger-item-2").holdings[0].description = "M1 to M15";
+  const boundaryAggregate = holdingPrivacyBoundary.records.find(({ id }) => id === "nininger-item-2").holdings[1];
+  boundaryAggregate.designation = "128 s";
+  boundaryAggregate.description = "a series of 15 individuals";
+  validatePublicCatalog(holdingPrivacyBoundary, modelFolios, "synthetic legitimate holding privacy boundaries");
+  holdingPrivacyAllowCount += 1;
+
+  const assertModelRejection = (description, mutate) => {
+    const candidate = clone(modelFixture);
+    mutate(candidate);
+    let rejected = false;
+    try {
+      validatePublicCatalog(candidate, modelFolios, `synthetic ${description}`);
+    } catch {
+      rejected = true;
+    }
+    assert(rejected, `synthetic model fixture must reject ${description}`);
+    modelRejectionCount += 1;
+  };
+  assertModelRejection("missing descriptor model", ({ metadata }) => { delete metadata.catalogs[0].recordModel; });
+  assertModelRejection("unknown descriptor model", ({ metadata }) => { metadata.catalogs[0].recordModel = "row"; });
+  assertModelRejection("catalog item fields under specimen descriptor", ({ records }) => {
+    records.find(({ id }) => id === "huss-h27-3").catalogItem = 27;
+  });
+  assertModelRejection("specimen fields under catalog-item descriptor", ({ records }) => {
+    const record = records.find(({ id }) => id === "nininger-item-1");
+    delete record.holdings; record.designation = "N1"; record.weight = { grams: 1 };
+  });
+  assertModelRejection("empty holdings", ({ records }) => {
+    records.find(({ id }) => id === "nininger-item-1").holdings = [];
+  });
+  assertModelRejection("extra holding key", ({ records }) => {
+    records.find(({ id }) => id === "nininger-item-1").holdings[0].notes = "Public-looking text";
+  });
+  assertModelRejection("invalid holding kind", ({ records }) => {
+    records.find(({ id }) => id === "nininger-item-1").holdings[0].kind = "replica";
+  });
+  assertModelRejection("specimen holding without designation", ({ records }) => {
+    records.find(({ id }) => id === "nininger-item-1").holdings[0].designation = null;
+  });
+  assertModelRejection("specimen holding without weight", ({ records }) => {
+    records.find(({ id }) => id === "nininger-item-1").holdings[0].weight.grams = null;
+  });
+  assertModelRejection("specimen holding with count", ({ records }) => {
+    records.find(({ id }) => id === "nininger-item-1").holdings[0].count = 1;
+  });
+  assertModelRejection("cast holding without designation", ({ records }) => {
+    records.find(({ id }) => id === "nininger-item-3").holdings[0].designation = null;
+  });
+  assertModelRejection("cast holding with count", ({ records }) => {
+    records.find(({ id }) => id === "nininger-item-3").holdings[0].count = 1;
+  });
+  assertModelRejection("cast holding with weight", ({ records }) => {
+    records.find(({ id }) => id === "nininger-item-3").holdings[0].weight.grams = 1;
+  });
+  assertModelRejection("aggregate holding without description", ({ records }) => {
+    records.find(({ id }) => id === "nininger-item-4").holdings[0].description = null;
+  });
+  assertModelRejection("aggregate holding without count or weight", ({ records }) => {
+    records.find(({ id }) => id === "nininger-item-4").holdings[0].count = null;
+  });
+  assertModelRejection("zero holding count", ({ records }) => {
+    records.find(({ id }) => id === "nininger-item-4").holdings[0].count = 0;
+  });
+  assertModelRejection("fractional holding count", ({ records }) => {
+    records.find(({ id }) => id === "nininger-item-4").holdings[0].count = 1.5;
+  });
+  assertModelRejection("negative holding mass", ({ records }) => {
+    records.find(({ id }) => id === "nininger-item-1").holdings[0].weight.grams = -1;
+  });
+  assertModelRejection("nonfinite holding mass", ({ records }) => {
+    records.find(({ id }) => id === "nininger-item-1").holdings[0].weight.grams = Infinity;
+  });
+  assertModelRejection("holding raw OCR leakage", ({ records }) => {
+    records.find(({ id }) => id === "nininger-item-1").holdings[0].description = "Raw OCR output";
+  });
+  assertModelRejection("holding source filename leakage", ({ records }) => {
+    records.find(({ id }) => id === "nininger-item-1").holdings[0].designation = "IMG_0031.TIFF";
+  });
+  assertModelRejection("holding path leakage", ({ records }) => {
+    records.find(({ id }) => id === "nininger-item-1").holdings[0].description = "../private/holding";
+  });
+  for (const value of [
+    "OCR line 4",
+    "Reviewer note: uncertain",
+    "review note: uncertain",
+    "12 grams",
+    "12 g",
+    "3 kg",
+    "Known Wt. 15.2 Kgs.",
+    "transcript.docx",
+    "Page ID 0042",
+    "page_0042",
+    "private-source-0042.dat",
+    "source/pages/0042.dat",
+  ]) {
+    assertModelRejection(`strict holding privacy: ${value}`, ({ records }) => {
+      records.find(({ id }) => id === "nininger-item-1").holdings[0].description = value;
+    });
+  }
+  assertModelRejection("catalog-item weight summary mismatch", ({ metadata }) => { metadata.catalogs[2].recordsWithWeight -= 1; });
+  assertModelRejection("duplicate catalog item within one catalog", ({ records }) => {
+    records.find(({ id }) => id === "nininger-item-2").catalogItem = 1;
+  });
+  assertModelRejection("decreasing catalog items within one catalog", ({ records }) => {
+    records.find(({ id }) => id === "nininger-item-2").catalogItem = 100;
+    records.find(({ id }) => id === "nininger-item-3").catalogItem = 50;
+  });
+  assertModelRejection("model-aware order violation", ({ records }) => { [records[0], records[1]] = [records[1], records[0]]; });
+
+  return {
+    baselineAllowCount,
+    baselineRejectionCount,
+    modelAllowCount,
+    modelOrderingAllowCount,
+    holdingPrivacyAllowCount,
+    modelRejectionCount,
+  };
+}
+
+function syntheticManifest({
+  rightsStatus = "public-domain",
+  image = "assets/folios/reviewed-example/page-3.webp",
+  thumbnail = "assets/folios/reviewed-example/page-3-thumbnail.webp",
+  alt = "Reviewed catalog page 3",
+  pageEntry,
+} = {}) {
+  const entry = pageEntry ?? { image, alt, ...(thumbnail === null ? {} : { thumbnail }) };
+  return {
+    schemaVersion: 1,
+    catalogs: {
+      "reviewed-example": { displayPolicy: "display", rightsStatus, pages: { 3: entry } },
     },
-    description,
-  );
-}
-assertCatalogRejection(
-  ({ data: fixtureData }) => {
-    fixtureData.records[0].rawOcr = "unpublished text";
-  },
-  "raw OCR key",
-);
-assertCatalogRejection(
-  ({ data: fixtureData }) => {
-    fixtureData.metadata.catalogs[0].sourceFilename = "page-1.dat";
-  },
-  "source filename key",
-);
-
-const deployedStats = validatePublicCatalog(data, folios, "root");
-const totalPageCount = [...deployedStats.metadataByCatalog.values()].reduce(
-  (sum, { entry }) => sum + entry.sourcePageCount,
-  0,
-);
-function formatSourcePages(sourcePages) {
-  const contiguous = sourcePages.every((page, index) => index === 0 || page === sourcePages[index - 1] + 1);
-  return contiguous && sourcePages.length > 1 ? `${sourcePages[0]}-${sourcePages.at(-1)}` : sourcePages.join(",");
+  };
 }
 
+function runSyntheticFolioTests() {
+  let allowCount = 0;
+  let rejectionCount = 0;
+  const allow = (manifest, description) => {
+    const stats = validateFolioManifest(manifest, `synthetic ${description}`);
+    assert(stats.pageEntryCount === 1, `synthetic ${description} must contain one page`);
+    allowCount += 1;
+  };
+  const reject = (manifest, description) => {
+    let rejected = false;
+    try {
+      validateFolioManifest(manifest, `synthetic ${description}`);
+    } catch {
+      rejected = true;
+    }
+    assert(rejected, `synthetic fixture must reject ${description}`);
+    rejectionCount += 1;
+  };
+
+  for (const extension of ["webp", "png", "jpg", "jpeg", "avif"]) {
+    allow(syntheticManifest({
+      image: `assets/folios/reviewed-example/page-3.${extension}`,
+      thumbnail: `assets/folios/reviewed-example/page-3-thumbnail.${extension}`,
+    }), `approved .${extension} paths`);
+  }
+  allow(syntheticManifest({ thumbnail: null }), "optional thumbnail omission");
+  reject(syntheticManifest({ rightsStatus: "undetermined" }), "display with undetermined rights");
+  reject(syntheticManifest({ rightsStatus: "unknown" }), "unknown rights status");
+  for (const [description, catalogId] of [
+    ["uppercase catalog ID", "Reviewed-Example"],
+    ["underscore catalog ID", "reviewed_example"],
+    ["whitespace catalog ID", "reviewed example"],
+    ["overlong catalog ID", "a".repeat(MAX_CATALOG_ID_LENGTH + 1)],
+  ]) {
+    const manifest = syntheticManifest();
+    manifest.catalogs[catalogId] = manifest.catalogs["reviewed-example"];
+    delete manifest.catalogs["reviewed-example"];
+    reject(manifest, description);
+  }
+  const malformedPaths = [
+    ["empty path", ""],
+    ["whitespace", "assets/folios/reviewed-example/page 3.webp"],
+    ["slash-rooted", "/assets/folios/reviewed-example/page-3.webp"],
+    ["scheme", "https://example.test/page-3.webp"],
+    ["protocol-relative", "//example.test/page-3.webp"],
+    ["backslash", "assets\\folios\\reviewed-example\\page-3.webp"],
+    ["query suffix", "assets/folios/reviewed-example/page-3.webp?download=1"],
+    ["query-only", "?download=1"],
+    ["fragment suffix", "assets/folios/reviewed-example/page-3.webp#page"],
+    ["fragment-only", "#page"],
+    ["current segment", "assets/folios/reviewed-example/./page-3.webp"],
+    ["parent segment", "assets/folios/reviewed-example/../page-3.webp"],
+    ["missing filename segment", "assets/folios/reviewed-example/"],
+    ["duplicate slash empty segment", "assets/folios/reviewed-example//page-3.webp"],
+    ["outside root", "assets/images/reviewed-example/page-3.webp"],
+    ["lookalike root", "assets/folios-other/reviewed-example/page-3.webp"],
+    ["wrong catalog directory", "assets/folios/other-catalog/page-3.webp"],
+    ["percent-encoded whitespace", "assets/folios/reviewed-example/page%203.webp"],
+    ["encoded traversal", "assets/folios/reviewed-example/%2e%2e/page-3.webp"],
+    ["repeated-encoded traversal", "assets/folios/reviewed-example/%252e%252e/page-3.webp"],
+    ["encoded external form", "assets/folios/reviewed-example/https%3A%2F%2Fevil.test/page-3.webp"],
+    ["repeated-encoded external form", "assets/folios/reviewed-example/https%253A%252F%252Fevil.test/page-3.webp"],
+    ["unsafe .svg extension", "assets/folios/reviewed-example/page-3.svg"],
+    ["unsafe .gif extension", "assets/folios/reviewed-example/page-3.gif"],
+    ["unsafe .pdf extension", "assets/folios/reviewed-example/page-3.pdf"],
+    ["missing extension", "assets/folios/reviewed-example/page-3"],
+    ["unapproved uppercase extension", "assets/folios/reviewed-example/page-3.WEBP"],
+  ];
+  for (const field of ["image", "thumbnail"]) {
+    for (const [description, value] of malformedPaths) reject(syntheticManifest({ [field]: value }), `${field} ${description}`);
+  }
+  reject(syntheticManifest({ pageEntry: {
+    full: "assets/folios/reviewed-example/page-3.webp", alt: "Reviewed catalog page 3",
+  } }), "wrong full key");
+  reject(syntheticManifest({ pageEntry: {
+    image: "assets/folios/reviewed-example/page-3.webp", alt: "Reviewed catalog page 3", caption: "Unexpected field",
+  } }), "extra page-entry key");
+  for (const [description, alt] of [
+    ["empty alt", ""],
+    ["whitespace-only alt", "   "],
+    ["non-NFC alt", "Cafe\u0301 catalog page"],
+    ["non-normalized alt whitespace", "Catalog  page 3"],
+    ["HTML markup alt", "<em>Catalog page 3</em>"],
+    ["Markdown markup alt", "[Catalog page 3](https://example.test)"],
+    ["control-character alt", "Catalog page\u0000 3"],
+    ["format-character alt", "Catalog page\u200B 3"],
+    ["overlong alt", "x".repeat(MAX_ALT_LENGTH + 1)],
+  ]) reject(syntheticManifest({ alt }), description);
+  assert(allowCount === 6, `expected 6 folio allows, got ${allowCount}`);
+  assert(rejectionCount === 71, `expected 71 folio rejections, got ${rejectionCount}`);
+  return { allowCount, rejectionCount };
+}
+
+const fixture = JSON.parse(await readFile(FIXTURE_URL, "utf8"));
+const catalogFixtureStats = runSyntheticCatalogTests(fixture);
+const folioFixtureStats = runSyntheticFolioTests();
 console.log(
-  `Validated data/catalog.json and data/folios.json: ${deployedStats.recordCount} records across ` +
-    `${deployedStats.catalogCount} facts-only catalog${deployedStats.catalogCount === 1 ? "" : "s"}, ` +
-    `${totalPageCount} metadata source pages, ${deployedStats.folioStats.pageEntryCount} displayable folio pages.`,
+  `Synthetic fixtures: ${catalogFixtureStats.baselineAllowCount} baseline catalog allows, ` +
+  `${catalogFixtureStats.baselineRejectionCount} baseline catalog/leakage rejections, ` +
+  `${catalogFixtureStats.modelAllowCount} model-aware catalog allow, ` +
+  `${catalogFixtureStats.modelOrderingAllowCount} model-ordering/catalog-scope allow, ` +
+  `${catalogFixtureStats.holdingPrivacyAllowCount} holding-privacy boundary allow, ` +
+  `${catalogFixtureStats.modelRejectionCount} model/holding rejections, ` +
+  `${folioFixtureStats.allowCount} folio allows, ${folioFixtureStats.rejectionCount} folio rejections passed.`,
 );
-for (const [catalogId, { entry }] of deployedStats.metadataByCatalog) {
-  const catalogStats = deployedStats.statsByCatalog.get(catalogId);
+
+if (!SYNTHETIC_ONLY) {
+  const [data, folios] = await Promise.all(
+    [CATALOG_URL, FOLIOS_URL].map(async (url) => JSON.parse(await readFile(url, "utf8"))),
+  );
+  const deployedStats = validatePublicCatalog(data, folios, "root");
+  const totalPageCount = [...deployedStats.metadataByCatalog.values()].reduce(
+    (sum, { descriptor }) => sum + descriptor.sourcePageCount,
+    0,
+  );
   console.log(
-    `${catalogId}: ${catalogStats.recordCount} records, pages ${formatSourcePages(entry.sourcePages)}, ` +
-      `${catalogStats.recordsWithDesignation} designations, ${catalogStats.recordsWithWeight} weights, ` +
-      `confidence high=${catalogStats.confidenceCounts.high} medium=${catalogStats.confidenceCounts.medium} ` +
-      `low=${catalogStats.confidenceCounts.low}, ${entry.folioDisplayPolicy}/${entry.rightsStatus}.`,
+    `Validated data/catalog.json and data/folios.json: ${deployedStats.recordCount} records across ` +
+    `${deployedStats.catalogCount} schema 3 facts-only catalogs, ${totalPageCount} metadata source pages, ` +
+    `${deployedStats.folioStats.pageEntryCount} displayable folio pages.`,
   );
+  for (const [catalogId, { descriptor }] of deployedStats.metadataByCatalog) {
+    const stats = deployedStats.statsByCatalog.get(catalogId);
+    console.log(
+      `${catalogId}: ${descriptor.recordModel}, ${stats.recordCount} records, ` +
+      `${stats.recordsWithDesignation} with designations, ${stats.recordsWithWeight} with weights, ` +
+      `confidence high=${stats.confidenceCounts.high} medium=${stats.confidenceCounts.medium} ` +
+      `low=${stats.confidenceCounts.low}, ${descriptor.folioDisplayPolicy}/${descriptor.rightsStatus}.`,
+    );
+  }
 }
-console.log(
-  `Fixtures: ${syntheticAllowCount} folio allows, ${syntheticRejectionCount} folio rejections, ` +
-    `${catalogAllowCount} multi-catalog allow, ${catalogRejectionCount} catalog/leakage rejections passed.`,
-);
+
+export { rejectCatalogExcludedContent, validateFolioManifest, validatePublicCatalog };

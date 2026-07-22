@@ -8,8 +8,8 @@
   <meta name="theme-color" content="#2d241b">
   <title>The Meteorite Cabinet | Historical Collection Index</title>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=20260721-5">
-  <script src="./app.js?v=20260721-5" defer></script>
+  <link rel="stylesheet" href="./styles.css?v=20260722-1">
+  <script src="./app.js?v=20260722-1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#catalog">Skip to catalog</a>
@@ -54,7 +54,7 @@
           <span>Search source observations</span>
           <span class="input-wrap search-wrap">
             <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m15.5 15.5 5 5"></path></svg>
-            <input id="search" name="q" type="search" autocomplete="off" placeholder="Name, designation, class, place, or year">
+            <input id="search" name="q" type="search" autocomplete="off" placeholder="Name, designation, catalog item, holding, class, place, or year">
           </span>
         </label>
 
@@ -84,8 +84,8 @@
           <span>Order the register</span>
           <span class="select-wrap">
             <select id="sort" name="sort">
-              <option value="designation-asc">Designation, ascending</option>
-              <option value="designation-desc">Designation, descending</option>
+              <option value="designation-asc">Designation / catalog item, ascending</option>
+              <option value="designation-desc">Designation / catalog item, descending</option>
               <option value="name-asc">Name, A-Z</option>
               <option value="name-desc">Name, Z-A</option>
               <option value="weight-asc">Weight, lightest first</option>
@@ -112,7 +112,7 @@
       <div id="empty-state" class="empty-state" hidden>
         <span aria-hidden="true">&#10022;</span>
         <h3>No source observations answer that description</h3>
-        <p>Try a broader name, designation, classification, locality, year, catalog, or mass interval.</p>
+        <p>Try a broader name, designation, catalog item, holding, classification, locality, year, catalog, or mass interval.</p>
         <button class="button" type="button" data-clear-filters>Clear the search</button>
       </div>
 
@@ -147,6 +147,10 @@
         <div class="locality-row"><dt>Locality</dt><dd></dd></div>
         <div class="year-row"><dt>Year</dt><dd></dd></div>
       </dl>
+      <section class="record-holdings" aria-label="Holdings" hidden>
+        <h4>Holdings</h4>
+        <ol class="holdings-list" role="list"></ol>
+      </section>
       <footer class="record-footer">
         <p class="catalog-reference"></p>
         <p class="confidence"><i aria-hidden="true"></i><span></span></p>

@@ -6,7 +6,7 @@ A searchable transcription of the 1976 Huss Meteorite Collection catalog, compil
 
 The other configured source attributions identify compilers only: Glenn I. Huss for the 1986 catalog and H. H. Nininger for the 1933 catalog. No publisher is inferred for either source.
 
-The site supports catalog filtering, segment-aware H-designation search, full-text factual search, numeric gram ranges, six deterministic sort orders, URL-persisted filters, and incremental rendering. A separate, default-deny rights manifest can enable folio viewing for future catalogs whose source pages have a documented public-domain determination.
+The site supports catalog filtering, segment-aware H-designation search, catalog-item and holding search, numeric gram ranges across specimen and holding masses, six deterministic sort orders, URL-persisted filters, and incremental rendering. A separate, default-deny rights manifest can enable folio viewing for future catalogs whose source pages have a documented public-domain determination.
 
 ## Local Preview
 
@@ -31,12 +31,29 @@ All runtime URLs are relative, so the site works at a GitHub Pages project subpa
 
 ## Public Data Scope
 
-The browser loads factual records only from `./data/catalog.json`. Its root contract is `{ metadata, records }`. Every public record contains exactly:
+The browser loads factual records only from `./data/catalog.json`. Schema version 3 has root contract `{ metadata, records }`; every catalog descriptor includes `recordModel`, either `specimen` or `catalog-item`.
+
+A `specimen` record contains exactly:
 
 ```text
 id, catalogId, designation, name, weight: { grams }, classification,
 locality, year, catalogPage, confidence
 ```
+
+A `catalog-item` record contains exactly:
+
+```text
+id, catalogId, catalogItem, holdings, name, classification, locality,
+year, catalogPage, confidence
+```
+
+Each holding contains exactly:
+
+```text
+designation, kind, description, count, weight: { grams }
+```
+
+`designation` and `description` are strings or `null`; `kind` is `specimen`, `cast`, or `aggregate`; `count` is a positive integer or `null`; and `weight.grams` is a finite nonnegative number or `null`. A specimen holding requires designation and mass and has no count. A cast requires designation and has neither count nor mass. An aggregate requires a description and at least a count or mass. Counts are displayed generically as `Count: N`, without inferring the counted object. Huss descriptors use `specimen`. The Nininger descriptor uses `catalog-item`, preserving one parent observation per numbered item and its holdings in source order.
 
 The release contains:
 
@@ -47,9 +64,9 @@ The release contains:
 | `nininger-1933` | The Nininger Collection of Meteorites (1933) | 136 | 19 | 5 | 1-7 and 10-20 | 1-7 and 10-11 |
 | **Total** |  | **1,758** | **90** | **24** | **85 catalog-scoped pages** | **76 catalog-scoped pages** |
 
-`catalogId` identifies the source catalog for each record. The 85-page figure is metadata source-page coverage, not a claim that every covered page is cited. `catalogPage` is a printed-page citation within that source; records cite 76 distinct catalog-scoped pages, and the same page number in different catalogs denotes different pages. The index presents structured specimen facts: designation, name, normalized mass, classification, locality, recorded year, catalog page, and transcription confidence. Null weights are excluded whenever a numeric weight filter is active.
+`catalogId` identifies the source catalog for each record. The 85-page figure is metadata source-page coverage, not a claim that every covered page is cited. `catalogPage` is a printed-page citation within that source; records cite 76 distinct catalog-scoped pages, and the same page number in different catalogs denotes different pages. Catalog-item numbers are unique and strictly increasing within each catalog, but may contain gaps and restart in another catalog. A mass range matches a catalog item when any one holding mass satisfies the entire range. Weight ascending uses a catalog item's minimum holding mass, weight descending uses its maximum, and statistics sum every holding mass once while counting the parent item as one observation.
 
-For `nininger-1933`, pages 8-9 are absent from the local source set. Pages 12-20 are included in metadata source-page coverage but are narrative-only, contain no observations, and are not cited by records. One Nininger observation represents one numbered catalog item, not each visible row or holding. If an item lists multiple holdings, they remain one public observation; the complete holding-level `weightText` and notes are preserved only in private transcription data.
+For `nininger-1933`, pages 8-9 are absent from the local source set. Pages 12-20 are included in metadata source-page coverage but are narrative-only, contain no observations, and are not cited by records. One Nininger observation represents one numbered catalog item, not each visible row or holding. Its structured holding facts are public in schema 3; verbatim `weightText`, transcription notes, and page-layout data remain private.
 
 ## Rights-Gated Folios
 
@@ -76,7 +93,7 @@ All three current catalogs are blocked by policy with `rightsStatus: "undetermin
 
 ## Private Local Archive
 
-Original source images for all three catalogs are held locally and ignored by Git. Image filenames, raw OCR, verbatim notes, holding-level fields such as `weightText`, page-layout reproductions, and working transcription material are intentionally excluded from the public edition. Display derivatives may be tracked only in private history; none are part of the public repository or deployment while export remains blocked.
+Original source images for all three catalogs are held locally and ignored by Git. Image filenames, raw OCR, verbatim notes, holding-level source text such as `weightText`, page-layout reproductions, and working transcription material are intentionally excluded from the public edition. Display derivatives may be tracked only in private history; none are part of the public repository or deployment while export remains blocked.
 
 The public client has no fallback loader for private material. If `catalog.json` is missing or does not match the facts-only schema, the interface shows an accessible error state. Failure of the optional folio manifest does not prevent factual records from loading.
 

@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "schemaVersion": 2,
+    "schemaVersion": 3,
     "scope": "facts-only",
     "factualFields": [
       "id",
@@ -8,6 +8,12 @@
       "designation",
       "name",
       "weight.grams",
+      "catalogItem",
+      "holdings[].designation",
+      "holdings[].kind",
+      "holdings[].description",
+      "holdings[].count",
+      "holdings[].weight.grams",
       "classification",
       "locality",
       "year",
@@ -17,6 +23,7 @@
     "catalogs": [
       {
         "id": "huss-1976",
+        "recordModel": "specimen",
         "label": "Huss Meteorite Collection catalog (1976)",
         "compiler": "Glenn Huss",
         "year": 1976,
@@ -82,6 +89,7 @@
       },
       {
         "id": "huss-1986",
+        "recordModel": "specimen",
         "label": "The Second Huss Collection of Meteorites (1986)",
         "compiler": "Glenn I. Huss",
         "year": 1986,
@@ -122,6 +130,7 @@
       },
       {
         "id": "nininger-1933",
+        "recordModel": "catalog-item",
         "label": "The Nininger Collection of Meteorites with Descriptions of the Huizopa and Pojoaque Meteorites (1933)",
         "compiler": "H. H. Nininger",
         "year": 1933,
@@ -148,7 +157,7 @@
         "sourcePageCount": 18,
         "recordCount": 136,
         "recordsWithDesignation": 136,
-        "recordsWithWeight": 93,
+        "recordsWithWeight": 136,
         "confidenceCounts": {
           "high": 136,
           "medium": 0,
@@ -160,7 +169,7 @@
     ],
     "recordCount": 1758,
     "recordsWithDesignation": 1743,
-    "recordsWithWeight": 1711,
+    "recordsWithWeight": 1754,
     "confidenceCounts": {
       "high": 1758,
       "medium": 0,
@@ -171,11 +180,19 @@
     {
       "id": "obs-2de087f4-e18b-4cf8-b1e1-8617df218d13",
       "catalogId": "nininger-1933",
-      "designation": "1",
+      "catalogItem": 1,
+      "holdings": [
+        {
+          "designation": "2a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 379
+          }
+        }
+      ],
       "name": "Adams Co.",
-      "weight": {
-        "grams": 379
-      },
       "classification": "Stone. Ccb.",
       "locality": "Colo.",
       "year": "1928",
@@ -185,15 +202,4537 @@
     {
       "id": "obs-63a5d172-f3a3-4dfb-8200-d514af6e5a54",
       "catalogId": "nininger-1933",
-      "designation": "2",
+      "catalogItem": 2,
+      "holdings": [
+        {
+          "designation": "8a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 34
+          }
+        }
+      ],
       "name": "Admire",
-      "weight": {
-        "grams": 34
-      },
       "classification": "Iron-stone. Pr.",
       "locality": "Lyon Co., Kansas",
       "year": "1881",
       "catalogPage": 1,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-71d16aec-9945-453c-8a27-1c18465a5241",
+      "catalogId": "nininger-1933",
+      "catalogItem": 3,
+      "holdings": [
+        {
+          "designation": "4a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 249
+          }
+        }
+      ],
+      "name": "Alfianello",
+      "classification": "Stone. Ci.",
+      "locality": "Italy",
+      "year": "1883",
+      "catalogPage": 1,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-5f7b3838-6424-43ed-92f2-6b4e2f8b178c",
+      "catalogId": "nininger-1933",
+      "catalogItem": 4,
+      "holdings": [
+        {
+          "designation": "7a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 319
+          }
+        }
+      ],
+      "name": "Allegan",
+      "classification": "Stone. Cco.",
+      "locality": "Allegan Co., Michigan",
+      "year": "1899",
+      "catalogPage": 1,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d52797b4-ff22-42e0-9169-74871324940d",
+      "catalogId": "nininger-1933",
+      "catalogItem": 5,
+      "holdings": [
+        {
+          "designation": "168a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 10192
+          }
+        }
+      ],
+      "name": "Altonah",
+      "classification": "Iron. Of.",
+      "locality": "Duchesne Co., Utah",
+      "year": "about 1932",
+      "catalogPage": 2,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-9cb7cfdd-ca40-433d-ac53-6791286fc5cd",
+      "catalogId": "nininger-1933",
+      "catalogItem": 6,
+      "holdings": [
+        {
+          "designation": "6a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 117
+          }
+        }
+      ],
+      "name": "Anthony",
+      "classification": "Stone. Cg.",
+      "locality": "Harper Co., Kansas",
+      "year": "1919",
+      "catalogPage": 2,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-149ae3f6-9854-4e59-be0a-ce539d7a17f6",
+      "catalogId": "nininger-1933",
+      "catalogItem": 7,
+      "holdings": [
+        {
+          "designation": "175a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 396
+          }
+        },
+        {
+          "designation": "175b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 58
+          }
+        }
+      ],
+      "name": "Archie",
+      "classification": "Stone.",
+      "locality": "Cass Co., Missouri",
+      "year": "1932",
+      "catalogPage": 2,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-11bc479c-55f1-43c6-a7d6-f55931c6b4ca",
+      "catalogId": "nininger-1933",
+      "catalogItem": 8,
+      "holdings": [
+        {
+          "designation": "9a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 2016
+          }
+        },
+        {
+          "designation": "9b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 13476
+          }
+        },
+        {
+          "designation": "9d",
+          "kind": "cast",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": null
+          }
+        }
+      ],
+      "name": "Arizpe",
+      "classification": "Iron. Ogg.",
+      "locality": "Sonora, Mexico",
+      "year": "1898",
+      "catalogPage": 2,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-061e7cb0-4e54-455f-b216-0c2c47792ff6",
+      "catalogId": "nininger-1933",
+      "catalogItem": 9,
+      "holdings": [
+        {
+          "designation": "1a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 38
+          }
+        }
+      ],
+      "name": "Arlington",
+      "classification": "Iron. Om.",
+      "locality": "Sibley Co., Minnesota",
+      "year": "1894",
+      "catalogPage": 2,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-2274a8af-b0e2-443b-9c9b-3bb4e5bd3b94",
+      "catalogId": "nininger-1933",
+      "catalogItem": 10,
+      "holdings": [
+        {
+          "designation": "5a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 2
+          }
+        }
+      ],
+      "name": "Atemajac",
+      "classification": "Stone. Cg.",
+      "locality": "Jalisco, Mexico",
+      "year": "1896",
+      "catalogPage": 2,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d3aae47c-cf52-441e-af9e-ad21a21d43e1",
+      "catalogId": "nininger-1933",
+      "catalogItem": 11,
+      "holdings": [
+        {
+          "designation": "3a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 22
+          }
+        }
+      ],
+      "name": "Aussun",
+      "classification": "Stone. Cc.",
+      "locality": "France",
+      "year": "1858",
+      "catalogPage": 2,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-0a89b714-1cd5-4e45-b8b1-1b799c6f15ac",
+      "catalogId": "nininger-1933",
+      "catalogItem": 12,
+      "holdings": [
+        {
+          "designation": "17a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 214
+          }
+        }
+      ],
+      "name": "Bacubirito",
+      "classification": "Iron. Of.",
+      "locality": "Sinaloa, Mexico",
+      "year": "1863",
+      "catalogPage": 2,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-0224ebfb-9ac1-4c83-b544-915946e32c1d",
+      "catalogId": "nininger-1933",
+      "catalogItem": 13,
+      "holdings": [
+        {
+          "designation": "12a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 120
+          }
+        },
+        {
+          "designation": "12b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 36
+          }
+        }
+      ],
+      "name": "Ballinger",
+      "classification": "Iron. Hb.",
+      "locality": "Texas",
+      "year": "1927",
+      "catalogPage": 2,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d0d20e94-d202-4a62-b4db-b92add13736c",
+      "catalogId": "nininger-1933",
+      "catalogItem": 14,
+      "holdings": [
+        {
+          "designation": "16a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 2392
+          }
+        },
+        {
+          "designation": "16b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 443
+          }
+        },
+        {
+          "designation": "16c",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 70.5
+          }
+        }
+      ],
+      "name": "Barrata",
+      "classification": "Stone. Cs.",
+      "locality": "N.S.W., Australia",
+      "year": "1845",
+      "catalogPage": 2,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-94345139-a6aa-40b2-b646-601455e2b311",
+      "catalogId": "nininger-1933",
+      "catalogItem": 15,
+      "holdings": [
+        {
+          "designation": "134a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 9286.5
+          }
+        },
+        {
+          "designation": "134b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 262
+          }
+        },
+        {
+          "designation": "134c",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 263
+          }
+        },
+        {
+          "designation": "134g",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 42
+          }
+        },
+        {
+          "designation": "134e",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 363
+          }
+        },
+        {
+          "designation": "134j",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 108
+          }
+        },
+        {
+          "designation": "134k",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 151
+          }
+        },
+        {
+          "designation": "134L",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 107
+          }
+        },
+        {
+          "designation": "134m",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 46
+          }
+        },
+        {
+          "designation": "134n",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 32
+          }
+        },
+        {
+          "designation": "134o",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 26
+          }
+        },
+        {
+          "designation": "134q",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 215
+          }
+        },
+        {
+          "designation": "134r",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 225
+          }
+        },
+        {
+          "designation": "134s",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 128
+          }
+        },
+        {
+          "designation": "134t",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 61
+          }
+        }
+      ],
+      "name": "Beardsley",
+      "classification": "Stone. Cga.",
+      "locality": "Kansas",
+      "year": "1929",
+      "catalogPage": 2,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6bdc4156-18b3-4b59-acf5-23846178c6ca",
+      "catalogId": "nininger-1933",
+      "catalogItem": 16,
+      "holdings": [
+        {
+          "designation": "15a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 32
+          }
+        }
+      ],
+      "name": "Beaver Creek",
+      "classification": "Stone. Cck.",
+      "locality": "British Columbia",
+      "year": "1893",
+      "catalogPage": 2,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-66d35f21-bc7c-4108-8228-769b719e8426",
+      "catalogId": "nininger-1933",
+      "catalogItem": 17,
+      "holdings": [
+        {
+          "designation": "150a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 9
+          }
+        },
+        {
+          "designation": "150b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 21
+          }
+        }
+      ],
+      "name": "Bielokrynitsche",
+      "classification": "Cca.",
+      "locality": "Russia",
+      "year": "1887",
+      "catalogPage": 2,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-0f90b63f-0fe6-4d53-b352-72f119a4eb7d",
+      "catalogId": "nininger-1933",
+      "catalogItem": 18,
+      "holdings": [
+        {
+          "designation": "151a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 521
+          }
+        }
+      ],
+      "name": "Billings",
+      "classification": "Iron. Cg.",
+      "locality": "Christian Co., Missouri",
+      "year": null,
+      "catalogPage": 2,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b3e6b09e-8ccc-47d6-a4e6-9bfbbe15b276",
+      "catalogId": "nininger-1933",
+      "catalogItem": 19,
+      "holdings": [
+        {
+          "designation": "156a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 94
+          }
+        },
+        {
+          "designation": "156b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 20
+          }
+        }
+      ],
+      "name": "Bitburg",
+      "classification": "Pallasite. Pa.",
+      "locality": "Rhenish Prussia",
+      "year": "before 1805",
+      "catalogPage": 2,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6432d5a8-65bd-44e2-95ce-6703c52d830d",
+      "catalogId": "nininger-1933",
+      "catalogItem": 20,
+      "holdings": [
+        {
+          "designation": "14a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 666
+          }
+        }
+      ],
+      "name": "Bjurbole",
+      "classification": "Stone. Cc.",
+      "locality": "Finland",
+      "year": "1899",
+      "catalogPage": 2,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-619df59a-719b-49a1-9c71-4395c4347bed",
+      "catalogId": "nininger-1933",
+      "catalogItem": 21,
+      "holdings": [
+        {
+          "designation": "13a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 563
+          }
+        }
+      ],
+      "name": "Bluff",
+      "classification": "Stone. Ckb.",
+      "locality": "Fayette Co., Texas",
+      "year": "1878",
+      "catalogPage": 2,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-39238d6b-c059-4cf8-a578-7c1efb2a5812",
+      "catalogId": "nininger-1933",
+      "catalogItem": 22,
+      "holdings": [
+        {
+          "designation": "11a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 0.7
+          }
+        }
+      ],
+      "name": "Bocas",
+      "classification": "Stone. Cw.",
+      "locality": "San Luis Potosi, Mexico",
+      "year": "1804",
+      "catalogPage": 2,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b15c49f4-0a78-4489-ae4a-057a19021ffb",
+      "catalogId": "nininger-1933",
+      "catalogItem": 23,
+      "holdings": [
+        {
+          "designation": "18b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 747
+          }
+        }
+      ],
+      "name": "Breece",
+      "classification": "Iron. Om.",
+      "locality": "New Mexico",
+      "year": "1921",
+      "catalogPage": 2,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-807d6532-9d06-4a00-9e1b-3eaaee4339ab",
+      "catalogId": "nininger-1933",
+      "catalogItem": 24,
+      "holdings": [
+        {
+          "designation": "10a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 719
+          }
+        },
+        {
+          "designation": "10L",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 14043
+          }
+        },
+        {
+          "designation": "10m",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 12457
+          }
+        },
+        {
+          "designation": "10n",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 6678
+          }
+        },
+        {
+          "designation": "10u",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 7400
+          }
+        },
+        {
+          "designation": "10g",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 2718
+          }
+        },
+        {
+          "designation": "10d",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 2573
+          }
+        },
+        {
+          "designation": "10c",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 2984
+          }
+        },
+        {
+          "designation": "10e",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 1625
+          }
+        },
+        {
+          "designation": "10f",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 5662
+          }
+        },
+        {
+          "designation": "10o",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 150
+          }
+        },
+        {
+          "designation": "10q",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 484
+          }
+        },
+        {
+          "designation": "10r",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 1184
+          }
+        },
+        {
+          "designation": null,
+          "kind": "aggregate",
+          "description": "fragments",
+          "count": null,
+          "weight": {
+            "grams": 470
+          }
+        },
+        {
+          "designation": null,
+          "kind": "aggregate",
+          "description": "olivine chondrules",
+          "count": null,
+          "weight": {
+            "grams": 152
+          }
+        },
+        {
+          "designation": null,
+          "kind": "aggregate",
+          "description": "mounted olivine chondrules",
+          "count": 40,
+          "weight": {
+            "grams": null
+          }
+        },
+        {
+          "designation": "M1 to M15",
+          "kind": "aggregate",
+          "description": "meteorodes; a series of 15 individuals showing various stages of alteration",
+          "count": 15,
+          "weight": {
+            "grams": 3200
+          }
+        },
+        {
+          "designation": "M18",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 263
+          }
+        },
+        {
+          "designation": "M19",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 7248
+          }
+        },
+        {
+          "designation": "M20",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 270
+          }
+        },
+        {
+          "designation": null,
+          "kind": "aggregate",
+          "description": "additional meteorodes and fragments",
+          "count": null,
+          "weight": {
+            "grams": 100000
+          }
+        }
+      ],
+      "name": "Brenham",
+      "classification": "Iron-stone. Pa.",
+      "locality": "Kiowa Co., Kansas",
+      "year": "1885",
+      "catalogPage": 3,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e8a820d2-a0cd-477c-89e1-cf076e42a175",
+      "catalogId": "nininger-1933",
+      "catalogItem": 25,
+      "holdings": [
+        {
+          "designation": "132a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 5
+          }
+        }
+      ],
+      "name": "Bruno",
+      "classification": "Iron. H.",
+      "locality": "Sask. Canada",
+      "year": "1931",
+      "catalogPage": 3,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-ec340b73-37e3-42c0-9d28-e5ce362f29bb",
+      "catalogId": "nininger-1933",
+      "catalogItem": 26,
+      "holdings": [
+        {
+          "designation": "165a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 182
+          }
+        }
+      ],
+      "name": "Burkett",
+      "classification": "Iron. Og.",
+      "locality": "Coleman Co., Texas",
+      "year": "1913",
+      "catalogPage": 3,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e4f9642c-f1f1-4430-b812-6cd0b96f935e",
+      "catalogId": "nininger-1933",
+      "catalogItem": 27,
+      "holdings": [
+        {
+          "designation": "137a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 714
+          }
+        },
+        {
+          "designation": "137c",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 108
+          }
+        }
+      ],
+      "name": "Butler",
+      "classification": "Iron. Off.",
+      "locality": "Bates Co., Missouri",
+      "year": "before 1874",
+      "catalogPage": 3,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d4aa1d81-3954-4dcd-abc4-a55634c8c3ad",
+      "catalogId": "nininger-1933",
+      "catalogItem": 28,
+      "holdings": [
+        {
+          "designation": "19a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 76.5
+          }
+        }
+      ],
+      "name": "Cacaria",
+      "classification": "Iron. Oh.",
+      "locality": "Durango, Mexico",
+      "year": "1867",
+      "catalogPage": 3,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-dc81ffdf-b5af-4e81-bd10-9034877d2870",
+      "catalogId": "nininger-1933",
+      "catalogItem": 29,
+      "holdings": [
+        {
+          "designation": "158a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 826
+          }
+        }
+      ],
+      "name": "Canyon City",
+      "classification": "Iron. Om.",
+      "locality": "Trinity Co., California",
+      "year": "1875",
+      "catalogPage": 3,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-77600896-d0b4-422a-8164-070cbeedd4fd",
+      "catalogId": "nininger-1933",
+      "catalogItem": 30,
+      "holdings": [
+        {
+          "designation": "34jj",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 11200
+          }
+        },
+        {
+          "designation": "34a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 3624
+          }
+        },
+        {
+          "designation": "34b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 1798
+          }
+        },
+        {
+          "designation": "34c",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 1373
+          }
+        },
+        {
+          "designation": null,
+          "kind": "aggregate",
+          "description": "individuals aggregating weight",
+          "count": 31,
+          "weight": {
+            "grams": 8900
+          }
+        }
+      ],
+      "name": "Canyon Diablo",
+      "classification": "Iron. Og.",
+      "locality": "Coconino Co., Arizona",
+      "year": "1891",
+      "catalogPage": 3,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-342224e1-0f1d-4bbf-9955-f7ac43376ea4",
+      "catalogId": "nininger-1933",
+      "catalogItem": 31,
+      "holdings": [
+        {
+          "designation": "139a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 8971
+          }
+        },
+        {
+          "designation": "139b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 380
+          }
+        }
+      ],
+      "name": "Carbo",
+      "classification": "Iron. Om.",
+      "locality": "Sonora, Mexico",
+      "year": "1923",
+      "catalogPage": 3,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-996c8ab3-dd1c-4ddc-b5e0-7d396ee571b1",
+      "catalogId": "nininger-1933",
+      "catalogItem": 32,
+      "holdings": [
+        {
+          "designation": "35a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 1305
+          }
+        },
+        {
+          "designation": "35b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 903
+          }
+        },
+        {
+          "designation": "35c",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 50
+          }
+        }
+      ],
+      "name": "Carlton",
+      "classification": "Iron. Off.",
+      "locality": "Hamilton Co., Texas",
+      "year": "1887",
+      "catalogPage": 3,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e184e509-d6e5-41de-b962-a67931fbad30",
+      "catalogId": "nininger-1933",
+      "catalogItem": 33,
+      "holdings": [
+        {
+          "designation": "36a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 658
+          }
+        }
+      ],
+      "name": "Casas Grandes",
+      "classification": "Iron. Om.",
+      "locality": "Chihuahua, Mexico",
+      "year": "1867",
+      "catalogPage": 3,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-1cf310ad-3e0e-4a4f-a76c-3f93ea8c0429",
+      "catalogId": "nininger-1933",
+      "catalogItem": 34,
+      "holdings": [
+        {
+          "designation": "20a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 260
+          }
+        }
+      ],
+      "name": "Cedar",
+      "classification": "Stone. Cca.",
+      "locality": "Fayette Co., Texas",
+      "year": "1900",
+      "catalogPage": 3,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c546a86d-2a5d-4dbb-a53f-3bfb38afd772",
+      "catalogId": "nininger-1933",
+      "catalogItem": 35,
+      "holdings": [
+        {
+          "designation": "27a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 34881
+          }
+        }
+      ],
+      "name": "Chihuahua City",
+      "classification": "Iron. Offbp.",
+      "locality": "Chihuahua, Mexico",
+      "year": "1929",
+      "catalogPage": 3,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-bfb24d30-c17e-472e-ada9-67949c157672",
+      "catalogId": "nininger-1933",
+      "catalogItem": 36,
+      "holdings": [
+        {
+          "designation": "29a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 16.5
+          }
+        }
+      ],
+      "name": "Chilcoot",
+      "classification": "Iron. Om.",
+      "locality": "Alaska",
+      "year": "1881",
+      "catalogPage": 3,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c93914d4-a731-47aa-8519-673f106333b7",
+      "catalogId": "nininger-1933",
+      "catalogItem": 37,
+      "holdings": [
+        {
+          "designation": "31a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 2078
+          }
+        },
+        {
+          "designation": "31b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 76
+          }
+        }
+      ],
+      "name": "Chupaderos",
+      "classification": "Iron. Of.",
+      "locality": "Chihuahua, Mexico",
+      "year": "1852",
+      "catalogPage": 3,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-3bffb136-fa02-4c2a-ab3a-ac656250eb8a",
+      "catalogId": "nininger-1933",
+      "catalogItem": 38,
+      "holdings": [
+        {
+          "designation": "32a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 39
+          }
+        }
+      ],
+      "name": "Coahuila",
+      "classification": "Iron. H.",
+      "locality": "Mexico",
+      "year": null,
+      "catalogPage": 3,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-5feedebe-4b4a-4ded-871d-a5ebf8a08879",
+      "catalogId": "nininger-1933",
+      "catalogItem": 39,
+      "holdings": [
+        {
+          "designation": "21a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 295
+          }
+        }
+      ],
+      "name": "Colby",
+      "classification": "Stone. Cia.",
+      "locality": "Clark Co., Wisconsin",
+      "year": "1917",
+      "catalogPage": 4,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-167c2969-3f7d-4b5e-927e-7444bdab39fd",
+      "catalogId": "nininger-1933",
+      "catalogItem": 40,
+      "holdings": [
+        {
+          "designation": "24a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 86.5
+          }
+        },
+        {
+          "designation": "24b",
+          "kind": "cast",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": null
+          }
+        }
+      ],
+      "name": "Coldwater",
+      "classification": "Stone. Veined chondrite.",
+      "locality": "Comanche Co., Kansas",
+      "year": "1924",
+      "catalogPage": 4,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-1776595e-1d9e-4ff7-a0bd-8705ff5425a4",
+      "catalogId": "nininger-1933",
+      "catalogItem": 41,
+      "holdings": [
+        {
+          "designation": "23a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 2858
+          }
+        },
+        {
+          "designation": "23b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 878
+          }
+        },
+        {
+          "designation": "23c",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 3576
+          }
+        }
+      ],
+      "name": "Coldwater",
+      "classification": "Iron. O.",
+      "locality": "Comanche Co., Kansas",
+      "year": "1923",
+      "catalogPage": 4,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a0060064-1097-4cf1-951b-78cebfe2bcfb",
+      "catalogId": "nininger-1933",
+      "catalogItem": 42,
+      "holdings": [
+        {
+          "designation": "30a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 382
+          }
+        }
+      ],
+      "name": "Concepcion",
+      "classification": "Iron. Om.",
+      "locality": "Chihuahua, Mexico",
+      "year": "1780",
+      "catalogPage": 4,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-ccdb8b36-005b-447e-a2dd-011e88c36978",
+      "catalogId": "nininger-1933",
+      "catalogItem": 43,
+      "holdings": [
+        {
+          "designation": "37a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 46.5
+          }
+        }
+      ],
+      "name": "Coopertown",
+      "classification": "Iron. Om.",
+      "locality": "Robertson Co., Tennessee",
+      "year": "1861",
+      "catalogPage": 4,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-48993541-cf49-4db0-912a-09f682c12ce7",
+      "catalogId": "nininger-1933",
+      "catalogItem": 44,
+      "holdings": [
+        {
+          "designation": "25a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 58
+          }
+        },
+        {
+          "designation": "25b",
+          "kind": "cast",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": null
+          }
+        }
+      ],
+      "name": "Cotesfield",
+      "classification": "Stone. Unclassified.",
+      "locality": "Howard Co., Nebraska",
+      "year": "1928",
+      "catalogPage": 4,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8fefcc82-4d5f-4801-bf50-55e113047816",
+      "catalogId": "nininger-1933",
+      "catalogItem": 45,
+      "holdings": [
+        {
+          "designation": "22a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 8000
+          }
+        },
+        {
+          "designation": "22b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 5889
+          }
+        },
+        {
+          "designation": "22c",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 3851
+          }
+        },
+        {
+          "designation": "22d",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 285
+          }
+        },
+        {
+          "designation": "22f",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 252
+          }
+        },
+        {
+          "designation": "22g",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 114
+          }
+        }
+      ],
+      "name": "Covert",
+      "classification": "Stone. Ccb.",
+      "locality": "Osborne Co., Kansas",
+      "year": "1929",
+      "catalogPage": 4,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8ca6332b-1fb2-4037-8d92-b85d1e507d51",
+      "catalogId": "nininger-1933",
+      "catalogItem": 46,
+      "holdings": [
+        {
+          "designation": "169a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 4625
+          }
+        }
+      ],
+      "name": "Coya Norte",
+      "classification": "Iron. H.",
+      "locality": "Chile",
+      "year": "1927",
+      "catalogPage": 4,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a958dbe5-4b1f-416f-b9f1-3bf3ef444996",
+      "catalogId": "nininger-1933",
+      "catalogItem": 47,
+      "holdings": [
+        {
+          "designation": "33a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 45
+          }
+        }
+      ],
+      "name": "Crab Orchard",
+      "classification": "Iron-Stone. M.",
+      "locality": "Cumberland Co., Tennessee",
+      "year": "1887",
+      "catalogPage": 4,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e0515630-87ba-4b34-898a-776fd38a7a95",
+      "catalogId": "nininger-1933",
+      "catalogItem": 48,
+      "holdings": [
+        {
+          "designation": "28a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 72.5
+          }
+        }
+      ],
+      "name": "Cuernavaca",
+      "classification": "Iron. Om.",
+      "locality": "Morelos, Mexico",
+      "year": "1889",
+      "catalogPage": 4,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-cdd37752-aa8b-4447-8e72-025d0bd7a525",
+      "catalogId": "nininger-1933",
+      "catalogItem": 49,
+      "holdings": [
+        {
+          "designation": "26a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 82
+          }
+        }
+      ],
+      "name": "Cumberland Falls",
+      "classification": "Stone. Whitleyite.",
+      "locality": "Whitley Co., Kentucky",
+      "year": "1919",
+      "catalogPage": 4,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b7465a91-083e-49c2-bd0d-a6ef01646f45",
+      "catalogId": "nininger-1933",
+      "catalogItem": 50,
+      "holdings": [
+        {
+          "designation": "148a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 182
+          }
+        },
+        {
+          "designation": "148b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 43
+          }
+        }
+      ],
+      "name": "Deport",
+      "classification": "Iron. O.",
+      "locality": "Texas",
+      "year": "1932",
+      "catalogPage": 4,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-bb1d325c-0146-474c-940c-f347ff97af7b",
+      "catalogId": "nininger-1933",
+      "catalogItem": 51,
+      "holdings": [
+        {
+          "designation": "39a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 293
+          }
+        }
+      ],
+      "name": "Descubridora",
+      "classification": "Iron. Om.",
+      "locality": "San Luis Potosi, Mexico",
+      "year": "1780",
+      "catalogPage": 4,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c7a789ce-df3a-426e-be81-914a8624437f",
+      "catalogId": "nininger-1933",
+      "catalogItem": 52,
+      "holdings": [
+        {
+          "designation": "41a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 303
+          }
+        }
+      ],
+      "name": "Dhurmsala",
+      "classification": "Stone. Ci.",
+      "locality": "Kangra Dist., India",
+      "year": "1860",
+      "catalogPage": 4,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6af0067f-f355-4c54-989b-691aac8d61dc",
+      "catalogId": "nininger-1933",
+      "catalogItem": 53,
+      "holdings": [
+        {
+          "designation": "131a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 112
+          }
+        }
+      ],
+      "name": "Doyleville",
+      "classification": "Stone. Unclassified.",
+      "locality": "Colorado",
+      "year": "1887",
+      "catalogPage": 4,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-eb402e63-3bfb-4d66-ac90-40f94ba04703",
+      "catalogId": "nininger-1933",
+      "catalogItem": 54,
+      "holdings": [
+        {
+          "designation": "40a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 2815
+          }
+        },
+        {
+          "designation": "40b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 77
+          }
+        }
+      ],
+      "name": "Duchesne",
+      "classification": "Iron. Of.",
+      "locality": "Utah",
+      "year": "1906",
+      "catalogPage": 4,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-62bab5ef-a568-4b82-a5b7-08be973ca8c4",
+      "catalogId": "nininger-1933",
+      "catalogItem": 55,
+      "holdings": [
+        {
+          "designation": "38a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 166
+          }
+        }
+      ],
+      "name": "Durango",
+      "classification": "Iron. Om.",
+      "locality": "Durango, Mexico",
+      "year": "1904",
+      "catalogPage": 4,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-1517e9ab-3fdf-483f-a226-3e57747169c7",
+      "catalogId": "nininger-1933",
+      "catalogItem": 56,
+      "holdings": [
+        {
+          "designation": "46a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 110
+          }
+        }
+      ],
+      "name": "El Capitan Range",
+      "classification": "Iron. Om.",
+      "locality": "Lincoln Co., New Mexico",
+      "year": "1893",
+      "catalogPage": 4,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6416fed4-269c-47b4-a11d-b544a5c4b040",
+      "catalogId": "nininger-1933",
+      "catalogItem": 57,
+      "holdings": [
+        {
+          "designation": "149a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 30
+          }
+        }
+      ],
+      "name": "Eli Elwah",
+      "classification": "Stone. Cu.",
+      "locality": "N.S.W., Australia",
+      "year": "1888",
+      "catalogPage": 5,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6fdda7a8-2196-4d26-a613-8b40bf3c955c",
+      "catalogId": "nininger-1933",
+      "catalogItem": 58,
+      "holdings": [
+        {
+          "designation": "43a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 55
+          }
+        }
+      ],
+      "name": "Elm Creek",
+      "classification": "Stone. Cc.",
+      "locality": "Lyon Co., Kansas",
+      "year": "1906",
+      "catalogPage": 5,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f8fa7a3a-e0d9-42d2-a492-16027a51e9d1",
+      "catalogId": "nininger-1933",
+      "catalogItem": 59,
+      "holdings": [
+        {
+          "designation": "45a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 86
+          }
+        }
+      ],
+      "name": "Ergheo",
+      "classification": "Stone. Ckb.",
+      "locality": "East Africa",
+      "year": "1889",
+      "catalogPage": 5,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-58f00e4f-a565-4496-9f22-40e7c2218d8a",
+      "catalogId": "nininger-1933",
+      "catalogItem": 60,
+      "holdings": [
+        {
+          "designation": "44a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 13750
+          }
+        }
+      ],
+      "name": "Estacado",
+      "classification": "Stone. Cck.",
+      "locality": "Hale Co., Texas",
+      "year": "1902",
+      "catalogPage": 5,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-aef4247d-0ca3-4743-b1c0-1c7df2dd9245",
+      "catalogId": "nininger-1933",
+      "catalogItem": 61,
+      "holdings": [
+        {
+          "designation": "42a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 234
+          }
+        },
+        {
+          "designation": "42b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 112
+          }
+        }
+      ],
+      "name": "Estherville",
+      "classification": "Stone-Iron. M.",
+      "locality": "Emmet Co., Iowa",
+      "year": "1879",
+      "catalogPage": 5,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-1d693bfb-0db1-4117-aeee-95e631f73993",
+      "catalogId": "nininger-1933",
+      "catalogItem": 62,
+      "holdings": [
+        {
+          "designation": "50i",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 1709
+          }
+        },
+        {
+          "designation": "50h",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 2573
+          }
+        },
+        {
+          "designation": "50f",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 6215
+          }
+        },
+        {
+          "designation": "50g",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 2038.5
+          }
+        },
+        {
+          "designation": "50d",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 10302
+          }
+        },
+        {
+          "designation": "50c",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 10645.5
+          }
+        },
+        {
+          "designation": "50e",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 6681
+          }
+        },
+        {
+          "designation": "50qq",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 8833.5
+          }
+        },
+        {
+          "designation": "50rr",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 22986
+          }
+        },
+        {
+          "designation": null,
+          "kind": "aggregate",
+          "description": "fragments aggregating",
+          "count": null,
+          "weight": {
+            "grams": 7730
+          }
+        }
+      ],
+      "name": "Fairplay",
+      "classification": "Iron-Stone. Problematical meteorite.",
+      "locality": "Missouri",
+      "year": "1928",
+      "catalogPage": 5,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8aa26023-3e73-46db-90d7-a2a23de99811",
+      "catalogId": "nininger-1933",
+      "catalogItem": 63,
+      "holdings": [
+        {
+          "designation": "48a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 65
+          }
+        },
+        {
+          "designation": "48b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 15
+          }
+        },
+        {
+          "designation": "48c",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 40
+          }
+        },
+        {
+          "designation": "48d",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 27
+          }
+        }
+      ],
+      "name": "Farmington",
+      "classification": "Stone. Cs.",
+      "locality": "Washington Co., Kansas",
+      "year": "1890",
+      "catalogPage": 5,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f036d68e-c413-480c-aff4-d004587f6bd7",
+      "catalogId": "nininger-1933",
+      "catalogItem": 64,
+      "holdings": [
+        {
+          "designation": "47a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 92
+          }
+        }
+      ],
+      "name": "Finmarken",
+      "classification": "Iron-Stone. P.",
+      "locality": "Arctic Norway",
+      "year": "1902",
+      "catalogPage": 5,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-962764b6-d25b-4b48-aeeb-441ce09be822",
+      "catalogId": "nininger-1933",
+      "catalogItem": 65,
+      "holdings": [
+        {
+          "designation": "171a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 149
+          }
+        }
+      ],
+      "name": "Fort Pierre",
+      "classification": "Iron. Om.",
+      "locality": "Stanley Co., South Dakota",
+      "year": "1856",
+      "catalogPage": 5,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-bb94f57f-8d0e-49d4-9041-968f477bd243",
+      "catalogId": "nininger-1933",
+      "catalogItem": 66,
+      "holdings": [
+        {
+          "designation": "49c",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 16
+          }
+        },
+        {
+          "designation": "49a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 13
+          }
+        },
+        {
+          "designation": "49b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 2.5
+          }
+        }
+      ],
+      "name": "Forest City",
+      "classification": "Stone. Ccb.",
+      "locality": "Winnebago Co., Iowa",
+      "year": "1890",
+      "catalogPage": 5,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a5a7e331-dd0e-4527-b7a5-af8ac95d5ae4",
+      "catalogId": "nininger-1933",
+      "catalogItem": 67,
+      "holdings": [
+        {
+          "designation": "166a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 621
+          }
+        }
+      ],
+      "name": "Four Corners",
+      "classification": "Iron. Obc.",
+      "locality": "New Mexico",
+      "year": "before 1924",
+      "catalogPage": 5,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6f9fc637-200f-4a40-aced-d9847eb86280",
+      "catalogId": "nininger-1933",
+      "catalogItem": 68,
+      "holdings": [
+        {
+          "designation": "51c",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 18005
+          }
+        },
+        {
+          "designation": "51a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 906
+          }
+        },
+        {
+          "designation": "51b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 136
+          }
+        }
+      ],
+      "name": "Gilgoin Station",
+      "classification": "Stone. Ck.",
+      "locality": "County Clyde, N.S.W., Australia",
+      "year": "1889",
+      "catalogPage": 5,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-5000199a-0f55-4ab9-b6c7-5fdc00b35ccb",
+      "catalogId": "nininger-1933",
+      "catalogItem": 69,
+      "holdings": [
+        {
+          "designation": "53a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 72
+          }
+        }
+      ],
+      "name": "Gladstone",
+      "classification": "Iron. Og.",
+      "locality": "Queensland, Australia",
+      "year": "1926",
+      "catalogPage": 5,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e3bcc0ad-186f-4108-8f1e-9c21b8986df5",
+      "catalogId": "nininger-1933",
+      "catalogItem": 70,
+      "holdings": [
+        {
+          "designation": "180a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 15
+          }
+        }
+      ],
+      "name": "Glen Rose",
+      "classification": "Stone. Cs.",
+      "locality": "Texas",
+      "year": "1925",
+      "catalogPage": 5,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-2ed0f81e-c254-43aa-b8d6-2f19a4d8dea7",
+      "catalogId": "nininger-1933",
+      "catalogItem": 71,
+      "holdings": [
+        {
+          "designation": "52a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 340
+          }
+        }
+      ],
+      "name": "Glorieta Mts.",
+      "classification": "Iron. Om.",
+      "locality": "Santa Fe Co., New Mexico",
+      "year": "1884",
+      "catalogPage": 5,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b2074dd6-099d-4a8e-b476-af2f23d86ecf",
+      "catalogId": "nininger-1933",
+      "catalogItem": 72,
+      "holdings": [
+        {
+          "designation": "54a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 1542
+          }
+        }
+      ],
+      "name": "Grand Rapids",
+      "classification": "Iron. Of.",
+      "locality": "Kent Co., Michigan",
+      "year": "1883",
+      "catalogPage": 5,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f081ba11-48b7-43ce-9202-efef53cbbd42",
+      "catalogId": "nininger-1933",
+      "catalogItem": 73,
+      "holdings": [
+        {
+          "designation": "176a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 2548
+          }
+        },
+        {
+          "designation": "176b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 580
+          }
+        },
+        {
+          "designation": "176c",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 92
+          }
+        }
+      ],
+      "name": "Harrisonville",
+      "classification": "Stone. Not yet described.",
+      "locality": "Cass Co., Missouri",
+      "year": "1933",
+      "catalogPage": 5,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-0ab80d59-65b7-470b-a8b0-acb569cb8312",
+      "catalogId": "nininger-1933",
+      "catalogItem": 74,
+      "holdings": [
+        {
+          "designation": "56a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 1
+          }
+        }
+      ],
+      "name": "Hermitage Plains",
+      "classification": "Stone. Cg.",
+      "locality": "N.S.W., Australia",
+      "year": "1909",
+      "catalogPage": 6,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-94fb2300-208c-4419-81d2-efde82f3fda4",
+      "catalogId": "nininger-1933",
+      "catalogItem": 75,
+      "holdings": [
+        {
+          "designation": "60a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 160
+          }
+        }
+      ],
+      "name": "Hoba",
+      "classification": "Iron. O.",
+      "locality": "Africa",
+      "year": "1927",
+      "catalogPage": 6,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f2ecbaf4-5788-4782-9a28-07d70fa49a94",
+      "catalogId": "nininger-1933",
+      "catalogItem": 76,
+      "holdings": [
+        {
+          "designation": "57a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 1569
+          }
+        },
+        {
+          "designation": "57e",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 510
+          }
+        },
+        {
+          "designation": "H2",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 202
+          }
+        },
+        {
+          "designation": null,
+          "kind": "aggregate",
+          "description": "other individuals found in 1912",
+          "count": null,
+          "weight": {
+            "grams": 1047
+          }
+        },
+        {
+          "designation": "57c",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 447
+          }
+        },
+        {
+          "designation": "H15",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 990
+          }
+        },
+        {
+          "designation": null,
+          "kind": "aggregate",
+          "description": "other individuals found in 1931",
+          "count": null,
+          "weight": {
+            "grams": 300
+          }
+        },
+        {
+          "designation": null,
+          "kind": "aggregate",
+          "description": "found in 1932",
+          "count": null,
+          "weight": {
+            "grams": 240
+          }
+        },
+        {
+          "designation": "H52",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 3850
+          }
+        },
+        {
+          "designation": null,
+          "kind": "aggregate",
+          "description": "other individuals found in 1933",
+          "count": null,
+          "weight": {
+            "grams": 960
+          }
+        },
+        {
+          "designation": null,
+          "kind": "aggregate",
+          "description": "fragments found in 1933",
+          "count": null,
+          "weight": {
+            "grams": 310
+          }
+        }
+      ],
+      "name": "Holbrook",
+      "classification": "Stone. Cck.",
+      "locality": "Navajo Co., Arizona",
+      "year": "1912",
+      "catalogPage": 6,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f1cc34ec-1006-48b0-b8aa-687d7df602f1",
+      "catalogId": "nininger-1933",
+      "catalogItem": 77,
+      "holdings": [
+        {
+          "designation": "177a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 1100
+          }
+        }
+      ],
+      "name": "Hobbs",
+      "classification": "Stone. Not yet described.",
+      "locality": "New Mexico",
+      "year": "1933",
+      "catalogPage": 6,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-eddd652f-6fc9-4567-91d8-4dd1bd58ee28",
+      "catalogId": "nininger-1933",
+      "catalogItem": 78,
+      "holdings": [
+        {
+          "designation": "59a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 138
+          }
+        },
+        {
+          "designation": "59b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 26
+          }
+        }
+      ],
+      "name": "Homestead",
+      "classification": "Stone. Cgb.",
+      "locality": "Iowa Co., Iowa",
+      "year": "1875",
+      "catalogPage": 6,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b8d880ed-64c6-4433-b767-a8d1e0624807",
+      "catalogId": "nininger-1933",
+      "catalogItem": 79,
+      "holdings": [
+        {
+          "designation": "58a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 324
+          }
+        },
+        {
+          "designation": "58b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 682
+          }
+        }
+      ],
+      "name": "Hualapai",
+      "classification": "Iron. Of.",
+      "locality": "Arizona",
+      "year": "1927",
+      "catalogPage": 6,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-80469e31-2883-4496-a587-aa91de3a9b48",
+      "catalogId": "nininger-1933",
+      "catalogItem": 80,
+      "holdings": [
+        {
+          "designation": "55a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 3666
+          }
+        },
+        {
+          "designation": "55c",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 668
+          }
+        },
+        {
+          "designation": "55e",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 2910
+          }
+        },
+        {
+          "designation": "55f",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 2900
+          }
+        },
+        {
+          "designation": "55g",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 2100
+          }
+        },
+        {
+          "designation": "55d",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 418
+          }
+        },
+        {
+          "designation": "55m",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 293
+          }
+        },
+        {
+          "designation": "55o",
+          "kind": "cast",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": null
+          }
+        }
+      ],
+      "name": "Huizopa",
+      "classification": "Iron. Of.",
+      "locality": "Chihuahua, Mexico",
+      "year": "1907",
+      "catalogPage": 6,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c727d655-08be-422e-8989-dc8d25ac941a",
+      "catalogId": "nininger-1933",
+      "catalogItem": 81,
+      "holdings": [
+        {
+          "designation": "63a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 41
+          }
+        }
+      ],
+      "name": "Indarch",
+      "classification": "Stone. Kc.",
+      "locality": "Transcaucasia, Russia",
+      "year": "1891",
+      "catalogPage": 6,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c0bb3948-b2d6-4bb0-bf95-dc00e72bc287",
+      "catalogId": "nininger-1933",
+      "catalogItem": 82,
+      "holdings": [
+        {
+          "designation": "62a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 1384
+          }
+        },
+        {
+          "designation": "62c",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 70
+          }
+        },
+        {
+          "designation": "62d",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 94
+          }
+        },
+        {
+          "designation": "62e",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 104.5
+          }
+        },
+        {
+          "designation": "62f",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 12
+          }
+        }
+      ],
+      "name": "Indian Valley",
+      "classification": "Iron. Hb.",
+      "locality": "Floyd Co., Virginia",
+      "year": "1887",
+      "catalogPage": 6,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-974d5d20-3509-45f3-96e6-9ab0e82f34e8",
+      "catalogId": "nininger-1933",
+      "catalogItem": 83,
+      "holdings": [
+        {
+          "designation": "61a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 20
+          }
+        }
+      ],
+      "name": "Ivanpah",
+      "classification": "Iron. Om.",
+      "locality": "San Bernardino Co., California",
+      "year": "1880",
+      "catalogPage": 6,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-caaef67d-e31c-4d83-a66c-15bc89ed854f",
+      "catalogId": "nininger-1933",
+      "catalogItem": 84,
+      "holdings": [
+        {
+          "designation": "64a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 1.5
+          }
+        }
+      ],
+      "name": "Jelica",
+      "classification": "Stone. Am.",
+      "locality": "Servia",
+      "year": "1889",
+      "catalogPage": 6,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-dd96ed5d-90fb-4845-b2f0-de90b12f5861",
+      "catalogId": "nininger-1933",
+      "catalogItem": 85,
+      "holdings": [
+        {
+          "designation": "125a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 284
+          }
+        },
+        {
+          "designation": "125b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 72.5
+          }
+        }
+      ],
+      "name": "Johnstown",
+      "classification": "Stone. Chl.",
+      "locality": "Weld Co., Colorado",
+      "year": "1924",
+      "catalogPage": 6,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-266e401d-79e2-464d-a4ed-0bc0e0dcee76",
+      "catalogId": "nininger-1933",
+      "catalogItem": 86,
+      "holdings": [
+        {
+          "designation": "65a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 45
+          }
+        }
+      ],
+      "name": "Juvinas",
+      "classification": "Stone. Eu.",
+      "locality": "Ardeche, France",
+      "year": "1812",
+      "catalogPage": 6,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6493a154-d3d9-4993-b72f-32e9e2d1af5d",
+      "catalogId": "nininger-1933",
+      "catalogItem": 87,
+      "holdings": [
+        {
+          "designation": "67a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 118
+          }
+        }
+      ],
+      "name": "Kendall County",
+      "classification": "Iron. Hb.",
+      "locality": "Texas",
+      "year": "1887",
+      "catalogPage": 6,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e905c3df-45fb-43cb-89aa-3ae2b3a32536",
+      "catalogId": "nininger-1933",
+      "catalogItem": 88,
+      "holdings": [
+        {
+          "designation": "66a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 435
+          }
+        }
+      ],
+      "name": "Kenton County",
+      "classification": "Iron. Om.",
+      "locality": "Kentucky",
+      "year": "1899",
+      "catalogPage": 6,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-bfb7045a-ed4f-4495-bce0-735c85bc1b68",
+      "catalogId": "nininger-1933",
+      "catalogItem": 89,
+      "holdings": [
+        {
+          "designation": "153a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 82
+          }
+        }
+      ],
+      "name": "Knyahinya",
+      "classification": "Stone. Cg.",
+      "locality": "Czechoslovakia",
+      "year": "1866",
+      "catalogPage": 6,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-5d2cf078-2475-4571-8d2d-d99406746040",
+      "catalogId": "nininger-1933",
+      "catalogItem": 90,
+      "holdings": [
+        {
+          "designation": "68a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 113
+          }
+        }
+      ],
+      "name": "Kyushu",
+      "classification": "Stone. Cwa.",
+      "locality": "Japan",
+      "year": "1886",
+      "catalogPage": 7,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-56908abb-d2c3-4053-8849-b8ced51eb7ad",
+      "catalogId": "nininger-1933",
+      "catalogItem": 91,
+      "holdings": [
+        {
+          "designation": "74a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 10
+          }
+        }
+      ],
+      "name": "L'Aigle",
+      "classification": "Stone. Cib.",
+      "locality": "Orne, France",
+      "year": "1803",
+      "catalogPage": 7,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d607c103-01b6-45fb-b174-11b1a85dc69a",
+      "catalogId": "nininger-1933",
+      "catalogItem": 92,
+      "holdings": [
+        {
+          "designation": "69a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 897
+          }
+        },
+        {
+          "designation": "69b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 80
+          }
+        },
+        {
+          "designation": "69c",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 77
+          }
+        },
+        {
+          "designation": "69d",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 63
+          }
+        },
+        {
+          "designation": "69e",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 71
+          }
+        },
+        {
+          "designation": "69f",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 59
+          }
+        },
+        {
+          "designation": "69g",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 42
+          }
+        },
+        {
+          "designation": "69h",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 22
+          }
+        }
+      ],
+      "name": "Leeds",
+      "classification": "Iron. Om.",
+      "locality": "Quebec, Canada",
+      "year": "1931",
+      "catalogPage": 7,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c9e7c4aa-8417-4b01-bfb4-4d90d8d3082e",
+      "catalogId": "nininger-1933",
+      "catalogItem": 93,
+      "holdings": [
+        {
+          "designation": "70 a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 111
+          }
+        }
+      ],
+      "name": "Lenarto",
+      "classification": "Iron. Om.",
+      "locality": "Saros, Czechoslovakia",
+      "year": "1814",
+      "catalogPage": 7,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-130fd422-ae56-46d7-a93a-3fd3ca04894d",
+      "catalogId": "nininger-1933",
+      "catalogItem": 94,
+      "holdings": [
+        {
+          "designation": "73a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 3
+          }
+        }
+      ],
+      "name": "Limerick",
+      "classification": "Stone. Cga.",
+      "locality": "Adare, Ireland",
+      "year": "1813",
+      "catalogPage": 7,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-409f0e67-7457-4ca7-8f8f-983a055282f6",
+      "catalogId": "nininger-1933",
+      "catalogItem": 95,
+      "holdings": [
+        {
+          "designation": "75a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 15
+          }
+        }
+      ],
+      "name": "Llano del Inca",
+      "classification": "Iron-stone. M.",
+      "locality": "Atacama, Chile",
+      "year": "1888",
+      "catalogPage": 7,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-495dc754-578b-425f-9557-47a24f3da2a5",
+      "catalogId": "nininger-1933",
+      "catalogItem": 96,
+      "holdings": [
+        {
+          "designation": "178a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 926
+          }
+        }
+      ],
+      "name": "Logan",
+      "classification": "Stone. Not yet described.",
+      "locality": "Oklahoma",
+      "year": "1933",
+      "catalogPage": 7,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b536ea8c-3817-4b8f-80e3-12e3685b490a",
+      "catalogId": "nininger-1933",
+      "catalogItem": 97,
+      "holdings": [
+        {
+          "designation": "72a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 62
+          }
+        }
+      ],
+      "name": "Los Amates",
+      "classification": "Iron. Om.",
+      "locality": "Mexico",
+      "year": "1888",
+      "catalogPage": 7,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d68f32eb-f719-4999-b5aa-45e1f6b33926",
+      "catalogId": "nininger-1933",
+      "catalogItem": 98,
+      "holdings": [
+        {
+          "designation": "71a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 262
+          }
+        },
+        {
+          "designation": "71b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 15.5
+          }
+        },
+        {
+          "designation": "71c",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 27
+          }
+        }
+      ],
+      "name": "Long Island",
+      "classification": "Stone. Cia.",
+      "locality": "Phillips Co., Kansas",
+      "year": "1891",
+      "catalogPage": 7,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-09109976-10e2-46fe-a410-1ea7f5cdf5db",
+      "catalogId": "nininger-1933",
+      "catalogItem": 99,
+      "holdings": [
+        {
+          "designation": "82a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 473
+          }
+        }
+      ],
+      "name": "Mart",
+      "classification": "Iron. Off.",
+      "locality": "McLannan Co., Texas",
+      "year": "1898",
+      "catalogPage": 7,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-cc326e86-11c0-416f-b4b7-e0db1c4a761c",
+      "catalogId": "nininger-1933",
+      "catalogItem": 100,
+      "holdings": [
+        {
+          "designation": "174a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 21744
+          }
+        },
+        {
+          "designation": "174b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 243
+          }
+        },
+        {
+          "designation": "174c",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 157
+          }
+        },
+        {
+          "designation": "174d",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 131
+          }
+        },
+        {
+          "designation": "174e",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 101
+          }
+        },
+        {
+          "designation": "174f",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 94
+          }
+        },
+        {
+          "designation": "174g",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 83
+          }
+        },
+        {
+          "designation": "174h",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 75
+          }
+        },
+        {
+          "designation": "174i",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 88
+          }
+        },
+        {
+          "designation": "174j",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 65
+          }
+        },
+        {
+          "designation": "174k",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 65
+          }
+        },
+        {
+          "designation": "174l",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 37
+          }
+        },
+        {
+          "designation": "174m",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 36
+          }
+        },
+        {
+          "designation": "174n",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 43
+          }
+        },
+        {
+          "designation": "174o",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 24
+          }
+        },
+        {
+          "designation": "174p",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 9
+          }
+        },
+        {
+          "designation": "174q",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 56
+          }
+        }
+      ],
+      "name": "Melrose",
+      "classification": "Stone. Not yet described.",
+      "locality": "New Mexico",
+      "year": "1933",
+      "catalogPage": 7,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-0a3968a9-857c-44c4-a030-f3c4eea4d239",
+      "catalogId": "nininger-1933",
+      "catalogItem": 101,
+      "holdings": [
+        {
+          "designation": "162a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 2870
+          }
+        }
+      ],
+      "name": "Misteca",
+      "classification": "Iron. Om.",
+      "locality": "Oaxaca, Mexico",
+      "year": "1804",
+      "catalogPage": 7,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c1d2d7fa-4ef0-4a7e-add3-985a19673c8e",
+      "catalogId": "nininger-1933",
+      "catalogItem": 102,
+      "holdings": [
+        {
+          "designation": "80a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 22
+          }
+        },
+        {
+          "designation": "80b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 14.5
+          }
+        }
+      ],
+      "name": "Mocs",
+      "classification": "Stone. Cwa.",
+      "locality": "Transylvania, Austria",
+      "year": "1882",
+      "catalogPage": 7,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c1ed9efb-742c-42d5-a709-e24db11f4e72",
+      "catalogId": "nininger-1933",
+      "catalogItem": 103,
+      "holdings": [
+        {
+          "designation": "78a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 367
+          }
+        }
+      ],
+      "name": "Moctezuma",
+      "classification": "Iron. Om.",
+      "locality": "Sonora, Mexico",
+      "year": "1899",
+      "catalogPage": 7,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-2f52fc71-72bb-4c9d-bfc8-76598926663c",
+      "catalogId": "nininger-1933",
+      "catalogItem": 104,
+      "holdings": [
+        {
+          "designation": "81a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 485
+          }
+        },
+        {
+          "designation": "81b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 263.9
+          }
+        }
+      ],
+      "name": "Modoc",
+      "classification": "Stone. Cwa.",
+      "locality": "Scott Co., Kansas",
+      "year": "1905",
+      "catalogPage": 7,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a5bf385c-518b-451f-8d88-00b04b858df7",
+      "catalogId": "nininger-1933",
+      "catalogItem": 105,
+      "holdings": [
+        {
+          "designation": "79a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 14400
+          }
+        },
+        {
+          "designation": "79b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 94
+          }
+        }
+      ],
+      "name": "McKinney",
+      "classification": "Stone. Cw.",
+      "locality": "Collin Co., Texas",
+      "year": "1870",
+      "catalogPage": 7,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-1b71336c-9848-4ab4-9a23-a8c253b523aa",
+      "catalogId": "nininger-1933",
+      "catalogItem": 142,
+      "holdings": [
+        {
+          "designation": "106a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 54
+          }
+        }
+      ],
+      "name": "Scott City",
+      "classification": "Stone. Cc.",
+      "locality": "Scott Co., Kansas",
+      "year": "1905",
+      "catalogPage": 10,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-bd256191-f77a-4b9d-ac79-614b58c8fd10",
+      "catalogId": "nininger-1933",
+      "catalogItem": 143,
+      "holdings": [
+        {
+          "designation": "164a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 142
+          }
+        }
+      ],
+      "name": "Scottsville",
+      "classification": "Iron. H.",
+      "locality": "Allen Co., Kentucky",
+      "year": "1867",
+      "catalogPage": 10,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b1d891ae-23b9-4ff8-8929-daa82274fb32",
+      "catalogId": "nininger-1933",
+      "catalogItem": 144,
+      "holdings": [
+        {
+          "designation": "105a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 1
+          }
+        }
+      ],
+      "name": "Searsmont",
+      "classification": "Stone. Cc.",
+      "locality": "Waldo Co., Maine",
+      "year": "1871",
+      "catalogPage": 10,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b1d5bee8-91eb-4423-8921-8c62ffe362c4",
+      "catalogId": "nininger-1933",
+      "catalogItem": 145,
+      "holdings": [
+        {
+          "designation": "102a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 18
+          }
+        }
+      ],
+      "name": "Seelasgen",
+      "classification": "Iron. Ogg.",
+      "locality": "Brandenburg, Prussia",
+      "year": "1847",
+      "catalogPage": 10,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-4f754017-c113-47e0-828b-dceae2a4db52",
+      "catalogId": "nininger-1933",
+      "catalogItem": 146,
+      "holdings": [
+        {
+          "designation": "109a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 16
+          }
+        }
+      ],
+      "name": "Shelburne",
+      "classification": "Stone. Cga.",
+      "locality": "Ontario, Canada",
+      "year": "1904",
+      "catalogPage": 10,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a1036b6e-1f39-4a4d-9213-741e7face934",
+      "catalogId": "nininger-1933",
+      "catalogItem": 147,
+      "holdings": [
+        {
+          "designation": "111a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 1300
+          }
+        }
+      ],
+      "name": "Smithville",
+      "classification": "Iron. Og.",
+      "locality": "De Kalb Co., Tennessee",
+      "year": "1840",
+      "catalogPage": 10,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-469cd50d-e842-4eab-b53a-5fb4b96cb127",
+      "catalogId": "nininger-1933",
+      "catalogItem": 148,
+      "holdings": [
+        {
+          "designation": "135a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 38050
+          }
+        },
+        {
+          "designation": "135b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 2378.25
+          }
+        },
+        {
+          "designation": "135c",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 2831
+          }
+        },
+        {
+          "designation": "135d",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 6680
+          }
+        },
+        {
+          "designation": "135h",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 755
+          }
+        },
+        {
+          "designation": "135i",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 662
+          }
+        }
+      ],
+      "name": "Springwater",
+      "classification": "Pallasite. Pa.",
+      "locality": "Sask., Canada",
+      "year": "1931",
+      "catalogPage": 10,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-771ded70-0b00-4427-b923-32aa41f0610a",
+      "catalogId": "nininger-1933",
+      "catalogItem": 149,
+      "holdings": [
+        {
+          "designation": "155a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 662
+          }
+        },
+        {
+          "designation": "155b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 217
+          }
+        }
+      ],
+      "name": "Staunton",
+      "classification": "Iron. Om.",
+      "locality": "Augusta Co., Virginia",
+      "year": "1858",
+      "catalogPage": 10,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d6d8d4c6-8022-484a-94be-f30f57c9e5a9",
+      "catalogId": "nininger-1933",
+      "catalogItem": 150,
+      "holdings": [
+        {
+          "designation": "173a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 117
+          }
+        },
+        {
+          "designation": "173b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 192
+          }
+        }
+      ],
+      "name": "St. Francois County",
+      "classification": "Iron. Og.",
+      "locality": "Missouri",
+      "year": "before 1863",
+      "catalogPage": 10,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-028c2044-615c-4a6d-a157-b01d28ce554f",
+      "catalogId": "nininger-1933",
+      "catalogItem": 151,
+      "holdings": [
+        {
+          "designation": "139a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 1
+          }
+        }
+      ],
+      "name": "St. Genevieve Co.",
+      "classification": "Iron. Of.",
+      "locality": "Missouri",
+      "year": "1888",
+      "catalogPage": 10,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f656ce14-10c1-4958-8d4a-164a4ba86e51",
+      "catalogId": "nininger-1933",
+      "catalogItem": 152,
+      "holdings": [
+        {
+          "designation": "104a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 35
+          }
+        }
+      ],
+      "name": "St. Michel",
+      "classification": "Stone. Cw.",
+      "locality": "Finland",
+      "year": "1910",
+      "catalogPage": 10,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-72169697-a002-405c-a82a-5c338699c7be",
+      "catalogId": "nininger-1933",
+      "catalogItem": 153,
+      "holdings": [
+        {
+          "designation": "115a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 1968
+          }
+        }
+      ],
+      "name": "Tacubaya",
+      "classification": "Iron. Om.",
+      "locality": "Mexico",
+      "year": "1931",
+      "catalogPage": 10,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-47bca77a-741e-4445-a02b-43e1a9da803b",
+      "catalogId": "nininger-1933",
+      "catalogItem": 154,
+      "holdings": [
+        {
+          "designation": "119a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 42
+          }
+        }
+      ],
+      "name": "Tabory",
+      "classification": "Stone. Ccb.",
+      "locality": "Perm, Russia",
+      "year": "1877",
+      "catalogPage": 10,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-39c45c59-6b79-4472-93af-122354720b9a",
+      "catalogId": "nininger-1933",
+      "catalogItem": 155,
+      "holdings": [
+        {
+          "designation": "121a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 742
+          }
+        }
+      ],
+      "name": "Thunda",
+      "classification": "Iron. Om.",
+      "locality": "Queensland, Australia",
+      "year": "1886",
+      "catalogPage": 10,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-86b6a77a-bf5e-484c-a873-b54864a63d4a",
+      "catalogId": "nininger-1933",
+      "catalogItem": 156,
+      "holdings": [
+        {
+          "designation": "113a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 18573
+          }
+        }
+      ],
+      "name": "Tlacotopec",
+      "classification": "Iron. Ataxite with cubic streaks.",
+      "locality": "Puebla, Mexico",
+      "year": "1903",
+      "catalogPage": 10,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-cbf5bfa8-49c6-49e6-8dba-9be257817fd9",
+      "catalogId": "nininger-1933",
+      "catalogItem": 157,
+      "holdings": [
+        {
+          "designation": "112a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 8493
+          }
+        },
+        {
+          "designation": "112b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 7474
+          }
+        },
+        {
+          "designation": "112c",
+          "kind": "aggregate",
+          "description": "octahedral plates",
+          "count": 9,
+          "weight": {
+            "grams": 18
+          }
+        },
+        {
+          "designation": "112d",
+          "kind": "aggregate",
+          "description": "octahedral plates",
+          "count": 160,
+          "weight": {
+            "grams": null
+          }
+        }
+      ],
+      "name": "Tlaxcala",
+      "classification": "Iron. Of.",
+      "locality": "Mexico",
+      "year": "1904",
+      "catalogPage": 10,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-eb8e4c13-79b9-412f-a9d3-6718cc40cb69",
+      "catalogId": "nininger-1933",
+      "catalogItem": 158,
+      "holdings": [
+        {
+          "designation": "120a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 222
+          }
+        }
+      ],
+      "name": "Tonganoxie",
+      "classification": "Iron. Om.",
+      "locality": "Leavenworth Co., Kansas",
+      "year": "1886",
+      "catalogPage": 10,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6cca15e2-1a21-49fd-9cb5-ab93af8172e4",
+      "catalogId": "nininger-1933",
+      "catalogItem": 159,
+      "holdings": [
+        {
+          "designation": "136a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 490
+          }
+        },
+        {
+          "designation": "136b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 153
+          }
+        }
+      ],
+      "name": "Trenton",
+      "classification": "Iron. Om.",
+      "locality": "Washington Co., Wisconsin",
+      "year": "1858",
+      "catalogPage": 11,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8856863d-7b19-40c2-a5b6-9d0dcc7fec95",
+      "catalogId": "nininger-1933",
+      "catalogItem": 160,
+      "holdings": [
+        {
+          "designation": "123a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 18
+          }
+        }
+      ],
+      "name": "Trenzano",
+      "classification": "Stone. Cca.",
+      "locality": "Italy",
+      "year": "1856",
+      "catalogPage": 11,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6d3bd799-8aea-450e-81f4-407d501aecb0",
+      "catalogId": "nininger-1933",
+      "catalogItem": 161,
+      "holdings": [
+        {
+          "designation": "122a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 940
+          }
+        }
+      ],
+      "name": "Tucson",
+      "classification": "Iron. Dm.",
+      "locality": "Pima Co., Arizona",
+      "year": "1850",
+      "catalogPage": 11,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-695d093d-8f7c-49d6-b3f5-32d3fd589e31",
+      "catalogId": "nininger-1933",
+      "catalogItem": 162,
+      "holdings": [
+        {
+          "designation": "117a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 357
+          }
+        }
+      ],
+      "name": "Tulia",
+      "classification": "Stone. Cka.",
+      "locality": "Swisher Co., Texas",
+      "year": "1924",
+      "catalogPage": 11,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a85cb490-2ead-48e0-8bb5-da27a9b97273",
+      "catalogId": "nininger-1933",
+      "catalogItem": 163,
+      "holdings": [
+        {
+          "designation": "140a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 17
+          }
+        }
+      ],
+      "name": "Uwet",
+      "classification": "Iron. H.",
+      "locality": "Southern Nigeria",
+      "year": "before 1903",
+      "catalogPage": 11,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-01ead841-1874-4c4a-8b74-3957cdf1066e",
+      "catalogId": "nininger-1933",
+      "catalogItem": 164,
+      "holdings": [
+        {
+          "designation": "124a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 35
+          }
+        }
+      ],
+      "name": "Vaca Muerta",
+      "classification": "Iron-Stone. M.",
+      "locality": "Atacama, Chile",
+      "year": "1861",
+      "catalogPage": 11,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d671558d-60ba-4ff9-a63f-264ae74b59f2",
+      "catalogId": "nininger-1933",
+      "catalogItem": 165,
+      "holdings": [
+        {
+          "designation": "170a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 4.5
+          }
+        }
+      ],
+      "name": "Warrenton",
+      "classification": "Stone. Cco.",
+      "locality": "Missouri",
+      "year": "1877",
+      "catalogPage": 11,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8f376d6c-673e-457f-9a4b-b20b581b4d3d",
+      "catalogId": "nininger-1933",
+      "catalogItem": 166,
+      "holdings": [
+        {
+          "designation": "127a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 40
+          }
+        }
+      ],
+      "name": "Waconda",
+      "classification": "Stone. Ccb.",
+      "locality": "Mitchell Co., Kansas",
+      "year": "1873",
+      "catalogPage": 11,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a8e6364a-9063-4251-86f2-e96d71ae3a57",
+      "catalogId": "nininger-1933",
+      "catalogItem": 167,
+      "holdings": [
+        {
+          "designation": "133a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 5630
+          }
+        }
+      ],
+      "name": "Weekeroo",
+      "classification": "Iron-Stone. P.",
+      "locality": "Australia",
+      "year": "1924",
+      "catalogPage": 11,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-697e068d-a436-48d2-a031-5701ae3ac2fc",
+      "catalogId": "nininger-1933",
+      "catalogItem": 168,
+      "holdings": [
+        {
+          "designation": "141a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 535
+          }
+        }
+      ],
+      "name": "Willamette",
+      "classification": "Iron. Om.",
+      "locality": "Clackamas Co., Oregon",
+      "year": "1902",
+      "catalogPage": 11,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-959b295d-bf5d-44bc-8328-ba36786076ea",
+      "catalogId": "nininger-1933",
+      "catalogItem": 169,
+      "holdings": [
+        {
+          "designation": "161a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 628
+          }
+        }
+      ],
+      "name": "Williamstown",
+      "classification": "Iron. Om.",
+      "locality": "Grant Co., Kentucky",
+      "year": "1892",
+      "catalogPage": 11,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-759f9650-2ae8-4b72-8e82-006903ace53b",
+      "catalogId": "nininger-1933",
+      "catalogItem": 170,
+      "holdings": [
+        {
+          "designation": "126a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 96
+          }
+        }
+      ],
+      "name": "Winona",
+      "classification": "Stony-Iron. M.",
+      "locality": "Arizona",
+      "year": "1928",
+      "catalogPage": 11,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-9a65e44b-bede-4c88-84d7-bcd56c4763c7",
+      "catalogId": "nininger-1933",
+      "catalogItem": 171,
+      "holdings": [
+        {
+          "designation": "143a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 206
+          }
+        }
+      ],
+      "name": "Woodward County",
+      "classification": "Stone.",
+      "locality": "Oklahoma",
+      "year": null,
+      "catalogPage": 11,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-11b69576-1fd1-46e9-9aa6-721fd3e4a86d",
+      "catalogId": "nininger-1933",
+      "catalogItem": 172,
+      "holdings": [
+        {
+          "designation": "128aaa",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 93400
+          }
+        },
+        {
+          "designation": "128www",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 13816
+          }
+        },
+        {
+          "designation": "128ll",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 20838
+          }
+        },
+        {
+          "designation": "128mm",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 25821
+          }
+        },
+        {
+          "designation": "128ooo",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 9400
+          }
+        },
+        {
+          "designation": null,
+          "kind": "aggregate",
+          "description": "other individuals",
+          "count": null,
+          "weight": {
+            "grams": 66877
+          }
+        },
+        {
+          "designation": "128dd",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 3553
+          }
+        },
+        {
+          "designation": "128ff",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 432
+          }
+        },
+        {
+          "designation": "128rr",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 308
+          }
+        },
+        {
+          "designation": "128nn",
+          "kind": "specimen",
+          "description": "Mexican barreta",
+          "count": null,
+          "weight": {
+            "grams": 3960
+          }
+        },
+        {
+          "designation": "128xx",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 926
+          }
+        },
+        {
+          "designation": "128yy",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 553
+          }
+        },
+        {
+          "designation": "128uu",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 15
+          }
+        },
+        {
+          "designation": "128vv",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 6
+          }
+        },
+        {
+          "designation": "128nnn",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 1074
+          }
+        },
+        {
+          "designation": "128ee",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 2251
+          }
+        },
+        {
+          "designation": "128gg",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 113
+          }
+        },
+        {
+          "designation": "128zz",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 243
+          }
+        },
+        {
+          "designation": "128jj",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 261
+          }
+        },
+        {
+          "designation": "128kk",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 209
+          }
+        },
+        {
+          "designation": "128pp",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 179
+          }
+        },
+        {
+          "designation": "128 s",
+          "kind": "specimen",
+          "description": "Hammer stone",
+          "count": null,
+          "weight": {
+            "grams": 1100
+          }
+        },
+        {
+          "designation": "128w",
+          "kind": "specimen",
+          "description": "Hammer stone",
+          "count": null,
+          "weight": {
+            "grams": 733
+          }
+        },
+        {
+          "designation": "128aa",
+          "kind": "specimen",
+          "description": "Hammer stone",
+          "count": null,
+          "weight": {
+            "grams": 368
+          }
+        },
+        {
+          "designation": "128x",
+          "kind": "specimen",
+          "description": "Hammer stone",
+          "count": null,
+          "weight": {
+            "grams": 380
+          }
+        },
+        {
+          "designation": "128t",
+          "kind": "specimen",
+          "description": "Hammer stone",
+          "count": null,
+          "weight": {
+            "grams": 1713
+          }
+        },
+        {
+          "designation": "128z",
+          "kind": "specimen",
+          "description": "Hammer stone",
+          "count": null,
+          "weight": {
+            "grams": 298
+          }
+        },
+        {
+          "designation": "128rrr",
+          "kind": "specimen",
+          "description": "Hammer stone",
+          "count": null,
+          "weight": {
+            "grams": 859
+          }
+        },
+        {
+          "designation": "128sss",
+          "kind": "specimen",
+          "description": "Hammer stone",
+          "count": null,
+          "weight": {
+            "grams": 345
+          }
+        },
+        {
+          "designation": "128ttt",
+          "kind": "specimen",
+          "description": "Hammer stone",
+          "count": null,
+          "weight": {
+            "grams": 841
+          }
+        },
+        {
+          "designation": "128uuu",
+          "kind": "specimen",
+          "description": "Hammer stone",
+          "count": null,
+          "weight": {
+            "grams": 850
+          }
+        }
+      ],
+      "name": "Xiquipilco",
+      "classification": "Iron. Om.",
+      "locality": "Mexico",
+      "year": "before 1776",
+      "catalogPage": 11,
       "confidence": "high"
     },
     {
@@ -7642,1882 +12181,6 @@
       "locality": "De Baca Co., New Mexico",
       "year": "1933",
       "catalogPage": 17,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-71d16aec-9945-453c-8a27-1c18465a5241",
-      "catalogId": "nininger-1933",
-      "designation": "3",
-      "name": "Alfianello",
-      "weight": {
-        "grams": 249
-      },
-      "classification": "Stone. Ci.",
-      "locality": "Italy",
-      "year": "1883",
-      "catalogPage": 1,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-5f7b3838-6424-43ed-92f2-6b4e2f8b178c",
-      "catalogId": "nininger-1933",
-      "designation": "4",
-      "name": "Allegan",
-      "weight": {
-        "grams": 319
-      },
-      "classification": "Stone. Cco.",
-      "locality": "Allegan Co., Michigan",
-      "year": "1899",
-      "catalogPage": 1,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-d52797b4-ff22-42e0-9169-74871324940d",
-      "catalogId": "nininger-1933",
-      "designation": "5",
-      "name": "Altonah",
-      "weight": {
-        "grams": 10192
-      },
-      "classification": "Iron. Of.",
-      "locality": "Duchesne Co., Utah",
-      "year": "about 1932",
-      "catalogPage": 2,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-9cb7cfdd-ca40-433d-ac53-6791286fc5cd",
-      "catalogId": "nininger-1933",
-      "designation": "6",
-      "name": "Anthony",
-      "weight": {
-        "grams": 117
-      },
-      "classification": "Stone. Cg.",
-      "locality": "Harper Co., Kansas",
-      "year": "1919",
-      "catalogPage": 2,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-149ae3f6-9854-4e59-be0a-ce539d7a17f6",
-      "catalogId": "nininger-1933",
-      "designation": "7",
-      "name": "Archie",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Stone.",
-      "locality": "Cass Co., Missouri",
-      "year": "1932",
-      "catalogPage": 2,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-11bc479c-55f1-43c6-a7d6-f55931c6b4ca",
-      "catalogId": "nininger-1933",
-      "designation": "8",
-      "name": "Arizpe",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Iron. Ogg.",
-      "locality": "Sonora, Mexico",
-      "year": "1898",
-      "catalogPage": 2,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-061e7cb0-4e54-455f-b216-0c2c47792ff6",
-      "catalogId": "nininger-1933",
-      "designation": "9",
-      "name": "Arlington",
-      "weight": {
-        "grams": 38
-      },
-      "classification": "Iron. Om.",
-      "locality": "Sibley Co., Minnesota",
-      "year": "1894",
-      "catalogPage": 2,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-2274a8af-b0e2-443b-9c9b-3bb4e5bd3b94",
-      "catalogId": "nininger-1933",
-      "designation": "10",
-      "name": "Atemajac",
-      "weight": {
-        "grams": 2
-      },
-      "classification": "Stone. Cg.",
-      "locality": "Jalisco, Mexico",
-      "year": "1896",
-      "catalogPage": 2,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-d3aae47c-cf52-441e-af9e-ad21a21d43e1",
-      "catalogId": "nininger-1933",
-      "designation": "11",
-      "name": "Aussun",
-      "weight": {
-        "grams": 22
-      },
-      "classification": "Stone. Cc.",
-      "locality": "France",
-      "year": "1858",
-      "catalogPage": 2,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-0a89b714-1cd5-4e45-b8b1-1b799c6f15ac",
-      "catalogId": "nininger-1933",
-      "designation": "12",
-      "name": "Bacubirito",
-      "weight": {
-        "grams": 214
-      },
-      "classification": "Iron. Of.",
-      "locality": "Sinaloa, Mexico",
-      "year": "1863",
-      "catalogPage": 2,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-0224ebfb-9ac1-4c83-b544-915946e32c1d",
-      "catalogId": "nininger-1933",
-      "designation": "13",
-      "name": "Ballinger",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Iron. Hb.",
-      "locality": "Texas",
-      "year": "1927",
-      "catalogPage": 2,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-d0d20e94-d202-4a62-b4db-b92add13736c",
-      "catalogId": "nininger-1933",
-      "designation": "14",
-      "name": "Barrata",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Stone. Cs.",
-      "locality": "N.S.W., Australia",
-      "year": "1845",
-      "catalogPage": 2,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-94345139-a6aa-40b2-b646-601455e2b311",
-      "catalogId": "nininger-1933",
-      "designation": "15",
-      "name": "Beardsley",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Stone. Cga.",
-      "locality": "Kansas",
-      "year": "1929",
-      "catalogPage": 2,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-6bdc4156-18b3-4b59-acf5-23846178c6ca",
-      "catalogId": "nininger-1933",
-      "designation": "16",
-      "name": "Beaver Creek",
-      "weight": {
-        "grams": 32
-      },
-      "classification": "Stone. Cck.",
-      "locality": "British Columbia",
-      "year": "1893",
-      "catalogPage": 2,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-66d35f21-bc7c-4108-8228-769b719e8426",
-      "catalogId": "nininger-1933",
-      "designation": "17",
-      "name": "Bielokrynitsche",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Cca.",
-      "locality": "Russia",
-      "year": "1887",
-      "catalogPage": 2,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-0f90b63f-0fe6-4d53-b352-72f119a4eb7d",
-      "catalogId": "nininger-1933",
-      "designation": "18",
-      "name": "Billings",
-      "weight": {
-        "grams": 521
-      },
-      "classification": "Iron. Cg.",
-      "locality": "Christian Co., Missouri",
-      "year": null,
-      "catalogPage": 2,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-b3e6b09e-8ccc-47d6-a4e6-9bfbbe15b276",
-      "catalogId": "nininger-1933",
-      "designation": "19",
-      "name": "Bitburg",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Pallasite. Pa.",
-      "locality": "Rhenish Prussia",
-      "year": "before 1805",
-      "catalogPage": 2,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-6432d5a8-65bd-44e2-95ce-6703c52d830d",
-      "catalogId": "nininger-1933",
-      "designation": "20",
-      "name": "Bjurbole",
-      "weight": {
-        "grams": 666
-      },
-      "classification": "Stone. Cc.",
-      "locality": "Finland",
-      "year": "1899",
-      "catalogPage": 2,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-619df59a-719b-49a1-9c71-4395c4347bed",
-      "catalogId": "nininger-1933",
-      "designation": "21",
-      "name": "Bluff",
-      "weight": {
-        "grams": 563
-      },
-      "classification": "Stone. Ckb.",
-      "locality": "Fayette Co., Texas",
-      "year": "1878",
-      "catalogPage": 2,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-39238d6b-c059-4cf8-a578-7c1efb2a5812",
-      "catalogId": "nininger-1933",
-      "designation": "22",
-      "name": "Bocas",
-      "weight": {
-        "grams": 0.7
-      },
-      "classification": "Stone. Cw.",
-      "locality": "San Luis Potosi, Mexico",
-      "year": "1804",
-      "catalogPage": 2,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-b15c49f4-0a78-4489-ae4a-057a19021ffb",
-      "catalogId": "nininger-1933",
-      "designation": "23",
-      "name": "Breece",
-      "weight": {
-        "grams": 747
-      },
-      "classification": "Iron. Om.",
-      "locality": "New Mexico",
-      "year": "1921",
-      "catalogPage": 2,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-807d6532-9d06-4a00-9e1b-3eaaee4339ab",
-      "catalogId": "nininger-1933",
-      "designation": "24",
-      "name": "Brenham",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Iron-stone. Pa.",
-      "locality": "Kiowa Co., Kansas",
-      "year": "1885",
-      "catalogPage": 3,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-e8a820d2-a0cd-477c-89e1-cf076e42a175",
-      "catalogId": "nininger-1933",
-      "designation": "25",
-      "name": "Bruno",
-      "weight": {
-        "grams": 5
-      },
-      "classification": "Iron. H.",
-      "locality": "Sask. Canada",
-      "year": "1931",
-      "catalogPage": 3,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-ec340b73-37e3-42c0-9d28-e5ce362f29bb",
-      "catalogId": "nininger-1933",
-      "designation": "26",
-      "name": "Burkett",
-      "weight": {
-        "grams": 182
-      },
-      "classification": "Iron. Og.",
-      "locality": "Coleman Co., Texas",
-      "year": "1913",
-      "catalogPage": 3,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-e4f9642c-f1f1-4430-b812-6cd0b96f935e",
-      "catalogId": "nininger-1933",
-      "designation": "27",
-      "name": "Butler",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Iron. Off.",
-      "locality": "Bates Co., Missouri",
-      "year": "before 1874",
-      "catalogPage": 3,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-d4aa1d81-3954-4dcd-abc4-a55634c8c3ad",
-      "catalogId": "nininger-1933",
-      "designation": "28",
-      "name": "Cacaria",
-      "weight": {
-        "grams": 76.5
-      },
-      "classification": "Iron. Oh.",
-      "locality": "Durango, Mexico",
-      "year": "1867",
-      "catalogPage": 3,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-dc81ffdf-b5af-4e81-bd10-9034877d2870",
-      "catalogId": "nininger-1933",
-      "designation": "29",
-      "name": "Canyon City",
-      "weight": {
-        "grams": 826
-      },
-      "classification": "Iron. Om.",
-      "locality": "Trinity Co., California",
-      "year": "1875",
-      "catalogPage": 3,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-77600896-d0b4-422a-8164-070cbeedd4fd",
-      "catalogId": "nininger-1933",
-      "designation": "30",
-      "name": "Canyon Diablo",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Iron. Og.",
-      "locality": "Coconino Co., Arizona",
-      "year": "1891",
-      "catalogPage": 3,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-342224e1-0f1d-4bbf-9955-f7ac43376ea4",
-      "catalogId": "nininger-1933",
-      "designation": "31",
-      "name": "Carbo",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Iron. Om.",
-      "locality": "Sonora, Mexico",
-      "year": "1923",
-      "catalogPage": 3,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-996c8ab3-dd1c-4ddc-b5e0-7d396ee571b1",
-      "catalogId": "nininger-1933",
-      "designation": "32",
-      "name": "Carlton",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Iron. Off.",
-      "locality": "Hamilton Co., Texas",
-      "year": "1887",
-      "catalogPage": 3,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-e184e509-d6e5-41de-b962-a67931fbad30",
-      "catalogId": "nininger-1933",
-      "designation": "33",
-      "name": "Casas Grandes",
-      "weight": {
-        "grams": 658
-      },
-      "classification": "Iron. Om.",
-      "locality": "Chihuahua, Mexico",
-      "year": "1867",
-      "catalogPage": 3,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-1cf310ad-3e0e-4a4f-a76c-3f93ea8c0429",
-      "catalogId": "nininger-1933",
-      "designation": "34",
-      "name": "Cedar",
-      "weight": {
-        "grams": 260
-      },
-      "classification": "Stone. Cca.",
-      "locality": "Fayette Co., Texas",
-      "year": "1900",
-      "catalogPage": 3,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-c546a86d-2a5d-4dbb-a53f-3bfb38afd772",
-      "catalogId": "nininger-1933",
-      "designation": "35",
-      "name": "Chihuahua City",
-      "weight": {
-        "grams": 34881
-      },
-      "classification": "Iron. Offbp.",
-      "locality": "Chihuahua, Mexico",
-      "year": "1929",
-      "catalogPage": 3,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-bfb24d30-c17e-472e-ada9-67949c157672",
-      "catalogId": "nininger-1933",
-      "designation": "36",
-      "name": "Chilcoot",
-      "weight": {
-        "grams": 16.5
-      },
-      "classification": "Iron. Om.",
-      "locality": "Alaska",
-      "year": "1881",
-      "catalogPage": 3,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-c93914d4-a731-47aa-8519-673f106333b7",
-      "catalogId": "nininger-1933",
-      "designation": "37",
-      "name": "Chupaderos",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Iron. Of.",
-      "locality": "Chihuahua, Mexico",
-      "year": "1852",
-      "catalogPage": 3,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-3bffb136-fa02-4c2a-ab3a-ac656250eb8a",
-      "catalogId": "nininger-1933",
-      "designation": "38",
-      "name": "Coahuila",
-      "weight": {
-        "grams": 39
-      },
-      "classification": "Iron. H.",
-      "locality": "Mexico",
-      "year": null,
-      "catalogPage": 3,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-5feedebe-4b4a-4ded-871d-a5ebf8a08879",
-      "catalogId": "nininger-1933",
-      "designation": "39",
-      "name": "Colby",
-      "weight": {
-        "grams": 295
-      },
-      "classification": "Stone. Cia.",
-      "locality": "Clark Co., Wisconsin",
-      "year": "1917",
-      "catalogPage": 4,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-167c2969-3f7d-4b5e-927e-7444bdab39fd",
-      "catalogId": "nininger-1933",
-      "designation": "40",
-      "name": "Coldwater",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Stone. Veined chondrite.",
-      "locality": "Comanche Co., Kansas",
-      "year": "1924",
-      "catalogPage": 4,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-1776595e-1d9e-4ff7-a0bd-8705ff5425a4",
-      "catalogId": "nininger-1933",
-      "designation": "41",
-      "name": "Coldwater",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Iron. O.",
-      "locality": "Comanche Co., Kansas",
-      "year": "1923",
-      "catalogPage": 4,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-a0060064-1097-4cf1-951b-78cebfe2bcfb",
-      "catalogId": "nininger-1933",
-      "designation": "42",
-      "name": "Concepcion",
-      "weight": {
-        "grams": 382
-      },
-      "classification": "Iron. Om.",
-      "locality": "Chihuahua, Mexico",
-      "year": "1780",
-      "catalogPage": 4,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-ccdb8b36-005b-447e-a2dd-011e88c36978",
-      "catalogId": "nininger-1933",
-      "designation": "43",
-      "name": "Coopertown",
-      "weight": {
-        "grams": 46.5
-      },
-      "classification": "Iron. Om.",
-      "locality": "Robertson Co., Tennessee",
-      "year": "1861",
-      "catalogPage": 4,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-48993541-cf49-4db0-912a-09f682c12ce7",
-      "catalogId": "nininger-1933",
-      "designation": "44",
-      "name": "Cotesfield",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Stone. Unclassified.",
-      "locality": "Howard Co., Nebraska",
-      "year": "1928",
-      "catalogPage": 4,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-8fefcc82-4d5f-4801-bf50-55e113047816",
-      "catalogId": "nininger-1933",
-      "designation": "45",
-      "name": "Covert",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Stone. Ccb.",
-      "locality": "Osborne Co., Kansas",
-      "year": "1929",
-      "catalogPage": 4,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-8ca6332b-1fb2-4037-8d92-b85d1e507d51",
-      "catalogId": "nininger-1933",
-      "designation": "46",
-      "name": "Coya Norte",
-      "weight": {
-        "grams": 4625
-      },
-      "classification": "Iron. H.",
-      "locality": "Chile",
-      "year": "1927",
-      "catalogPage": 4,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-a958dbe5-4b1f-416f-b9f1-3bf3ef444996",
-      "catalogId": "nininger-1933",
-      "designation": "47",
-      "name": "Crab Orchard",
-      "weight": {
-        "grams": 45
-      },
-      "classification": "Iron-Stone. M.",
-      "locality": "Cumberland Co., Tennessee",
-      "year": "1887",
-      "catalogPage": 4,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-e0515630-87ba-4b34-898a-776fd38a7a95",
-      "catalogId": "nininger-1933",
-      "designation": "48",
-      "name": "Cuernavaca",
-      "weight": {
-        "grams": 72.5
-      },
-      "classification": "Iron. Om.",
-      "locality": "Morelos, Mexico",
-      "year": "1889",
-      "catalogPage": 4,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-cdd37752-aa8b-4447-8e72-025d0bd7a525",
-      "catalogId": "nininger-1933",
-      "designation": "49",
-      "name": "Cumberland Falls",
-      "weight": {
-        "grams": 82
-      },
-      "classification": "Stone. Whitleyite.",
-      "locality": "Whitley Co., Kentucky",
-      "year": "1919",
-      "catalogPage": 4,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-b7465a91-083e-49c2-bd0d-a6ef01646f45",
-      "catalogId": "nininger-1933",
-      "designation": "50",
-      "name": "Deport",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Iron. O.",
-      "locality": "Texas",
-      "year": "1932",
-      "catalogPage": 4,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-bb1d325c-0146-474c-940c-f347ff97af7b",
-      "catalogId": "nininger-1933",
-      "designation": "51",
-      "name": "Descubridora",
-      "weight": {
-        "grams": 293
-      },
-      "classification": "Iron. Om.",
-      "locality": "San Luis Potosi, Mexico",
-      "year": "1780",
-      "catalogPage": 4,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-c7a789ce-df3a-426e-be81-914a8624437f",
-      "catalogId": "nininger-1933",
-      "designation": "52",
-      "name": "Dhurmsala",
-      "weight": {
-        "grams": 303
-      },
-      "classification": "Stone. Ci.",
-      "locality": "Kangra Dist., India",
-      "year": "1860",
-      "catalogPage": 4,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-6af0067f-f355-4c54-989b-691aac8d61dc",
-      "catalogId": "nininger-1933",
-      "designation": "53",
-      "name": "Doyleville",
-      "weight": {
-        "grams": 112
-      },
-      "classification": "Stone. Unclassified.",
-      "locality": "Colorado",
-      "year": "1887",
-      "catalogPage": 4,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-eb402e63-3bfb-4d66-ac90-40f94ba04703",
-      "catalogId": "nininger-1933",
-      "designation": "54",
-      "name": "Duchesne",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Iron. Of.",
-      "locality": "Utah",
-      "year": "1906",
-      "catalogPage": 4,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-62bab5ef-a568-4b82-a5b7-08be973ca8c4",
-      "catalogId": "nininger-1933",
-      "designation": "55",
-      "name": "Durango",
-      "weight": {
-        "grams": 166
-      },
-      "classification": "Iron. Om.",
-      "locality": "Durango, Mexico",
-      "year": "1904",
-      "catalogPage": 4,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-1517e9ab-3fdf-483f-a226-3e57747169c7",
-      "catalogId": "nininger-1933",
-      "designation": "56",
-      "name": "El Capitan Range",
-      "weight": {
-        "grams": 110
-      },
-      "classification": "Iron. Om.",
-      "locality": "Lincoln Co., New Mexico",
-      "year": "1893",
-      "catalogPage": 4,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-6416fed4-269c-47b4-a11d-b544a5c4b040",
-      "catalogId": "nininger-1933",
-      "designation": "57",
-      "name": "Eli Elwah",
-      "weight": {
-        "grams": 30
-      },
-      "classification": "Stone. Cu.",
-      "locality": "N.S.W., Australia",
-      "year": "1888",
-      "catalogPage": 5,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-6fdda7a8-2196-4d26-a613-8b40bf3c955c",
-      "catalogId": "nininger-1933",
-      "designation": "58",
-      "name": "Elm Creek",
-      "weight": {
-        "grams": 55
-      },
-      "classification": "Stone. Cc.",
-      "locality": "Lyon Co., Kansas",
-      "year": "1906",
-      "catalogPage": 5,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-f8fa7a3a-e0d9-42d2-a492-16027a51e9d1",
-      "catalogId": "nininger-1933",
-      "designation": "59",
-      "name": "Ergheo",
-      "weight": {
-        "grams": 86
-      },
-      "classification": "Stone. Ckb.",
-      "locality": "East Africa",
-      "year": "1889",
-      "catalogPage": 5,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-58f00e4f-a565-4496-9f22-40e7c2218d8a",
-      "catalogId": "nininger-1933",
-      "designation": "60",
-      "name": "Estacado",
-      "weight": {
-        "grams": 13750
-      },
-      "classification": "Stone. Cck.",
-      "locality": "Hale Co., Texas",
-      "year": "1902",
-      "catalogPage": 5,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-aef4247d-0ca3-4743-b1c0-1c7df2dd9245",
-      "catalogId": "nininger-1933",
-      "designation": "61",
-      "name": "Estherville",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Stone-Iron. M.",
-      "locality": "Emmet Co., Iowa",
-      "year": "1879",
-      "catalogPage": 5,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-1d693bfb-0db1-4117-aeee-95e631f73993",
-      "catalogId": "nininger-1933",
-      "designation": "62",
-      "name": "Fairplay",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Iron-Stone. Problematical meteorite.",
-      "locality": "Missouri",
-      "year": "1928",
-      "catalogPage": 5,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-8aa26023-3e73-46db-90d7-a2a23de99811",
-      "catalogId": "nininger-1933",
-      "designation": "63",
-      "name": "Farmington",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Stone. Cs.",
-      "locality": "Washington Co., Kansas",
-      "year": "1890",
-      "catalogPage": 5,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-f036d68e-c413-480c-aff4-d004587f6bd7",
-      "catalogId": "nininger-1933",
-      "designation": "64",
-      "name": "Finmarken",
-      "weight": {
-        "grams": 92
-      },
-      "classification": "Iron-Stone. P.",
-      "locality": "Arctic Norway",
-      "year": "1902",
-      "catalogPage": 5,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-962764b6-d25b-4b48-aeeb-441ce09be822",
-      "catalogId": "nininger-1933",
-      "designation": "65",
-      "name": "Fort Pierre",
-      "weight": {
-        "grams": 149
-      },
-      "classification": "Iron. Om.",
-      "locality": "Stanley Co., South Dakota",
-      "year": "1856",
-      "catalogPage": 5,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-bb94f57f-8d0e-49d4-9041-968f477bd243",
-      "catalogId": "nininger-1933",
-      "designation": "66",
-      "name": "Forest City",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Stone. Ccb.",
-      "locality": "Winnebago Co., Iowa",
-      "year": "1890",
-      "catalogPage": 5,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-a5a7e331-dd0e-4527-b7a5-af8ac95d5ae4",
-      "catalogId": "nininger-1933",
-      "designation": "67",
-      "name": "Four Corners",
-      "weight": {
-        "grams": 621
-      },
-      "classification": "Iron. Obc.",
-      "locality": "New Mexico",
-      "year": "before 1924",
-      "catalogPage": 5,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-6f9fc637-200f-4a40-aced-d9847eb86280",
-      "catalogId": "nininger-1933",
-      "designation": "68",
-      "name": "Gilgoin Station",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Stone. Ck.",
-      "locality": "County Clyde, N.S.W., Australia",
-      "year": "1889",
-      "catalogPage": 5,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-5000199a-0f55-4ab9-b6c7-5fdc00b35ccb",
-      "catalogId": "nininger-1933",
-      "designation": "69",
-      "name": "Gladstone",
-      "weight": {
-        "grams": 72
-      },
-      "classification": "Iron. Og.",
-      "locality": "Queensland, Australia",
-      "year": "1926",
-      "catalogPage": 5,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-e3bcc0ad-186f-4108-8f1e-9c21b8986df5",
-      "catalogId": "nininger-1933",
-      "designation": "70",
-      "name": "Glen Rose",
-      "weight": {
-        "grams": 15
-      },
-      "classification": "Stone. Cs.",
-      "locality": "Texas",
-      "year": "1925",
-      "catalogPage": 5,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-2ed0f81e-c254-43aa-b8d6-2f19a4d8dea7",
-      "catalogId": "nininger-1933",
-      "designation": "71",
-      "name": "Glorieta Mts.",
-      "weight": {
-        "grams": 340
-      },
-      "classification": "Iron. Om.",
-      "locality": "Santa Fe Co., New Mexico",
-      "year": "1884",
-      "catalogPage": 5,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-b2074dd6-099d-4a8e-b476-af2f23d86ecf",
-      "catalogId": "nininger-1933",
-      "designation": "72",
-      "name": "Grand Rapids",
-      "weight": {
-        "grams": 1542
-      },
-      "classification": "Iron. Of.",
-      "locality": "Kent Co., Michigan",
-      "year": "1883",
-      "catalogPage": 5,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-f081ba11-48b7-43ce-9202-efef53cbbd42",
-      "catalogId": "nininger-1933",
-      "designation": "73",
-      "name": "Harrisonville",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Stone. Not yet described.",
-      "locality": "Cass Co., Missouri",
-      "year": "1933",
-      "catalogPage": 5,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-0ab80d59-65b7-470b-a8b0-acb569cb8312",
-      "catalogId": "nininger-1933",
-      "designation": "74",
-      "name": "Hermitage Plains",
-      "weight": {
-        "grams": 1
-      },
-      "classification": "Stone. Cg.",
-      "locality": "N.S.W., Australia",
-      "year": "1909",
-      "catalogPage": 6,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-94fb2300-208c-4419-81d2-efde82f3fda4",
-      "catalogId": "nininger-1933",
-      "designation": "75",
-      "name": "Hoba",
-      "weight": {
-        "grams": 160
-      },
-      "classification": "Iron. O.",
-      "locality": "Africa",
-      "year": "1927",
-      "catalogPage": 6,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-f2ecbaf4-5788-4782-9a28-07d70fa49a94",
-      "catalogId": "nininger-1933",
-      "designation": "76",
-      "name": "Holbrook",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Stone. Cck.",
-      "locality": "Navajo Co., Arizona",
-      "year": "1912",
-      "catalogPage": 6,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-f1cc34ec-1006-48b0-b8aa-687d7df602f1",
-      "catalogId": "nininger-1933",
-      "designation": "77",
-      "name": "Hobbs",
-      "weight": {
-        "grams": 1100
-      },
-      "classification": "Stone. Not yet described.",
-      "locality": "New Mexico",
-      "year": "1933",
-      "catalogPage": 6,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-eddd652f-6fc9-4567-91d8-4dd1bd58ee28",
-      "catalogId": "nininger-1933",
-      "designation": "78",
-      "name": "Homestead",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Stone. Cgb.",
-      "locality": "Iowa Co., Iowa",
-      "year": "1875",
-      "catalogPage": 6,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-b8d880ed-64c6-4433-b767-a8d1e0624807",
-      "catalogId": "nininger-1933",
-      "designation": "79",
-      "name": "Hualapai",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Iron. Of.",
-      "locality": "Arizona",
-      "year": "1927",
-      "catalogPage": 6,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-80469e31-2883-4496-a587-aa91de3a9b48",
-      "catalogId": "nininger-1933",
-      "designation": "80",
-      "name": "Huizopa",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Iron. Of.",
-      "locality": "Chihuahua, Mexico",
-      "year": "1907",
-      "catalogPage": 6,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-c727d655-08be-422e-8989-dc8d25ac941a",
-      "catalogId": "nininger-1933",
-      "designation": "81",
-      "name": "Indarch",
-      "weight": {
-        "grams": 41
-      },
-      "classification": "Stone. Kc.",
-      "locality": "Transcaucasia, Russia",
-      "year": "1891",
-      "catalogPage": 6,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-c0bb3948-b2d6-4bb0-bf95-dc00e72bc287",
-      "catalogId": "nininger-1933",
-      "designation": "82",
-      "name": "Indian Valley",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Iron. Hb.",
-      "locality": "Floyd Co., Virginia",
-      "year": "1887",
-      "catalogPage": 6,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-974d5d20-3509-45f3-96e6-9ab0e82f34e8",
-      "catalogId": "nininger-1933",
-      "designation": "83",
-      "name": "Ivanpah",
-      "weight": {
-        "grams": 20
-      },
-      "classification": "Iron. Om.",
-      "locality": "San Bernardino Co., California",
-      "year": "1880",
-      "catalogPage": 6,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-caaef67d-e31c-4d83-a66c-15bc89ed854f",
-      "catalogId": "nininger-1933",
-      "designation": "84",
-      "name": "Jelica",
-      "weight": {
-        "grams": 1.5
-      },
-      "classification": "Stone. Am.",
-      "locality": "Servia",
-      "year": "1889",
-      "catalogPage": 6,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-dd96ed5d-90fb-4845-b2f0-de90b12f5861",
-      "catalogId": "nininger-1933",
-      "designation": "85",
-      "name": "Johnstown",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Stone. Chl.",
-      "locality": "Weld Co., Colorado",
-      "year": "1924",
-      "catalogPage": 6,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-266e401d-79e2-464d-a4ed-0bc0e0dcee76",
-      "catalogId": "nininger-1933",
-      "designation": "86",
-      "name": "Juvinas",
-      "weight": {
-        "grams": 45
-      },
-      "classification": "Stone. Eu.",
-      "locality": "Ardeche, France",
-      "year": "1812",
-      "catalogPage": 6,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-6493a154-d3d9-4993-b72f-32e9e2d1af5d",
-      "catalogId": "nininger-1933",
-      "designation": "87",
-      "name": "Kendall County",
-      "weight": {
-        "grams": 118
-      },
-      "classification": "Iron. Hb.",
-      "locality": "Texas",
-      "year": "1887",
-      "catalogPage": 6,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-e905c3df-45fb-43cb-89aa-3ae2b3a32536",
-      "catalogId": "nininger-1933",
-      "designation": "88",
-      "name": "Kenton County",
-      "weight": {
-        "grams": 435
-      },
-      "classification": "Iron. Om.",
-      "locality": "Kentucky",
-      "year": "1899",
-      "catalogPage": 6,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-bfb7045a-ed4f-4495-bce0-735c85bc1b68",
-      "catalogId": "nininger-1933",
-      "designation": "89",
-      "name": "Knyahinya",
-      "weight": {
-        "grams": 82
-      },
-      "classification": "Stone. Cg.",
-      "locality": "Czechoslovakia",
-      "year": "1866",
-      "catalogPage": 6,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-5d2cf078-2475-4571-8d2d-d99406746040",
-      "catalogId": "nininger-1933",
-      "designation": "90",
-      "name": "Kyushu",
-      "weight": {
-        "grams": 113
-      },
-      "classification": "Stone. Cwa.",
-      "locality": "Japan",
-      "year": "1886",
-      "catalogPage": 7,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-56908abb-d2c3-4053-8849-b8ced51eb7ad",
-      "catalogId": "nininger-1933",
-      "designation": "91",
-      "name": "L'Aigle",
-      "weight": {
-        "grams": 10
-      },
-      "classification": "Stone. Cib.",
-      "locality": "Orne, France",
-      "year": "1803",
-      "catalogPage": 7,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-d607c103-01b6-45fb-b174-11b1a85dc69a",
-      "catalogId": "nininger-1933",
-      "designation": "92",
-      "name": "Leeds",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Iron. Om.",
-      "locality": "Quebec, Canada",
-      "year": "1931",
-      "catalogPage": 7,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-c9e7c4aa-8417-4b01-bfb4-4d90d8d3082e",
-      "catalogId": "nininger-1933",
-      "designation": "93",
-      "name": "Lenarto",
-      "weight": {
-        "grams": 111
-      },
-      "classification": "Iron. Om.",
-      "locality": "Saros, Czechoslovakia",
-      "year": "1814",
-      "catalogPage": 7,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-130fd422-ae56-46d7-a93a-3fd3ca04894d",
-      "catalogId": "nininger-1933",
-      "designation": "94",
-      "name": "Limerick",
-      "weight": {
-        "grams": 3
-      },
-      "classification": "Stone. Cga.",
-      "locality": "Adare, Ireland",
-      "year": "1813",
-      "catalogPage": 7,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-409f0e67-7457-4ca7-8f8f-983a055282f6",
-      "catalogId": "nininger-1933",
-      "designation": "95",
-      "name": "Llano del Inca",
-      "weight": {
-        "grams": 15
-      },
-      "classification": "Iron-stone. M.",
-      "locality": "Atacama, Chile",
-      "year": "1888",
-      "catalogPage": 7,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-495dc754-578b-425f-9557-47a24f3da2a5",
-      "catalogId": "nininger-1933",
-      "designation": "96",
-      "name": "Logan",
-      "weight": {
-        "grams": 926
-      },
-      "classification": "Stone. Not yet described.",
-      "locality": "Oklahoma",
-      "year": "1933",
-      "catalogPage": 7,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-b536ea8c-3817-4b8f-80e3-12e3685b490a",
-      "catalogId": "nininger-1933",
-      "designation": "97",
-      "name": "Los Amates",
-      "weight": {
-        "grams": 62
-      },
-      "classification": "Iron. Om.",
-      "locality": "Mexico",
-      "year": "1888",
-      "catalogPage": 7,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-d68f32eb-f719-4999-b5aa-45e1f6b33926",
-      "catalogId": "nininger-1933",
-      "designation": "98",
-      "name": "Long Island",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Stone. Cia.",
-      "locality": "Phillips Co., Kansas",
-      "year": "1891",
-      "catalogPage": 7,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-09109976-10e2-46fe-a410-1ea7f5cdf5db",
-      "catalogId": "nininger-1933",
-      "designation": "99",
-      "name": "Mart",
-      "weight": {
-        "grams": 473
-      },
-      "classification": "Iron. Off.",
-      "locality": "McLannan Co., Texas",
-      "year": "1898",
-      "catalogPage": 7,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-cc326e86-11c0-416f-b4b7-e0db1c4a761c",
-      "catalogId": "nininger-1933",
-      "designation": "100",
-      "name": "Melrose",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Stone. Not yet described.",
-      "locality": "New Mexico",
-      "year": "1933",
-      "catalogPage": 7,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-0a3968a9-857c-44c4-a030-f3c4eea4d239",
-      "catalogId": "nininger-1933",
-      "designation": "101",
-      "name": "Misteca",
-      "weight": {
-        "grams": 2870
-      },
-      "classification": "Iron. Om.",
-      "locality": "Oaxaca, Mexico",
-      "year": "1804",
-      "catalogPage": 7,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-c1d2d7fa-4ef0-4a7e-add3-985a19673c8e",
-      "catalogId": "nininger-1933",
-      "designation": "102",
-      "name": "Mocs",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Stone. Cwa.",
-      "locality": "Transylvania, Austria",
-      "year": "1882",
-      "catalogPage": 7,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-c1ed9efb-742c-42d5-a709-e24db11f4e72",
-      "catalogId": "nininger-1933",
-      "designation": "103",
-      "name": "Moctezuma",
-      "weight": {
-        "grams": 367
-      },
-      "classification": "Iron. Om.",
-      "locality": "Sonora, Mexico",
-      "year": "1899",
-      "catalogPage": 7,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-2f52fc71-72bb-4c9d-bfc8-76598926663c",
-      "catalogId": "nininger-1933",
-      "designation": "104",
-      "name": "Modoc",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Stone. Cwa.",
-      "locality": "Scott Co., Kansas",
-      "year": "1905",
-      "catalogPage": 7,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-a5bf385c-518b-451f-8d88-00b04b858df7",
-      "catalogId": "nininger-1933",
-      "designation": "105",
-      "name": "McKinney",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Stone. Cw.",
-      "locality": "Collin Co., Texas",
-      "year": "1870",
-      "catalogPage": 7,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-1b71336c-9848-4ab4-9a23-a8c253b523aa",
-      "catalogId": "nininger-1933",
-      "designation": "142",
-      "name": "Scott City",
-      "weight": {
-        "grams": 54
-      },
-      "classification": "Stone. Cc.",
-      "locality": "Scott Co., Kansas",
-      "year": "1905",
-      "catalogPage": 10,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-bd256191-f77a-4b9d-ac79-614b58c8fd10",
-      "catalogId": "nininger-1933",
-      "designation": "143",
-      "name": "Scottsville",
-      "weight": {
-        "grams": 142
-      },
-      "classification": "Iron. H.",
-      "locality": "Allen Co., Kentucky",
-      "year": "1867",
-      "catalogPage": 10,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-b1d891ae-23b9-4ff8-8929-daa82274fb32",
-      "catalogId": "nininger-1933",
-      "designation": "144",
-      "name": "Searsmont",
-      "weight": {
-        "grams": 1
-      },
-      "classification": "Stone. Cc.",
-      "locality": "Waldo Co., Maine",
-      "year": "1871",
-      "catalogPage": 10,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-b1d5bee8-91eb-4423-8921-8c62ffe362c4",
-      "catalogId": "nininger-1933",
-      "designation": "145",
-      "name": "Seelasgen",
-      "weight": {
-        "grams": 18
-      },
-      "classification": "Iron. Ogg.",
-      "locality": "Brandenburg, Prussia",
-      "year": "1847",
-      "catalogPage": 10,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-4f754017-c113-47e0-828b-dceae2a4db52",
-      "catalogId": "nininger-1933",
-      "designation": "146",
-      "name": "Shelburne",
-      "weight": {
-        "grams": 16
-      },
-      "classification": "Stone. Cga.",
-      "locality": "Ontario, Canada",
-      "year": "1904",
-      "catalogPage": 10,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-a1036b6e-1f39-4a4d-9213-741e7face934",
-      "catalogId": "nininger-1933",
-      "designation": "147",
-      "name": "Smithville",
-      "weight": {
-        "grams": 1300
-      },
-      "classification": "Iron. Og.",
-      "locality": "De Kalb Co., Tennessee",
-      "year": "1840",
-      "catalogPage": 10,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-469cd50d-e842-4eab-b53a-5fb4b96cb127",
-      "catalogId": "nininger-1933",
-      "designation": "148",
-      "name": "Springwater",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Pallasite. Pa.",
-      "locality": "Sask., Canada",
-      "year": "1931",
-      "catalogPage": 10,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-771ded70-0b00-4427-b923-32aa41f0610a",
-      "catalogId": "nininger-1933",
-      "designation": "149",
-      "name": "Staunton",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Iron. Om.",
-      "locality": "Augusta Co., Virginia",
-      "year": "1858",
-      "catalogPage": 10,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-d6d8d4c6-8022-484a-94be-f30f57c9e5a9",
-      "catalogId": "nininger-1933",
-      "designation": "150",
-      "name": "St. Francois County",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Iron. Og.",
-      "locality": "Missouri",
-      "year": "before 1863",
-      "catalogPage": 10,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-028c2044-615c-4a6d-a157-b01d28ce554f",
-      "catalogId": "nininger-1933",
-      "designation": "151",
-      "name": "St. Genevieve Co.",
-      "weight": {
-        "grams": 1
-      },
-      "classification": "Iron. Of.",
-      "locality": "Missouri",
-      "year": "1888",
-      "catalogPage": 10,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-f656ce14-10c1-4958-8d4a-164a4ba86e51",
-      "catalogId": "nininger-1933",
-      "designation": "152",
-      "name": "St. Michel",
-      "weight": {
-        "grams": 35
-      },
-      "classification": "Stone. Cw.",
-      "locality": "Finland",
-      "year": "1910",
-      "catalogPage": 10,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-72169697-a002-405c-a82a-5c338699c7be",
-      "catalogId": "nininger-1933",
-      "designation": "153",
-      "name": "Tacubaya",
-      "weight": {
-        "grams": 1968
-      },
-      "classification": "Iron. Om.",
-      "locality": "Mexico",
-      "year": "1931",
-      "catalogPage": 10,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-47bca77a-741e-4445-a02b-43e1a9da803b",
-      "catalogId": "nininger-1933",
-      "designation": "154",
-      "name": "Tabory",
-      "weight": {
-        "grams": 42
-      },
-      "classification": "Stone. Ccb.",
-      "locality": "Perm, Russia",
-      "year": "1877",
-      "catalogPage": 10,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-39c45c59-6b79-4472-93af-122354720b9a",
-      "catalogId": "nininger-1933",
-      "designation": "155",
-      "name": "Thunda",
-      "weight": {
-        "grams": 742
-      },
-      "classification": "Iron. Om.",
-      "locality": "Queensland, Australia",
-      "year": "1886",
-      "catalogPage": 10,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-86b6a77a-bf5e-484c-a873-b54864a63d4a",
-      "catalogId": "nininger-1933",
-      "designation": "156",
-      "name": "Tlacotopec",
-      "weight": {
-        "grams": 18573
-      },
-      "classification": "Iron. Ataxite with cubic streaks.",
-      "locality": "Puebla, Mexico",
-      "year": "1903",
-      "catalogPage": 10,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-cbf5bfa8-49c6-49e6-8dba-9be257817fd9",
-      "catalogId": "nininger-1933",
-      "designation": "157",
-      "name": "Tlaxcala",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Iron. Of.",
-      "locality": "Mexico",
-      "year": "1904",
-      "catalogPage": 10,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-eb8e4c13-79b9-412f-a9d3-6718cc40cb69",
-      "catalogId": "nininger-1933",
-      "designation": "158",
-      "name": "Tonganoxie",
-      "weight": {
-        "grams": 222
-      },
-      "classification": "Iron. Om.",
-      "locality": "Leavenworth Co., Kansas",
-      "year": "1886",
-      "catalogPage": 10,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-6cca15e2-1a21-49fd-9cb5-ab93af8172e4",
-      "catalogId": "nininger-1933",
-      "designation": "159",
-      "name": "Trenton",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Iron. Om.",
-      "locality": "Washington Co., Wisconsin",
-      "year": "1858",
-      "catalogPage": 11,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-8856863d-7b19-40c2-a5b6-9d0dcc7fec95",
-      "catalogId": "nininger-1933",
-      "designation": "160",
-      "name": "Trenzano",
-      "weight": {
-        "grams": 18
-      },
-      "classification": "Stone. Cca.",
-      "locality": "Italy",
-      "year": "1856",
-      "catalogPage": 11,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-6d3bd799-8aea-450e-81f4-407d501aecb0",
-      "catalogId": "nininger-1933",
-      "designation": "161",
-      "name": "Tucson",
-      "weight": {
-        "grams": 940
-      },
-      "classification": "Iron. Dm.",
-      "locality": "Pima Co., Arizona",
-      "year": "1850",
-      "catalogPage": 11,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-695d093d-8f7c-49d6-b3f5-32d3fd589e31",
-      "catalogId": "nininger-1933",
-      "designation": "162",
-      "name": "Tulia",
-      "weight": {
-        "grams": 357
-      },
-      "classification": "Stone. Cka.",
-      "locality": "Swisher Co., Texas",
-      "year": "1924",
-      "catalogPage": 11,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-a85cb490-2ead-48e0-8bb5-da27a9b97273",
-      "catalogId": "nininger-1933",
-      "designation": "163",
-      "name": "Uwet",
-      "weight": {
-        "grams": 17
-      },
-      "classification": "Iron. H.",
-      "locality": "Southern Nigeria",
-      "year": "before 1903",
-      "catalogPage": 11,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-01ead841-1874-4c4a-8b74-3957cdf1066e",
-      "catalogId": "nininger-1933",
-      "designation": "164",
-      "name": "Vaca Muerta",
-      "weight": {
-        "grams": 35
-      },
-      "classification": "Iron-Stone. M.",
-      "locality": "Atacama, Chile",
-      "year": "1861",
-      "catalogPage": 11,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-d671558d-60ba-4ff9-a63f-264ae74b59f2",
-      "catalogId": "nininger-1933",
-      "designation": "165",
-      "name": "Warrenton",
-      "weight": {
-        "grams": 4.5
-      },
-      "classification": "Stone. Cco.",
-      "locality": "Missouri",
-      "year": "1877",
-      "catalogPage": 11,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-8f376d6c-673e-457f-9a4b-b20b581b4d3d",
-      "catalogId": "nininger-1933",
-      "designation": "166",
-      "name": "Waconda",
-      "weight": {
-        "grams": 40
-      },
-      "classification": "Stone. Ccb.",
-      "locality": "Mitchell Co., Kansas",
-      "year": "1873",
-      "catalogPage": 11,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-a8e6364a-9063-4251-86f2-e96d71ae3a57",
-      "catalogId": "nininger-1933",
-      "designation": "167",
-      "name": "Weekeroo",
-      "weight": {
-        "grams": 5630
-      },
-      "classification": "Iron-Stone. P.",
-      "locality": "Australia",
-      "year": "1924",
-      "catalogPage": 11,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-697e068d-a436-48d2-a031-5701ae3ac2fc",
-      "catalogId": "nininger-1933",
-      "designation": "168",
-      "name": "Willamette",
-      "weight": {
-        "grams": 535
-      },
-      "classification": "Iron. Om.",
-      "locality": "Clackamas Co., Oregon",
-      "year": "1902",
-      "catalogPage": 11,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-959b295d-bf5d-44bc-8328-ba36786076ea",
-      "catalogId": "nininger-1933",
-      "designation": "169",
-      "name": "Williamstown",
-      "weight": {
-        "grams": 628
-      },
-      "classification": "Iron. Om.",
-      "locality": "Grant Co., Kentucky",
-      "year": "1892",
-      "catalogPage": 11,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-759f9650-2ae8-4b72-8e82-006903ace53b",
-      "catalogId": "nininger-1933",
-      "designation": "170",
-      "name": "Winona",
-      "weight": {
-        "grams": 96
-      },
-      "classification": "Stony-Iron. M.",
-      "locality": "Arizona",
-      "year": "1928",
-      "catalogPage": 11,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-9a65e44b-bede-4c88-84d7-bcd56c4763c7",
-      "catalogId": "nininger-1933",
-      "designation": "171",
-      "name": "Woodward County",
-      "weight": {
-        "grams": 206
-      },
-      "classification": "Stone.",
-      "locality": "Oklahoma",
-      "year": null,
-      "catalogPage": 11,
-      "confidence": "high"
-    },
-    {
-      "id": "obs-11b69576-1fd1-46e9-9aa6-721fd3e4a86d",
-      "catalogId": "nininger-1933",
-      "designation": "172",
-      "name": "Xiquipilco",
-      "weight": {
-        "grams": null
-      },
-      "classification": "Iron. Om.",
-      "locality": "Mexico",
-      "year": "before 1776",
-      "catalogPage": 11,
       "confidence": "high"
     },
     {
