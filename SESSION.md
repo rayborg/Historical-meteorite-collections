@@ -1,6 +1,6 @@
 # Project Session Memory
 
-Last updated: 2026-07-21
+Last updated: 2026-07-22
 
 ## Mission
 
@@ -21,7 +21,10 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 - A separate private preservation archive retains the full scans, raw OCR, verbatim notes, and scan-linked site materials; operational coordinates are intentionally kept outside public history.
 - The original approximately 433 MB of source photographs remain in the ignored `source-images/`.
 - All three catalogs remain blocked/undetermined for folio display. Public output contains no scans, source filenames, raw OCR, verbatim notes, or private image paths.
-- The source-audited 2026-07-21 three-catalog/retake edition is deployed on GitHub Pages with 1,758 facts-only records, chronological source selection, and corrected designationless observations. CI passes, and private source paths remain unavailable.
+- Public metadata schema version 3 keeps both Huss catalogs as scalar `specimen` records and represents each numbered Nininger entry as one `catalog-item` parent with ordered holdings. The 136 Nininger items contain 310 reviewed holdings: 298 designated, 12 anonymous, 304 gram-bearing, 4 casts, and 2 count-only.
+- Commit `45644d5` is deployed on GitHub Pages with 1,758 facts-only parent observations. Validation and Pages workflows pass; a live headless-browser check passes desktop and 390px search, holdings, mass-filter, Huss, and layout regressions.
+- Live HTML, JavaScript, CSS, catalog, and folio bytes match `45644d5`. The deployed catalog SHA-256 is `f90a6c353289df1c4e4410a0d1b16e7132c9f2fde23bdce49b34414f1191b0e7`, and tested private registry, OCR, manifest, and source-image routes return `404`.
+- The tracked runtime harness passes 84 tests. Deployment fixtures pass 2 baseline allows, 55 baseline rejections, 3 schema-3 model/privacy allows, 38 model/holding rejections, 6 folio allows, and 71 folio rejections.
 
 ## Preservation And Data Rules
 
@@ -63,7 +66,7 @@ Distinct specimens with the same meteorite name and similar mass must not be col
 - Use this exact public deck wording: `A searchable transcription of Historic Meteorite Collection catalogs`
 - Keep the site static, dependency-light, responsive, accessible, and durable under the GitHub Pages project subpath.
 - Preserve the antique scientific catalog / old natural-history book visual language rather than using a generic dashboard.
-- Retain case-insensitive text/designation search, numeric weight ranges, deterministic sorting, result counts, clear empty states, page-cited factual records, keyboard usability, and reduced-motion support.
+- Retain case-insensitive text/designation/catalog-item/holding search, numeric weight ranges across all holding masses, deterministic sorting, result counts, clear empty states, page-cited factual records, keyboard usability, and reduced-motion support.
 - Retain folio-display infrastructure, but render public folios only for sources explicitly enabled by the separate reviewed manifest; `huss-1976` must remain facts-only.
 - Avoid remote runtime dependencies where practical.
 
