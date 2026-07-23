@@ -10,9 +10,13 @@ const SPECIMEN_KEYS = [
 const CATALOG_ITEM_KEYS = [
   "id", "catalogId", "catalogItem", "holdings", "name", "classification", "locality", "year", "catalogPage", "confidence",
 ];
+const CATALOG_NUMBER_KEYS = [
+  "id", "catalogId", "catalogNumber", "holdings", "name", "classification", "locality", "dateOfDiscovery", "catalogPages", "confidence",
+];
 const HOLDING_KEYS = ["designation", "kind", "description", "count", "weight"];
+const CATALOG_NUMBER_HOLDING_KEYS = ["description", "provenance", "count", "weights"];
 const HOLDING_KINDS = ["specimen", "cast", "aggregate"];
-const RECORD_MODELS = ["specimen", "catalog-item"];
+const RECORD_MODELS = ["catalog-item", "specimen", "catalog-number"];
 const FACTUAL_FIELDS = [
   "id",
   "catalogId",
@@ -20,15 +24,20 @@ const FACTUAL_FIELDS = [
   "name",
   "weight.grams",
   "catalogItem",
+  "catalogNumber",
   "holdings[].designation",
   "holdings[].kind",
   "holdings[].description",
+  "holdings[].provenance",
   "holdings[].count",
   "holdings[].weight.grams",
+  "holdings[].weights[].grams",
   "classification",
   "locality",
   "year",
+  "dateOfDiscovery",
   "catalogPage",
+  "catalogPages[]",
   "confidence",
 ];
 const METADATA_KEYS = [
@@ -48,10 +57,14 @@ const MAX_CATALOG_ID_LENGTH = 80;
 const MAX_CATALOG_TEXT_LENGTH = 160;
 const FOLIO_PATH_ROOT = "assets/folios/";
 const APPROVED_FOLIO_EXTENSION = /\.(?:webp|png|jpe?g|avif)$/u;
-const LEAKAGE_MARKER =
-  /\b(?:raw[\s_-]*ocr|raw[\s_-]*text|ocr[\s_-]*(?:output|text)|source[\s_-]*(?:image|file)(?:[\s_-]*name)?s?|scan(?:ned)?[\s_-]*(?:image|file|path|name)s?|verbatim[\s_-]*notes?|transcription[\s_-]*notes?)\b/iu;
-const IMAGE_OR_SOURCE_FILE =
-  /\.(?:avif|bmp|gif|heic|heif|hocr|jpe?g|ocr|pdf|png|svg|tiff?|webp)(?=$|[^A-Za-z0-9])|\b(?:dscn?|img|pxl)[_-]?\d{3,}\b/iu;
+const PRIVATE_LANGUAGE =
+  /\b(?:raw[\s_-]*(?:ocr|text|transcript(?:ion)?)|ocr[\s_-]*(?:batch|output|text)|source[\s_-]*(?:image|file)(?:[\s_-]*name)?s?|scan(?:ned)?[\s_-]*(?:image|file|path|name)s?|(?:private|research|transcription|verbatim|working)[\s_-]*notes?|(?:private|working)[\s_-]*(?:text|transcript(?:ion)?)|image[\s_-]*derivatives?)\b/iu;
+const PRIVATE_LABEL =
+  /^(?:notes?|verbatim\s+notes?|ocr|ocr\s+text|raw\s*(?:ocr|text)|source\s*(?:images?|files?|filenames?)|scans?|images?|paths?|weight(?:\s+|\.)display)$/iu;
+const IMAGE_LIKE_STRING =
+  /\.(?:arw|avif|bmp|cr2|cr3|csv|dat|dng|docx?|gif|heic|heif|hocr|jpe?g|jsonl?|log|md|nef|ocr|orf|pdf|pef|png|raf|rtf|rw2|srw|svg|text|tiff?|tsv|txt|webp|xml|ya?ml)(?=$|[^A-Za-z0-9])|\b(?:dscn?|img|pxl)[_-]?\d{3,}\b/iu;
+const OCR_BATCH_OR_CAMERA_TIMESTAMP =
+  /\b(?:ocr[\s_-]*)?batch[\s_-]*\d{1,5}(?:\.[A-Za-z0-9]{2,5})?\b|\b(?:19|20)\d{6}[_-]\d{6}(?:[_-]\d+)?(?:\.[A-Za-z0-9]{2,5})?\b/iu;
 const PATH_LIKE_STRING =
   /(?:^|[\s"'(])(?:[A-Za-z][A-Za-z\d+.-]*:\/\/|\/{1,2}|\.{1,2}[\\/]|~[\\/]|[A-Za-z]:[\\/]|(?:assets?|files?|folios?|images?|scans?|source[\s_-]*images?)[\\/])|\\/iu;
 const HOLDING_PRIVATE_LANGUAGE =
@@ -116,19 +129,21 @@ function assertCatalogText(value, path) {
   assert(value.length <= MAX_CATALOG_TEXT_LENGTH, `${path} must be at most ${MAX_CATALOG_TEXT_LENGTH} characters`);
 }
 
-function assertHoldingText(value, path) {
+function assertHoldingText(value, path, allowWeightDisplay = false) {
   if (value === null) return;
   assert(!HOLDING_PRIVATE_LANGUAGE.test(value), `${path} contains private holding language`);
   assert(!HOLDING_PRIVATE_DOCUMENT.test(value), `${path} contains a private path or document extension`);
-  assert(!HOLDING_WEIGHT_DISPLAY.test(value), `${path} contains a private weight-display string`);
+  assert(allowWeightDisplay || !HOLDING_WEIGHT_DISPLAY.test(value), `${path} contains a private weight-display string`);
 }
 
 function rejectCatalogExcludedContent(value, path = "catalog") {
   if (typeof value === "string") {
     assert(value === normalizeString(value), `${path} is not NFC/whitespace normalized`);
     assert(!/[\p{Cc}\p{Cf}]/u.test(value), `${path} contains a control or format character`);
-    assert(!LEAKAGE_MARKER.test(value), `${path} contains raw OCR, scan, note, or source-file language`);
-    assert(!IMAGE_OR_SOURCE_FILE.test(value), `${path} contains an image or source-document filename`);
+    assert(!PRIVATE_LABEL.test(value), `${path} contains a private-source label`);
+    assert(!PRIVATE_LANGUAGE.test(value), `${path} contains private-source language`);
+    assert(!IMAGE_LIKE_STRING.test(value), `${path} contains an image-like or source-document filename`);
+    assert(!OCR_BATCH_OR_CAMERA_TIMESTAMP.test(value), `${path} contains an OCR batch or camera timestamp filename`);
     assert(!PATH_LIKE_STRING.test(value), `${path} contains a file path`);
     return;
   }
@@ -161,12 +176,12 @@ function assertCountSummary(value, path) {
 
 function validateMetadata(metadata, path) {
   assertExactKeys(metadata, METADATA_KEYS, path);
-  assert(metadata.schemaVersion === 3, `${path}.schemaVersion must be 3`);
+  assert(metadata.schemaVersion === 4, `${path}.schemaVersion must be 4`);
   assert(metadata.scope === "facts-only", `${path}.scope must be facts-only`);
   assert(
     Array.isArray(metadata.factualFields) && metadata.factualFields.length === FACTUAL_FIELDS.length &&
       metadata.factualFields.every((field, index) => field === FACTUAL_FIELDS[index]),
-    `${path}.factualFields does not match the schema 3 public record models`,
+    `${path}.factualFields does not match the schema 4 public record models`,
   );
   assertCountSummary(metadata, path);
   assert(Array.isArray(metadata.catalogs) && metadata.catalogs.length > 0, `${path}.catalogs must be a nonempty array`);
@@ -213,15 +228,15 @@ function validateMetadata(metadata, path) {
 }
 
 function recordDesignations(record, recordModel) {
-  return recordModel === "specimen"
-    ? (record.designation === null ? [] : [record.designation])
-    : record.holdings.map((holding) => holding.designation).filter((value) => value !== null);
+  if (recordModel === "specimen") return record.designation === null ? [] : [record.designation];
+  if (recordModel === "catalog-number") return [];
+  return record.holdings.map((holding) => holding.designation).filter((value) => value !== null);
 }
 
 function recordMasses(record, recordModel) {
-  return recordModel === "specimen"
-    ? (record.weight.grams === null ? [] : [record.weight.grams])
-    : record.holdings.map((holding) => holding.weight.grams).filter((value) => value !== null);
+  if (recordModel === "specimen") return record.weight.grams === null ? [] : [record.weight.grams];
+  if (recordModel === "catalog-number") return record.holdings.flatMap((holding) => holding.weights.map(({ grams }) => grams));
+  return record.holdings.map((holding) => holding.weight.grams).filter((value) => value !== null);
 }
 
 function compareText(left, right) {
@@ -266,10 +281,14 @@ function compareNullableNumber(left, right) {
 function compareRecords(left, right, metadataByCatalog) {
   const leftModel = metadataByCatalog.get(left.catalogId).descriptor.recordModel;
   const rightModel = metadataByCatalog.get(right.catalogId).descriptor.recordModel;
-  const modelOrder = RECORD_MODELS.indexOf(rightModel) - RECORD_MODELS.indexOf(leftModel);
+  const modelOrder = RECORD_MODELS.indexOf(leftModel) - RECORD_MODELS.indexOf(rightModel);
   if (modelOrder) return modelOrder;
   if (leftModel === "catalog-item") {
     return left.catalogItem - right.catalogItem || compareText(left.name, right.name) || compareText(left.id, right.id);
+  }
+  if (leftModel === "catalog-number") {
+    return left.catalogPages[0] - right.catalogPages[0] || compareText(left.catalogNumber, right.catalogNumber) ||
+      compareText(left.name, right.name) || compareText(left.id, right.id);
   }
   const identityOrder = compareDesignation(left.designation, right.designation);
   const leftMasses = recordMasses(left, leftModel);
@@ -306,6 +325,22 @@ function validateHolding(holding, path) {
   }
 }
 
+function validateCatalogNumberHolding(holding, path) {
+  assertExactKeys(holding, CATALOG_NUMBER_HOLDING_KEYS, path);
+  assertString(holding.description, `${path}.description`);
+  assertHoldingText(holding.description, `${path}.description`, true);
+  assertString(holding.provenance, `${path}.provenance`, true);
+  assertHoldingText(holding.provenance, `${path}.provenance`, true);
+  assert(holding.count === null || (Number.isInteger(holding.count) && holding.count > 0),
+    `${path}.count must be a positive integer or null`);
+  assert(Array.isArray(holding.weights) && holding.weights.length > 0, `${path}.weights must be a nonempty ordered array`);
+  holding.weights.forEach((weight, weightIndex) => {
+    const weightPath = `${path}.weights[${weightIndex}]`;
+    assertExactKeys(weight, ["grams"], weightPath);
+    assert(Number.isFinite(weight.grams) && weight.grams >= 0, `${weightPath}.grams must be a finite nonnegative number`);
+  });
+}
+
 function validatePublicCatalog(data, folios, path = "catalog") {
   rejectCatalogExcludedContent(data, path);
   assertExactKeys(data, ["metadata", "records"], path);
@@ -315,6 +350,7 @@ function validatePublicCatalog(data, folios, path = "catalog") {
   const ids = new Set();
   const catalogItemNumbers = new Map();
   const previousCatalogItems = new Map();
+  const catalogNumbers = new Map();
   const representedCatalogs = new Set();
   const statsByCatalog = new Map([...metadataByCatalog].map(([catalogId]) => [catalogId, {
     recordCount: 0,
@@ -330,12 +366,14 @@ function validatePublicCatalog(data, folios, path = "catalog") {
     const catalog = metadataByCatalog.get(record.catalogId);
     assert(catalog, `${recordPath}.catalogId has no descriptor`);
     const { recordModel } = catalog.descriptor;
-    assertExactKeys(record, recordModel === "specimen" ? SPECIMEN_KEYS : CATALOG_ITEM_KEYS, recordPath);
+    assertExactKeys(record, recordModel === "specimen"
+      ? SPECIMEN_KEYS
+      : recordModel === "catalog-item" ? CATALOG_ITEM_KEYS : CATALOG_NUMBER_KEYS, recordPath);
     assertString(record.id, `${recordPath}.id`);
     assert(!ids.has(record.id), `${recordPath}.id is duplicated: ${record.id}`);
     ids.add(record.id);
     representedCatalogs.add(record.catalogId);
-    for (const field of ["name", "classification", "locality", "year"]) {
+    for (const field of ["name", "classification", "locality", recordModel === "catalog-number" ? "dateOfDiscovery" : "year"]) {
       assertString(record[field], `${recordPath}.${field}`, true);
     }
     if (recordModel === "specimen") {
@@ -346,7 +384,7 @@ function validatePublicCatalog(data, folios, path = "catalog") {
       assert(record.designation !== null || record.name !== null || record.weight.grams !== null ||
         record.classification !== null || record.locality !== null || record.year !== null,
       `${recordPath} must contain a substantive public fact`);
-    } else {
+    } else if (recordModel === "catalog-item") {
       assert(Number.isInteger(record.catalogItem) && record.catalogItem > 0,
         `${recordPath}.catalogItem must be a positive integer`);
       const itemNumbers = catalogItemNumbers.get(record.catalogId) ?? new Set();
@@ -360,9 +398,30 @@ function validatePublicCatalog(data, folios, path = "catalog") {
       previousCatalogItems.set(record.catalogId, record.catalogItem);
       assert(Array.isArray(record.holdings) && record.holdings.length > 0, `${recordPath}.holdings must be nonempty`);
       record.holdings.forEach((holding, holdingIndex) => validateHolding(holding, `${recordPath}.holdings[${holdingIndex}]`));
+    } else {
+      assertString(record.catalogNumber, `${recordPath}.catalogNumber`);
+      const numbers = catalogNumbers.get(record.catalogId) ?? new Set();
+      assert(!numbers.has(record.catalogNumber),
+        `${recordPath}.catalogNumber is duplicated within ${record.catalogId}: ${record.catalogNumber}`);
+      numbers.add(record.catalogNumber);
+      catalogNumbers.set(record.catalogId, numbers);
+      assert(Array.isArray(record.holdings) && record.holdings.length > 0, `${recordPath}.holdings must be nonempty`);
+      record.holdings.forEach((holding, holdingIndex) =>
+        validateCatalogNumberHolding(holding, `${recordPath}.holdings[${holdingIndex}]`));
     }
-    assert(Number.isInteger(record.catalogPage) && catalog.sourcePages.has(record.catalogPage),
-      `${recordPath}.catalogPage is outside its descriptor sourcePages`);
+    if (recordModel === "catalog-number") {
+      assert(Array.isArray(record.catalogPages) && record.catalogPages.length > 0,
+        `${recordPath}.catalogPages must be a nonempty ordered unique array`);
+      record.catalogPages.forEach((page, pageIndex) => {
+        assert(Number.isInteger(page) && page > 0 && catalog.sourcePages.has(page),
+          `${recordPath}.catalogPages[${pageIndex}] is outside its descriptor sourcePages`);
+        if (pageIndex) assert(page > record.catalogPages[pageIndex - 1],
+          `${recordPath}.catalogPages must be sorted and unique`);
+      });
+    } else {
+      assert(Number.isInteger(record.catalogPage) && catalog.sourcePages.has(record.catalogPage),
+        `${recordPath}.catalogPage is outside its descriptor sourcePages`);
+    }
     assert(CONFIDENCE_LEVELS.includes(record.confidence), `${recordPath}.confidence is invalid`);
 
     const stats = statsByCatalog.get(record.catalogId);
@@ -491,7 +550,7 @@ function multiCatalogFixture() {
   return {
     data: {
       metadata: {
-        schemaVersion: 3,
+        schemaVersion: 4,
         scope: "facts-only",
         factualFields: [...FACTUAL_FIELDS],
         catalogs: [
@@ -580,6 +639,7 @@ function runSyntheticCatalogTests(modelFixture) {
   let modelOrderingAllowCount = 0;
   let holdingPrivacyAllowCount = 0;
   let modelRejectionCount = 0;
+  let catalogNumberRejectionCount = 0;
   const assertCatalogAllow = (fixture, description) => {
     validatePublicCatalog(fixture.data, fixture.folios, `synthetic ${description}`);
     baselineAllowCount += 1;
@@ -603,9 +663,9 @@ function runSyntheticCatalogTests(modelFixture) {
   boundary.data.metadata.catalogs[0].label = "L".repeat(MAX_CATALOG_TEXT_LENGTH);
   boundary.data.metadata.catalogs[0].compiler = "C".repeat(MAX_CATALOG_TEXT_LENGTH);
   boundary.data.records[0].id = "record:alpha";
-  boundary.data.records[0].name = "scan";
-  boundary.data.records[0].classification = "image";
-  boundary.data.records[0].locality = "notes";
+  boundary.data.records[0].name = "catalog scan";
+  boundary.data.records[0].classification = "meteorite image";
+  boundary.data.records[0].locality = "field notes";
   assertCatalogAllow(boundary, "runtime boundary and leakage-safe values");
 
   for (const [description, catalogId] of [
@@ -692,11 +752,13 @@ function runSyntheticCatalogTests(modelFixture) {
     ["image extension before punctuation", "folio-0042.TIFF,"],
     ["source document filename", "page-0042.PDF"],
     ["camera-style image filename", "DSC_0042"],
+    ["private label", "Notes"],
+    ["OCR batch identifier", "batch-4"],
   ]) assertCatalogRejection(({ data }) => { data.records[0].locality = value; }, description);
   assertCatalogRejection(({ data }) => { data.records[0].rawOcr = "unpublished text"; }, "raw OCR key");
   assertCatalogRejection(({ data }) => { data.metadata.catalogs[0].sourceFilename = "page-1.dat"; }, "source filename key");
   assert(baselineAllowCount === 2, `expected 2 baseline catalog allows, got ${baselineAllowCount}`);
-  assert(baselineRejectionCount === 55, `expected 55 baseline catalog rejections, got ${baselineRejectionCount}`);
+  assert(baselineRejectionCount === 57, `expected 57 baseline catalog rejections, got ${baselineRejectionCount}`);
 
   const modelFolios = blockedFolios(modelFixture.metadata);
   validatePublicCatalog(modelFixture, modelFolios, "synthetic valid model-aware fixture");
@@ -729,6 +791,7 @@ function runSyntheticCatalogTests(modelFixture) {
     ].includes(id)),
     secondIndependent,
     ...independentNumbering.records.filter(({ catalogId }) => catalogId === "huss-1976"),
+    ...independentNumbering.records.filter(({ catalogId }) => catalogId === "hovey-1896"),
   ];
   validatePublicCatalog(independentNumbering, modelFolios,
     "synthetic independent numbering and catalog-item ID tie breaker");
@@ -738,6 +801,8 @@ function runSyntheticCatalogTests(modelFixture) {
   holdingPrivacyBoundary.records.find(({ id }) => id === "nininger-item-1").holdings[0].description = "found in 1932";
   holdingPrivacyBoundary.records.find(({ id }) => id === "nininger-item-1").holdings[0].designation = "134g";
   holdingPrivacyBoundary.records.find(({ id }) => id === "nininger-item-2").holdings[0].description = "M1 to M15";
+  holdingPrivacyBoundary.records.find(({ id }) => id === "hovey-catalog-z9").holdings[0].description =
+    "Twenty-two individuals ranging from 1.5 g. to 26.2 g.";
   const boundaryAggregate = holdingPrivacyBoundary.records.find(({ id }) => id === "nininger-item-2").holdings[1];
   boundaryAggregate.designation = "128 s";
   boundaryAggregate.description = "a series of 15 individuals";
@@ -847,6 +912,51 @@ function runSyntheticCatalogTests(modelFixture) {
   });
   assertModelRejection("model-aware order violation", ({ records }) => { [records[0], records[1]] = [records[1], records[0]]; });
 
+  const assertCatalogNumberRejection = (description, mutate) => {
+    const candidate = clone(modelFixture);
+    mutate(candidate);
+    let rejected = false;
+    try {
+      validatePublicCatalog(candidate, modelFolios, `synthetic ${description}`);
+    } catch {
+      rejected = true;
+    }
+    assert(rejected, `synthetic catalog-number fixture must reject ${description}`);
+    catalogNumberRejectionCount += 1;
+  };
+  const hoveyRecord = (records, id = "hovey-catalog-z9") => records.find((record) => record.id === id);
+  assertCatalogNumberRejection("schema 3 metadata under schema 4", ({ metadata }) => { metadata.schemaVersion = 3; });
+  assertCatalogNumberRejection("empty catalog number", ({ records }) => { hoveyRecord(records).catalogNumber = ""; });
+  assertCatalogNumberRejection("nonnull non-string catalog number", ({ records }) => { hoveyRecord(records).catalogNumber = 9; });
+  assertCatalogNumberRejection("duplicate catalog number within one catalog", ({ records }) => {
+    hoveyRecord(records, "hovey-catalog-fraction-like").catalogNumber = "Z-9";
+  });
+  assertCatalogNumberRejection("catalog-number record extra key", ({ records }) => { hoveyRecord(records).year = "1890"; });
+  assertCatalogNumberRejection("catalog-number empty holdings", ({ records }) => { hoveyRecord(records).holdings = []; });
+  assertCatalogNumberRejection("catalog-number empty description", ({ records }) => { hoveyRecord(records).holdings[0].description = ""; });
+  assertCatalogNumberRejection("catalog-number null description", ({ records }) => { hoveyRecord(records).holdings[0].description = null; });
+  assertCatalogNumberRejection("catalog-number empty provenance", ({ records }) => { hoveyRecord(records).holdings[0].provenance = ""; });
+  assertCatalogNumberRejection("catalog-number private provenance", ({ records }) => {
+    hoveyRecord(records).holdings[0].provenance = "Reviewer note: uncertain";
+  });
+  assertCatalogNumberRejection("catalog-number zero count", ({ records }) => { hoveyRecord(records).holdings[0].count = 0; });
+  assertCatalogNumberRejection("catalog-number fractional count", ({ records }) => { hoveyRecord(records).holdings[0].count = 1.5; });
+  assertCatalogNumberRejection("catalog-number empty weights", ({ records }) => { hoveyRecord(records).holdings[0].weights = []; });
+  assertCatalogNumberRejection("catalog-number negative mass", ({ records }) => { hoveyRecord(records).holdings[0].weights[0].grams = -1; });
+  assertCatalogNumberRejection("catalog-number null mass", ({ records }) => { hoveyRecord(records).holdings[0].weights[0].grams = null; });
+  assertCatalogNumberRejection("catalog-number nonfinite mass", ({ records }) => { hoveyRecord(records).holdings[0].weights[0].grams = Infinity; });
+  assertCatalogNumberRejection("catalog-number extra weight key", ({ records }) => {
+    hoveyRecord(records).holdings[0].weights[0].display = "212.6 g";
+  });
+  assertCatalogNumberRejection("catalog-number empty pages", ({ records }) => { hoveyRecord(records).catalogPages = []; });
+  assertCatalogNumberRejection("catalog-number decreasing pages", ({ records }) => { hoveyRecord(records).catalogPages = [150, 149]; });
+  assertCatalogNumberRejection("catalog-number duplicate pages", ({ records }) => { hoveyRecord(records).catalogPages = [149, 149]; });
+  assertCatalogNumberRejection("catalog-number page outside sourcePages", ({ records }) => { hoveyRecord(records).catalogPages = [151]; });
+  assertCatalogNumberRejection("catalog-number empty discovery date", ({ records }) => { hoveyRecord(records).dateOfDiscovery = ""; });
+  assertCatalogNumberRejection("catalog-number summary mismatch", ({ metadata }) => {
+    metadata.catalogs.find(({ id }) => id === "hovey-1896").recordsWithWeight = 1;
+  });
+
   return {
     baselineAllowCount,
     baselineRejectionCount,
@@ -854,6 +964,7 @@ function runSyntheticCatalogTests(modelFixture) {
     modelOrderingAllowCount,
     holdingPrivacyAllowCount,
     modelRejectionCount,
+    catalogNumberRejectionCount,
   };
 }
 
@@ -976,6 +1087,7 @@ console.log(
   `${catalogFixtureStats.modelOrderingAllowCount} model-ordering/catalog-scope allow, ` +
   `${catalogFixtureStats.holdingPrivacyAllowCount} holding-privacy boundary allow, ` +
   `${catalogFixtureStats.modelRejectionCount} model/holding rejections, ` +
+  `${catalogFixtureStats.catalogNumberRejectionCount} catalog-number/schema-4 rejections, ` +
   `${folioFixtureStats.allowCount} folio allows, ${folioFixtureStats.rejectionCount} folio rejections passed.`,
 );
 
@@ -990,7 +1102,7 @@ if (!SYNTHETIC_ONLY) {
   );
   console.log(
     `Validated data/catalog.json and data/folios.json: ${deployedStats.recordCount} records across ` +
-    `${deployedStats.catalogCount} schema 3 facts-only catalogs, ${totalPageCount} metadata source pages, ` +
+    `${deployedStats.catalogCount} schema 4 facts-only catalogs, ${totalPageCount} metadata source pages, ` +
     `${deployedStats.folioStats.pageEntryCount} displayable folio pages.`,
   );
   for (const [catalogId, { descriptor }] of deployedStats.metadataByCatalog) {

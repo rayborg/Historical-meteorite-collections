@@ -1,6 +1,6 @@
 # Project Session Memory
 
-Last updated: 2026-07-22
+Last updated: 2026-07-23
 
 ## Mission
 
@@ -12,19 +12,22 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 - Pages 3-48 were digitized as 46 photographed folios.
 - No rights notice was visible in those interior pages, but the front matter was absent. No public-domain determination was made, so the user chose a conservative facts-only public site.
 - Glenn Huss published Huss collection catalogs in 1976 and 1986.
-- The facts-only dataset covers Huss 1976, Huss 1986, and Nininger 1933. All 90 original images and OCR remain private.
+- The coordinated local schema-4 dataset covers Hovey 1896, Huss 1976, Huss 1986, and Nininger 1933. The 90 original images documented for the two Huss catalogs and Nininger catalog, and their OCR, remain private. No Hovey images are public.
 
 ## Current State
 
 - GitHub repository: `https://github.com/rayborg/Historical-meteorite-collections`
-- The generated public dataset contains 1,758 facts-only observations: 1,078 Huss 1976, 544 Huss 1986, and 136 Nininger 1933.
+- The coordinated local schema-4 dataset contains 1,783 facts-only observations: 25 Hovey 1896, 1,078 Huss 1976, 544 Huss 1986, and 136 Nininger 1933. It has not been deployed.
 - A separate private preservation archive retains the full scans, raw OCR, verbatim notes, and scan-linked site materials; operational coordinates are intentionally kept outside public history.
 - The original approximately 433 MB of source photographs remain in the ignored `source-images/`.
-- All three catalogs remain blocked/undetermined for folio display. Public output contains no scans, source filenames, raw OCR, verbatim notes, or private image paths.
-- Public metadata schema version 3 keeps both Huss catalogs as scalar `specimen` records and represents each numbered Nininger entry as one `catalog-item` parent with ordered holdings. The 136 Nininger items contain 310 reviewed holdings: 298 designated, 12 anonymous, 304 gram-bearing, 4 casts, and 2 count-only.
-- Commit `45644d5` is deployed on GitHub Pages with 1,758 facts-only parent observations. Validation and Pages workflows pass; a live headless-browser check passes desktop and 390px search, holdings, mass-filter, Huss, and layout regressions.
-- Live HTML, JavaScript, CSS, catalog, and folio bytes match `45644d5`. The deployed catalog SHA-256 is `f90a6c353289df1c4e4410a0d1b16e7132c9f2fde23bdce49b34414f1191b0e7`, and tested private registry, OCR, manifest, and source-image routes return `404`.
-- The tracked runtime harness passes 84 tests. Deployment fixtures pass 2 baseline allows, 55 baseline rejections, 3 schema-3 model/privacy allows, 38 model/holding rejections, 6 folio allows, and 71 folio rejections.
+- All four local catalogs remain blocked/undetermined for folio display. Public output contains no scans, source filenames, raw OCR, verbatim notes, or private image paths; no Hovey images are public.
+- Local metadata schema version 4 keeps both Huss catalogs as scalar `specimen` records, represents each numbered Nininger entry as one `catalog-item` parent with ordered holdings, and represents Hovey as `catalog-number` records with ordered holding groups. The 136 Nininger items contain 310 reviewed holdings: 298 designated, 12 anonymous, 304 gram-bearing, 4 casts, and 2 count-only.
+- The runtime, validator, `data/catalog.json`, and `data/folios.json` are validation-green for strict schema 4. Hovey catalog numbers remain searchable but are excluded from records-with-designation summaries, matching the private exporter and the descriptor's zero count. Both integrated and synthetic-only validation pass.
+- Schema 4 catalog-number records use opaque catalog-scoped identifiers, ordered holding groups with provenance and nested weights, discovery-date text, and one or more catalog pages. Counts are reported group facts and must not be interpreted as counts of physical specimens; nested masses are never multiplied by count.
+- Hovey contributes 25 records, 33 holding groups, 55 reported pieces, 34 reported weights, and 36,534.7 reported grams across pages 149-155. Three Hovey records span two pages. Its descriptor and runtime both report 0 records with specimen designations and 25 records with weights; catalog numbers remain independently searchable.
+- Local metadata covers 92 catalog-scoped pages and records cite 83. Hovey folios remain `blocked`/`undetermined`; the real local manifest and schema-4 fixture contain no Hovey folio pages, and no Hovey images are public.
+- The schema-4 release preserves the previous 1,758-record public prefix byte-for-byte at the record level and appends the 25 Hovey observations. It remains facts-only: no private registry, OCR, manifest, scan filename, or source-image path is a runtime dependency.
+- The tracked runtime harness passes 93 tests. Integrated validation accepts all 1,783 records across four catalogs and confirms that all folio policies remain blocked/undetermined with no displayable pages.
 
 ## Preservation And Data Rules
 

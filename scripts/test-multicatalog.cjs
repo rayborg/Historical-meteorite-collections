@@ -12,7 +12,11 @@ const SPECIMEN_FIELDS = [
 const CATALOG_ITEM_FIELDS = [
   "id", "catalogId", "catalogItem", "holdings", "name", "classification", "locality", "year", "catalogPage", "confidence"
 ];
+const CATALOG_NUMBER_FIELDS = [
+  "id", "catalogId", "catalogNumber", "holdings", "name", "classification", "locality", "dateOfDiscovery", "catalogPages", "confidence"
+];
 const HOLDING_FIELDS = ["designation", "kind", "description", "count", "weight"];
+const CATALOG_NUMBER_HOLDING_FIELDS = ["description", "provenance", "count", "weights"];
 const CATALOG_FIELDS = [
   "id", "recordModel", "label", "compiler", "year", "sourcePages", "sourcePageCount", "recordCount",
   "recordsWithDesignation", "recordsWithWeight", "confidenceCounts", "folioDisplayPolicy", "rightsStatus"
@@ -137,13 +141,14 @@ function threeCatalogManifest() {
   };
 }
 
-test("schema 3 fixture validates with exact model-aware shapes", () => {
+test("schema 4 fixture validates with exact model-aware shapes", () => {
   assert.equal(app.validateCatalog(fixture), fixture);
-  assert.equal(fixture.metadata.schemaVersion, 3);
+  assert.equal(fixture.metadata.schemaVersion, 4);
   assert.deepEqual(fixture.metadata.catalogs.map(({ id, recordModel }) => [id, recordModel]), [
     ["huss-1976", "specimen"],
     ["huss-1986", "specimen"],
-    ["nininger-1933", "catalog-item"]
+    ["nininger-1933", "catalog-item"],
+    ["hovey-1896", "catalog-number"]
   ]);
   fixture.metadata.catalogs.forEach((descriptor) => {
     assert.deepEqual(Object.keys(descriptor).sort(), [...CATALOG_FIELDS].sort());
@@ -152,17 +157,27 @@ test("schema 3 fixture validates with exact model-aware shapes", () => {
     const descriptor = fixture.metadata.catalogs.find(({ id }) => id === record.catalogId);
     assert.deepEqual(
       Object.keys(record).sort(),
-      [...(descriptor.recordModel === "specimen" ? SPECIMEN_FIELDS : CATALOG_ITEM_FIELDS)].sort()
+      [...(descriptor.recordModel === "specimen"
+        ? SPECIMEN_FIELDS
+        : descriptor.recordModel === "catalog-item" ? CATALOG_ITEM_FIELDS : CATALOG_NUMBER_FIELDS)].sort()
     );
     if (descriptor.recordModel === "specimen") assert.deepEqual(Object.keys(record.weight), ["grams"]);
-    else record.holdings.forEach((holding) => {
+    else if (descriptor.recordModel === "catalog-item") record.holdings.forEach((holding) => {
       assert.deepEqual(Object.keys(holding).sort(), [...HOLDING_FIELDS].sort());
       assert.deepEqual(Object.keys(holding.weight), ["grams"]);
+    });
+    else record.holdings.forEach((holding) => {
+      assert.deepEqual(Object.keys(holding).sort(), [...CATALOG_NUMBER_HOLDING_FIELDS].sort());
+      holding.weights.forEach((weight) => assert.deepEqual(Object.keys(weight), ["grams"]));
     });
   });
 });
 
-test("schema 2 and legacy metadata are intentionally rejected", () => {
+test("schema 3, schema 2, and legacy metadata are intentionally rejected", () => {
+  const schema3 = clone(fixture);
+  schema3.metadata.schemaVersion = 3;
+  assert.throws(() => app.validateCatalog(schema3), /facts-only schema/);
+
   const schema2 = clone(fixture);
   schema2.metadata.schemaVersion = 2;
   assert.throws(() => app.validateCatalog(schema2), /facts-only schema/);
@@ -270,7 +285,8 @@ test("catalog item gaps and independent catalog numbering are valid", () => {
   const nininger = candidate.records.filter(({ catalogId }) => catalogId === "nininger-1933");
   candidate.records = [
     nininger[0], secondCollection[0], nininger[1], secondCollection[1], ...nininger.slice(2),
-    ...candidate.records.filter(({ catalogId }) => catalogId === "huss-1976")
+    ...candidate.records.filter(({ catalogId }) => catalogId === "huss-1976"),
+    ...candidate.records.filter(({ catalogId }) => catalogId === "hovey-1896")
   ];
   assert.equal(app.validateCatalog(candidate), candidate);
 });
@@ -325,7 +341,8 @@ test("holding privacy permits factual designation and description boundaries", (
 
 test("metadata summaries use holding designation and mass presence", () => {
   assert.equal(fixture.metadata.recordsWithDesignation, 7);
-  assert.equal(fixture.metadata.recordsWithWeight, 8);
+  assert.equal(fixture.metadata.recordsWithWeight, 10);
+  assert.deepEqual(app.recordDesignations(recordById(fixture, "hovey-catalog-z9")), []);
   const candidate = clone(fixture);
   recordById(candidate, "nininger-item-4").holdings[0].designation = "N. 404";
   assert.throws(() => app.validateCatalog(candidate), /facts-only schema/);
@@ -351,6 +368,123 @@ test("catalog item preparation preserves source-order holdings and exact values"
   assert.deepEqual(item.holdings.map(({ designation }) => designation), ["168a", "34jj"]);
   assert.deepEqual(item.holdings.map(({ weight }) => weight.grams), [12, 3]);
   assert.deepEqual(app.recordMasses(item), [12, 3]);
+});
+
+test("catalog-number preparation preserves opaque numbers, holding order, weights, and pages", () => {
+  const records = recordsFor("hovey-1896");
+  assert.deepEqual(records.map(({ catalogNumber }) => catalogNumber), ["Z-9", "1/2"]);
+  assert.deepEqual(records[0].catalogPages, [149, 150]);
+  assert.deepEqual(records[0].holdings[0], {
+    description: "Fragments",
+    provenance: "Museum collection",
+    count: 22,
+    weights: [{ grams: 212.6 }]
+  });
+  assert.deepEqual(app.recordMasses(records[1]), [24.7, 11.4]);
+  assert.deepEqual(app.recordCatalogPages(records[0]), [149, 150]);
+});
+
+test("catalog numbers are unique opaque strings and need not increase", () => {
+  assert.doesNotThrow(() => app.validateCatalog(clone(fixture)));
+  assert.equal(recordById(fixture, "hovey-catalog-fraction-like").catalogNumber, "1/2");
+  const duplicate = clone(fixture);
+  recordById(duplicate, "hovey-catalog-fraction-like").catalogNumber = "Z-9";
+  assert.throws(() => app.validateCatalog(duplicate), /facts-only schema/);
+  for (const value of [null, "", 12]) {
+    const candidate = clone(fixture);
+    recordById(candidate, "hovey-catalog-z9").catalogNumber = value;
+    assert.throws(() => app.validateCatalog(candidate), /facts-only schema/);
+  }
+});
+
+test("catalog-number holding exact shape and scalar constraints are enforced", () => {
+  const mutations = [
+    (holding) => { holding.description = ""; },
+    (holding) => { holding.provenance = ""; },
+    (holding) => { holding.count = 0; },
+    (holding) => { holding.count = 1.5; },
+    (holding) => { holding.weights = []; },
+    (holding) => { holding.weights[0].grams = -1; },
+    (holding) => { holding.weights[0].grams = Infinity; },
+    (holding) => { holding.weights[0].display = "212.6 g"; },
+    (holding) => { holding.notes = "Public-looking"; }
+  ];
+  mutations.forEach((mutate) => {
+    const candidate = clone(fixture);
+    mutate(recordById(candidate, "hovey-catalog-z9").holdings[0]);
+    assert.throws(() => app.validateCatalog(candidate), /facts-only schema/);
+  });
+  const noHoldings = clone(fixture);
+  recordById(noHoldings, "hovey-catalog-z9").holdings = [];
+  assert.throws(() => app.validateCatalog(noHoldings), /facts-only schema/);
+});
+
+test("catalog-number pages are nonempty, ordered, unique, and descriptor-scoped", () => {
+  for (const pages of [[], [150, 149], [149, 149], [149, 151], [0], [149.5]]) {
+    const candidate = clone(fixture);
+    recordById(candidate, "hovey-catalog-z9").catalogPages = pages;
+    assert.throws(() => app.validateCatalog(candidate), /facts-only schema/);
+  }
+});
+
+test("catalog-number privacy rules cover descriptions and provenance", () => {
+  const sourceWeightProse = clone(fixture);
+  const sourceHolding = recordById(sourceWeightProse, "hovey-catalog-z9").holdings[0];
+  sourceHolding.description = "Twenty-two individuals ranging from 1.5 g. to 26.2 g.";
+  sourceHolding.provenance = "Purchased as a 12 g portion.";
+  assert.equal(app.validateCatalog(sourceWeightProse), sourceWeightProse);
+
+  for (const [field, value] of [
+    ["description", "Raw OCR output"],
+    ["description", "source/pages/149.dat"],
+    ["provenance", "Reviewer note: uncertain"],
+    ["provenance", "IMG_0149.TIFF"]
+  ]) {
+    const candidate = clone(fixture);
+    recordById(candidate, "hovey-catalog-z9").holdings[0][field] = value;
+    assert.throws(() => app.validateCatalog(candidate), /facts-only schema/);
+  }
+});
+
+test("generic leakage validation rejects private labels and OCR batch identifiers", () => {
+  for (const value of ["Notes", "batch-4"]) {
+    const candidate = clone(fixture);
+    recordById(candidate, "hovey-catalog-z9").locality = value;
+    assert.throws(() => app.validateCatalog(candidate), /facts-only schema/);
+  }
+});
+
+test("catalog-number search covers number, facts, descriptions, and provenance", () => {
+  const records = recordsFor("hovey-1896");
+  assert.deepEqual(ids(records.filter((record) => app.matchesSearch(record, "catalog no. 1/2"))), ["hovey-catalog-fraction-like"]);
+  assert.deepEqual(ids(records.filter((record) => app.matchesSearch(record, "Cross-page"))), ["hovey-catalog-z9"]);
+  assert.deepEqual(ids(records.filter((record) => app.matchesSearch(record, "Synthetic locality"))), ["hovey-catalog-z9"]);
+  assert.deepEqual(ids(records.filter((record) => app.matchesSearch(record, "1890"))), ["hovey-catalog-z9"]);
+  assert.deepEqual(ids(records.filter((record) => app.matchesSearch(record, "Fragments"))), ["hovey-catalog-z9"]);
+  assert.deepEqual(ids(records.filter((record) => app.matchesSearch(record, "Museum collection"))), ["hovey-catalog-z9"]);
+});
+
+test("catalog-number mass behavior flattens weights without multiplying counts", () => {
+  const records = recordsFor("hovey-1896");
+  assert.deepEqual(ids(app.filterRecords(records, filters({ min: 11, max: 12 }))), ["hovey-catalog-fraction-like"]);
+  assert.deepEqual(ids(app.filterRecords(records, filters({ min: 200, max: 220 }))), ["hovey-catalog-z9"]);
+  assert.deepEqual(ids(app.filterRecords(records, filters({ sort: "weight-asc" }))), [
+    "hovey-catalog-fraction-like", "hovey-catalog-z9"
+  ]);
+  assert.deepEqual(ids(app.filterRecords(records, filters({ sort: "weight-desc" }))), [
+    "hovey-catalog-z9", "hovey-catalog-fraction-like"
+  ]);
+  assert.equal(app.calculateStatistics(records).grams, 248.7);
+});
+
+test("catalog-number holding labels distinguish reported group counts", () => {
+  const [holding] = recordsFor("hovey-1896")[0].holdings;
+  assert.deepEqual(app.catalogNumberHoldingDetails(holding), [
+    "Provenance: Museum collection", "Reported count: 22", "Masses: 212.6 g"
+  ]);
+  assert.deepEqual(app.catalogNumberHoldingDetails(recordsFor("hovey-1896")[1].holdings[0]), [
+    "Reported count: 2", "Masses: 24.7 g, 11.4 g"
+  ]);
 });
 
 test("search covers catalog items and rendered holding facts", () => {
@@ -416,10 +550,10 @@ test("designation sorting uses numeric Nininger catalog items", () => {
 
 test("statistics keep parent observations and sum every holding mass once", () => {
   const statistics = app.calculateStatistics(preparedRecords());
-  assert.equal(statistics.observations, 10);
-  assert.equal(statistics.specimens, 10);
-  assert.equal(statistics.grams, 205);
-  assert.equal(statistics.pages, 10);
+  assert.equal(statistics.observations, 12);
+  assert.equal(statistics.specimens, 12);
+  assert.equal(statistics.grams, 453.7);
+  assert.equal(statistics.pages, 12);
 });
 
 test("holding labels are concise for count, cast, and aggregate rows", () => {
@@ -433,10 +567,11 @@ test("holding labels are concise for count, cast, and aggregate rows", () => {
 test("catalog selector and summaries retain descriptor model identity", () => {
   const registry = app.normalizeCatalogRegistry(fixture.metadata);
   assert.deepEqual(app.catalogSelectorEntries(registry).map(([id]) => id), [
-    "nininger-1933", "huss-1976", "huss-1986"
+    "hovey-1896", "nininger-1933", "huss-1976", "huss-1986"
   ]);
   assert.equal(registry["nininger-1933"].recordModel, "catalog-item");
-  assert.deepEqual(app.catalogSummaryEntries(registry).map(({ observationCount }) => observationCount), [2, 2, 6]);
+  assert.equal(registry["hovey-1896"].recordModel, "catalog-number");
+  assert.deepEqual(app.catalogSummaryEntries(registry).map(({ observationCount }) => observationCount), [2, 2, 6, 2]);
 });
 
 test("URL filter behavior and cache version remain stable", () => {
@@ -447,7 +582,7 @@ test("URL filter behavior and cache version remain stable", () => {
     query: "catalog item 2", catalog: "nininger-1933", min: "3", max: "12", sort: "weight-desc"
   });
   assert.equal(app.serializeUrlFilters(parsed).toString(), "q=catalog+item+2&catalog=nininger-1933&min=3&max=12&sort=weight-desc");
-  assert.equal(app.CACHE_VERSION, "20260722-1");
+  assert.equal(app.CACHE_VERSION, "20260723-1");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.CACHE_VERSION}`));
 });
@@ -470,6 +605,7 @@ test("folio policy validation still fails closed", () => {
   };
   assert.equal(app.validateFolioManifest(blockedManifest, registry), true);
   assert.equal(app.getAuthorizedFolio(blockedManifest, "nininger-1933", 1, registry), null);
+  assert.equal(app.getAuthorizedFolio(blockedManifest, "hovey-1896", 149, registry), null);
 
   const unsafe = clone(blockedManifest);
   unsafe.catalogs["nininger-1933"].displayPolicy = "display";
@@ -477,15 +613,18 @@ test("folio policy validation still fails closed", () => {
   assert.equal(app.validateFolioManifest(unsafe, registry), false);
 });
 
-test("HTML and runtime contain accessible catalog-item card behavior", () => {
+test("HTML and runtime contain accessible multi-holding card behavior", () => {
   const root = join(__dirname, "..");
   const html = readFileSync(join(root, "index.html"), "utf8");
   const script = readFileSync(join(root, "app.js"), "utf8");
   assert.match(html, /<section class="record-holdings" aria-label="Holdings" hidden>/);
   assert.match(html, /<ol class="holdings-list" role="list"><\/ol>/);
-  assert.match(html, /Designation \/ catalog item, ascending/);
+  assert.match(html, /Designation \/ catalog number, ascending/);
   assert.match(script, /recordWeight\.remove\(\)/);
   assert.match(script, /`Catalog item \$\{record\.catalogItem\}`/);
+  assert.match(script, /`Catalog no\. \$\{record\.catalogNumber\}`/);
+  assert.match(script, /Reported count:/);
+  assert.match(script, /citedPages\.join\(", "\)/);
   assert.match(script, /holdings\.forEach\(\(holding\) =>/);
   assert.match(script, /"Unnumbered"/);
 });
@@ -525,10 +664,11 @@ test("canonical global and per-catalog counts match the synthetic records", () =
   assert.deepEqual(fixture.metadata.confidenceCounts, totals.confidenceCounts);
 });
 
-test("canonical order is Nininger-first and literal while parenthesized search stays semantic", () => {
+test("canonical order preserves Nininger and literal Huss before catalog-number", () => {
   assert.deepEqual(ids(fixture.records), [
     "nininger-item-1", "nininger-item-2", "nininger-item-3", "nininger-item-4", "nininger-item-5",
-    "nininger-item-6", "huss-second-h399-1", "huss-second-h400", "huss-h27-3", "huss-h42"
+    "nininger-item-6", "huss-second-h399-1", "huss-second-h400", "huss-h27-3", "huss-h42",
+    "hovey-catalog-z9", "hovey-catalog-fraction-like"
   ]);
   const parenthesized = preparedRecords().find(({ id }) => id === "huss-second-h399-1");
   assert.equal(app.matchesSearch(parenthesized, "H399"), true);
@@ -630,7 +770,9 @@ test("duplicate labels retain distinct disambiguation inputs and catalog IDs", (
 test("catalog selector orders public sources chronologically without changing source order", () => {
   const registry = app.normalizeCatalogRegistry(fixture.metadata);
   const sourceOrder = fixture.metadata.catalogs.map(({ id }) => id);
-  assert.deepEqual(app.catalogSelectorEntries(registry).map(([id]) => id), ["nininger-1933", "huss-1976", "huss-1986"]);
+  assert.deepEqual(app.catalogSelectorEntries(registry).map(([id]) => id), [
+    "hovey-1896", "nininger-1933", "huss-1976", "huss-1986"
+  ]);
   assert.deepEqual(fixture.metadata.catalogs.map(({ id }) => id), sourceOrder);
   assert.deepEqual(app.catalogSummaryEntries(registry).map(({ id }) => id), sourceOrder);
 });

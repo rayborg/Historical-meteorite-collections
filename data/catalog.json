@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "schemaVersion": 3,
+    "schemaVersion": 4,
     "scope": "facts-only",
     "factualFields": [
       "id",
@@ -9,18 +9,50 @@
       "name",
       "weight.grams",
       "catalogItem",
+      "catalogNumber",
       "holdings[].designation",
       "holdings[].kind",
       "holdings[].description",
+      "holdings[].provenance",
       "holdings[].count",
       "holdings[].weight.grams",
+      "holdings[].weights[].grams",
       "classification",
       "locality",
       "year",
+      "dateOfDiscovery",
       "catalogPage",
+      "catalogPages[]",
       "confidence"
     ],
     "catalogs": [
+      {
+        "id": "hovey-1896",
+        "recordModel": "catalog-number",
+        "label": "Catalogue of meteorites in the collection of the American Museum of Natural History, to July 1, 1896 (1896)",
+        "compiler": "Edmund Otis Hovey",
+        "year": 1896,
+        "sourcePages": [
+          149,
+          150,
+          151,
+          152,
+          153,
+          154,
+          155
+        ],
+        "sourcePageCount": 7,
+        "recordCount": 25,
+        "recordsWithDesignation": 0,
+        "recordsWithWeight": 25,
+        "confidenceCounts": {
+          "high": 25,
+          "medium": 0,
+          "low": 0
+        },
+        "folioDisplayPolicy": "blocked",
+        "rightsStatus": "undetermined"
+      },
       {
         "id": "huss-1976",
         "recordModel": "specimen",
@@ -167,11 +199,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 1758,
+    "recordCount": 1783,
     "recordsWithDesignation": 1743,
-    "recordsWithWeight": 1754,
+    "recordsWithWeight": 1779,
     "confidenceCounts": {
-      "high": 1758,
+      "high": 1783,
       "medium": 0,
       "low": 0
     }
@@ -27441,6 +27473,717 @@
       "locality": "Roosevelt Co., New Mexico",
       "year": null,
       "catalogPage": 48,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-95822a38-806a-47e5-b73a-e84e71fc9d7a",
+      "catalogId": "hovey-1896",
+      "catalogNumber": "13/22",
+      "holdings": [
+        {
+          "description": "A complete individual of ellipsoidal form, which had been used as a pounder by the natives.",
+          "provenance": "(Spang Coll.)",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 564
+            }
+          ]
+        },
+        {
+          "description": "An obtusely angular specimen, one side of which has been polished and etched, showing coarse Widmanstätten figures. The original surface has been all scaled off.",
+          "provenance": "(Spang Coll.)",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 251
+            }
+          ]
+        }
+      ],
+      "name": "Xiquipilco",
+      "classification": "AËROSIDERITES. (IRON METEORITES.)",
+      "locality": "Toluca Valley, Mexico",
+      "dateOfDiscovery": "1784",
+      "catalogPages": [
+        149,
+        150
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "obs-5ee3a891-178e-400f-9057-417abb271c78",
+      "catalogId": "hovey-1896",
+      "catalogNumber": "13/5",
+      "holdings": [
+        {
+          "description": "A complete individual, the surface of which has scaled off somewhat. A polished and etched surface shows coarse Widmanstätten figures.",
+          "provenance": "(Bailey Coll.)",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 1153
+            }
+          ]
+        }
+      ],
+      "name": "Tejupilco",
+      "classification": "AËROSIDERITES. (IRON METEORITES.)",
+      "locality": "Toluca Valley, Mexico",
+      "dateOfDiscovery": "1784",
+      "catalogPages": [
+        149
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "obs-2572003b-2379-4c1b-80b4-61d867eb534f",
+      "catalogId": "hovey-1896",
+      "catalogNumber": "13/11",
+      "holdings": [
+        {
+          "description": "A rectangular chiseled and sawed fragment. Shows poor Widmanstätten figures.",
+          "provenance": "(Spang Coll.)",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 6.4
+            }
+          ]
+        }
+      ],
+      "name": "Elbogen",
+      "classification": "AËROSIDERITES. (IRON METEORITES.)",
+      "locality": "Bohemia",
+      "dateOfDiscovery": "Recognized in 1811",
+      "catalogPages": [
+        150
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "obs-29fd3cd4-1f98-4481-95a0-0d75424b1fb2",
+      "catalogId": "hovey-1896",
+      "catalogNumber": "13/14",
+      "holdings": [
+        {
+          "description": "A sawed, cuneiform piece showing part of an original surface pit.",
+          "provenance": "(Spang Coll.)",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 26.4
+            }
+          ]
+        }
+      ],
+      "name": "Braunau",
+      "classification": "AËROSIDERITES. (IRON METEORITES.)",
+      "locality": "Bohemia",
+      "dateOfDiscovery": "Fell July 14, 1847",
+      "catalogPages": [
+        150
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "obs-27cf1bb1-c95d-4695-ab05-0d40a069bdcd",
+      "catalogId": "hovey-1896",
+      "catalogNumber": "13/15",
+      "holdings": [
+        {
+          "description": "An irregular, chiseled fragment.",
+          "provenance": "(Spang Coll.)",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 18.3
+            }
+          ]
+        }
+      ],
+      "name": "See-Läsgen",
+      "classification": "AËROSIDERITES. (IRON METEORITES.)",
+      "locality": "Brandenburg, Prussia",
+      "dateOfDiscovery": "1847",
+      "catalogPages": [
+        150
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "obs-16d055d5-0845-4c53-82cb-35ace75bdd8b",
+      "catalogId": "hovey-1896",
+      "catalogNumber": "13/16",
+      "holdings": [
+        {
+          "description": "A sawed slab showing natural surface on one edge. Etched surface shows small, indistinct markings.",
+          "provenance": "(Spang Coll.)",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 43
+            }
+          ]
+        }
+      ],
+      "name": "Magura",
+      "classification": "AËROSIDERITES. (IRON METEORITES.)",
+      "locality": "Szlanicza, Arva, Hungary",
+      "dateOfDiscovery": "1840",
+      "catalogPages": [
+        150
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8f71ae04-ca9a-4c90-916e-5babc34c2b58",
+      "catalogId": "hovey-1896",
+      "catalogNumber": "13/25",
+      "holdings": [
+        {
+          "description": "Oblong, rectangular, sawed piece.",
+          "provenance": "(Spang Coll.)",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 52
+            }
+          ]
+        }
+      ],
+      "name": "Tazewell",
+      "classification": "AËROSIDERITES. (IRON METEORITES.)",
+      "locality": "Claiborne Co., Tenn.",
+      "dateOfDiscovery": "1853",
+      "catalogPages": [
+        150
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c446342a-bc6b-4950-a3f8-a5c5189f622e",
+      "catalogId": "hovey-1896",
+      "catalogNumber": "13/10",
+      "holdings": [
+        {
+          "description": "A complete individual, irregularly meniscus-shaped. Surface pitted and torn. Etched surface shows Widmanstätten figures.",
+          "provenance": "(Purchased from G. F. Kunz.)",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 24154
+            }
+          ]
+        },
+        {
+          "description": "A slab 180 x 123 x 5 to 9 mm. in size. Both sides have been etched and show the typical Widmanstätten figures very perfectly. Three edges show the original surface of the mass.",
+          "provenance": "(Purchased from G. F. Kunz.)",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 772
+            }
+          ]
+        }
+      ],
+      "name": "Glorieta Mt.",
+      "classification": "AËROSIDERITES. (IRON METEORITES.)",
+      "locality": "Santa Fé Co., New Mexico",
+      "dateOfDiscovery": "1884",
+      "catalogPages": [
+        151
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "obs-15ca1705-9590-4f60-b96a-f2b7a9dfa25b",
+      "catalogId": "hovey-1896",
+      "catalogNumber": "13/24",
+      "holdings": [
+        {
+          "description": "A polished slab 80 x 75 x 6 mm., one surface etched, showing excellent Widmanstätten figures.",
+          "provenance": "(Spang Coll.)",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 217
+            }
+          ]
+        }
+      ],
+      "name": "Staunton",
+      "classification": "AËROSIDERITES. (IRON METEORITES.)",
+      "locality": "Augusta Co., Va.",
+      "dateOfDiscovery": "1858–9",
+      "catalogPages": [
+        151
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "obs-9e85680c-6108-4692-a3ef-e01b7f355851",
+      "catalogId": "hovey-1896",
+      "catalogNumber": "13/26",
+      "holdings": [
+        {
+          "description": "A polished slab 278 x 137 x 7 to 17 mm. in size, an entire section of the mass. Much cohenite is present, frequently inclosing flakes and plates of schreibersite. Three irregularly ellipsoidal nodules are prominent in the mass. They consist of troilite associated with more or less of a relatively soft graphitic (?) substance, and surrounded by a shell of schreibersite, outside of which is a shell of cohenite. The Widmanstätten figures are broad and interrupted, giving the mass an almost granular appearance.",
+          "provenance": "(Purchased from E. E. Howell.)",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 2285
+            }
+          ]
+        },
+        {
+          "description": "A complete individual; in shape an irregular, elongated, four-sided pyramid.",
+          "provenance": "(Purchased from E. E. Howell.)",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 14.7
+            }
+          ]
+        }
+      ],
+      "name": "Cañon Diablo",
+      "classification": "AËROSIDERITES. (IRON METEORITES.)",
+      "locality": "Arizona",
+      "dateOfDiscovery": "1891",
+      "catalogPages": [
+        151,
+        152
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "obs-65dd11c1-5d4a-4939-9b84-c0a9ccb1537a",
+      "catalogId": "hovey-1896",
+      "catalogNumber": "13/19",
+      "holdings": [
+        {
+          "description": "An irregular chiseled piece showing a torn surface.",
+          "provenance": "(Spang Coll.)",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 78
+            }
+          ]
+        }
+      ],
+      "name": "Berg Emir",
+      "classification": "AËROSIDERITES. (IRON METEORITES.)",
+      "locality": "Siberia",
+      "dateOfDiscovery": "?",
+      "catalogPages": [
+        152
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f7f37ef3-39f2-44ee-a05f-158bf13e2c10",
+      "catalogId": "hovey-1896",
+      "catalogNumber": "13/2",
+      "holdings": [
+        {
+          "description": "A polished slab in which the stony portion exceeds the metallic. The iron shows delicate Widmanstätten figures.",
+          "provenance": "(Bailey Coll.)",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 26.4
+            }
+          ]
+        },
+        {
+          "description": "A polished piece in which the iron exceeds the stony matter in amount.",
+          "provenance": "(Bailey Coll.)",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 14.2
+            }
+          ]
+        }
+      ],
+      "name": "Rittersgrün",
+      "classification": "AËROSIDEROLITES. (IRON-STONE METEORITES.)",
+      "locality": "Erzgebirge, Saxony",
+      "dateOfDiscovery": "1847",
+      "catalogPages": [
+        152,
+        153
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "obs-4861fc0c-b0cf-4da6-8f94-42f1052478bf",
+      "catalogId": "hovey-1896",
+      "catalogNumber": "13/27",
+      "holdings": [
+        {
+          "description": "A polished slab 126 x 124 x 4 to 6 mm. in size, showing the original surface of the mass on all edges. The Widmanstätten figures are long and slender, with occasional broad bands. Many of the interspaces show a second, much smaller set of markings. One large nodule of troilite.",
+          "provenance": "(Purchased from E. E. Howell.)",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 455
+            }
+          ]
+        }
+      ],
+      "name": "El Capitan Mts.",
+      "classification": "AËROSIDERITES. (IRON METEORITES.)",
+      "locality": "New Mexico",
+      "dateOfDiscovery": "1893",
+      "catalogPages": [
+        152
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e9a4d7b5-e363-4b9a-a4a7-3575856b2e52",
+      "catalogId": "hovey-1896",
+      "catalogNumber": "13/13",
+      "holdings": [
+        {
+          "description": "An irregular piece, one side of which has been polished and etched. The particles of iron show Widmanstätten figures. The outer surface has been much rusted. The olivine and other stony matter exceed the iron in amount, and the whole seems to be identical with the specimens from Rittersgrün, No. 13/2. They are probably parts of the same fall.",
+          "provenance": "(Spang Coll.)",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 76
+            }
+          ]
+        }
+      ],
+      "name": "Breitenbach",
+      "classification": "AËROSIDEROLITES. (IRON-STONE METEORITES.)",
+      "locality": "Erzgebirge, Saxony",
+      "dateOfDiscovery": "1861",
+      "catalogPages": [
+        153
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "obs-bbc0b184-d867-41d3-988a-fbbe32295788",
+      "catalogId": "hovey-1896",
+      "catalogNumber": "13/3",
+      "holdings": [
+        {
+          "description": "Twenty-two complete individuals, ranging in weight from 1.5 g. to 26.2 g. All show the nickel-white, rounded knobs of iron.",
+          "provenance": "(Bailey and Spang Colls.)",
+          "count": 22,
+          "weights": [
+            {
+              "grams": 212.6
+            }
+          ]
+        },
+        {
+          "description": "An irregular mass, apparently showing none of the original crust.",
+          "provenance": "(Purchased from Miss F. A. M. Hitchcock.)",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 138.5
+            }
+          ]
+        },
+        {
+          "description": "An irregular mass like the last, but showing a little of the crust.",
+          "provenance": "(Spang Coll.)",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 58
+            }
+          ]
+        }
+      ],
+      "name": "Estherville",
+      "classification": "AËROSIDEROLITES. (IRON-STONE METEORITES.)",
+      "locality": "Emmet Co., Iowa",
+      "dateOfDiscovery": "Fell May 10, 1879.",
+      "catalogPages": [
+        153
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "obs-4e1545e1-334f-48e1-a7a1-7b45681c2d4f",
+      "catalogId": "hovey-1896",
+      "catalogNumber": "13/8",
+      "holdings": [
+        {
+          "description": "About half of a spheroidal mass, in which the iron much predominates over the included olivine. Much of the original surface has scaled off, but many of the pits still show. Apparently different from No. 13/20, and may be the pallasite of Imilac.",
+          "provenance": "(Presented by Mrs. R. L. Stuart.)",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 4876
+            }
+          ]
+        }
+      ],
+      "name": "Desert of Atacama",
+      "classification": "AËROSIDEROLITES. (IRON-STONE METEORITES.)",
+      "locality": "South America",
+      "dateOfDiscovery": "?",
+      "catalogPages": [
+        153
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "obs-388fced0-1416-47e1-8b44-a98037e315f9",
+      "catalogId": "hovey-1896",
+      "catalogNumber": "13/12",
+      "holdings": [
+        {
+          "description": "A very irregular, spongy iron, which has lost its original inclusions, closely resembling the original Pallas iron.",
+          "provenance": "(Spang Coll.)",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 4.5
+            }
+          ]
+        }
+      ],
+      "name": "Ensicheim",
+      "classification": "AËROSIDEROLITES. (IRON-STONE METEORITES.)",
+      "locality": "Elbogen, Bohemia",
+      "dateOfDiscovery": "?",
+      "catalogPages": [
+        154
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f95e08b1-e689-48c9-b158-2709c22a855b",
+      "catalogId": "hovey-1896",
+      "catalogNumber": "13/20",
+      "holdings": [
+        {
+          "description": "A sharp-pointed, irregular mass of very spongy iron, from which the stony matter has largely decomposed and has fallen out to some extent. Apparently different from No. 13/8.",
+          "provenance": "(Spang Coll.)",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 13.3
+            }
+          ]
+        }
+      ],
+      "name": "Desert of Atacama",
+      "classification": "AËROSIDEROLITES. (IRON-STONE METEORITES.)",
+      "locality": "South America",
+      "dateOfDiscovery": "?",
+      "catalogPages": [
+        154
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f4d47135-aec3-4b98-8ee9-4ba856dc6f25",
+      "catalogId": "hovey-1896",
+      "catalogNumber": "13/21",
+      "holdings": [
+        {
+          "description": "An irregular, spongy iron, which has lost its original inclusions.",
+          "provenance": "(Spang Coll.)",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 31
+            }
+          ]
+        }
+      ],
+      "name": "Mount Kemis",
+      "classification": "AËROSIDEROLITES. (IRON-STONE METEORITES.)",
+      "locality": "Siberia",
+      "dateOfDiscovery": "?",
+      "catalogPages": [
+        154
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6430ca11-8cc4-46b9-a9ed-9d6117be4a38",
+      "catalogId": "hovey-1896",
+      "catalogNumber": "13/4",
+      "holdings": [
+        {
+          "description": "A sub-rectangular individual with grayish-black skin, which has been removed at one spot showing the gray interior with its minute particles of iron.",
+          "provenance": "(Bailey Coll.)",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 35
+            }
+          ]
+        },
+        {
+          "description": "A complete, rudely wedge-shaped individual preserving its dull black crust nearly entire. The surface is indented with closely-set small pits. The description makes it probable that this is the correct locality for this stone, though none was given on the Spang label.",
+          "provenance": "(Spang Coll.)",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 75.4
+            }
+          ]
+        }
+      ],
+      "name": "Knyahinya",
+      "classification": "AËROLITES. (STONE METEORITES.)",
+      "locality": "near Nagy-Berezna, Hungary",
+      "dateOfDiscovery": "Fell June 9, 1866.",
+      "catalogPages": [
+        154
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "obs-26a72b37-c14d-4eb1-8661-04f0adca2059",
+      "catalogId": "hovey-1896",
+      "catalogNumber": "13/7",
+      "holdings": [
+        {
+          "description": "A fragment from the interior, preserving none of the crust. This is a gray rock with minute metallic (iron) points scattered thickly through it.",
+          "provenance": "(Bailey Coll.)",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 44.5
+            }
+          ]
+        }
+      ],
+      "name": "New Concord",
+      "classification": "AËROLITES. (STONE METEORITES.)",
+      "locality": "Ohio",
+      "dateOfDiscovery": "Fell May 1, 1860.",
+      "catalogPages": [
+        154
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "obs-49307dcd-7470-4530-8d30-54695055df89",
+      "catalogId": "hovey-1896",
+      "catalogNumber": "13/1",
+      "holdings": [
+        {
+          "description": "A complete, hemispheroidal individual, preserving its thin rusty-black crust. A chipped place shows the light gray interior with its metallic grains.",
+          "provenance": "(Bailey Coll.)",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 51.2
+            }
+          ]
+        }
+      ],
+      "name": "Pultusk",
+      "classification": "AËROLITES. (STONE METEORITES.)",
+      "locality": "Poland",
+      "dateOfDiscovery": "Fell Jan. 30, 1868.",
+      "catalogPages": [
+        155
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "obs-27177a52-5555-4a2a-86e7-da1dd0a26a16",
+      "catalogId": "hovey-1896",
+      "catalogNumber": "13/18",
+      "holdings": [
+        {
+          "description": "A complete, wedge-shaped individual. The comparatively thick, dull-black crust is intersected by a network of fine cracks. The interior is gray with small brown spots in it, and with numerous fine veins and particles of iron scattered through it.",
+          "provenance": "(Spang Coll.)",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 165
+            }
+          ]
+        },
+        {
+          "description": "Two smaller complete individuals presenting the same characters.",
+          "provenance": "(Spang Coll.)",
+          "count": 2,
+          "weights": [
+            {
+              "grams": 24.7
+            },
+            {
+              "grams": 11.4
+            }
+          ]
+        }
+      ],
+      "name": "Möcz",
+      "classification": "AËROLITES. (STONE METEORITES.)",
+      "locality": "Transylvania",
+      "dateOfDiscovery": "Fell Feb. 3, 1882.",
+      "catalogPages": [
+        155
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "obs-20583b8d-47b2-474e-9df9-dc0da7906567",
+      "catalogId": "hovey-1896",
+      "catalogNumber": "13/23",
+      "holdings": [
+        {
+          "description": "A cuboidal fragment from the interior. Light gray rock with numerous small brown patches. Numerous particles of iron are scattered through the mass, and there is one angular piece (part of a crystal ?) of pyrrhotite.",
+          "provenance": "(Spang Coll.)",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 4.2
+            }
+          ]
+        }
+      ],
+      "name": "Searsmont",
+      "classification": "AËROLITES. (STONE METEORITES.)",
+      "locality": "Waldo Co., Maine",
+      "dateOfDiscovery": "Fell May 21, 1871.",
+      "catalogPages": [
+        155
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b7e57736-141a-4881-bdde-f438fc0d992a",
+      "catalogId": "hovey-1896",
+      "catalogNumber": "13/6",
+      "holdings": [
+        {
+          "description": "A nearly complete individual, roughly pyramidal in shape, showing broad shallow surface pits. The thin, dull-black crust has been broken off in spots, revealing the dark gray interior with minute metallic points scattered through it. This is the fall entered as “West Liberty” in the British Museum catalogue of meteorites.",
+          "provenance": "(Purchased from H. T. Woodman.)",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 583
+            }
+          ]
+        }
+      ],
+      "name": "Homestead",
+      "classification": "AËROLITES. (STONE METEORITES.)",
+      "locality": "Iowa Co., Iowa",
+      "dateOfDiscovery": "Fell Feb. 12, 1875.",
+      "catalogPages": [
+        155
+      ],
       "confidence": "high"
     }
   ]

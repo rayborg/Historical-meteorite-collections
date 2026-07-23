@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "schemaVersion": 3,
+    "schemaVersion": 4,
     "scope": "facts-only",
     "factualFields": [
       "id",
@@ -9,15 +9,20 @@
       "name",
       "weight.grams",
       "catalogItem",
+      "catalogNumber",
       "holdings[].designation",
       "holdings[].kind",
       "holdings[].description",
+      "holdings[].provenance",
       "holdings[].count",
       "holdings[].weight.grams",
+      "holdings[].weights[].grams",
       "classification",
       "locality",
       "year",
+      "dateOfDiscovery",
       "catalogPage",
+      "catalogPages[]",
       "confidence"
     ],
     "catalogs": [
@@ -65,12 +70,27 @@
         "confidenceCounts": { "high": 3, "medium": 2, "low": 1 },
         "folioDisplayPolicy": "blocked",
         "rightsStatus": "undetermined"
+      },
+      {
+        "id": "hovey-1896",
+        "recordModel": "catalog-number",
+        "label": "Hovey meteorite catalog (1896)",
+        "compiler": "Edmund Otis Hovey",
+        "year": 1896,
+        "sourcePages": [149, 150],
+        "sourcePageCount": 2,
+        "recordCount": 2,
+        "recordsWithDesignation": 0,
+        "recordsWithWeight": 2,
+        "confidenceCounts": { "high": 1, "medium": 1, "low": 0 },
+        "folioDisplayPolicy": "blocked",
+        "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 10,
+    "recordCount": 12,
     "recordsWithDesignation": 7,
-    "recordsWithWeight": 8,
-    "confidenceCounts": { "high": 6, "medium": 3, "low": 1 }
+    "recordsWithWeight": 10,
+    "confidenceCounts": { "high": 7, "medium": 4, "low": 1 }
   },
   "records": [
     {
@@ -275,6 +295,44 @@
       "year": "1900",
       "catalogPage": 42,
       "confidence": "high"
+    },
+    {
+      "id": "hovey-catalog-z9",
+      "catalogId": "hovey-1896",
+      "catalogNumber": "Z-9",
+      "holdings": [
+        {
+          "description": "Fragments",
+          "provenance": "Museum collection",
+          "count": 22,
+          "weights": [{ "grams": 212.6 }]
+        }
+      ],
+      "name": "Cross-page example",
+      "classification": "Stone",
+      "locality": "Synthetic locality",
+      "dateOfDiscovery": "1890",
+      "catalogPages": [149, 150],
+      "confidence": "high"
+    },
+    {
+      "id": "hovey-catalog-fraction-like",
+      "catalogId": "hovey-1896",
+      "catalogNumber": "1/2",
+      "holdings": [
+        {
+          "description": "Two portions",
+          "provenance": null,
+          "count": 2,
+          "weights": [{ "grams": 24.7 }, { "grams": 11.4 }]
+        }
+      ],
+      "name": "Opaque number example",
+      "classification": null,
+      "locality": null,
+      "dateOfDiscovery": null,
+      "catalogPages": [150],
+      "confidence": "medium"
     }
   ]
 }

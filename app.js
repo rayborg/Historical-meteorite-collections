@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260722-1";
+const CACHE_VERSION = "20260723-1";
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "designation-asc";
 const VALID_SORTS = new Set([
@@ -35,9 +35,22 @@ const CATALOG_ITEM_RECORD_FIELDS = new Set([
   "catalogPage",
   "confidence"
 ]);
+const CATALOG_NUMBER_RECORD_FIELDS = new Set([
+  "id",
+  "catalogId",
+  "catalogNumber",
+  "holdings",
+  "name",
+  "classification",
+  "locality",
+  "dateOfDiscovery",
+  "catalogPages",
+  "confidence"
+]);
 const HOLDING_FIELDS = new Set(["designation", "kind", "description", "count", "weight"]);
+const CATALOG_NUMBER_HOLDING_FIELDS = new Set(["description", "provenance", "count", "weights"]);
 const HOLDING_KINDS = new Set(["specimen", "cast", "aggregate"]);
-const RECORD_MODEL_ORDER = ["specimen", "catalog-item"];
+const RECORD_MODEL_ORDER = ["catalog-item", "specimen", "catalog-number"];
 const RECORD_MODELS = new Set(RECORD_MODEL_ORDER);
 const FACTUAL_FIELDS = [
   "id",
@@ -46,15 +59,20 @@ const FACTUAL_FIELDS = [
   "name",
   "weight.grams",
   "catalogItem",
+  "catalogNumber",
   "holdings[].designation",
   "holdings[].kind",
   "holdings[].description",
+  "holdings[].provenance",
   "holdings[].count",
   "holdings[].weight.grams",
+  "holdings[].weights[].grams",
   "classification",
   "locality",
   "year",
+  "dateOfDiscovery",
   "catalogPage",
+  "catalogPages[]",
   "confidence"
 ];
 const CONFIDENCE_LEVELS = ["high", "medium", "low"];
@@ -91,8 +109,14 @@ const FOLIO_DISPLAY_POLICIES = new Set(["blocked", "display"]);
 const FOLIO_RIGHTS_STATUSES = new Set(["undetermined", "public-domain"]);
 const MAX_CATALOG_ID_LENGTH = 80;
 const MAX_DESCRIPTOR_TEXT_LENGTH = 160;
-const LEAKAGE_MARKER = /\b(?:raw[\s_-]*ocr|raw[\s_-]*text|ocr[\s_-]*(?:output|text)|source[\s_-]*(?:image|file)(?:[\s_-]*name)?s?|scan(?:ned)?[\s_-]*(?:image|file|path|name)s?|verbatim[\s_-]*notes?|transcription[\s_-]*notes?)\b/iu;
-const IMAGE_OR_SOURCE_FILE = /\.(?:avif|bmp|gif|heic|heif|hocr|jpe?g|ocr|pdf|png|svg|tiff?|webp)(?=$|[^A-Za-z0-9])|\b(?:dscn?|img|pxl)[_-]?\d{3,}\b/iu;
+const PRIVATE_LANGUAGE =
+  /\b(?:raw[\s_-]*(?:ocr|text|transcript(?:ion)?)|ocr[\s_-]*(?:batch|output|text)|source[\s_-]*(?:image|file)(?:[\s_-]*name)?s?|scan(?:ned)?[\s_-]*(?:image|file|path|name)s?|(?:private|research|transcription|verbatim|working)[\s_-]*notes?|(?:private|working)[\s_-]*(?:text|transcript(?:ion)?)|image[\s_-]*derivatives?)\b/iu;
+const PRIVATE_LABEL =
+  /^(?:notes?|verbatim\s+notes?|ocr|ocr\s+text|raw\s*(?:ocr|text)|source\s*(?:images?|files?|filenames?)|scans?|images?|paths?|weight(?:\s+|\.)display)$/iu;
+const IMAGE_LIKE_STRING =
+  /\.(?:arw|avif|bmp|cr2|cr3|csv|dat|dng|docx?|gif|heic|heif|hocr|jpe?g|jsonl?|log|md|nef|ocr|orf|pdf|pef|png|raf|rtf|rw2|srw|svg|text|tiff?|tsv|txt|webp|xml|ya?ml)(?=$|[^A-Za-z0-9])|\b(?:dscn?|img|pxl)[_-]?\d{3,}\b/iu;
+const OCR_BATCH_OR_CAMERA_TIMESTAMP =
+  /\b(?:ocr[\s_-]*)?batch[\s_-]*\d{1,5}(?:\.[A-Za-z0-9]{2,5})?\b|\b(?:19|20)\d{6}[_-]\d{6}(?:[_-]\d+)?(?:\.[A-Za-z0-9]{2,5})?\b/iu;
 const PATH_LIKE_STRING = /(?:^|[\s"'(])(?:[A-Za-z][A-Za-z\d+.-]*:\/\/|\/{1,2}|\.{1,2}[\\/]|~[\\/]|[A-Za-z]:[\\/]|(?:assets?|files?|folios?|images?|scans?|source[\s_-]*images?)[\\/])|\\/iu;
 const HOLDING_PRIVATE_LANGUAGE = /\bocr\b|\b(?:review(?:er)?|research|transcript(?:ion)?|verbatim|working|private)[\s_-]+notes?\b|\bpage[\s_-]*(?:id|identifier)\b|\bpage[_-]\d+\b|\b(?:private[\s_-]*source|source[\s_-]*page)\b/iu;
 const HOLDING_PRIVATE_DOCUMENT = /(?:^|[\s"'(])(?:source|private|data)[\\/][^\s"')]+|\.(?:dat|csv|docx?|json|md|odt|rtf|txt|xlsx?|xml)(?=$|[^A-Za-z0-9])/iu;
@@ -207,6 +231,10 @@ function matchesSearch(record, rawQuery) {
   const query = searchable(rawQuery);
   if (!query) return true;
 
+  const catalogNumberQuery = query.match(/^catalog no (.+)$/);
+  if (catalogNumberQuery && record.catalogNumber !== undefined) {
+    return searchable(record.catalogNumber) === catalogNumberQuery[1];
+  }
   const catalogItemQuery = query.match(/^catalog item (\d+)$/);
   if (catalogItemQuery) return record.catalogItem === Number(catalogItemQuery[1]);
   const holdingCodeQuery = numericLeadingHoldingCode(rawQuery);
@@ -222,10 +250,12 @@ function matchesSearch(record, rawQuery) {
 
   const numericQuery = String(rawQuery || "").trim();
   if (/^\d+$/.test(numericQuery)) {
-    const yearTokens = searchable(record.year).split(/\s+/).filter(Boolean);
+    if (record.catalogNumber !== undefined && searchable(record.catalogNumber).split(/\s+/).includes(numericQuery)) return true;
+    const yearTokens = searchable([record.year, record.dateOfDiscovery].filter(Boolean).join(" ")).split(/\s+/).filter(Boolean);
     const holdingTokens = new Set(searchable((record.holdings || []).flatMap((holding) => [
       holding.designation,
-      holding.description
+      holding.description,
+      holding.provenance
     ]).filter(Boolean).join(" ")).split(/\s+/).filter(Boolean));
     return String(record.catalogItem || "") === numericQuery ||
       recordDesignations(record).some((designation) => String(designation).trim() === numericQuery) ||
@@ -243,10 +273,12 @@ function matchesSearch(record, rawQuery) {
     const haystack = record.searchText || searchable([
       ...recordDesignations(record),
       record.catalogItem,
+      record.catalogNumber,
       record.name,
       record.classification,
       record.locality,
-      record.year
+      record.year,
+      record.dateOfDiscovery
     ].filter(Boolean).join(" "));
     if (!designationMatches) {
       const haystackTerms = new Set(haystack.split(/\s+/));
@@ -270,10 +302,12 @@ function matchesSearch(record, rawQuery) {
     const haystack = record.searchText || searchable([
       ...recordDesignations(record),
       record.catalogItem,
+      record.catalogNumber,
       record.name,
       record.classification,
       record.locality,
-      record.year
+      record.year,
+      record.dateOfDiscovery
     ].filter(Boolean).join(" "));
     const haystackTerms = new Set(haystack.split(/\s+/));
     return query.split(/\s+/).every((term) => haystackTerms.has(term));
@@ -282,15 +316,18 @@ function matchesSearch(record, rawQuery) {
   const haystack = record.searchText || searchable([
     ...recordDesignations(record),
     record.catalogItem,
+    record.catalogNumber,
     record.name,
     record.classification,
     record.locality,
-    record.year
+    record.year,
+    record.dateOfDiscovery
   ].filter(Boolean).join(" "));
   return query.split(/\s+/).every((term) => haystack.includes(term));
 }
 
 function recordDesignations(record) {
+  if (record?.catalogNumber !== undefined) return [];
   if (Array.isArray(record?.holdings)) {
     return record.holdings.map((holding) => holding.designation).filter(Boolean);
   }
@@ -338,13 +375,14 @@ function normalizedText(value) {
 
 function isLeakageSafeText(value) {
   return typeof value === "string" && value === normalizedText(value) &&
-    !/[\p{Cc}\p{Cf}]/u.test(value) && !LEAKAGE_MARKER.test(value) &&
-    !IMAGE_OR_SOURCE_FILE.test(value) && !PATH_LIKE_STRING.test(value);
+    !/[\p{Cc}\p{Cf}]/u.test(value) && !PRIVATE_LABEL.test(value) &&
+    !PRIVATE_LANGUAGE.test(value) && !IMAGE_LIKE_STRING.test(value) &&
+    !OCR_BATCH_OR_CAMERA_TIMESTAMP.test(value) && !PATH_LIKE_STRING.test(value);
 }
 
-function isLeakageSafeHoldingText(value) {
+function isLeakageSafeHoldingText(value, allowWeightDisplay = false) {
   return isLeakageSafeText(value) && !HOLDING_PRIVATE_LANGUAGE.test(value) &&
-    !HOLDING_PRIVATE_DOCUMENT.test(value) && !HOLDING_WEIGHT_DISPLAY.test(value);
+    !HOLDING_PRIVATE_DOCUMENT.test(value) && (allowWeightDisplay || !HOLDING_WEIGHT_DISPLAY.test(value));
 }
 
 function isLeakageSafeTree(value) {
@@ -414,10 +452,15 @@ function compareCanonicalNullableNumber(left, right) {
 function compareCanonicalRecords(left, right, registry) {
   const leftModel = registry[left.catalogId].recordModel;
   const rightModel = registry[right.catalogId].recordModel;
-  const modelOrder = RECORD_MODEL_ORDER.indexOf(rightModel) - RECORD_MODEL_ORDER.indexOf(leftModel);
+  const modelOrder = RECORD_MODEL_ORDER.indexOf(leftModel) - RECORD_MODEL_ORDER.indexOf(rightModel);
   if (modelOrder) return modelOrder;
   if (leftModel === "catalog-item") {
     return left.catalogItem - right.catalogItem ||
+      compareCanonicalText(left.name, right.name) || compareCanonicalText(left.id, right.id);
+  }
+  if (leftModel === "catalog-number") {
+    return left.catalogPages[0] - right.catalogPages[0] ||
+      compareCanonicalText(left.catalogNumber, right.catalogNumber) ||
       compareCanonicalText(left.name, right.name) || compareCanonicalText(left.id, right.id);
   }
   const identityOrder = compareCanonicalDesignation(left.designation, right.designation);
@@ -561,7 +604,7 @@ function createCatalogRegistry(descriptors) {
 function normalizeCatalogRegistry(metadata) {
   requireSchema(isPlainObject(metadata) && isLeakageSafeTree(metadata));
   requireSchema(hasExactFields(metadata, CANONICAL_METADATA_FIELDS));
-  requireSchema(metadata.schemaVersion === 3 && metadata.scope === "facts-only" && hasFactualFields(metadata.factualFields));
+  requireSchema(metadata.schemaVersion === 4 && metadata.scope === "facts-only" && hasFactualFields(metadata.factualFields));
   requireSchema(Array.isArray(metadata.catalogs) && metadata.catalogs.length > 0 && hasValidSummary(metadata));
   metadata.catalogs.forEach(validateCanonicalDescriptor);
   requireSchema(new Set(metadata.catalogs.map((descriptor) => descriptor.id)).size === metadata.catalogs.length);
@@ -590,6 +633,7 @@ function validateCatalog(catalog) {
   const ids = new Set();
   const catalogItemNumbers = {};
   const previousCatalogItems = {};
+  const catalogNumbers = {};
   const statistics = Object.fromEntries(Object.keys(registry).map((catalogId) => [catalogId, emptyCatalogStatistics()]));
 
   catalog.records.forEach((record, index) => {
@@ -599,8 +643,10 @@ function validateCatalog(catalog) {
     const recordModel = registry[record.catalogId].recordModel;
     requireSchema(recordModel === "specimen"
       ? hasExactFields(record, SPECIMEN_RECORD_FIELDS) && hasExactFields(record.weight, new Set(["grams"]))
-      : hasExactFields(record, CATALOG_ITEM_RECORD_FIELDS));
-    ["name", "classification", "locality", "year"].forEach((field) =>
+      : recordModel === "catalog-item"
+        ? hasExactFields(record, CATALOG_ITEM_RECORD_FIELDS)
+        : hasExactFields(record, CATALOG_NUMBER_RECORD_FIELDS));
+    ["name", "classification", "locality", recordModel === "catalog-number" ? "dateOfDiscovery" : "year"].forEach((field) =>
       requireSchema(record[field] === null || (record[field] !== "" && isLeakageSafeText(record[field])))
     );
     if (recordModel === "specimen") {
@@ -608,7 +654,7 @@ function validateCatalog(catalog) {
       requireSchema(record.weight.grams === null || (Number.isFinite(record.weight.grams) && record.weight.grams >= 0));
       requireSchema(record.designation !== null || record.name !== null || record.weight.grams !== null ||
         record.classification !== null || record.locality !== null || record.year !== null);
-    } else {
+    } else if (recordModel === "catalog-item") {
       requireSchema(Number.isInteger(record.catalogItem) && record.catalogItem > 0);
       const itemNumbers = catalogItemNumbers[record.catalogId] || new Set();
       requireSchema(!itemNumbers.has(record.catalogItem));
@@ -633,8 +679,32 @@ function validateCatalog(catalog) {
           requireSchema(holding.description !== null && (holding.count !== null || holding.weight.grams !== null));
         }
       });
+    } else {
+      requireSchema(record.catalogNumber !== "" && isLeakageSafeText(record.catalogNumber));
+      const numbers = catalogNumbers[record.catalogId] || new Set();
+      requireSchema(!numbers.has(record.catalogNumber));
+      numbers.add(record.catalogNumber);
+      catalogNumbers[record.catalogId] = numbers;
+      requireSchema(Array.isArray(record.holdings) && record.holdings.length > 0);
+      record.holdings.forEach((holding) => {
+        requireSchema(hasExactFields(holding, CATALOG_NUMBER_HOLDING_FIELDS));
+        requireSchema(holding.description !== "" && isLeakageSafeHoldingText(holding.description, true));
+        requireSchema(holding.provenance === null || (holding.provenance !== "" && isLeakageSafeHoldingText(holding.provenance, true)));
+        requireSchema(holding.count === null || (Number.isInteger(holding.count) && holding.count > 0));
+        requireSchema(Array.isArray(holding.weights) && holding.weights.length > 0);
+        holding.weights.forEach((weight) => requireSchema(
+          hasExactFields(weight, new Set(["grams"])) && Number.isFinite(weight.grams) && weight.grams >= 0
+        ));
+      });
     }
-    requireSchema(Number.isInteger(record.catalogPage) && registry[record.catalogId].sourcePages.includes(record.catalogPage));
+    if (recordModel === "catalog-number") {
+      requireSchema(Array.isArray(record.catalogPages) && record.catalogPages.length > 0 && record.catalogPages.every((page, pageIndex) =>
+        Number.isInteger(page) && page > 0 && registry[record.catalogId].sourcePages.includes(page) &&
+        (pageIndex === 0 || page > record.catalogPages[pageIndex - 1])
+      ));
+    } else {
+      requireSchema(Number.isInteger(record.catalogPage) && registry[record.catalogId].sourcePages.includes(record.catalogPage));
+    }
     requireSchema(CONFIDENCE_LEVELS.includes(record.confidence));
     if (index) requireSchema(compareCanonicalRecords(catalog.records[index - 1], record, registry) < 0);
 
@@ -753,14 +823,14 @@ function prepareRecord(source, index, registry = catalogRegistry) {
     name: cleanText(source.name),
     classification: cleanText(source.classification),
     locality: cleanText(source.locality),
-    year: cleanText(source.year),
-    catalogPage: source.catalogPage === null || source.catalogPage === "" ? null : Number(source.catalogPage),
     confidence: normalizeConfidence(source.confidence),
     recordModel,
     catalogLabel: catalogLabel(registry[cleanText(source.catalogId)], cleanText(source.catalogId)),
     order: index
   };
   if (recordModel === "catalog-item") {
+    record.year = cleanText(source.year);
+    record.catalogPage = source.catalogPage === null || source.catalogPage === "" ? null : Number(source.catalogPage);
     record.catalogItem = Number(source.catalogItem);
     record.holdings = source.holdings.map((holding) => ({
       designation: cleanText(holding.designation),
@@ -769,15 +839,29 @@ function prepareRecord(source, index, registry = catalogRegistry) {
       count: holding.count,
       weight: { grams: holding.weight.grams === null ? null : Number(holding.weight.grams) }
     }));
+  } else if (recordModel === "catalog-number") {
+    record.catalogNumber = cleanText(source.catalogNumber);
+    record.dateOfDiscovery = cleanText(source.dateOfDiscovery);
+    record.catalogPages = source.catalogPages.map(Number);
+    record.holdings = source.holdings.map((holding) => ({
+      description: cleanText(holding.description),
+      provenance: cleanText(holding.provenance),
+      count: holding.count,
+      weights: holding.weights.map((weight) => ({ grams: Number(weight.grams) }))
+    }));
   } else {
+    record.year = cleanText(source.year);
+    record.catalogPage = source.catalogPage === null || source.catalogPage === "" ? null : Number(source.catalogPage);
     record.designation = cleanText(source.designation);
     record.weight = { grams: source.weight.grams === null ? null : Number(source.weight.grams) };
   }
   record.searchText = searchable([
     record.catalogItem === undefined ? null : `catalog item ${record.catalogItem}`,
+    record.catalogNumber === undefined ? null : `catalog no ${record.catalogNumber}`,
     ...recordDesignations(record),
     ...(record.holdings || []).flatMap((holding) => [
       holding.description,
+      holding.provenance,
       holding.kind === "specimen" ? null : holding.kind,
       holding.count === null ? null : `count ${holding.count}`
     ]),
@@ -785,6 +869,7 @@ function prepareRecord(source, index, registry = catalogRegistry) {
     record.classification,
     record.locality,
     record.year,
+    record.dateOfDiscovery,
     record.catalogId,
     record.catalogLabel
   ].filter(Boolean).join(" "));
@@ -813,7 +898,9 @@ async function loadData() {
     loadFolioManifest().then((manifest) => {
       if (currentLoadToken !== loadToken) return;
       folioManifest = manifest;
-      if (manifest && records.some((record) => getAuthorizedFolio(manifest, record.catalogId, record.catalogPage, catalogRegistry))) render();
+      if (manifest && records.some((record) => recordCatalogPages(record).some(
+        (page) => getAuthorizedFolio(manifest, record.catalogId, page, catalogRegistry)
+      ))) render();
     });
   } catch (error) {
     showError(error);
@@ -879,30 +966,37 @@ function updateStatistics() {
 
 function calculateStatistics(sourceRecords) {
   const names = new Set(sourceRecords.map((record) => searchable(record.name)).filter(Boolean));
-  const pages = new Set(sourceRecords
-    .filter((record) => cleanText(record.catalogId) && Number.isFinite(record.catalogPage))
-    .map((record) => `${record.catalogId}\u0000${record.catalogPage}`));
+  const pages = new Set(sourceRecords.flatMap((record) => cleanText(record.catalogId)
+    ? recordCatalogPages(record).map((page) => `${record.catalogId}\u0000${page}`)
+    : []));
+  const masses = sourceRecords.flatMap(recordMasses).sort((left, right) => left - right);
   return {
     observations: sourceRecords.length,
     specimens: sourceRecords.length,
     names: names.size,
     pages: pages.size,
-    grams: sourceRecords.reduce((sum, record) =>
-      sum + recordMasses(record).reduce((recordSum, grams) => recordSum + grams, 0), 0)
+    grams: masses.reduce((sum, grams) => sum + grams, 0)
   };
 }
 
 function recordMasses(record) {
   if (Array.isArray(record?.holdings)) {
-    return record.holdings.map((holding) => holding.weight.grams).filter(Number.isFinite);
+    return record.holdings.flatMap((holding) => Array.isArray(holding.weights)
+      ? holding.weights.map((weight) => weight.grams).filter(Number.isFinite)
+      : [holding.weight?.grams].filter(Number.isFinite));
   }
   return Number.isFinite(record?.weight?.grams) ? [record.weight.grams] : [];
 }
 
+function recordCatalogPages(record) {
+  if (Array.isArray(record?.catalogPages)) return record.catalogPages.filter(Number.isInteger);
+  return Number.isInteger(record?.catalogPage) ? [record.catalogPage] : [];
+}
+
 function designationSortValue(record) {
-  return record.recordModel === "catalog-item" || Number.isInteger(record.catalogItem)
-    ? record.catalogItem
-    : record.designation;
+  if (record.recordModel === "catalog-item" || Number.isInteger(record.catalogItem)) return record.catalogItem;
+  if (record.recordModel === "catalog-number" || record.catalogNumber !== undefined) return record.catalogNumber;
+  return record.designation;
 }
 
 function weightSortValue(record, descending) {
@@ -1016,15 +1110,16 @@ function isSingleResultCount(count) {
 function createRecordCard(record) {
   const card = elements.template.content.firstElementChild.cloneNode(true);
   const catalogItem = record.recordModel === "catalog-item";
-  card.classList.toggle("catalog-item-card", catalogItem);
+  const catalogNumber = record.recordModel === "catalog-number";
+  card.classList.toggle("catalog-item-card", catalogItem || catalogNumber);
   card.querySelector(".designation").textContent = catalogItem
     ? `Catalog item ${record.catalogItem}`
-    : record.designation || "No printed designation";
+    : catalogNumber ? `Catalog no. ${record.catalogNumber}` : record.designation || "No printed designation";
   card.querySelector(".record-name").textContent = record.name ? displayText(record.name) : "Name not recorded";
   const recordWeight = card.querySelector(".record-weight");
-  if (catalogItem) {
+  if (catalogItem || catalogNumber) {
     recordWeight.remove();
-    renderHoldings(card, record.holdings);
+    renderHoldings(card, record.holdings, record.recordModel);
   } else {
     recordWeight.querySelector("strong").textContent = record.weight.grams === null
       ? "Not recorded"
@@ -1033,11 +1128,14 @@ function createRecordCard(record) {
   }
   setMetaRow(card, ".classification-row", record.classification);
   setMetaRow(card, ".locality-row", record.locality);
-  setMetaRow(card, ".year-row", record.year);
+  const dateRow = card.querySelector(".year-row");
+  if (catalogNumber) dateRow.querySelector("dt").textContent = "Date of discovery";
+  setMetaRow(card, ".year-row", catalogNumber ? record.dateOfDiscovery : record.year);
   const sourceLabel = record.catalogLabel || catalogLabel(catalogRegistry[record.catalogId], record.catalogId);
-  card.querySelector(".catalog-reference").textContent = record.catalogPage === null
-    ? `Source: ${sourceLabel} · page not recorded`
-    : `Source: ${sourceLabel} · p. ${record.catalogPage}`;
+  const citedPages = recordCatalogPages(record);
+  card.querySelector(".catalog-reference").textContent = citedPages.length
+    ? `Source: ${sourceLabel} · ${citedPages.length === 1 ? "p." : "pp."} ${citedPages.join(", ")}`
+    : `Source: ${sourceLabel} · page not recorded`;
   const confidence = card.querySelector(".confidence");
   if (record.confidence === "high") {
     confidence.remove();
@@ -1045,16 +1143,17 @@ function createRecordCard(record) {
     confidence.classList.add(record.confidence);
     confidence.querySelector("span").textContent = `${capitalize(record.confidence)} transcription confidence`;
   }
-  const folio = getAuthorizedFolio(folioManifest, record.catalogId, record.catalogPage, catalogRegistry);
-  if (folio) {
+  citedPages.forEach((catalogPage) => {
+    const folio = getAuthorizedFolio(folioManifest, record.catalogId, catalogPage, catalogRegistry);
+    if (!folio) return;
     const button = document.createElement("button");
     button.className = "folio-button";
     button.type = "button";
-    button.textContent = "View folio";
-    button.setAttribute("aria-label", `View catalog folio for ${sourceLabel}, page ${record.catalogPage}`);
-    button.addEventListener("click", () => openFolioDialog(record.catalogId, record.catalogPage, button));
+    button.textContent = citedPages.length === 1 ? "View folio" : `View folio ${catalogPage}`;
+    button.setAttribute("aria-label", `View catalog folio for ${sourceLabel}, page ${catalogPage}`);
+    button.addEventListener("click", () => openFolioDialog(record.catalogId, catalogPage, button));
     card.querySelector(".record-footer").append(button);
-  }
+  });
   return card;
 }
 
@@ -1067,23 +1166,34 @@ function holdingDetails(holding) {
   return details;
 }
 
-function renderHoldings(card, holdings) {
+function catalogNumberHoldingDetails(holding) {
+  const details = [];
+  if (holding.provenance) details.push(`Provenance: ${displayText(holding.provenance)}`);
+  if (holding.count !== null) details.push(`Reported count: ${integerFormat.format(holding.count)}`);
+  if (holding.weights.length) details.push(`Masses: ${holding.weights.map(({ grams }) => formatMass(grams)).join(", ")}`);
+  return details;
+}
+
+function renderHoldings(card, holdings, recordModel = "catalog-item") {
   const section = card.querySelector(".record-holdings");
   const list = section.querySelector(".holdings-list");
   holdings.forEach((holding) => {
     const item = document.createElement("li");
     const heading = document.createElement("div");
     const designation = document.createElement("strong");
-    designation.textContent = holding.designation ? displayText(holding.designation) : "Unnumbered";
+    const catalogNumberHolding = recordModel === "catalog-number";
+    designation.textContent = catalogNumberHolding
+      ? displayText(holding.description)
+      : holding.designation ? displayText(holding.designation) : "Unnumbered";
     heading.append(designation);
-    if (holding.weight.grams !== null) {
+    if (!catalogNumberHolding && holding.weight.grams !== null) {
       const mass = document.createElement("span");
       mass.className = "holding-mass";
       mass.textContent = formatMass(holding.weight.grams);
       heading.append(mass);
     }
     item.append(heading);
-    const details = holdingDetails(holding);
+    const details = catalogNumberHolding ? catalogNumberHoldingDetails(holding) : holdingDetails(holding);
     if (details.length) {
       const description = document.createElement("p");
       description.textContent = details.join(" · ");
@@ -1304,6 +1414,7 @@ if (typeof module !== "undefined" && module.exports) {
     catalogLabel,
     catalogSelectorEntries,
     catalogSummaryEntries,
+    catalogNumberHoldingDetails,
     compareRecords,
     designationComponents,
     filterRecords,
@@ -1328,6 +1439,7 @@ if (typeof module !== "undefined" && module.exports) {
     parseSearchQuery,
     prepareRecord,
     recordDesignations,
+    recordCatalogPages,
     recordMasses,
     searchable,
     serializeUrlFilters,
