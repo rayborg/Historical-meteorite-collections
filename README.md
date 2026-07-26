@@ -1,12 +1,12 @@
 # Historical Meteorite Collection
 
-The repository's coordinated local schema-4 data is a dependency-free, facts-only index of 1,783 observations from four historical meteorite catalogs. It is staged locally and has not been deployed.
+This repository is a dependency-free, facts-only index of 1,912 source observations from seven historical meteorite catalogs. The coordinated catalog uses public metadata schema 5 and supports four source-specific record models: `specimen`, `catalog-item`, `catalog-number`, and `collection-entry`.
 
 A searchable transcription of the 1976 Huss Meteorite Collection catalog, compiled and published by Glenn Huss.
 
-The other configured source attributions identify compilers only: Edmund Otis Hovey for the 1896 catalog, Glenn I. Huss for the 1986 catalog, and H. H. Nininger for the 1933 catalog. No publisher is inferred for those sources.
+The other configured sources identify their compilers without inferring a publisher: Jean Andre Henri Lucas for 1813; E. F. F. Chladni, with a Vienna appendix by Karl von Schreibers, for 1819; E. F. F. Chladni for 1825; Edmund Otis Hovey for 1896; H. H. Nininger for 1933; and Glenn I. Huss for 1986.
 
-The site supports catalog filtering, segment-aware H-designation search, catalog-item, catalog-number, and holding search, numeric gram ranges across specimen and nested holding masses, six deterministic sort orders, URL-persisted filters, and incremental rendering. A separate, default-deny rights manifest can enable folio viewing for future catalogs whose source pages have a documented public-domain determination.
+The site supports catalog filtering, model-aware search, segment-aware H-designation search, numeric gram ranges across scalar and nested masses, six deterministic sort orders, URL-persisted filters, incremental rendering, and rights-gated source folios. Catalog facts and folio authorization are validated separately.
 
 ## Local Preview
 
@@ -16,24 +16,30 @@ The site uses `fetch`, so serve the repository through a local HTTP server:
 python3 -m http.server 8000
 ```
 
-Visit `http://localhost:8000/`. No installation or build step is required.
+Visit `http://localhost:8000/`. No installation or application build is required.
+
+Validate the complete public package with:
+
+```sh
+node scripts/validate-public-catalog.mjs
+node scripts/test-multicatalog.cjs
+```
+
+The validator checks both synthetic rejection fixtures and the real catalog, manifest, and folio files. The runtime harness contains 106 tests.
 
 ## GitHub Pages
 
-1. Run `node scripts/validate-public-catalog.mjs`.
-2. Run `node scripts/test-multicatalog.cjs`.
-3. Push the repository to GitHub; the same checks run in `.github/workflows/validate.yml`.
-4. Open **Settings > Pages**.
-5. Under **Build and deployment**, choose **Deploy from a branch**.
-6. Select the publishing branch, normally `main`, and the root (`/`) folder.
+1. Run both validation commands above.
+2. Push the repository to GitHub; the same checks run in `.github/workflows/validate.yml`.
+3. Open **Settings > Pages**.
+4. Under **Build and deployment**, choose **Deploy from a branch**.
+5. Select the publishing branch, normally `main`, and the root (`/`) folder.
 
 All runtime URLs are relative, so the site works at a GitHub Pages project subpath without configuration.
 
-The runtime, validator, `data/catalog.json`, and `data/folios.json` are all locally staged and validation-green for schema 4. The live GitHub Pages deployment remains the earlier schema-3 release with 1,758 observations from three catalogs. The local files are not deployed, and this documentation makes no deployment claim for schema 4. Hovey catalog numbers remain searchable identifiers but are not designations, so its descriptor correctly reports zero `recordsWithDesignation`.
-
 ## Public Data Scope
 
-The browser loads factual records only from `./data/catalog.json`. The local schema-version-4 data has root contract `{ metadata, records }`; every catalog descriptor includes `recordModel`, one of `specimen`, `catalog-item`, or `catalog-number`. The first two record shapes are unchanged from schema 3.
+The browser loads factual records only from `./data/catalog.json`. The schema-5 root contract is `{ metadata, records }`. Every descriptor declares one of the four record models below.
 
 A `specimen` record contains exactly:
 
@@ -49,13 +55,7 @@ id, catalogId, catalogItem, holdings, name, classification, locality,
 year, catalogPage, confidence
 ```
 
-Each holding contains exactly:
-
-```text
-designation, kind, description, count, weight: { grams }
-```
-
-`designation` and `description` are strings or `null`; `kind` is `specimen`, `cast`, or `aggregate`; `count` is a positive integer or `null`; and `weight.grams` is a finite nonnegative number or `null`. A specimen holding requires designation and mass and has no count. A cast requires designation and has neither count nor mass. An aggregate requires a description and at least a count or mass. Counts are displayed generically as `Count: N`, without inferring the counted object. Huss descriptors use `specimen`. The Nininger descriptor uses `catalog-item`, preserving one parent observation per numbered item and its holdings in source order.
+Its holdings contain exactly `designation`, `kind`, `description`, `count`, and `weight: { grams }`. `kind` is `specimen`, `cast`, or `aggregate`. Counts remain reported source facts and are never used to infer a physical-specimen total.
 
 A `catalog-number` record contains exactly:
 
@@ -64,58 +64,83 @@ id, catalogId, catalogNumber, holdings, name, classification, locality,
 dateOfDiscovery, catalogPages, confidence
 ```
 
-Its holdings contain exactly `description`, `provenance`, `count`, and `weights`; each weight contains exactly `{ grams }`. Description is required normalized nonempty text, provenance is normalized nonempty text or `null`, count is a positive integer or `null`, and weights is a nonempty source-order array of finite nonnegative gram values. Catalog numbers are normalized, nonempty, opaque strings. They are unique within a catalog but are not parsed as arithmetic fractions and need not increase. `catalogPages` is a nonempty ordered unique array of positive descriptor-scoped page numbers. The runtime searches the catalog number, common facts, date of discovery, holding descriptions, and provenance; displays `Catalog no.`, every holding fact and mass, and every source-page citation; and labels count as a reported group count rather than a physical-specimen total.
+Its holdings contain exactly `description`, `provenance`, `count`, and `weights`; each weight contains exactly `{ grams }`. Catalog numbers are opaque source identifiers, including fraction-like strings, rather than arithmetic values. `catalogPages` is a nonempty ordered array because a printed entry may continue across pages.
 
-The coordinated local schema-4 data contains:
+A `collection-entry` record contains exactly:
 
-| `catalogId` | Configured source | Observations | Metadata source-page coverage | Pages cited by records |
-| --- | --- | ---: | --- | --- |
-| `hovey-1896` | Catalogue of meteorites in the collection of the American Museum of Natural History, to July 1, 1896 (1896) | 25 | 149-155 | 149-155 |
-| `huss-1976` | Huss Meteorite Collection catalog (1976) | 1,078 | 3-48 | 3-48 |
-| `huss-1986` | The Second Huss Collection of Meteorites (1986) | 544 | 3-23 | 3-23 |
-| `nininger-1933` | The Nininger Collection of Meteorites (1933) | 136 | 1-7 and 10-20 | 1-7 and 10-11 |
-| **Total** |  | **1,783** | **92 catalog-scoped pages** | **83 catalog-scoped pages** |
+```text
+id, catalogId, entryOrder, reportedNumber, catalogPages, section,
+holdings, name, classification, locality, eventDate, confidence
+```
 
-`catalogId` identifies the source catalog for each record. The 92-page figure is metadata source-page coverage, not a claim that every covered page is cited. Records cite 83 distinct catalog-scoped pages, and the same page number in different catalogs denotes different pages. The 25 Hovey records cite every page from 149 through 155; three records cite two pages. Catalog-item numbers are unique and strictly increasing within each catalog, but may contain gaps and restart in another catalog. A mass range matches a multi-holding record when any one holding mass satisfies the entire range. Weight ascending uses the minimum nested mass, weight descending uses the maximum, and statistics flatten and sum every reported mass once without multiplying by holding count while counting the parent record as one observation.
+Its holdings contain exactly `description`, `provenance`, `count`, and `weights`; numeric weights contain exactly `{ grams }`. The weights array may be empty when a historical or ambiguous mass has no supported numeric conversion; independently structured factual description prose may still retain the source-reported mass statement. `entryOrder` preserves source order. `reportedNumber` may be null or repeated because the source may omit, restart, or duplicate printed numbering.
 
-For `nininger-1933`, pages 8-9 are absent from the local source set. Pages 12-20 are included in metadata source-page coverage but are narrative-only, contain no observations, and are not cited by records. One Nininger observation represents one numbered catalog item, not each visible row or holding. Its structured holding facts remain in schema 4; verbatim `weightText`, transcription notes, and page-layout data remain private.
+The current catalog contains:
+
+| `catalogId` | Record model | Records | Metadata source pages | Pages cited by records |
+| --- | --- | ---: | ---: | ---: |
+| `chladni-1819` | `collection-entry` | 74 | 12 | 12 |
+| `chladni-1825` | `collection-entry` | 42 | 41 | 33 |
+| `hovey-1896` | `catalog-number` | 25 | 7 | 7 |
+| `huss-1976` | `specimen` | 1,078 | 46 | 46 |
+| `huss-1986` | `specimen` | 544 | 21 | 21 |
+| `lucas-1813` | `collection-entry` | 13 | 3 | 3 |
+| `nininger-1933` | `catalog-item` | 136 | 18 | 9 |
+| **Total** |  | **1,912** | **148** | **131** |
+
+Metadata source-page coverage is not a claim that every covered page contains a record. Chladni 1825 pages 200-207 are introductory folios; records begin on page 208. The Nininger source set has a title page and printed pages 1-7 and 10-20. Printed pages 8-9 and catalog items 106-141 are missing. Pages 12-20 are narrative-only and contain no catalog-item observations. The resulting 136 entries form a partial, not complete, digital edition.
+
+Records are source observations, not canonical meteorites or physical specimens. Equal names, designations, masses, or page numbers do not merge observations across catalogs. Statistics count each parent record once and sum every reported numeric mass once without multiplying by holding count.
 
 ## Rights-Gated Folios
 
-The client may also request optional `./data/folios.json`. This file contains display authorization and paths, not catalog facts. Its contract is:
+The client also requests `./data/folios.json`. This schema-2 manifest contains display authorization and public paths, not catalog facts:
 
 ```text
-{ schemaVersion: 1, catalogs: {
-  [catalogId]: { displayPolicy, rightsStatus, pages }
-} }
+{ schemaVersion: 2, catalogs: {
+  [catalogId]: { displayPolicy, rightsStatus, pages: [
+    { pageId, catalogPage, pageLabel, image, alt }
+  ] }
+} } }
 ```
 
-A folio control is created only when all of these conditions hold:
+A folio is authorized only when the entire manifest is valid, its catalog policy agrees with `catalog.json`, and all of these conditions hold:
 
-- The entire manifest is present and valid with `schemaVersion: 1` and a nonempty `catalogs` object.
-- The record's `catalogId` has `displayPolicy: "display"`, which is structurally valid only with `rightsStatus: "public-domain"` based on a documented determination.
-- The record's catalog page contains exactly required `image` and `alt` keys, with an optional `thumbnail` key and no others.
-- `image` and any `thumbnail` are plain relative paths rooted exactly under `assets/folios/<catalogId>/` for the authorized catalog, contain a filename, use only ASCII letters, digits, dots, underscores, and hyphens in each segment, and end in lowercase `.webp`, `.png`, `.jpg`, `.jpeg`, or `.avif`.
-- Paths contain no whitespace, scheme, leading slash, backslash, query, fragment, percent encoding, empty segment, duplicate slash, `.` segment, or `..` segment.
-- `alt` is nonempty NFC-normalized plain text with normalized whitespace, no HTML, backticks, Markdown link/image syntax, control characters, or invisible format characters, and no more than 160 Unicode characters.
+- `displayPolicy` is `display` with reviewed `rightsStatus` equal to `public-domain` or `no-copyright-us`.
+- Every page has exactly `pageId`, nullable `catalogPage`, `pageLabel`, `image`, and `alt`.
+- The ordered page list exactly matches the reviewed catalog page set.
+- `image` is a plain relative `.webp` path rooted under `assets/folios/<catalogId>/` and named by the authorized page ID.
+- Identifiers, paths, labels, and alt text satisfy the validator's normalization, length, and safety rules.
 
-Every other condition denies display. An empty, missing, or malformed manifest, missing catalog or page, blocked policy with pages, `display` without `public-domain`, unsafe path, invalid alt text, wrong key, or extra key leaves the factual catalog working without a folio control. The folio button opens `image` directly; the interface does not need to request or render `thumbnail`. The client never infers eligibility from a catalog's publication year or apparent age.
+Any missing, blocked, incomplete, contradictory, malformed, or unsafe value denies display without preventing the factual catalog from loading. Eligibility is never inferred from publication year or apparent age.
 
-All four catalogs in the local coordinated data are blocked by policy with `rightsStatus: "undetermined"` and no page entries. Hovey remains `blocked`/`undetermined`, and no Hovey images are public. All source-image and display-derivative exports remain blocked, and this project does not claim that any source is in the public domain.
+`scripts/folio-release-lock.json` separately pins the reviewed rights basis, exact ordered page IDs, and SHA-256 digest of every public folio. Default validation requires both the generic schema and this release lock to pass; synthetic-only validation remains generic for future reviewed releases.
 
-## Private Local Archive
+| `catalogId` | Policy | Rights status | Public folios |
+| --- | --- | --- | ---: |
+| `chladni-1819` | display | public-domain | 12 |
+| `chladni-1825` | blocked | undetermined | 0 |
+| `hovey-1896` | display | public-domain | 7 |
+| `huss-1976` | blocked | undetermined | 0 |
+| `huss-1986` | blocked | undetermined | 0 |
+| `lucas-1813` | display | public-domain | 3 |
+| `nininger-1933` | display | no-copyright-us | 19 |
+| **Total** |  |  | **41** |
 
-The 90 original source images documented for the two Huss catalogs and Nininger catalog are held locally and ignored by Git. Image filenames, raw OCR, verbatim notes, holding-level source text such as `weightText`, page-layout reproductions, and working transcription material are intentionally excluded from the public edition. No Hovey images are public. Display derivatives may be tracked only in private history; none are part of the public repository or deployment while export remains blocked.
+Hovey folios use the exact Smithsonian-contributed volume at [Biodiversity Heritage Library item 335869](https://www.biodiversitylibrary.org/item/335869), whose metadata marks the volume public domain. Nininger display is based on a documented search that found no renewal for the exact 1933 offprint; its status is specific to United States copyright review and is not a general ownership claim.
 
-The public client has no fallback loader for private material. If `catalog.json` is missing or does not match the facts-only schema, the interface shows an accessible error state. Failure of the optional folio manifest does not prevent factual records from loading.
+## Private Material
+
+Raw OCR, verbatim notes, uncertainty details, source filenames, private record page IDs, dedicated display-weight and `weightText` fields, acquisition files, unreviewed scans, and private derivative manifests are excluded from `catalog.json`. Independently structured factual description prose may retain source-reported historical mass statements. Reviewed folio `pageId` values are intentionally public in `folios.json`, and the public repository contains only the 41 selected, manifest-verified folio derivatives under `assets/folios/`.
+
+The public client has no fallback loader for private data. If `catalog.json` is missing or invalid, the interface shows an accessible error state. Failure of the optional folio manifest leaves factual records available without folio controls.
 
 ## Limitations
 
-- This is an independently structured factual index, not a facsimile or page-layout reproduction.
-- Transcription confidence describes the project transcription, not the scientific certainty of a classification or historical statement.
-- Historical names, classifications, localities, years, and masses may be incomplete, outdated, or erroneous in the source or transcription.
-- Source rights statuses are undetermined. No public-domain, copyright-ownership, endorsement, or comprehensive publication-history claim is made beyond the stated 1976 Huss attribution.
-- Folio display authorization is catalog-specific and page-specific. It is not a general legal conclusion or an automatic consequence of publication date.
-- Corrections and takedown requests may be submitted through the repository's GitHub issues.
+- This is an independently structured factual index, not a page-layout transcription or canonical specimen registry.
+- Transcription confidence describes the project transcription, not scientific certainty.
+- Historical names, classifications, localities, dates, and masses may be incomplete, outdated, or erroneous in the source or transcription.
+- Rights reviews are catalog- and copy-specific. Chladni 1825 and both Huss catalogs remain blocked/undetermined.
+- Corrections, attribution concerns, and takedown requests may be submitted through GitHub issues.
 
 See [`NOTICE.md`](./NOTICE.md) for attribution and rights information.

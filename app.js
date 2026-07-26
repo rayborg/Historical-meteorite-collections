@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260723-1";
+const CACHE_VERSION = "20260726-1";
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "designation-asc";
 const VALID_SORTS = new Set([
@@ -47,10 +47,24 @@ const CATALOG_NUMBER_RECORD_FIELDS = new Set([
   "catalogPages",
   "confidence"
 ]);
+const COLLECTION_ENTRY_RECORD_FIELDS = new Set([
+  "id",
+  "catalogId",
+  "entryOrder",
+  "reportedNumber",
+  "catalogPages",
+  "section",
+  "holdings",
+  "name",
+  "classification",
+  "locality",
+  "eventDate",
+  "confidence"
+]);
 const HOLDING_FIELDS = new Set(["designation", "kind", "description", "count", "weight"]);
 const CATALOG_NUMBER_HOLDING_FIELDS = new Set(["description", "provenance", "count", "weights"]);
 const HOLDING_KINDS = new Set(["specimen", "cast", "aggregate"]);
-const RECORD_MODEL_ORDER = ["catalog-item", "specimen", "catalog-number"];
+const RECORD_MODEL_ORDER = ["catalog-item", "specimen", "catalog-number", "collection-entry"];
 const RECORD_MODELS = new Set(RECORD_MODEL_ORDER);
 const FACTUAL_FIELDS = [
   "id",
@@ -60,6 +74,8 @@ const FACTUAL_FIELDS = [
   "weight.grams",
   "catalogItem",
   "catalogNumber",
+  "entryOrder",
+  "reportedNumber",
   "holdings[].designation",
   "holdings[].kind",
   "holdings[].description",
@@ -71,8 +87,10 @@ const FACTUAL_FIELDS = [
   "locality",
   "year",
   "dateOfDiscovery",
+  "eventDate",
   "catalogPage",
   "catalogPages[]",
+  "section",
   "confidence"
 ];
 const CONFIDENCE_LEVELS = ["high", "medium", "low"];
@@ -104,9 +122,10 @@ const CANONICAL_CATALOG_FIELDS = new Set([
 ]);
 const FOLIO_ROOT_FIELDS = new Set(["schemaVersion", "catalogs"]);
 const FOLIO_CATALOG_FIELDS = new Set(["displayPolicy", "rightsStatus", "pages"]);
-const FOLIO_PAGE_FIELDS = new Set(["image", "alt", "thumbnail"]);
+const FOLIO_PAGE_FIELDS = new Set(["pageId", "catalogPage", "pageLabel", "image", "alt"]);
 const FOLIO_DISPLAY_POLICIES = new Set(["blocked", "display"]);
-const FOLIO_RIGHTS_STATUSES = new Set(["undetermined", "public-domain"]);
+const FOLIO_RIGHTS_STATUSES = new Set(["undetermined", "public-domain", "no-copyright-us"]);
+const FOLIO_DISPLAY_RIGHTS_STATUSES = new Set(["public-domain", "no-copyright-us"]);
 const MAX_CATALOG_ID_LENGTH = 80;
 const MAX_DESCRIPTOR_TEXT_LENGTH = 160;
 const PRIVATE_LANGUAGE =
@@ -235,8 +254,14 @@ function matchesSearch(record, rawQuery) {
   if (catalogNumberQuery && record.catalogNumber !== undefined) {
     return searchable(record.catalogNumber) === catalogNumberQuery[1];
   }
+  const reportedNumberQuery = query.match(/^reported no (.+)$/);
+  if (reportedNumberQuery && record.reportedNumber !== undefined) {
+    return searchable(record.reportedNumber) === reportedNumberQuery[1];
+  }
   const catalogItemQuery = query.match(/^catalog item (\d+)$/);
   if (catalogItemQuery) return record.catalogItem === Number(catalogItemQuery[1]);
+  const collectionEntryQuery = query.match(/^collection entry (\d+)$/);
+  if (collectionEntryQuery) return record.entryOrder === Number(collectionEntryQuery[1]);
   const holdingCodeQuery = numericLeadingHoldingCode(rawQuery);
   if (holdingCodeQuery) {
     return Array.isArray(record.holdings) && record.holdings.some(
@@ -251,13 +276,14 @@ function matchesSearch(record, rawQuery) {
   const numericQuery = String(rawQuery || "").trim();
   if (/^\d+$/.test(numericQuery)) {
     if (record.catalogNumber !== undefined && searchable(record.catalogNumber).split(/\s+/).includes(numericQuery)) return true;
-    const yearTokens = searchable([record.year, record.dateOfDiscovery].filter(Boolean).join(" ")).split(/\s+/).filter(Boolean);
+    if (record.reportedNumber !== undefined && searchable(record.reportedNumber).split(/\s+/).includes(numericQuery)) return true;
+    const yearTokens = searchable([record.year, record.dateOfDiscovery, record.eventDate].filter(Boolean).join(" ")).split(/\s+/).filter(Boolean);
     const holdingTokens = new Set(searchable((record.holdings || []).flatMap((holding) => [
       holding.designation,
       holding.description,
       holding.provenance
     ]).filter(Boolean).join(" ")).split(/\s+/).filter(Boolean));
-    return String(record.catalogItem || "") === numericQuery ||
+    return String(record.catalogItem || "") === numericQuery || String(record.entryOrder || "") === numericQuery ||
       recordDesignations(record).some((designation) => String(designation).trim() === numericQuery) ||
       yearTokens.includes(numericQuery) || holdingTokens.has(numericQuery);
   }
@@ -274,11 +300,15 @@ function matchesSearch(record, rawQuery) {
       ...recordDesignations(record),
       record.catalogItem,
       record.catalogNumber,
+      record.entryOrder,
+      record.reportedNumber,
+      record.section,
       record.name,
       record.classification,
       record.locality,
       record.year,
-      record.dateOfDiscovery
+      record.dateOfDiscovery,
+      record.eventDate
     ].filter(Boolean).join(" "));
     if (!designationMatches) {
       const haystackTerms = new Set(haystack.split(/\s+/));
@@ -303,11 +333,15 @@ function matchesSearch(record, rawQuery) {
       ...recordDesignations(record),
       record.catalogItem,
       record.catalogNumber,
+      record.entryOrder,
+      record.reportedNumber,
+      record.section,
       record.name,
       record.classification,
       record.locality,
       record.year,
-      record.dateOfDiscovery
+      record.dateOfDiscovery,
+      record.eventDate
     ].filter(Boolean).join(" "));
     const haystackTerms = new Set(haystack.split(/\s+/));
     return query.split(/\s+/).every((term) => haystackTerms.has(term));
@@ -317,17 +351,21 @@ function matchesSearch(record, rawQuery) {
     ...recordDesignations(record),
     record.catalogItem,
     record.catalogNumber,
+    record.entryOrder,
+    record.reportedNumber,
+    record.section,
     record.name,
     record.classification,
     record.locality,
     record.year,
-    record.dateOfDiscovery
+    record.dateOfDiscovery,
+    record.eventDate
   ].filter(Boolean).join(" "));
   return query.split(/\s+/).every((term) => haystack.includes(term));
 }
 
 function recordDesignations(record) {
-  if (record?.catalogNumber !== undefined) return [];
+  if (record?.catalogNumber !== undefined || record?.entryOrder !== undefined) return [];
   if (Array.isArray(record?.holdings)) {
     return record.holdings.map((holding) => holding.designation).filter(Boolean);
   }
@@ -463,6 +501,10 @@ function compareCanonicalRecords(left, right, registry) {
       compareCanonicalText(left.catalogNumber, right.catalogNumber) ||
       compareCanonicalText(left.name, right.name) || compareCanonicalText(left.id, right.id);
   }
+  if (leftModel === "collection-entry") {
+    return compareCanonicalText(left.catalogId, right.catalogId) ||
+      left.entryOrder - right.entryOrder || compareCanonicalText(left.id, right.id);
+  }
   const identityOrder = compareCanonicalDesignation(left.designation, right.designation);
   const leftMasses = recordMasses(left);
   const rightMasses = recordMasses(right);
@@ -475,7 +517,9 @@ function compareCanonicalRecords(left, right, registry) {
 function hasValidCatalogPolicy(descriptor) {
   return FOLIO_DISPLAY_POLICIES.has(descriptor.folioDisplayPolicy) &&
     FOLIO_RIGHTS_STATUSES.has(descriptor.rightsStatus) &&
-    (descriptor.folioDisplayPolicy !== "display" || descriptor.rightsStatus === "public-domain");
+    (descriptor.folioDisplayPolicy === "display"
+      ? FOLIO_DISPLAY_RIGHTS_STATUSES.has(descriptor.rightsStatus)
+      : descriptor.rightsStatus === "undetermined");
 }
 
 function hasValidCatalogId(value) {
@@ -576,6 +620,16 @@ function renderCatalogSummary(catalogs) {
       details.append(row);
     });
     item.append(heading, details);
+    const folios = getAuthorizedFolioPages(folioManifest, summary.id, catalogRegistry);
+    if (folios.length) {
+      const button = document.createElement("button");
+      button.className = "folio-button";
+      button.type = "button";
+      button.textContent = "Browse all source images";
+      button.setAttribute("aria-label", `Browse all source images for ${summary.label}`);
+      button.addEventListener("click", () => openFolioDialog(summary.id, folios[0].pageId, button));
+      item.append(button);
+    }
     list.append(item);
   });
 
@@ -604,7 +658,7 @@ function createCatalogRegistry(descriptors) {
 function normalizeCatalogRegistry(metadata) {
   requireSchema(isPlainObject(metadata) && isLeakageSafeTree(metadata));
   requireSchema(hasExactFields(metadata, CANONICAL_METADATA_FIELDS));
-  requireSchema(metadata.schemaVersion === 4 && metadata.scope === "facts-only" && hasFactualFields(metadata.factualFields));
+  requireSchema(metadata.schemaVersion === 5 && metadata.scope === "facts-only" && hasFactualFields(metadata.factualFields));
   requireSchema(Array.isArray(metadata.catalogs) && metadata.catalogs.length > 0 && hasValidSummary(metadata));
   metadata.catalogs.forEach(validateCanonicalDescriptor);
   requireSchema(new Set(metadata.catalogs.map((descriptor) => descriptor.id)).size === metadata.catalogs.length);
@@ -634,6 +688,8 @@ function validateCatalog(catalog) {
   const catalogItemNumbers = {};
   const previousCatalogItems = {};
   const catalogNumbers = {};
+  const collectionEntryOrders = {};
+  const previousCollectionEntries = {};
   const statistics = Object.fromEntries(Object.keys(registry).map((catalogId) => [catalogId, emptyCatalogStatistics()]));
 
   catalog.records.forEach((record, index) => {
@@ -645,8 +701,12 @@ function validateCatalog(catalog) {
       ? hasExactFields(record, SPECIMEN_RECORD_FIELDS) && hasExactFields(record.weight, new Set(["grams"]))
       : recordModel === "catalog-item"
         ? hasExactFields(record, CATALOG_ITEM_RECORD_FIELDS)
-        : hasExactFields(record, CATALOG_NUMBER_RECORD_FIELDS));
-    ["name", "classification", "locality", recordModel === "catalog-number" ? "dateOfDiscovery" : "year"].forEach((field) =>
+        : recordModel === "catalog-number"
+          ? hasExactFields(record, CATALOG_NUMBER_RECORD_FIELDS)
+          : hasExactFields(record, COLLECTION_ENTRY_RECORD_FIELDS));
+    const dateField = recordModel === "catalog-number" ? "dateOfDiscovery" :
+      recordModel === "collection-entry" ? "eventDate" : "year";
+    ["name", "classification", "locality", dateField].forEach((field) =>
       requireSchema(record[field] === null || (record[field] !== "" && isLeakageSafeText(record[field])))
     );
     if (recordModel === "specimen") {
@@ -680,24 +740,38 @@ function validateCatalog(catalog) {
         }
       });
     } else {
-      requireSchema(record.catalogNumber !== "" && isLeakageSafeText(record.catalogNumber));
-      const numbers = catalogNumbers[record.catalogId] || new Set();
-      requireSchema(!numbers.has(record.catalogNumber));
-      numbers.add(record.catalogNumber);
-      catalogNumbers[record.catalogId] = numbers;
+      if (recordModel === "catalog-number") {
+        requireSchema(record.catalogNumber !== "" && isLeakageSafeText(record.catalogNumber));
+        const numbers = catalogNumbers[record.catalogId] || new Set();
+        requireSchema(!numbers.has(record.catalogNumber));
+        numbers.add(record.catalogNumber);
+        catalogNumbers[record.catalogId] = numbers;
+      } else {
+        requireSchema(Number.isInteger(record.entryOrder) && record.entryOrder > 0);
+        const entryOrders = collectionEntryOrders[record.catalogId] || new Set();
+        requireSchema(!entryOrders.has(record.entryOrder));
+        requireSchema(previousCollectionEntries[record.catalogId] === undefined ||
+          record.entryOrder > previousCollectionEntries[record.catalogId]);
+        entryOrders.add(record.entryOrder);
+        collectionEntryOrders[record.catalogId] = entryOrders;
+        previousCollectionEntries[record.catalogId] = record.entryOrder;
+        requireSchema(record.reportedNumber === null ||
+          (record.reportedNumber !== "" && isLeakageSafeText(record.reportedNumber)));
+        requireSchema(record.section === null || (record.section !== "" && isLeakageSafeText(record.section)));
+      }
       requireSchema(Array.isArray(record.holdings) && record.holdings.length > 0);
       record.holdings.forEach((holding) => {
         requireSchema(hasExactFields(holding, CATALOG_NUMBER_HOLDING_FIELDS));
         requireSchema(holding.description !== "" && isLeakageSafeHoldingText(holding.description, true));
         requireSchema(holding.provenance === null || (holding.provenance !== "" && isLeakageSafeHoldingText(holding.provenance, true)));
         requireSchema(holding.count === null || (Number.isInteger(holding.count) && holding.count > 0));
-        requireSchema(Array.isArray(holding.weights) && holding.weights.length > 0);
+        requireSchema(Array.isArray(holding.weights) && (recordModel !== "catalog-number" || holding.weights.length > 0));
         holding.weights.forEach((weight) => requireSchema(
           hasExactFields(weight, new Set(["grams"])) && Number.isFinite(weight.grams) && weight.grams >= 0
         ));
       });
     }
-    if (recordModel === "catalog-number") {
+    if (recordModel === "catalog-number" || recordModel === "collection-entry") {
       requireSchema(Array.isArray(record.catalogPages) && record.catalogPages.length > 0 && record.catalogPages.every((page, pageIndex) =>
         Number.isInteger(page) && page > 0 && registry[record.catalogId].sourcePages.includes(page) &&
         (pageIndex === 0 || page > record.catalogPages[pageIndex - 1])
@@ -726,15 +800,8 @@ function validateCatalog(catalog) {
   return catalog;
 }
 
-function isSafeFolioPath(value, catalogId) {
-  if (typeof value !== "string" || !value || /\s/.test(value) || !hasValidCatalogId(catalogId)) return false;
-  if (value.startsWith("/") || value.startsWith("//") || /^[a-z][a-z0-9+.-]*:/i.test(value)) return false;
-  if (/[\\?#%:]/.test(value) || !value.startsWith(`assets/folios/${catalogId}/`)) return false;
-  const segments = value.split("/");
-  if (segments.some((segment) => !segment || segment === "." || segment === "..")) return false;
-  if (segments.length < 4 || segments[0] !== "assets" || segments[1] !== "folios" || segments[2] !== catalogId) return false;
-  if (!segments.every((segment) => /^[A-Za-z0-9._-]+$/.test(segment))) return false;
-  return /\.(?:webp|png|jpe?g|avif)$/.test(segments.at(-1));
+function isSafeFolioPath(value, catalogId, pageId) {
+  return typeof value === "string" && value === `assets/folios/${catalogId}/${pageId}.webp`;
 }
 
 function normalizeFolioAlt(value) {
@@ -750,8 +817,13 @@ function isValidFolioAlt(value) {
   return normalized !== null && value === normalized;
 }
 
+function isValidFolioPageId(value) {
+  return typeof value === "string" && value.length <= MAX_CATALOG_ID_LENGTH &&
+    /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value);
+}
+
 function validateFolioManifest(manifest, registry = catalogRegistry) {
-  if (!hasExactFields(manifest, FOLIO_ROOT_FIELDS) || manifest.schemaVersion !== 1 || !isPlainObject(manifest.catalogs)) return false;
+  if (!hasExactFields(manifest, FOLIO_ROOT_FIELDS) || manifest.schemaVersion !== 2 || !isPlainObject(manifest.catalogs)) return false;
   if (!isPlainObject(registry) || !Object.keys(registry).length) return false;
   const manifestCatalogIds = Object.keys(manifest.catalogs);
   const registryCatalogIds = Object.keys(registry);
@@ -762,18 +834,23 @@ function validateFolioManifest(manifest, registry = catalogRegistry) {
 
   return Object.entries(manifest.catalogs).every(([catalogId, catalog]) => {
     const descriptor = registry[catalogId];
-    if (!hasValidCatalogId(catalogId) || !hasExactFields(catalog, FOLIO_CATALOG_FIELDS) || !isPlainObject(catalog.pages)) return false;
+    if (!hasValidCatalogId(catalogId) || !hasExactFields(catalog, FOLIO_CATALOG_FIELDS) || !Array.isArray(catalog.pages)) return false;
     if (!FOLIO_DISPLAY_POLICIES.has(catalog.displayPolicy) || !FOLIO_RIGHTS_STATUSES.has(catalog.rightsStatus)) return false;
-    if (catalog.displayPolicy === "display" && catalog.rightsStatus !== "public-domain") return false;
+    if (catalog.displayPolicy === "display" &&
+      (!FOLIO_DISPLAY_RIGHTS_STATUSES.has(catalog.rightsStatus) || !catalog.pages.length)) return false;
+    if (catalog.displayPolicy === "blocked" && (catalog.rightsStatus !== "undetermined" || catalog.pages.length)) return false;
     if (catalog.displayPolicy !== descriptor.folioDisplayPolicy || catalog.rightsStatus !== descriptor.rightsStatus) return false;
-    if (catalog.displayPolicy === "blocked" && Object.keys(catalog.pages).length) return false;
     const sourcePages = new Set(descriptor.sourcePages);
-    return Object.entries(catalog.pages).every(([pageNumber, page]) => {
-      if (!/^[1-9]\d*$/.test(pageNumber) || !sourcePages.has(Number(pageNumber)) || !isPlainObject(page)) return false;
-      const fields = Object.keys(page);
-      if (!fields.includes("image") || !fields.includes("alt") || !fields.every((field) => FOLIO_PAGE_FIELDS.has(field))) return false;
-      if (fields.length < 2 || fields.length > 3 || !isSafeFolioPath(page.image, catalogId) || !isValidFolioAlt(page.alt)) return false;
-      return page.thumbnail === undefined || isSafeFolioPath(page.thumbnail, catalogId);
+    const pageIds = new Set();
+    return catalog.pages.every((page) => {
+      if (!hasExactFields(page, FOLIO_PAGE_FIELDS) || !isValidFolioPageId(page.pageId) || pageIds.has(page.pageId)) return false;
+      pageIds.add(page.pageId);
+      if (page.catalogPage !== null) {
+        if (!Number.isInteger(page.catalogPage) || page.catalogPage <= 0 ||
+          !sourcePages.has(page.catalogPage)) return false;
+      }
+      if (page.pageLabel !== null && !isValidFolioAlt(page.pageLabel)) return false;
+      return isSafeFolioPath(page.image, catalogId, page.pageId) && isValidFolioAlt(page.alt);
     });
   });
 }
@@ -785,29 +862,31 @@ function hasMatchingFolioPolicy(manifest, catalogId, registry = catalogRegistry)
     descriptor.folioDisplayPolicy === policy.displayPolicy &&
     descriptor.rightsStatus === policy.rightsStatus &&
     descriptor.folioDisplayPolicy === "display" &&
-    descriptor.rightsStatus === "public-domain";
+    FOLIO_DISPLAY_RIGHTS_STATUSES.has(descriptor.rightsStatus);
+}
+
+function authorizedFolio(page, catalogId) {
+  return {
+    catalogId,
+    pageId: page.pageId,
+    catalogPage: page.catalogPage,
+    pageLabel: page.pageLabel,
+    image: page.image,
+    alt: page.alt
+  };
 }
 
 function getAuthorizedFolio(manifest, catalogId, catalogPage, registry = catalogRegistry) {
   const pageNumber = Number(catalogPage);
   if (!validateFolioManifest(manifest, registry) || !cleanText(catalogId) || catalogPage === null || catalogPage === "" || !Number.isInteger(pageNumber)) return null;
   if (!hasMatchingFolioPolicy(manifest, catalogId, registry) || !registry[catalogId].sourcePages.includes(pageNumber)) return null;
-  const catalog = manifest.catalogs[catalogId];
-  const page = catalog.pages[String(pageNumber)];
-  if (!page || !isSafeFolioPath(page.image, catalogId) || !isValidFolioAlt(page.alt)) return null;
-  const folio = { catalogId, catalogPage: pageNumber, image: page.image, alt: page.alt };
-  if (page.thumbnail !== undefined) folio.thumbnail = page.thumbnail;
-  return folio;
+  const page = manifest.catalogs[catalogId].pages.find((candidate) => candidate.catalogPage === pageNumber);
+  return page ? authorizedFolio(page, catalogId) : null;
 }
 
 function getAuthorizedFolioPages(manifest, catalogId, registry = catalogRegistry) {
   if (!validateFolioManifest(manifest, registry) || !hasMatchingFolioPolicy(manifest, catalogId, registry)) return [];
-  const catalog = manifest.catalogs[catalogId];
-  return Object.keys(catalog.pages)
-    .map(Number)
-    .sort((a, b) => a - b)
-    .map((catalogPage) => getAuthorizedFolio(manifest, catalogId, catalogPage, registry))
-    .filter(Boolean);
+  return manifest.catalogs[catalogId].pages.map((page) => authorizedFolio(page, catalogId));
 }
 
 function normalizeConfidence(value) {
@@ -839,9 +918,7 @@ function prepareRecord(source, index, registry = catalogRegistry) {
       count: holding.count,
       weight: { grams: holding.weight.grams === null ? null : Number(holding.weight.grams) }
     }));
-  } else if (recordModel === "catalog-number") {
-    record.catalogNumber = cleanText(source.catalogNumber);
-    record.dateOfDiscovery = cleanText(source.dateOfDiscovery);
+  } else if (recordModel === "catalog-number" || recordModel === "collection-entry") {
     record.catalogPages = source.catalogPages.map(Number);
     record.holdings = source.holdings.map((holding) => ({
       description: cleanText(holding.description),
@@ -849,6 +926,15 @@ function prepareRecord(source, index, registry = catalogRegistry) {
       count: holding.count,
       weights: holding.weights.map((weight) => ({ grams: Number(weight.grams) }))
     }));
+    if (recordModel === "catalog-number") {
+      record.catalogNumber = cleanText(source.catalogNumber);
+      record.dateOfDiscovery = cleanText(source.dateOfDiscovery);
+    } else {
+      record.entryOrder = Number(source.entryOrder);
+      record.reportedNumber = cleanText(source.reportedNumber);
+      record.section = cleanText(source.section);
+      record.eventDate = cleanText(source.eventDate);
+    }
   } else {
     record.year = cleanText(source.year);
     record.catalogPage = source.catalogPage === null || source.catalogPage === "" ? null : Number(source.catalogPage);
@@ -858,6 +944,8 @@ function prepareRecord(source, index, registry = catalogRegistry) {
   record.searchText = searchable([
     record.catalogItem === undefined ? null : `catalog item ${record.catalogItem}`,
     record.catalogNumber === undefined ? null : `catalog no ${record.catalogNumber}`,
+    record.entryOrder === undefined ? null : `collection entry ${record.entryOrder}`,
+    record.reportedNumber === undefined ? null : `reported no ${record.reportedNumber}`,
     ...recordDesignations(record),
     ...(record.holdings || []).flatMap((holding) => [
       holding.description,
@@ -870,6 +958,8 @@ function prepareRecord(source, index, registry = catalogRegistry) {
     record.locality,
     record.year,
     record.dateOfDiscovery,
+    record.eventDate,
+    record.section,
     record.catalogId,
     record.catalogLabel
   ].filter(Boolean).join(" "));
@@ -898,9 +988,10 @@ async function loadData() {
     loadFolioManifest().then((manifest) => {
       if (currentLoadToken !== loadToken) return;
       folioManifest = manifest;
-      if (manifest && records.some((record) => recordCatalogPages(record).some(
-        (page) => getAuthorizedFolio(manifest, record.catalogId, page, catalogRegistry)
-      ))) render();
+      if (manifest) {
+        renderCatalogSummary(catalogRegistry);
+        render();
+      }
     });
   } catch (error) {
     showError(error);
@@ -996,6 +1087,7 @@ function recordCatalogPages(record) {
 function designationSortValue(record) {
   if (record.recordModel === "catalog-item" || Number.isInteger(record.catalogItem)) return record.catalogItem;
   if (record.recordModel === "catalog-number" || record.catalogNumber !== undefined) return record.catalogNumber;
+  if (record.recordModel === "collection-entry" || record.entryOrder !== undefined) return record.reportedNumber || record.entryOrder;
   return record.designation;
 }
 
@@ -1111,13 +1203,18 @@ function createRecordCard(record) {
   const card = elements.template.content.firstElementChild.cloneNode(true);
   const catalogItem = record.recordModel === "catalog-item";
   const catalogNumber = record.recordModel === "catalog-number";
-  card.classList.toggle("catalog-item-card", catalogItem || catalogNumber);
+  const collectionEntry = record.recordModel === "collection-entry";
+  card.classList.toggle("catalog-item-card", catalogItem || catalogNumber || collectionEntry);
   card.querySelector(".designation").textContent = catalogItem
     ? `Catalog item ${record.catalogItem}`
-    : catalogNumber ? `Catalog no. ${record.catalogNumber}` : record.designation || "No printed designation";
+    : catalogNumber
+      ? `Catalog no. ${record.catalogNumber}`
+      : collectionEntry
+        ? record.reportedNumber ? `Reported no. ${record.reportedNumber}` : `Collection entry ${record.entryOrder}`
+        : record.designation || "No printed designation";
   card.querySelector(".record-name").textContent = record.name ? displayText(record.name) : "Name not recorded";
   const recordWeight = card.querySelector(".record-weight");
-  if (catalogItem || catalogNumber) {
+  if (catalogItem || catalogNumber || collectionEntry) {
     recordWeight.remove();
     renderHoldings(card, record.holdings, record.recordModel);
   } else {
@@ -1130,7 +1227,19 @@ function createRecordCard(record) {
   setMetaRow(card, ".locality-row", record.locality);
   const dateRow = card.querySelector(".year-row");
   if (catalogNumber) dateRow.querySelector("dt").textContent = "Date of discovery";
-  setMetaRow(card, ".year-row", catalogNumber ? record.dateOfDiscovery : record.year);
+  if (collectionEntry) dateRow.querySelector("dt").textContent = "Event date";
+  setMetaRow(card, ".year-row", catalogNumber ? record.dateOfDiscovery : collectionEntry ? record.eventDate : record.year);
+  if (collectionEntry) {
+    const sectionRow = document.createElement("div");
+    sectionRow.className = "section-row";
+    const term = document.createElement("dt");
+    const description = document.createElement("dd");
+    term.textContent = "Section";
+    description.textContent = record.section ? displayText(record.section) : "Not recorded";
+    if (!record.section) sectionRow.classList.add("unknown");
+    sectionRow.append(term, description);
+    card.querySelector(".record-meta").append(sectionRow);
+  }
   const sourceLabel = record.catalogLabel || catalogLabel(catalogRegistry[record.catalogId], record.catalogId);
   const citedPages = recordCatalogPages(record);
   card.querySelector(".catalog-reference").textContent = citedPages.length
@@ -1151,7 +1260,7 @@ function createRecordCard(record) {
     button.type = "button";
     button.textContent = citedPages.length === 1 ? "View folio" : `View folio ${catalogPage}`;
     button.setAttribute("aria-label", `View catalog folio for ${sourceLabel}, page ${catalogPage}`);
-    button.addEventListener("click", () => openFolioDialog(record.catalogId, catalogPage, button));
+    button.addEventListener("click", () => openFolioDialog(record.catalogId, folio.pageId, button));
     card.querySelector(".record-footer").append(button);
   });
   return card;
@@ -1181,19 +1290,19 @@ function renderHoldings(card, holdings, recordModel = "catalog-item") {
     const item = document.createElement("li");
     const heading = document.createElement("div");
     const designation = document.createElement("strong");
-    const catalogNumberHolding = recordModel === "catalog-number";
-    designation.textContent = catalogNumberHolding
+    const weightedHolding = recordModel === "catalog-number" || recordModel === "collection-entry";
+    designation.textContent = weightedHolding
       ? displayText(holding.description)
       : holding.designation ? displayText(holding.designation) : "Unnumbered";
     heading.append(designation);
-    if (!catalogNumberHolding && holding.weight.grams !== null) {
+    if (!weightedHolding && holding.weight.grams !== null) {
       const mass = document.createElement("span");
       mass.className = "holding-mass";
       mass.textContent = formatMass(holding.weight.grams);
       heading.append(mass);
     }
     item.append(heading);
-    const details = catalogNumberHolding ? catalogNumberHoldingDetails(holding) : holdingDetails(holding);
+    const details = weightedHolding ? catalogNumberHoldingDetails(holding) : holdingDetails(holding);
     if (details.length) {
       const description = document.createElement("p");
       description.textContent = details.join(" · ");
@@ -1218,28 +1327,39 @@ function displayText(value) {
   return String(value).replace(/(\p{L})-(?=\p{L})/gu, "$1\u2011");
 }
 
-function openFolioDialog(catalogId, catalogPage, opener) {
+function openFolioDialog(catalogId, pageReference, opener) {
   activeFolioPages = getAuthorizedFolioPages(folioManifest, catalogId, catalogRegistry);
-  activeFolioIndex = activeFolioPages.findIndex((folio) => folio.catalogPage === Number(catalogPage));
+  activeFolioIndex = activeFolioPages.findIndex((folio) => folio.pageId === pageReference);
+  if (activeFolioIndex < 0 && pageReference !== null && pageReference !== "") {
+    activeFolioIndex = activeFolioPages.findIndex((folio) => folio.catalogPage === Number(pageReference));
+  }
   if (activeFolioIndex < 0) return;
   folioOpener = opener;
   updateFolioDialog();
   elements.dialog.showModal();
 }
 
+function folioPageLabel(folio, index) {
+  if (folio.pageLabel) return folio.pageLabel;
+  if (folio.catalogPage !== null) return `Page ${folio.catalogPage}`;
+  return `Source image ${index + 1}`;
+}
+
 function updateFolioDialog() {
   const folio = activeFolioPages[activeFolioIndex];
   if (!folio) return;
   const sourceLabel = catalogLabel(catalogRegistry[folio.catalogId], folio.catalogId);
-  const safeLabel = `${sourceLabel}, page ${folio.catalogPage}`;
+  const pageLabel = folioPageLabel(folio, activeFolioIndex);
+  const safeLabel = `${sourceLabel}, ${pageLabel}`;
   elements.dialogCatalog.textContent = sourceLabel;
-  elements.dialogTitle.textContent = `Catalog page ${folio.catalogPage}`;
+  elements.dialogTitle.textContent = folio.pageLabel ||
+    (folio.catalogPage !== null ? `Catalog page ${folio.catalogPage}` : pageLabel);
   elements.dialogCaption.textContent = `Catalog folio: ${safeLabel}`;
   elements.dialogImageStatus.textContent = "Loading folio...";
   elements.dialogImage.hidden = false;
   elements.dialogImage.alt = folio.alt;
   elements.dialogImage.src = folio.image;
-  elements.folioPosition.textContent = `Page ${folio.catalogPage} · ${activeFolioIndex + 1} of ${activeFolioPages.length}`;
+  elements.folioPosition.textContent = `${pageLabel} · ${activeFolioIndex + 1} of ${activeFolioPages.length}`;
   elements.previousFolio.disabled = activeFolioIndex === 0;
   elements.nextFolio.disabled = activeFolioIndex === activeFolioPages.length - 1;
 }

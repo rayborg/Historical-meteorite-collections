@@ -1,25 +1,331 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "catalogs": {
-    "hovey-1896": {
+    "chladni-1819": {
+      "displayPolicy": "display",
+      "rightsStatus": "public-domain",
+      "pages": [
+        {
+          "pageId": "chladni-1819-page-0090",
+          "catalogPage": 90,
+          "pageLabel": "90",
+          "image": "assets/folios/chladni-1819/chladni-1819-page-0090.webp",
+          "alt": "Ueber Feuer-Meteore, und über die mit denselben herabgefallenen Massen (1819), page 90"
+        },
+        {
+          "pageId": "chladni-1819-page-0091",
+          "catalogPage": 91,
+          "pageLabel": "91",
+          "image": "assets/folios/chladni-1819/chladni-1819-page-0091.webp",
+          "alt": "Ueber Feuer-Meteore, und über die mit denselben herabgefallenen Massen (1819), page 91"
+        },
+        {
+          "pageId": "chladni-1819-page-0092",
+          "catalogPage": 92,
+          "pageLabel": "92",
+          "image": "assets/folios/chladni-1819/chladni-1819-page-0092.webp",
+          "alt": "Ueber Feuer-Meteore, und über die mit denselben herabgefallenen Massen (1819), page 92"
+        },
+        {
+          "pageId": "chladni-1819-page-0093",
+          "catalogPage": 93,
+          "pageLabel": "93",
+          "image": "assets/folios/chladni-1819/chladni-1819-page-0093.webp",
+          "alt": "Ueber Feuer-Meteore, und über die mit denselben herabgefallenen Massen (1819), page 93"
+        },
+        {
+          "pageId": "chladni-1819-page-0427",
+          "catalogPage": 427,
+          "pageLabel": "427",
+          "image": "assets/folios/chladni-1819/chladni-1819-page-0427.webp",
+          "alt": "Ueber Feuer-Meteore, und über die mit denselben herabgefallenen Massen (1819), page 427"
+        },
+        {
+          "pageId": "chladni-1819-page-0428",
+          "catalogPage": 428,
+          "pageLabel": "428",
+          "image": "assets/folios/chladni-1819/chladni-1819-page-0428.webp",
+          "alt": "Ueber Feuer-Meteore, und über die mit denselben herabgefallenen Massen (1819), page 428"
+        },
+        {
+          "pageId": "chladni-1819-page-0429",
+          "catalogPage": 429,
+          "pageLabel": "429",
+          "image": "assets/folios/chladni-1819/chladni-1819-page-0429.webp",
+          "alt": "Ueber Feuer-Meteore, und über die mit denselben herabgefallenen Massen (1819), page 429"
+        },
+        {
+          "pageId": "chladni-1819-page-0430",
+          "catalogPage": 430,
+          "pageLabel": "430",
+          "image": "assets/folios/chladni-1819/chladni-1819-page-0430.webp",
+          "alt": "Ueber Feuer-Meteore, und über die mit denselben herabgefallenen Massen (1819), page 430"
+        },
+        {
+          "pageId": "chladni-1819-page-0431",
+          "catalogPage": 431,
+          "pageLabel": "431",
+          "image": "assets/folios/chladni-1819/chladni-1819-page-0431.webp",
+          "alt": "Ueber Feuer-Meteore, und über die mit denselben herabgefallenen Massen (1819), page 431"
+        },
+        {
+          "pageId": "chladni-1819-page-0432",
+          "catalogPage": 432,
+          "pageLabel": "432",
+          "image": "assets/folios/chladni-1819/chladni-1819-page-0432.webp",
+          "alt": "Ueber Feuer-Meteore, und über die mit denselben herabgefallenen Massen (1819), page 432"
+        },
+        {
+          "pageId": "chladni-1819-page-0433",
+          "catalogPage": 433,
+          "pageLabel": "433",
+          "image": "assets/folios/chladni-1819/chladni-1819-page-0433.webp",
+          "alt": "Ueber Feuer-Meteore, und über die mit denselben herabgefallenen Massen (1819), page 433"
+        },
+        {
+          "pageId": "chladni-1819-page-0434",
+          "catalogPage": 434,
+          "pageLabel": "434",
+          "image": "assets/folios/chladni-1819/chladni-1819-page-0434.webp",
+          "alt": "Ueber Feuer-Meteore, und über die mit denselben herabgefallenen Massen (1819), page 434"
+        }
+      ]
+    },
+    "chladni-1825": {
       "displayPolicy": "blocked",
       "rightsStatus": "undetermined",
-      "pages": {}
+      "pages": []
+    },
+    "hovey-1896": {
+      "displayPolicy": "display",
+      "rightsStatus": "public-domain",
+      "pages": [
+        {
+          "pageId": "hovey-1896-page-0149",
+          "catalogPage": 149,
+          "pageLabel": "149",
+          "image": "assets/folios/hovey-1896/hovey-1896-page-0149.webp",
+          "alt": "Catalogue of meteorites in the collection of the American Museum of Natural History, to July 1, 1896 (1896), page 149"
+        },
+        {
+          "pageId": "hovey-1896-page-0150",
+          "catalogPage": 150,
+          "pageLabel": "150",
+          "image": "assets/folios/hovey-1896/hovey-1896-page-0150.webp",
+          "alt": "Catalogue of meteorites in the collection of the American Museum of Natural History, to July 1, 1896 (1896), page 150"
+        },
+        {
+          "pageId": "hovey-1896-page-0151",
+          "catalogPage": 151,
+          "pageLabel": "151",
+          "image": "assets/folios/hovey-1896/hovey-1896-page-0151.webp",
+          "alt": "Catalogue of meteorites in the collection of the American Museum of Natural History, to July 1, 1896 (1896), page 151"
+        },
+        {
+          "pageId": "hovey-1896-page-0152",
+          "catalogPage": 152,
+          "pageLabel": "152",
+          "image": "assets/folios/hovey-1896/hovey-1896-page-0152.webp",
+          "alt": "Catalogue of meteorites in the collection of the American Museum of Natural History, to July 1, 1896 (1896), page 152"
+        },
+        {
+          "pageId": "hovey-1896-page-0153",
+          "catalogPage": 153,
+          "pageLabel": "153",
+          "image": "assets/folios/hovey-1896/hovey-1896-page-0153.webp",
+          "alt": "Catalogue of meteorites in the collection of the American Museum of Natural History, to July 1, 1896 (1896), page 153"
+        },
+        {
+          "pageId": "hovey-1896-page-0154",
+          "catalogPage": 154,
+          "pageLabel": "154",
+          "image": "assets/folios/hovey-1896/hovey-1896-page-0154.webp",
+          "alt": "Catalogue of meteorites in the collection of the American Museum of Natural History, to July 1, 1896 (1896), page 154"
+        },
+        {
+          "pageId": "hovey-1896-page-0155",
+          "catalogPage": 155,
+          "pageLabel": "155",
+          "image": "assets/folios/hovey-1896/hovey-1896-page-0155.webp",
+          "alt": "Catalogue of meteorites in the collection of the American Museum of Natural History, to July 1, 1896 (1896), page 155"
+        }
+      ]
     },
     "huss-1976": {
       "displayPolicy": "blocked",
       "rightsStatus": "undetermined",
-      "pages": {}
+      "pages": []
     },
     "huss-1986": {
       "displayPolicy": "blocked",
       "rightsStatus": "undetermined",
-      "pages": {}
+      "pages": []
+    },
+    "lucas-1813": {
+      "displayPolicy": "display",
+      "rightsStatus": "public-domain",
+      "pages": [
+        {
+          "pageId": "lucas-1813-page-0569",
+          "catalogPage": 569,
+          "pageLabel": "569",
+          "image": "assets/folios/lucas-1813/lucas-1813-page-0569.webp",
+          "alt": "Tableau méthodique des espèces minérales, seconde partie (1813), page 569"
+        },
+        {
+          "pageId": "lucas-1813-page-0570",
+          "catalogPage": 570,
+          "pageLabel": "570",
+          "image": "assets/folios/lucas-1813/lucas-1813-page-0570.webp",
+          "alt": "Tableau méthodique des espèces minérales, seconde partie (1813), page 570"
+        },
+        {
+          "pageId": "lucas-1813-page-0571",
+          "catalogPage": 571,
+          "pageLabel": "571",
+          "image": "assets/folios/lucas-1813/lucas-1813-page-0571.webp",
+          "alt": "Tableau méthodique des espèces minérales, seconde partie (1813), page 571"
+        }
+      ]
     },
     "nininger-1933": {
-      "displayPolicy": "blocked",
-      "rightsStatus": "undetermined",
-      "pages": {}
+      "displayPolicy": "display",
+      "rightsStatus": "no-copyright-us",
+      "pages": [
+        {
+          "pageId": "nininger-1933-page-0001",
+          "catalogPage": null,
+          "pageLabel": "Title page",
+          "image": "assets/folios/nininger-1933/nininger-1933-page-0001.webp",
+          "alt": "The Nininger Collection of Meteorites with Descriptions of the Huizopa and Pojoaque Meteorites (1933), page Title page"
+        },
+        {
+          "pageId": "nininger-1933-page-0002",
+          "catalogPage": 1,
+          "pageLabel": "1",
+          "image": "assets/folios/nininger-1933/nininger-1933-page-0002.webp",
+          "alt": "The Nininger Collection of Meteorites with Descriptions of the Huizopa and Pojoaque Meteorites (1933), page 1"
+        },
+        {
+          "pageId": "nininger-1933-page-0003",
+          "catalogPage": 2,
+          "pageLabel": "2",
+          "image": "assets/folios/nininger-1933/nininger-1933-page-0003.webp",
+          "alt": "The Nininger Collection of Meteorites with Descriptions of the Huizopa and Pojoaque Meteorites (1933), page 2"
+        },
+        {
+          "pageId": "nininger-1933-page-0004",
+          "catalogPage": 3,
+          "pageLabel": "3",
+          "image": "assets/folios/nininger-1933/nininger-1933-page-0004.webp",
+          "alt": "The Nininger Collection of Meteorites with Descriptions of the Huizopa and Pojoaque Meteorites (1933), page 3"
+        },
+        {
+          "pageId": "nininger-1933-page-0005",
+          "catalogPage": 4,
+          "pageLabel": "4",
+          "image": "assets/folios/nininger-1933/nininger-1933-page-0005.webp",
+          "alt": "The Nininger Collection of Meteorites with Descriptions of the Huizopa and Pojoaque Meteorites (1933), page 4"
+        },
+        {
+          "pageId": "nininger-1933-page-0006",
+          "catalogPage": 5,
+          "pageLabel": "5",
+          "image": "assets/folios/nininger-1933/nininger-1933-page-0006.webp",
+          "alt": "The Nininger Collection of Meteorites with Descriptions of the Huizopa and Pojoaque Meteorites (1933), page 5"
+        },
+        {
+          "pageId": "nininger-1933-page-0007",
+          "catalogPage": 6,
+          "pageLabel": "6",
+          "image": "assets/folios/nininger-1933/nininger-1933-page-0007.webp",
+          "alt": "The Nininger Collection of Meteorites with Descriptions of the Huizopa and Pojoaque Meteorites (1933), page 6"
+        },
+        {
+          "pageId": "nininger-1933-page-0008",
+          "catalogPage": 7,
+          "pageLabel": "7",
+          "image": "assets/folios/nininger-1933/nininger-1933-page-0008.webp",
+          "alt": "The Nininger Collection of Meteorites with Descriptions of the Huizopa and Pojoaque Meteorites (1933), page 7"
+        },
+        {
+          "pageId": "nininger-1933-page-0009",
+          "catalogPage": 10,
+          "pageLabel": "10",
+          "image": "assets/folios/nininger-1933/nininger-1933-page-0009.webp",
+          "alt": "The Nininger Collection of Meteorites with Descriptions of the Huizopa and Pojoaque Meteorites (1933), page 10"
+        },
+        {
+          "pageId": "nininger-1933-page-0010",
+          "catalogPage": 11,
+          "pageLabel": "11",
+          "image": "assets/folios/nininger-1933/nininger-1933-page-0010.webp",
+          "alt": "The Nininger Collection of Meteorites with Descriptions of the Huizopa and Pojoaque Meteorites (1933), page 11"
+        },
+        {
+          "pageId": "nininger-1933-page-0011",
+          "catalogPage": 12,
+          "pageLabel": "12",
+          "image": "assets/folios/nininger-1933/nininger-1933-page-0011.webp",
+          "alt": "The Nininger Collection of Meteorites with Descriptions of the Huizopa and Pojoaque Meteorites (1933), page 12"
+        },
+        {
+          "pageId": "nininger-1933-page-0012",
+          "catalogPage": 13,
+          "pageLabel": "13",
+          "image": "assets/folios/nininger-1933/nininger-1933-page-0012.webp",
+          "alt": "The Nininger Collection of Meteorites with Descriptions of the Huizopa and Pojoaque Meteorites (1933), page 13"
+        },
+        {
+          "pageId": "nininger-1933-page-0013",
+          "catalogPage": 14,
+          "pageLabel": "14",
+          "image": "assets/folios/nininger-1933/nininger-1933-page-0013.webp",
+          "alt": "The Nininger Collection of Meteorites with Descriptions of the Huizopa and Pojoaque Meteorites (1933), page 14"
+        },
+        {
+          "pageId": "nininger-1933-page-0014",
+          "catalogPage": 15,
+          "pageLabel": "15",
+          "image": "assets/folios/nininger-1933/nininger-1933-page-0014.webp",
+          "alt": "The Nininger Collection of Meteorites with Descriptions of the Huizopa and Pojoaque Meteorites (1933), page 15"
+        },
+        {
+          "pageId": "nininger-1933-page-0015",
+          "catalogPage": 16,
+          "pageLabel": "16",
+          "image": "assets/folios/nininger-1933/nininger-1933-page-0015.webp",
+          "alt": "The Nininger Collection of Meteorites with Descriptions of the Huizopa and Pojoaque Meteorites (1933), page 16"
+        },
+        {
+          "pageId": "nininger-1933-page-0016",
+          "catalogPage": 17,
+          "pageLabel": "17",
+          "image": "assets/folios/nininger-1933/nininger-1933-page-0016.webp",
+          "alt": "The Nininger Collection of Meteorites with Descriptions of the Huizopa and Pojoaque Meteorites (1933), page 17"
+        },
+        {
+          "pageId": "nininger-1933-page-0017",
+          "catalogPage": 18,
+          "pageLabel": "18",
+          "image": "assets/folios/nininger-1933/nininger-1933-page-0017.webp",
+          "alt": "The Nininger Collection of Meteorites with Descriptions of the Huizopa and Pojoaque Meteorites (1933), page 18"
+        },
+        {
+          "pageId": "nininger-1933-page-0018",
+          "catalogPage": 19,
+          "pageLabel": "19",
+          "image": "assets/folios/nininger-1933/nininger-1933-page-0018.webp",
+          "alt": "The Nininger Collection of Meteorites with Descriptions of the Huizopa and Pojoaque Meteorites (1933), page 19"
+        },
+        {
+          "pageId": "nininger-1933-page-0019",
+          "catalogPage": 20,
+          "pageLabel": "20 (inferred)",
+          "image": "assets/folios/nininger-1933/nininger-1933-page-0019.webp",
+          "alt": "The Nininger Collection of Meteorites with Descriptions of the Huizopa and Pojoaque Meteorites (1933), page 20 (inferred)"
+        }
+      ]
     }
   }
 }

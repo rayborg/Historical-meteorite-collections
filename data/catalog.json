@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "schemaVersion": 4,
+    "schemaVersion": 5,
     "scope": "facts-only",
     "factualFields": [
       "id",
@@ -10,6 +10,8 @@
       "weight.grams",
       "catalogItem",
       "catalogNumber",
+      "entryOrder",
+      "reportedNumber",
       "holdings[].designation",
       "holdings[].kind",
       "holdings[].description",
@@ -21,11 +23,106 @@
       "locality",
       "year",
       "dateOfDiscovery",
+      "eventDate",
       "catalogPage",
       "catalogPages[]",
+      "section",
       "confidence"
     ],
     "catalogs": [
+      {
+        "id": "chladni-1819",
+        "recordModel": "collection-entry",
+        "label": "Ueber Feuer-Meteore, und über die mit denselben herabgefallenen Massen (1819)",
+        "compiler": "E. F. F. Chladni; Vienna appendix by Karl von Schreibers",
+        "year": 1819,
+        "sourcePages": [
+          90,
+          91,
+          92,
+          93,
+          427,
+          428,
+          429,
+          430,
+          431,
+          432,
+          433,
+          434
+        ],
+        "sourcePageCount": 12,
+        "recordCount": 74,
+        "recordsWithDesignation": 0,
+        "recordsWithWeight": 0,
+        "confidenceCounts": {
+          "high": 74,
+          "medium": 0,
+          "low": 0
+        },
+        "folioDisplayPolicy": "display",
+        "rightsStatus": "public-domain"
+      },
+      {
+        "id": "chladni-1825",
+        "recordModel": "collection-entry",
+        "label": "E. F. F. Chladni’s Beschreibung seiner Sammlung vom Himmel herabgefallener Massen. Nebst einigen allgemeinen Bemerkungen (1825)",
+        "compiler": "E. F. F. Chladni",
+        "year": 1825,
+        "sourcePages": [
+          200,
+          201,
+          202,
+          203,
+          204,
+          205,
+          206,
+          207,
+          208,
+          209,
+          210,
+          211,
+          212,
+          213,
+          214,
+          215,
+          216,
+          217,
+          218,
+          219,
+          220,
+          221,
+          222,
+          223,
+          224,
+          225,
+          226,
+          227,
+          228,
+          229,
+          230,
+          231,
+          232,
+          233,
+          234,
+          235,
+          236,
+          237,
+          238,
+          239,
+          240
+        ],
+        "sourcePageCount": 41,
+        "recordCount": 42,
+        "recordsWithDesignation": 0,
+        "recordsWithWeight": 0,
+        "confidenceCounts": {
+          "high": 42,
+          "medium": 0,
+          "low": 0
+        },
+        "folioDisplayPolicy": "blocked",
+        "rightsStatus": "undetermined"
+      },
       {
         "id": "hovey-1896",
         "recordModel": "catalog-number",
@@ -50,8 +147,8 @@
           "medium": 0,
           "low": 0
         },
-        "folioDisplayPolicy": "blocked",
-        "rightsStatus": "undetermined"
+        "folioDisplayPolicy": "display",
+        "rightsStatus": "public-domain"
       },
       {
         "id": "huss-1976",
@@ -161,6 +258,29 @@
         "rightsStatus": "undetermined"
       },
       {
+        "id": "lucas-1813",
+        "recordModel": "collection-entry",
+        "label": "Tableau méthodique des espèces minérales, seconde partie (1813)",
+        "compiler": "Jean André Henri Lucas",
+        "year": 1813,
+        "sourcePages": [
+          569,
+          570,
+          571
+        ],
+        "sourcePageCount": 3,
+        "recordCount": 13,
+        "recordsWithDesignation": 0,
+        "recordsWithWeight": 5,
+        "confidenceCounts": {
+          "high": 13,
+          "medium": 0,
+          "low": 0
+        },
+        "folioDisplayPolicy": "display",
+        "rightsStatus": "public-domain"
+      },
+      {
         "id": "nininger-1933",
         "recordModel": "catalog-item",
         "label": "The Nininger Collection of Meteorites with Descriptions of the Huizopa and Pojoaque Meteorites (1933)",
@@ -195,15 +315,15 @@
           "medium": 0,
           "low": 0
         },
-        "folioDisplayPolicy": "blocked",
-        "rightsStatus": "undetermined"
+        "folioDisplayPolicy": "display",
+        "rightsStatus": "no-copyright-us"
       }
     ],
-    "recordCount": 1783,
+    "recordCount": 1912,
     "recordsWithDesignation": 1743,
-    "recordsWithWeight": 1779,
+    "recordsWithWeight": 1784,
     "confidenceCounts": {
-      "high": 1783,
+      "high": 1912,
       "medium": 0,
       "low": 0
     }
@@ -28184,6 +28304,3144 @@
       "catalogPages": [
         155
       ],
+      "confidence": "high"
+    },
+    {
+      "id": "obs-31cbcc01-5df5-4207-aad3-b265d6b65c1e",
+      "catalogId": "chladni-1819",
+      "entryOrder": 1,
+      "reportedNumber": null,
+      "catalogPages": [
+        90
+      ],
+      "section": "I. Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Ein Stück, über ein Pfund schwer.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        },
+        {
+          "description": "Noch ein Paar kleinere Stücke.",
+          "provenance": null,
+          "count": 2,
+          "weights": []
+        }
+      ],
+      "name": "Ensisheim",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "7. November 1492",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-78bfa86b-8a9f-42a9-992f-50bbfd3319bf",
+      "catalogId": "chladni-1819",
+      "entryOrder": 2,
+      "reportedNumber": null,
+      "catalogPages": [
+        90
+      ],
+      "section": "I. Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Ein sehr kleines Stück.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Tabor",
+      "classification": "Meteor-Stein",
+      "locality": "Böhmen",
+      "eventDate": "4. Julius 1753",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a6acb418-aafd-4a06-b3b2-4fe228d3a170",
+      "catalogId": "chladni-1819",
+      "entryOrder": 3,
+      "reportedNumber": null,
+      "catalogPages": [
+        90
+      ],
+      "section": "I. Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Etwas von dem bey Lucé gefallenen Meteor-Stein.",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Lucé",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "13. September 1768",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a4a04a65-1201-4403-8ae5-625605f81c75",
+      "catalogId": "chladni-1819",
+      "entryOrder": 4,
+      "reportedNumber": null,
+      "catalogPages": [
+        90
+      ],
+      "section": "I. Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Etwas von dem bey Maurkirchen gefallenen Meteor-Stein.",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Maurkirchen",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "20. November 1768",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-4f9c309d-f3ef-4f0c-9af2-704f2e468223",
+      "catalogId": "chladni-1819",
+      "entryOrder": 5,
+      "reportedNumber": null,
+      "catalogPages": [
+        90
+      ],
+      "section": "I. Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Ein sehr kleines, aber sonst recht gutes Stück.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Charkow",
+      "classification": "Meteor-Stein",
+      "locality": "Gouvernement von Charkow",
+      "eventDate": "1. October 1787",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c0a4185b-277e-4a50-8b82-a2a2f8974041",
+      "catalogId": "chladni-1819",
+      "entryOrder": 6,
+      "reportedNumber": null,
+      "catalogPages": [
+        90
+      ],
+      "section": "I. Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Etwas von dem bey Barbotan gefallenen Meteor-Stein; zeichnet sich durch das viele, zum Theil krystallinische, Gediegeneisen aus.",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Barbotan",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "24. Julius 1790",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-775fdd29-3487-40a7-9d1f-4036601737b3",
+      "catalogId": "chladni-1819",
+      "entryOrder": 7,
+      "reportedNumber": null,
+      "catalogPages": [
+        90,
+        91
+      ],
+      "section": "I. Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Die Hälfte eines kleinen Steines, worin ein durchsägtes Stück der dunkelgrauen Substanz, und auch noch ein kleineres, sich als vierseitige Tafeln zeigen.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Siena",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "16. Junius 1794",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-614be90d-a658-46af-b2ef-26cc7d5d7118",
+      "catalogId": "chladni-1819",
+      "entryOrder": 8,
+      "reportedNumber": null,
+      "catalogPages": [
+        91
+      ],
+      "section": "I. Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Ein sehr kleines Stück.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Yorkshire",
+      "classification": "Meteor-Stein",
+      "locality": "Yorkshire",
+      "eventDate": "13. Sept. 1795",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-1801fc29-a774-46c4-9f69-beb5a4a4e10d",
+      "catalogId": "chladni-1819",
+      "entryOrder": 9,
+      "reportedNumber": null,
+      "catalogPages": [
+        91
+      ],
+      "section": "I. Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Etwas von dem bey Sales gefallenen Meteor-Stein.",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Sales",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "12. März 1798",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-62da8323-0144-4482-b95d-684ee0977c92",
+      "catalogId": "chladni-1819",
+      "entryOrder": 10,
+      "reportedNumber": null,
+      "catalogPages": [
+        91
+      ],
+      "section": "I. Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Ein ganzer Stein, wegen seiner schief prismatischen Gestalt sowie wegen mancher Stücke von Gediegeneisen ungefähr von der Größe einer Erbse merkwürdig.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "L'Aigle",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "1803",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-49533f19-da0e-41f8-8886-c1fd8c08b08d",
+      "catalogId": "chladni-1819",
+      "entryOrder": 11,
+      "reportedNumber": null,
+      "catalogPages": [
+        91
+      ],
+      "section": "I. Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Etwas von dem bey Apt gefallenen Meteor-Stein.",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Apt",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "8. October 1803",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-ae47c231-c26b-494f-b871-eb97129be4cb",
+      "catalogId": "chladni-1819",
+      "entryOrder": 12,
+      "reportedNumber": null,
+      "catalogPages": [
+        91
+      ],
+      "section": "I. Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Bemerkenswerth wegen der Mannigfaltigkeit der Gemengtheile und wegen der Krystallisationsflächen an einem Stücke der dunkelgrauern Substanz.",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Eggenfelde",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "13. December 1803",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-abc02f34-6bbf-48de-8486-8d1ec3b6e43e",
+      "catalogId": "chladni-1819",
+      "entryOrder": 13,
+      "reportedNumber": null,
+      "catalogPages": [
+        91
+      ],
+      "section": "I. Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Mehrere kleine Brocken von dieser von selbst zerfallenden, mehr einem schwarzen Mulme als andern Meteor-Steinen ähnlichen Substanz.",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Alais",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "15. März 1806",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-75e5e616-da3b-40ae-9b94-19b967b00cab",
+      "catalogId": "chladni-1819",
+      "entryOrder": 14,
+      "reportedNumber": null,
+      "catalogPages": [
+        91
+      ],
+      "section": "I. Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Etwas von dem bey Timochin gefallenen Meteor-Stein.",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Timochin",
+      "classification": "Meteor-Stein",
+      "locality": "Gouvernement von Smolensk",
+      "eventDate": "13. März 1807",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-98f17358-c2ee-453e-80f0-5961f27e1ca3",
+      "catalogId": "chladni-1819",
+      "entryOrder": 15,
+      "reportedNumber": null,
+      "catalogPages": [
+        91
+      ],
+      "section": "I. Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Zwei Stücke, eines fast 3/4 Unze, das andere etwa 1 Unze schwer.",
+          "provenance": null,
+          "count": 2,
+          "weights": []
+        }
+      ],
+      "name": "Weston",
+      "classification": "Meteor-Stein",
+      "locality": "Connecticut",
+      "eventDate": "14. December 1807",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-623a6494-a77c-48c5-8cdd-66d095e465d7",
+      "catalogId": "chladni-1819",
+      "entryOrder": 16,
+      "reportedNumber": null,
+      "catalogPages": [
+        91
+      ],
+      "section": "I. Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Etwas von dem im Parmesanischen gefallenen Meteor-Stein.",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": null,
+      "classification": "Meteor-Stein",
+      "locality": "im Parmesanischen",
+      "eventDate": "19. Aprill 1808",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-fecffdfd-e09d-45e0-8a6e-07077321b0cc",
+      "catalogId": "chladni-1819",
+      "entryOrder": 17,
+      "reportedNumber": null,
+      "catalogPages": [
+        91
+      ],
+      "section": "I. Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Ein ganzer Stein.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        },
+        {
+          "description": "Noch ein Paar Stücke.",
+          "provenance": null,
+          "count": 2,
+          "weights": []
+        }
+      ],
+      "name": "Stannern",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "22. May 1808",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e516cec3-8003-4477-b5a7-0af984d7ffd0",
+      "catalogId": "chladni-1819",
+      "entryOrder": 18,
+      "reportedNumber": null,
+      "catalogPages": [
+        91
+      ],
+      "section": "I. Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Zwei Stücke.",
+          "provenance": null,
+          "count": 2,
+          "weights": []
+        }
+      ],
+      "name": "Lissa",
+      "classification": "Meteor-Stein",
+      "locality": "Böhmen",
+      "eventDate": "3. September 1808",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f2af16f1-1603-4ec8-9128-5ad3e5da68e9",
+      "catalogId": "chladni-1819",
+      "entryOrder": 19,
+      "reportedNumber": null,
+      "catalogPages": [
+        91
+      ],
+      "section": "I. Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Etwas von dem bey Charsonville gefallenen Meteor-Stein.",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Charsonville",
+      "classification": "Meteor-Stein",
+      "locality": "nicht weit von Orleans",
+      "eventDate": "23. November 1810",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-2ee42ce3-31ac-4cb6-bc53-08b64e8b03e3",
+      "catalogId": "chladni-1819",
+      "entryOrder": 20,
+      "reportedNumber": null,
+      "catalogPages": [
+        91
+      ],
+      "section": "I. Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Etwas von dem in der Grafschaft Tipperary gefallenen Meteor-Stein.",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Tipperary",
+      "classification": "Meteor-Stein",
+      "locality": "Grafschaft Tipperary in Irland",
+      "eventDate": "August 1810",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-ab68db82-7318-4ca2-ae6d-f52e2822b55b",
+      "catalogId": "chladni-1819",
+      "entryOrder": 21,
+      "reportedNumber": null,
+      "catalogPages": [
+        91
+      ],
+      "section": "I. Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Zwei Stücke, das eine mit, das andere ohne Flecke von Eisenoxyd.",
+          "provenance": null,
+          "count": 2,
+          "weights": []
+        }
+      ],
+      "name": "Berlanguillas",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "8. Julius 1811",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-87eebbaa-4868-4f4c-9aa3-c6598265bcee",
+      "catalogId": "chladni-1819",
+      "entryOrder": 22,
+      "reportedNumber": null,
+      "catalogPages": [
+        91
+      ],
+      "section": "I. Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Etwas von dem bey Toulouse gefallenen Meteor-Stein.",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Toulouse",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "10. Aprill 1812",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-2a4cbb86-43b9-4fd7-8729-b1829820e96b",
+      "catalogId": "chladni-1819",
+      "entryOrder": 23,
+      "reportedNumber": null,
+      "catalogPages": [
+        91
+      ],
+      "section": "I. Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Etwas von dem bey Erxleben gefallenen Meteor-Stein.",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Erxleben",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "15. Aprill 1812",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-56b61cea-edde-4cc3-986b-5cf722e65a71",
+      "catalogId": "chladni-1819",
+      "entryOrder": 24,
+      "reportedNumber": null,
+      "catalogPages": [
+        91
+      ],
+      "section": "I. Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Zwei Stücke.",
+          "provenance": null,
+          "count": 2,
+          "weights": []
+        }
+      ],
+      "name": "Agen",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "5. Sept. 1814",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d6302341-bd54-482b-a454-fe6d522b378a",
+      "catalogId": "chladni-1819",
+      "entryOrder": 25,
+      "reportedNumber": null,
+      "catalogPages": [
+        91
+      ],
+      "section": "I. Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Etwas von dem bey Chassigny gefallenen Meteor-Stein.",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Chassigny",
+      "classification": "Meteor-Stein",
+      "locality": "nicht weit von Langres",
+      "eventDate": "3. October 1815",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-3e944d06-e77a-4bb7-939c-376ecf8f7b96",
+      "catalogId": "chladni-1819",
+      "entryOrder": 26,
+      "reportedNumber": null,
+      "catalogPages": [
+        92
+      ],
+      "section": "II. Gediegeneisen",
+      "holdings": [
+        {
+          "description": "Ein Stück, in welchem sich besonders ein ziemlich durchsichtiger Olivin mit drei regelmäßigen fünfseitigen Krystallisationsflächen auszeichnet, so daß er ein Dodekaeder zu seyn scheint.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        },
+        {
+          "description": "Noch ein kleineres Stück.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Pallas'sche Eisenmasse",
+      "classification": "Nickelhaltiges Gediegeneisen von ästigem Gefüge, mit inliegendem Olivin",
+      "locality": "Sibirien",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a60b4675-2755-4bfa-afc2-b9beb9cada4e",
+      "catalogId": "chladni-1819",
+      "entryOrder": 27,
+      "reportedNumber": null,
+      "catalogPages": [
+        92
+      ],
+      "section": "II. Gediegeneisen",
+      "holdings": [
+        {
+          "description": "Etwas von einer auf dem Felde gefundenen Masse, welche sich in Gotha befindet.",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": null,
+      "classification": "Nickelhaltiges Gediegeneisen von ästigem Gefüge, mit inliegendem Olivin",
+      "locality": "Sachsen",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-01a56b51-6128-468c-b054-d462d7d6c1c1",
+      "catalogId": "chladni-1819",
+      "entryOrder": 28,
+      "reportedNumber": null,
+      "catalogPages": [
+        92
+      ],
+      "section": "II. Gediegeneisen",
+      "holdings": [
+        {
+          "description": "Ein kleines, aber lehrreiches Stück der gefallenen Masse.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Agramer Comitat",
+      "classification": "Nickelhaltiges Gediegeneisen, derb, und von krystallinischem Gefüge",
+      "locality": "Agramer Comitat",
+      "eventDate": "26. May 1751",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-43cf098b-a9ae-4207-8b6c-f1d775e3df98",
+      "catalogId": "chladni-1819",
+      "entryOrder": 29,
+      "reportedNumber": null,
+      "catalogPages": [
+        92
+      ],
+      "section": "II. Gediegeneisen",
+      "holdings": [
+        {
+          "description": "Ein sehr gutes Stück der Elbogner Eisenmasse.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Elbogner Eisenmasse",
+      "classification": "Nickelhaltiges Gediegeneisen, derb, und von krystallinischem Gefüge",
+      "locality": null,
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-87e75a57-c1ac-49d6-9246-3d92fd01096b",
+      "catalogId": "chladni-1819",
+      "entryOrder": 30,
+      "reportedNumber": null,
+      "catalogPages": [
+        92
+      ],
+      "section": "II. Gediegeneisen",
+      "holdings": [
+        {
+          "description": "Etwas von der in Ungarn bey Lenarto gefundenen Masse. Die Art des krystallinischen Gefüges gibt sich im Bruche sehr deutlich zu erkennen, an einer geätzten Fläche aber besonders schön, und in großen Verhältnissen.",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Lenarto",
+      "classification": "Nickelhaltiges Gediegeneisen, derb, und von krystallinischem Gefüge",
+      "locality": "Ungarn",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f6e979a2-aad0-428e-9ecd-5b535b920689",
+      "catalogId": "chladni-1819",
+      "entryOrder": 31,
+      "reportedNumber": null,
+      "catalogPages": [
+        92
+      ],
+      "section": "II. Gediegeneisen",
+      "holdings": [
+        {
+          "description": "Etwas von der am Vorgebirge der guten Hoffnung gefundenen Masse.",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Vorgebirge der guten Hoffnung",
+      "classification": "Nickelhaltiges Gediegeneisen, derb, und von krystallinischem Gefüge",
+      "locality": "Vorgebirge der guten Hoffnung",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a269403f-9ea4-4420-926f-0bac2f9db12d",
+      "catalogId": "chladni-1819",
+      "entryOrder": 32,
+      "reportedNumber": null,
+      "catalogPages": [
+        92
+      ],
+      "section": "II. Gediegeneisen",
+      "holdings": [
+        {
+          "description": "Ein kleines Stück von mexicanischem Gediegeneisen.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": null,
+      "classification": "Nickelhaltiges Gediegeneisen, derb, und von krystallinischem Gefüge",
+      "locality": "Mexiko",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-43ec9013-6e88-4f2e-a97e-50b10417039d",
+      "catalogId": "chladni-1819",
+      "entryOrder": 33,
+      "reportedNumber": null,
+      "catalogPages": [
+        92
+      ],
+      "section": "II. Gediegeneisen",
+      "holdings": [
+        {
+          "description": "Ein kleines Stück Gediegeneisen.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "San Jago del Estero",
+      "classification": "Nickelhaltiges Gediegeneisen, derb, und von krystallinischem Gefüge",
+      "locality": "Süd-Amerika",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-fddf6001-646b-4ed6-86d8-8f24e18ef2b5",
+      "catalogId": "chladni-1819",
+      "entryOrder": 34,
+      "reportedNumber": null,
+      "catalogPages": [
+        92
+      ],
+      "section": "II. Gediegeneisen",
+      "holdings": [
+        {
+          "description": "Etwas von der Aachener Masse.",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        },
+        {
+          "description": "Ein Stück von der Rinde.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Aachener Masse",
+      "classification": "Problematisches Gediegeneisen",
+      "locality": null,
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-74490429-0462-40e5-bd17-1c955437c18d",
+      "catalogId": "chladni-1819",
+      "entryOrder": 35,
+      "reportedNumber": null,
+      "catalogPages": [
+        92
+      ],
+      "section": "II. Gediegeneisen",
+      "holdings": [
+        {
+          "description": "Einige Stücke von der mailändischen Masse.",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "mailändische Masse",
+      "classification": "Problematisches Gediegeneisen",
+      "locality": null,
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-9d962e95-ce2d-4e28-80db-f688f2d04970",
+      "catalogId": "chladni-1819",
+      "entryOrder": 36,
+      "reportedNumber": null,
+      "catalogPages": [
+        92
+      ],
+      "section": "II. Gediegeneisen",
+      "holdings": [
+        {
+          "description": "Etwas von dem durchaus damascirten Eisen.",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": null,
+      "classification": "Problematisches Gediegeneisen",
+      "locality": "Steyermark",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-fb41db59-2f18-4b4e-a79f-a7a590f035b2",
+      "catalogId": "chladni-1819",
+      "entryOrder": 37,
+      "reportedNumber": null,
+      "catalogPages": [
+        92
+      ],
+      "section": "II. Gediegeneisen",
+      "holdings": [
+        {
+          "description": "Etwas von dem dichteren und etwas von dem schwammigen Eisen, und auch etwas von der Rinde.",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Florac",
+      "classification": "Problematisches Gediegeneisen",
+      "locality": null,
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f099fecd-5e47-46b0-b653-c47155e2c679",
+      "catalogId": "chladni-1819",
+      "entryOrder": 38,
+      "reportedNumber": null,
+      "catalogPages": [
+        92
+      ],
+      "section": "III. Herabgefallene weiche oder staubartige Substanzen",
+      "holdings": [
+        {
+          "description": "Etwas von dem harzigen Stoffe, welcher mit einer Feuerkugel herabgefallen ist.",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": null,
+      "classification": "Harziger Stoff",
+      "locality": "Ober-Lausitz",
+      "eventDate": "8. März 1796",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e1a09e74-c5ca-4082-86b1-094b47578ffb",
+      "catalogId": "chladni-1819",
+      "entryOrder": 39,
+      "reportedNumber": null,
+      "catalogPages": [
+        93
+      ],
+      "section": "III. Herabgefallene weiche oder staubartige Substanzen",
+      "holdings": [
+        {
+          "description": "Rückstand von rothem Schnee.",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Alpe Anceindaz",
+      "classification": "Rückstand von rothem Schnee",
+      "locality": "am Flusse der Diablerets",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c9770348-efe8-4fb9-856f-8a30579205b6",
+      "catalogId": "chladni-1819",
+      "entryOrder": 40,
+      "reportedNumber": null,
+      "catalogPages": [
+        427
+      ],
+      "section": "Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Ein kleines Bruchstück. (Wiener Commercial-Gewicht.)",
+          "provenance": "Ein Geschenk des verstorbenen Majors v. Schwarz, 1809 erhalten.",
+          "count": 1,
+          "weights": []
+        },
+        {
+          "description": "Ein größeres Bruchstück.",
+          "provenance": "Durch gütige Vermittlung Sr. Excellenz des kaiserl. Ministers, Freyherrn v. Hügel, aus Colmar zum Geschenk erhalten, 1813.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Ensisheim",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "November 1492",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-459d3bf3-81a7-45a0-a841-07ffc439f1dd",
+      "catalogId": "chladni-1819",
+      "entryOrder": 41,
+      "reportedNumber": null,
+      "catalogPages": [
+        427
+      ],
+      "section": "Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Ein vollkommen ganzer, um und um mit Rinde bedeckter Stein.",
+          "provenance": "Von dem damahligen, zu jener Zeit in Tabor, der Kreisstadt des Bechiner-Kreises residirenden königl. böhmischen Kreishauptmann, Grafen v. Wratislaw, gleich nach der Begebenheit, die er aus eigenem Antriebe förmlich und ämtlich untersuchte, mit einem umständlichen Bericht an das königl. böhmische Gubernium, und von diesem an die k. k. Hofkammer in Wien eingesendet.",
+          "count": 1,
+          "weights": []
+        },
+        {
+          "description": "Eine geschliffene und polirte Platte.",
+          "provenance": "Vom Herrn Cabinetts-Custos v. Mühlfeld.",
+          "count": 1,
+          "weights": []
+        },
+        {
+          "description": "Ein kleines Bruchstück.",
+          "provenance": "Vom Herrn Doctor Pohl aus Prag, zu Tausch erhalten, 1811.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Tabor",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "Julius 1753",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-1f6b1e60-55a7-4d62-b2fd-db114e98060c",
+      "catalogId": "chladni-1819",
+      "entryOrder": 42,
+      "reportedNumber": null,
+      "catalogPages": [
+        428
+      ],
+      "section": "Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Ein Bruchstück.",
+          "provenance": "Durch Herrn Doctor Chladni erhalten, 1805.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Maurkirchen",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "November 1768",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c26eb92a-fb49-417b-b72d-78a42145ef24",
+      "catalogId": "chladni-1819",
+      "entryOrder": 43,
+      "reportedNumber": null,
+      "catalogPages": [
+        428
+      ],
+      "section": "Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Ein Bruchstück.",
+          "provenance": "Durch den Domherrn von Hompesch zu Eichstädt, um das Jahr 1789, dem damahligen Director des k. k. Mineralien-Cabinetts, Abbé Stütz, mitgetheilt.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Eichstädt",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "Februar 1785",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-cb5f7484-65de-4787-ac5c-82c5b6bae3e5",
+      "catalogId": "chladni-1819",
+      "entryOrder": 44,
+      "reportedNumber": null,
+      "catalogPages": [
+        428
+      ],
+      "section": "Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Ein Bruchstück.",
+          "provenance": "Von dem Mineralienhändler Herrn Mohr, zu Kauf erhalten, 1809.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Barbotan",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "Julius 1790",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-71a23177-ef38-436a-899e-fdb97e6644fd",
+      "catalogId": "chladni-1819",
+      "entryOrder": 45,
+      "reportedNumber": null,
+      "catalogPages": [
+        428
+      ],
+      "section": "Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Ein Bruchstück.",
+          "provenance": "Vom Herrn Obersten v. Tihavszky erhalten, 1809.",
+          "count": 1,
+          "weights": []
+        },
+        {
+          "description": "Ein kleiner, beynahe vollkommen ganzer, und um und um bis auf eine kleine Fläche incrustirter Stein.",
+          "provenance": "Durch Vermittlung des Herrn Professors v. Jacquin, aus Italien zum Kauf erhalten, 1816.",
+          "count": 1,
+          "weights": []
+        },
+        {
+          "description": "Ein noch kleinerer vollkommen ganzer Stein.",
+          "provenance": "Durch Vermittlung des Herrn Professors v. Jacquin, aus Italien zum Kauf erhalten, 1816.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Siena",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "Junius 1794",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-4fc617dc-1bc3-4176-8ad0-47db3aa1cdf4",
+      "catalogId": "chladni-1819",
+      "entryOrder": 46,
+      "reportedNumber": null,
+      "catalogPages": [
+        428
+      ],
+      "section": "Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Ein Bruchstück.",
+          "provenance": "Vom Mr. Sowerby in London zu Tausch erhalten, 1816.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Yorkshire",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "December 1795",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-34a0faf2-9cc5-48dc-8742-34fabb872e36",
+      "catalogId": "chladni-1819",
+      "entryOrder": 47,
+      "reportedNumber": null,
+      "catalogPages": [
+        428
+      ],
+      "section": "Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Ein Bruchstück.",
+          "provenance": "Durch Herrn Leman, aus der Sammlung des Herrn Marquis De Drée in Paris, zu Tausch erhalten, 1815.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Sales",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "März 1798",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a331de62-bd68-4ffe-9b20-a062742ddae8",
+      "catalogId": "chladni-1819",
+      "entryOrder": 48,
+      "reportedNumber": null,
+      "catalogPages": [
+        428
+      ],
+      "section": "Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Ein Bruchstück.",
+          "provenance": "Ein Geschenk des verstorbenen Greville in London, 1807.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Benares",
+      "classification": "Meteor-Stein",
+      "locality": "Bengalen",
+      "eventDate": "December 1798",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-1919ba09-d02c-4ef5-8415-990c70c843fa",
+      "catalogId": "chladni-1819",
+      "entryOrder": 49,
+      "reportedNumber": null,
+      "catalogPages": [
+        428,
+        429
+      ],
+      "section": "Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Ein vollkommen ganzer, durchaus mit Rinde bedeckter Stein.",
+          "provenance": "Von einem Franzosen in Wien zu Kauf erhalten, 1803.",
+          "count": 1,
+          "weights": []
+        },
+        {
+          "description": "Ein Bruchstück.",
+          "provenance": "Durch Herrn Apotheker Moser für das k. k. Cabinett in Paris angekauft, 1808.",
+          "count": 1,
+          "weights": []
+        },
+        {
+          "description": "Ein Bruchstück.",
+          "provenance": "Vom Mineralienhändler Herrn Lambotin in Paris zu Kauf erhalten, 1815.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "L'Aigle",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "May 1803",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-3b7e3beb-03f0-4d97-8643-7819b91de39f",
+      "catalogId": "chladni-1819",
+      "entryOrder": 50,
+      "reportedNumber": null,
+      "catalogPages": [
+        429
+      ],
+      "section": "Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Ein Bruchstück; der ganze Stein im königl. Museum zu Paris wog 1813 7 Pfund.",
+          "provenance": "Durch gefällige Mittheilung aus dem königl. Museum zu Paris erhalten, 1815.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Apt",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "October 1803",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-78204ab1-a496-4111-884f-8c8bdf23c288",
+      "catalogId": "chladni-1819",
+      "entryOrder": 51,
+      "reportedNumber": null,
+      "catalogPages": [
+        429
+      ],
+      "section": "Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Ein Bruchstück.",
+          "provenance": "Vom Mr. Sowerby in London zu Tausch erhalten, 1816.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "High Possil",
+      "classification": "Meteor-Stein",
+      "locality": "Glasgow",
+      "eventDate": "Aprill 1804",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c3be40e2-374f-4b83-8bc1-de96cfa0fd4d",
+      "catalogId": "chladni-1819",
+      "entryOrder": 52,
+      "reportedNumber": null,
+      "catalogPages": [
+        429
+      ],
+      "section": "Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Mehrere kleine Brocken, Pulver und Staub.",
+          "provenance": "Vom Hrn. Legations-Rath Lavater in Zürich, und von Herrn Leman aus der De Drée'schen Sammlung in Paris zu Tausch erhalten, 1811, 1815.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Alais",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "März 1806",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e8ae7aef-b385-4a6c-9de4-6618ec73b831",
+      "catalogId": "chladni-1819",
+      "entryOrder": 53,
+      "reportedNumber": null,
+      "catalogPages": [
+        429
+      ],
+      "section": "Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Ein Bruchstück, als Abschnitt von Klaproths eigenem größern Bruchstücke.",
+          "provenance": "Vom verstorbenen Ober-Medicinal-Rath Klaproth in Berlin dem k. k. Cabinette überlassen, 1810.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Timochin",
+      "classification": "Meteor-Stein",
+      "locality": "Smolensk",
+      "eventDate": "März 1807",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f0798ed2-52e5-435f-90ee-a90e0806020b",
+      "catalogId": "chladni-1819",
+      "entryOrder": 54,
+      "reportedNumber": null,
+      "catalogPages": [
+        429
+      ],
+      "section": "Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Zwey Bruchstücke.",
+          "provenance": "Vom verstorbenen Mineralienhändler Barton, 1812.",
+          "count": 2,
+          "weights": []
+        }
+      ],
+      "name": "Weston",
+      "classification": "Meteor-Stein",
+      "locality": "Connecticut",
+      "eventDate": "December 1807",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-3c22959a-d21b-4ecc-aa5e-3a673b43b2fe",
+      "catalogId": "chladni-1819",
+      "entryOrder": 55,
+      "reportedNumber": null,
+      "catalogPages": [
+        429,
+        430
+      ],
+      "section": "Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Ein Bruchstück; der ganze Stein im königl. Museum zu Paris wog 1813 1 Pfund.",
+          "provenance": "Durch gefällige Mittheilung aus dem königl. Museum zu Paris erhalten, 1815.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Parma",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "Aprill 1808",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a93cb016-64b0-4a0d-9660-1590d846c91c",
+      "catalogId": "chladni-1819",
+      "entryOrder": 56,
+      "reportedNumber": null,
+      "catalogPages": [
+        430
+      ],
+      "section": "Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Zwey und zwanzig Stücke und mehrere kleine Fragmente: eilf ganze und mehr oder weniger vollkommen und um und um mit Rinde bedeckte Steine sowie eilf größere und mehrere kleine Bruchstücke. Die Stücke wurden wegen Abweichungen in Größe, Form, Gestaltung, Rinde, Masse oder Gemengtheilen ausgewählt; die Auswahl stammte aus einem Vorrathe von 93 Stücken zu beynahe 46 Pfund.",
+          "provenance": "Theils auf der Untersuchungsreise an Ort und Stelle wenige Tage nach dem Ereignisse, theils späterhin bey veranlaßter fortgesetzter Aufsuchung durch das Iglauer Kreisamt eingeschickt erhalten. Beschreibungen der meisten Stücke waren bereits 1809 in Gilbert's Annalen der Physik B. 31. H. 1. gegeben worden.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Stannern",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "May 1808",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-baa48f83-1d71-4fcb-95ae-5265a2e469ee",
+      "catalogId": "chladni-1819",
+      "entryOrder": 57,
+      "reportedNumber": null,
+      "catalogPages": [
+        430,
+        431
+      ],
+      "section": "Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Ein vollkommen ganzer Stein.",
+          "provenance": "Vom Lissa'er Wirthschaftsamte, wohin derselbe gleich nach Auffindung abgegeben ward, mit den Resultaten der angeordneten, und am 17. November desselben Jahres gemeinschaftlich mit Herrn Doctor Reuß von Bilin an Ort und Stelle gepflogenen wissenschaftlichen Untersuchung des Ereignisses, an das Bunzlauer Kreisamt, und durch dieses an die k. k. Hofkammer in Wien eingesendet.",
+          "count": 1,
+          "weights": []
+        },
+        {
+          "description": "Ein Bruchstück.",
+          "provenance": "Vom Lissa'er Wirthschaftsamte mit den Resultaten der sogleich am 6ten Tage nach dem Ereignisse aus eigenem Antriebe vorgenommenen ämtlichen Untersuchung des Factums, dem Bunzlauer Kreisamte, und durch dieses nach Wien eingesendet.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Lissa",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "September 1808",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b860926f-46a0-43c2-8e88-c444064ffd89",
+      "catalogId": "chladni-1819",
+      "entryOrder": 58,
+      "reportedNumber": null,
+      "catalogPages": [
+        431
+      ],
+      "section": "Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Ein Bruchstück.",
+          "provenance": "Ein Geschenk des Herrn Professor Giesecke in Dublin, 1816.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Lipperary",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "August 1810",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6abacfce-4069-4869-8a9c-856150d9d671",
+      "catalogId": "chladni-1819",
+      "entryOrder": 59,
+      "reportedNumber": null,
+      "catalogPages": [
+        431
+      ],
+      "section": "Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Ein Bruchstück; der ganze Stein im k. Museum zu Paris wog 1813 11 Pfund.",
+          "provenance": "Durch gefällige Mittheilung aus dem k. Museum zu Paris erhalten, 1815.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Charsonville",
+      "classification": "Meteor-Stein",
+      "locality": "Orleans",
+      "eventDate": "November 1810",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-69c5e2c1-cccb-403b-91ef-496080a9666d",
+      "catalogId": "chladni-1819",
+      "entryOrder": 60,
+      "reportedNumber": null,
+      "catalogPages": [
+        431
+      ],
+      "section": "Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Ein Bruchstück; der ganze Stein im königl. Museum zu Paris wog 1813 3 Pfund.",
+          "provenance": "Durch gefällige Mittheilung aus dem königl. Museum zu Paris erhalten, 1815.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Berlanguillas",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "Julius 1811",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c3efb9aa-543e-41fd-819d-b414bad6cd1e",
+      "catalogId": "chladni-1819",
+      "entryOrder": 61,
+      "reportedNumber": null,
+      "catalogPages": [
+        431
+      ],
+      "section": "Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Ein Bruchstück; der Stein im königl. Museum zu Paris wog 1813 6 Loth.",
+          "provenance": "Durch gefällige Mittheilung aus dem königl. Museum zu Paris erhalten, 1815.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Toulouse",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "Aprill 1812",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-ef5d37a1-aef0-4576-9981-43daedb02db5",
+      "catalogId": "chladni-1819",
+      "entryOrder": 62,
+      "reportedNumber": null,
+      "catalogPages": [
+        431
+      ],
+      "section": "Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Ein Bruchstück.",
+          "provenance": "Ein Geschenk des Herrn Professors Blumenbach in Göttingen, 1813.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Erxleben",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "Aprill 1812",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-ed1d56b4-e6e8-4bd4-9ef5-8d636d31f3b0",
+      "catalogId": "chladni-1819",
+      "entryOrder": 63,
+      "reportedNumber": null,
+      "catalogPages": [
+        431
+      ],
+      "section": "Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Eine Masse.",
+          "provenance": "Auf Vermittlung des Herrn P. Partsch, durch Herrn Brochant in Paris zu Kauf erhalten, 1818.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Chantonay",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "August 1812",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-3093168f-df72-49c7-88c8-67c3214101f8",
+      "catalogId": "chladni-1819",
+      "entryOrder": 64,
+      "reportedNumber": null,
+      "catalogPages": [
+        431
+      ],
+      "section": "Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Ein Bruchstück.",
+          "provenance": "Vom Mr. Sowerby in London zu Tausch erhalten, 1816.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Limerik",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "September 1813",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-9f61dd20-82e2-4e0e-b080-088e3e53ee32",
+      "catalogId": "chladni-1819",
+      "entryOrder": 65,
+      "reportedNumber": null,
+      "catalogPages": [
+        432
+      ],
+      "section": "Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Ein Bruchstück.",
+          "provenance": "Durch gefällige Mittheilung aus dem königl. Museum in Paris, erhalten 1815.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Agen",
+      "classification": "Meteor-Stein",
+      "locality": null,
+      "eventDate": "September 1814",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f4c92ced-5303-495b-910d-0c475a43089c",
+      "catalogId": "chladni-1819",
+      "entryOrder": 66,
+      "reportedNumber": null,
+      "catalogPages": [
+        432
+      ],
+      "section": "Meteor-Steine",
+      "holdings": [
+        {
+          "description": "Ein Bruchstück.",
+          "provenance": "Ein Geschenk des Herrn Lucas, Garde adj. am Museum zu Paris, 1816.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Chassigny",
+      "classification": "Meteor-Stein",
+      "locality": "Langres",
+      "eventDate": "October 1815",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-25627168-ba42-4daa-9f8a-3e8d415199b8",
+      "catalogId": "chladni-1819",
+      "entryOrder": 67,
+      "reportedNumber": null,
+      "catalogPages": [
+        432,
+        433
+      ],
+      "section": "Meteor-Eisen",
+      "holdings": [
+        {
+          "description": "Eine Masse.",
+          "provenance": "Wahrscheinlich noch aus der Privat-Sammlung des verstorbenen Freyherrn v. Baillou herstammend, welche vor etwa 70 Jahren den Grund zur k. k. Mineralien-Sammlung legte.",
+          "count": 1,
+          "weights": []
+        },
+        {
+          "description": "? Eine ähnliche aber mehr abgerollte und abgenutzte Masse.",
+          "provenance": "Aus der Mineralien-Sammlung der Theresianischen Ritter-Akademie in Wien, bey Aufhebung derselben unter Kaiser Joseph, an das k. k. Hof-Mineralien-Cabinett übertragen; nach mitgekommener Notitz, ursprünglich aus Norwegen herstammend.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Sibirien. Pallas",
+      "classification": "Meteor-Eisen",
+      "locality": "Sibirien",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-74dedb30-9ffd-4ca1-8f08-0cd411546767",
+      "catalogId": "chladni-1819",
+      "entryOrder": 68,
+      "reportedNumber": null,
+      "catalogPages": [
+        433
+      ],
+      "section": "Meteor-Eisen",
+      "holdings": [
+        {
+          "description": "Ein sehr kleines Stück.",
+          "provenance": "Ein Geschenk des Herrn Präsidenten v. Schlotheim in Gotha, 1809.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Sachsen?",
+      "classification": "Meteor-Eisen",
+      "locality": "Sachsen?",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6c11758f-d942-427e-98df-2eb1fddd4648",
+      "catalogId": "chladni-1819",
+      "entryOrder": 69,
+      "reportedNumber": null,
+      "catalogPages": [
+        433
+      ],
+      "section": "Meteor-Eisen",
+      "holdings": [
+        {
+          "description": "Die eine größere der damahls vor vielen Augenzeugen herabgefallenen Massen.",
+          "provenance": "Nach der am 8ten Tage nach dem Ereignisse von Seite des bischöflichen Consistoriums zu Agram aus freyem Antriebe an Ort und Stelle gepflogenen ämtlichen und förmlichen Untersuchung, sammt einer in Folge dieser ausgestellten Urkunde durch den Bischof Freyherrn v. Klobuschiczky, auf dem eben zu jener Zeit in Ungarn abgehaltenen Landtage Sr. Majestät Kaiser Franz I. überbracht. Auf allerhöchsten Befehl nach Wien gesendet, anfänglich in der k. k. Schatzkammer aufbewahrt und später in das k. k. Mineralien-Cabinett übersetzt.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Agram",
+      "classification": "Meteor-Eisen",
+      "locality": "Croatien",
+      "eventDate": "May 1751",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-78144702-1e4f-4ca7-b662-48ea8a5bed73",
+      "catalogId": "chladni-1819",
+      "entryOrder": 70,
+      "reportedNumber": null,
+      "catalogPages": [
+        433
+      ],
+      "section": "Meteor-Eisen",
+      "holdings": [
+        {
+          "description": "Eine Masse; vor der Ausfolgung wurde in Elbogen ein Eck abgesäget und zum Angedenken zurückbehalten.",
+          "provenance": "Auf Veranlassung der k. k. Naturalien-Cabinetts-Direction im Jahre 1812 nach Wien gebracht.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Elbogen",
+      "classification": "Meteor-Eisen",
+      "locality": "Böhmen",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-0ad71bce-6847-4cb1-844f-1d88979a9092",
+      "catalogId": "chladni-1819",
+      "entryOrder": 71,
+      "reportedNumber": null,
+      "catalogPages": [
+        433
+      ],
+      "section": "Meteor-Eisen",
+      "holdings": [
+        {
+          "description": "Ein Stück.",
+          "provenance": "Vom Herrn Professor Sennowitz zu Eperies, dem k. k. Cabinette überlassen 1818.",
+          "count": 1,
+          "weights": []
+        },
+        {
+          "description": "Eine geschliffene und geätzte Platte.",
+          "provenance": "Ein Geschenk des Freyherrn v. Brudern, 1815.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Lenarto",
+      "classification": "Meteor-Eisen",
+      "locality": "Ungarn",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-7729f9cc-966c-4406-9f3d-7a41285c3252",
+      "catalogId": "chladni-1819",
+      "entryOrder": 72,
+      "reportedNumber": null,
+      "catalogPages": [
+        433,
+        434
+      ],
+      "section": "Meteor-Eisen",
+      "holdings": [
+        {
+          "description": "Ein Stück.",
+          "provenance": "Durch gefällige Mittheilung des Herrn Professor Van Marum zu Haarlem, auf Umtausch erhalten, 1815.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Kap",
+      "classification": "Meteor-Eisen",
+      "locality": "Afrika",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-05a86454-9cb4-4ac4-9163-3a95fe4fd4fb",
+      "catalogId": "chladni-1819",
+      "entryOrder": 73,
+      "reportedNumber": null,
+      "catalogPages": [
+        434
+      ],
+      "section": "Meteor-Eisen",
+      "holdings": [
+        {
+          "description": "Ein Stück, von einem größern, von Herrn v. Humboldt herrührenden Stücke abgefeilt.",
+          "provenance": "Im Besitze des verstorbenen O. M. R. Klaproth in Berlin, mit dessen gefälliger Zustimmung abgefeilt, und von demselben dem k. k. Cabinette überlassen, 1810.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Zacatecas? Toluca?",
+      "classification": "Meteor-Eisen",
+      "locality": "Mexico",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-bd7c0bf3-aa8f-4970-aa19-a815e6cf8422",
+      "catalogId": "chladni-1819",
+      "entryOrder": 74,
+      "reportedNumber": null,
+      "catalogPages": [
+        434
+      ],
+      "section": "Meteor-Eisen",
+      "holdings": [
+        {
+          "description": "Ein Stück.",
+          "provenance": "Durch den verstorbenen v. Fichtel aus Madrid, zu Kauf erhalten 1806.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "St. Jago del Estero",
+      "classification": "Meteor-Eisen",
+      "locality": "Chaco-Gualamba",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d046a615-bde1-448f-99d6-66bb45995947",
+      "catalogId": "chladni-1825",
+      "entryOrder": 1,
+      "reportedNumber": null,
+      "catalogPages": [
+        208,
+        209,
+        210
+      ],
+      "section": "I. Meteorsteine, in chronologischer Folge des Niederfallens",
+      "holdings": [
+        {
+          "description": "Ein Stück von dem ungefähr 270 Pfund schwer gewesenen Meteorsteine. Die Steinart ist von größerer Festigkeit und dichterem Korn, schiefergrau mit weißlich grauen Adern, größtentheils von schiefrigem Gefüge und ohne Körner. Sie zeigt dunkel schiefergraue glänzende Absonderungsflächen sowie metallisch glänzende Partien und Adern aus Gediegeneisen und Schwefeleisen; manche kleineren Teile sind dem Olivin ähnlich. An Chladnis Stück befindet sich keine Rinde.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Ensisheim",
+      "classification": "Meteorstein",
+      "locality": "Ober-Elsaß, oder im jetzigen Departement des Ober-Rheins",
+      "eventDate": "7. November 1492",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-081b0451-c622-4184-b7bd-65cbb862e702",
+      "catalogId": "chladni-1825",
+      "entryOrder": 2,
+      "reportedNumber": null,
+      "catalogPages": [
+        210
+      ],
+      "section": "I. Meteorsteine, in chronologischer Folge des Niederfallens",
+      "holdings": [
+        {
+          "description": "Ein eckiges Stück mit drei beinahe rechtwinklig zusammentreffenden Seiten, die von einer an den Kanten etwas wulstigen, schwarzen oder schwarzbraunen, etwas glänzenden Rinde mit Adern und Eindrücken bedeckt sind. Der dunkelgraue, ziemlich harte Hauptbestandteil enthält kleine hellere oder weißliche Partien, viele glänzende Teilchen von Gediegeneisen, etwas Eisenoxyd und kleine Kugeln einer schwärzlichen Steinart; Schwefeleisen ist kaum zu bemerken.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Tabor",
+      "classification": "Meteorstein",
+      "locality": "Böhmen",
+      "eventDate": "4. Juli 1753",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-7a7b4af3-bc18-438d-b157-32e724ab4245",
+      "catalogId": "chladni-1825",
+      "entryOrder": 3,
+      "reportedNumber": null,
+      "catalogPages": [
+        210,
+        211
+      ],
+      "section": "I. Meteorsteine, in chronologischer Folge des Niederfallens",
+      "holdings": [
+        {
+          "description": "Ein Stück ohne Rinde, dessen eine Seite vom Feuer oder Rauch des Meteors stark geschwärzt ist und den Anfang einer Rindenbildung zu zeigen scheint. Das aschgraue Innere enthält viel Gediegeneisen in kleinen und größeren Partien sowie als streifigen Anflug, wenig Eisenoxyd und Schwefeleisen und keine weiteren bemerkten Gemengteile.",
+          "provenance": "Chladni erklärt sein Stück als Teil desselben Stückes, das der Marquis De Drée einmal als Stein von Lucé und danach als ein anderes Stück aus der Sammlung des ehemaligen Ministers Trudaine in Montigny erwähnt hatte.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Lucé",
+      "classification": "Meteorstein",
+      "locality": "Departement de la Sarthe",
+      "eventDate": "13. September 1768",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-93d449ec-da21-4718-bc1b-fe3dea3ae0d0",
+      "catalogId": "chladni-1825",
+      "entryOrder": 4,
+      "reportedNumber": null,
+      "catalogPages": [
+        211,
+        212
+      ],
+      "section": "I. Meteorsteine, in chronologischer Folge des Niederfallens",
+      "holdings": [
+        {
+          "description": "Ein Stück mit einer etwas dickeren, graulich oder bräunlich schwarzen, glanzlosen Rinde mit parallelen Streifen. Das sehr weiche Innere ist weißlich oder hellgrau und enthält glimmerartig glänzende Teile, gleichförmig eingemengte feine metallische silberweiß glänzende Punkte, einzelne dunkelgraue oder schwärzliche Körner sowie etwas röthlich anlaufendes Schwefeleisen und Eisenoxyd. Eine Spalte ist, soweit der Brand des Meteors eindringen konnte, schwarzbraun gefärbt.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Maurkirchen",
+      "classification": "Meteorstein",
+      "locality": "Innviertel",
+      "eventDate": "20. November 1768",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-04dc970a-3a5d-4fea-80f1-031dae102c97",
+      "catalogId": "chladni-1825",
+      "entryOrder": 5,
+      "reportedNumber": null,
+      "catalogPages": [
+        212
+      ],
+      "section": "I. Meteorsteine, in chronologischer Folge des Niederfallens",
+      "holdings": [
+        {
+          "description": "Ein kleines Stück mit schwarzbrauner Rinde. In der weißlich grauen Hauptsubstanz des Inneren zeigen sich viele silberweiß glänzende Punkte, Schwefeleisen, Eisenoxyd, dunkelgraue Körner und kleine Adern.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Charkow",
+      "classification": "Meteorstein",
+      "locality": "Gouvernement von Charkow",
+      "eventDate": "1. October 1787",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b776fc37-894a-443a-a961-2527581c81f5",
+      "catalogId": "chladni-1825",
+      "entryOrder": 6,
+      "reportedNumber": null,
+      "catalogPages": [
+        212,
+        213
+      ],
+      "section": "I. Meteorsteine, in chronologischer Folge des Niederfallens",
+      "holdings": [
+        {
+          "description": "Ein Stück mit zwei eckigen, von Rinde bedeckten Seiten mit Adern und Eindrücken; an den Kanten bildet die Rinde wulstige Hervorragungen und zeigt zahlreiche Punkte und Körner von Gediegeneisen. Das dunkle, eisenreiche Innere enthält viel Gediegeneisen von unregelmäßiger, teils annähernd tafelförmiger Gestalt. Einige Flächen scheinen auf eine Neigung zu oktaedrischer Kristallisation zu deuten; unter dem Mikroskop zeigt das Gediegeneisen blättrige Struktur.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Barbotan",
+      "classification": "Meteorstein",
+      "locality": null,
+      "eventDate": "24. Juli 1790",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-7907a49c-35df-4b14-8c9c-5f6665b4a79b",
+      "catalogId": "chladni-1825",
+      "entryOrder": 7,
+      "reportedNumber": null,
+      "catalogPages": [
+        213,
+        214
+      ],
+      "section": "I. Meteorsteine, in chronologischer Folge des Niederfallens",
+      "holdings": [
+        {
+          "description": "Die Hälfte eines kleinen Steines mit graulich schwarzer, von kleinen Rissen durchzogener Rinde und einer eckigen, unregelmäßig prismatischen Gestalt mit abgestumpften Ecken und Kanten. Das Innere ist hellgrau mit metallisch glänzenden Teilen, Flocken von Eisenoxyd sowie dunkelgrauen oder schwärzlichen Körnern und größeren Teilen; einige kleinere Teile zeigen sich tafelförmig.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Siena",
+      "classification": "Meteorstein",
+      "locality": null,
+      "eventDate": "16. Juni 1794",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-beaf62bb-ba27-425b-82af-7fe4d0284a69",
+      "catalogId": "chladni-1825",
+      "entryOrder": 8,
+      "reportedNumber": null,
+      "catalogPages": [
+        214
+      ],
+      "section": "I. A. Meteorsteine",
+      "holdings": [
+        {
+          "description": "Ein kleines Stück ohne Rinde nebst einem noch kleinern Stück, an dem etwas von bräunlich schwarzer Rinde zu sehen ist.",
+          "provenance": null,
+          "count": 2,
+          "weights": []
+        }
+      ],
+      "name": "Yorkshire",
+      "classification": "Meteorstein",
+      "locality": "Yorkshire",
+      "eventDate": "13. Dezember 1795",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-4e04e0af-e92d-475b-a5a8-5ab3c2af63b3",
+      "catalogId": "chladni-1825",
+      "entryOrder": 9,
+      "reportedNumber": null,
+      "catalogPages": [
+        214,
+        215
+      ],
+      "section": "I. A. Meteorsteine",
+      "holdings": [
+        {
+          "description": "Ein Stück, Theil des größern Stückes des Marquis De Drée.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Sales",
+      "classification": "Meteorstein",
+      "locality": "nicht weit von Villefranche, im Rhonedepartement",
+      "eventDate": "12. März 1798",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a694a959-7a25-4fab-b012-b5b9440c3472",
+      "catalogId": "chladni-1825",
+      "entryOrder": 10,
+      "reportedNumber": null,
+      "catalogPages": [
+        215
+      ],
+      "section": "I. A. Meteorsteine",
+      "holdings": [
+        {
+          "description": "Ein ganzer, fast ganz mit Rinde überzogener Stein von schief prismatischer Gestalt mit abgerundeten Ecken und Kanten.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Laigle",
+      "classification": "Meteorstein",
+      "locality": "Ornedepartement oder vormalige Normandie",
+      "eventDate": "26. April 1803",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-29c71aa6-b2e1-4e41-b90a-69cac1b55a10",
+      "catalogId": "chladni-1825",
+      "entryOrder": 11,
+      "reportedNumber": null,
+      "catalogPages": [
+        215,
+        216
+      ],
+      "section": "I. A. Meteorsteine",
+      "holdings": [
+        {
+          "description": "Ein Stück, an zwei einen rechten Winkel miteinander machenden Seiten mit Rinde bedeckt.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Apt",
+      "classification": "Meteorstein",
+      "locality": "Departement von Vaucluse",
+      "eventDate": "8. October 1803",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-9aabf67c-2f89-4024-842e-727da90bce6c",
+      "catalogId": "chladni-1825",
+      "entryOrder": 12,
+      "reportedNumber": null,
+      "catalogPages": [
+        216
+      ],
+      "section": "I. A. Meteorsteine",
+      "holdings": [
+        {
+          "description": "Ein Stück mit einer stellenweise pechartig glänzenden schwarzen Rinde und mannigfaltigen Gemengtheilen.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Eggenfelde",
+      "classification": "Meteorstein",
+      "locality": "Innviertel",
+      "eventDate": "13. December 1803",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-0e1dcf64-48f0-43d7-b39b-b6325a07c16e",
+      "catalogId": "chladni-1825",
+      "entryOrder": 13,
+      "reportedNumber": null,
+      "catalogPages": [
+        216,
+        217
+      ],
+      "section": "I. A. Meteorsteine",
+      "holdings": [
+        {
+          "description": "Viele kleine Brocken einer mit den Fingern zerreiblichen, von selbst zerfallenden, schwärzlichen Substanz.",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Alais",
+      "classification": "Meteorstein",
+      "locality": "Departement du Gard",
+      "eventDate": "15. März 1806",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f886a17e-0abb-4a4d-820d-30ac98bd23a7",
+      "catalogId": "chladni-1825",
+      "entryOrder": 14,
+      "reportedNumber": null,
+      "catalogPages": [
+        217,
+        218
+      ],
+      "section": "I. A. Meteorsteine",
+      "holdings": [
+        {
+          "description": "Zwei Bruchstücke eines ungefähr 140 Pfund schweren Steins; eines ist an vier Seiten, das andere an einer Seite mit Rinde bedeckt.",
+          "provenance": null,
+          "count": 2,
+          "weights": []
+        }
+      ],
+      "name": "Timochin",
+      "classification": "Meteorstein",
+      "locality": "Gouvernement von Smolensk",
+      "eventDate": "13. März 1807",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-fd40d481-5369-4209-993b-0dddd21c7c5f",
+      "catalogId": "chladni-1825",
+      "entryOrder": 15,
+      "reportedNumber": null,
+      "catalogPages": [
+        218
+      ],
+      "section": "I. A. Meteorsteine",
+      "holdings": [
+        {
+          "description": "Zwei Stücke mit schwarzer, glanzloser, rauher Rinde und verschiedenfarbigem Cement.",
+          "provenance": null,
+          "count": 2,
+          "weights": []
+        }
+      ],
+      "name": "Weston",
+      "classification": "Meteorstein",
+      "locality": "Connecticut",
+      "eventDate": "14. December 1807",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b1b4e3e7-679e-46b4-9e1c-6493f3f2a0c7",
+      "catalogId": "chladni-1825",
+      "entryOrder": 16,
+      "reportedNumber": null,
+      "catalogPages": [
+        218,
+        219
+      ],
+      "section": "I. A. Meteorsteine",
+      "holdings": [
+        {
+          "description": "Etwas von der im Parmesanischen gefallenen Masse, mit braunlich schwarzer Rinde.",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Parmesanischen",
+      "classification": "Meteorstein",
+      "locality": "im Parmesanischen",
+      "eventDate": "19. April 1808",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-14d52c08-607f-40cf-b4b3-9f0f4002999c",
+      "catalogId": "chladni-1825",
+      "entryOrder": 17,
+      "reportedNumber": null,
+      "catalogPages": [
+        219,
+        220
+      ],
+      "section": "I. B. Meteorsteine",
+      "holdings": [
+        {
+          "description": "Ein ganzer, eckiger Stein, an einer Seite mehr concav und an der andern convex; nur ein kleines Stück ist abgeschlagen, um das Innere zu sehen.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        },
+        {
+          "description": "Ein Stück von einem größern Steine.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Stannern",
+      "classification": "Meteorstein ohne Gediegeneisen und Nickel",
+      "locality": "Mähren",
+      "eventDate": "22. Mai 1808",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-05366eac-fe9e-4726-8999-f0d0d5c4e02e",
+      "catalogId": "chladni-1825",
+      "entryOrder": 18,
+      "reportedNumber": null,
+      "catalogPages": [
+        220
+      ],
+      "section": "I. A. Meteorsteine",
+      "holdings": [
+        {
+          "description": "Ein Stück mit schwarzer, wenig glänzender Rinde.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Lissa",
+      "classification": "Meteorstein",
+      "locality": "Böhmen",
+      "eventDate": "3. September 1808",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-87323e4a-317e-470f-9317-ee05b52401a0",
+      "catalogId": "chladni-1825",
+      "entryOrder": 19,
+      "reportedNumber": null,
+      "catalogPages": [
+        220,
+        221
+      ],
+      "section": "I. A. Meteorsteine",
+      "holdings": [
+        {
+          "description": "Ein Stück mit schwarzbrauner, etwas rauher und fast glanzloser Rinde.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Tipperary",
+      "classification": "Meteorstein",
+      "locality": "Grafschaft Tipperary in Irland",
+      "eventDate": "August 1810",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-98e98630-115f-4f7e-951b-a324aa21d52c",
+      "catalogId": "chladni-1825",
+      "entryOrder": 20,
+      "reportedNumber": null,
+      "catalogPages": [
+        221
+      ],
+      "section": "I. A. Meteorsteine",
+      "holdings": [
+        {
+          "description": "Ein Stück mit bräunlichschwarzer, sehr eisenhaltiger Rinde.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        },
+        {
+          "description": "Zwei kleine Bruchstücke eines andern Steines; eines enthält etwas von der größern, das andere etwas von der kleinern durchsetzenden schwärzlichen Ader.",
+          "provenance": null,
+          "count": 2,
+          "weights": []
+        }
+      ],
+      "name": "Charsonville",
+      "classification": "Meteorstein",
+      "locality": "nicht weit von Orleans, Departement du Loiret",
+      "eventDate": "23. November 1810",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-92f26c35-ef98-4d27-a251-ce900940a803",
+      "catalogId": "chladni-1825",
+      "entryOrder": 21,
+      "reportedNumber": null,
+      "catalogPages": [
+        221,
+        222
+      ],
+      "section": "I. A. Meteorsteine",
+      "holdings": [
+        {
+          "description": "Zwei von verschiedenen Enden desselben Steines abgeschlagene Stücke.",
+          "provenance": null,
+          "count": 2,
+          "weights": []
+        }
+      ],
+      "name": "Berlanguillas",
+      "classification": "Meteorstein",
+      "locality": "unweit Burgos in Spanien",
+      "eventDate": "8. Juli 1811",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-607465b9-36c9-483f-ad54-33e95dbc07a2",
+      "catalogId": "chladni-1825",
+      "entryOrder": 22,
+      "reportedNumber": null,
+      "catalogPages": [
+        222
+      ],
+      "section": "I. A. Meteorsteine",
+      "holdings": [
+        {
+          "description": "Etwas von dem bei Toulouse gefallenen Meteorstein, mit schwarzer, wenig glänzender Rinde.",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Toulouse",
+      "classification": "Meteorstein",
+      "locality": "Toulouse",
+      "eventDate": "10. April 1812",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-28e23c58-50ae-467a-bbdc-70ea24d7e715",
+      "catalogId": "chladni-1825",
+      "entryOrder": 23,
+      "reportedNumber": null,
+      "catalogPages": [
+        222,
+        223
+      ],
+      "section": "I. A. Meteorsteine",
+      "holdings": [
+        {
+          "description": "Ein Stück mit größtentheils unzusammenhängender schwärzlicher Rinde.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Erxleben",
+      "classification": "Meteorstein",
+      "locality": "zwischen Magdeburg und Helmstädt",
+      "eventDate": "15. April 1812",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d63aabb7-e8ed-4e27-be2d-e6f029b17dd1",
+      "catalogId": "chladni-1825",
+      "entryOrder": 24,
+      "reportedNumber": null,
+      "catalogPages": [
+        224,
+        225
+      ],
+      "section": "I. A. Meteorsteine",
+      "holdings": [
+        {
+          "description": "Ein Stück ohne eigentliche Rinde; seine Oberfläche ist theils etwas verschlackt, theils verwittertem Basalte ähnlich und stellenweise mit rothbraunem Eisenoxyd bedeckt.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Chantonay",
+      "classification": "Meteorstein",
+      "locality": "Vendéedepartement",
+      "eventDate": "5. August 1812",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-22b45fe8-8e2e-416b-9537-8a88d1b5232e",
+      "catalogId": "chladni-1825",
+      "entryOrder": 25,
+      "reportedNumber": null,
+      "catalogPages": [
+        225
+      ],
+      "section": "I. A. Meteorsteine",
+      "holdings": [
+        {
+          "description": "Ein kleines Stück mit schwärzerer und rauherer Rinde als der zum Vergleich herangezogene Stein von Tipperary.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Limerick",
+      "classification": "Meteorstein",
+      "locality": "Grafschaft Limerick in Irland",
+      "eventDate": "10. September 1813",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e4ab3ea8-063e-4be0-810b-239f79083210",
+      "catalogId": "chladni-1825",
+      "entryOrder": 26,
+      "reportedNumber": null,
+      "catalogPages": [
+        225,
+        226
+      ],
+      "section": "I. B. Meteorsteine",
+      "holdings": [
+        {
+          "description": "Etwas von den bei Agen gefallenen Meteorsteinen, mit schwarzer, wenig glänzender und fein geaderter Rinde.",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Agen",
+      "classification": "Meteorstein ohne Nickel (nach Vauquelins Analyse; von Chladni bezweifelt)",
+      "locality": "Departement du Lot et Garonne",
+      "eventDate": "5. September 1814",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-2a8e8426-2bcb-4fb9-8582-3167485553af",
+      "catalogId": "chladni-1825",
+      "entryOrder": 27,
+      "reportedNumber": null,
+      "catalogPages": [
+        226,
+        227
+      ],
+      "section": "I. B. Meteorsteine",
+      "holdings": [
+        {
+          "description": "Etwas von dem bei Chassigny gefallenen Meteorstein, mit theils brauner, theils schwarzer, glänzender und lackartig erscheinender Rinde.",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Chassigny",
+      "classification": "Meteorstein ohne Nickel und Gediegeneisen (nach Chladnis Darstellung)",
+      "locality": "nicht weit von Langres, Champagne oder Departement der obern Marne",
+      "eventDate": "3. October 1815",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-7457ae5f-a821-439a-93a2-179073562062",
+      "catalogId": "chladni-1825",
+      "entryOrder": 28,
+      "reportedNumber": null,
+      "catalogPages": [
+        227,
+        228
+      ],
+      "section": "I. A. Meteorsteine",
+      "holdings": [
+        {
+          "description": "Ein Stück ohne Rinde nebst einem kleinen mit Rinde versehenen Stück.",
+          "provenance": null,
+          "count": 2,
+          "weights": []
+        }
+      ],
+      "name": "Politz",
+      "classification": "Meteorstein",
+      "locality": "nicht weit von Köstritz oder Gera im Fürstenthume Reuß",
+      "eventDate": "13. October 1819",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-4ed8ed65-cba5-4f16-b4e9-157c4e75c13c",
+      "catalogId": "chladni-1825",
+      "entryOrder": 29,
+      "reportedNumber": null,
+      "catalogPages": [
+        228,
+        229
+      ],
+      "section": "I. A. Meteorsteine",
+      "holdings": [
+        {
+          "description": "Ein Stück ohne Rinde nebst zwei sehr kleinen Stücken, von denen eines mit Rinde versehen ist.",
+          "provenance": "Dem verewigten Theodor v. Grotthuß verdankt.",
+          "count": 3,
+          "weights": []
+        }
+      ],
+      "name": "Lixna",
+      "classification": "Meteorstein",
+      "locality": "Dünaburger Kreis, Gouvernement von Witebsk",
+      "eventDate": "12. Juli 1820",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8ae671ba-d684-40d9-9be3-49b9fe897ba8",
+      "catalogId": "chladni-1825",
+      "entryOrder": 30,
+      "reportedNumber": null,
+      "catalogPages": [
+        229
+      ],
+      "section": "I. B. Meteorsteine",
+      "holdings": [
+        {
+          "description": "Einige kleine Bruchstücke ohne Rinde.",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Juvenas",
+      "classification": "Meteorstein ohne Nickel und Gediegeneisen",
+      "locality": "Departement de l'Ardèche",
+      "eventDate": "15. Juni 1821",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-5d5633e2-245f-4e58-8357-5fa4307550f5",
+      "catalogId": "chladni-1825",
+      "entryOrder": 31,
+      "reportedNumber": null,
+      "catalogPages": [
+        229,
+        230
+      ],
+      "section": "II. A. Aestig oder zellig, mit Ausfüllung der Zwischenräume durch Olivin (Peridot.)",
+      "holdings": [
+        {
+          "description": "Zwei Stücke der durch Pallas bekannt gewordenen Masse; das größere enthält unter anderem einen sehr hellen, durchsichtigen Olivinkrystall von der Größe einer Erbse.",
+          "provenance": null,
+          "count": 2,
+          "weights": []
+        }
+      ],
+      "name": "Pallas-Masse bei Krasnojarsk",
+      "classification": "Gediegeneisen mit Olivin (Peridot)",
+      "locality": "Sibirien, zwischen Krasnojarsk und Abakansk",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b8b09d9c-30f5-4880-8fdd-1e3e2d64922f",
+      "catalogId": "chladni-1825",
+      "entryOrder": 32,
+      "reportedNumber": null,
+      "catalogPages": [
+        230
+      ],
+      "section": "II. A. Aestig oder zellig, mit Ausfüllung der Zwischenräume durch Olivin (Peridot.)",
+      "holdings": [
+        {
+          "description": "Einige kleine Stücke einer einige wenige Pfund schwer gewesenen Masse, dem Pallas-Eisen mit inliegendem Olivin ähnlich.",
+          "provenance": "Die Masse befand sich vormals in der Mineraliensammlung des Berghauptmann v. Schönberg mit einem Zettel: „Ein kurioses Stück Gediegeneisen, so auf dem Felde gefunden worden.“ Hernach erhielt sie Hr. geh. Rath v. Schlotheim; zur Zeit der Quelle befand sie sich im herzoglichen Naturalienkabinet zu Gotha.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Sachsen?",
+      "classification": "Gediegeneisen mit inliegendem Olivin",
+      "locality": "wahrscheinlich in Sachsen",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-ccceedf5-b58a-43f9-8360-b473035f754f",
+      "catalogId": "chladni-1825",
+      "entryOrder": 33,
+      "reportedNumber": null,
+      "catalogPages": [
+        231
+      ],
+      "section": "II. B. Derbe Eisenmassen, von krystallinischem Gefüge",
+      "holdings": [
+        {
+          "description": "Ein kleines aber lehrreiches Stück mit zwei convexen Seiten, die äußere Oberfläche waren.",
+          "provenance": "Von der im k. k. Naturalienkabinet zu Wien befindlichen Masse.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Hradschina",
+      "classification": "Gediegeneisen",
+      "locality": "Agramer Comitat",
+      "eventDate": "26. Mai 1751",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d1d80afe-2ed6-4f80-8fd9-2c42381ba1ba",
+      "catalogId": "chladni-1825",
+      "entryOrder": 34,
+      "reportedNumber": null,
+      "catalogPages": [
+        231,
+        232,
+        233
+      ],
+      "section": "II. B. Derbe Eisenmassen, von krystallinischem Gefüge",
+      "holdings": [
+        {
+          "description": "Ein Stück der als der verwünschte Burggraf bekannten Masse.",
+          "provenance": "Von der vormals in Elbogen aufbewahrten Masse; zur Zeit der Quelle befand sich der größere Theil im k. k. Naturalienkabinet zu Wien und der kleinere im Rathhause zu Elbogen.",
+          "count": 1,
+          "weights": []
+        },
+        {
+          "description": "Ein aus der Masse gesägtes Täfelchen.",
+          "provenance": "Von der als der verwünschte Burggraf bekannten Elbogener Masse.",
+          "count": 1,
+          "weights": []
+        },
+        {
+          "description": "Eine aus diesem Eisen geschmiedete Federmesserklinge.",
+          "provenance": "Von der als der verwünschte Burggraf bekannten Elbogener Masse.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Elbogen",
+      "classification": "Gediegeneisen",
+      "locality": "Elbogen",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6f6b2dc7-b022-4d7f-9100-a4779349a11e",
+      "catalogId": "chladni-1825",
+      "entryOrder": 35,
+      "reportedNumber": null,
+      "catalogPages": [
+        233,
+        234
+      ],
+      "section": "II. B. Derbe Eisenmassen, von krystallinischem Gefüge",
+      "holdings": [
+        {
+          "description": "Ein sehr ausgezeichnetes Stück der bei Lénarto gefundenen Masse.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        },
+        {
+          "description": "Zwei andere, vormals neben einander befindliche und durch eine schmale Kluft oder Spalte von einander getrennte Stücke.",
+          "provenance": null,
+          "count": 2,
+          "weights": []
+        }
+      ],
+      "name": "Lenarto",
+      "classification": "Gediegeneisen",
+      "locality": "Ungarn, Comitat von Saros, an der Gallizischen Gränze",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-20dd1e18-12dd-4ddb-9fc2-d4dd860fd9d8",
+      "catalogId": "chladni-1825",
+      "entryOrder": 36,
+      "reportedNumber": null,
+      "catalogPages": [
+        234,
+        235
+      ],
+      "section": "II. B. Derbe Eisenmassen, von krystallinischem Gefüge",
+      "holdings": [
+        {
+          "description": "Ein Stück einer am Vorgebirge der guten Hofnung gefundenen Masse. Chladni beschreibt drei grobblättrige tafelförmige Theile; zwei bilden ungefähr 120 Grad miteinander, die dritte ungefähr einen rechten Winkel mit einer der beiden und ist durch eine kleine Spalte getrennt.",
+          "provenance": "Von der in der Sammlung der Batavischen Gesellschaft der Wissenschaften zu Haarlem befindlichen Masse.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Cape of Good Hope",
+      "classification": "Gediegeneisen",
+      "locality": "Vorgebirge der guten Hofnung",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a2356d1d-2648-45a5-a682-f703f44b723d",
+      "catalogId": "chladni-1825",
+      "entryOrder": 37,
+      "reportedNumber": null,
+      "catalogPages": [
+        235
+      ],
+      "section": "II. Gediegeneisen",
+      "holdings": [
+        {
+          "description": "Ein kleines Stück von der großen, wohl 30000 Pfund schweren Masse. Chladni beschreibt zwei tafelförmige Theile, die einen Winkel von ungefähr 120 Grad bilden und jeweils aus vielen dünnern und dickern, etwas krummen, gefurchten und gefalteten Blättern bestehen.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "S. Jago del Estero",
+      "classification": "Gediegeneisen",
+      "locality": "Bezirk von S. Jago del Estero, Provinz Chaco-Gualamba, Südamerika",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-35bd7ec5-206b-4595-bc56-0e23cf1c6974",
+      "catalogId": "chladni-1825",
+      "entryOrder": 38,
+      "reportedNumber": null,
+      "catalogPages": [
+        235
+      ],
+      "section": "II. Gediegeneisen",
+      "holdings": [
+        {
+          "description": "Ein kleines, durch das Losmachen und die dabei angewandte Hitze etwas gekrümmtes und mit schwarzem Eisenoxyd bedecktes Stück. Chladni beschreibt eine tafelförmige, aus parallelen krummen Blättern zusammengesetzte Struktur.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Mexico",
+      "classification": "Gediegeneisen",
+      "locality": "Mexico",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f1c49748-a05f-45d9-8d91-913c0b48243e",
+      "catalogId": "chladni-1825",
+      "entryOrder": 39,
+      "reportedNumber": null,
+      "catalogPages": [
+        236,
+        237,
+        238
+      ],
+      "section": "II. Gediegeneisen",
+      "holdings": [
+        {
+          "description": "Eine kleine, wohl für die Fassung in einen Ring bestimmte Antike, etwa 3 Linien lang und etwas über 2 Linien breit, unten convex, oben flacher und an einem Ende etwas abgebrochen. In die obere flache Seite ist ein kleines elliptisches Täfelchen von braunrothem Jaspis mit einem eingegrabenen Stern und Mond eingefaßt. Chladni bestimmt das Stück als Gediegeneisen und vermuthet mit ausdrücklich nur beanspruchter Wahrscheinlichkeit einen Zusammenhang mit dem von Plinius berichteten Niederfalle schwammigen Eisens in Lucanien, etwa 56 bis 52 Jahre vor unserer Zeitrechnung.",
+          "provenance": "Im Dezember 1817 in Gegenwart des Herrn Professor Rösel von der Akademie der bildenden Künste in Berlin bei dem Tempel des Jupiter in Pompeji ausgegraben.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Pompeji",
+      "classification": "Gediegeneisen (Bestimmung Chladnis)",
+      "locality": "Tempel des Jupiter, Pompeji",
+      "eventDate": "etwa 56 bis 52 Jahre vor unserer Zeitrechnung (Vermuthung Chladnis)",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e1e51c41-0571-43e5-bc9b-3c666d7b58d8",
+      "catalogId": "chladni-1825",
+      "entryOrder": 40,
+      "reportedNumber": null,
+      "catalogPages": [
+        238,
+        239
+      ],
+      "section": "II. Gediegeneisen",
+      "holdings": [
+        {
+          "description": "Ein durch Einschmelzen stark verändertes Stück von einem wieder ausgegrabenen Eisenkuchen. Chladni hatte die bei Bitburg gefundene Masse zunächst als problematisch und später wegen des von Oberst Gibbs berichteten Nickelgehalts als wahrscheinlich meteorisch bezeichnet; er verweist außerdem auf einen Nickelbefund des Professors Bischof. Chladni beschreibt den Kuchen als aus kleinern, wahrscheinlich krystallinisch gewesenen, nur unvollkommen zusammengeschmolzenen Brocken bestehend.",
+          "provenance": "Von Hrn. Oberbergrath und Professor Nöggerath aus einem am wieder aufgefundenen Eisenhammer ausgegrabenen Kuchen gefälligst zugeschickt.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Bitburg",
+      "classification": "Wahrscheinlich meteorisches Gediegeneisen (nach Chladni)",
+      "locality": "bei Bitburg, nicht weit von Trier",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-06cfe9e7-2b02-4496-87c5-efeb44f38ffd",
+      "catalogId": "chladni-1825",
+      "entryOrder": 41,
+      "reportedNumber": null,
+      "catalogPages": [
+        239
+      ],
+      "section": "III. Niedergefallene Substanzen, die von Meteorsteinen und von Gediegeneisenmassen verschieden sind",
+      "holdings": [
+        {
+          "description": "Eine kleine Portion einer harzigen Substanz, die laut Chladni mit einer in Sachsen, Brandenburg, Schlesien und Böhmen gesehenen explodirenden Feuerkugel herabgefallen war.",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": null,
+      "classification": "Harzige Substanz",
+      "locality": "Oberlausitz",
+      "eventDate": "8. März 1796",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-4bb70a39-abd3-4c8f-9ab6-32a79a421219",
+      "catalogId": "chladni-1825",
+      "entryOrder": 42,
+      "reportedNumber": null,
+      "catalogPages": [
+        239,
+        240
+      ],
+      "section": "III. Niedergefallene Substanzen, die von Meteorsteinen und von Gediegeneisenmassen verschieden sind",
+      "holdings": [
+        {
+          "description": "Ein etwa einen Quadratzoll großes Stückchen einer schwarzen papierähnlichen Substanz. Laut Chladni fand Hr. v. Grotthufs darin Kieselerde, Eisen, keinen Nickel, Kalk, Kohlenstoff, Magnesia oder Talkerde, wahrscheinlich Schwefel und eine Spur von Chrom. Chladni beschreibt das Blättchen als schwärzlich, halbverbranntem Papier ähnlich, runzlich, etwas rissig und mit wenig graulichbrauner erdiger Substanz in den Vertiefungen; er hält den Stoff nach eigener Einschätzung nicht für wesentlich verschieden von mehrfach niedergefallenem schwarzem Staub und den 1806 bei Alais gefallenen schwärzlichen, leicht zerreiblichen Steinen.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": null,
+      "classification": "Schwarze papierähnliche Substanz",
+      "locality": "Gut Rauden, Kurland; zugleich auch Pommern und Norwegen",
+      "eventDate": "31. Januar 1686",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8b0778b6-4c26-4062-8b12-73ac05ac659e",
+      "catalogId": "lucas-1813",
+      "entryOrder": 1,
+      "reportedNumber": "1",
+      "catalogPages": [
+        569
+      ],
+      "section": "Aérolithes de la Collection du Muséum",
+      "holdings": [
+        {
+          "description": "Portion d'Aérolithe détachée d'une masse pierreuse tombée à Ensisheim près de Colmar, département du Haut-Rhin, le 5 novembre 1492, et qui pesoit 127,27 kilogrammes (250 liv.).",
+          "provenance": "Envoyée par M. le baron Félix Desportes, préfet du Haut-Rhin, à M. le comte Fourcroy, alors directeur du Muséum, qui l'a fait placer dans la Collection.",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 9740
+            }
+          ]
+        }
+      ],
+      "name": "Ensisheim",
+      "classification": "Aérolithe",
+      "locality": "près de Colmar, département du Haut-Rhin",
+      "eventDate": "5 novembre 1492",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6a9e1aa8-7705-463c-be74-810cd77d5af8",
+      "catalogId": "lucas-1813",
+      "entryOrder": 2,
+      "reportedNumber": "2",
+      "catalogPages": [
+        569
+      ],
+      "section": "Aérolithes de la Collection du Muséum",
+      "holdings": [
+        {
+          "description": "Fragment d'une pierre météorique tombée le 17 novembre 1773, près de Sigena en Aragon. M. Proust en a fait l'analyse ; voy. Journ. de Ph. t. 60, p. 185.",
+          "provenance": "Rapporté d'Espagne et donné par M. De Lasteyrie, déjà cité p. 128.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Sigena",
+      "classification": "Aérolithe",
+      "locality": "Aragon",
+      "eventDate": "17 novembre 1773",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8830d443-3d32-4b9f-a7d4-2e59ab95e29a",
+      "catalogId": "lucas-1813",
+      "entryOrder": 3,
+      "reportedNumber": "3",
+      "catalogPages": [
+        569,
+        570
+      ],
+      "section": "Aérolithes de la Collection du Muséum",
+      "holdings": [
+        {
+          "description": "Morceau d'un Aérolithe tombé à Losse, département des Landes, en 1790. Suivant les rédacteurs du Bulletin polymathique de Bordeaux (t. 1, p. 39, janvier 1803), en mai 1790, on aperçut dans la commune de Roquefort, département des Landes, vers 10 heures du soir, par un temps très-serein, un corps lumineux qui se dirigeoit du midi au nord. Il éclata à Losse à 2 lieues de Roquefort. On trouva le lendemain, dans une étendue de terrain d'environ une demi-lieue, plusieurs pierres parfaitement semblables et de différentes grosseurs, dont une pesoit environ 80 livres. Dans les endroits où l'on en trouvoit, des ouvertures de forme conique s'étoient faites dans la terre ; leur grandeur et leur profondeur varioient avec le volume de la pierre. M. Darlès, pharmacien à Bordeaux, les a très-bien décrites.",
+          "provenance": "Donné en 1802 par MM. Rodrigues et Goethals, directeurs du Muséum d'instruction publique de Bordeaux.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Losse",
+      "classification": "Aérolithe",
+      "locality": "département des Landes",
+      "eventDate": "mai 1790",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-971cfc15-4fd2-4859-9d47-a772540a70e0",
+      "catalogId": "lucas-1813",
+      "entryOrder": 4,
+      "reportedNumber": "4",
+      "catalogPages": [
+        570
+      ],
+      "section": "Aérolithes de la Collection du Muséum",
+      "holdings": [
+        {
+          "description": "Petit fragment d'une des pierres tombées à Benarès dans les Indes orientales.",
+          "provenance": "Adressé au Muséum par M. Howard en 1803.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Benarès",
+      "classification": "Aérolithe",
+      "locality": "Indes orientales",
+      "eventDate": "19 décembre 1798 (1799 selon les rédacteurs de la Bibliothèque britannique)",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-0c6567c7-aabc-4609-908f-ae85402c32ca",
+      "catalogId": "lucas-1813",
+      "entryOrder": 5,
+      "reportedNumber": "5",
+      "catalogPages": [
+        570
+      ],
+      "section": "Aérolithes de la Collection du Muséum",
+      "holdings": [
+        {
+          "description": "Autre petit fragment d'une des pierres tombées le 13 décembre 1795, près de Woldcottage en Yorkshire.",
+          "provenance": "Donné par M. Howard.",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Woldcottage",
+      "classification": "Aérolithe",
+      "locality": "Yorkshire",
+      "eventDate": "13 décembre 1795",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d08bd215-d51d-45c4-9b6d-c40f61f94803",
+      "catalogId": "lucas-1813",
+      "entryOrder": 6,
+      "reportedNumber": "6",
+      "catalogPages": [
+        570
+      ],
+      "section": "Aérolithes de la Collection du Muséum",
+      "holdings": [
+        {
+          "description": "Collection d'Aérolithes entiers et de fragmens d'Aérolithes tombés aux environs de l'Aigle, département de l'Orne, le 26 avril 1803, dont la grosseur varie depuis celle d'une noisette jusqu'à celle du poing et au-delà.",
+          "provenance": "Recueillie sur les lieux par M. Biot, de l'Institut Impérial, et donnée par lui au Muséum.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "L'Aigle",
+      "classification": "Aérolithe",
+      "locality": "département de l'Orne",
+      "eventDate": "26 avril 1803",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a3d8db90-15b3-45c6-8fc6-605aa3efbcfd",
+      "catalogId": "lucas-1813",
+      "entryOrder": 7,
+      "reportedNumber": "2",
+      "catalogPages": [
+        570
+      ],
+      "section": "Aérolithes de la Collection du Muséum",
+      "holdings": [
+        {
+          "description": "Aérolithe tombé le 19 avril 1808, près de Pieve-di-Casignano, département du Taro, presque entièrement revêtu de sa croûte ferrugineuse noire, et dont les grains de fer sulfuré sont très-apparens et rougeâtre.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Pieve-di-Casignano",
+      "classification": "Aérolithe",
+      "locality": "département du Taro",
+      "eventDate": "19 avril 1808",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e075ab30-5ee5-4c4d-a566-0215588aef21",
+      "catalogId": "lucas-1813",
+      "entryOrder": 8,
+      "reportedNumber": "8",
+      "catalogPages": [
+        570
+      ],
+      "section": "Aérolithes de la Collection du Muséum",
+      "holdings": [
+        {
+          "description": "Pierre tombée le 8 octobre 1803, près d'Apt, département de Vaucluse.",
+          "provenance": "Envoyée au Muséum par M. le sénateur Chaptal, comte de Chanteloup, alors Ministre de l'Intérieur.",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 3360
+            }
+          ]
+        }
+      ],
+      "name": "Apt",
+      "classification": "Aérolithe",
+      "locality": "département de Vaucluse",
+      "eventDate": "8 octobre 1803",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-1eb719af-e884-4769-9197-3a2d119b420e",
+      "catalogId": "lucas-1813",
+      "entryOrder": 9,
+      "reportedNumber": "9",
+      "catalogPages": [
+        570
+      ],
+      "section": "Aérolithes de la Collection du Muséum",
+      "holdings": [
+        {
+          "description": "Portion d'une des masses terreuses noirâtres et friables tombées le 15 mars 1806, près d'Alais et de Saint-Etienne, dans le département du Gard.",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Alais et Saint-Etienne",
+      "classification": "Aérolithe",
+      "locality": "département du Gard",
+      "eventDate": "15 mars 1806",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b5e030d8-5d1d-4569-b5a3-f07398db1c14",
+      "catalogId": "lucas-1813",
+      "entryOrder": 10,
+      "reportedNumber": "10",
+      "catalogPages": [
+        570,
+        571
+      ],
+      "section": "Aérolithes de la Collection du Muséum",
+      "holdings": [
+        {
+          "description": "Aérolithe à tissu très-compacte tombé à Charsonville, département du Loiret, à environ 7 lieues d'Orléans.",
+          "provenance": "Adressé au Muséum par Son Excellence le comte de Montalivet, Ministre de l'Intérieur.",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 5440
+            }
+          ]
+        }
+      ],
+      "name": "Charsonville",
+      "classification": "Aérolithe",
+      "locality": "département du Loiret, à environ 7 lieues d'Orléans",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f9fb6e83-35e0-4721-9919-6381176376ad",
+      "catalogId": "lucas-1813",
+      "entryOrder": 11,
+      "reportedNumber": "11",
+      "catalogPages": [
+        571
+      ],
+      "section": "Aérolithes de la Collection du Muséum",
+      "holdings": [
+        {
+          "description": "Pierre tombée à Berlanguillas, en Catalogne, le 8 juillet 1811.",
+          "provenance": "Donnée par la Classe des Sciences de l'Institut Impérial.",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 1700
+            }
+          ]
+        }
+      ],
+      "name": "Berlanguillas",
+      "classification": "Aérolithe",
+      "locality": "Catalogne",
+      "eventDate": "8 juillet 1811",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-288cfc13-3939-4bcf-92f3-74bf175c17aa",
+      "catalogId": "lucas-1813",
+      "entryOrder": 12,
+      "reportedNumber": "12",
+      "catalogPages": [
+        571
+      ],
+      "section": "Aérolithes de la Collection du Muséum",
+      "holdings": [
+        {
+          "description": "Aérolithe tombé sur le toit d'un bâtiment à Permejean, aux environs de Toulouse, le 10 avril 1812. Il est ainsi que le précédent semblable à ceux de l'Aigle et revêtu presque entièrement de sa croûte noire.",
+          "provenance": "Adressé par M. le baron Desmousseaux, Préfet de la Haute-Garonne, à Son Excellence le Ministre de l'Intérieur, qui l'a envoyé au Muséum.",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 150
+            }
+          ]
+        }
+      ],
+      "name": "Permejean",
+      "classification": "Aérolithe",
+      "locality": "aux environs de Toulouse",
+      "eventDate": "10 avril 1812",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-2cac8dea-fdb6-4490-bbb3-450c7738591c",
+      "catalogId": "lucas-1813",
+      "entryOrder": 13,
+      "reportedNumber": null,
+      "catalogPages": [
+        571
+      ],
+      "section": "Fer natif ramuleux",
+      "holdings": [
+        {
+          "description": "Fer natif ramuleux, brun, criblé de pores comme une éponge grossière et renfermant des grains d'une matière vitreuse, jaune légèrement nuancé de verdâtre, regardée par quelques-uns comme analogue au péridot, auquel elle ressemble en effet beaucoup. Les deux morceaux proviennent de la masse découverte en 1750 par feu Pallas sur la cime d'une haute montagne, entre l'Oubeï et le Sisim, laquelle renferme une mine de fer compacte. Cette masse, que les Tartares regardent comme étant tombée du ciel, pesoit près de 40 pouds ou 1600 livres russes (environ 700 kilogrammes). On en a détaché différens morceaux, et le reste a été placé dans le cabinet de Saint-Pétersbourg.",
+          "provenance": "Du pays de Krasnojarsk, dans la Sibérie méridionale ; provenant de la masse découverte en 1750 par feu Pallas, associé étranger de l'Institut Impérial de France.",
+          "count": 2,
+          "weights": []
+        }
+      ],
+      "name": "Krasnojarsk",
+      "classification": "Fer natif ramuleux",
+      "locality": "Sibérie méridionale",
+      "eventDate": null,
       "confidence": "high"
     }
   ]

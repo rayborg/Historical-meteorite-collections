@@ -1,8 +1,14 @@
-import { readFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
+import { lstat, mkdtemp, mkdir, readFile, readdir, rm, symlink, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { dirname, join, relative, sep } from "node:path";
+import { fileURLToPath } from "node:url";
 
 const CATALOG_URL = new URL("../data/catalog.json", import.meta.url);
 const FOLIOS_URL = new URL("../data/folios.json", import.meta.url);
 const FIXTURE_URL = new URL("./test-multicatalog-fixture.json", import.meta.url);
+const RELEASE_LOCK_URL = new URL("./folio-release-lock.json", import.meta.url);
+const REPO_ROOT = fileURLToPath(new URL("../", import.meta.url));
 const SYNTHETIC_ONLY = process.argv.includes("--synthetic-only");
 const SPECIMEN_KEYS = [
   "id", "catalogId", "designation", "name", "weight", "classification", "locality", "year", "catalogPage", "confidence",
@@ -13,10 +19,14 @@ const CATALOG_ITEM_KEYS = [
 const CATALOG_NUMBER_KEYS = [
   "id", "catalogId", "catalogNumber", "holdings", "name", "classification", "locality", "dateOfDiscovery", "catalogPages", "confidence",
 ];
+const COLLECTION_ENTRY_KEYS = [
+  "id", "catalogId", "entryOrder", "reportedNumber", "catalogPages", "section", "holdings", "name", "classification", "locality",
+  "eventDate", "confidence",
+];
 const HOLDING_KEYS = ["designation", "kind", "description", "count", "weight"];
 const CATALOG_NUMBER_HOLDING_KEYS = ["description", "provenance", "count", "weights"];
 const HOLDING_KINDS = ["specimen", "cast", "aggregate"];
-const RECORD_MODELS = ["catalog-item", "specimen", "catalog-number"];
+const RECORD_MODELS = ["catalog-item", "specimen", "catalog-number", "collection-entry"];
 const FACTUAL_FIELDS = [
   "id",
   "catalogId",
@@ -25,6 +35,8 @@ const FACTUAL_FIELDS = [
   "weight.grams",
   "catalogItem",
   "catalogNumber",
+  "entryOrder",
+  "reportedNumber",
   "holdings[].designation",
   "holdings[].kind",
   "holdings[].description",
@@ -36,8 +48,10 @@ const FACTUAL_FIELDS = [
   "locality",
   "year",
   "dateOfDiscovery",
+  "eventDate",
   "catalogPage",
   "catalogPages[]",
+  "section",
   "confidence",
 ];
 const METADATA_KEYS = [
@@ -50,13 +64,13 @@ const DESCRIPTOR_KEYS = [
 ];
 const CONFIDENCE_LEVELS = ["high", "medium", "low"];
 const DISPLAY_POLICIES = ["blocked", "display"];
-const RIGHTS_STATUSES = ["undetermined", "public-domain"];
-const PAGE_ENTRY_KEYS = ["thumbnail", "image", "alt"];
+const RIGHTS_STATUSES = ["undetermined", "public-domain", "no-copyright-us"];
+const DISPLAY_RIGHTS_STATUSES = ["public-domain", "no-copyright-us"];
+const PAGE_ENTRY_KEYS = ["pageId", "catalogPage", "pageLabel", "image", "alt"];
 const MAX_ALT_LENGTH = 160;
 const MAX_CATALOG_ID_LENGTH = 80;
 const MAX_CATALOG_TEXT_LENGTH = 160;
 const FOLIO_PATH_ROOT = "assets/folios/";
-const APPROVED_FOLIO_EXTENSION = /\.(?:webp|png|jpe?g|avif)$/u;
 const PRIVATE_LANGUAGE =
   /\b(?:raw[\s_-]*(?:ocr|text|transcript(?:ion)?)|ocr[\s_-]*(?:batch|output|text)|source[\s_-]*(?:image|file)(?:[\s_-]*name)?s?|scan(?:ned)?[\s_-]*(?:image|file|path|name)s?|(?:private|research|transcription|verbatim|working)[\s_-]*notes?|(?:private|working)[\s_-]*(?:text|transcript(?:ion)?)|image[\s_-]*derivatives?)\b/iu;
 const PRIVATE_LABEL =
@@ -176,12 +190,12 @@ function assertCountSummary(value, path) {
 
 function validateMetadata(metadata, path) {
   assertExactKeys(metadata, METADATA_KEYS, path);
-  assert(metadata.schemaVersion === 4, `${path}.schemaVersion must be 4`);
+  assert(metadata.schemaVersion === 5, `${path}.schemaVersion must be 5`);
   assert(metadata.scope === "facts-only", `${path}.scope must be facts-only`);
   assert(
     Array.isArray(metadata.factualFields) && metadata.factualFields.length === FACTUAL_FIELDS.length &&
       metadata.factualFields.every((field, index) => field === FACTUAL_FIELDS[index]),
-    `${path}.factualFields does not match the schema 4 public record models`,
+    `${path}.factualFields does not match the schema 5 public record models`,
   );
   assertCountSummary(metadata, path);
   assert(Array.isArray(metadata.catalogs) && metadata.catalogs.length > 0, `${path}.catalogs must be a nonempty array`);
@@ -206,8 +220,10 @@ function validateMetadata(metadata, path) {
     assertCountSummary(descriptor, descriptorPath);
     assert(DISPLAY_POLICIES.includes(descriptor.folioDisplayPolicy), `${descriptorPath}.folioDisplayPolicy is invalid`);
     assert(RIGHTS_STATUSES.includes(descriptor.rightsStatus), `${descriptorPath}.rightsStatus is invalid`);
-    assert(descriptor.folioDisplayPolicy !== "display" || descriptor.rightsStatus === "public-domain",
-      `${descriptorPath} may display folios only with public-domain status`);
+    assert(descriptor.folioDisplayPolicy === "display"
+      ? DISPLAY_RIGHTS_STATUSES.includes(descriptor.rightsStatus)
+      : descriptor.rightsStatus === "undetermined",
+    `${descriptorPath} must use an authorized display right or blocked/undetermined`);
     metadataByCatalog.set(descriptor.id, {
       descriptor,
       path: descriptorPath,
@@ -229,13 +245,15 @@ function validateMetadata(metadata, path) {
 
 function recordDesignations(record, recordModel) {
   if (recordModel === "specimen") return record.designation === null ? [] : [record.designation];
-  if (recordModel === "catalog-number") return [];
+  if (recordModel === "catalog-number" || recordModel === "collection-entry") return [];
   return record.holdings.map((holding) => holding.designation).filter((value) => value !== null);
 }
 
 function recordMasses(record, recordModel) {
   if (recordModel === "specimen") return record.weight.grams === null ? [] : [record.weight.grams];
-  if (recordModel === "catalog-number") return record.holdings.flatMap((holding) => holding.weights.map(({ grams }) => grams));
+  if (recordModel === "catalog-number" || recordModel === "collection-entry") {
+    return record.holdings.flatMap((holding) => holding.weights.map(({ grams }) => grams));
+  }
   return record.holdings.map((holding) => holding.weight.grams).filter((value) => value !== null);
 }
 
@@ -290,6 +308,9 @@ function compareRecords(left, right, metadataByCatalog) {
     return left.catalogPages[0] - right.catalogPages[0] || compareText(left.catalogNumber, right.catalogNumber) ||
       compareText(left.name, right.name) || compareText(left.id, right.id);
   }
+  if (leftModel === "collection-entry") {
+    return compareText(left.catalogId, right.catalogId) || left.entryOrder - right.entryOrder || compareText(left.id, right.id);
+  }
   const identityOrder = compareDesignation(left.designation, right.designation);
   const leftMasses = recordMasses(left, leftModel);
   const rightMasses = recordMasses(right, rightModel);
@@ -325,7 +346,7 @@ function validateHolding(holding, path) {
   }
 }
 
-function validateCatalogNumberHolding(holding, path) {
+function validateCatalogNumberHolding(holding, path, allowEmptyWeights = false) {
   assertExactKeys(holding, CATALOG_NUMBER_HOLDING_KEYS, path);
   assertString(holding.description, `${path}.description`);
   assertHoldingText(holding.description, `${path}.description`, true);
@@ -333,7 +354,8 @@ function validateCatalogNumberHolding(holding, path) {
   assertHoldingText(holding.provenance, `${path}.provenance`, true);
   assert(holding.count === null || (Number.isInteger(holding.count) && holding.count > 0),
     `${path}.count must be a positive integer or null`);
-  assert(Array.isArray(holding.weights) && holding.weights.length > 0, `${path}.weights must be a nonempty ordered array`);
+  assert(Array.isArray(holding.weights) && (allowEmptyWeights || holding.weights.length > 0),
+    `${path}.weights must be ${allowEmptyWeights ? "an ordered" : "a nonempty ordered"} array`);
   holding.weights.forEach((weight, weightIndex) => {
     const weightPath = `${path}.weights[${weightIndex}]`;
     assertExactKeys(weight, ["grams"], weightPath);
@@ -351,6 +373,8 @@ function validatePublicCatalog(data, folios, path = "catalog") {
   const catalogItemNumbers = new Map();
   const previousCatalogItems = new Map();
   const catalogNumbers = new Map();
+  const collectionEntryOrders = new Map();
+  const previousCollectionEntries = new Map();
   const representedCatalogs = new Set();
   const statsByCatalog = new Map([...metadataByCatalog].map(([catalogId]) => [catalogId, {
     recordCount: 0,
@@ -368,12 +392,15 @@ function validatePublicCatalog(data, folios, path = "catalog") {
     const { recordModel } = catalog.descriptor;
     assertExactKeys(record, recordModel === "specimen"
       ? SPECIMEN_KEYS
-      : recordModel === "catalog-item" ? CATALOG_ITEM_KEYS : CATALOG_NUMBER_KEYS, recordPath);
+      : recordModel === "catalog-item"
+        ? CATALOG_ITEM_KEYS
+        : recordModel === "catalog-number" ? CATALOG_NUMBER_KEYS : COLLECTION_ENTRY_KEYS, recordPath);
     assertString(record.id, `${recordPath}.id`);
     assert(!ids.has(record.id), `${recordPath}.id is duplicated: ${record.id}`);
     ids.add(record.id);
     representedCatalogs.add(record.catalogId);
-    for (const field of ["name", "classification", "locality", recordModel === "catalog-number" ? "dateOfDiscovery" : "year"]) {
+    const dateField = recordModel === "catalog-number" ? "dateOfDiscovery" : recordModel === "collection-entry" ? "eventDate" : "year";
+    for (const field of ["name", "classification", "locality", dateField]) {
       assertString(record[field], `${recordPath}.${field}`, true);
     }
     if (recordModel === "specimen") {
@@ -398,7 +425,7 @@ function validatePublicCatalog(data, folios, path = "catalog") {
       previousCatalogItems.set(record.catalogId, record.catalogItem);
       assert(Array.isArray(record.holdings) && record.holdings.length > 0, `${recordPath}.holdings must be nonempty`);
       record.holdings.forEach((holding, holdingIndex) => validateHolding(holding, `${recordPath}.holdings[${holdingIndex}]`));
-    } else {
+    } else if (recordModel === "catalog-number") {
       assertString(record.catalogNumber, `${recordPath}.catalogNumber`);
       const numbers = catalogNumbers.get(record.catalogId) ?? new Set();
       assert(!numbers.has(record.catalogNumber),
@@ -408,8 +435,26 @@ function validatePublicCatalog(data, folios, path = "catalog") {
       assert(Array.isArray(record.holdings) && record.holdings.length > 0, `${recordPath}.holdings must be nonempty`);
       record.holdings.forEach((holding, holdingIndex) =>
         validateCatalogNumberHolding(holding, `${recordPath}.holdings[${holdingIndex}]`));
+    } else {
+      assert(Number.isInteger(record.entryOrder) && record.entryOrder > 0,
+        `${recordPath}.entryOrder must be a positive integer`);
+      const entryOrders = collectionEntryOrders.get(record.catalogId) ?? new Set();
+      assert(!entryOrders.has(record.entryOrder),
+        `${recordPath}.entryOrder is duplicated within ${record.catalogId}: ${record.entryOrder}`);
+      const previousEntryOrder = previousCollectionEntries.get(record.catalogId);
+      assert(previousEntryOrder === undefined || record.entryOrder > previousEntryOrder,
+        `${recordPath}.entryOrder must increase within ${record.catalogId}`);
+      entryOrders.add(record.entryOrder);
+      collectionEntryOrders.set(record.catalogId, entryOrders);
+      previousCollectionEntries.set(record.catalogId, record.entryOrder);
+      for (const field of ["reportedNumber", "section"]) {
+        assertString(record[field], `${recordPath}.${field}`, true);
+      }
+      assert(Array.isArray(record.holdings) && record.holdings.length > 0, `${recordPath}.holdings must be nonempty`);
+      record.holdings.forEach((holding, holdingIndex) =>
+        validateCatalogNumberHolding(holding, `${recordPath}.holdings[${holdingIndex}]`, true));
     }
-    if (recordModel === "catalog-number") {
+    if (recordModel === "catalog-number" || recordModel === "collection-entry") {
       assert(Array.isArray(record.catalogPages) && record.catalogPages.length > 0,
         `${recordPath}.catalogPages must be a nonempty ordered unique array`);
       record.catalogPages.forEach((page, pageIndex) => {
@@ -448,24 +493,25 @@ function validatePublicCatalog(data, folios, path = "catalog") {
     const policy = folios.catalogs[catalogId];
     assert(policy.displayPolicy === descriptor.folioDisplayPolicy, `${descriptorPath}.folioDisplayPolicy does not match folios`);
     assert(policy.rightsStatus === descriptor.rightsStatus, `${descriptorPath}.rightsStatus does not match folios`);
-    Object.keys(policy.pages).forEach((page) => assert(sourcePages.has(Number(page)),
-      `folios.catalogs.${catalogId}.pages.${page} is outside sourcePages`));
+    policy.pages.forEach((page, pageIndex) => {
+      if (page.catalogPage !== null) assert(sourcePages.has(page.catalogPage),
+        `folios.catalogs.${catalogId}.pages[${pageIndex}].catalogPage is outside sourcePages`);
+    });
   }
   return { catalogCount: metadataByCatalog.size, recordCount: data.records.length, statsByCatalog, metadataByCatalog, folioStats };
 }
 
-function assertSafeFolioPath(value, catalogId, path) {
+function assertPageId(value, path) {
+  assert(
+    typeof value === "string" && /^[a-z0-9]+(?:-[a-z0-9]+)*$/u.test(value) && value.length <= MAX_CATALOG_ID_LENGTH,
+    `${path} must be a lowercase slug of at most ${MAX_CATALOG_ID_LENGTH} characters`,
+  );
+}
+
+function assertSafeFolioPath(value, catalogId, pageId, path) {
   assertString(value, path);
-  assert(!/\s/u.test(value), `${path} must not contain whitespace`);
-  assert(!value.startsWith("/") && !/^[A-Za-z][A-Za-z\d+.-]*:/u.test(value), `${path} must be relative`);
-  assert(!/[\\?#%]/u.test(value) && !value.includes("//"), `${path} contains an unsafe URL or path form`);
-  const root = `${FOLIO_PATH_ROOT}${catalogId}/`;
-  assert(value.startsWith(root), `${path} must be rooted under ${root}`);
-  const segments = value.slice(root.length).split("/");
-  assert(segments.length && segments.every((segment) => segment && segment !== "." && segment !== ".."),
-    `${path} contains an unsafe segment`);
-  assert(segments.every((segment) => /^[A-Za-z0-9._-]+$/u.test(segment)), `${path} must use plain ASCII segments`);
-  assert(APPROVED_FOLIO_EXTENSION.test(segments.at(-1)), `${path} has an unapproved extension`);
+  const expected = `${FOLIO_PATH_ROOT}${catalogId}/${pageId}.webp`;
+  assert(value === expected, `${path} must be exactly ${expected}`);
 }
 
 function assertPlainAlt(value, path) {
@@ -476,30 +522,199 @@ function assertPlainAlt(value, path) {
 
 function validateFolioManifest(manifest, path) {
   assertExactKeys(manifest, ["schemaVersion", "catalogs"], path);
-  assert(manifest.schemaVersion === 1, `${path}.schemaVersion must be 1`);
+  assert(manifest.schemaVersion === 2, `${path}.schemaVersion must be 2`);
   assert(isObject(manifest.catalogs) && Object.keys(manifest.catalogs).length > 0, `${path}.catalogs must be nonempty`);
   let pageEntryCount = 0;
+  const pageIds = new Set();
   for (const [catalogId, policy] of Object.entries(manifest.catalogs)) {
     const policyPath = `${path}.catalogs.${catalogId}`;
     assertCatalogId(catalogId, `${policyPath} ID`);
     assertExactKeys(policy, ["displayPolicy", "rightsStatus", "pages"], policyPath);
     assert(DISPLAY_POLICIES.includes(policy.displayPolicy), `${policyPath}.displayPolicy is invalid`);
     assert(RIGHTS_STATUSES.includes(policy.rightsStatus), `${policyPath}.rightsStatus is invalid`);
-    assert(isObject(policy.pages), `${policyPath}.pages must be an object`);
-    if (policy.displayPolicy === "display") assert(policy.rightsStatus === "public-domain",
-      `${policyPath} may display only with public-domain status`);
-    else assert(Object.keys(policy.pages).length === 0, `${policyPath}.pages must be empty while blocked`);
-    for (const [page, entry] of Object.entries(policy.pages)) {
-      const entryPath = `${policyPath}.pages.${page}`;
-      assert(/^[1-9]\d*$/u.test(page), `${entryPath} must use a positive page number`);
-      assertAllowedKeys(entry, PAGE_ENTRY_KEYS, ["image", "alt"], entryPath);
-      assertSafeFolioPath(entry.image, catalogId, `${entryPath}.image`);
-      if (Object.hasOwn(entry, "thumbnail")) assertSafeFolioPath(entry.thumbnail, catalogId, `${entryPath}.thumbnail`);
+    assert(Array.isArray(policy.pages), `${policyPath}.pages must be an ordered array`);
+    if (policy.displayPolicy === "display") {
+      assert(DISPLAY_RIGHTS_STATUSES.includes(policy.rightsStatus),
+        `${policyPath} may display only with public-domain or no-copyright-us status`);
+      assert(policy.pages.length > 0, `${policyPath}.pages must be nonempty while displayable`);
+    } else {
+      assert(policy.rightsStatus === "undetermined", `${policyPath} must be undetermined while blocked`);
+      assert(policy.pages.length === 0, `${policyPath}.pages must be empty while blocked`);
+    }
+    policy.pages.forEach((entry, pageIndex) => {
+      const entryPath = `${policyPath}.pages[${pageIndex}]`;
+      assertExactKeys(entry, PAGE_ENTRY_KEYS, entryPath);
+      assertPageId(entry.pageId, `${entryPath}.pageId`);
+      assert(!pageIds.has(entry.pageId), `${entryPath}.pageId is duplicated: ${entry.pageId}`);
+      pageIds.add(entry.pageId);
+      assert(entry.catalogPage === null || (Number.isInteger(entry.catalogPage) && entry.catalogPage > 0),
+        `${entryPath}.catalogPage must be a positive integer or null`);
+      if (entry.pageLabel !== null) assertPlainAlt(entry.pageLabel, `${entryPath}.pageLabel`);
+      assertSafeFolioPath(entry.image, catalogId, entry.pageId, `${entryPath}.image`);
       assertPlainAlt(entry.alt, `${entryPath}.alt`);
       pageEntryCount += 1;
-    }
+    });
   }
   return { catalogCount: Object.keys(manifest.catalogs).length, pageEntryCount };
+}
+
+function validateWebP(buffer, path) {
+  assert(buffer.length >= 20, `${path} is too short to contain a WebP chunk`);
+  assert(buffer.toString("ascii", 0, 4) === "RIFF" && buffer.toString("ascii", 8, 12) === "WEBP",
+    `${path} does not have RIFF/WEBP magic`);
+  assert(buffer.readUInt32LE(4) === buffer.length - 8, `${path} RIFF length does not match the file length`);
+
+  let offset = 12;
+  let imageChunkCount = 0;
+  while (offset < buffer.length) {
+    assert(offset + 8 <= buffer.length, `${path} has a truncated WebP chunk header`);
+    const chunkType = buffer.toString("ascii", offset, offset + 4);
+    const chunkLength = buffer.readUInt32LE(offset + 4);
+    const dataOffset = offset + 8;
+    const dataEnd = dataOffset + chunkLength;
+    const paddedEnd = dataEnd + (chunkLength % 2);
+    assert(dataEnd <= buffer.length && paddedEnd <= buffer.length,
+      `${path} ${chunkType} chunk exceeds the RIFF boundary`);
+    if (chunkLength % 2) assert(buffer[dataEnd] === 0, `${path} ${chunkType} chunk has a nonzero padding byte`);
+
+    if (chunkType === "VP8 ") {
+      assert(imageChunkCount === 0, `${path} must contain exactly one VP8 or VP8L image payload chunk`);
+      assert(chunkLength > 10, `${path} VP8 chunk must contain data beyond its frame header`);
+      assert((buffer[dataOffset] & 1) === 0, `${path} VP8 dimension header is not a key frame`);
+      assert(buffer[dataOffset + 3] === 0x9d && buffer[dataOffset + 4] === 0x01 && buffer[dataOffset + 5] === 0x2a,
+        `${path} VP8 dimension header has an invalid start code`);
+      const width = buffer.readUInt16LE(dataOffset + 6) & 0x3fff;
+      const height = buffer.readUInt16LE(dataOffset + 8) & 0x3fff;
+      assert(width > 0 && height > 0, `${path} VP8 dimensions must be nonzero`);
+      imageChunkCount += 1;
+    } else if (chunkType === "VP8L") {
+      assert(imageChunkCount === 0, `${path} must contain exactly one VP8 or VP8L image payload chunk`);
+      assert(chunkLength > 5, `${path} VP8L chunk has no compressed image payload`);
+      assert(buffer[dataOffset] === 0x2f, `${path} VP8L dimension header has an invalid signature`);
+      const dimensions = buffer.readUInt32LE(dataOffset + 1);
+      assert((dimensions >>> 29) === 0, `${path} VP8L dimension header has an unsupported version`);
+      imageChunkCount += 1;
+    } else {
+      assert(false, `${path} contains forbidden WebP chunk ${chunkType}`);
+    }
+    offset = paddedEnd;
+  }
+  assert(offset === buffer.length, `${path} WebP chunks do not end at the RIFF boundary`);
+  assert(imageChunkCount === 1, `${path} must contain exactly one VP8 or VP8L image payload chunk`);
+}
+
+function validateFolioReleaseLock(manifest, releaseLock, path = "folio release lock") {
+  assertExactKeys(releaseLock, ["schemaVersion", "catalogs", "assets"], path);
+  assert(releaseLock.schemaVersion === 1, `${path}.schemaVersion must be 1`);
+  assert(isObject(releaseLock.catalogs), `${path}.catalogs must be an object`);
+  assertExactSet(Object.keys(releaseLock.catalogs), Object.keys(manifest.catalogs), `${path} catalog IDs`);
+
+  for (const [catalogId, policy] of Object.entries(manifest.catalogs)) {
+    const locked = releaseLock.catalogs[catalogId];
+    const lockedPath = `${path}.catalogs.${catalogId}`;
+    assertExactKeys(locked, ["displayPolicy", "rightsStatus", "basis", "basisUrl", "pageIds"], lockedPath);
+    assert(locked.displayPolicy === policy.displayPolicy, `${lockedPath}.displayPolicy does not match folios.json`);
+    assert(locked.rightsStatus === policy.rightsStatus, `${lockedPath}.rightsStatus does not match folios.json`);
+    assert(Array.isArray(locked.pageIds), `${lockedPath}.pageIds must be an ordered array`);
+    locked.pageIds.forEach((pageId, pageIndex) => assertPageId(pageId, `${lockedPath}.pageIds[${pageIndex}]`));
+    const pageIds = policy.pages.map(({ pageId }) => pageId);
+    assert(locked.pageIds.length === pageIds.length && locked.pageIds.every((pageId, index) => pageId === pageIds[index]),
+      `${lockedPath}.pageIds do not exactly match folios.json`);
+    if (locked.displayPolicy === "display") {
+      assertString(locked.basis, `${lockedPath}.basis`);
+      assertString(locked.basisUrl, `${lockedPath}.basisUrl`);
+      let basisUrl;
+      try {
+        basisUrl = new URL(locked.basisUrl);
+      } catch {
+        assert(false, `${lockedPath}.basisUrl must be a valid HTTPS URL`);
+      }
+      assert(basisUrl.protocol === "https:", `${lockedPath}.basisUrl must be a valid HTTPS URL`);
+    } else {
+      assert(locked.basis === null && locked.basisUrl === null,
+        `${lockedPath} must not claim rights evidence while blocked`);
+    }
+  }
+
+  assert(Array.isArray(releaseLock.assets), `${path}.assets must be an ordered array`);
+  const declared = Object.values(manifest.catalogs).flatMap((policy) => policy.pages.map(({ image }) => image));
+  assert(releaseLock.assets.length === declared.length, `${path}.assets must contain every declared folio exactly once`);
+  const hashes = new Map();
+  releaseLock.assets.forEach((asset, index) => {
+    const assetPath = `${path}.assets[${index}]`;
+    assertExactKeys(asset, ["path", "sha256"], assetPath);
+    assert(asset.path === declared[index], `${assetPath}.path must be exactly ${declared[index]}`);
+    assert(typeof asset.sha256 === "string" && /^[a-f0-9]{64}$/u.test(asset.sha256),
+      `${assetPath}.sha256 must be a lowercase SHA-256 digest`);
+    hashes.set(asset.path, asset.sha256);
+  });
+  return hashes;
+}
+
+async function validateFolioFiles(manifest, path = "folio files", repoRoot = REPO_ROOT, expectedHashes = null) {
+  const declared = new Set(Object.values(manifest.catalogs).flatMap((policy) => policy.pages.map(({ image }) => image)));
+  const assetsPath = join(repoRoot, "assets");
+  const folioRoot = join(assetsPath, "folios");
+
+  const rootDetails = await lstat(repoRoot);
+  assert(!rootDetails.isSymbolicLink() && rootDetails.isDirectory(), `${path} repository root must be a non-symlink directory`);
+
+  for (const [componentPath, componentName] of [[assetsPath, "assets"], [folioRoot, "assets/folios"]]) {
+    let details;
+    try {
+      details = await lstat(componentPath);
+    } catch (error) {
+      if (error.code === "ENOENT" && !declared.size) return { fileCount: 0 };
+      throw error;
+    }
+    assert(!details.isSymbolicLink() && details.isDirectory(), `${path} ${componentName} must be a non-symlink directory`);
+  }
+
+  const files = new Set();
+  async function visit(directoryPath, segments) {
+    const entries = await readdir(directoryPath);
+    for (const name of entries) {
+      const childPath = join(directoryPath, name);
+      const childSegments = [...segments, name];
+      const childManifestPath = ["assets", "folios", ...childSegments].join("/");
+      const details = await lstat(childPath);
+      assert(!details.isSymbolicLink(), `${path} contains a symlink: ${childManifestPath}`);
+      if (details.isDirectory()) {
+        await visit(childPath, childSegments);
+        continue;
+      }
+      assert(details.isFile(), `${path} contains a non-regular entry: ${childManifestPath}`);
+      const catalogId = childSegments[0];
+      const policy = manifest.catalogs[catalogId];
+      assert(policy, `${path} contains a file for absent catalog ${catalogId}: ${childManifestPath}`);
+      assert(policy.displayPolicy === "display", `${path} contains a file for blocked catalog ${catalogId}: ${childManifestPath}`);
+      assert(declared.has(childManifestPath), `${path} contains orphan file ${childManifestPath}`);
+      files.add(childManifestPath);
+      const contents = await readFile(childPath);
+      validateWebP(contents, childManifestPath);
+      if (expectedHashes) {
+        assert(expectedHashes.has(childManifestPath), `${path} has no locked hash for ${childManifestPath}`);
+        const actualHash = createHash("sha256").update(contents).digest("hex");
+        assert(actualHash === expectedHashes.get(childManifestPath), `${path} hash does not match release lock: ${childManifestPath}`);
+      }
+    }
+  }
+  await visit(folioRoot, []);
+
+  for (const image of declared) {
+    assert(files.has(image), `${path} is missing declared image ${image}`);
+    const absolutePath = join(repoRoot, ...image.split("/"));
+    assert(relative(repoRoot, absolutePath).split(sep)[0] !== "..", `${path} image escapes the repository: ${image}`);
+    let currentPath = repoRoot;
+    for (const segment of image.split("/")) {
+      currentPath = join(currentPath, segment);
+      const details = await lstat(currentPath);
+      assert(!details.isSymbolicLink(), `${path} path component is a symlink: ${image}`);
+    }
+    const details = await lstat(absolutePath);
+    assert(details.isFile() && !details.isSymbolicLink(), `${path} image must be a regular non-symlink file: ${image}`);
+  }
+  return { fileCount: files.size };
 }
 
 function clone(value) {
@@ -508,9 +723,9 @@ function clone(value) {
 
 function blockedFolios(metadata) {
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
     catalogs: Object.fromEntries(metadata.catalogs.map(({ id }) => [id, {
-      displayPolicy: "blocked", rightsStatus: "undetermined", pages: {},
+      displayPolicy: "blocked", rightsStatus: "undetermined", pages: [],
     }])),
   };
 }
@@ -550,7 +765,7 @@ function multiCatalogFixture() {
   return {
     data: {
       metadata: {
-        schemaVersion: 4,
+        schemaVersion: 5,
         scope: "facts-only",
         factualFields: [...FACTUAL_FIELDS],
         catalogs: [
@@ -603,19 +818,21 @@ function multiCatalogFixture() {
       ],
     },
     folios: {
-      schemaVersion: 1,
+      schemaVersion: 2,
       catalogs: {
-        "alpha-1901": { displayPolicy: "blocked", rightsStatus: "undetermined", pages: {} },
+        "alpha-1901": { displayPolicy: "blocked", rightsStatus: "undetermined", pages: [] },
         "beta-1888": {
           displayPolicy: "display",
           rightsStatus: "public-domain",
-          pages: {
-            7: {
-              image: "assets/folios/beta-1888/page-7.webp",
-              thumbnail: "assets/folios/beta-1888/page-7-thumbnail.webp",
+          pages: [
+            {
+              pageId: "beta-1888-page-7",
+              catalogPage: 7,
+              pageLabel: "Page 7",
+              image: "assets/folios/beta-1888/beta-1888-page-7.webp",
               alt: "Beta catalog page 7",
             },
-          },
+          ],
         },
       },
     },
@@ -640,6 +857,7 @@ function runSyntheticCatalogTests(modelFixture) {
   let holdingPrivacyAllowCount = 0;
   let modelRejectionCount = 0;
   let catalogNumberRejectionCount = 0;
+  let collectionEntryRejectionCount = 0;
   const assertCatalogAllow = (fixture, description) => {
     validatePublicCatalog(fixture.data, fixture.folios, `synthetic ${description}`);
     baselineAllowCount += 1;
@@ -709,7 +927,7 @@ function runSyntheticCatalogTests(modelFixture) {
   assertCatalogRejection(({ data }) => data.records.splice(1, 1), "records missing a catalog ID");
   assertCatalogRejection(({ folios }) => delete folios.catalogs["beta-1888"], "manifest missing a catalog ID");
   assertCatalogRejection(({ folios }) => {
-    folios.catalogs["extra-1900"] = { displayPolicy: "blocked", rightsStatus: "undetermined", pages: {} };
+    folios.catalogs["extra-1900"] = { displayPolicy: "blocked", rightsStatus: "undetermined", pages: [] };
   }, "manifest with an extra catalog ID");
   assertCatalogRejection(({ data }) => {
     Object.assign(data.metadata.catalogs[0], {
@@ -731,15 +949,16 @@ function runSyntheticCatalogTests(modelFixture) {
   assertCatalogRejection(({ data }) => { data.metadata.confidenceCounts = { high: 0, medium: 2, low: 1 }; }, "global confidence total mismatch");
   assertCatalogRejection(({ data }) => { data.metadata.catalogs[0].sourcePages = [2, 1, 3]; }, "unsorted sourcePages");
   assertCatalogRejection(({ data }) => { data.metadata.catalogs[0].sourcePages = [1, 2, 2]; }, "duplicate sourcePages");
-  assertCatalogRejection(({ data }) => { data.metadata.schemaVersion = 2; }, "wrong canonical metadata schema version");
+  assertCatalogRejection(({ data }) => { data.metadata.schemaVersion = 4; }, "wrong canonical metadata schema version");
   assertCatalogRejection(({ data }) => { data.metadata.generatedAt = "2026-07-19"; }, "extra canonical metadata root key");
   assertCatalogRejection(({ data }) => { data.metadata.catalogs[0].edition = "First"; }, "extra catalog descriptor key");
   assertCatalogRejection(({ data }) => { data.metadata.catalogs[0].sourcePageCount = 2; }, "sourcePageCount mismatch");
   assertCatalogRejection(({ data }) => { data.metadata.catalogs[0].label = "../private/catalog-scan.pdf"; }, "catalog label leakage");
   assertCatalogRejection(({ folios }) => {
-    folios.catalogs["beta-1888"].pages[8] = {
-      image: "assets/folios/beta-1888/page-8.webp", alt: "Beta catalog page 8",
-    };
+    folios.catalogs["beta-1888"].pages.push({
+      pageId: "beta-1888-page-8", catalogPage: 8, pageLabel: "Page 8",
+      image: "assets/folios/beta-1888/beta-1888-page-8.webp", alt: "Beta catalog page 8",
+    });
   }, "folio page outside its catalog source page set");
 
   for (const [description, value] of [
@@ -792,6 +1011,7 @@ function runSyntheticCatalogTests(modelFixture) {
     secondIndependent,
     ...independentNumbering.records.filter(({ catalogId }) => catalogId === "huss-1976"),
     ...independentNumbering.records.filter(({ catalogId }) => catalogId === "hovey-1896"),
+    ...independentNumbering.records.filter(({ catalogId }) => catalogId === "museum-1914"),
   ];
   validatePublicCatalog(independentNumbering, modelFolios,
     "synthetic independent numbering and catalog-item ID tie breaker");
@@ -925,7 +1145,7 @@ function runSyntheticCatalogTests(modelFixture) {
     catalogNumberRejectionCount += 1;
   };
   const hoveyRecord = (records, id = "hovey-catalog-z9") => records.find((record) => record.id === id);
-  assertCatalogNumberRejection("schema 3 metadata under schema 4", ({ metadata }) => { metadata.schemaVersion = 3; });
+  assertCatalogNumberRejection("schema 4 metadata under schema 5", ({ metadata }) => { metadata.schemaVersion = 4; });
   assertCatalogNumberRejection("empty catalog number", ({ records }) => { hoveyRecord(records).catalogNumber = ""; });
   assertCatalogNumberRejection("nonnull non-string catalog number", ({ records }) => { hoveyRecord(records).catalogNumber = 9; });
   assertCatalogNumberRejection("duplicate catalog number within one catalog", ({ records }) => {
@@ -957,6 +1177,59 @@ function runSyntheticCatalogTests(modelFixture) {
     metadata.catalogs.find(({ id }) => id === "hovey-1896").recordsWithWeight = 1;
   });
 
+  const assertCollectionEntryRejection = (description, mutate) => {
+    const candidate = clone(modelFixture);
+    mutate(candidate);
+    let rejected = false;
+    try {
+      validatePublicCatalog(candidate, modelFolios, `synthetic ${description}`);
+    } catch {
+      rejected = true;
+    }
+    assert(rejected, `synthetic collection-entry fixture must reject ${description}`);
+    collectionEntryRejectionCount += 1;
+  };
+  const collectionRecord = (records, id = "museum-entry-anonymous") => records.find((record) => record.id === id);
+  assertCollectionEntryRejection("collection-entry extra field", ({ records }) => {
+    collectionRecord(records).historicalMass = "about two ounces";
+  });
+  assertCollectionEntryRejection("collection-entry empty reported number", ({ records }) => {
+    collectionRecord(records, "museum-entry-duplicate-a").reportedNumber = "";
+  });
+  for (const field of ["section", "eventDate"]) {
+    assertCollectionEntryRejection(`collection-entry empty ${field}`, ({ records }) => { collectionRecord(records)[field] = ""; });
+  }
+  assertCollectionEntryRejection("collection-entry invalid entry order", ({ records }) => {
+    collectionRecord(records).entryOrder = 0;
+  });
+  assertCollectionEntryRejection("collection-entry duplicate entry order", ({ records }) => {
+    collectionRecord(records, "museum-entry-duplicate-b").entryOrder = 1;
+  });
+  assertCollectionEntryRejection("collection-entry extra weight key", ({ records }) => {
+    collectionRecord(records).holdings[0].weights[0].display = "2.25 g";
+  });
+  assertCollectionEntryRejection("collection-entry negative mass", ({ records }) => {
+    collectionRecord(records).holdings[0].weights[0].grams = -1;
+  });
+  assertCollectionEntryRejection("collection-entry nonfinite mass", ({ records }) => {
+    collectionRecord(records).holdings[0].weights[0].grams = Infinity;
+  });
+  assertCollectionEntryRejection("collection-entry empty holdings", ({ records }) => { collectionRecord(records).holdings = []; });
+  assertCollectionEntryRejection("collection-entry empty pages", ({ records }) => { collectionRecord(records).catalogPages = []; });
+  assertCollectionEntryRejection("collection-entry decreasing pages", ({ records }) => {
+    collectionRecord(records).catalogPages = [203, 202];
+  });
+  assertCollectionEntryRejection("collection-entry page outside sourcePages", ({ records }) => {
+    collectionRecord(records).catalogPages = [204];
+  });
+  assertCollectionEntryRejection("collection-entry summary mismatch", ({ metadata }) => {
+    metadata.catalogs.find(({ id }) => id === "museum-1914").recordsWithWeight = 1;
+  });
+  assertCollectionEntryRejection("collection-entry canonical order", ({ records }) => {
+    const firstIndex = records.findIndex(({ id }) => id === "museum-entry-duplicate-a");
+    [records[firstIndex], records[firstIndex + 1]] = [records[firstIndex + 1], records[firstIndex]];
+  });
+
   return {
     baselineAllowCount,
     baselineRejectionCount,
@@ -965,31 +1238,49 @@ function runSyntheticCatalogTests(modelFixture) {
     holdingPrivacyAllowCount,
     modelRejectionCount,
     catalogNumberRejectionCount,
+    collectionEntryRejectionCount,
   };
 }
 
 function syntheticManifest({
   rightsStatus = "public-domain",
-  image = "assets/folios/reviewed-example/page-3.webp",
-  thumbnail = "assets/folios/reviewed-example/page-3-thumbnail.webp",
+  displayPolicy = "display",
+  pageId = "reviewed-example-page-3",
+  catalogPage = 3,
+  pageLabel = "Page 3",
+  image = "assets/folios/reviewed-example/reviewed-example-page-3.webp",
   alt = "Reviewed catalog page 3",
   pageEntry,
 } = {}) {
-  const entry = pageEntry ?? { image, alt, ...(thumbnail === null ? {} : { thumbnail }) };
+  const entry = pageEntry ?? { pageId, catalogPage, pageLabel, image, alt };
+  return {
+    schemaVersion: 2,
+    catalogs: {
+      "reviewed-example": { displayPolicy, rightsStatus, pages: displayPolicy === "blocked" ? [] : [entry] },
+    },
+  };
+}
+
+function syntheticReleaseLock(manifest, sha256) {
   return {
     schemaVersion: 1,
-    catalogs: {
-      "reviewed-example": { displayPolicy: "display", rightsStatus, pages: { 3: entry } },
-    },
+    catalogs: Object.fromEntries(Object.entries(manifest.catalogs).map(([catalogId, policy]) => [catalogId, {
+      displayPolicy: policy.displayPolicy,
+      rightsStatus: policy.rightsStatus,
+      basis: policy.displayPolicy === "display" ? "Synthetic reviewed rights evidence." : null,
+      basisUrl: policy.displayPolicy === "display" ? "https://example.test/rights" : null,
+      pageIds: policy.pages.map(({ pageId }) => pageId),
+    }])),
+    assets: Object.values(manifest.catalogs).flatMap((policy) => policy.pages.map(({ image }) => ({ path: image, sha256 }))),
   };
 }
 
 function runSyntheticFolioTests() {
   let allowCount = 0;
   let rejectionCount = 0;
-  const allow = (manifest, description) => {
+  const allow = (manifest, description, expectedPages = 1) => {
     const stats = validateFolioManifest(manifest, `synthetic ${description}`);
-    assert(stats.pageEntryCount === 1, `synthetic ${description} must contain one page`);
+    assert(stats.pageEntryCount === expectedPages, `synthetic ${description} has the wrong page count`);
     allowCount += 1;
   };
   const reject = (manifest, description) => {
@@ -1003,15 +1294,26 @@ function runSyntheticFolioTests() {
     rejectionCount += 1;
   };
 
-  for (const extension of ["webp", "png", "jpg", "jpeg", "avif"]) {
-    allow(syntheticManifest({
-      image: `assets/folios/reviewed-example/page-3.${extension}`,
-      thumbnail: `assets/folios/reviewed-example/page-3-thumbnail.${extension}`,
-    }), `approved .${extension} paths`);
-  }
-  allow(syntheticManifest({ thumbnail: null }), "optional thumbnail omission");
+  allow(syntheticManifest(), "public-domain display page");
+  allow(syntheticManifest({ rightsStatus: "no-copyright-us" }), "no-copyright-us display page");
+  allow(syntheticManifest({ catalogPage: null }), "unnumbered page");
+  allow(syntheticManifest({ pageLabel: null }), "page without a printed label");
+  allow(syntheticManifest({ displayPolicy: "blocked", rightsStatus: "undetermined" }), "blocked catalog", 0);
+  const schema1 = syntheticManifest();
+  schema1.schemaVersion = 1;
+  reject(schema1, "schema 1 manifest");
   reject(syntheticManifest({ rightsStatus: "undetermined" }), "display with undetermined rights");
   reject(syntheticManifest({ rightsStatus: "unknown" }), "unknown rights status");
+  reject(syntheticManifest({ displayPolicy: "blocked", rightsStatus: "public-domain" }), "blocked public-domain catalog");
+  const blockedPages = syntheticManifest({ displayPolicy: "blocked", rightsStatus: "undetermined" });
+  blockedPages.catalogs["reviewed-example"].pages.push(syntheticManifest().catalogs["reviewed-example"].pages[0]);
+  reject(blockedPages, "blocked catalog with pages");
+  const emptyDisplay = syntheticManifest();
+  emptyDisplay.catalogs["reviewed-example"].pages = [];
+  reject(emptyDisplay, "display catalog without pages");
+  const objectPages = syntheticManifest();
+  objectPages.catalogs["reviewed-example"].pages = {};
+  reject(objectPages, "object page map");
   for (const [description, catalogId] of [
     ["uppercase catalog ID", "Reviewed-Example"],
     ["underscore catalog ID", "reviewed_example"],
@@ -1023,44 +1325,53 @@ function runSyntheticFolioTests() {
     delete manifest.catalogs["reviewed-example"];
     reject(manifest, description);
   }
+  for (const [description, pageId] of [
+    ["empty page ID", ""],
+    ["uppercase page ID", "Reviewed-page-3"],
+    ["underscore page ID", "reviewed_page_3"],
+    ["whitespace page ID", "reviewed page 3"],
+    ["traversal page ID", ".."],
+    ["overlong page ID", "a".repeat(MAX_CATALOG_ID_LENGTH + 1)],
+  ]) reject(syntheticManifest({ pageId, image: `assets/folios/reviewed-example/${pageId}.webp` }), description);
   const malformedPaths = [
     ["empty path", ""],
-    ["whitespace", "assets/folios/reviewed-example/page 3.webp"],
-    ["slash-rooted", "/assets/folios/reviewed-example/page-3.webp"],
-    ["scheme", "https://example.test/page-3.webp"],
-    ["protocol-relative", "//example.test/page-3.webp"],
-    ["backslash", "assets\\folios\\reviewed-example\\page-3.webp"],
-    ["query suffix", "assets/folios/reviewed-example/page-3.webp?download=1"],
-    ["query-only", "?download=1"],
-    ["fragment suffix", "assets/folios/reviewed-example/page-3.webp#page"],
-    ["fragment-only", "#page"],
-    ["current segment", "assets/folios/reviewed-example/./page-3.webp"],
-    ["parent segment", "assets/folios/reviewed-example/../page-3.webp"],
-    ["missing filename segment", "assets/folios/reviewed-example/"],
-    ["duplicate slash empty segment", "assets/folios/reviewed-example//page-3.webp"],
-    ["outside root", "assets/images/reviewed-example/page-3.webp"],
-    ["lookalike root", "assets/folios-other/reviewed-example/page-3.webp"],
-    ["wrong catalog directory", "assets/folios/other-catalog/page-3.webp"],
-    ["percent-encoded whitespace", "assets/folios/reviewed-example/page%203.webp"],
-    ["encoded traversal", "assets/folios/reviewed-example/%2e%2e/page-3.webp"],
-    ["repeated-encoded traversal", "assets/folios/reviewed-example/%252e%252e/page-3.webp"],
-    ["encoded external form", "assets/folios/reviewed-example/https%3A%2F%2Fevil.test/page-3.webp"],
-    ["repeated-encoded external form", "assets/folios/reviewed-example/https%253A%252F%252Fevil.test/page-3.webp"],
-    ["unsafe .svg extension", "assets/folios/reviewed-example/page-3.svg"],
-    ["unsafe .gif extension", "assets/folios/reviewed-example/page-3.gif"],
-    ["unsafe .pdf extension", "assets/folios/reviewed-example/page-3.pdf"],
-    ["missing extension", "assets/folios/reviewed-example/page-3"],
-    ["unapproved uppercase extension", "assets/folios/reviewed-example/page-3.WEBP"],
+    ["whitespace", "assets/folios/reviewed-example/reviewed example.webp"],
+    ["slash-rooted", "/assets/folios/reviewed-example/reviewed-example-page-3.webp"],
+    ["scheme", "https://example.test/reviewed-example-page-3.webp"],
+    ["backslash", "assets\\folios\\reviewed-example\\reviewed-example-page-3.webp"],
+    ["query suffix", "assets/folios/reviewed-example/reviewed-example-page-3.webp?download=1"],
+    ["fragment suffix", "assets/folios/reviewed-example/reviewed-example-page-3.webp#page"],
+    ["parent segment", "assets/folios/reviewed-example/../reviewed-example-page-3.webp"],
+    ["outside root", "assets/images/reviewed-example/reviewed-example-page-3.webp"],
+    ["wrong catalog directory", "assets/folios/other-catalog/reviewed-example-page-3.webp"],
+    ["unsafe extension", "assets/folios/reviewed-example/reviewed-example-page-3.png"],
+    ["wrong filename", "assets/folios/reviewed-example/page-3.webp"],
   ];
-  for (const field of ["image", "thumbnail"]) {
-    for (const [description, value] of malformedPaths) reject(syntheticManifest({ [field]: value }), `${field} ${description}`);
-  }
+  for (const [description, value] of malformedPaths) reject(syntheticManifest({ image: value }), `image ${description}`);
   reject(syntheticManifest({ pageEntry: {
-    full: "assets/folios/reviewed-example/page-3.webp", alt: "Reviewed catalog page 3",
+    pageId: "reviewed-example-page-3", catalogPage: 3, pageLabel: "Page 3",
+    full: "assets/folios/reviewed-example/reviewed-example-page-3.webp", alt: "Reviewed catalog page 3",
   } }), "wrong full key");
   reject(syntheticManifest({ pageEntry: {
-    image: "assets/folios/reviewed-example/page-3.webp", alt: "Reviewed catalog page 3", caption: "Unexpected field",
+    pageId: "reviewed-example-page-3", catalogPage: 3, pageLabel: "Page 3",
+    image: "assets/folios/reviewed-example/reviewed-example-page-3.webp", alt: "Reviewed catalog page 3", caption: "Unexpected field",
   } }), "extra page-entry key");
+  reject(syntheticManifest({ pageEntry: {
+    pageId: "reviewed-example-page-3", catalogPage: 3, pageLabel: "Page 3",
+    image: "assets/folios/reviewed-example/reviewed-example-page-3.webp",
+  } }), "missing alt key");
+  for (const value of [0, -1, 1.5, "3"]) reject(syntheticManifest({ catalogPage: value }), "invalid catalog page");
+  const missingCatalogPage = syntheticManifest();
+  delete missingCatalogPage.catalogs["reviewed-example"].pages[0].catalogPage;
+  reject(missingCatalogPage, "missing catalog page key");
+  for (const value of ["", "   ", "Page  3", "<em>Page 3</em>"]) {
+    reject(syntheticManifest({ pageLabel: value }), "invalid page label");
+  }
+  const duplicatePageId = syntheticManifest();
+  duplicatePageId.catalogs["reviewed-example"].pages.push({
+    ...duplicatePageId.catalogs["reviewed-example"].pages[0], catalogPage: 4,
+  });
+  reject(duplicatePageId, "duplicate page ID");
   for (const [description, alt] of [
     ["empty alt", ""],
     ["whitespace-only alt", "   "],
@@ -1072,14 +1383,141 @@ function runSyntheticFolioTests() {
     ["format-character alt", "Catalog page\u200B 3"],
     ["overlong alt", "x".repeat(MAX_ALT_LENGTH + 1)],
   ]) reject(syntheticManifest({ alt }), description);
-  assert(allowCount === 6, `expected 6 folio allows, got ${allowCount}`);
-  assert(rejectionCount === 71, `expected 71 folio rejections, got ${rejectionCount}`);
+  assert(allowCount === 5, `expected 5 folio allows, got ${allowCount}`);
+  assert(rejectionCount === 51, `expected 51 folio rejections, got ${rejectionCount}`);
+  return { allowCount, rejectionCount };
+}
+
+async function runSyntheticFolioFileTests() {
+  let allowCount = 0;
+  let rejectionCount = 0;
+  const validWebP = Buffer.from("UklGRh4AAABXRUJQVlA4TBEAAAAvAAAAAAfQ8pa3vP+BiOh/AAA=", "base64");
+  const validHash = createHash("sha256").update(validWebP).digest("hex");
+  const run = async (description, mutate, shouldReject = true, withLock = false) => {
+    const repoRoot = await mkdtemp(join(tmpdir(), "meteorite-folios-"));
+    const manifest = syntheticManifest();
+    const releaseLock = syntheticReleaseLock(manifest, validHash);
+    const image = manifest.catalogs["reviewed-example"].pages[0].image;
+    const imagePath = join(repoRoot, ...image.split("/"));
+    await mkdir(dirname(imagePath), { recursive: true });
+    await writeFile(imagePath, validWebP);
+    try {
+      if (mutate) await mutate({ repoRoot, manifest, releaseLock, imagePath });
+      let rejected = false;
+      try {
+        const hashes = withLock
+          ? validateFolioReleaseLock(manifest, releaseLock, `synthetic ${description} release lock`)
+          : null;
+        await validateFolioFiles(manifest, `synthetic ${description}`, repoRoot, hashes);
+      } catch {
+        rejected = true;
+      }
+      assert(rejected === shouldReject, `synthetic folio files must ${shouldReject ? "reject" : "allow"} ${description}`);
+      if (shouldReject) rejectionCount += 1;
+      else allowCount += 1;
+    } finally {
+      await rm(repoRoot, { recursive: true, force: true });
+    }
+  };
+
+  await run("valid declared WebP", null, false);
+  await run("bad WebP magic", async ({ imagePath }) => writeFile(imagePath, Buffer.from("not a WebP")));
+  await run("truncated WebP chunk", async ({ imagePath }) => {
+    const truncated = Buffer.from(validWebP.subarray(0, -1));
+    truncated.writeUInt32LE(truncated.length - 8, 4);
+    await writeFile(imagePath, truncated);
+  });
+  await run("invalid RIFF length", async ({ imagePath }) => {
+    const invalidLength = Buffer.from(validWebP);
+    invalidLength.writeUInt32LE(invalidLength.length - 9, 4);
+    await writeFile(imagePath, invalidLength);
+  });
+  await run("invalid VP8L chunk data", async ({ imagePath }) => {
+    const invalidChunk = Buffer.from(validWebP);
+    invalidChunk[20] = 0;
+    await writeFile(imagePath, invalidChunk);
+  });
+  await run("VP8X header without image data", async ({ imagePath }) => {
+    const headerOnly = Buffer.alloc(30);
+    headerOnly.write("RIFF", 0, "ascii");
+    headerOnly.writeUInt32LE(22, 4);
+    headerOnly.write("WEBP", 8, "ascii");
+    headerOnly.write("VP8X", 12, "ascii");
+    headerOnly.writeUInt32LE(10, 16);
+    await writeFile(imagePath, headerOnly);
+  });
+  await run("VP8 frame header without payload data", async ({ imagePath }) => {
+    const headerOnly = Buffer.alloc(30);
+    headerOnly.write("RIFF", 0, "ascii");
+    headerOnly.writeUInt32LE(22, 4);
+    headerOnly.write("WEBP", 8, "ascii");
+    headerOnly.write("VP8 ", 12, "ascii");
+    headerOnly.writeUInt32LE(10, 16);
+    headerOnly[23] = 0x9d;
+    headerOnly[24] = 0x01;
+    headerOnly[25] = 0x2a;
+    headerOnly.writeUInt16LE(1, 26);
+    headerOnly.writeUInt16LE(1, 28);
+    await writeFile(imagePath, headerOnly);
+  });
+  await run("VP8L frame header without payload data", async ({ imagePath }) => {
+    const headerOnly = Buffer.alloc(26);
+    headerOnly.write("RIFF", 0, "ascii");
+    headerOnly.writeUInt32LE(18, 4);
+    headerOnly.write("WEBP", 8, "ascii");
+    headerOnly.write("VP8L", 12, "ascii");
+    headerOnly.writeUInt32LE(5, 16);
+    headerOnly[20] = 0x2f;
+    await writeFile(imagePath, headerOnly);
+  });
+  await run("valid image with EXIF private-path chunk", async ({ imagePath }) => {
+    const privatePath = Buffer.from("/private/source/folio.tif", "utf8");
+    const exifChunk = Buffer.alloc(8 + privatePath.length + (privatePath.length % 2));
+    exifChunk.write("EXIF", 0, "ascii");
+    exifChunk.writeUInt32LE(privatePath.length, 4);
+    privatePath.copy(exifChunk, 8);
+    const withExif = Buffer.concat([validWebP, exifChunk]);
+    withExif.writeUInt32LE(withExif.length - 8, 4);
+    await writeFile(imagePath, withExif);
+  });
+  await run("orphan file", async ({ imagePath }) => writeFile(join(dirname(imagePath), "orphan.webp"), validWebP));
+  await run("file for blocked catalog", async ({ manifest }) => {
+    Object.assign(manifest.catalogs["reviewed-example"], { displayPolicy: "blocked", rightsStatus: "undetermined", pages: [] });
+  });
+  await run("file for absent catalog", async ({ manifest }) => { delete manifest.catalogs["reviewed-example"]; });
+  await run("missing declared image", async ({ imagePath }) => rm(imagePath));
+  await run("symlink image", async ({ repoRoot, imagePath }) => {
+    const target = join(repoRoot, "target.webp");
+    await writeFile(target, validWebP);
+    await rm(imagePath);
+    await symlink(target, imagePath);
+  });
+  await run("symlink catalog directory", async ({ repoRoot, imagePath }) => {
+    const targetDirectory = join(repoRoot, "outside");
+    await mkdir(targetDirectory);
+    await writeFile(join(targetDirectory, "reviewed-example-page-3.webp"), validWebP);
+    await rm(dirname(imagePath), { recursive: true });
+    await symlink(targetDirectory, dirname(imagePath));
+  });
+  await run("matching synthetic release lock", null, false, true);
+  await run("policy lock drift", async ({ manifest }) => {
+    manifest.catalogs["reviewed-example"].rightsStatus = "no-copyright-us";
+  }, true, true);
+  await run("page lock drift", async ({ releaseLock }) => {
+    releaseLock.catalogs["reviewed-example"].pageIds = ["reviewed-example-page-4"];
+  }, true, true);
+  await run("hash lock drift", async ({ releaseLock }) => {
+    releaseLock.assets[0].sha256 = "0".repeat(64);
+  }, true, true);
+  assert(allowCount === 2 && rejectionCount === 17,
+    `expected 2 folio-file allows and 17 rejections, got ${allowCount} and ${rejectionCount}`);
   return { allowCount, rejectionCount };
 }
 
 const fixture = JSON.parse(await readFile(FIXTURE_URL, "utf8"));
 const catalogFixtureStats = runSyntheticCatalogTests(fixture);
 const folioFixtureStats = runSyntheticFolioTests();
+const folioFileFixtureStats = await runSyntheticFolioFileTests();
 console.log(
   `Synthetic fixtures: ${catalogFixtureStats.baselineAllowCount} baseline catalog allows, ` +
   `${catalogFixtureStats.baselineRejectionCount} baseline catalog/leakage rejections, ` +
@@ -1087,23 +1525,27 @@ console.log(
   `${catalogFixtureStats.modelOrderingAllowCount} model-ordering/catalog-scope allow, ` +
   `${catalogFixtureStats.holdingPrivacyAllowCount} holding-privacy boundary allow, ` +
   `${catalogFixtureStats.modelRejectionCount} model/holding rejections, ` +
-  `${catalogFixtureStats.catalogNumberRejectionCount} catalog-number/schema-4 rejections, ` +
-  `${folioFixtureStats.allowCount} folio allows, ${folioFixtureStats.rejectionCount} folio rejections passed.`,
+  `${catalogFixtureStats.catalogNumberRejectionCount} catalog-number rejections, ` +
+  `${catalogFixtureStats.collectionEntryRejectionCount} collection-entry/schema-5 rejections, ` +
+  `${folioFixtureStats.allowCount} folio allows, ${folioFixtureStats.rejectionCount} folio rejections, ` +
+  `${folioFileFixtureStats.allowCount} folio-file allows, ${folioFileFixtureStats.rejectionCount} folio-file rejections passed.`,
 );
 
 if (!SYNTHETIC_ONLY) {
-  const [data, folios] = await Promise.all(
-    [CATALOG_URL, FOLIOS_URL].map(async (url) => JSON.parse(await readFile(url, "utf8"))),
+  const [data, folios, releaseLock] = await Promise.all(
+    [CATALOG_URL, FOLIOS_URL, RELEASE_LOCK_URL].map(async (url) => JSON.parse(await readFile(url, "utf8"))),
   );
   const deployedStats = validatePublicCatalog(data, folios, "root");
+  const expectedHashes = validateFolioReleaseLock(folios, releaseLock, "root folio release lock");
+  await validateFolioFiles(folios, "root folio files", REPO_ROOT, expectedHashes);
   const totalPageCount = [...deployedStats.metadataByCatalog.values()].reduce(
     (sum, { descriptor }) => sum + descriptor.sourcePageCount,
     0,
   );
   console.log(
     `Validated data/catalog.json and data/folios.json: ${deployedStats.recordCount} records across ` +
-    `${deployedStats.catalogCount} schema 4 facts-only catalogs, ${totalPageCount} metadata source pages, ` +
-    `${deployedStats.folioStats.pageEntryCount} displayable folio pages.`,
+    `${deployedStats.catalogCount} schema 5 facts-only catalogs, ${totalPageCount} metadata source pages, ` +
+    `${deployedStats.folioStats.pageEntryCount} displayable folio pages with locked SHA-256 assets.`,
   );
   for (const [catalogId, { descriptor }] of deployedStats.metadataByCatalog) {
     const stats = deployedStats.statsByCatalog.get(catalogId);
@@ -1116,4 +1558,11 @@ if (!SYNTHETIC_ONLY) {
   }
 }
 
-export { rejectCatalogExcludedContent, validateFolioManifest, validatePublicCatalog };
+export {
+  rejectCatalogExcludedContent,
+  validateFolioFiles,
+  validateFolioManifest,
+  validateFolioReleaseLock,
+  validatePublicCatalog,
+  validateWebP,
+};

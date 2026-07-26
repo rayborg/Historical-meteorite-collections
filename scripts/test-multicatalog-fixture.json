@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "schemaVersion": 4,
+    "schemaVersion": 5,
     "scope": "facts-only",
     "factualFields": [
       "id",
@@ -10,6 +10,8 @@
       "weight.grams",
       "catalogItem",
       "catalogNumber",
+      "entryOrder",
+      "reportedNumber",
       "holdings[].designation",
       "holdings[].kind",
       "holdings[].description",
@@ -21,8 +23,10 @@
       "locality",
       "year",
       "dateOfDiscovery",
+      "eventDate",
       "catalogPage",
       "catalogPages[]",
+      "section",
       "confidence"
     ],
     "catalogs": [
@@ -85,12 +89,27 @@
         "confidenceCounts": { "high": 1, "medium": 1, "low": 0 },
         "folioDisplayPolicy": "blocked",
         "rightsStatus": "undetermined"
+      },
+      {
+        "id": "museum-1914",
+        "recordModel": "collection-entry",
+        "label": "Museum collection register (1914)",
+        "compiler": "Museum registrar",
+        "year": 1914,
+        "sourcePages": [201, 202, 203],
+        "sourcePageCount": 3,
+        "recordCount": 3,
+        "recordsWithDesignation": 0,
+        "recordsWithWeight": 2,
+        "confidenceCounts": { "high": 1, "medium": 2, "low": 0 },
+        "folioDisplayPolicy": "blocked",
+        "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 12,
+    "recordCount": 15,
     "recordsWithDesignation": 7,
-    "recordsWithWeight": 10,
-    "confidenceCounts": { "high": 7, "medium": 4, "low": 1 }
+    "recordsWithWeight": 12,
+    "confidenceCounts": { "high": 8, "medium": 6, "low": 1 }
   },
   "records": [
     {
@@ -332,6 +351,69 @@
       "locality": null,
       "dateOfDiscovery": null,
       "catalogPages": [150],
+      "confidence": "medium"
+    },
+    {
+      "id": "museum-entry-duplicate-a",
+      "catalogId": "museum-1914",
+      "entryOrder": 1,
+      "reportedNumber": "No. 17",
+      "catalogPages": [201],
+      "section": "Mineralogical collection",
+      "holdings": [
+        {
+          "description": "Single fragment",
+          "provenance": "Transferred from the teaching collection",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Duplicate number without public mass",
+      "classification": "Iron",
+      "locality": "North America",
+      "eventDate": "Presented in 1891",
+      "confidence": "medium"
+    },
+    {
+      "id": "museum-entry-duplicate-b",
+      "catalogId": "museum-1914",
+      "entryOrder": 2,
+      "reportedNumber": "No. 17",
+      "catalogPages": [202],
+      "section": "Exchange collection",
+      "holdings": [
+        {
+          "description": "Complete stone",
+          "provenance": "Exchanged with a university museum",
+          "count": null,
+          "weights": [{ "grams": 64.5 }]
+        }
+      ],
+      "name": "Duplicate number with normalized mass",
+      "classification": "Stone",
+      "locality": "South America",
+      "eventDate": "Received by exchange",
+      "confidence": "high"
+    },
+    {
+      "id": "museum-entry-anonymous",
+      "catalogId": "museum-1914",
+      "entryOrder": 3,
+      "reportedNumber": null,
+      "catalogPages": [202, 203],
+      "section": "Unnumbered accessions",
+      "holdings": [
+        {
+          "description": "Unnumbered portion",
+          "provenance": "Old museum collection",
+          "count": null,
+          "weights": [{ "grams": 2.25 }]
+        }
+      ],
+      "name": "Anonymous multi-page entry",
+      "classification": null,
+      "locality": null,
+      "eventDate": "Found during reorganization",
       "confidence": "medium"
     }
   ]

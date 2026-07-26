@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "catalogs": {
+    "chladni-1819": {
+      "displayPolicy": "display",
+      "rightsStatus": "public-domain",
+      "basis": "ULB Duesseldorf OAI metadata assigns PDM 1.0 to the exact 1819 volume.",
+      "basisUrl": "https://digital.ulb.hhu.de/oai/?verb=GetRecord&metadataPrefix=oai_dc&identifier=oai:digital.ub.uni-duesseldorf.de:9065988",
+      "pageIds": [
+        "chladni-1819-page-0090",
+        "chladni-1819-page-0091",
+        "chladni-1819-page-0092",
+        "chladni-1819-page-0093",
+        "chladni-1819-page-0427",
+        "chladni-1819-page-0428",
+        "chladni-1819-page-0429",
+        "chladni-1819-page-0430",
+        "chladni-1819-page-0431",
+        "chladni-1819-page-0432",
+        "chladni-1819-page-0433",
+        "chladni-1819-page-0434"
+      ]
+    },
+    "chladni-1825": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "basis": null,
+      "basisUrl": null,
+      "pageIds": []
+    },
+    "hovey-1896": {
+      "displayPolicy": "display",
+      "rightsStatus": "public-domain",
+      "basis": "BHL item 335869, contributed by Smithsonian Libraries and Archives, marks the exact 1896 volume public domain.",
+      "basisUrl": "https://www.biodiversitylibrary.org/item/335869",
+      "pageIds": [
+        "hovey-1896-page-0149",
+        "hovey-1896-page-0150",
+        "hovey-1896-page-0151",
+        "hovey-1896-page-0152",
+        "hovey-1896-page-0153",
+        "hovey-1896-page-0154",
+        "hovey-1896-page-0155"
+      ]
+    },
+    "huss-1976": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "basis": null,
+      "basisUrl": null,
+      "pageIds": []
+    },
+    "huss-1986": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "basis": null,
+      "basisUrl": null,
+      "pageIds": []
+    },
+    "lucas-1813": {
+      "displayPolicy": "display",
+      "rightsStatus": "public-domain",
+      "basis": "Wikimedia Commons applies Public Domain Mark 1.0 to the exact source file.",
+      "basisUrl": "https://commons.wikimedia.org/wiki/File:Tableau_Methodique_des_Especes_Minerales,_Part_II_(IA_dli.granth.17656).pdf",
+      "pageIds": [
+        "lucas-1813-page-0569",
+        "lucas-1813-page-0570",
+        "lucas-1813-page-0571"
+      ]
+    },
+    "nininger-1933": {
+      "displayPolicy": "display",
+      "rightsStatus": "no-copyright-us",
+      "basis": "No renewal was found for the exact 1933 offprint after searches of the 1959-1961 Catalog of Copyright Entries via Stanford.",
+      "basisUrl": "https://www.copyright.gov/public-records/",
+      "pageIds": [
+        "nininger-1933-page-0001",
+        "nininger-1933-page-0002",
+        "nininger-1933-page-0003",
+        "nininger-1933-page-0004",
+        "nininger-1933-page-0005",
+        "nininger-1933-page-0006",
+        "nininger-1933-page-0007",
+        "nininger-1933-page-0008",
+        "nininger-1933-page-0009",
+        "nininger-1933-page-0010",
+        "nininger-1933-page-0011",
+        "nininger-1933-page-0012",
+        "nininger-1933-page-0013",
+        "nininger-1933-page-0014",
+        "nininger-1933-page-0015",
+        "nininger-1933-page-0016",
+        "nininger-1933-page-0017",
+        "nininger-1933-page-0018",
+        "nininger-1933-page-0019"
+      ]
+    }
+  },
+  "assets": [
+    {
+      "path": "assets/folios/chladni-1819/chladni-1819-page-0090.webp",
+      "sha256": "174cf890f4d77b947d44fd3eafe6e3410f365ac18b0e2d31098f8d6665b1ce78"
+    },
+    {
+      "path": "assets/folios/chladni-1819/chladni-1819-page-0091.webp",
+      "sha256": "256aedd90fe18f0f29e4e6769228fad825fc33c723e4a69dce70f8fe2dae2344"
+    },
+    {
+      "path": "assets/folios/chladni-1819/chladni-1819-page-0092.webp",
+      "sha256": "f75616c56e95646a23b90b594e10a9b4e18ff35ccf885b8ee0ba977c3eff06f4"
+    },
+    {
+      "path": "assets/folios/chladni-1819/chladni-1819-page-0093.webp",
+      "sha256": "739606d5c31840e1a09ce2cab10a367b3296888ab87f0c1655cf8d2a7cf0428a"
+    },
+    {
+      "path": "assets/folios/chladni-1819/chladni-1819-page-0427.webp",
+      "sha256": "cca32d1ba1a4897923e6a630a7ce9da6a7221b4b070fd6cc421731bf337d55e9"
+    },
+    {
+      "path": "assets/folios/chladni-1819/chladni-1819-page-0428.webp",
+      "sha256": "27ab770d5b56278566e268495ef250ee1098ba7dd83a8a813f193a46134b8d76"
+    },
+    {
+      "path": "assets/folios/chladni-1819/chladni-1819-page-0429.webp",
+      "sha256": "d584549e40fa09b9121dd0e2000d134f40523d65e520832f11dd90749d838565"
+    },
+    {
+      "path": "assets/folios/chladni-1819/chladni-1819-page-0430.webp",
+      "sha256": "298b8cc6892a63378f39498a5f56c1b6332124cc1488061271ae57361ed31876"
+    },
+    {
+      "path": "assets/folios/chladni-1819/chladni-1819-page-0431.webp",
+      "sha256": "d8f3b130b44c719a8b3e70e2e6837abea1811c153346e325b2b6726802c3d10a"
+    },
+    {
+      "path": "assets/folios/chladni-1819/chladni-1819-page-0432.webp",
+      "sha256": "66cdb2de25c054df598f6cc567446ad7dd860713896aac61345e4a51a8464371"
+    },
+    {
+      "path": "assets/folios/chladni-1819/chladni-1819-page-0433.webp",
+      "sha256": "cfbe0740078f5c5b0f3f3e280bfc895141e3536bbbb511f13ecc81ee3772b911"
+    },
+    {
+      "path": "assets/folios/chladni-1819/chladni-1819-page-0434.webp",
+      "sha256": "c63fb699487cd3559b68102d04185454944d36b74e1cbff48d6421992bc4236d"
+    },
+    {
+      "path": "assets/folios/hovey-1896/hovey-1896-page-0149.webp",
+      "sha256": "3b02d098d913ab4ed136f3001a27bedec40f1f3e84f3048a0e74ec7177fcb6e7"
+    },
+    {
+      "path": "assets/folios/hovey-1896/hovey-1896-page-0150.webp",
+      "sha256": "b7b351433eca04f662fdbad91a81f640c6fde65d4eba4caa71f020b6153a2598"
+    },
+    {
+      "path": "assets/folios/hovey-1896/hovey-1896-page-0151.webp",
+      "sha256": "8f6fc8cc5e3c8cf5a5ae3c9649149f2d6f07df82fe23d5e05092003c2b4f5aa0"
+    },
+    {
+      "path": "assets/folios/hovey-1896/hovey-1896-page-0152.webp",
+      "sha256": "0ae681112b4822cb9708c02a2dac7af3141cf0fc930b545452dd3035d6d1348d"
+    },
+    {
+      "path": "assets/folios/hovey-1896/hovey-1896-page-0153.webp",
+      "sha256": "2694e96c44b9c3250107f2f6b3ad615f68c14167649903c659c55d6a56b58c1f"
+    },
+    {
+      "path": "assets/folios/hovey-1896/hovey-1896-page-0154.webp",
+      "sha256": "0d8c3e143f43eb4da292b75b74c6824ed40b6c401c4ac4cc83affc1d45cad6e9"
+    },
+    {
+      "path": "assets/folios/hovey-1896/hovey-1896-page-0155.webp",
+      "sha256": "2bad29f2fb28af67d42395e8cb646bb8e8737bf2676587ce537f863242c4b285"
+    },
+    {
+      "path": "assets/folios/lucas-1813/lucas-1813-page-0569.webp",
+      "sha256": "d9f8aeaa0bd4d2cbee8f0e88952cb753cc10f873cefcb7fb59a705ccd760c18d"
+    },
+    {
+      "path": "assets/folios/lucas-1813/lucas-1813-page-0570.webp",
+      "sha256": "9cbb4b8418f5e3978f5f05b4ad0a903d8313ea96a3fbb4333f8b5c27434ea508"
+    },
+    {
+      "path": "assets/folios/lucas-1813/lucas-1813-page-0571.webp",
+      "sha256": "07657b6a2048b5cdd646020a79ce0314470a4b6e8a9f97ad2c126b92acd6edab"
+    },
+    {
+      "path": "assets/folios/nininger-1933/nininger-1933-page-0001.webp",
+      "sha256": "7d46b4dfcd3c1bed0310e3ec9c03b4c6ac35a187ea94cf8a45221dc3b037361f"
+    },
+    {
+      "path": "assets/folios/nininger-1933/nininger-1933-page-0002.webp",
+      "sha256": "0f65ef7f57a8e9b1a38d7dee00d47f0b688e1d309dd972968b700c7b6f1141bc"
+    },
+    {
+      "path": "assets/folios/nininger-1933/nininger-1933-page-0003.webp",
+      "sha256": "95e24f2bfd302eb7024d77a7d60a1e42f5e5715c2f2aedbd8af9fa508c81b1e2"
+    },
+    {
+      "path": "assets/folios/nininger-1933/nininger-1933-page-0004.webp",
+      "sha256": "18d826d7576776ab32f2c3869bdf702e4ba2695ea671d4b5e3933d004e0c5bfa"
+    },
+    {
+      "path": "assets/folios/nininger-1933/nininger-1933-page-0005.webp",
+      "sha256": "28c04ca80107fc83f93c86e7396e2b5d4279665cd8044e17f681e2fb59ef4758"
+    },
+    {
+      "path": "assets/folios/nininger-1933/nininger-1933-page-0006.webp",
+      "sha256": "5bc40c92893fe920308f14dd900fba1a95fdef256f34e3d6e66c2c7ca2aa7491"
+    },
+    {
+      "path": "assets/folios/nininger-1933/nininger-1933-page-0007.webp",
+      "sha256": "d975d285d10e866d5ef78567e43568c4945c8e02ebde1a4e0e727190713da66a"
+    },
+    {
+      "path": "assets/folios/nininger-1933/nininger-1933-page-0008.webp",
+      "sha256": "6adb14e585c0b2ff3ecaf212bec146cfc91c787c52611f441cb6f15cd41f70f9"
+    },
+    {
+      "path": "assets/folios/nininger-1933/nininger-1933-page-0009.webp",
+      "sha256": "6e950475998b74b0a156e7bc7f75b10c753fd0cb08a4960cc746671cac148d3b"
+    },
+    {
+      "path": "assets/folios/nininger-1933/nininger-1933-page-0010.webp",
+      "sha256": "31b46d3eb933eb06464535ee98b483142446c39cfed8d5a3a69dc7bb31176017"
+    },
+    {
+      "path": "assets/folios/nininger-1933/nininger-1933-page-0011.webp",
+      "sha256": "21d3a53978a588c6a26419b41f921d42c13d06d93842010ba963a5bc8ab870b7"
+    },
+    {
+      "path": "assets/folios/nininger-1933/nininger-1933-page-0012.webp",
+      "sha256": "1867c9ca85aee2a30f986b0044e5b4f7c3fbaddbceb417c2e16ccf14509bda07"
+    },
+    {
+      "path": "assets/folios/nininger-1933/nininger-1933-page-0013.webp",
+      "sha256": "0112fe6a652dda678647ed82e4b724f543d095874189b8ad63af917d15377e93"
+    },
+    {
+      "path": "assets/folios/nininger-1933/nininger-1933-page-0014.webp",
+      "sha256": "062aafad0106b88865db7004f3d9957a49fc58c0cd6de8466757f50334ed6874"
+    },
+    {
+      "path": "assets/folios/nininger-1933/nininger-1933-page-0015.webp",
+      "sha256": "d0c8301736aec0094d3ff24f3164512fa33ef768fe7f389b61185656dfa5b428"
+    },
+    {
+      "path": "assets/folios/nininger-1933/nininger-1933-page-0016.webp",
+      "sha256": "503679dd1af933e471691a89e66394ee4fd14baad37462fa35fd739acca13a07"
+    },
+    {
+      "path": "assets/folios/nininger-1933/nininger-1933-page-0017.webp",
+      "sha256": "ad0d4b4546e30b7d7d853a16d85d5e689bca6a8fd5fc19ce3591811acf6447c4"
+    },
+    {
+      "path": "assets/folios/nininger-1933/nininger-1933-page-0018.webp",
+      "sha256": "4ad74ff1171401b6f42e4a3510f51d5a5c20354db84f5e8fe15c9f45ba818dc3"
+    },
+    {
+      "path": "assets/folios/nininger-1933/nininger-1933-page-0019.webp",
+      "sha256": "7b420d9f37dc5238d942ac777d72a00c22bc55b77dcf69198c5b4213f118e3c2"
+    }
+  ]
+}

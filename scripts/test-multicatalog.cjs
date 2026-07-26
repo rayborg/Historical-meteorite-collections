@@ -15,6 +15,10 @@ const CATALOG_ITEM_FIELDS = [
 const CATALOG_NUMBER_FIELDS = [
   "id", "catalogId", "catalogNumber", "holdings", "name", "classification", "locality", "dateOfDiscovery", "catalogPages", "confidence"
 ];
+const COLLECTION_ENTRY_FIELDS = [
+  "id", "catalogId", "entryOrder", "reportedNumber", "catalogPages", "section", "holdings", "name", "classification", "locality",
+  "eventDate", "confidence"
+];
 const HOLDING_FIELDS = ["designation", "kind", "description", "count", "weight"];
 const CATALOG_NUMBER_HOLDING_FIELDS = ["description", "provenance", "count", "weights"];
 const CATALOG_FIELDS = [
@@ -107,48 +111,50 @@ function folioRegistry() {
       year: 1912,
       sourcePages: [27, 30],
       folioDisplayPolicy: "display",
-      rightsStatus: "public-domain"
+      rightsStatus: "no-copyright-us"
     }
   };
 }
 
-function page(image, alt) {
-  return { image, alt };
+function page(pageId, catalogPage, pageLabel, image, alt) {
+  return { pageId, catalogPage, pageLabel, image, alt };
 }
 
 function threeCatalogManifest() {
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
     catalogs: {
-      "huss-1976": { displayPolicy: "blocked", rightsStatus: "undetermined", pages: {} },
+      "huss-1976": { displayPolicy: "blocked", rightsStatus: "undetermined", pages: [] },
       "museum-1890": {
         displayPolicy: "display",
         rightsStatus: "public-domain",
-        pages: {
-          27: page("assets/folios/museum-1890/page-27.webp", "Museum catalog page 27"),
-          7: page("assets/folios/museum-1890/page-7.webp", "Museum catalog page 7")
-        }
+        pages: [
+          page("leaf-27", 27, null, "assets/folios/museum-1890/leaf-27.webp", "Museum catalog page 27"),
+          page("front-cover", null, "Front cover", "assets/folios/museum-1890/front-cover.webp", "Museum catalog front cover"),
+          page("leaf-7", 7, null, "assets/folios/museum-1890/leaf-7.webp", "Museum catalog page 7")
+        ]
       },
       "university-1912": {
         displayPolicy: "display",
-        rightsStatus: "public-domain",
-        pages: {
-          27: page("assets/folios/university-1912/page-27.webp", "University catalog page 27"),
-          30: page("assets/folios/university-1912/page-30.webp", "University catalog page 30")
-        }
+        rightsStatus: "no-copyright-us",
+        pages: [
+          page("leaf-30", 30, "Leaf 30", "assets/folios/university-1912/leaf-30.webp", "University catalog page 30"),
+          page("leaf-27", 27, null, "assets/folios/university-1912/leaf-27.webp", "University catalog page 27")
+        ]
       }
     }
   };
 }
 
-test("schema 4 fixture validates with exact model-aware shapes", () => {
+test("schema 5 fixture validates with exact model-aware shapes", () => {
   assert.equal(app.validateCatalog(fixture), fixture);
-  assert.equal(fixture.metadata.schemaVersion, 4);
+  assert.equal(fixture.metadata.schemaVersion, 5);
   assert.deepEqual(fixture.metadata.catalogs.map(({ id, recordModel }) => [id, recordModel]), [
     ["huss-1976", "specimen"],
     ["huss-1986", "specimen"],
     ["nininger-1933", "catalog-item"],
-    ["hovey-1896", "catalog-number"]
+    ["hovey-1896", "catalog-number"],
+    ["museum-1914", "collection-entry"]
   ]);
   fixture.metadata.catalogs.forEach((descriptor) => {
     assert.deepEqual(Object.keys(descriptor).sort(), [...CATALOG_FIELDS].sort());
@@ -159,7 +165,9 @@ test("schema 4 fixture validates with exact model-aware shapes", () => {
       Object.keys(record).sort(),
       [...(descriptor.recordModel === "specimen"
         ? SPECIMEN_FIELDS
-        : descriptor.recordModel === "catalog-item" ? CATALOG_ITEM_FIELDS : CATALOG_NUMBER_FIELDS)].sort()
+        : descriptor.recordModel === "catalog-item"
+          ? CATALOG_ITEM_FIELDS
+          : descriptor.recordModel === "catalog-number" ? CATALOG_NUMBER_FIELDS : COLLECTION_ENTRY_FIELDS)].sort()
     );
     if (descriptor.recordModel === "specimen") assert.deepEqual(Object.keys(record.weight), ["grams"]);
     else if (descriptor.recordModel === "catalog-item") record.holdings.forEach((holding) => {
@@ -173,7 +181,11 @@ test("schema 4 fixture validates with exact model-aware shapes", () => {
   });
 });
 
-test("schema 3, schema 2, and legacy metadata are intentionally rejected", () => {
+test("schema 4, schema 3, schema 2, and legacy metadata are intentionally rejected", () => {
+  const schema4 = clone(fixture);
+  schema4.metadata.schemaVersion = 4;
+  assert.throws(() => app.validateCatalog(schema4), /facts-only schema/);
+
   const schema3 = clone(fixture);
   schema3.metadata.schemaVersion = 3;
   assert.throws(() => app.validateCatalog(schema3), /facts-only schema/);
@@ -286,7 +298,8 @@ test("catalog item gaps and independent catalog numbering are valid", () => {
   candidate.records = [
     nininger[0], secondCollection[0], nininger[1], secondCollection[1], ...nininger.slice(2),
     ...candidate.records.filter(({ catalogId }) => catalogId === "huss-1976"),
-    ...candidate.records.filter(({ catalogId }) => catalogId === "hovey-1896")
+    ...candidate.records.filter(({ catalogId }) => catalogId === "hovey-1896"),
+    ...candidate.records.filter(({ catalogId }) => catalogId === "museum-1914")
   ];
   assert.equal(app.validateCatalog(candidate), candidate);
 });
@@ -341,7 +354,7 @@ test("holding privacy permits factual designation and description boundaries", (
 
 test("metadata summaries use holding designation and mass presence", () => {
   assert.equal(fixture.metadata.recordsWithDesignation, 7);
-  assert.equal(fixture.metadata.recordsWithWeight, 10);
+  assert.equal(fixture.metadata.recordsWithWeight, 12);
   assert.deepEqual(app.recordDesignations(recordById(fixture, "hovey-catalog-z9")), []);
   const candidate = clone(fixture);
   recordById(candidate, "nininger-item-4").holdings[0].designation = "N. 404";
@@ -487,6 +500,106 @@ test("catalog-number holding labels distinguish reported group counts", () => {
   ]);
 });
 
+test("collection-entry preparation preserves reported facts, pages, and numeric mass", () => {
+  const records = recordsFor("museum-1914");
+  assert.deepEqual(records.map(({ entryOrder }) => entryOrder), [1, 2, 3]);
+  assert.deepEqual(records.map(({ reportedNumber }) => reportedNumber), ["No. 17", "No. 17", null]);
+  assert.deepEqual(records.map(({ catalogPages }) => catalogPages), [[201], [202], [202, 203]]);
+  assert.deepEqual(records[0].holdings[0].weights, []);
+  assert.deepEqual(records[1].holdings[0].weights, [{ grams: 64.5 }]);
+  assert.deepEqual(records[2].holdings[0].weights, [{ grams: 2.25 }]);
+  assert.deepEqual(app.recordMasses(records[0]), []);
+  assert.deepEqual(app.recordMasses(records[1]), [64.5]);
+  assert.deepEqual(app.recordCatalogPages(records[2]), [202, 203]);
+  assert.equal(records[2].section, "Unnumbered accessions");
+  assert.equal(records[2].eventDate, "Found during reorganization");
+  assert.equal(records[2].holdings[0].provenance, "Old museum collection");
+});
+
+test("collection-entry reported numbers are optional, opaque, and non-unique", () => {
+  assert.doesNotThrow(() => app.validateCatalog(clone(fixture)));
+  const records = recordsFor("museum-1914");
+  assert.equal(records[0].reportedNumber, records[1].reportedNumber);
+  assert.equal(records[2].reportedNumber, null);
+
+  for (const value of ["", 17, [], {}]) {
+    const candidate = clone(fixture);
+    recordById(candidate, "museum-entry-duplicate-a").reportedNumber = value;
+    assert.throws(() => app.validateCatalog(candidate), /facts-only schema/);
+  }
+});
+
+test("collection entry orders must be unique within a catalog", () => {
+  const candidate = clone(fixture);
+  recordById(candidate, "museum-entry-duplicate-b").entryOrder = 1;
+  assert.throws(() => app.validateCatalog(candidate), /facts-only schema/);
+});
+
+test("collection entry orders must not decrease within a catalog", () => {
+  const candidate = clone(fixture);
+  recordById(candidate, "museum-entry-duplicate-b").entryOrder = 100;
+  recordById(candidate, "museum-entry-anonymous").entryOrder = 50;
+  assert.throws(() => app.validateCatalog(candidate), /facts-only schema/);
+});
+
+test("collection-entry exact shape excludes historical mass text", () => {
+  assert.equal("historicalMass" in recordById(fixture, "museum-entry-duplicate-a"), false);
+  const historicalMass = clone(fixture);
+  recordById(historicalMass, "museum-entry-duplicate-a").historicalMass = "about two ounces";
+  assert.throws(() => app.validateCatalog(historicalMass), /facts-only schema/);
+
+  const nestedDisplay = clone(fixture);
+  recordById(nestedDisplay, "museum-entry-duplicate-b").holdings[0].weights[0].display = "64.5 g";
+  assert.throws(() => app.validateCatalog(nestedDisplay), /facts-only schema/);
+});
+
+test("collection-entry scalar and page constraints are enforced", () => {
+  const mutations = [
+    (record) => { record.entryOrder = 0; },
+    (record) => { record.entryOrder = 1.5; },
+    (record) => { record.section = ""; },
+    (record) => { record.eventDate = ""; },
+    (record) => { record.holdings[0].description = ""; },
+    (record) => { record.holdings[0].provenance = ""; },
+    (record) => { record.holdings[0].count = 0; },
+    (record) => { record.holdings[0].weights[0].grams = null; },
+    (record) => { record.holdings[0].weights[0].grams = -1; },
+    (record) => { record.holdings[0].weights[0].grams = Infinity; },
+    (record) => { record.holdings[0].extra = "Public-looking"; },
+    (record) => { record.holdings = []; },
+    (record) => { record.catalogPages = []; },
+    (record) => { record.catalogPages = [203, 202]; },
+    (record) => { record.catalogPages = [202, 202]; },
+    (record) => { record.catalogPages = [204]; }
+  ];
+  mutations.forEach((mutate) => {
+    const candidate = clone(fixture);
+    mutate(recordById(candidate, "museum-entry-anonymous"));
+    assert.throws(() => app.validateCatalog(candidate), /facts-only schema/);
+  });
+});
+
+test("collection-entry search covers reported number, section, event, and provenance", () => {
+  const records = recordsFor("museum-1914");
+  assert.deepEqual(ids(records.filter((record) => app.matchesSearch(record, "reported no. No. 17"))), [
+    "museum-entry-duplicate-a", "museum-entry-duplicate-b"
+  ]);
+  assert.deepEqual(ids(records.filter((record) => app.matchesSearch(record, "Mineralogical collection"))), ["museum-entry-duplicate-a"]);
+  assert.deepEqual(ids(records.filter((record) => app.matchesSearch(record, "Received by exchange"))), ["museum-entry-duplicate-b"]);
+  assert.deepEqual(ids(records.filter((record) => app.matchesSearch(record, "Old museum collection"))), ["museum-entry-anonymous"]);
+  assert.deepEqual(ids(records.filter((record) => app.matchesSearch(record, "Unnumbered accessions"))), ["museum-entry-anonymous"]);
+});
+
+test("collection-entry sorting retains duplicate and anonymous source identities", () => {
+  const records = [...recordsFor("museum-1914")].reverse();
+  assert.deepEqual(ids(app.filterRecords(records, filters({ sort: "designation-asc" }))), [
+    "museum-entry-anonymous", "museum-entry-duplicate-a", "museum-entry-duplicate-b"
+  ]);
+  assert.deepEqual(ids(app.filterRecords(records, filters({ sort: "weight-asc" }))), [
+    "museum-entry-anonymous", "museum-entry-duplicate-b", "museum-entry-duplicate-a"
+  ]);
+});
+
 test("search covers catalog items and rendered holding facts", () => {
   const records = recordsFor("nininger-1933");
   assert.deepEqual(ids(records.filter((record) => app.matchesSearch(record, "2"))), ["nininger-item-2"]);
@@ -550,10 +663,10 @@ test("designation sorting uses numeric Nininger catalog items", () => {
 
 test("statistics keep parent observations and sum every holding mass once", () => {
   const statistics = app.calculateStatistics(preparedRecords());
-  assert.equal(statistics.observations, 12);
-  assert.equal(statistics.specimens, 12);
-  assert.equal(statistics.grams, 453.7);
-  assert.equal(statistics.pages, 12);
+  assert.equal(statistics.observations, 15);
+  assert.equal(statistics.specimens, 15);
+  assert.equal(statistics.grams, 520.45);
+  assert.equal(statistics.pages, 15);
 });
 
 test("holding labels are concise for count, cast, and aggregate rows", () => {
@@ -567,11 +680,12 @@ test("holding labels are concise for count, cast, and aggregate rows", () => {
 test("catalog selector and summaries retain descriptor model identity", () => {
   const registry = app.normalizeCatalogRegistry(fixture.metadata);
   assert.deepEqual(app.catalogSelectorEntries(registry).map(([id]) => id), [
-    "hovey-1896", "nininger-1933", "huss-1976", "huss-1986"
+    "hovey-1896", "museum-1914", "nininger-1933", "huss-1976", "huss-1986"
   ]);
   assert.equal(registry["nininger-1933"].recordModel, "catalog-item");
   assert.equal(registry["hovey-1896"].recordModel, "catalog-number");
-  assert.deepEqual(app.catalogSummaryEntries(registry).map(({ observationCount }) => observationCount), [2, 2, 6, 2]);
+  assert.equal(registry["museum-1914"].recordModel, "collection-entry");
+  assert.deepEqual(app.catalogSummaryEntries(registry).map(({ observationCount }) => observationCount), [2, 2, 6, 2, 3]);
 });
 
 test("URL filter behavior and cache version remain stable", () => {
@@ -582,7 +696,7 @@ test("URL filter behavior and cache version remain stable", () => {
     query: "catalog item 2", catalog: "nininger-1933", min: "3", max: "12", sort: "weight-desc"
   });
   assert.equal(app.serializeUrlFilters(parsed).toString(), "q=catalog+item+2&catalog=nininger-1933&min=3&max=12&sort=weight-desc");
-  assert.equal(app.CACHE_VERSION, "20260723-1");
+  assert.equal(app.CACHE_VERSION, "20260726-1");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.CACHE_VERSION}`));
 });
@@ -598,9 +712,9 @@ test("runtime rejects deterministic specimen order violations", () => {
 test("folio policy validation still fails closed", () => {
   const registry = app.normalizeCatalogRegistry(fixture.metadata);
   const blockedManifest = {
-    schemaVersion: 1,
+    schemaVersion: 2,
     catalogs: Object.fromEntries(Object.keys(registry).map((id) => [id, {
-      displayPolicy: "blocked", rightsStatus: "undetermined", pages: {}
+      displayPolicy: "blocked", rightsStatus: "undetermined", pages: []
     }]))
   };
   assert.equal(app.validateFolioManifest(blockedManifest, registry), true);
@@ -609,7 +723,9 @@ test("folio policy validation still fails closed", () => {
 
   const unsafe = clone(blockedManifest);
   unsafe.catalogs["nininger-1933"].displayPolicy = "display";
-  unsafe.catalogs["nininger-1933"].pages[1] = { image: "../private/page.jpg", alt: "Page 1" };
+  unsafe.catalogs["nininger-1933"].pages.push(
+    page("leaf-1", 1, null, "../private/page.jpg", "Page 1")
+  );
   assert.equal(app.validateFolioManifest(unsafe, registry), false);
 });
 
@@ -623,6 +739,11 @@ test("HTML and runtime contain accessible multi-holding card behavior", () => {
   assert.match(script, /recordWeight\.remove\(\)/);
   assert.match(script, /`Catalog item \$\{record\.catalogItem\}`/);
   assert.match(script, /`Catalog no\. \$\{record\.catalogNumber\}`/);
+  assert.match(script, /`Reported no\. \$\{record\.reportedNumber\}`/);
+  assert.match(script, /`Collection entry \$\{record\.entryOrder\}`/);
+  assert.match(script, /dateRow\.querySelector\("dt"\)\.textContent = "Event date"/);
+  assert.match(script, /term\.textContent = "Section"/);
+  assert.match(script, /recordModel === "catalog-number" \|\| recordModel === "collection-entry"/);
   assert.match(script, /Reported count:/);
   assert.match(script, /citedPages\.join\(", "\)/);
   assert.match(script, /holdings\.forEach\(\(holding\) =>/);
@@ -664,15 +785,25 @@ test("canonical global and per-catalog counts match the synthetic records", () =
   assert.deepEqual(fixture.metadata.confidenceCounts, totals.confidenceCounts);
 });
 
-test("canonical order preserves Nininger and literal Huss before catalog-number", () => {
+test("canonical order preserves existing models before collection entries", () => {
   assert.deepEqual(ids(fixture.records), [
     "nininger-item-1", "nininger-item-2", "nininger-item-3", "nininger-item-4", "nininger-item-5",
     "nininger-item-6", "huss-second-h399-1", "huss-second-h400", "huss-h27-3", "huss-h42",
-    "hovey-catalog-z9", "hovey-catalog-fraction-like"
+    "hovey-catalog-z9", "hovey-catalog-fraction-like", "museum-entry-duplicate-a",
+    "museum-entry-duplicate-b", "museum-entry-anonymous"
   ]);
   const parenthesized = preparedRecords().find(({ id }) => id === "huss-second-h399-1");
   assert.equal(app.matchesSearch(parenthesized, "H399"), true);
   assert.equal(app.matchesSearch(parenthesized, "(2)H399.1"), true);
+});
+
+test("runtime rejects collection entries placed before existing record models", () => {
+  const candidate = clone(fixture);
+  const collectionIndex = candidate.records.findIndex(({ id }) => id === "museum-entry-duplicate-a");
+  const catalogNumberIndex = candidate.records.findIndex(({ id }) => id === "hovey-catalog-fraction-like");
+  [candidate.records[collectionIndex], candidate.records[catalogNumberIndex]] =
+    [candidate.records[catalogNumberIndex], candidate.records[collectionIndex]];
+  assert.throws(() => app.validateCatalog(candidate), /facts-only schema/);
 });
 
 test("public catalog validation rejects private and unexpected specimen fields", () => {
@@ -771,7 +902,7 @@ test("catalog selector orders public sources chronologically without changing so
   const registry = app.normalizeCatalogRegistry(fixture.metadata);
   const sourceOrder = fixture.metadata.catalogs.map(({ id }) => id);
   assert.deepEqual(app.catalogSelectorEntries(registry).map(([id]) => id), [
-    "hovey-1896", "nininger-1933", "huss-1976", "huss-1986"
+    "hovey-1896", "museum-1914", "nininger-1933", "huss-1976", "huss-1986"
   ]);
   assert.deepEqual(fixture.metadata.catalogs.map(({ id }) => id), sourceOrder);
   assert.deepEqual(app.catalogSummaryEntries(registry).map(({ id }) => id), sourceOrder);
@@ -948,16 +1079,48 @@ test("the same page number resolves within its own catalog", () => {
   const registry = folioRegistry();
   const museum = app.getAuthorizedFolio(manifest, "museum-1890", 27, registry);
   const university = app.getAuthorizedFolio(manifest, "university-1912", 27, registry);
-  assert.equal(museum.image, "assets/folios/museum-1890/page-27.webp");
-  assert.equal(university.image, "assets/folios/university-1912/page-27.webp");
+  assert.equal(museum.image, "assets/folios/museum-1890/leaf-27.webp");
+  assert.equal(university.image, "assets/folios/university-1912/leaf-27.webp");
   assert.notEqual(museum.image, university.image);
 });
 
-test("authorized folio page lists are numeric-sorted and catalog-scoped", () => {
+test("authorized folio page arrays preserve manifest order and catalog scope", () => {
   const manifest = threeCatalogManifest();
   const registry = folioRegistry();
-  assert.deepEqual(app.getAuthorizedFolioPages(manifest, "museum-1890", registry).map(({ catalogPage }) => catalogPage), [7, 27]);
-  assert.deepEqual(app.getAuthorizedFolioPages(manifest, "university-1912", registry).map(({ catalogPage }) => catalogPage), [27, 30]);
+  assert.deepEqual(app.getAuthorizedFolioPages(manifest, "museum-1890", registry).map(({ pageId, catalogPage }) => [pageId, catalogPage]), [
+    ["leaf-27", 27], ["front-cover", null], ["leaf-7", 7]
+  ]);
+  assert.deepEqual(app.getAuthorizedFolioPages(manifest, "university-1912", registry).map(({ pageId, catalogPage }) => [pageId, catalogPage]), [
+    ["leaf-30", 30], ["leaf-27", 27]
+  ]);
+});
+
+test("unnumbered folios are browseable but cannot impersonate catalog pages", () => {
+  const manifest = threeCatalogManifest();
+  const registry = folioRegistry();
+  const unnumbered = app.getAuthorizedFolioPages(manifest, "museum-1890", registry)[1];
+  assert.deepEqual(unnumbered, {
+    catalogId: "museum-1890",
+    pageId: "front-cover",
+    catalogPage: null,
+    pageLabel: "Front cover",
+    image: "assets/folios/museum-1890/front-cover.webp",
+    alt: "Museum catalog front cover"
+  });
+  assert.equal(app.getAuthorizedFolio(manifest, "museum-1890", null, registry), null);
+  assert.equal(app.getAuthorizedFolio(manifest, "museum-1890", "front-cover", registry), null);
+});
+
+test("NoC-US policy authorizes only its own catalog's browse-all pages", () => {
+  const manifest = threeCatalogManifest();
+  const registry = folioRegistry();
+  assert.equal(registry["university-1912"].rightsStatus, "no-copyright-us");
+  assert.equal(app.hasMatchingFolioPolicy(manifest, "university-1912", registry), true);
+  assert.deepEqual(app.getAuthorizedFolioPages(manifest, "university-1912", registry).map(({ catalogId }) => catalogId), [
+    "university-1912", "university-1912"
+  ]);
+  assert.equal(app.getAuthorizedFolio(manifest, "university-1912", 30, registry).pageLabel, "Leaf 30");
+  assert.match(readFileSync(join(__dirname, "..", "app.js"), "utf8"), /Browse all source images/);
 });
 
 test("a valid blocked/undetermined catalog denies every folio", () => {
@@ -993,6 +1156,9 @@ test("malformed and contradictory rights policies fail closed", () => {
   const extra = threeCatalogManifest();
   extra.catalogs["museum-1890"].legalNote = "Not in schema";
   candidates.push(extra);
+  const schema1 = threeCatalogManifest();
+  schema1.schemaVersion = 1;
+  candidates.push(schema1);
   candidates.forEach((candidate) => {
     assert.equal(app.validateFolioManifest(candidate, registry), false);
     assert.equal(app.getAuthorizedFolio(candidate, "university-1912", 27, registry), null);
@@ -1002,27 +1168,56 @@ test("malformed and contradictory rights policies fail closed", () => {
 test("malformed folio entries invalidate the whole manifest and deny display", () => {
   const registry = folioRegistry();
   const mutations = [
+    (entry) => { entry.pageId = ""; },
+    (entry) => { entry.catalogPage = 0; },
+    (entry) => { entry.catalogPage = 999; },
+    (entry) => { entry.pageLabel = ""; },
     (entry) => { entry.image = "https://example.test/page-27.webp"; },
-    (entry) => { entry.image = "assets/folios/museum-1890/../page-27.webp"; },
-    (entry) => { entry.image = "assets/folios/museum-1890/page-27.svg"; },
+    (entry) => { entry.image = "assets/folios/museum-1890/nested/leaf-27.webp"; },
+    (entry) => { entry.image = "assets/folios/museum-1890/leaf-27.png"; },
+    (entry) => { entry.image = "assets/folios/museum-1890/page-27.webp"; },
     (entry) => { entry.alt = "<em>Catalog page 27</em>"; },
     (entry) => { entry.thumbnail = "assets/folios/museum-1890/page%2027.webp"; },
     (entry) => { entry.caption = "Unexpected field"; }
   ];
   mutations.forEach((mutate) => {
     const candidate = threeCatalogManifest();
-    mutate(candidate.catalogs["museum-1890"].pages[27]);
+    mutate(candidate.catalogs["museum-1890"].pages[0]);
     assert.equal(app.validateFolioManifest(candidate, registry), false);
     assert.equal(app.getAuthorizedFolio(candidate, "museum-1890", 27, registry), null);
   });
 });
 
-test("cross-catalog image and thumbnail paths invalidate the whole manifest", () => {
+test("runtime folio paths exactly bind catalog ID, page ID, and WebP filename", () => {
+  assert.equal(app.isSafeFolioPath(
+    "assets/folios/museum-1890/leaf-27.webp", "museum-1890", "leaf-27"
+  ), true);
+  assert.equal(app.isSafeFolioPath(
+    "assets/folios/museum-1890/nested/leaf-27.webp", "museum-1890", "leaf-27"
+  ), false);
+  assert.equal(app.isSafeFolioPath(
+    "assets/folios/museum-1890/leaf-27.png", "museum-1890", "leaf-27"
+  ), false);
+  assert.equal(app.isSafeFolioPath(
+    "assets/folios/museum-1890/page-27.webp", "museum-1890", "leaf-27"
+  ), false);
+});
+
+test("duplicate folio page IDs fail closed", () => {
+  const registry = folioRegistry();
+  const duplicateId = threeCatalogManifest();
+  duplicateId.catalogs["museum-1890"].pages[1].pageId = "leaf-27";
+  assert.equal(app.validateFolioManifest(duplicateId, registry), false);
+  assert.equal(app.getAuthorizedFolio(duplicateId, "museum-1890", 27, registry), null);
+  assert.deepEqual(app.getAuthorizedFolioPages(duplicateId, "university-1912", registry), []);
+});
+
+test("cross-catalog paths and unexpected thumbnail fields invalidate the whole manifest", () => {
   const registry = folioRegistry();
   const image = threeCatalogManifest();
-  image.catalogs["museum-1890"].pages[27].image = "assets/folios/university-1912/page-27.webp";
+  image.catalogs["museum-1890"].pages[0].image = "assets/folios/university-1912/leaf-27.webp";
   const thumbnail = threeCatalogManifest();
-  thumbnail.catalogs["museum-1890"].pages[27].thumbnail = "assets/folios/university-1912/page-27-thumb.webp";
+  thumbnail.catalogs["museum-1890"].pages[0].thumbnail = "assets/folios/university-1912/page-27-thumb.webp";
   for (const candidate of [image, thumbnail]) {
     assert.equal(app.validateFolioManifest(candidate, registry), false);
     assert.equal(app.getAuthorizedFolio(candidate, "museum-1890", 27, registry), null);
@@ -1034,11 +1229,11 @@ test("incomplete, extra, and out-of-range folio manifests fail closed", () => {
   const incomplete = threeCatalogManifest();
   delete incomplete.catalogs["huss-1976"];
   const extra = threeCatalogManifest();
-  extra.catalogs["extra-1900"] = { displayPolicy: "blocked", rightsStatus: "undetermined", pages: {} };
+  extra.catalogs["extra-1900"] = { displayPolicy: "blocked", rightsStatus: "undetermined", pages: [] };
   const outOfRange = threeCatalogManifest();
-  outOfRange.catalogs["museum-1890"].pages[999] = {
-    image: "assets/folios/museum-1890/page-999.webp", alt: "Museum catalog page 999"
-  };
+  outOfRange.catalogs["museum-1890"].pages.push(
+    page("leaf-999", 999, null, "assets/folios/museum-1890/leaf-999.webp", "Museum catalog page 999")
+  );
   for (const candidate of [incomplete, extra, outOfRange]) {
     assert.equal(app.validateFolioManifest(candidate, registry), false);
     assert.equal(app.getAuthorizedFolio(candidate, "museum-1890", 27, registry), null);
