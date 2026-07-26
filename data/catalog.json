@@ -333,14 +333,15 @@
           26,
           27,
           28,
-          29
+          29,
+          30
         ],
-        "sourcePageCount": 4,
-        "recordCount": 53,
-        "recordsWithDesignation": 53,
-        "recordsWithWeight": 52,
+        "sourcePageCount": 5,
+        "recordCount": 63,
+        "recordsWithDesignation": 63,
+        "recordsWithWeight": 62,
         "confidenceCounts": {
-          "high": 53,
+          "high": 63,
           "medium": 0,
           "low": 0
         },
@@ -348,11 +349,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 1965,
-    "recordsWithDesignation": 1796,
-    "recordsWithWeight": 1836,
+    "recordCount": 1975,
+    "recordsWithDesignation": 1806,
+    "recordsWithWeight": 1846,
     "confidenceCounts": {
-      "high": 1965,
+      "high": 1975,
       "medium": 0,
       "low": 0
     }
@@ -12428,6 +12429,27 @@
       "confidence": "high"
     },
     {
+      "id": "obs-5b8c63c4-3cb6-4dc4-82be-cfd9ca75cc45",
+      "catalogId": "nininger-1950",
+      "designation": "3a",
+      "name": "Aussun",
+      "weight": {
+        "grams": 22
+      },
+      "classification": "Stone. Spherical chondrite",
+      "locality": "Haute Garonne, France",
+      "year": "1858",
+      "catalogPage": 30,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Ausson",
+        "meteoriteCode": "4903",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4903",
+        "alternateNameNote": "MetBull lists Aussun, Clarac, and Montrejeau as historical synonyms of Ausson. The source 1858 fall year and 50 kg. total known weight match MetBull. The historical Spherical chondrite classification corresponds to modern L5."
+      }
+    },
+    {
       "id": "obs-d52f0c3a-320f-4f1f-bf17-97bdfaf0bddc",
       "catalogId": "nininger-1950",
       "designation": "4a",
@@ -12467,6 +12489,27 @@
         "meteoriteCode": "466",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=466",
         "alternateNameNote": "The source prints Brescia and Cremona as synonyms, both of which MetBull lists. The historical Intermediate hypersthene-chondrite classification corresponds to modern L6."
+      }
+    },
+    {
+      "id": "obs-ccba66b2-3e5a-4850-92f8-0a2009a0f0df",
+      "catalogId": "nininger-1950",
+      "designation": "5a",
+      "name": "Atemajac",
+      "weight": {
+        "grams": 6
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Sierra de Topalpo, Jalisco, Mexico",
+      "year": "1896",
+      "catalogPage": 30,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Atemajac",
+        "meteoriteCode": "4884",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4884",
+        "alternateNameNote": "The source reports total weight unknown; MetBull reports 94.2 g. The historical Grey chondrite classification corresponds to modern L6."
       }
     },
     {
@@ -12614,6 +12657,27 @@
         "meteoriteCode": "2332",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2332",
         "alternateNameNote": "The source reports found 1898 and 398 kg.; MetBull reports 1896 and 683 kg. The historical Coarsest octahedrite classification corresponds to modern Iron, IC. MetBull lists Arizpe, Moctezuma (of F. Berwerth), Noon, and Nova 057 as synonyms or linked piece names."
+      }
+    },
+    {
+      "id": "obs-34e42aa5-8d35-46b4-9ea5-e2ccac486d5a",
+      "catalogId": "nininger-1950",
+      "designation": "17a",
+      "name": "Bacubirito",
+      "weight": {
+        "grams": 214
+      },
+      "classification": "Iron. Finest octahedrite",
+      "locality": "Sinaloa, Mexico",
+      "year": "1863",
+      "catalogPage": 30,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bacubirito",
+        "meteoriteCode": "4919",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4919",
+        "alternateNameNote": "The source estimates 27,000 kg.; MetBull reports 22 t. The historical Finest octahedrite classification corresponds to modern Iron, ungrouped."
       }
     },
     {
@@ -12869,6 +12933,27 @@
       }
     },
     {
+      "id": "obs-bd73d222-c8b1-457c-9d92-2679115f46fe",
+      "catalogId": "nininger-1950",
+      "designation": "85.1",
+      "name": "Aurora",
+      "weight": {
+        "grams": 495
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Colfax County, New Mexico; 36° 16′ N., 105° 4′ W.",
+      "year": "1938",
+      "catalogPage": 30,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Aurora",
+        "meteoriteCode": "4901",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4901",
+        "alternateNameNote": "The source coordinates are 36° 16′ N., 105° 4′ W.; MetBull recommends 36° 20′ N., 105° 3′ W. The source generic Chondrite classification corresponds to modern H4."
+      }
+    },
+    {
       "id": "obs-fffe7e17-dd35-48fb-9dbb-cb1f8cdf0bd5",
       "catalogId": "nininger-1950",
       "designation": "168a",
@@ -12974,6 +13059,48 @@
       }
     },
     {
+      "id": "obs-960bd630-2f48-4819-9698-f697011e1f42",
+      "catalogId": "nininger-1950",
+      "designation": "209a",
+      "name": "Babbs Mill",
+      "weight": {
+        "grams": 184.5
+      },
+      "classification": "Iron. Nickel-rich ataxite",
+      "locality": "Greene County, Tennessee",
+      "year": "1842",
+      "catalogPage": 30,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "MetBull lists Babb's Mill as a synonym of two official records. The source's 1842 date matches Babb's Mill (Troost's Iron), code 4916, whose mass is 6.4 kg.; the source's 143 kg. mass instead approximates Babb's Mill (Blake's Iron), code 4915, whose mass is 136 kg. and find year is 1876. The specimen cannot be assigned uniquely."
+      }
+    },
+    {
+      "id": "obs-b456529c-03b7-4cf0-9c01-c0379145012e",
+      "catalogId": "nininger-1950",
+      "designation": "239.3",
+      "name": "Arva",
+      "weight": {
+        "grams": 164
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Magura, Czechoslovakia",
+      "year": "1840",
+      "catalogPage": 30,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Magura",
+        "meteoriteCode": "15388",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15388",
+        "alternateNameNote": "The source heading prints Arva with Magura immediately after it; MetBull lists Arva as a historical synonym of Magura. The source reports 1,500 kg.; MetBull reports 150 kg. The historical Coarse octahedrite classification corresponds to modern Iron, IAB-MG."
+      }
+    },
+    {
       "id": "obs-2d9e1be4-3654-4a65-bfc8-7260c0c5d0ba",
       "catalogId": "nininger-1950",
       "designation": "298.1",
@@ -13055,6 +13182,27 @@
         "meteoriteCode": "388",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=388",
         "alternateNameNote": "The specimen row continues from printed page 26. The source reports 23.979 kg.; MetBull reports 22.6 kg."
+      }
+    },
+    {
+      "id": "obs-76275038-02ef-47f8-8e17-61c105a26f12",
+      "catalogId": "nininger-1950",
+      "designation": "302.1",
+      "name": "Bald Mountain",
+      "weight": {
+        "grams": 264
+      },
+      "classification": "Stone. Grey veined chondrite",
+      "locality": "Yancey County, North Carolina",
+      "year": "1929",
+      "catalogPage": 30,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bald Mountain",
+        "meteoriteCode": "4925",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4925",
+        "alternateNameNote": "The source 1929 fall year and 3.7 kg. total known weight match MetBull. The historical Grey veined chondrite classification corresponds to modern L4. Adjacent page review confirms the entry is complete because page 31 begins Ballinger."
       }
     },
     {
@@ -13265,6 +13413,69 @@
         "meteoriteCode": "422",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=422",
         "alternateNameNote": "The source reports Brown County, Nebraska, historical classification Coarsest octahedrite, and 10.7 kg.; MetBull reports Iron, IIAB and 80.65 kg."
+      }
+    },
+    {
+      "id": "obs-e86d1c17-6b9b-41c3-b20f-dc7a6cad0e83",
+      "catalogId": "nininger-1950",
+      "designation": "427.1",
+      "name": "Atlanta",
+      "weight": {
+        "grams": 3895.2
+      },
+      "classification": "Stone",
+      "locality": "Winn Parish, Louisiana; 31° 48′ N., 92° 45′ W.",
+      "year": "1938",
+      "catalogPage": 30,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Atlanta",
+        "meteoriteCode": "4886",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4886",
+        "alternateNameNote": "The source coordinates and 5.5 kg. total known weight match MetBull. The source generic Stone classification corresponds to modern EL6."
+      }
+    },
+    {
+      "id": "obs-0fa347fe-c8f3-491f-93ab-b75cb53693bc",
+      "catalogId": "nininger-1950",
+      "designation": "427.5",
+      "name": "Atlanta",
+      "weight": {
+        "grams": 184
+      },
+      "classification": "Stone",
+      "locality": "Winn Parish, Louisiana; 31° 48′ N., 92° 45′ W.",
+      "year": "1938",
+      "catalogPage": 30,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Atlanta",
+        "meteoriteCode": "4886",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4886",
+        "alternateNameNote": "The source coordinates and 5.5 kg. total known weight match MetBull. The source generic Stone classification corresponds to modern EL6."
+      }
+    },
+    {
+      "id": "obs-4ce98458-5a79-4145-ae27-9264927816cb",
+      "catalogId": "nininger-1950",
+      "designation": "437.2",
+      "name": "Aztec",
+      "weight": {
+        "grams": 82.3
+      },
+      "classification": "Stone",
+      "locality": "San Juan County, New Mexico; 36° 48′ N., 108° W.",
+      "year": "1938",
+      "catalogPage": 30,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Aztec",
+        "meteoriteCode": "4913",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4913",
+        "alternateNameNote": "The source coordinates, 1938 fall year, and 2,831-gram total known weight match the official New Mexico record and distinguish it from the unrelated use of Aztec as a Holbrook synonym. The source generic Stone classification corresponds to modern L6."
       }
     },
     {

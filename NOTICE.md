@@ -8,9 +8,9 @@ The current repository edition also indexes *Tableau méthodique des espèces mi
 
 ## Facts-Only Scope
 
-The current repository edition distributes 1,965 structured, facts-only source observations from eight catalogs under metadata schema version 6. It supports four source-specific record models: `specimen`, `catalog-item`, `catalog-number`, and `collection-entry`. Records are source observations rather than canonical meteorites or inferred physical specimens, and `catalogId` identifies each source.
+The current repository edition distributes 1,975 structured, facts-only source observations from eight catalogs under metadata schema version 6. It supports four source-specific record models: `specimen`, `catalog-item`, `catalog-number`, and `collection-entry`. Records are source observations rather than canonical meteorites or inferred physical specimens, and `catalogId` identifies each source.
 
-Metadata covers 152 catalog-scoped source pages, of which 135 are cited by records. Source-page coverage is not a claim that every covered page contains an observation. In particular, Chladni 1825 pages 200-207 are introductory, and Nininger 1933 pages 12-20 are narrative-only; the available Nininger 1933 source set also omits printed pages 8-9 and catalog items 106-141, while Nininger 1950 currently covers only printed pages 26-29, so both digital editions are partial.
+Metadata covers 153 catalog-scoped source pages, of which 136 are cited by records. Source-page coverage is not a claim that every covered page contains an observation. In particular, Chladni 1825 pages 200-207 are introductory, and Nininger 1933 pages 12-20 are narrative-only; the available Nininger 1933 source set also omits printed pages 8-9 and catalog items 106-141, while Nininger 1950 currently covers only printed pages 26-30, so both digital editions are partial.
 
 Raw OCR and other private material remain excluded from the public data and repository distribution, including private source scans, source filenames, verbatim notes, private paths, and research or transcription archives. The public repository includes only the separately reviewed folio derivatives described below; their inclusion does not make excluded source or working material public.
 

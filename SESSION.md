@@ -8,7 +8,7 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 
 ## Current State
 
-- Schema 6 contains 1,965 facts-only records across eight catalogs:
+- Schema 6 contains 1,975 facts-only records across eight catalogs:
   - Lucas 1813: 13 `collection-entry` records.
   - Chladni 1819: 74 `collection-entry` records.
   - Chladni 1825: 42 `collection-entry` records.
@@ -16,12 +16,12 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
   - Huss 1976: 1,078 `specimen` records.
   - Huss 1986: 544 `specimen` records.
   - Nininger 1933: 136 `catalog-item` records.
-  - Nininger 1950: 53 `specimen` records from printed pages 26-29, with four Adrian rows continuing page-26 context on page 27; page 28's 1949 Albin stone is distinct from the 1915 pallasite; page 29 begins Appley Bridge after the complete Apoala entry and ends with the complete Arriba entry because page 30 begins Arva.
-- Metadata covers 152 source pages; records cite 135 of them.
+  - Nininger 1950: 63 `specimen` records from printed pages 26-30, with four Adrian rows continuing page-26 context on page 27; page 28's 1949 Albin stone is distinct from the 1915 pallasite; Arriba is complete before page 30 begins Arva, and Bald Mountain is complete before page 31 begins Ballinger.
+- Metadata covers 153 source pages; records cite 136 of them.
 - Public folios use schema 2 and expose 41 display pages: Lucas 1813 has 3 public-domain pages, Chladni 1819 has 12 public-domain pages, Hovey 1896 has 7 public-domain pages from BHL item 335869, and Nininger 1933 has 19 `no-copyright-us` pages.
 - Chladni 1825, Huss 1976, Huss 1986, and Nininger 1950 remain blocked/undetermined for folio display.
 - Nininger 1933 is incomplete: source pages 8-9 and catalog items 106-141 are missing.
-- The runtime suite passes 108 tests. The validator passes all 1,965 records, eight catalogs, and 41 public display pages.
+- The runtime suite passes 108 tests. The validator passes all 1,975 records, eight catalogs, and 41 public display pages.
 - `scripts/folio-release-lock.json` pins the reviewed rights evidence, ordered page IDs, and SHA-256 digest of every public folio.
 
 ## Preservation And Data Rules

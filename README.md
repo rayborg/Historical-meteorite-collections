@@ -1,6 +1,6 @@
 # Historical Meteorite Collection
 
-This repository is a dependency-free, facts-only index of 1,965 source observations from eight historical meteorite catalogs. The coordinated catalog uses public metadata schema 6 and supports four source-specific record models: `specimen`, `catalog-item`, `catalog-number`, and `collection-entry`.
+This repository is a dependency-free, facts-only index of 1,975 source observations from eight historical meteorite catalogs. The coordinated catalog uses public metadata schema 6 and supports four source-specific record models: `specimen`, `catalog-item`, `catalog-number`, and `collection-entry`.
 
 A searchable transcription of the 1976 Huss Meteorite Collection catalog, compiled and published by Glenn Huss.
 
@@ -86,10 +86,10 @@ The current catalog contains:
 | `huss-1986` | `specimen` | 544 | 21 | 21 |
 | `lucas-1813` | `collection-entry` | 13 | 3 | 3 |
 | `nininger-1933` | `catalog-item` | 136 | 18 | 9 |
-| `nininger-1950` | `specimen` | 53 | 4 | 4 |
-| **Total** |  | **1,965** | **152** | **135** |
+| `nininger-1950` | `specimen` | 63 | 5 | 5 |
+| **Total** |  | **1,975** | **153** | **136** |
 
-Metadata source-page coverage is not a claim that every covered page contains a record. Chladni 1825 pages 200-207 are introductory folios; records begin on page 208. The Nininger 1933 source set has a title page and printed pages 1-7 and 10-20. Printed pages 8-9 and catalog items 106-141 are missing. Pages 12-20 are narrative-only and contain no catalog-item observations. The resulting 136 entries form a partial, not complete, digital edition. Nininger 1950 currently covers printed pages 26-29 and 53 specimen observations from Abancay through Arriba; page 29 begins Appley Bridge after the complete Apoala entry and ends with the complete Arriba entry because page 30 begins Arva.
+Metadata source-page coverage is not a claim that every covered page contains a record. Chladni 1825 pages 200-207 are introductory folios; records begin on page 208. The Nininger 1933 source set has a title page and printed pages 1-7 and 10-20. Printed pages 8-9 and catalog items 106-141 are missing. Pages 12-20 are narrative-only and contain no catalog-item observations. The resulting 136 entries form a partial, not complete, digital edition. Nininger 1950 currently covers printed pages 26-30 and 63 specimen observations from Abancay through Bald Mountain; page 29 ends with the complete Arriba entry before page 30 begins Arva, and page 30 ends with the complete Bald Mountain entry before page 31 begins Ballinger.
 
 Records are source observations, not canonical meteorites or physical specimens. Equal names, designations, masses, or page numbers do not merge observations across catalogs. Statistics count each parent record once and sum every reported numeric mass once without multiplying by holding count.
 
