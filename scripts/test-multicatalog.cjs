@@ -239,6 +239,17 @@ test("validates, prepares, and searches explicit reviewed MetBull harmonization"
   assert.equal(app.metbullUrlForCode("12345"), "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12345");
   assert.equal(app.matchesSearch(prepared, "Current Alpha"), true);
   assert.equal(app.matchesSearch(prepared, "historical name"), true);
+
+  const caseCandidate = clone(fixture);
+  const caseSource = caseCandidate.records.find(({ id }) => id === "huss-h27-3");
+  caseSource.metbull = {
+    matchType: "case-normalized-exact",
+    canonicalName: caseSource.name.toLocaleUpperCase("en-US"),
+    meteoriteCode: "12345",
+    metbullUrl: app.metbullUrlForCode("12345"),
+    alternateNameNote: null
+  };
+  assert.equal(app.validateCatalog(caseCandidate), caseCandidate);
 });
 
 test("rejects inferred, malformed, and identity-claiming unresolved MetBull mappings", () => {
@@ -744,7 +755,7 @@ test("URL filter behavior and cache version remain stable", () => {
     query: "catalog item 2", catalog: "nininger-1933", min: "3", max: "12", sort: "weight-desc"
   });
   assert.equal(app.serializeUrlFilters(parsed).toString(), "q=catalog+item+2&catalog=nininger-1933&min=3&max=12&sort=weight-desc");
-  assert.equal(app.CACHE_VERSION, "20260726-2");
+  assert.equal(app.CACHE_VERSION, "20260726-3");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.CACHE_VERSION}`));
 });

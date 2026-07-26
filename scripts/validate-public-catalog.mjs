@@ -24,7 +24,7 @@ const COLLECTION_ENTRY_KEYS = [
   "eventDate", "confidence",
 ];
 const METBULL_KEYS = ["matchType", "canonicalName", "meteoriteCode", "metbullUrl", "alternateNameNote"];
-const METBULL_MATCH_TYPES = ["exact", "historical-alias", "corrected-spelling", "translated-or-older-name", "unresolved"];
+const METBULL_MATCH_TYPES = ["exact", "case-normalized-exact", "historical-alias", "corrected-spelling", "translated-or-older-name", "unresolved"];
 const HOLDING_KEYS = ["designation", "kind", "description", "count", "weight"];
 const CATALOG_NUMBER_HOLDING_KEYS = ["description", "provenance", "count", "weights"];
 const HOLDING_KINDS = ["specimen", "cast", "aggregate"];
@@ -182,6 +182,11 @@ function metbullUrlForCode(code) {
   return `https://www.lpi.usra.edu/meteor/metbull.cfm?code=${code}`;
 }
 
+function differsOnlyByCase(sourceName, canonicalName) {
+  return typeof sourceName === "string" && typeof canonicalName === "string" && sourceName !== canonicalName &&
+    sourceName.toLocaleLowerCase("en-US") === canonicalName.toLocaleLowerCase("en-US");
+}
+
 function validateMetbull(value, sourceName, path) {
   assertExactKeys(value, METBULL_KEYS, path);
   assert(METBULL_MATCH_TYPES.includes(value.matchType), `${path}.matchType is invalid`);
@@ -200,8 +205,13 @@ function validateMetbull(value, sourceName, path) {
     `${path}.meteoriteCode must be a positive decimal MetBull code string`);
   assert(value.metbullUrl === metbullUrlForCode(value.meteoriteCode),
     `${path}.metbullUrl must be the canonical HTTPS URL for meteoriteCode`);
-  assert(value.matchType === "exact" ? sourceName === value.canonicalName : sourceName !== value.canonicalName,
-    `${path}.matchType does not agree with the source and canonical names`);
+  if (value.matchType === "case-normalized-exact") {
+    assert(differsOnlyByCase(sourceName, value.canonicalName),
+      `${path}.matchType requires names that differ only by case`);
+  } else {
+    assert(value.matchType === "exact" ? sourceName === value.canonicalName : sourceName !== value.canonicalName,
+      `${path}.matchType does not agree with the source and canonical names`);
+  }
 }
 
 function assertCountSummary(value, path) {
@@ -1293,6 +1303,15 @@ function runSyntheticMetbullTests(modelFixture) {
   valid.data.records[0].metbull = reviewed;
   validatePublicCatalog(valid.data, valid.folios, "synthetic reviewed MetBull mapping");
 
+  const caseNormalized = makeFixture();
+  const caseSourceName = caseNormalized.data.records[0].name;
+  caseNormalized.data.records[0].metbull = {
+    ...reviewed,
+    matchType: "case-normalized-exact",
+    canonicalName: caseSourceName.toLocaleUpperCase("en-US"),
+  };
+  validatePublicCatalog(caseNormalized.data, caseNormalized.folios, "synthetic case-normalized MetBull mapping");
+
   const unresolved = makeFixture();
   unresolved.data.records[0].metbull = {
     matchType: "unresolved",
@@ -1328,7 +1347,7 @@ function runSyntheticMetbullTests(modelFixture) {
     }
     assert(rejected, `synthetic catalog fixture must reject ${description}`);
   });
-  return { allowCount: 2, rejectionCount: cases.length };
+  return { allowCount: 3, rejectionCount: cases.length };
 }
 
 function syntheticManifest({

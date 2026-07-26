@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260726-2";
+const CACHE_VERSION = "20260726-3";
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "designation-asc";
 const VALID_SORTS = new Set([
@@ -62,7 +62,7 @@ const COLLECTION_ENTRY_RECORD_FIELDS = new Set([
   "confidence"
 ]);
 const METBULL_FIELDS = new Set(["matchType", "canonicalName", "meteoriteCode", "metbullUrl", "alternateNameNote"]);
-const METBULL_MATCH_TYPES = new Set(["exact", "historical-alias", "corrected-spelling", "translated-or-older-name", "unresolved"]);
+const METBULL_MATCH_TYPES = new Set(["exact", "case-normalized-exact", "historical-alias", "corrected-spelling", "translated-or-older-name", "unresolved"]);
 const HOLDING_FIELDS = new Set(["designation", "kind", "description", "count", "weight"]);
 const CATALOG_NUMBER_HOLDING_FIELDS = new Set(["description", "provenance", "count", "weights"]);
 const HOLDING_KINDS = new Set(["specimen", "cast", "aggregate"]);
@@ -441,6 +441,11 @@ function metbullUrlForCode(code) {
   return `https://www.lpi.usra.edu/meteor/metbull.cfm?code=${code}`;
 }
 
+function differsOnlyByCase(sourceName, canonicalName) {
+  return typeof sourceName === "string" && typeof canonicalName === "string" && sourceName !== canonicalName &&
+    sourceName.toLocaleLowerCase("en-US") === canonicalName.toLocaleLowerCase("en-US");
+}
+
 function hasValidMetbull(value, sourceName) {
   if (!hasExactFields(value, METBULL_FIELDS) || !METBULL_MATCH_TYPES.has(value.matchType)) return false;
   if (value.alternateNameNote !== null &&
@@ -448,10 +453,13 @@ function hasValidMetbull(value, sourceName) {
   if (value.matchType === "unresolved") {
     return value.canonicalName === null && value.meteoriteCode === null && value.metbullUrl === null;
   }
+  const namesAgree = value.matchType === "case-normalized-exact"
+    ? differsOnlyByCase(sourceName, value.canonicalName)
+    : value.matchType === "exact" ? sourceName === value.canonicalName : sourceName !== value.canonicalName;
   return isLeakageSafeText(value.canonicalName) && value.canonicalName.length <= 200 &&
     typeof value.meteoriteCode === "string" && /^[1-9][0-9]{0,9}$/.test(value.meteoriteCode) &&
     value.metbullUrl === metbullUrlForCode(value.meteoriteCode) &&
-    (value.matchType === "exact" ? sourceName === value.canonicalName : sourceName !== value.canonicalName);
+    namesAgree;
 }
 
 function recordFields(record, baseFields) {

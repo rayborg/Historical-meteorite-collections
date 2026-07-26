@@ -101,9 +101,11 @@ Any of the four record models may additionally carry one optional `metbull` obje
 matchType, canonicalName, meteoriteCode, metbullUrl, alternateNameNote
 ```
 
-`matchType` is exactly one of `exact`, `historical-alias`, `corrected-spelling`, `translated-or-older-name`, or `unresolved`. Resolved reviews require a normalized current Meteoritical Bulletin name, a positive decimal code string, and the exact canonical HTTPS URL for that code. An `unresolved` review must keep all three canonical identity fields null. `alternateNameNote` is nullable explanatory text.
+`matchType` is exactly one of `exact`, `case-normalized-exact`, `historical-alias`, `corrected-spelling`, `translated-or-older-name`, or `unresolved`. `case-normalized-exact` is limited to names that differ only by Unicode letter case. Resolved reviews require a normalized current Meteoritical Bulletin name, a positive decimal code string, and the exact canonical HTTPS URL for that code. An `unresolved` review must keep all three canonical identity fields null. `alternateNameNote` is nullable explanatory text.
 
 The historical `name`, designation/catalog identifier fields, printed private weight strings, and numeric source weights are never replaced by this object. The website labels the source catalog name and shows a separate linked **Current Meteoritical Bulletin name** only when a reviewed canonical name differs. No client, build, or export path fuzzy-matches names or infers identity.
+
+The current release reviews all 1,750 records with a source name: 1,665 have a resolved current identity and 85 remain explicitly unresolved. The 225 records with no source name are not assigned a modern identity.
 
 ## Rights-Gated Folios
 
