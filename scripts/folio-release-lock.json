@@ -94,6 +94,13 @@
         "nininger-1933-page-0018",
         "nininger-1933-page-0019"
       ]
+    },
+    "nininger-1950": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "basis": null,
+      "basisUrl": null,
+      "pageIds": []
     }
   },
   "assets": [

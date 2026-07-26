@@ -326,6 +326,11 @@
           "alt": "The Nininger Collection of Meteorites with Descriptions of the Huizopa and Pojoaque Meteorites (1933), page 20 (inferred)"
         }
       ]
+    },
+    "nininger-1950": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "pages": []
     }
   }
 }

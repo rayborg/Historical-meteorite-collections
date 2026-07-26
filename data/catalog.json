@@ -317,13 +317,34 @@
         },
         "folioDisplayPolicy": "display",
         "rightsStatus": "no-copyright-us"
+      },
+      {
+        "id": "nininger-1950",
+        "recordModel": "specimen",
+        "label": "The Nininger Collection of Meteorites (1950)",
+        "compiler": "H. H. Nininger and Addie D. Nininger",
+        "year": 1950,
+        "sourcePages": [
+          26
+        ],
+        "sourcePageCount": 1,
+        "recordCount": 7,
+        "recordsWithDesignation": 7,
+        "recordsWithWeight": 7,
+        "confidenceCounts": {
+          "high": 7,
+          "medium": 0,
+          "low": 0
+        },
+        "folioDisplayPolicy": "blocked",
+        "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 1912,
-    "recordsWithDesignation": 1743,
-    "recordsWithWeight": 1784,
+    "recordCount": 1919,
+    "recordsWithDesignation": 1750,
+    "recordsWithWeight": 1791,
     "confidenceCounts": {
-      "high": 1912,
+      "high": 1919,
       "medium": 0,
       "low": 0
     }
@@ -4885,6 +4906,20 @@
       "locality": "Mexico",
       "year": "before 1776",
       "catalogPage": 11,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6c9de743-3e7a-4fb2-a5cd-7c08846af832",
+      "catalogId": "nininger-1950",
+      "designation": "2a",
+      "name": "Adams County",
+      "weight": {
+        "grams": 379
+      },
+      "classification": "Stone. Brecciated veined chondrite",
+      "locality": "Adams County, Colorado",
+      "year": "1928",
+      "catalogPage": 26,
       "confidence": "high"
     },
     {
@@ -12333,6 +12368,90 @@
       "locality": "De Baca Co., New Mexico",
       "year": "1933",
       "catalogPage": 17,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-da5e213a-f367-491a-87ea-3e4e12d7011b",
+      "catalogId": "nininger-1950",
+      "designation": "8c",
+      "name": "Admire",
+      "weight": {
+        "grams": 9000
+      },
+      "classification": "Pallasite",
+      "locality": "Lyons County, Kansas",
+      "year": "1881",
+      "catalogPage": 26,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-4d2368ea-d6b3-4fbe-9c4e-19f41b99b151",
+      "catalogId": "nininger-1950",
+      "designation": "8.4",
+      "name": "Admire",
+      "weight": {
+        "grams": 93.2
+      },
+      "classification": "Pallasite",
+      "locality": "Lyons County, Kansas",
+      "year": "1881",
+      "catalogPage": 26,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b64c220c-2577-40c0-905f-aecdafd20992",
+      "catalogId": "nininger-1950",
+      "designation": "209a",
+      "name": "Abancay",
+      "weight": {
+        "grams": 156
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Peru, South America",
+      "year": null,
+      "catalogPage": 26,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-63fb01eb-4a56-45e2-bfc0-35f30043e968",
+      "catalogId": "nininger-1950",
+      "designation": "473.1",
+      "name": "Abernathy",
+      "weight": {
+        "grams": 1611
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Lubbock County, Texas; 33° 51′ N., 101° 48′ W.",
+      "year": "1941",
+      "catalogPage": 26,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-fced4309-47df-44c6-8f3c-2f9834603dfd",
+      "catalogId": "nininger-1950",
+      "designation": "473.3",
+      "name": "Abernathy",
+      "weight": {
+        "grams": 525.5
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Lubbock County, Texas; 33° 51′ N., 101° 48′ W.",
+      "year": "1941",
+      "catalogPage": 26,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f390eac8-d733-40ec-bd76-c1fdf7f9004e",
+      "catalogId": "nininger-1950",
+      "designation": "516.1",
+      "name": "Acme",
+      "weight": {
+        "grams": 74745
+      },
+      "classification": "Stone. Crystalline spherical chondrite",
+      "locality": "Chaves County, New Mexico; 33° 38′ N., 104° 16′ W.",
+      "year": "1947",
+      "catalogPage": 26,
       "confidence": "high"
     },
     {
