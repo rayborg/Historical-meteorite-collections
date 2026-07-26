@@ -6734,7 +6734,7 @@
       "id": "obs-def1bb8e-e6e0-4fe6-ac18-35132a292188",
       "catalogId": "huss-1986",
       "designation": "(2)H37.681",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 121.5
       },
@@ -6742,13 +6742,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-dda41166-e6d9-4612-80e3-e268066f9692",
       "catalogId": "huss-1986",
       "designation": "(2)H37.827",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 21035.7
       },
@@ -6756,7 +6763,14 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-cc20f146-16b4-42ea-8aa6-5fffc305d33c",
@@ -7560,7 +7574,7 @@
       "id": "obs-f8c6296e-2ccc-4126-95d8-f771bf4e1ba2",
       "catalogId": "huss-1986",
       "designation": "(2)H37.898",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 4450
       },
@@ -7568,13 +7582,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-bd20e0c0-d0a6-44ee-a9bb-9366df6afd08",
       "catalogId": "huss-1986",
       "designation": "(2)H37.899",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 3119
       },
@@ -7582,13 +7603,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-3f6117b6-cfaa-4191-a449-4efd026ff76f",
       "catalogId": "huss-1986",
       "designation": "(2)H37.900",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 3367
       },
@@ -7596,13 +7624,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-c33b7327-5d71-419c-8c94-977d85c6512b",
       "catalogId": "huss-1986",
       "designation": "(2)H37.901",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 3267
       },
@@ -7610,13 +7645,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-eb827242-78eb-4486-9ebc-68ec0c55ed86",
       "catalogId": "huss-1986",
       "designation": "(2)H37.902",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 2286.9
       },
@@ -7624,13 +7666,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-d1bde58b-9cbd-4869-85bf-1e16533bc792",
       "catalogId": "huss-1986",
       "designation": "(2)H37.903",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 1765.5
       },
@@ -7638,13 +7687,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-c520f8d2-6ae5-4c94-ba0e-45b632e4a4da",
       "catalogId": "huss-1986",
       "designation": "(2)H37.904",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 1234.4
       },
@@ -7652,13 +7708,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-17d5dd56-38a1-4888-a2d8-9463595656fb",
       "catalogId": "huss-1986",
       "designation": "(2)H37.905",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 1154.4
       },
@@ -7666,13 +7729,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-7b7cea9e-bb7f-4248-8564-1cc5c0a77291",
       "catalogId": "huss-1986",
       "designation": "(2)H37.906",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 533.6
       },
@@ -7680,13 +7750,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-e12624e1-1d9a-4017-bec2-51a598faa5bf",
       "catalogId": "huss-1986",
       "designation": "(2)H37.907",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 755.1
       },
@@ -7694,13 +7771,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-971d5669-6b1d-449c-88a0-d13e1b2c52d2",
       "catalogId": "huss-1986",
       "designation": "(2)H37.908",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 425.7
       },
@@ -7708,13 +7792,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-28f6c92b-a16c-4624-90fb-c6e3da1177f5",
       "catalogId": "huss-1986",
       "designation": "(2)H37.909",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 411.1
       },
@@ -7722,13 +7813,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-5f27eee1-00b1-403c-b28a-95a01b51bbd8",
       "catalogId": "huss-1986",
       "designation": "(2)H37.910",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 579.6
       },
@@ -7736,13 +7834,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-7c380686-2c49-461f-bbdc-f8a4d24d6f05",
       "catalogId": "huss-1986",
       "designation": "(2)H37.911",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 426.7
       },
@@ -7750,13 +7855,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-c6102f8b-1637-4a48-90d4-8e0a39ce70b2",
       "catalogId": "huss-1986",
       "designation": "(2)H37.912",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 365
       },
@@ -7764,13 +7876,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-11df1a31-5759-4e7b-b25c-6ab0f317a2b1",
       "catalogId": "huss-1986",
       "designation": "(2)H37.913",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 436.6
       },
@@ -7778,13 +7897,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-13f805a4-cea3-47d9-b129-d916d02177d1",
       "catalogId": "huss-1986",
       "designation": "(2)H37.914",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 471.8
       },
@@ -7792,13 +7918,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-061ad051-9951-441e-a343-766498733838",
       "catalogId": "huss-1986",
       "designation": "(2)H37.915",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 310.5
       },
@@ -7806,13 +7939,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-3b628505-28b7-4954-83d0-02360710aaf2",
       "catalogId": "huss-1986",
       "designation": "(2)H37.916",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 313.3
       },
@@ -7820,13 +7960,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-e4afb6b1-0933-424b-951f-b2332f036805",
       "catalogId": "huss-1986",
       "designation": "(2)H37.917",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 315.5
       },
@@ -7834,13 +7981,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-ced18384-a487-4b06-804a-219352b29cdf",
       "catalogId": "huss-1986",
       "designation": "(2)H37.918",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 377
       },
@@ -7848,13 +8002,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-9daf1599-0bd2-482a-8183-866f875679f6",
       "catalogId": "huss-1986",
       "designation": "(2)H37.919",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 1724.3
       },
@@ -7862,13 +8023,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-50e1a4ee-b16b-49c9-91ce-e79e455ba49c",
       "catalogId": "huss-1986",
       "designation": "(2)H37.920",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 362
       },
@@ -7876,13 +8044,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-ec467fde-976f-48f0-b237-85f71079d576",
       "catalogId": "huss-1986",
       "designation": "(2)H37.921",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 254.7
       },
@@ -7890,13 +8065,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-8a83fe8d-52b2-4f0a-959c-5a87528b511f",
       "catalogId": "huss-1986",
       "designation": "(2)H37.922",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 273.1
       },
@@ -7904,13 +8086,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-6ba3ca48-b7c5-4b88-8b33-4fe62bad5dcd",
       "catalogId": "huss-1986",
       "designation": "(2)H37.923",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 127.7
       },
@@ -7918,13 +8107,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-d02083c1-8b96-438d-9149-85915607d5a2",
       "catalogId": "huss-1986",
       "designation": "(2)H37.924",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 208.6
       },
@@ -7932,13 +8128,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-65350e3a-90de-43ca-a516-6a47e98fb29c",
       "catalogId": "huss-1986",
       "designation": "(2)H37.925",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 213.8
       },
@@ -7946,13 +8149,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-e91a21d6-8237-45e4-a54d-8f7ed53206bc",
       "catalogId": "huss-1986",
       "designation": "(2)H37.926",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 155.2
       },
@@ -7960,13 +8170,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-842cf4fb-44e1-4d1e-8144-b0b3b1121e5b",
       "catalogId": "huss-1986",
       "designation": "(2)H37.927",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 169.6
       },
@@ -7974,13 +8191,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-47ea360e-6a32-4be5-b69a-f40945d5e1f7",
       "catalogId": "huss-1986",
       "designation": "(2)H37.928",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 173.5
       },
@@ -7988,13 +8212,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-92852e93-8fdf-4f46-9f4e-eb7661cf56af",
       "catalogId": "huss-1986",
       "designation": "(2)H37.929",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 140.6
       },
@@ -8002,13 +8233,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-f2362c71-d3ca-49dd-a5a6-ada8767f82e1",
       "catalogId": "huss-1986",
       "designation": "(2)H37.930",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 271.1
       },
@@ -8016,13 +8254,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-0f50481f-d013-480e-83b2-9ff43540ee40",
       "catalogId": "huss-1986",
       "designation": "(2)H37.931",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 140.1
       },
@@ -8030,13 +8275,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-d2be6480-c6b8-42f8-8d33-2d65d71179e9",
       "catalogId": "huss-1986",
       "designation": "(2)H37.932",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 97.7
       },
@@ -8044,13 +8296,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-5dad268f-d7be-4e70-b55f-b06e695a43dc",
       "catalogId": "huss-1986",
       "designation": "(2)H37.933",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 90.6
       },
@@ -8058,13 +8317,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-9668fba3-d410-4c96-b477-ad56c787ed1c",
       "catalogId": "huss-1986",
       "designation": "(2)H37.934",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 90.9
       },
@@ -8072,13 +8338,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-ce988314-55dd-49cd-8ed5-6c8632ab2ded",
       "catalogId": "huss-1986",
       "designation": "(2)H37.935",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 110.3
       },
@@ -8086,13 +8359,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-7572e4e1-9469-4f31-a756-f10baa820807",
       "catalogId": "huss-1986",
       "designation": "(2)H37.936",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 105.3
       },
@@ -8100,13 +8380,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-19ae8974-0bed-4875-9fc4-0b82418fa821",
       "catalogId": "huss-1986",
       "designation": "(2)H37.937",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 98.1
       },
@@ -8114,13 +8401,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-863beb47-3d1a-4b31-9538-0406ac46d69e",
       "catalogId": "huss-1986",
       "designation": "(2)H37.938",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 95.9
       },
@@ -8128,13 +8422,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-fcb81cbe-bb96-4863-8fb3-a23418d08283",
       "catalogId": "huss-1986",
       "designation": "(2)H37.939",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 90.6
       },
@@ -8142,13 +8443,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-8a42ed5e-c594-4f94-9294-727ef1fe9a7b",
       "catalogId": "huss-1986",
       "designation": "(2)H37.940",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 76.8
       },
@@ -8156,13 +8464,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-b1271634-2580-45f2-bc6a-4098bd7bc0ab",
       "catalogId": "huss-1986",
       "designation": "(2)H37.941",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 72.7
       },
@@ -8170,13 +8485,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-e7572e72-91af-4f20-a34f-15b105eeee12",
       "catalogId": "huss-1986",
       "designation": "(2)H37.942",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 61.7
       },
@@ -8184,13 +8506,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-b7247b44-0a25-4e70-a8e5-a230c437abb7",
       "catalogId": "huss-1986",
       "designation": "(2)H37.943",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 49.2
       },
@@ -8198,13 +8527,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-afa1158f-a267-4768-b2d5-d98cd2f11a7c",
       "catalogId": "huss-1986",
       "designation": "(2)H37.944",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 42.1
       },
@@ -8212,13 +8548,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-f4aaa2cf-34a4-41c3-ba47-f911fefd4c05",
       "catalogId": "huss-1986",
       "designation": "(2)H37.945",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 1143.7
       },
@@ -8226,13 +8569,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-63c26fc0-e22b-492a-8170-c580f8583cdc",
       "catalogId": "huss-1986",
       "designation": "(2)H37.946",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 827.2
       },
@@ -8240,13 +8590,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-2e64872a-e754-451f-8475-2c5482b1c75b",
       "catalogId": "huss-1986",
       "designation": "(2)H37.947",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 462
       },
@@ -8254,13 +8611,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-fccb026a-cb6a-4661-b9ce-2f75b864e3d9",
       "catalogId": "huss-1986",
       "designation": "(2)H37.948",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 85
       },
@@ -8268,13 +8632,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-e34bef61-38f3-48c8-9d5c-9399a1cf7481",
       "catalogId": "huss-1986",
       "designation": "(2)H37.949",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 3356
       },
@@ -8282,13 +8653,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-d464fc25-ab83-4119-bfb1-0eb998f4d949",
       "catalogId": "huss-1986",
       "designation": "(2)H37.950",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 1479.5
       },
@@ -8296,13 +8674,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-4222238c-be88-4eca-ae0d-1f3801e2162d",
       "catalogId": "huss-1986",
       "designation": "(2)H37.951",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 1346.2
       },
@@ -8310,13 +8695,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-f8c219cc-043f-465a-ad7d-baf6dfef1b29",
       "catalogId": "huss-1986",
       "designation": "(2)H37.952",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 1629.8
       },
@@ -8324,13 +8716,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-4beac5dd-0d33-4690-9c95-4215f353b17a",
       "catalogId": "huss-1986",
       "designation": "(2)H37.953",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 999.6
       },
@@ -8338,13 +8737,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-d75c4eae-1284-4e93-b456-9a4480cabd28",
       "catalogId": "huss-1986",
       "designation": "(2)H37.954",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 110
       },
@@ -8352,13 +8758,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-0397ae47-d083-4a08-bd36-eeb8853a27f6",
       "catalogId": "huss-1986",
       "designation": "(2)H37.955",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 3260
       },
@@ -8366,13 +8779,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-f30beb75-a26f-4265-91af-0501784be846",
       "catalogId": "huss-1986",
       "designation": "(2)H37.956",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 2516
       },
@@ -8380,13 +8800,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-a4b30cff-6555-45c3-9f68-95afe78ea25a",
       "catalogId": "huss-1986",
       "designation": "(2)H37.957",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 1126.4
       },
@@ -8394,13 +8821,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-5faad340-1f7a-4950-9217-a727fc179afe",
       "catalogId": "huss-1986",
       "designation": "(2)H37.958",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 634.3
       },
@@ -8408,13 +8842,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-861803a8-8ec9-4b29-82a4-09e20bfbb7a3",
       "catalogId": "huss-1986",
       "designation": "(2)H37.959",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 472.3
       },
@@ -8422,13 +8863,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-968a8c33-cd3e-4779-ad79-4bf31ae627df",
       "catalogId": "huss-1986",
       "designation": "(2)H37.960",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 310
       },
@@ -8436,13 +8884,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-c3369d21-795c-40f1-83ec-ddb856acbc50",
       "catalogId": "huss-1986",
       "designation": "(2)H37.961",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 239.9
       },
@@ -8450,13 +8905,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-25c9740f-9c92-4b78-b194-446ca776fdb8",
       "catalogId": "huss-1986",
       "designation": "(2)H37.962",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 73.6
       },
@@ -8464,13 +8926,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-24d958a9-48ee-49db-aa93-cdd3669a6cd9",
       "catalogId": "huss-1986",
       "designation": "(2)H37.963",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 2488
       },
@@ -8478,13 +8947,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-c3d79efd-dd51-490e-9428-b2501942d60e",
       "catalogId": "huss-1986",
       "designation": "(2)H37.964",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 322.5
       },
@@ -8492,13 +8968,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-26a9ce5a-4b35-48fd-a46d-4353c056105c",
       "catalogId": "huss-1986",
       "designation": "(2)H37.965",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 286.4
       },
@@ -8506,13 +8989,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-8d599702-b1e7-4eaa-97ea-13bf56936e4b",
       "catalogId": "huss-1986",
       "designation": "(2)H37.966",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 262.4
       },
@@ -8520,13 +9010,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-859fe49d-7cb2-412a-838b-2980c1ccf299",
       "catalogId": "huss-1986",
       "designation": "(2)H37.967",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 358.5
       },
@@ -8534,13 +9031,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-b6b936ce-d983-494a-8415-b9c95784755b",
       "catalogId": "huss-1986",
       "designation": "(2)H37.968",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 731.5
       },
@@ -8548,13 +9052,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-e65a4d8f-538d-4a47-b010-613283715ceb",
       "catalogId": "huss-1986",
       "designation": "(2)H37.969",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 221
       },
@@ -8562,13 +9073,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-9092f54a-53f5-481d-9e74-f4a4e9e116ec",
       "catalogId": "huss-1986",
       "designation": "(2)H37.970",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 735.8
       },
@@ -8576,13 +9094,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-3cb39cbe-3e96-4da4-a5a8-9a84dbe3b629",
       "catalogId": "huss-1986",
       "designation": "(2)H37.971",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 731.5
       },
@@ -8590,13 +9115,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-6c0614a5-6fd6-43f0-8b82-6e574c7c9f8f",
       "catalogId": "huss-1986",
       "designation": "(2)H37.972",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 697.5
       },
@@ -8604,13 +9136,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-69f0ad03-412c-40a3-9319-c5789c6f8b04",
       "catalogId": "huss-1986",
       "designation": "(2)H37.973",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 423.4
       },
@@ -8618,13 +9157,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-b3ef858c-1d35-4fc3-86b6-8b2b602dc3db",
       "catalogId": "huss-1986",
       "designation": "(2)H37.974",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 450
       },
@@ -8632,13 +9178,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 6,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-4caf93a7-f01a-4ce5-bd6f-36bd911eb023",
       "catalogId": "huss-1986",
       "designation": "(2)H37.975",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 454.2
       },
@@ -8646,13 +9199,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-09c7e848-f15b-4e06-be9b-c482d4a509e3",
       "catalogId": "huss-1986",
       "designation": "(2)H37.976",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 673.2
       },
@@ -8660,13 +9220,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-16bf75f3-0b39-42e3-90b2-e04b08b8763c",
       "catalogId": "huss-1986",
       "designation": "(2)H37.977",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 428.5
       },
@@ -8674,13 +9241,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-55247b12-f33f-4923-9a2b-1b96824c38c9",
       "catalogId": "huss-1986",
       "designation": "(2)H37.978",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 528.7
       },
@@ -8688,13 +9262,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-31e4195f-bcc3-4600-9b59-e83c1ec8d68e",
       "catalogId": "huss-1986",
       "designation": "(2)H37.979",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 597.5
       },
@@ -8702,13 +9283,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-02a40f24-ac5e-4f3b-98e9-c6db8bb6a08d",
       "catalogId": "huss-1986",
       "designation": "(2)H37.980",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 822
       },
@@ -8716,13 +9304,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-24207070-bbc0-442c-83ee-76cd116862c6",
       "catalogId": "huss-1986",
       "designation": "(2)H37.981",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 717.5
       },
@@ -8730,13 +9325,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-c035ad64-267e-4522-b391-a5f92ceff587",
       "catalogId": "huss-1986",
       "designation": "(2)H37.982",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 674.1
       },
@@ -8744,13 +9346,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-64a5439c-6e37-4b42-9be8-04cf1ca0770e",
       "catalogId": "huss-1986",
       "designation": "(2)H37.983",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 343.9
       },
@@ -8758,13 +9367,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-ecca3bf4-91c5-486b-82cd-da93d5c55cf4",
       "catalogId": "huss-1986",
       "designation": "(2)H37.984",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 432.4
       },
@@ -8772,13 +9388,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-accf1f16-9587-422b-b1c8-b7f60442cc22",
       "catalogId": "huss-1986",
       "designation": "(2)H37.985",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 262.3
       },
@@ -8786,13 +9409,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-7762685e-4828-46ae-8b4a-dc826eba2d56",
       "catalogId": "huss-1986",
       "designation": "(2)H37.986",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 351.4
       },
@@ -8800,13 +9430,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-985427f7-71b3-444f-bca8-25621d45744c",
       "catalogId": "huss-1986",
       "designation": "(2)H37.987",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 301.7
       },
@@ -8814,13 +9451,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-000eedb5-9ded-4942-b5bd-46b979401e51",
       "catalogId": "huss-1986",
       "designation": "(2)H37.988",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 227.8
       },
@@ -8828,13 +9472,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-16659ad4-b82c-4b79-bff9-605c2e537a92",
       "catalogId": "huss-1986",
       "designation": "(2)H37.989",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 1293.8
       },
@@ -8842,13 +9493,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-8ebdda94-d269-42c3-8372-2752d2a6b9f0",
       "catalogId": "huss-1986",
       "designation": "(2)H37.990",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 831.9
       },
@@ -8856,13 +9514,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-93a5c6a7-57a8-483f-a821-15d5d04ff0d7",
       "catalogId": "huss-1986",
       "designation": "(2)H37.991",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 1198.5
       },
@@ -8870,13 +9535,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-990dadcd-2c04-4457-8b3d-3276086c27c6",
       "catalogId": "huss-1986",
       "designation": "(2)H37.992",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 1050.6
       },
@@ -8884,13 +9556,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-2df138ce-f0df-4e2e-9fcf-802bae9cda0e",
       "catalogId": "huss-1986",
       "designation": "(2)H37.993",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 2483.7
       },
@@ -8898,13 +9577,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-2cebd2fc-d97f-4310-b6be-0a30241e1f03",
       "catalogId": "huss-1986",
       "designation": "(2)H37.994",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 1358
       },
@@ -8912,13 +9598,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-9870a4ff-0a81-4c92-872c-3c4f5e734162",
       "catalogId": "huss-1986",
       "designation": "(2)H37.995",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 1890
       },
@@ -8926,13 +9619,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-438e1785-b970-48d2-b24a-d0f2baf5857c",
       "catalogId": "huss-1986",
       "designation": "(2)H37.996",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 1750
       },
@@ -8940,13 +9640,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-532250e1-585d-4ce5-b5e6-9a7ec2f53165",
       "catalogId": "huss-1986",
       "designation": "(2)H37.997",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 1717.4
       },
@@ -8954,13 +9661,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-f8852d80-4930-49f4-9347-7ea21ad90d4a",
       "catalogId": "huss-1986",
       "designation": "(2)H37.998",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 2055.5
       },
@@ -8968,13 +9682,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-eca0c0ef-07c7-4a29-8d0f-28f57e8c51bd",
       "catalogId": "huss-1986",
       "designation": "(2)H37.999",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 725.3
       },
@@ -8982,13 +9703,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-abec68bd-724f-4a95-8a09-5cd96d2c0efb",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1000",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 816.1
       },
@@ -8996,13 +9724,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-a21fe7ef-ca06-4fb0-b8cf-9f5ef5d83cd3",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1002",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 388.4
       },
@@ -9010,13 +9745,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-a2560a4c-0e51-4267-a4f4-cc0bda645cd1",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1003",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 354.4
       },
@@ -9024,13 +9766,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-77700380-e46b-409b-82ea-863ea039800a",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1004",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 12.7
       },
@@ -9038,13 +9787,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-6d9f2b06-9adf-495c-8bc7-d565a9af2e5a",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1005",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 15.5
       },
@@ -9052,13 +9808,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-4ca21bb0-85f6-4bf6-8a24-2815b197aae7",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1006",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 16.4
       },
@@ -9066,13 +9829,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-2830795a-dcad-46a6-a1a1-8bfc25979066",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1007",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 46.2
       },
@@ -9080,13 +9850,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-847f0941-6545-476c-a5d3-67f699d658d2",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1008",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 55.7
       },
@@ -9094,13 +9871,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-2b16e519-b62b-471f-b370-3bae931c7ec8",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1009",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 56.5
       },
@@ -9108,13 +9892,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-55c85dc4-aecb-45bb-ad5b-1f6c0e00f73a",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1010",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 210
       },
@@ -9122,13 +9913,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-74ced66d-6e61-4cdc-9ffb-7135041adcc1",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1011",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 118.5
       },
@@ -9136,13 +9934,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-e600dacb-4b34-42fb-b04b-1f97d94f12b1",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1012",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 50
       },
@@ -9150,13 +9955,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-176199b5-f6be-43bb-9bdd-95d13c655784",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1013",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 40.1
       },
@@ -9164,13 +9976,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-653f1aa3-2857-41f6-924d-23f8c205db10",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1014",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 140
       },
@@ -9178,13 +9997,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-39e1a97d-9671-4bcc-9db0-58a828867474",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1015",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 125.2
       },
@@ -9192,13 +10018,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-aff494de-cb58-4260-92fd-eff17022647f",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1016",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 187.5
       },
@@ -9206,13 +10039,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-910a5d3e-6272-41f8-aa6f-2861729940cd",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1017",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 537.5
       },
@@ -9220,13 +10060,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-683a0fb0-9b17-4dfd-b4cf-22e7bd4fb74e",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1018",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 725
       },
@@ -9234,13 +10081,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-c1645574-7abd-4dfe-930e-6b7624852b8a",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1019",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 108.2
       },
@@ -9248,13 +10102,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-12c07957-4401-47a7-bdf1-487d0eaea133",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1020",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 85
       },
@@ -9262,13 +10123,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-d761f3bb-f797-4d35-8f66-727ce8d5a273",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1021",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 182.7
       },
@@ -9276,13 +10144,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-abf2b63e-b3c0-4413-9a6f-7ff784cc65b8",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1022",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 179.7
       },
@@ -9290,13 +10165,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-fc8f818d-b96f-4ffa-b615-e7deaadfc534",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1023",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 103.5
       },
@@ -9304,13 +10186,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-a3c95aec-b3ea-4c01-883b-a5b277927f5f",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1024",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 64.7
       },
@@ -9318,13 +10207,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-a966a6e9-1a84-43af-9058-6b7fddb48921",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1025",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 1556.2
       },
@@ -9332,13 +10228,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-6eb1f8f1-96c0-4863-8f46-ddde2c576979",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1026",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 1945.6
       },
@@ -9346,13 +10249,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-5b50fa78-b7b6-4b59-966e-78bc6f2b4b04",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1027",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 1672.4
       },
@@ -9360,13 +10270,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-0b708de7-d7b2-48da-a644-bc51f1868f36",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1028",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 1052.7
       },
@@ -9374,13 +10291,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-b545f9bf-cf07-4441-818e-883588310bc5",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1029",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 1759.2
       },
@@ -9388,13 +10312,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-9f3ca143-b6e0-4901-a464-e355fe2b8f56",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1030",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 963.2
       },
@@ -9402,13 +10333,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-450ea09d-6458-43e5-bbce-6aebeafe2aa3",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1031",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 1841
       },
@@ -9416,13 +10354,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-69d3e881-1ce0-4d04-a4a3-08d7cc1d2a6d",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1032",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 704.3
       },
@@ -9430,13 +10375,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-2126a137-b96d-4c2e-8683-72644fd1f720",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1033",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 1528.7
       },
@@ -9444,13 +10396,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-9ae4d513-f47e-4efc-a5cc-2960a92cb128",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1034",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 1311.4
       },
@@ -9458,13 +10417,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-2f364c68-d60e-4cba-b3bf-f789eae2df2d",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1035",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 1069
       },
@@ -9472,13 +10438,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-4e880a3e-89a2-4058-8374-7e10f765231d",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1036",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 1057.6
       },
@@ -9486,13 +10459,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-66454ae7-e5a4-43ea-8fe9-71efdd99e4a2",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1037",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 1145
       },
@@ -9500,13 +10480,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-653cc9d5-f3b9-4636-ad63-31aae6267ef1",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1038",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 1007.9
       },
@@ -9514,13 +10501,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-191eebc3-6d59-45e3-870a-9edc9fe83a8e",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1039",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 1366.4
       },
@@ -9528,13 +10522,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-06629365-b358-4c49-aa88-7393311fa132",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1040",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 1194.8
       },
@@ -9542,13 +10543,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-66586465-1248-4dea-a6ac-d6770de2f60f",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1041",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 1226.1
       },
@@ -9556,13 +10564,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-534ea75a-ea6a-4fe3-b2b5-055a2f5f1623",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1042",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 1035.1
       },
@@ -9570,13 +10585,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-32400957-4786-4af2-8525-4cb65e3a437e",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1043",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 1934
       },
@@ -9584,13 +10606,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-22dcf820-88e2-400c-bdf2-2025483fcb71",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1044",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 813.6
       },
@@ -9598,13 +10627,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-06ec606c-8c20-4d5e-bed9-5d20ff1546c1",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1045",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 1481.3
       },
@@ -9612,13 +10648,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-b0a42603-138f-4c6a-9a73-1849f1b03199",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1046",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 719.8
       },
@@ -9626,13 +10669,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-126d605f-9c5d-45b3-8eda-dbf3fdefb23c",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1047",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 163.8
       },
@@ -9640,13 +10690,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-74aa10b3-a7a8-465f-b4e1-dde9522e1203",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1048",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 259
       },
@@ -9654,13 +10711,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-37267edd-ab43-4e9e-8e30-06f5cde3d5fc",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1049",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 302.5
       },
@@ -9668,13 +10732,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-b6e50774-1f14-4921-b687-e963d0793e3c",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1050",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 278
       },
@@ -9682,13 +10753,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-7ef8c40e-2354-496b-97c6-84238f3fe410",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1051",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 142
       },
@@ -9696,13 +10774,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-e69db63d-8ed8-474a-918b-af01cf666736",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1052",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 161.7
       },
@@ -9710,13 +10795,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-dfad52a4-6dd1-4298-ad15-bdeed22ce448",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1053",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 84.1
       },
@@ -9724,13 +10816,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 8,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-6e6483e5-d770-4f07-ae18-e792c928fff9",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1054",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 143.3
       },
@@ -9738,13 +10837,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 9,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-3fc343e1-f596-47b3-ab65-d6bd7a109845",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1055",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 76.5
       },
@@ -9752,13 +10858,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 9,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-ee6e968c-365c-49c4-82c3-cea4a35fb559",
       "catalogId": "huss-1986",
       "designation": "(2)H37.1056",
-      "name": null,
+      "name": "Canyon Diablo (a)",
       "weight": {
         "grams": 272.1
       },
@@ -9766,7 +10879,14 @@
       "locality": null,
       "year": null,
       "catalogPage": 9,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-4501846a-b194-4bef-b76d-67065771adfd",
@@ -9835,7 +10955,7 @@
       "id": "obs-5db53671-f03f-4b85-9aa4-90f6d6f11dc8",
       "catalogId": "huss-1986",
       "designation": "(2)H39.417",
-      "name": null,
+      "name": "Wellman (c)",
       "weight": {
         "grams": 176.8
       },
@@ -9843,13 +10963,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 23,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Wellman (c)",
+        "meteoriteCode": "24239",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24239",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-19c195e0-c79f-4dd0-a256-3b6497912602",
       "catalogId": "huss-1986",
       "designation": "(2)H39.421",
-      "name": null,
+      "name": "Wellman (c)",
       "weight": {
         "grams": 16.1
       },
@@ -9857,13 +10984,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 23,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Wellman (c)",
+        "meteoriteCode": "24239",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24239",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-6ff9db69-e575-49bf-b0a7-1e55eb80a520",
       "catalogId": "huss-1986",
       "designation": "(2)H39.424",
-      "name": null,
+      "name": "Wellman (c)",
       "weight": {
         "grams": 6.8
       },
@@ -9871,13 +11005,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 23,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Wellman (c)",
+        "meteoriteCode": "24239",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24239",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-f9e27b18-62b5-48bc-9dba-38baf93bb0dc",
       "catalogId": "huss-1986",
       "designation": "(2)H39.425",
-      "name": null,
+      "name": "Wellman (c)",
       "weight": {
         "grams": 7.2
       },
@@ -9885,13 +11026,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 23,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Wellman (c)",
+        "meteoriteCode": "24239",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24239",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-4f7f24b1-1e27-425e-9d89-5303b009d883",
       "catalogId": "huss-1986",
       "designation": "(2)H39.426",
-      "name": null,
+      "name": "Wellman (c)",
       "weight": {
         "grams": 1.6
       },
@@ -9899,13 +11047,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 23,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Wellman (c)",
+        "meteoriteCode": "24239",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24239",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-b8bf8c9f-ac41-4b01-b941-49812643e560",
       "catalogId": "huss-1986",
       "designation": "(2)H39.427",
-      "name": null,
+      "name": "Wellman (c)",
       "weight": {
         "grams": 7.9
       },
@@ -9913,13 +11068,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 23,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Wellman (c)",
+        "meteoriteCode": "24239",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24239",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-fc89504d-6f21-4940-bfae-e095c1050242",
       "catalogId": "huss-1986",
       "designation": "(2)H39.433",
-      "name": null,
+      "name": "Wellman (c)",
       "weight": {
         "grams": 856.3
       },
@@ -9927,13 +11089,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 23,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Wellman (c)",
+        "meteoriteCode": "24239",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24239",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-5941f98e-98d6-4669-8831-9d05f0edb2b4",
       "catalogId": "huss-1986",
       "designation": "(2)H39.434",
-      "name": null,
+      "name": "Wellman (c)",
       "weight": {
         "grams": 33.3
       },
@@ -9941,13 +11110,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 23,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Wellman (c)",
+        "meteoriteCode": "24239",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24239",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-f6d06db1-a2e7-459a-a68a-ab3246c70f81",
       "catalogId": "huss-1986",
       "designation": "(2)H39.436",
-      "name": null,
+      "name": "Wellman (c)",
       "weight": {
         "grams": 205.3
       },
@@ -9955,13 +11131,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 23,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Wellman (c)",
+        "meteoriteCode": "24239",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24239",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-aa2a3e0a-aa22-450d-82ce-e2d7d71bd788",
       "catalogId": "huss-1986",
       "designation": "(2)H39.437",
-      "name": null,
+      "name": "Wellman (c)",
       "weight": {
         "grams": 170.7
       },
@@ -9969,13 +11152,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 23,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Wellman (c)",
+        "meteoriteCode": "24239",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24239",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-5b479344-3d9d-4ad3-9729-995b2f9bc6f6",
       "catalogId": "huss-1986",
       "designation": "(2)H39.438",
-      "name": null,
+      "name": "Wellman (c)",
       "weight": {
         "grams": 133.9
       },
@@ -9983,13 +11173,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 23,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Wellman (c)",
+        "meteoriteCode": "24239",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24239",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-e74b74d3-2559-4859-99d7-827e7653c0f2",
       "catalogId": "huss-1986",
       "designation": "(2)H39.440",
-      "name": null,
+      "name": "Wellman (c)",
       "weight": {
         "grams": 70
       },
@@ -9997,13 +11194,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 23,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Wellman (c)",
+        "meteoriteCode": "24239",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24239",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-7651be7c-a55d-45d8-8d88-722dca82687f",
       "catalogId": "huss-1986",
       "designation": "(2)H39.441",
-      "name": null,
+      "name": "Wellman (c)",
       "weight": {
         "grams": 37.2
       },
@@ -10011,13 +11215,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 23,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Wellman (c)",
+        "meteoriteCode": "24239",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24239",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-63beb632-2cea-4907-9cfb-3a504aefb40a",
       "catalogId": "huss-1986",
       "designation": "(2)H39.442",
-      "name": null,
+      "name": "Wellman (c)",
       "weight": {
         "grams": 34.4
       },
@@ -10025,13 +11236,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 23,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Wellman (c)",
+        "meteoriteCode": "24239",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24239",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-79228fb3-6a3a-4835-a0d0-ff02ca1cd481",
       "catalogId": "huss-1986",
       "designation": "(2)H39.443",
-      "name": null,
+      "name": "Wellman (c)",
       "weight": {
         "grams": 30.9
       },
@@ -10039,13 +11257,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 23,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Wellman (c)",
+        "meteoriteCode": "24239",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24239",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-d495a604-2cff-468e-ac87-e7dcf85ecfd7",
       "catalogId": "huss-1986",
       "designation": "(2)H39.444",
-      "name": null,
+      "name": "Wellman (c)",
       "weight": {
         "grams": 37.4
       },
@@ -10053,13 +11278,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 23,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Wellman (c)",
+        "meteoriteCode": "24239",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24239",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-f00974b6-db4f-48a2-b5fe-1cd46e899fab",
       "catalogId": "huss-1986",
       "designation": "(2)H39.445",
-      "name": null,
+      "name": "Wellman (c)",
       "weight": {
         "grams": 18.3
       },
@@ -10067,13 +11299,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 23,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Wellman (c)",
+        "meteoriteCode": "24239",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24239",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-849fcf56-516f-4079-aa33-678f3f967267",
       "catalogId": "huss-1986",
       "designation": "(2)H39.446",
-      "name": null,
+      "name": "Wellman (c)",
       "weight": {
         "grams": 12.7
       },
@@ -10081,13 +11320,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 23,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Wellman (c)",
+        "meteoriteCode": "24239",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24239",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-a2d47c4d-6669-4952-8fd5-ec8aba3c1eb5",
       "catalogId": "huss-1986",
       "designation": "(2)H39.447",
-      "name": null,
+      "name": "Wellman (c)",
       "weight": {
         "grams": 14.7
       },
@@ -10095,13 +11341,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 23,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Wellman (c)",
+        "meteoriteCode": "24239",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24239",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-1ec788b4-37f1-4a24-a79c-72fcae2bb3a8",
       "catalogId": "huss-1986",
       "designation": "(2)H39.448",
-      "name": null,
+      "name": "Wellman (c)",
       "weight": {
         "grams": 12.5
       },
@@ -10109,7 +11362,14 @@
       "locality": null,
       "year": null,
       "catalogPage": 23,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Wellman (c)",
+        "meteoriteCode": "24239",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24239",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-c4db1aee-2784-46ef-9de7-d8836fd19f02",
@@ -11711,7 +12971,7 @@
       "id": "obs-82a7c825-1621-41be-90f8-d83975a604d8",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.114",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 12
       },
@@ -11719,13 +12979,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-39ac330d-dc9c-47c5-839b-da1dd99dce25",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.115",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 24.8
       },
@@ -11733,13 +13000,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-68136a18-0466-4cdb-9657-e094148eb2db",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.116",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 6.4
       },
@@ -11747,13 +13021,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-8164211b-6183-4086-a843-9521eadcf67f",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.117",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 14.9
       },
@@ -11761,13 +13042,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-247241f9-6ab7-4bbe-8a22-57fc1c568d6e",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.118",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 18.7
       },
@@ -11775,13 +13063,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-4279ee63-ebe4-4ecc-9313-cc6515de5e8b",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.119",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 19.6
       },
@@ -11789,13 +13084,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-bda572b8-376b-4de0-bb7e-18bcca7b1fcd",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.120",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 10.4
       },
@@ -11803,13 +13105,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-5b0abfdc-3ec7-46cf-9d94-bac4469545c3",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.121",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 14.6
       },
@@ -11817,13 +13126,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-d484ee60-bab5-4821-afeb-1dc0b23a7c29",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.122",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 24.7
       },
@@ -11831,13 +13147,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-102061f3-1796-4b52-abf4-ec57409cf46f",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.123",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 32.9
       },
@@ -11845,13 +13168,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-9bfe64b3-ee51-4a46-80a3-90443288c018",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.124",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 31.6
       },
@@ -11859,13 +13189,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-1189496b-4f4d-4c5f-b974-cd95b2683b3e",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.125",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 40.4
       },
@@ -11873,13 +13210,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-ccae5071-d88b-4af7-bd0c-87975042c062",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.126",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 25.9
       },
@@ -11887,13 +13231,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-cc3719f5-0e6c-4966-a80d-06ebe3a6dad7",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.127",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 22.5
       },
@@ -11901,13 +13252,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-d9e9cc11-0484-4001-b6bd-8264a7d62478",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.128",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 20.9
       },
@@ -11915,13 +13273,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-8ae3f1fe-3c89-449f-9a13-00638160915c",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.129",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 14.8
       },
@@ -11929,13 +13294,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-979d0580-c9ae-47af-b642-bff9ceca3c41",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.130",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 18.3
       },
@@ -11943,13 +13315,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-300e8869-f337-4168-88ca-d1753aeb0d7b",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.131",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 18.3
       },
@@ -11957,13 +13336,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-79931d76-133d-4bf5-9828-414dbd8ab71a",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.132",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 19.2
       },
@@ -11971,13 +13357,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-ba9620b8-111b-4860-b9b5-6730ab12d9e2",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.133",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 25.6
       },
@@ -11985,13 +13378,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-79f30d25-f5d3-4636-9623-190f9e137fce",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.134",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 23.8
       },
@@ -11999,13 +13399,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-e3bf7891-99bd-47ad-8d25-209176030a4b",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.135",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 28.4
       },
@@ -12013,13 +13420,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-3012c45a-a2e1-4523-98ee-8663f6da96e9",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.136",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 15.5
       },
@@ -12027,13 +13441,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-fc05c3f2-1e41-4233-a3c8-c37efde3f562",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.137",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 19
       },
@@ -12041,13 +13462,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-b600216e-8612-4c27-b973-f416bf68b0ec",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.138",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 15.5
       },
@@ -12055,13 +13483,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-58ed1132-4781-4ad9-b3dc-70ff5bdabcbc",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.139",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 19
       },
@@ -12069,13 +13504,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-bf6abc79-8a90-467d-b115-16ba1da28cec",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.140",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 18.1
       },
@@ -12083,13 +13525,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-c361ba56-4549-4702-bf62-8eb2e43539e0",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.141",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 18.5
       },
@@ -12097,13 +13546,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-391cf2f8-c24a-4c22-8ba5-803a64458d85",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.142",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 18.4
       },
@@ -12111,13 +13567,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-fa2e68a4-3633-4c6b-be90-0acf9f8593d5",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.143",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 16.6
       },
@@ -12125,13 +13588,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-980adbdf-c854-40c0-b07b-32948bf40aec",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.144",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 17.7
       },
@@ -12139,13 +13609,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-be31b793-3e57-4632-b472-a43251ae94a6",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.145",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 18.3
       },
@@ -12153,13 +13630,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-7c9e8435-171b-4aea-a39f-95a7abe25513",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.146",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 17.5
       },
@@ -12167,13 +13651,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-3b878346-b772-4b85-92f9-e67878d4d824",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.147",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 41.4
       },
@@ -12181,13 +13672,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-4cd400f0-1eef-4fec-9c7b-cdd6ee76cbfe",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.148",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 376.1
       },
@@ -12195,13 +13693,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "Dalgaranga is recovered parent-entry and site context, but this observation describes iron oxide from west of the crater rather than an identified meteorite specimen; no canonical meteorite identity is claimed."
+      }
     },
     {
       "id": "obs-e066a496-59e8-4591-9d9b-4e7bffd8ec55",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.149",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 7.1
       },
@@ -12209,13 +13714,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-9ba9d6d4-ef46-4860-b993-4f9d64bc5840",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.150",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 7.9
       },
@@ -12223,13 +13735,20 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-2228c6b9-ccf7-42f8-b22b-487088369f85",
       "catalogId": "huss-1986",
       "designation": "(2)HC160.151",
-      "name": null,
+      "name": "Dalgaranga",
       "weight": {
         "grams": 5.3
       },
@@ -12237,7 +13756,14 @@
       "locality": null,
       "year": null,
       "catalogPage": 11,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalgaranga",
+        "meteoriteCode": "5506",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-833233c2-b13b-434b-b46f-a92328438a47",
@@ -41092,7 +42618,14 @@
       "classification": "Meteor-Stein",
       "locality": "im Parmesanischen",
       "eventDate": "19. Aprill 1808",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "Chladni 1819, p. 91, entry 16 prints only a date, the Parmesan region, and a weight; it has no separate proper source name. No canonical identity is inferred from the date or locality."
+      }
     },
     {
       "id": "obs-fecffdfd-e09d-45e0-8a6e-07077321b0cc",
@@ -41427,7 +42960,14 @@
       "classification": "Nickelhaltiges Gediegeneisen von ästigem Gefüge, mit inliegendem Olivin",
       "locality": "Sachsen",
       "eventDate": null,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "Chladni 1819, p. 92, entry 27 describes a field-found mass from Saxony held in Gotha and gives its weight, but prints no separate proper source name. No canonical identity is inferred from that context."
+      }
     },
     {
       "id": "obs-01a56b51-6128-468c-b054-d462d7d6c1c1",
@@ -41570,7 +43110,14 @@
       "classification": "Nickelhaltiges Gediegeneisen, derb, und von krystallinischem Gefüge",
       "locality": "Mexiko",
       "eventDate": null,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "Chladni 1819, p. 92, entry 32 says only that the specimen is a small piece of Mexican native iron; it prints no separate proper source name. No canonical identity is inferred from the geographic description."
+      }
     },
     {
       "id": "obs-43ec9013-6e88-4f2e-a97e-50b10417039d",
@@ -41689,7 +43236,14 @@
       "classification": "Problematisches Gediegeneisen",
       "locality": "Steyermark",
       "eventDate": null,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "Chladni 1819, p. 92, entry 36 describes damascened iron found in Styria and gives a weight, but prints no separate proper source name. No canonical identity is inferred from the locality or material description."
+      }
     },
     {
       "id": "obs-fb41db59-2f18-4b4e-a79f-a7a590f035b2",
@@ -41742,7 +43296,14 @@
       "classification": "Harziger Stoff",
       "locality": "Ober-Lausitz",
       "eventDate": "8. März 1796",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "Chladni 1819, p. 92, entry 38 describes resinous material reported to have fallen in Upper Lusatia on 8 March 1796, but prints no separate proper source name. No canonical identity is inferred from the event context."
+      }
     },
     {
       "id": "obs-e1a09e74-c5ca-4082-86b1-094b47578ffb",
@@ -44168,7 +45729,14 @@
       "classification": "Harzige Substanz",
       "locality": "Oberlausitz",
       "eventDate": "8. März 1796",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "Chladni 1825, p. 239, entry 41 describes resinous material reported with the Upper Lusatia fireball of 8 March 1796, but prints no separate proper source name. No canonical identity is inferred from the event context."
+      }
     },
     {
       "id": "obs-4bb70a39-abd3-4c8f-9ab6-32a79a421219",
@@ -44192,7 +45760,14 @@
       "classification": "Schwarze papierähnliche Substanz",
       "locality": "Gut Rauden, Kurland; zugleich auch Pommern und Norwegen",
       "eventDate": "31. Januar 1686",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "Chladni 1825, pp. 239-240, entry 42 describes a black paper-like substance reported from Rauden in Courland and other regions on 31 January 1686, but prints no separate proper source name. No canonical identity is inferred from that context."
+      }
     },
     {
       "id": "obs-8b0778b6-4c26-4062-8b12-73ac05ac659e",

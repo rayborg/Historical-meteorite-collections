@@ -105,7 +105,7 @@ matchType, canonicalName, meteoriteCode, metbullUrl, alternateNameNote
 
 The historical `name`, designation/catalog identifier fields, printed private weight strings, and numeric source weights are never replaced by this object. The website labels the source catalog name and shows a separate linked **Current Meteoritical Bulletin name** only when a reviewed canonical name differs. No client, build, or export path fuzzy-matches names or infers identity.
 
-The current release reviews all 1,750 records with a source name: 1,665 have a resolved current identity and 85 remain explicitly unresolved. The 225 records with no source name are not assigned a modern identity.
+The current release reviews all 1,975 records: 1,882 have a resolved current identity and 93 remain explicitly unresolved. Validated continuation evidence recovers source names for 218 formerly blank rows. Seven historical entries genuinely print no separate proper source name; they retain null names and unresolved reviews without an inferred modern identity.
 
 ## Rights-Gated Folios
 

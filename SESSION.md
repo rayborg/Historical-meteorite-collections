@@ -21,7 +21,7 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 - Public folios use schema 2 and expose 41 display pages: Lucas 1813 has 3 public-domain pages, Chladni 1819 has 12 public-domain pages, Hovey 1896 has 7 public-domain pages from BHL item 335869, and Nininger 1933 has 19 `no-copyright-us` pages.
 - Chladni 1825, Huss 1976, Huss 1986, and Nininger 1950 remain blocked/undetermined for folio display.
 - Nininger 1933 is incomplete: source pages 8-9 and catalog items 106-141 are missing.
-- Reviewed MetBull harmonization covers all 1,750 records with a source name: 1,665 resolved and 85 explicitly unresolved. The 225 null-name observations remain outside the optional layer pending separate source-name review.
+- Reviewed MetBull harmonization covers all 1,975 records: 1,882 resolved and 93 explicitly unresolved. Validated continuation evidence recovers 218 formerly blank source names; seven historical entries genuinely print no separate proper source name and retain null names with unresolved reviews.
 - The runtime suite passes 108 tests. The validator passes all 1,975 records, eight catalogs, and 41 public display pages.
 - `scripts/folio-release-lock.json` pins the reviewed rights evidence, ordered page IDs, and SHA-256 digest of every public folio.
 
