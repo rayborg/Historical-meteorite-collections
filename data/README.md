@@ -1,6 +1,6 @@
 # Public Catalog Data
 
-`catalog.json` is a schema-6 facts-only dataset containing 1,941 source observations from eight historical meteorite catalogs. `folios.json` is a separate schema-2, deny-by-default display manifest with 41 reviewed page entries.
+`catalog.json` is a schema-6 facts-only dataset containing 1,949 source observations from eight historical meteorite catalogs. `folios.json` is a separate schema-2, deny-by-default display manifest with 41 reviewed page entries.
 
 A searchable transcription of the 1976 Huss Meteorite Collection catalog, compiled and published by Glenn Huss.
 
@@ -15,10 +15,10 @@ The other configured descriptors identify their compilers without inferring a pu
 | `huss-1986` | `specimen` | 544 | 21 | 21 |
 | `lucas-1813` | `collection-entry` | 13 | 3 | 3 |
 | `nininger-1933` | `catalog-item` | 136 | 18 | 9 |
-| `nininger-1950` | `specimen` | 29 | 2 | 2 |
-| **Total** |  | **1,941** | **150** | **133** |
+| `nininger-1950` | `specimen` | 37 | 3 | 3 |
+| **Total** |  | **1,949** | **151** | **134** |
 
-Metadata source-page coverage is not a count of pages cited by records. For `nininger-1933`, printed pages 8-9 and catalog items 106-141 are missing from the available source set. Pages 12-20 are narrative-only. Its 136 represented items contain 310 reviewed holdings: 298 designated, 12 anonymous, 304 gram-bearing, 4 casts, and 2 count-only. `nininger-1950` currently covers printed pages 26-27 with 29 specimen observations. Both Nininger catalogs are partial digital editions.
+Metadata source-page coverage is not a count of pages cited by records. For `nininger-1933`, printed pages 8-9 and catalog items 106-141 are missing from the available source set. Pages 12-20 are narrative-only. Its 136 represented items contain 310 reviewed holdings: 298 designated, 12 anonymous, 304 gram-bearing, 4 casts, and 2 count-only. `nininger-1950` currently covers printed pages 26-28 with 37 specimen observations. Both Nininger catalogs are partial digital editions.
 
 ## Catalog Contract
 
@@ -26,7 +26,7 @@ The root contains exactly `metadata` and `records`. `metadata.schemaVersion` is 
 
 ### Specimen
 
-Used by both Huss catalogs:
+Used by both Huss catalogs and Nininger 1950:
 
 ```text
 id, catalogId, designation, name, weight: { grams }, classification,

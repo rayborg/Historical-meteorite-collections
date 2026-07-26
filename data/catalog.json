@@ -331,14 +331,15 @@
         "year": 1950,
         "sourcePages": [
           26,
-          27
+          27,
+          28
         ],
-        "sourcePageCount": 2,
-        "recordCount": 29,
-        "recordsWithDesignation": 29,
-        "recordsWithWeight": 29,
+        "sourcePageCount": 3,
+        "recordCount": 37,
+        "recordsWithDesignation": 37,
+        "recordsWithWeight": 37,
         "confidenceCounts": {
-          "high": 29,
+          "high": 37,
           "medium": 0,
           "low": 0
         },
@@ -346,11 +347,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 1941,
-    "recordsWithDesignation": 1772,
-    "recordsWithWeight": 1813,
+    "recordCount": 1949,
+    "recordsWithDesignation": 1780,
+    "recordsWithWeight": 1821,
     "confidenceCounts": {
-      "high": 1941,
+      "high": 1949,
       "medium": 0,
       "low": 0
     }
@@ -12384,6 +12385,90 @@
       "confidence": "high"
     },
     {
+      "id": "obs-d52f0c3a-320f-4f1f-bf17-97bdfaf0bddc",
+      "catalogId": "nininger-1950",
+      "designation": "4a",
+      "name": "Alfianello",
+      "weight": {
+        "grams": 249
+      },
+      "classification": "Stone. Intermediate hypersthene-chondrite",
+      "locality": "Brescia, Italy",
+      "year": "1883",
+      "catalogPage": 28,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Alfianello",
+        "meteoriteCode": "466",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=466",
+        "alternateNameNote": "The source prints Brescia and Cremona as synonyms, both of which MetBull lists. The historical Intermediate hypersthene-chondrite classification corresponds to modern L6."
+      }
+    },
+    {
+      "id": "obs-4c5d1be2-0b6b-4a50-b504-a3c4f8ef194c",
+      "catalogId": "nininger-1950",
+      "designation": "4.2",
+      "name": "Alfianello",
+      "weight": {
+        "grams": 8
+      },
+      "classification": "Stone. Intermediate hypersthene-chondrite",
+      "locality": "Brescia, Italy",
+      "year": "1883",
+      "catalogPage": 28,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Alfianello",
+        "meteoriteCode": "466",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=466",
+        "alternateNameNote": "The source prints Brescia and Cremona as synonyms, both of which MetBull lists. The historical Intermediate hypersthene-chondrite classification corresponds to modern L6."
+      }
+    },
+    {
+      "id": "obs-fb449b7f-cbe1-4280-87fe-462a2a713c58",
+      "catalogId": "nininger-1950",
+      "designation": "6a",
+      "name": "Anthony",
+      "weight": {
+        "grams": 117
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Harper County, Kansas",
+      "year": "1919",
+      "catalogPage": 28,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Anthony",
+        "meteoriteCode": "2310",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2310",
+        "alternateNameNote": "The historical Grey chondrite classification corresponds to modern H5."
+      }
+    },
+    {
+      "id": "obs-b72b7bcb-75a7-470a-a35d-0ba9cdc2befb",
+      "catalogId": "nininger-1950",
+      "designation": "7a",
+      "name": "Allegan",
+      "weight": {
+        "grams": 319
+      },
+      "classification": "Stone. Spherical bronzite-chondrite",
+      "locality": "Allegan County, Michigan",
+      "year": "1899",
+      "catalogPage": 28,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Allegan",
+        "meteoriteCode": "2276",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2276",
+        "alternateNameNote": "The source reports 35.5 kg.; MetBull reports 32 kg. The historical Spherical bronzite-chondrite classification corresponds to modern H5."
+      }
+    },
+    {
       "id": "obs-da5e213a-f367-491a-87ea-3e4e12d7011b",
       "catalogId": "nininger-1950",
       "designation": "8c",
@@ -12444,6 +12529,27 @@
         "meteoriteCode": "450",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=450",
         "alternateNameNote": "The source reports 2.2 kg.; MetBull reports 1800 g."
+      }
+    },
+    {
+      "id": "obs-7bac64e2-ace5-4fbe-87df-7a12a602a39a",
+      "catalogId": "nininger-1950",
+      "designation": "72a.",
+      "name": "Amates",
+      "weight": {
+        "grams": 62
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Iguala, Morelos, Mexico",
+      "year": "1889",
+      "catalogPage": 28,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toluca",
+        "meteoriteCode": "24018",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
+        "alternateNameNote": "MetBull explicitly lists Amates, Los Amates, Morelos, and Xiquipilco as synonyms of Toluca. This conflicts strongly with Nininger's treatment of Amates as a separate 300-gram iron found in 1889 at Iguala, Morelos; MetBull reports Toluca as a 3-ton Iron, IAB-sLL found in 1776 at 19° 34′ N., 99° 34′ W."
       }
     },
     {
@@ -12654,6 +12760,27 @@
         "meteoriteCode": "449",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=449",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-fffe7e17-dd35-48fb-9dbb-cb1f8cdf0bd5",
+      "catalogId": "nininger-1950",
+      "designation": "168a",
+      "name": "Altonah",
+      "weight": {
+        "grams": 8280
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Duchesne County, Utah; 40° 34′ N., 110° 20′ W.",
+      "year": "about 1932",
+      "catalogPage": 28,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Altonah",
+        "meteoriteCode": "2286",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2286",
+        "alternateNameNote": "The source reports about 1932, 21 kg., and 40° 34′ N., 110° 20′ W.; MetBull reports 1932, 21.5 kg., and 40° 34′ N., 110° 29′ W. The historical Fine octahedrite classification corresponds to modern Iron, IVA."
       }
     },
     {
@@ -12930,6 +13057,27 @@
       }
     },
     {
+      "id": "obs-22e552ad-0d79-4c8f-bad2-9c876e0a2a6b",
+      "catalogId": "nininger-1950",
+      "designation": "475.1",
+      "name": "Apoala",
+      "weight": {
+        "grams": 417.5
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Oaxaca, Mexico",
+      "year": "1889",
+      "catalogPage": 28,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Apoala",
+        "meteoriteCode": "2317",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2317",
+        "alternateNameNote": "The historical Fine octahedrite classification corresponds to modern Iron, IIIAB. MetBull also reports a past IIIB classification."
+      }
+    },
+    {
       "id": "obs-71f72d44-d300-4fab-b9bf-25462bd20d11",
       "catalogId": "nininger-1950",
       "designation": "515.1",
@@ -12969,6 +13117,27 @@
         "meteoriteCode": "371",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=371",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-a5bc0673-2f92-47f9-a647-8c023e84a227",
+      "catalogId": "nininger-1950",
+      "designation": "532.1",
+      "name": "Albin",
+      "weight": {
+        "grams": 8.6
+      },
+      "classification": "Stone",
+      "locality": "Laramie County, Wyoming; 41° 25′ N., 104° 6′ W.",
+      "year": "1949",
+      "catalogPage": 28,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Albin (stone)",
+        "meteoriteCode": "456",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=456",
+        "alternateNameNote": "MetBull adds the stone qualifier to distinguish Albin (pallasite). The source and MetBull agree on 1949, 15.4 kg., and 41° 25′ N., 104° 6′ W."
       }
     },
     {
