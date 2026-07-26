@@ -332,14 +332,15 @@
         "sourcePages": [
           26,
           27,
-          28
+          28,
+          29
         ],
-        "sourcePageCount": 3,
-        "recordCount": 37,
-        "recordsWithDesignation": 37,
-        "recordsWithWeight": 37,
+        "sourcePageCount": 4,
+        "recordCount": 53,
+        "recordsWithDesignation": 53,
+        "recordsWithWeight": 52,
         "confidenceCounts": {
-          "high": 37,
+          "high": 53,
           "medium": 0,
           "low": 0
         },
@@ -347,11 +348,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 1949,
-    "recordsWithDesignation": 1780,
-    "recordsWithWeight": 1821,
+    "recordCount": 1965,
+    "recordsWithDesignation": 1796,
+    "recordsWithWeight": 1836,
     "confidenceCounts": {
-      "high": 1949,
+      "high": 1965,
       "medium": 0,
       "low": 0
     }
@@ -4914,6 +4915,48 @@
       "year": "before 1776",
       "catalogPage": 11,
       "confidence": "high"
+    },
+    {
+      "id": "obs-95fb3601-501b-40b3-8e01-7313cf86b0fc",
+      "catalogId": "nininger-1950",
+      "designation": "1b",
+      "name": "Arlington",
+      "weight": {
+        "grams": 24
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Sibley County, Minnesota",
+      "year": "1894",
+      "catalogPage": 29,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Arlington",
+        "meteoriteCode": "2333",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2333",
+        "alternateNameNote": "The source reports 9 kg.; MetBull reports 8.94 kg. The historical Medium octahedrite classification corresponds to modern Iron, IIE-an. MetBull lists Sibley County as a synonym."
+      }
+    },
+    {
+      "id": "obs-65cfa937-a920-4b01-915c-37ae84ccf5bc",
+      "catalogId": "nininger-1950",
+      "designation": "1a",
+      "name": "Arlington",
+      "weight": {
+        "grams": 38
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Sibley County, Minnesota",
+      "year": "1894",
+      "catalogPage": 29,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Arlington",
+        "meteoriteCode": "2333",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2333",
+        "alternateNameNote": "The source reports 9 kg.; MetBull reports 8.94 kg. The historical Medium octahedrite classification corresponds to modern Iron, IIE-an. MetBull lists Sibley County as a synonym."
+      }
     },
     {
       "id": "obs-6c9de743-3e7a-4fb2-a5cd-7c08846af832",
@@ -12511,6 +12554,69 @@
       }
     },
     {
+      "id": "obs-4685a932-8244-4b32-933b-372588b26e9b",
+      "catalogId": "nininger-1950",
+      "designation": "9b",
+      "name": "Arispe",
+      "weight": {
+        "grams": 13476.75
+      },
+      "classification": "Iron. Coarsest octahedrite",
+      "locality": "Sonora, Mexico",
+      "year": "1898",
+      "catalogPage": 29,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Arispe",
+        "meteoriteCode": "2332",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2332",
+        "alternateNameNote": "The source reports found 1898 and 398 kg.; MetBull reports 1896 and 683 kg. The historical Coarsest octahedrite classification corresponds to modern Iron, IC. MetBull lists Arizpe, Moctezuma (of F. Berwerth), Noon, and Nova 057 as synonyms or linked piece names."
+      }
+    },
+    {
+      "id": "obs-665bf697-6e49-470c-9ddf-d260b5acae39",
+      "catalogId": "nininger-1950",
+      "designation": "9.5",
+      "name": "Arispe",
+      "weight": {
+        "grams": 6002
+      },
+      "classification": "Iron. Coarsest octahedrite",
+      "locality": "Sonora, Mexico",
+      "year": "1898",
+      "catalogPage": 29,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Arispe",
+        "meteoriteCode": "2332",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2332",
+        "alternateNameNote": "The source reports found 1898 and 398 kg.; MetBull reports 1896 and 683 kg. The historical Coarsest octahedrite classification corresponds to modern Iron, IC. MetBull lists Arizpe, Moctezuma (of F. Berwerth), Noon, and Nova 057 as synonyms or linked piece names."
+      }
+    },
+    {
+      "id": "obs-f8923eb3-04d9-453f-9c9a-d7a14a7d6508",
+      "catalogId": "nininger-1950",
+      "designation": "9.41",
+      "name": "Arispe",
+      "weight": {
+        "grams": 122300
+      },
+      "classification": "Iron. Coarsest octahedrite",
+      "locality": "Sonora, Mexico",
+      "year": "1898",
+      "catalogPage": 29,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Arispe",
+        "meteoriteCode": "2332",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2332",
+        "alternateNameNote": "The source reports found 1898 and 398 kg.; MetBull reports 1896 and 683 kg. The historical Coarsest octahedrite classification corresponds to modern Iron, IC. MetBull lists Arizpe, Moctezuma (of F. Berwerth), Noon, and Nova 057 as synonyms or linked piece names."
+      }
+    },
+    {
       "id": "obs-82bbe8bc-2bae-4107-aa8d-62522a94a0fe",
       "catalogId": "nininger-1950",
       "designation": "50.1",
@@ -12784,6 +12890,69 @@
       }
     },
     {
+      "id": "obs-211c2243-c944-4d9f-b865-c00d0d9675a9",
+      "catalogId": "nininger-1950",
+      "designation": "175a.",
+      "name": "Archie",
+      "weight": {
+        "grams": 396
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Cass County, Missouri",
+      "year": "1932",
+      "catalogPage": 29,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Archie",
+        "meteoriteCode": "2329",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2329",
+        "alternateNameNote": "The source reports 5.2 kg.; MetBull reports 5.07 kg. The historical Grey chondrite classification corresponds to modern H6."
+      }
+    },
+    {
+      "id": "obs-8373c187-a48d-4362-8551-b716bc754466",
+      "catalogId": "nininger-1950",
+      "designation": "199.1",
+      "name": "Appley Bridge",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Stone. Grey hypersthene-chondrite",
+      "locality": "Lancashire, England",
+      "year": "1914",
+      "catalogPage": 29,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Appley Bridge",
+        "meteoriteCode": "2318",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2318",
+        "alternateNameNote": "The source reports 15.3 kg.; MetBull reports 15 kg. The historical Grey hypersthene-chondrite classification corresponds to modern LL6. MetBull lists Lancashire and Wigan as synonyms."
+      }
+    },
+    {
+      "id": "obs-f350880d-542b-4c5e-b85f-9126c77132e9",
+      "catalogId": "nininger-1950",
+      "designation": "199.2",
+      "name": "Appley Bridge",
+      "weight": {
+        "grams": 4
+      },
+      "classification": "Stone. Grey hypersthene-chondrite",
+      "locality": "Lancashire, England",
+      "year": "1914",
+      "catalogPage": 29,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Appley Bridge",
+        "meteoriteCode": "2318",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2318",
+        "alternateNameNote": "The source reports 15.3 kg.; MetBull reports 15 kg. The historical Grey hypersthene-chondrite classification corresponds to modern LL6. MetBull lists Lancashire and Wigan as synonyms."
+      }
+    },
+    {
       "id": "obs-b64c220c-2577-40c0-905f-aecdafd20992",
       "catalogId": "nininger-1950",
       "designation": "209a",
@@ -12910,6 +13079,111 @@
       }
     },
     {
+      "id": "obs-56a56eec-e34b-438d-a1ff-b95155997b04",
+      "catalogId": "nininger-1950",
+      "designation": "328.1",
+      "name": "Arriba",
+      "weight": {
+        "grams": 7927
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Lincoln County, Colorado; 39° 18′ N., 103° 15′ W.",
+      "year": "1936",
+      "catalogPage": 29,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Arriba",
+        "meteoriteCode": "2339",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2339",
+        "alternateNameNote": "The source reports 33.6 kg.; MetBull reports 31.1 kg. The source generic Chondrite classification corresponds to modern L5. Adjacent page review confirms the entry is complete because page 30 begins Arva."
+      }
+    },
+    {
+      "id": "obs-f25c55cf-0b39-4472-8b0f-9c6d903e40b8",
+      "catalogId": "nininger-1950",
+      "designation": "328.3",
+      "name": "Arriba",
+      "weight": {
+        "grams": 476
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Lincoln County, Colorado; 39° 18′ N., 103° 15′ W.",
+      "year": "1936",
+      "catalogPage": 29,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Arriba",
+        "meteoriteCode": "2339",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2339",
+        "alternateNameNote": "The source reports 33.6 kg.; MetBull reports 31.1 kg. The source generic Chondrite classification corresponds to modern L5. Adjacent page review confirms the entry is complete because page 30 begins Arva."
+      }
+    },
+    {
+      "id": "obs-f9d4f86c-2891-4b7b-a879-fb702b418f29",
+      "catalogId": "nininger-1950",
+      "designation": "328.5",
+      "name": "Arriba",
+      "weight": {
+        "grams": 4021
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Lincoln County, Colorado; 39° 18′ N., 103° 15′ W.",
+      "year": "1936",
+      "catalogPage": 29,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Arriba",
+        "meteoriteCode": "2339",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2339",
+        "alternateNameNote": "The source reports 33.6 kg.; MetBull reports 31.1 kg. The source generic Chondrite classification corresponds to modern L5. Adjacent page review confirms the entry is complete because page 30 begins Arva."
+      }
+    },
+    {
+      "id": "obs-61b49e8c-5eaf-4c74-815a-614f1ff706ac",
+      "catalogId": "nininger-1950",
+      "designation": "328.6",
+      "name": "Arriba",
+      "weight": {
+        "grams": 8720
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Lincoln County, Colorado; 39° 18′ N., 103° 15′ W.",
+      "year": "1936",
+      "catalogPage": 29,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Arriba",
+        "meteoriteCode": "2339",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2339",
+        "alternateNameNote": "The source reports 33.6 kg.; MetBull reports 31.1 kg. The source generic Chondrite classification corresponds to modern L5. Adjacent page review confirms the entry is complete because page 30 begins Arva."
+      }
+    },
+    {
+      "id": "obs-f2fec3da-d022-49fc-86fa-9620d892776f",
+      "catalogId": "nininger-1950",
+      "designation": "328.11",
+      "name": "Arriba",
+      "weight": {
+        "grams": 3227
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Lincoln County, Colorado; 39° 18′ N., 103° 15′ W.",
+      "year": "1936",
+      "catalogPage": 29,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Arriba",
+        "meteoriteCode": "2339",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2339",
+        "alternateNameNote": "The source reports 33.6 kg.; MetBull reports 31.1 kg. The source generic Chondrite classification corresponds to modern L5. Adjacent page review confirms the entry is complete because page 30 begins Arva."
+      }
+    },
+    {
       "id": "obs-e2708f2f-16ea-41a6-9e6f-f4db909fa3cd",
       "catalogId": "nininger-1950",
       "designation": "354.1",
@@ -12928,6 +13202,27 @@
         "meteoriteCode": "419",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=419",
         "alternateNameNote": "The source reports 52.7 kg.; MetBull reports 52.6 kg."
+      }
+    },
+    {
+      "id": "obs-f28a0367-d3d1-4bb4-a50b-1c83dcd78d60",
+      "catalogId": "nininger-1950",
+      "designation": "390.2",
+      "name": "Arcadia",
+      "weight": {
+        "grams": 9681
+      },
+      "classification": "Stone. Achondrite",
+      "locality": "Valley County, Nebraska; 41° 25′ N., 99° 6′ W.",
+      "year": "1937",
+      "catalogPage": 29,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Arcadia",
+        "meteoriteCode": "2326",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2326",
+        "alternateNameNote": "The source classification Achondrite conflicts with modern LL6. MetBull lists Boelus as a synonym, and the linked MB8 writeup is headed BOELUS."
       }
     },
     {
@@ -12973,6 +13268,27 @@
       }
     },
     {
+      "id": "obs-0ab21cc3-8afa-464d-a37a-32c0014ab194",
+      "catalogId": "nininger-1950",
+      "designation": "458.2",
+      "name": "Argonia",
+      "weight": {
+        "grams": 27.5
+      },
+      "classification": "Pallasite",
+      "locality": "Sumner County, Kansas; 37° 16′ N., 97° 46′ W.",
+      "year": null,
+      "catalogPage": 29,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Argonia",
+        "meteoriteCode": "2331",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2331",
+        "alternateNameNote": "The source says found many years ago and recently identified without printing a year; MetBull reports 1940. The source Pallasite classification corresponds to modern Pallasite, PMG-an."
+      }
+    },
+    {
       "id": "obs-097445b1-58d6-4782-8e8d-cc93726fad25",
       "catalogId": "nininger-1950",
       "designation": "462.1",
@@ -13012,6 +13328,27 @@
         "meteoriteCode": "430",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=430",
         "alternateNameNote": "MetBull adds the year qualifier to distinguish later Akron finds. The source reports 408 grams; MetBull reports 1050 g. The linked MB30 writeup instead says Akron No. 2, found 1954, 0.64 kg."
+      }
+    },
+    {
+      "id": "obs-2e8f410b-9a22-434b-9f5d-872f85b2908b",
+      "catalogId": "nininger-1950",
+      "designation": "465.1",
+      "name": "Arapahoe",
+      "weight": {
+        "grams": 14000
+      },
+      "classification": "Stone. Black chondrite",
+      "locality": "Cheyenne County, Colorado; 38° 51′ N., 102° 10′ W.",
+      "year": "1940",
+      "catalogPage": 29,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Arapahoe",
+        "meteoriteCode": "2323",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2323",
+        "alternateNameNote": "The source coordinates are 38° 51′ N., 102° 10′ W.; MetBull recommends 38° 48′ N., 102° 12′ W. The historical Black chondrite classification corresponds to modern L5."
       }
     },
     {
