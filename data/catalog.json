@@ -334,14 +334,15 @@
           27,
           28,
           29,
-          30
+          30,
+          31
         ],
-        "sourcePageCount": 5,
-        "recordCount": 63,
-        "recordsWithDesignation": 63,
-        "recordsWithWeight": 62,
+        "sourcePageCount": 6,
+        "recordCount": 72,
+        "recordsWithDesignation": 72,
+        "recordsWithWeight": 71,
         "confidenceCounts": {
-          "high": 63,
+          "high": 72,
           "medium": 0,
           "low": 0
         },
@@ -349,11 +350,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 1975,
-    "recordsWithDesignation": 1806,
-    "recordsWithWeight": 1846,
+    "recordCount": 1984,
+    "recordsWithDesignation": 1815,
+    "recordsWithWeight": 1855,
     "confidenceCounts": {
-      "high": 1975,
+      "high": 1984,
       "medium": 0,
       "low": 0
     }
@@ -17336,6 +17337,69 @@
       }
     },
     {
+      "id": "obs-c6c6359c-a66a-4efe-ae83-0b0a27cfd976",
+      "catalogId": "nininger-1950",
+      "designation": "12a",
+      "name": "Ballinger",
+      "weight": {
+        "grams": 120
+      },
+      "classification": "Iron. Brecciated hexahedrite",
+      "locality": "Runnels County, Texas; 31° 46′ N., 99° 59′ W.",
+      "year": "1927",
+      "catalogPage": 31,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Ballinger",
+        "meteoriteCode": "4930",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4930",
+        "alternateNameNote": "The source coordinates, 1927 find year, and 1,250-gram total known weight agree with MetBull. The historical Brecciated hexahedrite classification differs from recommended Iron, IAB-MG."
+      }
+    },
+    {
+      "id": "obs-bf1a5322-9514-4a22-8463-29682a88b421",
+      "catalogId": "nininger-1950",
+      "designation": "16b",
+      "name": "Barratta",
+      "weight": {
+        "grams": 443
+      },
+      "classification": "Stone. Black chondrite",
+      "locality": "Deniliquin, County Townsend, New South Wales, Australia",
+      "year": "1845",
+      "catalogPage": 31,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Barratta",
+        "meteoriteCode": "4951",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4951",
+        "alternateNameNote": "MetBull lists Baratta and Deniliquin as synonyms. The source reports 181 kg.; MetBull reports 200 kg. The source historical Black chondrite classification corresponds broadly to modern L4."
+      }
+    },
+    {
+      "id": "obs-f7421f37-ea9f-4d53-b0c5-0bb40ad0d9c4",
+      "catalogId": "nininger-1950",
+      "designation": "16a",
+      "name": "Barratta",
+      "weight": {
+        "grams": 2392
+      },
+      "classification": "Stone. Black chondrite",
+      "locality": "Deniliquin, County Townsend, New South Wales, Australia",
+      "year": "1845",
+      "catalogPage": 31,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Barratta",
+        "meteoriteCode": "4951",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4951",
+        "alternateNameNote": "MetBull lists Baratta and Deniliquin as synonyms. The source reports 181 kg.; MetBull reports 200 kg. The source historical Black chondrite classification corresponds broadly to modern L4."
+      }
+    },
+    {
       "id": "obs-34e42aa5-8d35-46b4-9ea5-e2ccac486d5a",
       "catalogId": "nininger-1950",
       "designation": "17a",
@@ -17777,6 +17841,48 @@
       }
     },
     {
+      "id": "obs-11e9f8da-e8c0-422b-8495-19169ed0e173",
+      "catalogId": "nininger-1950",
+      "designation": "243a",
+      "name": "Bath Furnace",
+      "weight": {
+        "grams": 68
+      },
+      "classification": "Stone. Intermediate chondrite",
+      "locality": "Bath County, Kentucky",
+      "year": "1902",
+      "catalogPage": 31,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bath Furnace",
+        "meteoriteCode": "4975",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4975",
+        "alternateNameNote": "The exact name, Kentucky location, and 1902 fall year agree. The source reports 86.6 kg.; MetBull reports 86 kg. The historical Intermediate chondrite classification corresponds broadly to modern L6."
+      }
+    },
+    {
+      "id": "obs-0162f29b-1f80-4127-8f49-768de0b9aa64",
+      "catalogId": "nininger-1950",
+      "designation": "271a",
+      "name": "Ballinoo",
+      "weight": {
+        "grams": 65
+      },
+      "classification": "Iron. Finest octahedrite",
+      "locality": "Murchison River, Western Australia",
+      "year": "1892",
+      "catalogPage": 31,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Ballinoo",
+        "meteoriteCode": "4931",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4931",
+        "alternateNameNote": "The exact name, Western Australia context, and 1892 find year agree. The source reports 42.3 kg.; MetBull reports 42.2 kg. The historical Finest octahedrite classification corresponds to modern Iron, IIC."
+      }
+    },
+    {
       "id": "obs-2d9e1be4-3654-4a65-bfc8-7260c0c5d0ba",
       "catalogId": "nininger-1950",
       "designation": "298.1",
@@ -18008,6 +18114,48 @@
       }
     },
     {
+      "id": "obs-986e7ebb-c43e-4f0a-915b-a41f695a76f3",
+      "catalogId": "nininger-1950",
+      "designation": "338.1",
+      "name": "Barbotan",
+      "weight": {
+        "grams": 32
+      },
+      "classification": "Stone. Veined grey chondrite",
+      "locality": "Landes, France",
+      "year": "1790",
+      "catalogPage": 31,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Barbotan",
+        "meteoriteCode": "4942",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4942",
+        "alternateNameNote": "MetBull lists Agen, Landes, and Roquefort as synonyms. The source reports 9 kg. and 9:00 P.M.; MetBull's basic mass is 6.4 kg and its current writeup says around 9:30 p.m. The historical Veined grey chondrite classification corresponds broadly to modern H5."
+      }
+    },
+    {
+      "id": "obs-14a1f1ee-02b9-480a-93a9-e80786b1861c",
+      "catalogId": "nininger-1950",
+      "designation": "352.1",
+      "name": "Bear Creek",
+      "weight": {
+        "grams": 8720
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Jefferson County, Colorado",
+      "year": "1866",
+      "catalogPage": 31,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bear Creek",
+        "meteoriteCode": "4982",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4982",
+        "alternateNameNote": "MetBull lists Jefferson County as a synonym. The Colorado location, 1866 find year, and 227 kg mass agree. The historical Fine octahedrite classification corresponds to modern Iron, IIIAB."
+      }
+    },
+    {
       "id": "obs-e2708f2f-16ea-41a6-9e6f-f4db909fa3cd",
       "catalogId": "nininger-1950",
       "designation": "354.1",
@@ -18047,6 +18195,27 @@
         "meteoriteCode": "2326",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2326",
         "alternateNameNote": "The source classification Achondrite conflicts with modern LL6. MetBull lists Boelus as a synonym, and the linked MB8 writeup is headed BOELUS."
+      }
+    },
+    {
+      "id": "obs-8a5fc7e4-6a31-493b-85a6-48ce39a6db79",
+      "catalogId": "nininger-1950",
+      "designation": "419.1",
+      "name": "Baxter",
+      "weight": {
+        "grams": 607
+      },
+      "classification": "Stone. Chondrite.",
+      "locality": "Stone County, Missouri; 36° 33′ N., 93° 28′ W.",
+      "year": "1916",
+      "catalogPage": 31,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Baxter",
+        "meteoriteCode": "4977",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4977",
+        "alternateNameNote": "The 1916 fall year and 611-gram total known weight agree. Source coordinates are 36° 33′ N., 93° 28′ W.; MetBull recommends 36° 45′ N., 93° 30′ W. The source generic Chondrite classification is less specific than modern L6."
       }
     },
     {
@@ -18362,6 +18531,27 @@
         "meteoriteCode": "456",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=456",
         "alternateNameNote": "MetBull adds the stone qualifier to distinguish Albin (pallasite). The source and MetBull agree on 1949, 15.4 kg., and 41° 25′ N., 104° 6′ W."
+      }
+    },
+    {
+      "id": "obs-275ac71d-5782-4c43-89a1-5d87f5569fde",
+      "catalogId": "nininger-1950",
+      "designation": "536.1",
+      "name": "Barranca Blanca",
+      "weight": {
+        "grams": 189.5
+      },
+      "classification": "Iron. Brecciated octahedrite",
+      "locality": "Come Caballo Pass, Atacama, Chile",
+      "year": "1845",
+      "catalogPage": 31,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Barranca Blanca",
+        "meteoriteCode": "4950",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4950",
+        "alternateNameNote": "MetBull lists San Francisco Pass as a synonym; the Atacama location and 12 kg mass agree. The source reports 1845, while MetBull reports 1855. The historical Brecciated octahedrite classification corresponds to modern Iron, IIE-an."
       }
     },
     {
