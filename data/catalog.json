@@ -336,14 +336,15 @@
           29,
           30,
           31,
-          32
+          32,
+          33
         ],
-        "sourcePageCount": 7,
-        "recordCount": 106,
-        "recordsWithDesignation": 106,
-        "recordsWithWeight": 105,
+        "sourcePageCount": 8,
+        "recordCount": 122,
+        "recordsWithDesignation": 121,
+        "recordsWithWeight": 120,
         "confidenceCounts": {
-          "high": 106,
+          "high": 122,
           "medium": 0,
           "low": 0
         },
@@ -351,11 +352,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2018,
-    "recordsWithDesignation": 1849,
-    "recordsWithWeight": 1889,
+    "recordCount": 2034,
+    "recordsWithDesignation": 1864,
+    "recordsWithWeight": 1904,
     "confidenceCounts": {
-      "high": 2018,
+      "high": 2034,
       "medium": 0,
       "low": 0
     }
@@ -18283,6 +18284,69 @@
       }
     },
     {
+      "id": "obs-81b280a4-ebe6-4214-b529-2d3ac8112661",
+      "catalogId": "nininger-1950",
+      "designation": "150a",
+      "name": "Bielokrynitsche",
+      "weight": {
+        "grams": 9
+      },
+      "classification": "Stone. Veined spherical chondrite",
+      "locality": "Zaslavl, Volhynia, Ukraine",
+      "year": "1887",
+      "catalogPage": 33,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Bielokrynitschie",
+        "meteoriteCode": "5043",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5043",
+        "alternateNameNote": "Historical spelling. The Ukraine context, 1 January 1887 fall, and approximately 2 kg scale identify official Bielokrynitschie. Source says largest 2 kg.; MetBull mass is 1.9 kg."
+      }
+    },
+    {
+      "id": "obs-f597d5e1-fe76-40b6-a0c6-ee362ae3545a",
+      "catalogId": "nininger-1950",
+      "designation": "150b",
+      "name": "Bielokrynitsche",
+      "weight": {
+        "grams": 21
+      },
+      "classification": "Stone. Veined spherical chondrite",
+      "locality": "Zaslavl, Volhynia, Ukraine",
+      "year": "1887",
+      "catalogPage": 33,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Bielokrynitschie",
+        "meteoriteCode": "5043",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5043",
+        "alternateNameNote": "Historical spelling. The Ukraine context, 1 January 1887 fall, and approximately 2 kg scale identify official Bielokrynitschie. Source says largest 2 kg.; MetBull mass is 1.9 kg."
+      }
+    },
+    {
+      "id": "obs-d6ab3f47-00e8-4ba0-a7c3-f29f272cfda7",
+      "catalogId": "nininger-1950",
+      "designation": "151a",
+      "name": "Billings",
+      "weight": {
+        "grams": 521
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Christian County, Missouri",
+      "year": "1903",
+      "catalogPage": 33,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Billings",
+        "meteoriteCode": "5047",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5047",
+        "alternateNameNote": "The Missouri context, 1903 year, and 24.5 kg source total agree; MetBull lists Christian County as a synonym. The historical class corresponds broadly to modern Iron, IIIAB."
+      }
+    },
+    {
       "id": "obs-fffe7e17-dd35-48fb-9dbb-cb1f8cdf0bd5",
       "catalogId": "nininger-1950",
       "designation": "168a",
@@ -18406,6 +18470,90 @@
         "meteoriteCode": null,
         "metbullUrl": null,
         "alternateNameNote": "MetBull lists Babb's Mill as a synonym of two official records. The source's 1842 date matches Babb's Mill (Troost's Iron), code 4916, whose mass is 6.4 kg.; the source's 143 kg. mass instead approximates Babb's Mill (Blake's Iron), code 4915, whose mass is 136 kg. and find year is 1876. The specimen cannot be assigned uniquely."
+      }
+    },
+    {
+      "id": "obs-4b5dcdb4-3e74-4d63-a2ae-8cb47e4e45d0",
+      "catalogId": "nininger-1950",
+      "designation": "212a",
+      "name": "Bishopville",
+      "weight": {
+        "grams": 25
+      },
+      "classification": "Stone. Aubrite (enstatite-achondrite)",
+      "locality": "Sumter County, South Carolina",
+      "year": "1843",
+      "catalogPage": 33,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bishopville",
+        "meteoriteCode": "5059",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5059",
+        "alternateNameNote": "The South Carolina context, 25 March 1843 fall, and Aubrite class agree; MetBull lists Sumter County as a synonym. Source total is 5.9 kg.; MetBull mass is 6 kg."
+      }
+    },
+    {
+      "id": "obs-cdb9bf16-0cf1-4557-95f4-11811c29b42e",
+      "catalogId": "nininger-1950",
+      "designation": "212.2",
+      "name": "Bishopville",
+      "weight": {
+        "grams": 35.5
+      },
+      "classification": "Stone. Aubrite (enstatite-achondrite)",
+      "locality": "Sumter County, South Carolina",
+      "year": "1843",
+      "catalogPage": 33,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bishopville",
+        "meteoriteCode": "5059",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5059",
+        "alternateNameNote": "The South Carolina context, 25 March 1843 fall, and Aubrite class agree; MetBull lists Sumter County as a synonym. Source total is 5.9 kg.; MetBull mass is 6 kg."
+      }
+    },
+    {
+      "id": "obs-ab576a69-63d3-43bc-8d5b-2335cf604a04",
+      "catalogId": "nininger-1950",
+      "designation": "212.3",
+      "name": "Bishopville",
+      "weight": {
+        "grams": 5.6
+      },
+      "classification": "Stone. Aubrite (enstatite-achondrite)",
+      "locality": "Sumter County, South Carolina",
+      "year": "1843",
+      "catalogPage": 33,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bishopville",
+        "meteoriteCode": "5059",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5059",
+        "alternateNameNote": "The South Carolina context, 25 March 1843 fall, and Aubrite class agree; MetBull lists Sumter County as a synonym. Source total is 5.9 kg.; MetBull mass is 6 kg."
+      }
+    },
+    {
+      "id": "obs-449c3b2c-94ed-4b19-a8f4-14d54d141426",
+      "catalogId": "nininger-1950",
+      "designation": "212.4",
+      "name": "Bishopville",
+      "weight": {
+        "grams": 8
+      },
+      "classification": "Stone. Aubrite (enstatite-achondrite)",
+      "locality": "Sumter County, South Carolina",
+      "year": "1843",
+      "catalogPage": 33,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bishopville",
+        "meteoriteCode": "5059",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5059",
+        "alternateNameNote": "The South Carolina context, 25 March 1843 fall, and Aubrite class agree; MetBull lists Sumter County as a synonym. Source total is 5.9 kg.; MetBull mass is 6 kg."
       }
     },
     {
@@ -18829,6 +18977,48 @@
       }
     },
     {
+      "id": "obs-a396f272-2855-4017-9b30-ec394ff36ca9",
+      "catalogId": "nininger-1950",
+      "designation": "360.1",
+      "name": "Bishop Canyon",
+      "weight": {
+        "grams": 199
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "San Miguel County, Colorado",
+      "year": "1912",
+      "catalogPage": 33,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bishop Canyon",
+        "meteoriteCode": "5058",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5058",
+        "alternateNameNote": "The Colorado context, 1912 year, and 8.6 kg source total agree; MetBull lists San Miguel County as a synonym. The historical class corresponds broadly to modern Iron, IVA."
+      }
+    },
+    {
+      "id": "obs-7f3f8784-2be7-436c-9d4a-3b8c01215805",
+      "catalogId": "nininger-1950",
+      "designation": "374.1",
+      "name": "Bennett County",
+      "weight": {
+        "grams": 2100
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "South Dakota",
+      "year": "1935",
+      "catalogPage": 33,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bennett County",
+        "meteoriteCode": "5022",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5022",
+        "alternateNameNote": "The South Dakota context and 89 kg mass agree. Source year 1935 differs from MetBull year 1934; MetBull also reproduces a correction from Coarse octahedrite to Hexahedrite and recommends Iron, IIAB."
+      }
+    },
+    {
       "id": "obs-f28a0367-d3d1-4bb4-a50b-1c83dcd78d60",
       "catalogId": "nininger-1950",
       "designation": "390.2",
@@ -19123,6 +19313,69 @@
       }
     },
     {
+      "id": "obs-85fc86c7-3333-4677-836e-ff1b7ab0bb53",
+      "catalogId": "nininger-1950",
+      "designation": "472.1",
+      "name": "Bethune",
+      "weight": {
+        "grams": 27.5
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Carson County, Colorado; 39° 18′ N., 102° 25′ W.",
+      "year": "1941",
+      "catalogPage": 33,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bethune",
+        "meteoriteCode": "5033",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5033",
+        "alternateNameNote": "The Colorado context, 1941 year, 67 gram source total, and coordinates agree. The source generic Chondrite class is less specific than modern EH4/5."
+      }
+    },
+    {
+      "id": "obs-99fe2f07-1529-48c2-b371-5d68752406e4",
+      "catalogId": "nininger-1950",
+      "designation": "472.2",
+      "name": "Bethune",
+      "weight": {
+        "grams": 24.5
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Carson County, Colorado; 39° 18′ N., 102° 25′ W.",
+      "year": "1941",
+      "catalogPage": 33,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bethune",
+        "meteoriteCode": "5033",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5033",
+        "alternateNameNote": "The Colorado context, 1941 year, 67 gram source total, and coordinates agree. The source generic Chondrite class is less specific than modern EH4/5."
+      }
+    },
+    {
+      "id": "obs-6761efe9-fc0a-452b-ad65-35f5918b1dd7",
+      "catalogId": "nininger-1950",
+      "designation": "472.3",
+      "name": "Bethune",
+      "weight": {
+        "grams": 15
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Carson County, Colorado; 39° 18′ N., 102° 25′ W.",
+      "year": "1941",
+      "catalogPage": 33,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bethune",
+        "meteoriteCode": "5033",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5033",
+        "alternateNameNote": "The Colorado context, 1941 year, 67 gram source total, and coordinates agree. The source generic Chondrite class is less specific than modern EH4/5."
+      }
+    },
+    {
       "id": "obs-63fb01eb-4a56-45e2-bfc0-35f30043e968",
       "catalogId": "nininger-1950",
       "designation": "473.1",
@@ -19186,6 +19439,48 @@
       }
     },
     {
+      "id": "obs-ded70425-9e87-454d-b5aa-dd7f10575111",
+      "catalogId": "nininger-1950",
+      "designation": "506.1",
+      "name": "Bethany",
+      "weight": {
+        "grams": 1116.2
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Great Namaqualand, South Africa",
+      "year": "before 1836",
+      "catalogPage": 33,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Gibeon",
+        "meteoriteCode": "10912",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10912",
+        "alternateNameNote": "MetBull lists Bethany and the source's many other synonyms under official Gibeon. Source says known before 1836 and 15,000 kg.; MetBull gives 1836 and 26 t in modern Namibia."
+      }
+    },
+    {
+      "id": "obs-e8cf9272-07ae-411f-ab4e-3fdc2fe079f9",
+      "catalogId": "nininger-1950",
+      "designation": "506.2",
+      "name": "Bethany",
+      "weight": {
+        "grams": 2944
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Great Namaqualand, South Africa",
+      "year": "before 1836",
+      "catalogPage": 33,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Gibeon",
+        "meteoriteCode": "10912",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10912",
+        "alternateNameNote": "MetBull lists Bethany and the source's many other synonyms under official Gibeon. Source says known before 1836 and 15,000 kg.; MetBull gives 1836 and 26 t in modern Namibia."
+      }
+    },
+    {
       "id": "obs-71f72d44-d300-4fab-b9bf-25462bd20d11",
       "catalogId": "nininger-1950",
       "designation": "515.1",
@@ -19225,6 +19520,27 @@
         "meteoriteCode": "371",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=371",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-1b43ce6c-b57d-44ba-bd12-d5f6ac7cfac1",
+      "catalogId": "nininger-1950",
+      "designation": "530.1",
+      "name": "Benton",
+      "weight": {
+        "grams": 16.5
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Porten Settlement, New Brunswick",
+      "year": "1949",
+      "catalogPage": 33,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Benton",
+        "meteoriteCode": "5026",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5026",
+        "alternateNameNote": "The New Brunswick context and 1949 fall year agree. Source total is about 5.4 kg.; MetBull mass is 2.84 kg. The source generic Chondrite classification is less specific than modern LL6."
       }
     },
     {
@@ -41842,6 +42158,27 @@
         "meteoriteCode": null,
         "metbullUrl": null,
         "alternateNameNote": "Official checker reports the generic label as unknown; it covers distinct Roosevelt County observations from 1968–1973 and does not establish any approved meteorite identity."
+      }
+    },
+    {
+      "id": "obs-7d9c52e2-27ae-4ce3-8567-5cbd4524a288",
+      "catalogId": "nininger-1950",
+      "designation": null,
+      "name": "Bishopville",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Stone. Aubrite (enstatite-achondrite)",
+      "locality": "Sumter County, South Carolina",
+      "year": "1843",
+      "catalogPage": 33,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bishopville",
+        "meteoriteCode": "5059",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5059",
+        "alternateNameNote": "The source prints this as a separate description line without designation or weight; neither is inferred. The Bishopville identity and context match MetBull."
       }
     },
     {
