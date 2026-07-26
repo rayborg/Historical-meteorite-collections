@@ -335,14 +335,15 @@
           28,
           29,
           30,
-          31
+          31,
+          32
         ],
-        "sourcePageCount": 6,
-        "recordCount": 72,
-        "recordsWithDesignation": 72,
-        "recordsWithWeight": 71,
+        "sourcePageCount": 7,
+        "recordCount": 106,
+        "recordsWithDesignation": 106,
+        "recordsWithWeight": 105,
         "confidenceCounts": {
-          "high": 72,
+          "high": 106,
           "medium": 0,
           "low": 0
         },
@@ -350,11 +351,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 1984,
-    "recordsWithDesignation": 1815,
-    "recordsWithWeight": 1855,
+    "recordCount": 2018,
+    "recordsWithDesignation": 1849,
+    "recordsWithWeight": 1889,
     "confidenceCounts": {
-      "high": 1984,
+      "high": 2018,
       "medium": 0,
       "low": 0
     }
@@ -17358,6 +17359,27 @@
       }
     },
     {
+      "id": "obs-c05a1948-4d83-480e-bb02-8be387da993f",
+      "catalogId": "nininger-1950",
+      "designation": "15a",
+      "name": "Beaver Creek",
+      "weight": {
+        "grams": 32
+      },
+      "classification": "Stone. Crystalline spherical bronzite-chondrite",
+      "locality": "West Kootenay Dist., British Columbia, Canada",
+      "year": "1893",
+      "catalogPage": 32,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Beaver Creek",
+        "meteoriteCode": "4986",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4986",
+        "alternateNameNote": "The British Columbia context and 1893 fall year agree. The source reports 14.1 kg.; MetBull reports 14 kg. The historical Crystalline spherical bronzite-chondrite classification corresponds broadly to modern H5."
+      }
+    },
+    {
       "id": "obs-bf1a5322-9514-4a22-8463-29682a88b421",
       "catalogId": "nininger-1950",
       "designation": "16b",
@@ -17694,6 +17716,573 @@
       }
     },
     {
+      "id": "obs-079ffdcd-0d3a-4acf-bf73-0b75b890e0c4",
+      "catalogId": "nininger-1950",
+      "designation": "134vv",
+      "name": "Beardsley",
+      "weight": {
+        "grams": 3
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Rawlins County, Kansas",
+      "year": "1929",
+      "catalogPage": 32,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Beardsley",
+        "meteoriteCode": "4984",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4984",
+        "alternateNameNote": "The Kansas context, 1929 fall year, and 16 kg source total agree with MetBull. The historical Grey chondrite classification corresponds broadly to modern H5."
+      }
+    },
+    {
+      "id": "obs-e6ab0385-858a-45f9-a23c-415240f8fff4",
+      "catalogId": "nininger-1950",
+      "designation": "134uu",
+      "name": "Beardsley",
+      "weight": {
+        "grams": 5.5
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Rawlins County, Kansas",
+      "year": "1929",
+      "catalogPage": 32,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Beardsley",
+        "meteoriteCode": "4984",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4984",
+        "alternateNameNote": "The Kansas context, 1929 fall year, and 16 kg source total agree with MetBull. The historical Grey chondrite classification corresponds broadly to modern H5."
+      }
+    },
+    {
+      "id": "obs-548cea00-57b2-4b0c-91f9-5ff8cb37f084",
+      "catalogId": "nininger-1950",
+      "designation": "134tt",
+      "name": "Beardsley",
+      "weight": {
+        "grams": 10
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Rawlins County, Kansas",
+      "year": "1929",
+      "catalogPage": 32,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Beardsley",
+        "meteoriteCode": "4984",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4984",
+        "alternateNameNote": "The Kansas context, 1929 fall year, and 16 kg source total agree with MetBull. The historical Grey chondrite classification corresponds broadly to modern H5."
+      }
+    },
+    {
+      "id": "obs-acb0d735-4b09-441c-b5b1-b9b573405bce",
+      "catalogId": "nininger-1950",
+      "designation": "134ss",
+      "name": "Beardsley",
+      "weight": {
+        "grams": 10.5
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Rawlins County, Kansas",
+      "year": "1929",
+      "catalogPage": 32,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Beardsley",
+        "meteoriteCode": "4984",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4984",
+        "alternateNameNote": "The Kansas context, 1929 fall year, and 16 kg source total agree with MetBull. The historical Grey chondrite classification corresponds broadly to modern H5."
+      }
+    },
+    {
+      "id": "obs-a955bfd6-2232-49e1-be4c-bc3f21caae47",
+      "catalogId": "nininger-1950",
+      "designation": "134cc",
+      "name": "Beardsley",
+      "weight": {
+        "grams": 12.5
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Rawlins County, Kansas",
+      "year": "1929",
+      "catalogPage": 32,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Beardsley",
+        "meteoriteCode": "4984",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4984",
+        "alternateNameNote": "The Kansas context, 1929 fall year, and 16 kg source total agree with MetBull. The historical Grey chondrite classification corresponds broadly to modern H5."
+      }
+    },
+    {
+      "id": "obs-f8585434-a11e-463d-b8d6-7d3c1da63678",
+      "catalogId": "nininger-1950",
+      "designation": "134pp",
+      "name": "Beardsley",
+      "weight": {
+        "grams": 12.5
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Rawlins County, Kansas",
+      "year": "1929",
+      "catalogPage": 32,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Beardsley",
+        "meteoriteCode": "4984",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4984",
+        "alternateNameNote": "The Kansas context, 1929 fall year, and 16 kg source total agree with MetBull. The historical Grey chondrite classification corresponds broadly to modern H5."
+      }
+    },
+    {
+      "id": "obs-49c382c2-43cf-4311-8ea4-52adc9900ada",
+      "catalogId": "nininger-1950",
+      "designation": "134qq",
+      "name": "Beardsley",
+      "weight": {
+        "grams": 13
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Rawlins County, Kansas",
+      "year": "1929",
+      "catalogPage": 32,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Beardsley",
+        "meteoriteCode": "4984",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4984",
+        "alternateNameNote": "The Kansas context, 1929 fall year, and 16 kg source total agree with MetBull. The historical Grey chondrite classification corresponds broadly to modern H5."
+      }
+    },
+    {
+      "id": "obs-d4398740-a915-42fc-812d-8e669cc758b8",
+      "catalogId": "nininger-1950",
+      "designation": "134z",
+      "name": "Beardsley",
+      "weight": {
+        "grams": 16.5
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Rawlins County, Kansas",
+      "year": "1929",
+      "catalogPage": 32,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Beardsley",
+        "meteoriteCode": "4984",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4984",
+        "alternateNameNote": "The Kansas context, 1929 fall year, and 16 kg source total agree with MetBull. The historical Grey chondrite classification corresponds broadly to modern H5."
+      }
+    },
+    {
+      "id": "obs-a0fc031b-cf03-4269-a218-9a6181333f71",
+      "catalogId": "nininger-1950",
+      "designation": "134y",
+      "name": "Beardsley",
+      "weight": {
+        "grams": 17.5
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Rawlins County, Kansas",
+      "year": "1929",
+      "catalogPage": 32,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Beardsley",
+        "meteoriteCode": "4984",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4984",
+        "alternateNameNote": "The Kansas context, 1929 fall year, and 16 kg source total agree with MetBull. The historical Grey chondrite classification corresponds broadly to modern H5."
+      }
+    },
+    {
+      "id": "obs-e212733b-430f-40f0-b336-0a080bd0160c",
+      "catalogId": "nininger-1950",
+      "designation": "134mm",
+      "name": "Beardsley",
+      "weight": {
+        "grams": 22
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Rawlins County, Kansas",
+      "year": "1929",
+      "catalogPage": 32,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Beardsley",
+        "meteoriteCode": "4984",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4984",
+        "alternateNameNote": "The Kansas context, 1929 fall year, and 16 kg source total agree with MetBull. The historical Grey chondrite classification corresponds broadly to modern H5."
+      }
+    },
+    {
+      "id": "obs-2e63730e-1d46-40c4-9dab-9178ddb3d3ac",
+      "catalogId": "nininger-1950",
+      "designation": "134o",
+      "name": "Beardsley",
+      "weight": {
+        "grams": 26
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Rawlins County, Kansas",
+      "year": "1929",
+      "catalogPage": 32,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Beardsley",
+        "meteoriteCode": "4984",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4984",
+        "alternateNameNote": "The Kansas context, 1929 fall year, and 16 kg source total agree with MetBull. The historical Grey chondrite classification corresponds broadly to modern H5."
+      }
+    },
+    {
+      "id": "obs-36394a1f-86b7-4051-b168-b03304f64898",
+      "catalogId": "nininger-1950",
+      "designation": "134n",
+      "name": "Beardsley",
+      "weight": {
+        "grams": 32
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Rawlins County, Kansas",
+      "year": "1929",
+      "catalogPage": 32,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Beardsley",
+        "meteoriteCode": "4984",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4984",
+        "alternateNameNote": "The Kansas context, 1929 fall year, and 16 kg source total agree with MetBull. The historical Grey chondrite classification corresponds broadly to modern H5."
+      }
+    },
+    {
+      "id": "obs-4101fdcb-2dfc-4e19-bfb9-156f77e5c117",
+      "catalogId": "nininger-1950",
+      "designation": "134g",
+      "name": "Beardsley",
+      "weight": {
+        "grams": 42
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Rawlins County, Kansas",
+      "year": "1929",
+      "catalogPage": 32,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Beardsley",
+        "meteoriteCode": "4984",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4984",
+        "alternateNameNote": "The Kansas context, 1929 fall year, and 16 kg source total agree with MetBull. The historical Grey chondrite classification corresponds broadly to modern H5."
+      }
+    },
+    {
+      "id": "obs-1d799fff-f01b-4bad-9df7-536f147c4385",
+      "catalogId": "nininger-1950",
+      "designation": "134u",
+      "name": "Beardsley",
+      "weight": {
+        "grams": 44
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Rawlins County, Kansas",
+      "year": "1929",
+      "catalogPage": 32,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Beardsley",
+        "meteoriteCode": "4984",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4984",
+        "alternateNameNote": "The Kansas context, 1929 fall year, and 16 kg source total agree with MetBull. The historical Grey chondrite classification corresponds broadly to modern H5."
+      }
+    },
+    {
+      "id": "obs-0d1172bd-ae88-4d3e-a471-7beb78bb94a4",
+      "catalogId": "nininger-1950",
+      "designation": "134LL",
+      "name": "Beardsley",
+      "weight": {
+        "grams": 46
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Rawlins County, Kansas",
+      "year": "1929",
+      "catalogPage": 32,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Beardsley",
+        "meteoriteCode": "4984",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4984",
+        "alternateNameNote": "The Kansas context, 1929 fall year, and 16 kg source total agree with MetBull. The historical Grey chondrite classification corresponds broadly to modern H5."
+      }
+    },
+    {
+      "id": "obs-985f3178-e46e-4362-97ad-9b26ea68534c",
+      "catalogId": "nininger-1950",
+      "designation": "134jj",
+      "name": "Beardsley",
+      "weight": {
+        "grams": 73
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Rawlins County, Kansas",
+      "year": "1929",
+      "catalogPage": 32,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Beardsley",
+        "meteoriteCode": "4984",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4984",
+        "alternateNameNote": "The Kansas context, 1929 fall year, and 16 kg source total agree with MetBull. The historical Grey chondrite classification corresponds broadly to modern H5."
+      }
+    },
+    {
+      "id": "obs-3c272197-815e-4095-8069-c577422a657a",
+      "catalogId": "nininger-1950",
+      "designation": "134L",
+      "name": "Beardsley",
+      "weight": {
+        "grams": 107
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Rawlins County, Kansas",
+      "year": "1929",
+      "catalogPage": 32,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Beardsley",
+        "meteoriteCode": "4984",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4984",
+        "alternateNameNote": "The Kansas context, 1929 fall year, and 16 kg source total agree with MetBull. The historical Grey chondrite classification corresponds broadly to modern H5."
+      }
+    },
+    {
+      "id": "obs-b62e95ad-4976-46fa-a3fb-0d41126484ff",
+      "catalogId": "nininger-1950",
+      "designation": "134ff",
+      "name": "Beardsley",
+      "weight": {
+        "grams": 135.4
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Rawlins County, Kansas",
+      "year": "1929",
+      "catalogPage": 32,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Beardsley",
+        "meteoriteCode": "4984",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4984",
+        "alternateNameNote": "The Kansas context, 1929 fall year, and 16 kg source total agree with MetBull. The historical Grey chondrite classification corresponds broadly to modern H5."
+      }
+    },
+    {
+      "id": "obs-cb5f01b4-0409-4f3c-b40c-d9ebc5d2afed",
+      "catalogId": "nininger-1950",
+      "designation": "134hh",
+      "name": "Beardsley",
+      "weight": {
+        "grams": 250
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Rawlins County, Kansas",
+      "year": "1929",
+      "catalogPage": 32,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Beardsley",
+        "meteoriteCode": "4984",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4984",
+        "alternateNameNote": "The Kansas context, 1929 fall year, and 16 kg source total agree with MetBull. The historical Grey chondrite classification corresponds broadly to modern H5."
+      }
+    },
+    {
+      "id": "obs-4c46f3dd-001f-4b85-ab61-4affeec77118",
+      "catalogId": "nininger-1950",
+      "designation": "134b",
+      "name": "Beardsley",
+      "weight": {
+        "grams": 262
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Rawlins County, Kansas",
+      "year": "1929",
+      "catalogPage": 32,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Beardsley",
+        "meteoriteCode": "4984",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4984",
+        "alternateNameNote": "The Kansas context, 1929 fall year, and 16 kg source total agree with MetBull. The historical Grey chondrite classification corresponds broadly to modern H5."
+      }
+    },
+    {
+      "id": "obs-12658ab4-3e55-4a95-b3e2-77fcbcfa7a1a",
+      "catalogId": "nininger-1950",
+      "designation": "134e",
+      "name": "Beardsley",
+      "weight": {
+        "grams": 363
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Rawlins County, Kansas",
+      "year": "1929",
+      "catalogPage": 32,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Beardsley",
+        "meteoriteCode": "4984",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4984",
+        "alternateNameNote": "The Kansas context, 1929 fall year, and 16 kg source total agree with MetBull. The historical Grey chondrite classification corresponds broadly to modern H5."
+      }
+    },
+    {
+      "id": "obs-3927e35d-90d6-4b99-918d-ae50a5c4ccea",
+      "catalogId": "nininger-1950",
+      "designation": "134gg",
+      "name": "Beardsley",
+      "weight": {
+        "grams": 654
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Rawlins County, Kansas",
+      "year": "1929",
+      "catalogPage": 32,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Beardsley",
+        "meteoriteCode": "4984",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4984",
+        "alternateNameNote": "The Kansas context, 1929 fall year, and 16 kg source total agree with MetBull. The historical Grey chondrite classification corresponds broadly to modern H5."
+      }
+    },
+    {
+      "id": "obs-25946662-6f17-44c9-b254-759061ea3e02",
+      "catalogId": "nininger-1950",
+      "designation": "134ww",
+      "name": "Beardsley",
+      "weight": {
+        "grams": 704
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Rawlins County, Kansas",
+      "year": "1929",
+      "catalogPage": 32,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Beardsley",
+        "meteoriteCode": "4984",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4984",
+        "alternateNameNote": "The Kansas context, 1929 fall year, and 16 kg source total agree with MetBull. The historical Grey chondrite classification corresponds broadly to modern H5."
+      }
+    },
+    {
+      "id": "obs-b978abbe-1c6b-460c-a891-d31674fc47ed",
+      "catalogId": "nininger-1950",
+      "designation": "134a",
+      "name": "Beardsley",
+      "weight": {
+        "grams": 9286.5
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Rawlins County, Kansas",
+      "year": "1929",
+      "catalogPage": 32,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Beardsley",
+        "meteoriteCode": "4984",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4984",
+        "alternateNameNote": "The Kansas context, 1929 fall year, and 16 kg source total agree with MetBull. The historical Grey chondrite classification corresponds broadly to modern H5."
+      }
+    },
+    {
+      "id": "obs-5f5a2e69-381a-40a8-80c2-87943e67ac94",
+      "catalogId": "nininger-1950",
+      "designation": "134.53",
+      "name": "Beardsley",
+      "weight": {
+        "grams": 32.5
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Rawlins County, Kansas",
+      "year": "1929",
+      "catalogPage": 32,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Beardsley",
+        "meteoriteCode": "4984",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4984",
+        "alternateNameNote": "The Kansas context, 1929 fall year, and 16 kg source total agree with MetBull. The historical Grey chondrite classification corresponds broadly to modern H5."
+      }
+    },
+    {
+      "id": "obs-bbfba01a-553f-423d-9676-baa820b13a9c",
+      "catalogId": "nininger-1950",
+      "designation": "134.54",
+      "name": "Beardsley",
+      "weight": {
+        "grams": 9
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Rawlins County, Kansas",
+      "year": "1929",
+      "catalogPage": 32,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Beardsley",
+        "meteoriteCode": "4984",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4984",
+        "alternateNameNote": "The Kansas context, 1929 fall year, and 16 kg source total agree with MetBull. The historical Grey chondrite classification corresponds broadly to modern H5."
+      }
+    },
+    {
+      "id": "obs-82a24bf7-e420-4b12-a05e-88c30ebeb9fd",
+      "catalogId": "nininger-1950",
+      "designation": "134.56",
+      "name": "Beardsley",
+      "weight": {
+        "grams": 71.5
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Rawlins County, Kansas",
+      "year": "1929",
+      "catalogPage": 32,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Beardsley",
+        "meteoriteCode": "4984",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4984",
+        "alternateNameNote": "The Kansas context, 1929 fall year, and 16 kg source total agree with MetBull. The historical Grey chondrite classification corresponds broadly to modern H5."
+      }
+    },
+    {
       "id": "obs-fffe7e17-dd35-48fb-9dbb-cb1f8cdf0bd5",
       "catalogId": "nininger-1950",
       "designation": "168a",
@@ -17862,6 +18451,27 @@
       }
     },
     {
+      "id": "obs-888e3e12-142a-4275-ae16-cfe95220d36c",
+      "catalogId": "nininger-1950",
+      "designation": "266a",
+      "name": "Beilla Roca",
+      "weight": {
+        "grams": 720.6
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Sierra de San Francisco, Santiago Papasquiaro, Durango, Mexico",
+      "year": "1888",
+      "catalogPage": 32,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Bella Roca",
+        "meteoriteCode": "5003",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5003",
+        "alternateNameNote": "The source inserts i in Beilla. MetBull lists La Bella Roca and Papasquiaro as synonyms; the Durango context and 1888 date agree. The source reports 33.2 kg.; MetBull reports 33 kg. The historical Fine octahedrite classification corresponds broadly to modern Iron, IIIAB."
+      }
+    },
+    {
       "id": "obs-0162f29b-1f80-4127-8f49-768de0b9aa64",
       "catalogId": "nininger-1950",
       "designation": "271a",
@@ -17880,6 +18490,27 @@
         "meteoriteCode": "4931",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4931",
         "alternateNameNote": "The exact name, Western Australia context, and 1892 find year agree. The source reports 42.3 kg.; MetBull reports 42.2 kg. The historical Finest octahedrite classification corresponds to modern Iron, IIC."
+      }
+    },
+    {
+      "id": "obs-f43d3e70-cf72-40b6-8d3f-2b7861ebc4be",
+      "catalogId": "nininger-1950",
+      "designation": "286a",
+      "name": "Bear Lodge",
+      "weight": {
+        "grams": 1046
+      },
+      "classification": "Iron. Octahedrite",
+      "locality": "Crook County, Wyoming",
+      "year": "1931",
+      "catalogPage": 32,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bear Lodge",
+        "meteoriteCode": "4983",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4983",
+        "alternateNameNote": "The Wyoming context and 1931 find year agree. The source reports 48.6 kg.; MetBull reports 48.5 kg. The historical Octahedrite classification corresponds broadly to modern Iron, IIIAB."
       }
     },
     {
@@ -18177,6 +18808,27 @@
       }
     },
     {
+      "id": "obs-41bbbbb5-7ccc-4f57-b261-0c1497c6bc45",
+      "catalogId": "nininger-1950",
+      "designation": "355.1",
+      "name": "Bendego",
+      "weight": {
+        "grams": 920
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Bahia, Brazil",
+      "year": "1784",
+      "catalogPage": 32,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Bendegó",
+        "meteoriteCode": "5015",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5015",
+        "alternateNameNote": "The source omits the official final acute accent. MetBull lists Bahia as a synonym; the Brazil context and 1784 find year agree. The source reports 5,000 kg.; MetBull reports 5.36 t. The historical Coarse octahedrite classification corresponds broadly to modern Iron, IC."
+      }
+    },
+    {
       "id": "obs-f28a0367-d3d1-4bb4-a50b-1c83dcd78d60",
       "catalogId": "nininger-1950",
       "designation": "390.2",
@@ -18195,6 +18847,69 @@
         "meteoriteCode": "2326",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2326",
         "alternateNameNote": "The source classification Achondrite conflicts with modern LL6. MetBull lists Boelus as a synonym, and the linked MB8 writeup is headed BOELUS."
+      }
+    },
+    {
+      "id": "obs-669c57bf-98ec-49f4-9d4b-c7bfe6872613",
+      "catalogId": "nininger-1950",
+      "designation": "414.26",
+      "name": "Beenham",
+      "weight": {
+        "grams": 3171
+      },
+      "classification": "Stone. Intermediate chondrite",
+      "locality": "Union County, New Mexico; 36° 13′ N., 103° 39′ W.",
+      "year": "1937",
+      "catalogPage": 32,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Beenham",
+        "meteoriteCode": "4995",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4995",
+        "alternateNameNote": "The New Mexico context, 1937 find year, 44.4 kg mass, and source coordinates agree with MetBull. The historical Intermediate chondrite classification corresponds broadly to modern L5."
+      }
+    },
+    {
+      "id": "obs-c1928ab0-aa17-43c2-8bd1-6cc8adcfc4a1",
+      "catalogId": "nininger-1950",
+      "designation": "414.27",
+      "name": "Beenham",
+      "weight": {
+        "grams": 922
+      },
+      "classification": "Stone. Intermediate chondrite",
+      "locality": "Union County, New Mexico; 36° 13′ N., 103° 39′ W.",
+      "year": "1937",
+      "catalogPage": 32,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Beenham",
+        "meteoriteCode": "4995",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4995",
+        "alternateNameNote": "The New Mexico context, 1937 find year, 44.4 kg mass, and source coordinates agree with MetBull. The historical Intermediate chondrite classification corresponds broadly to modern L5."
+      }
+    },
+    {
+      "id": "obs-3dd672e5-cc41-4aba-b07e-93f125402d8a",
+      "catalogId": "nininger-1950",
+      "designation": "414.100",
+      "name": "Beenham",
+      "weight": {
+        "grams": 1539.5
+      },
+      "classification": "Stone. Intermediate chondrite",
+      "locality": "Union County, New Mexico; 36° 13′ N., 103° 39′ W.",
+      "year": "1937",
+      "catalogPage": 32,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Beenham",
+        "meteoriteCode": "4995",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4995",
+        "alternateNameNote": "The New Mexico context, 1937 find year, 44.4 kg mass, and source coordinates agree with MetBull. The historical Intermediate chondrite classification corresponds broadly to modern L5."
       }
     },
     {

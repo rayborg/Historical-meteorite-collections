@@ -1,6 +1,6 @@
 # Historical Meteorite Collection
 
-This repository is a dependency-free, facts-only index of 1,984 source observations from eight historical meteorite catalogs. The coordinated catalog uses public metadata schema 6 and supports four source-specific record models: `specimen`, `catalog-item`, `catalog-number`, and `collection-entry`.
+This repository is a dependency-free, facts-only index of 2,018 source observations from eight historical meteorite catalogs. The coordinated catalog uses public metadata schema 6 and supports four source-specific record models: `specimen`, `catalog-item`, `catalog-number`, and `collection-entry`.
 
 A searchable transcription of the 1976 Huss Meteorite Collection catalog, compiled and published by Glenn Huss.
 
@@ -86,10 +86,10 @@ The current catalog contains:
 | `huss-1986` | `specimen` | 544 | 21 | 21 |
 | `lucas-1813` | `collection-entry` | 13 | 3 | 3 |
 | `nininger-1933` | `catalog-item` | 136 | 18 | 9 |
-| `nininger-1950` | `specimen` | 72 | 6 | 6 |
-| **Total** |  | **1,984** | **154** | **137** |
+| `nininger-1950` | `specimen` | 106 | 7 | 7 |
+| **Total** |  | **2,018** | **155** | **138** |
 
-Metadata source-page coverage is not a claim that every covered page contains a record. Chladni 1825 pages 200-207 are introductory folios; records begin on page 208. The Nininger 1933 source set has a title page and printed pages 1-7 and 10-20. Printed pages 8-9 and catalog items 106-141 are missing. Pages 12-20 are narrative-only and contain no catalog-item observations. The resulting 136 entries form a partial, not complete, digital edition. Nininger 1950 currently covers printed pages 26-31 and 72 specimen observations from Abancay through Bear Creek; page 30 ends with the complete Bald Mountain entry before page 31 begins Ballinger. Beardsley begins at the foot of page 31 but contributes no observation there because its specimen section starts after the page boundary.
+Metadata source-page coverage is not a claim that every covered page contains a record. Chladni 1825 pages 200-207 are introductory folios; records begin on page 208. The Nininger 1933 source set has a title page and printed pages 1-7 and 10-20. Printed pages 8-9 and catalog items 106-141 are missing. Pages 12-20 are narrative-only and contain no catalog-item observations. The resulting 136 entries form a partial, not complete, digital edition. Nininger 1950 currently covers printed pages 26-32 and 106 specimen observations from Abancay through Bendego. Page 32 begins with exactly 27 Beardsley rows continuing page-31 context and closes Bendego before the page marker, with no outgoing continuation.
 
 Records are source observations, not canonical meteorites or physical specimens. Equal names, designations, masses, or page numbers do not merge observations across catalogs. Statistics count each parent record once and sum every reported numeric mass once without multiplying by holding count.
 
@@ -105,7 +105,7 @@ matchType, canonicalName, meteoriteCode, metbullUrl, alternateNameNote
 
 The historical `name`, designation/catalog identifier fields, printed private weight strings, and numeric source weights are never replaced by this object. The website labels the source catalog name and shows a separate linked **Current Meteoritical Bulletin name** only when a reviewed canonical name differs. No client, build, or export path fuzzy-matches names or infers identity.
 
-The current release reviews all 1,984 records: 1,891 have a resolved current identity and 93 remain explicitly unresolved. Validated continuation evidence recovers source names for 218 formerly blank rows. Seven historical entries genuinely print no separate proper source name; they retain null names and unresolved reviews without an inferred modern identity.
+The current release reviews all 2,018 records: 1,925 have a resolved current identity and 93 remain explicitly unresolved. Validated continuation evidence recovers source names for 218 formerly blank rows. Seven historical entries genuinely print no separate proper source name; they retain null names and unresolved reviews without an inferred modern identity.
 
 ## Rights-Gated Folios
 

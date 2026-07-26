@@ -8,7 +8,7 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 
 ## Current State
 
-- Schema 6 contains 1,984 facts-only records across eight catalogs:
+- Schema 6 contains 2,018 facts-only records across eight catalogs:
   - Lucas 1813: 13 `collection-entry` records.
   - Chladni 1819: 74 `collection-entry` records.
   - Chladni 1825: 42 `collection-entry` records.
@@ -16,13 +16,13 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
   - Huss 1976: 1,078 `specimen` records.
   - Huss 1986: 544 `specimen` records.
   - Nininger 1933: 136 `catalog-item` records.
-  - Nininger 1950: 72 `specimen` records from printed pages 26-31, with four Adrian rows continuing page-26 context on page 27; page 28's 1949 Albin stone is distinct from the 1915 pallasite; Bald Mountain is complete before page 31 begins Ballinger, and Beardsley's page-31 heading has no specimen row or observation before the boundary.
-- Metadata covers 154 source pages; records cite 137 of them.
+  - Nininger 1950: 106 `specimen` records from printed pages 26-32; page 32 begins with exactly 27 Beardsley continuation rows and ends with the complete Bendego 355.1 row, so there is no outgoing continuation.
+- Metadata covers 155 source pages; records cite 138 of them.
 - Public folios use schema 2 and expose 41 display pages: Lucas 1813 has 3 public-domain pages, Chladni 1819 has 12 public-domain pages, Hovey 1896 has 7 public-domain pages from BHL item 335869, and Nininger 1933 has 19 `no-copyright-us` pages.
 - Chladni 1825, Huss 1976, Huss 1986, and Nininger 1950 remain blocked/undetermined for folio display.
 - Nininger 1933 is incomplete: source pages 8-9 and catalog items 106-141 are missing.
-- Reviewed MetBull harmonization covers all 1,984 records: 1,891 resolved and 93 explicitly unresolved. Validated continuation evidence recovers 218 formerly blank source names; seven historical entries genuinely print no separate proper source name and retain null names with unresolved reviews.
-- The runtime suite passes 108 tests. The validator passes all 1,984 records, eight catalogs, and 41 public display pages.
+- Reviewed MetBull harmonization covers all 2,018 records: 1,925 resolved and 93 explicitly unresolved. Validated continuation evidence recovers 218 formerly blank source names; seven historical entries genuinely print no separate proper source name and retain null names with unresolved reviews.
+- The runtime suite passes 108 tests. The validator passes all 2,018 records, eight catalogs, and 41 public display pages.
 - `scripts/folio-release-lock.json` pins the reviewed rights evidence, ordered page IDs, and SHA-256 digest of every public folio.
 
 ## Preservation And Data Rules
