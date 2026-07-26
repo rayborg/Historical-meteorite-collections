@@ -23,6 +23,8 @@ const COLLECTION_ENTRY_KEYS = [
   "id", "catalogId", "entryOrder", "reportedNumber", "catalogPages", "section", "holdings", "name", "classification", "locality",
   "eventDate", "confidence",
 ];
+const METBULL_KEYS = ["matchType", "canonicalName", "meteoriteCode", "metbullUrl", "alternateNameNote"];
+const METBULL_MATCH_TYPES = ["exact", "historical-alias", "corrected-spelling", "translated-or-older-name", "unresolved"];
 const HOLDING_KEYS = ["designation", "kind", "description", "count", "weight"];
 const CATALOG_NUMBER_HOLDING_KEYS = ["description", "provenance", "count", "weights"];
 const HOLDING_KINDS = ["specimen", "cast", "aggregate"];
@@ -53,6 +55,11 @@ const FACTUAL_FIELDS = [
   "catalogPages[]",
   "section",
   "confidence",
+  "metbull.matchType",
+  "metbull.canonicalName",
+  "metbull.meteoriteCode",
+  "metbull.metbullUrl",
+  "metbull.alternateNameNote",
 ];
 const METADATA_KEYS = [
   "schemaVersion", "scope", "factualFields", "catalogs", "recordCount", "recordsWithDesignation",
@@ -166,7 +173,35 @@ function rejectCatalogExcludedContent(value, path = "catalog") {
     return;
   }
   if (!isObject(value)) return;
-  Object.entries(value).forEach(([key, child]) => rejectCatalogExcludedContent(child, `${path}.${key}`));
+  Object.entries(value).forEach(([key, child]) => {
+    if (key !== "metbullUrl") rejectCatalogExcludedContent(child, `${path}.${key}`);
+  });
+}
+
+function metbullUrlForCode(code) {
+  return `https://www.lpi.usra.edu/meteor/metbull.cfm?code=${code}`;
+}
+
+function validateMetbull(value, sourceName, path) {
+  assertExactKeys(value, METBULL_KEYS, path);
+  assert(METBULL_MATCH_TYPES.includes(value.matchType), `${path}.matchType is invalid`);
+  assertString(value.alternateNameNote, `${path}.alternateNameNote`, true);
+  if (value.alternateNameNote !== null) {
+    assert(value.alternateNameNote.length <= 500, `${path}.alternateNameNote must be at most 500 characters`);
+  }
+  if (value.matchType === "unresolved") {
+    assert(value.canonicalName === null && value.meteoriteCode === null && value.metbullUrl === null,
+      `${path} unresolved mapping cannot claim a canonical identity`);
+    return;
+  }
+  assertString(value.canonicalName, `${path}.canonicalName`);
+  assert(value.canonicalName.length <= 200, `${path}.canonicalName must be at most 200 characters`);
+  assert(typeof value.meteoriteCode === "string" && /^[1-9][0-9]{0,9}$/u.test(value.meteoriteCode),
+    `${path}.meteoriteCode must be a positive decimal MetBull code string`);
+  assert(value.metbullUrl === metbullUrlForCode(value.meteoriteCode),
+    `${path}.metbullUrl must be the canonical HTTPS URL for meteoriteCode`);
+  assert(value.matchType === "exact" ? sourceName === value.canonicalName : sourceName !== value.canonicalName,
+    `${path}.matchType does not agree with the source and canonical names`);
 }
 
 function assertCountSummary(value, path) {
@@ -190,12 +225,12 @@ function assertCountSummary(value, path) {
 
 function validateMetadata(metadata, path) {
   assertExactKeys(metadata, METADATA_KEYS, path);
-  assert(metadata.schemaVersion === 5, `${path}.schemaVersion must be 5`);
+  assert(metadata.schemaVersion === 6, `${path}.schemaVersion must be 6`);
   assert(metadata.scope === "facts-only", `${path}.scope must be facts-only`);
   assert(
     Array.isArray(metadata.factualFields) && metadata.factualFields.length === FACTUAL_FIELDS.length &&
       metadata.factualFields.every((field, index) => field === FACTUAL_FIELDS[index]),
-    `${path}.factualFields does not match the schema 5 public record models`,
+    `${path}.factualFields does not match the schema 6 public record models`,
   );
   assertCountSummary(metadata, path);
   assert(Array.isArray(metadata.catalogs) && metadata.catalogs.length > 0, `${path}.catalogs must be a nonempty array`);
@@ -390,11 +425,13 @@ function validatePublicCatalog(data, folios, path = "catalog") {
     const catalog = metadataByCatalog.get(record.catalogId);
     assert(catalog, `${recordPath}.catalogId has no descriptor`);
     const { recordModel } = catalog.descriptor;
-    assertExactKeys(record, recordModel === "specimen"
+    const expectedRecordKeys = [...(recordModel === "specimen"
       ? SPECIMEN_KEYS
       : recordModel === "catalog-item"
         ? CATALOG_ITEM_KEYS
-        : recordModel === "catalog-number" ? CATALOG_NUMBER_KEYS : COLLECTION_ENTRY_KEYS, recordPath);
+        : recordModel === "catalog-number" ? CATALOG_NUMBER_KEYS : COLLECTION_ENTRY_KEYS)];
+    if (Object.hasOwn(record, "metbull")) expectedRecordKeys.push("metbull");
+    assertExactKeys(record, expectedRecordKeys, recordPath);
     assertString(record.id, `${recordPath}.id`);
     assert(!ids.has(record.id), `${recordPath}.id is duplicated: ${record.id}`);
     ids.add(record.id);
@@ -403,6 +440,7 @@ function validatePublicCatalog(data, folios, path = "catalog") {
     for (const field of ["name", "classification", "locality", dateField]) {
       assertString(record[field], `${recordPath}.${field}`, true);
     }
+    if (Object.hasOwn(record, "metbull")) validateMetbull(record.metbull, record.name, `${recordPath}.metbull`);
     if (recordModel === "specimen") {
       assertString(record.designation, `${recordPath}.designation`, true);
       assertExactKeys(record.weight, ["grams"], `${recordPath}.weight`);
@@ -765,7 +803,7 @@ function multiCatalogFixture() {
   return {
     data: {
       metadata: {
-        schemaVersion: 5,
+        schemaVersion: 6,
         scope: "facts-only",
         factualFields: [...FACTUAL_FIELDS],
         catalogs: [
@@ -1145,7 +1183,7 @@ function runSyntheticCatalogTests(modelFixture) {
     catalogNumberRejectionCount += 1;
   };
   const hoveyRecord = (records, id = "hovey-catalog-z9") => records.find((record) => record.id === id);
-  assertCatalogNumberRejection("schema 4 metadata under schema 5", ({ metadata }) => { metadata.schemaVersion = 4; });
+  assertCatalogNumberRejection("older metadata under schema 6", ({ metadata }) => { metadata.schemaVersion = 5; });
   assertCatalogNumberRejection("empty catalog number", ({ records }) => { hoveyRecord(records).catalogNumber = ""; });
   assertCatalogNumberRejection("nonnull non-string catalog number", ({ records }) => { hoveyRecord(records).catalogNumber = 9; });
   assertCatalogNumberRejection("duplicate catalog number within one catalog", ({ records }) => {
@@ -1240,6 +1278,57 @@ function runSyntheticCatalogTests(modelFixture) {
     catalogNumberRejectionCount,
     collectionEntryRejectionCount,
   };
+}
+
+function runSyntheticMetbullTests(modelFixture) {
+  const makeFixture = () => ({ data: clone(modelFixture), folios: blockedFolios(modelFixture.metadata) });
+  const reviewed = {
+    matchType: "corrected-spelling",
+    canonicalName: "Current Alpha",
+    meteoriteCode: "12345",
+    metbullUrl: metbullUrlForCode("12345"),
+    alternateNameNote: "The source preserves an older spelling.",
+  };
+  const valid = makeFixture();
+  valid.data.records[0].metbull = reviewed;
+  validatePublicCatalog(valid.data, valid.folios, "synthetic reviewed MetBull mapping");
+
+  const unresolved = makeFixture();
+  unresolved.data.records[0].metbull = {
+    matchType: "unresolved",
+    canonicalName: null,
+    meteoriteCode: null,
+    metbullUrl: null,
+    alternateNameNote: "No reviewed identity has been established.",
+  };
+  validatePublicCatalog(unresolved.data, unresolved.folios, "synthetic unresolved MetBull mapping");
+
+  const cases = [
+    ["unknown match type", (value) => { value.matchType = "fuzzy"; }],
+    ["malformed code", (value) => { value.meteoriteCode = "012345"; }],
+    ["mismatched URL", (value) => { value.metbullUrl = metbullUrlForCode("9"); }],
+    ["noncanonical name", (value) => { value.canonicalName = " Current Alpha"; }],
+    ["false exact claim", (value) => { value.matchType = "exact"; }],
+    ["unresolved identity claim", (value) => {
+      value.matchType = "unresolved";
+      value.canonicalName = null;
+      value.meteoriteCode = null;
+    }],
+    ["extra field", (value) => { value.confidence = "probable"; }],
+  ];
+  cases.forEach(([description, mutate]) => {
+    const fixture = makeFixture();
+    fixture.data.records[0].metbull = clone(reviewed);
+    mutate(fixture.data.records[0].metbull);
+    let rejected = false;
+    try {
+      validatePublicCatalog(fixture.data, fixture.folios, `synthetic ${description}`);
+    } catch {
+      rejected = true;
+    }
+    assert(rejected, `synthetic catalog fixture must reject ${description}`);
+  });
+  return { allowCount: 2, rejectionCount: cases.length };
 }
 
 function syntheticManifest({
@@ -1516,6 +1605,7 @@ async function runSyntheticFolioFileTests() {
 
 const fixture = JSON.parse(await readFile(FIXTURE_URL, "utf8"));
 const catalogFixtureStats = runSyntheticCatalogTests(fixture);
+const metbullFixtureStats = runSyntheticMetbullTests(fixture);
 const folioFixtureStats = runSyntheticFolioTests();
 const folioFileFixtureStats = await runSyntheticFolioFileTests();
 console.log(
@@ -1526,7 +1616,8 @@ console.log(
   `${catalogFixtureStats.holdingPrivacyAllowCount} holding-privacy boundary allow, ` +
   `${catalogFixtureStats.modelRejectionCount} model/holding rejections, ` +
   `${catalogFixtureStats.catalogNumberRejectionCount} catalog-number rejections, ` +
-  `${catalogFixtureStats.collectionEntryRejectionCount} collection-entry/schema-5 rejections, ` +
+  `${catalogFixtureStats.collectionEntryRejectionCount} collection-entry/schema-6 rejections, ` +
+  `${metbullFixtureStats.allowCount} MetBull allows, ${metbullFixtureStats.rejectionCount} MetBull rejections, ` +
   `${folioFixtureStats.allowCount} folio allows, ${folioFixtureStats.rejectionCount} folio rejections, ` +
   `${folioFileFixtureStats.allowCount} folio-file allows, ${folioFileFixtureStats.rejectionCount} folio-file rejections passed.`,
 );
@@ -1544,7 +1635,7 @@ if (!SYNTHETIC_ONLY) {
   );
   console.log(
     `Validated data/catalog.json and data/folios.json: ${deployedStats.recordCount} records across ` +
-    `${deployedStats.catalogCount} schema 5 facts-only catalogs, ${totalPageCount} metadata source pages, ` +
+    `${deployedStats.catalogCount} schema 6 facts-only catalogs, ${totalPageCount} metadata source pages, ` +
     `${deployedStats.folioStats.pageEntryCount} displayable folio pages with locked SHA-256 assets.`,
   );
   for (const [catalogId, { descriptor }] of deployedStats.metadataByCatalog) {

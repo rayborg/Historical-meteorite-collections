@@ -8,7 +8,7 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 
 ## Current State
 
-- Schema 5 contains 1,912 facts-only records across seven catalogs:
+- Schema 6 contains 1,941 facts-only records across eight catalogs:
   - Lucas 1813: 13 `collection-entry` records.
   - Chladni 1819: 74 `collection-entry` records.
   - Chladni 1825: 42 `collection-entry` records.
@@ -16,11 +16,12 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
   - Huss 1976: 1,078 `specimen` records.
   - Huss 1986: 544 `specimen` records.
   - Nininger 1933: 136 `catalog-item` records.
-- Metadata covers 148 source pages; records cite 131 of them.
+  - Nininger 1950: 29 `specimen` records from printed pages 26-27, with four Adrian rows continuing page-26 context on page 27.
+- Metadata covers 150 source pages; records cite 133 of them.
 - Public folios use schema 2 and expose 41 display pages: Lucas 1813 has 3 public-domain pages, Chladni 1819 has 12 public-domain pages, Hovey 1896 has 7 public-domain pages from BHL item 335869, and Nininger 1933 has 19 `no-copyright-us` pages.
-- Chladni 1825, Huss 1976, and Huss 1986 remain blocked/undetermined for folio display.
+- Chladni 1825, Huss 1976, Huss 1986, and Nininger 1950 remain blocked/undetermined for folio display.
 - Nininger 1933 is incomplete: source pages 8-9 and catalog items 106-141 are missing.
-- The runtime suite passes 106 tests. The validator passes all 1,912 records, seven catalogs, and 41 public display pages.
+- The runtime suite passes 108 tests. The validator passes all 1,941 records, eight catalogs, and 41 public display pages.
 - `scripts/folio-release-lock.json` pins the reviewed rights evidence, ordered page IDs, and SHA-256 digest of every public folio.
 
 ## Preservation And Data Rules
@@ -31,6 +32,7 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 - Public records retain only independently structured factual fields, catalog-scoped printed-page citations, and confidence. Image fields never enter records; only separately reviewed folio paths enter `folios.json`. Do not publish source filenames, raw text, verbatim notes, or unreviewed images, and do not infer illegible facts.
 - Reconcile overlapping or duplicate photographs without discarding source provenance.
 - Weight filtering uses normalized numeric grams. Dedicated private `weightText` and display fields are excluded from public records, while independently structured factual description prose may retain source-reported historical mass statements.
+- Optional reviewed `metbull` fields preserve current canonical names, stable codes, and alternate-name notes without replacing source names, catalog identifiers, or weights. Unresolved reviews cannot claim a canonical identity.
 
 ## Publication Policy
 
@@ -71,7 +73,7 @@ Distinct specimens with the same meteorite name and similar mass must not be col
 2. Resolve the missing scan for MCB-104.
 3. Correct the source evidence for MCB-4 and MCB-5.
 4. Continue catalog-specific rights review, keeping unresolved sources blocked.
-5. Keep the schema 5 validator and runtime suite green while preserving the facts-only boundary.
+5. Keep the schema 6 validator and runtime suite green while preserving the facts-only boundary.
 
 ## Maintenance Rule
 

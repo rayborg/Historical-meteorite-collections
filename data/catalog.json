@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "schemaVersion": 5,
+    "schemaVersion": 6,
     "scope": "facts-only",
     "factualFields": [
       "id",
@@ -27,7 +27,12 @@
       "catalogPage",
       "catalogPages[]",
       "section",
-      "confidence"
+      "confidence",
+      "metbull.matchType",
+      "metbull.canonicalName",
+      "metbull.meteoriteCode",
+      "metbull.metbullUrl",
+      "metbull.alternateNameNote"
     ],
     "catalogs": [
       {
@@ -325,14 +330,15 @@
         "compiler": "H. H. Nininger and Addie D. Nininger",
         "year": 1950,
         "sourcePages": [
-          26
+          26,
+          27
         ],
-        "sourcePageCount": 1,
-        "recordCount": 7,
-        "recordsWithDesignation": 7,
-        "recordsWithWeight": 7,
+        "sourcePageCount": 2,
+        "recordCount": 29,
+        "recordsWithDesignation": 29,
+        "recordsWithWeight": 29,
         "confidenceCounts": {
-          "high": 7,
+          "high": 29,
           "medium": 0,
           "low": 0
         },
@@ -340,11 +346,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 1919,
-    "recordsWithDesignation": 1750,
-    "recordsWithWeight": 1791,
+    "recordCount": 1941,
+    "recordsWithDesignation": 1772,
+    "recordsWithWeight": 1813,
     "confidenceCounts": {
-      "high": 1919,
+      "high": 1941,
       "medium": 0,
       "low": 0
     }
@@ -4920,7 +4926,14 @@
       "locality": "Adams County, Colorado",
       "year": "1928",
       "catalogPage": 26,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Adams County",
+        "meteoriteCode": "375",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=375",
+        "alternateNameNote": "The Colorado locality and 1928 find year distinguish this record from the Adams County synonym associated with Mount Joy."
+      }
     },
     {
       "id": "obs-d4acdb6e-a5de-4d78-b619-4deb4cfdec58",
@@ -12382,7 +12395,14 @@
       "locality": "Lyons County, Kansas",
       "year": "1881",
       "catalogPage": 26,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Admire",
+        "meteoriteCode": "380",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=380",
+        "alternateNameNote": "The source prints Lyons County; the current locality name is Lyon County, Kansas."
+      }
     },
     {
       "id": "obs-4d2368ea-d6b3-4fbe-9c4e-19f41b99b151",
@@ -12396,7 +12416,245 @@
       "locality": "Lyons County, Kansas",
       "year": "1881",
       "catalogPage": 26,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Admire",
+        "meteoriteCode": "380",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=380",
+        "alternateNameNote": "The source prints Lyons County; the current locality name is Lyon County, Kansas."
+      }
+    },
+    {
+      "id": "obs-82bbe8bc-2bae-4107-aa8d-62522a94a0fe",
+      "catalogId": "nininger-1950",
+      "designation": "50.1",
+      "name": "Alamosa",
+      "weight": {
+        "grams": 4
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Alamosa County, Colorado; 37° 28′ N., 105° 52′ W.",
+      "year": "1937",
+      "catalogPage": 27,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Alamosa",
+        "meteoriteCode": "450",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=450",
+        "alternateNameNote": "The source reports 2.2 kg.; MetBull reports 1800 g."
+      }
+    },
+    {
+      "id": "obs-39ba8909-b8d3-49ca-b68b-d542ced2c602",
+      "catalogId": "nininger-1950",
+      "designation": "77.1",
+      "name": "Alamogordo",
+      "weight": {
+        "grams": 456
+      },
+      "classification": "Stone. Crystalline spherical chondrite",
+      "locality": "Otero County, New Mexico; 32° 54′ N., 105° 56′ W.",
+      "year": "1938",
+      "catalogPage": 27,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Alamogordo",
+        "meteoriteCode": "449",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=449",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-248e7f24-da78-4e22-986e-d181177ea457",
+      "catalogId": "nininger-1950",
+      "designation": "77.9",
+      "name": "Alamogordo",
+      "weight": {
+        "grams": 452.5
+      },
+      "classification": "Stone. Crystalline spherical chondrite",
+      "locality": "Otero County, New Mexico; 32° 54′ N., 105° 56′ W.",
+      "year": "1938",
+      "catalogPage": 27,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Alamogordo",
+        "meteoriteCode": "449",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=449",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-c6172de8-3737-459b-a8a0-4c65880b3f40",
+      "catalogId": "nininger-1950",
+      "designation": "77.10",
+      "name": "Alamogordo",
+      "weight": {
+        "grams": 554
+      },
+      "classification": "Stone. Crystalline spherical chondrite",
+      "locality": "Otero County, New Mexico; 32° 54′ N., 105° 56′ W.",
+      "year": "1938",
+      "catalogPage": 27,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Alamogordo",
+        "meteoriteCode": "449",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=449",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-603786a7-2577-48b4-9b7c-88f3017e41d1",
+      "catalogId": "nininger-1950",
+      "designation": "77.11",
+      "name": "Alamogordo",
+      "weight": {
+        "grams": 413
+      },
+      "classification": "Stone. Crystalline spherical chondrite",
+      "locality": "Otero County, New Mexico; 32° 54′ N., 105° 56′ W.",
+      "year": "1938",
+      "catalogPage": 27,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Alamogordo",
+        "meteoriteCode": "449",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=449",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-4833aa83-bb99-4377-91df-41b5585332a1",
+      "catalogId": "nininger-1950",
+      "designation": "77.12",
+      "name": "Alamogordo",
+      "weight": {
+        "grams": 463
+      },
+      "classification": "Stone. Crystalline spherical chondrite",
+      "locality": "Otero County, New Mexico; 32° 54′ N., 105° 56′ W.",
+      "year": "1938",
+      "catalogPage": 27,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Alamogordo",
+        "meteoriteCode": "449",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=449",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-f4826792-7bc4-4bc4-8be5-d5d270c679a7",
+      "catalogId": "nininger-1950",
+      "designation": "77.13",
+      "name": "Alamogordo",
+      "weight": {
+        "grams": 684
+      },
+      "classification": "Stone. Crystalline spherical chondrite",
+      "locality": "Otero County, New Mexico; 32° 54′ N., 105° 56′ W.",
+      "year": "1938",
+      "catalogPage": 27,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Alamogordo",
+        "meteoriteCode": "449",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=449",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-43dcd551-edb0-4f6c-8184-97cc1e8e5b48",
+      "catalogId": "nininger-1950",
+      "designation": "77.14",
+      "name": "Alamogordo",
+      "weight": {
+        "grams": 739
+      },
+      "classification": "Stone. Crystalline spherical chondrite",
+      "locality": "Otero County, New Mexico; 32° 54′ N., 105° 56′ W.",
+      "year": "1938",
+      "catalogPage": 27,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Alamogordo",
+        "meteoriteCode": "449",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=449",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-d6828349-1556-44db-963d-e4c39f24622b",
+      "catalogId": "nininger-1950",
+      "designation": "77.18",
+      "name": "Alamogordo",
+      "weight": {
+        "grams": 898
+      },
+      "classification": "Stone. Crystalline spherical chondrite",
+      "locality": "Otero County, New Mexico; 32° 54′ N., 105° 56′ W.",
+      "year": "1938",
+      "catalogPage": 27,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Alamogordo",
+        "meteoriteCode": "449",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=449",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-66cafba1-809e-43bf-a7bc-894e19fc9ec2",
+      "catalogId": "nininger-1950",
+      "designation": "77.20",
+      "name": "Alamogordo",
+      "weight": {
+        "grams": 243.5
+      },
+      "classification": "Stone. Crystalline spherical chondrite",
+      "locality": "Otero County, New Mexico; 32° 54′ N., 105° 56′ W.",
+      "year": "1938",
+      "catalogPage": 27,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Alamogordo",
+        "meteoriteCode": "449",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=449",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-f8631a66-93ec-454e-bbac-411c96566fe0",
+      "catalogId": "nininger-1950",
+      "designation": "77.21",
+      "name": "Alamogordo",
+      "weight": {
+        "grams": 222
+      },
+      "classification": "Stone. Crystalline spherical chondrite",
+      "locality": "Otero County, New Mexico; 32° 54′ N., 105° 56′ W.",
+      "year": "1938",
+      "catalogPage": 27,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Alamogordo",
+        "meteoriteCode": "449",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=449",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-b64c220c-2577-40c0-905f-aecdafd20992",
@@ -12410,7 +12668,224 @@
       "locality": "Peru, South America",
       "year": null,
       "catalogPage": 26,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "MetBull lists Abancay as a historical synonym of St. Genevieve County (code 23086), but the source locality Peru conflicts with the canonical Missouri record."
+      }
+    },
+    {
+      "id": "obs-2d9e1be4-3654-4a65-bfc8-7260c0c5d0ba",
+      "catalogId": "nininger-1950",
+      "designation": "298.1",
+      "name": "Adrian",
+      "weight": {
+        "grams": 2983.7
+      },
+      "classification": "Stone. Veined crystalline spherical chondrite",
+      "locality": "Deaf Smith County, Texas; 35° 9′ N., 102° 43′ W.",
+      "year": "1936",
+      "catalogPage": 27,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Adrian",
+        "meteoriteCode": "388",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=388",
+        "alternateNameNote": "The specimen row continues from printed page 26. The source reports 23.979 kg.; MetBull reports 22.6 kg."
+      }
+    },
+    {
+      "id": "obs-46c5470e-1641-407d-9514-873462daed9a",
+      "catalogId": "nininger-1950",
+      "designation": "298.12",
+      "name": "Adrian",
+      "weight": {
+        "grams": 1565
+      },
+      "classification": "Stone. Veined crystalline spherical chondrite",
+      "locality": "Deaf Smith County, Texas; 35° 9′ N., 102° 43′ W.",
+      "year": "1936",
+      "catalogPage": 27,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Adrian",
+        "meteoriteCode": "388",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=388",
+        "alternateNameNote": "The specimen row continues from printed page 26. The source reports 23.979 kg.; MetBull reports 22.6 kg."
+      }
+    },
+    {
+      "id": "obs-160749dc-3c88-43c3-ad28-8ea9efcb5a98",
+      "catalogId": "nininger-1950",
+      "designation": "298.17",
+      "name": "Adrian",
+      "weight": {
+        "grams": 26
+      },
+      "classification": "Stone. Veined crystalline spherical chondrite",
+      "locality": "Deaf Smith County, Texas; 35° 9′ N., 102° 43′ W.",
+      "year": "1936",
+      "catalogPage": 27,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Adrian",
+        "meteoriteCode": "388",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=388",
+        "alternateNameNote": "The specimen row continues from printed page 26. The source reports 23.979 kg.; MetBull reports 22.6 kg."
+      }
+    },
+    {
+      "id": "obs-6d13670c-fcaa-459b-9ba0-218000a42670",
+      "catalogId": "nininger-1950",
+      "designation": "298.24",
+      "name": "Adrian",
+      "weight": {
+        "grams": 15500
+      },
+      "classification": "Stone. Veined crystalline spherical chondrite",
+      "locality": "Deaf Smith County, Texas; 35° 9′ N., 102° 43′ W.",
+      "year": "1936",
+      "catalogPage": 27,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Adrian",
+        "meteoriteCode": "388",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=388",
+        "alternateNameNote": "The specimen row continues from printed page 26. The source reports 23.979 kg.; MetBull reports 22.6 kg."
+      }
+    },
+    {
+      "id": "obs-e90b792e-b6b4-4d84-a6dc-025c7305cdd1",
+      "catalogId": "nininger-1950",
+      "designation": "314.1",
+      "name": "Albin",
+      "weight": {
+        "grams": 34201
+      },
+      "classification": "Pallasite. (Rokicky group)",
+      "locality": "Laramie County, Wyoming; 41° 25′ N., 104° 6′ W.",
+      "year": "1915",
+      "catalogPage": 27,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Albin (pallasite)",
+        "meteoriteCode": "455",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=455",
+        "alternateNameNote": "MetBull adds the pallasite qualifier to distinguish Albin (stone). The source latitude is 41° 25′ N. versus MetBull 41° 30′ N.; the source reports 37.87 kg. versus 37.6 kg."
+      }
+    },
+    {
+      "id": "obs-e2708f2f-16ea-41a6-9e6f-f4db909fa3cd",
+      "catalogId": "nininger-1950",
+      "designation": "354.1",
+      "name": "Ahumada",
+      "weight": {
+        "grams": 774
+      },
+      "classification": "Pallasite",
+      "locality": "Chihuahua, Mexico",
+      "year": "1909",
+      "catalogPage": 27,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Ahumada",
+        "meteoriteCode": "419",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=419",
+        "alternateNameNote": "The source reports 52.7 kg.; MetBull reports 52.6 kg."
+      }
+    },
+    {
+      "id": "obs-b30c8ea3-be31-4209-af8c-ebebca2fb9a4",
+      "catalogId": "nininger-1950",
+      "designation": "420.1",
+      "name": "Ainsworth",
+      "weight": {
+        "grams": 273
+      },
+      "classification": "Iron. Coarsest octahedrite",
+      "locality": "Brown County, Nebraska",
+      "year": "1907",
+      "catalogPage": 27,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Ainsworth",
+        "meteoriteCode": "422",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=422",
+        "alternateNameNote": "The source reports Brown County, Nebraska, historical classification Coarsest octahedrite, and 10.7 kg.; MetBull reports Iron, IIAB and 80.65 kg."
+      }
+    },
+    {
+      "id": "obs-6f1fb5d8-2dd3-4cbe-a853-9619c716a09e",
+      "catalogId": "nininger-1950",
+      "designation": "420.2",
+      "name": "Ainsworth",
+      "weight": {
+        "grams": 215
+      },
+      "classification": "Iron. Coarsest octahedrite",
+      "locality": "Brown County, Nebraska",
+      "year": "1907",
+      "catalogPage": 27,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Ainsworth",
+        "meteoriteCode": "422",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=422",
+        "alternateNameNote": "The source reports Brown County, Nebraska, historical classification Coarsest octahedrite, and 10.7 kg.; MetBull reports Iron, IIAB and 80.65 kg."
+      }
+    },
+    {
+      "id": "obs-097445b1-58d6-4782-8e8d-cc93726fad25",
+      "catalogId": "nininger-1950",
+      "designation": "462.1",
+      "name": "Akron",
+      "weight": {
+        "grams": 214.5
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Washington County, Colorado; 40° 9′ N., 103° 10′ W.",
+      "year": "1940",
+      "catalogPage": 27,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Akron (1940)",
+        "meteoriteCode": "430",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=430",
+        "alternateNameNote": "MetBull adds the year qualifier to distinguish later Akron finds. The source reports 408 grams; MetBull reports 1050 g. The linked MB30 writeup instead says Akron No. 2, found 1954, 0.64 kg."
+      }
+    },
+    {
+      "id": "obs-3c8d873d-6eb8-46ac-b5f9-908b403ef89d",
+      "catalogId": "nininger-1950",
+      "designation": "462.3",
+      "name": "Akron",
+      "weight": {
+        "grams": 193.5
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Washington County, Colorado; 40° 9′ N., 103° 10′ W.",
+      "year": "1940",
+      "catalogPage": 27,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Akron (1940)",
+        "meteoriteCode": "430",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=430",
+        "alternateNameNote": "MetBull adds the year qualifier to distinguish later Akron finds. The source reports 408 grams; MetBull reports 1050 g. The linked MB30 writeup instead says Akron No. 2, found 1954, 0.64 kg."
+      }
     },
     {
       "id": "obs-63fb01eb-4a56-45e2-bfc0-35f30043e968",
@@ -12424,7 +12899,14 @@
       "locality": "Lubbock County, Texas; 33° 51′ N., 101° 48′ W.",
       "year": "1941",
       "catalogPage": 26,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Abernathy",
+        "meteoriteCode": "7",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=7",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-fced4309-47df-44c6-8f3c-2f9834603dfd",
@@ -12438,7 +12920,35 @@
       "locality": "Lubbock County, Texas; 33° 51′ N., 101° 48′ W.",
       "year": "1941",
       "catalogPage": 26,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Abernathy",
+        "meteoriteCode": "7",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=7",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-71f72d44-d300-4fab-b9bf-25462bd20d11",
+      "catalogId": "nininger-1950",
+      "designation": "515.1",
+      "name": "Albareto",
+      "weight": {
+        "grams": 15
+      },
+      "classification": "Stone. Spherical hypersthene-chondrite",
+      "locality": "Italy",
+      "year": "1766",
+      "catalogPage": 27,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Albareto",
+        "meteoriteCode": "453",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=453",
+        "alternateNameNote": "The source prints Modena as a synonym, which MetBull also lists. The source reports 12 kg.; MetBull reports 2 kg."
+      }
     },
     {
       "id": "obs-f390eac8-d733-40ec-bd76-c1fdf7f9004e",
@@ -12452,7 +12962,14 @@
       "locality": "Chaves County, New Mexico; 33° 38′ N., 104° 16′ W.",
       "year": "1947",
       "catalogPage": 26,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Acme",
+        "meteoriteCode": "371",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=371",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "h1-1-756abdd1513f",

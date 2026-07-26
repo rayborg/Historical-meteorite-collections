@@ -1,10 +1,10 @@
 # Public Catalog Data
 
-`catalog.json` is a schema-5 facts-only dataset containing 1,912 source observations from seven historical meteorite catalogs. `folios.json` is a separate schema-2, deny-by-default display manifest with 41 reviewed page entries.
+`catalog.json` is a schema-6 facts-only dataset containing 1,941 source observations from eight historical meteorite catalogs. `folios.json` is a separate schema-2, deny-by-default display manifest with 41 reviewed page entries.
 
 A searchable transcription of the 1976 Huss Meteorite Collection catalog, compiled and published by Glenn Huss.
 
-The other configured descriptors identify their compilers without inferring a publisher: Jean Andre Henri Lucas for 1813; E. F. F. Chladni, with a Vienna appendix by Karl von Schreibers, for 1819; E. F. F. Chladni for 1825; Edmund Otis Hovey for 1896; H. H. Nininger for 1933; and Glenn I. Huss for 1986.
+The other configured descriptors identify their compilers without inferring a publisher: Jean Andre Henri Lucas for 1813; E. F. F. Chladni, with a Vienna appendix by Karl von Schreibers, for 1819; E. F. F. Chladni for 1825; Edmund Otis Hovey for 1896; H. H. Nininger for 1933; H. H. Nininger and Addie D. Nininger for 1950; and Glenn I. Huss for 1986.
 
 | `catalogId` | Record model | Records | Metadata source pages | Pages cited by records |
 | --- | --- | ---: | ---: | ---: |
@@ -15,13 +15,14 @@ The other configured descriptors identify their compilers without inferring a pu
 | `huss-1986` | `specimen` | 544 | 21 | 21 |
 | `lucas-1813` | `collection-entry` | 13 | 3 | 3 |
 | `nininger-1933` | `catalog-item` | 136 | 18 | 9 |
-| **Total** |  | **1,912** | **148** | **131** |
+| `nininger-1950` | `specimen` | 29 | 2 | 2 |
+| **Total** |  | **1,941** | **150** | **133** |
 
-Metadata source-page coverage is not a count of pages cited by records. For `nininger-1933`, printed pages 8-9 and catalog items 106-141 are missing from the available source set. Pages 12-20 are narrative-only. Its 136 represented items contain 310 reviewed holdings: 298 designated, 12 anonymous, 304 gram-bearing, 4 casts, and 2 count-only. The Nininger data is therefore a partial digital edition.
+Metadata source-page coverage is not a count of pages cited by records. For `nininger-1933`, printed pages 8-9 and catalog items 106-141 are missing from the available source set. Pages 12-20 are narrative-only. Its 136 represented items contain 310 reviewed holdings: 298 designated, 12 anonymous, 304 gram-bearing, 4 casts, and 2 count-only. `nininger-1950` currently covers printed pages 26-27 with 29 specimen observations. Both Nininger catalogs are partial digital editions.
 
 ## Catalog Contract
 
-The root contains exactly `metadata` and `records`. `metadata.schemaVersion` is 5 and each catalog descriptor declares one of four `recordModel` values.
+The root contains exactly `metadata` and `records`. `metadata.schemaVersion` is 6 and each catalog descriptor declares one of four `recordModel` values.
 
 ### Specimen
 
@@ -67,6 +68,8 @@ Each holding has exactly `description`, `provenance`, `count`, and `weights`; nu
 
 Strings are NFC-normalized and whitespace-collapsed. Numeric grams are finite and nonnegative. Confidence is `high`, `medium`, or `low`. Model-specific ordering is deterministic. Statistics count parent records as observations, flatten nested masses, and never multiply a reported mass by holding count.
 
+Every model permits an optional reviewed `metbull` object with exactly `matchType`, `canonicalName`, `meteoriteCode`, `metbullUrl`, and `alternateNameNote`. Resolved mappings require a canonical name, positive decimal code string, and exact `https://www.lpi.usra.edu/meteor/metbull.cfm?code=<code>` URL. Unresolved mappings cannot claim any canonical identity. This additive layer does not alter source names, catalog identifiers, holdings, or weights and is never populated by fuzzy matching.
+
 The canonical `metadata.factualFields` union is:
 
 ```text
@@ -95,6 +98,11 @@ catalogPage
 catalogPages[]
 section
 confidence
+metbull.matchType
+metbull.canonicalName
+metbull.meteoriteCode
+metbull.metbullUrl
+metbull.alternateNameNote
 ```
 
 Raw OCR, private notes, source filenames, private record page IDs, dedicated display-weight and `weightText` fields, uncertainty fields, acquisition metadata, and private paths are excluded from `catalog.json`. Independently structured factual description prose may retain source-reported historical mass statements. Reviewed `pageId` values are intentionally public in `folios.json`.
@@ -122,6 +130,7 @@ The deployment-specific `scripts/folio-release-lock.json` pins every catalog pol
 | `huss-1986` | blocked | undetermined | 0 |
 | `lucas-1813` | display | public-domain | 3 |
 | `nininger-1933` | display | no-copyright-us | 19 |
+| `nininger-1950` | blocked | undetermined | 0 |
 | **Total** |  |  | **41** |
 
 Hovey pages come from [BHL item 335869](https://www.biodiversitylibrary.org/item/335869), contributed by Smithsonian Libraries and Archives and marked public domain. Nininger display follows a documented United States renewal search for the exact 1933 offprint. Rights status is copy- and jurisdiction-specific and is never inferred from age.

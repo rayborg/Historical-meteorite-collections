@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260726-1";
+const CACHE_VERSION = "20260726-2";
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "designation-asc";
 const VALID_SORTS = new Set([
@@ -61,6 +61,8 @@ const COLLECTION_ENTRY_RECORD_FIELDS = new Set([
   "eventDate",
   "confidence"
 ]);
+const METBULL_FIELDS = new Set(["matchType", "canonicalName", "meteoriteCode", "metbullUrl", "alternateNameNote"]);
+const METBULL_MATCH_TYPES = new Set(["exact", "historical-alias", "corrected-spelling", "translated-or-older-name", "unresolved"]);
 const HOLDING_FIELDS = new Set(["designation", "kind", "description", "count", "weight"]);
 const CATALOG_NUMBER_HOLDING_FIELDS = new Set(["description", "provenance", "count", "weights"]);
 const HOLDING_KINDS = new Set(["specimen", "cast", "aggregate"]);
@@ -91,7 +93,12 @@ const FACTUAL_FIELDS = [
   "catalogPage",
   "catalogPages[]",
   "section",
-  "confidence"
+  "confidence",
+  "metbull.matchType",
+  "metbull.canonicalName",
+  "metbull.meteoriteCode",
+  "metbull.metbullUrl",
+  "metbull.alternateNameNote"
 ];
 const CONFIDENCE_LEVELS = ["high", "medium", "low"];
 const CONFIDENCE_FIELDS = new Set(CONFIDENCE_LEVELS);
@@ -427,7 +434,30 @@ function isLeakageSafeTree(value) {
   if (typeof value === "string") return isLeakageSafeText(value);
   if (Array.isArray(value)) return value.every(isLeakageSafeTree);
   if (!isPlainObject(value)) return true;
-  return Object.values(value).every(isLeakageSafeTree);
+  return Object.entries(value).every(([key, child]) => key === "metbullUrl" || isLeakageSafeTree(child));
+}
+
+function metbullUrlForCode(code) {
+  return `https://www.lpi.usra.edu/meteor/metbull.cfm?code=${code}`;
+}
+
+function hasValidMetbull(value, sourceName) {
+  if (!hasExactFields(value, METBULL_FIELDS) || !METBULL_MATCH_TYPES.has(value.matchType)) return false;
+  if (value.alternateNameNote !== null &&
+      (!isLeakageSafeText(value.alternateNameNote) || value.alternateNameNote.length > 500)) return false;
+  if (value.matchType === "unresolved") {
+    return value.canonicalName === null && value.meteoriteCode === null && value.metbullUrl === null;
+  }
+  return isLeakageSafeText(value.canonicalName) && value.canonicalName.length <= 200 &&
+    typeof value.meteoriteCode === "string" && /^[1-9][0-9]{0,9}$/.test(value.meteoriteCode) &&
+    value.metbullUrl === metbullUrlForCode(value.meteoriteCode) &&
+    (value.matchType === "exact" ? sourceName === value.canonicalName : sourceName !== value.canonicalName);
+}
+
+function recordFields(record, baseFields) {
+  const fields = new Set(baseFields);
+  if (Object.hasOwn(record, "metbull")) fields.add("metbull");
+  return fields;
 }
 
 function hasFactualFields(value) {
@@ -658,7 +688,7 @@ function createCatalogRegistry(descriptors) {
 function normalizeCatalogRegistry(metadata) {
   requireSchema(isPlainObject(metadata) && isLeakageSafeTree(metadata));
   requireSchema(hasExactFields(metadata, CANONICAL_METADATA_FIELDS));
-  requireSchema(metadata.schemaVersion === 5 && metadata.scope === "facts-only" && hasFactualFields(metadata.factualFields));
+  requireSchema(metadata.schemaVersion === 6 && metadata.scope === "facts-only" && hasFactualFields(metadata.factualFields));
   requireSchema(Array.isArray(metadata.catalogs) && metadata.catalogs.length > 0 && hasValidSummary(metadata));
   metadata.catalogs.forEach(validateCanonicalDescriptor);
   requireSchema(new Set(metadata.catalogs.map((descriptor) => descriptor.id)).size === metadata.catalogs.length);
@@ -698,17 +728,18 @@ function validateCatalog(catalog) {
     requireSchema(hasValidCatalogId(record.catalogId) && Object.hasOwn(registry, record.catalogId));
     const recordModel = registry[record.catalogId].recordModel;
     requireSchema(recordModel === "specimen"
-      ? hasExactFields(record, SPECIMEN_RECORD_FIELDS) && hasExactFields(record.weight, new Set(["grams"]))
+      ? hasExactFields(record, recordFields(record, SPECIMEN_RECORD_FIELDS)) && hasExactFields(record.weight, new Set(["grams"]))
       : recordModel === "catalog-item"
-        ? hasExactFields(record, CATALOG_ITEM_RECORD_FIELDS)
+        ? hasExactFields(record, recordFields(record, CATALOG_ITEM_RECORD_FIELDS))
         : recordModel === "catalog-number"
-          ? hasExactFields(record, CATALOG_NUMBER_RECORD_FIELDS)
-          : hasExactFields(record, COLLECTION_ENTRY_RECORD_FIELDS));
+          ? hasExactFields(record, recordFields(record, CATALOG_NUMBER_RECORD_FIELDS))
+          : hasExactFields(record, recordFields(record, COLLECTION_ENTRY_RECORD_FIELDS)));
     const dateField = recordModel === "catalog-number" ? "dateOfDiscovery" :
       recordModel === "collection-entry" ? "eventDate" : "year";
     ["name", "classification", "locality", dateField].forEach((field) =>
       requireSchema(record[field] === null || (record[field] !== "" && isLeakageSafeText(record[field])))
     );
+    if (Object.hasOwn(record, "metbull")) requireSchema(hasValidMetbull(record.metbull, record.name));
     if (recordModel === "specimen") {
       requireSchema(record.designation === null || (record.designation !== "" && isLeakageSafeText(record.designation)));
       requireSchema(record.weight.grams === null || (Number.isFinite(record.weight.grams) && record.weight.grams >= 0));
@@ -941,6 +972,15 @@ function prepareRecord(source, index, registry = catalogRegistry) {
     record.designation = cleanText(source.designation);
     record.weight = { grams: source.weight.grams === null ? null : Number(source.weight.grams) };
   }
+  if (source.metbull) {
+    record.metbull = {
+      matchType: source.metbull.matchType,
+      canonicalName: cleanText(source.metbull.canonicalName),
+      meteoriteCode: cleanText(source.metbull.meteoriteCode),
+      metbullUrl: cleanText(source.metbull.metbullUrl),
+      alternateNameNote: cleanText(source.metbull.alternateNameNote)
+    };
+  }
   record.searchText = searchable([
     record.catalogItem === undefined ? null : `catalog item ${record.catalogItem}`,
     record.catalogNumber === undefined ? null : `catalog no ${record.catalogNumber}`,
@@ -954,6 +994,8 @@ function prepareRecord(source, index, registry = catalogRegistry) {
       holding.count === null ? null : `count ${holding.count}`
     ]),
     record.name,
+    record.metbull?.canonicalName,
+    record.metbull?.alternateNameNote,
     record.classification,
     record.locality,
     record.year,
@@ -1213,6 +1255,26 @@ function createRecordCard(record) {
         ? record.reportedNumber ? `Reported no. ${record.reportedNumber}` : `Collection entry ${record.entryOrder}`
         : record.designation || "No printed designation";
   card.querySelector(".record-name").textContent = record.name ? displayText(record.name) : "Name not recorded";
+  const metbull = card.querySelector(".metbull-name");
+  const hasDifferentCanonicalName = record.metbull?.canonicalName && record.metbull.canonicalName !== record.name;
+  const hasReviewNote = Boolean(record.metbull?.alternateNameNote);
+  if (hasDifferentCanonicalName || hasReviewNote) {
+    const label = metbull.querySelector("span");
+    label.textContent = hasDifferentCanonicalName ? "Current Meteoritical Bulletin name" : "Meteoritical Bulletin review";
+    const link = metbull.querySelector("a");
+    if (record.metbull.canonicalName) {
+      link.textContent = hasDifferentCanonicalName ? displayText(record.metbull.canonicalName) : "View official MetBull record";
+      link.href = record.metbull.metbullUrl;
+    } else {
+      link.remove();
+    }
+    const note = metbull.querySelector("p");
+    if (record.metbull.alternateNameNote) note.textContent = displayText(record.metbull.alternateNameNote);
+    else note.remove();
+    metbull.hidden = false;
+  } else {
+    metbull.remove();
+  }
   const recordWeight = card.querySelector(".record-weight");
   if (catalogItem || catalogNumber || collectionEntry) {
     recordWeight.remove();
@@ -1555,6 +1617,8 @@ if (typeof module !== "undefined" && module.exports) {
     normalizeDesignation,
     numericLeadingHoldingCode,
     normalizeCatalogRegistry,
+    hasValidMetbull,
+    metbullUrlForCode,
     parseUrlFilters,
     parseSearchQuery,
     prepareRecord,

@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "schemaVersion": 5,
+    "schemaVersion": 6,
     "scope": "facts-only",
     "factualFields": [
       "id",
@@ -27,7 +27,12 @@
       "catalogPage",
       "catalogPages[]",
       "section",
-      "confidence"
+      "confidence",
+      "metbull.matchType",
+      "metbull.canonicalName",
+      "metbull.meteoriteCode",
+      "metbull.metbullUrl",
+      "metbull.alternateNameNote"
     ],
     "catalogs": [
       {

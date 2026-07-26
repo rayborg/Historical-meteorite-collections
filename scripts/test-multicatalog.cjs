@@ -146,9 +146,9 @@ function threeCatalogManifest() {
   };
 }
 
-test("schema 5 fixture validates with exact model-aware shapes", () => {
+test("schema 6 fixture validates with exact model-aware shapes", () => {
   assert.equal(app.validateCatalog(fixture), fixture);
-  assert.equal(fixture.metadata.schemaVersion, 5);
+  assert.equal(fixture.metadata.schemaVersion, 6);
   assert.deepEqual(fixture.metadata.catalogs.map(({ id, recordModel }) => [id, recordModel]), [
     ["huss-1976", "specimen"],
     ["huss-1986", "specimen"],
@@ -181,7 +181,11 @@ test("schema 5 fixture validates with exact model-aware shapes", () => {
   });
 });
 
-test("schema 4, schema 3, schema 2, and legacy metadata are intentionally rejected", () => {
+test("older and legacy metadata are intentionally rejected", () => {
+  const schema5 = clone(fixture);
+  schema5.metadata.schemaVersion = 5;
+  assert.throws(() => app.validateCatalog(schema5), /facts-only schema/);
+
   const schema4 = clone(fixture);
   schema4.metadata.schemaVersion = 4;
   assert.throws(() => app.validateCatalog(schema4), /facts-only schema/);
@@ -214,6 +218,50 @@ test("record shape must agree exactly with descriptor recordModel", () => {
   const wrongDescriptor = clone(fixture);
   wrongDescriptor.metadata.catalogs.find(({ id }) => id === "nininger-1933").recordModel = "specimen";
   assert.throws(() => app.validateCatalog(wrongDescriptor), /facts-only schema/);
+});
+
+test("validates, prepares, and searches explicit reviewed MetBull harmonization", () => {
+  const candidate = clone(fixture);
+  const source = candidate.records.find(({ id }) => id === "huss-h27-3");
+  source.metbull = {
+    matchType: "historical-alias",
+    canonicalName: "Current Alpha Name",
+    meteoriteCode: "12345",
+    metbullUrl: app.metbullUrlForCode("12345"),
+    alternateNameNote: "The catalog uses a historical name."
+  };
+  assert.equal(app.validateCatalog(candidate), candidate);
+
+  const registry = app.normalizeCatalogRegistry(candidate.metadata);
+  const prepared = app.prepareRecord(source, 0, registry);
+  assert.equal(prepared.name, source.name);
+  assert.equal(prepared.metbull.canonicalName, "Current Alpha Name");
+  assert.equal(app.metbullUrlForCode("12345"), "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12345");
+  assert.equal(app.matchesSearch(prepared, "Current Alpha"), true);
+  assert.equal(app.matchesSearch(prepared, "historical name"), true);
+});
+
+test("rejects inferred, malformed, and identity-claiming unresolved MetBull mappings", () => {
+  const valid = {
+    matchType: "corrected-spelling",
+    canonicalName: "Current Alpha Name",
+    meteoriteCode: "12345",
+    metbullUrl: app.metbullUrlForCode("12345"),
+    alternateNameNote: null
+  };
+  for (const mutate of [
+    (value) => { value.matchType = "fuzzy"; },
+    (value) => { value.meteoriteCode = "012345"; },
+    (value) => { value.metbullUrl = "https://example.test/12345"; },
+    (value) => { value.matchType = "exact"; },
+    (value) => { value.matchType = "unresolved"; },
+  ]) {
+    const candidate = clone(fixture);
+    const record = candidate.records.find(({ id }) => id === "huss-h27-3");
+    record.metbull = clone(valid);
+    mutate(record.metbull);
+    assert.throws(() => app.validateCatalog(candidate), /facts-only schema/);
+  }
 });
 
 test("holding scalar constraints and exact keys are enforced", () => {
@@ -696,7 +744,7 @@ test("URL filter behavior and cache version remain stable", () => {
     query: "catalog item 2", catalog: "nininger-1933", min: "3", max: "12", sort: "weight-desc"
   });
   assert.equal(app.serializeUrlFilters(parsed).toString(), "q=catalog+item+2&catalog=nininger-1933&min=3&max=12&sort=weight-desc");
-  assert.equal(app.CACHE_VERSION, "20260726-1");
+  assert.equal(app.CACHE_VERSION, "20260726-2");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.CACHE_VERSION}`));
 });
@@ -735,8 +783,13 @@ test("HTML and runtime contain accessible multi-holding card behavior", () => {
   const script = readFileSync(join(root, "app.js"), "utf8");
   assert.match(html, /<section class="record-holdings" aria-label="Holdings" hidden>/);
   assert.match(html, /<ol class="holdings-list" role="list"><\/ol>/);
+  assert.match(html, /Source catalog name/);
+  assert.match(html, /Current Meteoritical Bulletin name/);
   assert.match(html, /Designation \/ catalog number, ascending/);
   assert.match(script, /recordWeight\.remove\(\)/);
+  assert.match(script, /record\.metbull\.canonicalName !== record\.name/);
+  assert.match(script, /Meteoritical Bulletin review/);
+  assert.match(script, /link\.href = record\.metbull\.metbullUrl/);
   assert.match(script, /`Catalog item \$\{record\.catalogItem\}`/);
   assert.match(script, /`Catalog no\. \$\{record\.catalogNumber\}`/);
   assert.match(script, /`Reported no\. \$\{record\.reportedNumber\}`/);
