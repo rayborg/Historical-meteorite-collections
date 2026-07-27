@@ -367,14 +367,15 @@
           60,
           61,
           62,
-          63
+          63,
+          64
         ],
-        "sourcePageCount": 38,
-        "recordCount": 867,
-        "recordsWithDesignation": 847,
-        "recordsWithWeight": 810,
+        "sourcePageCount": 39,
+        "recordCount": 879,
+        "recordsWithDesignation": 859,
+        "recordsWithWeight": 822,
         "confidenceCounts": {
-          "high": 867,
+          "high": 879,
           "medium": 0,
           "low": 0
         },
@@ -382,11 +383,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2779,
-    "recordsWithDesignation": 2590,
-    "recordsWithWeight": 2594,
+    "recordCount": 2791,
+    "recordsWithDesignation": 2602,
+    "recordsWithWeight": 2606,
     "confidenceCounts": {
-      "high": 2779,
+      "high": 2791,
       "medium": 0,
       "low": 0
     }
@@ -24950,6 +24951,27 @@
       }
     },
     {
+      "id": "obs-d48b0300-cfbf-4d38-bb73-4d5104801134",
+      "catalogId": "nininger-1950",
+      "designation": "61a",
+      "name": "Ivanpah",
+      "weight": {
+        "grams": 20
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "San Bernardino County, California",
+      "year": "1880",
+      "catalogPage": 64,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Ivanpah",
+        "meteoriteCode": "12062",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12062",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Ivanpah as code 12062, a California iron found in 1880. The official checker returns Ivanpah as Official, and the detail page confirms the exact name, year, Iron, IIIAB identity, 58 kg mass, and San Bernardino County synonym. The source's 58.3 kg total is preserved."
+      }
+    },
+    {
       "id": "obs-8b4e9aba-34cc-4b5f-a78d-3d0ab053b041",
       "catalogId": "nininger-1950",
       "designation": "62a",
@@ -24989,6 +25011,27 @@
         "meteoriteCode": "12027",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12027",
         "alternateNameNote": "The verified local valid-name CSV has Official Indarch code 12027, a 1891 Azerbaijan EH4 fall of 27 kg. The official exact-name checker and detail page confirm the identity, year, fall, class, and mass and list Elisabethpol, Gindorcha, Glindorcha, and Schuscha among its synonyms. Historical source geography and classification are preserved."
+      }
+    },
+    {
+      "id": "obs-a7281e2f-5427-4965-80d1-f492ee6d42eb",
+      "catalogId": "nininger-1950",
+      "designation": "64a",
+      "name": "Jelica",
+      "weight": {
+        "grams": 1.5
+      },
+      "classification": "Stone. Amphoterite",
+      "locality": "Serbia",
+      "year": "1889",
+      "catalogPage": 64,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Jelica",
+        "meteoriteCode": "12078",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12078",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Jelica as code 12078, an 1889 Serbian LL6 fall. The official checker returns Jelica as Official, and the detail page confirms the exact name, year, fall, Serbia, 34 kg mass, and Cacak and Jeliza synonyms. The source's 33.8 kg total is preserved."
       }
     },
     {
@@ -25304,6 +25347,90 @@
         "meteoriteCode": "10037",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10037",
         "alternateNameNote": "The official checker returns exact Official Enon. The detail page records the NHM historical classification Mesosiderite-an, but the valid-name CSV and current recommended classification say Iron, ungrouped; the source's Mesosiderite wording is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-093932bf-4427-4c75-8814-ebc6ec2ec666",
+      "catalogId": "nininger-1950",
+      "designation": "125b",
+      "name": "Johnstown",
+      "weight": {
+        "grams": 72.5
+      },
+      "classification": "Stone. Diogenite",
+      "locality": "Weld County, Colorado",
+      "year": "1924",
+      "catalogPage": 64,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Johnstown",
+        "meteoriteCode": "12198",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12198",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Johnstown as code 12198, a 1924 Colorado diogenite fall with 40.3 kg mass. The official checker returns Johnstown as Official, and the detail page confirms the exact name, year, fall, classification, mass, Weld County locality, and Elwell synonym."
+      }
+    },
+    {
+      "id": "obs-ca0488c0-0779-4cf4-ba7d-a3c955918c60",
+      "catalogId": "nininger-1950",
+      "designation": "125a",
+      "name": "Johnstown",
+      "weight": {
+        "grams": 284
+      },
+      "classification": "Stone. Diogenite",
+      "locality": "Weld County, Colorado",
+      "year": "1924",
+      "catalogPage": 64,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Johnstown",
+        "meteoriteCode": "12198",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12198",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Johnstown as code 12198, a 1924 Colorado diogenite fall with 40.3 kg mass. The official checker returns Johnstown as Official, and the detail page confirms the exact name, year, fall, classification, mass, Weld County locality, and Elwell synonym."
+      }
+    },
+    {
+      "id": "obs-11ea0d8c-32da-4347-8bd4-24fcf273f285",
+      "catalogId": "nininger-1950",
+      "designation": "125.3",
+      "name": "Johnstown",
+      "weight": {
+        "grams": 1215
+      },
+      "classification": "Stone. Diogenite",
+      "locality": "Weld County, Colorado",
+      "year": "1924",
+      "catalogPage": 64,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Johnstown",
+        "meteoriteCode": "12198",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12198",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Johnstown as code 12198, a 1924 Colorado diogenite fall with 40.3 kg mass. The official checker returns Johnstown as Official, and the detail page confirms the exact name, year, fall, classification, mass, Weld County locality, and Elwell synonym."
+      }
+    },
+    {
+      "id": "obs-6071f035-d6b0-4ecb-b4af-c377fe27cc13",
+      "catalogId": "nininger-1950",
+      "designation": "125.5",
+      "name": "Johnstown",
+      "weight": {
+        "grams": 2400
+      },
+      "classification": "Stone. Diogenite",
+      "locality": "Weld County, Colorado",
+      "year": "1924",
+      "catalogPage": 64,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Johnstown",
+        "meteoriteCode": "12198",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12198",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Johnstown as code 12198, a 1924 Colorado diogenite fall with 40.3 kg mass. The official checker returns Johnstown as Official, and the detail page confirms the exact name, year, fall, classification, mass, Weld County locality, and Elwell synonym."
       }
     },
     {
@@ -28751,6 +28878,27 @@
       }
     },
     {
+      "id": "obs-f5250b3a-1fd6-4b34-9336-96a7895f7a48",
+      "catalogId": "nininger-1950",
+      "designation": "237a",
+      "name": "Jerome",
+      "weight": {
+        "grams": 3
+      },
+      "classification": "Stone. Crystalline spherical bronzite-chondrite",
+      "locality": "Gove County, Kansas",
+      "year": "1894",
+      "catalogPage": 64,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Jerome (Kansas)",
+        "meteoriteCode": "12083",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12083",
+        "alternateNameNote": "The official checker treats bare Jerome as a partial name with two candidates. The verified local CSV and code 12083 detail page identify Official Jerome (Kansas), whose Kansas locality, 1894 year, L4 stone identity, and 29.6 kg mass distinguish it from the 1954 Idaho meteorite and agree with the source's Gove County and 29.8 kg context."
+      }
+    },
+    {
       "id": "obs-b456529c-03b7-4cf0-9c01-c0379145012e",
       "catalogId": "nininger-1950",
       "designation": "239.3",
@@ -28937,6 +29085,27 @@
         "meteoriteCode": "5450",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5450",
         "alternateNameNote": "The official detail page lists all four printed synonyms and gives 1837, Tennessee, and Iron, IAB-MG. The source's printed 96 kg conflicts with its own 2,112 lb. parenthetical and with the official 960 kg mass; both printed source values are retained without correction."
+      }
+    },
+    {
+      "id": "obs-e374b11f-273b-4ee5-add3-2b71c6f4b29a",
+      "catalogId": "nininger-1950",
+      "designation": "257a",
+      "name": "Jewell Hill",
+      "weight": {
+        "grams": 166
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Madison County, North Carolina",
+      "year": "1873",
+      "catalogPage": 64,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The local official-name CSV has distinct Duel Hill (1854), code 7738, and Duel Hill (1873), code 7739. The checker calls Jewell Hill a synonym of the 1854 record, whose detail page confirms that synonym, but the source's 1873 year, coarse-octahedrite description, and 11.4 kg total instead align with the distinct 1873 record. This conflict is unresolved; no code is inferred."
       }
     },
     {
@@ -31208,6 +31377,48 @@
       }
     },
     {
+      "id": "obs-b63be6f6-8800-4f6b-b8db-6237c2e093ad",
+      "catalogId": "nininger-1950",
+      "designation": "413.1",
+      "name": "Johnson",
+      "weight": {
+        "grams": 8493
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Stanton County, Kansas; 37° 34′ N., 101° 45′ W.",
+      "year": "1937",
+      "catalogPage": 64,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Johnson City",
+        "meteoriteCode": "12197",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12197",
+        "alternateNameNote": "The checker treats Johnson as a partial name, while the source explicitly prints Johnson City as its synonym. The verified local CSV and detail page identify Official Johnson City, code 12197, and confirm Johnson as a synonym, the 1937 Kansas find, L6 identity, 10.4 kg mass, and near-identical coordinates."
+      }
+    },
+    {
+      "id": "obs-e1e7f7ad-14d6-43de-8775-83a7a3c68e21",
+      "catalogId": "nininger-1950",
+      "designation": "413.3",
+      "name": "Johnson",
+      "weight": {
+        "grams": 30
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Stanton County, Kansas; 37° 34′ N., 101° 45′ W.",
+      "year": "1937",
+      "catalogPage": 64,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Johnson City",
+        "meteoriteCode": "12197",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12197",
+        "alternateNameNote": "The checker treats Johnson as a partial name, while the source explicitly prints Johnson City as its synonym. The verified local CSV and detail page identify Official Johnson City, code 12197, and confirm Johnson as a synonym, the 1937 Kansas find, L6 identity, 10.4 kg mass, and near-identical coordinates."
+      }
+    },
+    {
       "id": "obs-669c57bf-98ec-49f4-9d4b-c7bfe6872613",
       "catalogId": "nininger-1950",
       "designation": "414.26",
@@ -31583,6 +31794,27 @@
         "meteoriteCode": "11828",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11828",
         "alternateNameNote": "The verified local CSV and checker identify exact Official Hardwick, code 11828. The detail page confirms the 1937 Minnesota find, the printed coordinates, L4 stone classification, and 7.8 kg mass."
+      }
+    },
+    {
+      "id": "obs-0f345825-2419-49fb-af96-b162da4d83db",
+      "catalogId": "nininger-1950",
+      "designation": "430.1",
+      "name": "Ingalls",
+      "weight": {
+        "grams": 243.7
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Gray County, Kansas; 37° 50′ N., 100° 27′ W.",
+      "year": "1937",
+      "catalogPage": 64,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Ingalls",
+        "meteoriteCode": "12033",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12033",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Ingalls as code 12033, found 1937 in Kansas. The official checker returns Ingalls as Official, and the detail page confirms the exact name, year, H6 stone identity, and printed coordinates. Its 226 gram mass differs from the source's 243.7 gram total, which is preserved."
       }
     },
     {
@@ -32591,6 +32823,27 @@
         "meteoriteCode": "5137",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5137",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-f8f50c31-bcaa-4564-bed5-e8da2aa579a5",
+      "catalogId": "nininger-1950",
+      "designation": "484.1",
+      "name": "Joe Wright Mountain",
+      "weight": {
+        "grams": 98.5
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Independence County, Arkansas",
+      "year": "1884",
+      "catalogPage": 64,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Joe Wright Mountain",
+        "meteoriteCode": "12174",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12174",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Joe Wright Mountain as code 12174, an Arkansas iron found in 1884. The official checker returns the exact name as Official, and the detail page confirms the year, Iron, IIIAB identity, 42.6 kg mass, and Independence County synonym. The source's 42.7 kg total is preserved."
       }
     },
     {
