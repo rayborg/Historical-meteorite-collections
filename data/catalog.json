@@ -360,14 +360,15 @@
           53,
           54,
           55,
-          56
+          56,
+          57
         ],
-        "sourcePageCount": 31,
-        "recordCount": 610,
-        "recordsWithDesignation": 605,
-        "recordsWithWeight": 598,
+        "sourcePageCount": 32,
+        "recordCount": 644,
+        "recordsWithDesignation": 639,
+        "recordsWithWeight": 632,
         "confidenceCounts": {
-          "high": 610,
+          "high": 644,
           "medium": 0,
           "low": 0
         },
@@ -375,11 +376,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2522,
-    "recordsWithDesignation": 2348,
-    "recordsWithWeight": 2382,
+    "recordCount": 2556,
+    "recordsWithDesignation": 2382,
+    "recordsWithWeight": 2416,
     "confidenceCounts": {
-      "high": 2522,
+      "high": 2556,
       "medium": 0,
       "low": 0
     }
@@ -25363,6 +25364,573 @@
       }
     },
     {
+      "id": "obs-0ccc9efd-65cf-43b8-8cb8-23d28f090174",
+      "catalogId": "nininger-1950",
+      "designation": "193xx",
+      "name": "Henbury",
+      "weight": {
+        "grams": 19
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 57,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Henbury, code 11872. The detail page confirms the 1931 Australian iron identity; it reports Northern Territory, IIIAB, and a 2 t mass, while the source's McDonnell Ranges locality, medium-octahedrite classification, and about 681 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-0af85ac9-2178-41f6-a312-b62cd63ba2c5",
+      "catalogId": "nininger-1950",
+      "designation": "193e",
+      "name": "Henbury",
+      "weight": {
+        "grams": 36
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 57,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Henbury, code 11872. The detail page confirms the 1931 Australian iron identity; it reports Northern Territory, IIIAB, and a 2 t mass, while the source's McDonnell Ranges locality, medium-octahedrite classification, and about 681 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-06b63876-a1dc-4156-952e-299d723b01a4",
+      "catalogId": "nininger-1950",
+      "designation": "193qq",
+      "name": "Henbury",
+      "weight": {
+        "grams": 37
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 57,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Henbury, code 11872. The detail page confirms the 1931 Australian iron identity; it reports Northern Territory, IIIAB, and a 2 t mass, while the source's McDonnell Ranges locality, medium-octahedrite classification, and about 681 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-9831a169-f8e0-42e6-b276-6d454c114707",
+      "catalogId": "nininger-1950",
+      "designation": "193rr",
+      "name": "Henbury",
+      "weight": {
+        "grams": 40
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 57,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Henbury, code 11872. The detail page confirms the 1931 Australian iron identity; it reports Northern Territory, IIIAB, and a 2 t mass, while the source's McDonnell Ranges locality, medium-octahedrite classification, and about 681 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-750e180b-3f39-4e8b-b090-e699d55a09aa",
+      "catalogId": "nininger-1950",
+      "designation": "193mm",
+      "name": "Henbury",
+      "weight": {
+        "grams": 47
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 57,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Henbury, code 11872. The detail page confirms the 1931 Australian iron identity; it reports Northern Territory, IIIAB, and a 2 t mass, while the source's McDonnell Ranges locality, medium-octahedrite classification, and about 681 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-0d1d5c86-7558-4b61-84a8-1a4c327476a9",
+      "catalogId": "nininger-1950",
+      "designation": "193hh",
+      "name": "Henbury",
+      "weight": {
+        "grams": 52
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 57,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Henbury, code 11872. The detail page confirms the 1931 Australian iron identity; it reports Northern Territory, IIIAB, and a 2 t mass, while the source's McDonnell Ranges locality, medium-octahedrite classification, and about 681 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-15de0201-f493-4185-b637-1bebdedae627",
+      "catalogId": "nininger-1950",
+      "designation": "193oo",
+      "name": "Henbury",
+      "weight": {
+        "grams": 53
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 57,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Henbury, code 11872. The detail page confirms the 1931 Australian iron identity; it reports Northern Territory, IIIAB, and a 2 t mass, while the source's McDonnell Ranges locality, medium-octahedrite classification, and about 681 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-7f5782b6-35e9-48a4-b18f-eabaa8eccc4e",
+      "catalogId": "nininger-1950",
+      "designation": "193d",
+      "name": "Henbury",
+      "weight": {
+        "grams": 53
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 57,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Henbury, code 11872. The detail page confirms the 1931 Australian iron identity; it reports Northern Territory, IIIAB, and a 2 t mass, while the source's McDonnell Ranges locality, medium-octahedrite classification, and about 681 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-5b029837-ede8-473b-a006-36ff6c0f69f7",
+      "catalogId": "nininger-1950",
+      "designation": "193ee",
+      "name": "Henbury",
+      "weight": {
+        "grams": 54
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 57,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Henbury, code 11872. The detail page confirms the 1931 Australian iron identity; it reports Northern Territory, IIIAB, and a 2 t mass, while the source's McDonnell Ranges locality, medium-octahedrite classification, and about 681 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-90b8cde3-7f82-40da-a0ce-7c73955ebf58",
+      "catalogId": "nininger-1950",
+      "designation": "193pp",
+      "name": "Henbury",
+      "weight": {
+        "grams": 57
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 57,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Henbury, code 11872. The detail page confirms the 1931 Australian iron identity; it reports Northern Territory, IIIAB, and a 2 t mass, while the source's McDonnell Ranges locality, medium-octahedrite classification, and about 681 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-7bdc2efd-90f1-4358-b533-6965414e3315",
+      "catalogId": "nininger-1950",
+      "designation": "193cc",
+      "name": "Henbury",
+      "weight": {
+        "grams": 59
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 57,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Henbury, code 11872. The detail page confirms the 1931 Australian iron identity; it reports Northern Territory, IIIAB, and a 2 t mass, while the source's McDonnell Ranges locality, medium-octahedrite classification, and about 681 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-3b61c87e-7bae-44f6-80e3-a61a6929d49d",
+      "catalogId": "nininger-1950",
+      "designation": "193c",
+      "name": "Henbury",
+      "weight": {
+        "grams": 60
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 57,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Henbury, code 11872. The detail page confirms the 1931 Australian iron identity; it reports Northern Territory, IIIAB, and a 2 t mass, while the source's McDonnell Ranges locality, medium-octahedrite classification, and about 681 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-d875b2ad-4abe-4e50-8b6d-732564a0e005",
+      "catalogId": "nininger-1950",
+      "designation": "193ff",
+      "name": "Henbury",
+      "weight": {
+        "grams": 60
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 57,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Henbury, code 11872. The detail page confirms the 1931 Australian iron identity; it reports Northern Territory, IIIAB, and a 2 t mass, while the source's McDonnell Ranges locality, medium-octahedrite classification, and about 681 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-42dd8994-d7f6-4975-8337-83f537ee2cd1",
+      "catalogId": "nininger-1950",
+      "designation": "193bb",
+      "name": "Henbury",
+      "weight": {
+        "grams": 63
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 57,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Henbury, code 11872. The detail page confirms the 1931 Australian iron identity; it reports Northern Territory, IIIAB, and a 2 t mass, while the source's McDonnell Ranges locality, medium-octahedrite classification, and about 681 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-e5a7c065-122a-4930-adc9-c82d062c7fad",
+      "catalogId": "nininger-1950",
+      "designation": "193dd",
+      "name": "Henbury",
+      "weight": {
+        "grams": 66
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 57,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Henbury, code 11872. The detail page confirms the 1931 Australian iron identity; it reports Northern Territory, IIIAB, and a 2 t mass, while the source's McDonnell Ranges locality, medium-octahedrite classification, and about 681 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-a09417f2-7fe1-478f-9bc0-8da13b9e869e",
+      "catalogId": "nininger-1950",
+      "designation": "193r",
+      "name": "Henbury",
+      "weight": {
+        "grams": 68
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 57,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Henbury, code 11872. The detail page confirms the 1931 Australian iron identity; it reports Northern Territory, IIIAB, and a 2 t mass, while the source's McDonnell Ranges locality, medium-octahedrite classification, and about 681 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-417ee61b-8f30-445a-822a-5924d6c96390",
+      "catalogId": "nininger-1950",
+      "designation": "193w",
+      "name": "Henbury",
+      "weight": {
+        "grams": 75
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 57,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Henbury, code 11872. The detail page confirms the 1931 Australian iron identity; it reports Northern Territory, IIIAB, and a 2 t mass, while the source's McDonnell Ranges locality, medium-octahedrite classification, and about 681 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-7c8310a3-c9e2-4cdc-867c-5de10bc6320b",
+      "catalogId": "nininger-1950",
+      "designation": "193b",
+      "name": "Henbury",
+      "weight": {
+        "grams": 82
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 57,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Henbury, code 11872. The detail page confirms the 1931 Australian iron identity; it reports Northern Territory, IIIAB, and a 2 t mass, while the source's McDonnell Ranges locality, medium-octahedrite classification, and about 681 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-3d440210-b2ce-4258-a59c-2d62cb7a5ee2",
+      "catalogId": "nininger-1950",
+      "designation": "193t",
+      "name": "Henbury",
+      "weight": {
+        "grams": 90
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 57,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Henbury, code 11872. The detail page confirms the 1931 Australian iron identity; it reports Northern Territory, IIIAB, and a 2 t mass, while the source's McDonnell Ranges locality, medium-octahedrite classification, and about 681 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-fdbcc321-057c-4f36-bba9-b4db69a285c4",
+      "catalogId": "nininger-1950",
+      "designation": "193x",
+      "name": "Henbury",
+      "weight": {
+        "grams": 91
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 57,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Henbury, code 11872. The detail page confirms the 1931 Australian iron identity; it reports Northern Territory, IIIAB, and a 2 t mass, while the source's McDonnell Ranges locality, medium-octahedrite classification, and about 681 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-9a3a440c-690c-440a-ba0d-5da24752d1db",
+      "catalogId": "nininger-1950",
+      "designation": "193s",
+      "name": "Henbury",
+      "weight": {
+        "grams": 100
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 57,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Henbury, code 11872. The detail page confirms the 1931 Australian iron identity; it reports Northern Territory, IIIAB, and a 2 t mass, while the source's McDonnell Ranges locality, medium-octahedrite classification, and about 681 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-caec5dd6-682e-4724-90da-2eae0d300d4a",
+      "catalogId": "nininger-1950",
+      "designation": "193aa",
+      "name": "Henbury",
+      "weight": {
+        "grams": 107
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 57,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Henbury, code 11872. The detail page confirms the 1931 Australian iron identity; it reports Northern Territory, IIIAB, and a 2 t mass, while the source's McDonnell Ranges locality, medium-octahedrite classification, and about 681 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-965b27a0-9ebd-4ca3-bc9f-dba955e62c50",
+      "catalogId": "nininger-1950",
+      "designation": "193n",
+      "name": "Henbury",
+      "weight": {
+        "grams": 184
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 57,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Henbury, code 11872. The detail page confirms the 1931 Australian iron identity; it reports Northern Territory, IIIAB, and a 2 t mass, while the source's McDonnell Ranges locality, medium-octahedrite classification, and about 681 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-b4001b46-9a1e-4a1e-87d2-fe085cc2e4be",
+      "catalogId": "nininger-1950",
+      "designation": "193a",
+      "name": "Henbury",
+      "weight": {
+        "grams": 242
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 57,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Henbury, code 11872. The detail page confirms the 1931 Australian iron identity; it reports Northern Territory, IIIAB, and a 2 t mass, while the source's McDonnell Ranges locality, medium-octahedrite classification, and about 681 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-73ef1855-da2f-448e-9ada-72588fb09985",
+      "catalogId": "nininger-1950",
+      "designation": "193j",
+      "name": "Henbury",
+      "weight": {
+        "grams": 253
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 57,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Henbury, code 11872. The detail page confirms the 1931 Australian iron identity; it reports Northern Territory, IIIAB, and a 2 t mass, while the source's McDonnell Ranges locality, medium-octahedrite classification, and about 681 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-4857348d-3f42-4eaf-9c8b-d06cba52aa08",
+      "catalogId": "nininger-1950",
+      "designation": "193i",
+      "name": "Henbury",
+      "weight": {
+        "grams": 470
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 57,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Henbury, code 11872. The detail page confirms the 1931 Australian iron identity; it reports Northern Territory, IIIAB, and a 2 t mass, while the source's McDonnell Ranges locality, medium-octahedrite classification, and about 681 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-3ee22b59-0056-4186-bc7d-49f23fd069e6",
+      "catalogId": "nininger-1950",
+      "designation": "193g",
+      "name": "Henbury",
+      "weight": {
+        "grams": 11325
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 57,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Henbury, code 11872. The detail page confirms the 1931 Australian iron identity; it reports Northern Territory, IIIAB, and a 2 t mass, while the source's McDonnell Ranges locality, medium-octahedrite classification, and about 681 kg total are preserved without reconciliation."
+      }
+    },
+    {
       "id": "obs-a30025b0-7ff4-436e-a4a6-d9380bc3d43a",
       "catalogId": "nininger-1950",
       "designation": "194b",
@@ -26641,6 +27209,27 @@
         "meteoriteCode": null,
         "metbullUrl": null,
         "alternateNameNote": "No exact Hale Center row occurs in the verified local CSV, and the official exact-name checker returns no record or synonym. A contains search and the reviewed detail pages show two qualified official names, Hale Center (no. 1), code 11477, and Hale Center (no. 2), code 11478. Although the source's mass and the adjacent distinct No. 2 entry resemble the first record, no qualifier is printed and no match is inferred."
+      }
+    },
+    {
+      "id": "obs-ca913579-3bf7-4940-9995-9d04c3b8ce83",
+      "catalogId": "nininger-1950",
+      "designation": "311.1",
+      "name": "Hawk Springs",
+      "weight": {
+        "grams": 226
+      },
+      "classification": "Stone. Black chondrite",
+      "locality": "Goshen County, Wyoming; 41° 46′ N., 104° 16′ W.",
+      "year": "1935",
+      "catalogPage": 57,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Hawk Springs",
+        "meteoriteCode": "11862",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11862",
+        "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Hawk Springs, code 11862. The detail page confirms the 1935 Wyoming H5 and 367 g mass; its coordinates are one minute north and east of those printed, which are preserved without correction."
       }
     },
     {
@@ -27925,6 +28514,27 @@
       }
     },
     {
+      "id": "obs-7929664d-3ea8-45e6-88c2-33efdabefe6f",
+      "catalogId": "nininger-1950",
+      "designation": "407.1",
+      "name": "Haviland",
+      "weight": {
+        "grams": 950
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Kiowa County, Kansas; 37° 37′ N., 99° 6′ W.",
+      "year": "1937",
+      "catalogPage": 57,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Haviland (a)",
+        "meteoriteCode": "11860",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11860",
+        "alternateNameNote": "The verified local MetBull CSV has Official Haviland (a), code 11860, a 1937 Kansas H5 of 1,035 g. Its detail page exactly matches the source coordinates and lists Haviland (stone) as a synonym, establishing the source's 1937 chondrite despite the 1,033 g source total. The official exact-name checker instead returns bare Haviland only as a synonym of the incompatible Brenham pallasite; Brenham is not inferred."
+      }
+    },
+    {
       "id": "obs-0cebe4c4-58e9-4f32-a0b9-1e9d7d33a38c",
       "catalogId": "nininger-1950",
       "designation": "408.1",
@@ -29080,6 +29690,48 @@
       }
     },
     {
+      "id": "obs-8ec652e7-607c-4a97-b916-f261b6c86752",
+      "catalogId": "nininger-1950",
+      "designation": "481.1",
+      "name": "Hayes Center",
+      "weight": {
+        "grams": 2265
+      },
+      "classification": "Stone. Black chondrite",
+      "locality": "Hayes County, Nebraska; 40° 31′ N., 101° 2′ W.",
+      "year": "1941",
+      "catalogPage": 57,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Hayes Center",
+        "meteoriteCode": "11865",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11865",
+        "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Hayes Center, code 11865. The detail page confirms the 1941 Nebraska L6, exact printed coordinates, and 4.5 kg mass."
+      }
+    },
+    {
+      "id": "obs-b5c44841-dfad-4227-a629-320ca9e1ab1a",
+      "catalogId": "nininger-1950",
+      "designation": "481.5",
+      "name": "Hayes Center",
+      "weight": {
+        "grams": 603
+      },
+      "classification": "Stone. Black chondrite",
+      "locality": "Hayes County, Nebraska; 40° 31′ N., 101° 2′ W.",
+      "year": "1941",
+      "catalogPage": 57,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Hayes Center",
+        "meteoriteCode": "11865",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11865",
+        "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Hayes Center, code 11865. The detail page confirms the 1941 Nebraska L6, exact printed coordinates, and 4.5 kg mass."
+      }
+    },
+    {
       "id": "obs-7903127f-92cf-44fc-aad1-2c4a728c2cbf",
       "catalogId": "nininger-1950",
       "designation": "482.1",
@@ -29119,6 +29771,27 @@
         "meteoriteCode": "5137",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5137",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-c2878ac4-951b-45a7-8859-f85d40878c5f",
+      "catalogId": "nininger-1950",
+      "designation": "488.1",
+      "name": "Hatfield",
+      "weight": {
+        "grams": 21.2
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Polk County, Arkansas; 34° 29′ N., 94° 27′ W.",
+      "year": "1941",
+      "catalogPage": 57,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Hatfield",
+        "meteoriteCode": "11854",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11854",
+        "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Hatfield, code 11854. The detail page confirms the 1941 Arkansas iron and the printed coordinates; it reports a 21 g mass, while the source prints Total weight unknown and a 21.2 gram specimen, which are preserved without reconciliation."
       }
     },
     {
@@ -52345,6 +53018,48 @@
         "meteoriteCode": null,
         "metbullUrl": null,
         "alternateNameNote": "Official checker reports the generic label as unknown; it covers distinct Roosevelt County observations from 1968–1973 and does not establish any approved meteorite identity."
+      }
+    },
+    {
+      "id": "obs-85ad6d95-7e10-4b84-96ce-606664132a08",
+      "catalogId": "nininger-1950",
+      "designation": "S 193r",
+      "name": "Henbury",
+      "weight": {
+        "grams": 95
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 57,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Henbury, code 11872. The detail page confirms the 1931 Australian iron identity; it reports Northern Territory, IIIAB, and a 2 t mass, while the source's McDonnell Ranges locality, medium-octahedrite classification, and about 681 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-2eff323a-2ad1-4965-b12c-513fb2dd7113",
+      "catalogId": "nininger-1950",
+      "designation": "S 193v",
+      "name": "Henbury",
+      "weight": {
+        "grams": 172
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 57,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Henbury, code 11872. The detail page confirms the 1931 Australian iron identity; it reports Northern Territory, IIIAB, and a 2 t mass, while the source's McDonnell Ranges locality, medium-octahedrite classification, and about 681 kg total are preserved without reconciliation."
       }
     },
     {
