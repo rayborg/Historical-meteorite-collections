@@ -357,14 +357,15 @@
           50,
           51,
           52,
-          53
+          53,
+          54
         ],
-        "sourcePageCount": 28,
-        "recordCount": 566,
-        "recordsWithDesignation": 561,
-        "recordsWithWeight": 554,
+        "sourcePageCount": 29,
+        "recordCount": 579,
+        "recordsWithDesignation": 574,
+        "recordsWithWeight": 567,
         "confidenceCounts": {
-          "high": 566,
+          "high": 579,
           "medium": 0,
           "low": 0
         },
@@ -372,11 +373,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2478,
-    "recordsWithDesignation": 2304,
-    "recordsWithWeight": 2338,
+    "recordCount": 2491,
+    "recordsWithDesignation": 2317,
+    "recordsWithWeight": 2351,
     "confidenceCounts": {
-      "high": 2478,
+      "high": 2491,
       "medium": 0,
       "low": 0
     }
@@ -23680,6 +23681,69 @@
       }
     },
     {
+      "id": "obs-9afa47ff-3b57-4df8-a766-1214ee0487b0",
+      "catalogId": "nininger-1950",
+      "designation": "52a",
+      "name": "Glorieta Mountain",
+      "weight": {
+        "grams": 340
+      },
+      "classification": "Palla-siderite",
+      "locality": "Santa Fe County, New Mexico",
+      "year": "1884",
+      "catalogPage": 54,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Glorieta Mountain",
+        "meteoriteCode": "10935",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10935",
+        "alternateNameNote": "The verified local CSV and checker identify exact Official Glorieta Mountain, code 10935. The detail page confirms the 1884 New Mexico pallasite and reports 148 kg; the source's 145.5 kg is preserved. The structured shared remark dehyphenates the printed line-end investi-/gations; the diplomatic transcript preserves the break."
+      }
+    },
+    {
+      "id": "obs-e7b9d05a-8d4f-4499-afe6-68a23dd6b870",
+      "catalogId": "nininger-1950",
+      "designation": "52.4",
+      "name": "Glorieta Mountain",
+      "weight": {
+        "grams": 251.1
+      },
+      "classification": "Palla-siderite",
+      "locality": "Santa Fe County, New Mexico",
+      "year": "1884",
+      "catalogPage": 54,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Glorieta Mountain",
+        "meteoriteCode": "10935",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10935",
+        "alternateNameNote": "The verified local CSV and checker identify exact Official Glorieta Mountain, code 10935. The detail page confirms the 1884 New Mexico pallasite and reports 148 kg; the source's 145.5 kg is preserved. The structured shared remark dehyphenates the printed line-end investi-/gations; the diplomatic transcript preserves the break."
+      }
+    },
+    {
+      "id": "obs-0830ddcc-9a5e-4039-b230-c75afec27813",
+      "catalogId": "nininger-1950",
+      "designation": "52.6",
+      "name": "Glorieta Mountain",
+      "weight": {
+        "grams": 172.3
+      },
+      "classification": "Palla-siderite",
+      "locality": "Santa Fe County, New Mexico",
+      "year": "1884",
+      "catalogPage": 54,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Glorieta Mountain",
+        "meteoriteCode": "10935",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10935",
+        "alternateNameNote": "The verified local CSV and checker identify exact Official Glorieta Mountain, code 10935. The detail page confirms the 1884 New Mexico pallasite and reports 148 kg; the source's 145.5 kg is preserved. The structured shared remark dehyphenates the printed line-end investi-/gations; the diplomatic transcript preserves the break."
+      }
+    },
+    {
       "id": "obs-62ada7c8-e989-4284-a38c-69a5e4ae6cc1",
       "catalogId": "nininger-1950",
       "designation": "53a",
@@ -23719,6 +23783,27 @@
         "meteoriteCode": "10920",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10920",
         "alternateNameNote": "The verified local CSV has Official Gladstone (iron), code 10920. The checker marks Gladstone as a partial name with iron and stone candidates; the containing-name result and detail page identify the Queensland IAB-MG iron as code 10920, distinct from the New Mexico H4. The source's 1914 and 659 kg differ from the official 1915 and 736.6 kg and are preserved."
+      }
+    },
+    {
+      "id": "obs-6095eb1b-0a58-49d2-b827-bf5f688c3af8",
+      "catalogId": "nininger-1950",
+      "designation": "54a",
+      "name": "Grand Rapids",
+      "weight": {
+        "grams": 1542
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Kent County, Michigan",
+      "year": "1883",
+      "catalogPage": 54,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Grand Rapids",
+        "meteoriteCode": "10955",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10955",
+        "alternateNameNote": "The verified local CSV and checker identify exact Official Grand Rapids, code 10955. The detail page confirms the 1883 Michigan iron and lists Walker Township as a synonym; it reports 51.7 kg, while the source's 51.5 kg is preserved."
       }
     },
     {
@@ -25087,6 +25172,48 @@
       }
     },
     {
+      "id": "obs-a30025b0-7ff4-436e-a4a6-d9380bc3d43a",
+      "catalogId": "nininger-1950",
+      "designation": "194b",
+      "name": "Grady",
+      "weight": {
+        "grams": 21.5
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Curry County, New Mexico; 34° 48′ N., 103° 19′ W.",
+      "year": "1933",
+      "catalogPage": 54,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "translated-or-older-name",
+        "canonicalName": "Grady (1933)",
+        "meteoriteCode": "10951",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10951",
+        "alternateNameNote": "The checker marks bare Grady as a partial name with three candidates. The verified local CSV and official detail page identify Grady (1933), code 10951, whose 1933 New Mexico find, exact printed coordinates, L3-6 stone identity, and 4.23 kg mass uniquely agree with this source entry; the source's 4,234 grams is preserved. The detail page lists Grady (no. 1) as a synonym."
+      }
+    },
+    {
+      "id": "obs-29e7039c-16d4-413d-a6ee-e645757c323a",
+      "catalogId": "nininger-1950",
+      "designation": "194c",
+      "name": "Grady",
+      "weight": {
+        "grams": 23
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Curry County, New Mexico; 34° 48′ N., 103° 19′ W.",
+      "year": "1933",
+      "catalogPage": 54,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "translated-or-older-name",
+        "canonicalName": "Grady (1933)",
+        "meteoriteCode": "10951",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10951",
+        "alternateNameNote": "The checker marks bare Grady as a partial name with three candidates. The verified local CSV and official detail page identify Grady (1933), code 10951, whose 1933 New Mexico find, exact printed coordinates, L3-6 stone identity, and 4.23 kg mass uniquely agree with this source entry; the source's 4,234 grams is preserved. The detail page lists Grady (no. 1) as a synonym."
+      }
+    },
+    {
       "id": "obs-ef67c400-13c9-49d6-bbda-ff9cda438852",
       "catalogId": "nininger-1950",
       "designation": "196a",
@@ -26137,6 +26264,48 @@
       }
     },
     {
+      "id": "obs-f862cd8e-e6a2-42b5-8204-badde2d691bc",
+      "catalogId": "nininger-1950",
+      "designation": "315.1",
+      "name": "Gladstone",
+      "weight": {
+        "grams": 45526
+      },
+      "classification": "Stone. Veined crystalline spherical chondrite",
+      "locality": "Colfax County, New Mexico; 36° 18′ N., 103° 58′ W.",
+      "year": "1936",
+      "catalogPage": 54,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "translated-or-older-name",
+        "canonicalName": "Gladstone (stone)",
+        "meteoriteCode": "10921",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10921",
+        "alternateNameNote": "The verified local CSV has Official Gladstone (stone), code 10921. The checker marks bare Gladstone as a partial name with iron and stone candidates; the containing-name result and detail page identify the 1936 New Mexico H4 with nearby coordinates and the exact 57.3 kg mass as code 10921, distinct from the Queensland iron."
+      }
+    },
+    {
+      "id": "obs-be62ffb0-86df-470a-bdc5-abcf2790e6ee",
+      "catalogId": "nininger-1950",
+      "designation": "315.37",
+      "name": "Gladstone",
+      "weight": {
+        "grams": 1632
+      },
+      "classification": "Stone. Veined crystalline spherical chondrite",
+      "locality": "Colfax County, New Mexico; 36° 18′ N., 103° 58′ W.",
+      "year": "1936",
+      "catalogPage": 54,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "translated-or-older-name",
+        "canonicalName": "Gladstone (stone)",
+        "meteoriteCode": "10921",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10921",
+        "alternateNameNote": "The verified local CSV has Official Gladstone (stone), code 10921. The checker marks bare Gladstone as a partial name with iron and stone candidates; the containing-name result and detail page identify the 1936 New Mexico H4 with nearby coordinates and the exact 57.3 kg mass as code 10921, distinct from the Queensland iron."
+      }
+    },
+    {
       "id": "obs-453516a7-a4f1-4051-b2f2-e3999ace3139",
       "catalogId": "nininger-1950",
       "designation": "316.2",
@@ -26977,6 +27146,27 @@
       }
     },
     {
+      "id": "obs-c0b4b846-142d-43a0-8fa0-1ddaa05100a2",
+      "catalogId": "nininger-1950",
+      "designation": "373.4",
+      "name": "Grady, No. 2",
+      "weight": {
+        "grams": 5828
+      },
+      "classification": "Stone. Veined crystalline spherical chondrite",
+      "locality": "Curry County, New Mexico; 34° 48′ N., 103° 19′ W.",
+      "year": "1937",
+      "catalogPage": 54,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Grady (1937)",
+        "meteoriteCode": "10952",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10952",
+        "alternateNameNote": "The verified local CSV has Official Grady (1937), code 10952. The checker identifies punctuation-normalized Grady (no. 2) as its synonym, and the detail page lists that synonym and confirms the 1937 New Mexico H3.7, exact printed coordinates, and 9.3 kg mass. The source's comma and capitalized No. are preserved."
+      }
+    },
+    {
       "id": "obs-7f3f8784-2be7-436c-9d4a-3b8c01215805",
       "catalogId": "nininger-1950",
       "designation": "374.1",
@@ -27418,6 +27608,69 @@
       }
     },
     {
+      "id": "obs-9cc15d2a-49f0-49d2-adeb-05f8b1ce95e2",
+      "catalogId": "nininger-1950",
+      "designation": "425.1",
+      "name": "Goodland",
+      "weight": {
+        "grams": 729.7
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Sherman County, Kansas; 39° 20′ N., 101° 40′ W.",
+      "year": "1938",
+      "catalogPage": 54,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Goodland",
+        "meteoriteCode": "10945",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10945",
+        "alternateNameNote": "The verified local CSV and checker identify exact Official Goodland, code 10945. The detail page confirms the Kansas L4, 101° 40′ W. longitude, near-identical latitude, and approximately 3.6 kg mass but reports year found 1923; the source's 39° 20′ N. and Recognized 1938 are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-9524d884-52ab-46d0-a816-346dc7caa739",
+      "catalogId": "nininger-1950",
+      "designation": "425.2",
+      "name": "Goodland",
+      "weight": {
+        "grams": 1800
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Sherman County, Kansas; 39° 20′ N., 101° 40′ W.",
+      "year": "1938",
+      "catalogPage": 54,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Goodland",
+        "meteoriteCode": "10945",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10945",
+        "alternateNameNote": "The verified local CSV and checker identify exact Official Goodland, code 10945. The detail page confirms the Kansas L4, 101° 40′ W. longitude, near-identical latitude, and approximately 3.6 kg mass but reports year found 1923; the source's 39° 20′ N. and Recognized 1938 are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-fb435040-d79d-4dd1-afb8-c604c88ffaf9",
+      "catalogId": "nininger-1950",
+      "designation": "425.3",
+      "name": "Goodland",
+      "weight": {
+        "grams": 213.9
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Sherman County, Kansas; 39° 20′ N., 101° 40′ W.",
+      "year": "1938",
+      "catalogPage": 54,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Goodland",
+        "meteoriteCode": "10945",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10945",
+        "alternateNameNote": "The verified local CSV and checker identify exact Official Goodland, code 10945. The detail page confirms the Kansas L4, 101° 40′ W. longitude, near-identical latitude, and approximately 3.6 kg mass but reports year found 1923; the source's 39° 20′ N. and Recognized 1938 are preserved without reconciliation."
+      }
+    },
+    {
       "id": "obs-e86d1c17-6b9b-41c3-b20f-dc7a6cad0e83",
       "catalogId": "nininger-1950",
       "designation": "427.1",
@@ -27625,6 +27878,27 @@
         "meteoriteCode": "4913",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4913",
         "alternateNameNote": "The source coordinates, 1938 fall year, and 2,831-gram total known weight match the official New Mexico record and distinguish it from the unrelated use of Aztec as a Holbrook synonym. The source generic Stone classification corresponds to modern L6."
+      }
+    },
+    {
+      "id": "obs-32e12d47-355d-4fa7-9c8f-046262693193",
+      "catalogId": "nininger-1950",
+      "designation": "438.1",
+      "name": "Goose Lake",
+      "weight": {
+        "grams": 20.3
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Modoc County, California",
+      "year": "1938",
+      "catalogPage": 54,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Goose Lake",
+        "meteoriteCode": "10947",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10947",
+        "alternateNameNote": "The verified local CSV and checker identify exact Official Goose Lake, code 10947. The detail page confirms the 1938 California iron and 1,169.5 kg mass."
       }
     },
     {
