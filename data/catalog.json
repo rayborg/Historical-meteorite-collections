@@ -342,14 +342,15 @@
           35,
           36,
           37,
-          38
+          38,
+          39
         ],
-        "sourcePageCount": 13,
-        "recordCount": 234,
-        "recordsWithDesignation": 232,
-        "recordsWithWeight": 227,
+        "sourcePageCount": 14,
+        "recordCount": 301,
+        "recordsWithDesignation": 299,
+        "recordsWithWeight": 294,
         "confidenceCounts": {
-          "high": 234,
+          "high": 301,
           "medium": 0,
           "low": 0
         },
@@ -357,11 +358,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2146,
-    "recordsWithDesignation": 1975,
-    "recordsWithWeight": 2011,
+    "recordCount": 2213,
+    "recordsWithDesignation": 2042,
+    "recordsWithWeight": 2078,
     "confidenceCounts": {
-      "high": 2146,
+      "high": 2213,
       "medium": 0,
       "low": 0
     }
@@ -18772,6 +18773,27 @@
       }
     },
     {
+      "id": "obs-832b634c-2d76-4989-9c17-587c4a6bde7e",
+      "catalogId": "nininger-1950",
+      "designation": "34.80",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 25142
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
       "id": "obs-d1e736b2-e1e3-432c-b903-400c3a7b040e",
       "catalogId": "nininger-1950",
       "designation": "34.102",
@@ -18793,6 +18815,90 @@
       }
     },
     {
+      "id": "obs-b6b8e6cb-6611-4ad0-8582-a5171c4f89ec",
+      "catalogId": "nininger-1950",
+      "designation": "34.213",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 392
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-7a7065f5-10a0-4e37-a7ab-8d49ec2538b6",
+      "catalogId": "nininger-1950",
+      "designation": "34.252",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 37.5
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-48bf3180-fd34-4e4b-a745-d0f50cb81599",
+      "catalogId": "nininger-1950",
+      "designation": "34.253",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 39.5
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-286f8025-c29d-40cf-8ae9-3a454f4fc7f3",
+      "catalogId": "nininger-1950",
+      "designation": "34.257",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 28.7
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
       "id": "obs-203ba510-81e0-4fac-b49c-ee76c1f7647d",
       "catalogId": "nininger-1950",
       "designation": "34.364",
@@ -18811,6 +18917,1308 @@
         "meteoriteCode": "5257",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-0236c77b-43dd-4dba-85f5-41ffe7f2a9fe",
+      "catalogId": "nininger-1950",
+      "designation": "34.527",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 118866
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-0a29bb03-813e-474d-befc-e41259a90339",
+      "catalogId": "nininger-1950",
+      "designation": "34.528",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 65454
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-4338ef64-a30c-463c-aca0-64b11d47fe1e",
+      "catalogId": "nininger-1950",
+      "designation": "34.529",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 6795
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-d621887e-9459-4b68-b441-6ace8a289129",
+      "catalogId": "nininger-1950",
+      "designation": "34.531",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 12561
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-495304ea-6366-47bd-9d33-b79a448e63d9",
+      "catalogId": "nininger-1950",
+      "designation": "34.537",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 9513
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-e7d2aa3c-501f-4345-b508-00fe70a1e94e",
+      "catalogId": "nininger-1950",
+      "designation": "34.538",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 19026
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-59f4f6c9-c87d-4497-bf51-79db094fb67e",
+      "catalogId": "nininger-1950",
+      "designation": "34.539",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 11325
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-25a42a19-f8b4-4b9e-b108-5d8daed8bb38",
+      "catalogId": "nininger-1950",
+      "designation": "34.541",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 140430
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-14b1c282-4f3b-4cd7-ba52-cc254fffe435",
+      "catalogId": "nininger-1950",
+      "designation": "34.557",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 325
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-4a1db089-da29-46d1-84bc-1e6763dd520b",
+      "catalogId": "nininger-1950",
+      "designation": "34.566",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 96.2
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-b8a80d4b-8e0e-4319-8f72-9db73e262ab4",
+      "catalogId": "nininger-1950",
+      "designation": "34.589",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 77.3
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-3948e305-a39d-4e9e-8cff-485a5a76212e",
+      "catalogId": "nininger-1950",
+      "designation": "34.610",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 35
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-00c1a6cd-f48c-48b2-b44a-217a2168a10d",
+      "catalogId": "nininger-1950",
+      "designation": "34.613",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 31.8
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-4a339dcf-e305-4e31-930b-cf1ed73ccd61",
+      "catalogId": "nininger-1950",
+      "designation": "34.648",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 37.3
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-7aedd451-d9b2-47fe-ae75-282eb363585b",
+      "catalogId": "nininger-1950",
+      "designation": "34.730",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 28.8
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-7bbfe7b5-07f2-4452-bb7c-27a36af13486",
+      "catalogId": "nininger-1950",
+      "designation": "34.740",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 333
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-19db6952-57a9-4c31-8a48-0ea251d83c5d",
+      "catalogId": "nininger-1950",
+      "designation": "34.761",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 64
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-2c21e05e-8c29-4e5e-bbac-ba1f14dfd4ef",
+      "catalogId": "nininger-1950",
+      "designation": "34.770",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 46208
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-95c3fbc0-5419-4161-a274-23b690848900",
+      "catalogId": "nininger-1950",
+      "designation": "34.781",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 1550
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-10aa24e5-4263-41a4-b999-e66d52c7d5e9",
+      "catalogId": "nininger-1950",
+      "designation": "34.791",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 4190
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-61d3ffba-2e39-4978-a206-002dab08f161",
+      "catalogId": "nininger-1950",
+      "designation": "34.792",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 4303
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-b29c881b-3e30-4ae7-ba48-e023d320620c",
+      "catalogId": "nininger-1950",
+      "designation": "34.794",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 3171
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-ca513794-90eb-4833-b03a-cd3849482bec",
+      "catalogId": "nininger-1950",
+      "designation": "34.795",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 3044
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-4873d924-dda4-47d7-b86f-d6db55f8e865",
+      "catalogId": "nininger-1950",
+      "designation": "34.797",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 2491
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-539030cd-62fb-434a-ada6-13aec96441b6",
+      "catalogId": "nininger-1950",
+      "designation": "34.798",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 622
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-bc9ebacc-45e6-4437-afd1-484f5a1f17b8",
+      "catalogId": "nininger-1950",
+      "designation": "34.803",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 98663
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-2c6a88c2-2e39-4b1a-acc5-acf3e7d42432",
+      "catalogId": "nininger-1950",
+      "designation": "34.804",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 43714
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-889e1fa5-f5e8-472e-a9c1-91e8c8a6232a",
+      "catalogId": "nininger-1950",
+      "designation": "34.842",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 512.8
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-168b5609-1fc3-4dd6-a549-0bec7b8afec8",
+      "catalogId": "nininger-1950",
+      "designation": "34.843",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 462
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-0882f9c7-6402-4cbc-8637-e7390381e043",
+      "catalogId": "nininger-1950",
+      "designation": "34.844",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 442
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-26467652-c6ed-4133-8dc7-8b40bb0e625c",
+      "catalogId": "nininger-1950",
+      "designation": "34.845",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 437
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-9033f9bd-0e26-4b90-8b02-00a1f0ab1e2e",
+      "catalogId": "nininger-1950",
+      "designation": "34.846",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 432
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-1e51d9af-d945-4d20-8ce9-5f7ce9c0595c",
+      "catalogId": "nininger-1950",
+      "designation": "34.847",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 374.8
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-4caae68f-a777-432c-a6eb-8dfea6770252",
+      "catalogId": "nininger-1950",
+      "designation": "34.848",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 502.4
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-83f920f3-213e-444c-b379-8ed996110a67",
+      "catalogId": "nininger-1950",
+      "designation": "34.849",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 346
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-1922ffcd-1d90-4002-a244-74aef76b414e",
+      "catalogId": "nininger-1950",
+      "designation": "34.850",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 222.3
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-148f530a-20e9-4a85-8c28-3ce77c6f2900",
+      "catalogId": "nininger-1950",
+      "designation": "34.851",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 158
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-18ab4a0c-becb-4ab1-a887-a4855080cb13",
+      "catalogId": "nininger-1950",
+      "designation": "34.852",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 178
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-41fc60d0-a3d4-4ee9-a2a5-59ae4ed91bb7",
+      "catalogId": "nininger-1950",
+      "designation": "34.853",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 116.5
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-ec3b6a5d-5555-4d75-ba98-f606aabd17f2",
+      "catalogId": "nininger-1950",
+      "designation": "34.854",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 52.1
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-4c4e58a8-a9a0-44f1-a7ed-334a9d3b07ff",
+      "catalogId": "nininger-1950",
+      "designation": "34.855",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 44
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-b146131d-7650-4731-8f87-01187a817390",
+      "catalogId": "nininger-1950",
+      "designation": "34.856",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 54
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-83bec999-5546-4756-a379-1c4b6ca730ea",
+      "catalogId": "nininger-1950",
+      "designation": "34.857",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 52.9
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-e4372746-ca3c-421f-9eb8-cb1e868c6164",
+      "catalogId": "nininger-1950",
+      "designation": "34.858",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 42.6
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-1ae74cb1-f79a-4e92-b5c0-5dcf1c8a151d",
+      "catalogId": "nininger-1950",
+      "designation": "34.859",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 55
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-32dbeead-9a25-4f79-9c5c-88929f213da9",
+      "catalogId": "nininger-1950",
+      "designation": "34.861",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 69
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-deaa8f7f-cde2-4f2d-8574-a7b1db5b9ade",
+      "catalogId": "nininger-1950",
+      "designation": "34.865",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 101.5
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-7e7b3286-9523-4f7b-b4b6-84eb47adbb42",
+      "catalogId": "nininger-1950",
+      "designation": "34.875",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 249.3
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-6dd1632f-2ec5-4428-8279-6d874e04b778",
+      "catalogId": "nininger-1950",
+      "designation": "34.876",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 345.5
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-45641bf2-1326-4ed9-9393-91f17fad0dc1",
+      "catalogId": "nininger-1950",
+      "designation": "34.877",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 76.5
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-2f6aa532-fd95-499b-971c-82cc70e1c94f",
+      "catalogId": "nininger-1950",
+      "designation": "34.878",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 132.2
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-3ae9c1c2-16f8-4646-b9a3-c1b03bef5201",
+      "catalogId": "nininger-1950",
+      "designation": "34.879",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 310.5
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-0e6eb764-d013-4a82-be82-ac4b2cadf4ca",
+      "catalogId": "nininger-1950",
+      "designation": "34.880",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 239.7
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-3e56f1f5-51ad-4000-82d4-e33056c901bf",
+      "catalogId": "nininger-1950",
+      "designation": "34.881",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 136.2
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-4d401cf2-dfb3-4b4f-a000-90db17a95fec",
+      "catalogId": "nininger-1950",
+      "designation": "34.884",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 210.8
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-b43cb963-bd75-48fe-acc5-6b1aaf41025c",
+      "catalogId": "nininger-1950",
+      "designation": "34.885",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 242.8
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-888c9ba6-bbd0-4be4-9bee-0c33373bb3c7",
+      "catalogId": "nininger-1950",
+      "designation": "34.886",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 473.5
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-c4187196-28c1-49e4-b238-783b3ae4313c",
+      "catalogId": "nininger-1950",
+      "designation": "34.893",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 517
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-efd1a5a7-3520-400c-821c-0d59e0d8f7bd",
+      "catalogId": "nininger-1950",
+      "designation": "34.953",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 478
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-dae7e6f5-21cc-49d8-b9af-e411e09032ce",
+      "catalogId": "nininger-1950",
+      "designation": "34.954",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 109.5
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-bfda6319-cf1a-4e9b-9302-8dfe8e142751",
+      "catalogId": "nininger-1950",
+      "designation": "34.1271",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 36.5
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-0d015bc7-3dbf-4ac1-b09e-924d2de540eb",
+      "catalogId": "nininger-1950",
+      "designation": "34.1332",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 105.6
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 39,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
       }
     },
     {
