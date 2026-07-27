@@ -376,14 +376,15 @@
           69,
           70,
           71,
-          72
+          72,
+          73
         ],
-        "sourcePageCount": 47,
-        "recordCount": 972,
-        "recordsWithDesignation": 951,
-        "recordsWithWeight": 913,
+        "sourcePageCount": 48,
+        "recordCount": 985,
+        "recordsWithDesignation": 964,
+        "recordsWithWeight": 926,
         "confidenceCounts": {
-          "high": 972,
+          "high": 985,
           "medium": 0,
           "low": 0
         },
@@ -391,11 +392,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2884,
-    "recordsWithDesignation": 2694,
-    "recordsWithWeight": 2697,
+    "recordCount": 2897,
+    "recordsWithDesignation": 2707,
+    "recordsWithWeight": 2710,
     "confidenceCounts": {
-      "high": 2884,
+      "high": 2897,
       "medium": 0,
       "low": 0
     }
@@ -25379,6 +25380,48 @@
       }
     },
     {
+      "id": "obs-db099c3b-7600-4f3e-86db-efe95438c61f",
+      "catalogId": "nininger-1950",
+      "designation": "75.1",
+      "name": "Mokoia",
+      "weight": {
+        "grams": 358.5
+      },
+      "classification": "Stone. Carbonaceous chondrite",
+      "locality": "Taranaki, North Island, New Zealand",
+      "year": "1908",
+      "catalogPage": 73,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Mokoia",
+        "meteoriteCode": "16713",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16713",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Mokoia as code 16713, a 1908 New Zealand CV3 fall. The official exact-name checker returns Mokoia as Official, and the detail page confirms the exact name, year, fall, Taranaki locality, carbonaceous CV3 identity, and 4.5 kg mass. The source's 4.6 kg total is preserved."
+      }
+    },
+    {
+      "id": "obs-2358eaa7-d3ea-4b13-83fb-2861f3529f9e",
+      "catalogId": "nininger-1950",
+      "designation": "76a",
+      "name": "Molong",
+      "weight": {
+        "grams": 38
+      },
+      "classification": "Pallasite",
+      "locality": "Ashburnham County, New South Wales, Australia",
+      "year": "1912",
+      "catalogPage": 73,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Molong",
+        "meteoriteCode": "16716",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16716",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Molong as code 16716, a New South Wales pallasite found in 1912. The official exact-name checker returns Molong as Official, and the detail page confirms the exact name, year, Australian locality, pallasite PMG identity, and 104 kg mass, consistent with the source's 104.5 kg total."
+      }
+    },
+    {
       "id": "obs-39ba8909-b8d3-49ca-b68b-d542ced2c602",
       "catalogId": "nininger-1950",
       "designation": "77.1",
@@ -25586,6 +25629,153 @@
         "meteoriteCode": "449",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=449",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-35135bd5-4601-4ff6-bd5c-2cf7f0830695",
+      "catalogId": "nininger-1950",
+      "designation": "78a",
+      "name": "Moctezuma",
+      "weight": {
+        "grams": 367
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Sonora, Mexico",
+      "year": "1899",
+      "catalogPage": 73,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Moctezuma",
+        "meteoriteCode": "16710",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16710",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Moctezuma as code 16710, a 1.7 kg Sonora iron. The official exact-name checker returns Moctezuma as Official, and the detail page confirms the exact name, Sonora locality, iron IAB-sLL identity, and 1.7 kg mass. MetBull gives 1889 while the source prints 1899; the source year is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-1652f36a-19ec-47a7-9b61-c1ad8a34c09c",
+      "catalogId": "nininger-1950",
+      "designation": "80c",
+      "name": "Mocs",
+      "weight": {
+        "grams": 14.5
+      },
+      "classification": "Stone. Veined white hypersthene-chondrite",
+      "locality": "Cluj, (Klausenburg, Kolozsvár), Transylvania",
+      "year": "1882",
+      "catalogPage": 73,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Mocs",
+        "meteoriteCode": "16709",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16709",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Mocs as code 16709, a 300 kg Romanian L5-6 fall from 1882. The official exact-name checker returns Mocs as Official, and the detail page confirms the exact name, year, fall, 300 kg mass, Cluj locality, and printed Klausenburg and Visa synonyms. The historical source locality and classification are preserved."
+      }
+    },
+    {
+      "id": "obs-3e6e6d93-f9a4-45af-b3de-f62d6faa668f",
+      "catalogId": "nininger-1950",
+      "designation": "80b",
+      "name": "Mocs",
+      "weight": {
+        "grams": 14.5
+      },
+      "classification": "Stone. Veined white hypersthene-chondrite",
+      "locality": "Cluj, (Klausenburg, Kolozsvár), Transylvania",
+      "year": "1882",
+      "catalogPage": 73,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Mocs",
+        "meteoriteCode": "16709",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16709",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Mocs as code 16709, a 300 kg Romanian L5-6 fall from 1882. The official exact-name checker returns Mocs as Official, and the detail page confirms the exact name, year, fall, 300 kg mass, Cluj locality, and printed Klausenburg and Visa synonyms. The historical source locality and classification are preserved."
+      }
+    },
+    {
+      "id": "obs-3739dc7c-45ab-4212-aa58-ca4309bad65a",
+      "catalogId": "nininger-1950",
+      "designation": "80a",
+      "name": "Mocs",
+      "weight": {
+        "grams": 22
+      },
+      "classification": "Stone. Veined white hypersthene-chondrite",
+      "locality": "Cluj, (Klausenburg, Kolozsvár), Transylvania",
+      "year": "1882",
+      "catalogPage": 73,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Mocs",
+        "meteoriteCode": "16709",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16709",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Mocs as code 16709, a 300 kg Romanian L5-6 fall from 1882. The official exact-name checker returns Mocs as Official, and the detail page confirms the exact name, year, fall, 300 kg mass, Cluj locality, and printed Klausenburg and Visa synonyms. The historical source locality and classification are preserved."
+      }
+    },
+    {
+      "id": "obs-f1c29fe0-d48c-4dd6-9085-b0b09e5971b4",
+      "catalogId": "nininger-1950",
+      "designation": "81b",
+      "name": "Modoc",
+      "weight": {
+        "grams": 263.9
+      },
+      "classification": "Stone. Veined white hypersthene-chondrite",
+      "locality": "Scott County, Kansas",
+      "year": "1905",
+      "catalogPage": 73,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Modoc (1905)",
+        "meteoriteCode": "16711",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16711",
+        "alternateNameNote": "The official exact-name checker has no bare Modoc record or synonym, while its containing-name result lists distinct Official Modoc (1905), code 16711, and Modoc (1948), code 16712. The verified local CSV and code 16711 detail page confirm the 1905 Kansas L6 fall; that explicit year and event distinguish this entry from the 1948 find. The source's 30 kg total differs from the official 35 kg mass and is preserved."
+      }
+    },
+    {
+      "id": "obs-7070bba8-1089-435b-8d97-fcdbed8bcbe5",
+      "catalogId": "nininger-1950",
+      "designation": "81a",
+      "name": "Modoc",
+      "weight": {
+        "grams": 485
+      },
+      "classification": "Stone. Veined white hypersthene-chondrite",
+      "locality": "Scott County, Kansas",
+      "year": "1905",
+      "catalogPage": 73,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Modoc (1905)",
+        "meteoriteCode": "16711",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16711",
+        "alternateNameNote": "The official exact-name checker has no bare Modoc record or synonym, while its containing-name result lists distinct Official Modoc (1905), code 16711, and Modoc (1948), code 16712. The verified local CSV and code 16711 detail page confirm the 1905 Kansas L6 fall; that explicit year and event distinguish this entry from the 1948 find. The source's 30 kg total differs from the official 35 kg mass and is preserved."
+      }
+    },
+    {
+      "id": "obs-3e704085-651d-40e2-8511-b6aeeca78c9d",
+      "catalogId": "nininger-1950",
+      "designation": "81.3",
+      "name": "Modoc",
+      "weight": {
+        "grams": 282
+      },
+      "classification": "Stone. Veined white hypersthene-chondrite",
+      "locality": "Scott County, Kansas",
+      "year": "1905",
+      "catalogPage": 73,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Modoc (1905)",
+        "meteoriteCode": "16711",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16711",
+        "alternateNameNote": "The official exact-name checker has no bare Modoc record or synonym, while its containing-name result lists distinct Official Modoc (1905), code 16711, and Modoc (1948), code 16712. The verified local CSV and code 16711 detail page confirm the 1905 Kansas L6 fall; that explicit year and event distinguish this entry from the 1948 find. The source's 30 kg total differs from the official 35 kg mass and is preserved."
       }
     },
     {
@@ -29537,6 +29727,27 @@
       }
     },
     {
+      "id": "obs-67e5c1a4-c15c-43bd-8796-d315f706d960",
+      "catalogId": "nininger-1950",
+      "designation": "220a",
+      "name": "Molina",
+      "weight": {
+        "grams": 115
+      },
+      "classification": "Stone. Brecciated grey bronzite-chondrite",
+      "locality": "Murcia, Spain",
+      "year": "1858",
+      "catalogPage": 73,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Molina",
+        "meteoriteCode": "16715",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16715",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Molina as code 16715, an 1858 Spanish H5 fall. The official exact-name checker returns Molina as Official, and the detail page confirms the exact name, year, fall, Murcia locality and synonym, and H5 identity. The source's 114 kg total differs from the official 144 kg mass and is preserved."
+      }
+    },
+    {
       "id": "obs-63996358-813b-426b-bd17-35b109fb66e1",
       "catalogId": "nininger-1950",
       "designation": "226a",
@@ -29933,6 +30144,48 @@
         "meteoriteCode": "5450",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5450",
         "alternateNameNote": "The official detail page lists all four printed synonyms and gives 1837, Tennessee, and Iron, IAB-MG. The source's printed 96 kg conflicts with its own 2,112 lb. parenthetical and with the official 960 kg mass; both printed source values are retained without correction."
+      }
+    },
+    {
+      "id": "obs-6ab32005-88bf-4f0c-81ff-16044950459f",
+      "catalogId": "nininger-1950",
+      "designation": "256.1",
+      "name": "Monahans",
+      "weight": {
+        "grams": 10098.5
+      },
+      "classification": "Iron. Nickel-rich ataxite",
+      "locality": "Ward County, Texas; 31° 36′ N., 102° 53′ W.",
+      "year": "1938",
+      "catalogPage": 73,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Monahans (1938)",
+        "meteoriteCode": "16718",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16718",
+        "alternateNameNote": "The official exact-name checker identifies bare Monahans as a MetBase synonym of Official Monahans (1938), code 16718. The verified local CSV and detail page confirm that synonym, the 1938 Texas iron IIF find, exact 27.9 kg mass, and near-identical coordinates. The source's printed name, Ward County locality, and coordinates are preserved."
+      }
+    },
+    {
+      "id": "obs-291ca2bb-35ad-46b1-a854-0d370bfdab7e",
+      "catalogId": "nininger-1950",
+      "designation": "256.13",
+      "name": "Monahans",
+      "weight": {
+        "grams": 3624
+      },
+      "classification": "Iron. Nickel-rich ataxite",
+      "locality": "Ward County, Texas; 31° 36′ N., 102° 53′ W.",
+      "year": "1938",
+      "catalogPage": 73,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Monahans (1938)",
+        "meteoriteCode": "16718",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16718",
+        "alternateNameNote": "The official exact-name checker identifies bare Monahans as a MetBase synonym of Official Monahans (1938), code 16718. The verified local CSV and detail page confirm that synonym, the 1938 Texas iron IIF find, exact 27.9 kg mass, and near-identical coordinates. The source's printed name, Ward County locality, and coordinates are preserved."
       }
     },
     {
@@ -35120,6 +35373,27 @@
         "meteoriteCode": "11430",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11430",
         "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Guadaloupe County, code 11430, preserving the official spelling printed by the source. The detail page confirms a Texas iron and 20.5 g mass but reports 1950; the source's unknown find date and total weight and its Canyon Diablo remark are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-e29c08aa-06af-4741-9a56-91d9707be88b",
+      "catalogId": "nininger-1950",
+      "designation": "522.1",
+      "name": "Modoc No. 2",
+      "weight": {
+        "grams": 38
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Scott County, Kansas; 38° 30′ N., 101° 53′ W.",
+      "year": "1948",
+      "catalogPage": 73,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Modoc (1948)",
+        "meteoriteCode": "16712",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16712",
+        "alternateNameNote": "The official exact-name checker identifies Modoc No. 2 as an NHM Catalogue synonym of Official Modoc (1948), code 16712. The verified local CSV and detail page confirm the synonym, 1948 Kansas H6 find, and 1.8 kg mass. The detail page gives longitude 101° 6′ W., while the source prints 101° 53′ W.; the source coordinate is preserved without reconciliation."
       }
     },
     {
