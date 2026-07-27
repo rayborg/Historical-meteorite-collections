@@ -340,14 +340,15 @@
           33,
           34,
           35,
-          36
+          36,
+          37
         ],
-        "sourcePageCount": 11,
-        "recordCount": 208,
-        "recordsWithDesignation": 206,
-        "recordsWithWeight": 201,
+        "sourcePageCount": 12,
+        "recordCount": 220,
+        "recordsWithDesignation": 218,
+        "recordsWithWeight": 213,
         "confidenceCounts": {
-          "high": 208,
+          "high": 220,
           "medium": 0,
           "low": 0
         },
@@ -355,11 +356,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2120,
-    "recordsWithDesignation": 1949,
-    "recordsWithWeight": 1985,
+    "recordCount": 2132,
+    "recordsWithDesignation": 1961,
+    "recordsWithWeight": 1997,
     "confidenceCounts": {
-      "high": 2120,
+      "high": 2132,
       "medium": 0,
       "low": 0
     }
@@ -19001,6 +19002,27 @@
       }
     },
     {
+      "id": "obs-4a06c059-5497-4172-89a9-35ceed0586d5",
+      "catalogId": "nininger-1950",
+      "designation": "132.1",
+      "name": "Bruno",
+      "weight": {
+        "grams": 12684
+      },
+      "classification": "Iron. Hexahedrite",
+      "locality": "Saskatchewan, Canada; 52° 16′ N., 105° 32′ W.",
+      "year": "1931",
+      "catalogPage": 37,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bruno",
+        "meteoriteCode": "5158",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5158",
+        "alternateNameNote": null
+      }
+    },
+    {
       "id": "obs-079ffdcd-0d3a-4acf-bf73-0b75b890e0c4",
       "catalogId": "nininger-1950",
       "designation": "134vv",
@@ -19673,6 +19695,27 @@
       }
     },
     {
+      "id": "obs-a12f58f4-d45e-4260-adfa-f2bbc16744d3",
+      "catalogId": "nininger-1950",
+      "designation": "165a",
+      "name": "Burkett",
+      "weight": {
+        "grams": 182
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coleman County, Texas",
+      "year": "1913",
+      "catalogPage": 37,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Burkett",
+        "meteoriteCode": "5170",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5170",
+        "alternateNameNote": null
+      }
+    },
+    {
       "id": "obs-fffe7e17-dd35-48fb-9dbb-cb1f8cdf0bd5",
       "catalogId": "nininger-1950",
       "designation": "168a",
@@ -19901,6 +19944,111 @@
         "meteoriteCode": "5059",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5059",
         "alternateNameNote": "The South Carolina context, 25 March 1843 fall, and Aubrite class agree; MetBull lists Sumter County as a synonym. Source total is 5.9 kg.; MetBull mass is 6 kg."
+      }
+    },
+    {
+      "id": "obs-e3f2fb80-51fd-4a49-9ccd-6b99601c92b9",
+      "catalogId": "nininger-1950",
+      "designation": "216.1",
+      "name": "Bristol",
+      "weight": {
+        "grams": 7667.2
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Sullivan County, Tennessee; 36° 34′ N., 82° 11′ W.",
+      "year": "1937",
+      "catalogPage": 37,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bristol",
+        "meteoriteCode": "5143",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5143",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-e8d76d8d-f075-4959-a3b4-90ee360bcd88",
+      "catalogId": "nininger-1950",
+      "designation": "216.9",
+      "name": "Bristol",
+      "weight": {
+        "grams": 1124
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Sullivan County, Tennessee; 36° 34′ N., 82° 11′ W.",
+      "year": "1937",
+      "catalogPage": 37,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bristol",
+        "meteoriteCode": "5143",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5143",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-b7c8fbd3-5b62-49e2-ade2-86f613d847f8",
+      "catalogId": "nininger-1950",
+      "designation": "216.11",
+      "name": "Bristol",
+      "weight": {
+        "grams": 1169
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Sullivan County, Tennessee; 36° 34′ N., 82° 11′ W.",
+      "year": "1937",
+      "catalogPage": 37,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bristol",
+        "meteoriteCode": "5143",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5143",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-5894ae4f-a467-4b80-b08d-0d4a43840776",
+      "catalogId": "nininger-1950",
+      "designation": "216.13",
+      "name": "Bristol",
+      "weight": {
+        "grams": 590.2
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Sullivan County, Tennessee; 36° 34′ N., 82° 11′ W.",
+      "year": "1937",
+      "catalogPage": 37,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bristol",
+        "meteoriteCode": "5143",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5143",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-a49a9c26-3d06-4e66-8d45-4baff0409fb5",
+      "catalogId": "nininger-1950",
+      "designation": "216.14",
+      "name": "Bristol",
+      "weight": {
+        "grams": 528.3
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Sullivan County, Tennessee; 36° 34′ N., 82° 11′ W.",
+      "year": "1937",
+      "catalogPage": 37,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bristol",
+        "meteoriteCode": "5143",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5143",
+        "alternateNameNote": null
       }
     },
     {
@@ -20408,6 +20556,48 @@
       }
     },
     {
+      "id": "obs-a67a8498-71c4-4196-8482-d2b732543449",
+      "catalogId": "nininger-1950",
+      "designation": "329.1",
+      "name": "Burlington",
+      "weight": {
+        "grams": 74
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Otsego County, New York",
+      "year": "before 1819",
+      "catalogPage": 37,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Burlington",
+        "meteoriteCode": "5172",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5172",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-f60e4a46-b117-4d57-854c-762179d96a83",
+      "catalogId": "nininger-1950",
+      "designation": "329.2",
+      "name": "Burlington",
+      "weight": {
+        "grams": 46
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Otsego County, New York",
+      "year": "before 1819",
+      "catalogPage": 37,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Burlington",
+        "meteoriteCode": "5172",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5172",
+        "alternateNameNote": null
+      }
+    },
+    {
       "id": "obs-fe6c1377-673b-4c7d-99b7-fb512a8b6e69",
       "catalogId": "nininger-1950",
       "designation": "336.1",
@@ -20534,6 +20724,27 @@
       }
     },
     {
+      "id": "obs-86fe5e0b-40a9-43da-a5bd-b9cd119e23ca",
+      "catalogId": "nininger-1950",
+      "designation": "367.1",
+      "name": "Brownfield",
+      "weight": {
+        "grams": 300
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Terry County, Texas; 33° 13′ N., 102° 11′ W.",
+      "year": "1937",
+      "catalogPage": 37,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Brownfield (1937)",
+        "meteoriteCode": "5151",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5151",
+        "alternateNameNote": "The official name checker has no exact current name or synonym Brownfield and lists multiple Brownfield records. The source's 1937 date and exact 33° 13′ N., 102° 11′ W. coordinates uniquely agree with the official Brownfield (1937) record."
+      }
+    },
+    {
       "id": "obs-7f3f8784-2be7-436c-9d4a-3b8c01215805",
       "catalogId": "nininger-1950",
       "designation": "374.1",
@@ -20552,6 +20763,27 @@
         "meteoriteCode": "5022",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5022",
         "alternateNameNote": "The South Dakota context and 89 kg mass agree. Source year 1935 differs from MetBull year 1934; MetBull also reproduces a correction from Coarse octahedrite to Hexahedrite and recommends Iron, IIAB."
+      }
+    },
+    {
+      "id": "obs-1fa18dd1-3906-438c-baf5-fda5bbefe8fd",
+      "catalogId": "nininger-1950",
+      "designation": "381.1",
+      "name": "Bur-Gheluai",
+      "weight": {
+        "grams": 19.2
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Bur-Hagaba Dist., Italian Somaliland",
+      "year": "1919",
+      "catalogPage": 37,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bur-Gheluai",
+        "meteoriteCode": "5169",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5169",
+        "alternateNameNote": "The official detail page explicitly lists the source's printed synonym Bur-Hagaba for Bur-Gheluai."
       }
     },
     {
@@ -20594,6 +20826,27 @@
         "meteoriteCode": "2326",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2326",
         "alternateNameNote": "The source classification Achondrite conflicts with modern LL6. MetBull lists Boelus as a synonym, and the linked MB8 writeup is headed BOELUS."
+      }
+    },
+    {
+      "id": "obs-50d0ee91-f3b2-40a0-aee7-74c290bb86ae",
+      "catalogId": "nininger-1950",
+      "designation": "401.1",
+      "name": "Broken Bow",
+      "weight": {
+        "grams": 5492
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Custer County, Nebraska; 41° 24′ N., 99° 38′ W.",
+      "year": "1937",
+      "catalogPage": 37,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Broken Bow",
+        "meteoriteCode": "5145",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5145",
+        "alternateNameNote": null
       }
     },
     {
