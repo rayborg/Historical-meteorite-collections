@@ -374,14 +374,15 @@
           67,
           68,
           69,
-          70
+          70,
+          71
         ],
-        "sourcePageCount": 45,
-        "recordCount": 949,
-        "recordsWithDesignation": 928,
-        "recordsWithWeight": 890,
+        "sourcePageCount": 46,
+        "recordCount": 962,
+        "recordsWithDesignation": 941,
+        "recordsWithWeight": 903,
         "confidenceCounts": {
-          "high": 949,
+          "high": 962,
           "medium": 0,
           "low": 0
         },
@@ -389,11 +390,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2861,
-    "recordsWithDesignation": 2671,
-    "recordsWithWeight": 2674,
+    "recordCount": 2874,
+    "recordsWithDesignation": 2684,
+    "recordsWithWeight": 2687,
     "confidenceCounts": {
-      "high": 2861,
+      "high": 2874,
       "medium": 0,
       "low": 0
     }
@@ -25587,6 +25588,27 @@
       }
     },
     {
+      "id": "obs-6c0583b5-11b7-41a4-a207-1eeea24c53cd",
+      "catalogId": "nininger-1950",
+      "designation": "82a",
+      "name": "Mart",
+      "weight": {
+        "grams": 473
+      },
+      "classification": "Iron. Finest octahedrite",
+      "locality": "McLennan County, Texas",
+      "year": "1898",
+      "catalogPage": 71,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Mart",
+        "meteoriteCode": "15435",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15435",
+        "alternateNameNote": "The verified local CSV identifies Official Mart, code 15435, a Texas IVA iron found in 1898 with 7.14 kg mass. The official checker returns Mart as Official, and the detail page confirms the exact name, year, Texas locality, iron identity, mass, and McLennan County coordinates. The source's rounded 7.2 kg total is preserved."
+      }
+    },
+    {
       "id": "obs-bd73d222-c8b1-457c-9d92-2679115f46fe",
       "catalogId": "nininger-1950",
       "designation": "85.1",
@@ -26742,6 +26764,27 @@
       }
     },
     {
+      "id": "obs-fc279507-9907-4747-80ef-29228373729f",
+      "catalogId": "nininger-1950",
+      "designation": "174a",
+      "name": "Melrose",
+      "weight": {
+        "grams": 21630
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Curry County, New Mexico; 34° 26′ N., 103° 38′ W.",
+      "year": "1933",
+      "catalogPage": 71,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Melrose (a)",
+        "meteoriteCode": "15475",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15475",
+        "alternateNameNote": "The official checker treats bare Melrose as partial, with two records. The verified local CSV and code 15475 detail page identify Official Melrose (a), whose 1933 New Mexico L5 find, 36.4 kg mass, and near-identical coordinates match the source and distinguish it from the 1971, 50.5 gram howardite Melrose (b)."
+      }
+    },
+    {
       "id": "obs-211c2243-c944-4d9f-b865-c00d0d9675a9",
       "catalogId": "nininger-1950",
       "designation": "175a.",
@@ -26994,6 +27037,27 @@
       }
     },
     {
+      "id": "obs-6a7c0514-d0fb-439f-9510-05dd03bb6516",
+      "catalogId": "nininger-1950",
+      "designation": "179a",
+      "name": "Mbosi",
+      "weight": {
+        "grams": 475
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Rungwe district, Tanganyika Territory, Africa",
+      "year": "1930",
+      "catalogPage": 71,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Mbosi",
+        "meteoriteCode": "15456",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15456",
+        "alternateNameNote": "The verified local CSV identifies Official Mbosi, code 15456, a 1930 Tanzanian ungrouped iron. The official checker returns Mbosi as Official, and the detail page confirms the exact name, year, iron identity, Mbeya locality, and M'Bozi and Tanganyika synonyms. Its 16 t mass differs from the source's estimated 27 tons, which is preserved."
+      }
+    },
+    {
       "id": "obs-2fd8d474-aa85-4397-a70a-db0ae9da160b",
       "catalogId": "nininger-1950",
       "designation": "181.6",
@@ -27141,6 +27205,27 @@
       }
     },
     {
+      "id": "obs-adbc55ca-6c1b-44f9-a48d-a52c23ef6c11",
+      "catalogId": "nininger-1950",
+      "designation": "188a",
+      "name": "Merceditas",
+      "weight": {
+        "grams": 256
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Chañaral, Atacama, Chile",
+      "year": "1884",
+      "catalogPage": 71,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Merceditas",
+        "meteoriteCode": "15487",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15487",
+        "alternateNameNote": "The verified local CSV identifies Official Merceditas, code 15487, an Atacama IIIAB iron found in 1884 with 42.9 kg mass. The official checker returns Merceditas as Official, and the detail page confirms the exact name, year, Atacama locality, iron identity, mass, and Chañaral synonym. The source's 42.8 kg total is preserved."
+      }
+    },
+    {
       "id": "obs-7f6a35b4-cac2-418f-900c-72c86169e4c0",
       "catalogId": "nininger-1950",
       "designation": "189a",
@@ -27180,6 +27265,48 @@
         "meteoriteCode": "5453",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5453",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-1aafcf93-4213-4b25-bbe9-ff6d6c8e30e1",
+      "catalogId": "nininger-1950",
+      "designation": "192a",
+      "name": "Marsland",
+      "weight": {
+        "grams": 1047
+      },
+      "classification": "Stone. Crystalline spherical chondrite",
+      "locality": "Dawes County, Nebraska; 42° 27′ N., 103° 18′ W.",
+      "year": "1933",
+      "catalogPage": 71,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Marsland",
+        "meteoriteCode": "15434",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15434",
+        "alternateNameNote": "The verified local CSV identifies Official Marsland, code 15434, a 1933 Nebraska H5 find at the printed coordinates. The official checker returns Marsland as Official, and the detail page confirms the exact name, year, Nebraska locality, H5 identity, and coordinates. Its 6.85 kg mass differs from the source's 4.6 kg total, which is preserved."
+      }
+    },
+    {
+      "id": "obs-7f085bf0-8458-4d66-955a-774e197d2efa",
+      "catalogId": "nininger-1950",
+      "designation": "192.4",
+      "name": "Marsland",
+      "weight": {
+        "grams": 122.6
+      },
+      "classification": "Stone. Crystalline spherical chondrite",
+      "locality": "Dawes County, Nebraska; 42° 27′ N., 103° 18′ W.",
+      "year": "1933",
+      "catalogPage": 71,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Marsland",
+        "meteoriteCode": "15434",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15434",
+        "alternateNameNote": "The verified local CSV identifies Official Marsland, code 15434, a 1933 Nebraska H5 find at the printed coordinates. The official checker returns Marsland as Official, and the detail page confirms the exact name, year, Nebraska locality, H5 identity, and coordinates. Its 6.85 kg mass differs from the source's 4.6 kg total, which is preserved."
       }
     },
     {
@@ -28905,6 +29032,48 @@
       }
     },
     {
+      "id": "obs-93583195-df30-4323-953d-442a00a32aed",
+      "catalogId": "nininger-1950",
+      "designation": "200b",
+      "name": "Marjalahti",
+      "weight": {
+        "grams": 10
+      },
+      "classification": "Pallasite",
+      "locality": "Viborg, Finland",
+      "year": "1902",
+      "catalogPage": 71,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Marjalahti",
+        "meteoriteCode": "15426",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15426",
+        "alternateNameNote": "The verified local CSV identifies Official Marjalahti, code 15426, a 1902 pallasite fall with 45 kg mass. The official checker returns Marjalahti as Official, and the detail page confirms the exact name, year, fall, pallasite identity, mass, and 61° 30′ N., 30° 30′ E. coordinates. Its modern country is Russia; the historical source locality is preserved."
+      }
+    },
+    {
+      "id": "obs-8e369188-47cf-4216-ae40-90746b0d1740",
+      "catalogId": "nininger-1950",
+      "designation": "200a",
+      "name": "Marjalahti",
+      "weight": {
+        "grams": 137
+      },
+      "classification": "Pallasite",
+      "locality": "Viborg, Finland",
+      "year": "1902",
+      "catalogPage": 71,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Marjalahti",
+        "meteoriteCode": "15426",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15426",
+        "alternateNameNote": "The verified local CSV identifies Official Marjalahti, code 15426, a 1902 pallasite fall with 45 kg mass. The official checker returns Marjalahti as Official, and the detail page confirms the exact name, year, fall, pallasite identity, mass, and 61° 30′ N., 30° 30′ E. coordinates. Its modern country is Russia; the historical source locality is preserved."
+      }
+    },
+    {
       "id": "obs-38bf5350-c352-4c64-a4d4-367841f20329",
       "catalogId": "nininger-1950",
       "designation": "203b",
@@ -30417,6 +30586,27 @@
       }
     },
     {
+      "id": "obs-c00adf74-535d-4055-893f-190150698321",
+      "catalogId": "nininger-1950",
+      "designation": "292a",
+      "name": "Marshall County",
+      "weight": {
+        "grams": 401
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Kentucky",
+      "year": "1860",
+      "catalogPage": 71,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Marshall County",
+        "meteoriteCode": "15433",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15433",
+        "alternateNameNote": "The verified local CSV identifies Official Marshall County, code 15433, a Kentucky IIIAB iron found in 1860 with 6.8 kg mass. The official checker returns the exact name as Official, and the detail page confirms the name, year, Kentucky locality, iron identity, and 6.8 kg mass. The source's 6.9 kg total is preserved."
+      }
+    },
+    {
       "id": "obs-388722ec-a475-4d17-9581-b9b7efd7663e",
       "catalogId": "nininger-1950",
       "designation": "295a",
@@ -31254,6 +31444,69 @@
         "meteoriteCode": "12284",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12284",
         "alternateNameNote": "The verified local CSV has Official Kernouve, code 12284. The exact-name checker returns printed Kernouvé as its synonym, and the detail page confirms that synonym, the 1869 French H6 fall, 80 kg mass, and Cléguérec, Morbihan, and Napoléonsville synonyms."
+      }
+    },
+    {
+      "id": "obs-a7a99104-7d27-4588-8fe6-a523401e9fec",
+      "catalogId": "nininger-1950",
+      "designation": "340.1",
+      "name": "Mezö-Madaras",
+      "weight": {
+        "grams": 43.4
+      },
+      "classification": "Stone. Brecciated grey hypersthene-chondrite",
+      "locality": "Transylvania",
+      "year": "1852",
+      "catalogPage": 71,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Mezö-Madaras",
+        "meteoriteCode": "16628",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16628",
+        "alternateNameNote": "The verified local CSV identifies Official Mezö-Madaras, code 16628, an 1852 Romanian L3.7 fall with 22.7 kg mass. The official checker returns the printed name as Official, and the detail page confirms the exact name, year, fall, mass, historical Transylvania context, and Fekete and Maros synonyms."
+      }
+    },
+    {
+      "id": "obs-a35d6534-0eed-464a-a8bd-726d01fe07ef",
+      "catalogId": "nininger-1950",
+      "designation": "340.2",
+      "name": "Mezö-Madaras",
+      "weight": {
+        "grams": 30
+      },
+      "classification": "Stone. Brecciated grey hypersthene-chondrite",
+      "locality": "Transylvania",
+      "year": "1852",
+      "catalogPage": 71,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Mezö-Madaras",
+        "meteoriteCode": "16628",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16628",
+        "alternateNameNote": "The verified local CSV identifies Official Mezö-Madaras, code 16628, an 1852 Romanian L3.7 fall with 22.7 kg mass. The official checker returns the printed name as Official, and the detail page confirms the exact name, year, fall, mass, historical Transylvania context, and Fekete and Maros synonyms."
+      }
+    },
+    {
+      "id": "obs-ce314b11-e71e-4cab-b785-4594b9c63796",
+      "catalogId": "nininger-1950",
+      "designation": "340.3",
+      "name": "Mezö-Madaras",
+      "weight": {
+        "grams": 114
+      },
+      "classification": "Stone. Brecciated grey hypersthene-chondrite",
+      "locality": "Transylvania",
+      "year": "1852",
+      "catalogPage": 71,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Mezö-Madaras",
+        "meteoriteCode": "16628",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16628",
+        "alternateNameNote": "The verified local CSV identifies Official Mezö-Madaras, code 16628, an 1852 Romanian L3.7 fall with 22.7 kg mass. The official checker returns the printed name as Official, and the detail page confirms the exact name, year, fall, mass, historical Transylvania context, and Fekete and Maros synonyms."
       }
     },
     {
@@ -34320,6 +34573,27 @@
         "meteoriteCode": "5266",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5266",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-ae1e8f6f-2626-489c-8595-e013bee7abc9",
+      "catalogId": "nininger-1950",
+      "designation": "497.1",
+      "name": "Mazapil",
+      "weight": {
+        "grams": 2.6
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Zacatecas, Mexico",
+      "year": "1885",
+      "catalogPage": 71,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Mazapil",
+        "meteoriteCode": "15453",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15453",
+        "alternateNameNote": "The verified local CSV identifies Official Mazapil, code 15453, an 1885 Zacatecas iron fall with 4 kg mass. The official checker returns Mazapil as Official, and the detail page confirms the exact name, year, fall, Zacatecas locality, iron IAB-sLL identity, and 4 kg mass."
       }
     },
     {
