@@ -401,14 +401,15 @@
           94,
           95,
           96,
-          97
+          97,
+          98
         ],
-        "sourcePageCount": 72,
-        "recordCount": 1549,
-        "recordsWithDesignation": 1523,
-        "recordsWithWeight": 1484,
+        "sourcePageCount": 73,
+        "recordCount": 1561,
+        "recordsWithDesignation": 1535,
+        "recordsWithWeight": 1496,
         "confidenceCounts": {
-          "high": 1549,
+          "high": 1561,
           "medium": 0,
           "low": 0
         },
@@ -416,11 +417,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 3461,
-    "recordsWithDesignation": 3266,
-    "recordsWithWeight": 3268,
+    "recordCount": 3473,
+    "recordsWithDesignation": 3278,
+    "recordsWithWeight": 3280,
     "confidenceCounts": {
-      "high": 3461,
+      "high": 3473,
       "medium": 0,
       "low": 0
     }
@@ -32964,6 +32965,27 @@
       }
     },
     {
+      "id": "obs-f8453481-2ac1-41a9-bb5e-fccbfbd3d4b5",
+      "catalogId": "nininger-1950",
+      "designation": "123a",
+      "name": "Trenzano",
+      "weight": {
+        "grams": 18
+      },
+      "classification": "Stone. Veined spherical bronzite-chondrite",
+      "locality": "Brescia, Italy",
+      "year": "1856",
+      "catalogPage": 98,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Trenzano",
+        "meteoriteCode": "24046",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24046",
+        "alternateNameNote": "The verified local CSV identifies Official Trenzano, code 24046, as an 1856 Italian H3/4 fall with 11.8 kg mass. The official checker returns Trenzano as Official, and the detail page confirms the exact name, fall year, Italian identity, and Brescia synonym. The source's full fall date and time, 9 kg total, and historical classification are preserved."
+      }
+    },
+    {
       "id": "obs-093932bf-4427-4c75-8814-ebc6ec2ec666",
       "catalogId": "nininger-1950",
       "designation": "125b",
@@ -33696,6 +33718,48 @@
         "meteoriteCode": "23692",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23692",
         "alternateNameNote": "The verified local CSV identifies Official Springwater, code 23692, as a 1931 Saskatchewan Pallasite, PMG-an with 67.6 kg mass. The official checker returns Springwater as Official, and the detail page confirms the exact name, year, province, pallasite identity, and nearby 52° 0′ N., 108° 18′ W. coordinates. The source's historical Krasnojarsk-group classification, 94.3 kg total, and printed coordinates are preserved."
+      }
+    },
+    {
+      "id": "obs-cd895612-338b-45ca-9125-5f528bdc73ae",
+      "catalogId": "nininger-1950",
+      "designation": "136b",
+      "name": "Trenton",
+      "weight": {
+        "grams": 153
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Washington County, Wisconsin",
+      "year": "1858",
+      "catalogPage": 98,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Trenton",
+        "meteoriteCode": "24045",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24045",
+        "alternateNameNote": "The verified local CSV identifies Official Trenton, code 24045, as an 1858 Wisconsin Iron, IIIAB with 505 kg mass. The official checker returns Trenton as Official, and the detail page confirms the exact name, year, state, iron identity, and all four printed synonyms. The source's 65.1 kg total and historical medium-octahedrite classification are preserved."
+      }
+    },
+    {
+      "id": "obs-302131ef-a86b-472b-b806-d7d7fee00d71",
+      "catalogId": "nininger-1950",
+      "designation": "136a",
+      "name": "Trenton",
+      "weight": {
+        "grams": 490
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Washington County, Wisconsin",
+      "year": "1858",
+      "catalogPage": 98,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Trenton",
+        "meteoriteCode": "24045",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24045",
+        "alternateNameNote": "The verified local CSV identifies Official Trenton, code 24045, as an 1858 Wisconsin Iron, IIIAB with 505 kg mass. The official checker returns Trenton as Official, and the detail page confirms the exact name, year, state, iron identity, and all four printed synonyms. The source's 65.1 kg total and historical medium-octahedrite classification are preserved."
       }
     },
     {
@@ -38508,6 +38572,48 @@
       }
     },
     {
+      "id": "obs-5d800cd2-c260-4940-af3e-e53de4577b5e",
+      "catalogId": "nininger-1950",
+      "designation": "225a",
+      "name": "Travis County",
+      "weight": {
+        "grams": 105
+      },
+      "classification": "Stone. Black chondrite",
+      "locality": "Texas",
+      "year": "1889",
+      "catalogPage": 98,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Travis County (a)",
+        "meteoriteCode": "24040",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24040",
+        "alternateNameNote": "The checker treats bare Travis County as a partial name matching two official records, so name alone is insufficient. The official containing-name result and code 24040 detail page explicitly list Travis County as a synonym of Travis County (a), state that the original 1889 Travis County meteorite belongs to (a), and list Hill's Stone. The verified local CSV confirms code 24040 as an 1889 Texas H5 with 175.4 kg mass; the source's historical classification and 2.5 kg total are preserved."
+      }
+    },
+    {
+      "id": "obs-3b91b9f8-f0e1-4453-b99a-55e44ccb6c2d",
+      "catalogId": "nininger-1950",
+      "designation": "225.2",
+      "name": "Travis County",
+      "weight": {
+        "grams": 80
+      },
+      "classification": "Stone. Black chondrite",
+      "locality": "Texas",
+      "year": "1889",
+      "catalogPage": 98,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Travis County (a)",
+        "meteoriteCode": "24040",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24040",
+        "alternateNameNote": "The checker treats bare Travis County as a partial name matching two official records, so name alone is insufficient. The official containing-name result and code 24040 detail page explicitly list Travis County as a synonym of Travis County (a), state that the original 1889 Travis County meteorite belongs to (a), and list Hill's Stone. The verified local CSV confirms code 24040 as an 1889 Texas H5 with 175.4 kg mass; the source's historical classification and 2.5 kg total are preserved."
+      }
+    },
+    {
       "id": "obs-63996358-813b-426b-bd17-35b109fb66e1",
       "catalogId": "nininger-1950",
       "designation": "226a",
@@ -39639,6 +39745,27 @@
         "meteoriteCode": "10957",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10957",
         "alternateNameNote": "No Official Grants row occurs in the verified local CSV. The official exact-name checker explicitly identifies Grants as an NHM Catalogue synonym of Official Grant, code 10957, and the detail page lists that synonym and confirms a New Mexico IIIAB iron. It reports 1929 and 525 kg, while the source prints Found 1928 and 480 kg; the source values are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-b97827c1-c072-4eab-852a-733d7c8e0f26",
+      "catalogId": "nininger-1950",
+      "designation": "276a",
+      "name": "Troup",
+      "weight": {
+        "grams": 3
+      },
+      "classification": "Stone. Intermediate chondrite",
+      "locality": "Smith County, Texas",
+      "year": "1917",
+      "catalogPage": 98,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Troup",
+        "meteoriteCode": "24054",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24054",
+        "alternateNameNote": "The verified local CSV identifies Official Troup, code 24054, as a 1917 Texas L6 fall with 1,020 gram mass. The official checker returns Troup as Official, and the detail page confirms the exact name, fall year, state, classification, and closely corresponding mass. The source's full fall date, morning wording, 1 kg total, and historical classification are preserved."
       }
     },
     {
@@ -41721,6 +41848,27 @@
       }
     },
     {
+      "id": "obs-7e4377ed-d3ff-417a-8c13-5aa49789c421",
+      "catalogId": "nininger-1950",
+      "designation": "342.1",
+      "name": "Tourinnes-la-Grosse",
+      "weight": {
+        "grams": 6.8
+      },
+      "classification": "Stone. White hypersthene-chondrite",
+      "locality": "Tirlemont, Belgium",
+      "year": "1863",
+      "catalogPage": 98,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Tourinnes-la-Grosse",
+        "meteoriteCode": "24038",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24038",
+        "alternateNameNote": "The verified local CSV identifies Official Tourinnes-la-Grosse, code 24038, as an 1863 Belgian L6 fall with 14.5 kg mass. The official checker returns Tourinnes-la-Grosse as Official, and the detail page confirms the exact name, fall year, classification, mass, and both printed synonyms, Louvain and Tirlemont. The source's full fall date and time and historical classification are preserved."
+      }
+    },
+    {
       "id": "obs-33c47203-d7fb-43a7-aed9-3306993079f1",
       "catalogId": "nininger-1950",
       "designation": "343.1",
@@ -42663,6 +42811,48 @@
         "meteoriteCode": "17001",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17001",
         "alternateNameNote": "The official checker explicitly identifies Rio Loa as a synonym of Official North Chile, code 17001, and the detail page explicitly lists Rio Loa among its synonyms. The verified local CSV identifies North Chile as an Antofagasta IIAB iron. Its 1875 year and 300 kg mass conflict with the source's about-1915 date, hexahedrite description, and 4 kg total, which are preserved."
+      }
+    },
+    {
+      "id": "obs-31aec3b0-b681-48d7-b40c-b4cc511757e2",
+      "catalogId": "nininger-1950",
+      "designation": "377.1",
+      "name": "Township No. 8",
+      "weight": {
+        "grams": 426
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Lincoln County, Colorado; 39° 22′ N., 103° 10′ W.",
+      "year": "1938",
+      "catalogPage": 98,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Lincoln County",
+        "meteoriteCode": "14654",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=14654",
+        "alternateNameNote": "Township No. 8 is absent as an official row from the verified local CSV. The official checker identifies it as a synonym of Official Lincoln County, code 14654, and the detail page explicitly lists Township no. 8 as a synonym while confirming the exact printed coordinates, Colorado locality, L6 identity, and 4.5 kg mass. MetBull gives 1937 and 4.5 kg; the source's Found 1938, 4.6 kg total, and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-76c6c129-1dcb-466b-9ce3-39c84069ec8f",
+      "catalogId": "nininger-1950",
+      "designation": "377.4",
+      "name": "Township No. 8",
+      "weight": {
+        "grams": 3480
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Lincoln County, Colorado; 39° 22′ N., 103° 10′ W.",
+      "year": "1938",
+      "catalogPage": 98,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Lincoln County",
+        "meteoriteCode": "14654",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=14654",
+        "alternateNameNote": "Township No. 8 is absent as an official row from the verified local CSV. The official checker identifies it as a synonym of Official Lincoln County, code 14654, and the detail page explicitly lists Township no. 8 as a synonym while confirming the exact printed coordinates, Colorado locality, L6 identity, and 4.5 kg mass. MetBull gives 1937 and 4.5 kg; the source's Found 1938, 4.6 kg total, and historical classification are preserved."
       }
     },
     {
@@ -46254,6 +46444,69 @@
         "meteoriteCode": "18786",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18786",
         "alternateNameNote": "The checker returns the source's unaccented plural Pena Blanca Springs as Unknown, while the verified local CSV identifies Official Peña Blanca Spring, code 18786. Its detail page explicitly lists Peña Blanca Springs as a synonym and confirms the 1946 Texas aubrite fall and 70 kg mass. The source's unaccented heading, historical Achondrite classification, and 70.4 kg total are preserved."
+      }
+    },
+    {
+      "id": "obs-9946f4d3-d4a1-42ec-8d84-13d85a322ec0",
+      "catalogId": "nininger-1950",
+      "designation": "510.1",
+      "name": "Torrington",
+      "weight": {
+        "grams": 117.5
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Goshen County, Wyoming; 42° 4′ N., 104° 10′ W.",
+      "year": "1944",
+      "catalogPage": 98,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Torrington",
+        "meteoriteCode": "24032",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24032",
+        "alternateNameNote": "The verified local CSV identifies Official Torrington, code 24032, as a 1944 Wyoming H6 fall with 259.1 gram mass. The official checker returns Torrington as Official, and the detail page confirms the exact name, fall year, classification, mass, and exact printed coordinates. The source's full fall date and time and historical chondrite classification are preserved."
+      }
+    },
+    {
+      "id": "obs-36b30c80-faaa-4a5a-992b-729dc8965918",
+      "catalogId": "nininger-1950",
+      "designation": "510.2",
+      "name": "Torrington",
+      "weight": {
+        "grams": 116.4
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Goshen County, Wyoming; 42° 4′ N., 104° 10′ W.",
+      "year": "1944",
+      "catalogPage": 98,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Torrington",
+        "meteoriteCode": "24032",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24032",
+        "alternateNameNote": "The verified local CSV identifies Official Torrington, code 24032, as a 1944 Wyoming H6 fall with 259.1 gram mass. The official checker returns Torrington as Official, and the detail page confirms the exact name, fall year, classification, mass, and exact printed coordinates. The source's full fall date and time and historical chondrite classification are preserved."
+      }
+    },
+    {
+      "id": "obs-7dbf801a-ddc4-4114-96fa-190eec5fcb6c",
+      "catalogId": "nininger-1950",
+      "designation": "510.3",
+      "name": "Torrington",
+      "weight": {
+        "grams": 25.2
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Goshen County, Wyoming; 42° 4′ N., 104° 10′ W.",
+      "year": "1944",
+      "catalogPage": 98,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Torrington",
+        "meteoriteCode": "24032",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24032",
+        "alternateNameNote": "The verified local CSV identifies Official Torrington, code 24032, as a 1944 Wyoming H6 fall with 259.1 gram mass. The official checker returns Torrington as Official, and the detail page confirms the exact name, fall year, classification, mass, and exact printed coordinates. The source's full fall date and time and historical chondrite classification are preserved."
       }
     },
     {
