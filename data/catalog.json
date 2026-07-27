@@ -391,14 +391,15 @@
           84,
           85,
           86,
-          87
+          87,
+          88
         ],
-        "sourcePageCount": 62,
-        "recordCount": 1414,
-        "recordsWithDesignation": 1388,
-        "recordsWithWeight": 1350,
+        "sourcePageCount": 63,
+        "recordCount": 1427,
+        "recordsWithDesignation": 1401,
+        "recordsWithWeight": 1363,
         "confidenceCounts": {
-          "high": 1414,
+          "high": 1427,
           "medium": 0,
           "low": 0
         },
@@ -406,11 +407,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 3326,
-    "recordsWithDesignation": 3131,
-    "recordsWithWeight": 3134,
+    "recordCount": 3339,
+    "recordsWithDesignation": 3144,
+    "recordsWithWeight": 3147,
     "confidenceCounts": {
-      "high": 3326,
+      "high": 3339,
       "medium": 0,
       "low": 0
     }
@@ -32009,6 +32010,69 @@
       }
     },
     {
+      "id": "obs-64398c04-80ec-4fd3-8e08-833a98076cb5",
+      "catalogId": "nininger-1950",
+      "designation": "97b",
+      "name": "Pultusk",
+      "weight": {
+        "grams": 14
+      },
+      "classification": "Stone. Veined grey bronzite-chondrite",
+      "locality": "Warsaw, Poland",
+      "year": "1868",
+      "catalogPage": 88,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Pultusk",
+        "meteoriteCode": "18901",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18901",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official Pultusk as code 18901, a 1868 Polish H5 fall. The official checker returns Pultusk as Official, and the detail page confirms the exact name, fall year, Poland, H5 identity, and the printed Lerici, Nosy-Bé, Ostrolenka, and Warschau synonyms. The official 250 kg mass differs from the source's 200 kg total, which is preserved."
+      }
+    },
+    {
+      "id": "obs-be1eba30-142a-462a-b958-bead1019babb",
+      "catalogId": "nininger-1950",
+      "designation": "97a",
+      "name": "Pultusk",
+      "weight": {
+        "grams": 40
+      },
+      "classification": "Stone. Veined grey bronzite-chondrite",
+      "locality": "Warsaw, Poland",
+      "year": "1868",
+      "catalogPage": 88,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Pultusk",
+        "meteoriteCode": "18901",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18901",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official Pultusk as code 18901, a 1868 Polish H5 fall. The official checker returns Pultusk as Official, and the detail page confirms the exact name, fall year, Poland, H5 identity, and the printed Lerici, Nosy-Bé, Ostrolenka, and Warschau synonyms. The official 250 kg mass differs from the source's 200 kg total, which is preserved."
+      }
+    },
+    {
+      "id": "obs-874ad177-28eb-404e-8416-a6813a1570cf",
+      "catalogId": "nininger-1950",
+      "designation": "98.1",
+      "name": "Rancho de la Presa",
+      "weight": {
+        "grams": 37.7
+      },
+      "classification": "Stone. Spherical chondrite",
+      "locality": "Zenapecuaro, Michoacan, Mexico",
+      "year": "1899",
+      "catalogPage": 88,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Rancho de la Presa",
+        "meteoriteCode": "22390",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22390",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official Rancho de la Presa as code 22390, an 1899 Mexican H5 fall with 300 gram mass. The official checker returns Rancho de la Presa as Official, and the detail page confirms the exact name, year, Michoacan locality, H5 identity, and 300 gram mass. The source prints Found rather than Fell and gives a 399 gram total; both source facts are preserved."
+      }
+    },
+    {
       "id": "obs-27581ec3-4f85-45a1-ab77-50f4d55413fd",
       "catalogId": "nininger-1950",
       "designation": "112c",
@@ -32867,6 +32931,90 @@
         "meteoriteCode": "5182",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5182",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-dcef44cb-0808-4dc3-a7c6-70396cfde141",
+      "catalogId": "nininger-1950",
+      "designation": "142.2",
+      "name": "Ransom",
+      "weight": {
+        "grams": 6370
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Trego County, Kansas; 38° 37′ N., 99° 56′ W.",
+      "year": "1938",
+      "catalogPage": 88,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Ransom",
+        "meteoriteCode": "22393",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22393",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official Ransom as code 22393, a Kansas H4 with 15 kg mass at 38° 37′ N., 99° 56′ W. The official checker returns Ransom as Official, and the detail page confirms the exact name, 1938 database year, state, classification, mass, and exact printed coordinates. The source's Recognized wording is preserved."
+      }
+    },
+    {
+      "id": "obs-c39c5276-da6b-43e0-89a5-da359e639057",
+      "catalogId": "nininger-1950",
+      "designation": "142.16",
+      "name": "Ransom",
+      "weight": {
+        "grams": 3030
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Trego County, Kansas; 38° 37′ N., 99° 56′ W.",
+      "year": "1938",
+      "catalogPage": 88,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Ransom",
+        "meteoriteCode": "22393",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22393",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official Ransom as code 22393, a Kansas H4 with 15 kg mass at 38° 37′ N., 99° 56′ W. The official checker returns Ransom as Official, and the detail page confirms the exact name, 1938 database year, state, classification, mass, and exact printed coordinates. The source's Recognized wording is preserved."
+      }
+    },
+    {
+      "id": "obs-3351bf66-9c9d-43e8-8874-2a50daa3e98a",
+      "catalogId": "nininger-1950",
+      "designation": "142.28",
+      "name": "Ransom",
+      "weight": {
+        "grams": 312.4
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Trego County, Kansas; 38° 37′ N., 99° 56′ W.",
+      "year": "1938",
+      "catalogPage": 88,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Ransom",
+        "meteoriteCode": "22393",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22393",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official Ransom as code 22393, a Kansas H4 with 15 kg mass at 38° 37′ N., 99° 56′ W. The official checker returns Ransom as Official, and the detail page confirms the exact name, 1938 database year, state, classification, mass, and exact printed coordinates. The source's Recognized wording is preserved."
+      }
+    },
+    {
+      "id": "obs-4ca542ae-708e-4c96-ac4e-30aac27cdc9e",
+      "catalogId": "nininger-1950",
+      "designation": "142.29",
+      "name": "Ransom",
+      "weight": {
+        "grams": 145.8
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Trego County, Kansas; 38° 37′ N., 99° 56′ W.",
+      "year": "1938",
+      "catalogPage": 88,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Ransom",
+        "meteoriteCode": "22393",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22393",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official Ransom as code 22393, a Kansas H4 with 15 kg mass at 38° 37′ N., 99° 56′ W. The official checker returns Ransom as Official, and the detail page confirms the exact name, 1938 database year, state, classification, mass, and exact printed coordinates. The source's Recognized wording is preserved."
       }
     },
     {
@@ -37385,6 +37533,27 @@
       }
     },
     {
+      "id": "obs-a559b8e6-a7c9-4cb7-b5e9-16ad59ce8827",
+      "catalogId": "nininger-1950",
+      "designation": "246.2",
+      "name": "Putnam County",
+      "weight": {
+        "grams": 1387
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Georgia",
+      "year": "1839",
+      "catalogPage": 88,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Putnam County",
+        "meteoriteCode": "18906",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18906",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official Putnam County as code 18906, a Georgia Iron, IVA found in 1839 with 32.7 kg mass. The official checker returns Putnam County as Official, and the detail page confirms the exact name, year, state, iron identity, and mass. The source's historical fine-octahedrite classification is preserved."
+      }
+    },
+    {
       "id": "obs-2bc81d94-c641-4156-9cf7-fab32e75ceae",
       "catalogId": "nininger-1950",
       "designation": "247a",
@@ -37445,6 +37614,27 @@
         "meteoriteCode": "5343",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5343",
         "alternateNameNote": "The official detail page lists Chester County as a synonym and gives 1849; the source says found before 1849 and reports 16.33 kg versus MetBull's 16.5 kg."
+      }
+    },
+    {
+      "id": "obs-afe2c243-4f78-4aa5-8496-e85a8df1d66a",
+      "catalogId": "nininger-1950",
+      "designation": "252a",
+      "name": "Red River",
+      "weight": {
+        "grams": 96
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Cross Timbers, Johnson County, Texas",
+      "year": "1808",
+      "catalogPage": 88,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Red River",
+        "meteoriteCode": "22548",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22548",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official Red River as code 22548, a Texas Iron, IIIAB found in 1808 with 800 kg mass. The checker also returns a same-name Wichita County synonym; the code 22548 detail page resolves the printed entry by confirming the exact official name, 1808 Texas iron identity, and all five printed synonyms: Brazos, Cross Timbers, Gibb's Meteorite, Louisiana, and Texas. The source's historical classification and 743.2 kg total are preserved."
       }
     },
     {
@@ -37718,6 +37908,48 @@
         "meteoriteCode": "11441",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11441",
         "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Guffey, code 11441. The detail page confirms the 1907 Colorado iron and Currant Creek synonym and reports 309 kg and an ungrouped classification; the source's Ataxite wording and 310 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-8e79063d-bb1c-4ec3-b64b-b1ef5fef8cf8",
+      "catalogId": "nininger-1950",
+      "designation": "265a",
+      "name": "Quenggouk",
+      "weight": {
+        "grams": 3
+      },
+      "classification": "Stone. Spherical chondrite",
+      "locality": "Bassein district, Lower Burma",
+      "year": "1857",
+      "catalogPage": 88,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Quenggouk",
+        "meteoriteCode": "22358",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22358",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official Quenggouk as code 22358, an 1857 Burmese H4 fall with 6,045 gram mass. The official checker returns Quenggouk as Official, and the detail page confirms the exact name, year, country, H4 identity, 6.05 kg mass, and both printed synonyms, Bassein and Pegu. The source's historical classification and 6.1 kg total are preserved."
+      }
+    },
+    {
+      "id": "obs-df19da0c-3ddc-4b2c-901a-465b78c24927",
+      "catalogId": "nininger-1950",
+      "designation": "265.2",
+      "name": "Quenggouk",
+      "weight": {
+        "grams": 10.7
+      },
+      "classification": "Stone. Spherical chondrite",
+      "locality": "Bassein district, Lower Burma",
+      "year": "1857",
+      "catalogPage": 88,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Quenggouk",
+        "meteoriteCode": "22358",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22358",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official Quenggouk as code 22358, an 1857 Burmese H4 fall with 6,045 gram mass. The official checker returns Quenggouk as Official, and the detail page confirms the exact name, year, country, H4 identity, 6.05 kg mass, and both printed synonyms, Bassein and Pegu. The source's historical classification and 6.1 kg total are preserved."
       }
     },
     {
@@ -38789,6 +39021,27 @@
         "meteoriteCode": "18037",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18037",
         "alternateNameNote": "The verified local CSV identifies Official Osseo, code 18037. The official checker returns Osseo as Official, and the detail page confirms the exact name, 1931 Ontario iron, and 46.3 kg mass. The source's historical classification and Temiskaming locality wording are preserved."
+      }
+    },
+    {
+      "id": "obs-45b9cc51-97cd-4ff7-b8f9-65a1c795f02e",
+      "catalogId": "nininger-1950",
+      "designation": "310.1",
+      "name": "Quartz Mountain",
+      "weight": {
+        "grams": 34
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Nye County, Nevada",
+      "year": "1935",
+      "catalogPage": 88,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Quartz Mountain",
+        "meteoriteCode": "18910",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18910",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official Quartz Mountain as code 18910, a Nevada Iron, IIIAB found in 1935 with 4,832 gram mass. The official checker returns Quartz Mountain as Official, and the detail page confirms the exact name, year, state, iron identity, 4.83 kg mass, and coordinates in Nye County. The source's historical medium-octahedrite classification and 4.8 kg total are preserved."
       }
     },
     {
@@ -40532,6 +40785,27 @@
         "meteoriteCode": null,
         "metbullUrl": null,
         "alternateNameNote": "The official checker returns printed Ness County No. 2 as Unknown. The verified local CSV and detail page contain Official Ness County (1938), code 16947, with the same year, Kansas place, H4 classification, and 652 gram mass, but the detail page does not list Ness County No. 2 as a synonym. No canonical identity or code is inferred from those matching facts."
+      }
+    },
+    {
+      "id": "obs-d397c326-51f4-4b5d-bf58-76ec772e049e",
+      "catalogId": "nininger-1950",
+      "designation": "387.1",
+      "name": "Puripica",
+      "weight": {
+        "grams": 543
+      },
+      "classification": "Iron. Hexahedrite",
+      "locality": "El Loa, Antofagasta, Chile",
+      "year": "1929",
+      "catalogPage": 88,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "North Chile",
+        "meteoriteCode": "17001",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17001",
+        "alternateNameNote": "The official checker explicitly identifies Puripica as a synonym of North Chile. The verified local valid-name CSV identifies Official North Chile as code 17001, and the detail page explicitly lists Puripica among its synonyms and confirms an Antofagasta, Chile iron identity. The official 1875 year, Iron IIAB classification, and 300 kg mass differ from the source's Known 1929, hexahedrite description, and 19 kg total, which are preserved."
       }
     },
     {
