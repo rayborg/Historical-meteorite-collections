@@ -362,14 +362,15 @@
           55,
           56,
           57,
-          58
+          58,
+          59
         ],
-        "sourcePageCount": 33,
-        "recordCount": 710,
-        "recordsWithDesignation": 705,
-        "recordsWithWeight": 685,
+        "sourcePageCount": 34,
+        "recordCount": 741,
+        "recordsWithDesignation": 736,
+        "recordsWithWeight": 692,
         "confidenceCounts": {
-          "high": 710,
+          "high": 741,
           "medium": 0,
           "low": 0
         },
@@ -377,11 +378,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2622,
-    "recordsWithDesignation": 2448,
-    "recordsWithWeight": 2469,
+    "recordCount": 2653,
+    "recordsWithDesignation": 2479,
+    "recordsWithWeight": 2476,
     "confidenceCounts": {
-      "high": 2622,
+      "high": 2653,
       "medium": 0,
       "low": 0
     }
@@ -23811,6 +23812,27 @@
       }
     },
     {
+      "id": "obs-3a5582ef-147e-49aa-8a20-e5f7235c91ce",
+      "catalogId": "nininger-1950",
+      "designation": "56a",
+      "name": "Hermitage Plains",
+      "weight": {
+        "grams": 1
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "County Canbelego, New South Wales, Australia",
+      "year": "1909",
+      "catalogPage": 59,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Hermitage Plains",
+        "meteoriteCode": "11877",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11877",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache has an Official Hermitage Plains row, code 11877, found 1909 in New South Wales, Australia. The official checker returns exact name Hermitage Plains as Official, and the official detail page confirms the exact name, 1909 find, New South Wales locality, L6 identity, 32 kg mass, and Hermidale synonym. The source's 31.8 kg total and printed County Canbelego locality are preserved without reconciliation."
+      }
+    },
+    {
       "id": "obs-7bac64e2-ace5-4fbe-87df-7a12a602a39a",
       "catalogId": "nininger-1950",
       "designation": "72a.",
@@ -25299,6 +25321,27 @@
         "meteoriteCode": "5373",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5373",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-005417c5-eba5-455a-9e58-088f4dc9bbe5",
+      "catalogId": "nininger-1950",
+      "designation": "183a",
+      "name": "Hendersonville",
+      "weight": {
+        "grams": 295
+      },
+      "classification": "Stone. Spherical hypersthene-chondrite",
+      "locality": "Henderson County, North Carolina",
+      "year": "1901",
+      "catalogPage": 59,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Hendersonville",
+        "meteoriteCode": "11873",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11873",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache has an Official Hendersonville row, code 11873, found 1901 in North Carolina. The official checker returns exact name Hendersonville as Official, and the official detail page confirms the exact name, 1901 find, North Carolina locality, L5 identity, and 6 kg mass. The source's 5.9 kg total is preserved without reconciliation."
       }
     },
     {
@@ -27738,6 +27781,90 @@
       }
     },
     {
+      "id": "obs-29dc240f-4d27-4b60-9c2f-238785f53839",
+      "catalogId": "nininger-1950",
+      "designation": "263a",
+      "name": "Hessle",
+      "weight": {
+        "grams": 103
+      },
+      "classification": "Stone. Spherical bronzite-chondrite",
+      "locality": "Upsala, Sweden",
+      "year": "1869",
+      "catalogPage": 59,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Hessle",
+        "meteoriteCode": "11878",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11878",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache has an Official Hessle row, code 11878, for an 1869 fall at Uppsala, Sweden. The official checker returns exact name Hessle as Official, and the official detail page confirms the exact name, 1869 Swedish fall, H5 identity, 20 kg mass, and Stockholm synonym. The source's Upsala spelling and 18 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-3f601dd3-e261-4390-8681-323ac7d4bc32",
+      "catalogId": "nininger-1950",
+      "designation": "263.2",
+      "name": "Hessle",
+      "weight": {
+        "grams": 35
+      },
+      "classification": "Stone. Spherical bronzite-chondrite",
+      "locality": "Upsala, Sweden",
+      "year": "1869",
+      "catalogPage": 59,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Hessle",
+        "meteoriteCode": "11878",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11878",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache has an Official Hessle row, code 11878, for an 1869 fall at Uppsala, Sweden. The official checker returns exact name Hessle as Official, and the official detail page confirms the exact name, 1869 Swedish fall, H5 identity, 20 kg mass, and Stockholm synonym. The source's Upsala spelling and 18 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-1d0c73c6-fcbe-45c4-ab06-4462e4aa80a0",
+      "catalogId": "nininger-1950",
+      "designation": "263.3",
+      "name": "Hessle",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Stone. Spherical bronzite-chondrite",
+      "locality": "Upsala, Sweden",
+      "year": "1869",
+      "catalogPage": 59,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Hessle",
+        "meteoriteCode": "11878",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11878",
+        "alternateNameNote": "The source prints no weight for Hessle 263.3; none is inferred. Hessle remains exact official code 11878."
+      }
+    },
+    {
+      "id": "obs-1a8a7704-b2fe-4a2f-8fb2-522ebd824e05",
+      "catalogId": "nininger-1950",
+      "designation": "263.4",
+      "name": "Hessle",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Stone. Spherical bronzite-chondrite",
+      "locality": "Upsala, Sweden",
+      "year": "1869",
+      "catalogPage": 59,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Hessle",
+        "meteoriteCode": "11878",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11878",
+        "alternateNameNote": "The source prints no weight for Hessle 263.4; none is inferred. Hessle remains exact official code 11878."
+      }
+    },
+    {
       "id": "obs-d00bfe52-a7e8-4a47-97fe-3415e6be56f8",
       "catalogId": "nininger-1950",
       "designation": "264.1",
@@ -29607,6 +29734,27 @@
       }
     },
     {
+      "id": "obs-53906c30-d0f0-4543-970b-4a3a55e064be",
+      "catalogId": "nininger-1950",
+      "designation": "412.1",
+      "name": "Hex River Mountains",
+      "weight": {
+        "grams": 197
+      },
+      "classification": "Iron. Hexahedrite",
+      "locality": "Cape Province, South Africa",
+      "year": "1882",
+      "catalogPage": 59,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Hex River Mountains",
+        "meteoriteCode": "11880",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11880",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache has an Official Hex River Mountains row, code 11880, found 1882 in Western Cape, South Africa, with a 60 kg mass. The official checker returns exact name Hex River Mountains as Official, and the official detail page confirms the exact name, 1882 South African find, Iron, IIAB identity, and 60 kg mass."
+      }
+    },
+    {
       "id": "obs-669c57bf-98ec-49f4-9d4b-c7bfe6872613",
       "catalogId": "nininger-1950",
       "designation": "414.26",
@@ -29667,6 +29815,48 @@
         "meteoriteCode": "4995",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4995",
         "alternateNameNote": "The New Mexico context, 1937 find year, 44.4 kg mass, and source coordinates agree with MetBull. The historical Intermediate chondrite classification corresponds broadly to modern L5."
+      }
+    },
+    {
+      "id": "obs-c043ecff-5ee5-4a23-ba89-ee5ad6309e92",
+      "catalogId": "nininger-1950",
+      "designation": "416.1",
+      "name": "Hildreth",
+      "weight": {
+        "grams": 2761
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Franklin County, Nebraska; 40° 20′ N., 99° 2′ W.",
+      "year": "1937",
+      "catalogPage": 59,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Hildreth",
+        "meteoriteCode": "11885",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11885",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache has an Official Hildreth row, code 11885, found 1894 in Nebraska, with a 3.06 kg mass. The official checker returns exact name Hildreth as Official, and the official detail page confirms the exact name, Nebraska locality, L5 identity, 3.06 kg mass, and 1894 find year. The source instead prints Recognized 1937; that discrepancy is preserved and not reconciled."
+      }
+    },
+    {
+      "id": "obs-5c788e34-de88-4bc8-b6d5-61e1378297dc",
+      "catalogId": "nininger-1950",
+      "designation": "416.2",
+      "name": "Hildreth",
+      "weight": {
+        "grams": 172
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Franklin County, Nebraska; 40° 20′ N., 99° 2′ W.",
+      "year": "1937",
+      "catalogPage": 59,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Hildreth",
+        "meteoriteCode": "11885",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11885",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache has an Official Hildreth row, code 11885, found 1894 in Nebraska, with a 3.06 kg mass. The official checker returns exact name Hildreth as Official, and the official detail page confirms the exact name, Nebraska locality, L5 identity, 3.06 kg mass, and 1894 find year. The source instead prints Recognized 1937; that discrepancy is preserved and not reconciled."
       }
     },
     {
@@ -31410,6 +31600,111 @@
         "meteoriteCode": "5463",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5463",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-03f01bda-76ac-4fc9-947d-2a24b0b8b138",
+      "catalogId": "nininger-1950",
+      "designation": "G 193c",
+      "name": "Henbury",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 59,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "Designation-only Henbury silica-glass row; no description or weight is inferred. Henbury remains exact official code 11872."
+      }
+    },
+    {
+      "id": "obs-25d8ea05-4720-4c9d-961f-be87b74a7658",
+      "catalogId": "nininger-1950",
+      "designation": "G 193b",
+      "name": "Henbury",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 59,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "Designation-only Henbury silica-glass row; no description or weight is inferred. Henbury remains exact official code 11872."
+      }
+    },
+    {
+      "id": "obs-3de9a261-90d6-4329-b4cb-576470b5c42d",
+      "catalogId": "nininger-1950",
+      "designation": "G 193e",
+      "name": "Henbury",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 59,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "Henbury silica-glass aggregate of 8 specimens; no weight is inferred. Henbury remains exact official code 11872."
+      }
+    },
+    {
+      "id": "obs-64123e9a-f81f-4d49-a1a8-7a58bfda56f1",
+      "catalogId": "nininger-1950",
+      "designation": "G 193f",
+      "name": "Henbury",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 59,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "Henbury silica-glass aggregate of 6 specimens; no weight is inferred. Henbury remains exact official code 11872."
+      }
+    },
+    {
+      "id": "obs-c605be9b-bd2f-42d8-8523-2a17ea932bd6",
+      "catalogId": "nininger-1950",
+      "designation": "G 193a",
+      "name": "Henbury",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 59,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "Designation-only Henbury silica-glass row; no description or weight is inferred. Henbury remains exact official code 11872."
       }
     },
     {
@@ -52809,6 +53104,363 @@
         "meteoriteCode": "5506",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5506",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-0a0bc38f-874f-40a7-8ba5-34785d301178",
+      "catalogId": "nininger-1950",
+      "designation": "O 193j",
+      "name": "Henbury",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 59,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "Designation-only Henbury oxide row; no description or weight is inferred. Henbury remains exact official code 11872."
+      }
+    },
+    {
+      "id": "obs-0bcace93-072f-4382-877d-eb375e4ec26c",
+      "catalogId": "nininger-1950",
+      "designation": "O 193p",
+      "name": "Henbury",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 59,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "Designation-only Henbury oxide row; no description or weight is inferred. Henbury remains exact official code 11872."
+      }
+    },
+    {
+      "id": "obs-1e718383-c474-4b0a-9365-2b71a55d1658",
+      "catalogId": "nininger-1950",
+      "designation": "O 193q",
+      "name": "Henbury",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 59,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "Designation-only Henbury oxide row; no description or weight is inferred. Henbury remains exact official code 11872."
+      }
+    },
+    {
+      "id": "obs-423f807a-a566-4f7a-9496-de9b0c0c711a",
+      "catalogId": "nininger-1950",
+      "designation": "O 193h",
+      "name": "Henbury",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 59,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "Designation-only Henbury oxide row; no description or weight is inferred. Henbury remains exact official code 11872."
+      }
+    },
+    {
+      "id": "obs-449bad3d-4f2f-40dd-87de-7ed5618fc195",
+      "catalogId": "nininger-1950",
+      "designation": "O 193k",
+      "name": "Henbury",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 59,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "Designation-only Henbury oxide row; no description or weight is inferred. Henbury remains exact official code 11872."
+      }
+    },
+    {
+      "id": "obs-5feaf396-ad30-43ca-b9c0-859fb26223c3",
+      "catalogId": "nininger-1950",
+      "designation": "O 193m",
+      "name": "Henbury",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 59,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "Designation-only Henbury oxide row; no description or weight is inferred. Henbury remains exact official code 11872."
+      }
+    },
+    {
+      "id": "obs-64538a4e-2cfb-429c-a3b6-bf42886b2893",
+      "catalogId": "nininger-1950",
+      "designation": "O 193d",
+      "name": "Henbury",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 59,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "Designation-only Henbury oxide row; no description or weight is inferred. Henbury remains exact official code 11872."
+      }
+    },
+    {
+      "id": "obs-9cf88bc4-f3de-43ac-9f4f-66f87e29f3fa",
+      "catalogId": "nininger-1950",
+      "designation": "O 193g",
+      "name": "Henbury",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 59,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "Designation-only Henbury oxide row; no description or weight is inferred. Henbury remains exact official code 11872."
+      }
+    },
+    {
+      "id": "obs-a57accbe-97bf-459e-a5fb-505f08442a7e",
+      "catalogId": "nininger-1950",
+      "designation": "O 193i",
+      "name": "Henbury",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 59,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "Designation-only Henbury oxide row; no description or weight is inferred. Henbury remains exact official code 11872."
+      }
+    },
+    {
+      "id": "obs-ae981b86-b362-4669-8497-c4d0ce84c85c",
+      "catalogId": "nininger-1950",
+      "designation": "O 193c",
+      "name": "Henbury",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 59,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "Designation-only Henbury oxide row; no description or weight is inferred. Henbury remains exact official code 11872."
+      }
+    },
+    {
+      "id": "obs-b61fe0f7-84c7-4384-ae42-260bc6654d54",
+      "catalogId": "nininger-1950",
+      "designation": "O 193b",
+      "name": "Henbury",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 59,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "Designation-only Henbury oxide row; no description or weight is inferred. Henbury remains exact official code 11872."
+      }
+    },
+    {
+      "id": "obs-b73aeed5-1b56-49d0-9381-8d55e5a20141",
+      "catalogId": "nininger-1950",
+      "designation": "O 193a",
+      "name": "Henbury",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 59,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "Designation-only Henbury oxide row; no description or weight is inferred. Henbury remains exact official code 11872."
+      }
+    },
+    {
+      "id": "obs-b82b8809-d56c-4cb3-a4f6-96be09d715ff",
+      "catalogId": "nininger-1950",
+      "designation": "O 193n",
+      "name": "Henbury",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 59,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "Designation-only Henbury oxide row; no description or weight is inferred. Henbury remains exact official code 11872."
+      }
+    },
+    {
+      "id": "obs-bdbcfba8-c2b0-4b40-b2a2-f6777cda24d2",
+      "catalogId": "nininger-1950",
+      "designation": "O 193o",
+      "name": "Henbury",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 59,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "Designation-only Henbury oxide row; no description or weight is inferred. Henbury remains exact official code 11872."
+      }
+    },
+    {
+      "id": "obs-c58a49f5-41ca-4047-9536-af01e4da1069",
+      "catalogId": "nininger-1950",
+      "designation": "O 193L",
+      "name": "Henbury",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 59,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "Designation-only Henbury oxide row; no description or weight is inferred. The printed capital L is preserved, and Henbury remains exact official code 11872."
+      }
+    },
+    {
+      "id": "obs-de1286bc-ec71-4cca-bbf0-abe74bb45df4",
+      "catalogId": "nininger-1950",
+      "designation": "O 193e",
+      "name": "Henbury",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 59,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "Designation-only Henbury oxide row; no description or weight is inferred. Henbury remains exact official code 11872."
+      }
+    },
+    {
+      "id": "obs-effc8334-c5d2-4ace-998f-2d559ad9935a",
+      "catalogId": "nininger-1950",
+      "designation": "O 193f",
+      "name": "Henbury",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 59,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "Designation-only Henbury oxide row; no description or weight is inferred. Henbury remains exact official code 11872."
       }
     },
     {
