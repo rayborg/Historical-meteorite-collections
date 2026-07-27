@@ -380,14 +380,15 @@
           73,
           74,
           75,
-          76
+          76,
+          77
         ],
-        "sourcePageCount": 51,
-        "recordCount": 1025,
-        "recordsWithDesignation": 1003,
-        "recordsWithWeight": 966,
+        "sourcePageCount": 52,
+        "recordCount": 1052,
+        "recordsWithDesignation": 1030,
+        "recordsWithWeight": 993,
         "confidenceCounts": {
-          "high": 1025,
+          "high": 1052,
           "medium": 0,
           "low": 0
         },
@@ -395,11 +396,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2937,
-    "recordsWithDesignation": 2746,
-    "recordsWithWeight": 2750,
+    "recordCount": 2964,
+    "recordsWithDesignation": 2773,
+    "recordsWithWeight": 2777,
     "confidenceCounts": {
-      "high": 2937,
+      "high": 2964,
       "medium": 0,
       "low": 0
     }
@@ -26076,6 +26077,384 @@
       }
     },
     {
+      "id": "obs-c0db57f4-2ef9-4180-bee2-62f6acef9b38",
+      "catalogId": "nininger-1950",
+      "designation": "87.14",
+      "name": "Ness County",
+      "weight": {
+        "grams": 3400
+      },
+      "classification": "Stone. Crystalline chondrite",
+      "locality": "Kansas",
+      "year": "1894",
+      "catalogPage": 77,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Ness County (1894)",
+        "meteoriteCode": "16946",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16946",
+        "alternateNameNote": "The local CSV contains three qualified official Ness County names and identifies Official Ness County (1894), code 16946. The checker returns bare Ness County as a partial name with three candidates. The code 16946 detail page confirms the source's 1894 Kansas find and both printed synonyms, Ness City and Kansada; these controls distinguish it from the other qualified records. The source's 36 kg total differs from the official 82 kg mass and is preserved."
+      }
+    },
+    {
+      "id": "obs-162378b1-ec3e-496d-94a3-47ad79db2d15",
+      "catalogId": "nininger-1950",
+      "designation": "87.17",
+      "name": "Ness County",
+      "weight": {
+        "grams": 89
+      },
+      "classification": "Stone. Crystalline chondrite",
+      "locality": "Kansas",
+      "year": "1894",
+      "catalogPage": 77,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Ness County (1894)",
+        "meteoriteCode": "16946",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16946",
+        "alternateNameNote": "The local CSV contains three qualified official Ness County names and identifies Official Ness County (1894), code 16946. The checker returns bare Ness County as a partial name with three candidates. The code 16946 detail page confirms the source's 1894 Kansas find and both printed synonyms, Ness City and Kansada; these controls distinguish it from the other qualified records. The source's 36 kg total differs from the official 82 kg mass and is preserved."
+      }
+    },
+    {
+      "id": "obs-7c3a5912-28e2-42ce-81e5-29b24352e546",
+      "catalogId": "nininger-1950",
+      "designation": "87.20",
+      "name": "Ness County",
+      "weight": {
+        "grams": 59
+      },
+      "classification": "Stone. Crystalline chondrite",
+      "locality": "Kansas",
+      "year": "1894",
+      "catalogPage": 77,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Ness County (1894)",
+        "meteoriteCode": "16946",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16946",
+        "alternateNameNote": "The local CSV contains three qualified official Ness County names and identifies Official Ness County (1894), code 16946. The checker returns bare Ness County as a partial name with three candidates. The code 16946 detail page confirms the source's 1894 Kansas find and both printed synonyms, Ness City and Kansada; these controls distinguish it from the other qualified records. The source's 36 kg total differs from the official 82 kg mass and is preserved."
+      }
+    },
+    {
+      "id": "obs-dd2d3950-2978-4b94-b2c8-defbc58c7e3f",
+      "catalogId": "nininger-1950",
+      "designation": "87.21",
+      "name": "Ness County",
+      "weight": {
+        "grams": 46
+      },
+      "classification": "Stone. Crystalline chondrite",
+      "locality": "Kansas",
+      "year": "1894",
+      "catalogPage": 77,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Ness County (1894)",
+        "meteoriteCode": "16946",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16946",
+        "alternateNameNote": "The local CSV contains three qualified official Ness County names and identifies Official Ness County (1894), code 16946. The checker returns bare Ness County as a partial name with three candidates. The code 16946 detail page confirms the source's 1894 Kansas find and both printed synonyms, Ness City and Kansada; these controls distinguish it from the other qualified records. The source's 36 kg total differs from the official 82 kg mass and is preserved."
+      }
+    },
+    {
+      "id": "obs-058d29dc-ad21-4d01-9ac8-0116f68e5597",
+      "catalogId": "nininger-1950",
+      "designation": "87.25",
+      "name": "Ness County",
+      "weight": {
+        "grams": 42
+      },
+      "classification": "Stone. Crystalline chondrite",
+      "locality": "Kansas",
+      "year": "1894",
+      "catalogPage": 77,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Ness County (1894)",
+        "meteoriteCode": "16946",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16946",
+        "alternateNameNote": "The local CSV contains three qualified official Ness County names and identifies Official Ness County (1894), code 16946. The checker returns bare Ness County as a partial name with three candidates. The code 16946 detail page confirms the source's 1894 Kansas find and both printed synonyms, Ness City and Kansada; these controls distinguish it from the other qualified records. The source's 36 kg total differs from the official 82 kg mass and is preserved."
+      }
+    },
+    {
+      "id": "obs-427e4a50-c05c-4098-97a7-5eed3feea86b",
+      "catalogId": "nininger-1950",
+      "designation": "87.26",
+      "name": "Ness County",
+      "weight": {
+        "grams": 37
+      },
+      "classification": "Stone. Crystalline chondrite",
+      "locality": "Kansas",
+      "year": "1894",
+      "catalogPage": 77,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Ness County (1894)",
+        "meteoriteCode": "16946",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16946",
+        "alternateNameNote": "The local CSV contains three qualified official Ness County names and identifies Official Ness County (1894), code 16946. The checker returns bare Ness County as a partial name with three candidates. The code 16946 detail page confirms the source's 1894 Kansas find and both printed synonyms, Ness City and Kansada; these controls distinguish it from the other qualified records. The source's 36 kg total differs from the official 82 kg mass and is preserved."
+      }
+    },
+    {
+      "id": "obs-ecc74e15-51a6-4558-9ac6-eabef2c246cc",
+      "catalogId": "nininger-1950",
+      "designation": "87.27",
+      "name": "Ness County",
+      "weight": {
+        "grams": 34
+      },
+      "classification": "Stone. Crystalline chondrite",
+      "locality": "Kansas",
+      "year": "1894",
+      "catalogPage": 77,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Ness County (1894)",
+        "meteoriteCode": "16946",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16946",
+        "alternateNameNote": "The local CSV contains three qualified official Ness County names and identifies Official Ness County (1894), code 16946. The checker returns bare Ness County as a partial name with three candidates. The code 16946 detail page confirms the source's 1894 Kansas find and both printed synonyms, Ness City and Kansada; these controls distinguish it from the other qualified records. The source's 36 kg total differs from the official 82 kg mass and is preserved."
+      }
+    },
+    {
+      "id": "obs-4343fbff-f3bb-4660-9d6e-d3ca722e9bdb",
+      "catalogId": "nininger-1950",
+      "designation": "87.33",
+      "name": "Ness County",
+      "weight": {
+        "grams": 19
+      },
+      "classification": "Stone. Crystalline chondrite",
+      "locality": "Kansas",
+      "year": "1894",
+      "catalogPage": 77,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Ness County (1894)",
+        "meteoriteCode": "16946",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16946",
+        "alternateNameNote": "The local CSV contains three qualified official Ness County names and identifies Official Ness County (1894), code 16946. The checker returns bare Ness County as a partial name with three candidates. The code 16946 detail page confirms the source's 1894 Kansas find and both printed synonyms, Ness City and Kansada; these controls distinguish it from the other qualified records. The source's 36 kg total differs from the official 82 kg mass and is preserved."
+      }
+    },
+    {
+      "id": "obs-1c4ad420-db12-4fc7-82bd-696d0b7c6067",
+      "catalogId": "nininger-1950",
+      "designation": "87.34",
+      "name": "Ness County",
+      "weight": {
+        "grams": 16
+      },
+      "classification": "Stone. Crystalline chondrite",
+      "locality": "Kansas",
+      "year": "1894",
+      "catalogPage": 77,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Ness County (1894)",
+        "meteoriteCode": "16946",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16946",
+        "alternateNameNote": "The local CSV contains three qualified official Ness County names and identifies Official Ness County (1894), code 16946. The checker returns bare Ness County as a partial name with three candidates. The code 16946 detail page confirms the source's 1894 Kansas find and both printed synonyms, Ness City and Kansada; these controls distinguish it from the other qualified records. The source's 36 kg total differs from the official 82 kg mass and is preserved."
+      }
+    },
+    {
+      "id": "obs-ce35f8da-f890-4e82-94fb-b7ce0eae6e7b",
+      "catalogId": "nininger-1950",
+      "designation": "87.35",
+      "name": "Ness County",
+      "weight": {
+        "grams": 14
+      },
+      "classification": "Stone. Crystalline chondrite",
+      "locality": "Kansas",
+      "year": "1894",
+      "catalogPage": 77,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Ness County (1894)",
+        "meteoriteCode": "16946",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16946",
+        "alternateNameNote": "The local CSV contains three qualified official Ness County names and identifies Official Ness County (1894), code 16946. The checker returns bare Ness County as a partial name with three candidates. The code 16946 detail page confirms the source's 1894 Kansas find and both printed synonyms, Ness City and Kansada; these controls distinguish it from the other qualified records. The source's 36 kg total differs from the official 82 kg mass and is preserved."
+      }
+    },
+    {
+      "id": "obs-fad73dd4-aeaf-4531-b201-902a4fa6e8bd",
+      "catalogId": "nininger-1950",
+      "designation": "87.39",
+      "name": "Ness County",
+      "weight": {
+        "grams": 311
+      },
+      "classification": "Stone. Crystalline chondrite",
+      "locality": "Kansas",
+      "year": "1894",
+      "catalogPage": 77,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Ness County (1894)",
+        "meteoriteCode": "16946",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16946",
+        "alternateNameNote": "The local CSV contains three qualified official Ness County names and identifies Official Ness County (1894), code 16946. The checker returns bare Ness County as a partial name with three candidates. The code 16946 detail page confirms the source's 1894 Kansas find and both printed synonyms, Ness City and Kansada; these controls distinguish it from the other qualified records. The source's 36 kg total differs from the official 82 kg mass and is preserved."
+      }
+    },
+    {
+      "id": "obs-606369a8-1030-40dc-a712-12b827136347",
+      "catalogId": "nininger-1950",
+      "designation": "87.43",
+      "name": "Ness County",
+      "weight": {
+        "grams": 106
+      },
+      "classification": "Stone. Crystalline chondrite",
+      "locality": "Kansas",
+      "year": "1894",
+      "catalogPage": 77,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Ness County (1894)",
+        "meteoriteCode": "16946",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16946",
+        "alternateNameNote": "The local CSV contains three qualified official Ness County names and identifies Official Ness County (1894), code 16946. The checker returns bare Ness County as a partial name with three candidates. The code 16946 detail page confirms the source's 1894 Kansas find and both printed synonyms, Ness City and Kansada; these controls distinguish it from the other qualified records. The source's 36 kg total differs from the official 82 kg mass and is preserved."
+      }
+    },
+    {
+      "id": "obs-2e11444a-e546-45a4-802f-81666e849a7e",
+      "catalogId": "nininger-1950",
+      "designation": "87.44",
+      "name": "Ness County",
+      "weight": {
+        "grams": 73.7
+      },
+      "classification": "Stone. Crystalline chondrite",
+      "locality": "Kansas",
+      "year": "1894",
+      "catalogPage": 77,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Ness County (1894)",
+        "meteoriteCode": "16946",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16946",
+        "alternateNameNote": "The local CSV contains three qualified official Ness County names and identifies Official Ness County (1894), code 16946. The checker returns bare Ness County as a partial name with three candidates. The code 16946 detail page confirms the source's 1894 Kansas find and both printed synonyms, Ness City and Kansada; these controls distinguish it from the other qualified records. The source's 36 kg total differs from the official 82 kg mass and is preserved."
+      }
+    },
+    {
+      "id": "obs-4edf9f35-b989-4ddb-a6ec-b08ef10338e4",
+      "catalogId": "nininger-1950",
+      "designation": "87.45",
+      "name": "Ness County",
+      "weight": {
+        "grams": 219
+      },
+      "classification": "Stone. Crystalline chondrite",
+      "locality": "Kansas",
+      "year": "1894",
+      "catalogPage": 77,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Ness County (1894)",
+        "meteoriteCode": "16946",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16946",
+        "alternateNameNote": "The local CSV contains three qualified official Ness County names and identifies Official Ness County (1894), code 16946. The checker returns bare Ness County as a partial name with three candidates. The code 16946 detail page confirms the source's 1894 Kansas find and both printed synonyms, Ness City and Kansada; these controls distinguish it from the other qualified records. The source's 36 kg total differs from the official 82 kg mass and is preserved."
+      }
+    },
+    {
+      "id": "obs-062e0a82-44d0-49f7-9394-025b46dca350",
+      "catalogId": "nininger-1950",
+      "designation": "87.46",
+      "name": "Ness County",
+      "weight": {
+        "grams": 254.5
+      },
+      "classification": "Stone. Crystalline chondrite",
+      "locality": "Kansas",
+      "year": "1894",
+      "catalogPage": 77,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Ness County (1894)",
+        "meteoriteCode": "16946",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16946",
+        "alternateNameNote": "The local CSV contains three qualified official Ness County names and identifies Official Ness County (1894), code 16946. The checker returns bare Ness County as a partial name with three candidates. The code 16946 detail page confirms the source's 1894 Kansas find and both printed synonyms, Ness City and Kansada; these controls distinguish it from the other qualified records. The source's 36 kg total differs from the official 82 kg mass and is preserved."
+      }
+    },
+    {
+      "id": "obs-a63e9748-4d39-4064-9661-76514d333eae",
+      "catalogId": "nininger-1950",
+      "designation": "87.51",
+      "name": "Ness County",
+      "weight": {
+        "grams": 46.3
+      },
+      "classification": "Stone. Crystalline chondrite",
+      "locality": "Kansas",
+      "year": "1894",
+      "catalogPage": 77,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Ness County (1894)",
+        "meteoriteCode": "16946",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16946",
+        "alternateNameNote": "The local CSV contains three qualified official Ness County names and identifies Official Ness County (1894), code 16946. The checker returns bare Ness County as a partial name with three candidates. The code 16946 detail page confirms the source's 1894 Kansas find and both printed synonyms, Ness City and Kansada; these controls distinguish it from the other qualified records. The source's 36 kg total differs from the official 82 kg mass and is preserved."
+      }
+    },
+    {
+      "id": "obs-4dfa1d07-b957-47e7-87c9-11ffc6af283e",
+      "catalogId": "nininger-1950",
+      "designation": "87.53",
+      "name": "Ness County",
+      "weight": {
+        "grams": 42.8
+      },
+      "classification": "Stone. Crystalline chondrite",
+      "locality": "Kansas",
+      "year": "1894",
+      "catalogPage": 77,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Ness County (1894)",
+        "meteoriteCode": "16946",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16946",
+        "alternateNameNote": "The local CSV contains three qualified official Ness County names and identifies Official Ness County (1894), code 16946. The checker returns bare Ness County as a partial name with three candidates. The code 16946 detail page confirms the source's 1894 Kansas find and both printed synonyms, Ness City and Kansada; these controls distinguish it from the other qualified records. The source's 36 kg total differs from the official 82 kg mass and is preserved."
+      }
+    },
+    {
+      "id": "obs-e4e238b3-e252-4e6a-846d-071cc9f3df39",
+      "catalogId": "nininger-1950",
+      "designation": "88a",
+      "name": "New Baltimore",
+      "weight": {
+        "grams": 62
+      },
+      "classification": "Iron. Coarsest octahedrite",
+      "locality": "Somerset County, Pennsylvania",
+      "year": "1922",
+      "catalogPage": 77,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "New Baltimore",
+        "meteoriteCode": "16952",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16952",
+        "alternateNameNote": "The verified local CSV identifies Official New Baltimore, code 16952, and the checker returns New Baltimore as Official. The detail page confirms the exact name, 1922 Pennsylvania iron, and Somerset County synonym. Its 20 kg mass differs from the source's 18 kg total, which is preserved."
+      }
+    },
+    {
       "id": "obs-27581ec3-4f85-45a1-ab77-50f4d55413fd",
       "catalogId": "nininger-1950",
       "designation": "112c",
@@ -26913,6 +27292,69 @@
         "meteoriteCode": "5182",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5182",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-3d478c99-3166-4101-a470-abcbe3549d5a",
+      "catalogId": "nininger-1950",
+      "designation": "144h",
+      "name": "New Almelo",
+      "weight": {
+        "grams": 1130
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Norton County, Kansas; 39° 40′ N., 100° W.",
+      "year": "1932",
+      "catalogPage": 77,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "New Almelo",
+        "meteoriteCode": "16951",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16951",
+        "alternateNameNote": "The verified local CSV identifies Official New Almelo, code 16951, and the checker returns New Almelo as Official. The detail page confirms the exact name, Kansas location, L5 identity, and printed coordinates. MetBull gives 1917 and 8 kg, while the source prints Recognized 1932 and 4.8 kg; the source facts are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-429f379e-48ba-4981-89cb-4366411d6766",
+      "catalogId": "nininger-1950",
+      "designation": "144.8",
+      "name": "New Almelo",
+      "weight": {
+        "grams": 1897
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Norton County, Kansas; 39° 40′ N., 100° W.",
+      "year": "1932",
+      "catalogPage": 77,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "New Almelo",
+        "meteoriteCode": "16951",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16951",
+        "alternateNameNote": "The verified local CSV identifies Official New Almelo, code 16951, and the checker returns New Almelo as Official. The detail page confirms the exact name, Kansas location, L5 identity, and printed coordinates. MetBull gives 1917 and 8 kg, while the source prints Recognized 1932 and 4.8 kg; the source facts are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-970497d5-aa2d-47de-b898-050e9c2a1ae7",
+      "catalogId": "nininger-1950",
+      "designation": "144.9",
+      "name": "New Almelo",
+      "weight": {
+        "grams": 932
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Norton County, Kansas; 39° 40′ N., 100° W.",
+      "year": "1932",
+      "catalogPage": 77,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "New Almelo",
+        "meteoriteCode": "16951",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16951",
+        "alternateNameNote": "The verified local CSV identifies Official New Almelo, code 16951, and the checker returns New Almelo as Official. The detail page confirms the exact name, Kansas location, L5 identity, and printed coordinates. MetBull gives 1917 and 8 kg, while the source prints Recognized 1932 and 4.8 kg; the source facts are preserved without reconciliation."
       }
     },
     {
@@ -29667,6 +30109,48 @@
       }
     },
     {
+      "id": "obs-912a58dc-0f7a-471c-b5d7-3fea6bbe3eef",
+      "catalogId": "nininger-1950",
+      "designation": "202b",
+      "name": "New Concord",
+      "weight": {
+        "grams": 7.5
+      },
+      "classification": "Stone. Veined intermediate hypersthene-chondrite",
+      "locality": "Muskingum County, Ohio",
+      "year": "1860",
+      "catalogPage": 77,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "New Concord",
+        "meteoriteCode": "16953",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16953",
+        "alternateNameNote": "The verified local CSV identifies Official New Concord, code 16953, and the checker returns New Concord as Official. The detail page confirms the exact name, 1860 Ohio L6 fall, 230 kg mass, and both printed synonyms, Guernsey County and Muskingum County; the source's 227.3 kg total is preserved."
+      }
+    },
+    {
+      "id": "obs-d0f57828-7733-4344-9170-fa39e7617f3b",
+      "catalogId": "nininger-1950",
+      "designation": "202a",
+      "name": "New Concord",
+      "weight": {
+        "grams": 440
+      },
+      "classification": "Stone. Veined intermediate hypersthene-chondrite",
+      "locality": "Muskingum County, Ohio",
+      "year": "1860",
+      "catalogPage": 77,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "New Concord",
+        "meteoriteCode": "16953",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16953",
+        "alternateNameNote": "The verified local CSV identifies Official New Concord, code 16953, and the checker returns New Concord as Official. The detail page confirms the exact name, 1860 Ohio L6 fall, 230 kg mass, and both printed synonyms, Guernsey County and Muskingum County; the source's 227.3 kg total is preserved."
+      }
+    },
+    {
       "id": "obs-38bf5350-c352-4c64-a4d4-367841f20329",
       "catalogId": "nininger-1950",
       "designation": "203b",
@@ -30483,6 +30967,27 @@
         "meteoriteCode": "5066",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5066",
         "alternateNameNote": "The Buncombe County/North Carolina context and 1839 iron identity agree; MetBull lists Buncombe County as a synonym. Source total is 4 kg.; MetBull mass is 800 g and modern class is Iron, IAB-MG."
+      }
+    },
+    {
+      "id": "obs-2bc81d94-c641-4156-9cf7-fab32e75ceae",
+      "catalogId": "nininger-1950",
+      "designation": "247a",
+      "name": "Netschaevo",
+      "weight": {
+        "grams": 78
+      },
+      "classification": "Iron. Brecciated octahedrite, with silicate inclusions",
+      "locality": "Tula, Russia",
+      "year": "1846",
+      "catalogPage": 77,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Netschaëvo",
+        "meteoriteCode": "16949",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16949",
+        "alternateNameNote": "The verified local CSV identifies Official Netschaëvo, code 16949. The checker explicitly returns the printed unaccented Netschaevo spelling as a Variant of Netschaëvo, and the detail page confirms the 1846 Russian iron, 250 kg mass, and Tula synonym."
       }
     },
     {
@@ -33342,6 +33847,48 @@
       }
     },
     {
+      "id": "obs-f2eb9956-2d03-47f0-b4ce-e657355ae7a9",
+      "catalogId": "nininger-1950",
+      "designation": "385.1",
+      "name": "Ness County No. 2",
+      "weight": {
+        "grams": 585
+      },
+      "classification": "Stone. Chondrite, differing markedly from Ness County",
+      "locality": "(south central part of county) Kansas",
+      "year": "1938",
+      "catalogPage": 77,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The official checker returns printed Ness County No. 2 as Unknown. The verified local CSV and detail page contain Official Ness County (1938), code 16947, with the same year, Kansas place, H4 classification, and 652 gram mass, but the detail page does not list Ness County No. 2 as a synonym. No canonical identity or code is inferred from those matching facts."
+      }
+    },
+    {
+      "id": "obs-6df81583-2b54-478f-a21b-6a78e6a40961",
+      "catalogId": "nininger-1950",
+      "designation": "385.2",
+      "name": "Ness County No. 2",
+      "weight": {
+        "grams": 47.3
+      },
+      "classification": "Stone. Chondrite, differing markedly from Ness County",
+      "locality": "(south central part of county) Kansas",
+      "year": "1938",
+      "catalogPage": 77,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The official checker returns printed Ness County No. 2 as Unknown. The verified local CSV and detail page contain Official Ness County (1938), code 16947, with the same year, Kansas place, H4 classification, and 652 gram mass, but the detail page does not list Ness County No. 2 as a synonym. No canonical identity or code is inferred from those matching facts."
+      }
+    },
+    {
       "id": "obs-019557ac-10ef-414a-bb2a-5155710872a6",
       "catalogId": "nininger-1950",
       "designation": "388.1",
@@ -33444,6 +33991,27 @@
         "meteoriteCode": "15417",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15417",
         "alternateNameNote": "The checker treats bare Maria Elena as partial. The verified local CSV and containing-name result identify Official Maria Elena (1935), code 15417; its detail page confirms Antofagasta, Chile, iron IVA identity, and 15.5 kg mass. These distinguish it from the Maria Elena (1928) synonym of North Chile. The source's Known 1936 date is preserved."
+      }
+    },
+    {
+      "id": "obs-a66bbe9a-6bf4-4e30-b44c-a3418b112147",
+      "catalogId": "nininger-1950",
+      "designation": "394.1",
+      "name": "New Leipzig",
+      "weight": {
+        "grams": 38
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Grant County, North Dakota; 46° 23′ N., 101° 56′ W.",
+      "year": "1936",
+      "catalogPage": 77,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "New Leipzig",
+        "meteoriteCode": "16955",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16955",
+        "alternateNameNote": "The verified local CSV identifies Official New Leipzig, code 16955, and the checker returns New Leipzig as Official. The detail page confirms the exact name, 1936 North Dakota iron, 20 kg mass, and coordinates within one arcminute of the printed values."
       }
     },
     {
