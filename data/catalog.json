@@ -348,14 +348,15 @@
           41,
           42,
           43,
-          44
+          44,
+          45
         ],
-        "sourcePageCount": 19,
-        "recordCount": 422,
-        "recordsWithDesignation": 418,
-        "recordsWithWeight": 410,
+        "sourcePageCount": 20,
+        "recordCount": 433,
+        "recordsWithDesignation": 429,
+        "recordsWithWeight": 421,
         "confidenceCounts": {
-          "high": 422,
+          "high": 433,
           "medium": 0,
           "low": 0
         },
@@ -363,11 +364,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2334,
-    "recordsWithDesignation": 2161,
-    "recordsWithWeight": 2194,
+    "recordCount": 2345,
+    "recordsWithDesignation": 2172,
+    "recordsWithWeight": 2205,
     "confidenceCounts": {
-      "high": 2334,
+      "high": 2345,
       "medium": 0,
       "low": 0
     }
@@ -18778,6 +18779,90 @@
       }
     },
     {
+      "id": "obs-398a74a8-611e-426d-b9b1-36784023a970",
+      "catalogId": "nininger-1950",
+      "designation": "21a",
+      "name": "Colby",
+      "weight": {
+        "grams": 295
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Clark County, Wisconsin",
+      "year": "1917",
+      "catalogPage": 45,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "translated-or-older-name",
+        "canonicalName": "Colby (Wisconsin)",
+        "meteoriteCode": "5395",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5395",
+        "alternateNameNote": "The official checker treats bare Colby as a partial name matching two records. The detail record for Colby (Wisconsin), code 5395, agrees on Wisconsin, the 1917 fall, stone classification, and 104 kg, distinguishing it from the Kansas find."
+      }
+    },
+    {
+      "id": "obs-266a1c8f-30b9-4fa9-9e98-c700dbb4337d",
+      "catalogId": "nininger-1950",
+      "designation": "23c",
+      "name": "Coldwater",
+      "weight": {
+        "grams": 3576
+      },
+      "classification": "Iron. Octahedrite (oxidized)",
+      "locality": "Comanche County, Kansas; 37° 16′ N., 99° 20′ W.",
+      "year": "1923",
+      "catalogPage": 45,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Coldwater (iron)",
+        "meteoriteCode": "5398",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5398",
+        "alternateNameNote": "The official checker treats bare Coldwater as a partial name matching two records. The detail record for Coldwater (iron), code 5398, agrees on the printed Kansas coordinates, 1923, iron classification, and 18.4 kg, distinguishing it from the 1924 stone."
+      }
+    },
+    {
+      "id": "obs-77b367ba-424b-44cd-b7f1-6935285d40ab",
+      "catalogId": "nininger-1950",
+      "designation": "24.11",
+      "name": "Coldwater",
+      "weight": {
+        "grams": 86.5
+      },
+      "classification": "Stone. Spherical chondrite",
+      "locality": "Comanche County, Kansas; 37° 16′ N., 99° 20′ W.",
+      "year": "1924",
+      "catalogPage": 45,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Coldwater (stone)",
+        "meteoriteCode": "5399",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5399",
+        "alternateNameNote": "The official checker treats bare Coldwater as a partial name matching two records. The detail record for Coldwater (stone), code 5399, agrees on the printed Kansas coordinates, 1924, and stone classification, distinguishing it from the 1923 iron; the source prints 11 kg while MetBull reports 16 kg."
+      }
+    },
+    {
+      "id": "obs-e6de8f29-b2a5-4749-b129-ba366f13b5a3",
+      "catalogId": "nininger-1950",
+      "designation": "24.12",
+      "name": "Coldwater",
+      "weight": {
+        "grams": 4898
+      },
+      "classification": "Stone. Spherical chondrite",
+      "locality": "Comanche County, Kansas; 37° 16′ N., 99° 20′ W.",
+      "year": "1924",
+      "catalogPage": 45,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Coldwater (stone)",
+        "meteoriteCode": "5399",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5399",
+        "alternateNameNote": "The official checker treats bare Coldwater as a partial name matching two records. The detail record for Coldwater (stone), code 5399, agrees on the printed Kansas coordinates, 1924, and stone classification, distinguishing it from the 1923 iron; the source prints 11 kg while MetBull reports 16 kg."
+      }
+    },
+    {
       "id": "obs-e9a28cb9-3dfb-495f-8322-45a54c8aa998",
       "catalogId": "nininger-1950",
       "designation": "27a",
@@ -18820,6 +18905,27 @@
       }
     },
     {
+      "id": "obs-9b23c842-83d2-4049-9aa9-24f6e5416645",
+      "catalogId": "nininger-1950",
+      "designation": "30a",
+      "name": "Concepcion",
+      "weight": {
+        "grams": 382
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Jimenez, Chihuahua, Mexico",
+      "year": "Known for centuries",
+      "catalogPage": 45,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Chupaderos",
+        "meteoriteCode": "5363",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5363",
+        "alternateNameNote": "The official checker identifies Concepcion as a synonym for Chupaderos, code 5363, while noting another synonym collision. The Chupaderos detail record explicitly lists Concepcion and the other printed aliases and agrees on the Chihuahua iron context; no identity is inferred from name alone."
+      }
+    },
+    {
       "id": "obs-d4a73c8e-083a-482e-a556-cfa5948bee9b",
       "catalogId": "nininger-1950",
       "designation": "31b",
@@ -18859,6 +18965,48 @@
         "meteoriteCode": "5363",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5363",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-b54300f7-a9c3-495b-b3b7-043be33c7b3c",
+      "catalogId": "nininger-1950",
+      "designation": "32a",
+      "name": "Coahuila",
+      "weight": {
+        "grams": 39
+      },
+      "classification": "Iron. Hexahedrite",
+      "locality": "Mexico",
+      "year": "1837",
+      "catalogPage": 45,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Coahuila",
+        "meteoriteCode": "5387",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5387",
+        "alternateNameNote": "The official checker returns exact official Coahuila, code 5387. The detail record agrees on Mexico, 1837, iron, and the printed synonyms and reports a closely corresponding 2.1 t mass."
+      }
+    },
+    {
+      "id": "obs-606e29db-2d18-497b-8c19-c9ca01253093",
+      "catalogId": "nininger-1950",
+      "designation": "32.5",
+      "name": "Coahuila",
+      "weight": {
+        "grams": 157
+      },
+      "classification": "Iron. Hexahedrite",
+      "locality": "Mexico",
+      "year": "1837",
+      "catalogPage": 45,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Coahuila",
+        "meteoriteCode": "5387",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5387",
+        "alternateNameNote": "The official checker returns exact official Coahuila, code 5387. The detail record agrees on Mexico, 1837, iron, and the printed synonyms and reports a closely corresponding 2.1 t mass."
       }
     },
     {
@@ -24658,6 +24806,48 @@
       }
     },
     {
+      "id": "obs-7b231dea-27d9-4b58-860d-e4db97d59ca2",
+      "catalogId": "nininger-1950",
+      "designation": "397.2",
+      "name": "Coolidge",
+      "weight": {
+        "grams": 3507
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Hamilton County, Kansas; 38° 2′ N., 101° 59′ W.",
+      "year": "1937",
+      "catalogPage": 45,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Coolidge",
+        "meteoriteCode": "5434",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5434",
+        "alternateNameNote": "The official checker returns exact official Coolidge, code 5434. The detail record agrees on the printed Kansas coordinates, 1937, chondritic stone, and 4.5 kg; its current recommended classification is CL4."
+      }
+    },
+    {
+      "id": "obs-69e1feb7-2ebd-4864-b715-ce0ad06204ed",
+      "catalogId": "nininger-1950",
+      "designation": "397.10",
+      "name": "Coolidge",
+      "weight": {
+        "grams": 345
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Hamilton County, Kansas; 38° 2′ N., 101° 59′ W.",
+      "year": "1937",
+      "catalogPage": 45,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Coolidge",
+        "meteoriteCode": "5434",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5434",
+        "alternateNameNote": "The official checker returns exact official Coolidge, code 5434. The detail record agrees on the printed Kansas coordinates, 1937, chondritic stone, and 4.5 kg; its current recommended classification is CL4."
+      }
+    },
+    {
       "id": "obs-50d0ee91-f3b2-40a0-aee7-74c290bb86ae",
       "catalogId": "nininger-1950",
       "designation": "401.1",
@@ -25225,6 +25415,27 @@
       }
     },
     {
+      "id": "obs-b5a7347d-2738-415e-962c-ad7219fb8b50",
+      "catalogId": "nininger-1950",
+      "designation": "466.1",
+      "name": "Colby",
+      "weight": {
+        "grams": 2192
+      },
+      "classification": "Stone. Spherical crystalline chondrite",
+      "locality": "Thomas County, Kansas; 39° 25′ N., 101° 3′ W.",
+      "year": "1940",
+      "catalogPage": 45,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "translated-or-older-name",
+        "canonicalName": "Colby (Kansas)",
+        "meteoriteCode": "5394",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5394",
+        "alternateNameNote": "The official checker treats bare Colby as a partial name matching two records. The detail record for Colby (Kansas), code 5394, agrees on Kansas coordinates, 1940, stone classification, and approximately 2.4 kg, distinguishing it from the Wisconsin fall."
+      }
+    },
+    {
       "id": "obs-85fc86c7-3333-4677-836e-ff1b7ab0bb53",
       "catalogId": "nininger-1950",
       "designation": "472.1",
@@ -25600,6 +25811,27 @@
         "meteoriteCode": "10912",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10912",
         "alternateNameNote": "MetBull lists Bethany and the source's many other synonyms under official Gibeon. Source says known before 1836 and 15,000 kg.; MetBull gives 1836 and 26 t in modern Namibia."
+      }
+    },
+    {
+      "id": "obs-31c4e2ae-a7ab-4f45-a7e0-27d8aaeb8b21",
+      "catalogId": "nininger-1950",
+      "designation": "512.1",
+      "name": "Clinton",
+      "weight": {
+        "grams": 10
+      },
+      "classification": "Iron",
+      "locality": "Anderson County, Tennessee",
+      "year": null,
+      "catalogPage": 45,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Clinton",
+        "meteoriteCode": "5381",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5381",
+        "alternateNameNote": "The official checker returns exact official Clinton, code 5381. The detail record agrees on Tennessee, iron, and 7.7 kg; the source itself prints the find date as unknown, so no year is inferred."
       }
     },
     {
