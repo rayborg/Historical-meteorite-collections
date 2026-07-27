@@ -358,14 +358,15 @@
           51,
           52,
           53,
-          54
+          54,
+          55
         ],
-        "sourcePageCount": 29,
-        "recordCount": 579,
-        "recordsWithDesignation": 574,
-        "recordsWithWeight": 567,
+        "sourcePageCount": 30,
+        "recordCount": 593,
+        "recordsWithDesignation": 588,
+        "recordsWithWeight": 581,
         "confidenceCounts": {
-          "high": 579,
+          "high": 593,
           "medium": 0,
           "low": 0
         },
@@ -373,11 +374,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2491,
-    "recordsWithDesignation": 2317,
-    "recordsWithWeight": 2351,
+    "recordCount": 2505,
+    "recordsWithDesignation": 2331,
+    "recordsWithWeight": 2365,
     "confidenceCounts": {
-      "high": 2491,
+      "high": 2505,
       "medium": 0,
       "low": 0
     }
@@ -25298,6 +25299,48 @@
       }
     },
     {
+      "id": "obs-a01ff0df-d09d-4337-8ac0-86b75f1bea29",
+      "catalogId": "nininger-1950",
+      "designation": "208b",
+      "name": "Gretna",
+      "weight": {
+        "grams": 24
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Phillips County, Kansas",
+      "year": "1933",
+      "catalogPage": 55,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Gretna",
+        "meteoriteCode": "11201",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11201",
+        "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Gretna, code 11201. The detail page confirms Kansas and an L5 stone identity but reports a 1912 find and 82 kg mass; the source's Recognized 1933 and 59 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-8059f816-23e7-416c-b18a-657f2e4899d3",
+      "catalogId": "nininger-1950",
+      "designation": "208a",
+      "name": "Gretna",
+      "weight": {
+        "grams": 29
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Phillips County, Kansas",
+      "year": "1933",
+      "catalogPage": 55,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Gretna",
+        "meteoriteCode": "11201",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11201",
+        "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Gretna, code 11201. The detail page confirms Kansas and an L5 stone identity but reports a 1912 find and 82 kg mass; the source's Recognized 1933 and 59 kg total are preserved without reconciliation."
+      }
+    },
+    {
       "id": "obs-b64c220c-2577-40c0-905f-aecdafd20992",
       "catalogId": "nininger-1950",
       "designation": "209a",
@@ -25676,6 +25719,48 @@
       }
     },
     {
+      "id": "obs-1481be2a-9dc8-4bb2-8e8a-9d6d25851362",
+      "catalogId": "nininger-1950",
+      "designation": "241.5",
+      "name": "Gruver",
+      "weight": {
+        "grams": 2433
+      },
+      "classification": "Stone. Spherical crystalline chondrite",
+      "locality": "Hansford County, Texas; 36° 19′ N., 101° 24′ W.",
+      "year": "1934",
+      "catalogPage": 55,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Gruver",
+        "meteoriteCode": "11428",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11428",
+        "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Gruver, code 11428. The detail page confirms the 1934 Texas find, H4 stone identity, near-identical coordinates, and Gruever synonym; it reports 13.1 kg, while the source prints 11.3 kg, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-b78406cd-efcc-4995-ba50-46987ff22a32",
+      "catalogId": "nininger-1950",
+      "designation": "241.7",
+      "name": "Gruver",
+      "weight": {
+        "grams": 445
+      },
+      "classification": "Stone. Spherical crystalline chondrite",
+      "locality": "Hansford County, Texas; 36° 19′ N., 101° 24′ W.",
+      "year": "1934",
+      "catalogPage": 55,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Gruver",
+        "meteoriteCode": "11428",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11428",
+        "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Gruver, code 11428. The detail page confirms the 1934 Texas find, H4 stone identity, near-identical coordinates, and Gruever synonym; it reports 13.1 kg, while the source prints 11.3 kg, which is preserved without reconciliation."
+      }
+    },
+    {
       "id": "obs-3bd20cf3-58cb-4123-99af-20a951f4398d",
       "catalogId": "nininger-1950",
       "designation": "242a",
@@ -25823,6 +25908,27 @@
       }
     },
     {
+      "id": "obs-d00bfe52-a7e8-4a47-97fe-3415e6be56f8",
+      "catalogId": "nininger-1950",
+      "designation": "264.1",
+      "name": "Guffey",
+      "weight": {
+        "grams": 18.6
+      },
+      "classification": "Iron. Ataxite",
+      "locality": "Park County, Colorado",
+      "year": "1907",
+      "catalogPage": 55,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Guffey",
+        "meteoriteCode": "11441",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11441",
+        "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Guffey, code 11441. The detail page confirms the 1907 Colorado iron and Currant Creek synonym and reports 309 kg and an ungrouped classification; the source's Ataxite wording and 310 kg total are preserved without reconciliation."
+      }
+    },
+    {
       "id": "obs-888e3e12-142a-4275-ae16-cfe95220d36c",
       "catalogId": "nininger-1950",
       "designation": "266a",
@@ -25967,6 +26073,48 @@
         "meteoriteCode": "16720",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16720",
         "alternateNameNote": "Flows is absent from the valid-name CSV, which contains Official Monroe, code 16720. The official exact-name checker returns Flows as a synonym of Monroe, matching the source's own Syn: Monroe; the detail page confirms the 1849 North Carolina H4 fall, 8.6 kg mass, and both Flows and Charlotte as synonyms."
+      }
+    },
+    {
+      "id": "obs-8615ea0f-035c-4d50-8bed-79f551e749dd",
+      "catalogId": "nininger-1950",
+      "designation": "275b",
+      "name": "Grants",
+      "weight": {
+        "grams": 32
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Valencia County, New Mexico",
+      "year": "1928",
+      "catalogPage": 55,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Grant",
+        "meteoriteCode": "10957",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10957",
+        "alternateNameNote": "No Official Grants row occurs in the verified local CSV. The official exact-name checker explicitly identifies Grants as an NHM Catalogue synonym of Official Grant, code 10957, and the detail page lists that synonym and confirms a New Mexico IIIAB iron. It reports 1929 and 525 kg, while the source prints Found 1928 and 480 kg; the source values are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-61c6aabb-9476-405d-91c9-57522743f302",
+      "catalogId": "nininger-1950",
+      "designation": "275a",
+      "name": "Grants",
+      "weight": {
+        "grams": 106
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Valencia County, New Mexico",
+      "year": "1928",
+      "catalogPage": 55,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Grant",
+        "meteoriteCode": "10957",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10957",
+        "alternateNameNote": "No Official Grants row occurs in the verified local CSV. The official exact-name checker explicitly identifies Grants as an NHM Catalogue synonym of Official Grant, code 10957, and the detail page lists that synonym and confirms a New Mexico IIIAB iron. It reports 1929 and 525 kg, while the source prints Found 1928 and 480 kg; the source values are preserved without reconciliation."
       }
     },
     {
@@ -26240,6 +26388,27 @@
         "meteoriteCode": "422",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=422",
         "alternateNameNote": "The official name checker and Ainsworth detail page explicitly list Central Missouri as a synonym. Source date, mass, and geographic wording differ from the current Ainsworth record and are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-2d01f476-67b0-4528-bf36-98241cd0987d",
+      "catalogId": "nininger-1950",
+      "designation": "306.3",
+      "name": "Hale Center",
+      "weight": {
+        "grams": 53
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Hale County, Texas; 34° 3′ N., 101° 45′ W.",
+      "year": "1936",
+      "catalogPage": 55,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "No exact Hale Center row occurs in the verified local CSV, and the official exact-name checker returns no record or synonym. A contains search and the reviewed detail pages show two qualified official names, Hale Center (no. 1), code 11477, and Hale Center (no. 2), code 11478. Although the source's mass and the adjacent distinct No. 2 entry resemble the first record, no qualifier is printed and no match is inferred."
       }
     },
     {
@@ -26768,6 +26937,48 @@
       }
     },
     {
+      "id": "obs-33c47203-d7fb-43a7-aed9-3306993079f1",
+      "catalogId": "nininger-1950",
+      "designation": "343.1",
+      "name": "Hainholz",
+      "weight": {
+        "grams": 37.7
+      },
+      "classification": "Mesosiderite",
+      "locality": "Minden, Westphalia, Germany",
+      "year": "1856",
+      "catalogPage": 55,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Hainholz",
+        "meteoriteCode": "11473",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11473",
+        "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Hainholz, code 11473. The detail page confirms the 1856 German find, 16.5 kg mass, mesosiderite identity, and Paderborn synonym."
+      }
+    },
+    {
+      "id": "obs-e23fa18a-1449-4183-a4f6-15e1b3db13c8",
+      "catalogId": "nininger-1950",
+      "designation": "343.2",
+      "name": "Hainholz",
+      "weight": {
+        "grams": 370
+      },
+      "classification": "Mesosiderite",
+      "locality": "Minden, Westphalia, Germany",
+      "year": "1856",
+      "catalogPage": 55,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Hainholz",
+        "meteoriteCode": "11473",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11473",
+        "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Hainholz, code 11473. The detail page confirms the 1856 German find, 16.5 kg mass, mesosiderite identity, and Paderborn synonym."
+      }
+    },
+    {
       "id": "obs-16e8602d-e423-4703-b672-40229317621c",
       "catalogId": "nininger-1950",
       "designation": "344.17",
@@ -26786,6 +26997,48 @@
         "meteoriteCode": "5257",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
         "alternateNameNote": "Printed designation 344.17 is retained as source evidence despite the surrounding 034 sequence."
+      }
+    },
+    {
+      "id": "obs-d681397f-ee28-4612-a65e-42b04c98037e",
+      "catalogId": "nininger-1950",
+      "designation": "346.1",
+      "name": "Grant County",
+      "weight": {
+        "grams": 959
+      },
+      "classification": "Stone. Grey crystalline chondrite",
+      "locality": "Kansas; 37° 24′ N., 101° 28′ W.",
+      "year": "1936",
+      "catalogPage": 55,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Grant County",
+        "meteoriteCode": "10958",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10958",
+        "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Grant County, code 10958. The detail page confirms the 1936 Kansas find, 2.3 kg mass, L6 stone identity, and catalogue coordinates 37° 28′ N., 101° 26′ W.; the source's classification wording and slightly different printed coordinates are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-9b0b8349-d9cd-452d-9599-9c23ef99fd98",
+      "catalogId": "nininger-1950",
+      "designation": "346.7",
+      "name": "Grant County",
+      "weight": {
+        "grams": 3.5
+      },
+      "classification": "Stone. Grey crystalline chondrite",
+      "locality": "Kansas; 37° 24′ N., 101° 28′ W.",
+      "year": "1936",
+      "catalogPage": 55,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Grant County",
+        "meteoriteCode": "10958",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10958",
+        "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Grant County, code 10958. The detail page confirms the 1936 Kansas find, 2.3 kg mass, L6 stone identity, and catalogue coordinates 37° 28′ N., 101° 26′ W.; the source's classification wording and slightly different printed coordinates are preserved without reconciliation."
       }
     },
     {
@@ -27227,6 +27480,27 @@
         "meteoriteCode": "5328",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5328",
         "alternateNameNote": "The official detail page lists Dickson County as a synonym; the Tennessee locality, 1835 fall, and 4.3 kg total agree."
+      }
+    },
+    {
+      "id": "obs-e497a56e-788e-4779-a0ab-759d2aabc3b5",
+      "catalogId": "nininger-1950",
+      "designation": "383.1",
+      "name": "Gun Creek",
+      "weight": {
+        "grams": 42
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Gila County, Arizona",
+      "year": "1909",
+      "catalogPage": 55,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Gun Creek",
+        "meteoriteCode": "11451",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11451",
+        "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Gun Creek, code 11451. The detail page confirms the 1909 Arizona iron and 22.7 kg mass and recommends an ungrouped iron classification; the source's Medium octahedrite wording is preserved without reconciliation."
       }
     },
     {
@@ -28844,6 +29118,27 @@
         "meteoriteCode": "10114",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10114",
         "alternateNameNote": "The verified local CSV and official checker identify exact Official Floydada, code 10114. The detail page gives a 1912 Texas find, IIIAB iron, and 12.5 kg mass; the source instead prints Recognized 1938 and the internally inconsistent parenthetical 2.75 lb., both preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-50961d3c-15db-455c-a7f3-c930411a9b3d",
+      "catalogId": "nininger-1950",
+      "designation": "521.1",
+      "name": "Guadaloupe County",
+      "weight": {
+        "grams": 20.5
+      },
+      "classification": "Iron",
+      "locality": "Texas",
+      "year": null,
+      "catalogPage": 55,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Guadaloupe County",
+        "meteoriteCode": "11430",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11430",
+        "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Guadaloupe County, code 11430, preserving the official spelling printed by the source. The detail page confirms a Texas iron and 20.5 g mass but reports 1950; the source's unknown find date and total weight and its Canyon Diablo remark are preserved without reconciliation."
       }
     },
     {
