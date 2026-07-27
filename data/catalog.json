@@ -381,14 +381,15 @@
           74,
           75,
           76,
-          77
+          77,
+          78
         ],
-        "sourcePageCount": 52,
-        "recordCount": 1052,
-        "recordsWithDesignation": 1030,
-        "recordsWithWeight": 993,
+        "sourcePageCount": 53,
+        "recordCount": 1063,
+        "recordsWithDesignation": 1041,
+        "recordsWithWeight": 1004,
         "confidenceCounts": {
-          "high": 1052,
+          "high": 1063,
           "medium": 0,
           "low": 0
         },
@@ -396,11 +397,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2964,
-    "recordsWithDesignation": 2773,
-    "recordsWithWeight": 2777,
+    "recordCount": 2975,
+    "recordsWithDesignation": 2784,
+    "recordsWithWeight": 2788,
     "confidenceCounts": {
-      "high": 2964,
+      "high": 2975,
       "medium": 0,
       "low": 0
     }
@@ -26455,6 +26456,27 @@
       }
     },
     {
+      "id": "obs-3da3e3de-fa2f-471f-a900-aa07880a2381",
+      "catalogId": "nininger-1950",
+      "designation": "89a",
+      "name": "Newport",
+      "weight": {
+        "grams": 2050
+      },
+      "classification": "Pallasite",
+      "locality": "Jackson County, Arkansas; 35° 36′ N., 91° 16′ W.",
+      "year": "1923",
+      "catalogPage": 78,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Newport",
+        "meteoriteCode": "16962",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16962",
+        "alternateNameNote": "The verified local CSV identifies Official Newport, code 16962, a 1923 Arkansas Pallasite, PMG with 5.6 kg mass. The official checker returns Newport as Official, and the detail page confirms the exact name, year, state, pallasite identity, mass, and exact printed coordinates."
+      }
+    },
+    {
       "id": "obs-27581ec3-4f85-45a1-ab77-50f4d55413fd",
       "catalogId": "nininger-1950",
       "designation": "112c",
@@ -32041,6 +32063,48 @@
       }
     },
     {
+      "id": "obs-87df8ea6-7b73-48d1-a707-1c894eefd65b",
+      "catalogId": "nininger-1950",
+      "designation": "296.1",
+      "name": "Norfork",
+      "weight": {
+        "grams": 705
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Baxter County, Arkansas; 36° 13′ N., 92° 16′ W.",
+      "year": "1918",
+      "catalogPage": 78,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Norfork",
+        "meteoriteCode": "16994",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16994",
+        "alternateNameNote": "The verified local CSV identifies Official Norfork, code 16994, a 1918 Arkansas Iron, IIIAB fall with 1,050 gram mass. The official checker returns Norfork as Official, and the detail page confirms the exact name, fall year, state, iron identity, mass, and exact printed coordinates."
+      }
+    },
+    {
+      "id": "obs-6d91f12b-86f4-4dbf-9b57-7a3764a74a93",
+      "catalogId": "nininger-1950",
+      "designation": "296.3",
+      "name": "Norfork",
+      "weight": {
+        "grams": 95
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Baxter County, Arkansas; 36° 13′ N., 92° 16′ W.",
+      "year": "1918",
+      "catalogPage": 78,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Norfork",
+        "meteoriteCode": "16994",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16994",
+        "alternateNameNote": "The verified local CSV identifies Official Norfork, code 16994, a 1918 Arkansas Iron, IIIAB fall with 1,050 gram mass. The official checker returns Norfork as Official, and the detail page confirms the exact name, fall year, state, iron identity, mass, and exact printed coordinates."
+      }
+    },
+    {
       "id": "obs-2d9e1be4-3654-4a65-bfc8-7260c0c5d0ba",
       "catalogId": "nininger-1950",
       "designation": "298.1",
@@ -33151,6 +33215,27 @@
         "meteoriteCode": null,
         "metbullUrl": null,
         "alternateNameNote": "The verified local valid-name CSV contains no Official India row. The official exact-name checker returns no meteorite name and no synonym exactly India. With only an unknown find date, generic Stone classification, unknown total weight, and no locality, no official identity or detail record can be verified; the match remains unresolved."
+      }
+    },
+    {
+      "id": "obs-0d0cb7b1-6dc7-42a4-a90f-b59ade87d317",
+      "catalogId": "nininger-1950",
+      "designation": "349.1",
+      "name": "Nobleboro",
+      "weight": {
+        "grams": 10.2
+      },
+      "classification": "Stone. Howardite",
+      "locality": "Lincoln County, Maine",
+      "year": "1823",
+      "catalogPage": 78,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Nobleborough",
+        "meteoriteCode": "16984",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16984",
+        "alternateNameNote": "The checker returns Nobleboro as a partial name rather than an approved name. The verified local CSV identifies Official Nobleborough, code 16984, and the official detail page explicitly lists Nobleboro as an NHM Catalogue synonym while confirming the 1823 Maine fall, 2.3 kg mass, and historical Howardite classification."
       }
     },
     {
@@ -34351,6 +34436,27 @@
       }
     },
     {
+      "id": "obs-1e5885db-513e-4124-b299-7ad61dc7bc4c",
+      "catalogId": "nininger-1950",
+      "designation": "410.3",
+      "name": "Norfolk",
+      "weight": {
+        "grams": 33.4
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Norfolk or Princess Anne County, Virginia",
+      "year": "1907",
+      "catalogPage": 78,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Norfolk",
+        "meteoriteCode": "16993",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16993",
+        "alternateNameNote": "The verified local CSV identifies Official Norfolk, code 16993, a 1907 Virginia Iron, IIIAB with 23 kg mass. The official checker returns Norfolk as Official, and the detail page confirms the exact name, year, state, iron identity, and mass. The source reports Fell 1907, September, while the official record treats it as a find; the source wording is preserved."
+      }
+    },
+    {
       "id": "obs-471dd0ca-34a7-4775-ba34-1c44a815c431",
       "catalogId": "nininger-1950",
       "designation": "411.1",
@@ -35272,6 +35378,27 @@
         "meteoriteCode": "5180",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5180",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-71351a28-a05a-43a9-885f-bc2d685ff868",
+      "catalogId": "nininger-1950",
+      "designation": "447.1",
+      "name": "Newsom",
+      "weight": {
+        "grams": 464
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Alamosa County, Colorado; 37° 36′ N., 105° 50′ W.",
+      "year": "1939",
+      "catalogPage": 78,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Newsom",
+        "meteoriteCode": "16963",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16963",
+        "alternateNameNote": "The verified local CSV identifies Official Newsom, code 16963, a 1939 Colorado L6 with 892 gram mass. The official checker returns Newsom as Official, and the detail page confirms the exact name, year, state, chondrite identity, mass, and exact printed coordinates."
       }
     },
     {
@@ -36577,6 +36704,27 @@
       }
     },
     {
+      "id": "obs-e6a806a2-bb17-4f1d-99f5-0679352e7530",
+      "catalogId": "nininger-1950",
+      "designation": "511.1",
+      "name": "New Mexico",
+      "weight": {
+        "grams": 126.7
+      },
+      "classification": "Iron. Hexahedrite",
+      "locality": null,
+      "year": "1935",
+      "catalogPage": 78,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "New Mexico",
+        "meteoriteCode": "16957",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16957",
+        "alternateNameNote": "The verified local CSV identifies Official New Mexico, code 16957, a New Mexico iron found in 1935 with 130 gram mass. The official checker returns New Mexico as Official, and the detail page confirms the exact name, year, state, iron identity, and mass. The source's historical Hexahedrite classification and qualified total are preserved."
+      }
+    },
+    {
       "id": "obs-31c4e2ae-a7ab-4f45-a7e0-27d8aaeb8b21",
       "catalogId": "nininger-1950",
       "designation": "512.1",
@@ -36766,6 +36914,48 @@
       }
     },
     {
+      "id": "obs-92501f75-7aa3-4a95-95c8-6e367cabecbc",
+      "catalogId": "nininger-1950",
+      "designation": "523.1",
+      "name": "Norton County",
+      "weight": {
+        "grams": 34.3
+      },
+      "classification": "Stone. Achondrite",
+      "locality": "Kansas (Furnas County, Nebraska); 39° 41′ N., 99° 52′ W.",
+      "year": "1948",
+      "catalogPage": 78,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Norton County",
+        "meteoriteCode": "17922",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17922",
+        "alternateNameNote": "The verified local CSV identifies Official Norton County, code 17922, a 1948 Kansas Aubrite fall with 1.1 tonne mass. The official checker returns Norton County as Official, and the detail page confirms the exact name, fall year, state, achondrite identity, mass, exact printed coordinates, and Furnas County synonym."
+      }
+    },
+    {
+      "id": "obs-fda7333d-1455-4278-ab0c-c286475693d0",
+      "catalogId": "nininger-1950",
+      "designation": "523.2",
+      "name": "Norton County",
+      "weight": {
+        "grams": 119
+      },
+      "classification": "Stone. Achondrite",
+      "locality": "Kansas (Furnas County, Nebraska); 39° 41′ N., 99° 52′ W.",
+      "year": "1948",
+      "catalogPage": 78,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Norton County",
+        "meteoriteCode": "17922",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17922",
+        "alternateNameNote": "The verified local CSV identifies Official Norton County, code 17922, a 1948 Kansas Aubrite fall with 1.1 tonne mass. The official checker returns Norton County as Official, and the detail page confirms the exact name, fall year, state, achondrite identity, mass, exact printed coordinates, and Furnas County synonym."
+      }
+    },
+    {
       "id": "obs-831841ac-5924-4a2c-a3ee-225c54dfc872",
       "catalogId": "nininger-1950",
       "designation": "524.1",
@@ -36784,6 +36974,48 @@
         "meteoriteCode": "11989",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11989",
         "alternateNameNote": "The verified local valid-name CSV has Official Hvittis code 11989, a 1901 Finnish EL6 fall of 14 kg, and no Huittinen row. The official exact-name checker identifies Huittinen as a synonym of Hvittis, and the detail page confirms Huittinen among its synonyms plus the matching year, fall, country, class, and mass."
+      }
+    },
+    {
+      "id": "obs-ef3ed74d-a010-481c-8821-68c15cb32b96",
+      "catalogId": "nininger-1950",
+      "designation": "525.30",
+      "name": "Norcatur",
+      "weight": {
+        "grams": 88.7
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Decatur County, Kansas; 39° 49′ N., 100° 12′ W.",
+      "year": "1948",
+      "catalogPage": 78,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The official checker returns printed Norcatur as Unknown, and official exact and containing-name searches find no record or synonym. The verified local CSV and detail page contain Official Norcateur, code 16991, with the exact printed Kansas coordinates, L6 identity, and 3.2 kg mass, but year 1940 rather than the source's Recognized 1948; the detail page does not list Norcatur as a synonym. No canonical identity or code is inferred from spelling and contextual similarity."
+      }
+    },
+    {
+      "id": "obs-08ee9d69-ab98-4b60-aa37-36240ccf4bc8",
+      "catalogId": "nininger-1950",
+      "designation": "525.31",
+      "name": "Norcatur",
+      "weight": {
+        "grams": 2831
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Decatur County, Kansas; 39° 49′ N., 100° 12′ W.",
+      "year": "1948",
+      "catalogPage": 78,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The official checker returns printed Norcatur as Unknown, and official exact and containing-name searches find no record or synonym. The verified local CSV and detail page contain Official Norcateur, code 16991, with the exact printed Kansas coordinates, L6 identity, and 3.2 kg mass, but year 1940 rather than the source's Recognized 1948; the detail page does not list Norcatur as a synonym. No canonical identity or code is inferred from spelling and contextual similarity."
       }
     },
     {
