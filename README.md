@@ -1,7 +1,7 @@
 # Historical Meteorite Collection
 
 <!-- release-summary:readme-overview:start -->
-This repository is a dependency-free, facts-only index of 3,446 source observations from 8 historical meteorite catalogs. The coordinated catalog uses public metadata schema 6 and supports 4 source-specific record models: `catalog-item`, `catalog-number`, `collection-entry`, `specimen`.
+This repository is a dependency-free, facts-only index of 3,461 source observations from 8 historical meteorite catalogs. The coordinated catalog uses public metadata schema 6 and supports 4 source-specific record models: `catalog-item`, `catalog-number`, `collection-entry`, `specimen`.
 <!-- release-summary:readme-overview:end -->
 
 A searchable transcription of the 1976 Huss Meteorite Collection catalog, compiled and published by Glenn Huss.
@@ -93,8 +93,8 @@ The current catalog contains:
 | `huss-1986` | `specimen` | 544 | 21 | 21 |
 | `lucas-1813` | `collection-entry` | 13 | 3 | 3 |
 | `nininger-1933` | `catalog-item` | 136 | 18 | 9 |
-| `nininger-1950` | `specimen` | 1,534 | 71 | 71 |
-| **Total** |  | **3,446** | **219** | **202** |
+| `nininger-1950` | `specimen` | 1,549 | 72 | 72 |
+| **Total** |  | **3,461** | **220** | **203** |
 <!-- release-summary:readme-catalog-table:end -->
 
 Metadata source-page coverage is not a claim that every covered page contains a record. Some covered pages are introductory or narrative-only.
@@ -102,7 +102,7 @@ Metadata source-page coverage is not a claim that every covered page contains a 
 Chladni 1825 pages 200-207 are introductory folios. For Nininger 1933, printed pages 8-9 and catalog items 106-141 are missing from the available source set, and pages 12-20 are narrative-only.
 
 <!-- release-summary:readme-nininger-coverage:start -->
-`nininger-1933` has 136 records; its metadata source pages span 1-20, and its record citations span 1-11. `nininger-1950` has 1,534 records; its metadata source pages span 26-96, and its record citations span 26-96.
+`nininger-1933` has 136 records; its metadata source pages span 1-20, and its record citations span 1-11. `nininger-1950` has 1,549 records; its metadata source pages span 26-97, and its record citations span 26-97.
 <!-- release-summary:readme-nininger-coverage:end -->
 
 Both Nininger catalogs are partial digital editions. These ranges summarize current metadata and citations without asserting page-boundary continuity.
@@ -122,7 +122,7 @@ matchType, canonicalName, meteoriteCode, metbullUrl, alternateNameNote
 The historical `name`, designation/catalog identifier fields, printed private weight strings, and numeric source weights are never replaced by this object. The website labels the source catalog name and shows a separate linked **Current Meteoritical Bulletin name** only when a reviewed canonical name differs. No client, build, or export path fuzzy-matches names or infers identity.
 
 <!-- release-summary:readme-metbull:start -->
-The current release includes reviewed MetBull harmonization for 3,446 of 3,446 records: 3,330 have a resolved current identity and 116 remain explicitly unresolved. 7 records currently have a null `name` value.
+The current release includes reviewed MetBull harmonization for 3,461 of 3,461 records: 3,345 have a resolved current identity and 116 remain explicitly unresolved. 7 records currently have a null `name` value.
 <!-- release-summary:readme-metbull:end -->
 
 Validated continuation evidence recovers formerly blank source names where supported; it does not infer modern identity.

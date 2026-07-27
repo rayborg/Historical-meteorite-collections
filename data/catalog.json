@@ -400,14 +400,15 @@
           93,
           94,
           95,
-          96
+          96,
+          97
         ],
-        "sourcePageCount": 71,
-        "recordCount": 1534,
-        "recordsWithDesignation": 1508,
-        "recordsWithWeight": 1469,
+        "sourcePageCount": 72,
+        "recordCount": 1549,
+        "recordsWithDesignation": 1523,
+        "recordsWithWeight": 1484,
         "confidenceCounts": {
-          "high": 1534,
+          "high": 1549,
           "medium": 0,
           "low": 0
         },
@@ -415,11 +416,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 3446,
-    "recordsWithDesignation": 3251,
-    "recordsWithWeight": 3253,
+    "recordCount": 3461,
+    "recordsWithDesignation": 3266,
+    "recordsWithWeight": 3268,
     "confidenceCounts": {
-      "high": 3446,
+      "high": 3461,
       "medium": 0,
       "low": 0
     }
@@ -32774,6 +32775,27 @@
       }
     },
     {
+      "id": "obs-3a1273f2-b89b-415f-865c-26697b04b182",
+      "catalogId": "nininger-1950",
+      "designation": "113a",
+      "name": "Tlacotepec",
+      "weight": {
+        "grams": 17940
+      },
+      "classification": "Iron. Nickel-rich ataxite",
+      "locality": "Tecamachalco, Puebla, Mexico",
+      "year": "1903",
+      "catalogPage": 97,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Tlacotepec",
+        "meteoriteCode": "24013",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24013",
+        "alternateNameNote": "The verified local CSV identifies Official Tlacotepec, code 24013, a 1903 Puebla, Mexico Iron, IVB with 71 kg mass. The official checker returns Tlacotepec as Official, and the detail page confirms the exact name, year, locality, iron identity, and mass. The source's 70.6 kg total and historical nickel-rich ataxite description are preserved."
+      }
+    },
+    {
       "id": "obs-5f035861-4a5f-4e9e-b5de-1f761667f34f",
       "catalogId": "nininger-1950",
       "designation": "114.1",
@@ -32792,6 +32814,27 @@
         "meteoriteCode": "23079",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23079",
         "alternateNameNote": "The verified local CSV identifies Official St. Ann, code 23079. The official checker returns St. Ann as Official, and the detail page confirms the exact name, 1938 Nebraska H6 find, 373.5 gram database mass, and exact printed coordinates. The source’s historical generic classification is preserved."
+      }
+    },
+    {
+      "id": "obs-a8cae06e-eb46-48ad-9bf5-20af27ede72f",
+      "catalogId": "nininger-1950",
+      "designation": "115.1",
+      "name": "Tacubaya",
+      "weight": {
+        "grams": 1968
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Mexico",
+      "year": "1931",
+      "catalogPage": 97,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toluca",
+        "meteoriteCode": "24018",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
+        "alternateNameNote": "Tacubaya is absent as an official row from the verified local CSV. The official checker explicitly identifies Tacubaya as a synonym of Official Toluca, code 24018, and the detail page explicitly lists Tacubaya among Toluca's synonyms. The official record is a 1776 Mexican Iron, IAB-sLL with 3 tonne mass, conflicting with the source's 1931 date, medium-octahedrite description, and 7 kg total; the source facts are preserved."
       }
     },
     {
@@ -32876,6 +32919,48 @@
         "meteoriteCode": "18895",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18895",
         "alternateNameNote": "The verified local CSV identifies Official Puente-Ladron, code 18895, as a 1944 New Mexico L6 with 7.7 gram mass. The checker returns Puente-Ladron as Official, and the detail page confirms the May 17 find, Socorro County, L6 identity, and 7.673 gram original mass. The source's coordinates and rounded 7.67 grams are preserved."
+      }
+    },
+    {
+      "id": "obs-ec66c10e-2fb0-4d18-986c-3f9ec66c522b",
+      "catalogId": "nininger-1950",
+      "designation": "120a",
+      "name": "Tonganoxie",
+      "weight": {
+        "grams": 222
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Leavenworth County, Kansas",
+      "year": "1886",
+      "catalogPage": 97,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Tonganoxie",
+        "meteoriteCode": "24025",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24025",
+        "alternateNameNote": "The verified local CSV identifies Official Tonganoxie, code 24025, an 1886 Kansas Iron, IIIAB with 11.8 kg mass. The official checker returns Tonganoxie as Official, and the detail page confirms the exact name, year, state, iron identity, mass, and both printed synonyms, Kansas and Leavenworth County. The source's historical medium-octahedrite description is preserved."
+      }
+    },
+    {
+      "id": "obs-34391dee-2f8d-425b-a848-b86b73969a1c",
+      "catalogId": "nininger-1950",
+      "designation": "121a",
+      "name": "Thunda",
+      "weight": {
+        "grams": 742
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Windorah, County Grey, Queensland, Australia",
+      "year": "1886",
+      "catalogPage": 97,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Thunda",
+        "meteoriteCode": "23978",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23978",
+        "alternateNameNote": "The verified local CSV identifies Official Thunda, code 23978, a Queensland Iron, IIIAB with 62.1 kg mass. The official checker returns Thunda as Official, and the detail page confirms the exact name, Australian iron identity, mass, and both printed synonyms, Diamantina and Windorah. MetBull gives 1881 while the source prints Found 1886 and 62.3 kg; the source facts and historical classification are preserved."
       }
     },
     {
@@ -39977,6 +40062,27 @@
       }
     },
     {
+      "id": "obs-319496f3-83d7-46dd-8bb5-c7d7677b23ac",
+      "catalogId": "nininger-1950",
+      "designation": "289a",
+      "name": "Tazewell",
+      "weight": {
+        "grams": 167.5
+      },
+      "classification": "Iron. Finest octahedrite",
+      "locality": "Claiborne County, Tennessee",
+      "year": "1853",
+      "catalogPage": 97,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Tazewell",
+        "meteoriteCode": "23891",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23891",
+        "alternateNameNote": "The verified local CSV identifies Official Tazewell, code 23891, an 1853 Tennessee Iron, IAB-sLH with 27 kg mass. The official checker returns Tazewell as Official, and the detail page confirms the exact name, year, state, iron identity, and all three printed synonyms: Claiborne County, East Tennessee, and Knoxville. The source's 27.3 kg total and historical finest-octahedrite description are preserved."
+      }
+    },
+    {
       "id": "obs-00f2d6e1-2dd4-4d47-87b8-ac5dfc5d3b26",
       "catalogId": "nininger-1950",
       "designation": "291c",
@@ -41213,6 +41319,69 @@
         "meteoriteCode": "10107",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10107",
         "alternateNameNote": "The verified local CSV and official checker identify exact Official Fisher, code 10107. The detail page confirms the 1894 Minnesota L6 fall and lists Polk County as a synonym, but reports 17.6 kg; the source's historical classification wording and 5.4 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-7c358a90-3f69-4650-a7ad-0f9a4c0ec78e",
+      "catalogId": "nininger-1950",
+      "designation": "331.1",
+      "name": "Tilden",
+      "weight": {
+        "grams": 14
+      },
+      "classification": "Stone. White chondrite",
+      "locality": "Randolph County, Illinois",
+      "year": "1927",
+      "catalogPage": 97,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Tilden",
+        "meteoriteCode": "23998",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23998",
+        "alternateNameNote": "The verified local CSV identifies Official Tilden, code 23998, a 1927 Illinois L6 fall with 74.8 kg mass. The official checker returns Tilden as Official, and the detail page confirms the exact name, fall year, state, L6 identity, and mass. The source's full fall date and time, rounded 75 kg total, and historical white-chondrite description are preserved."
+      }
+    },
+    {
+      "id": "obs-264c4c4d-f70a-4b94-912c-22cd7c3842c2",
+      "catalogId": "nininger-1950",
+      "designation": "331.2",
+      "name": "Tilden",
+      "weight": {
+        "grams": 2
+      },
+      "classification": "Stone. White chondrite",
+      "locality": "Randolph County, Illinois",
+      "year": "1927",
+      "catalogPage": 97,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Tilden",
+        "meteoriteCode": "23998",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23998",
+        "alternateNameNote": "The verified local CSV identifies Official Tilden, code 23998, a 1927 Illinois L6 fall with 74.8 kg mass. The official checker returns Tilden as Official, and the detail page confirms the exact name, fall year, state, L6 identity, and mass. The source's full fall date and time, rounded 75 kg total, and historical white-chondrite description are preserved."
+      }
+    },
+    {
+      "id": "obs-a2cfcb9d-aad5-4591-9cd4-7a271e7688b9",
+      "catalogId": "nininger-1950",
+      "designation": "331.3",
+      "name": "Tilden",
+      "weight": {
+        "grams": 17.3
+      },
+      "classification": "Stone. White chondrite",
+      "locality": "Randolph County, Illinois",
+      "year": "1927",
+      "catalogPage": 97,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Tilden",
+        "meteoriteCode": "23998",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23998",
+        "alternateNameNote": "The verified local CSV identifies Official Tilden, code 23998, a 1927 Illinois L6 fall with 74.8 kg mass. The official checker returns Tilden as Official, and the detail page confirms the exact name, fall year, state, L6 identity, and mass. The source's full fall date and time, rounded 75 kg total, and historical white-chondrite description are preserved."
       }
     },
     {
@@ -43418,6 +43587,111 @@
         "meteoriteCode": "4995",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4995",
         "alternateNameNote": "The New Mexico context, 1937 find year, 44.4 kg mass, and source coordinates agree with MetBull. The historical Intermediate chondrite classification corresponds broadly to modern L5."
+      }
+    },
+    {
+      "id": "obs-6e09b5c0-fafa-4f6e-89d0-907841a2bd4e",
+      "catalogId": "nininger-1950",
+      "designation": "415.1",
+      "name": "Texline",
+      "weight": {
+        "grams": 15967
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Dallam County, Texas; 36° 24′ N., 103° 1′ W.",
+      "year": "1937",
+      "catalogPage": 97,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Texline",
+        "meteoriteCode": "23906",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23906",
+        "alternateNameNote": "The verified local CSV identifies Official Texline, code 23906, a 1937 Texas H5 with 26.2 kg mass. The official checker returns Texline as Official, and the detail page confirms the exact name, year, state, H5 identity, mass, and exact printed coordinates. The source's July wording and historical grey-chondrite description are preserved."
+      }
+    },
+    {
+      "id": "obs-fa1b24d7-cb87-4bee-94d2-d8d71c85c827",
+      "catalogId": "nininger-1950",
+      "designation": "415.10",
+      "name": "Texline",
+      "weight": {
+        "grams": 946.5
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Dallam County, Texas; 36° 24′ N., 103° 1′ W.",
+      "year": "1937",
+      "catalogPage": 97,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Texline",
+        "meteoriteCode": "23906",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23906",
+        "alternateNameNote": "The verified local CSV identifies Official Texline, code 23906, a 1937 Texas H5 with 26.2 kg mass. The official checker returns Texline as Official, and the detail page confirms the exact name, year, state, H5 identity, mass, and exact printed coordinates. The source's July wording and historical grey-chondrite description are preserved."
+      }
+    },
+    {
+      "id": "obs-cae5664d-8915-40a9-b674-55d738001924",
+      "catalogId": "nininger-1950",
+      "designation": "415.16",
+      "name": "Texline",
+      "weight": {
+        "grams": 548.5
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Dallam County, Texas; 36° 24′ N., 103° 1′ W.",
+      "year": "1937",
+      "catalogPage": 97,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Texline",
+        "meteoriteCode": "23906",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23906",
+        "alternateNameNote": "The verified local CSV identifies Official Texline, code 23906, a 1937 Texas H5 with 26.2 kg mass. The official checker returns Texline as Official, and the detail page confirms the exact name, year, state, H5 identity, mass, and exact printed coordinates. The source's July wording and historical grey-chondrite description are preserved."
+      }
+    },
+    {
+      "id": "obs-e7319353-d14b-409d-a060-b9cf35627223",
+      "catalogId": "nininger-1950",
+      "designation": "415.20",
+      "name": "Texline",
+      "weight": {
+        "grams": 678.5
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Dallam County, Texas; 36° 24′ N., 103° 1′ W.",
+      "year": "1937",
+      "catalogPage": 97,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Texline",
+        "meteoriteCode": "23906",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23906",
+        "alternateNameNote": "The verified local CSV identifies Official Texline, code 23906, a 1937 Texas H5 with 26.2 kg mass. The official checker returns Texline as Official, and the detail page confirms the exact name, year, state, H5 identity, mass, and exact printed coordinates. The source's July wording and historical grey-chondrite description are preserved."
+      }
+    },
+    {
+      "id": "obs-f92cda2c-cfc7-40de-b4eb-7f6175d83810",
+      "catalogId": "nininger-1950",
+      "designation": "415.22",
+      "name": "Texline",
+      "weight": {
+        "grams": 204.3
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Dallam County, Texas; 36° 24′ N., 103° 1′ W.",
+      "year": "1937",
+      "catalogPage": 97,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Texline",
+        "meteoriteCode": "23906",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23906",
+        "alternateNameNote": "The verified local CSV identifies Official Texline, code 23906, a 1937 Texas H5 with 26.2 kg mass. The official checker returns Texline as Official, and the detail page confirms the exact name, year, state, H5 identity, mass, and exact printed coordinates. The source's July wording and historical grey-chondrite description are preserved."
       }
     },
     {
@@ -46673,6 +46947,48 @@
         "meteoriteCode": "5463",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5463",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-86f4283f-cf45-48a8-aa92-8e415d5eb581",
+      "catalogId": "nininger-1950",
+      "designation": "541.1",
+      "name": "Taiban",
+      "weight": {
+        "grams": 4530
+      },
+      "classification": "Stone. Black chondrite",
+      "locality": "De Baca County, New Mexico; 34° 27′ N., 104° 1′ W.",
+      "year": "1934",
+      "catalogPage": 97,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Taiban",
+        "meteoriteCode": "23785",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23785",
+        "alternateNameNote": "The verified local CSV identifies Official Taiban, code 23785, a 1934 New Mexico L5 with 25 kg mass. The official checker returns Taiban as Official, and the detail page confirms the exact name, year, state, classification, and exact printed coordinates. The source's Recognized as distinct 1949 wording, historical classification, and about-15 kg total are preserved."
+      }
+    },
+    {
+      "id": "obs-41ca8d92-2419-4f97-b763-44fef75a0b10",
+      "catalogId": "nininger-1950",
+      "designation": "541.4",
+      "name": "Taiban",
+      "weight": {
+        "grams": 398
+      },
+      "classification": "Stone. Black chondrite",
+      "locality": "De Baca County, New Mexico; 34° 27′ N., 104° 1′ W.",
+      "year": "1934",
+      "catalogPage": 97,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Taiban",
+        "meteoriteCode": "23785",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23785",
+        "alternateNameNote": "The verified local CSV identifies Official Taiban, code 23785, a 1934 New Mexico L5 with 25 kg mass. The official checker returns Taiban as Official, and the detail page confirms the exact name, year, state, classification, and exact printed coordinates. The source's Recognized as distinct 1949 wording, historical classification, and about-15 kg total are preserved."
       }
     },
     {
