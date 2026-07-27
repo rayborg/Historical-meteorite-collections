@@ -365,14 +365,15 @@
           58,
           59,
           60,
-          61
+          61,
+          62
         ],
-        "sourcePageCount": 36,
-        "recordCount": 841,
-        "recordsWithDesignation": 821,
-        "recordsWithWeight": 784,
+        "sourcePageCount": 37,
+        "recordCount": 853,
+        "recordsWithDesignation": 833,
+        "recordsWithWeight": 796,
         "confidenceCounts": {
-          "high": 841,
+          "high": 853,
           "medium": 0,
           "low": 0
         },
@@ -380,11 +381,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2753,
-    "recordsWithDesignation": 2564,
-    "recordsWithWeight": 2568,
+    "recordCount": 2765,
+    "recordsWithDesignation": 2576,
+    "recordsWithWeight": 2580,
     "confidenceCounts": {
-      "high": 2753,
+      "high": 2765,
       "medium": 0,
       "low": 0
     }
@@ -24822,6 +24823,69 @@
       }
     },
     {
+      "id": "obs-d54e9e3f-ced4-4f7a-a8d9-a093409f2919",
+      "catalogId": "nininger-1950",
+      "designation": "58b",
+      "name": "Hualapai",
+      "weight": {
+        "grams": 682
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Hualapai Reservation, Arizona",
+      "year": "1927",
+      "catalogPage": 62,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Wallapai",
+        "meteoriteCode": "24206",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24206",
+        "alternateNameNote": "No Official Hualapai row occurs in the verified local CSV. The official exact-name checker explicitly identifies Hualapai as an NHM Catalogue synonym of Official Wallapai, code 24206, and the detail page confirms that synonym, a 1927 Arizona IID iron, and 430 kg mass; the source's 423.6 kg total is preserved."
+      }
+    },
+    {
+      "id": "obs-9dd818d6-28ee-459a-8e80-1264c4080499",
+      "catalogId": "nininger-1950",
+      "designation": "59b",
+      "name": "Homestead",
+      "weight": {
+        "grams": 26
+      },
+      "classification": "Stone. Brecciated grey bronzite-chondrite",
+      "locality": "Iowa County, Iowa",
+      "year": "1875",
+      "catalogPage": 62,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Homestead",
+        "meteoriteCode": "11901",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11901",
+        "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Homestead, code 11901. The detail page confirms the 1875 Iowa fall, L5 identity, and all five printed synonyms; it reports 230 kg, while the source's 227.3 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-99ff1234-a940-41d7-864a-bc053ff21132",
+      "catalogId": "nininger-1950",
+      "designation": "59a",
+      "name": "Homestead",
+      "weight": {
+        "grams": 138
+      },
+      "classification": "Stone. Brecciated grey bronzite-chondrite",
+      "locality": "Iowa County, Iowa",
+      "year": "1875",
+      "catalogPage": 62,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Homestead",
+        "meteoriteCode": "11901",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11901",
+        "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Homestead, code 11901. The detail page confirms the 1875 Iowa fall, L5 identity, and all five printed synonyms; it reports 230 kg, while the source's 227.3 kg total is preserved without reconciliation."
+      }
+    },
+    {
       "id": "obs-1096b1eb-9540-4edb-bb51-95b574b07564",
       "catalogId": "nininger-1950",
       "designation": "60a",
@@ -29211,6 +29275,48 @@
       }
     },
     {
+      "id": "obs-bd5f2b54-5d5a-4d61-b262-d598ddc29df1",
+      "catalogId": "nininger-1950",
+      "designation": "281.1",
+      "name": "Holyoke",
+      "weight": {
+        "grams": 3680
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Phillips County, Colorado; 40° 34′ N., 102° 18′ W.",
+      "year": "1935",
+      "catalogPage": 62,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holyoke",
+        "meteoriteCode": "11900",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11900",
+        "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Holyoke, code 11900. The detail page confirms the printed Colorado coordinates and an H4 stone identity but reports a 1933 find and 11.2 kg mass; the source's Recognized 1935 and 5.4 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-61c348b6-d008-415d-a91a-59e79874b0d6",
+      "catalogId": "nininger-1950",
+      "designation": "281.4",
+      "name": "Holyoke",
+      "weight": {
+        "grams": 345
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Phillips County, Colorado; 40° 34′ N., 102° 18′ W.",
+      "year": "1935",
+      "catalogPage": 62,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holyoke",
+        "meteoriteCode": "11900",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11900",
+        "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Holyoke, code 11900. The detail page confirms the printed Colorado coordinates and an H4 stone identity but reports a 1933 find and 11.2 kg mass; the source's Recognized 1935 and 5.4 kg total are preserved without reconciliation."
+      }
+    },
+    {
       "id": "obs-f43d3e70-cf72-40b6-8d3f-2b7861ebc4be",
       "catalogId": "nininger-1950",
       "designation": "286a",
@@ -30009,6 +30115,27 @@
       }
     },
     {
+      "id": "obs-7145d561-83f3-4a0b-a871-db1e1ab4f6ed",
+      "catalogId": "nininger-1950",
+      "designation": "344.1",
+      "name": "Hugo",
+      "weight": {
+        "grams": 64
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Lincoln County, Colorado; 39° 8′ N., 103° 19′ W.",
+      "year": "1936",
+      "catalogPage": 62,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "No exact Hugo row occurs in the verified local CSV, and the official exact-name checker returns no record or synonym. A contains search shows Official Hugo (stone), code 11983, and the distinct Hugo (iron) synonym of Soper; although the Hugo (stone) detail agrees in year, state, type, and mass, the source prints no qualifier and no match is inferred."
+      }
+    },
+    {
       "id": "obs-16e8602d-e423-4703-b672-40229317621c",
       "catalogId": "nininger-1950",
       "designation": "344.17",
@@ -30468,6 +30595,27 @@
         "meteoriteCode": "5022",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5022",
         "alternateNameNote": "The South Dakota context and 89 kg mass agree. Source year 1935 differs from MetBull year 1934; MetBull also reproduces a correction from Coarse octahedrite to Hexahedrite and recommends Iron, IIAB."
+      }
+    },
+    {
+      "id": "obs-3d2bc31f-b286-4189-858d-1cbdee92b78a",
+      "catalogId": "nininger-1950",
+      "designation": "378.1",
+      "name": "Horse Creek",
+      "weight": {
+        "grams": 411.6
+      },
+      "classification": "Iron",
+      "locality": "Baca County, Colorado; 37° 35′ N., 102° 46′ W.",
+      "year": "1937",
+      "catalogPage": 62,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Horse Creek",
+        "meteoriteCode": "11910",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11910",
+        "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Horse Creek, code 11910. The detail page confirms the 1937 Colorado find, printed coordinates, iron identity, and 570 g mass and recommends Iron, ungrouped; the source's broader Iron classification and metallographic remark are preserved."
       }
     },
     {
@@ -31311,6 +31459,48 @@
       }
     },
     {
+      "id": "obs-a924c394-3868-4406-a2c2-a681f58af267",
+      "catalogId": "nininger-1950",
+      "designation": "433.1",
+      "name": "Howe",
+      "weight": {
+        "grams": 5662
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Grayson County, Texas; 33° 30′ N., 96° 36′ W.",
+      "year": "1938",
+      "catalogPage": 62,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Howe",
+        "meteoriteCode": "11914",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11914",
+        "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Howe, code 11914. The detail page confirms the 1938 Texas find, printed coordinates, and H5 stone identity and reports 8.63 kg; the source's 8,635 g total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-0b255f62-dc3c-4c56-9e5a-22e9d9c51bdc",
+      "catalogId": "nininger-1950",
+      "designation": "433.3",
+      "name": "Howe",
+      "weight": {
+        "grams": 402
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Grayson County, Texas; 33° 30′ N., 96° 36′ W.",
+      "year": "1938",
+      "catalogPage": 62,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Howe",
+        "meteoriteCode": "11914",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11914",
+        "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Howe, code 11914. The detail page confirms the 1938 Texas find, printed coordinates, and H5 stone identity and reports 8.63 kg; the source's 8,635 g total is preserved without reconciliation."
+      }
+    },
+    {
       "id": "obs-4ce98458-5a79-4145-ae27-9264927816cb",
       "catalogId": "nininger-1950",
       "designation": "437.2",
@@ -31455,6 +31645,48 @@
         "meteoriteCode": "5180",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5180",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-016109b5-fc84-4ae7-9620-c72f1de39eed",
+      "catalogId": "nininger-1950",
+      "designation": "448.1",
+      "name": "Horace",
+      "weight": {
+        "grams": 5775
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Greeley County, Kansas; 38° 28′ N., 101° 48′ W.",
+      "year": "1940",
+      "catalogPage": 62,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Horace",
+        "meteoriteCode": "11908",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11908",
+        "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Horace, code 11908. The detail page confirms the 1940 Kansas H5 stone but reports 19.7 kg and latitude 38° 21′ N.; the source's 9,201 g total and 38° 28′ N. latitude are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-33fa6fbe-3a90-440d-bd8f-a5d530e298bc",
+      "catalogId": "nininger-1950",
+      "designation": "448.9",
+      "name": "Horace",
+      "weight": {
+        "grams": 1108
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Greeley County, Kansas; 38° 28′ N., 101° 48′ W.",
+      "year": "1940",
+      "catalogPage": 62,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Horace",
+        "meteoriteCode": "11908",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11908",
+        "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Horace, code 11908. The detail page confirms the 1940 Kansas H5 stone but reports 19.7 kg and latitude 38° 21′ N.; the source's 9,201 g total and 38° 28′ N. latitude are preserved without reconciliation."
       }
     },
     {
@@ -32085,6 +32317,27 @@
         "meteoriteCode": "5137",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5137",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-bfe23875-9b09-424e-b9be-beefcc831a68",
+      "catalogId": "nininger-1950",
+      "designation": "487.1",
+      "name": "Huckitta",
+      "weight": {
+        "grams": 1935
+      },
+      "classification": "Pallasite",
+      "locality": "Central Australia",
+      "year": "1924",
+      "catalogPage": 62,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Huckitta",
+        "meteoriteCode": "11922",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11922",
+        "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Huckitta, code 11922. The detail page confirms the 1924 Australian find, pallasite identity, 2.3 t mass, and Alice Springs synonym; the source's first-piece and later-large-mass wording and over-2-tons total are preserved."
       }
     },
     {
