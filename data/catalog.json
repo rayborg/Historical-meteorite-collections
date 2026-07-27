@@ -338,14 +338,15 @@
           31,
           32,
           33,
-          34
+          34,
+          35
         ],
-        "sourcePageCount": 9,
-        "recordCount": 135,
-        "recordsWithDesignation": 134,
-        "recordsWithWeight": 133,
+        "sourcePageCount": 10,
+        "recordCount": 167,
+        "recordsWithDesignation": 165,
+        "recordsWithWeight": 164,
         "confidenceCounts": {
-          "high": 135,
+          "high": 167,
           "medium": 0,
           "low": 0
         },
@@ -353,11 +354,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2047,
-    "recordsWithDesignation": 1877,
-    "recordsWithWeight": 1917,
+    "recordCount": 2079,
+    "recordsWithDesignation": 1908,
+    "recordsWithWeight": 1948,
     "confidenceCounts": {
-      "high": 2047,
+      "high": 2079,
       "medium": 0,
       "low": 0
     }
@@ -17340,6 +17341,468 @@
       }
     },
     {
+      "id": "obs-ef922a4d-1106-4c1c-9a16-991a7329c718",
+      "catalogId": "nininger-1950",
+      "designation": "10i",
+      "name": "Brenham",
+      "weight": {
+        "grams": 111
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 35,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": "Source says found 1885, 4,318 kg., and Palla-siderite; MetBull gives 1882, 4.3 t, and Pallasite, PMG-an. Brenham continues onto p.36."
+      }
+    },
+    {
+      "id": "obs-a4fe77ab-97eb-4acf-9086-bff93ddbe130",
+      "catalogId": "nininger-1950",
+      "designation": "10w",
+      "name": "Brenham",
+      "weight": {
+        "grams": 122
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 35,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": "Source says found 1885, 4,318 kg., and Palla-siderite; MetBull gives 1882, 4.3 t, and Pallasite, PMG-an. Brenham continues onto p.36."
+      }
+    },
+    {
+      "id": "obs-f538c30a-4704-47b1-9dd2-394b84f98663",
+      "catalogId": "nininger-1950",
+      "designation": "10b",
+      "name": "Brenham",
+      "weight": {
+        "grams": 217.2
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 35,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": "Source says found 1885, 4,318 kg., and Palla-siderite; MetBull gives 1882, 4.3 t, and Pallasite, PMG-an. Brenham continues onto p.36."
+      }
+    },
+    {
+      "id": "obs-7b9b5c21-34d2-4a7f-a7e0-1009b8509810",
+      "catalogId": "nininger-1950",
+      "designation": "10d",
+      "name": "Brenham",
+      "weight": {
+        "grams": 2573
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 35,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": "Source says found 1885, 4,318 kg., and Palla-siderite; MetBull gives 1882, 4.3 t, and Pallasite, PMG-an. Brenham continues onto p.36."
+      }
+    },
+    {
+      "id": "obs-c961de9a-28b1-4a9b-be83-2004c7105deb",
+      "catalogId": "nininger-1950",
+      "designation": "10v",
+      "name": "Brenham",
+      "weight": {
+        "grams": 4303
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 35,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": "Source says found 1885, 4,318 kg., and Palla-siderite; MetBull gives 1882, 4.3 t, and Pallasite, PMG-an. Brenham continues onto p.36."
+      }
+    },
+    {
+      "id": "obs-55a47a27-31ad-4b10-852c-2995f10da25c",
+      "catalogId": "nininger-1950",
+      "designation": "10m",
+      "name": "Brenham",
+      "weight": {
+        "grams": 12457
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 35,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": "Source says found 1885, 4,318 kg., and Palla-siderite; MetBull gives 1882, 4.3 t, and Pallasite, PMG-an. Brenham continues onto p.36."
+      }
+    },
+    {
+      "id": "obs-02d7a98b-c820-45de-9d0f-e15bd8eb0c17",
+      "catalogId": "nininger-1950",
+      "designation": "10L",
+      "name": "Brenham",
+      "weight": {
+        "grams": 14043
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 35,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": "Source says found 1885, 4,318 kg., and Palla-siderite; MetBull gives 1882, 4.3 t, and Pallasite, PMG-an. Brenham continues onto p.36."
+      }
+    },
+    {
+      "id": "obs-cc6283a5-1c38-46f4-a6a7-25c6ae3613b0",
+      "catalogId": "nininger-1950",
+      "designation": "10y",
+      "name": "Brenham",
+      "weight": {
+        "grams": 29900
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 35,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": "Source says found 1885, 4,318 kg., and Palla-siderite; MetBull gives 1882, 4.3 t, and Pallasite, PMG-an. Brenham continues onto p.36."
+      }
+    },
+    {
+      "id": "obs-5616ee8c-a09d-4811-a68a-ed37e41cefb8",
+      "catalogId": "nininger-1950",
+      "designation": "10M1",
+      "name": "Brenham",
+      "weight": {
+        "grams": 465
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 35,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": "Source says found 1885, 4,318 kg., and Palla-siderite; MetBull gives 1882, 4.3 t, and Pallasite, PMG-an. Brenham continues onto p.36."
+      }
+    },
+    {
+      "id": "obs-6a908830-572c-4319-abb6-f460014c0b7d",
+      "catalogId": "nininger-1950",
+      "designation": "10M4",
+      "name": "Brenham",
+      "weight": {
+        "grams": 220
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 35,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": "Source says found 1885, 4,318 kg., and Palla-siderite; MetBull gives 1882, 4.3 t, and Pallasite, PMG-an. Brenham continues onto p.36."
+      }
+    },
+    {
+      "id": "obs-b82b6f2d-48b5-4248-9b47-04b14ad77531",
+      "catalogId": "nininger-1950",
+      "designation": "10M5",
+      "name": "Brenham",
+      "weight": {
+        "grams": 124
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 35,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": "Source says found 1885, 4,318 kg., and Palla-siderite; MetBull gives 1882, 4.3 t, and Pallasite, PMG-an. Brenham continues onto p.36."
+      }
+    },
+    {
+      "id": "obs-e007421e-4902-4ef2-8af7-79f2d36adf1f",
+      "catalogId": "nininger-1950",
+      "designation": "10M6",
+      "name": "Brenham",
+      "weight": {
+        "grams": 120
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 35,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": "Source says found 1885, 4,318 kg., and Palla-siderite; MetBull gives 1882, 4.3 t, and Pallasite, PMG-an. Brenham continues onto p.36."
+      }
+    },
+    {
+      "id": "obs-1ca1d901-bb67-4941-88df-2df76ef8da02",
+      "catalogId": "nininger-1950",
+      "designation": "10M7",
+      "name": "Brenham",
+      "weight": {
+        "grams": 2185
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 35,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": "Source says found 1885, 4,318 kg., and Palla-siderite; MetBull gives 1882, 4.3 t, and Pallasite, PMG-an. Brenham continues onto p.36."
+      }
+    },
+    {
+      "id": "obs-f760f5b2-88fe-4887-8b84-b88da38c10e9",
+      "catalogId": "nininger-1950",
+      "designation": "10M8",
+      "name": "Brenham",
+      "weight": {
+        "grams": 138
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 35,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": "Source says found 1885, 4,318 kg., and Palla-siderite; MetBull gives 1882, 4.3 t, and Pallasite, PMG-an. Brenham continues onto p.36."
+      }
+    },
+    {
+      "id": "obs-427d3ddd-295b-430b-8f92-fb618e40c479",
+      "catalogId": "nininger-1950",
+      "designation": "10M10",
+      "name": "Brenham",
+      "weight": {
+        "grams": 74
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 35,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": "Source says found 1885, 4,318 kg., and Palla-siderite; MetBull gives 1882, 4.3 t, and Pallasite, PMG-an. Brenham continues onto p.36."
+      }
+    },
+    {
+      "id": "obs-4828e4f6-1e18-4d84-a210-a0cdd3776898",
+      "catalogId": "nininger-1950",
+      "designation": "10M16",
+      "name": "Brenham",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 35,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": "The source prints 40 mounted olivine crystals under Meteorodes without a weight; none is inferred. Source says found 1885 and Palla-siderite; MetBull gives 1882 and Pallasite, PMG-an. Brenham continues onto p.36."
+      }
+    },
+    {
+      "id": "obs-84aa27f5-162f-453a-8eac-9a64e28abc31",
+      "catalogId": "nininger-1950",
+      "designation": "10M17",
+      "name": "Brenham",
+      "weight": {
+        "grams": 152
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 35,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": "Source says found 1885, 4,318 kg., and Palla-siderite; MetBull gives 1882, 4.3 t, and Pallasite, PMG-an. Brenham continues onto p.36."
+      }
+    },
+    {
+      "id": "obs-1fe8aa36-229b-4f12-a301-51f2ebb92f9c",
+      "catalogId": "nininger-1950",
+      "designation": "10M19",
+      "name": "Brenham",
+      "weight": {
+        "grams": 7248
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 35,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": "Source says found 1885, 4,318 kg., and Palla-siderite; MetBull gives 1882, 4.3 t, and Pallasite, PMG-an. Brenham continues onto p.36."
+      }
+    },
+    {
+      "id": "obs-c7da2bba-09f3-4de0-9cbb-15f358365204",
+      "catalogId": "nininger-1950",
+      "designation": "10M25",
+      "name": "Brenham",
+      "weight": {
+        "grams": 38050
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 35,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": "Source says found 1885, 4,318 kg., and Palla-siderite; MetBull gives 1882, 4.3 t, and Pallasite, PMG-an. Brenham continues onto p.36."
+      }
+    },
+    {
+      "id": "obs-b3b012a3-e28a-4247-9c6a-e2ace41e917d",
+      "catalogId": "nininger-1950",
+      "designation": "10M26",
+      "name": "Brenham",
+      "weight": {
+        "grams": 882
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 35,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": "Last p.35 row. The reviewed read-only p.36 preview continues Brenham with 10M27. Source says found 1885 and Palla-siderite; MetBull gives 1882 and Pallasite, PMG-an."
+      }
+    },
+    {
+      "id": "obs-c107e660-c0d8-4bfa-a155-5ea9b72b2c93",
+      "catalogId": "nininger-1950",
+      "designation": "10.33",
+      "name": "Brenham",
+      "weight": {
+        "grams": 3171
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 35,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": "Source says found 1885, 4,318 kg., and Palla-siderite; MetBull gives 1882, 4.3 t, and Pallasite, PMG-an. Brenham continues onto p.36."
+      }
+    },
+    {
+      "id": "obs-aff471ba-47fd-4fad-9de0-42242402ae53",
+      "catalogId": "nininger-1950",
+      "designation": "10.36",
+      "name": "Brenham",
+      "weight": {
+        "grams": 30.7
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 35,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": "Source says found 1885, 4,318 kg., and Palla-siderite; MetBull gives 1882, 4.3 t, and Pallasite, PMG-an. Brenham continues onto p.36."
+      }
+    },
+    {
       "id": "obs-8ae3a7b2-be66-49a4-bab6-fc1d912e0159",
       "catalogId": "nininger-1950",
       "designation": "11a",
@@ -17505,6 +17968,27 @@
         "meteoriteCode": "4919",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4919",
         "alternateNameNote": "The source estimates 27,000 kg.; MetBull reports 22 t. The historical Finest octahedrite classification corresponds to modern Iron, ungrouped."
+      }
+    },
+    {
+      "id": "obs-c5c2d198-df32-4f8d-827f-372e23671dc0",
+      "catalogId": "nininger-1950",
+      "designation": "18b",
+      "name": "Breece",
+      "weight": {
+        "grams": 747
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McKinley County, New Mexico",
+      "year": "1921",
+      "catalogPage": 35,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Grant",
+        "meteoriteCode": "10957",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10957",
+        "alternateNameNote": "MetBull explicitly lists Breece as a synonym of Grant. Source says found 1921 and 51 kg.; MetBull gives 1929, 525 kg, and Iron, IIIAB."
       }
     },
     {
@@ -18684,6 +19168,27 @@
       }
     },
     {
+      "id": "obs-63996358-813b-426b-bd17-35b109fb66e1",
+      "catalogId": "nininger-1950",
+      "designation": "226a",
+      "name": "Braunau",
+      "weight": {
+        "grams": 26
+      },
+      "classification": "Iron. Hexahedrite",
+      "locality": "Trautenau, Bohemia",
+      "year": "1847",
+      "catalogPage": 35,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Braunau",
+        "meteoriteCode": "5133",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5133",
+        "alternateNameNote": "The historical Bohemian locality, 1847 fall, and exact 39 kg source total agree. MetBull places Braunau in the modern Czech Republic and recommends Iron, IIAB."
+      }
+    },
+    {
       "id": "obs-b456529c-03b7-4cf0-9c01-c0379145012e",
       "catalogId": "nininger-1950",
       "designation": "239.3",
@@ -19167,6 +19672,27 @@
       }
     },
     {
+      "id": "obs-fe6c1377-673b-4c7d-99b7-fb512a8b6e69",
+      "catalogId": "nininger-1950",
+      "designation": "336.1",
+      "name": "Bremevörde",
+      "weight": {
+        "grams": 19.7
+      },
+      "classification": "Stone. Brecciated spherical bronzite-chondrite",
+      "locality": "Hanover, Germany",
+      "year": "1855",
+      "catalogPage": 35,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Bremervörde",
+        "meteoriteCode": "5135",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5135",
+        "alternateNameNote": "Source omits the second r in Bremervörde. Its 1855 date, 7.25 kg mass, and printed synonyms Gnarrenburg and Stade support the correction; modern classification is H/L3.9."
+      }
+    },
+    {
       "id": "obs-986e7ebb-c43e-4f0a-915b-a41f695a76f3",
       "catalogId": "nininger-1950",
       "designation": "338.1",
@@ -19290,6 +19816,27 @@
         "meteoriteCode": "5022",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5022",
         "alternateNameNote": "The South Dakota context and 89 kg mass agree. Source year 1935 differs from MetBull year 1934; MetBull also reproduces a correction from Coarse octahedrite to Hexahedrite and recommends Iron, IIAB."
+      }
+    },
+    {
+      "id": "obs-0e5dd9d4-42e4-44b9-93c2-b644eaa23aa3",
+      "catalogId": "nininger-1950",
+      "designation": "384.1",
+      "name": "Brady",
+      "weight": {
+        "grams": 755
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "McCulloch County, Texas; 31° 11′ N., 99° 20′ W.",
+      "year": "1937",
+      "catalogPage": 35,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brady",
+        "meteoriteCode": "5129",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5129",
+        "alternateNameNote": "The Texas context, 1937 year, and exact 927 gram source total agree. Source coordinates differ from MetBull's recommended coordinates; modern classification is L6."
       }
     },
     {
@@ -19479,6 +20026,111 @@
         "meteoriteCode": "4886",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4886",
         "alternateNameNote": "The source coordinates and 5.5 kg. total known weight match MetBull. The source generic Stone classification corresponds to modern EL6."
+      }
+    },
+    {
+      "id": "obs-61247f59-e28c-4068-899d-6ec441eb6c02",
+      "catalogId": "nininger-1950",
+      "designation": "432.1",
+      "name": "Boxhole",
+      "weight": {
+        "grams": 3110
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Plenty River, Central Australia",
+      "year": "1937",
+      "catalogPage": 35,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Boxhole",
+        "meteoriteCode": "5126",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5126",
+        "alternateNameNote": "Source reports largest mass 82 kg. and Central Australia; MetBull gives 500 kg, Northern Territory, Australia, and Iron, IIIAB."
+      }
+    },
+    {
+      "id": "obs-0f80a040-4abe-4015-be49-114baee384fb",
+      "catalogId": "nininger-1950",
+      "designation": "432.2",
+      "name": "Boxhole",
+      "weight": {
+        "grams": 48.6
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Plenty River, Central Australia",
+      "year": "1937",
+      "catalogPage": 35,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Boxhole",
+        "meteoriteCode": "5126",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5126",
+        "alternateNameNote": "Source reports largest mass 82 kg. and Central Australia; MetBull gives 500 kg, Northern Territory, Australia, and Iron, IIIAB."
+      }
+    },
+    {
+      "id": "obs-8b2817fa-07f9-46f3-a97c-6060bcb9ed8a",
+      "catalogId": "nininger-1950",
+      "designation": "432.3",
+      "name": "Boxhole",
+      "weight": {
+        "grams": 42.5
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Plenty River, Central Australia",
+      "year": "1937",
+      "catalogPage": 35,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Boxhole",
+        "meteoriteCode": "5126",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5126",
+        "alternateNameNote": "Source reports largest mass 82 kg. and Central Australia; MetBull gives 500 kg, Northern Territory, Australia, and Iron, IIIAB."
+      }
+    },
+    {
+      "id": "obs-2c12e700-c1cc-400a-b686-26a551379f17",
+      "catalogId": "nininger-1950",
+      "designation": "432.4",
+      "name": "Boxhole",
+      "weight": {
+        "grams": 39
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Plenty River, Central Australia",
+      "year": "1937",
+      "catalogPage": 35,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Boxhole",
+        "meteoriteCode": "5126",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5126",
+        "alternateNameNote": "Source reports largest mass 82 kg. and Central Australia; MetBull gives 500 kg, Northern Territory, Australia, and Iron, IIIAB."
+      }
+    },
+    {
+      "id": "obs-53616279-ae11-4ad0-8dc3-93290dfb5a34",
+      "catalogId": "nininger-1950",
+      "designation": "432.5",
+      "name": "Boxhole",
+      "weight": {
+        "grams": 17
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Plenty River, Central Australia",
+      "year": "1937",
+      "catalogPage": 35,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Boxhole",
+        "meteoriteCode": "5126",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5126",
+        "alternateNameNote": "Source reports largest mass 82 kg. and Central Australia; MetBull gives 500 kg, Northern Territory, Australia, and Iron, IIIAB."
       }
     },
     {
@@ -42474,6 +43126,27 @@
         "meteoriteCode": "5103",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5103",
         "alternateNameNote": "The source gives 1959; MetBull gives 1956. The Philippine locality, mesosiderite class, 888.6 kg mass, and name agree."
+      }
+    },
+    {
+      "id": "obs-cbdb2b48-cbc4-4946-95db-5f1eb2e6e483",
+      "catalogId": "nininger-1950",
+      "designation": null,
+      "name": "Boxhole",
+      "weight": {
+        "grams": 87
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Plenty River, Central Australia",
+      "year": "1937",
+      "catalogPage": 35,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Boxhole",
+        "meteoriteCode": "5126",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5126",
+        "alternateNameNote": "The source prints this weighted tray without a designation; none is inferred. Source reports largest mass 82 kg. and Central Australia; MetBull gives 500 kg, Northern Territory, Australia, and Iron, IIIAB."
       }
     },
     {
