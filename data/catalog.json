@@ -399,14 +399,15 @@
           92,
           93,
           94,
-          95
+          95,
+          96
         ],
-        "sourcePageCount": 70,
-        "recordCount": 1524,
-        "recordsWithDesignation": 1498,
-        "recordsWithWeight": 1459,
+        "sourcePageCount": 71,
+        "recordCount": 1534,
+        "recordsWithDesignation": 1508,
+        "recordsWithWeight": 1469,
         "confidenceCounts": {
-          "high": 1524,
+          "high": 1534,
           "medium": 0,
           "low": 0
         },
@@ -414,11 +415,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 3436,
-    "recordsWithDesignation": 3241,
-    "recordsWithWeight": 3243,
+    "recordCount": 3446,
+    "recordsWithDesignation": 3251,
+    "recordsWithWeight": 3253,
     "confidenceCounts": {
-      "high": 3436,
+      "high": 3446,
       "medium": 0,
       "low": 0
     }
@@ -34096,6 +34097,48 @@
       }
     },
     {
+      "id": "obs-4de06aff-c882-47b4-bb6d-0d4fd17f77cd",
+      "catalogId": "nininger-1950",
+      "designation": "155b",
+      "name": "Staunton",
+      "weight": {
+        "grams": 217
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Augusta County, Virginia",
+      "year": "1858-59",
+      "catalogPage": 96,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Staunton",
+        "meteoriteCode": "23716",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23716",
+        "alternateNameNote": "The verified local CSV identifies Official Staunton, code 23716, as a Virginia Iron, IIIE with database year 1869 and 43.5 kg mass. The official checker returns Staunton as Official, and the detail page confirms the exact name, Virginia iron identity, and Augusta County synonym. The source's Found 1858-59 wording, 121.6 kg total, and historical medium-octahedrite classification are preserved."
+      }
+    },
+    {
+      "id": "obs-7c84957f-4b9e-478d-946d-0b7af35bd7c2",
+      "catalogId": "nininger-1950",
+      "designation": "155a",
+      "name": "Staunton",
+      "weight": {
+        "grams": 666
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Augusta County, Virginia",
+      "year": "1858-59",
+      "catalogPage": 96,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Staunton",
+        "meteoriteCode": "23716",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23716",
+        "alternateNameNote": "The verified local CSV identifies Official Staunton, code 23716, as a Virginia Iron, IIIE with database year 1869 and 43.5 kg mass. The official checker returns Staunton as Official, and the detail page confirms the exact name, Virginia iron identity, and Augusta County synonym. The source's Found 1858-59 wording, 121.6 kg total, and historical medium-octahedrite classification are preserved."
+      }
+    },
+    {
       "id": "obs-00234437-5866-4bec-84c8-4a2beb19838b",
       "catalogId": "nininger-1950",
       "designation": "156b",
@@ -34891,6 +34934,27 @@
         "meteoriteCode": "7651",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=7651",
         "alternateNameNote": "The official checker returns exact name Dix as code 7651. The source prints Found 1938, while the official CSV reports year 1927; the discrepancy is preserved and not reconciled."
+      }
+    },
+    {
+      "id": "obs-568ecbae-c872-4809-85f4-446e3f6fb1ea",
+      "catalogId": "nininger-1950",
+      "designation": "185a",
+      "name": "Stalldalen",
+      "weight": {
+        "grams": 55
+      },
+      "classification": "Stone. Brecciated grey bronzite-chondrite",
+      "locality": "Nya Kopparberg, Örebro, Sweden",
+      "year": "1876",
+      "catalogPage": 96,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Ställdalen",
+        "meteoriteCode": "23712",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23712",
+        "alternateNameNote": "Printed Stalldalen is absent as an official row from the verified local CSV, which identifies Official Ställdalen, code 23712, as a 1876 Swedish H5 fall with 34 kg mass. The official checker returns Stalldalen as a Variant of Ställdalen, and the detail page confirms the year, country, mass, and Örebro coordinates. The source's unaccented heading spelling and historical classification are preserved."
       }
     },
     {
@@ -38779,6 +38843,27 @@
       }
     },
     {
+      "id": "obs-56b24cc4-6be7-4042-9797-e0d9baea3b84",
+      "catalogId": "nininger-1950",
+      "designation": "248a",
+      "name": "Stavropol",
+      "weight": {
+        "grams": 5.5
+      },
+      "classification": "Stone. Crystalline bronzite-chondrite",
+      "locality": "North side of the Caucasus, Russia",
+      "year": "1857",
+      "catalogPage": 96,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Stavropol",
+        "meteoriteCode": "23717",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23717",
+        "alternateNameNote": "The verified local CSV identifies Official Stavropol, code 23717, as a 1857 Russian L6 fall with 1.5 kg mass. The official checker returns Stavropol as Official, and the detail page confirms the exact name, fall year, country, and mass. The detail page lists Stawropol and Stavrapol rather than the source's printed Strawropol; that printed synonym and the historical classification are preserved without correction."
+      }
+    },
+    {
       "id": "obs-78cfd315-22d2-40fc-b4e6-4de9563ff9d4",
       "catalogId": "nininger-1950",
       "designation": "250a",
@@ -39007,6 +39092,27 @@
         "meteoriteCode": "16699",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16699",
         "alternateNameNote": "The checker treats bare Minnesota as a partial name with two records. The verified local CSV and detail page identify Official Minnesota (stone), code 16699, as an L stone with 1.8 gram mass. The source explicitly distinguishes this daggered entry as Stone and prints a 2 gram specimen; its unknown date remains null."
+      }
+    },
+    {
+      "id": "obs-578a39dc-4d62-440e-ab16-751bf8d86d2a",
+      "catalogId": "nininger-1950",
+      "designation": "261a",
+      "name": "Steinbach",
+      "weight": {
+        "grams": 47
+      },
+      "classification": "Siderophyre",
+      "locality": "Erzgebirge, Saxony",
+      "year": "1724",
+      "catalogPage": 96,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Steinbach",
+        "meteoriteCode": "23722",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23722",
+        "alternateNameNote": "The verified local CSV identifies Official Steinbach, code 23722, as a 1724 German Iron, IVA-an with 98 kg mass. The official checker returns Steinbach as Official, and the detail page confirms the exact name, year, mass, Saxony coordinates, and the Breitenbach, Eibenstock, Grimma, Johanngeorgenstadt, and Rittersgrün synonyms. The source's missing separator between Eibenstock and Grimma, Johanngeogenstadt spelling, and historical Siderophyre classification are preserved."
       }
     },
     {
@@ -41905,6 +42011,69 @@
         "meteoriteCode": "12286",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12286",
         "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Kesen, code 12286. The detail page confirms the 1850 Japanese H4 fall, 135 kg mass, and Iwate synonym."
+      }
+    },
+    {
+      "id": "obs-884d2493-23f5-4d3b-afef-77c4784a68c9",
+      "catalogId": "nininger-1950",
+      "designation": "363.1",
+      "name": "Stannern",
+      "weight": {
+        "grams": 72.5
+      },
+      "classification": "Stone. Eucrite",
+      "locality": "Iglau, Moravia, Czechoslovakia",
+      "year": "1808",
+      "catalogPage": 96,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Stannern",
+        "meteoriteCode": "23713",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23713",
+        "alternateNameNote": "The verified local CSV identifies Official Stannern, code 23713, as a 1808 Czech Eucrite-mmict fall with 52 kg mass. The official checker returns Stannern as Official, and the detail page confirms the exact name, fall year, mass, and all three printed synonyms, Iglau, Langenpiernitz, and Stonarov. The source's historical Moravian geography and Eucrite wording are preserved."
+      }
+    },
+    {
+      "id": "obs-456d5af7-6eba-4d2a-8e31-279b481ef0ca",
+      "catalogId": "nininger-1950",
+      "designation": "364.1",
+      "name": "Taborg",
+      "weight": {
+        "grams": 16.5
+      },
+      "classification": "Stone. Brecciated spherical bronzite-chondrite",
+      "locality": "(Ochansk), Perm, Russia",
+      "year": "1887",
+      "catalogPage": 96,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Ochansk",
+        "meteoriteCode": "17979",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17979",
+        "alternateNameNote": "Taborg is absent as an official row from the verified local CSV. The official checker identifies Taborg as a synonym only of Official Ochansk, code 17979; the CSV and detail page identify Ochansk as a 1887 Russian H4 fall with 500 kg mass, and the detail page lists Taborg, Okhansk, Tabory, and Taborskoie Selo. Official Tabor, code 23776, is a distinct 1753 Czech H5 and is not inferred. The source heading, full fall date, and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-17eb872c-5320-4fa4-b11f-559357354836",
+      "catalogId": "nininger-1950",
+      "designation": "364.2",
+      "name": "Taborg",
+      "weight": {
+        "grams": 42
+      },
+      "classification": "Stone. Brecciated spherical bronzite-chondrite",
+      "locality": "(Ochansk), Perm, Russia",
+      "year": "1887",
+      "catalogPage": 96,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Ochansk",
+        "meteoriteCode": "17979",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17979",
+        "alternateNameNote": "Taborg is absent as an official row from the verified local CSV. The official checker identifies Taborg as a synonym only of Official Ochansk, code 17979; the CSV and detail page identify Ochansk as a 1887 Russian H4 fall with 500 kg mass, and the detail page lists Taborg, Okhansk, Tabory, and Taborskoie Selo. Official Tabor, code 23776, is a distinct 1753 Czech H5 and is not inferred. The source heading, full fall date, and historical classification are preserved."
       }
     },
     {
@@ -45898,6 +46067,27 @@
       }
     },
     {
+      "id": "obs-1da51133-31a2-40f9-94f6-15eec58b5d95",
+      "catalogId": "nininger-1950",
+      "designation": "514.1",
+      "name": "Stonington",
+      "weight": {
+        "grams": 2265
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Baca County, Colorado; 37° 18′ N., 102° 12′ W.",
+      "year": "1941",
+      "catalogPage": 96,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Stonington",
+        "meteoriteCode": "23727",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23727",
+        "alternateNameNote": "The verified local CSV identifies Official Stonington, code 23727, as a Colorado H5 with database year 1942, 2.7 kg mass, and 37° 17′ N., 102° 12′ W. coordinates. The official checker returns Stonington as Official, and the detail page confirms the exact name and Colorado identity. The source's Found 1941, 2.3 kg total, exact printed coordinates, and historical chondrite description are preserved."
+      }
+    },
+    {
       "id": "obs-71f72d44-d300-4fab-b9bf-25462bd20d11",
       "catalogId": "nininger-1950",
       "designation": "515.1",
@@ -46399,6 +46589,27 @@
         "meteoriteCode": "4950",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4950",
         "alternateNameNote": "MetBull lists San Francisco Pass as a synonym; the Atacama location and 12 kg mass agree. The source reports 1845, while MetBull reports 1855. The historical Brecciated octahedrite classification corresponds to modern Iron, IIE-an."
+      }
+    },
+    {
+      "id": "obs-0bee9446-5064-4b2e-923c-6075683d8bf7",
+      "catalogId": "nininger-1950",
+      "designation": "537.1",
+      "name": "Supuhee",
+      "weight": {
+        "grams": 14
+      },
+      "classification": "Stone. Brecciated grey chondrite",
+      "locality": "Padrauna, Gorakhpur district, United Provinces, India",
+      "year": "1865",
+      "catalogPage": 96,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Supuhee",
+        "meteoriteCode": "23760",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23760",
+        "alternateNameNote": "The verified local CSV identifies Official Supuhee, code 23760, as a 1865 Indian H6 fall with 7,235 gram mass. The official checker returns Supuhee as Official, and the detail page confirms the exact name, fall year, country, and all four printed synonyms, Bubuowly, Goruckpur, Mouza Khoorna, and Sidowra. The source's about-74 kg total, full fall date, historical geography, and classification are preserved."
       }
     },
     {
