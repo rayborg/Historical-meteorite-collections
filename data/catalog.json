@@ -372,14 +372,15 @@
           65,
           66,
           67,
-          68
+          68,
+          69
         ],
-        "sourcePageCount": 43,
-        "recordCount": 924,
-        "recordsWithDesignation": 904,
-        "recordsWithWeight": 865,
+        "sourcePageCount": 44,
+        "recordCount": 935,
+        "recordsWithDesignation": 915,
+        "recordsWithWeight": 876,
         "confidenceCounts": {
-          "high": 924,
+          "high": 935,
           "medium": 0,
           "low": 0
         },
@@ -387,11 +388,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2836,
-    "recordsWithDesignation": 2647,
-    "recordsWithWeight": 2649,
+    "recordCount": 2847,
+    "recordsWithDesignation": 2658,
+    "recordsWithWeight": 2660,
     "confidenceCounts": {
-      "high": 2836,
+      "high": 2847,
       "medium": 0,
       "low": 0
     }
@@ -25228,6 +25229,90 @@
       }
     },
     {
+      "id": "obs-f161050b-7d51-415f-bfa4-2677200cb2aa",
+      "catalogId": "nininger-1950",
+      "designation": "70a",
+      "name": "Lenarto",
+      "weight": {
+        "grams": 111
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Sáros, Czechoslovakia",
+      "year": "1814",
+      "catalogPage": 69,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Lenarto",
+        "meteoriteCode": "12763",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12763",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Lenarto as code 12763, an iron IIIAB found in 1814 with 108.5 kg mass. The official exact-name checker returns Lenarto as Official, and the detail page confirms the exact name, year, Slovakia, iron IIIAB identity, mass, and Polen and Saros synonyms. The historical source geography and accented Sáros spelling are preserved."
+      }
+    },
+    {
+      "id": "obs-4d1a2cea-f608-4061-b1e6-5342769b7199",
+      "catalogId": "nininger-1950",
+      "designation": "71b",
+      "name": "Long Island",
+      "weight": {
+        "grams": 15.5
+      },
+      "classification": "Stone. Veined intermediate hypersthene-chondrite",
+      "locality": "Phillips County, Kansas",
+      "year": "1891",
+      "catalogPage": 69,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Long Island",
+        "meteoriteCode": "14694",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=14694",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Long Island as code 14694, a Kansas L6 found in 1891 with 564 kg mass. The official exact-name checker returns Long Island as Official, and the detail page confirms the exact name, year, Kansas, L6 identity, mass, and Phillips County synonym. The source's 565 kg total is preserved."
+      }
+    },
+    {
+      "id": "obs-243ab2f1-9fb5-442a-8645-3387b24bdc00",
+      "catalogId": "nininger-1950",
+      "designation": "71c",
+      "name": "Long Island",
+      "weight": {
+        "grams": 27
+      },
+      "classification": "Stone. Veined intermediate hypersthene-chondrite",
+      "locality": "Phillips County, Kansas",
+      "year": "1891",
+      "catalogPage": 69,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Long Island",
+        "meteoriteCode": "14694",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=14694",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Long Island as code 14694, a Kansas L6 found in 1891 with 564 kg mass. The official exact-name checker returns Long Island as Official, and the detail page confirms the exact name, year, Kansas, L6 identity, mass, and Phillips County synonym. The source's 565 kg total is preserved."
+      }
+    },
+    {
+      "id": "obs-cedb4160-6c07-4e4e-b20d-ab18619d8e48",
+      "catalogId": "nininger-1950",
+      "designation": "71d",
+      "name": "Long Island",
+      "weight": {
+        "grams": 419
+      },
+      "classification": "Stone. Veined intermediate hypersthene-chondrite",
+      "locality": "Phillips County, Kansas",
+      "year": "1891",
+      "catalogPage": 69,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Long Island",
+        "meteoriteCode": "14694",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=14694",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Long Island as code 14694, a Kansas L6 found in 1891 with 564 kg mass. The official exact-name checker returns Long Island as Official, and the detail page confirms the exact name, year, Kansas, L6 identity, mass, and Phillips County synonym. The source's 565 kg total is preserved."
+      }
+    },
+    {
       "id": "obs-7bac64e2-ace5-4fbe-87df-7a12a602a39a",
       "catalogId": "nininger-1950",
       "designation": "72a.",
@@ -25246,6 +25331,27 @@
         "meteoriteCode": "24018",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
         "alternateNameNote": "MetBull explicitly lists Amates, Los Amates, Morelos, and Xiquipilco as synonyms of Toluca. This conflicts strongly with Nininger's treatment of Amates as a separate 300-gram iron found in 1889 at Iguala, Morelos; MetBull reports Toluca as a 3-ton Iron, IAB-sLL found in 1776 at 19° 34′ N., 99° 34′ W."
+      }
+    },
+    {
+      "id": "obs-571cd2ce-d281-44bf-a8de-f349f8e024e2",
+      "catalogId": "nininger-1950",
+      "designation": "73a",
+      "name": "Limerick",
+      "weight": {
+        "grams": 3
+      },
+      "classification": "Stone. Veined grey bronzite-chondrite",
+      "locality": "Limerick County, Ireland",
+      "year": "1813",
+      "catalogPage": 69,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Limerick",
+        "meteoriteCode": "14652",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=14652",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Limerick as code 14652, an 1813 Irish H5 fall. The official exact-name checker returns Limerick as Official, and the detail page confirms the exact name, fall, year, Ireland, H5 identity, 50 kg mass, and Adare and Faha synonyms. The source's 48 kg total is preserved."
       }
     },
     {
@@ -26863,6 +26969,27 @@
         "meteoriteCode": "11891",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11891",
         "alternateNameNote": "The verified local MetBull CSV-derived cache contains Official Hobbs code 11891 (H4, 1933, New Mexico, 2.3 kg) and the distinct Hobbs (b) code 11892 (H5, 1.6 kg). The official checker returns exact Hobbs as Official, and the code 11891 detail page confirms 1933, New Mexico, H4, and 2.3 kg; the source's printed 2.3 kg chondrite therefore supports Hobbs rather than Hobbs (b)."
+      }
+    },
+    {
+      "id": "obs-bee2adf1-7397-44db-aab9-0de229b01620",
+      "catalogId": "nininger-1950",
+      "designation": "178a",
+      "name": "Logan",
+      "weight": {
+        "grams": 926
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Beaver County, Oklahoma",
+      "year": "1933",
+      "catalogPage": 69,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Logan",
+        "meteoriteCode": "14677",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=14677",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Logan as code 14677, an Oklahoma H5 with 1,315 gram mass. The official exact-name checker returns Logan as Official, and the detail page confirms the exact name, Oklahoma, H5 identity, and mass. MetBull gives a 1918 find, while the source prints Recognized 1933 and a rounded 1.32 kg total; the source values are preserved."
       }
     },
     {
@@ -29677,6 +29804,27 @@
         "meteoriteCode": "5003",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5003",
         "alternateNameNote": "The source inserts i in Beilla. MetBull lists La Bella Roca and Papasquiaro as synonyms; the Durango context and 1888 date agree. The source reports 33.2 kg.; MetBull reports 33 kg. The historical Fine octahedrite classification corresponds broadly to modern Iron, IIIAB."
+      }
+    },
+    {
+      "id": "obs-5903cf03-14ea-4ea2-b3a1-aa798f53b189",
+      "catalogId": "nininger-1950",
+      "designation": "269a",
+      "name": "Locust Grove",
+      "weight": {
+        "grams": 212
+      },
+      "classification": "Iron. Nickel-poor ataxite",
+      "locality": "Henry County, Georgia",
+      "year": "1857",
+      "catalogPage": 69,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Locust Grove",
+        "meteoriteCode": "14673",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=14673",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Locust Grove as code 14673, a Georgia iron IIAB found in 1857 with 10 kg mass. The official exact-name checker returns Locust Grove as Official, and the detail page confirms the exact name, year, Georgia, iron identity, mass, and Henry County synonym."
       }
     },
     {
@@ -33796,6 +33944,27 @@
       }
     },
     {
+      "id": "obs-72b3c409-7548-4cd7-9a65-95f0d5619384",
+      "catalogId": "nininger-1950",
+      "designation": "490.1",
+      "name": "Lockney",
+      "weight": {
+        "grams": 520
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Hale County, Texas; 34° 9′ N., 101° 18′ W.",
+      "year": "1944",
+      "catalogPage": 69,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Lockney",
+        "meteoriteCode": "14672",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=14672",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Lockney as code 14672, a Texas L6 found in 1944 with 824 gram mass. The official exact-name checker returns Lockney as Official, and the detail page confirms the exact name, year, Texas, L6 identity, mass, and the printed 34° 9′ N., 101° 18′ W. coordinates."
+      }
+    },
+    {
       "id": "obs-a2d03705-7639-4ce4-be6f-126a70e002f0",
       "catalogId": "nininger-1950",
       "designation": "491.1",
@@ -33814,6 +33983,48 @@
         "meteoriteCode": "11826",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11826",
         "alternateNameNote": "The verified local CSV and checker identify exact Official Harding County, code 11826. The detail page confirms the 1941 South Dakota find, L4 stone classification, and 3,075 g mass printed by the source."
+      }
+    },
+    {
+      "id": "obs-a2d8b0f5-462e-456f-9c71-ae51ef557e62",
+      "catalogId": "nininger-1950",
+      "designation": "492.1",
+      "name": "Linwood",
+      "weight": {
+        "grams": 42.6
+      },
+      "classification": "Iron",
+      "locality": "Butler County, Nebraska; 41° 25′ N., 96° 55′ W.",
+      "year": "1943",
+      "catalogPage": 69,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Linwood",
+        "meteoriteCode": "14657",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=14657",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Linwood as code 14657, a Nebraska iron IAB-MG with 46 kg mass. The official exact-name checker returns Linwood as Official, and the detail page confirms the exact name, Nebraska, iron identity, mass, and nearby coordinates. MetBull gives a 1940 find and 41° 26′ N., 96° 58′ W.; the source's Recognized 1943 wording, 45.9 kg total, and printed coordinates are preserved."
+      }
+    },
+    {
+      "id": "obs-e2709e93-0582-447d-9051-711e724b92ef",
+      "catalogId": "nininger-1950",
+      "designation": "492.2",
+      "name": "Linwood",
+      "weight": {
+        "grams": 17.7
+      },
+      "classification": "Iron",
+      "locality": "Butler County, Nebraska; 41° 25′ N., 96° 55′ W.",
+      "year": "1943",
+      "catalogPage": 69,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Linwood",
+        "meteoriteCode": "14657",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=14657",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Linwood as code 14657, a Nebraska iron IAB-MG with 46 kg mass. The official exact-name checker returns Linwood as Official, and the detail page confirms the exact name, Nebraska, iron identity, mass, and nearby coordinates. MetBull gives a 1940 find and 41° 26′ N., 96° 58′ W.; the source's Recognized 1943 wording, 45.9 kg total, and printed coordinates are preserved."
       }
     },
     {
@@ -34192,6 +34403,27 @@
         "meteoriteCode": "11989",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11989",
         "alternateNameNote": "The verified local valid-name CSV has Official Hvittis code 11989, a 1901 Finnish EL6 fall of 14 kg, and no Huittinen row. The official exact-name checker identifies Huittinen as a synonym of Hvittis, and the detail page confirms Huittinen among its synonyms plus the matching year, fall, country, class, and mass."
+      }
+    },
+    {
+      "id": "obs-4c3e021a-e24b-45fb-95bd-82998ee2c898",
+      "catalogId": "nininger-1950",
+      "designation": "526.1",
+      "name": "Livingston",
+      "weight": {
+        "grams": 1555
+      },
+      "classification": "Iron. Octahedrite",
+      "locality": "Park County, Montana; 45° 40′ N., 110° 24′ W.",
+      "year": "1936",
+      "catalogPage": 69,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Livingston (Montana)",
+        "meteoriteCode": "14668",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=14668",
+        "alternateNameNote": "The official exact-name checker has no bare Livingston record or synonym, while its containing-name result lists distinct Official Livingston (Montana) and Livingston (Tennessee). The verified local CSV and code 14668 detail page identify Livingston (Montana), whose Montana locality, 1936 year, iron IIIAB identity, and 1,600 gram mass directly agree with the source and distinguish the 1937 Tennessee iron. The source's bare name and printed coordinates are preserved."
       }
     },
     {
