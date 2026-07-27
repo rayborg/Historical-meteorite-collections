@@ -341,14 +341,15 @@
           34,
           35,
           36,
-          37
+          37,
+          38
         ],
-        "sourcePageCount": 12,
-        "recordCount": 220,
-        "recordsWithDesignation": 218,
-        "recordsWithWeight": 213,
+        "sourcePageCount": 13,
+        "recordCount": 234,
+        "recordsWithDesignation": 232,
+        "recordsWithWeight": 227,
         "confidenceCounts": {
-          "high": 220,
+          "high": 234,
           "medium": 0,
           "low": 0
         },
@@ -356,11 +357,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2132,
-    "recordsWithDesignation": 1961,
-    "recordsWithWeight": 1997,
+    "recordCount": 2146,
+    "recordsWithDesignation": 1975,
+    "recordsWithWeight": 2011,
     "confidenceCounts": {
-      "high": 2132,
+      "high": 2146,
       "medium": 0,
       "low": 0
     }
@@ -18729,6 +18730,90 @@
       }
     },
     {
+      "id": "obs-f9f1be6c-a4f3-4a90-81c4-edabc2bf09a4",
+      "catalogId": "nininger-1950",
+      "designation": "19a",
+      "name": "Cacaria",
+      "weight": {
+        "grams": 76.5
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Durango, Mexico",
+      "year": "1867",
+      "catalogPage": 38,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Cacaria",
+        "meteoriteCode": "5188",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5188",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-9fdc73f7-0a31-4507-b42a-a7dac3f18e06",
+      "catalogId": "nininger-1950",
+      "designation": "34jj",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 11200
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 38,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-d1e736b2-e1e3-432c-b903-400c3a7b040e",
+      "catalogId": "nininger-1950",
+      "designation": "34.102",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 1691
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 38,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-203ba510-81e0-4fac-b49c-ee76c1f7647d",
+      "catalogId": "nininger-1950",
+      "designation": "34.364",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 2972
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 38,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
       "id": "obs-82bbe8bc-2bae-4107-aa8d-62522a94a0fe",
       "catalogId": "nininger-1950",
       "designation": "50.1",
@@ -19590,6 +19675,27 @@
       }
     },
     {
+      "id": "obs-7d76d273-b9b5-44e1-8951-c6deaf72638e",
+      "catalogId": "nininger-1950",
+      "designation": "137a",
+      "name": "Butler",
+      "weight": {
+        "grams": 714
+      },
+      "classification": "Iron. Finest octahedrite",
+      "locality": "Bates County, Missouri",
+      "year": "before 1874",
+      "catalogPage": 38,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Butler",
+        "meteoriteCode": "5182",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5182",
+        "alternateNameNote": null
+      }
+    },
+    {
       "id": "obs-81b280a4-ebe6-4214-b529-2d3ac8112661",
       "catalogId": "nininger-1950",
       "designation": "150a",
@@ -19692,6 +19798,27 @@
         "meteoriteCode": "5062",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5062",
         "alternateNameNote": "The Trier and large metal-rich mass context identify official Bitburg. Source says known before 1805, 1,600 kg., and Pallasite; MetBull gives 1805, 1.5 t, and Iron, IAB complex. The source remarks that both specimens show artificial heating effects."
+      }
+    },
+    {
+      "id": "obs-4b0c5e6c-cf60-4b94-81d3-3b7de10ec3bf",
+      "catalogId": "nininger-1950",
+      "designation": "158a",
+      "name": "Canyon City",
+      "weight": {
+        "grams": 826
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Trinity County, California",
+      "year": "1875",
+      "catalogPage": 38,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon City",
+        "meteoriteCode": "5256",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5256",
+        "alternateNameNote": null
       }
     },
     {
@@ -20133,6 +20260,27 @@
         "meteoriteCode": "5066",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5066",
         "alternateNameNote": "The Buncombe County/North Carolina context and 1839 iron identity agree; MetBull lists Buncombe County as a synonym. Source total is 4 kg.; MetBull mass is 800 g and modern class is Iron, IAB-MG."
+      }
+    },
+    {
+      "id": "obs-cc09e1fa-4be4-486a-a193-f408d2100c75",
+      "catalogId": "nininger-1950",
+      "designation": "253a",
+      "name": "Butsura",
+      "weight": {
+        "grams": 26
+      },
+      "classification": "Stone. Intermediate chondrite",
+      "locality": "Champeran district, Bihar, India",
+      "year": "1861",
+      "catalogPage": 38,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Butsura",
+        "meteoriteCode": "5183",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5183",
+        "alternateNameNote": null
       }
     },
     {
@@ -20640,6 +20788,27 @@
       }
     },
     {
+      "id": "obs-67d0d4ac-1b01-45e0-811e-bcd5be3fcd58",
+      "catalogId": "nininger-1950",
+      "designation": "351.1",
+      "name": "Campbellsville",
+      "weight": {
+        "grams": 282
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Taylor County, Kentucky",
+      "year": "1929",
+      "catalogPage": 38,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Campbellsville",
+        "meteoriteCode": "5245",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5245",
+        "alternateNameNote": null
+      }
+    },
+    {
       "id": "obs-14a1f1ee-02b9-480a-93a9-e80786b1861c",
       "catalogId": "nininger-1950",
       "designation": "352.1",
@@ -20700,6 +20869,27 @@
         "meteoriteCode": "5015",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5015",
         "alternateNameNote": "The source omits the official final acute accent. MetBull lists Bahia as a synonym; the Brazil context and 1784 find year agree. The source reports 5,000 kg.; MetBull reports 5.36 t. The historical Coarse octahedrite classification corresponds broadly to modern Iron, IC."
+      }
+    },
+    {
+      "id": "obs-6ae2817d-04bf-48a9-867b-a77e87d425e5",
+      "catalogId": "nininger-1950",
+      "designation": "359.1",
+      "name": "Cambria",
+      "weight": {
+        "grams": 402
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Niagara County, New York",
+      "year": "1818",
+      "catalogPage": 38,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Cambria",
+        "meteoriteCode": "5203",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5203",
+        "alternateNameNote": null
       }
     },
     {
@@ -21141,6 +21331,111 @@
         "meteoriteCode": "4913",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4913",
         "alternateNameNote": "The source coordinates, 1938 fall year, and 2,831-gram total known weight match the official New Mexico record and distinguish it from the unrelated use of Aztec as a Holbrook synonym. The source generic Stone classification corresponds to modern L6."
+      }
+    },
+    {
+      "id": "obs-acc4705d-99b7-4d0a-b37b-093926771660",
+      "catalogId": "nininger-1950",
+      "designation": "440.1",
+      "name": "Camp Verde",
+      "weight": {
+        "grams": 61072
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Yavapai County, Arizona; 34° 34′ N., 111° 51′ W.",
+      "year": "about 1915",
+      "catalogPage": 38,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The official name checker identifies Camp Verde as a synonym of Canyon Diablo. The official Canyon Diablo detail page also lists Camp Verde as a synonym; the source's Yavapai County, Arizona iron context agrees."
+      }
+    },
+    {
+      "id": "obs-ec4e2cc0-d32a-4ac5-9dba-12934d854599",
+      "catalogId": "nininger-1950",
+      "designation": "440.2",
+      "name": "Camp Verde",
+      "weight": {
+        "grams": 274
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Yavapai County, Arizona; 34° 34′ N., 111° 51′ W.",
+      "year": "about 1915",
+      "catalogPage": 38,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The official name checker identifies Camp Verde as a synonym of Canyon Diablo. The official Canyon Diablo detail page also lists Camp Verde as a synonym; the source's Yavapai County, Arizona iron context agrees."
+      }
+    },
+    {
+      "id": "obs-61fe8db9-4770-4f26-bdca-690851486763",
+      "catalogId": "nininger-1950",
+      "designation": "440.3",
+      "name": "Camp Verde",
+      "weight": {
+        "grams": 35.5
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Yavapai County, Arizona; 34° 34′ N., 111° 51′ W.",
+      "year": "about 1915",
+      "catalogPage": 38,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The official name checker identifies Camp Verde as a synonym of Canyon Diablo. The official Canyon Diablo detail page also lists Camp Verde as a synonym; the source's Yavapai County, Arizona iron context agrees."
+      }
+    },
+    {
+      "id": "obs-648b5f30-8c63-47e3-be59-0bb8894b2cc8",
+      "catalogId": "nininger-1950",
+      "designation": "446.1",
+      "name": "Bushnell",
+      "weight": {
+        "grams": 1068
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Kimball County, Nebraska; 41° 14′ N., 103° 54′ W.",
+      "year": "1939",
+      "catalogPage": 38,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bushnell",
+        "meteoriteCode": "5180",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5180",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-ff2b0750-d9db-41ad-b552-90b049d46121",
+      "catalogId": "nininger-1950",
+      "designation": "446.2",
+      "name": "Bushnell",
+      "weight": {
+        "grams": 53.4
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Kimball County, Nebraska; 41° 14′ N., 103° 54′ W.",
+      "year": "1939",
+      "catalogPage": 38,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bushnell",
+        "meteoriteCode": "5180",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5180",
+        "alternateNameNote": null
       }
     },
     {
