@@ -356,14 +356,15 @@
           49,
           50,
           51,
-          52
+          52,
+          53
         ],
-        "sourcePageCount": 27,
-        "recordCount": 552,
-        "recordsWithDesignation": 547,
-        "recordsWithWeight": 540,
+        "sourcePageCount": 28,
+        "recordCount": 566,
+        "recordsWithDesignation": 561,
+        "recordsWithWeight": 554,
         "confidenceCounts": {
-          "high": 552,
+          "high": 566,
           "medium": 0,
           "low": 0
         },
@@ -371,11 +372,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2464,
-    "recordsWithDesignation": 2290,
-    "recordsWithWeight": 2324,
+    "recordCount": 2478,
+    "recordsWithDesignation": 2304,
+    "recordsWithWeight": 2338,
     "confidenceCounts": {
-      "high": 2464,
+      "high": 2478,
       "medium": 0,
       "low": 0
     }
@@ -23637,6 +23638,90 @@
       }
     },
     {
+      "id": "obs-3b784349-c47b-42be-ab37-e9e8daefce2f",
+      "catalogId": "nininger-1950",
+      "designation": "51a",
+      "name": "Gilgoin Station",
+      "weight": {
+        "grams": 906
+      },
+      "classification": "Stone. Crystalline bronzite-chondrite",
+      "locality": "Brewarrina, County Clyde, New South Wales, Australia",
+      "year": "1889",
+      "catalogPage": 53,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Gilgoin",
+        "meteoriteCode": "10915",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10915",
+        "alternateNameNote": "The verified local CSV has Official Gilgoin, code 10915, not Gilgoin Station. The official checker returns Gilgoin Station solely as a synonym of Gilgoin, and the detail page confirms the 1889 New South Wales H5 and lists that synonym; the source's 147.5 kg is preserved."
+      }
+    },
+    {
+      "id": "obs-c3877fe8-60d7-4e8b-84d7-555cf077ff3e",
+      "catalogId": "nininger-1950",
+      "designation": "51c",
+      "name": "Gilgoin Station",
+      "weight": {
+        "grams": 17667
+      },
+      "classification": "Stone. Crystalline bronzite-chondrite",
+      "locality": "Brewarrina, County Clyde, New South Wales, Australia",
+      "year": "1889",
+      "catalogPage": 53,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Gilgoin",
+        "meteoriteCode": "10915",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10915",
+        "alternateNameNote": "The verified local CSV has Official Gilgoin, code 10915, not Gilgoin Station. The official checker returns Gilgoin Station solely as a synonym of Gilgoin, and the detail page confirms the 1889 New South Wales H5 and lists that synonym; the source's 147.5 kg is preserved."
+      }
+    },
+    {
+      "id": "obs-62ada7c8-e989-4284-a38c-69a5e4ae6cc1",
+      "catalogId": "nininger-1950",
+      "designation": "53a",
+      "name": "Gladstone",
+      "weight": {
+        "grams": 749
+      },
+      "classification": "Iron. Coarsest octahedrite",
+      "locality": "Portcurtis, Queensland, Australia",
+      "year": "1914",
+      "catalogPage": 53,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "translated-or-older-name",
+        "canonicalName": "Gladstone (iron)",
+        "meteoriteCode": "10920",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10920",
+        "alternateNameNote": "The verified local CSV has Official Gladstone (iron), code 10920. The checker marks Gladstone as a partial name with iron and stone candidates; the containing-name result and detail page identify the Queensland IAB-MG iron as code 10920, distinct from the New Mexico H4. The source's 1914 and 659 kg differ from the official 1915 and 736.6 kg and are preserved."
+      }
+    },
+    {
+      "id": "obs-bf1ae3ac-f7d1-4721-849a-38be73d6b485",
+      "catalogId": "nininger-1950",
+      "designation": "53.4",
+      "name": "Gladstone",
+      "weight": {
+        "grams": 75
+      },
+      "classification": "Iron. Coarsest octahedrite",
+      "locality": "Portcurtis, Queensland, Australia",
+      "year": "1914",
+      "catalogPage": 53,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "translated-or-older-name",
+        "canonicalName": "Gladstone (iron)",
+        "meteoriteCode": "10920",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10920",
+        "alternateNameNote": "The verified local CSV has Official Gladstone (iron), code 10920. The checker marks Gladstone as a partial name with iron and stone candidates; the containing-name result and detail page identify the Queensland IAB-MG iron as code 10920, distinct from the New Mexico H4. The source's 1914 and 659 kg differ from the official 1915 and 736.6 kg and are preserved."
+      }
+    },
+    {
       "id": "obs-7bac64e2-ace5-4fbe-87df-7a12a602a39a",
       "catalogId": "nininger-1950",
       "designation": "72a.",
@@ -24792,6 +24877,27 @@
       }
     },
     {
+      "id": "obs-54c3b8bf-aba3-446b-9fd0-8fd9902522ca",
+      "catalogId": "nininger-1950",
+      "designation": "166a",
+      "name": "Four Corners",
+      "weight": {
+        "grams": 621
+      },
+      "classification": "Iron. Brecciated octahedrite with silicate inclusions",
+      "locality": "San Juan County, New Mexico",
+      "year": "about 1924",
+      "catalogPage": 53,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Four Corners",
+        "meteoriteCode": "10172",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10172",
+        "alternateNameNote": "The verified local CSV has Official Four Corners, code 10172. The official checker returns Four Corners as Official, and the detail page confirms the 1924 New Mexico iron and 25 kg mass."
+      }
+    },
+    {
       "id": "obs-fffe7e17-dd35-48fb-9dbb-cb1f8cdf0bd5",
       "catalogId": "nininger-1950",
       "designation": "168a",
@@ -24831,6 +24937,27 @@
         "meteoriteCode": "17001",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17001",
         "alternateNameNote": "The official name checker returns Coya Norte as a synonym of North Chile. The official detail page for code 17001 lists Coya Norte as both a Buchwald and NHM Catalogue synonym; the verified CSV's Official row names North Chile."
+      }
+    },
+    {
+      "id": "obs-d08242e6-c259-4838-b02c-ce5ec3a3ca45",
+      "catalogId": "nininger-1950",
+      "designation": "171a",
+      "name": "Fort Pierre",
+      "weight": {
+        "grams": 149
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Stanley County, South Dakota",
+      "year": "1856",
+      "catalogPage": 53,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Fort Pierre",
+        "meteoriteCode": "10167",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10167",
+        "alternateNameNote": "The verified local CSV has Official Fort Pierre, code 10167. The official checker returns Fort Pierre as Official, and the detail page confirms the 1856 South Dakota iron, 15.9 kg mass, and Nebraska synonym; the source's 16 kg is preserved."
       }
     },
     {
@@ -24915,6 +25042,27 @@
         "meteoriteCode": "7651",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=7651",
         "alternateNameNote": "The official checker returns exact name Dix as code 7651. The source prints Found 1938, while the official CSV reports year 1927; the discrepancy is preserved and not reconciled."
+      }
+    },
+    {
+      "id": "obs-65a2e655-929d-4799-9866-e14700ac3b26",
+      "catalogId": "nininger-1950",
+      "designation": "187a",
+      "name": "Franceville",
+      "weight": {
+        "grams": 417.5
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "El Paso County, Colorado",
+      "year": "1890",
+      "catalogPage": 53,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Franceville",
+        "meteoriteCode": "10173",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10173",
+        "alternateNameNote": "The verified local CSV has Official Franceville, code 10173. The official checker returns Franceville as Official, and the detail page confirms the 1890 Colorado IIIAB iron and 18.8 kg mass."
       }
     },
     {
@@ -26367,6 +26515,48 @@
       }
     },
     {
+      "id": "obs-85f8d89d-198e-4b49-b811-72ce63959f65",
+      "catalogId": "nininger-1950",
+      "designation": "337.1",
+      "name": "Futtehpur",
+      "weight": {
+        "grams": 3.3
+      },
+      "classification": "Stone. Veined white chondrite",
+      "locality": "Allahabad district, United Provinces, India",
+      "year": "1822",
+      "catalogPage": 53,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Futtehpur",
+        "meteoriteCode": "10839",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10839",
+        "alternateNameNote": "The verified local CSV has Official Futtehpur, code 10839. The official checker returns Futtehpur as Official, and the detail page confirms the 1822 Indian L6 fall and lists Allahabad, Bithur, Doab, Fatehpur, and Shahpur as synonyms; the source's Bither spelling is preserved."
+      }
+    },
+    {
+      "id": "obs-1ad135ee-31a2-4a78-8105-90faae3993d5",
+      "catalogId": "nininger-1950",
+      "designation": "337.2",
+      "name": "Futtehpur",
+      "weight": {
+        "grams": 6.5
+      },
+      "classification": "Stone. Veined white chondrite",
+      "locality": "Allahabad district, United Provinces, India",
+      "year": "1822",
+      "catalogPage": 53,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Futtehpur",
+        "meteoriteCode": "10839",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10839",
+        "alternateNameNote": "The verified local CSV has Official Futtehpur, code 10839. The official checker returns Futtehpur as Official, and the detail page confirms the 1822 Indian L6 fall and lists Allahabad, Bithur, Doab, Fatehpur, and Shahpur as synonyms; the source's Bither spelling is preserved."
+      }
+    },
+    {
       "id": "obs-986e7ebb-c43e-4f0a-915b-a41f695a76f3",
       "catalogId": "nininger-1950",
       "designation": "338.1",
@@ -27270,6 +27460,48 @@
       }
     },
     {
+      "id": "obs-457935ed-a525-4b8d-86cb-df17b2a3cb91",
+      "catalogId": "nininger-1950",
+      "designation": "428.1",
+      "name": "Garnett",
+      "weight": {
+        "grams": 1672
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Anderson County, Kansas; 38° 17′ N., 95° 12′ W.",
+      "year": "1938",
+      "catalogPage": 53,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Garnett",
+        "meteoriteCode": "10862",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10862",
+        "alternateNameNote": "The verified local CSV has Official Garnett, code 10862. The official checker returns Garnett as Official, and the detail page confirms the 1938 Kansas H4, printed coordinates, and 4.79 kg mass; the source's 4.7 kg is preserved."
+      }
+    },
+    {
+      "id": "obs-15758423-6fd9-4c14-af4c-a8abff1fae62",
+      "catalogId": "nininger-1950",
+      "designation": "428.5",
+      "name": "Garnett",
+      "weight": {
+        "grams": 358.5
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Anderson County, Kansas; 38° 17′ N., 95° 12′ W.",
+      "year": "1938",
+      "catalogPage": 53,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Garnett",
+        "meteoriteCode": "10862",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10862",
+        "alternateNameNote": "The verified local CSV has Official Garnett, code 10862. The official checker returns Garnett as Official, and the detail page confirms the 1938 Kansas H4, printed coordinates, and 4.79 kg mass; the source's 4.7 kg is preserved."
+      }
+    },
+    {
       "id": "obs-61247f59-e28c-4068-899d-6ec441eb6c02",
       "catalogId": "nininger-1950",
       "designation": "432.1",
@@ -27498,6 +27730,27 @@
         "meteoriteCode": "5180",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5180",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-26fdf3ce-645b-4f5a-86e7-fb3bc1a0783b",
+      "catalogId": "nininger-1950",
+      "designation": "452.1",
+      "name": "Ganado",
+      "weight": {
+        "grams": 38.9
+      },
+      "classification": "Iron. Hexahedrite",
+      "locality": "Apache County, Arizona; 35° 43′ N., 109° 34′ W.",
+      "year": "1938",
+      "catalogPage": 53,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The verified local CSV has no official Ganado row and has Official Canyon Diablo, code 5257. The official checker returns Ganado solely as a synonym of Canyon Diablo, and the Canyon Diablo detail page lists Ganado as a synonym; no identity is inferred from the printed mass or coordinates."
       }
     },
     {
@@ -28338,6 +28591,48 @@
         "meteoriteCode": "5026",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5026",
         "alternateNameNote": "The New Brunswick context and 1949 fall year agree. Source total is about 5.4 kg.; MetBull mass is 2.84 kg. The source generic Chondrite classification is less specific than modern LL6."
+      }
+    },
+    {
+      "id": "obs-89f12157-8392-494b-b262-a376b9e5c898",
+      "catalogId": "nininger-1950",
+      "designation": "531.1",
+      "name": "Girgenti",
+      "weight": {
+        "grams": 14.5
+      },
+      "classification": "Stone. Veined white hypersthene-chondrite",
+      "locality": "Sicily, Italy",
+      "year": "1853",
+      "catalogPage": 53,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Girgenti",
+        "meteoriteCode": "10917",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10917",
+        "alternateNameNote": "The verified local CSV has Official Girgenti, code 10917. The official checker returns Girgenti as Official, and the detail page confirms the 1853 Sicily L6 fall; its 18 kg mass differs from the source's largest-stone statement, which is preserved."
+      }
+    },
+    {
+      "id": "obs-251bfbec-8d3e-4329-9238-9a501c49193c",
+      "catalogId": "nininger-1950",
+      "designation": "531.2",
+      "name": "Girgenti",
+      "weight": {
+        "grams": 10
+      },
+      "classification": "Stone. Veined white hypersthene-chondrite",
+      "locality": "Sicily, Italy",
+      "year": "1853",
+      "catalogPage": 53,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Girgenti",
+        "meteoriteCode": "10917",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10917",
+        "alternateNameNote": "The verified local CSV has Official Girgenti, code 10917. The official checker returns Girgenti as Official, and the detail page confirms the 1853 Sicily L6 fall; its 18 kg mass differs from the source's largest-stone statement, which is preserved."
       }
     },
     {
