@@ -379,14 +379,15 @@
           72,
           73,
           74,
-          75
+          75,
+          76
         ],
-        "sourcePageCount": 50,
-        "recordCount": 1008,
-        "recordsWithDesignation": 987,
-        "recordsWithWeight": 949,
+        "sourcePageCount": 51,
+        "recordCount": 1025,
+        "recordsWithDesignation": 1003,
+        "recordsWithWeight": 966,
         "confidenceCounts": {
-          "high": 1008,
+          "high": 1025,
           "medium": 0,
           "low": 0
         },
@@ -394,11 +395,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2920,
-    "recordsWithDesignation": 2730,
-    "recordsWithWeight": 2733,
+    "recordCount": 2937,
+    "recordsWithDesignation": 2746,
+    "recordsWithWeight": 2750,
     "confidenceCounts": {
-      "high": 2920,
+      "high": 2937,
       "medium": 0,
       "low": 0
     }
@@ -25844,6 +25845,48 @@
       }
     },
     {
+      "id": "obs-da9fd8c7-f99c-46a9-a3d5-9f3911afb4d8",
+      "catalogId": "nininger-1950",
+      "designation": "83a",
+      "name": "Navajo",
+      "weight": {
+        "grams": 5
+      },
+      "classification": "Iron. Nickel-poor ataxite",
+      "locality": "Apache County, Arizona",
+      "year": "1922",
+      "catalogPage": 76,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Navajo",
+        "meteoriteCode": "16926",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16926",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official Navajo as code 16926, an Arizona Iron, IIAB with 2,184 kg mass. The official checker returns Navajo as Official, and the detail page confirms the exact name, state, iron identity, mass, and coordinates. The official 1921 year differs from the source's Found 1922, and the source's historical classification and 2,188 kg total are preserved."
+      }
+    },
+    {
+      "id": "obs-c3efaff3-b87a-49bd-a1fc-049f8a6907c9",
+      "catalogId": "nininger-1950",
+      "designation": "84a",
+      "name": "Nakhla",
+      "weight": {
+        "grams": 14.5
+      },
+      "classification": "Stone. Nakhlite (diopside-olivine-achondrite)",
+      "locality": "Abu Hommos, Alexandria, Egypt",
+      "year": "1911",
+      "catalogPage": 76,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Nakhla",
+        "meteoriteCode": "16898",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16898",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official Nakhla as code 16898, a 1911 Egyptian Martian nakhlite fall. The official checker returns Nakhla as Official, and the detail page confirms the exact name, fall year, country, nakhlite identity, printed coordinates, and Abdel Malek and El Nakhla el Baharia synonyms. The official 10 kg mass differs from the source's 40 kg total, which is preserved."
+      }
+    },
+    {
       "id": "obs-bd73d222-c8b1-457c-9d92-2679115f46fe",
       "catalogId": "nininger-1950",
       "designation": "85.1",
@@ -25862,6 +25905,237 @@
         "meteoriteCode": "4901",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4901",
         "alternateNameNote": "The source coordinates are 36° 16′ N., 105° 4′ W.; MetBull recommends 36° 20′ N., 105° 3′ W. The source generic Chondrite classification corresponds to modern H4."
+      }
+    },
+    {
+      "id": "obs-82be29ce-a3cb-4e63-abec-18ba1eae9f87",
+      "catalogId": "nininger-1950",
+      "designation": "86a",
+      "name": "Nejed",
+      "weight": {
+        "grams": 30
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Wadee Banee Khaled, Central Arabia",
+      "year": "1863",
+      "catalogPage": 76,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Wabar",
+        "meteoriteCode": "24194",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24194",
+        "alternateNameNote": "The checker treats Nejed as a partial name because Nejed (no. 2) also exists, but the official exact-name result identifies Nejed as a Wabar synonym. The verified local CSV and Wabar detail page confirm code 24194, explicitly list Nejed and Wadee Banee Khaled as synonyms, and give the same 1863 year and an Iron, IIIAB identity. The source's 121.8 kg total differs from the official 2.55 tonne mass and is preserved."
+      }
+    },
+    {
+      "id": "obs-9ec270fb-9c1d-4f6d-892e-034bc25e64f7",
+      "catalogId": "nininger-1950",
+      "designation": "86b",
+      "name": "Nejed",
+      "weight": {
+        "grams": 177
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Wadee Banee Khaled, Central Arabia",
+      "year": "1863",
+      "catalogPage": 76,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Wabar",
+        "meteoriteCode": "24194",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24194",
+        "alternateNameNote": "The checker treats Nejed as a partial name because Nejed (no. 2) also exists, but the official exact-name result identifies Nejed as a Wabar synonym. The verified local CSV and Wabar detail page confirm code 24194, explicitly list Nejed and Wadee Banee Khaled as synonyms, and give the same 1863 year and an Iron, IIIAB identity. The source's 121.8 kg total differs from the official 2.55 tonne mass and is preserved."
+      }
+    },
+    {
+      "id": "obs-f7bf8d26-da43-4bcf-9a7a-922ffd156424",
+      "catalogId": "nininger-1950",
+      "designation": "87b",
+      "name": "Ness County",
+      "weight": {
+        "grams": 128
+      },
+      "classification": "Stone. Crystalline chondrite",
+      "locality": "Kansas",
+      "year": "1894",
+      "catalogPage": 76,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Ness County (1894)",
+        "meteoriteCode": "16946",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16946",
+        "alternateNameNote": "The checker treats bare Ness County as a partial name with three candidates. The verified local CSV and code 16946 detail page identify Official Ness County (1894); the source's 1894 year and its Ness City and Kansada synonyms select that record over the 1938 and (c) records. The detail page confirms those synonyms and a Kansas L6 identity. The official 82 kg mass differs from the source's 36 kg total and is preserved."
+      }
+    },
+    {
+      "id": "obs-1055c371-229d-4250-afec-fa726fa59fad",
+      "catalogId": "nininger-1950",
+      "designation": "87a",
+      "name": "Ness County",
+      "weight": {
+        "grams": 1147
+      },
+      "classification": "Stone. Crystalline chondrite",
+      "locality": "Kansas",
+      "year": "1894",
+      "catalogPage": 76,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Ness County (1894)",
+        "meteoriteCode": "16946",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16946",
+        "alternateNameNote": "The checker treats bare Ness County as a partial name with three candidates. The verified local CSV and code 16946 detail page identify Official Ness County (1894); the source's 1894 year and its Ness City and Kansada synonyms select that record over the 1938 and (c) records. The detail page confirms those synonyms and a Kansas L6 identity. The official 82 kg mass differs from the source's 36 kg total and is preserved."
+      }
+    },
+    {
+      "id": "obs-3c9f0f1a-6ac9-4a28-8d97-fc2cec03555e",
+      "catalogId": "nininger-1950",
+      "designation": "87.7",
+      "name": "Ness County",
+      "weight": {
+        "grams": 2365
+      },
+      "classification": "Stone. Crystalline chondrite",
+      "locality": "Kansas",
+      "year": "1894",
+      "catalogPage": 76,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Ness County (1894)",
+        "meteoriteCode": "16946",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16946",
+        "alternateNameNote": "The checker treats bare Ness County as a partial name with three candidates. The verified local CSV and code 16946 detail page identify Official Ness County (1894); the source's 1894 year and its Ness City and Kansada synonyms select that record over the 1938 and (c) records. The detail page confirms those synonyms and a Kansas L6 identity. The official 82 kg mass differs from the source's 36 kg total and is preserved."
+      }
+    },
+    {
+      "id": "obs-6f7bffd3-7d44-45d9-87c6-1965e1313cee",
+      "catalogId": "nininger-1950",
+      "designation": "87.8",
+      "name": "Ness County",
+      "weight": {
+        "grams": 1497
+      },
+      "classification": "Stone. Crystalline chondrite",
+      "locality": "Kansas",
+      "year": "1894",
+      "catalogPage": 76,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Ness County (1894)",
+        "meteoriteCode": "16946",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16946",
+        "alternateNameNote": "The checker treats bare Ness County as a partial name with three candidates. The verified local CSV and code 16946 detail page identify Official Ness County (1894); the source's 1894 year and its Ness City and Kansada synonyms select that record over the 1938 and (c) records. The detail page confirms those synonyms and a Kansas L6 identity. The official 82 kg mass differs from the source's 36 kg total and is preserved."
+      }
+    },
+    {
+      "id": "obs-a8d7b531-62de-4571-9a7a-76e586203f46",
+      "catalogId": "nininger-1950",
+      "designation": "87.9",
+      "name": "Ness County",
+      "weight": {
+        "grams": 1345
+      },
+      "classification": "Stone. Crystalline chondrite",
+      "locality": "Kansas",
+      "year": "1894",
+      "catalogPage": 76,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Ness County (1894)",
+        "meteoriteCode": "16946",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16946",
+        "alternateNameNote": "The checker treats bare Ness County as a partial name with three candidates. The verified local CSV and code 16946 detail page identify Official Ness County (1894); the source's 1894 year and its Ness City and Kansada synonyms select that record over the 1938 and (c) records. The detail page confirms those synonyms and a Kansas L6 identity. The official 82 kg mass differs from the source's 36 kg total and is preserved."
+      }
+    },
+    {
+      "id": "obs-2f1af53f-4173-4a72-9125-7d361a6ef3a0",
+      "catalogId": "nininger-1950",
+      "designation": "87.12",
+      "name": "Ness County",
+      "weight": {
+        "grams": 628
+      },
+      "classification": "Stone. Crystalline chondrite",
+      "locality": "Kansas",
+      "year": "1894",
+      "catalogPage": 76,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Ness County (1894)",
+        "meteoriteCode": "16946",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16946",
+        "alternateNameNote": "The checker treats bare Ness County as a partial name with three candidates. The verified local CSV and code 16946 detail page identify Official Ness County (1894); the source's 1894 year and its Ness City and Kansada synonyms select that record over the 1938 and (c) records. The detail page confirms those synonyms and a Kansas L6 identity. The official 82 kg mass differs from the source's 36 kg total and is preserved."
+      }
+    },
+    {
+      "id": "obs-27581ec3-4f85-45a1-ab77-50f4d55413fd",
+      "catalogId": "nininger-1950",
+      "designation": "112c",
+      "name": "Nativitas",
+      "weight": {
+        "grams": 18
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Tlaxcala, Santa Apolonia, Mexico",
+      "year": "1904",
+      "catalogPage": 76,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Santa Apolonia",
+        "meteoriteCode": "23160",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23160",
+        "alternateNameNote": "The official checker explicitly identifies Nativitas as a synonym of Santa Apolonia. The verified local CSV and code 23160 detail page identify Official Santa Apolonia and confirm Nativitas as a synonym, the Tlaxcala coordinates, Iron, IIIAB identity, and 1,316 kg mass. The official 1872 year conflicts with the source's Found 1904, and the source's 1,315 kg total is preserved."
+      }
+    },
+    {
+      "id": "obs-0c453f94-bdcb-47b7-96f9-30399d757ddb",
+      "catalogId": "nininger-1950",
+      "designation": "112b",
+      "name": "Nativitas",
+      "weight": {
+        "grams": 7474
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Tlaxcala, Santa Apolonia, Mexico",
+      "year": "1904",
+      "catalogPage": 76,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Santa Apolonia",
+        "meteoriteCode": "23160",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23160",
+        "alternateNameNote": "The official checker explicitly identifies Nativitas as a synonym of Santa Apolonia. The verified local CSV and code 23160 detail page identify Official Santa Apolonia and confirm Nativitas as a synonym, the Tlaxcala coordinates, Iron, IIIAB identity, and 1,316 kg mass. The official 1872 year conflicts with the source's Found 1904, and the source's 1,315 kg total is preserved."
+      }
+    },
+    {
+      "id": "obs-6303071e-2851-4681-9d8b-e0c86c0eb484",
+      "catalogId": "nininger-1950",
+      "designation": "112.5",
+      "name": "Nativitas",
+      "weight": {
+        "grams": 3397
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Tlaxcala, Santa Apolonia, Mexico",
+      "year": "1904",
+      "catalogPage": 76,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Santa Apolonia",
+        "meteoriteCode": "23160",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23160",
+        "alternateNameNote": "The official checker explicitly identifies Nativitas as a synonym of Santa Apolonia. The verified local CSV and code 23160 detail page identify Official Santa Apolonia and confirm Nativitas as a synonym, the Tlaxcala coordinates, Iron, IIIAB identity, and 1,316 kg mass. The official 1872 year conflicts with the source's Found 1904, and the source's 1,315 kg total is preserved."
       }
     },
     {
@@ -29432,6 +29706,27 @@
         "meteoriteCode": "16750",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16750",
         "alternateNameNote": "The verified local CSV identifies exact Official Morristown, code 16750, a Tennessee Mesosiderite-A3 found in 1887 with 16.3 kg mass. The official checker returns the exact name as Official, and the detail page confirms the identity and lists East Tennessee, Hamblen County, and Safford Meteorite as synonyms. The source's 16.4 kg total is preserved."
+      }
+    },
+    {
+      "id": "obs-caa04775-ab82-4df4-b486-08bb24a17c54",
+      "catalogId": "nininger-1950",
+      "designation": "206a",
+      "name": "Nashville",
+      "weight": {
+        "grams": 266
+      },
+      "classification": "Iron. Octahedrite",
+      "locality": "Nashville County, North Carolina",
+      "year": "before 1934",
+      "catalogPage": 76,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Nashville (iron)",
+        "meteoriteCode": "16920",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16920",
+        "alternateNameNote": "The checker treats bare Nashville as a partial name with two candidates. The verified local CSV and code 16920 detail page identify Official Nashville (iron); its North Carolina locality, iron identity, 18 kg mass, and 1934 date distinguish it from Nashville (stone). The source's qualified Known before 1934 wording and historical octahedrite description are preserved."
       }
     },
     {
@@ -34454,6 +34749,27 @@
       }
     },
     {
+      "id": "obs-bceb7e0f-0264-4b1c-9607-0ea85dfbf3af",
+      "catalogId": "nininger-1950",
+      "designation": "451.1b",
+      "name": "McLean",
+      "weight": {
+        "grams": 1585
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Gray County, Texas; 35° 14′ N., 100° 36′ W.",
+      "year": "1939",
+      "catalogPage": 76,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "McLean",
+        "meteoriteCode": "15464",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15464",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official McLean as code 15464, a Texas H6 found in 1939 with 4.3 kg mass at the printed coordinates. The official checker returns McLean as Official, and the detail page confirms the exact name, year, state, classification, mass, and 35° 14′ N., 100° 36′ W. coordinates."
+      }
+    },
+    {
       "id": "obs-26fdf3ce-645b-4f5a-86e7-fb3bc1a0783b",
       "catalogId": "nininger-1950",
       "designation": "452.1",
@@ -35522,6 +35838,27 @@
         "meteoriteCode": "12217",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12217",
         "alternateNameNote": "The source prints no weight for Kaalijarv 498.2; none is inferred. Kaalijarv remains exact official code 12217."
+      }
+    },
+    {
+      "id": "obs-5d23545f-5fa0-465e-839e-314fa80c6e27",
+      "catalogId": "nininger-1950",
+      "designation": "499.1",
+      "name": "Nashville",
+      "weight": {
+        "grams": 2
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Kingman County, Kansas; 37° 27′ N., 98° 25′ W.",
+      "year": "1938",
+      "catalogPage": 76,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Nashville (stone)",
+        "meteoriteCode": "16921",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16921",
+        "alternateNameNote": "The checker treats bare Nashville as a partial name with two candidates. The verified local CSV and code 16921 detail page identify Official Nashville (stone); its Kansas locality, L6 stone identity, 25 kg mass, and exact printed coordinates distinguish it from Nashville (iron). The official 1939 year differs from the source's Recognized 1938 and is not substituted."
       }
     },
     {
@@ -61100,6 +61437,27 @@
         "meteoriteCode": "30371",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=30371",
         "alternateNameNote": "The official checker and detail page identify Myersville (a) as a synonym of Yorktown (Texas); the source also prints Yorktown and De Witt County."
+      }
+    },
+    {
+      "id": "obs-12f21dec-72f2-4e77-88e0-217f553aba45",
+      "catalogId": "nininger-1950",
+      "designation": null,
+      "name": "Nativitas",
+      "weight": {
+        "grams": 400
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Tlaxcala, Santa Apolonia, Mexico",
+      "year": "1904",
+      "catalogPage": 76,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Santa Apolonia",
+        "meteoriteCode": "23160",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23160",
+        "alternateNameNote": "The official checker explicitly identifies Nativitas as a synonym of Santa Apolonia. The verified local CSV and code 23160 detail page identify Official Santa Apolonia and confirm Nativitas as a synonym, the Tlaxcala coordinates, Iron, IIIAB identity, and 1,316 kg mass. The official 1872 year conflicts with the source's Found 1904, and the source's 1,315 kg total is preserved."
       }
     },
     {
