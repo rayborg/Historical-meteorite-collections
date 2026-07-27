@@ -364,14 +364,15 @@
           57,
           58,
           59,
-          60
+          60,
+          61
         ],
-        "sourcePageCount": 35,
-        "recordCount": 789,
-        "recordsWithDesignation": 784,
-        "recordsWithWeight": 740,
+        "sourcePageCount": 36,
+        "recordCount": 841,
+        "recordsWithDesignation": 821,
+        "recordsWithWeight": 784,
         "confidenceCounts": {
-          "high": 789,
+          "high": 841,
           "medium": 0,
           "low": 0
         },
@@ -379,11 +380,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2701,
-    "recordsWithDesignation": 2527,
-    "recordsWithWeight": 2524,
+    "recordCount": 2753,
+    "recordsWithDesignation": 2564,
+    "recordsWithWeight": 2568,
     "confidenceCounts": {
-      "high": 2701,
+      "high": 2753,
       "medium": 0,
       "low": 0
     }
@@ -24086,6 +24087,741 @@
       }
     },
     {
+      "id": "obs-11e19d6d-1183-4cf6-98b1-2f41d2d5b2d6",
+      "catalogId": "nininger-1950",
+      "designation": "57.108",
+      "name": "Holbrook",
+      "weight": {
+        "grams": 10.5
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-c33a4a34-0526-49e5-a897-aeb25f87483c",
+      "catalogId": "nininger-1950",
+      "designation": "57.109",
+      "name": "Holbrook",
+      "weight": {
+        "grams": 10.9
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-76e885bc-6f48-4112-9e33-d55412db12a2",
+      "catalogId": "nininger-1950",
+      "designation": "57.110",
+      "name": "Holbrook",
+      "weight": {
+        "grams": 13.2
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-213a71d0-d9bd-48c1-88cd-127207353651",
+      "catalogId": "nininger-1950",
+      "designation": "57.111",
+      "name": "Holbrook",
+      "weight": {
+        "grams": 10.4
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-1358d73b-05a8-4374-b3d7-ad8cf2c8cc10",
+      "catalogId": "nininger-1950",
+      "designation": "57.112",
+      "name": "Holbrook",
+      "weight": {
+        "grams": 8.9
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-68f92d8e-5b3b-4388-80f4-054b998d882a",
+      "catalogId": "nininger-1950",
+      "designation": "57.113",
+      "name": "Holbrook",
+      "weight": {
+        "grams": 8.1
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-f2a0cd7d-d678-4307-a9aa-b217c584f475",
+      "catalogId": "nininger-1950",
+      "designation": "57.114",
+      "name": "Holbrook",
+      "weight": {
+        "grams": 7.8
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-0c00d81e-de3b-43af-a89b-591333991ca5",
+      "catalogId": "nininger-1950",
+      "designation": "57.115",
+      "name": "Holbrook",
+      "weight": {
+        "grams": 8.8
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-80da7e81-9d45-4fca-98b4-5eebf58e431f",
+      "catalogId": "nininger-1950",
+      "designation": "57.116",
+      "name": "Holbrook",
+      "weight": {
+        "grams": 10
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-6eaaf2b7-4759-40d9-8b38-c9142ef450da",
+      "catalogId": "nininger-1950",
+      "designation": "57.117",
+      "name": "Holbrook",
+      "weight": {
+        "grams": 11
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-e0f8c3bd-0638-4d64-9c3a-66df57944fc1",
+      "catalogId": "nininger-1950",
+      "designation": "57.118",
+      "name": "Holbrook",
+      "weight": {
+        "grams": 7.4
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-fa4b9ef5-cc93-4a9c-a22f-1a3a00808a8e",
+      "catalogId": "nininger-1950",
+      "designation": "57.119",
+      "name": "Holbrook",
+      "weight": {
+        "grams": 6
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-647aca88-b480-489f-9689-af2cfb37c089",
+      "catalogId": "nininger-1950",
+      "designation": "57.120",
+      "name": "Holbrook",
+      "weight": {
+        "grams": 7.3
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-972ac401-813f-4165-aec4-a1b96908d338",
+      "catalogId": "nininger-1950",
+      "designation": "57.121",
+      "name": "Holbrook",
+      "weight": {
+        "grams": 12.6
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-ccb0d68b-8be0-4b9a-b28b-f6c665680c4d",
+      "catalogId": "nininger-1950",
+      "designation": "57.122",
+      "name": "Holbrook",
+      "weight": {
+        "grams": 7.3
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-b4e5a239-da33-47e0-af6d-d4768ab594af",
+      "catalogId": "nininger-1950",
+      "designation": "57.123",
+      "name": "Holbrook",
+      "weight": {
+        "grams": 14.4
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-f4490d72-f533-40ef-ae55-395f34722ece",
+      "catalogId": "nininger-1950",
+      "designation": "57.124",
+      "name": "Holbrook",
+      "weight": {
+        "grams": 11.7
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-0683db72-3c8a-44b2-be48-569da644432c",
+      "catalogId": "nininger-1950",
+      "designation": "57.125",
+      "name": "Holbrook",
+      "weight": {
+        "grams": 10.4
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-d80ac50c-0a64-48c4-9d86-cc1bbb6f2719",
+      "catalogId": "nininger-1950",
+      "designation": "57.126",
+      "name": "Holbrook",
+      "weight": {
+        "grams": 6.9
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-70e504d2-eee0-4b99-b8b8-4e3d8b42e1e0",
+      "catalogId": "nininger-1950",
+      "designation": "57.127",
+      "name": "Holbrook",
+      "weight": {
+        "grams": 11.4
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-cdd6a0e8-e8e3-440a-9270-60ba40d29d76",
+      "catalogId": "nininger-1950",
+      "designation": "57.128",
+      "name": "Holbrook",
+      "weight": {
+        "grams": 15
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-c15fd519-d11d-4aca-b1ec-391c2fe4b6eb",
+      "catalogId": "nininger-1950",
+      "designation": "57.129",
+      "name": "Holbrook",
+      "weight": {
+        "grams": 14.5
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-1fc9cff2-dc27-4c64-ad2a-03de3c03410a",
+      "catalogId": "nininger-1950",
+      "designation": "57.130",
+      "name": "Holbrook",
+      "weight": {
+        "grams": 11.1
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-ec1affa3-0cc1-4575-87d4-9eb93ac3fd5d",
+      "catalogId": "nininger-1950",
+      "designation": "57.131",
+      "name": "Holbrook",
+      "weight": {
+        "grams": 11.2
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-23fe7931-074e-4039-b124-9ce5350d71cf",
+      "catalogId": "nininger-1950",
+      "designation": "57.132",
+      "name": "Holbrook",
+      "weight": {
+        "grams": 9.5
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-50a03fbd-ab65-4b28-8a43-975d72172663",
+      "catalogId": "nininger-1950",
+      "designation": "57.133",
+      "name": "Holbrook",
+      "weight": {
+        "grams": 6.3
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-7755bb63-977e-43ae-8ebd-d6da60707bd1",
+      "catalogId": "nininger-1950",
+      "designation": "57.134",
+      "name": "Holbrook",
+      "weight": {
+        "grams": 10
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-e055ced5-45d9-46b0-9a29-4287f4fc979b",
+      "catalogId": "nininger-1950",
+      "designation": "57.135",
+      "name": "Holbrook",
+      "weight": {
+        "grams": 7.8
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-9fbb72f8-863a-425f-bd8e-4e52d5c06a92",
+      "catalogId": "nininger-1950",
+      "designation": "57.136",
+      "name": "Holbrook",
+      "weight": {
+        "grams": 12.2
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-2c94d845-29d4-43ba-9648-b514b47a6389",
+      "catalogId": "nininger-1950",
+      "designation": "57.137",
+      "name": "Holbrook",
+      "weight": {
+        "grams": 7
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-371b4238-3fed-4c4d-8cad-e5cd9e477db7",
+      "catalogId": "nininger-1950",
+      "designation": "57.138",
+      "name": "Holbrook",
+      "weight": {
+        "grams": 12.2
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-6ed50d28-c5de-45d4-806b-1b0fb13983b9",
+      "catalogId": "nininger-1950",
+      "designation": "57.139",
+      "name": "Holbrook",
+      "weight": {
+        "grams": 9.2
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-50f37f26-16ee-4353-8a81-89b64f0e083f",
+      "catalogId": "nininger-1950",
+      "designation": "57.140",
+      "name": "Holbrook",
+      "weight": {
+        "grams": 6.5
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-f10ea4ef-77fb-4a1f-b55b-fe3dcabf41e2",
+      "catalogId": "nininger-1950",
+      "designation": "57.141",
+      "name": "Holbrook",
+      "weight": {
+        "grams": 5.9
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-6e9be42b-a07c-4769-86bf-98871525cfdf",
+      "catalogId": "nininger-1950",
+      "designation": "57.146",
+      "name": "Holbrook",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The source prints no weight for Holbrook 57.146; none is inferred. Holbrook remains exact official code 11894."
+      }
+    },
+    {
       "id": "obs-1096b1eb-9540-4edb-bb51-95b574b07564",
       "catalogId": "nininger-1950",
       "designation": "60a",
@@ -29732,6 +30468,48 @@
         "meteoriteCode": "5022",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5022",
         "alternateNameNote": "The South Dakota context and 89 kg mass agree. Source year 1935 differs from MetBull year 1934; MetBull also reproduces a correction from Coarse octahedrite to Hexahedrite and recommends Iron, IIAB."
+      }
+    },
+    {
+      "id": "obs-50b81329-3a45-4046-9ff1-4cfc4fb45e84",
+      "catalogId": "nininger-1950",
+      "designation": "380.3",
+      "name": "Holly",
+      "weight": {
+        "grams": 113.7
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Prowers County, Colorado; 38° 4′ N., 102° 7′ W.",
+      "year": "1937",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holly",
+        "meteoriteCode": "11898",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11898",
+        "alternateNameNote": "The verified local MetBull CSV identifies Official Holly as code 11898, found 1937 in Colorado at 38° 4′ N., 102° 6′ W., with H4 classification and 299 gram mass. The official exact-name checker returns Holly as Official, and the detail page confirms the exact name, 1937 Colorado find, H4 identity, 299 gram mass, and those coordinates. The source's longitude of 102° 7′ W. and total of 299.2 grams are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-ab2edf56-8396-4673-95a1-16d368f03f6b",
+      "catalogId": "nininger-1950",
+      "designation": "380.4",
+      "name": "Holly",
+      "weight": {
+        "grams": 92.1
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Prowers County, Colorado; 38° 4′ N., 102° 7′ W.",
+      "year": "1937",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holly",
+        "meteoriteCode": "11898",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11898",
+        "alternateNameNote": "The verified local MetBull CSV identifies Official Holly as code 11898, found 1937 in Colorado at 38° 4′ N., 102° 6′ W., with H4 classification and 299 gram mass. The official exact-name checker returns Holly as Official, and the detail page confirms the exact name, 1937 Colorado find, H4 identity, 299 gram mass, and those coordinates. The source's longitude of 102° 7′ W. and total of 299.2 grams are preserved without reconciliation."
       }
     },
     {
@@ -56405,6 +57183,48 @@
       }
     },
     {
+      "id": "obs-fe471b1c-f10d-4e11-b3d7-4fbf20a599ad",
+      "catalogId": "nininger-1950",
+      "designation": null,
+      "name": "Holbrook",
+      "weight": {
+        "grams": 21.5
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-882b4ab7-b7a8-400f-ae98-62e7df24f9a2",
+      "catalogId": "nininger-1950",
+      "designation": null,
+      "name": "Holbrook",
+      "weight": {
+        "grams": 31
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
       "id": "obs-1a631b8c-5e57-46ab-8f53-356fc3970f72",
       "catalogId": "huss-1986",
       "designation": null,
@@ -56423,6 +57243,279 @@
         "meteoriteCode": "11894",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-cad87eaf-f3db-4638-86e0-7579400181e6",
+      "catalogId": "nininger-1950",
+      "designation": null,
+      "name": "Holbrook",
+      "weight": {
+        "grams": 44
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-f39840a0-c7f2-4a19-8b53-2c9c33c0408c",
+      "catalogId": "nininger-1950",
+      "designation": null,
+      "name": "Holbrook",
+      "weight": {
+        "grams": 52
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-b25bd858-1362-4719-beee-b65fdcccfb5b",
+      "catalogId": "nininger-1950",
+      "designation": null,
+      "name": "Holbrook",
+      "weight": {
+        "grams": 90
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-4c4d3f16-6bec-4735-bace-66ac32511930",
+      "catalogId": "nininger-1950",
+      "designation": null,
+      "name": "Holbrook",
+      "weight": {
+        "grams": 155
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-721c54b5-ac7b-4857-91e5-82a7064dfb9e",
+      "catalogId": "nininger-1950",
+      "designation": null,
+      "name": "Holbrook",
+      "weight": {
+        "grams": 285
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-90155a1e-f71b-4225-a6f5-64d813e1ff0b",
+      "catalogId": "nininger-1950",
+      "designation": null,
+      "name": "Holbrook",
+      "weight": {
+        "grams": 1599
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The adjacent reviewed heading establishes Holbrook. The verified local MetBull CSV identifies Official Holbrook as code 11894, a 1912 Arizona fall with L/LL6 classification and 220 kg mass. The official exact-name checker returns Holbrook as Official, and the detail page confirms the exact name, 1912 fall, Arizona identity, 220 kg mass, and Aztec synonym. The source's printed 235 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-14afb8b4-e252-445c-b2bf-8a06cb785d33",
+      "catalogId": "nininger-1950",
+      "designation": null,
+      "name": "Holbrook",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The source prints no designation or weight for this Holbrook aggregate; neither is inferred. Holbrook remains exact official code 11894."
+      }
+    },
+    {
+      "id": "obs-3a6b64c7-75a8-4947-bda5-231522b6b306",
+      "catalogId": "nininger-1950",
+      "designation": null,
+      "name": "Holbrook",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The source prints no designation or gram weight for this Holbrook tray aggregate; neither is inferred. Holbrook remains exact official code 11894."
+      }
+    },
+    {
+      "id": "obs-3ff2edd5-4784-4695-844b-171edce09292",
+      "catalogId": "nininger-1950",
+      "designation": null,
+      "name": "Holbrook",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The source prints no designation or gram weight for this Holbrook tray aggregate; neither is inferred. Holbrook remains exact official code 11894."
+      }
+    },
+    {
+      "id": "obs-4f2b347b-687b-47d9-8970-0b0415139752",
+      "catalogId": "nininger-1950",
+      "designation": null,
+      "name": "Holbrook",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The source prints no designation or gram weight for this Holbrook tray aggregate; neither is inferred. Holbrook remains exact official code 11894."
+      }
+    },
+    {
+      "id": "obs-5e4b26af-093f-4366-9ec5-1cb90ff06e13",
+      "catalogId": "nininger-1950",
+      "designation": null,
+      "name": "Holbrook",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The source prints no designation or gram weight for this Holbrook aggregate; neither is inferred. Holbrook remains exact official code 11894."
+      }
+    },
+    {
+      "id": "obs-a7b93b90-0903-46fd-ace0-778bab759698",
+      "catalogId": "nininger-1950",
+      "designation": null,
+      "name": "Holbrook",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The source prints no designation or gram weight for this Holbrook glass-jar aggregate; neither is inferred. Holbrook remains exact official code 11894."
+      }
+    },
+    {
+      "id": "obs-eac39465-e9cc-4187-b81c-2f68c4a4cb61",
+      "catalogId": "nininger-1950",
+      "designation": null,
+      "name": "Holbrook",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Navajo County, Arizona",
+      "year": "1912",
+      "catalogPage": 61,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Holbrook",
+        "meteoriteCode": "11894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11894",
+        "alternateNameNote": "The source prints no designation or gram weight for this Holbrook tray aggregate; neither is inferred. Holbrook remains exact official code 11894."
       }
     },
     {

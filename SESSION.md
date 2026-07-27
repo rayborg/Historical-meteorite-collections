@@ -9,7 +9,7 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 ## Current State
 
 <!-- release-summary:session-current-state:start -->
-- Schema 6 contains 2,701 facts-only records across 8 catalogs.
+- Schema 6 contains 2,753 facts-only records across 8 catalogs.
 
 | `catalogId` | Record model | Records | Metadata source pages | Pages cited by records |
 | --- | --- | ---: | ---: | ---: |
@@ -20,14 +20,14 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 | `huss-1986` | `specimen` | 544 | 21 | 21 |
 | `lucas-1813` | `collection-entry` | 13 | 3 | 3 |
 | `nininger-1933` | `catalog-item` | 136 | 18 | 9 |
-| `nininger-1950` | `specimen` | 789 | 35 | 35 |
-| **Total** |  | **2,701** | **183** | **166** |
+| `nininger-1950` | `specimen` | 841 | 36 | 36 |
+| **Total** |  | **2,753** | **184** | **167** |
 
-- Metadata covers 183 catalog-scoped source pages; records cite 166 of them.
-- Nininger coverage is derived without page-boundary assumptions: `nininger-1933` has 136 records; its metadata source pages span 1-20, and its record citations span 1-11. `nininger-1950` has 789 records; its metadata source pages span 26-60, and its record citations span 26-60.
+- Metadata covers 184 catalog-scoped source pages; records cite 167 of them.
+- Nininger coverage is derived without page-boundary assumptions: `nininger-1933` has 136 records; its metadata source pages span 1-20, and its record citations span 1-11. `nininger-1950` has 841 records; its metadata source pages span 26-61, and its record citations span 26-61.
 - Public folios use schema 2 and expose 41 display pages across 4 catalogs: `chladni-1819` (12 pages, `public-domain`); `hovey-1896` (7 pages, `public-domain`); `lucas-1813` (3 pages, `public-domain`); `nininger-1933` (19 pages, `no-copyright-us`).
 - Blocked folio catalogs are: `chladni-1825` (0 pages, `undetermined`); `huss-1976` (0 pages, `undetermined`); `huss-1986` (0 pages, `undetermined`); `nininger-1950` (0 pages, `undetermined`).
-- Reviewed MetBull harmonization covers 2,701 of 2,701 records: 2,604 resolved and 97 explicitly unresolved.
+- Reviewed MetBull harmonization covers 2,753 of 2,753 records: 2,656 resolved and 97 explicitly unresolved.
 - Records currently having a null `name` value: 7.
 <!-- release-summary:session-current-state:end -->
 
