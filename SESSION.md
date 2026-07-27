@@ -8,21 +8,33 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 
 ## Current State
 
-- Schema 6 contains 2,034 facts-only records across eight catalogs:
-  - Lucas 1813: 13 `collection-entry` records.
-  - Chladni 1819: 74 `collection-entry` records.
-  - Chladni 1825: 42 `collection-entry` records.
-  - Hovey 1896: 25 `catalog-number` records.
-  - Huss 1976: 1,078 `specimen` records.
-  - Huss 1986: 544 `specimen` records.
-  - Nininger 1933: 136 `catalog-item` records.
-  - Nininger 1950: 122 `specimen` records from printed pages 26-33; page 33 begins Bennett County after Bendego closes on page 32 and closes Bishopville after four designated weighted fragments plus one undesignated, unweighed Small vial of fragments observation, with no boundary continuation.
-- Metadata covers 156 source pages; records cite 139 of them.
-- Public folios use schema 2 and expose 41 display pages: Lucas 1813 has 3 public-domain pages, Chladni 1819 has 12 public-domain pages, Hovey 1896 has 7 public-domain pages from BHL item 335869, and Nininger 1933 has 19 `no-copyright-us` pages.
-- Chladni 1825, Huss 1976, Huss 1986, and Nininger 1950 remain blocked/undetermined for folio display.
-- Nininger 1933 is incomplete: source pages 8-9 and catalog items 106-141 are missing.
-- Reviewed MetBull harmonization covers all 2,034 records: 1,941 resolved and 93 explicitly unresolved. Validated continuation evidence recovers 218 formerly blank source names; seven historical entries genuinely print no separate proper source name and retain null names with unresolved reviews.
-- The runtime suite passes 108 tests. The validator passes all 2,034 records, eight catalogs, and 41 public display pages.
+<!-- release-summary:session-current-state:start -->
+- Schema 6 contains 2,047 facts-only records across 8 catalogs.
+
+| `catalogId` | Record model | Records | Metadata source pages | Pages cited by records |
+| --- | --- | ---: | ---: | ---: |
+| `chladni-1819` | `collection-entry` | 74 | 12 | 12 |
+| `chladni-1825` | `collection-entry` | 42 | 41 | 33 |
+| `hovey-1896` | `catalog-number` | 25 | 7 | 7 |
+| `huss-1976` | `specimen` | 1,078 | 46 | 46 |
+| `huss-1986` | `specimen` | 544 | 21 | 21 |
+| `lucas-1813` | `collection-entry` | 13 | 3 | 3 |
+| `nininger-1933` | `catalog-item` | 136 | 18 | 9 |
+| `nininger-1950` | `specimen` | 135 | 9 | 9 |
+| **Total** |  | **2,047** | **157** | **140** |
+
+- Metadata covers 157 catalog-scoped source pages; records cite 140 of them.
+- Nininger coverage is derived without page-boundary assumptions: `nininger-1933` has 136 records; its metadata source pages span 1-20, and its record citations span 1-11. `nininger-1950` has 135 records; its metadata source pages span 26-34, and its record citations span 26-34.
+- Public folios use schema 2 and expose 41 display pages across 4 catalogs: `chladni-1819` (12 pages, `public-domain`); `hovey-1896` (7 pages, `public-domain`); `lucas-1813` (3 pages, `public-domain`); `nininger-1933` (19 pages, `no-copyright-us`).
+- Blocked folio catalogs are: `chladni-1825` (0 pages, `undetermined`); `huss-1976` (0 pages, `undetermined`); `huss-1986` (0 pages, `undetermined`); `nininger-1950` (0 pages, `undetermined`).
+- Reviewed MetBull harmonization covers 2,047 of 2,047 records: 1,954 resolved and 93 explicitly unresolved.
+- Records currently having a null `name` value: 7.
+<!-- release-summary:session-current-state:end -->
+
+- Chladni 1825 pages 200-207 are introductory folios.
+- Nininger 1933 is incomplete: printed pages 8-9 and catalog items 106-141 are missing, and pages 12-20 are narrative-only.
+- The runtime suite and integrated public validator must pass before release.
+- Validated continuation evidence recovers formerly blank source names where supported, without inferring modern identity. Reviewed historical entries that genuinely print no separate proper source name retain null names and unresolved reviews.
 - `scripts/folio-release-lock.json` pins the reviewed rights evidence, ordered page IDs, and SHA-256 digest of every public folio.
 
 ## Preservation And Data Rules
@@ -39,8 +51,8 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 
 - Public folio access is opt-in through a separate manifest and is never inferred from a source's age or publication year.
 - Each displayed source requires an explicit reviewed rights status, display policy, and safe asset path.
-- Lucas 1813, Chladni 1819, Hovey 1896, and Nininger 1933 are enabled only for the reviewed pages listed above.
-- Chladni 1825 and both Huss catalogs remain facts-only until rights review supports a different policy. Ownership of a physical catalog and absence of a visible notice do not establish public-domain status.
+- Display is enabled only for the reviewed catalogs and pages in the generated current-state summary above.
+- Blocked catalogs remain facts-only until rights review supports a different policy. Ownership of a physical catalog and absence of a visible notice do not establish public-domain status.
 - Validate every release against accidental disclosure of restricted scans, filenames, OCR, notes, and private paths.
 
 ## Provenance Model Direction

@@ -1,6 +1,8 @@
 # Historical Meteorite Collection
 
-This repository is a dependency-free, facts-only index of 2,034 source observations from eight historical meteorite catalogs. The coordinated catalog uses public metadata schema 6 and supports four source-specific record models: `specimen`, `catalog-item`, `catalog-number`, and `collection-entry`.
+<!-- release-summary:readme-overview:start -->
+This repository is a dependency-free, facts-only index of 2,047 source observations from 8 historical meteorite catalogs. The coordinated catalog uses public metadata schema 6 and supports 4 source-specific record models: `catalog-item`, `catalog-number`, `collection-entry`, `specimen`.
+<!-- release-summary:readme-overview:end -->
 
 A searchable transcription of the 1976 Huss Meteorite Collection catalog, compiled and published by Glenn Huss.
 
@@ -21,15 +23,19 @@ Visit `http://localhost:8000/`. No installation or application build is required
 Validate the complete public package with:
 
 ```sh
+node scripts/sync-release-summary.mjs --check
+node --test scripts/sync-release-summary.test.mjs
 node scripts/validate-public-catalog.mjs
 node scripts/test-multicatalog.cjs
 ```
 
 The validator checks both synthetic rejection fixtures and the real catalog, manifest, and folio files. The runtime harness contains 108 tests.
 
+After changing either public data file, run `node scripts/sync-release-summary.mjs --write`; use `--json` to inspect the derived release summary without changing documentation.
+
 ## GitHub Pages
 
-1. Run both validation commands above.
+1. Run all validation commands above.
 2. Push the repository to GitHub; the same checks run in `.github/workflows/validate.yml`.
 3. Open **Settings > Pages**.
 4. Under **Build and deployment**, choose **Deploy from a branch**.
@@ -77,6 +83,7 @@ Its holdings contain exactly `description`, `provenance`, `count`, and `weights`
 
 The current catalog contains:
 
+<!-- release-summary:readme-catalog-table:start -->
 | `catalogId` | Record model | Records | Metadata source pages | Pages cited by records |
 | --- | --- | ---: | ---: | ---: |
 | `chladni-1819` | `collection-entry` | 74 | 12 | 12 |
@@ -86,10 +93,19 @@ The current catalog contains:
 | `huss-1986` | `specimen` | 544 | 21 | 21 |
 | `lucas-1813` | `collection-entry` | 13 | 3 | 3 |
 | `nininger-1933` | `catalog-item` | 136 | 18 | 9 |
-| `nininger-1950` | `specimen` | 122 | 8 | 8 |
-| **Total** |  | **2,034** | **156** | **139** |
+| `nininger-1950` | `specimen` | 135 | 9 | 9 |
+| **Total** |  | **2,047** | **157** | **140** |
+<!-- release-summary:readme-catalog-table:end -->
 
-Metadata source-page coverage is not a claim that every covered page contains a record. Chladni 1825 pages 200-207 are introductory folios; records begin on page 208. The Nininger 1933 source set has a title page and printed pages 1-7 and 10-20. Printed pages 8-9 and catalog items 106-141 are missing. Pages 12-20 are narrative-only and contain no catalog-item observations. The resulting 136 entries form a partial, not complete, digital edition. Nininger 1950 currently covers printed pages 26-33 and 122 specimen observations from Abancay through Bishopville. Page 33 begins Bennett County after Bendego closes on page 32 and closes Bishopville after four designated weighted rows plus one intentional undesignated, unweighed Small vial of fragments observation; page 34 begins Bitburg, so there is no page-33 boundary continuation.
+Metadata source-page coverage is not a claim that every covered page contains a record. Some covered pages are introductory or narrative-only.
+
+Chladni 1825 pages 200-207 are introductory folios. For Nininger 1933, printed pages 8-9 and catalog items 106-141 are missing from the available source set, and pages 12-20 are narrative-only.
+
+<!-- release-summary:readme-nininger-coverage:start -->
+`nininger-1933` has 136 records; its metadata source pages span 1-20, and its record citations span 1-11. `nininger-1950` has 135 records; its metadata source pages span 26-34, and its record citations span 26-34.
+<!-- release-summary:readme-nininger-coverage:end -->
+
+Both Nininger catalogs are partial digital editions. These ranges summarize current metadata and citations without asserting page-boundary continuity.
 
 Records are source observations, not canonical meteorites or physical specimens. Equal names, designations, masses, or page numbers do not merge observations across catalogs. Statistics count each parent record once and sum every reported numeric mass once without multiplying by holding count.
 
@@ -105,7 +121,13 @@ matchType, canonicalName, meteoriteCode, metbullUrl, alternateNameNote
 
 The historical `name`, designation/catalog identifier fields, printed private weight strings, and numeric source weights are never replaced by this object. The website labels the source catalog name and shows a separate linked **Current Meteoritical Bulletin name** only when a reviewed canonical name differs. No client, build, or export path fuzzy-matches names or infers identity.
 
-The current release reviews all 2,034 records: 1,941 have a resolved current identity and 93 remain explicitly unresolved. Validated continuation evidence recovers source names for 218 formerly blank rows. Seven historical entries genuinely print no separate proper source name; they retain null names and unresolved reviews without an inferred modern identity.
+<!-- release-summary:readme-metbull:start -->
+The current release includes reviewed MetBull harmonization for 2,047 of 2,047 records: 1,954 have a resolved current identity and 93 remain explicitly unresolved. 7 records currently have a null `name` value.
+<!-- release-summary:readme-metbull:end -->
+
+Validated continuation evidence recovers formerly blank source names where supported; it does not infer modern identity.
+
+Reviewed historical entries that genuinely print no separate proper source name retain null names and unresolved reviews without an inferred modern identity.
 
 ## Rights-Gated Folios
 
@@ -131,6 +153,7 @@ Any missing, blocked, incomplete, contradictory, malformed, or unsafe value deni
 
 `scripts/folio-release-lock.json` separately pins the reviewed rights basis, exact ordered page IDs, and SHA-256 digest of every public folio. Default validation requires both the generic schema and this release lock to pass; synthetic-only validation remains generic for future reviewed releases.
 
+<!-- release-summary:readme-folio-table:start -->
 | `catalogId` | Policy | Rights status | Public folios |
 | --- | --- | --- | ---: |
 | `chladni-1819` | display | public-domain | 12 |
@@ -142,12 +165,17 @@ Any missing, blocked, incomplete, contradictory, malformed, or unsafe value deni
 | `nininger-1933` | display | no-copyright-us | 19 |
 | `nininger-1950` | blocked | undetermined | 0 |
 | **Total** |  |  | **41** |
+<!-- release-summary:readme-folio-table:end -->
 
 Hovey folios use the exact Smithsonian-contributed volume at [Biodiversity Heritage Library item 335869](https://www.biodiversitylibrary.org/item/335869), whose metadata marks the volume public domain. Nininger display is based on a documented search that found no renewal for the exact 1933 offprint; its status is specific to United States copyright review and is not a general ownership claim.
 
 ## Private Material
 
-Raw OCR, verbatim notes, uncertainty details, source filenames, private record page IDs, dedicated display-weight and `weightText` fields, acquisition files, unreviewed scans, and private derivative manifests are excluded from `catalog.json`. Independently structured factual description prose may retain source-reported historical mass statements. Reviewed folio `pageId` values are intentionally public in `folios.json`, and the public repository contains only the 41 selected, manifest-verified folio derivatives under `assets/folios/`.
+Raw OCR, verbatim notes, uncertainty details, source filenames, private record page IDs, dedicated display-weight and `weightText` fields, acquisition files, unreviewed scans, and private derivative manifests are excluded from `catalog.json`. Independently structured factual description prose may retain source-reported historical mass statements.
+
+<!-- release-summary:readme-public-folios:start -->
+Reviewed folio `pageId` values are intentionally public in `folios.json`, and the public repository contains only the 41 selected, manifest-verified folio derivatives under `assets/folios/`.
+<!-- release-summary:readme-public-folios:end -->
 
 The public client has no fallback loader for private data. If `catalog.json` is missing or invalid, the interface shows an accessible error state. Failure of the optional folio manifest leaves factual records available without folio controls.
 
@@ -156,7 +184,7 @@ The public client has no fallback loader for private data. If `catalog.json` is 
 - This is an independently structured factual index, not a page-layout transcription or canonical specimen registry.
 - Transcription confidence describes the project transcription, not scientific certainty.
 - Historical names, classifications, localities, dates, and masses may be incomplete, outdated, or erroneous in the source or transcription.
-- Rights reviews are catalog- and copy-specific. Chladni 1825, both Huss catalogs, and Nininger 1950 remain blocked/undetermined.
+- Rights reviews are catalog- and copy-specific; current display policies and statuses are listed in the generated folio table above.
 - Corrections, attribution concerns, and takedown requests may be submitted through GitHub issues.
 
 See [`NOTICE.md`](./NOTICE.md) for attribution and rights information.

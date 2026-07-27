@@ -16,6 +16,16 @@ Runtime schema tests intentionally reject schemas 5, 4, 3, and 2 as well as lega
 
 Folio authorization tests pass the normalized catalog registry to manifest validation, `getAuthorizedFolio`, and `getAuthorizedFolioPages`. They cover matching public-domain policy, blocked policy, malformed manifests, missing or extra catalogs, out-of-range pages, exact `assets/folios/<catalogId>/<pageId>.webp` paths, and independently valid metadata/manifest policies that disagree and therefore deny display.
 
-The validator reports exactly 2 baseline catalog allows, 57 baseline catalog/leakage rejections, 1 model-aware catalog allow, 1 model-ordering/catalog-scope allow, 1 holding-privacy boundary allow, 38 model/holding rejections, 23 catalog-number rejections, 15 collection-entry/schema-6 rejections, 3 MetBull allows, 7 MetBull rejections, 5 folio allows, 51 folio rejections, 2 folio-file allows, and 17 folio-file rejections. Real-release checks additionally lock reviewed rights evidence, ordered page IDs, and all 41 asset hashes.
+The validator reports exactly 2 baseline catalog allows, 57 baseline catalog/leakage rejections, 1 model-aware catalog allow, 1 model-ordering/catalog-scope allow, 1 holding-privacy boundary allow, 38 model/holding rejections, 23 catalog-number rejections, 15 collection-entry/schema-6 rejections, 3 MetBull allows, 7 MetBull rejections, 5 folio allows, 51 folio rejections, 2 folio-file allows, and 17 folio-file rejections.
 
-The runtime harness does not import `data/catalog.json`, so run the integrated validator separately. The default `node scripts/validate-public-catalog.mjs` command reads and passes the real schema-6 `data/catalog.json` and `data/folios.json`: 2,034 records across eight catalogs with 41 displayable folio pages. Real Hovey metadata is `display/public-domain`; Hovey catalog numbers remain searchable but are excluded from `recordsWithDesignation`, matching the descriptor. `--synthetic-only` checks the strict schema-6 fixtures without reading those real files and also passes.
+<!-- release-summary:test-notes-folio-lock:start -->
+Real-release checks additionally lock reviewed rights evidence, ordered page IDs, and all 41 asset hashes.
+<!-- release-summary:test-notes-folio-lock:end -->
+
+The runtime harness does not import `data/catalog.json`, so run the integrated validator separately.
+
+<!-- release-summary:test-notes-real-release:start -->
+The default `node scripts/validate-public-catalog.mjs` command reads and passes the real schema-6 `data/catalog.json` and `data/folios.json`: 2,047 records across 8 catalogs with 41 displayable folio pages.
+<!-- release-summary:test-notes-real-release:end -->
+
+Real Hovey metadata is `display/public-domain`; Hovey catalog numbers remain searchable but are excluded from `recordsWithDesignation`, matching the descriptor. `--synthetic-only` checks the strict schema-6 fixtures without reading those real files and also passes.

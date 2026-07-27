@@ -8,9 +8,19 @@ The current repository edition also indexes *Tableau méthodique des espèces mi
 
 ## Facts-Only Scope
 
-The current repository edition distributes 2,034 structured, facts-only source observations from eight catalogs under metadata schema version 6. It supports four source-specific record models: `specimen`, `catalog-item`, `catalog-number`, and `collection-entry`. Records are source observations rather than canonical meteorites or inferred physical specimens, and `catalogId` identifies each source.
+<!-- release-summary:notice-facts:start -->
+The current repository edition distributes 2,047 structured, facts-only source observations from 8 catalogs under metadata schema version 6. It supports 4 source-specific record models: `catalog-item`, `catalog-number`, `collection-entry`, `specimen`. Records are source observations rather than canonical meteorites or inferred physical specimens, and `catalogId` identifies each source.
+<!-- release-summary:notice-facts:end -->
 
-Metadata covers 156 catalog-scoped source pages, of which 139 are cited by records. Source-page coverage is not a claim that every covered page contains an observation. In particular, Chladni 1825 pages 200-207 are introductory, and Nininger 1933 pages 12-20 are narrative-only; the available Nininger 1933 source set also omits printed pages 8-9 and catalog items 106-141, while Nininger 1950 currently covers only printed pages 26-33, so both digital editions are partial.
+<!-- release-summary:notice-coverage:start -->
+Metadata covers 157 catalog-scoped source pages, of which 140 are cited by records. Source-page coverage is not a claim that every covered page contains an observation. `nininger-1933` has 136 records; its metadata source pages span 1-20, and its record citations span 1-11. `nininger-1950` has 135 records; its metadata source pages span 26-34, and its record citations span 26-34.
+<!-- release-summary:notice-coverage:end -->
+
+Some covered pages are introductory or narrative-only. Both Nininger digital editions are partial, and citation ranges do not assert page-boundary continuity.
+
+Chladni 1825 pages 200-207 are introductory folios. For Nininger 1933, printed pages 8-9 and catalog items 106-141 are missing from the available source set, and pages 12-20 are narrative-only.
+
+Validated continuation evidence recovers formerly blank source names only where supported. Reviewed historical entries that genuinely print no separate proper source name retain null names without an inferred modern identity.
 
 Raw OCR and other private material remain excluded from the public data and repository distribution, including private source scans, source filenames, verbatim notes, private paths, and research or transcription archives. The public repository includes only the separately reviewed folio derivatives described below; their inclusion does not make excluded source or working material public.
 
@@ -18,9 +28,13 @@ Folio display is controlled separately by the schema-version-2 rights manifest. 
 
 ## Rights Status
 
-The repository publicly provides 41 reviewed folio derivatives: 3 Lucas 1813 pages with `public-domain` status; 12 Chladni 1819 pages with `public-domain` status; 7 Hovey 1896 pages with `public-domain` status from Biodiversity Heritage Library item 335869, contributed by Smithsonian Libraries and Archives; and 19 Nininger 1933 pages with `no-copyright-us` status after a documented no-renewal search for the exact 1933 offprint.
+<!-- release-summary:notice-folios:start -->
+The repository publicly provides 41 reviewed folio derivatives: `chladni-1819` (12 pages, `public-domain`); `hovey-1896` (7 pages, `public-domain`); `lucas-1813` (3 pages, `public-domain`); `nininger-1933` (19 pages, `no-copyright-us`).
 
-Chladni 1825, both Huss catalogs, and Nininger 1950 remain `blocked` with `undetermined` rights status and no public folio pages. Their raw scans, OCR, filenames, and other private source material remain excluded.
+Catalogs remaining blocked with undetermined rights and no public folio pages are: `chladni-1825` (0 pages, `undetermined`); `huss-1976` (0 pages, `undetermined`); `huss-1986` (0 pages, `undetermined`); `nininger-1950` (0 pages, `undetermined`).
+<!-- release-summary:notice-folios:end -->
+
+Hovey folios come from Biodiversity Heritage Library item 335869, contributed by Smithsonian Libraries and Archives and marked public domain. Nininger display follows a documented United States no-renewal search for the exact 1933 offprint. Raw scans, OCR, filenames, and other private source material for blocked catalogs remain excluded.
 
 Rights reviews and labels are specific to the reviewed catalog, copy, and jurisdiction. They are not legal advice, do not establish ownership of a source, and do not provide a general license for source material. Facts-only indexing does not resolve rights held by others. Repository code and site styling may have separate authorship and rights, and their presence does not change the rights status of historical source material.
 
