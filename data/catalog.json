@@ -394,14 +394,15 @@
           87,
           88,
           89,
-          90
+          90,
+          91
         ],
-        "sourcePageCount": 65,
-        "recordCount": 1455,
-        "recordsWithDesignation": 1429,
-        "recordsWithWeight": 1390,
+        "sourcePageCount": 66,
+        "recordCount": 1468,
+        "recordsWithDesignation": 1442,
+        "recordsWithWeight": 1403,
         "confidenceCounts": {
-          "high": 1455,
+          "high": 1468,
           "medium": 0,
           "low": 0
         },
@@ -409,11 +410,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 3367,
-    "recordsWithDesignation": 3172,
-    "recordsWithWeight": 3174,
+    "recordCount": 3380,
+    "recordsWithDesignation": 3185,
+    "recordsWithWeight": 3187,
     "confidenceCounts": {
-      "high": 3367,
+      "high": 3380,
       "medium": 0,
       "low": 0
     }
@@ -32264,6 +32265,90 @@
       }
     },
     {
+      "id": "obs-ed9519d9-7f13-4c19-a7b7-192c1a99f55c",
+      "catalogId": "nininger-1950",
+      "designation": "104b",
+      "name": "St. Michel",
+      "weight": {
+        "grams": 97.5
+      },
+      "classification": "Stone. White hypersthene-chondrite",
+      "locality": "Finland",
+      "year": "1910",
+      "catalogPage": 91,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "St. Michel",
+        "meteoriteCode": "23093",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23093",
+        "alternateNameNote": "The verified local CSV identifies Official St. Michel, code 23093. The official checker returns St. Michel as Official, and the detail page confirms the exact name, 1910 Finnish L6 fall, and 17 kg mass. The source’s historical classification is preserved."
+      }
+    },
+    {
+      "id": "obs-7b02de89-2d37-46d5-9956-6c856b599330",
+      "catalogId": "nininger-1950",
+      "designation": "104.3",
+      "name": "St. Michel",
+      "weight": {
+        "grams": 174.3
+      },
+      "classification": "Stone. White hypersthene-chondrite",
+      "locality": "Finland",
+      "year": "1910",
+      "catalogPage": 91,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "St. Michel",
+        "meteoriteCode": "23093",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23093",
+        "alternateNameNote": "The verified local CSV identifies Official St. Michel, code 23093. The official checker returns St. Michel as Official, and the detail page confirms the exact name, 1910 Finnish L6 fall, and 17 kg mass. The source’s historical classification is preserved."
+      }
+    },
+    {
+      "id": "obs-55fb7e6e-084e-480a-9d99-fc6f0b8f9040",
+      "catalogId": "nininger-1950",
+      "designation": "107a",
+      "name": "Saline",
+      "weight": {
+        "grams": 8
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Sheridan County, Kansas",
+      "year": "1898",
+      "catalogPage": 91,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Saline",
+        "meteoriteCode": "23109",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23109",
+        "alternateNameNote": "The verified local CSV identifies Official Saline, code 23109. The official checker returns Saline as Official, and the detail page confirms the exact name, Kansas H5 identity, 30.8 kg mass, and coordinates in Sheridan County. MetBull records a 1901 find, while the source prints a fall on November 15, 1898 and a 30.9 kg total; the source facts and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-fa424e92-5999-4f0c-a8e4-d9d3348bd20d",
+      "catalogId": "nininger-1950",
+      "designation": "107b",
+      "name": "Saline",
+      "weight": {
+        "grams": 302
+      },
+      "classification": "Stone. Crystalline spherical hypersthene-chondrite",
+      "locality": "Sheridan County, Kansas",
+      "year": "1898",
+      "catalogPage": 91,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Saline",
+        "meteoriteCode": "23109",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23109",
+        "alternateNameNote": "The verified local CSV identifies Official Saline, code 23109. The official checker returns Saline as Official, and the detail page confirms the exact name, Kansas H5 identity, 30.8 kg mass, and coordinates in Sheridan County. MetBull records a 1901 find, while the source prints a fall on November 15, 1898 and a 30.9 kg total; the source facts and historical classification are preserved."
+      }
+    },
+    {
       "id": "obs-83eaf757-7867-47ff-a4d6-e08bb56dac7c",
       "catalogId": "nininger-1950",
       "designation": "108b",
@@ -32345,6 +32430,27 @@
         "meteoriteCode": "23160",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23160",
         "alternateNameNote": "The official checker explicitly identifies Nativitas as a synonym of Santa Apolonia. The verified local CSV and code 23160 detail page identify Official Santa Apolonia and confirm Nativitas as a synonym, the Tlaxcala coordinates, Iron, IIIAB identity, and 1,316 kg mass. The official 1872 year conflicts with the source's Found 1904, and the source's 1,315 kg total is preserved."
+      }
+    },
+    {
+      "id": "obs-5f035861-4a5f-4e9e-b5de-1f761667f34f",
+      "catalogId": "nininger-1950",
+      "designation": "114.1",
+      "name": "St. Ann",
+      "weight": {
+        "grams": 373.5
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Frontier County, Nebraska; 40° 27′ N., 100° 45′ W.",
+      "year": "1938",
+      "catalogPage": 91,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "St. Ann",
+        "meteoriteCode": "23079",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23079",
+        "alternateNameNote": "The verified local CSV identifies Official St. Ann, code 23079. The official checker returns St. Ann as Official, and the detail page confirms the exact name, 1938 Nebraska H6 find, 373.5 gram database mass, and exact printed coordinates. The source’s historical generic classification is preserved."
       }
     },
     {
@@ -33146,6 +33252,48 @@
       }
     },
     {
+      "id": "obs-e6581d53-a640-4b0e-a988-46fa7b5a9039",
+      "catalogId": "nininger-1950",
+      "designation": "139b",
+      "name": "St. Genevieve County",
+      "weight": {
+        "grams": 58210
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Missouri",
+      "year": "1888",
+      "catalogPage": 91,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "St. Genevieve County",
+        "meteoriteCode": "23086",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23086",
+        "alternateNameNote": "The verified local CSV identifies Official St. Genevieve County, code 23086. The official checker returns the exact name as Official, and the detail page confirms the 1888 Missouri IIIF iron identity and 244.5 kg mass. The source’s rounded 245 kg total and historical fine-octahedrite classification are preserved."
+      }
+    },
+    {
+      "id": "obs-bc0d4093-3945-411d-a595-1f839d964459",
+      "catalogId": "nininger-1950",
+      "designation": "139.17",
+      "name": "St. Genevieve County",
+      "weight": {
+        "grams": 655
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Missouri",
+      "year": "1888",
+      "catalogPage": 91,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "St. Genevieve County",
+        "meteoriteCode": "23086",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23086",
+        "alternateNameNote": "The verified local CSV identifies Official St. Genevieve County, code 23086. The official checker returns the exact name as Official, and the detail page confirms the 1888 Missouri IIIF iron identity and 244.5 kg mass. The source’s rounded 245 kg total and historical fine-octahedrite classification are preserved."
+      }
+    },
+    {
       "id": "obs-dcef44cb-0808-4dc3-a7c6-70396cfde141",
       "catalogId": "nininger-1950",
       "designation": "142.2",
@@ -33815,6 +33963,48 @@
         "meteoriteCode": "18795",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18795",
         "alternateNameNote": "The verified local CSV identifies Official Perryville, code 18795, and the checker returns Perryville as Official. The detail page confirms the exact name, 1906 Missouri iron find, Iron IIC identity, and 17.5 kg mass; the source's historical octahedrite classification is preserved."
+      }
+    },
+    {
+      "id": "obs-f9746761-3431-489d-9f99-ae8a186cbfec",
+      "catalogId": "nininger-1950",
+      "designation": "173a",
+      "name": "St. Francois County",
+      "weight": {
+        "grams": 117
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Missouri",
+      "year": "before 1863",
+      "catalogPage": 91,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "St. Francois County",
+        "meteoriteCode": "23085",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23085",
+        "alternateNameNote": "The verified local CSV identifies Official St. Francois County, code 23085. The official checker returns the exact name as Official, and the detail page confirms the Missouri IC iron identity and both printed synonyms, Missouri and South-east Missouri. MetBull gives 1863 and 3.6 kg, while the source prints Found before 1863 and 2.7 kg; the source facts and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-035e34a4-2d42-4658-ada5-05a93ce08587",
+      "catalogId": "nininger-1950",
+      "designation": "173b",
+      "name": "St. Francois County",
+      "weight": {
+        "grams": 192
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Missouri",
+      "year": "before 1863",
+      "catalogPage": 91,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "St. Francois County",
+        "meteoriteCode": "23085",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23085",
+        "alternateNameNote": "The verified local CSV identifies Official St. Francois County, code 23085. The official checker returns the exact name as Official, and the detail page confirms the Missouri IC iron identity and both printed synonyms, Missouri and South-east Missouri. MetBull gives 1863 and 3.6 kg, while the source prints Found before 1863 and 2.7 kg; the source facts and historical classification are preserved."
       }
     },
     {
@@ -36947,6 +37137,27 @@
       }
     },
     {
+      "id": "obs-66e65dac-df41-4ea2-acba-3060419f97c5",
+      "catalogId": "nininger-1950",
+      "designation": "204a",
+      "name": "St. Mesmin",
+      "weight": {
+        "grams": 8
+      },
+      "classification": "Stone. Brecciated intermediate hypersthene-chondrite",
+      "locality": "Aube, France",
+      "year": "1866",
+      "catalogPage": 91,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "St. Mesmin",
+        "meteoriteCode": "23092",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23092",
+        "alternateNameNote": "The verified local CSV identifies Official St. Mesmin, code 23092. The official checker returns St. Mesmin as Official, and the detail page confirms the exact name, 1866 French LL6 fall, 8.3 kg mass, and Champagne-Ardenne locality. The source’s Aube locality and historical classification are preserved."
+      }
+    },
+    {
       "id": "obs-7c4d7563-9498-4173-a9da-1ef0b00bdb53",
       "catalogId": "nininger-1950",
       "designation": "205a",
@@ -38078,6 +38289,27 @@
         "meteoriteCode": null,
         "metbullUrl": null,
         "alternateNameNote": "The local official-name CSV has distinct Duel Hill (1854), code 7738, and Duel Hill (1873), code 7739. The checker calls Jewell Hill a synonym of the 1854 record, whose detail page confirms that synonym, but the source's 1873 year, coarse-octahedrite description, and 11.4 kg total instead align with the distinct 1873 record. This conflict is unresolved; no code is inferred."
+      }
+    },
+    {
+      "id": "obs-ca34f8f0-6a0a-4718-a41d-f182475e3173",
+      "catalogId": "nininger-1950",
+      "designation": "258a",
+      "name": "Salt River",
+      "weight": {
+        "grams": 34
+      },
+      "classification": "Iron. Finest octahedrite",
+      "locality": "Bullitt County, Kentucky",
+      "year": "1850",
+      "catalogPage": 91,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Salt River",
+        "meteoriteCode": "23113",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23113",
+        "alternateNameNote": "The verified local CSV identifies Official Salt River, code 23113. The official checker returns Salt River as Official, and the detail page confirms the exact name, 1850 Kentucky IIC iron identity, 3.6 kg mass, and coordinates in Bullitt County. The source’s historical finest-octahedrite classification is preserved."
       }
     },
     {
@@ -39737,6 +39969,27 @@
         "meteoriteCode": "14698",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=14698",
         "alternateNameNote": "The verified local valid-name evidence identifies Official Loomis, code 14698. The official checker returns Loomis as Official, and the detail page confirms the 1933 Nebraska find, L6 identity, 3.02 kg mass, and exact printed coordinates."
+      }
+    },
+    {
+      "id": "obs-7ea31531-288a-49fc-943d-d16430938283",
+      "catalogId": "nininger-1950",
+      "designation": "321.1",
+      "name": "Salina",
+      "weight": {
+        "grams": 37
+      },
+      "classification": "Iron. Medium octahedrite, oxidized",
+      "locality": "Sevier County, Utah",
+      "year": "about 1908",
+      "catalogPage": 91,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Salina",
+        "meteoriteCode": "23108",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23108",
+        "alternateNameNote": "The verified local CSV identifies Official Salina, code 23108. The official checker returns Salina as Official, and the detail page confirms the exact name, 1908 Utah iron identity, 235 gram mass, and coordinates in Sevier County. The source’s approximate year and historical oxidized medium-octahedrite description are preserved."
       }
     },
     {
@@ -42635,6 +42888,27 @@
         "meteoriteCode": "12030",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12030",
         "alternateNameNote": "The verified local valid-name CSV has Official Indianola code 12030, found 1939 in Nebraska, classified L5, with 4 kg mass and coordinates matching the source. The official exact-name checker and detail page independently confirm the exact name, official status, year, Nebraska identity, L5 class, 4 kg mass, and coordinates."
+      }
+    },
+    {
+      "id": "obs-f4a9c639-6777-411c-9633-f14b56780f7c",
+      "catalogId": "nininger-1950",
+      "designation": "436.1",
+      "name": "Sam's Valley",
+      "weight": {
+        "grams": 26.1
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Jackson County, Oregon",
+      "year": "1894",
+      "catalogPage": 91,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Sam's Valley",
+        "meteoriteCode": "23116",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23116",
+        "alternateNameNote": "The verified local CSV identifies Official Sam's Valley, code 23116. The official checker returns Sam's Valley as Official, and the detail page confirms the exact name, 1894 Oregon IIIAB iron identity, 6.92 kg mass, and coordinates in Jackson County. The source's rounded 6.9 kg total and historical classification are preserved."
       }
     },
     {
