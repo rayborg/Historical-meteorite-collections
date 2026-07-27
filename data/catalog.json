@@ -373,14 +373,15 @@
           66,
           67,
           68,
-          69
+          69,
+          70
         ],
-        "sourcePageCount": 44,
-        "recordCount": 935,
-        "recordsWithDesignation": 915,
-        "recordsWithWeight": 876,
+        "sourcePageCount": 45,
+        "recordCount": 949,
+        "recordsWithDesignation": 928,
+        "recordsWithWeight": 890,
         "confidenceCounts": {
-          "high": 935,
+          "high": 949,
           "medium": 0,
           "low": 0
         },
@@ -388,11 +389,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2847,
-    "recordsWithDesignation": 2658,
-    "recordsWithWeight": 2660,
+    "recordCount": 2861,
+    "recordsWithDesignation": 2671,
+    "recordsWithWeight": 2674,
     "confidenceCounts": {
-      "high": 2847,
+      "high": 2861,
       "medium": 0,
       "low": 0
     }
@@ -29429,6 +29430,27 @@
       }
     },
     {
+      "id": "obs-ec0799f5-9be5-477a-9c47-3eff90f175bb",
+      "catalogId": "nininger-1950",
+      "designation": "240.1",
+      "name": "Lost Lake",
+      "weight": {
+        "grams": 11
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "San Luis Valley, Colorado; 37° 39′ N., 105° 44′ W.",
+      "year": "1934",
+      "catalogPage": 70,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Lost Lake",
+        "meteoriteCode": "14714",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=14714",
+        "alternateNameNote": "The verified local valid-name evidence identifies Official Lost Lake, code 14714. The official checker returns Lost Lake as Official, and the detail page confirms the Colorado L6 identity, 11 gram mass, and exact printed coordinates. MetBull reports found 1931 while the source prints recognized 1934; both are retained in their respective contexts."
+      }
+    },
+    {
       "id": "obs-1481be2a-9dc8-4bb2-8e8a-9d6d25851362",
       "catalogId": "nininger-1950",
       "designation": "241.5",
@@ -29510,6 +29532,48 @@
         "meteoriteCode": "4975",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4975",
         "alternateNameNote": "The exact name, Kentucky location, and 1902 fall year agree. The source reports 86.6 kg.; MetBull reports 86 kg. The historical Intermediate chondrite classification corresponds broadly to modern L6."
+      }
+    },
+    {
+      "id": "obs-ac948bfc-ac12-4953-9a74-31bbc0c6231f",
+      "catalogId": "nininger-1950",
+      "designation": "244a",
+      "name": "Marion",
+      "weight": {
+        "grams": 924
+      },
+      "classification": "Stone. Veined white hypersthene-chondrite",
+      "locality": "Linn County, Iowa",
+      "year": "1847",
+      "catalogPage": 70,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Marion (Iowa)",
+        "meteoriteCode": "15424",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15424",
+        "alternateNameNote": "The checker treats bare Marion as partial among three names. The verified local CSV and detail page identify Official Marion (Iowa), code 15424, and confirm the 1847 Iowa L6 fall, 28.4 kg mass, and Hartford, Iowa, and Linn County synonyms, uniquely agreeing with the source."
+      }
+    },
+    {
+      "id": "obs-b19953b5-1264-4e51-87a0-e0f74b61670b",
+      "catalogId": "nininger-1950",
+      "designation": "244.2",
+      "name": "Marion",
+      "weight": {
+        "grams": 24
+      },
+      "classification": "Stone. Veined white hypersthene-chondrite",
+      "locality": "Linn County, Iowa",
+      "year": "1847",
+      "catalogPage": 70,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Marion (Iowa)",
+        "meteoriteCode": "15424",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15424",
+        "alternateNameNote": "The checker treats bare Marion as partial among three names. The verified local CSV and detail page identify Official Marion (Iowa), code 15424, and confirm the 1847 Iowa L6 fall, 28.4 kg mass, and Hartford, Iowa, and Linn County synonyms, uniquely agreeing with the source."
       }
     },
     {
@@ -30269,6 +30333,48 @@
       }
     },
     {
+      "id": "obs-f05ed73d-32b5-44d0-af88-b04608ebec35",
+      "catalogId": "nininger-1950",
+      "designation": "288b",
+      "name": "Losttown",
+      "weight": {
+        "grams": 39.5
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Cherokee County, Georgia",
+      "year": "1868",
+      "catalogPage": 70,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Losttown",
+        "meteoriteCode": "14715",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=14715",
+        "alternateNameNote": "The verified local valid-name evidence identifies Official Losttown, code 14715. The official checker returns Losttown as Official, and the detail page confirms the 1868 Georgia iron, IID identity, 3 kg mass, and Cherokee County synonym."
+      }
+    },
+    {
+      "id": "obs-a3b18390-9b28-472c-90d1-5563dae48496",
+      "catalogId": "nininger-1950",
+      "designation": "288a",
+      "name": "Losttown",
+      "weight": {
+        "grams": 49.5
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Cherokee County, Georgia",
+      "year": "1868",
+      "catalogPage": 70,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Losttown",
+        "meteoriteCode": "14715",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=14715",
+        "alternateNameNote": "The verified local valid-name evidence identifies Official Losttown, code 14715. The official checker returns Losttown as Official, and the detail page confirms the 1868 Georgia iron, IID identity, 3 kg mass, and Cherokee County synonym."
+      }
+    },
+    {
       "id": "obs-00f2d6e1-2dd4-4d47-87b8-ac5dfc5d3b26",
       "catalogId": "nininger-1950",
       "designation": "291c",
@@ -30749,6 +30855,48 @@
         "meteoriteCode": "5340",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5340",
         "alternateNameNote": "The official checker returns Cherokee Springs; the South Carolina locality, 1933 fall, and 8.4 kg total agree."
+      }
+    },
+    {
+      "id": "obs-a580cd6a-e039-4a29-92a7-acba62f0106d",
+      "catalogId": "nininger-1950",
+      "designation": "320.1",
+      "name": "Loomis",
+      "weight": {
+        "grams": 615.5
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Phelps County, Nebraska; 40° 28′ N., 99° 30′ W.",
+      "year": "1933",
+      "catalogPage": 70,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Loomis",
+        "meteoriteCode": "14698",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=14698",
+        "alternateNameNote": "The verified local valid-name evidence identifies Official Loomis, code 14698. The official checker returns Loomis as Official, and the detail page confirms the 1933 Nebraska find, L6 identity, 3.02 kg mass, and exact printed coordinates."
+      }
+    },
+    {
+      "id": "obs-e94cc5fa-1202-4593-ac27-002018eeab20",
+      "catalogId": "nininger-1950",
+      "designation": "320.3",
+      "name": "Loomis",
+      "weight": {
+        "grams": 1.7
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Phelps County, Nebraska; 40° 28′ N., 99° 30′ W.",
+      "year": "1933",
+      "catalogPage": 70,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Loomis",
+        "meteoriteCode": "14698",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=14698",
+        "alternateNameNote": "The verified local valid-name evidence identifies Official Loomis, code 14698. The official checker returns Loomis as Official, and the detail page confirms the 1933 Nebraska find, L6 identity, 3.02 kg mass, and exact printed coordinates."
       }
     },
     {
@@ -31928,6 +32076,48 @@
       }
     },
     {
+      "id": "obs-5bbf814c-0cd1-4f3e-b87d-3c3acf846109",
+      "catalogId": "nininger-1950",
+      "designation": "392.1",
+      "name": "Maria Elena",
+      "weight": {
+        "grams": 40.5
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Antofagasta, Chile",
+      "year": "1936",
+      "catalogPage": 70,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Maria Elena (1935)",
+        "meteoriteCode": "15417",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15417",
+        "alternateNameNote": "The checker treats bare Maria Elena as partial. The verified local CSV and containing-name result identify Official Maria Elena (1935), code 15417; its detail page confirms Antofagasta, Chile, iron IVA identity, and 15.5 kg mass. These distinguish it from the Maria Elena (1928) synonym of North Chile. The source's Known 1936 date is preserved."
+      }
+    },
+    {
+      "id": "obs-e5f9fd2d-00db-4879-94c7-96b31862b768",
+      "catalogId": "nininger-1950",
+      "designation": "392.2",
+      "name": "Maria Elena",
+      "weight": {
+        "grams": 9.5
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Antofagasta, Chile",
+      "year": "1936",
+      "catalogPage": 70,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Maria Elena (1935)",
+        "meteoriteCode": "15417",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15417",
+        "alternateNameNote": "The checker treats bare Maria Elena as partial. The verified local CSV and containing-name result identify Official Maria Elena (1935), code 15417; its detail page confirms Antofagasta, Chile, iron IVA identity, and 15.5 kg mass. These distinguish it from the Maria Elena (1928) synonym of North Chile. The source's Known 1936 date is preserved."
+      }
+    },
+    {
       "id": "obs-bc15e031-7e90-4959-8f93-681773a4045a",
       "catalogId": "nininger-1950",
       "designation": "395.1",
@@ -32705,6 +32895,48 @@
       }
     },
     {
+      "id": "obs-a6cefc78-b185-4d89-b07e-d68f273d79cf",
+      "catalogId": "nininger-1950",
+      "designation": "431.4",
+      "name": "Lubbock",
+      "weight": {
+        "grams": 390.5
+      },
+      "classification": "Stone. Chondrite, showing flowage lines",
+      "locality": "Lubbock County, Texas; 33° 36′ N., 101° 44′ W.",
+      "year": "1938",
+      "catalogPage": 70,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Lubbock",
+        "meteoriteCode": "14722",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=14722",
+        "alternateNameNote": "The verified local valid-name evidence identifies Official Lubbock, code 14722. The official checker returns Lubbock as Official, and the detail page confirms the 1938 Texas find, L5 identity, 1,458 gram mass, and exact printed coordinates. The source's rounded 1.45 kg total is preserved."
+      }
+    },
+    {
+      "id": "obs-b631a9b2-784d-46e7-98e3-b70438ae9680",
+      "catalogId": "nininger-1950",
+      "designation": "431.6",
+      "name": "Lubbock",
+      "weight": {
+        "grams": 392.5
+      },
+      "classification": "Stone. Chondrite, showing flowage lines",
+      "locality": "Lubbock County, Texas; 33° 36′ N., 101° 44′ W.",
+      "year": "1938",
+      "catalogPage": 70,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Lubbock",
+        "meteoriteCode": "14722",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=14722",
+        "alternateNameNote": "The verified local valid-name evidence identifies Official Lubbock, code 14722. The official checker returns Lubbock as Official, and the detail page confirms the 1938 Texas find, L5 identity, 1,458 gram mass, and exact printed coordinates. The source's rounded 1.45 kg total is preserved."
+      }
+    },
+    {
       "id": "obs-61247f59-e28c-4068-899d-6ec441eb6c02",
       "catalogId": "nininger-1950",
       "designation": "432.1",
@@ -33185,6 +33417,27 @@
         "meteoriteCode": "11853",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11853",
         "alternateNameNote": "The verified local CSV and checker identify exact Official Hat Creek, code 11853. The detail page confirms the 1939 Wyoming find, H4 stone classification, and 8.9 kg mass; its coordinates are close to the source, whose Niabara County spelling and longitude are preserved without correction."
+      }
+    },
+    {
+      "id": "obs-47107531-3949-40e6-9895-3b5f34b7a43f",
+      "catalogId": "nininger-1950",
+      "designation": "457.1",
+      "name": "Lusk",
+      "weight": {
+        "grams": 46
+      },
+      "classification": "Iron. Oxidized octahedrite",
+      "locality": "Niobrara County, Wyoming; 42° 46′ N., 104° 21′ W.",
+      "year": "1940",
+      "catalogPage": 70,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Lusk",
+        "meteoriteCode": "14761",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=14761",
+        "alternateNameNote": "The verified local valid-name evidence identifies Official Lusk, code 14761. The official checker returns Lusk as Official, and the detail page confirms the 1940 Wyoming iron, 46 gram mass, and exact printed coordinates."
       }
     },
     {
@@ -33857,6 +34110,27 @@
         "meteoriteCode": "12174",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12174",
         "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Joe Wright Mountain as code 12174, an Arkansas iron found in 1884. The official checker returns the exact name as Official, and the detail page confirms the year, Iron, IIIAB identity, 42.6 kg mass, and Independence County synonym. The source's 42.7 kg total is preserved."
+      }
+    },
+    {
+      "id": "obs-c1134635-2aae-4fe5-883c-6055abf64ea1",
+      "catalogId": "nininger-1950",
+      "designation": "485.1",
+      "name": "Mapleton",
+      "weight": {
+        "grams": 27.5
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Monona County, Iowa",
+      "year": "1939",
+      "catalogPage": 70,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Mapleton",
+        "meteoriteCode": "15410",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15410",
+        "alternateNameNote": "The verified local valid-name evidence identifies Official Mapleton, code 15410. The official checker returns Mapleton as Official, and the detail page confirms the 1939 Iowa iron, IIIAB identity, and 49 kg mass."
       }
     },
     {
@@ -59540,6 +59814,27 @@
         "meteoriteCode": "12766",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12766",
         "alternateNameNote": "The official MetBull name search lists Leoville (a) as a synonym of Leoville; the Kansas CV3 coordinates and 8.1 kg mass agree."
+      }
+    },
+    {
+      "id": "obs-194eb474-44d8-43cc-b431-8c2543ed363e",
+      "catalogId": "nininger-1950",
+      "designation": null,
+      "name": "Maria Elena",
+      "weight": {
+        "grams": 70.5
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Antofagasta, Chile",
+      "year": "1936",
+      "catalogPage": 70,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Maria Elena (1935)",
+        "meteoriteCode": "15417",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15417",
+        "alternateNameNote": "The checker treats bare Maria Elena as partial. The verified local CSV and containing-name result identify Official Maria Elena (1935), code 15417; its detail page confirms Antofagasta, Chile, iron IVA identity, and 15.5 kg mass. These distinguish it from the Maria Elena (1928) synonym of North Chile. The source's Known 1936 date is preserved."
       }
     },
     {
