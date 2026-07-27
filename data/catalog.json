@@ -375,14 +375,15 @@
           68,
           69,
           70,
-          71
+          71,
+          72
         ],
-        "sourcePageCount": 46,
-        "recordCount": 962,
-        "recordsWithDesignation": 941,
-        "recordsWithWeight": 903,
+        "sourcePageCount": 47,
+        "recordCount": 972,
+        "recordsWithDesignation": 951,
+        "recordsWithWeight": 913,
         "confidenceCounts": {
-          "high": 962,
+          "high": 972,
           "medium": 0,
           "low": 0
         },
@@ -390,11 +391,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2874,
-    "recordsWithDesignation": 2684,
-    "recordsWithWeight": 2687,
+    "recordCount": 2884,
+    "recordsWithDesignation": 2694,
+    "recordsWithWeight": 2697,
     "confidenceCounts": {
-      "high": 2874,
+      "high": 2884,
       "medium": 0,
       "low": 0
     }
@@ -26617,6 +26618,27 @@
       }
     },
     {
+      "id": "obs-90a9f47b-f481-4ec4-970e-1e1741349257",
+      "catalogId": "nininger-1950",
+      "designation": "162a",
+      "name": "Misteca",
+      "weight": {
+        "grams": 2870
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Oaxaca, Mexico",
+      "year": "1804",
+      "catalogPage": 72,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Misteca",
+        "meteoriteCode": "16705",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16705",
+        "alternateNameNote": "The verified local CSV identifies Official Misteca, code 16705, an Oaxaca iron known from 1804. The official checker returns Misteca as Official, and the detail page confirms the exact name, year, Mexican locality, iron identity, and Oaxaca synonym. The source's unknown total weight is preserved."
+      }
+    },
+    {
       "id": "obs-53c95a63-5afd-491a-9f76-b9cca0c15c88",
       "catalogId": "nininger-1950",
       "designation": "163.1",
@@ -29095,6 +29117,27 @@
       }
     },
     {
+      "id": "obs-770dbf94-5003-47a6-b3af-8cdc3cc255c4",
+      "catalogId": "nininger-1950",
+      "designation": "207a",
+      "name": "Mincy",
+      "weight": {
+        "grams": 395
+      },
+      "classification": "Mesosiderite",
+      "locality": "Taney County, Missouri",
+      "year": "1857",
+      "catalogPage": 72,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Mincy",
+        "meteoriteCode": "16694",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16694",
+        "alternateNameNote": "The verified local CSV identifies Official Mincy, code 16694, an 1857 Missouri mesosiderite with 89.4 kg mass. The official checker returns Mincy as Official, and the detail page confirms Crawford County, Forsyth, Miney, and Taney County as synonyms. The source's 89.5 kg total is preserved."
+      }
+    },
+    {
       "id": "obs-a01ff0df-d09d-4337-8ac0-86b75f1bea29",
       "catalogId": "nininger-1950",
       "designation": "208b",
@@ -29176,6 +29219,27 @@
         "meteoriteCode": null,
         "metbullUrl": null,
         "alternateNameNote": "MetBull lists Babb's Mill as a synonym of two official records. The source's 1842 date matches Babb's Mill (Troost's Iron), code 4916, whose mass is 6.4 kg.; the source's 143 kg. mass instead approximates Babb's Mill (Blake's Iron), code 4915, whose mass is 136 kg. and find year is 1876. The specimen cannot be assigned uniquely."
+      }
+    },
+    {
+      "id": "obs-da3d86e1-1eea-4127-b759-f829a7528589",
+      "catalogId": "nininger-1950",
+      "designation": "211.1",
+      "name": "Mighei",
+      "weight": {
+        "grams": 4.6
+      },
+      "classification": "Stone. Carbonaceous chondrite",
+      "locality": "Olviopol, Kherson, Ukraine",
+      "year": "1889",
+      "catalogPage": 72,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Mighei",
+        "meteoriteCode": "16634",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16634",
+        "alternateNameNote": "The verified local CSV identifies Official Mighei, code 16634, an 1889 Ukrainian CM2 fall with 8 kg mass. The official checker returns Mighei as Official, and the detail page confirms the exact identity and lists Elisabethpol and Migheia as synonyms."
       }
     },
     {
@@ -29890,6 +29954,27 @@
         "meteoriteCode": null,
         "metbullUrl": null,
         "alternateNameNote": "The local official-name CSV has distinct Duel Hill (1854), code 7738, and Duel Hill (1873), code 7739. The checker calls Jewell Hill a synonym of the 1854 record, whose detail page confirms that synonym, but the source's 1873 year, coarse-octahedrite description, and 11.4 kg total instead align with the distinct 1873 record. This conflict is unresolved; no code is inferred."
+      }
+    },
+    {
+      "id": "obs-13b4db2d-19c7-4c97-8cf8-5a9a617b7482",
+      "catalogId": "nininger-1950",
+      "designation": "260.1",
+      "name": "Minnesota",
+      "weight": {
+        "grams": 2
+      },
+      "classification": "Stone. Chondrite",
+      "locality": null,
+      "year": null,
+      "catalogPage": 72,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Minnesota (stone)",
+        "meteoriteCode": "16699",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16699",
+        "alternateNameNote": "The checker treats bare Minnesota as a partial name with two records. The verified local CSV and detail page identify Official Minnesota (stone), code 16699, as an L stone with 1.8 gram mass. The source explicitly distinguishes this daggered entry as Stone and prints a 2 gram specimen; its unknown date remains null."
       }
     },
     {
@@ -31342,6 +31427,48 @@
       }
     },
     {
+      "id": "obs-70d7f13f-fccb-418a-8056-1a2f6da59850",
+      "catalogId": "nininger-1950",
+      "designation": "335.1",
+      "name": "Milena",
+      "weight": {
+        "grams": 7.5
+      },
+      "classification": "Stone. White chondrite",
+      "locality": "Varazdin, Croatia, Yugoslavia",
+      "year": "1842",
+      "catalogPage": 72,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Milena",
+        "meteoriteCode": "16640",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16640",
+        "alternateNameNote": "The verified local CSV identifies Official Milena, code 16640, an 1842 Croatian L6 fall with 10 kg mass. The official checker returns Milena as Official, and the detail page confirms the exact identity and lists Miljana and Pusinsko Selo as synonyms. The source's 10 to 12 kg range is preserved."
+      }
+    },
+    {
+      "id": "obs-d3bee582-e109-44f1-a7d0-3a08f8eb2307",
+      "catalogId": "nininger-1950",
+      "designation": "335.2",
+      "name": "Milena",
+      "weight": {
+        "grams": 5
+      },
+      "classification": "Stone. White chondrite",
+      "locality": "Varazdin, Croatia, Yugoslavia",
+      "year": "1842",
+      "catalogPage": 72,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Milena",
+        "meteoriteCode": "16640",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16640",
+        "alternateNameNote": "The verified local CSV identifies Official Milena, code 16640, an 1842 Croatian L6 fall with 10 kg mass. The official checker returns Milena as Official, and the detail page confirms the exact identity and lists Miljana and Pusinsko Selo as synonyms. The source's 10 to 12 kg range is preserved."
+      }
+    },
+    {
       "id": "obs-fe6c1377-673b-4c7d-99b7-fb512a8b6e69",
       "catalogId": "nininger-1950",
       "designation": "336.1",
@@ -32476,6 +32603,27 @@
       }
     },
     {
+      "id": "obs-3003d5f5-8730-4cdb-b2b1-e7d28788a9f3",
+      "catalogId": "nininger-1950",
+      "designation": "399.1",
+      "name": "Miami",
+      "weight": {
+        "grams": 57531
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Roberts County, Texas; 35° 41′ N., 100° 38′ W.",
+      "year": "1937",
+      "catalogPage": 72,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Miami",
+        "meteoriteCode": "16630",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16630",
+        "alternateNameNote": "The verified local CSV identifies Official Miami, code 16630. The official checker returns Miami as Official, and the detail page confirms the Texas H5, 57.7 kg mass, and near-identical coordinates. MetBull gives 1930 while the source prints Recognized 1937; the source wording and year are preserved."
+      }
+    },
+    {
       "id": "obs-6c47a71f-4b7b-43f6-9b26-4ca20a331689",
       "catalogId": "nininger-1950",
       "designation": "400.1",
@@ -32557,6 +32705,27 @@
         "meteoriteCode": "5262",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5262",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-eefe3dfc-6b14-489a-887d-24c2bf4170e5",
+      "catalogId": "nininger-1950",
+      "designation": "404.1",
+      "name": "Miller",
+      "weight": {
+        "grams": 20.6
+      },
+      "classification": "Stone. Grey enstatite chondrite",
+      "locality": "Cleburne County, Arkansas",
+      "year": "1930",
+      "catalogPage": 72,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Miller (Arkansas)",
+        "meteoriteCode": "16645",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16645",
+        "alternateNameNote": "The official checker treats bare Miller as a partial name. The verified local CSV and detail page identify Official Miller (Arkansas), code 16645, whose Arkansas locality, 1930 fall, and exact 16.7 kg mass distinguish it from Miller (Kansas). The source's historical classification is preserved."
       }
     },
     {
@@ -34912,6 +35081,27 @@
       }
     },
     {
+      "id": "obs-a09ed5c4-f373-4bf1-8835-c70545d87da6",
+      "catalogId": "nininger-1950",
+      "designation": "518.1",
+      "name": "Minnesota",
+      "weight": {
+        "grams": 6.3
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": null,
+      "year": null,
+      "catalogPage": 72,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Minnesota (iron)",
+        "meteoriteCode": "16698",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16698",
+        "alternateNameNote": "The checker treats bare Minnesota as a partial name with two records. The verified local CSV and detail page identify Official Minnesota (iron), code 16698, as an iron with historical medium-octahedrite classification and 6.1 gram mass. The source prints a 6.3 gram specimen; its unknown date remains null."
+      }
+    },
+    {
       "id": "obs-50961d3c-15db-455c-a7f3-c930411a9b3d",
       "catalogId": "nininger-1950",
       "designation": "521.1",
@@ -35119,6 +35309,27 @@
         "meteoriteCode": "5436",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5436",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-31f77041-b94d-4768-9bf5-89f00ee3a157",
+      "catalogId": "nininger-1950",
+      "designation": "534.1",
+      "name": "Mission",
+      "weight": {
+        "grams": 10.7
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Todd County, South Dakota; 43° 19′ N., 100° 46′ W.",
+      "year": "1949",
+      "catalogPage": 72,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Mission",
+        "meteoriteCode": "16704",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16704",
+        "alternateNameNote": "The verified local CSV identifies Official Mission, code 16704, a 1949 South Dakota L chondrite with 12 kg mass. The official checker returns Mission as Official, and the detail page confirms the exact name, year, state, mass, and printed coordinates."
       }
     },
     {
