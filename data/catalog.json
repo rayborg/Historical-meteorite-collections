@@ -349,14 +349,15 @@
           42,
           43,
           44,
-          45
+          45,
+          46
         ],
-        "sourcePageCount": 20,
-        "recordCount": 433,
-        "recordsWithDesignation": 429,
-        "recordsWithWeight": 421,
+        "sourcePageCount": 21,
+        "recordCount": 446,
+        "recordsWithDesignation": 442,
+        "recordsWithWeight": 434,
         "confidenceCounts": {
-          "high": 433,
+          "high": 446,
           "medium": 0,
           "low": 0
         },
@@ -364,11 +365,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2345,
-    "recordsWithDesignation": 2172,
-    "recordsWithWeight": 2205,
+    "recordCount": 2358,
+    "recordsWithDesignation": 2185,
+    "recordsWithWeight": 2218,
     "confidenceCounts": {
-      "high": 2345,
+      "high": 2358,
       "medium": 0,
       "low": 0
     }
@@ -18800,6 +18801,90 @@
       }
     },
     {
+      "id": "obs-19a14fc6-8ad7-4c4a-9649-3ccb5b5e353d",
+      "catalogId": "nininger-1950",
+      "designation": "22b",
+      "name": "Covert",
+      "weight": {
+        "grams": 5083
+      },
+      "classification": "Stone. Crystalline spherical chondrite",
+      "locality": "Osborne County, Kansas; 39° 12′ N., 98° 47′ W.",
+      "year": "1929",
+      "catalogPage": 46,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Covert",
+        "meteoriteCode": "5456",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5456",
+        "alternateNameNote": "The exact official name, Kansas coordinates, and 61 kg mass agree. The source prints recognized 1929, while the official checker, verified CSV, and detail page give found 1896; the source event year is retained without reconciliation."
+      }
+    },
+    {
+      "id": "obs-17ac5466-248c-4e9f-8fa6-c416778e337d",
+      "catalogId": "nininger-1950",
+      "designation": "22a",
+      "name": "Covert",
+      "weight": {
+        "grams": 7103
+      },
+      "classification": "Stone. Crystalline spherical chondrite",
+      "locality": "Osborne County, Kansas; 39° 12′ N., 98° 47′ W.",
+      "year": "1929",
+      "catalogPage": 46,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Covert",
+        "meteoriteCode": "5456",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5456",
+        "alternateNameNote": "The exact official name, Kansas coordinates, and 61 kg mass agree. The source prints recognized 1929, while the official checker, verified CSV, and detail page give found 1896; the source event year is retained without reconciliation."
+      }
+    },
+    {
+      "id": "obs-2499cfb1-7c0d-40e4-b521-616c196857d2",
+      "catalogId": "nininger-1950",
+      "designation": "22.16",
+      "name": "Covert",
+      "weight": {
+        "grams": 6681
+      },
+      "classification": "Stone. Crystalline spherical chondrite",
+      "locality": "Osborne County, Kansas; 39° 12′ N., 98° 47′ W.",
+      "year": "1929",
+      "catalogPage": 46,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Covert",
+        "meteoriteCode": "5456",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5456",
+        "alternateNameNote": "The exact official name, Kansas coordinates, and 61 kg mass agree. The source prints recognized 1929, while the official checker, verified CSV, and detail page give found 1896; the source event year is retained without reconciliation."
+      }
+    },
+    {
+      "id": "obs-f78abd69-8071-4683-b7ae-a6b0f45757e3",
+      "catalogId": "nininger-1950",
+      "designation": "22.22",
+      "name": "Covert",
+      "weight": {
+        "grams": 130.8
+      },
+      "classification": "Stone. Crystalline spherical chondrite",
+      "locality": "Osborne County, Kansas; 39° 12′ N., 98° 47′ W.",
+      "year": "1929",
+      "catalogPage": 46,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Covert",
+        "meteoriteCode": "5456",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5456",
+        "alternateNameNote": "The exact official name, Kansas coordinates, and 61 kg mass agree. The source prints recognized 1929, while the official checker, verified CSV, and detail page give found 1896; the source event year is retained without reconciliation."
+      }
+    },
+    {
       "id": "obs-266a1c8f-30b9-4fa9-9e98-c700dbb4337d",
       "catalogId": "nininger-1950",
       "designation": "23c",
@@ -18860,6 +18945,27 @@
         "meteoriteCode": "5399",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5399",
         "alternateNameNote": "The official checker treats bare Coldwater as a partial name matching two records. The detail record for Coldwater (stone), code 5399, agrees on the printed Kansas coordinates, 1924, and stone classification, distinguishing it from the 1923 iron; the source prints 11 kg while MetBull reports 16 kg."
+      }
+    },
+    {
+      "id": "obs-afbb6a0b-8b52-4b88-9c16-5b10ddb46cea",
+      "catalogId": "nininger-1950",
+      "designation": "25a",
+      "name": "Cotesfield",
+      "weight": {
+        "grams": 58
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Howard County, Nebraska; 41° 22′ N., 98° 38′ W.",
+      "year": "1928",
+      "catalogPage": 46,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Cotesfield",
+        "meteoriteCode": "5454",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5454",
+        "alternateNameNote": null
       }
     },
     {
@@ -22097,6 +22203,48 @@
       }
     },
     {
+      "id": "obs-d59cc3da-b990-4ba0-8d1a-9cad2bae6398",
+      "catalogId": "nininger-1950",
+      "designation": "37a",
+      "name": "Coopertown",
+      "weight": {
+        "grams": 46.5
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Robertson County, Tennessee",
+      "year": "1860",
+      "catalogPage": 46,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Coopertown",
+        "meteoriteCode": "5438",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5438",
+        "alternateNameNote": "The official detail page lists the printed Robertson County name as a synonym. The source's 1860 date agrees; its rounded 17 kg total corresponds to the official 16.8 kg mass."
+      }
+    },
+    {
+      "id": "obs-f035db3a-67ac-48b7-b3df-4fc88539cf1f",
+      "catalogId": "nininger-1950",
+      "designation": "37b",
+      "name": "Coopertown",
+      "weight": {
+        "grams": 309
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Robertson County, Tennessee",
+      "year": "1860",
+      "catalogPage": 46,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Coopertown",
+        "meteoriteCode": "5438",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5438",
+        "alternateNameNote": "The official detail page lists the printed Robertson County name as a synonym. The source's 1860 date agrees; its rounded 17 kg total corresponds to the official 16.8 kg mass."
+      }
+    },
+    {
       "id": "obs-82bbe8bc-2bae-4107-aa8d-62522a94a0fe",
       "catalogId": "nininger-1950",
       "designation": "50.1",
@@ -22367,6 +22515,48 @@
         "meteoriteCode": "4901",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4901",
         "alternateNameNote": "The source coordinates are 36° 16′ N., 105° 4′ W.; MetBull recommends 36° 20′ N., 105° 3′ W. The source generic Chondrite classification corresponds to modern H4."
+      }
+    },
+    {
+      "id": "obs-8cb03f52-5e4b-4746-9a95-6b4c28c6bcab",
+      "catalogId": "nininger-1950",
+      "designation": "116.3",
+      "name": "Cope",
+      "weight": {
+        "grams": 205.5
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Washington County, Colorado; 39° 40′ N., 102° 50′ W.",
+      "year": "1938",
+      "catalogPage": 46,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Cope",
+        "meteoriteCode": "5440",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5440",
+        "alternateNameNote": "The exact official name, Washington County coordinates, and 12 kg mass agree. The source prints found 1938, while the official checker, verified CSV, and detail page give 1934; the source year is retained without reconciliation."
+      }
+    },
+    {
+      "id": "obs-02cf07b9-ebf9-4b0a-860c-8f042d29875d",
+      "catalogId": "nininger-1950",
+      "designation": "116.8",
+      "name": "Cope",
+      "weight": {
+        "grams": 2144
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Washington County, Colorado; 39° 40′ N., 102° 50′ W.",
+      "year": "1938",
+      "catalogPage": 46,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Cope",
+        "meteoriteCode": "5440",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5440",
+        "alternateNameNote": "The exact official name, Washington County coordinates, and 12 kg mass agree. The source prints found 1938, while the official checker, verified CSV, and detail page give 1934; the source year is retained without reconciliation."
       }
     },
     {
@@ -23210,6 +23400,27 @@
       }
     },
     {
+      "id": "obs-eba6b8c5-0da2-492d-9712-ceac5a02f779",
+      "catalogId": "nininger-1950",
+      "designation": "190.1",
+      "name": "Costilla Peak",
+      "weight": {
+        "grams": 2068
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Taos County, New Mexico",
+      "year": "1881",
+      "catalogPage": 46,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Costilla Peak",
+        "meteoriteCode": "5453",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5453",
+        "alternateNameNote": null
+      }
+    },
+    {
       "id": "obs-8373c187-a48d-4362-8551-b716bc754466",
       "catalogId": "nininger-1950",
       "designation": "199.1",
@@ -23690,6 +23901,27 @@
         "meteoriteCode": "5183",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5183",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-844e34bd-201c-4a53-879f-d438de54cd1d",
+      "catalogId": "nininger-1950",
+      "designation": "255a",
+      "name": "Cosby's Creek",
+      "weight": {
+        "grams": 136
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Cocke County, Tennessee",
+      "year": "1837",
+      "catalogPage": 46,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Cosby's Creek",
+        "meteoriteCode": "5450",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5450",
+        "alternateNameNote": "The official detail page lists all four printed synonyms and gives 1837, Tennessee, and Iron, IAB-MG. The source's printed 96 kg conflicts with its own 2,112 lb. parenthetical and with the official 960 kg mass; both printed source values are retained without correction."
       }
     },
     {
@@ -25688,6 +25920,27 @@
       }
     },
     {
+      "id": "obs-7903127f-92cf-44fc-aad1-2c4a728c2cbf",
+      "catalogId": "nininger-1950",
+      "designation": "482.1",
+      "name": "Cortez",
+      "weight": {
+        "grams": 456
+      },
+      "classification": "Stone. Chondrite with metallic veins",
+      "locality": "Montezuma County, Colorado; 37° 21′ N., 108° 41′ W.",
+      "year": "1940",
+      "catalogPage": 46,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Cortez",
+        "meteoriteCode": "5449",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5449",
+        "alternateNameNote": null
+      }
+    },
+    {
       "id": "obs-d8e47119-cc0d-4f14-888a-1cf8787c1e26",
       "catalogId": "nininger-1950",
       "designation": "483.1",
@@ -25916,6 +26169,27 @@
         "meteoriteCode": "456",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=456",
         "alternateNameNote": "MetBull adds the stone qualifier to distinguish Albin (pallasite). The source and MetBull agree on 1949, 15.4 kg., and 41° 25′ N., 104° 6′ W."
+      }
+    },
+    {
+      "id": "obs-620f01c5-6adc-4aac-92f5-f23024ea43f9",
+      "catalogId": "nininger-1950",
+      "designation": "533.1",
+      "name": "Coon Butte",
+      "weight": {
+        "grams": 732
+      },
+      "classification": "Stone. Brecciated grey chondrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1905",
+      "catalogPage": 46,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Coon Butte",
+        "meteoriteCode": "5436",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5436",
+        "alternateNameNote": null
       }
     },
     {
