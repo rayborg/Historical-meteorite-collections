@@ -398,14 +398,15 @@
           91,
           92,
           93,
-          94
+          94,
+          95
         ],
-        "sourcePageCount": 69,
-        "recordCount": 1509,
-        "recordsWithDesignation": 1483,
-        "recordsWithWeight": 1444,
+        "sourcePageCount": 70,
+        "recordCount": 1524,
+        "recordsWithDesignation": 1498,
+        "recordsWithWeight": 1459,
         "confidenceCounts": {
-          "high": 1509,
+          "high": 1524,
           "medium": 0,
           "low": 0
         },
@@ -413,11 +414,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 3421,
-    "recordsWithDesignation": 3226,
-    "recordsWithWeight": 3228,
+    "recordCount": 3436,
+    "recordsWithDesignation": 3241,
+    "recordsWithWeight": 3243,
     "confidenceCounts": {
-      "high": 3421,
+      "high": 3436,
       "medium": 0,
       "low": 0
     }
@@ -32688,6 +32689,27 @@
       }
     },
     {
+      "id": "obs-409b94d8-8e4e-4a40-879b-0a978b9eea63",
+      "catalogId": "nininger-1950",
+      "designation": "111a",
+      "name": "Smithville",
+      "weight": {
+        "grams": 1300
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "De Kalb County, Tennessee",
+      "year": "1840",
+      "catalogPage": 95,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Smithville",
+        "meteoriteCode": "23654",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23654",
+        "alternateNameNote": "The verified local CSV identifies Official Smithville, code 23654, as an 1840 Tennessee Iron, IAB-MG with 70.5 kg mass. The official checker returns Smithville as Official, and the detail page confirms the exact name, year, state, iron identity, and all four printed synonyms, Caney Fork, Cany Fork, Caryfort, and DeKalb County. The source's historical classification and 56 kg total are preserved."
+      }
+    },
+    {
       "id": "obs-27581ec3-4f85-45a1-ab77-50f4d55413fd",
       "catalogId": "nininger-1950",
       "designation": "112c",
@@ -33546,6 +33568,48 @@
         "meteoriteCode": "4984",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4984",
         "alternateNameNote": "The Kansas context, 1929 fall year, and 16 kg source total agree with MetBull. The historical Grey chondrite classification corresponds broadly to modern H5."
+      }
+    },
+    {
+      "id": "obs-b5eff296-afe2-4b83-9c82-357889870cce",
+      "catalogId": "nininger-1950",
+      "designation": "135d",
+      "name": "Springwater",
+      "weight": {
+        "grams": 6680
+      },
+      "classification": "Pallasite. Krasnojarsk group",
+      "locality": "Saskatchewan, Canada; 51° 58′ N., 108° 22′ W.",
+      "year": "1931",
+      "catalogPage": 95,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Springwater",
+        "meteoriteCode": "23692",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23692",
+        "alternateNameNote": "The verified local CSV identifies Official Springwater, code 23692, as a 1931 Saskatchewan Pallasite, PMG-an with 67.6 kg mass. The official checker returns Springwater as Official, and the detail page confirms the exact name, year, province, pallasite identity, and nearby 52° 0′ N., 108° 18′ W. coordinates. The source's historical Krasnojarsk-group classification, 94.3 kg total, and printed coordinates are preserved."
+      }
+    },
+    {
+      "id": "obs-35517d23-c4db-4893-b629-9e94f86be25a",
+      "catalogId": "nininger-1950",
+      "designation": "135a",
+      "name": "Springwater",
+      "weight": {
+        "grams": 38050
+      },
+      "classification": "Pallasite. Krasnojarsk group",
+      "locality": "Saskatchewan, Canada; 51° 58′ N., 108° 22′ W.",
+      "year": "1931",
+      "catalogPage": 95,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Springwater",
+        "meteoriteCode": "23692",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23692",
+        "alternateNameNote": "The verified local CSV identifies Official Springwater, code 23692, as a 1931 Saskatchewan Pallasite, PMG-an with 67.6 kg mass. The official checker returns Springwater as Official, and the detail page confirms the exact name, year, province, pallasite identity, and nearby 52° 0′ N., 108° 18′ W. coordinates. The source's historical Krasnojarsk-group classification, 94.3 kg total, and printed coordinates are preserved."
       }
     },
     {
@@ -37350,6 +37414,132 @@
       }
     },
     {
+      "id": "obs-29555f47-729e-4f53-b387-cff187bbcf33",
+      "catalogId": "nininger-1950",
+      "designation": "198g",
+      "name": "Sioux County",
+      "weight": {
+        "grams": 55
+      },
+      "classification": "Stone. Howardite",
+      "locality": "Nebraska; 42° 35′ N., 103° 40′ W.",
+      "year": "1933",
+      "catalogPage": 95,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Sioux County",
+        "meteoriteCode": "23614",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23614",
+        "alternateNameNote": "The verified local CSV identifies Official Sioux County, code 23614, as a 1933 Nebraska Eucrite-mmict fall with 4.1 kg mass. The official checker returns Sioux County as Official, and the detail page confirms the exact name, fall year, state, mass, and exact printed coordinates. The source's historical Howardite classification is preserved."
+      }
+    },
+    {
+      "id": "obs-1e964d6e-7ace-4336-9d23-c3acc6b689ad",
+      "catalogId": "nininger-1950",
+      "designation": "198f",
+      "name": "Sioux County",
+      "weight": {
+        "grams": 162.5
+      },
+      "classification": "Stone. Howardite",
+      "locality": "Nebraska; 42° 35′ N., 103° 40′ W.",
+      "year": "1933",
+      "catalogPage": 95,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Sioux County",
+        "meteoriteCode": "23614",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23614",
+        "alternateNameNote": "The verified local CSV identifies Official Sioux County, code 23614, as a 1933 Nebraska Eucrite-mmict fall with 4.1 kg mass. The official checker returns Sioux County as Official, and the detail page confirms the exact name, fall year, state, mass, and exact printed coordinates. The source's historical Howardite classification is preserved."
+      }
+    },
+    {
+      "id": "obs-1d71caa8-742d-44d2-9794-7141388455b5",
+      "catalogId": "nininger-1950",
+      "designation": "198a",
+      "name": "Sioux County",
+      "weight": {
+        "grams": 206
+      },
+      "classification": "Stone. Howardite",
+      "locality": "Nebraska; 42° 35′ N., 103° 40′ W.",
+      "year": "1933",
+      "catalogPage": 95,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Sioux County",
+        "meteoriteCode": "23614",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23614",
+        "alternateNameNote": "The verified local CSV identifies Official Sioux County, code 23614, as a 1933 Nebraska Eucrite-mmict fall with 4.1 kg mass. The official checker returns Sioux County as Official, and the detail page confirms the exact name, fall year, state, mass, and exact printed coordinates. The source's historical Howardite classification is preserved."
+      }
+    },
+    {
+      "id": "obs-c7b759ff-3359-43c8-805b-398df5411311",
+      "catalogId": "nininger-1950",
+      "designation": "198.3",
+      "name": "Sioux County",
+      "weight": {
+        "grams": 380
+      },
+      "classification": "Stone. Howardite",
+      "locality": "Nebraska; 42° 35′ N., 103° 40′ W.",
+      "year": "1933",
+      "catalogPage": 95,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Sioux County",
+        "meteoriteCode": "23614",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23614",
+        "alternateNameNote": "The verified local CSV identifies Official Sioux County, code 23614, as a 1933 Nebraska Eucrite-mmict fall with 4.1 kg mass. The official checker returns Sioux County as Official, and the detail page confirms the exact name, fall year, state, mass, and exact printed coordinates. The source's historical Howardite classification is preserved."
+      }
+    },
+    {
+      "id": "obs-382871f6-7c9a-45a4-a72f-0d35b9c00eb7",
+      "catalogId": "nininger-1950",
+      "designation": "198.8",
+      "name": "Sioux County",
+      "weight": {
+        "grams": 625
+      },
+      "classification": "Stone. Howardite",
+      "locality": "Nebraska; 42° 35′ N., 103° 40′ W.",
+      "year": "1933",
+      "catalogPage": 95,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Sioux County",
+        "meteoriteCode": "23614",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23614",
+        "alternateNameNote": "The verified local CSV identifies Official Sioux County, code 23614, as a 1933 Nebraska Eucrite-mmict fall with 4.1 kg mass. The official checker returns Sioux County as Official, and the detail page confirms the exact name, fall year, state, mass, and exact printed coordinates. The source's historical Howardite classification is preserved."
+      }
+    },
+    {
+      "id": "obs-ae3e8762-e032-40b5-8849-c42048465959",
+      "catalogId": "nininger-1950",
+      "designation": "198.10",
+      "name": "Sioux County",
+      "weight": {
+        "grams": 681
+      },
+      "classification": "Stone. Howardite",
+      "locality": "Nebraska; 42° 35′ N., 103° 40′ W.",
+      "year": "1933",
+      "catalogPage": 95,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Sioux County",
+        "meteoriteCode": "23614",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23614",
+        "alternateNameNote": "The verified local CSV identifies Official Sioux County, code 23614, as a 1933 Nebraska Eucrite-mmict fall with 4.1 kg mass. The official checker returns Sioux County as Official, and the detail page confirms the exact name, fall year, state, mass, and exact printed coordinates. The source's historical Howardite classification is preserved."
+      }
+    },
+    {
       "id": "obs-8373c187-a48d-4362-8551-b716bc754466",
       "catalogId": "nininger-1950",
       "designation": "199.1",
@@ -38208,6 +38398,27 @@
         "meteoriteCode": "12269",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12269",
         "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Kearney as code 12269, a 1934 Nebraska find at the printed coordinates, with H5 classification and 10 kg mass. The official exact-name checker returns Kearney as Official, and the detail page confirms the exact name, 1934 Nebraska find, H5 identity, and coordinates. The source's 1.1 kg total differs from the official 10 kg mass and is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-310c4713-bfb2-46fd-b5c9-8d3c47bdb4d4",
+      "catalogId": "nininger-1950",
+      "designation": "230.3",
+      "name": "Spearman",
+      "weight": {
+        "grams": 553
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Hansford County, Texas; 36° 15′ N., 101° 13′ W.",
+      "year": "1934",
+      "catalogPage": 95,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Spearman",
+        "meteoriteCode": "23687",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23687",
+        "alternateNameNote": "The verified local CSV identifies Official Spearman, code 23687, as a 1934 Texas Iron, IIIAB with 10.4 kg mass. The official checker returns Spearman as Official, and the detail page confirms the exact name, year, state, iron identity, mass, and exact printed coordinates. The source's historical medium-octahedrite classification is preserved."
       }
     },
     {
@@ -40122,6 +40333,27 @@
       }
     },
     {
+      "id": "obs-8fbea836-f8f1-49ce-a67b-a87828854d3b",
+      "catalogId": "nininger-1950",
+      "designation": "303.1",
+      "name": "Soper",
+      "weight": {
+        "grams": 89.2
+      },
+      "classification": "Iron. Nickel-poor ataxite",
+      "locality": "Choctaw County, Oklahoma",
+      "year": "1938",
+      "catalogPage": 95,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Soper",
+        "meteoriteCode": "23669",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23669",
+        "alternateNameNote": "The verified local CSV identifies Official Soper, code 23669, as a 1938 Oklahoma ungrouped iron with 3.7 kg mass. The official checker returns Soper as Official, and the detail page confirms the exact name, year, state, mass, and Hugo (iron) synonym. The source's unqualified Hugo synonym, historical classification, and Recognized wording are preserved."
+      }
+    },
+    {
       "id": "obs-b3eb93a0-4285-4c79-b76e-6e842b28e4c9",
       "catalogId": "nininger-1950",
       "designation": "304.1",
@@ -40644,6 +40876,27 @@
         "meteoriteCode": "18023",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18023",
         "alternateNameNote": "The checker treats bare Orange River as a partial name with two candidates. The verified local CSV and code 18023 detail page identify Official Orange River (iron); the source's 1855 South African iron identity, 149 kg total, and Griqualand synonym distinguish it from doubtful Orange River (stone), an 1887 8 gram fall. The official 148.8 kg mass differs slightly from the source total, which is preserved."
+      }
+    },
+    {
+      "id": "obs-01ab4461-31b4-4cc1-add8-d5b5fcfb6576",
+      "catalogId": "nininger-1950",
+      "designation": "324.1",
+      "name": "Shytal",
+      "weight": {
+        "grams": 8.5
+      },
+      "classification": "Stone. Brecciated intermediate hypersthene-chondrite",
+      "locality": "Madhupur jungle, Mymensingh, Bengal, India",
+      "year": "1863",
+      "catalogPage": 95,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Shytal",
+        "meteoriteCode": "23584",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23584",
+        "alternateNameNote": "The verified local CSV identifies Official Shytal, code 23584, as an 1863 Bangladesh L6 fall with 3.2 kg mass. The official checker returns Shytal as Official, and the detail page confirms the exact name, fall year, mass, and all three printed synonyms, Dacca, Shaital, and Shythal. The source's historical Bengal geography and classification are preserved."
       }
     },
     {
@@ -41550,6 +41803,27 @@
       }
     },
     {
+      "id": "obs-916f5a38-a4d0-4f13-8803-b3804fb10c63",
+      "catalogId": "nininger-1950",
+      "designation": "358.1",
+      "name": "South Byron",
+      "weight": {
+        "grams": 363
+      },
+      "classification": "Iron. Nickel-rich ataxite",
+      "locality": "Genesee County, New York",
+      "year": "1915",
+      "catalogPage": 95,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "South Byron",
+        "meteoriteCode": "23676",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23676",
+        "alternateNameNote": "The verified local CSV identifies Official South Byron, code 23676, as a 1915 New York ungrouped iron with 6 kg mass. The official checker returns South Byron as Official, and the detail page confirms the exact name, year, state, iron identity, 6 kg mass, and coordinates in Genesee County. The source's historical nickel-rich-ataxite classification is preserved."
+      }
+    },
+    {
       "id": "obs-6ae2817d-04bf-48a9-867b-a77e87d425e5",
       "catalogId": "nininger-1950",
       "designation": "359.1",
@@ -42072,6 +42346,48 @@
         "meteoriteCode": "11910",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11910",
         "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Horse Creek, code 11910. The detail page confirms the 1937 Colorado find, printed coordinates, iron identity, and 570 g mass and recommends Iron, ungrouped; the source's broader Iron classification and metallographic remark are preserved."
+      }
+    },
+    {
+      "id": "obs-1b05c5ad-d08e-48bc-bae9-c4f9dce18ca5",
+      "catalogId": "nininger-1950",
+      "designation": "379.7",
+      "name": "Springfield",
+      "weight": {
+        "grams": 2022
+      },
+      "classification": "Stone. Crystalline spherical chondrite",
+      "locality": "Baca County, Colorado; 37° 25′ N., 102° 37′ W.",
+      "year": "1937",
+      "catalogPage": 95,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Springfield",
+        "meteoriteCode": "23689",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23689",
+        "alternateNameNote": "The verified local CSV identifies Official Springfield, code 23689, as a 1937 Colorado L6 with 3.2 kg mass. The official checker returns bare Springfield as Official, and the detail page's 37° 23′ N., 102° 38′ W. coordinates agree closely with the printed coordinates. This distinguishes Springfield from Official Springfield (b), code 23690, whose 229.3 gram mass and 37° 29′ N., 102° 40.6′ W. coordinates do not match the source. The historical source classification is preserved."
+      }
+    },
+    {
+      "id": "obs-c8f7914b-7736-455c-9746-5b126463f02e",
+      "catalogId": "nininger-1950",
+      "designation": "379.13",
+      "name": "Springfield",
+      "weight": {
+        "grams": 517
+      },
+      "classification": "Stone. Crystalline spherical chondrite",
+      "locality": "Baca County, Colorado; 37° 25′ N., 102° 37′ W.",
+      "year": "1937",
+      "catalogPage": 95,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Springfield",
+        "meteoriteCode": "23689",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23689",
+        "alternateNameNote": "The verified local CSV identifies Official Springfield, code 23689, as a 1937 Colorado L6 with 3.2 kg mass. The official checker returns bare Springfield as Official, and the detail page's 37° 23′ N., 102° 38′ W. coordinates agree closely with the printed coordinates. This distinguishes Springfield from Official Springfield (b), code 23690, whose 229.3 gram mass and 37° 29′ N., 102° 40.6′ W. coordinates do not match the source. The historical source classification is preserved."
       }
     },
     {
