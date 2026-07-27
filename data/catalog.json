@@ -351,14 +351,15 @@
           44,
           45,
           46,
-          47
+          47,
+          48
         ],
-        "sourcePageCount": 22,
-        "recordCount": 458,
-        "recordsWithDesignation": 454,
-        "recordsWithWeight": 446,
+        "sourcePageCount": 23,
+        "recordCount": 468,
+        "recordsWithDesignation": 464,
+        "recordsWithWeight": 456,
         "confidenceCounts": {
-          "high": 458,
+          "high": 468,
           "medium": 0,
           "low": 0
         },
@@ -366,11 +367,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2370,
-    "recordsWithDesignation": 2197,
-    "recordsWithWeight": 2230,
+    "recordCount": 2380,
+    "recordsWithDesignation": 2207,
+    "recordsWithWeight": 2240,
     "confidenceCounts": {
-      "high": 2370,
+      "high": 2380,
       "medium": 0,
       "low": 0
     }
@@ -22372,6 +22373,90 @@
       }
     },
     {
+      "id": "obs-1f1fead1-bd88-4e1f-9766-1a1f2e15a1cb",
+      "catalogId": "nininger-1950",
+      "designation": "39a",
+      "name": "Descubridora",
+      "weight": {
+        "grams": 293
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "San Luis Potosi, Mexico",
+      "year": "1780",
+      "catalogPage": 48,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Charcas",
+        "meteoriteCode": "5326",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5326",
+        "alternateNameNote": "The official name checker identifies Descubridora as a synonym of Charcas. The Charcas detail page explicitly lists Descubridora among its synonyms and places Charcas in San Luis Potosi, Mexico."
+      }
+    },
+    {
+      "id": "obs-4d049861-1821-44c8-8ce8-d794748a2553",
+      "catalogId": "nininger-1950",
+      "designation": "40b",
+      "name": "Duchesne",
+      "weight": {
+        "grams": 77
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Duchesne County, Utah",
+      "year": "1906",
+      "catalogPage": 48,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Duchesne",
+        "meteoriteCode": "7737",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=7737",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-fce48f98-c0f0-479e-bb8c-a03e5bb821a1",
+      "catalogId": "nininger-1950",
+      "designation": "40a",
+      "name": "Duchesne",
+      "weight": {
+        "grams": 2815
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Duchesne County, Utah",
+      "year": "1906",
+      "catalogPage": 48,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Duchesne",
+        "meteoriteCode": "7737",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=7737",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-bb15b830-f77d-4f20-9c6f-71a2c9351498",
+      "catalogId": "nininger-1950",
+      "designation": "41a",
+      "name": "Dhurmsala",
+      "weight": {
+        "grams": 303
+      },
+      "classification": "Stone. Intermediate hypersthene-chondrite",
+      "locality": "Kangra district, India",
+      "year": "1860",
+      "catalogPage": 48,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dhurmsala",
+        "meteoriteCode": "7640",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=7640",
+        "alternateNameNote": null
+      }
+    },
+    {
       "id": "obs-82bbe8bc-2bae-4107-aa8d-62522a94a0fe",
       "catalogId": "nininger-1950",
       "designation": "50.1",
@@ -22684,6 +22769,27 @@
         "meteoriteCode": "5440",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5440",
         "alternateNameNote": "The exact official name, Washington County coordinates, and 12 kg mass agree. The source prints found 1938, while the official checker, verified CSV, and detail page give 1934; the source year is retained without reconciliation."
+      }
+    },
+    {
+      "id": "obs-08e95f35-c50d-4c65-983e-6bd13d5d6c87",
+      "catalogId": "nininger-1950",
+      "designation": "131a",
+      "name": "Doyleville",
+      "weight": {
+        "grams": 86.5
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Gunnison County, Colorado; 38° 25′ N., 106° 35′ W.",
+      "year": "1887",
+      "catalogPage": 48,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Doyleville",
+        "meteoriteCode": "7727",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=7727",
+        "alternateNameNote": null
       }
     },
     {
@@ -23296,6 +23402,48 @@
       }
     },
     {
+      "id": "obs-1923f58f-9558-4c02-8766-b3dfb8ac3234",
+      "catalogId": "nininger-1950",
+      "designation": "148e",
+      "name": "Deport",
+      "weight": {
+        "grams": 204
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Red River County, Texas",
+      "year": "1926",
+      "catalogPage": 48,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Deport",
+        "meteoriteCode": "6662",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=6662",
+        "alternateNameNote": "The official checker returns Deport as code 6662. The official CSV also contains a distinct Deport (a); the source's iron classification, 1926 year, and 15 kg total agree with Deport code 6662, not Deport (a)."
+      }
+    },
+    {
+      "id": "obs-ef0ff761-471d-4246-ae6c-6d6a6a85447a",
+      "catalogId": "nininger-1950",
+      "designation": "148d",
+      "name": "Deport",
+      "weight": {
+        "grams": 1041
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Red River County, Texas",
+      "year": "1926",
+      "catalogPage": 48,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Deport",
+        "meteoriteCode": "6662",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=6662",
+        "alternateNameNote": "The official checker returns Deport as code 6662. The official CSV also contains a distinct Deport (a); the source's iron classification, 1926 year, and 15 kg total agree with Deport code 6662, not Deport (a)."
+      }
+    },
+    {
       "id": "obs-81b280a4-ebe6-4214-b529-2d3ac8112661",
       "catalogId": "nininger-1950",
       "designation": "150a",
@@ -23545,6 +23693,27 @@
         "meteoriteCode": "5373",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5373",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-81a79c67-bf0a-4b4e-b219-defcf2b7b1da",
+      "catalogId": "nininger-1950",
+      "designation": "184.1",
+      "name": "Dix",
+      "weight": {
+        "grams": 34648
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Kimball County, Nebraska; 41° 14′ N., 103° 29′ W.",
+      "year": "1938",
+      "catalogPage": 48,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dix",
+        "meteoriteCode": "7651",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=7651",
+        "alternateNameNote": "The official checker returns exact name Dix as code 7651. The source prints Found 1938, while the official CSV reports year 1927; the discrepancy is preserved and not reconciled."
       }
     },
     {
@@ -24976,6 +25145,27 @@
       }
     },
     {
+      "id": "obs-0f8460c9-9c0c-4e4d-aa0f-ff80ebb663c9",
+      "catalogId": "nininger-1950",
+      "designation": "365.1",
+      "name": "Drake Creek",
+      "weight": {
+        "grams": 9.2
+      },
+      "classification": "Stone. Veined white hypersthene-chondrite",
+      "locality": "Nashville, Sumner County, Tennessee",
+      "year": "1827",
+      "catalogPage": 48,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Drake Creek",
+        "meteoriteCode": "7728",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=7728",
+        "alternateNameNote": null
+      }
+    },
+    {
       "id": "obs-86fe5e0b-40a9-43da-a5bd-b9cd119e23ca",
       "catalogId": "nininger-1950",
       "designation": "367.1",
@@ -25897,6 +26087,27 @@
         "meteoriteCode": "5394",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5394",
         "alternateNameNote": "The official checker treats bare Colby as a partial name matching two records. The detail record for Colby (Kansas), code 5394, agrees on Kansas coordinates, 1940, stone classification, and approximately 2.4 kg, distinguishing it from the Wisconsin fall."
+      }
+    },
+    {
+      "id": "obs-d6d55861-01eb-4fe2-9dc1-3233610b0c3a",
+      "catalogId": "nininger-1950",
+      "designation": "471.2",
+      "name": "De Nova",
+      "weight": {
+        "grams": 11551
+      },
+      "classification": "Stone. White chondrite",
+      "locality": "Washington County, Colorado; 39° 51′ N., 102° 57′ W.",
+      "year": "1940",
+      "catalogPage": 48,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "De Nova",
+        "meteoriteCode": "6624",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=6624",
+        "alternateNameNote": null
       }
     },
     {
