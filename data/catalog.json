@@ -353,14 +353,15 @@
           46,
           47,
           48,
-          49
+          49,
+          50
         ],
-        "sourcePageCount": 24,
-        "recordCount": 479,
-        "recordsWithDesignation": 475,
-        "recordsWithWeight": 467,
+        "sourcePageCount": 25,
+        "recordCount": 506,
+        "recordsWithDesignation": 501,
+        "recordsWithWeight": 494,
         "confidenceCounts": {
-          "high": 479,
+          "high": 506,
           "medium": 0,
           "low": 0
         },
@@ -368,11 +369,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2391,
-    "recordsWithDesignation": 2218,
-    "recordsWithWeight": 2251,
+    "recordCount": 2418,
+    "recordsWithDesignation": 2244,
+    "recordsWithWeight": 2278,
     "confidenceCounts": {
-      "high": 2391,
+      "high": 2418,
       "medium": 0,
       "low": 0
     }
@@ -22479,6 +22480,489 @@
       }
     },
     {
+      "id": "obs-83625f50-fb6a-48df-8e44-647a9f32d19c",
+      "catalogId": "nininger-1950",
+      "designation": "42p",
+      "name": "Estherville",
+      "weight": {
+        "grams": 3
+      },
+      "classification": "Mesosiderite",
+      "locality": "Emmet County, Iowa",
+      "year": "1879",
+      "catalogPage": 50,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Estherville",
+        "meteoriteCode": "10059",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10059",
+        "alternateNameNote": "The official checker returns exact Official Estherville. The valid-name CSV and detail page report 320 kg and recommended classification Mesosiderite-A3/4; the source prints 338 kg. and Mesosiderite, which are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-693af259-4d73-45cc-8704-fe18a77ba2c7",
+      "catalogId": "nininger-1950",
+      "designation": "42o",
+      "name": "Estherville",
+      "weight": {
+        "grams": 4
+      },
+      "classification": "Mesosiderite",
+      "locality": "Emmet County, Iowa",
+      "year": "1879",
+      "catalogPage": 50,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Estherville",
+        "meteoriteCode": "10059",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10059",
+        "alternateNameNote": "The official checker returns exact Official Estherville. The valid-name CSV and detail page report 320 kg and recommended classification Mesosiderite-A3/4; the source prints 338 kg. and Mesosiderite, which are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-91fc29eb-978b-4194-88b5-17d7bb5f85de",
+      "catalogId": "nininger-1950",
+      "designation": "42n",
+      "name": "Estherville",
+      "weight": {
+        "grams": 9
+      },
+      "classification": "Mesosiderite",
+      "locality": "Emmet County, Iowa",
+      "year": "1879",
+      "catalogPage": 50,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Estherville",
+        "meteoriteCode": "10059",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10059",
+        "alternateNameNote": "The official checker returns exact Official Estherville. The valid-name CSV and detail page report 320 kg and recommended classification Mesosiderite-A3/4; the source prints 338 kg. and Mesosiderite, which are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-7f782f3a-b97e-49a0-bfff-271a3ef7897e",
+      "catalogId": "nininger-1950",
+      "designation": "42L",
+      "name": "Estherville",
+      "weight": {
+        "grams": 10
+      },
+      "classification": "Mesosiderite",
+      "locality": "Emmet County, Iowa",
+      "year": "1879",
+      "catalogPage": 50,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Estherville",
+        "meteoriteCode": "10059",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10059",
+        "alternateNameNote": "Printed designation 42L retains its capital L. Estherville remains exact official code 10059; the source prints 338 kg. and Mesosiderite versus the official 320 kg and Mesosiderite-A3/4."
+      }
+    },
+    {
+      "id": "obs-cd744ce0-3a50-40e7-8c22-f06f7dfa4505",
+      "catalogId": "nininger-1950",
+      "designation": "42k",
+      "name": "Estherville",
+      "weight": {
+        "grams": 21
+      },
+      "classification": "Mesosiderite",
+      "locality": "Emmet County, Iowa",
+      "year": "1879",
+      "catalogPage": 50,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Estherville",
+        "meteoriteCode": "10059",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10059",
+        "alternateNameNote": "The official checker returns exact Official Estherville. The valid-name CSV and detail page report 320 kg and recommended classification Mesosiderite-A3/4; the source prints 338 kg. and Mesosiderite, which are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-5ed27c22-f2b0-4743-ad92-ce745c8e2a9a",
+      "catalogId": "nininger-1950",
+      "designation": "42h",
+      "name": "Estherville",
+      "weight": {
+        "grams": 58
+      },
+      "classification": "Mesosiderite",
+      "locality": "Emmet County, Iowa",
+      "year": "1879",
+      "catalogPage": 50,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Estherville",
+        "meteoriteCode": "10059",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10059",
+        "alternateNameNote": "The official checker returns exact Official Estherville. The valid-name CSV and detail page report 320 kg and recommended classification Mesosiderite-A3/4; the source prints 338 kg. and Mesosiderite, which are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-3fce98bf-574f-4413-b0b7-b063d6411d12",
+      "catalogId": "nininger-1950",
+      "designation": "42d",
+      "name": "Estherville",
+      "weight": {
+        "grams": 59
+      },
+      "classification": "Mesosiderite",
+      "locality": "Emmet County, Iowa",
+      "year": "1879",
+      "catalogPage": 50,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Estherville",
+        "meteoriteCode": "10059",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10059",
+        "alternateNameNote": "Printed aggregate of 12 iron pellets retained as one row, not expanded. Estherville remains exact official code 10059; the source prints 338 kg. and Mesosiderite versus the official 320 kg and Mesosiderite-A3/4."
+      }
+    },
+    {
+      "id": "obs-740052f4-40d6-4d8f-8930-2aebd5247a56",
+      "catalogId": "nininger-1950",
+      "designation": "42g",
+      "name": "Estherville",
+      "weight": {
+        "grams": 60
+      },
+      "classification": "Mesosiderite",
+      "locality": "Emmet County, Iowa",
+      "year": "1879",
+      "catalogPage": 50,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Estherville",
+        "meteoriteCode": "10059",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10059",
+        "alternateNameNote": "The official checker returns exact Official Estherville. The valid-name CSV and detail page report 320 kg and recommended classification Mesosiderite-A3/4; the source prints 338 kg. and Mesosiderite, which are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-8676f564-7c2e-45c6-8710-7394e27dd84d",
+      "catalogId": "nininger-1950",
+      "designation": "42c",
+      "name": "Estherville",
+      "weight": {
+        "grams": 87
+      },
+      "classification": "Mesosiderite",
+      "locality": "Emmet County, Iowa",
+      "year": "1879",
+      "catalogPage": 50,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Estherville",
+        "meteoriteCode": "10059",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10059",
+        "alternateNameNote": "Printed aggregate of 12 iron pellets retained as one row, not expanded. Estherville remains exact official code 10059; the source prints 338 kg. and Mesosiderite versus the official 320 kg and Mesosiderite-A3/4."
+      }
+    },
+    {
+      "id": "obs-30ba1e5a-8180-4b85-9b27-e6bf80ade35a",
+      "catalogId": "nininger-1950",
+      "designation": "42q",
+      "name": "Estherville",
+      "weight": {
+        "grams": 159
+      },
+      "classification": "Mesosiderite",
+      "locality": "Emmet County, Iowa",
+      "year": "1879",
+      "catalogPage": 50,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Estherville",
+        "meteoriteCode": "10059",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10059",
+        "alternateNameNote": "The official checker returns exact Official Estherville. The valid-name CSV and detail page report 320 kg and recommended classification Mesosiderite-A3/4; the source prints 338 kg. and Mesosiderite, which are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-435c2009-4331-4f46-9c34-268ae6c47d04",
+      "catalogId": "nininger-1950",
+      "designation": "42.18",
+      "name": "Estherville",
+      "weight": {
+        "grams": 12
+      },
+      "classification": "Mesosiderite",
+      "locality": "Emmet County, Iowa",
+      "year": "1879",
+      "catalogPage": 50,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Estherville",
+        "meteoriteCode": "10059",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10059",
+        "alternateNameNote": "The official checker returns exact Official Estherville. The valid-name CSV and detail page report 320 kg and recommended classification Mesosiderite-A3/4; the source prints 338 kg. and Mesosiderite, which are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-9a7f6e8c-3d15-40f2-984f-4f0c98d5b7c2",
+      "catalogId": "nininger-1950",
+      "designation": "42.21",
+      "name": "Estherville",
+      "weight": {
+        "grams": 9
+      },
+      "classification": "Mesosiderite",
+      "locality": "Emmet County, Iowa",
+      "year": "1879",
+      "catalogPage": 50,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Estherville",
+        "meteoriteCode": "10059",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10059",
+        "alternateNameNote": "The official checker returns exact Official Estherville. The valid-name CSV and detail page report 320 kg and recommended classification Mesosiderite-A3/4; the source prints 338 kg. and Mesosiderite, which are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-1cf801a5-d9f4-4057-8399-2869cb9a63e5",
+      "catalogId": "nininger-1950",
+      "designation": "42.22",
+      "name": "Estherville",
+      "weight": {
+        "grams": 6
+      },
+      "classification": "Mesosiderite",
+      "locality": "Emmet County, Iowa",
+      "year": "1879",
+      "catalogPage": 50,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Estherville",
+        "meteoriteCode": "10059",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10059",
+        "alternateNameNote": "The official checker returns exact Official Estherville. The valid-name CSV and detail page report 320 kg and recommended classification Mesosiderite-A3/4; the source prints 338 kg. and Mesosiderite, which are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-3f0cb40f-6852-4b92-8a79-de3572590d18",
+      "catalogId": "nininger-1950",
+      "designation": "42.23",
+      "name": "Estherville",
+      "weight": {
+        "grams": 8.6
+      },
+      "classification": "Mesosiderite",
+      "locality": "Emmet County, Iowa",
+      "year": "1879",
+      "catalogPage": 50,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Estherville",
+        "meteoriteCode": "10059",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10059",
+        "alternateNameNote": "The official checker returns exact Official Estherville. The valid-name CSV and detail page report 320 kg and recommended classification Mesosiderite-A3/4; the source prints 338 kg. and Mesosiderite, which are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-49c0ef8a-9a72-4f85-9faa-ddb524207f0e",
+      "catalogId": "nininger-1950",
+      "designation": "42.24",
+      "name": "Estherville",
+      "weight": {
+        "grams": 6
+      },
+      "classification": "Mesosiderite",
+      "locality": "Emmet County, Iowa",
+      "year": "1879",
+      "catalogPage": 50,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Estherville",
+        "meteoriteCode": "10059",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10059",
+        "alternateNameNote": "The official checker returns exact Official Estherville. The valid-name CSV and detail page report 320 kg and recommended classification Mesosiderite-A3/4; the source prints 338 kg. and Mesosiderite, which are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-7c2b2a57-296b-486e-a374-4a8f10554125",
+      "catalogId": "nininger-1950",
+      "designation": "42.25",
+      "name": "Estherville",
+      "weight": {
+        "grams": 5
+      },
+      "classification": "Mesosiderite",
+      "locality": "Emmet County, Iowa",
+      "year": "1879",
+      "catalogPage": 50,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Estherville",
+        "meteoriteCode": "10059",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10059",
+        "alternateNameNote": "The official checker returns exact Official Estherville. The valid-name CSV and detail page report 320 kg and recommended classification Mesosiderite-A3/4; the source prints 338 kg. and Mesosiderite, which are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-e674d5d8-2b19-442c-8061-772bb6526ed8",
+      "catalogId": "nininger-1950",
+      "designation": "42.27",
+      "name": "Estherville",
+      "weight": {
+        "grams": 4
+      },
+      "classification": "Mesosiderite",
+      "locality": "Emmet County, Iowa",
+      "year": "1879",
+      "catalogPage": 50,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Estherville",
+        "meteoriteCode": "10059",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10059",
+        "alternateNameNote": "The official checker returns exact Official Estherville. The valid-name CSV and detail page report 320 kg and recommended classification Mesosiderite-A3/4; the source prints 338 kg. and Mesosiderite, which are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-af6d191b-96fa-430f-a186-4dcbabc6d899",
+      "catalogId": "nininger-1950",
+      "designation": "42.28",
+      "name": "Estherville",
+      "weight": {
+        "grams": 4
+      },
+      "classification": "Mesosiderite",
+      "locality": "Emmet County, Iowa",
+      "year": "1879",
+      "catalogPage": 50,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Estherville",
+        "meteoriteCode": "10059",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10059",
+        "alternateNameNote": "The official checker returns exact Official Estherville. The valid-name CSV and detail page report 320 kg and recommended classification Mesosiderite-A3/4; the source prints 338 kg. and Mesosiderite, which are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-965e03f0-fc2a-4fe0-8ed0-c58ce3eebadf",
+      "catalogId": "nininger-1950",
+      "designation": "42.29",
+      "name": "Estherville",
+      "weight": {
+        "grams": 100
+      },
+      "classification": "Mesosiderite",
+      "locality": "Emmet County, Iowa",
+      "year": "1879",
+      "catalogPage": 50,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Estherville",
+        "meteoriteCode": "10059",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10059",
+        "alternateNameNote": "The official checker returns exact Official Estherville. The valid-name CSV and detail page report 320 kg and recommended classification Mesosiderite-A3/4; the source prints 338 kg. and Mesosiderite, which are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-e6e17f9b-c059-4dc1-8aee-60b80a7bed92",
+      "catalogId": "nininger-1950",
+      "designation": "43a",
+      "name": "Elm Creek",
+      "weight": {
+        "grams": 55
+      },
+      "classification": "Stone. Spherical hypersthene-chondrite",
+      "locality": "Lyon County, Kansas",
+      "year": "1906",
+      "catalogPage": 50,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Elm Creek",
+        "meteoriteCode": "10024",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10024",
+        "alternateNameNote": "The official checker returns exact Official Elm Creek. The valid-name CSV and detail page report a mass of 7 kg; the source prints 7,075 grams, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-0e27dbc2-a844-4a4d-b595-bc4d3e582286",
+      "catalogId": "nininger-1950",
+      "designation": "44a",
+      "name": "Estacado",
+      "weight": {
+        "grams": 13750
+      },
+      "classification": "Stone. Crystalline bronzite-chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1883",
+      "catalogPage": 50,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Estacado",
+        "meteoriteCode": "10057",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10057",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-c253e0cd-41c6-4717-a83d-78a158439b45",
+      "catalogId": "nininger-1950",
+      "designation": "45a",
+      "name": "Ergheo",
+      "weight": {
+        "grams": 86
+      },
+      "classification": "Stone. Crystalline hypersthene-chondrite",
+      "locality": "Brava, Italian Somaliland, East Africa",
+      "year": "1889",
+      "catalogPage": 50,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Ergheo",
+        "meteoriteCode": "10044",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10044",
+        "alternateNameNote": "The official checker returns exact Official Ergheo. The valid-name CSV and detail page use the modern locality Shabeellaha Hoose, Somalia; the source's historical Brava, Italian Somaliland, East Africa locality is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-04b40670-31df-471b-8fda-21d84d2af98a",
+      "catalogId": "nininger-1950",
+      "designation": "45b",
+      "name": "Ergheo",
+      "weight": {
+        "grams": 183
+      },
+      "classification": "Stone. Crystalline hypersthene-chondrite",
+      "locality": "Brava, Italian Somaliland, East Africa",
+      "year": "1889",
+      "catalogPage": 50,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Ergheo",
+        "meteoriteCode": "10044",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10044",
+        "alternateNameNote": "The official checker returns exact Official Ergheo. The valid-name CSV and detail page use the modern locality Shabeellaha Hoose, Somalia; the source's historical Brava, Italian Somaliland, East Africa locality is preserved without reconciliation."
+      }
+    },
+    {
       "id": "obs-75a440b0-e0b9-436e-a7c9-f8a10c1191bb",
       "catalogId": "nininger-1950",
       "designation": "46a",
@@ -22812,6 +23296,27 @@
         "meteoriteCode": "5440",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5440",
         "alternateNameNote": "The exact official name, Washington County coordinates, and 12 kg mass agree. The source prints found 1938, while the official checker, verified CSV, and detail page give 1934; the source year is retained without reconciliation."
+      }
+    },
+    {
+      "id": "obs-8cf2202a-c656-4fd7-84e2-655967ef70ac",
+      "catalogId": "nininger-1950",
+      "designation": "118.1",
+      "name": "Enon",
+      "weight": {
+        "grams": 598
+      },
+      "classification": "Mesosiderite",
+      "locality": "Clark County, Ohio; 39° 53′ N., 83° 56′ W.",
+      "year": "1883",
+      "catalogPage": 50,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Enon",
+        "meteoriteCode": "10037",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10037",
+        "alternateNameNote": "The official checker returns exact Official Enon. The detail page records the NHM historical classification Mesosiderite-an, but the valid-name CSV and current recommended classification say Iron, ungrouped; the source's Mesosiderite wording is preserved without reconciliation."
       }
     },
     {
@@ -24933,6 +25438,48 @@
         "meteoriteCode": "5172",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5172",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-32cf0f43-30ec-4233-a543-f73e776343d1",
+      "catalogId": "nininger-1950",
+      "designation": "332.1",
+      "name": "Ensisheim",
+      "weight": {
+        "grams": 4.5
+      },
+      "classification": "Stone. Crystalline hypersthene-chondrite",
+      "locality": "Alsace, France",
+      "year": "1492",
+      "catalogPage": 50,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Ensisheim",
+        "meteoriteCode": "10039",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10039",
+        "alternateNameNote": "The official checker returns exact Official Ensisheim, and the detail page lists the source's printed Elsass form as a synonym."
+      }
+    },
+    {
+      "id": "obs-8255794d-b794-4e64-879e-6fad32b7e703",
+      "catalogId": "nininger-1950",
+      "designation": "332.2",
+      "name": "Ensisheim",
+      "weight": {
+        "grams": 0.51
+      },
+      "classification": "Stone. Crystalline hypersthene-chondrite",
+      "locality": "Alsace, France",
+      "year": "1492",
+      "catalogPage": 50,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Ensisheim",
+        "meteoriteCode": "10039",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10039",
+        "alternateNameNote": "The official checker returns exact Official Ensisheim, and the detail page lists the source's printed Elsass form as a synonym."
       }
     },
     {
@@ -49881,6 +50428,27 @@
         "meteoriteCode": null,
         "metbullUrl": null,
         "alternateNameNote": "Dalgaranga is parent-entry/site context for this crater material, but the observation describes non-specimen or unconfirmed material and explicitly does not independently apply the parent meteorite classification; no canonical meteorite identity is claimed."
+      }
+    },
+    {
+      "id": "obs-0c23ef83-760a-4b69-986d-dff6dd913821",
+      "catalogId": "nininger-1950",
+      "designation": null,
+      "name": "Estherville",
+      "weight": {
+        "grams": 48.9
+      },
+      "classification": "Mesosiderite",
+      "locality": "Emmet County, Iowa",
+      "year": "1879",
+      "catalogPage": 50,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Estherville",
+        "meteoriteCode": "10059",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10059",
+        "alternateNameNote": "Printed undesignated aggregate of 11 iron pellets retained as one row, not expanded; no designation is inferred. Estherville remains exact official code 10059; the source prints 338 kg. and Mesosiderite versus the official 320 kg and Mesosiderite-A3/4."
       }
     },
     {
