@@ -382,14 +382,15 @@
           75,
           76,
           77,
-          78
+          78,
+          79
         ],
-        "sourcePageCount": 53,
-        "recordCount": 1063,
-        "recordsWithDesignation": 1041,
-        "recordsWithWeight": 1004,
+        "sourcePageCount": 54,
+        "recordCount": 1101,
+        "recordsWithDesignation": 1075,
+        "recordsWithWeight": 1037,
         "confidenceCounts": {
-          "high": 1063,
+          "high": 1101,
           "medium": 0,
           "low": 0
         },
@@ -397,11 +398,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2975,
-    "recordsWithDesignation": 2784,
-    "recordsWithWeight": 2788,
+    "recordCount": 3013,
+    "recordsWithDesignation": 2818,
+    "recordsWithWeight": 2821,
     "confidenceCounts": {
-      "high": 2975,
+      "high": 3013,
       "medium": 0,
       "low": 0
     }
@@ -26477,6 +26478,426 @@
       }
     },
     {
+      "id": "obs-bce9525b-71fa-4ae9-b2f6-4ae467363377",
+      "catalogId": "nininger-1950",
+      "designation": "91u",
+      "name": "Odessa",
+      "weight": {
+        "grams": 15
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
+      }
+    },
+    {
+      "id": "obs-2ee4db83-b3f6-440f-9873-4938e929dd0c",
+      "catalogId": "nininger-1950",
+      "designation": "91s",
+      "name": "Odessa",
+      "weight": {
+        "grams": 16
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
+      }
+    },
+    {
+      "id": "obs-97fa25f7-e0a2-45a2-9293-0c3b4a6240d1",
+      "catalogId": "nininger-1950",
+      "designation": "91r",
+      "name": "Odessa",
+      "weight": {
+        "grams": 23
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
+      }
+    },
+    {
+      "id": "obs-0bfae0be-98b3-4111-a122-562c512300e7",
+      "catalogId": "nininger-1950",
+      "designation": "91p",
+      "name": "Odessa",
+      "weight": {
+        "grams": 28
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
+      }
+    },
+    {
+      "id": "obs-30c9e206-2dd0-4e48-ac6a-34a420aa7bb5",
+      "catalogId": "nininger-1950",
+      "designation": "91o",
+      "name": "Odessa",
+      "weight": {
+        "grams": 51
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
+      }
+    },
+    {
+      "id": "obs-3f66279f-8026-4bd8-a685-2fdf1e50b372",
+      "catalogId": "nininger-1950",
+      "designation": "91n",
+      "name": "Odessa",
+      "weight": {
+        "grams": 64
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
+      }
+    },
+    {
+      "id": "obs-e8462931-c91d-4ac4-974c-154bcb996683",
+      "catalogId": "nininger-1950",
+      "designation": "91m",
+      "name": "Odessa",
+      "weight": {
+        "grams": 65
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
+      }
+    },
+    {
+      "id": "obs-8d60b354-2b89-4052-ada9-491567a3e1a2",
+      "catalogId": "nininger-1950",
+      "designation": "91a",
+      "name": "Odessa",
+      "weight": {
+        "grams": 95
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
+      }
+    },
+    {
+      "id": "obs-e79d4a93-a823-4ff2-a117-6d1a964f71c8",
+      "catalogId": "nininger-1950",
+      "designation": "91j",
+      "name": "Odessa",
+      "weight": {
+        "grams": 200
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
+      }
+    },
+    {
+      "id": "obs-3204598c-9d32-4861-9553-1b0dda9ed355",
+      "catalogId": "nininger-1950",
+      "designation": "91b",
+      "name": "Odessa",
+      "weight": {
+        "grams": 296
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
+      }
+    },
+    {
+      "id": "obs-a77c07a0-de4a-4d14-81a9-b4529b49f57f",
+      "catalogId": "nininger-1950",
+      "designation": "91h",
+      "name": "Odessa",
+      "weight": {
+        "grams": 367
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
+      }
+    },
+    {
+      "id": "obs-47053f29-9736-490a-96d2-cf94f333f4ab",
+      "catalogId": "nininger-1950",
+      "designation": "91c",
+      "name": "Odessa",
+      "weight": {
+        "grams": 610
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
+      }
+    },
+    {
+      "id": "obs-97533b14-d3db-422c-9618-6bc1803f58d1",
+      "catalogId": "nininger-1950",
+      "designation": "91e",
+      "name": "Odessa",
+      "weight": {
+        "grams": 900
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
+      }
+    },
+    {
+      "id": "obs-a9edd36e-d989-4802-91e9-ea922bdfe7a1",
+      "catalogId": "nininger-1950",
+      "designation": "91.32",
+      "name": "Odessa",
+      "weight": {
+        "grams": 14
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
+      }
+    },
+    {
+      "id": "obs-efac1cc4-d228-4cf2-82fb-79ba0bf2dfb9",
+      "catalogId": "nininger-1950",
+      "designation": "91.33",
+      "name": "Odessa",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
+      }
+    },
+    {
+      "id": "obs-a7d7532a-bfde-4a2a-8d05-d5aa77127760",
+      "catalogId": "nininger-1950",
+      "designation": "91.34",
+      "name": "Odessa",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
+      }
+    },
+    {
+      "id": "obs-dbe91de6-a64a-416c-a5fa-fca3b22566c1",
+      "catalogId": "nininger-1950",
+      "designation": "91.35",
+      "name": "Odessa",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
+      }
+    },
+    {
+      "id": "obs-020dd10a-653e-40a4-a405-d06cf12c7468",
+      "catalogId": "nininger-1950",
+      "designation": "91.36",
+      "name": "Odessa",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
+      }
+    },
+    {
+      "id": "obs-74f50547-288f-45b2-81da-edd33963cf8b",
+      "catalogId": "nininger-1950",
+      "designation": "91.42",
+      "name": "Odessa",
+      "weight": {
+        "grams": 428
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
+      }
+    },
+    {
+      "id": "obs-c419bbe0-0d4d-4c65-8fe1-b5fdc82f2bf8",
+      "catalogId": "nininger-1950",
+      "designation": "91.45",
+      "name": "Odessa",
+      "weight": {
+        "grams": 53.5
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
+      }
+    },
+    {
       "id": "obs-27581ec3-4f85-45a1-ab77-50f4d55413fd",
       "catalogId": "nininger-1950",
       "designation": "112c",
@@ -27503,6 +27924,27 @@
         "meteoriteCode": "5047",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5047",
         "alternateNameNote": "The Missouri context, 1903 year, and 24.5 kg source total agree; MetBull lists Christian County as a synonym. The historical class corresponds broadly to modern Iron, IIIAB."
+      }
+    },
+    {
+      "id": "obs-d749bd64-1df1-4288-8737-e9f3cb7a036f",
+      "catalogId": "nininger-1950",
+      "designation": "152a",
+      "name": "Oakley",
+      "weight": {
+        "grams": 263
+      },
+      "classification": "Stone. Crystalline bronzite-chondrite",
+      "locality": "Logan County, Kansas",
+      "year": "1895",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Oakley (stone)",
+        "meteoriteCode": "17973",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17973",
+        "alternateNameNote": "The official checker treats bare Oakley as a partial name with two candidates. The verified local CSV identifies Official Oakley (stone), code 17973, and the detail page confirms the source's 1895 Kansas stone, H6 identity, 27.7 kg mass, and Logan County coordinates; these controls distinguish it from the 1926 Idaho iron. The source's historical classification is preserved."
       }
     },
     {
@@ -31808,6 +32250,27 @@
         "meteoriteCode": "16746",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16746",
         "alternateNameNote": "The verified local CSV identifies exact Official Morland, code 16746, a Kansas H6 with 295 kg mass and year 1890. The official checker returns the exact name as Official, and the detail page confirms the class, printed coordinates, and Graham County synonym. The source's Found 1935 and 327.2 kg total conflict with the official year and mass and are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-27f6e39c-4859-4cc0-8847-b5eb1bf59de4",
+      "catalogId": "nininger-1950",
+      "designation": "283a",
+      "name": "Oberlin",
+      "weight": {
+        "grams": 2265
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Decatur County, Kansas; 39° 48′ N., 100° 31′ W.",
+      "year": "1935",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Oberlin",
+        "meteoriteCode": "17975",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17975",
+        "alternateNameNote": "The verified local CSV identifies Official Oberlin, code 17975, a Kansas LL5 with 2.5 kg mass. The official checker returns Oberlin as Official, and the detail page confirms the exact name, state, chondrite identity, and exact printed coordinates. MetBull gives 1911 and 2.5 kg, while the source prints Recognized 1935 and 2,591 grams; the source facts are preserved."
       }
     },
     {
@@ -37310,6 +37773,258 @@
         "meteoriteCode": "5463",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5463",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-8c83b597-4298-4194-9dd9-71d542437e73",
+      "catalogId": "nininger-1950",
+      "designation": "D 91.72",
+      "name": "Odessa",
+      "weight": {
+        "grams": 129
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
+      }
+    },
+    {
+      "id": "obs-7a42b431-bbc0-4c97-ae46-08d340f3c807",
+      "catalogId": "nininger-1950",
+      "designation": "D 91.75",
+      "name": "Odessa",
+      "weight": {
+        "grams": 339
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
+      }
+    },
+    {
+      "id": "obs-2d2a5317-c54a-43ee-80ba-884b369acb93",
+      "catalogId": "nininger-1950",
+      "designation": "D 91.77",
+      "name": "Odessa",
+      "weight": {
+        "grams": 700
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
+      }
+    },
+    {
+      "id": "obs-3015bfaa-37cb-4610-beaa-93a5a0ca614b",
+      "catalogId": "nininger-1950",
+      "designation": "D 91.80",
+      "name": "Odessa",
+      "weight": {
+        "grams": 717
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
+      }
+    },
+    {
+      "id": "obs-61e3b491-972d-4c64-a18a-444054309a7b",
+      "catalogId": "nininger-1950",
+      "designation": "D 91.83",
+      "name": "Odessa",
+      "weight": {
+        "grams": 704
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
+      }
+    },
+    {
+      "id": "obs-d9c30b69-6a6a-4a66-94da-28fcdc0bfe49",
+      "catalogId": "nininger-1950",
+      "designation": "D 91.87",
+      "name": "Odessa",
+      "weight": {
+        "grams": 913
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
+      }
+    },
+    {
+      "id": "obs-0d858e44-bf1c-4b1b-b753-277ac1227ec1",
+      "catalogId": "nininger-1950",
+      "designation": "D 91.88",
+      "name": "Odessa",
+      "weight": {
+        "grams": 1640
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
+      }
+    },
+    {
+      "id": "obs-69c263f1-d435-4319-8a6b-83b975e8f330",
+      "catalogId": "nininger-1950",
+      "designation": "D 91.89",
+      "name": "Odessa",
+      "weight": {
+        "grams": 1812
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
+      }
+    },
+    {
+      "id": "obs-2113a483-151c-43a2-89b2-a2520fb1bdc0",
+      "catalogId": "nininger-1950",
+      "designation": "D 91.90",
+      "name": "Odessa",
+      "weight": {
+        "grams": 2944
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
+      }
+    },
+    {
+      "id": "obs-946ebbb1-1aa2-4c68-9c32-2565a5342d8f",
+      "catalogId": "nininger-1950",
+      "designation": "D 91.91",
+      "name": "Odessa",
+      "weight": {
+        "grams": 3171
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
+      }
+    },
+    {
+      "id": "obs-33845f72-533d-4323-8b91-edae8c60bd95",
+      "catalogId": "nininger-1950",
+      "designation": "D 91.93",
+      "name": "Odessa",
+      "weight": {
+        "grams": 78389
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
+      }
+    },
+    {
+      "id": "obs-0f44cac3-1516-4bca-ab33-6f394d991107",
+      "catalogId": "nininger-1950",
+      "designation": "D 91.95",
+      "name": "Odessa",
+      "weight": {
+        "grams": 1129
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
       }
     },
     {
@@ -62258,6 +62973,90 @@
         "meteoriteCode": "23160",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23160",
         "alternateNameNote": "The official checker explicitly identifies Nativitas as a synonym of Santa Apolonia. The verified local CSV and code 23160 detail page identify Official Santa Apolonia and confirm Nativitas as a synonym, the Tlaxcala coordinates, Iron, IIIAB identity, and 1,316 kg mass. The official 1872 year conflicts with the source's Found 1904, and the source's 1,315 kg total is preserved."
+      }
+    },
+    {
+      "id": "obs-daaa6398-7a3c-4ddd-a251-87b3f32f3d49",
+      "catalogId": "nininger-1950",
+      "designation": null,
+      "name": "Odessa",
+      "weight": {
+        "grams": 83
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
+      }
+    },
+    {
+      "id": "obs-a20fd12d-0cd0-415c-8bcc-f5e8071964d6",
+      "catalogId": "nininger-1950",
+      "designation": null,
+      "name": "Odessa",
+      "weight": {
+        "grams": 140
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
+      }
+    },
+    {
+      "id": "obs-afb4162c-e3bc-4377-b03a-5671e5fb3a21",
+      "catalogId": "nininger-1950",
+      "designation": null,
+      "name": "Odessa",
+      "weight": {
+        "grams": 930
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
+      }
+    },
+    {
+      "id": "obs-36124dec-062e-4d82-aa71-0f857249092d",
+      "catalogId": "nininger-1950",
+      "designation": null,
+      "name": "Odessa",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Ector County, Texas",
+      "year": "1922",
+      "catalogPage": 79,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The official checker treats bare Odessa as a partial name with three containing records. The verified local CSV identifies Official Odessa (iron), code 17985, and the detail page confirms the source's 1922 Texas iron and Ector County synonym; these controls distinguish it from Odessa (stone), Odessa [crater], and the unrelated Grossliebenthal synonym. The source's historical classification and qualified total are preserved."
       }
     },
     {
