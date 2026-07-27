@@ -396,14 +396,15 @@
           89,
           90,
           91,
-          92
+          92,
+          93
         ],
-        "sourcePageCount": 67,
-        "recordCount": 1484,
-        "recordsWithDesignation": 1458,
-        "recordsWithWeight": 1419,
+        "sourcePageCount": 68,
+        "recordCount": 1495,
+        "recordsWithDesignation": 1469,
+        "recordsWithWeight": 1430,
         "confidenceCounts": {
-          "high": 1484,
+          "high": 1495,
           "medium": 0,
           "low": 0
         },
@@ -411,11 +412,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 3396,
-    "recordsWithDesignation": 3201,
-    "recordsWithWeight": 3203,
+    "recordCount": 3407,
+    "recordsWithDesignation": 3212,
+    "recordsWithWeight": 3214,
     "confidenceCounts": {
-      "high": 3396,
+      "high": 3407,
       "medium": 0,
       "low": 0
     }
@@ -32266,6 +32267,90 @@
       }
     },
     {
+      "id": "obs-1a86366a-ea84-43ac-bede-da82258c0f29",
+      "catalogId": "nininger-1950",
+      "designation": "102a",
+      "name": "Seelasgen",
+      "weight": {
+        "grams": 18
+      },
+      "classification": "Iron. Coarsest octahedrite",
+      "locality": "Schwiebus, Brandenburg, Prussia",
+      "year": "1847",
+      "catalogPage": 93,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Seeläsgen",
+        "meteoriteCode": "23474",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23474",
+        "alternateNameNote": "The verified local CSV identifies Official Seeläsgen, code 23474, an 1847 Poland Iron, IAB-MG with 102 kg mass. The checker explicitly returns printed Seelasgen as a Variant of Seeläsgen, and the detail page confirms the identity, year, mass, and Brandenburg and Schwiebus synonyms. The source's unaccented spelling, historical Prussia locality, and coarsest-octahedrite classification are preserved."
+      }
+    },
+    {
+      "id": "obs-bb6bf53e-07e8-4dec-8469-5d2d5919b8b6",
+      "catalogId": "nininger-1950",
+      "designation": "102b",
+      "name": "Seelasgen",
+      "weight": {
+        "grams": 18.8
+      },
+      "classification": "Iron. Coarsest octahedrite",
+      "locality": "Schwiebus, Brandenburg, Prussia",
+      "year": "1847",
+      "catalogPage": 93,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Seeläsgen",
+        "meteoriteCode": "23474",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23474",
+        "alternateNameNote": "The verified local CSV identifies Official Seeläsgen, code 23474, an 1847 Poland Iron, IAB-MG with 102 kg mass. The checker explicitly returns printed Seelasgen as a Variant of Seeläsgen, and the detail page confirms the identity, year, mass, and Brandenburg and Schwiebus synonyms. The source's unaccented spelling, historical Prussia locality, and coarsest-octahedrite classification are preserved."
+      }
+    },
+    {
+      "id": "obs-1a7641a8-d91c-4fad-8d08-895eef706103",
+      "catalogId": "nininger-1950",
+      "designation": "103b",
+      "name": "Santa Rosa",
+      "weight": {
+        "grams": 14
+      },
+      "classification": "Iron. Ataxite to obscure brecciated octahedrite",
+      "locality": "Columbia, South America",
+      "year": "1810",
+      "catalogPage": 93,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Santa Rosa",
+        "meteoriteCode": "23167",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23167",
+        "alternateNameNote": "The verified local CSV identifies Official Santa Rosa, code 23167, an 1810 Colombia Iron, IC with 825 kg mass. The official checker returns Santa Rosa as Official, and the detail page confirms the exact name, year, country, iron identity, and the printed Bogota, New Granada, Rasgata, and Zipaquira synonyms. The detail page uses Colombia where the source prints Columbia; the source's Columbia and Tocavita text, 813 kg total, and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-a7eba70f-eb2e-415c-a3c2-a208a4e333de",
+      "catalogId": "nininger-1950",
+      "designation": "103a",
+      "name": "Santa Rosa",
+      "weight": {
+        "grams": 520
+      },
+      "classification": "Iron. Ataxite to obscure brecciated octahedrite",
+      "locality": "Columbia, South America",
+      "year": "1810",
+      "catalogPage": 93,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Santa Rosa",
+        "meteoriteCode": "23167",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23167",
+        "alternateNameNote": "The verified local CSV identifies Official Santa Rosa, code 23167, an 1810 Colombia Iron, IC with 825 kg mass. The official checker returns Santa Rosa as Official, and the detail page confirms the exact name, year, country, iron identity, and the printed Bogota, New Granada, Rasgata, and Zipaquira synonyms. The detail page uses Colombia where the source prints Columbia; the source's Columbia and Tocavita text, 813 kg total, and historical classification are preserved."
+      }
+    },
+    {
       "id": "obs-ed9519d9-7f13-4c19-a7b7-192c1a99f55c",
       "catalogId": "nininger-1950",
       "designation": "104b",
@@ -32305,6 +32390,48 @@
         "meteoriteCode": "23093",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23093",
         "alternateNameNote": "The verified local CSV identifies Official St. Michel, code 23093. The official checker returns St. Michel as Official, and the detail page confirms the exact name, 1910 Finnish L6 fall, and 17 kg mass. The source’s historical classification is preserved."
+      }
+    },
+    {
+      "id": "obs-fce8aa2c-20bf-4392-ae2d-ee58cd3ce480",
+      "catalogId": "nininger-1950",
+      "designation": "105.2",
+      "name": "Searsmont",
+      "weight": {
+        "grams": 50
+      },
+      "classification": "Stone. Spherical bronzite-chondrite",
+      "locality": "Waldo County, Maine",
+      "year": "1871",
+      "catalogPage": 93,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Searsmont",
+        "meteoriteCode": "23472",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23472",
+        "alternateNameNote": "The verified local CSV identifies Official Searsmont, code 23472, an 1871 Maine H5 fall with 5.4 kg mass. The official checker returns Searsmont as Official, and the detail page confirms the exact name, fall year, state, H5 identity, mass, and Searsport and Waldo County synonyms. The source's full fall date and time and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-a506a977-dc36-46c2-a6f8-d8b988a326af",
+      "catalogId": "nininger-1950",
+      "designation": "106a",
+      "name": "Scott City",
+      "weight": {
+        "grams": 54
+      },
+      "classification": "Stone. Spherical chondrite",
+      "locality": "Scott County, Kansas",
+      "year": "1905",
+      "catalogPage": 93,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Scott City",
+        "meteoriteCode": "23462",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23462",
+        "alternateNameNote": "The verified local CSV identifies Official Scott City, code 23462, a 1905 Kansas H5 with 2,135 gram mass. The official checker returns Scott City as Official, and the detail page confirms the exact name, year, state, H5 identity, near-identical mass, and Scott County coordinates. The source's rounded 2.2 kg total and historical spherical-chondrite description are preserved."
       }
     },
     {
@@ -32473,6 +32600,48 @@
         "meteoriteCode": "23156",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23156",
         "alternateNameNote": "The verified local valid-name CSV identifies Official Sandia Mountains, code 23156, as a 1925 New Mexico Iron, IIAB with 45 kg mass. The official checker returns Sandia Mountains as Official, and the detail page confirms the exact name, year, state, and iron identity. The official 45 kg mass differs from the source's 15 kg total; the source total and historical granular-hexahedrite classification are preserved."
+      }
+    },
+    {
+      "id": "obs-3c03c93f-3fc7-4365-8173-4e15b06ee30d",
+      "catalogId": "nininger-1950",
+      "designation": "110a",
+      "name": "Santa Luzia",
+      "weight": {
+        "grams": 370
+      },
+      "classification": "Iron. Coarsest octahedrite",
+      "locality": "Goyaz, Brazil",
+      "year": "1921",
+      "catalogPage": 93,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Santa Luzia",
+        "meteoriteCode": "23166",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23166",
+        "alternateNameNote": "The verified local CSV identifies Official Santa Luzia, code 23166, a 1921 Goias, Brazil Iron, IIAB with 1,918 kg mass. The official checker returns Santa Luzia as Official, and the detail page confirms the exact name, year, country, iron identity, near-identical mass, and Santa Maria synonym. The source's Goyaz spelling, 1,912 kg total, and historical coarsest-octahedrite classification are preserved."
+      }
+    },
+    {
+      "id": "obs-650d8c2e-73c8-46bd-a8bd-305dfc6f7813",
+      "catalogId": "nininger-1950",
+      "designation": "110.2",
+      "name": "Santa Luzia",
+      "weight": {
+        "grams": 106
+      },
+      "classification": "Iron. Coarsest octahedrite",
+      "locality": "Goyaz, Brazil",
+      "year": "1921",
+      "catalogPage": 93,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Santa Luzia",
+        "meteoriteCode": "23166",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23166",
+        "alternateNameNote": "The verified local CSV identifies Official Santa Luzia, code 23166, a 1921 Goias, Brazil Iron, IIAB with 1,918 kg mass. The official checker returns Santa Luzia as Official, and the detail page confirms the exact name, year, country, iron identity, near-identical mass, and Santa Maria synonym. The source's Goyaz spelling, 1,912 kg total, and historical coarsest-octahedrite classification are preserved."
       }
     },
     {
@@ -33964,6 +34133,27 @@
         "meteoriteCode": "12262",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12262",
         "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Karkh as code 12262, a 1905 Baluchistan fall with L6 classification and 22 kg mass. The official exact-name checker returns Karkh as Official, and the detail page confirms the exact name, 1905 fall, Baluchistan locality in present-day Pakistan, L6 identity, and 22 kg mass. The historical source locality is preserved."
+      }
+    },
+    {
+      "id": "obs-4cf7a6ca-be3c-4210-88c8-b489c26bba82",
+      "catalogId": "nininger-1950",
+      "designation": "164a",
+      "name": "Scottsville",
+      "weight": {
+        "grams": 142
+      },
+      "classification": "Iron. Hexahedrite",
+      "locality": "Allen County, Kentucky",
+      "year": "1867",
+      "catalogPage": 93,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Scottsville",
+        "meteoriteCode": "23466",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23466",
+        "alternateNameNote": "The verified local CSV identifies Official Scottsville, code 23466, an 1867 Kentucky Iron, IIAB with 10 kg mass. The official checker returns Scottsville as Official, and the detail page confirms the exact name, year, state, iron identity, mass, and Allen County synonym. The source's historical hexahedrite classification is preserved."
       }
     },
     {
@@ -37915,6 +38105,27 @@
       }
     },
     {
+      "id": "obs-b81d72a2-0542-4d3d-8620-68bd70f4d78c",
+      "catalogId": "nininger-1950",
+      "designation": "224a",
+      "name": "Santa Fe",
+      "weight": {
+        "grams": 35
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Santa Fe County, New Mexico",
+      "year": "1928",
+      "catalogPage": 93,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Glorieta Mountain",
+        "meteoriteCode": "10935",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10935",
+        "alternateNameNote": "Santa Fe is absent as an official row from the verified local CSV. The checker treats it as partial, but the official exact-name search explicitly identifies Santa Fe as a synonym of Official Glorieta Mountain, code 10935, and the detail page lists Santa Fe. MetBull's 1884 New Mexico pallasite and 148 kg mass conflict with the source's 1928 iron and 11.3 kg facts, which are preserved with the source's own Glorieta-association remark."
+      }
+    },
+    {
       "id": "obs-63996358-813b-426b-bd17-35b109fb66e1",
       "catalogId": "nininger-1950",
       "designation": "226a",
@@ -41146,6 +41357,27 @@
         "meteoriteCode": "5058",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5058",
         "alternateNameNote": "The Colorado context, 1912 year, and 8.6 kg source total agree; MetBull lists San Miguel County as a synonym. The historical class corresponds broadly to modern Iron, IVA."
+      }
+    },
+    {
+      "id": "obs-f9d8c6df-ff87-44dc-8360-d6b70a503a01",
+      "catalogId": "nininger-1950",
+      "designation": "361.1",
+      "name": "Sao Juliao de Moreira",
+      "weight": {
+        "grams": 182
+      },
+      "classification": "Iron. Brecciated hexahedrite",
+      "locality": "Ponte De Lima, Minho, Portugal",
+      "year": "before 1883",
+      "catalogPage": 93,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "São Julião de Moreira",
+        "meteoriteCode": "23172",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23172",
+        "alternateNameNote": "The verified local CSV identifies Official São Julião de Moreira, code 23172, an 1883 Portugal Iron, IIAB with 162 kg mass. The checker explicitly returns printed Sao Juliao de Moreira as a Variant of that official spelling, and the detail page confirms the identity, mass, and Ponte de Lima synonym. The source's unaccented spelling, Known before 1883 wording, locality, and historical classification are preserved."
       }
     },
     {
