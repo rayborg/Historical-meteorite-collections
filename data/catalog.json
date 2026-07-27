@@ -339,14 +339,15 @@
           32,
           33,
           34,
-          35
+          35,
+          36
         ],
-        "sourcePageCount": 10,
-        "recordCount": 167,
-        "recordsWithDesignation": 165,
-        "recordsWithWeight": 164,
+        "sourcePageCount": 11,
+        "recordCount": 208,
+        "recordsWithDesignation": 206,
+        "recordsWithWeight": 201,
         "confidenceCounts": {
-          "high": 167,
+          "high": 208,
           "medium": 0,
           "low": 0
         },
@@ -354,11 +355,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2079,
-    "recordsWithDesignation": 1908,
-    "recordsWithWeight": 1948,
+    "recordCount": 2120,
+    "recordsWithDesignation": 1949,
+    "recordsWithWeight": 1985,
     "confidenceCounts": {
-      "high": 2079,
+      "high": 2120,
       "medium": 0,
       "low": 0
     }
@@ -17761,6 +17762,153 @@
       }
     },
     {
+      "id": "obs-5e4541f0-ed00-4d51-9033-a780547036f4",
+      "catalogId": "nininger-1950",
+      "designation": "10M27",
+      "name": "Brenham",
+      "weight": {
+        "grams": 3850
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-892e1e69-cf0f-41d9-86ae-f1a48f6e7b00",
+      "catalogId": "nininger-1950",
+      "designation": "10M28",
+      "name": "Brenham",
+      "weight": {
+        "grams": 7021
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-6d1c1e08-1fc7-4bb6-9ae7-9d286071d397",
+      "catalogId": "nininger-1950",
+      "designation": "10M29",
+      "name": "Brenham",
+      "weight": {
+        "grams": 7929
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-dacd6f5d-051f-4fbe-8e95-825343e78cb6",
+      "catalogId": "nininger-1950",
+      "designation": "10M30",
+      "name": "Brenham",
+      "weight": {
+        "grams": 4983
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-839aceb6-baab-483b-962c-89e749aa84a3",
+      "catalogId": "nininger-1950",
+      "designation": "10M31",
+      "name": "Brenham",
+      "weight": {
+        "grams": 4530
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-dd186c83-e76e-48f7-837e-b3c8c9cb168d",
+      "catalogId": "nininger-1950",
+      "designation": "10M32",
+      "name": "Brenham",
+      "weight": {
+        "grams": 4077
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-c72b250a-5693-40d7-ba50-9d92ca7cc133",
+      "catalogId": "nininger-1950",
+      "designation": "10M33",
+      "name": "Brenham",
+      "weight": {
+        "grams": 1245
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": null
+      }
+    },
+    {
       "id": "obs-c107e660-c0d8-4bfa-a155-5ea9b72b2c93",
       "catalogId": "nininger-1950",
       "designation": "10.33",
@@ -17782,6 +17930,48 @@
       }
     },
     {
+      "id": "obs-e4b5a5f7-92f4-466a-b71c-59850a3eac1d",
+      "catalogId": "nininger-1950",
+      "designation": "10M34",
+      "name": "Brenham",
+      "weight": {
+        "grams": 534.5
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-75f050fa-8842-4597-a552-ff22b9c2ffed",
+      "catalogId": "nininger-1950",
+      "designation": "10M35",
+      "name": "Brenham",
+      "weight": {
+        "grams": 362.3
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": null
+      }
+    },
+    {
       "id": "obs-aff471ba-47fd-4fad-9de0-42242402ae53",
       "catalogId": "nininger-1950",
       "designation": "10.36",
@@ -17800,6 +17990,552 @@
         "meteoriteCode": "5136",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
         "alternateNameNote": "Source says found 1885, 4,318 kg., and Palla-siderite; MetBull gives 1882, 4.3 t, and Pallasite, PMG-an. Brenham continues onto p.36."
+      }
+    },
+    {
+      "id": "obs-68770736-c5f1-4c9d-95f7-39c7c2eb0273",
+      "catalogId": "nininger-1950",
+      "designation": "10M36",
+      "name": "Brenham",
+      "weight": {
+        "grams": 172.2
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-37d23bee-aab9-4d08-932f-4001f76362d4",
+      "catalogId": "nininger-1950",
+      "designation": "10M37",
+      "name": "Brenham",
+      "weight": {
+        "grams": 79.5
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-f8e3d9be-d9b1-4430-9c52-bd42c3d34632",
+      "catalogId": "nininger-1950",
+      "designation": "10M38",
+      "name": "Brenham",
+      "weight": {
+        "grams": 73.8
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-acae15ff-c3d5-4bc8-9df9-9fb739c43cd2",
+      "catalogId": "nininger-1950",
+      "designation": "10M39",
+      "name": "Brenham",
+      "weight": {
+        "grams": 66.5
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-eca49ad0-3db8-4704-a45d-de5c6f3d82be",
+      "catalogId": "nininger-1950",
+      "designation": "10M40",
+      "name": "Brenham",
+      "weight": {
+        "grams": 68.9
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-a335bd80-98d4-4314-aa11-a46abceb2b55",
+      "catalogId": "nininger-1950",
+      "designation": "10M41a",
+      "name": "Brenham",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": "A spanning brace applies this description to both 10M41 and 10M41a; no weight is printed for either; none is inferred."
+      }
+    },
+    {
+      "id": "obs-afd13b46-cc2a-4b35-b643-0fec579ca7f1",
+      "catalogId": "nininger-1950",
+      "designation": "10M41",
+      "name": "Brenham",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": "A spanning brace applies this description to both 10M41 and 10M41a; no weight is printed for either; none is inferred."
+      }
+    },
+    {
+      "id": "obs-c59274ea-3e74-4aa4-9f56-ee682ee979db",
+      "catalogId": "nininger-1950",
+      "designation": "10M42",
+      "name": "Brenham",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": "The source prints no weight for this box of fragments; none is inferred."
+      }
+    },
+    {
+      "id": "obs-16260eed-285e-4008-9466-abfdb6b12010",
+      "catalogId": "nininger-1950",
+      "designation": "10M43",
+      "name": "Brenham",
+      "weight": {
+        "grams": 842.8
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-69e60d77-6932-4ffb-b1c0-18b008238bea",
+      "catalogId": "nininger-1950",
+      "designation": "10M44",
+      "name": "Brenham",
+      "weight": {
+        "grams": 1153.5
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-d9560d6a-56f8-45a8-8f99-e7c15f339aea",
+      "catalogId": "nininger-1950",
+      "designation": "10M45",
+      "name": "Brenham",
+      "weight": {
+        "grams": 422.8
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-7106bf6d-9960-4dfe-9bf3-2c04fdc8ea4b",
+      "catalogId": "nininger-1950",
+      "designation": "10M46",
+      "name": "Brenham",
+      "weight": {
+        "grams": 239.6
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-e19fabc8-791a-4e00-a81d-3e83d6be6eb5",
+      "catalogId": "nininger-1950",
+      "designation": "10M47",
+      "name": "Brenham",
+      "weight": {
+        "grams": 205.4
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-7049f5ea-0469-49f0-9c5d-7024ae6370ef",
+      "catalogId": "nininger-1950",
+      "designation": "10M48",
+      "name": "Brenham",
+      "weight": {
+        "grams": 226.7
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-229bd500-e3b7-42e3-828c-8d496dd75851",
+      "catalogId": "nininger-1950",
+      "designation": "10M49",
+      "name": "Brenham",
+      "weight": {
+        "grams": 72
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-747fe59b-d9fe-4246-a6af-751697d92cda",
+      "catalogId": "nininger-1950",
+      "designation": "10M50",
+      "name": "Brenham",
+      "weight": {
+        "grams": 124.2
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-8b6a5cd9-881b-4a78-b577-2d36475ecbeb",
+      "catalogId": "nininger-1950",
+      "designation": "10M51",
+      "name": "Brenham",
+      "weight": {
+        "grams": 51.2
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-adab0469-829f-4549-8668-65edf4ccbb3c",
+      "catalogId": "nininger-1950",
+      "designation": "10M52",
+      "name": "Brenham",
+      "weight": {
+        "grams": 35.6
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-c6aa3085-e0af-4e9c-8a2b-ce058b6e6b54",
+      "catalogId": "nininger-1950",
+      "designation": "10M53",
+      "name": "Brenham",
+      "weight": {
+        "grams": 106.3
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-36384a26-4f2e-4344-be7b-a9e3974d2f88",
+      "catalogId": "nininger-1950",
+      "designation": "10M54",
+      "name": "Brenham",
+      "weight": {
+        "grams": 227.5
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-d9453327-e9f4-4af4-8322-415795631ba1",
+      "catalogId": "nininger-1950",
+      "designation": "10M55",
+      "name": "Brenham",
+      "weight": {
+        "grams": 205.7
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-10891b34-4e7c-4d04-ace4-588de7d906db",
+      "catalogId": "nininger-1950",
+      "designation": "10M56",
+      "name": "Brenham",
+      "weight": {
+        "grams": 215.7
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-5eb03a20-0c83-4651-9bad-e5211598ca7a",
+      "catalogId": "nininger-1950",
+      "designation": "10M57",
+      "name": "Brenham",
+      "weight": {
+        "grams": 890.5
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-805b037e-3bd2-4723-a1b1-f4c4d59b424a",
+      "catalogId": "nininger-1950",
+      "designation": "10M58",
+      "name": "Brenham",
+      "weight": {
+        "grams": 419.9
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-679b7a6b-a9b9-4822-a3e5-dbcdb74d6ebc",
+      "catalogId": "nininger-1950",
+      "designation": "10M59",
+      "name": "Brenham",
+      "weight": {
+        "grams": 12457
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-cabc72cb-43fe-415a-a186-64670fa6fba7",
+      "catalogId": "nininger-1950",
+      "designation": "10M61",
+      "name": "Brenham",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Palla-siderite",
+      "locality": "Kiowa County, Kansas",
+      "year": "1885",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brenham",
+        "meteoriteCode": "5136",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5136",
+        "alternateNameNote": "The source prints no weight for this tray; none is inferred. Structured text dehyphenates the printed line-end forms 'com-plete' and 'unwrap-ping'."
       }
     },
     {
@@ -20365,6 +21101,111 @@
       }
     },
     {
+      "id": "obs-90b03e7b-c21f-4bdb-ac21-1a06677ee2ad",
+      "catalogId": "nininger-1950",
+      "designation": "477.1",
+      "name": "Briscoe County",
+      "weight": {
+        "grams": 580
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Texas (16 miles east of Kress)",
+      "year": "1940",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Briscoe",
+        "meteoriteCode": "5142",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5142",
+        "alternateNameNote": "The official name checker identifies Briscoe County as a synonym of Briscoe. The detail page lists that synonym, and the source agrees on the 1940 Texas find and 1,773 g total mass."
+      }
+    },
+    {
+      "id": "obs-4704ae4f-e848-4b22-af2b-039d56daff9e",
+      "catalogId": "nininger-1950",
+      "designation": "477.2",
+      "name": "Briscoe County",
+      "weight": {
+        "grams": 210
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Texas (16 miles east of Kress)",
+      "year": "1940",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Briscoe",
+        "meteoriteCode": "5142",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5142",
+        "alternateNameNote": "The official name checker identifies Briscoe County as a synonym of Briscoe. The detail page lists that synonym, and the source agrees on the 1940 Texas find and 1,773 g total mass."
+      }
+    },
+    {
+      "id": "obs-3b2ab37d-b7b5-4c13-90eb-eb5acacf0e89",
+      "catalogId": "nininger-1950",
+      "designation": "477.4",
+      "name": "Briscoe County",
+      "weight": {
+        "grams": 79.3
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Texas (16 miles east of Kress)",
+      "year": "1940",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Briscoe",
+        "meteoriteCode": "5142",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5142",
+        "alternateNameNote": "The official name checker identifies Briscoe County as a synonym of Briscoe. The detail page lists that synonym, and the source agrees on the 1940 Texas find and 1,773 g total mass."
+      }
+    },
+    {
+      "id": "obs-67e6716c-58a7-4a33-acfb-a6eca933ebce",
+      "catalogId": "nininger-1950",
+      "designation": "477.5",
+      "name": "Briscoe County",
+      "weight": {
+        "grams": 884
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Texas (16 miles east of Kress)",
+      "year": "1940",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Briscoe",
+        "meteoriteCode": "5142",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5142",
+        "alternateNameNote": "The official name checker identifies Briscoe County as a synonym of Briscoe. The detail page lists that synonym, and the source agrees on the 1940 Texas find and 1,773 g total mass."
+      }
+    },
+    {
+      "id": "obs-d8e47119-cc0d-4f14-888a-1cf8787c1e26",
+      "catalogId": "nininger-1950",
+      "designation": "483.1",
+      "name": "Brewster",
+      "weight": {
+        "grams": 15034
+      },
+      "classification": "Stone. Intermediate chondrite",
+      "locality": "Sherman County, Kansas; 39° 21′ N., 101° 22′ W.",
+      "year": "1940",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brewster",
+        "meteoriteCode": "5137",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5137",
+        "alternateNameNote": null
+      }
+    },
+    {
       "id": "obs-ded70425-9e87-454d-b5aa-dd7f10575111",
       "catalogId": "nininger-1950",
       "designation": "506.1",
@@ -20488,6 +21329,27 @@
         "meteoriteCode": "456",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=456",
         "alternateNameNote": "MetBull adds the stone qualifier to distinguish Albin (pallasite). The source and MetBull agree on 1949, 15.4 kg., and 41° 25′ N., 104° 6′ W."
+      }
+    },
+    {
+      "id": "obs-afb9b96d-4e7a-498d-b335-ab85cb24f8de",
+      "catalogId": "nininger-1950",
+      "designation": "535.1",
+      "name": "Briggsdale",
+      "weight": {
+        "grams": 2211.4
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Weld County, Colorado; 40° 40′ N., 104° 19′ W.",
+      "year": "1949",
+      "catalogPage": 36,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Briggsdale",
+        "meteoriteCode": "5141",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5141",
+        "alternateNameNote": null
       }
     },
     {
