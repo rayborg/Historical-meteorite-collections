@@ -366,14 +366,15 @@
           59,
           60,
           61,
-          62
+          62,
+          63
         ],
-        "sourcePageCount": 37,
-        "recordCount": 853,
-        "recordsWithDesignation": 833,
-        "recordsWithWeight": 796,
+        "sourcePageCount": 38,
+        "recordCount": 867,
+        "recordsWithDesignation": 847,
+        "recordsWithWeight": 810,
         "confidenceCounts": {
-          "high": 853,
+          "high": 867,
           "medium": 0,
           "low": 0
         },
@@ -381,11 +382,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2765,
-    "recordsWithDesignation": 2576,
-    "recordsWithWeight": 2580,
+    "recordCount": 2779,
+    "recordsWithDesignation": 2590,
+    "recordsWithWeight": 2594,
     "confidenceCounts": {
-      "high": 2765,
+      "high": 2779,
       "medium": 0,
       "low": 0
     }
@@ -23815,6 +23816,48 @@
       }
     },
     {
+      "id": "obs-c73ecb09-813d-49ec-a3f2-f8ddc3e1e0e1",
+      "catalogId": "nininger-1950",
+      "designation": "55c",
+      "name": "Huizopa",
+      "weight": {
+        "grams": 668
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Temosachic, Chihuahua, Mexico",
+      "year": "1907",
+      "catalogPage": 63,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Huizopa",
+        "meteoriteCode": "11985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11985",
+        "alternateNameNote": "The verified local valid-name CSV has Official Huizopa code 11985, found 1907 in Chihuahua, Mexico, classified Iron, IVA, with 140 kg mass. The official exact-name checker and detail page confirm that identity and the Temosachic synonym. The source's 130 kg total and historical fine-octahedrite description are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-7e02b494-9238-4439-83d9-ce629f070ddb",
+      "catalogId": "nininger-1950",
+      "designation": "55b",
+      "name": "Huizopa",
+      "weight": {
+        "grams": 2415.8
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Temosachic, Chihuahua, Mexico",
+      "year": "1907",
+      "catalogPage": 63,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Huizopa",
+        "meteoriteCode": "11985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11985",
+        "alternateNameNote": "The verified local valid-name CSV has Official Huizopa code 11985, found 1907 in Chihuahua, Mexico, classified Iron, IVA, with 140 kg mass. The official exact-name checker and detail page confirm that identity and the Temosachic synonym. The source's 130 kg total and historical fine-octahedrite description are preserved without reconciliation."
+      }
+    },
+    {
       "id": "obs-3a5582ef-147e-49aa-8a20-e5f7235c91ce",
       "catalogId": "nininger-1950",
       "designation": "56a",
@@ -24904,6 +24947,48 @@
         "meteoriteCode": "11890",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11890",
         "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Hoba as code 11890, found 1920 at Grootfontein, Namibia. The official checker returns Hoba as Official, and the detail page confirms the exact name, 1920 year, Iron, IVB classification, 60 t mass, and all three printed synonyms. The source's estimated 36,363 kg total is preserved without reconciliation to the current official mass."
+      }
+    },
+    {
+      "id": "obs-8b4e9aba-34cc-4b5f-a78d-3d0ab053b041",
+      "catalogId": "nininger-1950",
+      "designation": "62a",
+      "name": "Indian Valley",
+      "weight": {
+        "grams": 1384
+      },
+      "classification": "Iron. Brecciated nickel-poor ataxite to hexahedrite",
+      "locality": "Township, Floyd County, Virginia",
+      "year": "1887",
+      "catalogPage": 63,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Indian Valley",
+        "meteoriteCode": "12029",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12029",
+        "alternateNameNote": "The verified local valid-name CSV has Official Indian Valley code 12029, found 1887 in Virginia, classified Iron, IIAB, with 14.1 kg mass. The official exact-name checker and detail page confirm the identity, year, state, and class and list Floyd County, Floyd Mountain, and Radford Furnace as synonyms. The source's 14.2 kg total is preserved."
+      }
+    },
+    {
+      "id": "obs-3acc7f0d-7fb6-4918-8a05-9abca5ebceb5",
+      "catalogId": "nininger-1950",
+      "designation": "63a",
+      "name": "Indarch",
+      "weight": {
+        "grams": 41
+      },
+      "classification": "Stone. Carbonaceous spherical chondrite",
+      "locality": "Shusha, Elisavetpol, Transcaucasia, Russia",
+      "year": "1891",
+      "catalogPage": 63,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Indarch",
+        "meteoriteCode": "12027",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12027",
+        "alternateNameNote": "The verified local valid-name CSV has Official Indarch code 12027, a 1891 Azerbaijan EH4 fall of 27 kg. The official exact-name checker and detail page confirm the identity, year, fall, class, and mass and list Elisabethpol, Gindorcha, Glindorcha, and Schuscha among its synonyms. Historical source geography and classification are preserved."
       }
     },
     {
@@ -29275,6 +29360,69 @@
       }
     },
     {
+      "id": "obs-5e9444f0-a99c-4b13-9cea-d2af2538092c",
+      "catalogId": "nininger-1950",
+      "designation": "280b",
+      "name": "Hugoton",
+      "weight": {
+        "grams": 520
+      },
+      "classification": "Stone. Brecciated crystalline chondrite",
+      "locality": "Stevens County, Kansas; 37° 12′ N., 101° 21′ W.",
+      "year": "1935",
+      "catalogPage": 63,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Hugoton",
+        "meteoriteCode": "11984",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11984",
+        "alternateNameNote": "The verified local valid-name CSV has Official Hugoton code 11984, H5, Kansas, 350 kg, and year 1927. The official exact-name checker returns Hugoton as Official, and the detail page confirms the name, Kansas coordinates, H5 class, and 350 kg mass. The source's Found 1935 conflicts with the official 1927 year and is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-83482f0d-d1d5-4ab1-a860-33ed83e95ac4",
+      "catalogId": "nininger-1950",
+      "designation": "280a",
+      "name": "Hugoton",
+      "weight": {
+        "grams": 313476
+      },
+      "classification": "Stone. Brecciated crystalline chondrite",
+      "locality": "Stevens County, Kansas; 37° 12′ N., 101° 21′ W.",
+      "year": "1935",
+      "catalogPage": 63,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Hugoton",
+        "meteoriteCode": "11984",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11984",
+        "alternateNameNote": "The verified local valid-name CSV has Official Hugoton code 11984, H5, Kansas, 350 kg, and year 1927. The official exact-name checker returns Hugoton as Official, and the detail page confirms the name, Kansas coordinates, H5 class, and 350 kg mass. The source's Found 1935 conflicts with the official 1927 year and is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-71064377-6c87-447b-b977-11d357c00ca2",
+      "catalogId": "nininger-1950",
+      "designation": "280.103",
+      "name": "Hugoton",
+      "weight": {
+        "grams": 1350
+      },
+      "classification": "Stone. Brecciated crystalline chondrite",
+      "locality": "Stevens County, Kansas; 37° 12′ N., 101° 21′ W.",
+      "year": "1935",
+      "catalogPage": 63,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Hugoton",
+        "meteoriteCode": "11984",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11984",
+        "alternateNameNote": "The verified local valid-name CSV has Official Hugoton code 11984, H5, Kansas, 350 kg, and year 1927. The official exact-name checker returns Hugoton as Official, and the detail page confirms the name, Kansas coordinates, H5 class, and 350 kg mass. The source's Found 1935 conflicts with the official 1927 year and is preserved without reconciliation."
+      }
+    },
+    {
       "id": "obs-bd5f2b54-5d5a-4d61-b262-d598ddc29df1",
       "catalogId": "nininger-1950",
       "designation": "281.1",
@@ -29356,6 +29504,69 @@
         "meteoriteCode": "5371",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5371",
         "alternateNameNote": "The verified local CSV confirms the exact official name and code. The source reports 1935 and 1,074 g; the official record instead gives 1931 and 1,050 g, while its Wyoming coordinates agree closely."
+      }
+    },
+    {
+      "id": "obs-388722ec-a475-4d17-9581-b9b7efd7663e",
+      "catalogId": "nininger-1950",
+      "designation": "295a",
+      "name": "Imilac",
+      "weight": {
+        "grams": 215
+      },
+      "classification": "Pallasite",
+      "locality": "Atacama, Chile",
+      "year": "1822",
+      "catalogPage": 63,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Imilac",
+        "meteoriteCode": "12025",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12025",
+        "alternateNameNote": "The verified local valid-name CSV has Official Imilac code 12025, found 1822 in Antofagasta, Chile, classified Pallasite, PMG, with 920 kg mass. The official exact-name checker and detail page confirm the identity and list Atacama, Campo del Pucara, Caracoles, La Encantada, Potosi, and San Pedro among its synonyms."
+      }
+    },
+    {
+      "id": "obs-c7b3ad16-51b6-4084-80f8-a50e11bce15d",
+      "catalogId": "nininger-1950",
+      "designation": "295.3",
+      "name": "Imilac",
+      "weight": {
+        "grams": 53
+      },
+      "classification": "Pallasite",
+      "locality": "Atacama, Chile",
+      "year": "1822",
+      "catalogPage": 63,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Imilac",
+        "meteoriteCode": "12025",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12025",
+        "alternateNameNote": "The verified local valid-name CSV has Official Imilac code 12025, found 1822 in Antofagasta, Chile, classified Pallasite, PMG, with 920 kg mass. The official exact-name checker and detail page confirm the identity and list Atacama, Campo del Pucara, Caracoles, La Encantada, Potosi, and San Pedro among its synonyms."
+      }
+    },
+    {
+      "id": "obs-78b6aa31-900a-4ee8-940c-19aa58f8543a",
+      "catalogId": "nininger-1950",
+      "designation": "295.5",
+      "name": "Imilac",
+      "weight": {
+        "grams": 6.5
+      },
+      "classification": "Pallasite",
+      "locality": "Atacama, Chile",
+      "year": "1822",
+      "catalogPage": 63,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Imilac",
+        "meteoriteCode": "12025",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12025",
+        "alternateNameNote": "The verified local valid-name CSV has Official Imilac code 12025, found 1822 in Antofagasta, Chile, classified Pallasite, PMG, with 920 kg mass. The official exact-name checker and detail page confirm the identity and list Atacama, Campo del Pucara, Caracoles, La Encantada, Potosi, and San Pedro among its synonyms."
       }
     },
     {
@@ -30217,6 +30428,27 @@
         "meteoriteCode": "5291",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5291",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-c0724e95-6b4e-482f-8e11-f09e4497b036",
+      "catalogId": "nininger-1950",
+      "designation": "348.1",
+      "name": "India",
+      "weight": {
+        "grams": 1.2
+      },
+      "classification": "Stone",
+      "locality": null,
+      "year": null,
+      "catalogPage": 63,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The verified local valid-name CSV contains no Official India row. The official exact-name checker returns no meteorite name and no synonym exactly India. With only an unknown find date, generic Stone classification, unknown total weight, and no locality, no official identity or detail record can be verified; the match remains unresolved."
       }
     },
     {
@@ -31501,6 +31733,48 @@
       }
     },
     {
+      "id": "obs-72e6ed15-9dcb-4247-a968-58e09bbc5852",
+      "catalogId": "nininger-1950",
+      "designation": "435.1",
+      "name": "Indianola",
+      "weight": {
+        "grams": 2971
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Red Willow County, Nebraska; 40° 14′ N., 100° 25′ W.",
+      "year": "1939",
+      "catalogPage": 63,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Indianola",
+        "meteoriteCode": "12030",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12030",
+        "alternateNameNote": "The verified local valid-name CSV has Official Indianola code 12030, found 1939 in Nebraska, classified L5, with 4 kg mass and coordinates matching the source. The official exact-name checker and detail page independently confirm the exact name, official status, year, Nebraska identity, L5 class, 4 kg mass, and coordinates."
+      }
+    },
+    {
+      "id": "obs-fb9f2e52-6095-432b-a4b6-06ba5e0ad738",
+      "catalogId": "nininger-1950",
+      "designation": "435.2",
+      "name": "Indianola",
+      "weight": {
+        "grams": 282
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Red Willow County, Nebraska; 40° 14′ N., 100° 25′ W.",
+      "year": "1939",
+      "catalogPage": 63,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Indianola",
+        "meteoriteCode": "12030",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12030",
+        "alternateNameNote": "The verified local valid-name CSV has Official Indianola code 12030, found 1939 in Nebraska, classified L5, with 4 kg mass and coordinates matching the source. The official exact-name checker and detail page independently confirm the exact name, official status, year, Nebraska identity, L5 class, 4 kg mass, and coordinates."
+      }
+    },
+    {
       "id": "obs-4ce98458-5a79-4145-ae27-9264927816cb",
       "catalogId": "nininger-1950",
       "designation": "437.2",
@@ -32695,6 +32969,27 @@
         "meteoriteCode": "11430",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11430",
         "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Guadaloupe County, code 11430, preserving the official spelling printed by the source. The detail page confirms a Texas iron and 20.5 g mass but reports 1950; the source's unknown find date and total weight and its Canyon Diablo remark are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-831841ac-5924-4a2c-a3ee-225c54dfc872",
+      "catalogId": "nininger-1950",
+      "designation": "524.1",
+      "name": "Huittinen",
+      "weight": {
+        "grams": 9.7
+      },
+      "classification": "Stone. Crystalline enstatite-chondrite",
+      "locality": "Turku, Finland",
+      "year": "1901",
+      "catalogPage": 63,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Hvittis",
+        "meteoriteCode": "11989",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11989",
+        "alternateNameNote": "The verified local valid-name CSV has Official Hvittis code 11989, a 1901 Finnish EL6 fall of 14 kg, and no Huittinen row. The official exact-name checker identifies Huittinen as a synonym of Hvittis, and the detail page confirms Huittinen among its synonyms plus the matching year, fall, country, class, and mass."
       }
     },
     {
