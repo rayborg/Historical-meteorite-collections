@@ -378,14 +378,15 @@
           71,
           72,
           73,
-          74
+          74,
+          75
         ],
-        "sourcePageCount": 49,
-        "recordCount": 997,
-        "recordsWithDesignation": 976,
-        "recordsWithWeight": 938,
+        "sourcePageCount": 50,
+        "recordCount": 1008,
+        "recordsWithDesignation": 987,
+        "recordsWithWeight": 949,
         "confidenceCounts": {
-          "high": 997,
+          "high": 1008,
           "medium": 0,
           "low": 0
         },
@@ -393,11 +394,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2909,
-    "recordsWithDesignation": 2719,
-    "recordsWithWeight": 2722,
+    "recordCount": 2920,
+    "recordsWithDesignation": 2730,
+    "recordsWithWeight": 2733,
     "confidenceCounts": {
-      "high": 2909,
+      "high": 2920,
       "medium": 0,
       "low": 0
     }
@@ -25654,6 +25655,48 @@
       }
     },
     {
+      "id": "obs-438216e9-28c2-4ec8-bf18-2a581dcbe331",
+      "catalogId": "nininger-1950",
+      "designation": "79.1",
+      "name": "McKinney",
+      "weight": {
+        "grams": 5660
+      },
+      "classification": "Stone. Black hypersthene-chondrite",
+      "locality": "Collin County, Texas",
+      "year": "1870",
+      "catalogPage": 75,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "McKinney",
+        "meteoriteCode": "15463",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15463",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official McKinney as code 15463, a Texas L4 chondrite found in 1870 with 150 kg mass. The official checker returns McKinney as Official, and the detail page confirms the exact name, year, Texas L4 identity, coordinates in Collin County, and Collin County, Mackinney, and Rockport synonyms. The source's historical classification and 160 kg total are preserved."
+      }
+    },
+    {
+      "id": "obs-6590bab9-84ed-499d-a839-b2aabc77b31f",
+      "catalogId": "nininger-1950",
+      "designation": "79.44",
+      "name": "McKinney",
+      "weight": {
+        "grams": 1656
+      },
+      "classification": "Stone. Black hypersthene-chondrite",
+      "locality": "Collin County, Texas",
+      "year": "1870",
+      "catalogPage": 75,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "McKinney",
+        "meteoriteCode": "15463",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15463",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official McKinney as code 15463, a Texas L4 chondrite found in 1870 with 150 kg mass. The official checker returns McKinney as Official, and the detail page confirms the exact name, year, Texas L4 identity, coordinates in Collin County, and Collin County, Mackinney, and Rockport synonyms. The source's historical classification and 160 kg total are preserved."
+      }
+    },
+    {
       "id": "obs-1652f36a-19ec-47a7-9b61-c1ad8a34c09c",
       "catalogId": "nininger-1950",
       "designation": "80c",
@@ -27499,6 +27542,27 @@
         "meteoriteCode": "5453",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5453",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-da6b36b2-1a16-47ea-98d1-cb1df07b895c",
+      "catalogId": "nininger-1950",
+      "designation": "191a",
+      "name": "Mount Stirling",
+      "weight": {
+        "grams": 1312
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "York, South West Division, Western Australia",
+      "year": "1892",
+      "catalogPage": 75,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Youndegin",
+        "meteoriteCode": "30374",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=30374",
+        "alternateNameNote": "The official checker explicitly identifies Mount Stirling as a synonym of Youndegin. The verified local valid-name CSV identifies Official Youndegin as code 30374, and the detail page explicitly lists Mount Stirling among its synonyms and confirms a Western Australian iron identity. The official 1884 year and 3.8 tonne collective mass differ from the source's Known 1892 and 90.9 kg total and are not substituted."
       }
     },
     {
@@ -29809,6 +29873,27 @@
         "meteoriteCode": "16715",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16715",
         "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Molina as code 16715, an 1858 Spanish H5 fall. The official exact-name checker returns Molina as Official, and the detail page confirms the exact name, year, fall, Murcia locality and synonym, and H5 identity. The source's 114 kg total differs from the official 144 kg mass and is preserved."
+      }
+    },
+    {
+      "id": "obs-3769294a-d3c5-4fda-8f1a-6bcaa8ddcc70",
+      "catalogId": "nininger-1950",
+      "designation": "221a",
+      "name": "Mount Vernon",
+      "weight": {
+        "grams": 1200
+      },
+      "classification": "Pallasite",
+      "locality": "Christian County, Kentucky",
+      "year": "about 1868",
+      "catalogPage": 75,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Mount Vernon",
+        "meteoriteCode": "16806",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16806",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official Mount Vernon as code 16806, found 1868 in Kentucky, classified Pallasite, PMG, with 159 kg mass. The official checker returns Mount Vernon as Official, and the detail page confirms the exact name, year, Kentucky pallasite identity, 159 kg mass, and coordinates in Christian County. The source's qualified date and 159.5 kg total are preserved."
       }
     },
     {
@@ -32479,6 +32564,48 @@
       }
     },
     {
+      "id": "obs-790cbfc1-6db9-4536-a907-df63745d7960",
+      "catalogId": "nininger-1950",
+      "designation": "366.1",
+      "name": "Muroc Dry Lake",
+      "weight": {
+        "grams": 14.2
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Kern County, California; 34° 55′ N., 117° 50′ W.",
+      "year": "1936",
+      "catalogPage": 75,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Muroc Dry Lake",
+        "meteoriteCode": "16880",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16880",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official Muroc Dry Lake as code 16880, a California L6 chondrite found in 1936 with 223 gram mass at the printed coordinates. The official checker returns Muroc Dry Lake as Official, and the detail page confirms the exact name, year, state, classification, mass, and 34° 55′ N., 117° 50′ W. coordinates."
+      }
+    },
+    {
+      "id": "obs-67605c23-1a76-4021-bc38-52d0ab43ac46",
+      "catalogId": "nininger-1950",
+      "designation": "366.2",
+      "name": "Muroc Dry Lake",
+      "weight": {
+        "grams": 4.5
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Kern County, California; 34° 55′ N., 117° 50′ W.",
+      "year": "1936",
+      "catalogPage": 75,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Muroc Dry Lake",
+        "meteoriteCode": "16880",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16880",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official Muroc Dry Lake as code 16880, a California L6 chondrite found in 1936 with 223 gram mass at the printed coordinates. The official checker returns Muroc Dry Lake as Official, and the detail page confirms the exact name, year, state, classification, mass, and 34° 55′ N., 117° 50′ W. coordinates."
+      }
+    },
+    {
       "id": "obs-86fe5e0b-40a9-43da-a5bd-b9cd119e23ca",
       "catalogId": "nininger-1950",
       "designation": "367.1",
@@ -32539,6 +32666,27 @@
         "meteoriteCode": "12444",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12444",
         "alternateNameNote": "The verified local valid-name CSV has Official Lake Labyrinth code 12444, South Australia, year 1924, LL6, and 25.85 kg mass. The official exact-name checker returns it as Official, and the detail page confirms those facts and now treats it as a probable fall. The source's Found wording and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-30fdbf96-22d7-475a-90cb-d8dff7aacdcf",
+      "catalogId": "nininger-1950",
+      "designation": "370.1",
+      "name": "Muroc",
+      "weight": {
+        "grams": 3
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Kern County, California; 34° 55′ N., 117° 50′ W.",
+      "year": "1936",
+      "catalogPage": 75,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Muroc",
+        "meteoriteCode": "16879",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16879",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official Muroc as code 16879, a California L chondrite found in 1936 with 18.4 gram mass at the printed coordinates. The official checker returns Muroc as Official, and the detail page confirms the exact name, year, state, classification, mass, and 34° 55′ N., 117° 50′ W. coordinates."
       }
     },
     {
@@ -32917,6 +33065,27 @@
         "meteoriteCode": null,
         "metbullUrl": null,
         "alternateNameNote": "The official name checker returns Chile only as a partial name, not an approved identity, and the verified local CSV contains no exact meteorite named Chile. The country-only heading, unknown date, and generic iron class do not establish a canonical meteorite; none is inferred."
+      }
+    },
+    {
+      "id": "obs-0a44aa73-00e8-49ee-a7bb-2eb9325b893f",
+      "catalogId": "nininger-1950",
+      "designation": "389.1",
+      "name": "Mount Morris",
+      "weight": {
+        "grams": 120
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Waushara County, Wisconsin",
+      "year": "before 1937",
+      "catalogPage": 75,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Mount Morris (Wisconsin)",
+        "meteoriteCode": "16783",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16783",
+        "alternateNameNote": "The official checker treats bare Mount Morris as a partial name with two candidates. The verified local valid-name CSV and code 16783 detail page identify Official Mount Morris (Wisconsin), whose Wisconsin locality and exact 676 gram mass distinguish it from the 12.5 gram New York record. The official iron classification and 1937 year conflict with the source's Stone. Chondrite and Known before 1937 wording, which are preserved."
       }
     },
     {
@@ -34117,6 +34286,27 @@
       }
     },
     {
+      "id": "obs-b246b988-be94-406e-aaac-b18887a351b3",
+      "catalogId": "nininger-1950",
+      "designation": "439.1",
+      "name": "McAddo",
+      "weight": {
+        "grams": 36
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Dickens County, Texas; 33° 45′ N., 100° 56′ W.",
+      "year": "1935",
+      "catalogPage": 75,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "McAddo",
+        "meteoriteCode": "15457",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15457",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official McAddo as code 15457, a Texas L6 chondrite found in 1935 with 1,100 gram mass at the printed coordinates. The official checker returns McAddo as Official, and the detail page confirms the exact name, year, state, classification, mass, 33° 45′ N., 100° 56′ W. coordinates, and McAdoo synonym."
+      }
+    },
+    {
       "id": "obs-acc4705d-99b7-4d0a-b37b-093926771660",
       "catalogId": "nininger-1950",
       "designation": "440.1",
@@ -35227,6 +35417,48 @@
         "meteoriteCode": "5266",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5266",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-3648cea8-b629-4caf-a089-d8d0d9070784",
+      "catalogId": "nininger-1950",
+      "designation": "495.1",
+      "name": "Murphy",
+      "weight": {
+        "grams": 5.2
+      },
+      "classification": "Iron. Hexahedrite",
+      "locality": "Cherokee County, North Carolina",
+      "year": "1899",
+      "catalogPage": 75,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Murphy",
+        "meteoriteCode": "16881",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16881",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official Murphy as code 16881, a North Carolina Iron, IIAB found in 1899 with 7.7 kg mass. The official checker returns Murphy as Official, and the detail page confirms the exact name, year, North Carolina iron identity, mass, and coordinates in Cherokee County. The source's historical hexahedrite description is preserved."
+      }
+    },
+    {
+      "id": "obs-a546d4a2-ea62-42ee-a3b0-5f0856ccd2d7",
+      "catalogId": "nininger-1950",
+      "designation": "496.1",
+      "name": "Mungindi",
+      "weight": {
+        "grams": 11.3
+      },
+      "classification": "Iron. Finest octahedrite",
+      "locality": "County Benarba, New South Wales, Australia",
+      "year": "1897",
+      "catalogPage": 75,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Mungindi",
+        "meteoriteCode": "16872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16872",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official Mungindi as code 16872, an Australian iron found in 1897 with 51.3 kg mass. The official checker returns Mungindi as Official, and the detail page confirms the exact name, year, Australian Iron, IAB-sLM identity, and 51.3 kg mass. The detail record places it in Queensland; the source's County Benarba, New South Wales locality and 51.4 kg total are preserved without reconciliation."
       }
     },
     {
