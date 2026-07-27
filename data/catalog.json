@@ -345,14 +345,15 @@
           38,
           39,
           40,
-          41
+          41,
+          42
         ],
-        "sourcePageCount": 16,
-        "recordCount": 392,
-        "recordsWithDesignation": 388,
-        "recordsWithWeight": 381,
+        "sourcePageCount": 17,
+        "recordCount": 402,
+        "recordsWithDesignation": 398,
+        "recordsWithWeight": 391,
         "confidenceCounts": {
-          "high": 392,
+          "high": 402,
           "medium": 0,
           "low": 0
         },
@@ -360,11 +361,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2304,
-    "recordsWithDesignation": 2131,
-    "recordsWithWeight": 2165,
+    "recordCount": 2314,
+    "recordsWithDesignation": 2141,
+    "recordsWithWeight": 2175,
     "confidenceCounts": {
-      "high": 2304,
+      "high": 2314,
       "medium": 0,
       "low": 0
     }
@@ -18754,6 +18755,27 @@
       }
     },
     {
+      "id": "obs-fcef8103-7906-43fd-bc4a-ed3d1963563b",
+      "catalogId": "nininger-1950",
+      "designation": "20a",
+      "name": "Cedar",
+      "weight": {
+        "grams": 563
+      },
+      "classification": "Stone. Veined spherical chondrite",
+      "locality": "Fayette County, Texas",
+      "year": "1900",
+      "catalogPage": 42,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Cedar (Texas)",
+        "meteoriteCode": "5303",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5303",
+        "alternateNameNote": "The official checker finds no exact official name or synonym for plain Cedar. Fayette County, Texas, and 1900 identify Cedar (Texas), not Cedar (Kansas) or later Cedar names; the source reports 14 kg., while the current official record reports 26 kg."
+      }
+    },
+    {
       "id": "obs-9fdc73f7-0a31-4507-b42a-a7dac3f18e06",
       "catalogId": "nininger-1950",
       "designation": "34jj",
@@ -21799,6 +21821,48 @@
       }
     },
     {
+      "id": "obs-1d00a73a-25ac-40da-ad6f-bf7e98c743c7",
+      "catalogId": "nininger-1950",
+      "designation": "35a",
+      "name": "Carlton",
+      "weight": {
+        "grams": 1305
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Hamilton County, Texas",
+      "year": "1887",
+      "catalogPage": 42,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Carlton",
+        "meteoriteCode": "5277",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5277",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-b959b1de-7855-42d4-b914-25c9853ad198",
+      "catalogId": "nininger-1950",
+      "designation": "36a",
+      "name": "Casas Grandes",
+      "weight": {
+        "grams": 658
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Chihuahua, Mexico",
+      "year": "1867",
+      "catalogPage": 42,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Casas Grandes",
+        "meteoriteCode": "5285",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5285",
+        "alternateNameNote": null
+      }
+    },
+    {
       "id": "obs-82bbe8bc-2bae-4107-aa8d-62522a94a0fe",
       "catalogId": "nininger-1950",
       "designation": "50.1",
@@ -23605,6 +23669,27 @@
       }
     },
     {
+      "id": "obs-b3eb93a0-4285-4c79-b76e-6e842b28e4c9",
+      "catalogId": "nininger-1950",
+      "designation": "304.1",
+      "name": "Central Missouri",
+      "weight": {
+        "grams": 981
+      },
+      "classification": "Iron. Coarsest octahedrite",
+      "locality": null,
+      "year": "1855",
+      "catalogPage": 42,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Ainsworth",
+        "meteoriteCode": "422",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=422",
+        "alternateNameNote": "The official name checker and Ainsworth detail page explicitly list Central Missouri as a synonym. Source date, mass, and geographic wording differ from the current Ainsworth record and are preserved without reconciliation."
+      }
+    },
+    {
       "id": "obs-e90b792e-b6b4-4d84-a6dc-025c7305cdd1",
       "catalogId": "nininger-1950",
       "designation": "314.1",
@@ -23833,6 +23918,27 @@
         "meteoriteCode": "5257",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
         "alternateNameNote": "Printed designation 344.17 is retained as source evidence despite the surrounding 034 sequence."
+      }
+    },
+    {
+      "id": "obs-f8ccdadc-cdbb-4e79-af80-4430074c8813",
+      "catalogId": "nininger-1950",
+      "designation": "347.1",
+      "name": "Castalia",
+      "weight": {
+        "grams": 28
+      },
+      "classification": "Stone. Brecciated grey bronzite-chondrite",
+      "locality": "Nash County, North Carolina",
+      "year": "1874",
+      "catalogPage": 42,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Castalia",
+        "meteoriteCode": "5291",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5291",
+        "alternateNameNote": null
       }
     },
     {
@@ -24214,6 +24320,27 @@
       }
     },
     {
+      "id": "obs-0cebe4c4-58e9-4f32-a0b9-1e9d7d33a38c",
+      "catalogId": "nininger-1950",
+      "designation": "408.1",
+      "name": "Cedar",
+      "weight": {
+        "grams": 3960
+      },
+      "classification": "Stone. Black chondrite",
+      "locality": "Smith County, Kansas; 39° 40′ N., 98° 53′ W.",
+      "year": "1937",
+      "catalogPage": 42,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Cedar (Kansas)",
+        "meteoriteCode": "5302",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5302",
+        "alternateNameNote": "The official checker finds no exact official name or synonym for plain Cedar. Smith County, Kansas, 1937, 4.9 kg., and the printed coordinates identify Cedar (Kansas); its detail page lists Smith County (Kansas) as a synonym."
+      }
+    },
+    {
       "id": "obs-669c57bf-98ec-49f4-9d4b-c7bfe6872613",
       "catalogId": "nininger-1950",
       "designation": "414.26",
@@ -24337,6 +24464,27 @@
         "meteoriteCode": "422",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=422",
         "alternateNameNote": "The source reports Brown County, Nebraska, historical classification Coarsest octahedrite, and 10.7 kg.; MetBull reports Iron, IIAB and 80.65 kg."
+      }
+    },
+    {
+      "id": "obs-3d68c1a5-04db-4720-859d-dfdf7f2eb9e3",
+      "catalogId": "nininger-1950",
+      "designation": "424.1",
+      "name": "Chainpur",
+      "weight": {
+        "grams": 91
+      },
+      "classification": "Stone. Spherical chondrite",
+      "locality": "Azamgarh district, United Provinces, India",
+      "year": "1907",
+      "catalogPage": 42,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Chainpur",
+        "meteoriteCode": "5315",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5315",
+        "alternateNameNote": null
       }
     },
     {
@@ -24802,6 +24950,48 @@
       }
     },
     {
+      "id": "obs-c8981557-7119-46c4-a2cf-6104e79d081e",
+      "catalogId": "nininger-1950",
+      "designation": "474.1",
+      "name": "Chamberlin",
+      "weight": {
+        "grams": 1078
+      },
+      "classification": "Stone. Crystalline spherical chondrite",
+      "locality": "Dallam County, Texas; 36° 12′ N., 102° 27′ W.",
+      "year": "1941",
+      "catalogPage": 42,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Chamberlin",
+        "meteoriteCode": "5317",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5317",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-f558f91e-6618-4d84-a83c-56fc38cbbca6",
+      "catalogId": "nininger-1950",
+      "designation": "474.4",
+      "name": "Chamberlin",
+      "weight": {
+        "grams": 1072
+      },
+      "classification": "Stone. Crystalline spherical chondrite",
+      "locality": "Dallam County, Texas; 36° 12′ N., 102° 27′ W.",
+      "year": "1941",
+      "catalogPage": 42,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Chamberlin",
+        "meteoriteCode": "5317",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5317",
+        "alternateNameNote": null
+      }
+    },
+    {
       "id": "obs-22e552ad-0d79-4c8f-bad2-9c876e0a2a6b",
       "catalogId": "nininger-1950",
       "designation": "475.1",
@@ -24946,6 +25136,27 @@
         "meteoriteCode": "5266",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5266",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-3e1941f3-3477-48ee-9a77-8fc19eb87437",
+      "catalogId": "nininger-1950",
+      "designation": "504.1",
+      "name": "Cavour",
+      "weight": {
+        "grams": 118.8
+      },
+      "classification": "Stone. Chondrite with metallic veins",
+      "locality": "Beadle County, South Dakota",
+      "year": "1941",
+      "catalogPage": 42,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Cavour",
+        "meteoriteCode": "5300",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5300",
+        "alternateNameNote": "The exact name and South Dakota context identify Cavour. The source says recognized 1941 and 21.3 kg.; the current official record gives found 1938 and 26.21 kg."
       }
     },
     {
