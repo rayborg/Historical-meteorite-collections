@@ -395,14 +395,15 @@
           88,
           89,
           90,
-          91
+          91,
+          92
         ],
-        "sourcePageCount": 66,
-        "recordCount": 1468,
-        "recordsWithDesignation": 1442,
-        "recordsWithWeight": 1403,
+        "sourcePageCount": 67,
+        "recordCount": 1484,
+        "recordsWithDesignation": 1458,
+        "recordsWithWeight": 1419,
         "confidenceCounts": {
-          "high": 1468,
+          "high": 1484,
           "medium": 0,
           "low": 0
         },
@@ -410,11 +411,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 3380,
-    "recordsWithDesignation": 3185,
-    "recordsWithWeight": 3187,
+    "recordCount": 3396,
+    "recordsWithDesignation": 3201,
+    "recordsWithWeight": 3203,
     "confidenceCounts": {
-      "high": 3380,
+      "high": 3396,
       "medium": 0,
       "low": 0
     }
@@ -32370,6 +32371,111 @@
       }
     },
     {
+      "id": "obs-ebee4785-1dc3-4487-88da-80ac14c47e4d",
+      "catalogId": "nininger-1950",
+      "designation": "108b",
+      "name": "Sandia Mountains",
+      "weight": {
+        "grams": 57
+      },
+      "classification": "Iron. Granular hexahedrite",
+      "locality": "Albuquerque, New Mexico",
+      "year": "1925",
+      "catalogPage": 92,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Sandia Mountains",
+        "meteoriteCode": "23156",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23156",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official Sandia Mountains, code 23156, as a 1925 New Mexico Iron, IIAB with 45 kg mass. The official checker returns Sandia Mountains as Official, and the detail page confirms the exact name, year, state, and iron identity. The official 45 kg mass differs from the source's 15 kg total; the source total and historical granular-hexahedrite classification are preserved."
+      }
+    },
+    {
+      "id": "obs-c3e76c55-a045-4cce-8058-6d3c84d4735f",
+      "catalogId": "nininger-1950",
+      "designation": "108a",
+      "name": "Sandia Mountains",
+      "weight": {
+        "grams": 516
+      },
+      "classification": "Iron. Granular hexahedrite",
+      "locality": "Albuquerque, New Mexico",
+      "year": "1925",
+      "catalogPage": 92,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Sandia Mountains",
+        "meteoriteCode": "23156",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23156",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official Sandia Mountains, code 23156, as a 1925 New Mexico Iron, IIAB with 45 kg mass. The official checker returns Sandia Mountains as Official, and the detail page confirms the exact name, year, state, and iron identity. The official 45 kg mass differs from the source's 15 kg total; the source total and historical granular-hexahedrite classification are preserved."
+      }
+    },
+    {
+      "id": "obs-1909932e-6730-4781-945a-529ca13fbb6a",
+      "catalogId": "nininger-1950",
+      "designation": "108e",
+      "name": "Sandia Mountains",
+      "weight": {
+        "grams": 6480
+      },
+      "classification": "Iron. Granular hexahedrite",
+      "locality": "Albuquerque, New Mexico",
+      "year": "1925",
+      "catalogPage": 92,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Sandia Mountains",
+        "meteoriteCode": "23156",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23156",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official Sandia Mountains, code 23156, as a 1925 New Mexico Iron, IIAB with 45 kg mass. The official checker returns Sandia Mountains as Official, and the detail page confirms the exact name, year, state, and iron identity. The official 45 kg mass differs from the source's 15 kg total; the source total and historical granular-hexahedrite classification are preserved."
+      }
+    },
+    {
+      "id": "obs-427ce0d9-516a-423c-a8d6-8b0d362ac1c2",
+      "catalogId": "nininger-1950",
+      "designation": "108.23",
+      "name": "Sandia Mountains",
+      "weight": {
+        "grams": 650
+      },
+      "classification": "Iron. Granular hexahedrite",
+      "locality": "Albuquerque, New Mexico",
+      "year": "1925",
+      "catalogPage": 92,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Sandia Mountains",
+        "meteoriteCode": "23156",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23156",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official Sandia Mountains, code 23156, as a 1925 New Mexico Iron, IIAB with 45 kg mass. The official checker returns Sandia Mountains as Official, and the detail page confirms the exact name, year, state, and iron identity. The official 45 kg mass differs from the source's 15 kg total; the source total and historical granular-hexahedrite classification are preserved."
+      }
+    },
+    {
+      "id": "obs-049a2e8f-258e-429d-9c10-4142b7c3d524",
+      "catalogId": "nininger-1950",
+      "designation": "108.24",
+      "name": "Sandia Mountains",
+      "weight": {
+        "grams": 727
+      },
+      "classification": "Iron. Granular hexahedrite",
+      "locality": "Albuquerque, New Mexico",
+      "year": "1925",
+      "catalogPage": 92,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Sandia Mountains",
+        "meteoriteCode": "23156",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23156",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official Sandia Mountains, code 23156, as a 1925 New Mexico Iron, IIAB with 45 kg mass. The official checker returns Sandia Mountains as Official, and the detail page confirms the exact name, year, state, and iron identity. The official 45 kg mass differs from the source's 15 kg total; the source total and historical granular-hexahedrite classification are preserved."
+      }
+    },
+    {
       "id": "obs-27581ec3-4f85-45a1-ab77-50f4d55413fd",
       "catalogId": "nininger-1950",
       "designation": "112c",
@@ -33252,6 +33358,27 @@
       }
     },
     {
+      "id": "obs-b697d10f-2486-43e3-95d5-a55377ba3844",
+      "catalogId": "nininger-1950",
+      "designation": "138a",
+      "name": "San Francisco Mountains",
+      "weight": {
+        "grams": 60
+      },
+      "classification": "Iron. Finest octahedrite",
+      "locality": "Arizona",
+      "year": "about 1920",
+      "catalogPage": 92,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "San Francisco Mountains",
+        "meteoriteCode": "23124",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23124",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official San Francisco Mountains, code 23124, as a 1920 Arizona Iron, IVA with 1.7 kg mass. The official checker returns the exact name as Official, and the detail page confirms the year, state, iron identity, and 1.7 kg mass. The source's approximate year, 1 kg total, and historical finest-octahedrite classification are preserved."
+      }
+    },
+    {
       "id": "obs-e6581d53-a640-4b0e-a988-46fa7b5a9039",
       "catalogId": "nininger-1950",
       "designation": "139b",
@@ -33753,6 +33880,27 @@
         "meteoriteCode": "5256",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5256",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-5ca55361-a00e-4fbc-98c1-9ba6e7cef4c9",
+      "catalogId": "nininger-1950",
+      "designation": "159.2",
+      "name": "San Angelo",
+      "weight": {
+        "grams": 528
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Tom Green County, Texas",
+      "year": "1897",
+      "catalogPage": 92,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "San Angelo",
+        "meteoriteCode": "23117",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23117",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official San Angelo, code 23117, as an 1897 Texas Iron, IIIAB with 88 kg mass. The official checker returns San Angelo as Official, and the detail page confirms the exact name, year, state, iron identity, 88 kg mass, and Tom Green County coordinates. The source's 88.2 kg total and historical medium-octahedrite classification are preserved."
       }
     },
     {
@@ -37725,6 +37873,48 @@
       }
     },
     {
+      "id": "obs-8847ed3e-00a8-4810-84f7-f16c222775f9",
+      "catalogId": "nininger-1950",
+      "designation": "223b",
+      "name": "Santa Catharina",
+      "weight": {
+        "grams": 235
+      },
+      "classification": "Iron. Nickel-rich ataxite",
+      "locality": "Brazil",
+      "year": "1875",
+      "catalogPage": 92,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Santa Catharina",
+        "meteoriteCode": "23162",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23162",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official Santa Catharina, code 23162, as an 1875 Brazilian Iron, IAB-ung with 7 t mass. The official checker returns Santa Catharina as Official, and the detail page confirms the exact name, year, country, iron identity, and all three printed synonyms. The source's 25,000 kg total and historical nickel-rich ataxite classification are preserved."
+      }
+    },
+    {
+      "id": "obs-be6d519a-6302-4cee-b12c-955a90578cfb",
+      "catalogId": "nininger-1950",
+      "designation": "223a",
+      "name": "Santa Catharina",
+      "weight": {
+        "grams": 827
+      },
+      "classification": "Iron. Nickel-rich ataxite",
+      "locality": "Brazil",
+      "year": "1875",
+      "catalogPage": 92,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Santa Catharina",
+        "meteoriteCode": "23162",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23162",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official Santa Catharina, code 23162, as an 1875 Brazilian Iron, IAB-ung with 7 t mass. The official checker returns Santa Catharina as Official, and the detail page confirms the exact name, year, country, iron identity, and all three printed synonyms. The source's 25,000 kg total and historical nickel-rich ataxite classification are preserved."
+      }
+    },
+    {
       "id": "obs-63996358-813b-426b-bd17-35b109fb66e1",
       "catalogId": "nininger-1950",
       "designation": "226a",
@@ -39255,6 +39445,27 @@
         "meteoriteCode": "15433",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15433",
         "alternateNameNote": "The verified local CSV identifies Official Marshall County, code 15433, a Kentucky IIIAB iron found in 1860 with 6.8 kg mass. The official checker returns the exact name as Official, and the detail page confirms the name, year, Kentucky locality, iron identity, and 6.8 kg mass. The source's 6.9 kg total is preserved."
+      }
+    },
+    {
+      "id": "obs-724a8c38-7822-4d0e-b844-763994157b27",
+      "catalogId": "nininger-1950",
+      "designation": "293a",
+      "name": "Sanchez Estate",
+      "weight": {
+        "grams": 383
+      },
+      "classification": "Iron. Hexahedrite",
+      "locality": "Coahuila, Mexico",
+      "year": "1837",
+      "catalogPage": 92,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The verified local valid-name CSV has no Official Sanchez Estate row. The official checker calls Sanchez Estate a synonym of Coahuila, code 5387, and the Coahuila detail page lists that synonym, but the source explicitly states that this material is not of the same fall. Its 114 kg total also differs from Coahuila's official 2.1 t mass. No identity or code is inferred across the conflict."
       }
     },
     {
@@ -43038,6 +43249,27 @@
       }
     },
     {
+      "id": "obs-92ac7ee3-f46c-4dae-980b-68164aba832c",
+      "catalogId": "nininger-1950",
+      "designation": "441.3",
+      "name": "Sanderson",
+      "weight": {
+        "grams": 4190
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Terrell County, Texas; 30° 9′ N., 102° 24′ W.",
+      "year": "1936",
+      "catalogPage": 92,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Sanderson",
+        "meteoriteCode": "23135",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23135",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official Sanderson, code 23135, as a 1936 Texas Iron, IIIAB with 6.8 kg mass. The official checker returns Sanderson as Official, and the detail page confirms the exact name, year, state, iron identity, mass, and nearby Terrell County coordinates. The source's historical fine-octahedrite classification and exact printed coordinates are preserved."
+      }
+    },
+    {
       "id": "obs-4ba260d8-2248-45f2-a32d-b7c98600697d",
       "catalogId": "nininger-1950",
       "designation": "444.1",
@@ -43350,6 +43582,111 @@
         "meteoriteCode": "2331",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2331",
         "alternateNameNote": "The source says found many years ago and recently identified without printing a year; MetBull reports 1940. The source Pallasite classification corresponds to modern Pallasite, PMG-an."
+      }
+    },
+    {
+      "id": "obs-b7944d9b-32cd-477c-a809-689a3de2ca00",
+      "catalogId": "nininger-1950",
+      "designation": "460.1",
+      "name": "Santa Cruz",
+      "weight": {
+        "grams": 32.6
+      },
+      "classification": "Stone. Carbonaceous chondrite",
+      "locality": "Tamaulipas, Mexico",
+      "year": "1939",
+      "catalogPage": 92,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Santa Cruz",
+        "meteoriteCode": "23164",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23164",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official Santa Cruz, code 23164, as a 1939 Tamaulipas, Mexico CM2 fall with 60 gram mass. The official checker returns Santa Cruz as Official, and the detail page confirms the exact name, fall year, place, CM2 identity, and mass. The source's September 3 date, historical classification, and statement that total weight is unknown are preserved."
+      }
+    },
+    {
+      "id": "obs-4d28bb62-6b83-48a1-aeaf-af14eed77a19",
+      "catalogId": "nininger-1950",
+      "designation": "460.3",
+      "name": "Santa Cruz",
+      "weight": {
+        "grams": 6.2
+      },
+      "classification": "Stone. Carbonaceous chondrite",
+      "locality": "Tamaulipas, Mexico",
+      "year": "1939",
+      "catalogPage": 92,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Santa Cruz",
+        "meteoriteCode": "23164",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23164",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official Santa Cruz, code 23164, as a 1939 Tamaulipas, Mexico CM2 fall with 60 gram mass. The official checker returns Santa Cruz as Official, and the detail page confirms the exact name, fall year, place, CM2 identity, and mass. The source's September 3 date, historical classification, and statement that total weight is unknown are preserved."
+      }
+    },
+    {
+      "id": "obs-c52d3b5a-4a90-4290-aa95-b7a37aff7629",
+      "catalogId": "nininger-1950",
+      "designation": "460.5",
+      "name": "Santa Cruz",
+      "weight": {
+        "grams": 3.3
+      },
+      "classification": "Stone. Carbonaceous chondrite",
+      "locality": "Tamaulipas, Mexico",
+      "year": "1939",
+      "catalogPage": 92,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Santa Cruz",
+        "meteoriteCode": "23164",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23164",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official Santa Cruz, code 23164, as a 1939 Tamaulipas, Mexico CM2 fall with 60 gram mass. The official checker returns Santa Cruz as Official, and the detail page confirms the exact name, fall year, place, CM2 identity, and mass. The source's September 3 date, historical classification, and statement that total weight is unknown are preserved."
+      }
+    },
+    {
+      "id": "obs-4294e79d-512d-44bb-88cc-d5130b3a6111",
+      "catalogId": "nininger-1950",
+      "designation": "460.6",
+      "name": "Santa Cruz",
+      "weight": {
+        "grams": 3.5
+      },
+      "classification": "Stone. Carbonaceous chondrite",
+      "locality": "Tamaulipas, Mexico",
+      "year": "1939",
+      "catalogPage": 92,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Santa Cruz",
+        "meteoriteCode": "23164",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23164",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official Santa Cruz, code 23164, as a 1939 Tamaulipas, Mexico CM2 fall with 60 gram mass. The official checker returns Santa Cruz as Official, and the detail page confirms the exact name, fall year, place, CM2 identity, and mass. The source's September 3 date, historical classification, and statement that total weight is unknown are preserved."
+      }
+    },
+    {
+      "id": "obs-e9b26091-0337-40a9-a23f-235e8d1a523a",
+      "catalogId": "nininger-1950",
+      "designation": "460.7",
+      "name": "Santa Cruz",
+      "weight": {
+        "grams": 1.3
+      },
+      "classification": "Stone. Carbonaceous chondrite",
+      "locality": "Tamaulipas, Mexico",
+      "year": "1939",
+      "catalogPage": 92,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Santa Cruz",
+        "meteoriteCode": "23164",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23164",
+        "alternateNameNote": "The verified local valid-name CSV identifies Official Santa Cruz, code 23164, as a 1939 Tamaulipas, Mexico CM2 fall with 60 gram mass. The official checker returns Santa Cruz as Official, and the detail page confirms the exact name, fall year, place, CM2 identity, and mass. The source's September 3 date, historical classification, and statement that total weight is unknown are preserved."
       }
     },
     {
