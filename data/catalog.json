@@ -361,14 +361,15 @@
           54,
           55,
           56,
-          57
+          57,
+          58
         ],
-        "sourcePageCount": 32,
-        "recordCount": 644,
-        "recordsWithDesignation": 639,
-        "recordsWithWeight": 632,
+        "sourcePageCount": 33,
+        "recordCount": 710,
+        "recordsWithDesignation": 705,
+        "recordsWithWeight": 685,
         "confidenceCounts": {
-          "high": 644,
+          "high": 710,
           "medium": 0,
           "low": 0
         },
@@ -376,11 +377,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2556,
-    "recordsWithDesignation": 2382,
-    "recordsWithWeight": 2416,
+    "recordCount": 2622,
+    "recordsWithDesignation": 2448,
+    "recordsWithWeight": 2469,
     "confidenceCounts": {
-      "high": 2556,
+      "high": 2622,
       "medium": 0,
       "low": 0
     }
@@ -25928,6 +25929,1056 @@
         "meteoriteCode": "11872",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
         "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Henbury, code 11872. The detail page confirms the 1931 Australian iron identity; it reports Northern Territory, IIIAB, and a 2 t mass, while the source's McDonnell Ranges locality, medium-octahedrite classification, and about 681 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-fdebe51b-4333-4496-8bc4-67d8899cdddf",
+      "catalogId": "nininger-1950",
+      "designation": "193.107",
+      "name": "Henbury",
+      "weight": {
+        "grams": 257
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-972420bc-0c76-4f78-a612-abfbda4a13ea",
+      "catalogId": "nininger-1950",
+      "designation": "193.113",
+      "name": "Henbury",
+      "weight": {
+        "grams": 146
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-57f1022d-d87a-447a-b386-52fcae07c73c",
+      "catalogId": "nininger-1950",
+      "designation": "193.122",
+      "name": "Henbury",
+      "weight": {
+        "grams": 121
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-922001bc-ff8d-4bec-97c7-ad72105d39bf",
+      "catalogId": "nininger-1950",
+      "designation": "193.124",
+      "name": "Henbury",
+      "weight": {
+        "grams": 132
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-a9e911cf-785a-4a62-a263-583794f358bb",
+      "catalogId": "nininger-1950",
+      "designation": "193.126",
+      "name": "Henbury",
+      "weight": {
+        "grams": 112
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-27cd4d54-80de-44a5-a19c-b022de1a86dc",
+      "catalogId": "nininger-1950",
+      "designation": "193.127",
+      "name": "Henbury",
+      "weight": {
+        "grams": 121
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-7d6ea064-79cb-46a8-aaf4-7c46dcc04356",
+      "catalogId": "nininger-1950",
+      "designation": "193.128",
+      "name": "Henbury",
+      "weight": {
+        "grams": 126
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-207ba5c1-0a0c-45fa-8222-c1ca2789dfc7",
+      "catalogId": "nininger-1950",
+      "designation": "193.130",
+      "name": "Henbury",
+      "weight": {
+        "grams": 100
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-2dba7591-837f-40c4-8d9a-8d685ac011cd",
+      "catalogId": "nininger-1950",
+      "designation": "193.131",
+      "name": "Henbury",
+      "weight": {
+        "grams": 100
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-4f7dc0e5-a8af-4812-b26d-a935f2c99c2d",
+      "catalogId": "nininger-1950",
+      "designation": "193.132",
+      "name": "Henbury",
+      "weight": {
+        "grams": 112
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-c407fb91-3d33-4dfe-a433-0721a7006783",
+      "catalogId": "nininger-1950",
+      "designation": "193.134",
+      "name": "Henbury",
+      "weight": {
+        "grams": 92
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-886702fe-95fd-4e1f-99aa-ffed4c5336b8",
+      "catalogId": "nininger-1950",
+      "designation": "193.135",
+      "name": "Henbury",
+      "weight": {
+        "grams": 99
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-40e1e3bd-7b4b-4b75-9665-eea72eb76df5",
+      "catalogId": "nininger-1950",
+      "designation": "193.137",
+      "name": "Henbury",
+      "weight": {
+        "grams": 111
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-36363ddd-ab46-4155-a28b-ddc4b6c7b627",
+      "catalogId": "nininger-1950",
+      "designation": "193.138",
+      "name": "Henbury",
+      "weight": {
+        "grams": 117
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-df51c6c4-f405-4552-a96e-019b526d36f6",
+      "catalogId": "nininger-1950",
+      "designation": "193.139",
+      "name": "Henbury",
+      "weight": {
+        "grams": 99
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-cbcaca17-4189-473c-be5e-bb9f1c51a2f2",
+      "catalogId": "nininger-1950",
+      "designation": "193.140",
+      "name": "Henbury",
+      "weight": {
+        "grams": 94
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-1a05a2ef-57e8-42f9-a7b7-0b9aed47db1e",
+      "catalogId": "nininger-1950",
+      "designation": "193.141",
+      "name": "Henbury",
+      "weight": {
+        "grams": 84
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-c8e72ed4-6ab5-4cad-af8a-3c3eab8902ac",
+      "catalogId": "nininger-1950",
+      "designation": "193.150",
+      "name": "Henbury",
+      "weight": {
+        "grams": 17
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-365c33d9-3b65-41d7-ba53-bae621ce5073",
+      "catalogId": "nininger-1950",
+      "designation": "193.152",
+      "name": "Henbury",
+      "weight": {
+        "grams": 9160
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-b7573785-5305-4ce0-bac7-8d47a3d3ac62",
+      "catalogId": "nininger-1950",
+      "designation": "193.154",
+      "name": "Henbury",
+      "weight": {
+        "grams": 986
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-403a1914-fc71-43b2-b631-f0d2548b2ee8",
+      "catalogId": "nininger-1950",
+      "designation": "193.156",
+      "name": "Henbury",
+      "weight": {
+        "grams": 1938
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-8cae8dd8-8e2e-43c7-ab76-9a1ce453bb5a",
+      "catalogId": "nininger-1950",
+      "designation": "193.158",
+      "name": "Henbury",
+      "weight": {
+        "grams": 563
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-6b414814-a044-49c9-a990-7704aa8bd36f",
+      "catalogId": "nininger-1950",
+      "designation": "193.166",
+      "name": "Henbury",
+      "weight": {
+        "grams": 26274
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-5aa91078-71cd-40b1-96ac-0e69d112faf3",
+      "catalogId": "nininger-1950",
+      "designation": "193.230",
+      "name": "Henbury",
+      "weight": {
+        "grams": 170
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-f8d44419-53a5-4ffb-8b1f-db1152066737",
+      "catalogId": "nininger-1950",
+      "designation": "193.233",
+      "name": "Henbury",
+      "weight": {
+        "grams": 135
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-a19aaa80-e925-4750-8e73-0d6d357f3a57",
+      "catalogId": "nininger-1950",
+      "designation": "193.235",
+      "name": "Henbury",
+      "weight": {
+        "grams": 104
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-560e5ef3-6b0f-4ef6-8ea6-83b8dc2deb90",
+      "catalogId": "nininger-1950",
+      "designation": "193.236",
+      "name": "Henbury",
+      "weight": {
+        "grams": 68
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-0a626dcb-213c-42c0-b03f-0d72f815dee6",
+      "catalogId": "nininger-1950",
+      "designation": "193.237",
+      "name": "Henbury",
+      "weight": {
+        "grams": 53
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-ffb3f49d-ff53-416f-b292-1ab311b2b68e",
+      "catalogId": "nininger-1950",
+      "designation": "193.238",
+      "name": "Henbury",
+      "weight": {
+        "grams": 46
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-af0eb3d7-fbd7-45cf-9ca6-ff5b733c62ba",
+      "catalogId": "nininger-1950",
+      "designation": "193.240",
+      "name": "Henbury",
+      "weight": {
+        "grams": 49
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-c99b4b34-de6f-44ce-bdb6-7d08b91e7f02",
+      "catalogId": "nininger-1950",
+      "designation": "193.253",
+      "name": "Henbury",
+      "weight": {
+        "grams": 17
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-92f84312-7d47-42bb-afc9-b53b08f797b6",
+      "catalogId": "nininger-1950",
+      "designation": "193.256",
+      "name": "Henbury",
+      "weight": {
+        "grams": 9.5
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-6f40703f-b865-437e-b91d-a04da868d0cd",
+      "catalogId": "nininger-1950",
+      "designation": "193.262",
+      "name": "Henbury",
+      "weight": {
+        "grams": 10.5
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-787e6d8f-7dbf-49d2-b84a-033bd75ad774",
+      "catalogId": "nininger-1950",
+      "designation": "193.266",
+      "name": "Henbury",
+      "weight": {
+        "grams": 10.5
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-205d76bc-b15c-44d6-97b1-6bc215c32f63",
+      "catalogId": "nininger-1950",
+      "designation": "193.290",
+      "name": "Henbury",
+      "weight": {
+        "grams": 81.5
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-0d134ebf-cd5e-432a-8d0b-ad7833edd8cf",
+      "catalogId": "nininger-1950",
+      "designation": "193.291",
+      "name": "Henbury",
+      "weight": {
+        "grams": 89.7
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-dd024e8f-ae69-4777-89ea-194c039f00dc",
+      "catalogId": "nininger-1950",
+      "designation": "193.292",
+      "name": "Henbury",
+      "weight": {
+        "grams": 102.6
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-7a5429d2-0783-4cd0-aee8-184ba518cd27",
+      "catalogId": "nininger-1950",
+      "designation": "193.294",
+      "name": "Henbury",
+      "weight": {
+        "grams": 38.1
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-630f6b3e-9d17-443b-94f5-4309b278c637",
+      "catalogId": "nininger-1950",
+      "designation": "193.297",
+      "name": "Henbury",
+      "weight": {
+        "grams": 67.8
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-25830903-c6cd-464d-a046-87f9342e24a4",
+      "catalogId": "nininger-1950",
+      "designation": "193.300",
+      "name": "Henbury",
+      "weight": {
+        "grams": 60.5
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-61ddcf68-20fe-4d28-b657-c7162638e9ab",
+      "catalogId": "nininger-1950",
+      "designation": "193.301",
+      "name": "Henbury",
+      "weight": {
+        "grams": 80
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-842d977e-e45e-46e2-8386-314f982a206e",
+      "catalogId": "nininger-1950",
+      "designation": "193.303",
+      "name": "Henbury",
+      "weight": {
+        "grams": 52
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-48038683-f755-4e04-a133-6f6e438949be",
+      "catalogId": "nininger-1950",
+      "designation": "193.308",
+      "name": "Henbury",
+      "weight": {
+        "grams": 49
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-ab6df7d4-6c32-46cb-9a02-c0c5a38571d6",
+      "catalogId": "nininger-1950",
+      "designation": "193.310",
+      "name": "Henbury",
+      "weight": {
+        "grams": 44
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-5e8311c2-a264-49ce-95d7-8756651f3334",
+      "catalogId": "nininger-1950",
+      "designation": "193.311",
+      "name": "Henbury",
+      "weight": {
+        "grams": 32.7
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-0998c0e6-3837-40ba-aeed-26b557fd2d33",
+      "catalogId": "nininger-1950",
+      "designation": "193.312",
+      "name": "Henbury",
+      "weight": {
+        "grams": 41.8
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-999bbd8c-41a4-4de8-9515-3c5d9fa3debf",
+      "catalogId": "nininger-1950",
+      "designation": "193.344",
+      "name": "Henbury",
+      "weight": {
+        "grams": 783.4
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-91f20b98-2df7-4b57-8d87-9a3eddcc7d9e",
+      "catalogId": "nininger-1950",
+      "designation": "193.345",
+      "name": "Henbury",
+      "weight": {
+        "grams": 6.8
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-d2134472-5df3-49da-9a78-23663085fd6c",
+      "catalogId": "nininger-1950",
+      "designation": "193.346",
+      "name": "Henbury",
+      "weight": {
+        "grams": 6
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-2fde9316-7cf9-4c89-a717-7de86a6b4c21",
+      "catalogId": "nininger-1950",
+      "designation": "193.347",
+      "name": "Henbury",
+      "weight": {
+        "grams": 4.1
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
       }
     },
     {
@@ -53060,6 +54111,342 @@
         "meteoriteCode": "11872",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
         "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Henbury, code 11872. The detail page confirms the 1931 Australian iron identity; it reports Northern Territory, IIIAB, and a 2 t mass, while the source's McDonnell Ranges locality, medium-octahedrite classification, and about 681 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-580fc4b4-87c5-43bc-8aba-d2416c61b2c3",
+      "catalogId": "nininger-1950",
+      "designation": "S 193x",
+      "name": "Henbury",
+      "weight": {
+        "grams": 436
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-f2ee38b6-4db0-496c-a140-4163866a23de",
+      "catalogId": "nininger-1950",
+      "designation": "S 193w",
+      "name": "Henbury",
+      "weight": {
+        "grams": 639
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-449699d4-78f4-4546-a12f-65d13f7f651d",
+      "catalogId": "nininger-1950",
+      "designation": "S 193v",
+      "name": "Henbury",
+      "weight": {
+        "grams": 1826
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The verified local MetBull CSV has an Official Henbury row, code 11872, found 1931 in Northern Territory, Australia. The official name checker returns exact name Henbury as Official code 11872, and the official detail page confirms the exact name, 1931 find, Australian locality, and iron identity."
+      }
+    },
+    {
+      "id": "obs-071435b4-a87d-4ced-838f-2c1ef78770a6",
+      "catalogId": "nininger-1950",
+      "designation": "S 193h",
+      "name": "Henbury",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The source prints a designation-only Fused Rock row with no weight; none is inferred. Henbury remains exact official code 11872."
+      }
+    },
+    {
+      "id": "obs-0cf8e4a6-04a7-4118-90f0-dfc9e4a9304f",
+      "catalogId": "nininger-1950",
+      "designation": "S 193y",
+      "name": "Henbury",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The source prints a designation-only Fused Rock row with no weight; none is inferred. Henbury remains exact official code 11872."
+      }
+    },
+    {
+      "id": "obs-3487c07f-e690-478f-a77e-a59f2efa0c9e",
+      "catalogId": "nininger-1950",
+      "designation": "S 193c",
+      "name": "Henbury",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The source prints a designation-only Fused Rock row with no weight; none is inferred. Henbury remains exact official code 11872."
+      }
+    },
+    {
+      "id": "obs-370192dc-93ec-4e78-aac8-8eb536cd2172",
+      "catalogId": "nininger-1950",
+      "designation": "S 193k",
+      "name": "Henbury",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The source prints a designation-only Fused Rock row with no weight; none is inferred. Henbury remains exact official code 11872."
+      }
+    },
+    {
+      "id": "obs-643f7479-ab18-46b4-a003-0351ae6eafb4",
+      "catalogId": "nininger-1950",
+      "designation": "S 193j",
+      "name": "Henbury",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The source prints a designation-only Fused Rock row with no weight; none is inferred. Henbury remains exact official code 11872."
+      }
+    },
+    {
+      "id": "obs-733e8fd9-5e98-45b9-81d7-40cce0b6fe0a",
+      "catalogId": "nininger-1950",
+      "designation": "S 193g",
+      "name": "Henbury",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The source prints a designation-only Fused Rock row with no weight; none is inferred. Henbury remains exact official code 11872."
+      }
+    },
+    {
+      "id": "obs-87ff24bf-895a-484b-b160-e0ed2fd5046f",
+      "catalogId": "nininger-1950",
+      "designation": "S 193i",
+      "name": "Henbury",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The source prints a designation-only Fused Rock row with no weight; none is inferred. Henbury remains exact official code 11872."
+      }
+    },
+    {
+      "id": "obs-97212f8b-3fec-49ea-a953-8c98cfcc2f1d",
+      "catalogId": "nininger-1950",
+      "designation": "S 193b",
+      "name": "Henbury",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The source prints a designation-only Fused Rock row with no weight; none is inferred. Henbury remains exact official code 11872."
+      }
+    },
+    {
+      "id": "obs-a12fcf3c-1108-43fc-9149-d73358d48ae1",
+      "catalogId": "nininger-1950",
+      "designation": "S 193a",
+      "name": "Henbury",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The source prints a designation-only Fused Rock row with no weight; none is inferred. Henbury remains exact official code 11872."
+      }
+    },
+    {
+      "id": "obs-a35430e8-4b7e-420d-bc70-60b4d7759ed2",
+      "catalogId": "nininger-1950",
+      "designation": "S 193L",
+      "name": "Henbury",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The source prints a designation-only Fused Rock row with no weight; none is inferred. The printed capital L is preserved, and Henbury remains exact official code 11872."
+      }
+    },
+    {
+      "id": "obs-dc52856b-fc3b-49e1-9441-6cf7d838b2d9",
+      "catalogId": "nininger-1950",
+      "designation": "S 193f",
+      "name": "Henbury",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The source prints a designation-only Fused Rock row with no weight; none is inferred. Henbury remains exact official code 11872."
+      }
+    },
+    {
+      "id": "obs-eb080345-4312-4ea9-83e4-0c289e5ca257",
+      "catalogId": "nininger-1950",
+      "designation": "S 193e",
+      "name": "Henbury",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The source prints a designation-only Fused Rock row with no weight; none is inferred. Henbury remains exact official code 11872."
+      }
+    },
+    {
+      "id": "obs-eebf0adc-84c1-4db0-baf3-0bd539891067",
+      "catalogId": "nininger-1950",
+      "designation": "S 193d",
+      "name": "Henbury",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "McDonnell Ranges, Central Australia",
+      "year": "1931",
+      "catalogPage": 58,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Henbury",
+        "meteoriteCode": "11872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
+        "alternateNameNote": "The source prints a designation-only Fused Rock row with no weight; none is inferred. Henbury remains exact official code 11872."
       }
     },
     {
