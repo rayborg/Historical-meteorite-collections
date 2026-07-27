@@ -390,14 +390,15 @@
           83,
           84,
           85,
-          86
+          86,
+          87
         ],
-        "sourcePageCount": 61,
-        "recordCount": 1396,
-        "recordsWithDesignation": 1370,
-        "recordsWithWeight": 1332,
+        "sourcePageCount": 62,
+        "recordCount": 1414,
+        "recordsWithDesignation": 1388,
+        "recordsWithWeight": 1350,
         "confidenceCounts": {
-          "high": 1396,
+          "high": 1414,
           "medium": 0,
           "low": 0
         },
@@ -405,11 +406,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 3308,
-    "recordsWithDesignation": 3113,
-    "recordsWithWeight": 3116,
+    "recordCount": 3326,
+    "recordsWithDesignation": 3131,
+    "recordsWithWeight": 3134,
     "confidenceCounts": {
-      "high": 3308,
+      "high": 3326,
       "medium": 0,
       "low": 0
     }
@@ -31630,6 +31631,195 @@
       }
     },
     {
+      "id": "obs-b5be5433-e531-41cd-8576-f08f5c749816",
+      "catalogId": "nininger-1950",
+      "designation": "92.992",
+      "name": "Plainview",
+      "weight": {
+        "grams": 399.8
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 87,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700 kg mass. The detail page confirms the exact printed coordinates and Hale County synonym, distinguishing it from later qualified Plainview records."
+      }
+    },
+    {
+      "id": "obs-eb61baba-d01b-43f9-977f-39f3d9c5e8b0",
+      "catalogId": "nininger-1950",
+      "designation": "92.993",
+      "name": "Plainview",
+      "weight": {
+        "grams": 642.5
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 87,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700 kg mass. The detail page confirms the exact printed coordinates and Hale County synonym, distinguishing it from later qualified Plainview records."
+      }
+    },
+    {
+      "id": "obs-38acce2b-4ea3-4e28-a7a4-45c1d8ca5470",
+      "catalogId": "nininger-1950",
+      "designation": "92.994",
+      "name": "Plainview",
+      "weight": {
+        "grams": 310
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 87,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700 kg mass. The detail page confirms the exact printed coordinates and Hale County synonym, distinguishing it from later qualified Plainview records."
+      }
+    },
+    {
+      "id": "obs-cb68795f-1ba0-40f0-9e8d-768d993b20b8",
+      "catalogId": "nininger-1950",
+      "designation": "92.995",
+      "name": "Plainview",
+      "weight": {
+        "grams": 4983
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 87,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700 kg mass. The detail page confirms the exact printed coordinates and Hale County synonym, distinguishing it from later qualified Plainview records."
+      }
+    },
+    {
+      "id": "obs-9c4ab62c-58f6-4ee7-ba39-0724efc5875e",
+      "catalogId": "nininger-1950",
+      "designation": "92.996",
+      "name": "Plainview",
+      "weight": {
+        "grams": 535.5
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 87,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700 kg mass. The detail page confirms the exact printed coordinates and Hale County synonym, distinguishing it from later qualified Plainview records."
+      }
+    },
+    {
+      "id": "obs-303d730b-54fa-4233-806c-f35b857f308e",
+      "catalogId": "nininger-1950",
+      "designation": "92.999",
+      "name": "Plainview",
+      "weight": {
+        "grams": 193.1
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 87,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700 kg mass. The detail page confirms the exact printed coordinates and Hale County synonym, distinguishing it from later qualified Plainview records."
+      }
+    },
+    {
+      "id": "obs-f5ee1748-3663-47e8-acaa-07076f6c8d66",
+      "catalogId": "nininger-1950",
+      "designation": "92.1001",
+      "name": "Plainview",
+      "weight": {
+        "grams": 3737
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 87,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700 kg mass. The detail page confirms the exact printed coordinates and Hale County synonym, distinguishing it from later qualified Plainview records."
+      }
+    },
+    {
+      "id": "obs-6b072d42-5834-4119-80fd-90db8ed3c5d5",
+      "catalogId": "nininger-1950",
+      "designation": "92.1042",
+      "name": "Plainview",
+      "weight": {
+        "grams": 57
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 87,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700 kg mass. The detail page confirms the exact printed coordinates and Hale County synonym, distinguishing it from later qualified Plainview records."
+      }
+    },
+    {
+      "id": "obs-eaea1b6e-a32b-42a2-8ab6-f7dfc9870ab7",
+      "catalogId": "nininger-1950",
+      "designation": "92.1060",
+      "name": "Plainview",
+      "weight": {
+        "grams": 11
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 87,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700 kg mass. The detail page confirms the exact printed coordinates and Hale County synonym, distinguishing it from later qualified Plainview records."
+      }
+    },
+    {
       "id": "obs-4fc94015-8674-4abd-8d87-9fd65f0914ba",
       "catalogId": "nininger-1950",
       "designation": "93a",
@@ -31669,6 +31859,48 @@
         "meteoriteCode": "18108",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18108",
         "alternateNameNote": "The verified local CSV identifies Official Parnallee, code 18108, and the checker returns Parnallee as Official. The detail page confirms the exact name, 1857 Indian LL3.6 fall, 77.6 kg mass, Tamil Nadu coordinates, and printed Perunali synonym. The source's 77.7 kg total, historical locality, and classification are preserved."
+      }
+    },
+    {
+      "id": "obs-31fb0d33-4f34-45bd-9808-3e76a03d7d09",
+      "catalogId": "nininger-1950",
+      "designation": "94e",
+      "name": "Puente del Zacate",
+      "weight": {
+        "grams": 4.5
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Monclova district, Coahuila, Mexico",
+      "year": "1904",
+      "catalogPage": 87,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Puente del Zacate",
+        "meteoriteCode": "18894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18894",
+        "alternateNameNote": "The verified local CSV identifies Official Puente del Zacate, code 18894, as a 1904 Coahuila Iron, IIIAB with 30.79 kg mass. The checker returns the name as Official, and the detail page confirms the exact name, year, place, iron identity, and mass. The source's historical classification and 30.7 kg total are preserved."
+      }
+    },
+    {
+      "id": "obs-f326b273-acfe-446f-8d7d-e1521b7e5b5e",
+      "catalogId": "nininger-1950",
+      "designation": "94b",
+      "name": "Puente del Zacate",
+      "weight": {
+        "grams": 235.5
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Monclova district, Coahuila, Mexico",
+      "year": "1904",
+      "catalogPage": 87,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Puente del Zacate",
+        "meteoriteCode": "18894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18894",
+        "alternateNameNote": "The verified local CSV identifies Official Puente del Zacate, code 18894, as a 1904 Coahuila Iron, IIIAB with 30.79 kg mass. The checker returns the name as Official, and the detail page confirms the exact name, year, place, iron identity, and mass. The source's historical classification and 30.7 kg total are preserved."
       }
     },
     {
@@ -31900,6 +32132,27 @@
         "meteoriteCode": "10037",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10037",
         "alternateNameNote": "The official checker returns exact Official Enon. The detail page records the NHM historical classification Mesosiderite-an, but the valid-name CSV and current recommended classification say Iron, ungrouped; the source's Mesosiderite wording is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-3d37b042-d7d0-4b45-9fa8-12f724665053",
+      "catalogId": "nininger-1950",
+      "designation": "119.1",
+      "name": "Puente-Ladron",
+      "weight": {
+        "grams": 7.67
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Socorro County, New Mexico; 34° 18′ N., 106° 54′ W.",
+      "year": "1944",
+      "catalogPage": 87,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Puente-Ladron",
+        "meteoriteCode": "18895",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18895",
+        "alternateNameNote": "The verified local CSV identifies Official Puente-Ladron, code 18895, as a 1944 New Mexico L6 with 7.7 gram mass. The checker returns Puente-Ladron as Official, and the detail page confirms the May 17 find, Socorro County, L6 identity, and 7.673 gram original mass. The source's coordinates and rounded 7.67 grams are preserved."
       }
     },
     {
@@ -32971,6 +33224,27 @@
         "meteoriteCode": "5256",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5256",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-3c268ec7-4b73-44bc-bd87-74b347e15305",
+      "catalogId": "nininger-1950",
+      "designation": "160a",
+      "name": "Plymouth",
+      "weight": {
+        "grams": 350
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Marshall County, Indiana",
+      "year": "1893",
+      "catalogPage": 87,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Plymouth",
+        "meteoriteCode": "18850",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18850",
+        "alternateNameNote": "The verified local CSV identifies Official Plymouth, code 18850, as an 1893 Indiana Iron, IIIAB with 14 kg mass. The checker returns Plymouth as Official, and the detail page confirms the exact name, year, state, iron identity, and Marshall County synonym. The source's 3 kg total is preserved."
       }
     },
     {
@@ -36418,6 +36692,27 @@
       }
     },
     {
+      "id": "obs-d46c24fb-37c7-452c-9bea-633a359e6135",
+      "catalogId": "nininger-1950",
+      "designation": "210a",
+      "name": "Pojoaque",
+      "weight": {
+        "grams": 6
+      },
+      "classification": "Pallasite",
+      "locality": "Santa Fe County, New Mexico",
+      "year": "1931",
+      "catalogPage": 87,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Glorieta Mountain",
+        "meteoriteCode": "10935",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10935",
+        "alternateNameNote": "The official checker explicitly identifies Pojoaque as a synonym of Glorieta Mountain. The verified local CSV identifies Official Glorieta Mountain, code 10935, as a New Mexico pallasite, and the detail page lists Pojoaque as a synonym. The source's distinct 1931 event, 84 gram total, and stated association are preserved."
+      }
+    },
+    {
       "id": "obs-da3d86e1-1eea-4127-b759-f829a7528589",
       "catalogId": "nininger-1950",
       "designation": "211.1",
@@ -38515,6 +38810,27 @@
         "meteoriteCode": "11862",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11862",
         "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Hawk Springs, code 11862. The detail page confirms the 1935 Wyoming H5 and 367 g mass; its coordinates are one minute north and east of those printed, which are preserved without correction."
+      }
+    },
+    {
+      "id": "obs-73f83284-d27e-489b-8603-a1eb36c13746",
+      "catalogId": "nininger-1950",
+      "designation": "312.1",
+      "name": "Pleasanton",
+      "weight": {
+        "grams": 142
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Linn County, Kansas; 38° 11′ N., 94° 43′ W.",
+      "year": "1935",
+      "catalogPage": 87,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Pleasanton",
+        "meteoriteCode": "18848",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18848",
+        "alternateNameNote": "The verified local CSV identifies Official Pleasanton, code 18848, as a 1935 Kansas H5 with 2.3 kg mass. The checker returns Pleasanton as Official, and the detail page confirms the exact name, year, state, mass, and printed coordinates. The source's approximate 2.2 kg total is preserved."
       }
     },
     {
@@ -40975,6 +41291,27 @@
       }
     },
     {
+      "id": "obs-4e3a8368-444f-44cc-a576-e336c8249f8f",
+      "catalogId": "nininger-1950",
+      "designation": "421.1",
+      "name": "Ponca Creek",
+      "weight": {
+        "grams": 400
+      },
+      "classification": "Iron. Coarsest octahedrite",
+      "locality": "Holt County, Nebraska",
+      "year": "1863",
+      "catalogPage": 87,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Ainsworth",
+        "meteoriteCode": "422",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=422",
+        "alternateNameNote": "The official checker explicitly identifies Ponca Creek as a synonym of Ainsworth. The verified local CSV identifies Official Ainsworth, code 422, as a Nebraska Iron, IIAB, and the detail page lists Ponca Creek, Dacotah, and Dakota as synonyms. Its 1907 year and 80.65 kg mass conflict with the source's 1863 and 45.4 kg facts, which are preserved."
+      }
+    },
+    {
       "id": "obs-9617c8e4-2bee-4c65-9f69-93a666c81879",
       "catalogId": "nininger-1950",
       "designation": "422.1",
@@ -42379,6 +42716,48 @@
         "meteoriteCode": "2317",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2317",
         "alternateNameNote": "The historical Fine octahedrite classification corresponds to modern Iron, IIIAB. MetBull also reports a past IIIB classification."
+      }
+    },
+    {
+      "id": "obs-b4595830-1e7b-462b-99ac-2720a85be9bb",
+      "catalogId": "nininger-1950",
+      "designation": "476.19",
+      "name": "Potter",
+      "weight": {
+        "grams": 15061
+      },
+      "classification": "Stone. Brecciated grey chondrite",
+      "locality": "Cheyenne County, Nebraska; 41° 14′ N., 103° 18′ W.",
+      "year": null,
+      "catalogPage": 87,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Potter",
+        "meteoriteCode": "18878",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18878",
+        "alternateNameNote": "The verified local CSV identifies Official Potter, code 18878, as a 1941 Nebraska L6 with 261 kg mass. The checker returns Potter as Official, and the detail page confirms the exact name, state, classification, mass, and printed coordinates. The official year is not used to fill the source's silent year field."
+      }
+    },
+    {
+      "id": "obs-bc9124fd-fa90-41e7-b75e-73fc94fd2cc3",
+      "catalogId": "nininger-1950",
+      "designation": "476.67",
+      "name": "Potter",
+      "weight": {
+        "grams": 23556
+      },
+      "classification": "Stone. Brecciated grey chondrite",
+      "locality": "Cheyenne County, Nebraska; 41° 14′ N., 103° 18′ W.",
+      "year": null,
+      "catalogPage": 87,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Potter",
+        "meteoriteCode": "18878",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18878",
+        "alternateNameNote": "The verified local CSV identifies Official Potter, code 18878, as a 1941 Nebraska L6 with 261 kg mass. The checker returns Potter as Official, and the detail page confirms the exact name, state, classification, mass, and printed coordinates. The official year is not used to fill the source's silent year field."
       }
     },
     {
