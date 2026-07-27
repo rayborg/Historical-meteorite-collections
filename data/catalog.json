@@ -352,14 +352,15 @@
           45,
           46,
           47,
-          48
+          48,
+          49
         ],
-        "sourcePageCount": 23,
-        "recordCount": 468,
-        "recordsWithDesignation": 464,
-        "recordsWithWeight": 456,
+        "sourcePageCount": 24,
+        "recordCount": 479,
+        "recordsWithDesignation": 475,
+        "recordsWithWeight": 467,
         "confidenceCounts": {
-          "high": 468,
+          "high": 479,
           "medium": 0,
           "low": 0
         },
@@ -367,11 +368,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2380,
-    "recordsWithDesignation": 2207,
-    "recordsWithWeight": 2240,
+    "recordCount": 2391,
+    "recordsWithDesignation": 2218,
+    "recordsWithWeight": 2251,
     "confidenceCounts": {
-      "high": 2380,
+      "high": 2391,
       "medium": 0,
       "low": 0
     }
@@ -22373,6 +22374,27 @@
       }
     },
     {
+      "id": "obs-f3d6bdb0-e43e-4e9c-887b-53392a97cb1f",
+      "catalogId": "nininger-1950",
+      "designation": "38a",
+      "name": "Durango",
+      "weight": {
+        "grams": 166
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Durango, Mexico",
+      "year": "1904",
+      "catalogPage": 49,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Durango",
+        "meteoriteCode": "7751",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=7751",
+        "alternateNameNote": "The official checker and valid-name CSV report year 1804 and mass 164 kg; the source prints Described 1904 and 167 kg, which are preserved without reconciliation."
+      }
+    },
+    {
       "id": "obs-1f1fead1-bd88-4e1f-9766-1a1f2e15a1cb",
       "catalogId": "nininger-1950",
       "designation": "39a",
@@ -22454,6 +22476,27 @@
         "meteoriteCode": "7640",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=7640",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-75a440b0-e0b9-436e-a7c9-f8a10c1191bb",
+      "catalogId": "nininger-1950",
+      "designation": "46a",
+      "name": "El Capitan Range",
+      "weight": {
+        "grams": 110
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Lincoln County, New Mexico",
+      "year": "1893",
+      "catalogPage": 49,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "El Capitan",
+        "meteoriteCode": "7794",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=7794",
+        "alternateNameNote": "The valid-name CSV contains official El Capitan, not El Capitan Range. The source itself prints Syn: Capitan Range; the official checker identifies Capitan Range as a synonym of El Capitan, and the detail page agrees on the 1893 New Mexico iron and lists Capitan Range among its synonyms."
       }
     },
     {
@@ -23444,6 +23487,27 @@
       }
     },
     {
+      "id": "obs-dfc72ba2-0e35-4fac-911b-db8696a40406",
+      "catalogId": "nininger-1950",
+      "designation": "149a",
+      "name": "Eli Elwah",
+      "weight": {
+        "grams": 30
+      },
+      "classification": "Stone. White hypersthene-chondrite",
+      "locality": "Hay, County Waradgery, New South Wales, Australia",
+      "year": "1888",
+      "catalogPage": 49,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Eli Elwah",
+        "meteoriteCode": "10013",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10013",
+        "alternateNameNote": "The official detail page lists Hay as a synonym."
+      }
+    },
+    {
       "id": "obs-81b280a4-ebe6-4214-b529-2d3ac8112661",
       "catalogId": "nininger-1950",
       "designation": "150a",
@@ -23735,6 +23799,27 @@
         "meteoriteCode": "5453",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5453",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-ef67c400-13c9-49d6-bbda-ff9cda438852",
+      "catalogId": "nininger-1950",
+      "designation": "196a",
+      "name": "Eagle Station",
+      "weight": {
+        "grams": 97
+      },
+      "classification": "Pallasite",
+      "locality": "Carroll County, Kentucky",
+      "year": "1880",
+      "catalogPage": 49,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Eagle Station",
+        "meteoriteCode": "7761",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=7761",
+        "alternateNameNote": "The official checker and valid-name CSV report mass 36 kg; the source prints 36.4 kg, which is preserved without reconciliation."
       }
     },
     {
@@ -25187,6 +25272,27 @@
       }
     },
     {
+      "id": "obs-cacd97b7-e647-4ea4-a9e3-5f3009441235",
+      "catalogId": "nininger-1950",
+      "designation": "368.1",
+      "name": "Dungannon",
+      "weight": {
+        "grams": 152
+      },
+      "classification": "Iron. Medium (to coarse) octahedrite",
+      "locality": "Scott County, Virginia",
+      "year": "1922-1923",
+      "catalogPage": 49,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dungannon",
+        "meteoriteCode": "7747",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=7747",
+        "alternateNameNote": "The official checker and valid-name CSV report year 1922; the source prints Found 1922-1923, which is preserved without reconciliation."
+      }
+    },
+    {
       "id": "obs-25948071-c80a-4215-a1ad-95157fa18298",
       "catalogId": "nininger-1950",
       "designation": "371.1",
@@ -26090,6 +26196,69 @@
       }
     },
     {
+      "id": "obs-48475c8b-57ad-4fb9-92a9-ae6b9558f341",
+      "catalogId": "nininger-1950",
+      "designation": "468.1",
+      "name": "Dwight",
+      "weight": {
+        "grams": 3511
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Geary County, Kansas; 38° 51′ N., 96° 35′ W.",
+      "year": "1940",
+      "catalogPage": 49,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dwight",
+        "meteoriteCode": "7756",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=7756",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-76e99113-793d-4888-8504-6d53e0b36733",
+      "catalogId": "nininger-1950",
+      "designation": "468.5",
+      "name": "Dwight",
+      "weight": {
+        "grams": 219
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Geary County, Kansas; 38° 51′ N., 96° 35′ W.",
+      "year": "1940",
+      "catalogPage": 49,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dwight",
+        "meteoriteCode": "7756",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=7756",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-5b7fa58f-3257-4327-9ff5-18edb3ed4f9d",
+      "catalogId": "nininger-1950",
+      "designation": "469.1",
+      "name": "El Burro",
+      "weight": {
+        "grams": 2314
+      },
+      "classification": "Iron. Granular hexahedrite",
+      "locality": "Val Verde County, Texas",
+      "year": "before 1941",
+      "catalogPage": 49,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "El Burro",
+        "meteoriteCode": "7793",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=7793",
+        "alternateNameNote": "The official checker returns the exact official name El Burro. The valid-name CSV and detail page place it in Coahuila, Mexico, date it to 1939, and report 35.9 kg; the source instead prints Val Verde County, Texas, Syn: Del Rio, Known before 1941, and Total weight unknown. These discrepancies are preserved and not reconciled."
+      }
+    },
+    {
       "id": "obs-d6d55861-01eb-4fe2-9dc1-3233610b0c3a",
       "catalogId": "nininger-1950",
       "designation": "471.2",
@@ -26468,6 +26637,48 @@
       }
     },
     {
+      "id": "obs-fb012e79-962c-4d44-b94c-fcc9c9edf8b5",
+      "catalogId": "nininger-1950",
+      "designation": "505.1",
+      "name": "Elkhart",
+      "weight": {
+        "grams": 475
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Morton County, Kansas; 37° 1′ N., 101° 53′ W.",
+      "year": "1936",
+      "catalogPage": 49,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Elkhart",
+        "meteoriteCode": "10017",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10017",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-cf4aca8e-2304-4377-a496-8e52e006b679",
+      "catalogId": "nininger-1950",
+      "designation": "505.2",
+      "name": "Elkhart",
+      "weight": {
+        "grams": 83
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Morton County, Kansas; 37° 1′ N., 101° 53′ W.",
+      "year": "1936",
+      "catalogPage": 49,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Elkhart",
+        "meteoriteCode": "10017",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10017",
+        "alternateNameNote": null
+      }
+    },
+    {
       "id": "obs-ded70425-9e87-454d-b5aa-dd7f10575111",
       "catalogId": "nininger-1950",
       "designation": "506.1",
@@ -26507,6 +26718,27 @@
         "meteoriteCode": "10912",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10912",
         "alternateNameNote": "MetBull lists Bethany and the source's many other synonyms under official Gibeon. Source says known before 1836 and 15,000 kg.; MetBull gives 1836 and 26 t in modern Namibia."
+      }
+    },
+    {
+      "id": "obs-8311efee-14cc-4708-bc73-1a7e7eeeb89f",
+      "catalogId": "nininger-1950",
+      "designation": "508.1",
+      "name": "Eaton",
+      "weight": {
+        "grams": 29.55
+      },
+      "classification": "Coppery meteorite",
+      "locality": "Weld County, Colorado; 40° 31′ N., 104° 41′ W.",
+      "year": "1931",
+      "catalogPage": 49,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "No Eaton entry occurs in the reviewed valid-name CSV. The official exact-name checker and code 7765 detail page classify Eaton as a pseudo-meteorite, not an official valid meteorite; no valid identity is inferred."
       }
     },
     {
