@@ -337,14 +337,15 @@
           30,
           31,
           32,
-          33
+          33,
+          34
         ],
-        "sourcePageCount": 8,
-        "recordCount": 122,
-        "recordsWithDesignation": 121,
-        "recordsWithWeight": 120,
+        "sourcePageCount": 9,
+        "recordCount": 135,
+        "recordsWithDesignation": 134,
+        "recordsWithWeight": 133,
         "confidenceCounts": {
-          "high": 122,
+          "high": 135,
           "medium": 0,
           "low": 0
         },
@@ -352,11 +353,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2034,
-    "recordsWithDesignation": 1864,
-    "recordsWithWeight": 1904,
+    "recordCount": 2047,
+    "recordsWithDesignation": 1877,
+    "recordsWithWeight": 1917,
     "confidenceCounts": {
-      "high": 2034,
+      "high": 2047,
       "medium": 0,
       "low": 0
     }
@@ -17339,6 +17340,27 @@
       }
     },
     {
+      "id": "obs-8ae3a7b2-be66-49a4-bab6-fc1d912e0159",
+      "catalogId": "nininger-1950",
+      "designation": "11a",
+      "name": "Bocas",
+      "weight": {
+        "grams": 0.7
+      },
+      "classification": "Stone. White chondrite",
+      "locality": "San Luis Potosi, Mexico",
+      "year": "1804",
+      "catalogPage": 34,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bocas",
+        "meteoriteCode": "5093",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5093",
+        "alternateNameNote": "The San Luis Potosi context and 1804 fall agree. Source says 50 grams preserved; MetBull mass is 56 g. The source White chondrite class is historical; modern class is L6."
+      }
+    },
+    {
       "id": "obs-c6c6359c-a66a-4efe-ae83-0b0a27cfd976",
       "catalogId": "nininger-1950",
       "designation": "12a",
@@ -17357,6 +17379,48 @@
         "meteoriteCode": "4930",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4930",
         "alternateNameNote": "The source coordinates, 1927 find year, and 1,250-gram total known weight agree with MetBull. The historical Brecciated hexahedrite classification differs from recommended Iron, IAB-MG."
+      }
+    },
+    {
+      "id": "obs-8e5ab0c8-a67d-4521-b4fe-cfa4f6abf640",
+      "catalogId": "nininger-1950",
+      "designation": "13b",
+      "name": "Bluff",
+      "weight": {
+        "grams": 264.5
+      },
+      "classification": "Stone. Brecciated crystalline hypersthene-chondrite",
+      "locality": "Fayette County, Texas",
+      "year": "1878",
+      "catalogPage": 34,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Bluff (a)",
+        "meteoriteCode": "5087",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5087",
+        "alternateNameNote": "MetBull lists Bluff as a synonym of Bluff (a); Fayette County and 1878 distinguish it from Bluff (b). Source total is 146 kg.; MetBull mass is 153.3 kg and modern class is L5."
+      }
+    },
+    {
+      "id": "obs-b8358896-4667-4b88-a44b-12c5c18094ae",
+      "catalogId": "nininger-1950",
+      "designation": "14a",
+      "name": "Bjurböle",
+      "weight": {
+        "grams": 666
+      },
+      "classification": "Stone. Spherical hypersthene-chondrite",
+      "locality": "Borga, Nyland, Finland",
+      "year": "1899",
+      "catalogPage": 34,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bjurböle",
+        "meteoriteCode": "5064",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5064",
+        "alternateNameNote": "The exact diacritical name, Finland context, 1899 fall, and 330 kg source total agree. The historical class is less specific than modern L/LL4."
       }
     },
     {
@@ -18347,6 +18411,48 @@
       }
     },
     {
+      "id": "obs-00234437-5866-4bec-84c8-4a2beb19838b",
+      "catalogId": "nininger-1950",
+      "designation": "156b",
+      "name": "Bitburg",
+      "weight": {
+        "grams": 20
+      },
+      "classification": "Pallasite",
+      "locality": "Trier, Renish Prussia",
+      "year": "before 1805",
+      "catalogPage": 34,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bitburg",
+        "meteoriteCode": "5062",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5062",
+        "alternateNameNote": "The Trier and large metal-rich mass context identify official Bitburg. Source says known before 1805, 1,600 kg., and Pallasite; MetBull gives 1805, 1.5 t, and Iron, IAB complex. The source remarks that both specimens show artificial heating effects."
+      }
+    },
+    {
+      "id": "obs-eab06a62-5134-43d7-a128-9e6e7082b44d",
+      "catalogId": "nininger-1950",
+      "designation": "156a",
+      "name": "Bitburg",
+      "weight": {
+        "grams": 94
+      },
+      "classification": "Pallasite",
+      "locality": "Trier, Renish Prussia",
+      "year": "before 1805",
+      "catalogPage": 34,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bitburg",
+        "meteoriteCode": "5062",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5062",
+        "alternateNameNote": "The Trier and large metal-rich mass context identify official Bitburg. Source says known before 1805, 1,600 kg., and Pallasite; MetBull gives 1805, 1.5 t, and Iron, IAB complex. The source remarks that both specimens show artificial heating effects."
+      }
+    },
+    {
       "id": "obs-fffe7e17-dd35-48fb-9dbb-cb1f8cdf0bd5",
       "catalogId": "nininger-1950",
       "designation": "168a",
@@ -18428,6 +18534,27 @@
         "meteoriteCode": "2318",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2318",
         "alternateNameNote": "The source reports 15.3 kg.; MetBull reports 15 kg. The historical Grey hypersthene-chondrite classification corresponds to modern LL6. MetBull lists Lancashire and Wigan as synonyms."
+      }
+    },
+    {
+      "id": "obs-38bf5350-c352-4c64-a4d4-367841f20329",
+      "catalogId": "nininger-1950",
+      "designation": "203b",
+      "name": "Blanket",
+      "weight": {
+        "grams": 179
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Brown County, Texas",
+      "year": "1909",
+      "catalogPage": 34,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Blanket",
+        "meteoriteCode": "5071",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5071",
+        "alternateNameNote": "The Texas context and 1909 fall agree. Source total is 5 kg.; MetBull mass is 5.1 kg. The source generic Chondrite class is less specific than modern L6."
       }
     },
     {
@@ -18599,6 +18726,27 @@
       }
     },
     {
+      "id": "obs-b01bfabb-bbf9-4844-b420-cb92f59bcb9c",
+      "catalogId": "nininger-1950",
+      "designation": "245a",
+      "name": "Black Mountain",
+      "weight": {
+        "grams": 3.5
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Buncombe County, North Carolina",
+      "year": "1839",
+      "catalogPage": 34,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Black Mountain",
+        "meteoriteCode": "5066",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5066",
+        "alternateNameNote": "The Buncombe County/North Carolina context and 1839 iron identity agree; MetBull lists Buncombe County as a synonym. Source total is 4 kg.; MetBull mass is 800 g and modern class is Iron, IAB-MG."
+      }
+    },
+    {
       "id": "obs-888e3e12-142a-4275-ae16-cfe95220d36c",
       "catalogId": "nininger-1950",
       "designation": "266a",
@@ -18620,6 +18768,27 @@
       }
     },
     {
+      "id": "obs-62a355bd-c322-440d-8808-47cd9b9a79c6",
+      "catalogId": "nininger-1950",
+      "designation": "270a",
+      "name": "Boerne",
+      "weight": {
+        "grams": 90
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Kendall County, Texas",
+      "year": "1932",
+      "catalogPage": 34,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Boerne",
+        "meteoriteCode": "5095",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5095",
+        "alternateNameNote": "The Texas context, 1932 find year, and 1.1 kg source total agree. The source generic Chondrite class is less specific than modern H6."
+      }
+    },
+    {
       "id": "obs-0162f29b-1f80-4127-8f49-768de0b9aa64",
       "catalogId": "nininger-1950",
       "designation": "271a",
@@ -18638,6 +18807,111 @@
         "meteoriteCode": "4931",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4931",
         "alternateNameNote": "The exact name, Western Australia context, and 1892 find year agree. The source reports 42.3 kg.; MetBull reports 42.2 kg. The historical Finest octahedrite classification corresponds to modern Iron, IIC."
+      }
+    },
+    {
+      "id": "obs-b9bbd6bb-ea96-4179-8b4e-f211f75e9395",
+      "catalogId": "nininger-1950",
+      "designation": "277d",
+      "name": "Bolivia",
+      "weight": {
+        "grams": 1
+      },
+      "classification": "Iron. Coarsest octahedrite",
+      "locality": "South America",
+      "year": "1927",
+      "catalogPage": 34,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bolivia",
+        "meteoriteCode": "5100",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5100",
+        "alternateNameNote": "The exact 21.25 kg source total and iron context identify official Bolivia. Source says known 1927; MetBull gives 1896 and location Bolivia?. The dagger is a source marker, not part of the name. The printed plural in 1 grams is preserved in sourceWeightText."
+      }
+    },
+    {
+      "id": "obs-c78b0fb0-efc1-48aa-b5a4-09abf0e8a3fa",
+      "catalogId": "nininger-1950",
+      "designation": "277b",
+      "name": "Bolivia",
+      "weight": {
+        "grams": 8
+      },
+      "classification": "Iron. Coarsest octahedrite",
+      "locality": "South America",
+      "year": "1927",
+      "catalogPage": 34,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bolivia",
+        "meteoriteCode": "5100",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5100",
+        "alternateNameNote": "The exact 21.25 kg source total and iron context identify official Bolivia. Source says known 1927; MetBull gives 1896 and location Bolivia?. The dagger is a source marker, not part of the name."
+      }
+    },
+    {
+      "id": "obs-df24b41f-beeb-4e7d-a706-26dd10f3b68a",
+      "catalogId": "nininger-1950",
+      "designation": "277c",
+      "name": "Bolivia",
+      "weight": {
+        "grams": 8
+      },
+      "classification": "Iron. Coarsest octahedrite",
+      "locality": "South America",
+      "year": "1927",
+      "catalogPage": 34,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bolivia",
+        "meteoriteCode": "5100",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5100",
+        "alternateNameNote": "The exact 21.25 kg source total and iron context identify official Bolivia. Source says known 1927; MetBull gives 1896 and location Bolivia?. The dagger is a source marker, not part of the name."
+      }
+    },
+    {
+      "id": "obs-e56ca714-210a-4716-8699-1ba55a1ae17f",
+      "catalogId": "nininger-1950",
+      "designation": "277e",
+      "name": "Bolivia",
+      "weight": {
+        "grams": 43.8
+      },
+      "classification": "Iron. Coarsest octahedrite",
+      "locality": "South America",
+      "year": "1927",
+      "catalogPage": 34,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bolivia",
+        "meteoriteCode": "5100",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5100",
+        "alternateNameNote": "The exact 21.25 kg source total and iron context identify official Bolivia. Source says known 1927; MetBull gives 1896 and location Bolivia?. The dagger is a source marker, not part of the name."
+      }
+    },
+    {
+      "id": "obs-5a1e741a-97c3-4f23-840d-b07ca713bf9f",
+      "catalogId": "nininger-1950",
+      "designation": "277a",
+      "name": "Bolivia",
+      "weight": {
+        "grams": 206
+      },
+      "classification": "Iron. Coarsest octahedrite",
+      "locality": "South America",
+      "year": "1927",
+      "catalogPage": 34,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bolivia",
+        "meteoriteCode": "5100",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5100",
+        "alternateNameNote": "The exact 21.25 kg source total and iron context identify official Bolivia. Source says known 1927; MetBull gives 1896 and location Bolivia?. The dagger is a source marker, not part of the name."
       }
     },
     {
