@@ -355,14 +355,15 @@
           48,
           49,
           50,
-          51
+          51,
+          52
         ],
-        "sourcePageCount": 26,
-        "recordCount": 521,
-        "recordsWithDesignation": 516,
-        "recordsWithWeight": 509,
+        "sourcePageCount": 27,
+        "recordCount": 552,
+        "recordsWithDesignation": 547,
+        "recordsWithWeight": 540,
         "confidenceCounts": {
-          "high": 521,
+          "high": 552,
           "medium": 0,
           "low": 0
         },
@@ -370,11 +371,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2433,
-    "recordsWithDesignation": 2259,
-    "recordsWithWeight": 2293,
+    "recordCount": 2464,
+    "recordsWithDesignation": 2290,
+    "recordsWithWeight": 2324,
     "confidenceCounts": {
-      "high": 2433,
+      "high": 2464,
       "medium": 0,
       "low": 0
     }
@@ -23069,6 +23070,552 @@
       }
     },
     {
+      "id": "obs-db697474-a9a1-4d02-8d89-a4c5fe95d8b4",
+      "catalogId": "nininger-1950",
+      "designation": "49s",
+      "name": "Forest City",
+      "weight": {
+        "grams": 1
+      },
+      "classification": "Stone. Brecciated spherical bronzite-chondrite",
+      "locality": "Winnebago County, Iowa",
+      "year": "1890",
+      "catalogPage": 52,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Forest City",
+        "meteoriteCode": "10119",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10119",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Forest City, code 10119. The detail page confirms the 1890 Iowa H5 fall and all four printed synonyms, but reports 152 kg rather than the source's 122 kg, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-995bf36a-35d6-4c3d-8c59-df781a86fcb7",
+      "catalogId": "nininger-1950",
+      "designation": "49b",
+      "name": "Forest City",
+      "weight": {
+        "grams": 2.5
+      },
+      "classification": "Stone. Brecciated spherical bronzite-chondrite",
+      "locality": "Winnebago County, Iowa",
+      "year": "1890",
+      "catalogPage": 52,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Forest City",
+        "meteoriteCode": "10119",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10119",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Forest City, code 10119. The detail page confirms the 1890 Iowa H5 fall and all four printed synonyms, but reports 152 kg rather than the source's 122 kg, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-7ad25d35-f095-448a-9e10-b564fc892d9f",
+      "catalogId": "nininger-1950",
+      "designation": "49n",
+      "name": "Forest City",
+      "weight": {
+        "grams": 3
+      },
+      "classification": "Stone. Brecciated spherical bronzite-chondrite",
+      "locality": "Winnebago County, Iowa",
+      "year": "1890",
+      "catalogPage": 52,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Forest City",
+        "meteoriteCode": "10119",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10119",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Forest City, code 10119. The detail page confirms the 1890 Iowa H5 fall and all four printed synonyms, but reports 152 kg rather than the source's 122 kg, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-8888d6c4-545a-410b-885b-86a85eafb6b7",
+      "catalogId": "nininger-1950",
+      "designation": "49r",
+      "name": "Forest City",
+      "weight": {
+        "grams": 6
+      },
+      "classification": "Stone. Brecciated spherical bronzite-chondrite",
+      "locality": "Winnebago County, Iowa",
+      "year": "1890",
+      "catalogPage": 52,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Forest City",
+        "meteoriteCode": "10119",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10119",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Forest City, code 10119. The detail page confirms the 1890 Iowa H5 fall and all four printed synonyms, but reports 152 kg rather than the source's 122 kg, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-0097f1ca-8a6c-4797-9e00-0a1637e8860d",
+      "catalogId": "nininger-1950",
+      "designation": "49a",
+      "name": "Forest City",
+      "weight": {
+        "grams": 13
+      },
+      "classification": "Stone. Brecciated spherical bronzite-chondrite",
+      "locality": "Winnebago County, Iowa",
+      "year": "1890",
+      "catalogPage": 52,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Forest City",
+        "meteoriteCode": "10119",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10119",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Forest City, code 10119. The detail page confirms the 1890 Iowa H5 fall and all four printed synonyms, but reports 152 kg rather than the source's 122 kg, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-e8edf55b-5dc3-488c-8806-93294004115d",
+      "catalogId": "nininger-1950",
+      "designation": "49z",
+      "name": "Forest City",
+      "weight": {
+        "grams": 14
+      },
+      "classification": "Stone. Brecciated spherical bronzite-chondrite",
+      "locality": "Winnebago County, Iowa",
+      "year": "1890",
+      "catalogPage": 52,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Forest City",
+        "meteoriteCode": "10119",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10119",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Forest City, code 10119. The detail page confirms the 1890 Iowa H5 fall and all four printed synonyms, but reports 152 kg rather than the source's 122 kg, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-54b6c16c-223f-407b-83d4-55220399872d",
+      "catalogId": "nininger-1950",
+      "designation": "49c",
+      "name": "Forest City",
+      "weight": {
+        "grams": 16
+      },
+      "classification": "Stone. Brecciated spherical bronzite-chondrite",
+      "locality": "Winnebago County, Iowa",
+      "year": "1890",
+      "catalogPage": 52,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Forest City",
+        "meteoriteCode": "10119",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10119",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Forest City, code 10119. The detail page confirms the 1890 Iowa H5 fall and all four printed synonyms, but reports 152 kg rather than the source's 122 kg, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-7351d3b4-222f-4fdc-a63a-6badacb4666d",
+      "catalogId": "nininger-1950",
+      "designation": "49x",
+      "name": "Forest City",
+      "weight": {
+        "grams": 16
+      },
+      "classification": "Stone. Brecciated spherical bronzite-chondrite",
+      "locality": "Winnebago County, Iowa",
+      "year": "1890",
+      "catalogPage": 52,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Forest City",
+        "meteoriteCode": "10119",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10119",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Forest City, code 10119. The detail page confirms the 1890 Iowa H5 fall and all four printed synonyms, but reports 152 kg rather than the source's 122 kg, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-f00428f8-7b9c-42ee-9b85-c72ee6677f73",
+      "catalogId": "nininger-1950",
+      "designation": "49w",
+      "name": "Forest City",
+      "weight": {
+        "grams": 16
+      },
+      "classification": "Stone. Brecciated spherical bronzite-chondrite",
+      "locality": "Winnebago County, Iowa",
+      "year": "1890",
+      "catalogPage": 52,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Forest City",
+        "meteoriteCode": "10119",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10119",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Forest City, code 10119. The detail page confirms the 1890 Iowa H5 fall and all four printed synonyms, but reports 152 kg rather than the source's 122 kg, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-46d779d7-f5dd-4103-8052-82b3454503ec",
+      "catalogId": "nininger-1950",
+      "designation": "49v",
+      "name": "Forest City",
+      "weight": {
+        "grams": 19
+      },
+      "classification": "Stone. Brecciated spherical bronzite-chondrite",
+      "locality": "Winnebago County, Iowa",
+      "year": "1890",
+      "catalogPage": 52,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Forest City",
+        "meteoriteCode": "10119",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10119",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Forest City, code 10119. The detail page confirms the 1890 Iowa H5 fall and all four printed synonyms, but reports 152 kg rather than the source's 122 kg, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-52229d90-b894-4ab8-a79e-6070c92fc76c",
+      "catalogId": "nininger-1950",
+      "designation": "49u",
+      "name": "Forest City",
+      "weight": {
+        "grams": 27
+      },
+      "classification": "Stone. Brecciated spherical bronzite-chondrite",
+      "locality": "Winnebago County, Iowa",
+      "year": "1890",
+      "catalogPage": 52,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Forest City",
+        "meteoriteCode": "10119",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10119",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Forest City, code 10119. The detail page confirms the 1890 Iowa H5 fall and all four printed synonyms, but reports 152 kg rather than the source's 122 kg, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-d26172db-eb86-424f-aab4-eb548c7d64d5",
+      "catalogId": "nininger-1950",
+      "designation": "49q",
+      "name": "Forest City",
+      "weight": {
+        "grams": 27
+      },
+      "classification": "Stone. Brecciated spherical bronzite-chondrite",
+      "locality": "Winnebago County, Iowa",
+      "year": "1890",
+      "catalogPage": 52,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Forest City",
+        "meteoriteCode": "10119",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10119",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Forest City, code 10119. The detail page confirms the 1890 Iowa H5 fall and all four printed synonyms, but reports 152 kg rather than the source's 122 kg, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-8d19e52d-e9be-4e74-9ad4-fc957e3dbb05",
+      "catalogId": "nininger-1950",
+      "designation": "49p",
+      "name": "Forest City",
+      "weight": {
+        "grams": 29.5
+      },
+      "classification": "Stone. Brecciated spherical bronzite-chondrite",
+      "locality": "Winnebago County, Iowa",
+      "year": "1890",
+      "catalogPage": 52,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Forest City",
+        "meteoriteCode": "10119",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10119",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Forest City, code 10119. The detail page confirms the 1890 Iowa H5 fall and all four printed synonyms, but reports 152 kg rather than the source's 122 kg, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-3ce49120-d691-4b5d-9298-d2535a7cda3b",
+      "catalogId": "nininger-1950",
+      "designation": "49o",
+      "name": "Forest City",
+      "weight": {
+        "grams": 68
+      },
+      "classification": "Stone. Brecciated spherical bronzite-chondrite",
+      "locality": "Winnebago County, Iowa",
+      "year": "1890",
+      "catalogPage": 52,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Forest City",
+        "meteoriteCode": "10119",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10119",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Forest City, code 10119. The detail page confirms the 1890 Iowa H5 fall and all four printed synonyms, but reports 152 kg rather than the source's 122 kg, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-5b6809a1-e7df-4324-baa0-b0883b10a3f3",
+      "catalogId": "nininger-1950",
+      "designation": "49t",
+      "name": "Forest City",
+      "weight": {
+        "grams": 109
+      },
+      "classification": "Stone. Brecciated spherical bronzite-chondrite",
+      "locality": "Winnebago County, Iowa",
+      "year": "1890",
+      "catalogPage": 52,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Forest City",
+        "meteoriteCode": "10119",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10119",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Forest City, code 10119. The detail page confirms the 1890 Iowa H5 fall and all four printed synonyms, but reports 152 kg rather than the source's 122 kg, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-912372f5-6d35-4b82-ae97-983ddfb870c5",
+      "catalogId": "nininger-1950",
+      "designation": "49i",
+      "name": "Forest City",
+      "weight": {
+        "grams": 154
+      },
+      "classification": "Stone. Brecciated spherical bronzite-chondrite",
+      "locality": "Winnebago County, Iowa",
+      "year": "1890",
+      "catalogPage": 52,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Forest City",
+        "meteoriteCode": "10119",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10119",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Forest City, code 10119. The detail page confirms the 1890 Iowa H5 fall and all four printed synonyms, but reports 152 kg rather than the source's 122 kg, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-52c9a02e-39c7-451b-bd0c-c68d59d71ceb",
+      "catalogId": "nininger-1950",
+      "designation": "49h",
+      "name": "Forest City",
+      "weight": {
+        "grams": 272
+      },
+      "classification": "Stone. Brecciated spherical bronzite-chondrite",
+      "locality": "Winnebago County, Iowa",
+      "year": "1890",
+      "catalogPage": 52,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Forest City",
+        "meteoriteCode": "10119",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10119",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Forest City, code 10119. The detail page confirms the 1890 Iowa H5 fall and all four printed synonyms, but reports 152 kg rather than the source's 122 kg, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-1f4a9655-ca72-41d4-99b1-aba3375052e6",
+      "catalogId": "nininger-1950",
+      "designation": "49f",
+      "name": "Forest City",
+      "weight": {
+        "grams": 470
+      },
+      "classification": "Stone. Brecciated spherical bronzite-chondrite",
+      "locality": "Winnebago County, Iowa",
+      "year": "1890",
+      "catalogPage": 52,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Forest City",
+        "meteoriteCode": "10119",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10119",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Forest City, code 10119. The detail page confirms the 1890 Iowa H5 fall and all four printed synonyms, but reports 152 kg rather than the source's 122 kg, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-ff4126c5-edaf-4fff-812e-544836dcbcbd",
+      "catalogId": "nininger-1950",
+      "designation": "49g",
+      "name": "Forest City",
+      "weight": {
+        "grams": 490
+      },
+      "classification": "Stone. Brecciated spherical bronzite-chondrite",
+      "locality": "Winnebago County, Iowa",
+      "year": "1890",
+      "catalogPage": 52,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Forest City",
+        "meteoriteCode": "10119",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10119",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Forest City, code 10119. The detail page confirms the 1890 Iowa H5 fall and all four printed synonyms, but reports 152 kg rather than the source's 122 kg, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-7132825a-a553-4a5a-8bd8-8894d13ba41d",
+      "catalogId": "nininger-1950",
+      "designation": "49j",
+      "name": "Forest City",
+      "weight": {
+        "grams": 560
+      },
+      "classification": "Stone. Brecciated spherical bronzite-chondrite",
+      "locality": "Winnebago County, Iowa",
+      "year": "1890",
+      "catalogPage": 52,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Forest City",
+        "meteoriteCode": "10119",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10119",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Forest City, code 10119. The detail page confirms the 1890 Iowa H5 fall and all four printed synonyms, but reports 152 kg rather than the source's 122 kg, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-eb977b90-d38a-45fc-adb8-6b23b6bd5b7b",
+      "catalogId": "nininger-1950",
+      "designation": "49.27",
+      "name": "Forest City",
+      "weight": {
+        "grams": 19.5
+      },
+      "classification": "Stone. Brecciated spherical bronzite-chondrite",
+      "locality": "Winnebago County, Iowa",
+      "year": "1890",
+      "catalogPage": 52,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Forest City",
+        "meteoriteCode": "10119",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10119",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Forest City, code 10119. The detail page confirms the 1890 Iowa H5 fall and all four printed synonyms, but reports 152 kg rather than the source's 122 kg, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-fd134690-13c2-4a07-8f16-6b7844997afd",
+      "catalogId": "nininger-1950",
+      "designation": "49.33",
+      "name": "Forest City",
+      "weight": {
+        "grams": 128
+      },
+      "classification": "Stone. Brecciated spherical bronzite-chondrite",
+      "locality": "Winnebago County, Iowa",
+      "year": "1890",
+      "catalogPage": 52,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Forest City",
+        "meteoriteCode": "10119",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10119",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Forest City, code 10119. The detail page confirms the 1890 Iowa H5 fall and all four printed synonyms, but reports 152 kg rather than the source's 122 kg, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-ab0c116e-0bde-4adf-ade6-6c982ef7a81b",
+      "catalogId": "nininger-1950",
+      "designation": "49.38",
+      "name": "Forest City",
+      "weight": {
+        "grams": 235
+      },
+      "classification": "Stone. Brecciated spherical bronzite-chondrite",
+      "locality": "Winnebago County, Iowa",
+      "year": "1890",
+      "catalogPage": 52,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Forest City",
+        "meteoriteCode": "10119",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10119",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Forest City, code 10119. The detail page confirms the 1890 Iowa H5 fall and all four printed synonyms, but reports 152 kg rather than the source's 122 kg, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-f555ca33-0477-478c-b57d-ae0377b76e23",
+      "catalogId": "nininger-1950",
+      "designation": "49.41",
+      "name": "Forest City",
+      "weight": {
+        "grams": 223
+      },
+      "classification": "Stone. Brecciated spherical bronzite-chondrite",
+      "locality": "Winnebago County, Iowa",
+      "year": "1890",
+      "catalogPage": 52,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Forest City",
+        "meteoriteCode": "10119",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10119",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Forest City, code 10119. The detail page confirms the 1890 Iowa H5 fall and all four printed synonyms, but reports 152 kg rather than the source's 122 kg, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-14aae0d7-83f4-4bfc-8690-a19dc3a6b67d",
+      "catalogId": "nininger-1950",
+      "designation": "49.46",
+      "name": "Forest City",
+      "weight": {
+        "grams": 191
+      },
+      "classification": "Stone. Brecciated spherical bronzite-chondrite",
+      "locality": "Winnebago County, Iowa",
+      "year": "1890",
+      "catalogPage": 52,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Forest City",
+        "meteoriteCode": "10119",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10119",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Forest City, code 10119. The detail page confirms the 1890 Iowa H5 fall and all four printed synonyms, but reports 152 kg rather than the source's 122 kg, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-b3fd543b-f4ef-4fae-830e-1ffd7e0af260",
+      "catalogId": "nininger-1950",
+      "designation": "49.53",
+      "name": "Forest City",
+      "weight": {
+        "grams": 166.9
+      },
+      "classification": "Stone. Brecciated spherical bronzite-chondrite",
+      "locality": "Winnebago County, Iowa",
+      "year": "1890",
+      "catalogPage": 52,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Forest City",
+        "meteoriteCode": "10119",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10119",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Forest City, code 10119. The detail page confirms the 1890 Iowa H5 fall and all four printed synonyms, but reports 152 kg rather than the source's 122 kg, which is preserved without reconciliation."
+      }
+    },
+    {
       "id": "obs-82bbe8bc-2bae-4107-aa8d-62522a94a0fe",
       "catalogId": "nininger-1950",
       "designation": "50.1",
@@ -24770,6 +25317,27 @@
       }
     },
     {
+      "id": "obs-13875b9e-ff39-45e4-91d7-0ef8e86f6d5f",
+      "catalogId": "nininger-1950",
+      "designation": "218a",
+      "name": "Florence",
+      "weight": {
+        "grams": 50
+      },
+      "classification": "Stone. Grey brecciated chondrite",
+      "locality": "Williamson County, Texas",
+      "year": "1922",
+      "catalogPage": 52,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Florence",
+        "meteoriteCode": "10111",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10111",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Florence, code 10111. The detail page confirms the 1922 Texas fall, H3 identity, and 3.64 kg mass printed by the source."
+      }
+    },
+    {
       "id": "obs-63996358-813b-426b-bd17-35b109fb66e1",
       "catalogId": "nininger-1950",
       "designation": "226a",
@@ -25061,6 +25629,69 @@
         "meteoriteCode": "5352",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5352",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-73f70194-ffad-4baa-a603-d5ed6308f5b9",
+      "catalogId": "nininger-1950",
+      "designation": "273a",
+      "name": "Forksville",
+      "weight": {
+        "grams": 107
+      },
+      "classification": "Stone. Spherical hypersthene-chondrite",
+      "locality": "Mecklenburg County, Virginia",
+      "year": "1924",
+      "catalogPage": 52,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Forksville",
+        "meteoriteCode": "10123",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10123",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Forksville, code 10123. The detail page confirms the 1924 Virginia L6 fall and reports 6.07 kg (the CSV gives 6,067 g), while the source prints 6.3 kg; the source value is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-e2e04ffe-8e75-47c4-b8af-c2d1fa557bb2",
+      "catalogId": "nininger-1950",
+      "designation": "274a",
+      "name": "Flows",
+      "weight": {
+        "grams": 49
+      },
+      "classification": "Stone. Veined grey bronzite-chondrite",
+      "locality": "Cabarrus County, North Carolina",
+      "year": "1849",
+      "catalogPage": 52,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Monroe",
+        "meteoriteCode": "16720",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16720",
+        "alternateNameNote": "Flows is absent from the valid-name CSV, which contains Official Monroe, code 16720. The official exact-name checker returns Flows as a synonym of Monroe, matching the source's own Syn: Monroe; the detail page confirms the 1849 North Carolina H4 fall, 8.6 kg mass, and both Flows and Charlotte as synonyms."
+      }
+    },
+    {
+      "id": "obs-fd12d815-b416-4612-8714-73be6478614b",
+      "catalogId": "nininger-1950",
+      "designation": "274b",
+      "name": "Flows",
+      "weight": {
+        "grams": 64
+      },
+      "classification": "Stone. Veined grey bronzite-chondrite",
+      "locality": "Cabarrus County, North Carolina",
+      "year": "1849",
+      "catalogPage": 52,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Monroe",
+        "meteoriteCode": "16720",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16720",
+        "alternateNameNote": "Flows is absent from the valid-name CSV, which contains Official Monroe, code 16720. The official exact-name checker returns Flows as a synonym of Monroe, matching the source's own Syn: Monroe; the detail page confirms the 1849 North Carolina H4 fall, 8.6 kg mass, and both Flows and Charlotte as synonyms."
       }
     },
     {
@@ -27665,6 +28296,27 @@
         "meteoriteCode": "371",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=371",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-c0b53875-e30d-49a4-8365-cc1adc126277",
+      "catalogId": "nininger-1950",
+      "designation": "517.1",
+      "name": "Floydada",
+      "weight": {
+        "grams": 20.8
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Floyd County, Texas",
+      "year": "1938",
+      "catalogPage": 52,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Floydada",
+        "meteoriteCode": "10114",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10114",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Floydada, code 10114. The detail page gives a 1912 Texas find, IIIAB iron, and 12.5 kg mass; the source instead prints Recognized 1938 and the internally inconsistent parenthetical 2.75 lb., both preserved without reconciliation."
       }
     },
     {
