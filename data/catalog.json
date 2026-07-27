@@ -392,14 +392,15 @@
           85,
           86,
           87,
-          88
+          88,
+          89
         ],
-        "sourcePageCount": 63,
-        "recordCount": 1427,
-        "recordsWithDesignation": 1401,
-        "recordsWithWeight": 1363,
+        "sourcePageCount": 64,
+        "recordCount": 1441,
+        "recordsWithDesignation": 1415,
+        "recordsWithWeight": 1376,
         "confidenceCounts": {
-          "high": 1427,
+          "high": 1441,
           "medium": 0,
           "low": 0
         },
@@ -407,11 +408,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 3339,
-    "recordsWithDesignation": 3144,
-    "recordsWithWeight": 3147,
+    "recordCount": 3353,
+    "recordsWithDesignation": 3158,
+    "recordsWithWeight": 3160,
     "confidenceCounts": {
-      "high": 3339,
+      "high": 3353,
       "medium": 0,
       "low": 0
     }
@@ -32073,6 +32074,195 @@
       }
     },
     {
+      "id": "obs-8343db1d-c023-4c18-9d8d-3b316cee559f",
+      "catalogId": "nininger-1950",
+      "designation": "100a",
+      "name": "Richardton",
+      "weight": {
+        "grams": 338
+      },
+      "classification": "Stone. Veined spherical bronzite-chondrite",
+      "locality": "Stark County, North Dakota",
+      "year": "1918",
+      "catalogPage": 89,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Richardton",
+        "meteoriteCode": "22599",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22599",
+        "alternateNameNote": "The verified local CSV identifies Official Richardton, code 22599. The official checker returns Richardton as Official, and the detail page confirms the exact name, 1918 North Dakota H5 fall, 90 kg mass, and Stark County coordinates. The source's 90.9 kg total and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-25d2a168-0a32-4c64-880d-c8f3ca8947a6",
+      "catalogId": "nininger-1950",
+      "designation": "100o",
+      "name": "Richardton",
+      "weight": {
+        "grams": 374.3
+      },
+      "classification": "Stone. Veined spherical bronzite-chondrite",
+      "locality": "Stark County, North Dakota",
+      "year": "1918",
+      "catalogPage": 89,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Richardton",
+        "meteoriteCode": "22599",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22599",
+        "alternateNameNote": "The verified local CSV identifies Official Richardton, code 22599. The official checker returns Richardton as Official, and the detail page confirms the exact name, 1918 North Dakota H5 fall, 90 kg mass, and Stark County coordinates. The source's 90.9 kg total and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-527f8483-927e-4e04-989e-33da34961854",
+      "catalogId": "nininger-1950",
+      "designation": "100c",
+      "name": "Richardton",
+      "weight": {
+        "grams": 1670
+      },
+      "classification": "Stone. Veined spherical bronzite-chondrite",
+      "locality": "Stark County, North Dakota",
+      "year": "1918",
+      "catalogPage": 89,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Richardton",
+        "meteoriteCode": "22599",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22599",
+        "alternateNameNote": "The verified local CSV identifies Official Richardton, code 22599. The official checker returns Richardton as Official, and the detail page confirms the exact name, 1918 North Dakota H5 fall, 90 kg mass, and Stark County coordinates. The source's 90.9 kg total and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-eb622831-544b-49d4-bc56-bb4e0e18199b",
+      "catalogId": "nininger-1950",
+      "designation": "100j",
+      "name": "Richardton",
+      "weight": {
+        "grams": 4756
+      },
+      "classification": "Stone. Veined spherical bronzite-chondrite",
+      "locality": "Stark County, North Dakota",
+      "year": "1918",
+      "catalogPage": 89,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Richardton",
+        "meteoriteCode": "22599",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22599",
+        "alternateNameNote": "The verified local CSV identifies Official Richardton, code 22599. The official checker returns Richardton as Official, and the detail page confirms the exact name, 1918 North Dakota H5 fall, 90 kg mass, and Stark County coordinates. The source's 90.9 kg total and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-c5c30b38-02c9-496a-9127-dc68ac527d68",
+      "catalogId": "nininger-1950",
+      "designation": "100i",
+      "name": "Richardton",
+      "weight": {
+        "grams": 4983
+      },
+      "classification": "Stone. Veined spherical bronzite-chondrite",
+      "locality": "Stark County, North Dakota",
+      "year": "1918",
+      "catalogPage": 89,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Richardton",
+        "meteoriteCode": "22599",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22599",
+        "alternateNameNote": "The verified local CSV identifies Official Richardton, code 22599. The official checker returns Richardton as Official, and the detail page confirms the exact name, 1918 North Dakota H5 fall, 90 kg mass, and Stark County coordinates. The source's 90.9 kg total and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-bb002474-570d-4318-8854-607e73bac7db",
+      "catalogId": "nininger-1950",
+      "designation": "100d",
+      "name": "Richardton",
+      "weight": {
+        "grams": 5436
+      },
+      "classification": "Stone. Veined spherical bronzite-chondrite",
+      "locality": "Stark County, North Dakota",
+      "year": "1918",
+      "catalogPage": 89,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Richardton",
+        "meteoriteCode": "22599",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22599",
+        "alternateNameNote": "The verified local CSV identifies Official Richardton, code 22599. The official checker returns Richardton as Official, and the detail page confirms the exact name, 1918 North Dakota H5 fall, 90 kg mass, and Stark County coordinates. The source's 90.9 kg total and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-07862a72-2172-4924-9f46-56154fae004a",
+      "catalogId": "nininger-1950",
+      "designation": "100h",
+      "name": "Richardton",
+      "weight": {
+        "grams": 5775
+      },
+      "classification": "Stone. Veined spherical bronzite-chondrite",
+      "locality": "Stark County, North Dakota",
+      "year": "1918",
+      "catalogPage": 89,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Richardton",
+        "meteoriteCode": "22599",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22599",
+        "alternateNameNote": "The verified local CSV identifies Official Richardton, code 22599. The official checker returns Richardton as Official, and the detail page confirms the exact name, 1918 North Dakota H5 fall, 90 kg mass, and Stark County coordinates. The source's 90.9 kg total and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-ef2532b8-276a-4b97-9fc6-ab22f1f79204",
+      "catalogId": "nininger-1950",
+      "designation": "101a",
+      "name": "Rodeo",
+      "weight": {
+        "grams": 1600
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Durango, Mexico",
+      "year": "1852",
+      "catalogPage": 89,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Rodeo",
+        "meteoriteCode": "22643",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22643",
+        "alternateNameNote": "The verified local CSV identifies Official Rodeo, code 22643. The official checker returns Rodeo as Official, and the detail page confirms the exact name, 1852 Durango iron, 44 kg mass, and El Rodeo synonym. The source's 44.1 kg total and historical fine-octahedrite description are preserved."
+      }
+    },
+    {
+      "id": "obs-83eaf757-7867-47ff-a4d6-e08bb56dac7c",
+      "catalogId": "nininger-1950",
+      "designation": "108b",
+      "name": "Rosebud",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Stone. Black chondrite",
+      "locality": "Falls County, Texas; 30° 50′ N., 96° 58′ W.",
+      "year": "1925",
+      "catalogPage": 89,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Rosebud",
+        "meteoriteCode": "22767",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22767",
+        "alternateNameNote": "The verified local CSV identifies Official Rosebud, code 22767. The official checker returns Rosebud as Official, and the detail page confirms the exact name, Texas H5 identity, 54.9 kg mass, nearby coordinates, and Glen Rose (stone) synonym. MetBull gives 1915 or 1907, while the source prints Recognized 1925; the source facts are preserved."
+      }
+    },
+    {
       "id": "obs-27581ec3-4f85-45a1-ab77-50f4d55413fd",
       "catalogId": "nininger-1950",
       "designation": "112c",
@@ -33312,6 +33502,27 @@
       }
     },
     {
+      "id": "obs-fbaa393d-4f54-49ae-b733-1ca3b2c0f3ab",
+      "catalogId": "nininger-1950",
+      "designation": "154a",
+      "name": "Reed City",
+      "weight": {
+        "grams": 200
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Osceola County, Michigan",
+      "year": "1895",
+      "catalogPage": 89,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Reed City",
+        "meteoriteCode": "22552",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22552",
+        "alternateNameNote": "The verified local CSV identifies Official Reed City, code 22552. The official checker returns Reed City as Official, and the detail page confirms the exact name, 1895 Michigan find, 20 kg mass, and Osceola County coordinates. The source's historical coarse-octahedrite description is preserved rather than replaced by the recommended ungrouped-iron classification."
+      }
+    },
+    {
       "id": "obs-00234437-5866-4bec-84c8-4a2beb19838b",
       "catalogId": "nininger-1950",
       "designation": "156b",
@@ -33876,6 +34087,27 @@
         "meteoriteCode": "15456",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15456",
         "alternateNameNote": "The verified local CSV identifies Official Mbosi, code 15456, a 1930 Tanzanian ungrouped iron. The official checker returns Mbosi as Official, and the detail page confirms the exact name, year, iron identity, Mbeya locality, and M'Bozi and Tanganyika synonyms. Its 16 t mass differs from the source's estimated 27 tons, which is preserved."
+      }
+    },
+    {
+      "id": "obs-72fc33e6-51f6-433b-9716-f5fb9078f1bb",
+      "catalogId": "nininger-1950",
+      "designation": "180a",
+      "name": "Rosebud",
+      "weight": {
+        "grams": 15
+      },
+      "classification": "Stone. Black chondrite",
+      "locality": "Falls County, Texas; 30° 50′ N., 96° 58′ W.",
+      "year": "1925",
+      "catalogPage": 89,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Rosebud",
+        "meteoriteCode": "22767",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22767",
+        "alternateNameNote": "The verified local CSV identifies Official Rosebud, code 22767. The official checker returns Rosebud as Official, and the detail page confirms the exact name, Texas H5 identity, 54.9 kg mass, nearby coordinates, and Glen Rose (stone) synonym. MetBull gives 1915 or 1907, while the source prints Recognized 1925; the source facts are preserved."
       }
     },
     {
@@ -40095,6 +40327,27 @@
       }
     },
     {
+      "id": "obs-bbb88f85-b3b2-4054-992c-ab99f86fac44",
+      "catalogId": "nininger-1950",
+      "designation": "353.1",
+      "name": "Roebourne",
+      "weight": {
+        "grams": 1466
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "North West Division, Western Australia",
+      "year": "1892",
+      "catalogPage": 89,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Roebourne",
+        "meteoriteCode": "22644",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22644",
+        "alternateNameNote": "The verified local CSV identifies Official Roebourne, code 22644. The official checker returns Roebourne as Official, and the detail page confirms the exact name, 1892 Western Australian IIIAB iron, 86.86 kg mass, and both printed synonyms, Hamersley and Hammersley. The source's rounded 87 kg total and historical classification are preserved."
+      }
+    },
+    {
       "id": "obs-e2708f2f-16ea-41a6-9e6f-f4db909fa3cd",
       "catalogId": "nininger-1950",
       "designation": "354.1",
@@ -40596,6 +40849,27 @@
         "meteoriteCode": "16745",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16745",
         "alternateNameNote": "The verified local CSV identifies exact Official Morito, code 16745, a Chihuahua, Mexico Iron, IIIAB found in 1600 with 10.1 tonne mass. The official checker returns the exact name as Official, and the detail page confirms the year, locality, class, mass, and El Morito, Humboldt Iron, San Gregorio, and Valle de Allende synonyms. The source wording and 11,000 kg total are preserved."
+      }
+    },
+    {
+      "id": "obs-dceda56f-1f8f-4022-82cd-1750ea912383",
+      "catalogId": "nininger-1950",
+      "designation": "376.1",
+      "name": "Rio Loa",
+      "weight": {
+        "grams": 80.6
+      },
+      "classification": "Iron. Hexahedrite",
+      "locality": "Tarapaca, Chile",
+      "year": "about 1915",
+      "catalogPage": 89,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "North Chile",
+        "meteoriteCode": "17001",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17001",
+        "alternateNameNote": "The official checker explicitly identifies Rio Loa as a synonym of Official North Chile, code 17001, and the detail page explicitly lists Rio Loa among its synonyms. The verified local CSV identifies North Chile as an Antofagasta IIAB iron. Its 1875 year and 300 kg mass conflict with the source's about-1915 date, hexahedrite description, and 4 kg total, which are preserved."
       }
     },
     {
@@ -42423,6 +42697,27 @@
         "meteoriteCode": "5257",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
         "alternateNameNote": "The verified local CSV has no official Ganado row and has Official Canyon Diablo, code 5257. The official checker returns Ganado solely as a synonym of Canyon Diablo, and the Canyon Diablo detail page lists Ganado as a synonym; no identity is inferred from the printed mass or coordinates."
+      }
+    },
+    {
+      "id": "obs-9cdf7221-796f-4120-8822-a50c6d0d98fa",
+      "catalogId": "nininger-1950",
+      "designation": "454.1",
+      "name": "Romero",
+      "weight": {
+        "grams": 54.7
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Hartley County, Texas; 35° 46′ N., 102° 57′ W.",
+      "year": "1939",
+      "catalogPage": 89,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Romero",
+        "meteoriteCode": "22651",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22651",
+        "alternateNameNote": "The verified local CSV identifies Official Romero, code 22651. The official checker returns Romero as Official, and the detail page confirms the exact name, Texas H4 identity, and exact printed coordinates. MetBull gives 1938 and 17.2 kg, while the source prints Found 1939 and 17.3 kg; the source facts are preserved."
       }
     },
     {

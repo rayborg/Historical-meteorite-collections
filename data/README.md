@@ -1,7 +1,7 @@
 # Public Catalog Data
 
 <!-- release-summary:data-overview:start -->
-`catalog.json` is a schema-6 facts-only dataset containing 3,339 source observations from 8 historical meteorite catalogs. `folios.json` is a separate schema-2, deny-by-default display manifest with 41 reviewed page entries.
+`catalog.json` is a schema-6 facts-only dataset containing 3,353 source observations from 8 historical meteorite catalogs. `folios.json` is a separate schema-2, deny-by-default display manifest with 41 reviewed page entries.
 <!-- release-summary:data-overview:end -->
 
 A searchable transcription of the 1976 Huss Meteorite Collection catalog, compiled and published by Glenn Huss.
@@ -18,8 +18,8 @@ The other configured descriptors identify their compilers without inferring a pu
 | `huss-1986` | `specimen` | 544 | 21 | 21 |
 | `lucas-1813` | `collection-entry` | 13 | 3 | 3 |
 | `nininger-1933` | `catalog-item` | 136 | 18 | 9 |
-| `nininger-1950` | `specimen` | 1,427 | 63 | 63 |
-| **Total** |  | **3,339** | **211** | **194** |
+| `nininger-1950` | `specimen` | 1,441 | 64 | 64 |
+| **Total** |  | **3,353** | **212** | **195** |
 <!-- release-summary:data-catalog-table:end -->
 
 Metadata source-page coverage is not a count of pages cited by records. Some covered pages are introductory or narrative-only.
@@ -27,7 +27,7 @@ Metadata source-page coverage is not a count of pages cited by records. Some cov
 Chladni 1825 pages 200-207 are introductory folios. For `nininger-1933`, printed pages 8-9 and catalog items 106-141 are missing from the available source set, and pages 12-20 are narrative-only.
 
 <!-- release-summary:data-nininger-coverage:start -->
-`nininger-1933` has 136 records; its metadata source pages span 1-20, and its record citations span 1-11. `nininger-1950` has 1,427 records; its metadata source pages span 26-88, and its record citations span 26-88.
+`nininger-1933` has 136 records; its metadata source pages span 1-20, and its record citations span 1-11. `nininger-1950` has 1,441 records; its metadata source pages span 26-89, and its record citations span 26-89.
 <!-- release-summary:data-nininger-coverage:end -->
 
 Both Nininger catalogs are partial digital editions. These ranges summarize current metadata and citations without asserting page-boundary continuity.
