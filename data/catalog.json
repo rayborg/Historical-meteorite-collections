@@ -393,14 +393,15 @@
           86,
           87,
           88,
-          89
+          89,
+          90
         ],
-        "sourcePageCount": 64,
-        "recordCount": 1441,
-        "recordsWithDesignation": 1415,
-        "recordsWithWeight": 1376,
+        "sourcePageCount": 65,
+        "recordCount": 1455,
+        "recordsWithDesignation": 1429,
+        "recordsWithWeight": 1390,
         "confidenceCounts": {
-          "high": 1441,
+          "high": 1455,
           "medium": 0,
           "low": 0
         },
@@ -408,11 +409,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 3353,
-    "recordsWithDesignation": 3158,
-    "recordsWithWeight": 3160,
+    "recordCount": 3367,
+    "recordsWithDesignation": 3172,
+    "recordsWithWeight": 3174,
     "confidenceCounts": {
-      "high": 3353,
+      "high": 3367,
       "medium": 0,
       "low": 0
     }
@@ -32074,6 +32075,27 @@
       }
     },
     {
+      "id": "obs-11c82028-4552-4729-adc8-c33e47783a5d",
+      "catalogId": "nininger-1950",
+      "designation": "99b",
+      "name": "Ruff's Mountain",
+      "weight": {
+        "grams": 2420
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Lexington County, South Carolina",
+      "year": "1844",
+      "catalogPage": 90,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Ruff's Mountain",
+        "meteoriteCode": "22779",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22779",
+        "alternateNameNote": "The verified local CSV identifies Official Ruff's Mountain, code 22779. The official checker returns the name as Official, and the detail page confirms the exact name, 1844 South Carolina IIIAB iron, 53.07 kg mass, and both printed synonyms, Lexington County and Newberry. The source's rounded total and historical classification are preserved."
+      }
+    },
+    {
       "id": "obs-8343db1d-c023-4c18-9d8d-3b316cee559f",
       "catalogId": "nininger-1950",
       "designation": "100a",
@@ -37198,6 +37220,27 @@
       }
     },
     {
+      "id": "obs-61326320-f8ac-42a3-b530-7bbe694659d9",
+      "catalogId": "nininger-1950",
+      "designation": "213.1",
+      "name": "Roswell",
+      "weight": {
+        "grams": 53
+      },
+      "classification": "Iron",
+      "locality": "Eddy County, New Mexico",
+      "year": null,
+      "catalogPage": 90,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The official checker explicitly identifies Roswell as a synonym of Official Canyon Diablo, code 5257, and the detail page lists Roswell among its synonyms. The source itself remarks 'Possibly Canyon Diablo.' MetBull's 1891 Arizona IAB-MG identity and 30 t mass conflict with the source's New Mexico locality and unknown date and weight; all source facts are preserved."
+      }
+    },
+    {
       "id": "obs-7c214507-6097-4601-beb4-26d83dce4b01",
       "catalogId": "nininger-1950",
       "designation": "214a",
@@ -37510,6 +37553,48 @@
         "meteoriteCode": "12269",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12269",
         "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Kearney as code 12269, a 1934 Nebraska find at the printed coordinates, with H5 classification and 10 kg mass. The official exact-name checker returns Kearney as Official, and the detail page confirms the exact name, 1934 Nebraska find, H5 identity, and coordinates. The source's 1.1 kg total differs from the official 10 kg mass and is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-eace206d-0edb-4c54-bed9-e8e040290d3f",
+      "catalogId": "nininger-1950",
+      "designation": "234b",
+      "name": "Roy",
+      "weight": {
+        "grams": 7238
+      },
+      "classification": "Stone. Crystalline spherical chondrite",
+      "locality": "Harding County, New Mexico; 35° 57′ N., 104° 12′ W.",
+      "year": "1933",
+      "catalogPage": 90,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Roy (1933)",
+        "meteoriteCode": "22774",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22774",
+        "alternateNameNote": "The checker treats bare Roy as partial, and the verified local CSV has Official Roy (1933), code 22774, and Roy (1934). The source's 1933 year, New Mexico locality, and exact 35° 57′ N., 104° 12′ W. coordinates uniquely match the Roy (1933) detail page. MetBull gives L5 and 47.2 kg; the source's historical class and 50 kg total are preserved."
+      }
+    },
+    {
+      "id": "obs-57cce5f4-311b-489e-a06f-16d9e0199f90",
+      "catalogId": "nininger-1950",
+      "designation": "234.37",
+      "name": "Roy",
+      "weight": {
+        "grams": 8720
+      },
+      "classification": "Stone. Crystalline spherical chondrite",
+      "locality": "Harding County, New Mexico; 35° 57′ N., 104° 12′ W.",
+      "year": "1933",
+      "catalogPage": 90,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Roy (1933)",
+        "meteoriteCode": "22774",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22774",
+        "alternateNameNote": "The checker treats bare Roy as partial, and the verified local CSV has Official Roy (1933), code 22774, and Roy (1934). The source's 1933 year, New Mexico locality, and exact 35° 57′ N., 104° 12′ W. coordinates uniquely match the Roy (1933) detail page. MetBull gives L5 and 47.2 kg; the source's historical class and 50 kg total are preserved."
       }
     },
     {
@@ -38203,6 +38288,48 @@
         "meteoriteCode": "5003",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5003",
         "alternateNameNote": "The source inserts i in Beilla. MetBull lists La Bella Roca and Papasquiaro as synonyms; the Durango context and 1888 date agree. The source reports 33.2 kg.; MetBull reports 33 kg. The historical Fine octahedrite classification corresponds broadly to modern Iron, IIIAB."
+      }
+    },
+    {
+      "id": "obs-f56ed685-c5b5-4bec-8691-841f220e0acc",
+      "catalogId": "nininger-1950",
+      "designation": "267.1",
+      "name": "Rush Creek",
+      "weight": {
+        "grams": 4075
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Kiowa County, Colorado; 38° 37′ N., 102° 43′ W.",
+      "year": "1938",
+      "catalogPage": 90,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Rush Creek",
+        "meteoriteCode": "22786",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22786",
+        "alternateNameNote": "The verified local CSV identifies Official Rush Creek, code 22786. The official checker returns Rush Creek as Official, and the detail page confirms the exact name, 1938 Colorado L6 identity, 9.3 kg mass, and exact printed coordinates. The source's historical generic classification is preserved."
+      }
+    },
+    {
+      "id": "obs-aff32e96-5605-44d0-ae4a-1227cb9387bb",
+      "catalogId": "nininger-1950",
+      "designation": "267.2",
+      "name": "Rush Creek",
+      "weight": {
+        "grams": 3170
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Kiowa County, Colorado; 38° 37′ N., 102° 43′ W.",
+      "year": "1938",
+      "catalogPage": 90,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Rush Creek",
+        "meteoriteCode": "22786",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22786",
+        "alternateNameNote": "The verified local CSV identifies Official Rush Creek, code 22786. The official checker returns Rush Creek as Official, and the detail page confirms the exact name, 1938 Colorado L6 identity, 9.3 kg mass, and exact printed coordinates. The source's historical generic classification is preserved."
       }
     },
     {
@@ -39130,6 +39257,69 @@
       }
     },
     {
+      "id": "obs-ab9d61d3-8f11-43ea-bd46-4f5e9a2d5e82",
+      "catalogId": "nininger-1950",
+      "designation": "301.1",
+      "name": "Rose City",
+      "weight": {
+        "grams": 520.6
+      },
+      "classification": "Stone. Brecciated black bronzite-chondrite",
+      "locality": "Ogemaw County, Michigan",
+      "year": "1921",
+      "catalogPage": 90,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Rose City",
+        "meteoriteCode": "22766",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22766",
+        "alternateNameNote": "The verified local CSV identifies Official Rose City, code 22766. The official checker returns Rose City as Official, and the detail page confirms the exact name, 1921 Michigan H5 fall, 10.6 kg mass, and printed coordinates. Shared source facts are explicitly recovered from the incoming heading on page 89; the historical classification is preserved."
+      }
+    },
+    {
+      "id": "obs-ac222c39-0d5e-4631-8b8a-0a20428df17b",
+      "catalogId": "nininger-1950",
+      "designation": "301.2",
+      "name": "Rose City",
+      "weight": {
+        "grams": 191
+      },
+      "classification": "Stone. Brecciated black bronzite-chondrite",
+      "locality": "Ogemaw County, Michigan",
+      "year": "1921",
+      "catalogPage": 90,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Rose City",
+        "meteoriteCode": "22766",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22766",
+        "alternateNameNote": "The verified local CSV identifies Official Rose City, code 22766. The official checker returns Rose City as Official, and the detail page confirms the exact name, 1921 Michigan H5 fall, 10.6 kg mass, and printed coordinates. Shared source facts are explicitly recovered from the incoming heading on page 89; the historical classification is preserved."
+      }
+    },
+    {
+      "id": "obs-51d85242-37ae-47b7-99c0-203b0e22b14f",
+      "catalogId": "nininger-1950",
+      "designation": "301.4",
+      "name": "Rose City",
+      "weight": {
+        "grams": 19
+      },
+      "classification": "Stone. Brecciated black bronzite-chondrite",
+      "locality": "Ogemaw County, Michigan",
+      "year": "1921",
+      "catalogPage": 90,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Rose City",
+        "meteoriteCode": "22766",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22766",
+        "alternateNameNote": "The verified local CSV identifies Official Rose City, code 22766. The official checker returns Rose City as Official, and the detail page confirms the exact name, 1921 Michigan H5 fall, 10.6 kg mass, and printed coordinates. Shared source facts are explicitly recovered from the incoming heading on page 89; the historical classification is preserved."
+      }
+    },
+    {
       "id": "obs-76275038-02ef-47f8-8e17-61c105a26f12",
       "catalogId": "nininger-1950",
       "designation": "302.1",
@@ -39211,6 +39401,27 @@
         "meteoriteCode": null,
         "metbullUrl": null,
         "alternateNameNote": "No exact Hale Center row occurs in the verified local CSV, and the official exact-name checker returns no record or synonym. A contains search and the reviewed detail pages show two qualified official names, Hale Center (no. 1), code 11477, and Hale Center (no. 2), code 11478. Although the source's mass and the adjacent distinct No. 2 entry resemble the first record, no qualifier is printed and no match is inferred."
+      }
+    },
+    {
+      "id": "obs-595ecf66-0aaf-45cb-ac50-85c99b59d18a",
+      "catalogId": "nininger-1950",
+      "designation": "307.1",
+      "name": "Russell Gulch",
+      "weight": {
+        "grams": 78
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Gilpin County, Colorado",
+      "year": "1863",
+      "catalogPage": 90,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Russel Gulch",
+        "meteoriteCode": "22788",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22788",
+        "alternateNameNote": "The official checker explicitly identifies Russell Gulch as a synonym of Official Russel Gulch, code 22788, and the detail page lists the printed double-l form among its synonyms. The verified local CSV and detail page confirm the 1863 Colorado IIIAB iron and 13.2 kg mass. The source spelling and historical fine-octahedrite classification are preserved."
       }
     },
     {
@@ -40747,6 +40958,48 @@
       }
     },
     {
+      "id": "obs-3cf5deed-28f4-4b03-a727-4a185d9a5db7",
+      "catalogId": "nininger-1950",
+      "designation": "372.1",
+      "name": "Sacramento Mountains",
+      "weight": {
+        "grams": 109
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Eddy County, New Mexico",
+      "year": "1896",
+      "catalogPage": 90,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Sacramento Mountains",
+        "meteoriteCode": "22794",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22794",
+        "alternateNameNote": "The verified local CSV identifies Official Sacramento Mountains, code 22794. The official checker returns the exact name as Official, and the detail page confirms the New Mexico IIIAB iron and both printed synonyms, Badger and Eddy County. MetBull gives 1890 and 237.2 kg, while the source prints 1896 and 237.7 kg; the source facts and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-5441afc6-f871-4c29-b5ae-9e5fedfcb914",
+      "catalogId": "nininger-1950",
+      "designation": "372.2",
+      "name": "Sacramento Mountains",
+      "weight": {
+        "grams": 81
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Eddy County, New Mexico",
+      "year": "1896",
+      "catalogPage": 90,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Sacramento Mountains",
+        "meteoriteCode": "22794",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22794",
+        "alternateNameNote": "The verified local CSV identifies Official Sacramento Mountains, code 22794. The official checker returns the exact name as Official, and the detail page confirms the New Mexico IIIAB iron and both printed synonyms, Badger and Eddy County. MetBull gives 1890 and 237.2 kg, while the source prints 1896 and 237.7 kg; the source facts and historical classification are preserved."
+      }
+    },
+    {
       "id": "obs-c0b4b846-142d-43a0-8fa0-1ddaa05100a2",
       "catalogId": "nininger-1950",
       "designation": "373.4",
@@ -41143,6 +41396,27 @@
         "meteoriteCode": "2326",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2326",
         "alternateNameNote": "The source classification Achondrite conflicts with modern LL6. MetBull lists Boelus as a synonym, and the linked MB8 writeup is headed BOELUS."
+      }
+    },
+    {
+      "id": "obs-535d9324-b20c-4510-a8f5-d68e535d8d92",
+      "catalogId": "nininger-1950",
+      "designation": "391.1",
+      "name": "Roy No. 2",
+      "weight": {
+        "grams": 346
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Harding County, New Mexico; 35° 57′ N., 104° 12′ W.",
+      "year": "1934",
+      "catalogPage": 90,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Roy (1934)",
+        "meteoriteCode": "22775",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22775",
+        "alternateNameNote": "The exact printed punctuation is checker-unknown, but the official checker maps Roy (no. 2) to Official Roy (1934), code 22775, and the detail page explicitly lists that synonym. The source's 1934 year and exact coordinates agree. MetBull gives L6 and 5,619 grams, conflicting with the source's generic class and 346 gram total; the source facts are preserved."
       }
     },
     {
@@ -44482,6 +44756,27 @@
         "meteoriteCode": "11849",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11849",
         "alternateNameNote": "The verified local CSV and checker identify exact Official Haskell, code 11849. The detail page confirms the 1909 Texas find, L5 stone classification, 36 kg mass, and Catalogue coordinates exactly matching those printed."
+      }
+    },
+    {
+      "id": "obs-bb05f564-8ba1-46ec-9abd-32e60e670c64",
+      "catalogId": "nininger-1950",
+      "designation": "529.1",
+      "name": "Rush County",
+      "weight": {
+        "grams": 86.5
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Indiana",
+      "year": "1948",
+      "catalogPage": 90,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Rush County",
+        "meteoriteCode": "22785",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22785",
+        "alternateNameNote": "The verified local CSV identifies Official Rush County, code 22785. The official checker returns Rush County as Official, and the detail page confirms the exact name, 1948 Indiana H5 identity, and 4.3 kg mass. The source's Recognized wording and historical generic classification are preserved."
       }
     },
     {
