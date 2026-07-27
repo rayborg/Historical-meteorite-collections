@@ -347,14 +347,15 @@
           40,
           41,
           42,
-          43
+          43,
+          44
         ],
-        "sourcePageCount": 18,
-        "recordCount": 411,
-        "recordsWithDesignation": 407,
-        "recordsWithWeight": 399,
+        "sourcePageCount": 19,
+        "recordCount": 422,
+        "recordsWithDesignation": 418,
+        "recordsWithWeight": 410,
         "confidenceCounts": {
-          "high": 411,
+          "high": 422,
           "medium": 0,
           "low": 0
         },
@@ -362,11 +363,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2323,
-    "recordsWithDesignation": 2150,
-    "recordsWithWeight": 2183,
+    "recordCount": 2334,
+    "recordsWithDesignation": 2161,
+    "recordsWithWeight": 2194,
     "confidenceCounts": {
-      "high": 2323,
+      "high": 2334,
       "medium": 0,
       "low": 0
     }
@@ -18777,6 +18778,90 @@
       }
     },
     {
+      "id": "obs-e9a28cb9-3dfb-495f-8322-45a54c8aa998",
+      "catalogId": "nininger-1950",
+      "designation": "27a",
+      "name": "Chihuahua City",
+      "weight": {
+        "grams": 34881
+      },
+      "classification": "Iron. Brecciated octahedrite",
+      "locality": "Chihuahua, Mexico; 28° 40′ N., 106° 7′ W.",
+      "year": "1929",
+      "catalogPage": 44,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Chihuahua City",
+        "meteoriteCode": "5350",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5350",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-95bf20ac-3093-41e2-987b-c9f3aa0f1383",
+      "catalogId": "nininger-1950",
+      "designation": "29a",
+      "name": "Chilcoot Inlet",
+      "weight": {
+        "grams": 16.5
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Portage Bay, Alaska",
+      "year": "1881",
+      "catalogPage": 44,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Chilkoot",
+        "meteoriteCode": "5351",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5351",
+        "alternateNameNote": "The official name checker reports Chilcoot Inlet as a synonym of Chilkoot. The official detail page explicitly lists Chilcoot Inlet and Chilcat as synonyms and agrees on Alaska, 1881, iron, and 43 kg; the verified local CSV gives code 5351."
+      }
+    },
+    {
+      "id": "obs-d4a73c8e-083a-482e-a556-cfa5948bee9b",
+      "catalogId": "nininger-1950",
+      "designation": "31b",
+      "name": "Chupaderos",
+      "weight": {
+        "grams": 76
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Jimenez, Chihuahua, Mexico",
+      "year": "1852",
+      "catalogPage": 44,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Chupaderos",
+        "meteoriteCode": "5363",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5363",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-ddd825e7-5ab4-4491-a270-ba329049ae5f",
+      "catalogId": "nininger-1950",
+      "designation": "31a",
+      "name": "Chupaderos",
+      "weight": {
+        "grams": 1301
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Jimenez, Chihuahua, Mexico",
+      "year": "1852",
+      "catalogPage": 44,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Chupaderos",
+        "meteoriteCode": "5363",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5363",
+        "alternateNameNote": null
+      }
+    },
+    {
       "id": "obs-9fdc73f7-0a31-4507-b42a-a7dac3f18e06",
       "catalogId": "nininger-1950",
       "designation": "34jj",
@@ -22935,6 +23020,48 @@
       }
     },
     {
+      "id": "obs-2fd8d474-aa85-4397-a70a-db0ae9da160b",
+      "catalogId": "nininger-1950",
+      "designation": "181.6",
+      "name": "Clark County",
+      "weight": {
+        "grams": 426.5
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Kentucky",
+      "year": "1937",
+      "catalogPage": 44,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Clark County",
+        "meteoriteCode": "5373",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5373",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-821639e8-6789-44ef-b894-ff4651c07357",
+      "catalogId": "nininger-1950",
+      "designation": "181.9",
+      "name": "Clark County",
+      "weight": {
+        "grams": 5973
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Kentucky",
+      "year": "1937",
+      "catalogPage": 44,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Clark County",
+        "meteoriteCode": "5373",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5373",
+        "alternateNameNote": null
+      }
+    },
+    {
       "id": "obs-8373c187-a48d-4362-8551-b716bc754466",
       "catalogId": "nininger-1950",
       "designation": "199.1",
@@ -23124,6 +23251,27 @@
       }
     },
     {
+      "id": "obs-7c214507-6097-4601-beb4-26d83dce4b01",
+      "catalogId": "nininger-1950",
+      "designation": "214a",
+      "name": "Chile",
+      "weight": {
+        "grams": 38
+      },
+      "classification": "Stone",
+      "locality": "Chile",
+      "year": null,
+      "catalogPage": 44,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The official name checker returns Chile only as a partial name, not an approved identity, and the verified local CSV contains no exact meteorite named Chile. The country-only heading, unknown date, and generic Stone class do not establish a canonical meteorite; none is inferred."
+      }
+    },
+    {
       "id": "obs-e3f2fb80-51fd-4a49-9ccd-6b99601c92b9",
       "catalogId": "nininger-1950",
       "designation": "216.1",
@@ -23289,6 +23437,27 @@
         "meteoriteCode": "15388",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15388",
         "alternateNameNote": "The source heading prints Arva with Magura immediately after it; MetBull lists Arva as a historical synonym of Magura. The source reports 1,500 kg.; MetBull reports 150 kg. The historical Coarse octahedrite classification corresponds to modern Iron, IAB-MG."
+      }
+    },
+    {
+      "id": "obs-3bd20cf3-58cb-4123-99af-20a951f4398d",
+      "catalogId": "nininger-1950",
+      "designation": "242a",
+      "name": "Cleveland",
+      "weight": {
+        "grams": 303
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Bradley County, Tennessee",
+      "year": "1860",
+      "catalogPage": 44,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Cleveland",
+        "meteoriteCode": "5379",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5379",
+        "alternateNameNote": "The verified local CSV confirms the exact official name and code. The official detail page lists the source's Bradley County, East Tennessee, Lea Iron, and Philadelphia Iron labels as synonyms, but places the official record in Georgia? rather than the source's Tennessee locality."
       }
     },
     {
@@ -23460,6 +23629,27 @@
       }
     },
     {
+      "id": "obs-245485cc-8221-42f8-87b1-ba77c8dce431",
+      "catalogId": "nininger-1950",
+      "designation": "272a",
+      "name": "Chinautla",
+      "weight": {
+        "grams": 48
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Guatemala, Central America",
+      "year": "1902",
+      "catalogPage": 44,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Chinautla",
+        "meteoriteCode": "5352",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5352",
+        "alternateNameNote": null
+      }
+    },
+    {
       "id": "obs-b9bbd6bb-ea96-4179-8b4e-f211f75e9395",
       "catalogId": "nininger-1950",
       "designation": "277d",
@@ -23583,6 +23773,27 @@
         "meteoriteCode": "4983",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4983",
         "alternateNameNote": "The Wyoming context and 1931 find year agree. The source reports 48.6 kg.; MetBull reports 48.5 kg. The historical Octahedrite classification corresponds broadly to modern Iron, IIIAB."
+      }
+    },
+    {
+      "id": "obs-173d5b65-590b-4659-ad4e-9c29c93c04ea",
+      "catalogId": "nininger-1950",
+      "designation": "287b",
+      "name": "Clareton",
+      "weight": {
+        "grams": 711
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Weston County, Wyoming; 43° 43′ N., 104° 41′ W.",
+      "year": "1935",
+      "catalogPage": 44,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Clareton",
+        "meteoriteCode": "5371",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5371",
+        "alternateNameNote": "The verified local CSV confirms the exact official name and code. The source reports 1935 and 1,074 g; the official record instead gives 1931 and 1,050 g, while its Wyoming coordinates agree closely."
       }
     },
     {
@@ -24402,6 +24613,27 @@
         "meteoriteCode": "5129",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5129",
         "alternateNameNote": "The Texas context, 1937 year, and exact 927 gram source total agree. Source coordinates differ from MetBull's recommended coordinates; modern classification is L6."
+      }
+    },
+    {
+      "id": "obs-019557ac-10ef-414a-bb2a-5155710872a6",
+      "catalogId": "nininger-1950",
+      "designation": "388.1",
+      "name": "Chile",
+      "weight": {
+        "grams": 235.5
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Chile",
+      "year": null,
+      "catalogPage": 44,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The official name checker returns Chile only as a partial name, not an approved identity, and the verified local CSV contains no exact meteorite named Chile. The country-only heading, unknown date, and generic iron class do not establish a canonical meteorite; none is inferred."
       }
     },
     {
