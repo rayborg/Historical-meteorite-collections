@@ -384,14 +384,15 @@
           77,
           78,
           79,
-          80
+          80,
+          81
         ],
-        "sourcePageCount": 55,
-        "recordCount": 1110,
-        "recordsWithDesignation": 1084,
-        "recordsWithWeight": 1046,
+        "sourcePageCount": 56,
+        "recordCount": 1140,
+        "recordsWithDesignation": 1114,
+        "recordsWithWeight": 1076,
         "confidenceCounts": {
-          "high": 1110,
+          "high": 1140,
           "medium": 0,
           "low": 0
         },
@@ -399,11 +400,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 3022,
-    "recordsWithDesignation": 2827,
-    "recordsWithWeight": 2830,
+    "recordCount": 3052,
+    "recordsWithDesignation": 2857,
+    "recordsWithWeight": 2860,
     "confidenceCounts": {
-      "high": 3022,
+      "high": 3052,
       "medium": 0,
       "low": 0
     }
@@ -26920,6 +26921,132 @@
       }
     },
     {
+      "id": "obs-4fc94015-8674-4abd-8d87-9fd65f0914ba",
+      "catalogId": "nininger-1950",
+      "designation": "93a",
+      "name": "Parnallee",
+      "weight": {
+        "grams": 18.5
+      },
+      "classification": "Stone. Veined grey hypersthene-chondrite",
+      "locality": "Madura district, Madras, India",
+      "year": "1857",
+      "catalogPage": 81,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Parnallee",
+        "meteoriteCode": "18108",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18108",
+        "alternateNameNote": "The verified local CSV identifies Official Parnallee, code 18108, and the checker returns Parnallee as Official. The detail page confirms the exact name, 1857 Indian LL3.6 fall, 77.6 kg mass, Tamil Nadu coordinates, and printed Perunali synonym. The source's 77.7 kg total, historical locality, and classification are preserved."
+      }
+    },
+    {
+      "id": "obs-1c29169c-ef9f-439b-962c-7666aee7e335",
+      "catalogId": "nininger-1950",
+      "designation": "93.2",
+      "name": "Parnallee",
+      "weight": {
+        "grams": 40
+      },
+      "classification": "Stone. Veined grey hypersthene-chondrite",
+      "locality": "Madura district, Madras, India",
+      "year": "1857",
+      "catalogPage": 81,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Parnallee",
+        "meteoriteCode": "18108",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18108",
+        "alternateNameNote": "The verified local CSV identifies Official Parnallee, code 18108, and the checker returns Parnallee as Official. The detail page confirms the exact name, 1857 Indian LL3.6 fall, 77.6 kg mass, Tamil Nadu coordinates, and printed Perunali synonym. The source's 77.7 kg total, historical locality, and classification are preserved."
+      }
+    },
+    {
+      "id": "obs-ea4ea8bc-96f5-41f5-814c-75066f59079d",
+      "catalogId": "nininger-1950",
+      "designation": "95c",
+      "name": "Paragould",
+      "weight": {
+        "grams": 15
+      },
+      "classification": "Stone. Brecciated veined chondrite",
+      "locality": "Greene County, Arkansas",
+      "year": "1930",
+      "catalogPage": 81,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Paragould",
+        "meteoriteCode": "18101",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18101",
+        "alternateNameNote": "The verified local CSV identifies Official Paragould, code 18101, and the checker returns Paragould as Official. The detail page confirms the exact name, 1930 Arkansas LL5 fall, and 408 kg mass. The source's 409 kg total, Greene County locality, and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-8883c91c-9fe7-43c7-b218-e4ea7d91cf39",
+      "catalogId": "nininger-1950",
+      "designation": "95a",
+      "name": "Paragould",
+      "weight": {
+        "grams": 135.5
+      },
+      "classification": "Stone. Brecciated veined chondrite",
+      "locality": "Greene County, Arkansas",
+      "year": "1930",
+      "catalogPage": 81,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Paragould",
+        "meteoriteCode": "18101",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18101",
+        "alternateNameNote": "The verified local CSV identifies Official Paragould, code 18101, and the checker returns Paragould as Official. The detail page confirms the exact name, 1930 Arkansas LL5 fall, and 408 kg mass. The source's 409 kg total, Greene County locality, and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-4005febc-d2fd-4564-9dfd-89da8168e651",
+      "catalogId": "nininger-1950",
+      "designation": "96b",
+      "name": "Pacula",
+      "weight": {
+        "grams": 62.75
+      },
+      "classification": "Stone. Brecciated white chondrite",
+      "locality": "Jacala, Hidalgo, Mexico",
+      "year": "1881",
+      "catalogPage": 81,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Pacula",
+        "meteoriteCode": "18068",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18068",
+        "alternateNameNote": "The verified local CSV identifies Official Pacula, code 18068, and the checker returns Pacula as Official. The detail page confirms the exact name, 1881 Hidalgo L6 fall, 3.4 kg mass, and both printed synonyms, Jacala and Hidalgo. The source's historical classification is preserved."
+      }
+    },
+    {
+      "id": "obs-d813f469-d73d-4c2c-9aac-9f0cf2a77a80",
+      "catalogId": "nininger-1950",
+      "designation": "96a",
+      "name": "Pacula",
+      "weight": {
+        "grams": 66
+      },
+      "classification": "Stone. Brecciated white chondrite",
+      "locality": "Jacala, Hidalgo, Mexico",
+      "year": "1881",
+      "catalogPage": 81,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Pacula",
+        "meteoriteCode": "18068",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18068",
+        "alternateNameNote": "The verified local CSV identifies Official Pacula, code 18068, and the checker returns Pacula as Official. The detail page confirms the exact name, 1881 Hidalgo L6 fall, 3.4 kg mass, and both printed synonyms, Jacala and Hidalgo. The source's historical classification is preserved."
+      }
+    },
+    {
       "id": "obs-27581ec3-4f85-45a1-ab77-50f4d55413fd",
       "catalogId": "nininger-1950",
       "designation": "112c",
@@ -30550,6 +30677,447 @@
         "meteoriteCode": "7761",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=7761",
         "alternateNameNote": "The official checker and valid-name CSV report mass 36 kg; the source prints 36.4 kg, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-09ebc5f4-e464-4f98-bd16-73197b6cb719",
+      "catalogId": "nininger-1950",
+      "designation": "197gg",
+      "name": "Pasamonte",
+      "weight": {
+        "grams": 4.5
+      },
+      "classification": "Stone. Howardite",
+      "locality": "Union County, New Mexico; 36° 14′ N., 103° 49′ W.",
+      "year": "1933",
+      "catalogPage": 81,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Pasamonte",
+        "meteoriteCode": "18110",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18110",
+        "alternateNameNote": "The verified local CSV identifies Official Pasamonte, code 18110, and the checker returns Pasamonte as Official. The detail page confirms the exact name, 1933 New Mexico eucrite fall, and 5.1 kg mass. It gives 36° 13′ N., 103° 24′ W., differing from the source's coordinates; the source's Howardite classification, 3.62 kg total, and coordinates are preserved."
+      }
+    },
+    {
+      "id": "obs-e8a78ad7-7f19-42b6-902b-598a5610cbd4",
+      "catalogId": "nininger-1950",
+      "designation": "197dd",
+      "name": "Pasamonte",
+      "weight": {
+        "grams": 7
+      },
+      "classification": "Stone. Howardite",
+      "locality": "Union County, New Mexico; 36° 14′ N., 103° 49′ W.",
+      "year": "1933",
+      "catalogPage": 81,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Pasamonte",
+        "meteoriteCode": "18110",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18110",
+        "alternateNameNote": "The verified local CSV identifies Official Pasamonte, code 18110, and the checker returns Pasamonte as Official. The detail page confirms the exact name, 1933 New Mexico eucrite fall, and 5.1 kg mass. It gives 36° 13′ N., 103° 24′ W., differing from the source's coordinates; the source's Howardite classification, 3.62 kg total, and coordinates are preserved."
+      }
+    },
+    {
+      "id": "obs-3e27d343-f99b-43dd-ade4-d4fa2514367c",
+      "catalogId": "nininger-1950",
+      "designation": "197bb",
+      "name": "Pasamonte",
+      "weight": {
+        "grams": 12
+      },
+      "classification": "Stone. Howardite",
+      "locality": "Union County, New Mexico; 36° 14′ N., 103° 49′ W.",
+      "year": "1933",
+      "catalogPage": 81,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Pasamonte",
+        "meteoriteCode": "18110",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18110",
+        "alternateNameNote": "The verified local CSV identifies Official Pasamonte, code 18110, and the checker returns Pasamonte as Official. The detail page confirms the exact name, 1933 New Mexico eucrite fall, and 5.1 kg mass. It gives 36° 13′ N., 103° 24′ W., differing from the source's coordinates; the source's Howardite classification, 3.62 kg total, and coordinates are preserved."
+      }
+    },
+    {
+      "id": "obs-f8cc6584-8462-4316-8992-907c8c5c4791",
+      "catalogId": "nininger-1950",
+      "designation": "197oo",
+      "name": "Pasamonte",
+      "weight": {
+        "grams": 21
+      },
+      "classification": "Stone. Howardite",
+      "locality": "Union County, New Mexico; 36° 14′ N., 103° 49′ W.",
+      "year": "1933",
+      "catalogPage": 81,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Pasamonte",
+        "meteoriteCode": "18110",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18110",
+        "alternateNameNote": "The verified local CSV identifies Official Pasamonte, code 18110, and the checker returns Pasamonte as Official. The detail page confirms the exact name, 1933 New Mexico eucrite fall, and 5.1 kg mass. It gives 36° 13′ N., 103° 24′ W., differing from the source's coordinates; the source's Howardite classification, 3.62 kg total, and coordinates are preserved."
+      }
+    },
+    {
+      "id": "obs-3957bb5b-f779-43dc-8a1e-02d2a11c4905",
+      "catalogId": "nininger-1950",
+      "designation": "197ww",
+      "name": "Pasamonte",
+      "weight": {
+        "grams": 30
+      },
+      "classification": "Stone. Howardite",
+      "locality": "Union County, New Mexico; 36° 14′ N., 103° 49′ W.",
+      "year": "1933",
+      "catalogPage": 81,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Pasamonte",
+        "meteoriteCode": "18110",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18110",
+        "alternateNameNote": "The verified local CSV identifies Official Pasamonte, code 18110, and the checker returns Pasamonte as Official. The detail page confirms the exact name, 1933 New Mexico eucrite fall, and 5.1 kg mass. It gives 36° 13′ N., 103° 24′ W., differing from the source's coordinates; the source's Howardite classification, 3.62 kg total, and coordinates are preserved."
+      }
+    },
+    {
+      "id": "obs-ee4216bc-4072-4505-a633-4236507bb012",
+      "catalogId": "nininger-1950",
+      "designation": "197n",
+      "name": "Pasamonte",
+      "weight": {
+        "grams": 36.8
+      },
+      "classification": "Stone. Howardite",
+      "locality": "Union County, New Mexico; 36° 14′ N., 103° 49′ W.",
+      "year": "1933",
+      "catalogPage": 81,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Pasamonte",
+        "meteoriteCode": "18110",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18110",
+        "alternateNameNote": "The verified local CSV identifies Official Pasamonte, code 18110, and the checker returns Pasamonte as Official. The detail page confirms the exact name, 1933 New Mexico eucrite fall, and 5.1 kg mass. It gives 36° 13′ N., 103° 24′ W., differing from the source's coordinates; the source's Howardite classification, 3.62 kg total, and coordinates are preserved."
+      }
+    },
+    {
+      "id": "obs-a8fdd5b4-c0ef-441f-a521-ab9ddde845fe",
+      "catalogId": "nininger-1950",
+      "designation": "197v",
+      "name": "Pasamonte",
+      "weight": {
+        "grams": 39
+      },
+      "classification": "Stone. Howardite",
+      "locality": "Union County, New Mexico; 36° 14′ N., 103° 49′ W.",
+      "year": "1933",
+      "catalogPage": 81,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Pasamonte",
+        "meteoriteCode": "18110",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18110",
+        "alternateNameNote": "The verified local CSV identifies Official Pasamonte, code 18110, and the checker returns Pasamonte as Official. The detail page confirms the exact name, 1933 New Mexico eucrite fall, and 5.1 kg mass. It gives 36° 13′ N., 103° 24′ W., differing from the source's coordinates; the source's Howardite classification, 3.62 kg total, and coordinates are preserved."
+      }
+    },
+    {
+      "id": "obs-d144d872-15ff-4c4b-9c0a-8a009bcf3430",
+      "catalogId": "nininger-1950",
+      "designation": "197uu",
+      "name": "Pasamonte",
+      "weight": {
+        "grams": 40
+      },
+      "classification": "Stone. Howardite",
+      "locality": "Union County, New Mexico; 36° 14′ N., 103° 49′ W.",
+      "year": "1933",
+      "catalogPage": 81,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Pasamonte",
+        "meteoriteCode": "18110",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18110",
+        "alternateNameNote": "The verified local CSV identifies Official Pasamonte, code 18110, and the checker returns Pasamonte as Official. The detail page confirms the exact name, 1933 New Mexico eucrite fall, and 5.1 kg mass. It gives 36° 13′ N., 103° 24′ W., differing from the source's coordinates; the source's Howardite classification, 3.62 kg total, and coordinates are preserved."
+      }
+    },
+    {
+      "id": "obs-911eecfb-1b3a-454a-86a1-20ad3143a31e",
+      "catalogId": "nininger-1950",
+      "designation": "197jj",
+      "name": "Pasamonte",
+      "weight": {
+        "grams": 41
+      },
+      "classification": "Stone. Howardite",
+      "locality": "Union County, New Mexico; 36° 14′ N., 103° 49′ W.",
+      "year": "1933",
+      "catalogPage": 81,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Pasamonte",
+        "meteoriteCode": "18110",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18110",
+        "alternateNameNote": "The verified local CSV identifies Official Pasamonte, code 18110, and the checker returns Pasamonte as Official. The detail page confirms the exact name, 1933 New Mexico eucrite fall, and 5.1 kg mass. It gives 36° 13′ N., 103° 24′ W., differing from the source's coordinates; the source's Howardite classification, 3.62 kg total, and coordinates are preserved."
+      }
+    },
+    {
+      "id": "obs-f2e8977e-8eaf-4e80-bb2d-a5e1c5df4546",
+      "catalogId": "nininger-1950",
+      "designation": "197y",
+      "name": "Pasamonte",
+      "weight": {
+        "grams": 44
+      },
+      "classification": "Stone. Howardite",
+      "locality": "Union County, New Mexico; 36° 14′ N., 103° 49′ W.",
+      "year": "1933",
+      "catalogPage": 81,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Pasamonte",
+        "meteoriteCode": "18110",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18110",
+        "alternateNameNote": "The verified local CSV identifies Official Pasamonte, code 18110, and the checker returns Pasamonte as Official. The detail page confirms the exact name, 1933 New Mexico eucrite fall, and 5.1 kg mass. It gives 36° 13′ N., 103° 24′ W., differing from the source's coordinates; the source's Howardite classification, 3.62 kg total, and coordinates are preserved."
+      }
+    },
+    {
+      "id": "obs-5198f0bd-e0a9-42dc-aac3-be7048887c90",
+      "catalogId": "nininger-1950",
+      "designation": "197LL",
+      "name": "Pasamonte",
+      "weight": {
+        "grams": 48
+      },
+      "classification": "Stone. Howardite",
+      "locality": "Union County, New Mexico; 36° 14′ N., 103° 49′ W.",
+      "year": "1933",
+      "catalogPage": 81,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Pasamonte",
+        "meteoriteCode": "18110",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18110",
+        "alternateNameNote": "The verified local CSV identifies Official Pasamonte, code 18110, and the checker returns Pasamonte as Official. The detail page confirms the exact name, 1933 New Mexico eucrite fall, and 5.1 kg mass. It gives 36° 13′ N., 103° 24′ W., differing from the source's coordinates; the source's Howardite classification, 3.62 kg total, and coordinates are preserved."
+      }
+    },
+    {
+      "id": "obs-6ac43718-6a2d-4af1-ba30-e5c1560863a1",
+      "catalogId": "nininger-1950",
+      "designation": "197k",
+      "name": "Pasamonte",
+      "weight": {
+        "grams": 51
+      },
+      "classification": "Stone. Howardite",
+      "locality": "Union County, New Mexico; 36° 14′ N., 103° 49′ W.",
+      "year": "1933",
+      "catalogPage": 81,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Pasamonte",
+        "meteoriteCode": "18110",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18110",
+        "alternateNameNote": "The verified local CSV identifies Official Pasamonte, code 18110, and the checker returns Pasamonte as Official. The detail page confirms the exact name, 1933 New Mexico eucrite fall, and 5.1 kg mass. It gives 36° 13′ N., 103° 24′ W., differing from the source's coordinates; the source's Howardite classification, 3.62 kg total, and coordinates are preserved."
+      }
+    },
+    {
+      "id": "obs-17f61326-0516-4746-ae1e-cb08945ce4f2",
+      "catalogId": "nininger-1950",
+      "designation": "197kk",
+      "name": "Pasamonte",
+      "weight": {
+        "grams": 66
+      },
+      "classification": "Stone. Howardite",
+      "locality": "Union County, New Mexico; 36° 14′ N., 103° 49′ W.",
+      "year": "1933",
+      "catalogPage": 81,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Pasamonte",
+        "meteoriteCode": "18110",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18110",
+        "alternateNameNote": "The verified local CSV identifies Official Pasamonte, code 18110, and the checker returns Pasamonte as Official. The detail page confirms the exact name, 1933 New Mexico eucrite fall, and 5.1 kg mass. It gives 36° 13′ N., 103° 24′ W., differing from the source's coordinates; the source's Howardite classification, 3.62 kg total, and coordinates are preserved."
+      }
+    },
+    {
+      "id": "obs-94a77561-62fc-4b7f-b780-a9b458578e3a",
+      "catalogId": "nininger-1950",
+      "designation": "197α",
+      "name": "Pasamonte",
+      "weight": {
+        "grams": 75
+      },
+      "classification": "Stone. Howardite",
+      "locality": "Union County, New Mexico; 36° 14′ N., 103° 49′ W.",
+      "year": "1933",
+      "catalogPage": 81,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Pasamonte",
+        "meteoriteCode": "18110",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18110",
+        "alternateNameNote": "The verified local CSV identifies Official Pasamonte, code 18110, and the checker returns Pasamonte as Official. The detail page confirms the exact name, 1933 New Mexico eucrite fall, and 5.1 kg mass. It gives 36° 13′ N., 103° 24′ W., differing from the source's coordinates; the source's Howardite classification, 3.62 kg total, and coordinates are preserved."
+      }
+    },
+    {
+      "id": "obs-b7d36b53-bb0e-479f-820e-0697afbfe3a0",
+      "catalogId": "nininger-1950",
+      "designation": "197e",
+      "name": "Pasamonte",
+      "weight": {
+        "grams": 77
+      },
+      "classification": "Stone. Howardite",
+      "locality": "Union County, New Mexico; 36° 14′ N., 103° 49′ W.",
+      "year": "1933",
+      "catalogPage": 81,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Pasamonte",
+        "meteoriteCode": "18110",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18110",
+        "alternateNameNote": "The verified local CSV identifies Official Pasamonte, code 18110, and the checker returns Pasamonte as Official. The detail page confirms the exact name, 1933 New Mexico eucrite fall, and 5.1 kg mass. It gives 36° 13′ N., 103° 24′ W., differing from the source's coordinates; the source's Howardite classification, 3.62 kg total, and coordinates are preserved."
+      }
+    },
+    {
+      "id": "obs-a799d80a-266a-4aa8-9ecf-80f69d0b98d5",
+      "catalogId": "nininger-1950",
+      "designation": "197ss",
+      "name": "Pasamonte",
+      "weight": {
+        "grams": 116
+      },
+      "classification": "Stone. Howardite",
+      "locality": "Union County, New Mexico; 36° 14′ N., 103° 49′ W.",
+      "year": "1933",
+      "catalogPage": 81,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Pasamonte",
+        "meteoriteCode": "18110",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18110",
+        "alternateNameNote": "The verified local CSV identifies Official Pasamonte, code 18110, and the checker returns Pasamonte as Official. The detail page confirms the exact name, 1933 New Mexico eucrite fall, and 5.1 kg mass. It gives 36° 13′ N., 103° 24′ W., differing from the source's coordinates; the source's Howardite classification, 3.62 kg total, and coordinates are preserved."
+      }
+    },
+    {
+      "id": "obs-b08c5c97-7234-4006-bd36-3e19623d3c72",
+      "catalogId": "nininger-1950",
+      "designation": "197g",
+      "name": "Pasamonte",
+      "weight": {
+        "grams": 292
+      },
+      "classification": "Stone. Howardite",
+      "locality": "Union County, New Mexico; 36° 14′ N., 103° 49′ W.",
+      "year": "1933",
+      "catalogPage": 81,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Pasamonte",
+        "meteoriteCode": "18110",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18110",
+        "alternateNameNote": "The verified local CSV identifies Official Pasamonte, code 18110, and the checker returns Pasamonte as Official. The detail page confirms the exact name, 1933 New Mexico eucrite fall, and 5.1 kg mass. It gives 36° 13′ N., 103° 24′ W., differing from the source's coordinates; the source's Howardite classification, 3.62 kg total, and coordinates are preserved."
+      }
+    },
+    {
+      "id": "obs-3caf7b4f-1b7f-4b18-9c14-2a0e74f120c8",
+      "catalogId": "nininger-1950",
+      "designation": "197.60",
+      "name": "Pasamonte",
+      "weight": {
+        "grams": 133
+      },
+      "classification": "Stone. Howardite",
+      "locality": "Union County, New Mexico; 36° 14′ N., 103° 49′ W.",
+      "year": "1933",
+      "catalogPage": 81,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Pasamonte",
+        "meteoriteCode": "18110",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18110",
+        "alternateNameNote": "The verified local CSV identifies Official Pasamonte, code 18110, and the checker returns Pasamonte as Official. The detail page confirms the exact name, 1933 New Mexico eucrite fall, and 5.1 kg mass. It gives 36° 13′ N., 103° 24′ W., differing from the source's coordinates; the source's Howardite classification, 3.62 kg total, and coordinates are preserved."
+      }
+    },
+    {
+      "id": "obs-a48c7315-8a90-43f5-b7eb-025ada51f057",
+      "catalogId": "nininger-1950",
+      "designation": "197.61",
+      "name": "Pasamonte",
+      "weight": {
+        "grams": 61
+      },
+      "classification": "Stone. Howardite",
+      "locality": "Union County, New Mexico; 36° 14′ N., 103° 49′ W.",
+      "year": "1933",
+      "catalogPage": 81,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Pasamonte",
+        "meteoriteCode": "18110",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18110",
+        "alternateNameNote": "The verified local CSV identifies Official Pasamonte, code 18110, and the checker returns Pasamonte as Official. The detail page confirms the exact name, 1933 New Mexico eucrite fall, and 5.1 kg mass. It gives 36° 13′ N., 103° 24′ W., differing from the source's coordinates; the source's Howardite classification, 3.62 kg total, and coordinates are preserved."
+      }
+    },
+    {
+      "id": "obs-b379cac2-a9b6-47ac-b6d6-edee45988d1e",
+      "catalogId": "nininger-1950",
+      "designation": "197.65",
+      "name": "Pasamonte",
+      "weight": {
+        "grams": 10
+      },
+      "classification": "Stone. Howardite",
+      "locality": "Union County, New Mexico; 36° 14′ N., 103° 49′ W.",
+      "year": "1933",
+      "catalogPage": 81,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Pasamonte",
+        "meteoriteCode": "18110",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18110",
+        "alternateNameNote": "The verified local CSV identifies Official Pasamonte, code 18110, and the checker returns Pasamonte as Official. The detail page confirms the exact name, 1933 New Mexico eucrite fall, and 5.1 kg mass. It gives 36° 13′ N., 103° 24′ W., differing from the source's coordinates; the source's Howardite classification, 3.62 kg total, and coordinates are preserved."
+      }
+    },
+    {
+      "id": "obs-941f22e4-1428-49a5-b733-490f5f5876a2",
+      "catalogId": "nininger-1950",
+      "designation": "197.66",
+      "name": "Pasamonte",
+      "weight": {
+        "grams": 50
+      },
+      "classification": "Stone. Howardite",
+      "locality": "Union County, New Mexico; 36° 14′ N., 103° 49′ W.",
+      "year": "1933",
+      "catalogPage": 81,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Pasamonte",
+        "meteoriteCode": "18110",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18110",
+        "alternateNameNote": "The verified local CSV identifies Official Pasamonte, code 18110, and the checker returns Pasamonte as Official. The detail page confirms the exact name, 1933 New Mexico eucrite fall, and 5.1 kg mass. It gives 36° 13′ N., 103° 24′ W., differing from the source's coordinates; the source's Howardite classification, 3.62 kg total, and coordinates are preserved."
       }
     },
     {
@@ -37231,6 +37799,48 @@
       }
     },
     {
+      "id": "obs-2d3a531b-7a6b-4914-9fc0-0d3c73de27cd",
+      "catalogId": "nininger-1950",
+      "designation": "503.4",
+      "name": "Pantar",
+      "weight": {
+        "grams": 96
+      },
+      "classification": "Stone. Veined Chondrite",
+      "locality": "Lanao, P. I.; 8° 4′ N., 124° 17′ E.",
+      "year": "1938",
+      "catalogPage": 81,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Pantar",
+        "meteoriteCode": "18098",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18098",
+        "alternateNameNote": "The verified local CSV identifies Official Pantar, code 18098, and the checker returns Pantar as Official. The detail page confirms the exact name, 1938 Philippine H5 fall, and exact printed coordinates. Its 2.13 kg mass differs from the source's 10.33 kg total, which is preserved with the historical classification and locality wording."
+      }
+    },
+    {
+      "id": "obs-af3d0e07-9ce5-429b-b72a-93c8ab2a5cd1",
+      "catalogId": "nininger-1950",
+      "designation": "503.5",
+      "name": "Pantar",
+      "weight": {
+        "grams": 22.4
+      },
+      "classification": "Stone. Veined Chondrite",
+      "locality": "Lanao, P. I.; 8° 4′ N., 124° 17′ E.",
+      "year": "1938",
+      "catalogPage": 81,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Pantar",
+        "meteoriteCode": "18098",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18098",
+        "alternateNameNote": "The verified local CSV identifies Official Pantar, code 18098, and the checker returns Pantar as Official. The detail page confirms the exact name, 1938 Philippine H5 fall, and exact printed coordinates. Its 2.13 kg mass differs from the source's 10.33 kg total, which is preserved with the historical classification and locality wording."
+      }
+    },
+    {
       "id": "obs-3e1941f3-3477-48ee-9a77-8fc19eb87437",
       "catalogId": "nininger-1950",
       "designation": "504.1",
@@ -37522,6 +38132,27 @@
         "meteoriteCode": "16698",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16698",
         "alternateNameNote": "The checker treats bare Minnesota as a partial name with two records. The verified local CSV and detail page identify Official Minnesota (iron), code 16698, as an iron with historical medium-octahedrite classification and 6.1 gram mass. The source prints a 6.3 gram specimen; its unknown date remains null."
+      }
+    },
+    {
+      "id": "obs-d46a20ac-fab3-46b4-afd6-a5401e36a598",
+      "catalogId": "nininger-1950",
+      "designation": "520.1",
+      "name": "Palisades Park",
+      "weight": {
+        "grams": 58
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Randall County, Texas; 35° 6′ N., 101° 52′ W.",
+      "year": "1935",
+      "catalogPage": 81,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The checker identifies Palisades Park as an NHM Catalogue synonym of Official Canyon Diablo, code 5257, and the detail page lists that synonym. However, Canyon Diablo is an Arizona iron found in 1891 with 30 tonne mass, while the source prints a 1935 Texas coarse octahedrite totaling 120 grams at different coordinates. The local CSV confirms the conflict; no identity or code is inferred."
       }
     },
     {
