@@ -388,14 +388,15 @@
           81,
           82,
           83,
-          84
+          84,
+          85
         ],
-        "sourcePageCount": 59,
-        "recordCount": 1264,
-        "recordsWithDesignation": 1238,
-        "recordsWithWeight": 1200,
+        "sourcePageCount": 60,
+        "recordCount": 1330,
+        "recordsWithDesignation": 1304,
+        "recordsWithWeight": 1266,
         "confidenceCounts": {
-          "high": 1264,
+          "high": 1330,
           "medium": 0,
           "low": 0
         },
@@ -403,11 +404,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 3176,
-    "recordsWithDesignation": 2981,
-    "recordsWithWeight": 2984,
+    "recordCount": 3242,
+    "recordsWithDesignation": 3047,
+    "recordsWithWeight": 3050,
     "confidenceCounts": {
-      "high": 3176,
+      "high": 3242,
       "medium": 0,
       "low": 0
     }
@@ -28877,6 +28878,1371 @@
       }
     },
     {
+      "id": "obs-3c865590-6986-497c-b6e7-54c856272d17",
+      "catalogId": "nininger-1950",
+      "designation": "92.474",
+      "name": "Plainview",
+      "weight": {
+        "grams": 12
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-d8ae40e3-3cdb-41c9-9783-b34e066c3def",
+      "catalogId": "nininger-1950",
+      "designation": "92.475",
+      "name": "Plainview",
+      "weight": {
+        "grams": 10.5
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-ec755308-394b-4e37-b95f-4890ce838871",
+      "catalogId": "nininger-1950",
+      "designation": "92.476",
+      "name": "Plainview",
+      "weight": {
+        "grams": 11.3
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-30efda23-28c8-44cc-a124-fc842b69cee4",
+      "catalogId": "nininger-1950",
+      "designation": "92.477",
+      "name": "Plainview",
+      "weight": {
+        "grams": 5.5
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-3bafa01f-36a4-4b55-b5a0-5d1ae65ad53d",
+      "catalogId": "nininger-1950",
+      "designation": "92.478",
+      "name": "Plainview",
+      "weight": {
+        "grams": 5.5
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-213e5258-32f1-4c8e-a03d-a2826d18b3d9",
+      "catalogId": "nininger-1950",
+      "designation": "92.479",
+      "name": "Plainview",
+      "weight": {
+        "grams": 6
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-550805c3-fe83-451d-8490-5018d47833e8",
+      "catalogId": "nininger-1950",
+      "designation": "92.480",
+      "name": "Plainview",
+      "weight": {
+        "grams": 5.3
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-ce85dcdc-063b-4d73-8419-0abfb8810770",
+      "catalogId": "nininger-1950",
+      "designation": "92.481",
+      "name": "Plainview",
+      "weight": {
+        "grams": 5.7
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-53fee2db-ad2d-47c6-b7b3-93f063ffa1ea",
+      "catalogId": "nininger-1950",
+      "designation": "92.482",
+      "name": "Plainview",
+      "weight": {
+        "grams": 3.7
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-13034f68-1bdb-4ae1-9ad0-493bd7931963",
+      "catalogId": "nininger-1950",
+      "designation": "92.483",
+      "name": "Plainview",
+      "weight": {
+        "grams": 26.5
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-414d8fde-a243-43f0-a56b-c0261b5af2c9",
+      "catalogId": "nininger-1950",
+      "designation": "92.484",
+      "name": "Plainview",
+      "weight": {
+        "grams": 13.8
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-61b7168f-6d98-4dce-b0c3-449842050806",
+      "catalogId": "nininger-1950",
+      "designation": "92.485",
+      "name": "Plainview",
+      "weight": {
+        "grams": 11.8
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-2a92ac3f-75d1-4977-8337-062cf1e957ed",
+      "catalogId": "nininger-1950",
+      "designation": "92.486",
+      "name": "Plainview",
+      "weight": {
+        "grams": 7.1
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-dfefca20-17fe-49d9-aa6e-8bbb1f10df43",
+      "catalogId": "nininger-1950",
+      "designation": "92.487",
+      "name": "Plainview",
+      "weight": {
+        "grams": 9.2
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-ab0b8faa-c6df-4c15-8914-309970bf4b4c",
+      "catalogId": "nininger-1950",
+      "designation": "92.488",
+      "name": "Plainview",
+      "weight": {
+        "grams": 6.6
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-98528d2a-578a-46fb-b333-be35166e779a",
+      "catalogId": "nininger-1950",
+      "designation": "92.490",
+      "name": "Plainview",
+      "weight": {
+        "grams": 6.8
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-94fa51b3-f398-429f-b63a-14be9045fbb0",
+      "catalogId": "nininger-1950",
+      "designation": "92.491",
+      "name": "Plainview",
+      "weight": {
+        "grams": 1.8
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-a87b68c1-09fa-4b66-ad41-35878d7fd0be",
+      "catalogId": "nininger-1950",
+      "designation": "92.492",
+      "name": "Plainview",
+      "weight": {
+        "grams": 4.4
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-98bf1c9e-3a38-48f6-9899-f3097988ab3b",
+      "catalogId": "nininger-1950",
+      "designation": "92.494",
+      "name": "Plainview",
+      "weight": {
+        "grams": 1.6
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-1bc4034c-98b6-47f4-81b9-2d2855a0f3e1",
+      "catalogId": "nininger-1950",
+      "designation": "92.501",
+      "name": "Plainview",
+      "weight": {
+        "grams": 2718
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-702d1c18-4c2f-41ae-8cb6-991b6508a47b",
+      "catalogId": "nininger-1950",
+      "designation": "92.502",
+      "name": "Plainview",
+      "weight": {
+        "grams": 1233
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-6c0173a5-3a96-4146-b2f4-0416a98a44bc",
+      "catalogId": "nininger-1950",
+      "designation": "92.507",
+      "name": "Plainview",
+      "weight": {
+        "grams": 1022.3
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-830b0a93-50e6-4736-b3d2-f0075b33c2b3",
+      "catalogId": "nininger-1950",
+      "designation": "92.509",
+      "name": "Plainview",
+      "weight": {
+        "grams": 228
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-ef3c4ac7-8b3c-42ef-96be-8b825d4681ad",
+      "catalogId": "nininger-1950",
+      "designation": "92.529",
+      "name": "Plainview",
+      "weight": {
+        "grams": 8.4
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-09cb509b-a31a-4f8f-a0a9-98299fc142b8",
+      "catalogId": "nininger-1950",
+      "designation": "92.532",
+      "name": "Plainview",
+      "weight": {
+        "grams": 403.2
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-ae574837-f30f-4429-a81f-7792d0335f3a",
+      "catalogId": "nininger-1950",
+      "designation": "92.538",
+      "name": "Plainview",
+      "weight": {
+        "grams": 228
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-1f2e5607-1774-40ce-aa4c-c4c9e022f848",
+      "catalogId": "nininger-1950",
+      "designation": "92.542",
+      "name": "Plainview",
+      "weight": {
+        "grams": 289
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-f92459d6-0f13-46b1-8530-4872b3f3f977",
+      "catalogId": "nininger-1950",
+      "designation": "92.543",
+      "name": "Plainview",
+      "weight": {
+        "grams": 720
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-e625f427-cdd0-4a6f-8c44-f06e56ec53cb",
+      "catalogId": "nininger-1950",
+      "designation": "92.544",
+      "name": "Plainview",
+      "weight": {
+        "grams": 1331
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-fb1e52ed-36d9-4ba2-8d9b-d060a4ccf260",
+      "catalogId": "nininger-1950",
+      "designation": "92.548",
+      "name": "Plainview",
+      "weight": {
+        "grams": 644.3
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-3ca1ef13-5883-4729-95d4-13000e08de08",
+      "catalogId": "nininger-1950",
+      "designation": "92.549",
+      "name": "Plainview",
+      "weight": {
+        "grams": 1230
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-a336afbe-b1b3-4fbb-8beb-d6769edddb5e",
+      "catalogId": "nininger-1950",
+      "designation": "92.551",
+      "name": "Plainview",
+      "weight": {
+        "grams": 828.6
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-d6008c86-6fdf-449b-ab8f-0c2ac3351115",
+      "catalogId": "nininger-1950",
+      "designation": "92.552",
+      "name": "Plainview",
+      "weight": {
+        "grams": 665
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-65f40d72-1dbd-454c-bf39-c33dc6e8e82e",
+      "catalogId": "nininger-1950",
+      "designation": "92.555",
+      "name": "Plainview",
+      "weight": {
+        "grams": 375.9
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-99547fa7-aba8-4a6d-a2a7-c6a3cdcffb96",
+      "catalogId": "nininger-1950",
+      "designation": "92.560",
+      "name": "Plainview",
+      "weight": {
+        "grams": 829
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-f823a2a8-95cd-4aed-a8e0-9294c30da5b8",
+      "catalogId": "nininger-1950",
+      "designation": "92.561",
+      "name": "Plainview",
+      "weight": {
+        "grams": 539.5
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-514b7991-f1a7-4b9d-9539-e7ef6a873e77",
+      "catalogId": "nininger-1950",
+      "designation": "92.562",
+      "name": "Plainview",
+      "weight": {
+        "grams": 300
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-2f941998-ce3c-4c5a-9971-be658ba7eee7",
+      "catalogId": "nininger-1950",
+      "designation": "92.563",
+      "name": "Plainview",
+      "weight": {
+        "grams": 212
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-c1597a15-405b-458d-b9c0-67d681a143a1",
+      "catalogId": "nininger-1950",
+      "designation": "92.565",
+      "name": "Plainview",
+      "weight": {
+        "grams": 649.5
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-8595e0be-1d00-4ec1-8233-a76f6ce1ade6",
+      "catalogId": "nininger-1950",
+      "designation": "92.566",
+      "name": "Plainview",
+      "weight": {
+        "grams": 848
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-37466825-d987-4cef-9c81-2b20e31bf63e",
+      "catalogId": "nininger-1950",
+      "designation": "92.568",
+      "name": "Plainview",
+      "weight": {
+        "grams": 1105
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-04d07fbc-1595-4d72-ae5c-9bffbe39ef7b",
+      "catalogId": "nininger-1950",
+      "designation": "92.569",
+      "name": "Plainview",
+      "weight": {
+        "grams": 784
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-d04fab24-4729-459b-99c5-86ad55512829",
+      "catalogId": "nininger-1950",
+      "designation": "92.570",
+      "name": "Plainview",
+      "weight": {
+        "grams": 626
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-d4fcc648-173d-4ab3-b503-5141a40cf276",
+      "catalogId": "nininger-1950",
+      "designation": "92.571",
+      "name": "Plainview",
+      "weight": {
+        "grams": 595
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-d52b457c-bd95-4b08-9532-cf5f86e6e3e9",
+      "catalogId": "nininger-1950",
+      "designation": "92.582",
+      "name": "Plainview",
+      "weight": {
+        "grams": 236
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-898bbd99-dba7-4892-988e-82cf2d9aba9b",
+      "catalogId": "nininger-1950",
+      "designation": "92.593",
+      "name": "Plainview",
+      "weight": {
+        "grams": 115
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-8bdb50e1-7450-4fdf-98c5-cde88fbb450a",
+      "catalogId": "nininger-1950",
+      "designation": "92.601",
+      "name": "Plainview",
+      "weight": {
+        "grams": 1242
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-c1857b97-455f-43fe-9b7d-b12dbe91cdb1",
+      "catalogId": "nininger-1950",
+      "designation": "92.602",
+      "name": "Plainview",
+      "weight": {
+        "grams": 1387
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-703ca529-f344-40e8-ac35-66f00400d41c",
+      "catalogId": "nininger-1950",
+      "designation": "92.605",
+      "name": "Plainview",
+      "weight": {
+        "grams": 782
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-fa69ce31-6224-468a-af04-e55f500890d7",
+      "catalogId": "nininger-1950",
+      "designation": "92.606",
+      "name": "Plainview",
+      "weight": {
+        "grams": 684
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-586af15e-ec55-440f-b5a6-2272f5343b25",
+      "catalogId": "nininger-1950",
+      "designation": "92.607",
+      "name": "Plainview",
+      "weight": {
+        "grams": 474
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-714b6af6-0a7e-4a7c-957d-047974afe8a0",
+      "catalogId": "nininger-1950",
+      "designation": "92.615",
+      "name": "Plainview",
+      "weight": {
+        "grams": 145
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-ee612b22-2493-4cb8-b353-41af91c689ca",
+      "catalogId": "nininger-1950",
+      "designation": "92.616",
+      "name": "Plainview",
+      "weight": {
+        "grams": 24.5
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-e5f49bbd-2b67-4447-a761-0bff8514311b",
+      "catalogId": "nininger-1950",
+      "designation": "92.617",
+      "name": "Plainview",
+      "weight": {
+        "grams": 16.3
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-2565a5be-c4d7-45e9-9796-ced14fcba5bb",
+      "catalogId": "nininger-1950",
+      "designation": "92.618",
+      "name": "Plainview",
+      "weight": {
+        "grams": 10.4
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-7cb0c3e2-98ec-47fd-b2af-1b349a22d76b",
+      "catalogId": "nininger-1950",
+      "designation": "92.619",
+      "name": "Plainview",
+      "weight": {
+        "grams": 16.3
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-684ac07b-5985-423a-acc2-0baa9fb2a8df",
+      "catalogId": "nininger-1950",
+      "designation": "92.620",
+      "name": "Plainview",
+      "weight": {
+        "grams": 10
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-79047a55-833f-4a6e-ae50-614b0639beea",
+      "catalogId": "nininger-1950",
+      "designation": "92.621",
+      "name": "Plainview",
+      "weight": {
+        "grams": 4.5
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-5f843152-9c83-4dc3-bae1-114cfdd69579",
+      "catalogId": "nininger-1950",
+      "designation": "92.622",
+      "name": "Plainview",
+      "weight": {
+        "grams": 89.4
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-54ce3ffd-ff4e-485a-8d3e-649129dcd435",
+      "catalogId": "nininger-1950",
+      "designation": "92.624",
+      "name": "Plainview",
+      "weight": {
+        "grams": 23
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-e9a8f6d2-b61b-49ad-ad41-6b84f3e42ecf",
+      "catalogId": "nininger-1950",
+      "designation": "92.625",
+      "name": "Plainview",
+      "weight": {
+        "grams": 20
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-8d3fe1af-32fc-4b35-a2c1-7ffe6d216e85",
+      "catalogId": "nininger-1950",
+      "designation": "92.626",
+      "name": "Plainview",
+      "weight": {
+        "grams": 17
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-cfcd4717-93f4-4f5d-af10-a6ceb7a56f09",
+      "catalogId": "nininger-1950",
+      "designation": "92.627",
+      "name": "Plainview",
+      "weight": {
+        "grams": 22.5
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-e3852235-5d91-404d-ad91-2e34e5b85cb2",
+      "catalogId": "nininger-1950",
+      "designation": "92.628",
+      "name": "Plainview",
+      "weight": {
+        "grams": 12
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
+      "id": "obs-4b087646-7006-4b15-8461-1059d53c5034",
+      "catalogId": "nininger-1950",
+      "designation": "92.629",
+      "name": "Plainview",
+      "weight": {
+        "grams": 15.5
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
+      }
+    },
+    {
       "id": "obs-4fc94015-8674-4abd-8d87-9fd65f0914ba",
       "catalogId": "nininger-1950",
       "designation": "93a",
@@ -28916,6 +30282,27 @@
         "meteoriteCode": "18108",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18108",
         "alternateNameNote": "The verified local CSV identifies Official Parnallee, code 18108, and the checker returns Parnallee as Official. The detail page confirms the exact name, 1857 Indian LL3.6 fall, 77.6 kg mass, Tamil Nadu coordinates, and printed Perunali synonym. The source's 77.7 kg total, historical locality, and classification are preserved."
+      }
+    },
+    {
+      "id": "obs-f914cac6-3441-4221-be53-7d2a0daf1ab6",
+      "catalogId": "nininger-1950",
+      "designation": "94.493",
+      "name": "Plainview",
+      "weight": {
+        "grams": 3
+      },
+      "classification": "Stone. Veined intermediate chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1917",
+      "catalogPage": 85,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The checker returns bare Plainview as a partial name with six candidates. The verified local CSV identifies Official Plainview (1917), code 18841, as a 1917 Texas H5 with 700,000 gram mass. The detail page confirms the official name, year, Texas location, H5 identity, 700 kg mass, 34° 7′ N., 101° 47′ W. coordinates, and Hale County synonym. These controls distinguish later qualified Plainview names; the source historical classification and estimated total are preserved."
       }
     },
     {
