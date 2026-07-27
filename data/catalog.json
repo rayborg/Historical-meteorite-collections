@@ -350,14 +350,15 @@
           43,
           44,
           45,
-          46
+          46,
+          47
         ],
-        "sourcePageCount": 21,
-        "recordCount": 446,
-        "recordsWithDesignation": 442,
-        "recordsWithWeight": 434,
+        "sourcePageCount": 22,
+        "recordCount": 458,
+        "recordsWithDesignation": 454,
+        "recordsWithWeight": 446,
         "confidenceCounts": {
-          "high": 446,
+          "high": 458,
           "medium": 0,
           "low": 0
         },
@@ -365,11 +366,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2358,
-    "recordsWithDesignation": 2185,
-    "recordsWithWeight": 2218,
+    "recordCount": 2370,
+    "recordsWithDesignation": 2197,
+    "recordsWithWeight": 2230,
     "confidenceCounts": {
-      "high": 2358,
+      "high": 2370,
       "medium": 0,
       "low": 0
     }
@@ -18969,6 +18970,90 @@
       }
     },
     {
+      "id": "obs-2831c464-16c5-4089-90cf-4a35212b4906",
+      "catalogId": "nininger-1950",
+      "designation": "26a",
+      "name": "Cumberland Falls",
+      "weight": {
+        "grams": 82
+      },
+      "classification": "Stone. Whitleyite, a breccia consisting of fragments of white aubrite and black enstatite-chondrite",
+      "locality": "Whitley County, Kentucky",
+      "year": "1919",
+      "catalogPage": 47,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Cumberland Falls",
+        "meteoriteCode": "5496",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5496",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-356abef0-b20e-4c2a-b8bb-9bba329d7e2d",
+      "catalogId": "nininger-1950",
+      "designation": "26e",
+      "name": "Cumberland Falls",
+      "weight": {
+        "grams": 102.7
+      },
+      "classification": "Stone. Whitleyite, a breccia consisting of fragments of white aubrite and black enstatite-chondrite",
+      "locality": "Whitley County, Kentucky",
+      "year": "1919",
+      "catalogPage": 47,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Cumberland Falls",
+        "meteoriteCode": "5496",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5496",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-3a556553-461f-471c-be86-b3c2ba22c6f5",
+      "catalogId": "nininger-1950",
+      "designation": "26.4",
+      "name": "Cumberland Falls",
+      "weight": {
+        "grams": 148
+      },
+      "classification": "Stone. Whitleyite, a breccia consisting of fragments of white aubrite and black enstatite-chondrite",
+      "locality": "Whitley County, Kentucky",
+      "year": "1919",
+      "catalogPage": 47,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Cumberland Falls",
+        "meteoriteCode": "5496",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5496",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-0b658174-0c29-434e-a753-b1e5d830e5f0",
+      "catalogId": "nininger-1950",
+      "designation": "26.5",
+      "name": "Cumberland Falls",
+      "weight": {
+        "grams": 431.5
+      },
+      "classification": "Stone. Whitleyite, a breccia consisting of fragments of white aubrite and black enstatite-chondrite",
+      "locality": "Whitley County, Kentucky",
+      "year": "1919",
+      "catalogPage": 47,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Cumberland Falls",
+        "meteoriteCode": "5496",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5496",
+        "alternateNameNote": null
+      }
+    },
+    {
       "id": "obs-e9a28cb9-3dfb-495f-8322-45a54c8aa998",
       "catalogId": "nininger-1950",
       "designation": "27a",
@@ -18987,6 +19072,27 @@
         "meteoriteCode": "5350",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5350",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-e42a8d97-2035-4e6a-ba01-0d95fd267e90",
+      "catalogId": "nininger-1950",
+      "designation": "28a",
+      "name": "Cuernavaca",
+      "weight": {
+        "grams": 72.5
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Morelos, Mexico",
+      "year": "1889",
+      "catalogPage": 47,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Chupaderos",
+        "meteoriteCode": "5363",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5363",
+        "alternateNameNote": "The official name checker returns Cuernavaca as a synonym of Chupaderos. The official detail page for code 5363 lists Cuernavaca as both a Buchwald and NHM Catalogue synonym; the verified CSV's Official row names Chupaderos."
       }
     },
     {
@@ -19113,6 +19219,27 @@
         "meteoriteCode": "5387",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5387",
         "alternateNameNote": "The official checker returns exact official Coahuila, code 5387. The detail record agrees on Mexico, 1837, iron, and the printed synonyms and reports a closely corresponding 2.1 t mass."
+      }
+    },
+    {
+      "id": "obs-c7ed7fe7-ecea-41a3-a528-6f1c5a5d5ca5",
+      "catalogId": "nininger-1950",
+      "designation": "33a",
+      "name": "Crab Orchard",
+      "weight": {
+        "grams": 45
+      },
+      "classification": "Mesosiderite",
+      "locality": "Cumberland County, Tennessee",
+      "year": "1887",
+      "catalogPage": 47,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Crab Orchard",
+        "meteoriteCode": "5461",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5461",
+        "alternateNameNote": null
       }
     },
     {
@@ -23337,6 +23464,27 @@
       }
     },
     {
+      "id": "obs-4ecbdc50-92f3-4e95-8d56-0fb7e6e31166",
+      "catalogId": "nininger-1950",
+      "designation": "169.1",
+      "name": "Coya Norte",
+      "weight": {
+        "grams": 4993
+      },
+      "classification": "Iron. Hexahedrite",
+      "locality": "Chuquicamata, Chile, South America",
+      "year": "1927",
+      "catalogPage": 47,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "North Chile",
+        "meteoriteCode": "17001",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17001",
+        "alternateNameNote": "The official name checker returns Coya Norte as a synonym of North Chile. The official detail page for code 17001 lists Coya Norte as both a Buchwald and NHM Catalogue synonym; the verified CSV's Official row names North Chile."
+      }
+    },
+    {
       "id": "obs-211c2243-c944-4d9f-b865-c00d0d9675a9",
       "catalogId": "nininger-1950",
       "designation": "175a.",
@@ -23628,6 +23776,27 @@
         "meteoriteCode": null,
         "metbullUrl": null,
         "alternateNameNote": "The official name checker returns Chile only as a partial name, not an approved identity, and the verified local CSV contains no exact meteorite named Chile. The country-only heading, unknown date, and generic Stone class do not establish a canonical meteorite; none is inferred."
+      }
+    },
+    {
+      "id": "obs-a43a52bc-f5ea-4735-9474-566bd5be681c",
+      "catalogId": "nininger-1950",
+      "designation": "215.2",
+      "name": "Cullison",
+      "weight": {
+        "grams": 278
+      },
+      "classification": "Stone. Spherical bronzite-chondrite",
+      "locality": "Pratt County, Kansas",
+      "year": "1911",
+      "catalogPage": 47,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Cullison",
+        "meteoriteCode": "5495",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5495",
+        "alternateNameNote": null
       }
     },
     {
@@ -24744,6 +24913,27 @@
       }
     },
     {
+      "id": "obs-0d51b718-1aa8-47bd-9036-dd5a22ed0181",
+      "catalogId": "nininger-1950",
+      "designation": "357.1",
+      "name": "Deep Springs",
+      "weight": {
+        "grams": 670
+      },
+      "classification": "Iron. Nickel-rich ataxite",
+      "locality": "Rockingham County, North Carolina",
+      "year": "1846",
+      "catalogPage": 47,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Deep Springs",
+        "meteoriteCode": "6637",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=6637",
+        "alternateNameNote": null
+      }
+    },
+    {
       "id": "obs-6ae2817d-04bf-48a9-867b-a77e87d425e5",
       "catalogId": "nininger-1950",
       "designation": "359.1",
@@ -25038,6 +25228,27 @@
       }
     },
     {
+      "id": "obs-3ed9485c-e71c-46b4-b879-8c7c17cae286",
+      "catalogId": "nininger-1950",
+      "designation": "396.1",
+      "name": "Dalton",
+      "weight": {
+        "grams": 35
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Whitfield County, Georgia",
+      "year": "1877",
+      "catalogPage": 47,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dalton",
+        "meteoriteCode": "5509",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5509",
+        "alternateNameNote": null
+      }
+    },
+    {
       "id": "obs-7b231dea-27d9-4b58-860d-e4db97d59ca2",
       "catalogId": "nininger-1950",
       "designation": "397.2",
@@ -25203,6 +25414,27 @@
         "meteoriteCode": "4995",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4995",
         "alternateNameNote": "The New Mexico context, 1937 find year, 44.4 kg mass, and source coordinates agree with MetBull. The historical Intermediate chondrite classification corresponds broadly to modern L5."
+      }
+    },
+    {
+      "id": "obs-8258c86a-e8d3-452a-bc4f-5d406f1e4644",
+      "catalogId": "nininger-1950",
+      "designation": "417.1",
+      "name": "Culbertson",
+      "weight": {
+        "grams": 160.6
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Hitchcock County, Nebraska",
+      "year": "1913",
+      "catalogPage": 47,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Culbertson",
+        "meteoriteCode": "5494",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5494",
+        "alternateNameNote": null
       }
     },
     {
@@ -26253,6 +26485,27 @@
         "meteoriteCode": "5329",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5329",
         "alternateNameNote": "The official detail page lists all seven printed synonyms, with Orléans carrying its modern diacritic; the 1810 fall and 27 kg total agree."
+      }
+    },
+    {
+      "id": "obs-b9bd2690-b5ed-4bef-9ebc-f74660101df6",
+      "catalogId": "nininger-1950",
+      "designation": "540.1",
+      "name": "Cranbourne",
+      "weight": {
+        "grams": 28
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "near Melbourne, Victoria, Australia",
+      "year": "1854",
+      "catalogPage": 47,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Cranbourne",
+        "meteoriteCode": "5463",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5463",
+        "alternateNameNote": null
       }
     },
     {
