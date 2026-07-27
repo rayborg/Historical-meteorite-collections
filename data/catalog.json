@@ -397,14 +397,15 @@
           90,
           91,
           92,
-          93
+          93,
+          94
         ],
-        "sourcePageCount": 68,
-        "recordCount": 1495,
-        "recordsWithDesignation": 1469,
-        "recordsWithWeight": 1430,
+        "sourcePageCount": 69,
+        "recordCount": 1509,
+        "recordsWithDesignation": 1483,
+        "recordsWithWeight": 1444,
         "confidenceCounts": {
-          "high": 1495,
+          "high": 1509,
           "medium": 0,
           "low": 0
         },
@@ -412,11 +413,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 3407,
-    "recordsWithDesignation": 3212,
-    "recordsWithWeight": 3214,
+    "recordCount": 3421,
+    "recordsWithDesignation": 3226,
+    "recordsWithWeight": 3228,
     "confidenceCounts": {
-      "high": 3407,
+      "high": 3421,
       "medium": 0,
       "low": 0
     }
@@ -32603,6 +32604,48 @@
       }
     },
     {
+      "id": "obs-af65e58f-96a9-4eef-8167-7de32c4b9075",
+      "catalogId": "nininger-1950",
+      "designation": "109a",
+      "name": "Shelburne",
+      "weight": {
+        "grams": 16
+      },
+      "classification": "Stone. Veined grey chondrite",
+      "locality": "Grey County, Ontario, Canada",
+      "year": "1904",
+      "catalogPage": 94,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Shelburne",
+        "meteoriteCode": "23529",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23529",
+        "alternateNameNote": "The verified local CSV identifies Official Shelburne, code 23529, as a 1904 Ontario L5 fall with 18.6 kg mass. The official checker returns Shelburne as Official, and the detail page confirms the exact name, fall year, province, classification, and mass. The source's Grey County wording, exact fall time, and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-caa1f00c-1313-4638-b5e9-6081d403917e",
+      "catalogId": "nininger-1950",
+      "designation": "109b",
+      "name": "Shelburne",
+      "weight": {
+        "grams": 16
+      },
+      "classification": "Stone. Veined grey chondrite",
+      "locality": "Grey County, Ontario, Canada",
+      "year": "1904",
+      "catalogPage": 94,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Shelburne",
+        "meteoriteCode": "23529",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23529",
+        "alternateNameNote": "The verified local CSV identifies Official Shelburne, code 23529, as a 1904 Ontario L5 fall with 18.6 kg mass. The official checker returns Shelburne as Official, and the detail page confirms the exact name, fall year, province, classification, and mass. The source's Grey County wording, exact fall time, and historical classification are preserved."
+      }
+    },
+    {
       "id": "obs-3c03c93f-3fc7-4365-8173-4e15b06ee30d",
       "catalogId": "nininger-1950",
       "designation": "110a",
@@ -38168,6 +38211,27 @@
       }
     },
     {
+      "id": "obs-37575b54-f7ce-4c68-942d-9cdfb5ad5dfb",
+      "catalogId": "nininger-1950",
+      "designation": "233a",
+      "name": "Shrewsbury",
+      "weight": {
+        "grams": 22
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "York County, Pennsylvania",
+      "year": "1907",
+      "catalogPage": 94,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Shrewsbury",
+        "meteoriteCode": "23581",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23581",
+        "alternateNameNote": "The verified local CSV identifies Official Shrewsbury, code 23581, as a 1907 Pennsylvania Iron, IAB-sLL with 12 kg mass. The official checker returns Shrewsbury as Official, and the detail page confirms the exact name, year, state, and iron identity. The source's York County wording, historical classification, and 12.3 kg total are preserved."
+      }
+    },
+    {
       "id": "obs-eace206d-0edb-4c54-bed9-e8e040290d3f",
       "catalogId": "nininger-1950",
       "designation": "234b",
@@ -39806,6 +39870,27 @@
       }
     },
     {
+      "id": "obs-df365c67-0753-4833-ac38-262a2acc5d6d",
+      "catalogId": "nininger-1950",
+      "designation": "297.1",
+      "name": "Seneca",
+      "weight": {
+        "grams": 440
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Nemaha County, Kansas; 39° 50′ N., 96° 4′ W.",
+      "year": "1936",
+      "catalogPage": 94,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Seneca",
+        "meteoriteCode": "23497",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23497",
+        "alternateNameNote": "The verified local CSV identifies Official Seneca, code 23497, as a 1936 Kansas H4 with 1,900 gram mass. The official checker returns Seneca as Official, and the detail page confirms the exact name, year, state, mass, and exact printed coordinates. The source's historical classification is preserved."
+      }
+    },
+    {
       "id": "obs-2d9e1be4-3654-4a65-bfc8-7260c0c5d0ba",
       "catalogId": "nininger-1950",
       "designation": "298.1",
@@ -39908,6 +39993,48 @@
         "meteoriteCode": "16779",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16779",
         "alternateNameNote": "The verified local CSV identifies exact Official Mount Joy, code 16779, a Pennsylvania Iron, IIAB found in 1887 with 384 kg mass. The official checker returns the exact name as Official, and the detail page confirms the identity and lists Adams County and Gettysburg as synonyms. The source's 385 kg total and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-88ced700-b7e6-4c9f-9497-9ae1e1d49b51",
+      "catalogId": "nininger-1950",
+      "designation": "300.1",
+      "name": "Seneca Township",
+      "weight": {
+        "grams": 223
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Lenawee County, Michigan",
+      "year": "1923",
+      "catalogPage": 94,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Seneca Township",
+        "meteoriteCode": "23499",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23499",
+        "alternateNameNote": "The verified local CSV identifies Official Seneca Township, code 23499, as a 1923 Michigan Iron, IVA with 11.5 kg mass. The official checker returns Seneca Township as Official, and the detail page confirms the exact name, year, state, iron identity, and mass. The source's Lenawee County wording and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-0a78e365-36c9-4387-a835-dd6bb5679cdf",
+      "catalogId": "nininger-1950",
+      "designation": "300.2",
+      "name": "Seneca Township",
+      "weight": {
+        "grams": 131
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Lenawee County, Michigan",
+      "year": "1923",
+      "catalogPage": 94,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Seneca Township",
+        "meteoriteCode": "23499",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23499",
+        "alternateNameNote": "The verified local CSV identifies Official Seneca Township, code 23499, as a 1923 Michigan Iron, IVA with 11.5 kg mass. The official checker returns Seneca Township as Official, and the detail page confirms the exact name, year, state, iron identity, and mass. The source's Lenawee County wording and historical classification are preserved."
       }
     },
     {
@@ -40331,6 +40458,90 @@
       }
     },
     {
+      "id": "obs-7ffa7b89-f96d-4254-a9e2-de743cb0f7ce",
+      "catalogId": "nininger-1950",
+      "designation": "318.2",
+      "name": "Shallowwater",
+      "weight": {
+        "grams": 175
+      },
+      "classification": "Stone. Diogenite, large enstatite crystals",
+      "locality": "Lubbock County, Texas; 33° 42′ N., 101° 56′ W.",
+      "year": "1936",
+      "catalogPage": 94,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "Shallowwater is absent from the verified local valid-name CSV, and official exact and containing-name searches find no record or synonym. Official Shallowater, code 23522, has matching 1936 Texas aubrite context, exact printed coordinates, and 4.65 kg mass, but its detail page does not list Shallowwater as a synonym. No identity or spelling correction is inferred."
+      }
+    },
+    {
+      "id": "obs-3d43301f-c4cd-4288-ae8d-41fa337bdf62",
+      "catalogId": "nininger-1950",
+      "designation": "318.7",
+      "name": "Shallowwater",
+      "weight": {
+        "grams": 239
+      },
+      "classification": "Stone. Diogenite, large enstatite crystals",
+      "locality": "Lubbock County, Texas; 33° 42′ N., 101° 56′ W.",
+      "year": "1936",
+      "catalogPage": 94,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "Shallowwater is absent from the verified local valid-name CSV, and official exact and containing-name searches find no record or synonym. Official Shallowater, code 23522, has matching 1936 Texas aubrite context, exact printed coordinates, and 4.65 kg mass, but its detail page does not list Shallowwater as a synonym. No identity or spelling correction is inferred."
+      }
+    },
+    {
+      "id": "obs-20704ab7-5bfc-4dea-9a94-fda7e3140238",
+      "catalogId": "nininger-1950",
+      "designation": "318.9",
+      "name": "Shallowwater",
+      "weight": {
+        "grams": 205
+      },
+      "classification": "Stone. Diogenite, large enstatite crystals",
+      "locality": "Lubbock County, Texas; 33° 42′ N., 101° 56′ W.",
+      "year": "1936",
+      "catalogPage": 94,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "Shallowwater is absent from the verified local valid-name CSV, and official exact and containing-name searches find no record or synonym. Official Shallowater, code 23522, has matching 1936 Texas aubrite context, exact printed coordinates, and 4.65 kg mass, but its detail page does not list Shallowwater as a synonym. No identity or spelling correction is inferred."
+      }
+    },
+    {
+      "id": "obs-10785153-5ecd-4b88-a6f4-e87779084c75",
+      "catalogId": "nininger-1950",
+      "designation": "318.11",
+      "name": "Shallowwater",
+      "weight": {
+        "grams": 146
+      },
+      "classification": "Stone. Diogenite, large enstatite crystals",
+      "locality": "Lubbock County, Texas; 33° 42′ N., 101° 56′ W.",
+      "year": "1936",
+      "catalogPage": 94,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "Shallowwater is absent from the verified local valid-name CSV, and official exact and containing-name searches find no record or synonym. Official Shallowater, code 23522, has matching 1936 Texas aubrite context, exact printed coordinates, and 4.65 kg mass, but its detail page does not list Shallowwater as a synonym. No identity or spelling correction is inferred."
+      }
+    },
+    {
       "id": "obs-c5a916c6-0b79-4858-badd-21a2a4320687",
       "catalogId": "nininger-1950",
       "designation": "319.1",
@@ -40433,6 +40644,27 @@
         "meteoriteCode": "18023",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18023",
         "alternateNameNote": "The checker treats bare Orange River as a partial name with two candidates. The verified local CSV and code 18023 detail page identify Official Orange River (iron); the source's 1855 South African iron identity, 149 kg total, and Griqualand synonym distinguish it from doubtful Orange River (stone), an 1887 8 gram fall. The official 148.8 kg mass differs slightly from the source total, which is preserved."
+      }
+    },
+    {
+      "id": "obs-ceeccc6e-f32a-4f33-ae71-0352f863cf64",
+      "catalogId": "nininger-1950",
+      "designation": "325.1",
+      "name": "Shalka",
+      "weight": {
+        "grams": 8
+      },
+      "classification": "Stone. Diogenite (hypersthene-achondrite)",
+      "locality": "Bishnupur, Bankura district, Bengal, India",
+      "year": "1850",
+      "catalogPage": 94,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Shalka",
+        "meteoriteCode": "23521",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23521",
+        "alternateNameNote": "The verified local CSV identifies Official Shalka, code 23521, as an 1850 Indian Diogenite fall with 4 kg mass. The official checker returns Shalka as Official, and the detail page confirms the exact name, year, country, classification, and all four printed locality or synonym forms: Bancoorah, Bankura, Bissempore, and Saluka. The source's 3.6 kg total is preserved."
       }
     },
     {
@@ -42449,6 +42681,27 @@
         "meteoriteCode": "12410",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12410",
         "alternateNameNote": "The verified local MetBull CSV and official checker identify exact Official Ladder Creek, code 12410. The detail page confirms the 1937 Kansas L6 find, 35.1 kg mass, printed coordinates, and Greeley County synonym. The source's historical classification wording is preserved."
+      }
+    },
+    {
+      "id": "obs-084fbbca-e926-4603-b817-92688edd0615",
+      "catalogId": "nininger-1950",
+      "designation": "406.2",
+      "name": "Shaw",
+      "weight": {
+        "grams": 1171.3
+      },
+      "classification": "Stone. Amphoterite",
+      "locality": "Lincoln County, Colorado; 39° 32′ N., 103° 20′ W.",
+      "year": "1937",
+      "catalogPage": 94,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Shaw",
+        "meteoriteCode": "23526",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23526",
+        "alternateNameNote": "The verified local CSV identifies Official Shaw, code 23526, as a 1937 Colorado L6/7 with 17.5 kg mass. The official checker returns Shaw as Official, and the detail page confirms the exact name, year, state, and exact printed coordinates. The source's historical Amphoterite classification and conflicting 3.7 kg total are preserved."
       }
     },
     {
@@ -44528,6 +44781,48 @@
         "meteoriteCode": "5142",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5142",
         "alternateNameNote": "The official name checker identifies Briscoe County as a synonym of Briscoe. The detail page lists that synonym, and the source agrees on the 1940 Texas find and 1,773 g total mass."
+      }
+    },
+    {
+      "id": "obs-8ea017a6-1979-48e0-a59c-d3abc821073f",
+      "catalogId": "nininger-1950",
+      "designation": "480.1",
+      "name": "Seibert",
+      "weight": {
+        "grams": 3486
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Kit Carson County, Colorado; 39° 18′ N., 102° 50′ W.",
+      "year": "1941",
+      "catalogPage": 94,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Seibert (a)",
+        "meteoriteCode": "23479",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23479",
+        "alternateNameNote": "The verified local CSV identifies Official Seibert (a), code 23479, as a 1941 Colorado H5 with 3.5 kg mass. The official checker explicitly identifies printed Seibert as its synonym, and the detail page confirms the exact printed coordinates, year, state, mass, and Seibert synonym. The source's historical classification is preserved."
+      }
+    },
+    {
+      "id": "obs-3680542e-a989-48d9-87c4-84f7171bad3e",
+      "catalogId": "nininger-1950",
+      "designation": "480.2",
+      "name": "Seibert",
+      "weight": {
+        "grams": 132
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Kit Carson County, Colorado; 39° 18′ N., 102° 50′ W.",
+      "year": "1941",
+      "catalogPage": 94,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Seibert (a)",
+        "meteoriteCode": "23479",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23479",
+        "alternateNameNote": "The verified local CSV identifies Official Seibert (a), code 23479, as a 1941 Colorado H5 with 3.5 kg mass. The official checker explicitly identifies printed Seibert as its synonym, and the detail page confirms the exact printed coordinates, year, state, mass, and Seibert synonym. The source's historical classification is preserved."
       }
     },
     {
