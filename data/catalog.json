@@ -354,14 +354,15 @@
           47,
           48,
           49,
-          50
+          50,
+          51
         ],
-        "sourcePageCount": 25,
-        "recordCount": 506,
-        "recordsWithDesignation": 501,
-        "recordsWithWeight": 494,
+        "sourcePageCount": 26,
+        "recordCount": 521,
+        "recordsWithDesignation": 516,
+        "recordsWithWeight": 509,
         "confidenceCounts": {
-          "high": 506,
+          "high": 521,
           "medium": 0,
           "low": 0
         },
@@ -369,11 +370,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2418,
-    "recordsWithDesignation": 2244,
-    "recordsWithWeight": 2278,
+    "recordCount": 2433,
+    "recordsWithDesignation": 2259,
+    "recordsWithWeight": 2293,
     "confidenceCounts": {
-      "high": 2418,
+      "high": 2433,
       "medium": 0,
       "low": 0
     }
@@ -22984,6 +22985,90 @@
       }
     },
     {
+      "id": "obs-a5591b9d-c6f7-4e15-b792-d7754333fe08",
+      "catalogId": "nininger-1950",
+      "designation": "47a",
+      "name": "Finmarken",
+      "weight": {
+        "grams": 92
+      },
+      "classification": "Pallasite",
+      "locality": "Arctic Norway",
+      "year": "1902",
+      "catalogPage": 51,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Finmarken",
+        "meteoriteCode": "10103",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10103",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Finmarken, code 10103. The detail page confirms the 1902 Norway find and pallasite identity and reports 78.3 kg; the source's Arctic Norway locality wording and 77.5 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-49bfc333-42a0-4846-802b-75f0251826bf",
+      "catalogId": "nininger-1950",
+      "designation": "48b",
+      "name": "Farmington",
+      "weight": {
+        "grams": 15
+      },
+      "classification": "Stone. Black hypersthene-chondrite",
+      "locality": "Washington County, Kansas",
+      "year": "1890",
+      "catalogPage": 51,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Farmington",
+        "meteoriteCode": "10074",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10074",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Farmington, code 10074. The detail page confirms the 1890 Kansas fall and L5 stone identity and reports 89.4 kg; the source's historical classification wording and 90 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-9d74dbb4-d667-4bb6-b75a-3bf86291d297",
+      "catalogId": "nininger-1950",
+      "designation": "48a",
+      "name": "Farmington",
+      "weight": {
+        "grams": 65
+      },
+      "classification": "Stone. Black hypersthene-chondrite",
+      "locality": "Washington County, Kansas",
+      "year": "1890",
+      "catalogPage": 51,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Farmington",
+        "meteoriteCode": "10074",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10074",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Farmington, code 10074. The detail page confirms the 1890 Kansas fall and L5 stone identity and reports 89.4 kg; the source's historical classification wording and 90 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-6b901d10-6614-4a03-8867-6d02ae367466",
+      "catalogId": "nininger-1950",
+      "designation": "48.5",
+      "name": "Farmington",
+      "weight": {
+        "grams": 2053
+      },
+      "classification": "Stone. Black hypersthene-chondrite",
+      "locality": "Washington County, Kansas",
+      "year": "1890",
+      "catalogPage": 51,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Farmington",
+        "meteoriteCode": "10074",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10074",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Farmington, code 10074. The detail page confirms the 1890 Kansas fall and L5 stone identity and reports 89.4 kg; the source's historical classification wording and 90 kg total are preserved without reconciliation."
+      }
+    },
+    {
       "id": "obs-82bbe8bc-2bae-4107-aa8d-62522a94a0fe",
       "catalogId": "nininger-1950",
       "designation": "50.1",
@@ -24664,6 +24749,27 @@
       }
     },
     {
+      "id": "obs-2917b35f-2a0a-40d0-91a9-92d6666aa50d",
+      "catalogId": "nininger-1950",
+      "designation": "217a",
+      "name": "Felix",
+      "weight": {
+        "grams": 2.6
+      },
+      "classification": "Stone. Spherical carbonaceous hypersthene-chondrite",
+      "locality": "Perry County, Alabama",
+      "year": "1900",
+      "catalogPage": 51,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Felix",
+        "meteoriteCode": "10081",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10081",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Felix, code 10081. The detail page confirms the 1900 Alabama fall and 3.2 kg mass and recommends CO3.3; the source's historical classification wording is preserved without reconciliation."
+      }
+    },
+    {
       "id": "obs-63996358-813b-426b-bd17-35b109fb66e1",
       "catalogId": "nininger-1950",
       "designation": "226a",
@@ -25252,6 +25358,69 @@
       }
     },
     {
+      "id": "obs-453516a7-a4f1-4051-b2f2-e3999ace3139",
+      "catalogId": "nininger-1950",
+      "designation": "316.2",
+      "name": "Farley",
+      "weight": {
+        "grams": 450
+      },
+      "classification": "Stone. Crystalline chondrite",
+      "locality": "Colfax County, New Mexico; 36° 20′ N., 104° 3′ W.",
+      "year": "1936",
+      "catalogPage": 51,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Farley",
+        "meteoriteCode": "10073",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10073",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Farley, code 10073. The detail page confirms the 1936 New Mexico find, exact printed coordinates, and H5 stone identity; it reports 19.4 kg, while the source prints 19.5 kg, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-25bdaf86-8573-443d-a906-797eff20ae77",
+      "catalogId": "nininger-1950",
+      "designation": "316.5",
+      "name": "Farley",
+      "weight": {
+        "grams": 3850
+      },
+      "classification": "Stone. Crystalline chondrite",
+      "locality": "Colfax County, New Mexico; 36° 20′ N., 104° 3′ W.",
+      "year": "1936",
+      "catalogPage": 51,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Farley",
+        "meteoriteCode": "10073",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10073",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Farley, code 10073. The detail page confirms the 1936 New Mexico find, exact printed coordinates, and H5 stone identity; it reports 19.4 kg, while the source prints 19.5 kg, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-ec9eca6e-3a33-450a-b9c0-5cd0fd7cb7d6",
+      "catalogId": "nininger-1950",
+      "designation": "316.8",
+      "name": "Farley",
+      "weight": {
+        "grams": 77
+      },
+      "classification": "Stone. Crystalline chondrite",
+      "locality": "Colfax County, New Mexico; 36° 20′ N., 104° 3′ W.",
+      "year": "1936",
+      "catalogPage": 51,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Farley",
+        "meteoriteCode": "10073",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10073",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Farley, code 10073. The detail page confirms the 1936 New Mexico find, exact printed coordinates, and H5 stone identity; it reports 19.4 kg, while the source prints 19.5 kg, which is preserved without reconciliation."
+      }
+    },
+    {
       "id": "obs-918b68b4-0d4d-4c9e-8dd6-075581a6af76",
       "catalogId": "nininger-1950",
       "designation": "317.1",
@@ -25291,6 +25460,27 @@
         "meteoriteCode": "5340",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5340",
         "alternateNameNote": "The official checker returns Cherokee Springs; the South Carolina locality, 1933 fall, and 8.4 kg total agree."
+      }
+    },
+    {
+      "id": "obs-0587cf3d-965b-4ba3-b83c-dc092378d4b1",
+      "catalogId": "nininger-1950",
+      "designation": "327.1",
+      "name": "Fayetteville",
+      "weight": {
+        "grams": 29
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Washington County, Arkansas",
+      "year": "1934",
+      "catalogPage": 51,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Fayetteville",
+        "meteoriteCode": "10079",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10079",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Fayetteville, code 10079. The detail page confirms the 1934 Arkansas H4 fall and reports 2.36 kg, consistent with but more precise than the source's preserved 2.4 kg total."
       }
     },
     {
@@ -25438,6 +25628,27 @@
         "meteoriteCode": "5172",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5172",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-3317ca29-9987-4676-8785-1b1d7b65ba20",
+      "catalogId": "nininger-1950",
+      "designation": "330.1",
+      "name": "Fisher",
+      "weight": {
+        "grams": 10
+      },
+      "classification": "Stone. Veined intermediate hypersthene-chondrite",
+      "locality": "Polk County, Minnesota",
+      "year": "1894",
+      "catalogPage": 51,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Fisher",
+        "meteoriteCode": "10107",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10107",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Fisher, code 10107. The detail page confirms the 1894 Minnesota L6 fall and lists Polk County as a synonym, but reports 17.6 kg; the source's historical classification wording and 5.4 kg total are preserved without reconciliation."
       }
     },
     {
@@ -26155,6 +26366,27 @@
       }
     },
     {
+      "id": "obs-f6855114-baab-498b-bcd5-3d08539d672e",
+      "catalogId": "nininger-1950",
+      "designation": "402.1",
+      "name": "Farnum",
+      "weight": {
+        "grams": 3054
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Nebraska (Across the line in Frontier County); 40° 42′ N., 100° 13′ W.",
+      "year": "1937",
+      "catalogPage": 51,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Farnum",
+        "meteoriteCode": "10076",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10076",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Farnum, code 10076. The detail page confirms the 1937 Nebraska find and L5 stone identity but gives 40° 15′ N., 100° 14′ W. and 4.2 kg; the source's parenthetical locality, printed coordinates, and 4 kg total are preserved without reconciliation."
+      }
+    },
+    {
       "id": "obs-7495bc97-1dbc-4976-8310-677bdc0a2b8d",
       "catalogId": "nininger-1950",
       "designation": "403.1",
@@ -26656,6 +26888,48 @@
         "meteoriteCode": "2331",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2331",
         "alternateNameNote": "The source says found many years ago and recently identified without printing a year; MetBull reports 1940. The source Pallasite classification corresponds to modern Pallasite, PMG-an."
+      }
+    },
+    {
+      "id": "obs-65109f1e-6948-4853-a729-b8a7ab318aa0",
+      "catalogId": "nininger-1950",
+      "designation": "461.1",
+      "name": "Fleming",
+      "weight": {
+        "grams": 718
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Logan County, Colorado; 40° 41′ N., 102° 50′ W.",
+      "year": "1940",
+      "catalogPage": 51,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Fleming",
+        "meteoriteCode": "10110",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10110",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Fleming, code 10110. The detail page confirms the 1940 Colorado find, H3.7 stone identity, latitude, and 1.75 kg mass; it gives longitude 102° 49′ W., while the source prints 102° 50′ W., which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-10f2ffa6-5b19-416d-b7c6-882ffd4d74ab",
+      "catalogId": "nininger-1950",
+      "designation": "461.4",
+      "name": "Fleming",
+      "weight": {
+        "grams": 210
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Logan County, Colorado; 40° 41′ N., 102° 50′ W.",
+      "year": "1940",
+      "catalogPage": 51,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Fleming",
+        "meteoriteCode": "10110",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10110",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Fleming, code 10110. The detail page confirms the 1940 Colorado find, H3.7 stone identity, latitude, and 1.75 kg mass; it gives longitude 102° 49′ W., while the source prints 102° 50′ W., which is preserved without reconciliation."
       }
     },
     {
@@ -27307,6 +27581,48 @@
         "meteoriteCode": "5381",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5381",
         "alternateNameNote": "The official checker returns exact official Clinton, code 5381. The detail record agrees on Tennessee, iron, and 7.7 kg; the source itself prints the find date as unknown, so no year is inferred."
+      }
+    },
+    {
+      "id": "obs-3ad51b53-c2ec-4a3c-aea6-54975e484003",
+      "catalogId": "nininger-1950",
+      "designation": "513.1",
+      "name": "Ferguson Switch",
+      "weight": {
+        "grams": 735
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1937",
+      "catalogPage": 51,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Ferguson Switch",
+        "meteoriteCode": "10089",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10089",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Ferguson Switch, code 10089. The detail page confirms the 1937 Texas find and H5 stone identity and reports 1.7 kg; the source's 1.3 kg total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-ea65d27f-8e6c-47d8-8854-cd3e331c370c",
+      "catalogId": "nininger-1950",
+      "designation": "513.2",
+      "name": "Ferguson Switch",
+      "weight": {
+        "grams": 418
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Hale County, Texas",
+      "year": "1937",
+      "catalogPage": 51,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Ferguson Switch",
+        "meteoriteCode": "10089",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10089",
+        "alternateNameNote": "The verified local CSV and official checker identify exact Official Ferguson Switch, code 10089. The detail page confirms the 1937 Texas find and H5 stone identity and reports 1.7 kg; the source's 1.3 kg total is preserved without reconciliation."
       }
     },
     {
