@@ -371,14 +371,15 @@
           64,
           65,
           66,
-          67
+          67,
+          68
         ],
-        "sourcePageCount": 42,
-        "recordCount": 912,
-        "recordsWithDesignation": 892,
-        "recordsWithWeight": 853,
+        "sourcePageCount": 43,
+        "recordCount": 924,
+        "recordsWithDesignation": 904,
+        "recordsWithWeight": 865,
         "confidenceCounts": {
-          "high": 912,
+          "high": 924,
           "medium": 0,
           "low": 0
         },
@@ -386,11 +387,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2824,
-    "recordsWithDesignation": 2635,
-    "recordsWithWeight": 2637,
+    "recordCount": 2836,
+    "recordsWithDesignation": 2647,
+    "recordsWithWeight": 2649,
     "confidenceCounts": {
-      "high": 2824,
+      "high": 2836,
       "medium": 0,
       "low": 0
     }
@@ -25143,6 +25144,90 @@
       }
     },
     {
+      "id": "obs-dc8ad0fe-4eb0-492e-806c-889819708f96",
+      "catalogId": "nininger-1950",
+      "designation": "69f",
+      "name": "Leeds",
+      "weight": {
+        "grams": 59
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Quebec, Canada; 46° 18′ N., 71° 20′ W.",
+      "year": "1931",
+      "catalogPage": 68,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The verified local valid-name CSV has no Official Leeds row. The official checker calls Leeds the sole synonym of Toluca, code 24018, and Toluca's detail page lists that synonym, but its Mexico locality, 1776 year, Iron IAB-sLL class, and 3 t mass conflict with the source's Quebec, 1931, medium-octahedrite, 1.5 kg record. No identity or code is inferred."
+      }
+    },
+    {
+      "id": "obs-9d0abe10-641d-47bd-8749-21ae6dd44999",
+      "catalogId": "nininger-1950",
+      "designation": "69a",
+      "name": "Leeds",
+      "weight": {
+        "grams": 397
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Quebec, Canada; 46° 18′ N., 71° 20′ W.",
+      "year": "1931",
+      "catalogPage": 68,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The verified local valid-name CSV has no Official Leeds row. The official checker calls Leeds the sole synonym of Toluca, code 24018, and Toluca's detail page lists that synonym, but its Mexico locality, 1776 year, Iron IAB-sLL class, and 3 t mass conflict with the source's Quebec, 1931, medium-octahedrite, 1.5 kg record. No identity or code is inferred."
+      }
+    },
+    {
+      "id": "obs-c5aea9e6-d4da-4099-868f-08d63e640c76",
+      "catalogId": "nininger-1950",
+      "designation": "69.4",
+      "name": "Leeds",
+      "weight": {
+        "grams": 60
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Quebec, Canada; 46° 18′ N., 71° 20′ W.",
+      "year": "1931",
+      "catalogPage": 68,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The verified local valid-name CSV has no Official Leeds row. The official checker calls Leeds the sole synonym of Toluca, code 24018, and Toluca's detail page lists that synonym, but its Mexico locality, 1776 year, Iron IAB-sLL class, and 3 t mass conflict with the source's Quebec, 1931, medium-octahedrite, 1.5 kg record. No identity or code is inferred."
+      }
+    },
+    {
+      "id": "obs-8451d3d0-91b2-49cd-b3da-2cc9e7b530bd",
+      "catalogId": "nininger-1950",
+      "designation": "69.7",
+      "name": "Leeds",
+      "weight": {
+        "grams": 42
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Quebec, Canada; 46° 18′ N., 71° 20′ W.",
+      "year": "1931",
+      "catalogPage": 68,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The verified local valid-name CSV has no Official Leeds row. The official checker calls Leeds the sole synonym of Toluca, code 24018, and Toluca's detail page lists that synonym, but its Mexico locality, 1776 year, Iron IAB-sLL class, and 3 t mass conflict with the source's Quebec, 1931, medium-octahedrite, 1.5 kg record. No identity or code is inferred."
+      }
+    },
+    {
       "id": "obs-7bac64e2-ace5-4fbe-87df-7a12a602a39a",
       "catalogId": "nininger-1950",
       "designation": "72a.",
@@ -29070,6 +29155,27 @@
       }
     },
     {
+      "id": "obs-ce5d0e1d-f26c-4bad-a6ad-a7110c758390",
+      "catalogId": "nininger-1950",
+      "designation": "219a",
+      "name": "Lawrence",
+      "weight": {
+        "grams": 95
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Douglas County, Kansas",
+      "year": "1928",
+      "catalogPage": 68,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Lawrence",
+        "meteoriteCode": "12744",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12744",
+        "alternateNameNote": "The verified local valid-name CSV has Official Lawrence code 12744, found 1928 in Kansas, L6, with 515 gram mass. The official exact-name checker returns Lawrence as Official, and the detail page confirms the exact name, year, state, class, mass, and Douglas County coordinates."
+      }
+    },
+    {
       "id": "obs-63996358-813b-426b-bd17-35b109fb66e1",
       "catalogId": "nininger-1950",
       "designation": "226a",
@@ -30288,6 +30394,27 @@
       }
     },
     {
+      "id": "obs-68cb232f-073a-489a-90d3-807825844382",
+      "catalogId": "nininger-1950",
+      "designation": "308.1",
+      "name": "Lanton",
+      "weight": {
+        "grams": 83
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Howell County, Missouri",
+      "year": "1932",
+      "catalogPage": 68,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Lanton",
+        "meteoriteCode": "12463",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12463",
+        "alternateNameNote": "The verified local valid-name CSV has Official Lanton code 12463, found 1932 in Missouri, Iron IIIAB, with 13.78 kg mass. The official exact-name checker returns Lanton as Official, and the detail page confirms the exact name, year, state, iron identity, and mass. The source's historical fine-octahedrite description is preserved."
+      }
+    },
+    {
       "id": "obs-ca913579-3bf7-4940-9995-9d04c3b8ce83",
       "catalogId": "nininger-1950",
       "designation": "311.1",
@@ -31296,6 +31423,27 @@
       }
     },
     {
+      "id": "obs-b103e7e7-9ec5-41d6-bd87-23dd35a86fff",
+      "catalogId": "nininger-1950",
+      "designation": "369.2",
+      "name": "Lake Labyrinth",
+      "weight": {
+        "grams": 4337
+      },
+      "classification": "Stone. Olivine enstatite chondrite",
+      "locality": "South Australia",
+      "year": "1924",
+      "catalogPage": 68,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Lake Labyrinth",
+        "meteoriteCode": "12444",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12444",
+        "alternateNameNote": "The verified local valid-name CSV has Official Lake Labyrinth code 12444, South Australia, year 1924, LL6, and 25.85 kg mass. The official exact-name checker returns it as Official, and the detail page confirms those facts and now treats it as a probable fall. The source's Found wording and historical classification are preserved."
+      }
+    },
+    {
       "id": "obs-25948071-c80a-4215-a1ad-95157fa18298",
       "catalogId": "nininger-1950",
       "designation": "371.1",
@@ -31632,6 +31780,27 @@
       }
     },
     {
+      "id": "obs-bc15e031-7e90-4959-8f93-681773a4045a",
+      "catalogId": "nininger-1950",
+      "designation": "395.1",
+      "name": "Lake Okechobee",
+      "weight": {
+        "grams": 20
+      },
+      "classification": "Stone. Spherical chondrite",
+      "locality": "Florida",
+      "year": "1916",
+      "catalogPage": 68,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Okechobee",
+        "meteoriteCode": "18001",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18001",
+        "alternateNameNote": "The verified local valid-name CSV has Official Okechobee code 18001, Florida, 1916, L4, and 1,000 gram mass, with no Lake Okechobee official row. The official checker calls Lake Okechobee its sole synonym, and the detail page explicitly lists that synonym and confirms the identity. The source's before-1916 wording and 1.1 kg total are preserved."
+      }
+    },
+    {
       "id": "obs-3ed9485c-e71c-46b4-b879-8c7c17cae286",
       "catalogId": "nininger-1950",
       "designation": "396.1",
@@ -31713,6 +31882,27 @@
         "meteoriteCode": "12273",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12273",
         "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Kelly as code 12273, found 1937 in Colorado at the printed coordinates, with LL4 classification and 44.3 kg mass. The official exact-name checker returns Kelly as Official, and the detail page confirms the exact name, 1937 Colorado find, LL4 identity, 44.3 kg mass, and coordinates. The source's rounded 44 kg total is preserved."
+      }
+    },
+    {
+      "id": "obs-6c47a71f-4b7b-43f6-9b26-4ca20a331689",
+      "catalogId": "nininger-1950",
+      "designation": "400.1",
+      "name": "Laketon",
+      "weight": {
+        "grams": 1980
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Gray County, Texas; 35° 34′ N., 100° 40′ W.",
+      "year": "1937",
+      "catalogPage": 68,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Laketon",
+        "meteoriteCode": "12448",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12448",
+        "alternateNameNote": "The verified local valid-name CSV has Official Laketon code 12448, found 1937 in Texas, L6, with 3.6 kg mass and the printed coordinates. The official exact-name checker and detail page independently confirm the exact name, official status, year, state, class, mass, and coordinates."
       }
     },
     {
@@ -32955,6 +33145,27 @@
       }
     },
     {
+      "id": "obs-732d7321-410c-4b2c-a627-396b9eb946ef",
+      "catalogId": "nininger-1950",
+      "designation": "464.12S",
+      "name": "La Lande",
+      "weight": {
+        "grams": 10400
+      },
+      "classification": "Stone. Spherical crystalline chondrite",
+      "locality": "De Baca County, New Mexico; 34° 27′ N., 104° 8′ W.",
+      "year": "1933",
+      "catalogPage": 68,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "La Lande",
+        "meteoriteCode": "12400",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12400",
+        "alternateNameNote": "The verified local valid-name CSV has Official La Lande code 12400, found 1933 in New Mexico, L5, with 30 kg mass and the printed coordinates. The official exact-name checker and detail page independently confirm the exact name, official status, year, state, class, mass, and coordinates."
+      }
+    },
+    {
       "id": "obs-2e8f410b-9a22-434b-9f5d-872f85b2908b",
       "catalogId": "nininger-1950",
       "designation": "465.1",
@@ -33501,6 +33712,27 @@
       }
     },
     {
+      "id": "obs-55b7fa58-3102-4649-b433-cf385829c21a",
+      "catalogId": "nininger-1950",
+      "designation": "486.1",
+      "name": "La Porte",
+      "weight": {
+        "grams": 94.5
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "La Porte County, Indiana",
+      "year": "1900",
+      "catalogPage": 68,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "La Porte",
+        "meteoriteCode": "12401",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12401",
+        "alternateNameNote": "The verified local valid-name CSV has Official La Porte code 12401, found 1900 in Indiana, Iron IIIAB, with 14.54 kg mass. The official exact-name checker and detail page confirm the exact name, year, state, iron identity, and mass. The source's rounded 14.5 kg total and historical medium-octahedrite description are preserved."
+      }
+    },
+    {
       "id": "obs-bfe23875-9b09-424e-b9be-beefcc831a68",
       "catalogId": "nininger-1950",
       "designation": "487.1",
@@ -33540,6 +33772,27 @@
         "meteoriteCode": "11854",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11854",
         "alternateNameNote": "The verified local MetBull CSV and official exact-name checker identify Official Hatfield, code 11854. The detail page confirms the 1941 Arkansas iron and the printed coordinates; it reports a 21 g mass, while the source prints Total weight unknown and a 21.2 gram specimen, which are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-4b1eceee-fbeb-4bf0-b862-3b56a50325a6",
+      "catalogId": "nininger-1950",
+      "designation": "489.1",
+      "name": "Leedey",
+      "weight": {
+        "grams": 4077
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Dewey County, Oklahoma; 35° 52′ N., 99° 20′ W.",
+      "year": "1943",
+      "catalogPage": 68,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Leedey",
+        "meteoriteCode": "12755",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12755",
+        "alternateNameNote": "The verified local valid-name CSV has Official Leedey code 12755, a 1943 Oklahoma L6 fall with 51.5 kg mass and coordinates matching the source. The official exact-name checker and detail page confirm the exact name, fall, year, state, class, mass, and coordinates. The source's 50 kg total is preserved."
       }
     },
     {
