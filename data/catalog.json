@@ -368,14 +368,15 @@
           61,
           62,
           63,
-          64
+          64,
+          65
         ],
-        "sourcePageCount": 39,
-        "recordCount": 879,
-        "recordsWithDesignation": 859,
-        "recordsWithWeight": 822,
+        "sourcePageCount": 40,
+        "recordCount": 889,
+        "recordsWithDesignation": 869,
+        "recordsWithWeight": 830,
         "confidenceCounts": {
-          "high": 879,
+          "high": 889,
           "medium": 0,
           "low": 0
         },
@@ -383,11 +384,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2791,
-    "recordsWithDesignation": 2602,
-    "recordsWithWeight": 2606,
+    "recordCount": 2801,
+    "recordsWithDesignation": 2612,
+    "recordsWithWeight": 2614,
     "confidenceCounts": {
-      "high": 2791,
+      "high": 2801,
       "medium": 0,
       "low": 0
     }
@@ -25035,6 +25036,48 @@
       }
     },
     {
+      "id": "obs-17fe388f-a36d-4db5-acf9-7a4cf8ceb9c1",
+      "catalogId": "nininger-1950",
+      "designation": "65a",
+      "name": "Juvinas",
+      "weight": {
+        "grams": 45
+      },
+      "classification": "Stone. Eucrite",
+      "locality": "Libonnès, Entraigues, Ardèche, France",
+      "year": "1812",
+      "catalogPage": 65,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Juvinas",
+        "meteoriteCode": "12214",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12214",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Juvinas as code 12214, a French eucrite fall with 91 kg mass. The official exact-name checker returns Juvinas as Official, and the detail page confirms the exact name, France, eucrite identity, 91 kg mass, and Libonnez synonym. MetBull gives 1821, while the source prints 1812; the source date is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-dd385349-b807-4f97-9cc4-27dd106247f2",
+      "catalogId": "nininger-1950",
+      "designation": "67a",
+      "name": "Kendall County",
+      "weight": {
+        "grams": 118
+      },
+      "classification": "Iron. Brecciated hexahedrite",
+      "locality": "Texas",
+      "year": "1887",
+      "catalogPage": 65,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Kendall County",
+        "meteoriteCode": "12274",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12274",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Kendall County as code 12274, found 1887 in Texas, with an iron IAB-ung classification and 21 kg mass. The official exact-name checker returns Kendall County as Official, and the detail page confirms the exact name, 1887 Texas find, iron identity, 21 kg mass, and San Antonio synonym."
+      }
+    },
+    {
       "id": "obs-7bac64e2-ace5-4fbe-87df-7a12a602a39a",
       "catalogId": "nininger-1950",
       "designation": "72a.",
@@ -26250,6 +26293,27 @@
         "meteoriteCode": "5256",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5256",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-53c95a63-5afd-491a-9f76-b9cca0c15c88",
+      "catalogId": "nininger-1950",
+      "designation": "163.1",
+      "name": "Karkh",
+      "weight": {
+        "grams": 7.5
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Jhalawan, Baluchistan, India",
+      "year": "1905",
+      "catalogPage": 65,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Karkh",
+        "meteoriteCode": "12262",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12262",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Karkh as code 12262, a 1905 Baluchistan fall with L6 classification and 22 kg mass. The official exact-name checker returns Karkh as Official, and the detail page confirms the exact name, 1905 fall, Baluchistan locality in present-day Pakistan, L6 identity, and 22 kg mass. The historical source locality is preserved."
       }
     },
     {
@@ -28836,6 +28900,27 @@
       }
     },
     {
+      "id": "obs-9c4f99fc-807f-49dd-9c06-e59326f928f9",
+      "catalogId": "nininger-1950",
+      "designation": "228b",
+      "name": "Kearney",
+      "weight": {
+        "grams": 80.8
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Kearney County, Nebraska; 40° 41′ N., 99° 4′ W.",
+      "year": "1934",
+      "catalogPage": 65,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Kearney",
+        "meteoriteCode": "12269",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12269",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Kearney as code 12269, a 1934 Nebraska find at the printed coordinates, with H5 classification and 10 kg mass. The official exact-name checker returns Kearney as Official, and the detail page confirms the exact name, 1934 Nebraska find, H5 identity, and coordinates. The source's 1.1 kg total differs from the official 10 kg mass and is preserved without reconciliation."
+      }
+    },
+    {
       "id": "obs-36615e45-9525-43f7-b93a-55051abe1082",
       "catalogId": "nininger-1950",
       "designation": "235a",
@@ -30537,6 +30622,27 @@
       }
     },
     {
+      "id": "obs-4e4d51fd-449a-443d-b6a2-3d876535d198",
+      "catalogId": "nininger-1950",
+      "designation": "345.1",
+      "name": "Karval",
+      "weight": {
+        "grams": 828
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Lincoln County, Colorado; 38° 43′ N., 103° 31′ W.",
+      "year": "1936",
+      "catalogPage": 65,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Karval",
+        "meteoriteCode": "12265",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12265",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Karval as code 12265, found 1936 in Colorado at the printed coordinates, with H5 classification and 1,104 gram mass. The official exact-name checker returns Karval as Official, and the detail page confirms the exact name, 1936 Colorado find, H5 identity, 1,104 gram mass, and 38° 43′ N., 103° 31′ W. coordinates."
+      }
+    },
+    {
       "id": "obs-d681397f-ee28-4612-a65e-42b04c98037e",
       "catalogId": "nininger-1950",
       "designation": "346.1",
@@ -31251,6 +31357,27 @@
       }
     },
     {
+      "id": "obs-3c4e18fc-3f2a-4d63-8bed-208cb898de44",
+      "catalogId": "nininger-1950",
+      "designation": "398.1",
+      "name": "Kelly",
+      "weight": {
+        "grams": 1872
+      },
+      "classification": "Stone. White to grey brecciated chondrite",
+      "locality": "Logan County, Colorado; 40° 28′ N., 103° 2′ W.",
+      "year": "1937",
+      "catalogPage": 65,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Kelly",
+        "meteoriteCode": "12273",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12273",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Kelly as code 12273, found 1937 in Colorado at the printed coordinates, with LL4 classification and 44.3 kg mass. The official exact-name checker returns Kelly as Official, and the detail page confirms the exact name, 1937 Colorado find, LL4 identity, 44.3 kg mass, and coordinates. The source's rounded 44 kg total is preserved."
+      }
+    },
+    {
       "id": "obs-50d0ee91-f3b2-40a0-aee7-74c290bb86ae",
       "catalogId": "nininger-1950",
       "designation": "401.1",
@@ -31962,6 +32089,48 @@
         "meteoriteCode": "11914",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11914",
         "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Howe, code 11914. The detail page confirms the 1938 Texas find, printed coordinates, and H5 stone identity and reports 8.63 kg; the source's 8,635 g total is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-f6c23c68-46e0-455e-908f-733b231a18c9",
+      "catalogId": "nininger-1950",
+      "designation": "434.1",
+      "name": "Karoonda",
+      "weight": {
+        "grams": 4.9
+      },
+      "classification": "Stone. Grey olivine chondrite asiderite",
+      "locality": "Buccleuch County, South Australia",
+      "year": "1930",
+      "catalogPage": 65,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Karoonda",
+        "meteoriteCode": "12264",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12264",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Karoonda as code 12264, a 1930 South Australian fall with CK4 classification and 41.73 kg mass. The official exact-name checker returns Karoonda as Official, and the detail page confirms the exact name, 1930 fall, South Australia locality, CK4 identity, and 41.73 kg mass, consistent with the source's rounded 41.7 kg total."
+      }
+    },
+    {
+      "id": "obs-96fbfa28-0517-4a17-87ee-dfad6a971c3e",
+      "catalogId": "nininger-1950",
+      "designation": "434.5",
+      "name": "Karoonda",
+      "weight": {
+        "grams": 56.5
+      },
+      "classification": "Stone. Grey olivine chondrite asiderite",
+      "locality": "Buccleuch County, South Australia",
+      "year": "1930",
+      "catalogPage": 65,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Karoonda",
+        "meteoriteCode": "12264",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12264",
+        "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Karoonda as code 12264, a 1930 South Australian fall with CK4 classification and 41.73 kg mass. The official exact-name checker returns Karoonda as Official, and the detail page confirms the exact name, 1930 fall, South Australia locality, CK4 identity, and 41.73 kg mass, consistent with the source's rounded 41.7 kg total."
       }
     },
     {
@@ -32928,6 +33097,48 @@
         "meteoriteCode": "5266",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5266",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-9ce6b090-9bcf-4de1-9c3f-82a6f791b059",
+      "catalogId": "nininger-1950",
+      "designation": "498.1",
+      "name": "Kaalijarv",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Metabolitic ataxite to medium octahedrite",
+      "locality": "Saaremaa (Oesel), Estonia",
+      "year": "1937",
+      "catalogPage": 65,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Kaalijarv",
+        "meteoriteCode": "12217",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12217",
+        "alternateNameNote": "The source prints no weight for Kaalijarv 498.1; none is inferred. Kaalijarv remains exact official code 12217."
+      }
+    },
+    {
+      "id": "obs-231aac67-4103-4686-89b0-7899055def21",
+      "catalogId": "nininger-1950",
+      "designation": "498.2",
+      "name": "Kaalijarv",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Metabolitic ataxite to medium octahedrite",
+      "locality": "Saaremaa (Oesel), Estonia",
+      "year": "1937",
+      "catalogPage": 65,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Kaalijarv",
+        "meteoriteCode": "12217",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12217",
+        "alternateNameNote": "The source prints no weight for Kaalijarv 498.2; none is inferred. Kaalijarv remains exact official code 12217."
       }
     },
     {
