@@ -25,7 +25,7 @@ Real-release checks additionally lock reviewed rights evidence, ordered page IDs
 The runtime harness does not import `data/catalog.json`, so run the integrated validator separately.
 
 <!-- release-summary:test-notes-real-release:start -->
-The default `node scripts/validate-public-catalog.mjs` command reads and passes the real schema-6 `data/catalog.json` and `data/folios.json`: 2,812 records across 8 catalogs with 41 displayable folio pages.
+The default `node scripts/validate-public-catalog.mjs` command reads and passes the real schema-6 `data/catalog.json` and `data/folios.json`: 2,824 records across 8 catalogs with 41 displayable folio pages.
 <!-- release-summary:test-notes-real-release:end -->
 
 Real Hovey metadata is `display/public-domain`; Hovey catalog numbers remain searchable but are excluded from `recordsWithDesignation`, matching the descriptor. `--synthetic-only` checks the strict schema-6 fixtures without reading those real files and also passes.

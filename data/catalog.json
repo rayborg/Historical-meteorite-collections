@@ -370,14 +370,15 @@
           63,
           64,
           65,
-          66
+          66,
+          67
         ],
-        "sourcePageCount": 41,
-        "recordCount": 900,
-        "recordsWithDesignation": 880,
-        "recordsWithWeight": 841,
+        "sourcePageCount": 42,
+        "recordCount": 912,
+        "recordsWithDesignation": 892,
+        "recordsWithWeight": 853,
         "confidenceCounts": {
-          "high": 900,
+          "high": 912,
           "medium": 0,
           "low": 0
         },
@@ -385,11 +386,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2812,
-    "recordsWithDesignation": 2623,
-    "recordsWithWeight": 2625,
+    "recordCount": 2824,
+    "recordsWithDesignation": 2635,
+    "recordsWithWeight": 2637,
     "confidenceCounts": {
-      "high": 2812,
+      "high": 2824,
       "medium": 0,
       "low": 0
     }
@@ -25100,6 +25101,48 @@
       }
     },
     {
+      "id": "obs-f0ef4216-0d9b-420b-9f1a-b47e573ab57e",
+      "catalogId": "nininger-1950",
+      "designation": "68b",
+      "name": "Kyushu",
+      "weight": {
+        "grams": 53
+      },
+      "classification": "Stone. Veined white chondrite",
+      "locality": "Japan",
+      "year": "1886",
+      "catalogPage": 67,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Kyushu",
+        "meteoriteCode": "12390",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12390",
+        "alternateNameNote": "The verified local MetBull CSV and official checker identify exact Official Kyushu, code 12390. The detail page confirms the 1886 Japanese L6 fall and all nine printed synonyms in modernized spellings. It reports 45 kg, while the source's historical classification and 31 kg total are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-d6431da6-0b8c-4b87-a3a8-fd5285e88815",
+      "catalogId": "nininger-1950",
+      "designation": "68a",
+      "name": "Kyushu",
+      "weight": {
+        "grams": 113
+      },
+      "classification": "Stone. Veined white chondrite",
+      "locality": "Japan",
+      "year": "1886",
+      "catalogPage": 67,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Kyushu",
+        "meteoriteCode": "12390",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12390",
+        "alternateNameNote": "The verified local MetBull CSV and official checker identify exact Official Kyushu, code 12390. The detail page confirms the 1886 Japanese L6 fall and all nine printed synonyms in modernized spellings. It reports 45 kg, while the source's historical classification and 31 kg total are preserved without reconciliation."
+      }
+    },
+    {
       "id": "obs-7bac64e2-ace5-4fbe-87df-7a12a602a39a",
       "catalogId": "nininger-1950",
       "designation": "72a.",
@@ -25118,6 +25161,27 @@
         "meteoriteCode": "24018",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
         "alternateNameNote": "MetBull explicitly lists Amates, Los Amates, Morelos, and Xiquipilco as synonyms of Toluca. This conflicts strongly with Nininger's treatment of Amates as a separate 300-gram iron found in 1889 at Iguala, Morelos; MetBull reports Toluca as a 3-ton Iron, IAB-sLL found in 1776 at 19° 34′ N., 99° 34′ W."
+      }
+    },
+    {
+      "id": "obs-d52fbfcb-0730-4c93-8b28-dbb5b352cbd5",
+      "catalogId": "nininger-1950",
+      "designation": "74a",
+      "name": "L'Aigle",
+      "weight": {
+        "grams": 10
+      },
+      "classification": "Stone. Brecciated intermediate hypersthene chondrite",
+      "locality": "Orne, France",
+      "year": "1803",
+      "catalogPage": 67,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "L'Aigle",
+        "meteoriteCode": "12434",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12434",
+        "alternateNameNote": "The verified local MetBull CSV and official checker identify exact Official L'Aigle, code 12434. The detail page confirms the 1803 French L6 fall, 37 kg mass, and Aigle, Ober-Pfalz, and Waldau synonyms. The source's historical classification wording is preserved."
       }
     },
     {
@@ -26402,6 +26466,27 @@
       }
     },
     {
+      "id": "obs-4ec2b0e8-c972-4692-b763-3392981f63d4",
+      "catalogId": "nininger-1950",
+      "designation": "167a",
+      "name": "Lafayette",
+      "weight": {
+        "grams": 190.7
+      },
+      "classification": "Stone. Nakhlite",
+      "locality": "Tippecanoe County, Indiana",
+      "year": "1931",
+      "catalogPage": 67,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Lafayette (stone)",
+        "meteoriteCode": "12412",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12412",
+        "alternateNameNote": "The checker marks bare Lafayette as partial. The verified local CSV, containing-name result, and detail page identify Official Lafayette (stone), code 12412, and confirm Indiana, 1931, nakhlite, Purdue, and La Fayette, distinguishing it from doubtful 1908 Colorado Lafayette (iron). The official mass is 800 g; the source's 600 grams is preserved."
+      }
+    },
+    {
       "id": "obs-fffe7e17-dd35-48fb-9dbb-cb1f8cdf0bd5",
       "catalogId": "nininger-1950",
       "designation": "168a",
@@ -26735,6 +26820,48 @@
         "meteoriteCode": "5373",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5373",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-f0b26b64-29b0-4668-a153-0874cd71ad87",
+      "catalogId": "nininger-1950",
+      "designation": "182.1",
+      "name": "Krasnojarsk",
+      "weight": {
+        "grams": 7.5
+      },
+      "classification": "Pallasite",
+      "locality": "Yeniseisk, Siberia",
+      "year": "1749",
+      "catalogPage": 67,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Krasnojarsk",
+        "meteoriteCode": "12356",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12356",
+        "alternateNameNote": "The verified local MetBull CSV and official checker identify exact Official Krasnojarsk, code 12356. The detail page confirms the 1749 Russian pallasite, 700 kg mass, and the printed Emir, Kemis, Medwedewa, and Pallas Iron names among its synonyms. The historical source locality is preserved."
+      }
+    },
+    {
+      "id": "obs-ca9f94a5-5d27-42f3-b3ec-bc2c2e9b83b5",
+      "catalogId": "nininger-1950",
+      "designation": "182.2",
+      "name": "Krasnojarsk",
+      "weight": {
+        "grams": 85.5
+      },
+      "classification": "Pallasite",
+      "locality": "Yeniseisk, Siberia",
+      "year": "1749",
+      "catalogPage": 67,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Krasnojarsk",
+        "meteoriteCode": "12356",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12356",
+        "alternateNameNote": "The verified local MetBull CSV and official checker identify exact Official Krasnojarsk, code 12356. The detail page confirms the 1749 Russian pallasite, 700 kg mass, and the printed Emir, Kemis, Medwedewa, and Pallas Iron names among its synonyms. The historical source locality is preserved."
       }
     },
     {
@@ -29237,6 +29364,27 @@
       }
     },
     {
+      "id": "obs-d673ca49-d9a7-4cf9-8794-660451eaacbe",
+      "catalogId": "nininger-1950",
+      "designation": "254a",
+      "name": "La Caille",
+      "weight": {
+        "grams": 333
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Grasse, Alpes Maritimes, France",
+      "year": "1828",
+      "catalogPage": 67,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "La Caille",
+        "meteoriteCode": "12393",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12393",
+        "alternateNameNote": "The verified local MetBull CSV and official checker identify exact Official La Caille, code 12393. The detail page confirms the 1828 French iron, Caille and Grasse synonyms, and a 626 kg mass; the source's medium-octahedrite classification and 625 kg total are preserved."
+      }
+    },
+    {
       "id": "obs-844e34bd-201c-4a53-879f-d438de54cd1d",
       "catalogId": "nininger-1950",
       "designation": "255a",
@@ -29804,6 +29952,27 @@
       }
     },
     {
+      "id": "obs-f35c3d12-08cd-4abf-b11a-3b575d94c26d",
+      "catalogId": "nininger-1950",
+      "designation": "285a",
+      "name": "Kyancutta",
+      "weight": {
+        "grams": 480
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Le Hunte County, South Australia",
+      "year": "1932",
+      "catalogPage": 67,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Kyancutta",
+        "meteoriteCode": "12386",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12386",
+        "alternateNameNote": "The verified local MetBull CSV and official checker identify exact Official Kyancutta, code 12386. The detail page confirms the 1932 South Australian find and iron IIIAB identity and reports 32.7 kg; the source's Le Hunte County wording, medium-octahedrite classification, and 32.2 kg total are preserved."
+      }
+    },
+    {
       "id": "obs-f43d3e70-cf72-40b6-8d3f-2b7861ebc4be",
       "catalogId": "nininger-1950",
       "designation": "286a",
@@ -29843,6 +30012,48 @@
         "meteoriteCode": "5371",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5371",
         "alternateNameNote": "The verified local CSV confirms the exact official name and code. The source reports 1935 and 1,074 g; the official record instead gives 1931 and 1,050 g, while its Wyoming coordinates agree closely."
+      }
+    },
+    {
+      "id": "obs-00f2d6e1-2dd4-4d47-87b8-ac5dfc5d3b26",
+      "catalogId": "nininger-1950",
+      "designation": "291c",
+      "name": "La Grange",
+      "weight": {
+        "grams": 187.5
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Oldham County, Kentucky",
+      "year": "1860",
+      "catalogPage": 67,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "La Grange",
+        "meteoriteCode": "12399",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12399",
+        "alternateNameNote": "The verified local MetBull CSV and official checker identify exact Official La Grange, code 12399. The detail page confirms the 1860 Kentucky iron, IVA identity, Oldham County synonym, and 50.8 kg mass; the source's fine-octahedrite classification and 50.9 kg total are preserved."
+      }
+    },
+    {
+      "id": "obs-adfcd812-72d2-4e95-b420-eac3d2c5995c",
+      "catalogId": "nininger-1950",
+      "designation": "291a",
+      "name": "La Grange",
+      "weight": {
+        "grams": 516
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Oldham County, Kentucky",
+      "year": "1860",
+      "catalogPage": 67,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "La Grange",
+        "meteoriteCode": "12399",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12399",
+        "alternateNameNote": "The verified local MetBull CSV and official checker identify exact Official La Grange, code 12399. The detail page confirms the 1860 Kentucky iron, IVA identity, Oldham County synonym, and 50.8 kg mass; the source's fine-octahedrite classification and 50.9 kg total are preserved."
       }
     },
     {
@@ -31565,6 +31776,48 @@
         "meteoriteCode": "5262",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5262",
         "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-46044388-7bd7-4c97-afed-0705e9453e25",
+      "catalogId": "nininger-1950",
+      "designation": "405H",
+      "name": "Ladder Creek",
+      "weight": {
+        "grams": 12800
+      },
+      "classification": "Stone. Crystalline spherical chondrite",
+      "locality": "Greeley County, Kansas; 38° 37′ N., 101° 38′ W.",
+      "year": "1937",
+      "catalogPage": 67,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Ladder Creek",
+        "meteoriteCode": "12410",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12410",
+        "alternateNameNote": "The verified local MetBull CSV and official checker identify exact Official Ladder Creek, code 12410. The detail page confirms the 1937 Kansas L6 find, 35.1 kg mass, printed coordinates, and Greeley County synonym. The source's historical classification wording is preserved."
+      }
+    },
+    {
+      "id": "obs-2122bff9-2af1-4e28-be7f-429ad2553fd6",
+      "catalogId": "nininger-1950",
+      "designation": "405.39",
+      "name": "Ladder Creek",
+      "weight": {
+        "grams": 410.5
+      },
+      "classification": "Stone. Crystalline spherical chondrite",
+      "locality": "Greeley County, Kansas; 38° 37′ N., 101° 38′ W.",
+      "year": "1937",
+      "catalogPage": 67,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Ladder Creek",
+        "meteoriteCode": "12410",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12410",
+        "alternateNameNote": "The verified local MetBull CSV and official checker identify exact Official Ladder Creek, code 12410. The detail page confirms the 1937 Kansas L6 find, 35.1 kg mass, printed coordinates, and Greeley County synonym. The source's historical classification wording is preserved."
       }
     },
     {
