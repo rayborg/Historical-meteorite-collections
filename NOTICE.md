@@ -9,11 +9,11 @@ The current repository edition also indexes *Tableau méthodique des espèces mi
 ## Facts-Only Scope
 
 <!-- release-summary:notice-facts:start -->
-The current repository edition distributes 3,508 structured, facts-only source observations from 8 catalogs under metadata schema version 6. It supports 4 source-specific record models: `catalog-item`, `catalog-number`, `collection-entry`, `specimen`. Records are source observations rather than canonical meteorites or inferred physical specimens, and `catalogId` identifies each source.
+The current repository edition distributes 3,521 structured, facts-only source observations from 8 catalogs under metadata schema version 6. It supports 4 source-specific record models: `catalog-item`, `catalog-number`, `collection-entry`, `specimen`. Records are source observations rather than canonical meteorites or inferred physical specimens, and `catalogId` identifies each source.
 <!-- release-summary:notice-facts:end -->
 
 <!-- release-summary:notice-coverage:start -->
-Metadata covers 223 catalog-scoped source pages, of which 206 are cited by records. Source-page coverage is not a claim that every covered page contains an observation. `nininger-1933` has 136 records; its metadata source pages span 1-20, and its record citations span 1-11. `nininger-1950` has 1,596 records; its metadata source pages span 26-100, and its record citations span 26-100.
+Metadata covers 224 catalog-scoped source pages, of which 207 are cited by records. Source-page coverage is not a claim that every covered page contains an observation. `nininger-1933` has 136 records; its metadata source pages span 1-20, and its record citations span 1-11. `nininger-1950` has 1,609 records; its metadata source pages span 26-101, and its record citations span 26-101.
 <!-- release-summary:notice-coverage:end -->
 
 Some covered pages are introductory or narrative-only. Both Nininger digital editions are partial, and citation ranges do not assert page-boundary continuity.

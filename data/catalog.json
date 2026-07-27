@@ -404,14 +404,15 @@
           97,
           98,
           99,
-          100
+          100,
+          101
         ],
-        "sourcePageCount": 75,
-        "recordCount": 1596,
-        "recordsWithDesignation": 1570,
-        "recordsWithWeight": 1529,
+        "sourcePageCount": 76,
+        "recordCount": 1609,
+        "recordsWithDesignation": 1583,
+        "recordsWithWeight": 1540,
         "confidenceCounts": {
-          "high": 1596,
+          "high": 1609,
           "medium": 0,
           "low": 0
         },
@@ -419,11 +420,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 3508,
-    "recordsWithDesignation": 3313,
-    "recordsWithWeight": 3313,
+    "recordCount": 3521,
+    "recordsWithDesignation": 3326,
+    "recordsWithWeight": 3324,
     "confidenceCounts": {
-      "high": 3508,
+      "high": 3521,
       "medium": 0,
       "low": 0
     }
@@ -33387,6 +33388,27 @@
       }
     },
     {
+      "id": "obs-0be64429-0277-4b14-9fbd-b7fd243686da",
+      "catalogId": "nininger-1950",
+      "designation": "133a",
+      "name": "Weekeroo",
+      "weight": {
+        "grams": 5630
+      },
+      "classification": "Iron. Brecciated coarse octahedrite, silicate inclusions",
+      "locality": "Mannahill, South Australia",
+      "year": "1924",
+      "catalogPage": 101,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Weekeroo Station",
+        "meteoriteCode": "24230",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24230",
+        "alternateNameNote": "The verified local CSV identifies Official Weekeroo Station, code 24230, a 1924 South Australian Iron, IIE-an with 94.2 kg mass. The checker returns Weekeroo as a partial name, and the official detail page explicitly lists Weekeroo as a synonym while confirming the year, region, and mass. The source's historical classification is preserved."
+      }
+    },
+    {
       "id": "obs-079ffdcd-0d3a-4acf-bf73-0b75b890e0c4",
       "catalogId": "nininger-1950",
       "designation": "134vv",
@@ -39162,6 +39184,48 @@
       }
     },
     {
+      "id": "obs-39efaf8a-1828-40ec-ab08-e5805fb96989",
+      "catalogId": "nininger-1950",
+      "designation": "231a",
+      "name": "Weldona",
+      "weight": {
+        "grams": 25404
+      },
+      "classification": "Stone. Crystalline spherical chondrite",
+      "locality": "Morgan County, Colorado; 40° 21′ N., 103° 57′ W.",
+      "year": "1934",
+      "catalogPage": 101,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Weldona",
+        "meteoriteCode": "24234",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24234",
+        "alternateNameNote": "The verified local CSV identifies Official Weldona, code 24234, a 1934 Colorado H4 with 27.7 kg mass. The official checker returns Weldona as Official, and the detail page confirms the exact name, year, state, H4 identity, mass, and exact printed coordinates. The source's historical classification is preserved."
+      }
+    },
+    {
+      "id": "obs-4a610585-9aef-42a8-97ba-43e6c6473f7e",
+      "catalogId": "nininger-1950",
+      "designation": "231.11",
+      "name": "Weldona",
+      "weight": {
+        "grams": 117
+      },
+      "classification": "Stone. Crystalline spherical chondrite",
+      "locality": "Morgan County, Colorado; 40° 21′ N., 103° 57′ W.",
+      "year": "1934",
+      "catalogPage": 101,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Weldona",
+        "meteoriteCode": "24234",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24234",
+        "alternateNameNote": "The verified local CSV identifies Official Weldona, code 24234, a 1934 Colorado H4 with 27.7 kg mass. The official checker returns Weldona as Official, and the detail page confirms the exact name, year, state, H4 identity, mass, and exact printed coordinates. The source's historical classification is preserved."
+      }
+    },
+    {
       "id": "obs-37575b54-f7ce-4c68-942d-9cdfb5ad5dfb",
       "catalogId": "nininger-1950",
       "designation": "233a",
@@ -39285,6 +39349,69 @@
         "meteoriteCode": "12083",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12083",
         "alternateNameNote": "The official checker treats bare Jerome as a partial name with two candidates. The verified local CSV and code 12083 detail page identify Official Jerome (Kansas), whose Kansas locality, 1894 year, L4 stone identity, and 29.6 kg mass distinguish it from the 1954 Idaho meteorite and agree with the source's Gove County and 29.8 kg context."
+      }
+    },
+    {
+      "id": "obs-a57347cc-6a59-450b-869a-ac5aae44d6a8",
+      "catalogId": "nininger-1950",
+      "designation": "238a",
+      "name": "Weston",
+      "weight": {
+        "grams": 10
+      },
+      "classification": "Stone. Brecciated spherical chondrite",
+      "locality": "Fairfield County, Connecticut",
+      "year": "1807",
+      "catalogPage": 101,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Weston",
+        "meteoriteCode": "24249",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24249",
+        "alternateNameNote": "The verified local CSV identifies Official Weston, code 24249, an 1807 Connecticut H4 fall with 150 kg mass. The official checker returns Weston as Official, and the detail page confirms the exact name, fall year, state, H4 identity, mass, and Fairfield County synonym. The source's historical classification and printed event details are preserved."
+      }
+    },
+    {
+      "id": "obs-bea37578-2c05-4b95-be53-2e079c58021b",
+      "catalogId": "nininger-1950",
+      "designation": "238.2",
+      "name": "Weston",
+      "weight": {
+        "grams": 20.4
+      },
+      "classification": "Stone. Brecciated spherical chondrite",
+      "locality": "Fairfield County, Connecticut",
+      "year": "1807",
+      "catalogPage": 101,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Weston",
+        "meteoriteCode": "24249",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24249",
+        "alternateNameNote": "The verified local CSV identifies Official Weston, code 24249, an 1807 Connecticut H4 fall with 150 kg mass. The official checker returns Weston as Official, and the detail page confirms the exact name, fall year, state, H4 identity, mass, and Fairfield County synonym. The source's historical classification and printed event details are preserved."
+      }
+    },
+    {
+      "id": "obs-4d4668e5-f6c4-4e64-a128-8f801cf29a4a",
+      "catalogId": "nininger-1950",
+      "designation": "238.6",
+      "name": "Weston",
+      "weight": {
+        "grams": 59.7
+      },
+      "classification": "Stone. Brecciated spherical chondrite",
+      "locality": "Fairfield County, Connecticut",
+      "year": "1807",
+      "catalogPage": 101,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Weston",
+        "meteoriteCode": "24249",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24249",
+        "alternateNameNote": "The verified local CSV identifies Official Weston, code 24249, an 1807 Connecticut H4 fall with 150 kg mass. The official checker returns Weston as Official, and the detail page confirms the exact name, fall year, state, H4 identity, mass, and Fairfield County synonym. The source's historical classification and printed event details are preserved."
       }
     },
     {
@@ -40380,6 +40507,27 @@
       }
     },
     {
+      "id": "obs-b16d4275-7cfd-482d-a334-12a54860597c",
+      "catalogId": "nininger-1950",
+      "designation": "278a",
+      "name": "Western Arkansas",
+      "weight": {
+        "grams": 39
+      },
+      "classification": "Iron. Nickel-poor ataxite",
+      "locality": null,
+      "year": "before 1890",
+      "catalogPage": 101,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Western Arkansas",
+        "meteoriteCode": "24248",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24248",
+        "alternateNameNote": "The verified local CSV identifies Official Western Arkansas, code 24248, an Arkansas Iron, IVA with 1.75 kg mass and database year 1890. The official checker returns Western Arkansas as Official, and the detail page confirms the exact name, state, mass, and IVA identity. The source's Found before 1890 wording and historical nickel-poor-ataxite classification are preserved."
+      }
+    },
+    {
       "id": "obs-e86c431a-2dcf-42e7-9ad5-934e3351de2f",
       "catalogId": "nininger-1950",
       "designation": "279b",
@@ -41427,6 +41575,27 @@
         "meteoriteCode": "18848",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18848",
         "alternateNameNote": "The verified local CSV identifies Official Pleasanton, code 18848, as a 1935 Kansas H5 with 2.3 kg mass. The checker returns Pleasanton as Official, and the detail page confirms the exact name, year, state, mass, and printed coordinates. The source's approximate 2.2 kg total is preserved."
+      }
+    },
+    {
+      "id": "obs-70bf9e65-a503-43ff-bb8f-b70e689899cd",
+      "catalogId": "nininger-1950",
+      "designation": "313.1",
+      "name": "Weaver",
+      "weight": {
+        "grams": 50
+      },
+      "classification": "Iron. Nickel-rich ataxite",
+      "locality": "(Mountains), Wickenburg, Maricopa County, Arizona",
+      "year": "1898",
+      "catalogPage": 101,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Weaver Mountains",
+        "meteoriteCode": "24227",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24227",
+        "alternateNameNote": "The verified local CSV identifies Official Weaver Mountains, code 24227, an 1898 Arizona Iron, IVB with 38.8 kg mass. The checker returns Weaver as a partial name, and the official detail page explicitly lists Weaver as a synonym while confirming the year, state, mass, and IVB identity. The source's 38.9 kg total and historical nickel-rich-ataxite description are preserved."
       }
     },
     {
@@ -44580,6 +44749,48 @@
       }
     },
     {
+      "id": "obs-35f07d95-44b4-4fef-8f2b-f66be5501075",
+      "catalogId": "nininger-1950",
+      "designation": "418.1",
+      "name": "Whitman",
+      "weight": {
+        "grams": 193.5
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "(Found in Cherry County), Nebraska; 42° 2′ N., 101° 55′ W.",
+      "year": "1937",
+      "catalogPage": 101,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Whitman",
+        "meteoriteCode": "24254",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24254",
+        "alternateNameNote": "The verified local CSV identifies Official Whitman, code 24254, a 1937 Nebraska H5 with 221 gram mass. The official checker returns Whitman as Official, and the detail page confirms the exact name, year, state, H5 identity, mass, and exact printed coordinates. The source's Cherry County wording and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-f4467035-1fb7-45e0-969a-5f2ccc00da78",
+      "catalogId": "nininger-1950",
+      "designation": "418.5",
+      "name": "Whitman",
+      "weight": {
+        "grams": 16.9
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "(Found in Cherry County), Nebraska; 42° 2′ N., 101° 55′ W.",
+      "year": "1937",
+      "catalogPage": 101,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Whitman",
+        "meteoriteCode": "24254",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24254",
+        "alternateNameNote": "The verified local CSV identifies Official Whitman, code 24254, a 1937 Nebraska H5 with 221 gram mass. The official checker returns Whitman as Official, and the detail page confirms the exact name, year, state, H5 identity, mass, and exact printed coordinates. The source's Cherry County wording and historical classification are preserved."
+      }
+    },
+    {
       "id": "obs-8a5fc7e4-6a31-493b-85a6-48ce39a6db79",
       "catalogId": "nininger-1950",
       "designation": "419.1",
@@ -46470,6 +46681,27 @@
       }
     },
     {
+      "id": "obs-466679c5-aff6-4e34-808b-63dba0f6e628",
+      "catalogId": "nininger-1950",
+      "designation": "479.1",
+      "name": "Wellman",
+      "weight": {
+        "grams": 49620
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Terry County, Texas; 33° 2′ N., 102° 20′ W.",
+      "year": "1940",
+      "catalogPage": 101,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Wellman (a)",
+        "meteoriteCode": "24237",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24237",
+        "alternateNameNote": "The verified local CSV identifies Official Wellman (a), code 24237, a 1940 Texas H5 with 55 kg mass. The checker returns Wellman as a partial name, and the official Wellman (a) detail page explicitly lists Wellman as a synonym and confirms the exact printed coordinates and year. The source's 50.1 kg total and historical classification are preserved."
+      }
+    },
+    {
       "id": "obs-8ea017a6-1979-48e0-a59c-d3abc821073f",
       "catalogId": "nininger-1950",
       "designation": "480.1",
@@ -46992,6 +47224,48 @@
         "meteoriteCode": "5349",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5349",
         "alternateNameNote": "The official checker returns Chicora; the Pennsylvania locality, 1938 fall, and 303 gram total agree."
+      }
+    },
+    {
+      "id": "obs-5800dc27-ff9f-4765-979e-5150588f9d1b",
+      "catalogId": "nininger-1950",
+      "designation": "502.1",
+      "name": "Welland",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Welland County, Ontario, Canada",
+      "year": "1888",
+      "catalogPage": 101,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Welland",
+        "meteoriteCode": "24235",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24235",
+        "alternateNameNote": "The verified local CSV identifies Official Welland, code 24235, an 1888 Ontario Iron, IIIAB with 8.2 kg mass. The official checker returns Welland as Official, and the detail page confirms the exact name, year, province, iron identity, and mass. The source's historical medium-octahedrite classification is preserved."
+      }
+    },
+    {
+      "id": "obs-447d04f0-cc34-4c99-971d-57d8da5f6a3c",
+      "catalogId": "nininger-1950",
+      "designation": "502.2",
+      "name": "Welland",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Welland County, Ontario, Canada",
+      "year": "1888",
+      "catalogPage": 101,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Welland",
+        "meteoriteCode": "24235",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24235",
+        "alternateNameNote": "The verified local CSV identifies Official Welland, code 24235, an 1888 Ontario Iron, IIIAB with 8.2 kg mass. The official checker returns Welland as Official, and the detail page confirms the exact name, year, province, iron identity, and mass. The source's historical medium-octahedrite classification is preserved."
       }
     },
     {
