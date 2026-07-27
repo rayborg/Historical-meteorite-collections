@@ -343,14 +343,15 @@
           36,
           37,
           38,
-          39
+          39,
+          40
         ],
-        "sourcePageCount": 14,
-        "recordCount": 301,
-        "recordsWithDesignation": 299,
-        "recordsWithWeight": 294,
+        "sourcePageCount": 15,
+        "recordCount": 364,
+        "recordsWithDesignation": 360,
+        "recordsWithWeight": 355,
         "confidenceCounts": {
-          "high": 301,
+          "high": 364,
           "medium": 0,
           "low": 0
         },
@@ -358,11 +359,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2213,
-    "recordsWithDesignation": 2042,
-    "recordsWithWeight": 2078,
+    "recordCount": 2276,
+    "recordsWithDesignation": 2103,
+    "recordsWithWeight": 2139,
     "confidenceCounts": {
-      "high": 2213,
+      "high": 2276,
       "medium": 0,
       "low": 0
     }
@@ -18773,6 +18774,1056 @@
       }
     },
     {
+      "id": "obs-25c803cd-1027-4121-89e7-047d52d570b8",
+      "catalogId": "nininger-1950",
+      "designation": "034.1",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 187.5
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-595fb4f9-51ae-4556-9a49-34638f9f7fe2",
+      "catalogId": "nininger-1950",
+      "designation": "034.2",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 152
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-bff0c8db-dc7e-4199-b6aa-4ac06ff65b0c",
+      "catalogId": "nininger-1950",
+      "designation": "034.3",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 130
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-7bc4d53e-7476-42f1-94e5-dc58dc9bea2f",
+      "catalogId": "nininger-1950",
+      "designation": "034.4",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 40.5
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-8ce3ec62-7333-43da-ad93-eae2f6e30bf6",
+      "catalogId": "nininger-1950",
+      "designation": "034.5",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 28.1
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-74b3ee4b-b16c-43a9-a5ad-35e01e36bd31",
+      "catalogId": "nininger-1950",
+      "designation": "034.6",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 26.8
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-6f4903d7-4488-4385-bac1-e07157a6dbc5",
+      "catalogId": "nininger-1950",
+      "designation": "034.7",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 26.5
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-30cdef8a-fc1d-4f75-bd8e-963f0b3e31ac",
+      "catalogId": "nininger-1950",
+      "designation": "034.8",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 45
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-09f49040-8b09-4562-a463-d91e7732944d",
+      "catalogId": "nininger-1950",
+      "designation": "034.9",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 20
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-83f43cb5-2b22-4208-a645-2a9e0b6b65b9",
+      "catalogId": "nininger-1950",
+      "designation": "034.10",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 13
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-bea1f5e1-0071-4c81-b07c-575e342bcb4f",
+      "catalogId": "nininger-1950",
+      "designation": "034.11",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 237.3
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-7017a206-753f-4ae6-aab5-c824f95aaa6e",
+      "catalogId": "nininger-1950",
+      "designation": "034.12",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 200.4
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-dd82ed4f-d377-485f-9a24-f11885e5acd9",
+      "catalogId": "nininger-1950",
+      "designation": "034.13",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 154.5
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-3507c400-2a8f-47ea-9bc4-41ebb6296336",
+      "catalogId": "nininger-1950",
+      "designation": "034.14",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 148.8
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-6ebf989f-2c39-4c42-9b1c-ab71aa403493",
+      "catalogId": "nininger-1950",
+      "designation": "034.15",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 145.3
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-95066a2f-1479-475f-8ec0-194dfcc85853",
+      "catalogId": "nininger-1950",
+      "designation": "034.16",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 158.3
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-1da253ab-ef37-4ae6-95b1-5e2400ff432e",
+      "catalogId": "nininger-1950",
+      "designation": "034.18",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 65.7
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-5f396162-ca27-41f1-9893-c0ee1f9507f4",
+      "catalogId": "nininger-1950",
+      "designation": "034.19",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 76.2
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-1c2e5dc2-4d38-4772-8a2a-a5226d767d89",
+      "catalogId": "nininger-1950",
+      "designation": "034.20",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 51.6
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-167846bc-5444-4bae-b10e-1a82f571c302",
+      "catalogId": "nininger-1950",
+      "designation": "034.21",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 50.7
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-00812a20-c90c-4638-8686-41e7bcdd7393",
+      "catalogId": "nininger-1950",
+      "designation": "034.22",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 32
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-e7733718-e293-4ac9-bb1f-3973ec908f15",
+      "catalogId": "nininger-1950",
+      "designation": "034.23",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 30.5
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-5a3a8ff9-4275-43ae-9dba-ce3bce2067a8",
+      "catalogId": "nininger-1950",
+      "designation": "034.24",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 31.5
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-d2431735-1da8-4020-b238-13191bb2beee",
+      "catalogId": "nininger-1950",
+      "designation": "034.25",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 28.6
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-0bffebd1-b018-4c23-85a4-8aa949fbd0a0",
+      "catalogId": "nininger-1950",
+      "designation": "034.26",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 28.2
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-7564c112-6bfb-4c01-9a5c-d96724b6add2",
+      "catalogId": "nininger-1950",
+      "designation": "034.27",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 20
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-e2cd3831-844e-4a82-ac1a-5cad8ddbe5f5",
+      "catalogId": "nininger-1950",
+      "designation": "034.28",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 14.6
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-b8c10e91-a520-442d-89f3-8d8ca4acd36a",
+      "catalogId": "nininger-1950",
+      "designation": "034.29",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 10
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-fa38663f-c4bf-4feb-b4ac-74723ad7b396",
+      "catalogId": "nininger-1950",
+      "designation": "034.30",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 5.2
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-f9a80c98-f56d-4fed-af1e-bfece6ee0963",
+      "catalogId": "nininger-1950",
+      "designation": "034.31",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 3171
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-05729052-d8ca-4dab-a960-7e10d318105e",
+      "catalogId": "nininger-1950",
+      "designation": "034.32",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 1132.5
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-0df31538-fd4c-4c40-bdcd-7be6cf618a78",
+      "catalogId": "nininger-1950",
+      "designation": "034.33",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 1132.5
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-314371db-4b26-4bcb-9d64-84ca01880998",
+      "catalogId": "nininger-1950",
+      "designation": "034.34",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 2265
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-87214095-088d-4d57-8f33-7e6bbb6823c2",
+      "catalogId": "nininger-1950",
+      "designation": "034.35",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 2944.5
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-bd2f992c-376e-48f5-981a-09ccd349f3db",
+      "catalogId": "nininger-1950",
+      "designation": "034.36",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 617.4
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-4a30290a-62be-4d01-8914-694be8b447d1",
+      "catalogId": "nininger-1950",
+      "designation": "034.37",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 406.8
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-ae85f214-e093-4a43-8b2d-5e7ad4d13024",
+      "catalogId": "nininger-1950",
+      "designation": "034.38",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 91
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-3599412e-13b1-4139-93a9-15d034022af6",
+      "catalogId": "nininger-1950",
+      "designation": "034.39",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 191.7
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-6c789339-639d-4b1f-a756-3c46f0bf9bd5",
+      "catalogId": "nininger-1950",
+      "designation": "034.40",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 62.2
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-f845970f-778b-45bf-be1c-f70156aadb5c",
+      "catalogId": "nininger-1950",
+      "designation": "034.41",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 471.5
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-f8f8d51c-9232-4a94-a2c4-d099c23523e2",
+      "catalogId": "nininger-1950",
+      "designation": "034.42",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 310
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-acca2704-f526-4b72-970b-94a7376aeb59",
+      "catalogId": "nininger-1950",
+      "designation": "034.43",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 398.7
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-5ff74fa8-b942-4412-af75-927e12ce11a1",
+      "catalogId": "nininger-1950",
+      "designation": "034.44",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 45.7
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-e230f87a-aa5b-4ab2-8835-735e98a9a30f",
+      "catalogId": "nininger-1950",
+      "designation": "034.45",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 23.2
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-086e8cdd-bedf-49dc-8dfb-ce1670084c43",
+      "catalogId": "nininger-1950",
+      "designation": "034.46",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 24.6
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-d5267f23-f082-4107-93a3-55aaf8de32dc",
+      "catalogId": "nininger-1950",
+      "designation": "034.47",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 23
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-d4da73dd-d4bb-418d-a91d-4368815f74a5",
+      "catalogId": "nininger-1950",
+      "designation": "034.48",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 83.3
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-1342ec14-4520-43a2-b09e-a8de37192b8e",
+      "catalogId": "nininger-1950",
+      "designation": "034.49",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 16
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-36e30de7-f1ad-4e1c-92b5-3c224cf0c5a8",
+      "catalogId": "nininger-1950",
+      "designation": "034.50",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 7
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-f5c30ab6-af23-4b46-94b3-ce7a4ab33ef4",
+      "catalogId": "nininger-1950",
+      "designation": "034.51",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 7
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
       "id": "obs-832b634c-2d76-4989-9c17-587c4a6bde7e",
       "catalogId": "nininger-1950",
       "designation": "34.80",
@@ -20219,6 +21270,132 @@
         "meteoriteCode": "5257",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
         "alternateNameNote": "The verified official CSV and official name checker identify Canyon Diablo as Official code 5257. The checker treats Arizona only as a partial name, while the official Canyon Diablo detail page explicitly lists Arizona as an NHM Catalogue synonym; the source's printed Syn: Arizona is therefore retained as historical context, not used as the source-entry identity."
+      }
+    },
+    {
+      "id": "obs-b48fc257-d01c-4456-b65a-4bd12db41150",
+      "catalogId": "nininger-1950",
+      "designation": "34.1333",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 48
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-0b408d14-88a0-4032-b80b-8deddcbacb8e",
+      "catalogId": "nininger-1950",
+      "designation": "34.1334",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 4.3
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-ee5a4691-ad3a-4081-974d-18f78b685e14",
+      "catalogId": "nininger-1950",
+      "designation": "34.1335",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 126.6
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-fb350078-ca88-4016-9bbe-6d46ca8e927a",
+      "catalogId": "nininger-1950",
+      "designation": "34.1336",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 96.4
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-4b72c785-c490-460f-ae45-fdb8b66891e1",
+      "catalogId": "nininger-1950",
+      "designation": "34.1337",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 91.2
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-43d8a32d-3f5a-455a-8a60-ec3b38c80ae0",
+      "catalogId": "nininger-1950",
+      "designation": "34.1338",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 1073
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
       }
     },
     {
@@ -22193,6 +23370,27 @@
         "meteoriteCode": "4942",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4942",
         "alternateNameNote": "MetBull lists Agen, Landes, and Roquefort as synonyms. The source reports 9 kg. and 9:00 P.M.; MetBull's basic mass is 6.4 kg and its current writeup says around 9:30 p.m. The historical Veined grey chondrite classification corresponds broadly to modern H5."
+      }
+    },
+    {
+      "id": "obs-16e8602d-e423-4703-b672-40229317621c",
+      "catalogId": "nininger-1950",
+      "designation": "344.17",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 78.9
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "Printed designation 344.17 is retained as source evidence despite the surrounding 034 sequence."
       }
     },
     {
@@ -44729,6 +45927,90 @@
       }
     },
     {
+      "id": "obs-7493417f-7a6d-4cfe-98b0-0de61940c5e6",
+      "catalogId": "nininger-1950",
+      "designation": "Panel No. 1",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 24000
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-b1160209-efd0-44f4-9a9d-e40519bedae2",
+      "catalogId": "nininger-1950",
+      "designation": "Panel No. 2",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 27700
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-537dd8fd-1cfb-40f1-9a71-0f3906b58618",
+      "catalogId": "nininger-1950",
+      "designation": "Panel No. 3",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 27180
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-fb537ba6-779b-41fb-9281-5a277ca21a68",
+      "catalogId": "nininger-1950",
+      "designation": "Panel No. 4",
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": 27600
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": null
+      }
+    },
+    {
       "id": "s2-t2s-r35e-5c9c06746fde",
       "catalogId": "huss-1976",
       "designation": "S2-T2S-R35E",
@@ -45965,6 +47247,48 @@
         "meteoriteCode": "5126",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5126",
         "alternateNameNote": "The source prints this weighted tray without a designation; none is inferred. Source reports largest mass 82 kg. and Central Australia; MetBull gives 500 kg, Northern Territory, Australia, and Iron, IIIAB."
+      }
+    },
+    {
+      "id": "obs-42857b42-179f-412a-8443-a063e366354e",
+      "catalogId": "nininger-1950",
+      "designation": null,
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The source prints no designation or weight for this mount; none is inferred."
+      }
+    },
+    {
+      "id": "obs-4da16c22-3f46-46e9-8e39-5c68fdd08f4a",
+      "catalogId": "nininger-1950",
+      "designation": null,
+      "name": "Canyon Diablo",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Coconino County, Arizona",
+      "year": "1891",
+      "catalogPage": 40,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The source prints no designation or weight for this mount; none is inferred."
       }
     },
     {
