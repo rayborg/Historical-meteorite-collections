@@ -359,14 +359,15 @@
           52,
           53,
           54,
-          55
+          55,
+          56
         ],
-        "sourcePageCount": 30,
-        "recordCount": 593,
-        "recordsWithDesignation": 588,
-        "recordsWithWeight": 581,
+        "sourcePageCount": 31,
+        "recordCount": 610,
+        "recordsWithDesignation": 605,
+        "recordsWithWeight": 598,
         "confidenceCounts": {
-          "high": 593,
+          "high": 610,
           "medium": 0,
           "low": 0
         },
@@ -374,11 +375,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2505,
-    "recordsWithDesignation": 2331,
-    "recordsWithWeight": 2365,
+    "recordCount": 2522,
+    "recordsWithDesignation": 2348,
+    "recordsWithWeight": 2382,
     "confidenceCounts": {
-      "high": 2505,
+      "high": 2522,
       "medium": 0,
       "low": 0
     }
@@ -25068,6 +25069,195 @@
       }
     },
     {
+      "id": "obs-f38522cf-6a42-47a3-9955-ee9d610a0faa",
+      "catalogId": "nininger-1950",
+      "designation": "176f",
+      "name": "Harrisonville",
+      "weight": {
+        "grams": 156
+      },
+      "classification": "Stone. Veined grey chondrite",
+      "locality": "Cass County, Missouri; 38° 39′ N., 94° 21′ W.",
+      "year": "1933",
+      "catalogPage": 56,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Harrisonville",
+        "meteoriteCode": "11844",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11844",
+        "alternateNameNote": "The verified local CSV and checker identify exact Official Harrisonville, code 11844. The detail page confirms 1933, Missouri, the printed latitude and near-identical longitude, and L6 stone identity; its 46.5 kg mass differs from the source's 16.2 kg total, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-671710f3-de05-4408-84df-d266de4c47cf",
+      "catalogId": "nininger-1950",
+      "designation": "176h",
+      "name": "Harrisonville",
+      "weight": {
+        "grams": 2419
+      },
+      "classification": "Stone. Veined grey chondrite",
+      "locality": "Cass County, Missouri; 38° 39′ N., 94° 21′ W.",
+      "year": "1933",
+      "catalogPage": 56,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Harrisonville",
+        "meteoriteCode": "11844",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11844",
+        "alternateNameNote": "The verified local CSV and checker identify exact Official Harrisonville, code 11844. The detail page confirms 1933, Missouri, the printed latitude and near-identical longitude, and L6 stone identity; its 46.5 kg mass differs from the source's 16.2 kg total, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-791d654c-5c11-47be-a910-d0a2e90853e9",
+      "catalogId": "nininger-1950",
+      "designation": "176.18",
+      "name": "Harrisonville",
+      "weight": {
+        "grams": 518
+      },
+      "classification": "Stone. Veined grey chondrite",
+      "locality": "Cass County, Missouri; 38° 39′ N., 94° 21′ W.",
+      "year": "1933",
+      "catalogPage": 56,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Harrisonville",
+        "meteoriteCode": "11844",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11844",
+        "alternateNameNote": "The verified local CSV and checker identify exact Official Harrisonville, code 11844. The detail page confirms 1933, Missouri, the printed latitude and near-identical longitude, and L6 stone identity; its 46.5 kg mass differs from the source's 16.2 kg total, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-229ddfc2-2dec-413a-8b54-73a0931350e3",
+      "catalogId": "nininger-1950",
+      "designation": "176.20",
+      "name": "Harrisonville",
+      "weight": {
+        "grams": 6879
+      },
+      "classification": "Stone. Veined grey chondrite",
+      "locality": "Cass County, Missouri; 38° 39′ N., 94° 21′ W.",
+      "year": "1933",
+      "catalogPage": 56,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Harrisonville",
+        "meteoriteCode": "11844",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11844",
+        "alternateNameNote": "The verified local CSV and checker identify exact Official Harrisonville, code 11844. The detail page confirms 1933, Missouri, the printed latitude and near-identical longitude, and L6 stone identity; its 46.5 kg mass differs from the source's 16.2 kg total, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-12a5321a-d9be-42cd-8186-3050bd79051e",
+      "catalogId": "nininger-1950",
+      "designation": "176.24",
+      "name": "Harrisonville",
+      "weight": {
+        "grams": 7021.5
+      },
+      "classification": "Stone. Veined grey chondrite",
+      "locality": "Cass County, Missouri; 38° 39′ N., 94° 21′ W.",
+      "year": "1933",
+      "catalogPage": 56,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Harrisonville",
+        "meteoriteCode": "11844",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11844",
+        "alternateNameNote": "The verified local CSV and checker identify exact Official Harrisonville, code 11844. The detail page confirms 1933, Missouri, the printed latitude and near-identical longitude, and L6 stone identity; its 46.5 kg mass differs from the source's 16.2 kg total, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-1fe29ba9-12cd-4f14-83f7-c1097b9cc6f3",
+      "catalogId": "nininger-1950",
+      "designation": "176.26",
+      "name": "Harrisonville",
+      "weight": {
+        "grams": 6029
+      },
+      "classification": "Stone. Veined grey chondrite",
+      "locality": "Cass County, Missouri; 38° 39′ N., 94° 21′ W.",
+      "year": "1933",
+      "catalogPage": 56,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Harrisonville",
+        "meteoriteCode": "11844",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11844",
+        "alternateNameNote": "The verified local CSV and checker identify exact Official Harrisonville, code 11844. The detail page confirms 1933, Missouri, the printed latitude and near-identical longitude, and L6 stone identity; its 46.5 kg mass differs from the source's 16.2 kg total, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-c6665e3d-9070-4859-848f-3d5e8e1a2d87",
+      "catalogId": "nininger-1950",
+      "designation": "176.27",
+      "name": "Harrisonville",
+      "weight": {
+        "grams": 247.5
+      },
+      "classification": "Stone. Veined grey chondrite",
+      "locality": "Cass County, Missouri; 38° 39′ N., 94° 21′ W.",
+      "year": "1933",
+      "catalogPage": 56,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Harrisonville",
+        "meteoriteCode": "11844",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11844",
+        "alternateNameNote": "The verified local CSV and checker identify exact Official Harrisonville, code 11844. The detail page confirms 1933, Missouri, the printed latitude and near-identical longitude, and L6 stone identity; its 46.5 kg mass differs from the source's 16.2 kg total, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-a7fa28aa-c266-4936-9119-6c8f2090dd9a",
+      "catalogId": "nininger-1950",
+      "designation": "176.28",
+      "name": "Harrisonville",
+      "weight": {
+        "grams": 124.5
+      },
+      "classification": "Stone. Veined grey chondrite",
+      "locality": "Cass County, Missouri; 38° 39′ N., 94° 21′ W.",
+      "year": "1933",
+      "catalogPage": 56,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Harrisonville",
+        "meteoriteCode": "11844",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11844",
+        "alternateNameNote": "The verified local CSV and checker identify exact Official Harrisonville, code 11844. The detail page confirms 1933, Missouri, the printed latitude and near-identical longitude, and L6 stone identity; its 46.5 kg mass differs from the source's 16.2 kg total, which is preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-1c8a99e3-3620-4b27-9c46-036876d0e96a",
+      "catalogId": "nininger-1950",
+      "designation": "176.29",
+      "name": "Harrisonville",
+      "weight": {
+        "grams": 165
+      },
+      "classification": "Stone. Veined grey chondrite",
+      "locality": "Cass County, Missouri; 38° 39′ N., 94° 21′ W.",
+      "year": "1933",
+      "catalogPage": 56,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Harrisonville",
+        "meteoriteCode": "11844",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11844",
+        "alternateNameNote": "The verified local CSV and checker identify exact Official Harrisonville, code 11844. The detail page confirms 1933, Missouri, the printed latitude and near-identical longitude, and L6 stone identity; its 46.5 kg mass differs from the source's 16.2 kg total, which is preserved without reconciliation."
+      }
+    },
+    {
       "id": "obs-2fd8d474-aa85-4397-a70a-db0ae9da160b",
       "catalogId": "nininger-1950",
       "designation": "181.6",
@@ -25674,6 +25864,27 @@
         "meteoriteCode": "5133",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5133",
         "alternateNameNote": "The historical Bohemian locality, 1847 fall, and exact 39 kg source total agree. MetBull places Braunau in the modern Czech Republic and recommends Iron, IIAB."
+      }
+    },
+    {
+      "id": "obs-36615e45-9525-43f7-b93a-55051abe1082",
+      "catalogId": "nininger-1950",
+      "designation": "235a",
+      "name": "Hammond",
+      "weight": {
+        "grams": 374
+      },
+      "classification": "Iron. Hammond octahedrite",
+      "locality": "St. Croix County, Wisconsin",
+      "year": "1884",
+      "catalogPage": 56,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Hammond",
+        "meteoriteCode": "11813",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11813",
+        "alternateNameNote": "The verified local CSV and checker identify exact Official Hammond, code 11813. The detail page confirms 1884, Wisconsin, 24 kg, and the St. Croix County and Wisconsin synonyms; it spells the other synonym Eau Claire, while the source's Eau Clair and 24.1 kg are preserved without correction."
       }
     },
     {
@@ -26388,6 +26599,27 @@
         "meteoriteCode": "422",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=422",
         "alternateNameNote": "The official name checker and Ainsworth detail page explicitly list Central Missouri as a synonym. Source date, mass, and geographic wording differ from the current Ainsworth record and are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-dc5fe1d9-3952-40bc-8111-1961c94552c0",
+      "catalogId": "nininger-1950",
+      "designation": "305.3",
+      "name": "Hale Center No. 2",
+      "weight": {
+        "grams": 50
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Hale County, Texas; 34° 3′ N., 101° 45′ W.",
+      "year": "1936",
+      "catalogPage": 56,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Hale Center (no. 2)",
+        "meteoriteCode": "11478",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11478",
+        "alternateNameNote": "The verified local CSV has Official Hale Center (no. 2), code 11478. The checker returns printed Hale Center No. 2 as its Variant, and the detail page confirms 1936, Texas, the printed coordinates, 695 g, and H4; the official parenthetical punctuation and lower-case no. are retained only in the canonical name."
       }
     },
     {
@@ -28029,6 +28261,27 @@
       }
     },
     {
+      "id": "obs-8ea49cc2-42ae-48f1-b4ad-2140b9af2a32",
+      "catalogId": "nininger-1950",
+      "designation": "429.1",
+      "name": "Hardwick",
+      "weight": {
+        "grams": 5506
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Battle Plain Township, Rock County, Minnesota; 43° 47′ N., 96° 10′ W.",
+      "year": "1937",
+      "catalogPage": 56,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Hardwick",
+        "meteoriteCode": "11828",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11828",
+        "alternateNameNote": "The verified local CSV and checker identify exact Official Hardwick, code 11828. The detail page confirms the 1937 Minnesota find, the printed coordinates, L4 stone classification, and 7.8 kg mass."
+      }
+    },
+    {
       "id": "obs-61247f59-e28c-4068-899d-6ec441eb6c02",
       "catalogId": "nininger-1950",
       "designation": "432.1",
@@ -28299,6 +28552,48 @@
         "meteoriteCode": "5257",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
         "alternateNameNote": "The verified local CSV has no official Ganado row and has Official Canyon Diablo, code 5257. The official checker returns Ganado solely as a synonym of Canyon Diablo, and the Canyon Diablo detail page lists Ganado as a synonym; no identity is inferred from the printed mass or coordinates."
+      }
+    },
+    {
+      "id": "obs-132edc70-1818-482c-8a6e-c1cb25e0aec1",
+      "catalogId": "nininger-1950",
+      "designation": "456.1",
+      "name": "Hat Creek",
+      "weight": {
+        "grams": 633
+      },
+      "classification": "Stone. Veined grey chondrite",
+      "locality": "Niabara County, Wyoming; 42° 56′ N., 104° 22′ W.",
+      "year": "1939",
+      "catalogPage": 56,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Hat Creek",
+        "meteoriteCode": "11853",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11853",
+        "alternateNameNote": "The verified local CSV and checker identify exact Official Hat Creek, code 11853. The detail page confirms the 1939 Wyoming find, H4 stone classification, and 8.9 kg mass; its coordinates are close to the source, whose Niabara County spelling and longitude are preserved without correction."
+      }
+    },
+    {
+      "id": "obs-26e52aa7-60d1-426f-ac81-77bf25dd63ac",
+      "catalogId": "nininger-1950",
+      "designation": "456.3",
+      "name": "Hat Creek",
+      "weight": {
+        "grams": 8040.75
+      },
+      "classification": "Stone. Veined grey chondrite",
+      "locality": "Niabara County, Wyoming; 42° 56′ N., 104° 22′ W.",
+      "year": "1939",
+      "catalogPage": 56,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Hat Creek",
+        "meteoriteCode": "11853",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11853",
+        "alternateNameNote": "The verified local CSV and checker identify exact Official Hat Creek, code 11853. The detail page confirms the 1939 Wyoming find, H4 stone classification, and 8.9 kg mass; its coordinates are close to the source, whose Niabara County spelling and longitude are preserved without correction."
       }
     },
     {
@@ -28827,6 +29122,27 @@
       }
     },
     {
+      "id": "obs-a2d03705-7639-4ce4-be6f-126a70e002f0",
+      "catalogId": "nininger-1950",
+      "designation": "491.1",
+      "name": "Harding County",
+      "weight": {
+        "grams": 78
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "South Dakota",
+      "year": "1941",
+      "catalogPage": 56,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Harding County",
+        "meteoriteCode": "11826",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11826",
+        "alternateNameNote": "The verified local CSV and checker identify exact Official Harding County, code 11826. The detail page confirms the 1941 South Dakota find, L4 stone classification, and 3,075 g mass printed by the source."
+      }
+    },
+    {
       "id": "obs-43ae96ee-08d9-49f3-b4af-acac01ed7848",
       "catalogId": "nininger-1950",
       "designation": "494.1",
@@ -29139,6 +29455,48 @@
         "meteoriteCode": "11430",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11430",
         "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Guadaloupe County, code 11430, preserving the official spelling printed by the source. The detail page confirms a Texas iron and 20.5 g mass but reports 1950; the source's unknown find date and total weight and its Canyon Diablo remark are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-13e3bbde-d0b4-431c-8273-777d12b1f857",
+      "catalogId": "nininger-1950",
+      "designation": "527.1",
+      "name": "Haskell",
+      "weight": {
+        "grams": 35840
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Haskell County, Texas; 33° 9′ N., 99° 45′ W.",
+      "year": "1909",
+      "catalogPage": 56,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Haskell",
+        "meteoriteCode": "11849",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11849",
+        "alternateNameNote": "The verified local CSV and checker identify exact Official Haskell, code 11849. The detail page confirms the 1909 Texas find, L5 stone classification, 36 kg mass, and Catalogue coordinates exactly matching those printed."
+      }
+    },
+    {
+      "id": "obs-131af2f6-b8fa-4bbf-a261-5ea6e94f089b",
+      "catalogId": "nininger-1950",
+      "designation": "527.2",
+      "name": "Haskell",
+      "weight": {
+        "grams": 8.2
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Haskell County, Texas; 33° 9′ N., 99° 45′ W.",
+      "year": "1909",
+      "catalogPage": 56,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Haskell",
+        "meteoriteCode": "11849",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11849",
+        "alternateNameNote": "The verified local CSV and checker identify exact Official Haskell, code 11849. The detail page confirms the 1909 Texas find, L5 stone classification, 36 kg mass, and Catalogue coordinates exactly matching those printed."
       }
     },
     {
