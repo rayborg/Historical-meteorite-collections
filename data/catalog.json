@@ -402,14 +402,15 @@
           95,
           96,
           97,
-          98
+          98,
+          99
         ],
-        "sourcePageCount": 73,
-        "recordCount": 1561,
-        "recordsWithDesignation": 1535,
-        "recordsWithWeight": 1496,
+        "sourcePageCount": 74,
+        "recordCount": 1582,
+        "recordsWithDesignation": 1556,
+        "recordsWithWeight": 1517,
         "confidenceCounts": {
-          "high": 1561,
+          "high": 1582,
           "medium": 0,
           "low": 0
         },
@@ -417,11 +418,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 3473,
-    "recordsWithDesignation": 3278,
-    "recordsWithWeight": 3280,
+    "recordCount": 3494,
+    "recordsWithDesignation": 3299,
+    "recordsWithWeight": 3301,
     "confidenceCounts": {
-      "high": 3473,
+      "high": 3494,
       "medium": 0,
       "low": 0
     }
@@ -32881,6 +32882,111 @@
       }
     },
     {
+      "id": "obs-f3574018-8cf6-4b36-9d7a-dc6b0ab37e84",
+      "catalogId": "nininger-1950",
+      "designation": "117a",
+      "name": "Tulia",
+      "weight": {
+        "grams": 357
+      },
+      "classification": "Stone. Veined crystalline chondrite",
+      "locality": "Swisher County, Texas",
+      "year": "1924",
+      "catalogPage": 99,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The official checker returns bare Tulia only as a partial name matching five qualified records. The verified local CSV distinguishes Tulia (a), code 24066, from Tulia (b), code 24067, and their detail pages warn that collection specimens labelled Tulia may be Tulia (b). The source's 1924 date and 136 kg total establish neither identity, so none is inferred."
+      }
+    },
+    {
+      "id": "obs-60bb71d2-f0fa-458f-afa0-ebdb64c2218d",
+      "catalogId": "nininger-1950",
+      "designation": "117.15",
+      "name": "Tulia",
+      "weight": {
+        "grams": 455
+      },
+      "classification": "Stone. Veined crystalline chondrite",
+      "locality": "Swisher County, Texas",
+      "year": "1924",
+      "catalogPage": 99,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The official checker returns bare Tulia only as a partial name matching five qualified records. The verified local CSV distinguishes Tulia (a), code 24066, from Tulia (b), code 24067, and their detail pages warn that collection specimens labelled Tulia may be Tulia (b). The source's 1924 date and 136 kg total establish neither identity, so none is inferred."
+      }
+    },
+    {
+      "id": "obs-655897c1-b07d-4fd2-888f-8a21ed2ed587",
+      "catalogId": "nininger-1950",
+      "designation": "117.17",
+      "name": "Tulia",
+      "weight": {
+        "grams": 474
+      },
+      "classification": "Stone. Veined crystalline chondrite",
+      "locality": "Swisher County, Texas",
+      "year": "1924",
+      "catalogPage": 99,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The official checker returns bare Tulia only as a partial name matching five qualified records. The verified local CSV distinguishes Tulia (a), code 24066, from Tulia (b), code 24067, and their detail pages warn that collection specimens labelled Tulia may be Tulia (b). The source's 1924 date and 136 kg total establish neither identity, so none is inferred."
+      }
+    },
+    {
+      "id": "obs-7c08b53b-a968-4dea-bdd9-e18efe983b0f",
+      "catalogId": "nininger-1950",
+      "designation": "117.27",
+      "name": "Tulia",
+      "weight": {
+        "grams": 1420
+      },
+      "classification": "Stone. Veined crystalline chondrite",
+      "locality": "Swisher County, Texas",
+      "year": "1924",
+      "catalogPage": 99,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The official checker returns bare Tulia only as a partial name matching five qualified records. The verified local CSV distinguishes Tulia (a), code 24066, from Tulia (b), code 24067, and their detail pages warn that collection specimens labelled Tulia may be Tulia (b). The source's 1924 date and 136 kg total establish neither identity, so none is inferred."
+      }
+    },
+    {
+      "id": "obs-e3814235-f864-4e4c-b929-25805833e65e",
+      "catalogId": "nininger-1950",
+      "designation": "117.28",
+      "name": "Tulia",
+      "weight": {
+        "grams": 717.8
+      },
+      "classification": "Stone. Veined crystalline chondrite",
+      "locality": "Swisher County, Texas",
+      "year": "1924",
+      "catalogPage": 99,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The official checker returns bare Tulia only as a partial name matching five qualified records. The verified local CSV distinguishes Tulia (a), code 24066, from Tulia (b), code 24067, and their detail pages warn that collection specimens labelled Tulia may be Tulia (b). The source's 1924 date and 136 kg total establish neither identity, so none is inferred."
+      }
+    },
+    {
       "id": "obs-8cf2202a-c656-4fd7-84e2-655967ef70ac",
       "catalogId": "nininger-1950",
       "designation": "118.1",
@@ -32962,6 +33068,27 @@
         "meteoriteCode": "23978",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23978",
         "alternateNameNote": "The verified local CSV identifies Official Thunda, code 23978, a Queensland Iron, IIIAB with 62.1 kg mass. The official checker returns Thunda as Official, and the detail page confirms the exact name, Australian iron identity, mass, and both printed synonyms, Diamantina and Windorah. MetBull gives 1881 while the source prints Found 1886 and 62.3 kg; the source facts and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-3a4fbe35-de27-418a-b606-7c242538af23",
+      "catalogId": "nininger-1950",
+      "designation": "122a",
+      "name": "Tucson",
+      "weight": {
+        "grams": 940
+      },
+      "classification": "Iron. Ataxite",
+      "locality": "Pima County, Arizona",
+      "year": "1850",
+      "catalogPage": 99,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Tucson",
+        "meteoriteCode": "24061",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24061",
+        "alternateNameNote": "The verified local CSV identifies Official Tucson, code 24061, as an 1850 Arizona ungrouped iron with 975 kg mass. The official checker returns Tucson as Official, and the detail page confirms the exact name, year, mass, Pima County coordinates, and all printed synonyms. The source's historical ataxite classification is preserved."
       }
     },
     {
@@ -33844,6 +33971,27 @@
         "meteoriteCode": "23086",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23086",
         "alternateNameNote": "The verified local CSV identifies Official St. Genevieve County, code 23086. The official checker returns the exact name as Official, and the detail page confirms the 1888 Missouri IIIF iron identity and 244.5 kg mass. The source’s rounded 245 kg total and historical fine-octahedrite classification are preserved."
+      }
+    },
+    {
+      "id": "obs-03d45218-1877-425d-80dc-33d9f639ad80",
+      "catalogId": "nininger-1950",
+      "designation": "140a",
+      "name": "Uwet",
+      "weight": {
+        "grams": 17
+      },
+      "classification": "Iron. Hexahedrite",
+      "locality": "Calabar, Southern Nigeria",
+      "year": "before 1903",
+      "catalogPage": 99,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Uwet",
+        "meteoriteCode": "24138",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24138",
+        "alternateNameNote": "The verified local CSV identifies Official Uwet, code 24138, as a Nigerian Iron, IIAB with 54 kg mass and year 1903. The official checker returns Uwet as Official, and the detail page confirms the exact name, Nigerian iron identity, 54 kg mass, and Calabar-region coordinates. The source's before-1903 wording, 54.5 kg total, and historical hexahedrite classification are preserved."
       }
     },
     {
@@ -38656,6 +38804,174 @@
       }
     },
     {
+      "id": "obs-7fd497af-59ea-4b72-a778-61e0f2c2c608",
+      "catalogId": "nininger-1950",
+      "designation": "229n",
+      "name": "Tryon",
+      "weight": {
+        "grams": 358
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "McPherson County, Nebraska; 41° 33′ N., 100° 58′ W.",
+      "year": "1934",
+      "catalogPage": 99,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Tryon",
+        "meteoriteCode": "24056",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24056",
+        "alternateNameNote": "The verified local CSV identifies Official Tryon, code 24056, as a 1934 Nebraska L6 with 15.9 kg mass. The official checker returns Tryon as Official, and the detail page confirms the exact name, year, mass, and exact printed coordinates. The source's historical chondrite classification is preserved."
+      }
+    },
+    {
+      "id": "obs-88cb6f44-c859-4f7e-9660-38b7b2dc58b8",
+      "catalogId": "nininger-1950",
+      "designation": "229k",
+      "name": "Tryon",
+      "weight": {
+        "grams": 498
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "McPherson County, Nebraska; 41° 33′ N., 100° 58′ W.",
+      "year": "1934",
+      "catalogPage": 99,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Tryon",
+        "meteoriteCode": "24056",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24056",
+        "alternateNameNote": "The verified local CSV identifies Official Tryon, code 24056, as a 1934 Nebraska L6 with 15.9 kg mass. The official checker returns Tryon as Official, and the detail page confirms the exact name, year, mass, and exact printed coordinates. The source's historical chondrite classification is preserved."
+      }
+    },
+    {
+      "id": "obs-a9f7e31e-ffdf-4d69-a1d5-a44ff8648b90",
+      "catalogId": "nininger-1950",
+      "designation": "229i",
+      "name": "Tryon",
+      "weight": {
+        "grams": 536
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "McPherson County, Nebraska; 41° 33′ N., 100° 58′ W.",
+      "year": "1934",
+      "catalogPage": 99,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Tryon",
+        "meteoriteCode": "24056",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24056",
+        "alternateNameNote": "The verified local CSV identifies Official Tryon, code 24056, as a 1934 Nebraska L6 with 15.9 kg mass. The official checker returns Tryon as Official, and the detail page confirms the exact name, year, mass, and exact printed coordinates. The source's historical chondrite classification is preserved."
+      }
+    },
+    {
+      "id": "obs-9ab07d0f-932e-4b40-a0bf-1555711ac7f5",
+      "catalogId": "nininger-1950",
+      "designation": "229g",
+      "name": "Tryon",
+      "weight": {
+        "grams": 567
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "McPherson County, Nebraska; 41° 33′ N., 100° 58′ W.",
+      "year": "1934",
+      "catalogPage": 99,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Tryon",
+        "meteoriteCode": "24056",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24056",
+        "alternateNameNote": "The verified local CSV identifies Official Tryon, code 24056, as a 1934 Nebraska L6 with 15.9 kg mass. The official checker returns Tryon as Official, and the detail page confirms the exact name, year, mass, and exact printed coordinates. The source's historical chondrite classification is preserved."
+      }
+    },
+    {
+      "id": "obs-1aa7a341-6d56-49a4-bac2-85a5af76b841",
+      "catalogId": "nininger-1950",
+      "designation": "229h",
+      "name": "Tryon",
+      "weight": {
+        "grams": 573
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "McPherson County, Nebraska; 41° 33′ N., 100° 58′ W.",
+      "year": "1934",
+      "catalogPage": 99,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Tryon",
+        "meteoriteCode": "24056",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24056",
+        "alternateNameNote": "The verified local CSV identifies Official Tryon, code 24056, as a 1934 Nebraska L6 with 15.9 kg mass. The official checker returns Tryon as Official, and the detail page confirms the exact name, year, mass, and exact printed coordinates. The source's historical chondrite classification is preserved."
+      }
+    },
+    {
+      "id": "obs-7964268a-fad6-413e-ae84-d5b166533a67",
+      "catalogId": "nininger-1950",
+      "designation": "229d",
+      "name": "Tryon",
+      "weight": {
+        "grams": 1444
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "McPherson County, Nebraska; 41° 33′ N., 100° 58′ W.",
+      "year": "1934",
+      "catalogPage": 99,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Tryon",
+        "meteoriteCode": "24056",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24056",
+        "alternateNameNote": "The verified local CSV identifies Official Tryon, code 24056, as a 1934 Nebraska L6 with 15.9 kg mass. The official checker returns Tryon as Official, and the detail page confirms the exact name, year, mass, and exact printed coordinates. The source's historical chondrite classification is preserved."
+      }
+    },
+    {
+      "id": "obs-f0b6a1d7-fb86-421c-a8c6-d3c97b50a73a",
+      "catalogId": "nininger-1950",
+      "designation": "229a",
+      "name": "Tryon",
+      "weight": {
+        "grams": 2545
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "McPherson County, Nebraska; 41° 33′ N., 100° 58′ W.",
+      "year": "1934",
+      "catalogPage": 99,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Tryon",
+        "meteoriteCode": "24056",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24056",
+        "alternateNameNote": "The verified local CSV identifies Official Tryon, code 24056, as a 1934 Nebraska L6 with 15.9 kg mass. The official checker returns Tryon as Official, and the detail page confirms the exact name, year, mass, and exact printed coordinates. The source's historical chondrite classification is preserved."
+      }
+    },
+    {
+      "id": "obs-dc2c2533-3ce7-41a5-ad8a-d75223e222c8",
+      "catalogId": "nininger-1950",
+      "designation": "229.39",
+      "name": "Tryon",
+      "weight": {
+        "grams": 99
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "McPherson County, Nebraska; 41° 33′ N., 100° 58′ W.",
+      "year": "1934",
+      "catalogPage": 99,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Tryon",
+        "meteoriteCode": "24056",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24056",
+        "alternateNameNote": "The verified local CSV identifies Official Tryon, code 24056, as a 1934 Nebraska L6 with 15.9 kg mass. The official checker returns Tryon as Official, and the detail page confirms the exact name, year, mass, and exact printed coordinates. The source's historical chondrite classification is preserved."
+      }
+    },
+    {
       "id": "obs-310c4713-bfb2-46fd-b5c9-8d3c47bdb4d4",
       "catalogId": "nininger-1950",
       "designation": "230.3",
@@ -39871,6 +40187,48 @@
         "meteoriteCode": "5100",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5100",
         "alternateNameNote": "The exact 21.25 kg source total and iron context identify official Bolivia. Source says known 1927; MetBull gives 1896 and location Bolivia?. The dagger is a source marker, not part of the name."
+      }
+    },
+    {
+      "id": "obs-e86c431a-2dcf-42e7-9ad5-934e3351de2f",
+      "catalogId": "nininger-1950",
+      "designation": "279b",
+      "name": "Ulysses",
+      "weight": {
+        "grams": 249
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Grant County, Kansas; 37° 36′ N., 101° 15′ W.",
+      "year": "1934",
+      "catalogPage": 99,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Ulysses",
+        "meteoriteCode": "24110",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24110",
+        "alternateNameNote": "The verified local CSV identifies Official Ulysses, code 24110, as a Kansas H4 with 3.9 kg mass. The official checker returns Ulysses as Official, and the detail page confirms the exact name, state, H4 identity, mass, and exact printed coordinates. MetBull gives found 1927; the source's Recognized 1934 and 3.6 kg total are preserved."
+      }
+    },
+    {
+      "id": "obs-3f454574-88bb-4afc-87b1-29f1e201d950",
+      "catalogId": "nininger-1950",
+      "designation": "279.1",
+      "name": "Ulysses",
+      "weight": {
+        "grams": 2802
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Grant County, Kansas; 37° 36′ N., 101° 15′ W.",
+      "year": "1934",
+      "catalogPage": 99,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Ulysses",
+        "meteoriteCode": "24110",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24110",
+        "alternateNameNote": "The verified local CSV identifies Official Ulysses, code 24110, as a Kansas H4 with 3.9 kg mass. The official checker returns Ulysses as Official, and the detail page confirms the exact name, state, H4 identity, mass, and exact printed coordinates. MetBull gives found 1927; the source's Recognized 1934 and 3.6 kg total are preserved."
       }
     },
     {
@@ -41260,6 +41618,69 @@
       }
     },
     {
+      "id": "obs-914ff650-337e-4c56-9549-0d4b01a43dec",
+      "catalogId": "nininger-1950",
+      "designation": "326.1",
+      "name": "Union County",
+      "weight": {
+        "grams": 299
+      },
+      "classification": "Iron. Coarsest octahedrite",
+      "locality": "Georgia",
+      "year": "1853",
+      "catalogPage": 99,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Union County",
+        "meteoriteCode": "24122",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24122",
+        "alternateNameNote": "The verified local CSV identifies Official Union County, code 24122, as an 1853 Georgia Iron, IC with 6.8 kg mass. The official checker returns Union County as Official, and the detail page confirms the exact name, year, state, iron identity, and mass. The source's historical coarsest-octahedrite classification is preserved."
+      }
+    },
+    {
+      "id": "obs-a55d300f-6b55-4a6d-a280-bd5618cdedc7",
+      "catalogId": "nininger-1950",
+      "designation": "326.2",
+      "name": "Union County",
+      "weight": {
+        "grams": 27
+      },
+      "classification": "Iron. Coarsest octahedrite",
+      "locality": "Georgia",
+      "year": "1853",
+      "catalogPage": 99,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Union County",
+        "meteoriteCode": "24122",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24122",
+        "alternateNameNote": "The verified local CSV identifies Official Union County, code 24122, as an 1853 Georgia Iron, IC with 6.8 kg mass. The official checker returns Union County as Official, and the detail page confirms the exact name, year, state, iron identity, and mass. The source's historical coarsest-octahedrite classification is preserved."
+      }
+    },
+    {
+      "id": "obs-4a574ec3-32e3-49ee-b47b-703eb24d97b7",
+      "catalogId": "nininger-1950",
+      "designation": "326.3",
+      "name": "Union County",
+      "weight": {
+        "grams": 17.5
+      },
+      "classification": "Iron. Coarsest octahedrite",
+      "locality": "Georgia",
+      "year": "1853",
+      "catalogPage": 99,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Union County",
+        "meteoriteCode": "24122",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24122",
+        "alternateNameNote": "The verified local CSV identifies Official Union County, code 24122, as an 1853 Georgia Iron, IC with 6.8 kg mass. The official checker returns Union County as Official, and the detail page confirms the exact name, year, state, iron identity, and mass. The source's historical coarsest-octahedrite classification is preserved."
+      }
+    },
+    {
       "id": "obs-0587cf3d-965b-4ba3-b83c-dc092378d4b1",
       "catalogId": "nininger-1950",
       "designation": "327.1",
@@ -42076,6 +42497,27 @@
         "meteoriteCode": "16984",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16984",
         "alternateNameNote": "The checker returns Nobleboro as a partial name rather than an approved name. The verified local CSV identifies Official Nobleborough, code 16984, and the official detail page explicitly lists Nobleboro as an NHM Catalogue synonym while confirming the 1823 Maine fall, 2.3 kg mass, and historical Howardite classification."
+      }
+    },
+    {
+      "id": "obs-0a127bf8-41c3-4e6f-8293-2e0bcfa85f32",
+      "catalogId": "nininger-1950",
+      "designation": "350.1",
+      "name": "Ute Creek",
+      "weight": {
+        "grams": 553
+      },
+      "classification": "Stone. Crystalline spherical chondrite",
+      "locality": "Union County, New Mexico; 36° 16′ N., 103° 53′ W.",
+      "year": "1936",
+      "catalogPage": 99,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Ute Creek",
+        "meteoriteCode": "24134",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24134",
+        "alternateNameNote": "The verified local CSV identifies Official Ute Creek, code 24134, as a 1936 New Mexico H4 with 1,000 gram mass. The official checker returns Ute Creek as Official, and the detail page confirms the exact name, year, state, classification, mass, and nearby coordinates. The exact printed coordinates and historical classification are preserved."
       }
     },
     {
