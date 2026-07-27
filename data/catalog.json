@@ -377,14 +377,15 @@
           70,
           71,
           72,
-          73
+          73,
+          74
         ],
-        "sourcePageCount": 48,
-        "recordCount": 985,
-        "recordsWithDesignation": 964,
-        "recordsWithWeight": 926,
+        "sourcePageCount": 49,
+        "recordCount": 997,
+        "recordsWithDesignation": 976,
+        "recordsWithWeight": 938,
         "confidenceCounts": {
-          "high": 985,
+          "high": 997,
           "medium": 0,
           "low": 0
         },
@@ -392,11 +393,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2897,
-    "recordsWithDesignation": 2707,
-    "recordsWithWeight": 2710,
+    "recordCount": 2909,
+    "recordsWithDesignation": 2719,
+    "recordsWithWeight": 2722,
     "confidenceCounts": {
-      "high": 2897,
+      "high": 2909,
       "medium": 0,
       "low": 0
     }
@@ -27396,6 +27397,27 @@
       }
     },
     {
+      "id": "obs-a4e98626-d2ca-48ad-9a50-78fe5793a12c",
+      "catalogId": "nininger-1950",
+      "designation": "186a",
+      "name": "Mount Dyrring",
+      "weight": {
+        "grams": 109
+      },
+      "classification": "Pallasite",
+      "locality": "Singleton district, County Durham, New South Wales, Australia",
+      "year": null,
+      "catalogPage": 74,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Mount Dyrring",
+        "meteoriteCode": "16772",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16772",
+        "alternateNameNote": "The verified local CSV identifies exact Official Mount Dyrring, code 16772, a New South Wales Pallasite, PMG found in 1903 with 11.3 kg mass. The official checker returns the exact name as Official, and the detail page confirms the locality, pallasite identity, and mass. The source prints no event year, so structured year remains null, and its 11.4 kg total is preserved."
+      }
+    },
+    {
       "id": "obs-65a2e655-929d-4799-9866-e14700ac3b26",
       "catalogId": "nininger-1950",
       "designation": "187a",
@@ -29181,6 +29203,27 @@
       }
     },
     {
+      "id": "obs-b1d31109-76b5-48a1-98c5-18eda1aefe4c",
+      "catalogId": "nininger-1950",
+      "designation": "195.1",
+      "name": "Morrill",
+      "weight": {
+        "grams": 545
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "16 miles north of Morrill in Sioux Co., Nebraska; 41° 58′ N., 103° 56′ W.",
+      "year": "1933",
+      "catalogPage": 74,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Morrill",
+        "meteoriteCode": "16749",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16749",
+        "alternateNameNote": "The verified local CSV identifies exact Official Morrill, code 16749, a Nebraska Iron, IAB-an found in 1920 with 1,387 gram mass. The official checker returns the exact name as Official, and the detail page confirms the class and printed coordinates. The source's Recognized 1933 conflicts with the official year, while its rounded 1.4 kg total agrees; the source is preserved."
+      }
+    },
+    {
       "id": "obs-ef67c400-13c9-49d6-bbda-ff9cda438852",
       "catalogId": "nininger-1950",
       "designation": "196a",
@@ -29304,6 +29347,27 @@
         "meteoriteCode": "5071",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5071",
         "alternateNameNote": "The Texas context and 1909 fall agree. Source total is 5 kg.; MetBull mass is 5.1 kg. The source generic Chondrite class is less specific than modern L6."
+      }
+    },
+    {
+      "id": "obs-7c4d7563-9498-4173-a9da-1ef0b00bdb53",
+      "catalogId": "nininger-1950",
+      "designation": "205a",
+      "name": "Morristown",
+      "weight": {
+        "grams": 130
+      },
+      "classification": "Mesosiderite",
+      "locality": "Hamblen County, Tennessee",
+      "year": "1887",
+      "catalogPage": 74,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Morristown",
+        "meteoriteCode": "16750",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16750",
+        "alternateNameNote": "The verified local CSV identifies exact Official Morristown, code 16750, a Tennessee Mesosiderite-A3 found in 1887 with 16.3 kg mass. The official checker returns the exact name as Official, and the detail page confirms the identity and lists East Tennessee, Hamblen County, and Safford Meteorite as synonyms. The source's 16.4 kg total is preserved."
       }
     },
     {
@@ -30777,6 +30841,69 @@
       }
     },
     {
+      "id": "obs-a58502f1-0554-46a6-be54-332c6798436b",
+      "catalogId": "nininger-1950",
+      "designation": "282e",
+      "name": "Morland",
+      "weight": {
+        "grams": 288
+      },
+      "classification": "Stone. Crystalline chondrite",
+      "locality": "Graham County, Kansas; 39° 20′ N., 100° 4′ W.",
+      "year": "1935",
+      "catalogPage": 74,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Morland",
+        "meteoriteCode": "16746",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16746",
+        "alternateNameNote": "The verified local CSV identifies exact Official Morland, code 16746, a Kansas H6 with 295 kg mass and year 1890. The official checker returns the exact name as Official, and the detail page confirms the class, printed coordinates, and Graham County synonym. The source's Found 1935 and 327.2 kg total conflict with the official year and mass and are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-afd7755e-1cf2-45be-9954-c53332375564",
+      "catalogId": "nininger-1950",
+      "designation": "282ee",
+      "name": "Morland",
+      "weight": {
+        "grams": 798
+      },
+      "classification": "Stone. Crystalline chondrite",
+      "locality": "Graham County, Kansas; 39° 20′ N., 100° 4′ W.",
+      "year": "1935",
+      "catalogPage": 74,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Morland",
+        "meteoriteCode": "16746",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16746",
+        "alternateNameNote": "The verified local CSV identifies exact Official Morland, code 16746, a Kansas H6 with 295 kg mass and year 1890. The official checker returns the exact name as Official, and the detail page confirms the class, printed coordinates, and Graham County synonym. The source's Found 1935 and 327.2 kg total conflict with the official year and mass and are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-4fedda0d-354c-405a-bd27-5e7c3303534d",
+      "catalogId": "nininger-1950",
+      "designation": "282.62",
+      "name": "Morland",
+      "weight": {
+        "grams": 535
+      },
+      "classification": "Stone. Crystalline chondrite",
+      "locality": "Graham County, Kansas; 39° 20′ N., 100° 4′ W.",
+      "year": "1935",
+      "catalogPage": 74,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Morland",
+        "meteoriteCode": "16746",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16746",
+        "alternateNameNote": "The verified local CSV identifies exact Official Morland, code 16746, a Kansas H6 with 295 kg mass and year 1890. The official checker returns the exact name as Official, and the detail page confirms the class, printed coordinates, and Graham County synonym. The source's Found 1935 and 327.2 kg total conflict with the official year and mass and are preserved without reconciliation."
+      }
+    },
+    {
       "id": "obs-f35c3d12-08cd-4abf-b11a-3b575d94c26d",
       "catalogId": "nininger-1950",
       "designation": "285a",
@@ -30945,6 +31072,27 @@
       }
     },
     {
+      "id": "obs-a43ff27c-d1f4-4413-97be-2a0045233b59",
+      "catalogId": "nininger-1950",
+      "designation": "294a",
+      "name": "Moore County",
+      "weight": {
+        "grams": 174
+      },
+      "classification": "Stone. Eucrite",
+      "locality": "North Carolina",
+      "year": "1913",
+      "catalogPage": 74,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Moore County",
+        "meteoriteCode": "16736",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16736",
+        "alternateNameNote": "The verified local CSV identifies exact Official Moore County, code 16736, a 1913 North Carolina Eucrite-cm fall of 1,880 grams. The official checker returns the exact name as Official, and the detail page confirms the year, fall, locality, eucrite identity, mass, and Graves synonym. The source's rounded 1.9 kg total is preserved."
+      }
+    },
+    {
       "id": "obs-388722ec-a475-4d17-9581-b9b7efd7663e",
       "catalogId": "nininger-1950",
       "designation": "295a",
@@ -31089,6 +31237,27 @@
         "meteoriteCode": "388",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=388",
         "alternateNameNote": "The specimen row continues from printed page 26. The source reports 23.979 kg.; MetBull reports 22.6 kg."
+      }
+    },
+    {
+      "id": "obs-88d8a49a-a662-49d3-99fa-e067364772fd",
+      "catalogId": "nininger-1950",
+      "designation": "299.48",
+      "name": "Mount Joy",
+      "weight": {
+        "grams": 8580
+      },
+      "classification": "Iron. Granular hexahedrite (Coarsest octahedrite—according to Prior)",
+      "locality": "Adams County, Pennsylvania",
+      "year": "1887",
+      "catalogPage": 74,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Mount Joy",
+        "meteoriteCode": "16779",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16779",
+        "alternateNameNote": "The verified local CSV identifies exact Official Mount Joy, code 16779, a Pennsylvania Iron, IIAB found in 1887 with 384 kg mass. The official checker returns the exact name as Official, and the detail page confirms the identity and lists Adams County and Gettysburg as synonyms. The source's 385 kg total and historical classification are preserved."
       }
     },
     {
@@ -32517,6 +32686,69 @@
         "meteoriteCode": "5022",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5022",
         "alternateNameNote": "The South Dakota context and 89 kg mass agree. Source year 1935 differs from MetBull year 1934; MetBull also reproduces a correction from Coarse octahedrite to Hexahedrite and recommends Iron, IIAB."
+      }
+    },
+    {
+      "id": "obs-34b0eb76-c9d6-455d-90eb-68ed797d3f7c",
+      "catalogId": "nininger-1950",
+      "designation": "375.1",
+      "name": "Morito",
+      "weight": {
+        "grams": 371
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Chihuahua, Mexico",
+      "year": "1600",
+      "catalogPage": 74,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Morito",
+        "meteoriteCode": "16745",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16745",
+        "alternateNameNote": "The verified local CSV identifies exact Official Morito, code 16745, a Chihuahua, Mexico Iron, IIIAB found in 1600 with 10.1 tonne mass. The official checker returns the exact name as Official, and the detail page confirms the year, locality, class, mass, and El Morito, Humboldt Iron, San Gregorio, and Valle de Allende synonyms. The source wording and 11,000 kg total are preserved."
+      }
+    },
+    {
+      "id": "obs-e4e7bb92-45a3-4b4e-8359-339ffe83aa2e",
+      "catalogId": "nininger-1950",
+      "designation": "375.2",
+      "name": "Morito",
+      "weight": {
+        "grams": 265
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Chihuahua, Mexico",
+      "year": "1600",
+      "catalogPage": 74,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Morito",
+        "meteoriteCode": "16745",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16745",
+        "alternateNameNote": "The verified local CSV identifies exact Official Morito, code 16745, a Chihuahua, Mexico Iron, IIIAB found in 1600 with 10.1 tonne mass. The official checker returns the exact name as Official, and the detail page confirms the year, locality, class, mass, and El Morito, Humboldt Iron, San Gregorio, and Valle de Allende synonyms. The source wording and 11,000 kg total are preserved."
+      }
+    },
+    {
+      "id": "obs-9bc17c10-3a0c-439e-b84f-ff811601bd02",
+      "catalogId": "nininger-1950",
+      "designation": "375.3",
+      "name": "Morito",
+      "weight": {
+        "grams": 496
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Chihuahua, Mexico",
+      "year": "1600",
+      "catalogPage": 74,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Morito",
+        "meteoriteCode": "16745",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16745",
+        "alternateNameNote": "The verified local CSV identifies exact Official Morito, code 16745, a Chihuahua, Mexico Iron, IIIAB found in 1600 with 10.1 tonne mass. The official checker returns the exact name as Official, and the detail page confirms the year, locality, class, mass, and El Morito, Humboldt Iron, San Gregorio, and Valle de Allende synonyms. The source wording and 11,000 kg total are preserved."
       }
     },
     {
@@ -35667,6 +35899,27 @@
         "meteoriteCode": "5329",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5329",
         "alternateNameNote": "The official detail page lists all seven printed synonyms, with Orléans carrying its modern diacritic; the 1810 fall and 27 kg total agree."
+      }
+    },
+    {
+      "id": "obs-c3e1e372-9af3-4d8a-af49-30a800b3c752",
+      "catalogId": "nininger-1950",
+      "designation": "539.1",
+      "name": "Mooresfort",
+      "weight": {
+        "grams": 14
+      },
+      "classification": "Stone. Veined grey chondrite",
+      "locality": "County Tipperary, Ireland",
+      "year": "1810",
+      "catalogPage": 74,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Mooresfort",
+        "meteoriteCode": "16737",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16737",
+        "alternateNameNote": "The verified local CSV identifies exact Official Mooresfort, code 16737, an 1810 Irish H5 fall of 3,520 grams. The official checker returns the exact name as Official, and the detail page confirms the year, fall, Ireland, H5 identity, mass, and Tipperary synonym. The source's rounded 3.5 kg total is preserved."
       }
     },
     {
