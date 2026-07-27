@@ -346,14 +346,15 @@
           39,
           40,
           41,
-          42
+          42,
+          43
         ],
-        "sourcePageCount": 17,
-        "recordCount": 402,
-        "recordsWithDesignation": 398,
-        "recordsWithWeight": 391,
+        "sourcePageCount": 18,
+        "recordCount": 411,
+        "recordsWithDesignation": 407,
+        "recordsWithWeight": 399,
         "confidenceCounts": {
-          "high": 402,
+          "high": 411,
           "medium": 0,
           "low": 0
         },
@@ -361,11 +362,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2314,
-    "recordsWithDesignation": 2141,
-    "recordsWithWeight": 2175,
+    "recordCount": 2323,
+    "recordsWithDesignation": 2150,
+    "recordsWithWeight": 2183,
     "confidenceCounts": {
-      "high": 2314,
+      "high": 2323,
       "medium": 0,
       "low": 0
     }
@@ -23333,6 +23334,27 @@
       }
     },
     {
+      "id": "obs-744d1789-beb3-42bd-8c2e-bbbe27e950ed",
+      "catalogId": "nininger-1950",
+      "designation": "251a",
+      "name": "Chesterville",
+      "weight": {
+        "grams": 147
+      },
+      "classification": "Iron. Nickel-poor ataxite",
+      "locality": "Chester County, South Carolina",
+      "year": "1849",
+      "catalogPage": 43,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Chesterville",
+        "meteoriteCode": "5343",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5343",
+        "alternateNameNote": "The official detail page lists Chester County as a synonym and gives 1849; the source says found before 1849 and reports 16.33 kg versus MetBull's 16.5 kg."
+      }
+    },
+    {
       "id": "obs-cc09e1fa-4be4-486a-a193-f408d2100c75",
       "catalogId": "nininger-1950",
       "designation": "253a",
@@ -23711,6 +23733,48 @@
       }
     },
     {
+      "id": "obs-918b68b4-0d4d-4c9e-8dd6-075581a6af76",
+      "catalogId": "nininger-1950",
+      "designation": "317.1",
+      "name": "Channing",
+      "weight": {
+        "grams": 5151
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Hartley County, Texas; 35° 41′ N., 102° 23′ W.",
+      "year": "1936",
+      "catalogPage": 43,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Channing",
+        "meteoriteCode": "5324",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5324",
+        "alternateNameNote": "The official checker returns Channing. Source and detail agree on the 1936 Texas find and coordinates; the source total of 13 kg differs from MetBull's 15.3 kg."
+      }
+    },
+    {
+      "id": "obs-c5a916c6-0b79-4858-badd-21a2a4320687",
+      "catalogId": "nininger-1950",
+      "designation": "319.1",
+      "name": "Cherokee Springs",
+      "weight": {
+        "grams": 134
+      },
+      "classification": "Stone. Intermediate chondrite",
+      "locality": "Spartanburg County, South Carolina",
+      "year": "1933",
+      "catalogPage": 43,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Cherokee Springs",
+        "meteoriteCode": "5340",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5340",
+        "alternateNameNote": "The official checker returns Cherokee Springs; the South Carolina locality, 1933 fall, and 8.4 kg total agree."
+      }
+    },
+    {
       "id": "obs-56a56eec-e34b-438d-a1ff-b95155997b04",
       "catalogId": "nininger-1950",
       "designation": "328.1",
@@ -23858,6 +23922,27 @@
       }
     },
     {
+      "id": "obs-04c3d73b-dded-489c-bf33-274be30596b2",
+      "catalogId": "nininger-1950",
+      "designation": "333.1",
+      "name": "Chateau-Renard",
+      "weight": {
+        "grams": 15.8
+      },
+      "classification": "Stone. Veined intermediate hypersthene-chondrite",
+      "locality": "Montargis, Loiret, France",
+      "year": "1841",
+      "catalogPage": 43,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Château-Renard",
+        "meteoriteCode": "5332",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5332",
+        "alternateNameNote": "The official checker identifies Chateau-Renard as a variant of Château-Renard. The detail page explicitly lists Chateau-Renard and Trigueres as synonyms; the 1841 fall and 30 kg total agree."
+      }
+    },
+    {
       "id": "obs-fe6c1377-673b-4c7d-99b7-fb512a8b6e69",
       "catalogId": "nininger-1950",
       "designation": "336.1",
@@ -23897,6 +23982,27 @@
         "meteoriteCode": "4942",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4942",
         "alternateNameNote": "MetBull lists Agen, Landes, and Roquefort as synonyms. The source reports 9 kg. and 9:00 P.M.; MetBull's basic mass is 6.4 kg and its current writeup says around 9:30 p.m. The historical Veined grey chondrite classification corresponds broadly to modern H5."
+      }
+    },
+    {
+      "id": "obs-a31a59b5-efd8-4e89-b6ce-425352e22bdc",
+      "catalogId": "nininger-1950",
+      "designation": "341.1",
+      "name": "Chantonnay",
+      "weight": {
+        "grams": 7.2
+      },
+      "classification": "Stone. Brecciated grey hypersthene-chondrite",
+      "locality": "Vendée, France",
+      "year": "1812",
+      "catalogPage": 43,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Chantonnay",
+        "meteoriteCode": "5325",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5325",
+        "alternateNameNote": "The official detail page lists both printed synonyms, Bourbon-Vendée and La Rochelle; the 1812 fall and 31.5 kg total agree."
       }
     },
     {
@@ -24023,6 +24129,27 @@
         "meteoriteCode": "5015",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5015",
         "alternateNameNote": "The source omits the official final acute accent. MetBull lists Bahia as a synonym; the Brazil context and 1784 find year agree. The source reports 5,000 kg.; MetBull reports 5.36 t. The historical Coarse octahedrite classification corresponds broadly to modern Iron, IC."
+      }
+    },
+    {
+      "id": "obs-b8ced3dd-db97-4a64-a8f3-f82995c2b03e",
+      "catalogId": "nininger-1950",
+      "designation": "356.1",
+      "name": "Charcas",
+      "weight": {
+        "grams": 1515
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "San Luis Potosi, Mexico",
+      "year": "1804",
+      "catalogPage": 43,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Charcas",
+        "meteoriteCode": "5326",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5326",
+        "alternateNameNote": "The official detail page lists San Luis Potosi as a synonym and agrees on Mexico and 1804; the source total of 780 kg differs from MetBull's 1.4 t."
       }
     },
     {
@@ -24233,6 +24360,27 @@
         "meteoriteCode": "5169",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5169",
         "alternateNameNote": "The official detail page explicitly lists the source's printed synonym Bur-Hagaba for Bur-Gheluai."
+      }
+    },
+    {
+      "id": "obs-c9eff9b1-bf75-431d-a951-7519d8c0f815",
+      "catalogId": "nininger-1950",
+      "designation": "382.1",
+      "name": "Charlotte",
+      "weight": {
+        "grams": 218.6
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Dickson County, Tennessee",
+      "year": "1835",
+      "catalogPage": 43,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Charlotte",
+        "meteoriteCode": "5328",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5328",
+        "alternateNameNote": "The official detail page lists Dickson County as a synonym; the Tennessee locality, 1835 fall, and 4.3 kg total agree."
       }
     },
     {
@@ -25139,6 +25287,27 @@
       }
     },
     {
+      "id": "obs-9286c6b5-4942-41f0-a905-8854f457bd9d",
+      "catalogId": "nininger-1950",
+      "designation": "500.1",
+      "name": "Chicora",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Stone. Achondrite",
+      "locality": "Butler County, Pennsylvania",
+      "year": "1938",
+      "catalogPage": 43,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Chicora",
+        "meteoriteCode": "5349",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5349",
+        "alternateNameNote": "The official checker returns Chicora; the Pennsylvania locality, 1938 fall, and 303 gram total agree."
+      }
+    },
+    {
       "id": "obs-3e1941f3-3477-48ee-9a77-8fc19eb87437",
       "catalogId": "nininger-1950",
       "designation": "504.1",
@@ -25325,6 +25494,27 @@
         "meteoriteCode": "4950",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4950",
         "alternateNameNote": "MetBull lists San Francisco Pass as a synonym; the Atacama location and 12 kg mass agree. The source reports 1845, while MetBull reports 1855. The historical Brecciated octahedrite classification corresponds to modern Iron, IIE-an."
+      }
+    },
+    {
+      "id": "obs-5e6c1e93-d9cb-4953-b4f9-7b460e0309b8",
+      "catalogId": "nininger-1950",
+      "designation": "538.1",
+      "name": "Charsonville",
+      "weight": {
+        "grams": 37
+      },
+      "classification": "Stone. Veined grey chondrite",
+      "locality": "Meung, Loiret, France",
+      "year": "1810",
+      "catalogPage": 43,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Charsonville",
+        "meteoriteCode": "5329",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5329",
+        "alternateNameNote": "The official detail page lists all seven printed synonyms, with Orléans carrying its modern diacritic; the 1810 fall and 27 kg total agree."
       }
     },
     {
