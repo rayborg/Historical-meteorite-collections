@@ -403,14 +403,15 @@
           96,
           97,
           98,
-          99
+          99,
+          100
         ],
-        "sourcePageCount": 74,
-        "recordCount": 1582,
-        "recordsWithDesignation": 1556,
-        "recordsWithWeight": 1517,
+        "sourcePageCount": 75,
+        "recordCount": 1596,
+        "recordsWithDesignation": 1570,
+        "recordsWithWeight": 1529,
         "confidenceCounts": {
-          "high": 1582,
+          "high": 1596,
           "medium": 0,
           "low": 0
         },
@@ -418,11 +419,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 3494,
-    "recordsWithDesignation": 3299,
-    "recordsWithWeight": 3301,
+    "recordCount": 3508,
+    "recordsWithDesignation": 3313,
+    "recordsWithWeight": 3313,
     "confidenceCounts": {
-      "high": 3494,
+      "high": 3508,
       "medium": 0,
       "low": 0
     }
@@ -33113,6 +33114,132 @@
       }
     },
     {
+      "id": "obs-46116909-2b00-4c9f-bc76-c77ee6b5ce74",
+      "catalogId": "nininger-1950",
+      "designation": "124.1",
+      "name": "Vaca Muerta",
+      "weight": {
+        "grams": 35
+      },
+      "classification": "Mesosiderite",
+      "locality": "Sierra de Chaco, Taltal, Atacama, Chile",
+      "year": "1861",
+      "catalogPage": 100,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Vaca Muerta",
+        "meteoriteCode": "24142",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24142",
+        "alternateNameNote": "The verified local CSV identifies Official Vaca Muerta, code 24142. The official checker returns Vaca Muerta as Official, and the detail page confirms the exact name, 1861 Chile find, Antofagasta locality, and mesosiderite identity. MetBull gives a 3.83 t mass and recommended Mesosiderite-A1 classification; the source's unquantified total and historical classification are preserved. The structured synonym context dehyphenates only the printed line-end Car-/risalillo split."
+      }
+    },
+    {
+      "id": "obs-4221d9fc-1046-48b4-a059-ddd79fb819c2",
+      "catalogId": "nininger-1950",
+      "designation": "124.2",
+      "name": "Vaca Muerta",
+      "weight": {
+        "grams": 27
+      },
+      "classification": "Mesosiderite",
+      "locality": "Sierra de Chaco, Taltal, Atacama, Chile",
+      "year": "1861",
+      "catalogPage": 100,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Vaca Muerta",
+        "meteoriteCode": "24142",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24142",
+        "alternateNameNote": "The verified local CSV identifies Official Vaca Muerta, code 24142. The official checker returns Vaca Muerta as Official, and the detail page confirms the exact name, 1861 Chile find, Antofagasta locality, and mesosiderite identity. MetBull gives a 3.83 t mass and recommended Mesosiderite-A1 classification; the source's unquantified total and historical classification are preserved. The structured synonym context dehyphenates only the printed line-end Car-/risalillo split."
+      }
+    },
+    {
+      "id": "obs-4c833fed-5849-4330-9fcb-cad52ce47cd4",
+      "catalogId": "nininger-1950",
+      "designation": "124.3",
+      "name": "Vaca Muerta",
+      "weight": {
+        "grams": 129.5
+      },
+      "classification": "Mesosiderite",
+      "locality": "Sierra de Chaco, Taltal, Atacama, Chile",
+      "year": "1861",
+      "catalogPage": 100,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Vaca Muerta",
+        "meteoriteCode": "24142",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24142",
+        "alternateNameNote": "The verified local CSV identifies Official Vaca Muerta, code 24142. The official checker returns Vaca Muerta as Official, and the detail page confirms the exact name, 1861 Chile find, Antofagasta locality, and mesosiderite identity. MetBull gives a 3.83 t mass and recommended Mesosiderite-A1 classification; the source's unquantified total and historical classification are preserved. The structured synonym context dehyphenates only the printed line-end Car-/risalillo split."
+      }
+    },
+    {
+      "id": "obs-9ddb95e4-970e-441a-9a93-d515ee908f1e",
+      "catalogId": "nininger-1950",
+      "designation": "124.4",
+      "name": "Vaca Muerta",
+      "weight": {
+        "grams": 39.5
+      },
+      "classification": "Mesosiderite",
+      "locality": "Sierra de Chaco, Taltal, Atacama, Chile",
+      "year": "1861",
+      "catalogPage": 100,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Vaca Muerta",
+        "meteoriteCode": "24142",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24142",
+        "alternateNameNote": "The verified local CSV identifies Official Vaca Muerta, code 24142. The official checker returns Vaca Muerta as Official, and the detail page confirms the exact name, 1861 Chile find, Antofagasta locality, and mesosiderite identity. MetBull gives a 3.83 t mass and recommended Mesosiderite-A1 classification; the source's unquantified total and historical classification are preserved. The structured synonym context dehyphenates only the printed line-end Car-/risalillo split."
+      }
+    },
+    {
+      "id": "obs-a14a4870-acf0-424e-897e-7f4a48934249",
+      "catalogId": "nininger-1950",
+      "designation": "124.5",
+      "name": "Vaca Muerta",
+      "weight": {
+        "grams": 30.5
+      },
+      "classification": "Mesosiderite",
+      "locality": "Sierra de Chaco, Taltal, Atacama, Chile",
+      "year": "1861",
+      "catalogPage": 100,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Vaca Muerta",
+        "meteoriteCode": "24142",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24142",
+        "alternateNameNote": "The verified local CSV identifies Official Vaca Muerta, code 24142. The official checker returns Vaca Muerta as Official, and the detail page confirms the exact name, 1861 Chile find, Antofagasta locality, and mesosiderite identity. MetBull gives a 3.83 t mass and recommended Mesosiderite-A1 classification; the source's unquantified total and historical classification are preserved. The structured synonym context dehyphenates only the printed line-end Car-/risalillo split."
+      }
+    },
+    {
+      "id": "obs-5c571a32-b9c3-43a3-9639-db26f2c47262",
+      "catalogId": "nininger-1950",
+      "designation": "124.6",
+      "name": "Vaca Muerta",
+      "weight": {
+        "grams": 15
+      },
+      "classification": "Mesosiderite",
+      "locality": "Sierra de Chaco, Taltal, Atacama, Chile",
+      "year": "1861",
+      "catalogPage": 100,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Vaca Muerta",
+        "meteoriteCode": "24142",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24142",
+        "alternateNameNote": "The verified local CSV identifies Official Vaca Muerta, code 24142. The official checker returns Vaca Muerta as Official, and the detail page confirms the exact name, 1861 Chile find, Antofagasta locality, and mesosiderite identity. MetBull gives a 3.83 t mass and recommended Mesosiderite-A1 classification; the source's unquantified total and historical classification are preserved. The structured synonym context dehyphenates only the printed line-end Car-/risalillo split."
+      }
+    },
+    {
       "id": "obs-093932bf-4427-4c75-8814-ebc6ec2ec666",
       "catalogId": "nininger-1950",
       "designation": "125b",
@@ -33194,6 +33321,27 @@
         "meteoriteCode": "12198",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12198",
         "alternateNameNote": "The verified local MetBull CSV-derived cache identifies Official Johnstown as code 12198, a 1924 Colorado diogenite fall with 40.3 kg mass. The official checker returns Johnstown as Official, and the detail page confirms the exact name, year, fall, classification, mass, Weld County locality, and Elwell synonym."
+      }
+    },
+    {
+      "id": "obs-2160fc32-7906-457c-a299-8debf6d568a1",
+      "catalogId": "nininger-1950",
+      "designation": "127a",
+      "name": "Waconda",
+      "weight": {
+        "grams": 40
+      },
+      "classification": "Stone. Brecciated spherical crystalline chondrite",
+      "locality": "Mitchell County, Kansas",
+      "year": "1873",
+      "catalogPage": 100,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Waconda",
+        "meteoriteCode": "24195",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24195",
+        "alternateNameNote": "The verified local CSV identifies Official Waconda, code 24195. The official checker returns Waconda as Official, and the detail page confirms the exact name, 1873 Kansas L6 identity, 50 kg mass, and Mitchell County synonym. The source's historical classification is preserved."
       }
     },
     {
@@ -34706,6 +34854,27 @@
         "meteoriteCode": "17001",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17001",
         "alternateNameNote": "The official name checker returns Coya Norte as a synonym of North Chile. The official detail page for code 17001 lists Coya Norte as both a Buchwald and NHM Catalogue synonym; the verified CSV's Official row names North Chile."
+      }
+    },
+    {
+      "id": "obs-2e0e0dba-84ca-4e7b-85cb-731c10fa8009",
+      "catalogId": "nininger-1950",
+      "designation": "170a",
+      "name": "Warrenton",
+      "weight": {
+        "grams": 4.5
+      },
+      "classification": "Stone. Spherical hypersthene-chondrite",
+      "locality": "Warren County, Missouri",
+      "year": "1877",
+      "catalogPage": 100,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Warrenton",
+        "meteoriteCode": "24215",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24215",
+        "alternateNameNote": "The verified local CSV identifies Official Warrenton, code 24215. The official checker returns Warrenton as Official, and the detail page confirms the exact name, 1877 Missouri fall and CO3.7 identity. MetBull gives a 1.6 kg mass, which conflicts with the source's 45.5 kg total; the source mass and historical classification are preserved."
       }
     },
     {
@@ -39368,6 +39537,27 @@
         "meteoriteCode": "23717",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23717",
         "alternateNameNote": "The verified local CSV identifies Official Stavropol, code 23717, as a 1857 Russian L6 fall with 1.5 kg mass. The official checker returns Stavropol as Official, and the detail page confirms the exact name, fall year, country, and mass. The detail page lists Stawropol and Stavrapol rather than the source's printed Strawropol; that printed synonym and the historical classification are preserved without correction."
+      }
+    },
+    {
+      "id": "obs-01b7e5cd-d74c-4e3a-ab18-1d0e15fb31d9",
+      "catalogId": "nininger-1950",
+      "designation": "249a",
+      "name": "Verkhne Udinsk",
+      "weight": {
+        "grams": 12
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "(Werchne), Transbaikal, Siberia",
+      "year": "1854",
+      "catalogPage": 100,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Verkhne Udinsk",
+        "meteoriteCode": "24166",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24166",
+        "alternateNameNote": "The verified local CSV identifies Official Verkhne Udinsk, code 24166. The official checker returns Verkhne Udinsk as Official, and the detail page confirms the exact name, 1854 Russian iron identity, 18 kg mass, and the printed Niro, Werkne Udinsk, and Witim synonyms. The source's historical Transbaikal/Siberia locality wording and medium-octahedrite classification are preserved rather than replaced by the recommended Iron, IIIAB classification."
       }
     },
     {
@@ -44495,6 +44685,27 @@
       }
     },
     {
+      "id": "obs-990d0245-47f4-4ac5-91d9-5f8c13fb483a",
+      "catalogId": "nininger-1950",
+      "designation": "423.1",
+      "name": "Waldo",
+      "weight": {
+        "grams": 1144
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Osborne County, Kansas; 39° 6′ N., 98° 50′ W.",
+      "year": "1937",
+      "catalogPage": 100,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Waldo",
+        "meteoriteCode": "24202",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24202",
+        "alternateNameNote": "The verified local CSV identifies Official Waldo, code 24202. The official checker returns Waldo as Official, and the detail page confirms the exact name, 1937 Kansas L6 identity, 1.3 kg mass, and exact printed coordinates. The source's broader historical chondrite classification is preserved."
+      }
+    },
+    {
       "id": "obs-3d68c1a5-04db-4720-859d-dfdf7f2eb9e3",
       "catalogId": "nininger-1950",
       "designation": "424.1",
@@ -45146,6 +45357,27 @@
       }
     },
     {
+      "id": "obs-ad09bb72-aafd-4e18-99c5-3d630b9a531d",
+      "catalogId": "nininger-1950",
+      "designation": "442.1",
+      "name": "Washougal",
+      "weight": {
+        "grams": 34.4
+      },
+      "classification": "Stone. Howardite",
+      "locality": "Clark County, Washington",
+      "year": "1939",
+      "catalogPage": 100,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Washougal",
+        "meteoriteCode": "24218",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24218",
+        "alternateNameNote": "The verified local CSV identifies Official Washougal, code 24218. The official checker returns Washougal as Official, and the detail page confirms the exact name, 1939 Washington howardite fall, and nearby Clark County coordinates. MetBull gives a 225 gram mass, while the source prints 220 grams; the source total is preserved."
+      }
+    },
+    {
       "id": "obs-4ba260d8-2248-45f2-a32d-b7c98600697d",
       "catalogId": "nininger-1950",
       "designation": "444.1",
@@ -45356,6 +45588,48 @@
       }
     },
     {
+      "id": "obs-d0a32d9f-5612-47cf-9464-0ccf7edd681d",
+      "catalogId": "nininger-1950",
+      "designation": "453.1",
+      "name": "Waterville",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Siderite with pallasitic distribution of troilite nodules",
+      "locality": "Douglas County, Washington",
+      "year": "before 1929",
+      "catalogPage": 100,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Waterville",
+        "meteoriteCode": "24219",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24219",
+        "alternateNameNote": "The verified local CSV identifies Official Waterville, code 24219. The official checker returns Waterville as Official, and the detail page confirms the exact Washington iron identity and gives a 1917 find, corrected 37.125 kg mass, revised coordinates near Waterville, and recommended Iron, IAB-ung classification. The source's Douglas County locality, Found before 1929 wording, 34 kg total, and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-84219962-3329-467a-a2e2-0cafa49b5bf6",
+      "catalogId": "nininger-1950",
+      "designation": "453.2",
+      "name": "Waterville",
+      "weight": {
+        "grams": null
+      },
+      "classification": "Iron. Siderite with pallasitic distribution of troilite nodules",
+      "locality": "Douglas County, Washington",
+      "year": "before 1929",
+      "catalogPage": 100,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Waterville",
+        "meteoriteCode": "24219",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24219",
+        "alternateNameNote": "The verified local CSV identifies Official Waterville, code 24219. The official checker returns Waterville as Official, and the detail page confirms the exact Washington iron identity and gives a 1917 find, corrected 37.125 kg mass, revised coordinates near Waterville, and recommended Iron, IAB-ung classification. The source's Douglas County locality, Found before 1929 wording, 34 kg total, and historical classification are preserved."
+      }
+    },
+    {
       "id": "obs-9cdf7221-796f-4120-8822-a50c6d0d98fa",
       "catalogId": "nininger-1950",
       "designation": "454.1",
@@ -45458,6 +45732,27 @@
         "meteoriteCode": "2331",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2331",
         "alternateNameNote": "The source says found many years ago and recently identified without printing a year; MetBull reports 1940. The source Pallasite classification corresponds to modern Pallasite, PMG-an."
+      }
+    },
+    {
+      "id": "obs-3a9d6e8a-fc0f-4788-a675-0d5bee0a0618",
+      "catalogId": "nininger-1950",
+      "designation": "459.1",
+      "name": "Weatherford",
+      "weight": {
+        "grams": 55.8
+      },
+      "classification": "Mesosiderite",
+      "locality": "Custer County, Oklahoma; 35° 30′ N., 98° 42′ W.",
+      "year": "1940",
+      "catalogPage": 100,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Weatherford",
+        "meteoriteCode": "24226",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24226",
+        "alternateNameNote": "The verified local CSV identifies Official Weatherford, code 24226. The official checker returns Weatherford as Official, and the detail page confirms the exact name, Oklahoma identity, 2 kg mass, and exact printed coordinates. MetBull gives a 1926 find and recommended CBa classification, while the source prints Recognized 1940 and Mesosiderite; the source facts are preserved."
       }
     },
     {
