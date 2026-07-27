@@ -369,14 +369,15 @@
           62,
           63,
           64,
-          65
+          65,
+          66
         ],
-        "sourcePageCount": 40,
-        "recordCount": 889,
-        "recordsWithDesignation": 869,
-        "recordsWithWeight": 830,
+        "sourcePageCount": 41,
+        "recordCount": 900,
+        "recordsWithDesignation": 880,
+        "recordsWithWeight": 841,
         "confidenceCounts": {
-          "high": 889,
+          "high": 900,
           "medium": 0,
           "low": 0
         },
@@ -384,11 +385,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 2801,
-    "recordsWithDesignation": 2612,
-    "recordsWithWeight": 2614,
+    "recordCount": 2812,
+    "recordsWithDesignation": 2623,
+    "recordsWithWeight": 2625,
     "confidenceCounts": {
-      "high": 2801,
+      "high": 2812,
       "medium": 0,
       "low": 0
     }
@@ -25057,6 +25058,27 @@
       }
     },
     {
+      "id": "obs-bc02e93b-b9a1-4e45-b33d-1619d000b109",
+      "catalogId": "nininger-1950",
+      "designation": "66a",
+      "name": "Kenton County",
+      "weight": {
+        "grams": 435
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Kentucky",
+      "year": "1899",
+      "catalogPage": 66,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Kenton County",
+        "meteoriteCode": "12280",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12280",
+        "alternateNameNote": "The verified local CSV and official checker identify Official Kenton County, code 12280. The detail page confirms the Kentucky IIIAB iron and Independence synonym, but gives 1889 and 194 kg; the source's 1899 date and 163 kg total are preserved without reconciliation."
+      }
+    },
+    {
       "id": "obs-dd385349-b807-4f97-9cc4-27dd106247f2",
       "catalogId": "nininger-1950",
       "designation": "67a",
@@ -26233,6 +26255,27 @@
       }
     },
     {
+      "id": "obs-358a5f03-2208-478f-9fea-c33ec382e2dd",
+      "catalogId": "nininger-1950",
+      "designation": "153a",
+      "name": "Knyahinya",
+      "weight": {
+        "grams": 82
+      },
+      "classification": "Stone. Grey hypersthene chondrite",
+      "locality": "Nagy-Bereszna, Ungvar, Czechoslovakia",
+      "year": "1866",
+      "catalogPage": 66,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Knyahinya",
+        "meteoriteCode": "12335",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12335",
+        "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Knyahinya, code 12335. The detail page confirms the 1866 fall, L/LL5 identity, 500 kg mass, present-day Ukrainian locality, and Nagy-Bereszna synonym; the historical source locality is preserved."
+      }
+    },
+    {
       "id": "obs-00234437-5866-4bec-84c8-4a2beb19838b",
       "catalogId": "nininger-1950",
       "designation": "156b",
@@ -26755,6 +26798,27 @@
         "meteoriteCode": "10173",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10173",
         "alternateNameNote": "The verified local CSV has Official Franceville, code 10173. The official checker returns Franceville as Official, and the detail page confirms the 1890 Colorado IIIAB iron and 18.8 kg mass."
+      }
+    },
+    {
+      "id": "obs-7f6a35b4-cac2-418f-900c-72c86169e4c0",
+      "catalogId": "nininger-1950",
+      "designation": "189a",
+      "name": "Kingston",
+      "weight": {
+        "grams": 827
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Sierra County, New Mexico",
+      "year": "1891",
+      "catalogPage": 66,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Kingston",
+        "meteoriteCode": "12318",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12318",
+        "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Kingston, code 12318. The detail page confirms the 1891 New Mexico iron and 12.9 kg mass, consistent with the source's rounded 13 kg total; the source's medium-octahedrite classification is preserved."
       }
     },
     {
@@ -29110,6 +29174,27 @@
       }
     },
     {
+      "id": "obs-78cfd315-22d2-40fc-b4e6-4de9563ff9d4",
+      "catalogId": "nininger-1950",
+      "designation": "250a",
+      "name": "Kilbourn",
+      "weight": {
+        "grams": 26.5
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Columbia County, Wisconsin",
+      "year": "1911",
+      "catalogPage": 66,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Kilbourn",
+        "meteoriteCode": "12308",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12308",
+        "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Kilbourn, code 12308. The detail page confirms the 1911 Wisconsin H5 fall but gives 772 grams; the source's 800 gram total is preserved without reconciliation."
+      }
+    },
+    {
       "id": "obs-744d1789-beb3-42bd-8c2e-bbbe27e950ed",
       "catalogId": "nininger-1950",
       "designation": "251a",
@@ -30517,6 +30602,27 @@
       }
     },
     {
+      "id": "obs-18565045-f68c-4579-b7b5-6f59de46f5f6",
+      "catalogId": "nininger-1950",
+      "designation": "339.1",
+      "name": "Kernouvé",
+      "weight": {
+        "grams": 5
+      },
+      "classification": "Stone. Veined crystalline bronzite-chondrite",
+      "locality": "Morbihan, France",
+      "year": "1869",
+      "catalogPage": 66,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Kernouve",
+        "meteoriteCode": "12284",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12284",
+        "alternateNameNote": "The verified local CSV has Official Kernouve, code 12284. The exact-name checker returns printed Kernouvé as its synonym, and the detail page confirms that synonym, the 1869 French H6 fall, 80 kg mass, and Cléguérec, Morbihan, and Napoléonsville synonyms."
+      }
+    },
+    {
       "id": "obs-a31a59b5-efd8-4e89-b6ce-425352e22bdc",
       "catalogId": "nininger-1950",
       "designation": "341.1",
@@ -30892,6 +30998,27 @@
         "meteoriteCode": "5058",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5058",
         "alternateNameNote": "The Colorado context, 1912 year, and 8.6 kg source total agree; MetBull lists San Miguel County as a synonym. The historical class corresponds broadly to modern Iron, IVA."
+      }
+    },
+    {
+      "id": "obs-84c710ae-9d17-451e-a279-c21ad1bf4b7b",
+      "catalogId": "nininger-1950",
+      "designation": "362.1",
+      "name": "Kesen",
+      "weight": {
+        "grams": 679
+      },
+      "classification": "Stone. Spherical hypersthene-chondrite",
+      "locality": "Rikuzen, Japan",
+      "year": "1850",
+      "catalogPage": 66,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Kesen",
+        "meteoriteCode": "12286",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12286",
+        "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Kesen, code 12286. The detail page confirms the 1850 Japanese H4 fall, 135 kg mass, and Iwate synonym."
       }
     },
     {
@@ -31480,6 +31607,48 @@
         "meteoriteCode": "5302",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5302",
         "alternateNameNote": "The official checker finds no exact official name or synonym for plain Cedar. Smith County, Kansas, 1937, 4.9 kg., and the printed coordinates identify Cedar (Kansas); its detail page lists Smith County (Kansas) as a synonym."
+      }
+    },
+    {
+      "id": "obs-3b1e25ad-2ab4-476c-a7d5-91696ea015f2",
+      "catalogId": "nininger-1950",
+      "designation": "409.1",
+      "name": "Kensington",
+      "weight": {
+        "grams": 1238.5
+      },
+      "classification": "Stone. Grey chondrite",
+      "locality": "Smith County, Kansas; 39° 50′ N., 99° 1′ W.",
+      "year": "1937",
+      "catalogPage": 66,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Smith Center",
+        "meteoriteCode": "23649",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23649",
+        "alternateNameNote": "Kensington is absent as an official row in the verified local CSV. The official exact-name checker returns it solely as a synonym of Official Smith Center, code 23649, and the detail page confirms the Kensington synonym, 1937 Kansas find, L6 identity, 1,585 gram mass, and printed coordinates."
+      }
+    },
+    {
+      "id": "obs-471dd0ca-34a7-4775-ba34-1c44a815c431",
+      "catalogId": "nininger-1950",
+      "designation": "411.1",
+      "name": "Knowles",
+      "weight": {
+        "grams": 152.7
+      },
+      "classification": "Iron. Octahedrite",
+      "locality": "Beaver County, Oklahoma",
+      "year": "1903",
+      "catalogPage": 66,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Knowles",
+        "meteoriteCode": "12334",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12334",
+        "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Knowles, code 12334. The detail page confirms the 1903 Oklahoma IIIAB iron and 161 kg mass, consistent with the source's 161.4 kg total."
       }
     },
     {
@@ -32635,6 +32804,69 @@
         "meteoriteCode": "7793",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=7793",
         "alternateNameNote": "The official checker returns the exact official name El Burro. The valid-name CSV and detail page place it in Coahuila, Mexico, date it to 1939, and report 35.9 kg; the source instead prints Val Verde County, Texas, Syn: Del Rio, Known before 1941, and Total weight unknown. These discrepancies are preserved and not reconciled."
+      }
+    },
+    {
+      "id": "obs-81616ffc-ec1c-4b18-b7ec-cbd5bb869b7c",
+      "catalogId": "nininger-1950",
+      "designation": "470.2",
+      "name": "Keyes",
+      "weight": {
+        "grams": 330
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Cimarron County, Oklahoma; 36° 43′ N., 102° 30′ W.",
+      "year": "1939",
+      "catalogPage": 66,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Keyes",
+        "meteoriteCode": "12287",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12287",
+        "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Keyes, code 12287. The detail page confirms the 1939 Oklahoma L6 find, 142 kg mass, Boise City synonym, and printed coordinates."
+      }
+    },
+    {
+      "id": "obs-cb125749-a4e7-4762-85d8-ced8632fa50b",
+      "catalogId": "nininger-1950",
+      "designation": "470.3",
+      "name": "Keyes",
+      "weight": {
+        "grams": 341.5
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Cimarron County, Oklahoma; 36° 43′ N., 102° 30′ W.",
+      "year": "1939",
+      "catalogPage": 66,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Keyes",
+        "meteoriteCode": "12287",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12287",
+        "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Keyes, code 12287. The detail page confirms the 1939 Oklahoma L6 find, 142 kg mass, Boise City synonym, and printed coordinates."
+      }
+    },
+    {
+      "id": "obs-6e78653b-83ee-44f9-ac1b-3c373ba81726",
+      "catalogId": "nininger-1950",
+      "designation": "470.5",
+      "name": "Keyes",
+      "weight": {
+        "grams": 61.6
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Cimarron County, Oklahoma; 36° 43′ N., 102° 30′ W.",
+      "year": "1939",
+      "catalogPage": 66,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Keyes",
+        "meteoriteCode": "12287",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12287",
+        "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Keyes, code 12287. The detail page confirms the 1939 Oklahoma L6 find, 142 kg mass, Boise City synonym, and printed coordinates."
       }
     },
     {
