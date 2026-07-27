@@ -383,14 +383,15 @@
           76,
           77,
           78,
-          79
+          79,
+          80
         ],
-        "sourcePageCount": 54,
-        "recordCount": 1101,
-        "recordsWithDesignation": 1075,
-        "recordsWithWeight": 1037,
+        "sourcePageCount": 55,
+        "recordCount": 1110,
+        "recordsWithDesignation": 1084,
+        "recordsWithWeight": 1046,
         "confidenceCounts": {
-          "high": 1101,
+          "high": 1110,
           "medium": 0,
           "low": 0
         },
@@ -398,11 +399,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 3013,
-    "recordsWithDesignation": 2818,
-    "recordsWithWeight": 2821,
+    "recordCount": 3022,
+    "recordsWithDesignation": 2827,
+    "recordsWithWeight": 2830,
     "confidenceCounts": {
-      "high": 3013,
+      "high": 3022,
       "medium": 0,
       "low": 0
     }
@@ -26478,6 +26479,27 @@
       }
     },
     {
+      "id": "obs-64003754-e560-4278-b373-e0c7bbc72d33",
+      "catalogId": "nininger-1950",
+      "designation": "90.1",
+      "name": "Ogallala",
+      "weight": {
+        "grams": 2888
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Keith County, Nebraska; 41° 7′ N., 101° 44′ W.",
+      "year": "1918",
+      "catalogPage": 80,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Ogallala",
+        "meteoriteCode": "17992",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17992",
+        "alternateNameNote": "The verified local CSV identifies Official Ogallala, code 17992, a 1918 Nebraska Iron, IAB-sLL with 3.3 kg mass. The official checker returns Ogallala as Official, and the detail page confirms the exact name, year, iron identity, mass, and Brule synonym. Its official coordinates differ from the printed coordinates, which are preserved."
+      }
+    },
+    {
       "id": "obs-bce9525b-71fa-4ae9-b2f6-4ae467363377",
       "catalogId": "nininger-1950",
       "designation": "91u",
@@ -27798,6 +27820,48 @@
         "meteoriteCode": "16951",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16951",
         "alternateNameNote": "The verified local CSV identifies Official New Almelo, code 16951, and the checker returns New Almelo as Official. The detail page confirms the exact name, Kansas location, L5 identity, and printed coordinates. MetBull gives 1917 and 8 kg, while the source prints Recognized 1932 and 4.8 kg; the source facts are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-7af74e69-7050-4d7d-bbf1-268ba5e981f5",
+      "catalogId": "nininger-1950",
+      "designation": "145a",
+      "name": "Owens Valley",
+      "weight": {
+        "grams": 430
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Inyo County, California",
+      "year": "1913",
+      "catalogPage": 80,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Owens Valley",
+        "meteoriteCode": "18061",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18061",
+        "alternateNameNote": "The verified local CSV identifies Official Owens Valley, code 18061. The official checker returns Owens Valley as Official, and the detail page confirms the exact name, 1913 California Iron, IIIAB find. Its 192.8 kg mass differs from the source's 193.2 kg total, which is preserved."
+      }
+    },
+    {
+      "id": "obs-ec54303a-6e64-4188-baef-c8780007b735",
+      "catalogId": "nininger-1950",
+      "designation": "146a",
+      "name": "Ollague",
+      "weight": {
+        "grams": 376
+      },
+      "classification": "Pallasite",
+      "locality": "Potosi Dept., Bolivia",
+      "year": "1924",
+      "catalogPage": 80,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "Ollague is absent from the verified local valid-name CSV. The official checker identifies it as a synonym of Official Imilac, code 12025, and the detail page lists Ollague as an Imilac synonym; however, that record is a Chilean find from 1822 with 920 kg mass, conflicting with the source's Bolivia locality, 1924 year, and 6.66 kg total. No canonical identity or code is inferred."
       }
     },
     {
@@ -31140,6 +31204,27 @@
       }
     },
     {
+      "id": "obs-7d53fbc6-9b45-4d06-bcc3-bc01cf66b444",
+      "catalogId": "nininger-1950",
+      "designation": "222a",
+      "name": "Orgueil",
+      "weight": {
+        "grams": 2
+      },
+      "classification": "Stone. Carbonaceous chondrite",
+      "locality": "Montauban, Tarn-et-Garonne, France",
+      "year": "1864",
+      "catalogPage": 80,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Orgueil",
+        "meteoriteCode": "18026",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18026",
+        "alternateNameNote": "The verified local CSV identifies Official Orgueil, code 18026. The official checker returns Orgueil as Official, and the detail page confirms the exact name, 1864 French CI1 fall, and Montauban synonym. Its 14 kg mass differs from the source's 9.8 kg total, which is preserved."
+      }
+    },
+    {
       "id": "obs-63996358-813b-426b-bd17-35b109fb66e1",
       "catalogId": "nininger-1950",
       "designation": "226a",
@@ -32778,6 +32863,27 @@
       }
     },
     {
+      "id": "obs-8adc3466-c929-417b-9df1-b8873e7c6fef",
+      "catalogId": "nininger-1950",
+      "designation": "309.2",
+      "name": "Osseo",
+      "weight": {
+        "grams": 400
+      },
+      "classification": "Iron. Coarsest octahedrite",
+      "locality": "Temiskaming, Ontario, Canada",
+      "year": "1931",
+      "catalogPage": 80,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Osseo",
+        "meteoriteCode": "18037",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18037",
+        "alternateNameNote": "The verified local CSV identifies Official Osseo, code 18037. The official checker returns Osseo as Official, and the detail page confirms the exact name, 1931 Ontario iron, and 46.3 kg mass. The source's historical classification and Temiskaming locality wording are preserved."
+      }
+    },
+    {
       "id": "obs-ca913579-3bf7-4940-9995-9d04c3b8ce83",
       "catalogId": "nininger-1950",
       "designation": "311.1",
@@ -33006,6 +33112,27 @@
         "meteoriteCode": "14698",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=14698",
         "alternateNameNote": "The verified local valid-name evidence identifies Official Loomis, code 14698. The official checker returns Loomis as Official, and the detail page confirms the 1933 Nebraska find, L6 identity, 3.02 kg mass, and exact printed coordinates."
+      }
+    },
+    {
+      "id": "obs-6b5150c3-6d21-471e-84c5-c6db4d324948",
+      "catalogId": "nininger-1950",
+      "designation": "322.1",
+      "name": "Orange River",
+      "weight": {
+        "grams": 1331
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "South Africa",
+      "year": "1855",
+      "catalogPage": 80,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Orange River (iron)",
+        "meteoriteCode": "18023",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18023",
+        "alternateNameNote": "The checker treats bare Orange River as a partial name with two candidates. The verified local CSV and code 18023 detail page identify Official Orange River (iron); the source's 1855 South African iron identity, 149 kg total, and Griqualand synonym distinguish it from doubtful Orange River (stone), an 1887 8 gram fall. The official 148.8 kg mass differs slightly from the source total, which is preserved."
       }
     },
     {
@@ -35802,6 +35929,27 @@
       }
     },
     {
+      "id": "obs-f3e1c35d-8d2c-46f4-81e2-157f70fefa5a",
+      "catalogId": "nininger-1950",
+      "designation": "445.1",
+      "name": "Ovid",
+      "weight": {
+        "grams": 4700
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Sedgwick County, Colorado; 40° 58′ N., 102° 24′ W.",
+      "year": "1939",
+      "catalogPage": 80,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Ovid",
+        "meteoriteCode": "18057",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18057",
+        "alternateNameNote": "The verified local CSV identifies Official Ovid, code 18057. The official checker returns Ovid as Official, and the detail page confirms the exact name, 1939 Colorado H6 find, and exact printed coordinates. Its 6.169 kg mass differs slightly from the source's 6.2 kg total, which is preserved."
+      }
+    },
+    {
       "id": "obs-648b5f30-8c63-47e3-be59-0bb8894b2cc8",
       "catalogId": "nininger-1950",
       "designation": "446.1",
@@ -35904,6 +36052,27 @@
         "meteoriteCode": "11908",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11908",
         "alternateNameNote": "The verified local CSV and official exact-name checker identify Official Horace, code 11908. The detail page confirms the 1940 Kansas H5 stone but reports 19.7 kg and latitude 38° 21′ N.; the source's 9,201 g total and 38° 28′ N. latitude are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-0ee12e0a-8cb2-4bc5-a544-ff7e62386525",
+      "catalogId": "nininger-1950",
+      "designation": "450.1",
+      "name": "Orvinio",
+      "weight": {
+        "grams": 63.3
+      },
+      "classification": "Stone. Black bronzite-chondrite",
+      "locality": "Rome, Italy",
+      "year": "1872",
+      "catalogPage": 80,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Orvinio",
+        "meteoriteCode": "18034",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18034",
+        "alternateNameNote": "The verified local CSV identifies Official Orvinio, code 18034. The official checker returns Orvinio as Official, and the detail page confirms the exact name, 1872 Italian H6 fall, 3.4 kg mass, and Rome synonym. The source's historical classification is preserved."
       }
     },
     {
@@ -36177,6 +36346,27 @@
         "meteoriteCode": "5394",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5394",
         "alternateNameNote": "The official checker treats bare Colby as a partial name matching two records. The detail record for Colby (Kansas), code 5394, agrees on Kansas coordinates, 1940, stone classification, and approximately 2.4 kg, distinguishing it from the Wisconsin fall."
+      }
+    },
+    {
+      "id": "obs-2a2d9f1e-3739-48e0-9af4-8556e275f7fe",
+      "catalogId": "nininger-1950",
+      "designation": "467.1",
+      "name": "Otis",
+      "weight": {
+        "grams": 1970.2
+      },
+      "classification": "Stone. Crystalline chondrite",
+      "locality": "Rush County, Kansas; 38° 32′ N., 99° 3′ W.",
+      "year": "1940",
+      "catalogPage": 80,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Otis",
+        "meteoriteCode": "18044",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18044",
+        "alternateNameNote": "The verified local CSV identifies Official Otis, code 18044. The official checker returns Otis as Official, and the detail page confirms the exact name, 1940 Kansas L6 find, 2.6 kg mass, and exact printed coordinates. The source's historical classification is preserved."
       }
     },
     {
