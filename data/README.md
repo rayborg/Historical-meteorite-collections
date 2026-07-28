@@ -1,7 +1,7 @@
 # Public Catalog Data
 
 <!-- release-summary:data-overview:start -->
-`catalog.json` is a schema-6 facts-only dataset containing 3,590 source observations from 8 historical meteorite catalogs. `folios.json` is a separate schema-2, deny-by-default display manifest with 41 reviewed page entries.
+`catalog.json` is a schema-6 facts-only dataset containing 3,625 source observations from 8 historical meteorite catalogs. `folios.json` is a separate schema-2, deny-by-default display manifest with 43 reviewed page entries.
 <!-- release-summary:data-overview:end -->
 
 A searchable transcription of the 1976 Huss Meteorite Collection catalog, compiled and published by Glenn Huss.
@@ -17,20 +17,20 @@ The other configured descriptors identify their compilers without inferring a pu
 | `huss-1976` | `specimen` | 1,078 | 46 | 46 |
 | `huss-1986` | `specimen` | 544 | 21 | 21 |
 | `lucas-1813` | `collection-entry` | 13 | 3 | 3 |
-| `nininger-1933` | `catalog-item` | 136 | 18 | 9 |
+| `nininger-1933` | `catalog-item` | 171 | 20 | 11 |
 | `nininger-1950` | `specimen` | 1,678 | 79 | 79 |
-| **Total** |  | **3,590** | **227** | **210** |
+| **Total** |  | **3,625** | **229** | **212** |
 <!-- release-summary:data-catalog-table:end -->
 
 Metadata source-page coverage is not a count of pages cited by records. Some covered pages are introductory or narrative-only.
 
-Chladni 1825 pages 200-207 are introductory folios. For `nininger-1933`, printed pages 8-9 and catalog items 106-141 are missing from the available source set, and pages 12-20 are narrative-only.
+Chladni 1825 pages 200-207 are introductory folios. `nininger-1933` includes printed pages 1-20; pages 12-20 are narrative-only, and the printed catalog numbering skips item 139.
 
 <!-- release-summary:data-nininger-coverage:start -->
-`nininger-1933` has 136 records; its metadata source pages span 1-20, and its record citations span 1-11. `nininger-1950` has 1,678 records; its metadata source pages span 26-104, and its record citations span 26-104.
+`nininger-1933` has 171 records; its metadata source pages span 1-20, and its record citations span 1-11. `nininger-1950` has 1,678 records; its metadata source pages span 26-104, and its record citations span 26-104.
 <!-- release-summary:data-nininger-coverage:end -->
 
-Both Nininger catalogs are partial digital editions. These ranges summarize current metadata and citations without asserting page-boundary continuity.
+`nininger-1933` covers printed pages 1-20, and the reviewed `nininger-1950` collection-catalog range covers printed pages 26-104 through its terminal entry. These ranges summarize current metadata and citations without merging source observations.
 
 ## Catalog Contract
 
@@ -144,9 +144,9 @@ The deployment-specific `scripts/folio-release-lock.json` pins every catalog pol
 | `huss-1976` | blocked | undetermined | 0 |
 | `huss-1986` | blocked | undetermined | 0 |
 | `lucas-1813` | display | public-domain | 3 |
-| `nininger-1933` | display | no-copyright-us | 19 |
+| `nininger-1933` | display | no-copyright-us | 21 |
 | `nininger-1950` | blocked | undetermined | 0 |
-| **Total** |  |  | **41** |
+| **Total** |  |  | **43** |
 <!-- release-summary:data-folio-table:end -->
 
 Hovey pages come from [BHL item 335869](https://www.biodiversitylibrary.org/item/335869), contributed by Smithsonian Libraries and Archives and marked public domain. Nininger display follows a documented United States renewal search for the exact 1933 offprint. Rights status is copy- and jurisdiction-specific and is never inferred from age.

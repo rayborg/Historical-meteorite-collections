@@ -1,7 +1,7 @@
 # Historical Meteorite Collection
 
 <!-- release-summary:readme-overview:start -->
-This repository is a dependency-free, facts-only index of 3,590 source observations from 8 historical meteorite catalogs. The coordinated catalog uses public metadata schema 6 and supports 4 source-specific record models: `catalog-item`, `catalog-number`, `collection-entry`, `specimen`.
+This repository is a dependency-free, facts-only index of 3,625 source observations from 8 historical meteorite catalogs. The coordinated catalog uses public metadata schema 6 and supports 4 source-specific record models: `catalog-item`, `catalog-number`, `collection-entry`, `specimen`.
 <!-- release-summary:readme-overview:end -->
 
 A searchable transcription of the 1976 Huss Meteorite Collection catalog, compiled and published by Glenn Huss.
@@ -92,20 +92,20 @@ The current catalog contains:
 | `huss-1976` | `specimen` | 1,078 | 46 | 46 |
 | `huss-1986` | `specimen` | 544 | 21 | 21 |
 | `lucas-1813` | `collection-entry` | 13 | 3 | 3 |
-| `nininger-1933` | `catalog-item` | 136 | 18 | 9 |
+| `nininger-1933` | `catalog-item` | 171 | 20 | 11 |
 | `nininger-1950` | `specimen` | 1,678 | 79 | 79 |
-| **Total** |  | **3,590** | **227** | **210** |
+| **Total** |  | **3,625** | **229** | **212** |
 <!-- release-summary:readme-catalog-table:end -->
 
 Metadata source-page coverage is not a claim that every covered page contains a record. Some covered pages are introductory or narrative-only.
 
-Chladni 1825 pages 200-207 are introductory folios. For Nininger 1933, printed pages 8-9 and catalog items 106-141 are missing from the available source set, and pages 12-20 are narrative-only.
+Chladni 1825 pages 200-207 are introductory folios. Nininger 1933 includes printed pages 1-20; pages 12-20 are narrative-only, and the printed catalog numbering skips item 139.
 
 <!-- release-summary:readme-nininger-coverage:start -->
-`nininger-1933` has 136 records; its metadata source pages span 1-20, and its record citations span 1-11. `nininger-1950` has 1,678 records; its metadata source pages span 26-104, and its record citations span 26-104.
+`nininger-1933` has 171 records; its metadata source pages span 1-20, and its record citations span 1-11. `nininger-1950` has 1,678 records; its metadata source pages span 26-104, and its record citations span 26-104.
 <!-- release-summary:readme-nininger-coverage:end -->
 
-Both Nininger catalogs are partial digital editions. These ranges summarize current metadata and citations without asserting page-boundary continuity.
+Nininger 1933 covers printed pages 1-20, and the reviewed Nininger 1950 collection-catalog range covers printed pages 26-104 through its terminal entry. These ranges summarize current metadata and citations without merging source observations.
 
 Records are source observations, not canonical meteorites or physical specimens. Equal names, designations, masses, or page numbers do not merge observations across catalogs. Statistics count each parent record once and sum every reported numeric mass once without multiplying by holding count.
 
@@ -122,7 +122,7 @@ matchType, canonicalName, meteoriteCode, metbullUrl, alternateNameNote
 The historical `name`, designation/catalog identifier fields, printed private weight strings, and numeric source weights are never replaced by this object. The website labels the source catalog name and shows a separate linked **Current Meteoritical Bulletin name** only when a reviewed canonical name differs. No client, build, or export path fuzzy-matches names or infers identity.
 
 <!-- release-summary:readme-metbull:start -->
-The current release includes reviewed MetBull harmonization for 3,590 of 3,590 records: 3,468 have a resolved current identity and 122 remain explicitly unresolved. 7 records currently have a null `name` value.
+The current release includes reviewed MetBull harmonization for 3,625 of 3,625 records: 3,496 have a resolved current identity and 129 remain explicitly unresolved. 7 records currently have a null `name` value.
 <!-- release-summary:readme-metbull:end -->
 
 Validated continuation evidence recovers formerly blank source names where supported; it does not infer modern identity.
@@ -162,9 +162,9 @@ Any missing, blocked, incomplete, contradictory, malformed, or unsafe value deni
 | `huss-1976` | blocked | undetermined | 0 |
 | `huss-1986` | blocked | undetermined | 0 |
 | `lucas-1813` | display | public-domain | 3 |
-| `nininger-1933` | display | no-copyright-us | 19 |
+| `nininger-1933` | display | no-copyright-us | 21 |
 | `nininger-1950` | blocked | undetermined | 0 |
-| **Total** |  |  | **41** |
+| **Total** |  |  | **43** |
 <!-- release-summary:readme-folio-table:end -->
 
 Hovey folios use the exact Smithsonian-contributed volume at [Biodiversity Heritage Library item 335869](https://www.biodiversitylibrary.org/item/335869), whose metadata marks the volume public domain. Nininger display is based on a documented search that found no renewal for the exact 1933 offprint; its status is specific to United States copyright review and is not a general ownership claim.
@@ -174,7 +174,7 @@ Hovey folios use the exact Smithsonian-contributed volume at [Biodiversity Herit
 Raw OCR, verbatim notes, uncertainty details, source filenames, private record page IDs, dedicated display-weight and `weightText` fields, acquisition files, unreviewed scans, and private derivative manifests are excluded from `catalog.json`. Independently structured factual description prose may retain source-reported historical mass statements.
 
 <!-- release-summary:readme-public-folios:start -->
-Reviewed folio `pageId` values are intentionally public in `folios.json`, and the public repository contains only the 41 selected, manifest-verified folio derivatives under `assets/folios/`.
+Reviewed folio `pageId` values are intentionally public in `folios.json`, and the public repository contains only the 43 selected, manifest-verified folio derivatives under `assets/folios/`.
 <!-- release-summary:readme-public-folios:end -->
 
 The public client has no fallback loader for private data. If `catalog.json` is missing or invalid, the interface shows an accessible error state. Failure of the optional folio manifest leaves factual records available without folio controls.

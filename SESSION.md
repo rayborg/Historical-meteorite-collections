@@ -9,7 +9,7 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 ## Current State
 
 <!-- release-summary:session-current-state:start -->
-- Schema 6 contains 3,590 facts-only records across 8 catalogs.
+- Schema 6 contains 3,625 facts-only records across 8 catalogs.
 
 | `catalogId` | Record model | Records | Metadata source pages | Pages cited by records |
 | --- | --- | ---: | ---: | ---: |
@@ -19,20 +19,20 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 | `huss-1976` | `specimen` | 1,078 | 46 | 46 |
 | `huss-1986` | `specimen` | 544 | 21 | 21 |
 | `lucas-1813` | `collection-entry` | 13 | 3 | 3 |
-| `nininger-1933` | `catalog-item` | 136 | 18 | 9 |
+| `nininger-1933` | `catalog-item` | 171 | 20 | 11 |
 | `nininger-1950` | `specimen` | 1,678 | 79 | 79 |
-| **Total** |  | **3,590** | **227** | **210** |
+| **Total** |  | **3,625** | **229** | **212** |
 
-- Metadata covers 227 catalog-scoped source pages; records cite 210 of them.
-- Nininger coverage is derived without page-boundary assumptions: `nininger-1933` has 136 records; its metadata source pages span 1-20, and its record citations span 1-11. `nininger-1950` has 1,678 records; its metadata source pages span 26-104, and its record citations span 26-104.
-- Public folios use schema 2 and expose 41 display pages across 4 catalogs: `chladni-1819` (12 pages, `public-domain`); `hovey-1896` (7 pages, `public-domain`); `lucas-1813` (3 pages, `public-domain`); `nininger-1933` (19 pages, `no-copyright-us`).
+- Metadata covers 229 catalog-scoped source pages; records cite 212 of them.
+- Nininger coverage is derived without page-boundary assumptions: `nininger-1933` has 171 records; its metadata source pages span 1-20, and its record citations span 1-11. `nininger-1950` has 1,678 records; its metadata source pages span 26-104, and its record citations span 26-104.
+- Public folios use schema 2 and expose 43 display pages across 4 catalogs: `chladni-1819` (12 pages, `public-domain`); `hovey-1896` (7 pages, `public-domain`); `lucas-1813` (3 pages, `public-domain`); `nininger-1933` (21 pages, `no-copyright-us`).
 - Blocked folio catalogs are: `chladni-1825` (0 pages, `undetermined`); `huss-1976` (0 pages, `undetermined`); `huss-1986` (0 pages, `undetermined`); `nininger-1950` (0 pages, `undetermined`).
-- Reviewed MetBull harmonization covers 3,590 of 3,590 records: 3,468 resolved and 122 explicitly unresolved.
+- Reviewed MetBull harmonization covers 3,625 of 3,625 records: 3,496 resolved and 129 explicitly unresolved.
 - Records currently having a null `name` value: 7.
 <!-- release-summary:session-current-state:end -->
 
 - Chladni 1825 pages 200-207 are introductory folios.
-- Nininger 1933 is incomplete: printed pages 8-9 and catalog items 106-141 are missing, and pages 12-20 are narrative-only.
+- Nininger 1933 includes printed pages 1-20; pages 12-20 are narrative-only, and the printed catalog numbering skips item 139.
 - The runtime suite and integrated public validator must pass before release.
 - Validated continuation evidence recovers formerly blank source names where supported, without inferring modern identity. Reviewed historical entries that genuinely print no separate proper source name retain null names and unresolved reviews.
 - `scripts/folio-release-lock.json` pins the reviewed rights evidence, ordered page IDs, and SHA-256 digest of every public folio.
@@ -82,11 +82,10 @@ Distinct specimens with the same meteorite name and similar mass must not be col
 
 ## Immediate Next Steps
 
-1. Locate and process Nininger 1933 pages 8-9 to recover missing catalog items 106-141.
-2. Resolve the missing scan for MCB-104.
-3. Correct the source evidence for MCB-4 and MCB-5.
-4. Continue catalog-specific rights review, keeping unresolved sources blocked.
-5. Keep the schema 6 validator and runtime suite green while preserving the facts-only boundary.
+1. Resolve the missing scan for `SP1949-0039` (currently MCB-107).
+2. Correct the source evidence for MCB-4 and MCB-5.
+3. Continue catalog-specific rights review, keeping unresolved sources blocked.
+4. Keep the schema 6 validator and runtime suite green while preserving the facts-only boundary.
 
 ## Maintenance Rule
 

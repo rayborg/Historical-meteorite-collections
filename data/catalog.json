@@ -299,6 +299,8 @@
           5,
           6,
           7,
+          8,
+          9,
           10,
           11,
           12,
@@ -311,12 +313,12 @@
           19,
           20
         ],
-        "sourcePageCount": 18,
-        "recordCount": 136,
-        "recordsWithDesignation": 136,
-        "recordsWithWeight": 136,
+        "sourcePageCount": 20,
+        "recordCount": 171,
+        "recordsWithDesignation": 171,
+        "recordsWithWeight": 171,
         "confidenceCounts": {
-          "high": 136,
+          "high": 171,
           "medium": 0,
           "low": 0
         },
@@ -423,11 +425,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 3590,
-    "recordsWithDesignation": 3395,
-    "recordsWithWeight": 3393,
+    "recordCount": 3625,
+    "recordsWithDesignation": 3430,
+    "recordsWithWeight": 3428,
     "confidenceCounts": {
-      "high": 3590,
+      "high": 3625,
       "medium": 0,
       "low": 0
     }
@@ -4672,6 +4674,1336 @@
         "canonicalName": "McKinney",
         "meteoriteCode": "15463",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15463",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-ad7b90c7-bbea-4647-aef0-1131b81beab0",
+      "catalogId": "nininger-1933",
+      "catalogItem": 106,
+      "holdings": [
+        {
+          "designation": "76a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 38
+          }
+        }
+      ],
+      "name": "Molong",
+      "classification": "Iron-Stone. P.",
+      "locality": "Ashburnham Co., N.S.W., Australia",
+      "year": "1912",
+      "catalogPage": 8,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Molong",
+        "meteoriteCode": "16716",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16716",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-22de454b-267d-4099-8ca3-2df8e8c8f04c",
+      "catalogId": "nininger-1933",
+      "catalogItem": 107,
+      "holdings": [
+        {
+          "designation": "163a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 7927
+          }
+        },
+        {
+          "designation": "163b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 633
+          }
+        },
+        {
+          "designation": "163c",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 568
+          }
+        }
+      ],
+      "name": "Mukerop",
+      "classification": "Iron. Of.",
+      "locality": "South Africa",
+      "year": "before 1836",
+      "catalogPage": 8,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "No existing reviewed mapping establishes an exact canonical identity for this source name and context."
+      }
+    },
+    {
+      "id": "obs-dbaab620-ee5e-44a8-9820-9beaf7285b46",
+      "catalogId": "nininger-1933",
+      "catalogItem": 108,
+      "holdings": [
+        {
+          "designation": "84a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 14.5
+          }
+        }
+      ],
+      "name": "Nakhla",
+      "classification": "Stone. Na.",
+      "locality": "Nakhla, Egypt",
+      "year": "1911",
+      "catalogPage": 8,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Nakhla",
+        "meteoriteCode": "16898",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16898",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-6602e601-1e66-4525-ab54-06bae97dd68a",
+      "catalogId": "nininger-1933",
+      "catalogItem": 109,
+      "holdings": [
+        {
+          "designation": "83a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 5
+          }
+        }
+      ],
+      "name": "Navajo",
+      "classification": "Iron. D.",
+      "locality": "Apache Co., Arizona",
+      "year": "1922",
+      "catalogPage": 8,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Navajo",
+        "meteoriteCode": "16926",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16926",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-79525b79-ec63-49b7-b96f-e75689487963",
+      "catalogId": "nininger-1933",
+      "catalogItem": 110,
+      "holdings": [
+        {
+          "designation": "86a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 30
+          }
+        }
+      ],
+      "name": "Nejed",
+      "classification": "Iron. Om.",
+      "locality": "Central Arabia",
+      "year": "1864",
+      "catalogPage": 8,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Wabar",
+        "meteoriteCode": "24194",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24194",
+        "alternateNameNote": "Existing reviewed mappings identify Nejed as a Wabar synonym; the Central Arabia iron context supports the same identity."
+      }
+    },
+    {
+      "id": "obs-364613bf-2444-4e4b-ad5f-3f6d65225067",
+      "catalogId": "nininger-1933",
+      "catalogItem": 111,
+      "holdings": [
+        {
+          "designation": "87a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 1147
+          }
+        },
+        {
+          "designation": "87b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 128
+          }
+        }
+      ],
+      "name": "Ness County",
+      "classification": "Stone. Ck.",
+      "locality": "Ness Co., Kansas",
+      "year": "1897",
+      "catalogPage": 8,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Ness County (1894)",
+        "meteoriteCode": "16946",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16946",
+        "alternateNameNote": "Existing reviewed mappings identify bare Ness County as Ness County (1894); the Kansas stone context supports that qualified identity."
+      }
+    },
+    {
+      "id": "obs-a5733018-2ff0-4277-9259-ec771f0e1869",
+      "catalogId": "nininger-1933",
+      "catalogItem": 112,
+      "holdings": [
+        {
+          "designation": "144c",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 85
+          }
+        },
+        {
+          "designation": "144d",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 350
+          }
+        },
+        {
+          "designation": "144e",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 240
+          }
+        },
+        {
+          "designation": "144g",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 174
+          }
+        },
+        {
+          "designation": "144h",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 1130
+          }
+        }
+      ],
+      "name": "New Almelo",
+      "classification": "Stone. Not yet described.",
+      "locality": "Norton Co., Kansas",
+      "year": "1932",
+      "catalogPage": 8,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "New Almelo",
+        "meteoriteCode": "16951",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16951",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-d4da2f95-31ca-4ed5-8445-87149dd73838",
+      "catalogId": "nininger-1933",
+      "catalogItem": 113,
+      "holdings": [
+        {
+          "designation": "88a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 62
+          }
+        }
+      ],
+      "name": "New Baltimore",
+      "classification": "Iron. Og.",
+      "locality": "Somerset Co., Pennsylvania",
+      "year": "1922",
+      "catalogPage": 8,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "New Baltimore",
+        "meteoriteCode": "16952",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16952",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-dc33238d-8806-4e45-8c71-dc96c66a21d5",
+      "catalogId": "nininger-1933",
+      "catalogItem": 114,
+      "holdings": [
+        {
+          "designation": "89a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 2050
+          }
+        }
+      ],
+      "name": "Newport",
+      "classification": "Iron-Stone. P.",
+      "locality": "Arkansas",
+      "year": "1923",
+      "catalogPage": 8,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Newport",
+        "meteoriteCode": "16962",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16962",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-77ed636a-e9e7-49e3-93af-84b2397603e2",
+      "catalogId": "nininger-1933",
+      "catalogItem": 115,
+      "holdings": [
+        {
+          "designation": "152a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 263
+          }
+        }
+      ],
+      "name": "Oakley",
+      "classification": "Stone. Ck.",
+      "locality": "Logan Co., Kansas",
+      "year": "1895",
+      "catalogPage": 8,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Oakley (stone)",
+        "meteoriteCode": "17973",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17973",
+        "alternateNameNote": "The 1895 Kansas stone is Oakley (stone), distinct from the later Idaho iron."
+      }
+    },
+    {
+      "id": "obs-509dd464-1ebf-461b-bfba-009e5f7df722",
+      "catalogId": "nininger-1933",
+      "catalogItem": 116,
+      "holdings": [
+        {
+          "designation": "91a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 95
+          }
+        },
+        {
+          "designation": "91b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 296
+          }
+        },
+        {
+          "designation": "91c",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 450
+          }
+        },
+        {
+          "designation": "91d",
+          "kind": "aggregate",
+          "description": "small irons",
+          "count": 502,
+          "weight": {
+            "grams": null
+          }
+        },
+        {
+          "designation": "91e",
+          "kind": "specimen",
+          "description": "oxide",
+          "count": null,
+          "weight": {
+            "grams": 900
+          }
+        }
+      ],
+      "name": "Odessa",
+      "classification": "Iron. Om.",
+      "locality": "West Texas",
+      "year": "1922",
+      "catalogPage": 8,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Odessa (iron)",
+        "meteoriteCode": "17985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17985",
+        "alternateNameNote": "The West Texas iron context identifies Odessa (iron), not Odessa (stone) from Ukraine."
+      }
+    },
+    {
+      "id": "obs-69652a14-801e-45c3-8fe1-8b57457e7ee7",
+      "catalogId": "nininger-1933",
+      "catalogItem": 117,
+      "holdings": [
+        {
+          "designation": "90a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 2888
+          }
+        },
+        {
+          "designation": "C90a",
+          "kind": "cast",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": null
+          }
+        },
+        {
+          "designation": "C90b",
+          "kind": "cast",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": null
+          }
+        },
+        {
+          "designation": "C90c",
+          "kind": "cast",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": null
+          }
+        }
+      ],
+      "name": "Ogallala",
+      "classification": "Iron. O.",
+      "locality": "Keith Co., Nebraska",
+      "year": "1918",
+      "catalogPage": 8,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Ogallala",
+        "meteoriteCode": "17992",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17992",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-985cdbc1-11c3-4bcb-8549-8afe99ecd8a2",
+      "catalogId": "nininger-1933",
+      "catalogItem": 118,
+      "holdings": [
+        {
+          "designation": "146a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 376
+          }
+        }
+      ],
+      "name": "Ollague",
+      "classification": "Pallasite. P.",
+      "locality": "Bolivia, South America",
+      "year": "1924",
+      "catalogPage": 8,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "Existing reviewed evidence links Ollague to Imilac only as a conflicting synonym; the Bolivia locality, 1924 year, and 6.66 kg mass do not support that identity."
+      }
+    },
+    {
+      "id": "obs-e06568ec-cff7-478d-a5f4-ec4cf3e71c36",
+      "catalogId": "nininger-1933",
+      "catalogItem": 119,
+      "holdings": [
+        {
+          "designation": "145a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 430
+          }
+        }
+      ],
+      "name": "Owens Valley",
+      "classification": "Iron. Om.",
+      "locality": "California",
+      "year": "1913",
+      "catalogPage": 8,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Owens Valley",
+        "meteoriteCode": "18061",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18061",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-67cd06ce-5918-4a5c-813a-e9d858cbfd84",
+      "catalogId": "nininger-1933",
+      "catalogItem": 120,
+      "holdings": [
+        {
+          "designation": "96a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 66
+          }
+        },
+        {
+          "designation": "96b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 62.75
+          }
+        }
+      ],
+      "name": "Pacula",
+      "classification": "Stone. Cwb.",
+      "locality": "Hidalgo, Mexico",
+      "year": "1881",
+      "catalogPage": 8,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Pacula",
+        "meteoriteCode": "18068",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18068",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-4becab94-478e-48d8-a8a5-5ec66cb4cfb1",
+      "catalogId": "nininger-1933",
+      "catalogItem": 121,
+      "holdings": [
+        {
+          "designation": "95a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 136.5
+          }
+        },
+        {
+          "designation": "95b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 41
+          }
+        },
+        {
+          "designation": "95c",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 15
+          }
+        }
+      ],
+      "name": "Paragould",
+      "classification": "Stone. Ccb.",
+      "locality": "Arkansas",
+      "year": "1930",
+      "catalogPage": 8,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Paragould",
+        "meteoriteCode": "18101",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18101",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-aa2244c4-5a66-4b38-aeb4-81489abadc47",
+      "catalogId": "nininger-1933",
+      "catalogItem": 122,
+      "holdings": [
+        {
+          "designation": "93a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 18.5
+          }
+        }
+      ],
+      "name": "Paranallee",
+      "classification": "Stone. Cga.",
+      "locality": "Madras, India",
+      "year": "1857",
+      "catalogPage": 8,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "No existing reviewed mapping establishes an exact canonical identity for this source spelling and context."
+      }
+    },
+    {
+      "id": "obs-7134c599-b314-4ae5-9802-5d87a67853c8",
+      "catalogId": "nininger-1933",
+      "catalogItem": 123,
+      "holdings": [
+        {
+          "designation": "172a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 390
+          }
+        }
+      ],
+      "name": "Perryville",
+      "classification": "Iron. Off.",
+      "locality": "Perry Co., Missouri",
+      "year": "1906",
+      "catalogPage": 8,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Perryville",
+        "meteoriteCode": "18795",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18795",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-51f674f5-d1a1-480e-ad9d-4d47a097ade3",
+      "catalogId": "nininger-1933",
+      "catalogItem": 124,
+      "holdings": [
+        {
+          "designation": "147a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 6900
+          }
+        },
+        {
+          "designation": "147b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 405
+          }
+        }
+      ],
+      "name": "Pinon",
+      "classification": "Iron. D.",
+      "locality": "New Mexico",
+      "year": "1930",
+      "catalogPage": 9,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Piñon",
+        "meteoriteCode": "18828",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18828",
+        "alternateNameNote": "Existing reviewed mappings identify the unaccented source spelling Pinon as official Piñon; the New Mexico iron context agrees."
+      }
+    },
+    {
+      "id": "obs-8343c31c-dd06-4a9d-98b8-321a710ce1a4",
+      "catalogId": "nininger-1933",
+      "catalogItem": 125,
+      "holdings": [
+        {
+          "designation": "92a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 2265
+          }
+        }
+      ],
+      "name": "Plainview",
+      "classification": "Stone. Cia.",
+      "locality": "Hale Co., Texas",
+      "year": "1917",
+      "catalogPage": 9,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": "The Hale County, Texas locality and 1917 year identify Plainview (1917), not a later qualified Plainview record."
+      }
+    },
+    {
+      "id": "obs-f50185d7-9017-44d8-a50b-b49e644ac61e",
+      "catalogId": "nininger-1933",
+      "catalogItem": 126,
+      "holdings": [
+        {
+          "designation": "160a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 350
+          }
+        }
+      ],
+      "name": "Plymouth",
+      "classification": "Iron. Om.",
+      "locality": "Marshall Co., Indiana",
+      "year": "1893",
+      "catalogPage": 9,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Plymouth",
+        "meteoriteCode": "18850",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18850",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-86e5261f-3a5b-492a-a8e7-267448c57daa",
+      "catalogId": "nininger-1933",
+      "catalogItem": 127,
+      "holdings": [
+        {
+          "designation": "94a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 685
+          }
+        },
+        {
+          "designation": "94b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 235.5
+          }
+        },
+        {
+          "designation": "94c",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 322
+          }
+        },
+        {
+          "designation": "94d",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 97
+          }
+        },
+        {
+          "designation": "94e",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 4.5
+          }
+        }
+      ],
+      "name": "Puente del Zacate",
+      "classification": "Iron. Om.",
+      "locality": "Coahuila, Mexico",
+      "year": "1904",
+      "catalogPage": 9,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Puente del Zacate",
+        "meteoriteCode": "18894",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18894",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-39c83187-840b-446e-a46c-09dc25bf6c6b",
+      "catalogId": "nininger-1933",
+      "catalogItem": 128,
+      "holdings": [
+        {
+          "designation": "97a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 40
+          }
+        },
+        {
+          "designation": "97b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 14
+          }
+        }
+      ],
+      "name": "Pultusk",
+      "classification": "Stone. Cga.",
+      "locality": "Warsaw, Poland",
+      "year": "1868",
+      "catalogPage": 9,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Pultusk",
+        "meteoriteCode": "18901",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18901",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-4861336f-dff2-4060-8eec-8598eeeba83e",
+      "catalogId": "nininger-1933",
+      "catalogItem": 129,
+      "holdings": [
+        {
+          "designation": "167a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 106
+          }
+        }
+      ],
+      "name": "Purdue",
+      "classification": "Stone. Not yet described.",
+      "locality": "Indiana",
+      "year": null,
+      "catalogPage": 9,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "No existing reviewed mapping establishes an exact canonical identity for this source name and context."
+      }
+    },
+    {
+      "id": "obs-0eecb7d7-74d4-4f05-97d8-67666d7c94db",
+      "catalogId": "nininger-1933",
+      "catalogItem": 130,
+      "holdings": [
+        {
+          "designation": "98a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 37.75
+          }
+        }
+      ],
+      "name": "Rancho de la Presa",
+      "classification": "Stone. Cc.",
+      "locality": "Michoacan, Mexico",
+      "year": "1899",
+      "catalogPage": 9,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Rancho de la Presa",
+        "meteoriteCode": "22390",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22390",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-2a199de0-aa28-4e6d-807e-e036631a7b38",
+      "catalogId": "nininger-1933",
+      "catalogItem": 131,
+      "holdings": [
+        {
+          "designation": "154a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 200
+          }
+        }
+      ],
+      "name": "Reed City",
+      "classification": "Iron. Oh.",
+      "locality": "Osceola Co., Michigan",
+      "year": "1895",
+      "catalogPage": 9,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Reed City",
+        "meteoriteCode": "22552",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22552",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-fc13a6f3-aceb-49e4-824e-dea614b6629f",
+      "catalogId": "nininger-1933",
+      "catalogItem": 132,
+      "holdings": [
+        {
+          "designation": "100a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 358
+          }
+        },
+        {
+          "designation": "100b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 1000
+          }
+        },
+        {
+          "designation": "100d",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 5436
+          }
+        },
+        {
+          "designation": "100e",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 1690
+          }
+        },
+        {
+          "designation": "100f",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 1355
+          }
+        }
+      ],
+      "name": "Richardton",
+      "classification": "Stone. Cca.",
+      "locality": "Stark Co., N. Dakota",
+      "year": "1918",
+      "catalogPage": 9,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Richardton",
+        "meteoriteCode": "22599",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22599",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-67362b34-acc1-4350-b236-a021fed10afe",
+      "catalogId": "nininger-1933",
+      "catalogItem": 133,
+      "holdings": [
+        {
+          "designation": "101a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 1600
+          }
+        }
+      ],
+      "name": "Rodeo",
+      "classification": "Iron. Of.",
+      "locality": "Durango, Mexico",
+      "year": "1852",
+      "catalogPage": 9,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Rodeo",
+        "meteoriteCode": "22643",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22643",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-603d8658-bd62-4226-8561-38e68cea69f7",
+      "catalogId": "nininger-1933",
+      "catalogItem": 134,
+      "holdings": [
+        {
+          "designation": "99a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 117
+          }
+        }
+      ],
+      "name": "Ruff's Mt.",
+      "classification": "Iron. Om.",
+      "locality": "Lexington Co., South Carolina",
+      "year": "1844",
+      "catalogPage": 9,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "No existing reviewed mapping establishes an exact canonical identity for this abbreviated source name and context."
+      }
+    },
+    {
+      "id": "obs-d69db7aa-1c9c-433a-a482-fe4b645b802b",
+      "catalogId": "nininger-1933",
+      "catalogItem": 135,
+      "holdings": [
+        {
+          "designation": "107a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 8
+          }
+        }
+      ],
+      "name": "Saline",
+      "classification": "Stone. Cck.",
+      "locality": "Sheridan Co., Kansas",
+      "year": "1898",
+      "catalogPage": 9,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Saline",
+        "meteoriteCode": "23109",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23109",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-374eceb2-f8fb-4d3c-b808-cc924fba4e9b",
+      "catalogId": "nininger-1933",
+      "catalogItem": 136,
+      "holdings": [
+        {
+          "designation": "159a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 2162
+          }
+        }
+      ],
+      "name": "San Angelo",
+      "classification": "Iron. Om.",
+      "locality": "Tom Green Co., Texas",
+      "year": "1897",
+      "catalogPage": 9,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "San Angelo",
+        "meteoriteCode": "23117",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23117",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-926cafaf-77b9-4e3e-b6f0-4050737c64d2",
+      "catalogId": "nininger-1933",
+      "catalogItem": 137,
+      "holdings": [
+        {
+          "designation": "108e",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 6480
+          }
+        },
+        {
+          "designation": "108a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 516
+          }
+        },
+        {
+          "designation": "108b",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 57
+          }
+        },
+        {
+          "designation": "108c",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 19
+          }
+        },
+        {
+          "designation": "108d",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 21
+          }
+        },
+        {
+          "designation": "108f",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 1200
+          }
+        },
+        {
+          "designation": "108k",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 52
+          }
+        },
+        {
+          "designation": "108l",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 4
+          }
+        },
+        {
+          "designation": "108m",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 2008
+          }
+        }
+      ],
+      "name": "Sandia Mts.",
+      "classification": "Iron. H.",
+      "locality": "New Mexico",
+      "year": "1925",
+      "catalogPage": 9,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "No existing reviewed mapping establishes an exact canonical identity for this abbreviated source name and context."
+      }
+    },
+    {
+      "id": "obs-4eac6aaf-bf0a-4d9d-9e95-143869e06678",
+      "catalogId": "nininger-1933",
+      "catalogItem": 138,
+      "holdings": [
+        {
+          "designation": "138a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 60
+          }
+        }
+      ],
+      "name": "San Francisco Mt.",
+      "classification": "Iron. O.",
+      "locality": "Arizona",
+      "year": "about 1920",
+      "catalogPage": 9,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "No existing reviewed mapping establishes an exact canonical identity for this abbreviated source name and context."
+      }
+    },
+    {
+      "id": "obs-045a1d64-bfe9-4b28-999f-59281803bd7a",
+      "catalogId": "nininger-1933",
+      "catalogItem": 140,
+      "holdings": [
+        {
+          "designation": "110a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 370
+          }
+        }
+      ],
+      "name": "Santa Luzia",
+      "classification": "Iron. Ogg.",
+      "locality": "Goyaz, Brazil",
+      "year": "1921",
+      "catalogPage": 9,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Santa Luzia",
+        "meteoriteCode": "23166",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23166",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-75b4e52e-3efd-425a-ac8b-b3aa95b3e543",
+      "catalogId": "nininger-1933",
+      "catalogItem": 141,
+      "holdings": [
+        {
+          "designation": "103a",
+          "kind": "specimen",
+          "description": null,
+          "count": null,
+          "weight": {
+            "grams": 520
+          }
+        }
+      ],
+      "name": "Santa Rosa",
+      "classification": "Iron. Ds.",
+      "locality": "Columbia, South America",
+      "year": "1810",
+      "catalogPage": 9,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Santa Rosa",
+        "meteoriteCode": "23167",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23167",
         "alternateNameNote": null
       }
     },

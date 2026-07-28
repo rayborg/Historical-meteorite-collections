@@ -9,16 +9,16 @@ The current repository edition also indexes *Tableau méthodique des espèces mi
 ## Facts-Only Scope
 
 <!-- release-summary:notice-facts:start -->
-The current repository edition distributes 3,590 structured, facts-only source observations from 8 catalogs under metadata schema version 6. It supports 4 source-specific record models: `catalog-item`, `catalog-number`, `collection-entry`, `specimen`. Records are source observations rather than canonical meteorites or inferred physical specimens, and `catalogId` identifies each source.
+The current repository edition distributes 3,625 structured, facts-only source observations from 8 catalogs under metadata schema version 6. It supports 4 source-specific record models: `catalog-item`, `catalog-number`, `collection-entry`, `specimen`. Records are source observations rather than canonical meteorites or inferred physical specimens, and `catalogId` identifies each source.
 <!-- release-summary:notice-facts:end -->
 
 <!-- release-summary:notice-coverage:start -->
-Metadata covers 227 catalog-scoped source pages, of which 210 are cited by records. Source-page coverage is not a claim that every covered page contains an observation. `nininger-1933` has 136 records; its metadata source pages span 1-20, and its record citations span 1-11. `nininger-1950` has 1,678 records; its metadata source pages span 26-104, and its record citations span 26-104.
+Metadata covers 229 catalog-scoped source pages, of which 212 are cited by records. Source-page coverage is not a claim that every covered page contains an observation. `nininger-1933` has 171 records; its metadata source pages span 1-20, and its record citations span 1-11. `nininger-1950` has 1,678 records; its metadata source pages span 26-104, and its record citations span 26-104.
 <!-- release-summary:notice-coverage:end -->
 
-Some covered pages are introductory or narrative-only. Both Nininger digital editions are partial, and citation ranges do not assert page-boundary continuity.
+Some covered pages are introductory or narrative-only. Nininger 1933 covers printed pages 1-20, and the reviewed Nininger 1950 collection-catalog range covers printed pages 26-104 through its terminal entry.
 
-Chladni 1825 pages 200-207 are introductory folios. For Nininger 1933, printed pages 8-9 and catalog items 106-141 are missing from the available source set, and pages 12-20 are narrative-only.
+Chladni 1825 pages 200-207 are introductory folios. Nininger 1933 pages 12-20 are narrative-only, and its printed catalog numbering skips item 139.
 
 Validated continuation evidence recovers formerly blank source names only where supported. Reviewed historical entries that genuinely print no separate proper source name retain null names without an inferred modern identity.
 
@@ -29,7 +29,7 @@ Folio display is controlled separately by the schema-version-2 rights manifest. 
 ## Rights Status
 
 <!-- release-summary:notice-folios:start -->
-The repository publicly provides 41 reviewed folio derivatives: `chladni-1819` (12 pages, `public-domain`); `hovey-1896` (7 pages, `public-domain`); `lucas-1813` (3 pages, `public-domain`); `nininger-1933` (19 pages, `no-copyright-us`).
+The repository publicly provides 43 reviewed folio derivatives: `chladni-1819` (12 pages, `public-domain`); `hovey-1896` (7 pages, `public-domain`); `lucas-1813` (3 pages, `public-domain`); `nininger-1933` (21 pages, `no-copyright-us`).
 
 Catalogs remaining blocked with undetermined rights and no public folio pages are: `chladni-1825` (0 pages, `undetermined`); `huss-1976` (0 pages, `undetermined`); `huss-1986` (0 pages, `undetermined`); `nininger-1950` (0 pages, `undetermined`).
 <!-- release-summary:notice-folios:end -->

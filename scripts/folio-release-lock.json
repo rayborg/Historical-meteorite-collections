@@ -82,6 +82,8 @@
         "nininger-1933-page-0006",
         "nininger-1933-page-0007",
         "nininger-1933-page-0008",
+        "nininger-1933-page-0020",
+        "nininger-1933-page-0021",
         "nininger-1933-page-0009",
         "nininger-1933-page-0010",
         "nininger-1933-page-0011",
@@ -223,6 +225,14 @@
     {
       "path": "assets/folios/nininger-1933/nininger-1933-page-0008.webp",
       "sha256": "6adb14e585c0b2ff3ecaf212bec146cfc91c787c52611f441cb6f15cd41f70f9"
+    },
+    {
+      "path": "assets/folios/nininger-1933/nininger-1933-page-0020.webp",
+      "sha256": "d0781bd2c632c5af41e961940e2c39fc389b51ffb6a5aa5d7a2ee22c4945e177"
+    },
+    {
+      "path": "assets/folios/nininger-1933/nininger-1933-page-0021.webp",
+      "sha256": "3e231ae4e920f9ee5b49477a7c85ca7fc54362958b5856926a98c2ed0715f9fd"
     },
     {
       "path": "assets/folios/nininger-1933/nininger-1933-page-0009.webp",
