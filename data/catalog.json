@@ -405,14 +405,15 @@
           98,
           99,
           100,
-          101
+          101,
+          102
         ],
-        "sourcePageCount": 76,
-        "recordCount": 1609,
-        "recordsWithDesignation": 1583,
-        "recordsWithWeight": 1540,
+        "sourcePageCount": 77,
+        "recordCount": 1628,
+        "recordsWithDesignation": 1602,
+        "recordsWithWeight": 1559,
         "confidenceCounts": {
-          "high": 1609,
+          "high": 1628,
           "medium": 0,
           "low": 0
         },
@@ -420,11 +421,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 3521,
-    "recordsWithDesignation": 3326,
-    "recordsWithWeight": 3324,
+    "recordCount": 3540,
+    "recordsWithDesignation": 3345,
+    "recordsWithWeight": 3343,
     "confidenceCounts": {
-      "high": 3521,
+      "high": 3540,
       "medium": 0,
       "low": 0
     }
@@ -34165,6 +34166,216 @@
       }
     },
     {
+      "id": "obs-88ea88ac-cb58-4772-a35c-902a9af9733c",
+      "catalogId": "nininger-1950",
+      "designation": "141.4",
+      "name": "Willamette",
+      "weight": {
+        "grams": 1847.3
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Clackamas County, Oregon",
+      "year": "1902",
+      "catalogPage": 102,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Willamette",
+        "meteoriteCode": "24269",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24269",
+        "alternateNameNote": "The verified local CSV identifies Official Willamette, code 24269, a 1902 Oregon Iron, IIIAB with 15.5 t mass. The official checker returns Willamette as Official, and the detail page confirms the exact name, year, state, and iron identity. MetBull's current mass differs from the source's 12,272.7 kg total; the source's Clackamas County locality, total, and historical medium-octahedrite classification are preserved."
+      }
+    },
+    {
+      "id": "obs-28553ca4-9dba-4db5-abca-d1c6b610164f",
+      "catalogId": "nininger-1950",
+      "designation": "141.5",
+      "name": "Willamette",
+      "weight": {
+        "grams": 128
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Clackamas County, Oregon",
+      "year": "1902",
+      "catalogPage": 102,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Willamette",
+        "meteoriteCode": "24269",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24269",
+        "alternateNameNote": "The verified local CSV identifies Official Willamette, code 24269, a 1902 Oregon Iron, IIIAB with 15.5 t mass. The official checker returns Willamette as Official, and the detail page confirms the exact name, year, state, and iron identity. MetBull's current mass differs from the source's 12,272.7 kg total; the source's Clackamas County locality, total, and historical medium-octahedrite classification are preserved."
+      }
+    },
+    {
+      "id": "obs-46d034e3-a8fe-4d79-964c-58b78792b5b2",
+      "catalogId": "nininger-1950",
+      "designation": "141.6",
+      "name": "Willamette",
+      "weight": {
+        "grams": 116
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Clackamas County, Oregon",
+      "year": "1902",
+      "catalogPage": 102,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Willamette",
+        "meteoriteCode": "24269",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24269",
+        "alternateNameNote": "The verified local CSV identifies Official Willamette, code 24269, a 1902 Oregon Iron, IIIAB with 15.5 t mass. The official checker returns Willamette as Official, and the detail page confirms the exact name, year, state, and iron identity. MetBull's current mass differs from the source's 12,272.7 kg total; the source's Clackamas County locality, total, and historical medium-octahedrite classification are preserved."
+      }
+    },
+    {
+      "id": "obs-37f801fb-c3e0-46c1-bdd8-6651e1d39ddd",
+      "catalogId": "nininger-1950",
+      "designation": "141.7",
+      "name": "Willamette",
+      "weight": {
+        "grams": 132.5
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Clackamas County, Oregon",
+      "year": "1902",
+      "catalogPage": 102,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Willamette",
+        "meteoriteCode": "24269",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24269",
+        "alternateNameNote": "The verified local CSV identifies Official Willamette, code 24269, a 1902 Oregon Iron, IIIAB with 15.5 t mass. The official checker returns Willamette as Official, and the detail page confirms the exact name, year, state, and iron identity. MetBull's current mass differs from the source's 12,272.7 kg total; the source's Clackamas County locality, total, and historical medium-octahedrite classification are preserved."
+      }
+    },
+    {
+      "id": "obs-dcf7f33d-bf9f-4e74-8cf6-bf2884f411b4",
+      "catalogId": "nininger-1950",
+      "designation": "141.8",
+      "name": "Willamette",
+      "weight": {
+        "grams": 138.5
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Clackamas County, Oregon",
+      "year": "1902",
+      "catalogPage": 102,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Willamette",
+        "meteoriteCode": "24269",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24269",
+        "alternateNameNote": "The verified local CSV identifies Official Willamette, code 24269, a 1902 Oregon Iron, IIIAB with 15.5 t mass. The official checker returns Willamette as Official, and the detail page confirms the exact name, year, state, and iron identity. MetBull's current mass differs from the source's 12,272.7 kg total; the source's Clackamas County locality, total, and historical medium-octahedrite classification are preserved."
+      }
+    },
+    {
+      "id": "obs-81e85260-a047-404b-90bc-0e84ea986221",
+      "catalogId": "nininger-1950",
+      "designation": "141.9",
+      "name": "Willamette",
+      "weight": {
+        "grams": 97.5
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Clackamas County, Oregon",
+      "year": "1902",
+      "catalogPage": 102,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Willamette",
+        "meteoriteCode": "24269",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24269",
+        "alternateNameNote": "The verified local CSV identifies Official Willamette, code 24269, a 1902 Oregon Iron, IIIAB with 15.5 t mass. The official checker returns Willamette as Official, and the detail page confirms the exact name, year, state, and iron identity. MetBull's current mass differs from the source's 12,272.7 kg total; the source's Clackamas County locality, total, and historical medium-octahedrite classification are preserved."
+      }
+    },
+    {
+      "id": "obs-72382796-510a-4ced-8d99-4adda343a7f5",
+      "catalogId": "nininger-1950",
+      "designation": "141.10",
+      "name": "Willamette",
+      "weight": {
+        "grams": 76.5
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Clackamas County, Oregon",
+      "year": "1902",
+      "catalogPage": 102,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Willamette",
+        "meteoriteCode": "24269",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24269",
+        "alternateNameNote": "The verified local CSV identifies Official Willamette, code 24269, a 1902 Oregon Iron, IIIAB with 15.5 t mass. The official checker returns Willamette as Official, and the detail page confirms the exact name, year, state, and iron identity. MetBull's current mass differs from the source's 12,272.7 kg total; the source's Clackamas County locality, total, and historical medium-octahedrite classification are preserved."
+      }
+    },
+    {
+      "id": "obs-ecffa48b-aa16-4609-90cb-b2f2881f989d",
+      "catalogId": "nininger-1950",
+      "designation": "141.11",
+      "name": "Willamette",
+      "weight": {
+        "grams": 10.3
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Clackamas County, Oregon",
+      "year": "1902",
+      "catalogPage": 102,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Willamette",
+        "meteoriteCode": "24269",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24269",
+        "alternateNameNote": "The verified local CSV identifies Official Willamette, code 24269, a 1902 Oregon Iron, IIIAB with 15.5 t mass. The official checker returns Willamette as Official, and the detail page confirms the exact name, year, state, and iron identity. MetBull's current mass differs from the source's 12,272.7 kg total; the source's Clackamas County locality, total, and historical medium-octahedrite classification are preserved."
+      }
+    },
+    {
+      "id": "obs-2c596f47-d678-4df0-97a9-45fb13d1a069",
+      "catalogId": "nininger-1950",
+      "designation": "141.12",
+      "name": "Willamette",
+      "weight": {
+        "grams": 10
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Clackamas County, Oregon",
+      "year": "1902",
+      "catalogPage": 102,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Willamette",
+        "meteoriteCode": "24269",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24269",
+        "alternateNameNote": "The verified local CSV identifies Official Willamette, code 24269, a 1902 Oregon Iron, IIIAB with 15.5 t mass. The official checker returns Willamette as Official, and the detail page confirms the exact name, year, state, and iron identity. MetBull's current mass differs from the source's 12,272.7 kg total; the source's Clackamas County locality, total, and historical medium-octahedrite classification are preserved."
+      }
+    },
+    {
+      "id": "obs-aa09debf-9b85-4c49-a260-310b575a9186",
+      "catalogId": "nininger-1950",
+      "designation": "141.13",
+      "name": "Willamette",
+      "weight": {
+        "grams": 8.5
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Clackamas County, Oregon",
+      "year": "1902",
+      "catalogPage": 102,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Willamette",
+        "meteoriteCode": "24269",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24269",
+        "alternateNameNote": "The verified local CSV identifies Official Willamette, code 24269, a 1902 Oregon Iron, IIIAB with 15.5 t mass. The official checker returns Willamette as Official, and the detail page confirms the exact name, year, state, and iron identity. MetBull's current mass differs from the source's 12,272.7 kg total; the source's Clackamas County locality, total, and historical medium-octahedrite classification are preserved."
+      }
+    },
+    {
       "id": "obs-dcef44cb-0808-4dc3-a7c6-70396cfde141",
       "catalogId": "nininger-1950",
       "designation": "142.2",
@@ -34708,6 +34919,27 @@
         "meteoriteCode": "18850",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18850",
         "alternateNameNote": "The verified local CSV identifies Official Plymouth, code 18850, as an 1893 Indiana Iron, IIIAB with 14 kg mass. The checker returns Plymouth as Official, and the detail page confirms the exact name, year, state, iron identity, and Marshall County synonym. The source's 3 kg total is preserved."
+      }
+    },
+    {
+      "id": "obs-e202dff3-6c83-4e83-a188-f5d4df2b5d9b",
+      "catalogId": "nininger-1950",
+      "designation": "161a",
+      "name": "Williamstown",
+      "weight": {
+        "grams": 628
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Grant County, Kentucky",
+      "year": "1892",
+      "catalogPage": 102,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Kenton County",
+        "meteoriteCode": "12280",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12280",
+        "alternateNameNote": "The verified local CSV identifies Official Kenton County, code 12280, a Kentucky Iron, IIIAB found in 1889 with 194 kg mass. The checker returns Williamstown as a synonym of Kenton County, and the detail page explicitly lists Williamstown while confirming the Kentucky iron identity. The source's Grant County locality, 1892 date, 30.9 kg total, and historical classification differ from current MetBull facts and are preserved."
       }
     },
     {
@@ -38974,6 +39206,27 @@
       }
     },
     {
+      "id": "obs-41bff65b-11df-458a-a6c0-91ebbe713450",
+      "catalogId": "nininger-1950",
+      "designation": "227.14",
+      "name": "Willow Creek",
+      "weight": {
+        "grams": 34609
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Natrona County, Wyoming; 43° 26′ N., 106° 46′ W.",
+      "year": "about 1914",
+      "catalogPage": 102,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Willow Creek",
+        "meteoriteCode": "24276",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24276",
+        "alternateNameNote": "The verified local CSV identifies Official Willow Creek, code 24276, a 1914 Wyoming Iron, IIIE with 51 kg mass. The official checker returns Willow Creek as Official, and the detail page confirms the exact name, year, state, iron identity, exact printed coordinates, and Central Wyoming synonym. The source's recognition year, 51.2 kg total, and historical medium-octahedrite classification are preserved."
+      }
+    },
+    {
       "id": "obs-9c4f99fc-807f-49dd-9c06-e59326f928f9",
       "catalogId": "nininger-1950",
       "designation": "228b",
@@ -39223,6 +39476,48 @@
         "meteoriteCode": "24234",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24234",
         "alternateNameNote": "The verified local CSV identifies Official Weldona, code 24234, a 1934 Colorado H4 with 27.7 kg mass. The official checker returns Weldona as Official, and the detail page confirms the exact name, year, state, H4 identity, mass, and exact printed coordinates. The source's historical classification is preserved."
+      }
+    },
+    {
+      "id": "obs-6a51f8fa-dc88-4715-98f2-fc5cfd08390f",
+      "catalogId": "nininger-1950",
+      "designation": "232a",
+      "name": "Wichita County",
+      "weight": {
+        "grams": 59
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Texas",
+      "year": "before 1836",
+      "catalogPage": 102,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Wichita County",
+        "meteoriteCode": "24257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24257",
+        "alternateNameNote": "The adjacent reviewed heading establishes Wichita County. The verified local CSV identifies Official Wichita County, code 24257, a Texas Iron, IAB-MG found in 1836 with 145 kg mass. The official checker returns Wichita County as Official, and the detail page confirms the exact name, Texas iron identity, mass, and printed Brazos River, Red River, and Young County synonyms. The source's Known before 1836 wording, Austina synonym, 145.4 kg total, and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-07c34fe5-1aaf-4453-abf3-019f9201b076",
+      "catalogId": "nininger-1950",
+      "designation": "232.1",
+      "name": "Wichita County",
+      "weight": {
+        "grams": 275
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Texas",
+      "year": "before 1836",
+      "catalogPage": 102,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Wichita County",
+        "meteoriteCode": "24257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24257",
+        "alternateNameNote": "The adjacent reviewed heading establishes Wichita County. The verified local CSV identifies Official Wichita County, code 24257, a Texas Iron, IAB-MG found in 1836 with 145 kg mass. The official checker returns Wichita County as Official, and the detail page confirms the exact name, Texas iron identity, mass, and printed Brazos River, Red River, and Young County synonyms. The source's Known before 1836 wording, Austina synonym, 145.4 kg total, and historical classification are preserved."
       }
     },
     {
@@ -43720,6 +44015,27 @@
       }
     },
     {
+      "id": "obs-f3213ef2-c3b2-4117-aed5-f3c33d483c86",
+      "catalogId": "nininger-1950",
+      "designation": "380.1",
+      "name": "Wiley",
+      "weight": {
+        "grams": 2277
+      },
+      "classification": "Iron. Microscopic octahedrite—Nininger. Nickel-rich ataxite—Perry.",
+      "locality": "Prowers County, Colorado; 38° 9′ N., 102° 40′ W.",
+      "year": "1938",
+      "catalogPage": 102,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Wiley",
+        "meteoriteCode": "24268",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24268",
+        "alternateNameNote": "The verified local CSV identifies Official Wiley, code 24268, a 1938 Colorado Iron, IIC with 3.5 kg mass. The official checker returns Wiley as Official, and the detail page confirms the exact name, year, state, iron identity, mass, and exact printed coordinates. The source's attributed historical classifications are preserved."
+      }
+    },
+    {
       "id": "obs-50b81329-3a45-4046-9ff1-4cfc4fb45e84",
       "catalogId": "nininger-1950",
       "designation": "380.3",
@@ -45736,6 +46052,27 @@
       }
     },
     {
+      "id": "obs-6aac6718-86a6-4d85-9d95-296a4c6c91a9",
+      "catalogId": "nininger-1950",
+      "designation": "449.4",
+      "name": "Wickenburg",
+      "weight": {
+        "grams": 612.3
+      },
+      "classification": "Stone. Black chondrite",
+      "locality": "Maricopa County, Arizona; 33° 58′ N., 112° 40′ W.",
+      "year": "1940",
+      "catalogPage": 102,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Wickenburg (stone)",
+        "meteoriteCode": "24258",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24258",
+        "alternateNameNote": "The checker returns bare Wickenburg only as a partial name, while the verified local CSV identifies Official Wickenburg (stone), code 24258, a 1940 Arizona L6 with 9.2 kg mass. The detail page confirms the year, state, stone identity, mass, and 33° 58′ N. latitude, resolving this first heading from the separate iron below. It gives 112° 44′ W.; the source's 112° 40′ W., historical classification, bare name, and recognition wording are preserved."
+      }
+    },
+    {
       "id": "obs-0ee12e0a-8cb2-4bc5-a544-ff7e62386525",
       "catalogId": "nininger-1950",
       "designation": "450.1",
@@ -45859,6 +46196,27 @@
         "meteoriteCode": "22651",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22651",
         "alternateNameNote": "The verified local CSV identifies Official Romero, code 22651. The official checker returns Romero as Official, and the detail page confirms the exact name, Texas H4 identity, and exact printed coordinates. MetBull gives 1938 and 17.2 kg, while the source prints Found 1939 and 17.3 kg; the source facts are preserved."
+      }
+    },
+    {
+      "id": "obs-9646766a-29bc-4f7d-8931-43f0d7a397ab",
+      "catalogId": "nininger-1950",
+      "designation": "455.1",
+      "name": "Wickenburg",
+      "weight": {
+        "grams": 100.5
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Maricopa County, Arizona",
+      "year": "1939",
+      "catalogPage": 102,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The verified local CSV has no official bare Wickenburg or Wickenburg iron record. The checker returns bare Wickenburg only as a partial name whose sole containing result is Wickenburg (stone), code 24258. That 1940 Arizona L6 has 9.2 kg mass and matches the separate preceding stone entry, while this source entry is a 1939 coarse octahedrite of about 200 grams. No identity is inferred."
       }
     },
     {
@@ -46153,6 +46511,48 @@
         "meteoriteCode": "430",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=430",
         "alternateNameNote": "MetBull adds the year qualifier to distinguish later Akron finds. The source reports 408 grams; MetBull reports 1050 g. The linked MB30 writeup instead says Akron No. 2, found 1954, 0.64 kg."
+      }
+    },
+    {
+      "id": "obs-d5701ac7-f010-46ac-ba3f-a360f7e1538a",
+      "catalogId": "nininger-1950",
+      "designation": "463.1",
+      "name": "Wilberton",
+      "weight": {
+        "grams": 126.5
+      },
+      "classification": "Stone",
+      "locality": "Morton County, Kansas",
+      "year": "1940",
+      "catalogPage": 102,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Wilburton",
+        "meteoriteCode": "24262",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24262",
+        "alternateNameNote": "The verified local CSV identifies Official Wilburton, code 24262, a 1940 Kansas H5 with 207.8 gram mass. The checker returns printed Wilberton as a synonym of Wilburton, and the official detail page explicitly lists that spelling while confirming the year, state, and stone identity. The source's Morton County locality, broader Stone classification, spelling, and 207.5 gram total are preserved."
+      }
+    },
+    {
+      "id": "obs-24a9bffa-13ce-452e-a683-1e41ab0e32fd",
+      "catalogId": "nininger-1950",
+      "designation": "463.2",
+      "name": "Wilberton",
+      "weight": {
+        "grams": 81
+      },
+      "classification": "Stone",
+      "locality": "Morton County, Kansas",
+      "year": "1940",
+      "catalogPage": 102,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Wilburton",
+        "meteoriteCode": "24262",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24262",
+        "alternateNameNote": "The verified local CSV identifies Official Wilburton, code 24262, a 1940 Kansas H5 with 207.8 gram mass. The checker returns printed Wilberton as a synonym of Wilburton, and the official detail page explicitly lists that spelling while confirming the year, state, and stone identity. The source's Morton County locality, broader Stone classification, spelling, and 207.5 gram total are preserved."
       }
     },
     {
