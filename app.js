@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260726-3";
+const CACHE_VERSION = "20260728-4";
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "designation-asc";
 const VALID_SORTS = new Set([
@@ -133,6 +133,51 @@ const FOLIO_PAGE_FIELDS = new Set(["pageId", "catalogPage", "pageLabel", "image"
 const FOLIO_DISPLAY_POLICIES = new Set(["blocked", "display"]);
 const FOLIO_RIGHTS_STATUSES = new Set(["undetermined", "public-domain", "no-copyright-us"]);
 const FOLIO_DISPLAY_RIGHTS_STATUSES = new Set(["public-domain", "no-copyright-us"]);
+const LINEAGE_ROOT_FIELDS = new Set(["metadata", "relationships"]);
+const LINEAGE_METADATA_FIELDS = new Set(["schemaVersion", "scope", "source", "collectionSeries", "methodology", "counts"]);
+const LINEAGE_SOURCE_FIELDS = new Set(["catalogSchemaVersion", "recordCount", "catalogCount", "flattenedMassObservationCount", "inventoryObservationCount"]);
+const LINEAGE_SERIES_FIELDS = new Set(["id", "catalogIds"]);
+const LINEAGE_METHODOLOGY_FIELDS = new Set(["inventoryNormalization", "possibleMatchIdentity", "massThresholds", "ambiguityPolicy", "evidenceStrengthOrder", "nonAssertions"]);
+const LINEAGE_INVENTORY_NORMALIZATION_FIELDS = new Set(["unicode", "case", "whitespace", "hussEditionMarker"]);
+const LINEAGE_POSSIBLE_IDENTITY_FIELDS = new Set(["resolved", "unresolved"]);
+const LINEAGE_MASS_THRESHOLD_FIELDS = new Set(["exactDifferenceGrams", "nearMinimumMassGrams", "nearMaximumRelativeDifference", "nearMaximumAbsoluteDifferenceGrams"]);
+const LINEAGE_COUNT_FIELDS = new Set([
+  "relationshipCount", "sameInventoryRelationshipCount", "possibleMatchRelationshipCount", "unreviewedPossibleMatchCount",
+  "exactMassPossibleMatchCount", "nearMassPossibleMatchCount", "metbullIdentityPossibleMatchCount", "normalizedNameIdentityPossibleMatchCount",
+  "sameDesignationPossibleMatchCount", "designationFamilyPossibleMatchCount", "aggregateOrMultiplePossibleMatchCount", "castPossibleMatchCount",
+  "identityResolvedInventoryCollisionCount", "omittedAmbiguousInventoryKeyCount", "possibleMatchEvidenceStrength", "catalogPairs"
+]);
+const LINEAGE_STRENGTHS = ["multiple-matching-facts", "two-matching-facts", "limited-matching-evidence"];
+const LINEAGE_STRENGTH_FIELDS = new Set(LINEAGE_STRENGTHS);
+const LINEAGE_PAIR_COUNT_FIELDS = new Set(["catalogPair", "sameInventoryCount", "possibleMatchCount"]);
+const LINEAGE_RELATIONSHIP_FIELDS = new Set(["id", "relationship", "basis", "status", "displayName", "catalogPair", "collectionSeries", "identity", "evidence", "review", "observations"]);
+const LINEAGE_COLLECTION_SERIES_FIELDS = new Set(["id", "inventoryId"]);
+const LINEAGE_IDENTITY_FIELDS = new Set(["method", "key", "canonicalName"]);
+const LINEAGE_EVIDENCE_FIELDS = new Set(["strength", "massMatch", "absoluteDifferenceGrams", "relativeDifference", "sameDesignation", "designationFamily", "factCodes", "cautionCodes"]);
+const LINEAGE_REVIEW_FIELDS = new Set(["status", "outcome", "reviewedOn", "publicNote", "citations"]);
+const LINEAGE_OBSERVATION_FIELDS = new Set([
+  "id", "recordId", "catalogId", "catalogLabel", "catalogYear", "recordModel", "designationPath", "massPath", "sourceRecordLabel",
+  "sourceName", "canonicalName", "meteoriteCode", "designation", "massGrams", "kind", "count", "catalogSearchUrl"
+]);
+const LINEAGE_RELATIONSHIP_ID = /^(?:same-inventory-lineage|possible-lineage)-[0-9a-f]{8}-[0-9a-f]{4}-5[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/u;
+const LINEAGE_OBSERVATION_ID = /^(?:inventory|mass)-observation-[0-9a-f]{8}-[0-9a-f]{4}-5[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/u;
+const LINEAGE_RECORD_ID = /^[A-Za-z0-9][A-Za-z0-9._-]*$/u;
+const LINEAGE_IDENTITY_METHODS = new Set(["metbull-code", "normalized-source-name"]);
+const LINEAGE_MASS_MATCHES = new Set(["exact", "near"]);
+const LINEAGE_CAUTION_CODES = new Set(["normalized-name-identity", "near-reported-mass", "designation-differs-or-missing", "aggregate-or-multiple", "cast"]);
+const LINEAGE_FACT_CODE_ORDER = ["shared-metbull-code", "shared-normalized-source-name", "exact-reported-mass", "near-reported-mass", "same-designation", "designation-family"];
+const LINEAGE_CAUTION_CODE_ORDER = ["normalized-name-identity", "near-reported-mass", "designation-differs-or-missing", "aggregate-or-multiple", "cast"];
+const LINEAGE_FACT_CODES = new Set(LINEAGE_FACT_CODE_ORDER);
+const LINEAGE_COLLECTION_SERIES = [
+  { id: "huss", catalogIds: ["huss-1976", "huss-1986"] },
+  { id: "nininger", catalogIds: ["nininger-1933", "nininger-1950"] }
+];
+const LINEAGE_UUID_NAMESPACE = "65b19e0b-1f86-5ca5-a65b-81c38ec53040";
+const LINEAGE_STRENGTH_LABELS = {
+  "multiple-matching-facts": "Multiple matching facts",
+  "two-matching-facts": "Two matching facts",
+  "limited-matching-evidence": "Limited matching evidence"
+};
 const MAX_CATALOG_ID_LENGTH = 80;
 const MAX_DESCRIPTOR_TEXT_LENGTH = 160;
 const PRIVATE_LANGUAGE =
@@ -192,6 +237,7 @@ const elements = typeof document === "undefined" ? null : {
 let records = [];
 let catalogRegistry = {};
 let folioManifest = null;
+let earlierRecordsByLaterId = new Map();
 let activeFolioPages = [];
 let activeFolioIndex = -1;
 let folioOpener = null;
@@ -257,6 +303,9 @@ function matchesSearch(record, rawQuery) {
   const query = searchable(rawQuery);
   if (!query) return true;
 
+  const recordIdQuery = String(rawQuery || "").trim().match(/^record\s+id\s+(.+)$/iu);
+  if (recordIdQuery) return record.id === recordIdQuery[1].trim();
+
   const catalogNumberQuery = query.match(/^catalog no (.+)$/);
   if (catalogNumberQuery && record.catalogNumber !== undefined) {
     return searchable(record.catalogNumber) === catalogNumberQuery[1];
@@ -271,9 +320,10 @@ function matchesSearch(record, rawQuery) {
   if (collectionEntryQuery) return record.entryOrder === Number(collectionEntryQuery[1]);
   const holdingCodeQuery = numericLeadingHoldingCode(rawQuery);
   if (holdingCodeQuery) {
-    return Array.isArray(record.holdings) && record.holdings.some(
-      (holding) => numericLeadingHoldingCode(holding.designation) === holdingCodeQuery
-    );
+    return numericLeadingHoldingCode(record.designation) === holdingCodeQuery ||
+      (Array.isArray(record.holdings) && record.holdings.some(
+        (holding) => numericLeadingHoldingCode(holding.designation) === holdingCodeQuery
+      ));
   }
   const compactQuery = query.replace(/ /g, "");
   if (!designationComponents(rawQuery) && recordDesignations(record).some(
@@ -839,6 +889,630 @@ function validateCatalog(catalog) {
   return catalog;
 }
 
+function lineageSchemaError() {
+  return new Error("The specimen-lineage data does not match its public contract.");
+}
+
+function requireLineage(condition) {
+  if (!condition) throw lineageSchemaError();
+}
+
+function isLineageText(value, nullable = false) {
+  if (nullable && value === null) return true;
+  return typeof value === "string" && value.length > 0 && value.length <= 1000 &&
+    value === value.normalize("NFC").trim() && !/[\p{Cc}\p{Cf}]/u.test(value);
+}
+
+function isSafeLineageSearchUrl(value, observation) {
+  if (typeof value !== "string" || !/^\.\/index\.html\?catalog=[^&#]+&q=[^&#]+#catalog$/u.test(value)) return false;
+  const expectedQuery = `record id ${observation.recordId}`;
+  const expected = `./index.html?catalog=${encodeURIComponent(observation.catalogId)}&q=${encodeURIComponent(expectedQuery)}#catalog`;
+  if (value !== expected) return false;
+  try {
+    const url = new URL(value, "https://lineages.invalid/");
+    return url.origin === "https://lineages.invalid" && url.pathname === "/index.html" && url.hash === "#catalog" &&
+      !url.username && !url.password && [...url.searchParams.keys()].join(",") === "catalog,q" &&
+      url.searchParams.get("catalog") === observation.catalogId && url.searchParams.get("q") === expectedQuery;
+  } catch {
+    return false;
+  }
+}
+
+function isRealLineageDate(value) {
+  if (typeof value !== "string" || !/^[1-9][0-9]{3}-[0-9]{2}-[0-9]{2}$/u.test(value)) return false;
+  const [year, month, day] = value.split("-").map(Number);
+  const date = new Date(Date.UTC(year, month - 1, day));
+  return date.getUTCFullYear() === year && date.getUTCMonth() === month - 1 && date.getUTCDate() === day;
+}
+
+function lineageRecordLabel(record) {
+  if (record.recordModel === "catalog-item") return `Catalog item ${record.catalogItem}`;
+  if (record.recordModel === "catalog-number") return `Catalog no. ${record.catalogNumber}`;
+  if (record.recordModel === "collection-entry") return `Collection entry ${record.entryOrder}`;
+  return record.designation ?? record.name;
+}
+
+function resolveLineageObservation(record, designationPath, massPath) {
+  if (record.recordModel === "specimen") {
+    return massPath === "weight.grams" && (designationPath === null || designationPath === "designation") ? {
+      massGrams: record.weight.grams,
+      designation: designationPath === null ? null : record.designation,
+      kind: null,
+      count: null
+    } : null;
+  }
+  if (record.recordModel === "catalog-item") {
+    const match = massPath.match(/^holdings\[([0-9]+)\]\.weight\.grams$/u);
+    const holding = match ? record.holdings[Number(match[1])] : null;
+    const expectedDesignationPath = match ? `holdings[${match[1]}].designation` : null;
+    if (designationPath !== null && designationPath !== expectedDesignationPath) return null;
+    return holding ? {
+      massGrams: holding.weight.grams,
+      designation: designationPath === null ? null : holding.designation,
+      kind: holding.kind,
+      count: holding.count
+    } : null;
+  }
+  const match = massPath.match(/^holdings\[([0-9]+)\]\.weights\[([0-9]+)\]\.grams$/u);
+  const holding = match ? record.holdings[Number(match[1])] : null;
+  const weight = holding && match ? holding.weights[Number(match[2])] : null;
+  return weight ? {
+    massGrams: weight.grams,
+    designation: null,
+    kind: null,
+    count: holding.count
+  } : null;
+}
+
+function normalizeLineageName(value) {
+  return String(value).normalize("NFKD").replace(/\p{Diacritic}/gu, "").toLowerCase().replace(/[^a-z0-9]+/gu, " ").trim();
+}
+
+function normalizeLineageInventoryId(value, seriesId) {
+  let normalized = String(value).normalize("NFKC").toLocaleLowerCase("en-US").replace(/\s+/gu, "");
+  if (seriesId === "huss") normalized = normalized.replace(/^\(2\)/u, "");
+  return normalized;
+}
+
+function normalizeLineageCollisionName(value) {
+  return normalizeLineageName(value).replace(/\b(?:mt|mts)\b/gu, "mountains").replace(/\bco\b/gu, "county");
+}
+
+function lineageRotateLeft(value, bits) {
+  return (value << bits) | (value >>> (32 - bits));
+}
+
+function lineageSha1(bytes) {
+  const bitLength = bytes.length * 8;
+  const paddedLength = Math.ceil((bytes.length + 9) / 64) * 64;
+  const padded = new Uint8Array(paddedLength);
+  padded.set(bytes);
+  padded[bytes.length] = 0x80;
+  const view = new DataView(padded.buffer);
+  view.setUint32(paddedLength - 8, Math.floor(bitLength / 0x100000000));
+  view.setUint32(paddedLength - 4, bitLength >>> 0);
+  let h0 = 0x67452301;
+  let h1 = 0xefcdab89;
+  let h2 = 0x98badcfe;
+  let h3 = 0x10325476;
+  let h4 = 0xc3d2e1f0;
+  const words = new Uint32Array(80);
+  for (let offset = 0; offset < paddedLength; offset += 64) {
+    for (let index = 0; index < 16; index += 1) words[index] = view.getUint32(offset + index * 4);
+    for (let index = 16; index < 80; index += 1) {
+      words[index] = lineageRotateLeft(words[index - 3] ^ words[index - 8] ^ words[index - 14] ^ words[index - 16], 1) >>> 0;
+    }
+    let a = h0;
+    let b = h1;
+    let c = h2;
+    let d = h3;
+    let e = h4;
+    for (let index = 0; index < 80; index += 1) {
+      let f;
+      let k;
+      if (index < 20) {
+        f = (b & c) | (~b & d);
+        k = 0x5a827999;
+      } else if (index < 40) {
+        f = b ^ c ^ d;
+        k = 0x6ed9eba1;
+      } else if (index < 60) {
+        f = (b & c) | (b & d) | (c & d);
+        k = 0x8f1bbcdc;
+      } else {
+        f = b ^ c ^ d;
+        k = 0xca62c1d6;
+      }
+      const next = (lineageRotateLeft(a, 5) + f + e + k + words[index]) >>> 0;
+      e = d;
+      d = c;
+      c = lineageRotateLeft(b, 30) >>> 0;
+      b = a;
+      a = next;
+    }
+    h0 = (h0 + a) >>> 0;
+    h1 = (h1 + b) >>> 0;
+    h2 = (h2 + c) >>> 0;
+    h3 = (h3 + d) >>> 0;
+    h4 = (h4 + e) >>> 0;
+  }
+  const digest = new Uint8Array(20);
+  const digestView = new DataView(digest.buffer);
+  [h0, h1, h2, h3, h4].forEach((value, index) => digestView.setUint32(index * 4, value));
+  return digest;
+}
+
+function lineageUuidV5(name) {
+  const namespace = Uint8Array.from(LINEAGE_UUID_NAMESPACE.replaceAll("-", "").match(/../gu), (byte) => Number.parseInt(byte, 16));
+  const nameBytes = new TextEncoder().encode(String(name));
+  const input = new Uint8Array(namespace.length + nameBytes.length);
+  input.set(namespace);
+  input.set(nameBytes, namespace.length);
+  const bytes = lineageSha1(input).slice(0, 16);
+  bytes[6] = (bytes[6] & 0x0f) | 0x50;
+  bytes[8] = (bytes[8] & 0x3f) | 0x80;
+  const hex = [...bytes].map((byte) => byte.toString(16).padStart(2, "0")).join("");
+  return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
+}
+
+function expectedLineageIds(type, candidateReference, seriesId = null, inventoryId = null, endpointReferences = []) {
+  const observationPrefix = type === "same-inventory" ? "inventory-observation" : "mass-observation";
+  const relationshipPrefix = type === "same-inventory" ? "same-inventory-lineage" : "possible-lineage";
+  const relationshipName = type === "same-inventory"
+    ? `${relationshipPrefix}\u0000${seriesId}\u0000${inventoryId}\u0000${candidateReference}`
+    : `${relationshipPrefix}\u0000${candidateReference}`;
+  return {
+    relationshipId: `${relationshipPrefix}-${lineageUuidV5(relationshipName)}`,
+    observationIds: new Map(endpointReferences.map((reference) => [
+      reference,
+      `${observationPrefix}-${lineageUuidV5(`${observationPrefix}\u0000${candidateReference}\u0000${reference}`)}`
+    ]))
+  };
+}
+
+function equalLineageCodes(actual, expected, order, allowed) {
+  return Array.isArray(actual) && actual.length === expected.length && new Set(actual).size === actual.length &&
+    actual.every((code, index) => allowed.has(code) && code === expected[index] &&
+      (index === 0 || order.indexOf(actual[index - 1]) < order.indexOf(code)));
+}
+
+function validateLineageReview(review) {
+  requireLineage(hasExactFields(review, LINEAGE_REVIEW_FIELDS) && Array.isArray(review.citations));
+  if (review.status === "unreviewed") {
+    requireLineage(review.outcome === null && review.reviewedOn === null && review.publicNote === null && review.citations.length === 0);
+    return;
+  }
+  requireLineage(review.status === "reviewed" && ["retain-as-possible", "not-supported"].includes(review.outcome));
+  requireLineage(isRealLineageDate(review.reviewedOn));
+  requireLineage(review.publicNote === null || (typeof review.publicNote === "string" && review.publicNote.length <= 1000));
+  review.citations.forEach((citation) => {
+    requireLineage(hasExactFields(citation, new Set(["label", "url"])) && isLineageText(citation.label));
+    try {
+      const url = new URL(citation.url);
+      const numericHost = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/u.test(url.hostname) || url.hostname.startsWith("[");
+      requireLineage(url.protocol === "https:" && !url.username && !url.password && url.hostname.includes(".") && !numericHost);
+    } catch {
+      throw lineageSchemaError();
+    }
+  });
+}
+
+function calculateLineageCounts(relationships, inventorySummary = {}) {
+  const possible = relationships.filter(({ relationship }) => relationship === "possible-match");
+  const sameInventory = relationships.filter(({ relationship }) => relationship === "same-inventory");
+  const count = (items, predicate) => items.filter(predicate).length;
+  const evidenceStrength = Object.fromEntries(LINEAGE_STRENGTHS.map((strength) => [
+    strength,
+    count(possible, (relationship) => relationship.evidence.strength === strength)
+  ]));
+  const catalogPairs = new Map();
+  relationships.forEach((relationship) => {
+    const counts = catalogPairs.get(relationship.catalogPair) || { sameInventoryCount: 0, possibleMatchCount: 0 };
+    counts[relationship.relationship === "same-inventory" ? "sameInventoryCount" : "possibleMatchCount"] += 1;
+    catalogPairs.set(relationship.catalogPair, counts);
+  });
+  return {
+    relationshipCount: relationships.length,
+    sameInventoryRelationshipCount: sameInventory.length,
+    possibleMatchRelationshipCount: possible.length,
+    unreviewedPossibleMatchCount: count(possible, (relationship) => relationship.review.status === "unreviewed"),
+    exactMassPossibleMatchCount: count(possible, (relationship) => relationship.evidence.massMatch === "exact"),
+    nearMassPossibleMatchCount: count(possible, (relationship) => relationship.evidence.massMatch === "near"),
+    metbullIdentityPossibleMatchCount: count(possible, (relationship) => relationship.identity.method === "metbull-code"),
+    normalizedNameIdentityPossibleMatchCount: count(possible, (relationship) => relationship.identity.method === "normalized-source-name"),
+    sameDesignationPossibleMatchCount: count(possible, (relationship) => relationship.evidence.sameDesignation),
+    designationFamilyPossibleMatchCount: count(possible, (relationship) => relationship.evidence.designationFamily),
+    aggregateOrMultiplePossibleMatchCount: count(possible, (relationship) => relationship.evidence.cautionCodes.includes("aggregate-or-multiple")),
+    castPossibleMatchCount: count(possible, (relationship) => relationship.evidence.cautionCodes.includes("cast")),
+    identityResolvedInventoryCollisionCount: inventorySummary.identityResolvedInventoryCollisionCount || 0,
+    omittedAmbiguousInventoryKeyCount: inventorySummary.omittedAmbiguousInventoryKeyCount || 0,
+    possibleMatchEvidenceStrength: evidenceStrength,
+    catalogPairs
+  };
+}
+
+function lineageSeriesByCatalog() {
+  return new Map(LINEAGE_COLLECTION_SERIES.flatMap((series) => series.catalogIds.map((catalogId) => [catalogId, series.id])));
+}
+
+function lineageInventoryEndpoints(sourceRecords) {
+  const seriesByCatalog = lineageSeriesByCatalog();
+  const endpoints = [];
+  sourceRecords.forEach((record) => {
+    const seriesId = seriesByCatalog.get(record.catalogId);
+    if (!seriesId) return;
+    const add = (designation, designationPath, massGrams, massPath, kind = null, count = null) => {
+      if (!designation) return;
+      endpoints.push({ record, seriesId, inventoryId: normalizeLineageInventoryId(designation, seriesId), designation, designationPath, massGrams, massPath, kind, count });
+    };
+    if (record.recordModel === "specimen") {
+      add(record.designation, "designation", record.weight.grams, "weight.grams");
+    } else if (record.recordModel === "catalog-item") {
+      record.holdings.forEach((holding, index) => add(
+        holding.designation,
+        `holdings[${index}].designation`,
+        holding.weight.grams,
+        `holdings[${index}].weight.grams`,
+        holding.kind,
+        holding.count
+      ));
+    }
+  });
+  return endpoints;
+}
+
+function lineageCollisionNames(endpoint) {
+  return new Set([endpoint.record.sourceName || endpoint.record.name, endpoint.record.metbull?.canonicalName]
+    .filter(Boolean).map(normalizeLineageCollisionName));
+}
+
+function lineageCollisionIdentityConsistent(left, right) {
+  const leftCode = left.record.metbull?.meteoriteCode;
+  const rightCode = right.record.metbull?.meteoriteCode;
+  if (leftCode && rightCode) return leftCode === rightCode;
+  const leftNames = lineageCollisionNames(left);
+  return [...lineageCollisionNames(right)].some((name) => leftNames.has(name));
+}
+
+function lineageEndpointKey(endpoint) {
+  return `${endpoint.record.id}\u0000${endpoint.designationPath}`;
+}
+
+function expectedSameInventoryRelationships(sourceRecords) {
+  const byCatalog = Map.groupBy(lineageInventoryEndpoints(sourceRecords), (endpoint) => endpoint.record.catalogId);
+  const expected = new Map();
+  let identityResolvedInventoryCollisionCount = 0;
+  let omittedAmbiguousInventoryKeyCount = 0;
+  LINEAGE_COLLECTION_SERIES.forEach((series) => {
+    for (let index = 1; index < series.catalogIds.length; index += 1) {
+      const earlier = Map.groupBy(byCatalog.get(series.catalogIds[index - 1]) || [], (endpoint) => endpoint.inventoryId);
+      const later = Map.groupBy(byCatalog.get(series.catalogIds[index]) || [], (endpoint) => endpoint.inventoryId);
+      earlier.forEach((earlierEndpoints, inventoryId) => {
+        const laterEndpoints = later.get(inventoryId);
+        if (!laterEndpoints) return;
+        let pair;
+        if (earlierEndpoints.length === 1 && laterEndpoints.length === 1) {
+          pair = [earlierEndpoints[0], laterEndpoints[0]];
+        } else {
+          const consistent = earlierEndpoints.flatMap((left) => laterEndpoints
+            .filter((right) => lineageCollisionIdentityConsistent(left, right)).map((right) => [left, right]));
+          if (consistent.length !== 1) {
+            omittedAmbiguousInventoryKeyCount += 1;
+            return;
+          }
+          pair = consistent[0];
+          identityResolvedInventoryCollisionCount += 1;
+        }
+        const endpointReferences = pair.map(lineageEndpointKey).sort();
+        const key = endpointReferences.join("\u0001");
+        expected.set(key, {
+          seriesId: series.id,
+          inventoryId,
+          endpoints: pair,
+          ...expectedLineageIds("same-inventory", key, series.id, inventoryId, endpointReferences)
+        });
+      });
+    }
+  });
+  return { expected, identityResolvedInventoryCollisionCount, omittedAmbiguousInventoryKeyCount };
+}
+
+function lineageMassEndpoints(sourceRecords) {
+  const endpoints = [];
+  const add = (record, massGrams, massPath) => {
+    if (!Number.isFinite(massGrams)) return;
+    const unresolved = record.metbull?.matchType === "unresolved";
+    const identityKey = unresolved ? (record.name ? normalizeLineageName(record.name) : null) : record.metbull?.meteoriteCode;
+    if (!identityKey) return;
+    endpoints.push({
+      record,
+      massGrams,
+      massPath,
+      sourceReference: `${record.id}\u0000${massPath}`,
+      identityMethod: unresolved ? "normalized-source-name" : "metbull-code",
+      identityKey
+    });
+  };
+  sourceRecords.forEach((record) => {
+    if (record.recordModel === "specimen") {
+      add(record, record.weight.grams, "weight.grams");
+    } else if (record.recordModel === "catalog-item") {
+      record.holdings.forEach((holding, index) => add(record, holding.weight.grams, `holdings[${index}].weight.grams`));
+    } else {
+      record.holdings.forEach((holding, holdingIndex) => holding.weights.forEach((weight, weightIndex) =>
+        add(record, weight.grams, `holdings[${holdingIndex}].weights[${weightIndex}].grams`)));
+    }
+  });
+  return endpoints;
+}
+
+function expectedPossibleRelationships(sourceRecords) {
+  const seriesByCatalog = lineageSeriesByCatalog();
+  const grouped = Map.groupBy(lineageMassEndpoints(sourceRecords), (endpoint) => `${endpoint.identityMethod}:${endpoint.identityKey}`);
+  const expected = new Map();
+  grouped.forEach((group) => {
+    for (let leftIndex = 0; leftIndex < group.length; leftIndex += 1) {
+      for (let rightIndex = leftIndex + 1; rightIndex < group.length; rightIndex += 1) {
+        const left = group[leftIndex];
+        const right = group[rightIndex];
+        if (left.record.catalogId === right.record.catalogId) continue;
+        const leftNamespace = seriesByCatalog.get(left.record.catalogId) || left.record.catalogId;
+        const rightNamespace = seriesByCatalog.get(right.record.catalogId) || right.record.catalogId;
+        if (leftNamespace === rightNamespace) continue;
+        const difference = Math.abs(left.massGrams - right.massGrams);
+        const maximumMass = Math.max(left.massGrams, right.massGrams);
+        const relativeDifference = maximumMass === 0 ? 0 : difference / maximumMass;
+        const exact = difference === 0;
+        const near = Math.min(left.massGrams, right.massGrams) >= 10 && difference <= 2 && relativeDifference <= 0.0025;
+        if (!exact && !near) continue;
+        const endpointReferences = [left.sourceReference, right.sourceReference].sort();
+        const key = endpointReferences.join("\u0001");
+        expected.set(key, {
+          endpoints: [left, right],
+          ...expectedLineageIds("possible-match", key, null, null, endpointReferences)
+        });
+      }
+    }
+  });
+  return expected;
+}
+
+function lineageMassObservationCount(sourceRecords) {
+  let count = 0;
+  sourceRecords.forEach((record) => {
+    if (record.recordModel === "specimen") count += Number.isFinite(record.weight.grams) ? 1 : 0;
+    else if (record.recordModel === "catalog-item") count += record.holdings.filter((holding) => Number.isFinite(holding.weight.grams)).length;
+    else count += record.holdings.reduce((sum, holding) => sum + holding.weights.filter((weight) => Number.isFinite(weight.grams)).length, 0);
+  });
+  return count;
+}
+
+function validateLineageCandidates(lineageData, sourceRecords, registry) {
+  requireLineage(hasExactFields(lineageData, LINEAGE_ROOT_FIELDS) && Array.isArray(lineageData.relationships));
+  requireLineage(hasExactFields(lineageData.metadata, LINEAGE_METADATA_FIELDS));
+  const metadata = lineageData.metadata;
+  requireLineage(metadata.schemaVersion === 2 && metadata.scope === "series-inventory-and-cross-source-candidates");
+  requireLineage(hasExactFields(metadata.source, LINEAGE_SOURCE_FIELDS) && hasExactFields(metadata.methodology, LINEAGE_METHODOLOGY_FIELDS));
+  requireLineage(hasExactFields(metadata.methodology.inventoryNormalization, LINEAGE_INVENTORY_NORMALIZATION_FIELDS));
+  requireLineage(hasExactFields(metadata.methodology.possibleMatchIdentity, LINEAGE_POSSIBLE_IDENTITY_FIELDS));
+  requireLineage(hasExactFields(metadata.methodology.massThresholds, LINEAGE_MASS_THRESHOLD_FIELDS));
+  requireLineage(metadata.methodology.inventoryNormalization.unicode === "NFKC" && metadata.methodology.inventoryNormalization.case === "lowercase" &&
+    metadata.methodology.inventoryNormalization.whitespace === "removed" && metadata.methodology.inventoryNormalization.hussEditionMarker === "one leading (2) removed");
+  requireLineage(metadata.methodology.massThresholds.exactDifferenceGrams === 0 && metadata.methodology.massThresholds.nearMinimumMassGrams === 10 &&
+    metadata.methodology.massThresholds.nearMaximumRelativeDifference === 0.0025 && metadata.methodology.massThresholds.nearMaximumAbsoluteDifferenceGrams === 2);
+  requireLineage(isLineageText(metadata.methodology.possibleMatchIdentity.resolved) && isLineageText(metadata.methodology.possibleMatchIdentity.unresolved) &&
+    isLineageText(metadata.methodology.ambiguityPolicy));
+  requireLineage(JSON.stringify(metadata.methodology.evidenceStrengthOrder) === JSON.stringify(LINEAGE_STRENGTHS) &&
+    JSON.stringify(metadata.methodology.nonAssertions) === JSON.stringify(["custody-chain", "ownership-transfer"]));
+  requireLineage(Array.isArray(metadata.collectionSeries) && JSON.stringify(metadata.collectionSeries) === JSON.stringify(LINEAGE_COLLECTION_SERIES) &&
+    metadata.collectionSeries.every((series) => hasExactFields(series, LINEAGE_SERIES_FIELDS)));
+  requireLineage(hasExactFields(metadata.counts, LINEAGE_COUNT_FIELDS) && hasExactFields(metadata.counts.possibleMatchEvidenceStrength, LINEAGE_STRENGTH_FIELDS));
+  requireLineage(Array.isArray(metadata.counts.catalogPairs));
+
+  const sourceRecordsById = new Map(sourceRecords.map((record) => [record.id, record]));
+  requireLineage(sourceRecordsById.size === sourceRecords.length && isPlainObject(registry) && Object.keys(registry).length > 0);
+  const inventorySummary = expectedSameInventoryRelationships(sourceRecords);
+  const expectedPossible = expectedPossibleRelationships(sourceRecords);
+  const inventoryObservationCount = lineageInventoryEndpoints(sourceRecords).length;
+  requireLineage(metadata.source.catalogSchemaVersion === 6 && metadata.source.recordCount === sourceRecords.length &&
+    metadata.source.catalogCount === Object.keys(registry).length && metadata.source.flattenedMassObservationCount === lineageMassObservationCount(sourceRecords) &&
+    metadata.source.inventoryObservationCount === inventoryObservationCount);
+  const relationshipIds = new Set();
+  const observationIds = new Set();
+  const seenInventoryRelationships = new Set();
+  const seenPossibleRelationships = new Set();
+  const seriesByCatalog = lineageSeriesByCatalog();
+
+  lineageData.relationships.forEach((relationship) => {
+    requireLineage(hasExactFields(relationship, LINEAGE_RELATIONSHIP_FIELDS) && LINEAGE_RELATIONSHIP_ID.test(relationship.id) && !relationshipIds.has(relationship.id));
+    relationshipIds.add(relationship.id);
+    const sameInventory = relationship.relationship === "same-inventory";
+    requireLineage(["same-inventory", "possible-match"].includes(relationship.relationship) && isLineageText(relationship.displayName));
+    requireLineage(relationship.basis === (sameInventory ? "series-scoped-normalized-inventory-id" : "reviewed-identity-and-reported-mass") &&
+      relationship.status === (sameInventory ? "established" : "possible"));
+    requireLineage(Array.isArray(relationship.observations) && relationship.observations.length === 2);
+
+    relationship.observations.forEach((observation) => {
+      requireLineage(hasExactFields(observation, LINEAGE_OBSERVATION_FIELDS));
+      requireLineage(LINEAGE_OBSERVATION_ID.test(observation.id) && !observationIds.has(observation.id));
+      observationIds.add(observation.id);
+      requireLineage(LINEAGE_RECORD_ID.test(observation.recordId) && sourceRecordsById.has(observation.recordId));
+      requireLineage(isLineageText(observation.catalogId) && Object.hasOwn(registry, observation.catalogId));
+      const descriptor = registry[observation.catalogId];
+      const sourceRecord = sourceRecordsById.get(observation.recordId);
+      requireLineage(sourceRecord.catalogId === observation.catalogId && sourceRecord.recordModel === observation.recordModel);
+      requireLineage(observation.catalogYear === descriptor.year && observation.catalogLabel === descriptor.label);
+      requireLineage(isLineageText(observation.sourceRecordLabel) && observation.sourceRecordLabel === lineageRecordLabel(sourceRecord));
+      requireLineage(isLineageText(observation.sourceName, true) && observation.sourceName === sourceRecord.name);
+      requireLineage(isLineageText(observation.canonicalName, true) &&
+        (observation.meteoriteCode === null || (typeof observation.meteoriteCode === "string" && /^[1-9][0-9]{0,9}$/u.test(observation.meteoriteCode))));
+      const resolved = resolveLineageObservation(sourceRecord, observation.designationPath, observation.massPath);
+      requireLineage(resolved && (sameInventory ? observation.massGrams === null || (Number.isFinite(observation.massGrams) && observation.massGrams >= 0) : Number.isFinite(observation.massGrams) && observation.massGrams >= 0));
+      requireLineage(resolved.massGrams === observation.massGrams);
+      requireLineage(observation.designation === resolved.designation && observation.kind === resolved.kind && observation.count === resolved.count);
+      requireLineage(sourceRecord.metbull && (sourceRecord.metbull.matchType === "unresolved"
+        ? observation.canonicalName === null && observation.meteoriteCode === null
+        : observation.canonicalName === sourceRecord.metbull.canonicalName && observation.meteoriteCode === sourceRecord.metbull.meteoriteCode));
+      requireLineage(isSafeLineageSearchUrl(observation.catalogSearchUrl, observation));
+    });
+    requireLineage(relationship.observations[0].catalogId !== relationship.observations[1].catalogId);
+    const pair = relationship.observations.map(({ catalogId }) => catalogId).sort().join("|");
+    requireLineage(relationship.catalogPair === pair);
+    const sourceOrdered = [...relationship.observations].sort((left, right) =>
+      `${left.recordId}\u0000${left.designationPath || left.massPath}`.localeCompare(`${right.recordId}\u0000${right.designationPath || right.massPath}`));
+    const displayName = sourceOrdered.map((observation) => observation.canonicalName).find(Boolean) ||
+      sourceOrdered.map((observation) => observation.sourceName).filter(Boolean).sort()[0];
+    requireLineage(relationship.displayName === displayName);
+
+    if (sameInventory) {
+      requireLineage(relationship.id.startsWith("same-inventory-lineage-") && hasExactFields(relationship.collectionSeries, LINEAGE_COLLECTION_SERIES_FIELDS));
+      requireLineage(relationship.identity === null && relationship.evidence === null && relationship.review === null);
+      const endpointKey = relationship.observations.map((observation) => `${observation.recordId}\u0000${observation.designationPath}`).sort().join("\u0001");
+      const expected = inventorySummary.expected.get(endpointKey);
+      requireLineage(expected && !seenInventoryRelationships.has(endpointKey));
+      seenInventoryRelationships.add(endpointKey);
+      requireLineage(relationship.id === expected.relationshipId);
+      relationship.observations.forEach((observation) => requireLineage(
+        observation.id === expected.observationIds.get(`${observation.recordId}\u0000${observation.designationPath}`)
+      ));
+      requireLineage(relationship.collectionSeries.id === expected.seriesId && relationship.collectionSeries.inventoryId === expected.inventoryId);
+      requireLineage(relationship.observations.every((observation) => observation.designation !== null &&
+        normalizeLineageInventoryId(observation.designation, expected.seriesId) === expected.inventoryId));
+      return;
+    }
+
+    requireLineage(relationship.id.startsWith("possible-lineage-") && relationship.collectionSeries === null);
+    const endpointKey = relationship.observations.map((observation) => `${observation.recordId}\u0000${observation.massPath}`).sort().join("\u0001");
+    const expected = expectedPossible.get(endpointKey);
+    requireLineage(expected && !seenPossibleRelationships.has(endpointKey) && relationship.id === expected.relationshipId);
+    seenPossibleRelationships.add(endpointKey);
+    relationship.observations.forEach((observation) => requireLineage(
+      observation.id === expected.observationIds.get(`${observation.recordId}\u0000${observation.massPath}`)
+    ));
+    requireLineage((seriesByCatalog.get(relationship.observations[0].catalogId) || relationship.observations[0].catalogId) !==
+      (seriesByCatalog.get(relationship.observations[1].catalogId) || relationship.observations[1].catalogId));
+    requireLineage(hasExactFields(relationship.identity, LINEAGE_IDENTITY_FIELDS) && LINEAGE_IDENTITY_METHODS.has(relationship.identity.method) && isLineageText(relationship.identity.key));
+    requireLineage(relationship.identity.canonicalName === null || isLineageText(relationship.identity.canonicalName));
+    requireLineage(hasExactFields(relationship.evidence, LINEAGE_EVIDENCE_FIELDS) && LINEAGE_STRENGTHS.includes(relationship.evidence.strength));
+    requireLineage(LINEAGE_MASS_MATCHES.has(relationship.evidence.massMatch) && Number.isFinite(relationship.evidence.absoluteDifferenceGrams) && relationship.evidence.absoluteDifferenceGrams >= 0);
+    requireLineage(Number.isFinite(relationship.evidence.relativeDifference) && relationship.evidence.relativeDifference >= 0 &&
+      typeof relationship.evidence.sameDesignation === "boolean" && typeof relationship.evidence.designationFamily === "boolean");
+    requireLineage(Array.isArray(relationship.evidence.factCodes) && Array.isArray(relationship.evidence.cautionCodes));
+    validateLineageReview(relationship.review);
+
+    const [left, right] = relationship.observations;
+    const difference = Math.abs(left.massGrams - right.massGrams);
+    const maximumMass = Math.max(left.massGrams, right.massGrams);
+    const relativeDifference = maximumMass === 0 ? 0 : difference / maximumMass;
+    const massMatch = difference === 0 ? "exact" : "near";
+    requireLineage(relationship.evidence.absoluteDifferenceGrams === difference && relationship.evidence.relativeDifference === relativeDifference &&
+      relationship.evidence.massMatch === massMatch);
+    requireLineage(massMatch === "exact" || (Math.min(left.massGrams, right.massGrams) >= 10 && difference <= 2 && relativeDifference <= 0.0025));
+    const leftDesignation = left.designation === null ? null : left.designation.toLowerCase();
+    const rightDesignation = right.designation === null ? null : right.designation.toLowerCase();
+    const sameDesignation = leftDesignation !== null && rightDesignation !== null && leftDesignation === rightDesignation;
+    const leftFamily = left.designation === null ? null : left.designation.replace(/^\(2\)/u, "").toLowerCase();
+    const rightFamily = right.designation === null ? null : right.designation.replace(/^\(2\)/u, "").toLowerCase();
+    const designationFamily = leftFamily !== null && rightFamily !== null && leftFamily === rightFamily;
+    requireLineage(relationship.evidence.sameDesignation === sameDesignation && relationship.evidence.designationFamily === designationFamily);
+    if (relationship.identity.method === "metbull-code") {
+      requireLineage(relationship.observations.every((observation) => observation.meteoriteCode === relationship.identity.key &&
+        observation.canonicalName === relationship.identity.canonicalName));
+    } else {
+      requireLineage(relationship.identity.canonicalName === null && relationship.observations.every((observation) =>
+        observation.canonicalName === null && observation.meteoriteCode === null && isLineageText(observation.sourceName) &&
+        normalizeLineageName(observation.sourceName) === relationship.identity.key));
+    }
+    const aggregateOrMultiple = relationship.observations.some((observation) => observation.kind === "aggregate" || (observation.count ?? 1) > 1);
+    const cast = relationship.observations.some((observation) => observation.kind === "cast");
+    const expectedFacts = [
+      relationship.identity.method === "metbull-code" ? "shared-metbull-code" : "shared-normalized-source-name",
+      massMatch === "exact" ? "exact-reported-mass" : "near-reported-mass",
+      ...(sameDesignation ? ["same-designation"] : []),
+      ...(designationFamily ? ["designation-family"] : [])
+    ];
+    const expectedCautions = [
+      ...(relationship.identity.method === "normalized-source-name" ? ["normalized-name-identity"] : []),
+      ...(massMatch === "near" ? ["near-reported-mass"] : []),
+      ...(!sameDesignation ? ["designation-differs-or-missing"] : []),
+      ...(aggregateOrMultiple ? ["aggregate-or-multiple"] : []),
+      ...(cast ? ["cast"] : [])
+    ];
+    requireLineage(equalLineageCodes(relationship.evidence.factCodes, expectedFacts, LINEAGE_FACT_CODE_ORDER, LINEAGE_FACT_CODES));
+    requireLineage(equalLineageCodes(relationship.evidence.cautionCodes, expectedCautions, LINEAGE_CAUTION_CODE_ORDER, LINEAGE_CAUTION_CODES));
+    const expectedStrength = sameDesignation || designationFamily
+      ? "multiple-matching-facts" : massMatch === "exact" ? "two-matching-facts" : "limited-matching-evidence";
+    requireLineage(relationship.evidence.strength === expectedStrength);
+  });
+
+  requireLineage(seenInventoryRelationships.size === inventorySummary.expected.size);
+  requireLineage(seenPossibleRelationships.size === expectedPossible.size);
+
+  const calculated = calculateLineageCounts(lineageData.relationships, inventorySummary);
+  const scalarFields = [...LINEAGE_COUNT_FIELDS].filter((field) => !["possibleMatchEvidenceStrength", "catalogPairs"].includes(field));
+  scalarFields.forEach((field) => requireLineage(Number.isInteger(metadata.counts[field]) && metadata.counts[field] === calculated[field]));
+  LINEAGE_STRENGTHS.forEach((strength) => requireLineage(metadata.counts.possibleMatchEvidenceStrength[strength] === calculated.possibleMatchEvidenceStrength[strength]));
+  requireLineage(metadata.counts.catalogPairs.length === calculated.catalogPairs.size);
+  const seenPairs = new Set();
+  metadata.counts.catalogPairs.forEach((item) => {
+    requireLineage(hasExactFields(item, LINEAGE_PAIR_COUNT_FIELDS) && !seenPairs.has(item.catalogPair));
+    const counts = calculated.catalogPairs.get(item.catalogPair);
+    requireLineage(counts && counts.sameInventoryCount === item.sameInventoryCount && counts.possibleMatchCount === item.possibleMatchCount);
+    seenPairs.add(item.catalogPair);
+  });
+  return lineageData;
+}
+
+function chronologicalEarlierPair(observations) {
+  const chronological = [...observations].sort((left, right) =>
+    left.catalogYear - right.catalogYear || left.catalogId.localeCompare(right.catalogId) || left.id.localeCompare(right.id)
+  );
+  return chronological[0].catalogYear < chronological[1].catalogYear
+    ? { earlier: chronological[0], later: chronological[1] }
+    : null;
+}
+
+function deriveEarlierRecordIndex(lineageData, sourceRecords, registry) {
+  validateLineageCandidates(lineageData, sourceRecords, registry);
+  const index = new Map();
+  lineageData.relationships.forEach((relationship) => {
+    if (relationship.review?.outcome === "not-supported") return;
+    const pair = chronologicalEarlierPair(relationship.observations);
+    if (!pair) return;
+    const { earlier, later } = pair;
+    const entries = index.get(later.recordId) || [];
+    entries.push({
+      relationshipId: relationship.id,
+      relationship: relationship.relationship,
+      recordId: earlier.recordId,
+      catalogYear: earlier.catalogYear,
+      catalogLabel: earlier.catalogLabel,
+      sourceName: earlier.sourceName,
+      massGrams: earlier.massGrams,
+      seriesId: relationship.collectionSeries?.id || null,
+      inventoryId: relationship.collectionSeries?.inventoryId || null,
+      strength: relationship.evidence?.strength || null,
+      catalogSearchUrl: `./index.html?catalog=${encodeURIComponent(earlier.catalogId)}&q=${encodeURIComponent(`record id ${earlier.recordId}`)}#catalog`
+    });
+    index.set(later.recordId, entries);
+  });
+  index.forEach((entries) => entries.sort((left, right) =>
+    left.catalogYear - right.catalogYear || collator.compare(left.catalogLabel, right.catalogLabel) ||
+    collator.compare(left.sourceName || "", right.sourceName || "") || left.relationshipId.localeCompare(right.relationshipId)
+  ));
+  return index;
+}
+
+async function loadEarlierRecordIndex(sourceRecords = records, registry = catalogRegistry, fetcher = fetch) {
+  try {
+    const response = await fetcher("./data/specimen-lineages.json", { cache: "no-cache" });
+    if (!response.ok) return new Map();
+    return deriveEarlierRecordIndex(await response.json(), sourceRecords, registry);
+  } catch {
+    return new Map();
+  }
+}
+
 function isSafeFolioPath(value, catalogId, pageId) {
   return typeof value === "string" && value === `assets/folios/${catalogId}/${pageId}.webp`;
 }
@@ -1021,6 +1695,7 @@ function prepareRecord(source, index, registry = catalogRegistry) {
 async function loadData() {
   const currentLoadToken = ++loadToken;
   folioManifest = null;
+  earlierRecordsByLaterId = new Map();
   setLoadingState();
   try {
     const response = await fetch("./data/catalog.json", { cache: "no-cache" });
@@ -1035,6 +1710,11 @@ async function loadData() {
     applyUrlState();
     visibleLimit = PAGE_SIZE;
     render();
+    loadEarlierRecordIndex(records, catalogRegistry).then((index) => {
+      if (currentLoadToken !== loadToken) return;
+      earlierRecordsByLaterId = index;
+      if (index.size) render();
+    });
     loadFolioManifest().then((manifest) => {
       if (currentLoadToken !== loadToken) return;
       folioManifest = manifest;
@@ -1172,6 +1852,10 @@ function formatMass(grams) {
   return `${massFormat.format(grams)} g`;
 }
 
+function formatEarlierRecordMass(grams) {
+  return grams === null ? "Not recorded" : `${massFormat.format(grams)} g`;
+}
+
 function currentFilters() {
   const min = elements.min.value === "" ? null : Number(elements.min.value);
   const max = elements.max.value === "" ? null : Number(elements.max.value);
@@ -1293,6 +1977,7 @@ function createRecordCard(record) {
       : formatMass(record.weight.grams);
     card.querySelector(".record-holdings").remove();
   }
+  renderEarlierRecords(card, earlierRecordsByLaterId.get(record.id) || []);
   setMetaRow(card, ".classification-row", record.classification);
   setMetaRow(card, ".locality-row", record.locality);
   const dateRow = card.querySelector(".year-row");
@@ -1334,6 +2019,33 @@ function createRecordCard(record) {
     card.querySelector(".record-footer").append(button);
   });
   return card;
+}
+
+function renderEarlierRecords(card, entries) {
+  const section = card.querySelector(".earlier-records");
+  if (!entries.length) {
+    section.remove();
+    return;
+  }
+  section.querySelector(".earlier-records-title").textContent = `Earlier specimen-lineage records (${integerFormat.format(entries.length)})`;
+  const list = section.querySelector(".earlier-records-list");
+  entries.forEach((entry) => {
+    const item = document.createElement("li");
+    const link = document.createElement("a");
+    link.className = "earlier-record-link";
+    link.href = entry.catalogSearchUrl;
+    link.textContent = `${entry.catalogYear} · ${displayText(entry.catalogLabel)}`;
+    const name = document.createElement("p");
+    name.textContent = `Source name: ${entry.sourceName ? displayText(entry.sourceName) : "Not recorded"}`;
+    const facts = document.createElement("p");
+    facts.className = "earlier-record-facts";
+    facts.textContent = entry.relationship === "same-inventory"
+      ? `Same collection inventory ID: ${entry.seriesId}:${entry.inventoryId} · Reported mass: ${formatEarlierRecordMass(entry.massGrams)}`
+      : `Possible match · Reported mass: ${formatEarlierRecordMass(entry.massGrams)} · ${LINEAGE_STRENGTH_LABELS[entry.strength]}`;
+    item.append(link, name, facts);
+    list.append(item);
+  });
+  section.hidden = false;
 }
 
 function holdingDetails(holding) {
@@ -1601,14 +2313,18 @@ if (typeof module !== "undefined" && module.exports) {
     CACHE_VERSION,
     DEFAULT_SORT,
     calculateStatistics,
+    calculateLineageCounts,
+    chronologicalEarlierPair,
     catalogLabel,
     catalogSelectorEntries,
     catalogSummaryEntries,
     catalogNumberHoldingDetails,
     compareRecords,
     designationComponents,
+    deriveEarlierRecordIndex,
     filterRecords,
     formatMass,
+    formatEarlierRecordMass,
     formatSourcePageCoverage,
     getAuthorizedFolio,
     getAuthorizedFolioPages,
@@ -1617,9 +2333,11 @@ if (typeof module !== "undefined" && module.exports) {
     hasMatchingFolioPolicy,
     isDesignationQuery,
     isSingleResultCount,
+    isSafeLineageSearchUrl,
     isSafeFolioPath,
     isValidFolioAlt,
     matchesSearch,
+    loadEarlierRecordIndex,
     normalizeWeightRange,
     normalizeFolioAlt,
     normalizeDesignation,
@@ -1637,6 +2355,7 @@ if (typeof module !== "undefined" && module.exports) {
     serializeUrlFilters,
     weightSortValue,
     validateCatalog,
-    validateFolioManifest
+    validateFolioManifest,
+    validateLineageCandidates
   };
 }

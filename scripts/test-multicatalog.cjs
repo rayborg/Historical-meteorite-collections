@@ -661,6 +661,9 @@ test("collection-entry sorting retains duplicate and anonymous source identities
 
 test("search covers catalog items and rendered holding facts", () => {
   const records = recordsFor("nininger-1933");
+  assert.deepEqual(ids(records.filter((record) => app.matchesSearch(record, "record id nininger-item-2"))), ["nininger-item-2"]);
+  assert.deepEqual(ids(records.filter((record) => app.matchesSearch(record, "record id missing-record"))), []);
+  assert.deepEqual(ids(records.filter((record) => app.matchesSearch(record, "record id NININGER-ITEM-2"))), []);
   assert.deepEqual(ids(records.filter((record) => app.matchesSearch(record, "2"))), ["nininger-item-2"]);
   assert.deepEqual(ids(records.filter((record) => app.matchesSearch(record, "catalog item 2"))), ["nininger-item-2"]);
   assert.deepEqual(ids(records.filter((record) => app.matchesSearch(record, "34jj"))), ["nininger-item-2"]);
@@ -675,6 +678,9 @@ test("search covers catalog items and rendered holding facts", () => {
 
 test("numeric-leading holding codes match exactly after case and space normalization", () => {
   const records = recordsFor("nininger-1933");
+  const specimen = prepareSpecimens([specimenSource({ id: "direct-26a", designation: "26a" })])[0];
+  assert.equal(app.matchesSearch(specimen, "26a"), true);
+  assert.equal(app.matchesSearch(specimen, "26b"), false);
   assert.deepEqual(ids(records.filter((record) => app.matchesSearch(record, "8a"))), [
     "nininger-item-1", "nininger-item-3"
   ]);
@@ -755,7 +761,7 @@ test("URL filter behavior and cache version remain stable", () => {
     query: "catalog item 2", catalog: "nininger-1933", min: "3", max: "12", sort: "weight-desc"
   });
   assert.equal(app.serializeUrlFilters(parsed).toString(), "q=catalog+item+2&catalog=nininger-1933&min=3&max=12&sort=weight-desc");
-  assert.equal(app.CACHE_VERSION, "20260726-3");
+  assert.equal(app.CACHE_VERSION, "20260728-4");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.CACHE_VERSION}`));
 });

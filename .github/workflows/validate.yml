@@ -15,5 +15,8 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: 24
+      - run: node scripts/build-specimen-lineages.mjs --check
+      - run: node scripts/validate-specimen-lineages.mjs
       - run: node scripts/validate-public-catalog.mjs
       - run: node scripts/test-multicatalog.cjs
+      - run: node --test scripts/*.test.mjs

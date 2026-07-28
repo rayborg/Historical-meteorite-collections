@@ -163,7 +163,22 @@ button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible
 .source-summary > header .eyebrow { margin-bottom: .45rem; color: var(--oxblood); }
 .source-summary > header h2 { margin: 0; font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 400; }
 .source-summary > header h2::after { content: "◆"; display: block; margin: .65rem 0; color: var(--brass); font-size: .55rem; }
-.source-summary > header > p:last-child { margin: 0; color: var(--ink-soft); font-size: .88rem; font-style: italic; }
+.source-summary > header > p:not(.eyebrow) { margin: 0; color: var(--ink-soft); font-size: .88rem; font-style: italic; }
+.master-list-link {
+  display: inline-flex;
+  flex-direction: column;
+  gap: .12rem;
+  margin-top: 1.1rem;
+  padding: .7rem 1rem .65rem;
+  color: var(--paper-light);
+  text-decoration: none;
+  background: var(--oxblood-dark);
+  border: 1px solid var(--brass);
+  box-shadow: 0 .25rem .65rem rgba(63, 45, 26, .13);
+}
+.master-list-link strong { font-size: .9rem; font-weight: 700; }
+.master-list-link span { color: #d8c7a4; font-size: .7rem; }
+.master-list-link:hover { background: var(--oxblood); }
 .catalog-summary-list { margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; list-style: none; }
 .catalog-summary-card {
   position: relative;
@@ -282,6 +297,14 @@ button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible
 .holdings-list strong { min-width: 0; color: var(--oxblood-dark); font-size: .82rem; font-weight: 700; overflow-wrap: anywhere; }
 .holding-mass { flex: 0 0 auto; font-size: .8rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .holdings-list p { margin: .15rem 0 0; color: var(--ink-soft); font-size: .74rem; line-height: 1.35; }
+.earlier-records { position: relative; z-index: 1; margin: .15rem 0 .8rem; padding: .7rem .75rem; background: rgba(154, 119, 55, .08); border-left: 2px solid var(--brass); }
+.earlier-records-title { margin: 0 0 .35rem; color: var(--oxblood-dark); font-size: .68rem; letter-spacing: .07em; line-height: 1.3; text-transform: uppercase; }
+.earlier-records-list { margin: 0; padding: 0; list-style: none; }
+.earlier-records-list li { min-width: 0; padding: .45rem 0; border-top: 1px dotted rgba(64, 48, 31, .28); }
+.earlier-record-link { color: var(--oxblood-dark); font-size: .76rem; font-weight: 700; line-height: 1.3; overflow-wrap: anywhere; }
+.earlier-records-list p { margin: .12rem 0 0; color: var(--ink-soft); font-size: .7rem; line-height: 1.35; overflow-wrap: anywhere; }
+.earlier-records-list .earlier-record-facts { color: var(--ink); font-variant-numeric: tabular-nums; }
+.earlier-records-caveat { margin: .35rem 0 0; padding-top: .4rem; color: var(--ink-soft); font-size: .65rem; font-style: italic; line-height: 1.35; border-top: 1px solid rgba(64, 48, 31, .2); }
 .catalog-item-card .record-heading { grid-template-columns: minmax(0, 1fr); }
 .record-footer { position: relative; z-index: 1; margin-top: auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: .35rem .8rem; padding: .7rem 0 0; color: var(--ink-soft); background: transparent; border: 0; }
 .record-footer p { margin: 0; font-size: .61rem; letter-spacing: .06em; text-transform: uppercase; }

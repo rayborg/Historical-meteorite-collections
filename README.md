@@ -4,6 +4,8 @@
 This repository is a dependency-free, facts-only index of 3,625 source observations from 8 historical meteorite catalogs. The coordinated catalog uses public metadata schema 6 and supports 4 source-specific record models: `catalog-item`, `catalog-number`, `collection-entry`, `specimen`.
 <!-- release-summary:readme-overview:end -->
 
+The repository also publishes [`data/specimen-lineages.json`](./data/specimen-lineages.json), a deterministic index that distinguishes same collection inventory IDs across consecutive editions from possible matches across separate collection sources. Same-inventory continuity is series-scoped and does not infer custody or ownership. Cross-source candidates retain public review decisions from [`data/specimen-lineage-reviews.json`](./data/specimen-lineage-reviews.json) and do not assert physical identity, custody, or ownership transfer.
+
 A searchable transcription of the 1976 Huss Meteorite Collection catalog, compiled and published by Glenn Huss.
 
 The other configured sources identify their compilers without inferring a publisher: Jean Andre Henri Lucas for 1813; E. F. F. Chladni, with a Vienna appendix by Karl von Schreibers, for 1819; E. F. F. Chladni for 1825; Edmund Otis Hovey for 1896; H. H. Nininger for 1933; H. H. Nininger and Addie D. Nininger for 1950; and Glenn I. Huss for 1986.
@@ -25,6 +27,9 @@ Validate the complete public package with:
 ```sh
 node scripts/sync-release-summary.mjs --check
 node --test scripts/sync-release-summary.test.mjs
+node scripts/build-specimen-lineages.mjs --check
+node scripts/validate-specimen-lineages.mjs
+node --test scripts/specimen-lineages.test.mjs
 node scripts/validate-public-catalog.mjs
 node scripts/test-multicatalog.cjs
 ```

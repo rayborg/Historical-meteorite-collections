@@ -8,8 +8,8 @@
   <meta name="theme-color" content="#2d241b">
   <title>The Meteorite Cabinet | Historical Collection Index</title>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=20260726-3">
-  <script src="./app.js?v=20260726-3" defer></script>
+  <link rel="stylesheet" href="./styles.css?v=20260728-4">
+  <script src="./app.js?v=20260728-4" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#catalog">Skip to catalog</a>
@@ -37,6 +37,10 @@
         <p class="eyebrow">Source register</p>
         <h2 id="source-summary-heading">Catalogs in this edition</h2>
         <p>Catalog observations remain attributed to their individual historical sources.</p>
+        <a class="master-list-link" href="./data/bibliography-master-list.html">
+          <strong>Browse the bibliography master list</strong>
+          <span>265 controls, source links, acquisition status, and catalog processing progress</span>
+        </a>
       </header>
       <div id="catalog-summary" aria-busy="true">
         <p class="catalog-summary-status" role="status">Reading catalog metadata...</p>
@@ -156,6 +160,11 @@
       <section class="record-holdings" aria-label="Holdings" hidden>
         <h4>Holdings</h4>
         <ol class="holdings-list" role="list"></ol>
+      </section>
+      <section class="earlier-records" hidden>
+        <h4 class="earlier-records-title"></h4>
+        <ol class="earlier-records-list" role="list"></ol>
+        <p class="earlier-records-caveat">Same-inventory links identify collection inventory continuity. Possible matches do not prove physical identity. Neither establishes custody or ownership.</p>
       </section>
       <footer class="record-footer">
         <p class="catalog-reference"></p>
