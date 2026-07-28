@@ -406,14 +406,15 @@
           99,
           100,
           101,
-          102
+          102,
+          103
         ],
-        "sourcePageCount": 77,
-        "recordCount": 1628,
-        "recordsWithDesignation": 1602,
-        "recordsWithWeight": 1559,
+        "sourcePageCount": 78,
+        "recordCount": 1653,
+        "recordsWithDesignation": 1627,
+        "recordsWithWeight": 1584,
         "confidenceCounts": {
-          "high": 1628,
+          "high": 1653,
           "medium": 0,
           "low": 0
         },
@@ -421,11 +422,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 3540,
-    "recordsWithDesignation": 3345,
-    "recordsWithWeight": 3343,
+    "recordCount": 3565,
+    "recordsWithDesignation": 3370,
+    "recordsWithWeight": 3368,
     "confidenceCounts": {
-      "high": 3540,
+      "high": 3565,
       "medium": 0,
       "low": 0
     }
@@ -33326,6 +33327,174 @@
       }
     },
     {
+      "id": "obs-66fe8c30-5211-45da-a52c-4522b145a0bf",
+      "catalogId": "nininger-1950",
+      "designation": "126g",
+      "name": "Winona",
+      "weight": {
+        "grams": 3.4
+      },
+      "classification": "Mesosiderite",
+      "locality": "Coconino County, Arizona",
+      "year": "1928",
+      "catalogPage": 103,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Winona",
+        "meteoriteCode": "24285",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24285",
+        "alternateNameNote": "The verified local CSV identifies Official Winona, code 24285, a 1928 Arizona winonaite with 24 kg mass. The official checker returns Winona as Official, and the detail page confirms the exact name, year, state, mass, and winonaite identity. The source's Coconino County locality and historical mesosiderite classification are preserved."
+      }
+    },
+    {
+      "id": "obs-f963596d-292e-4462-aa3d-17c45d03cbe9",
+      "catalogId": "nininger-1950",
+      "designation": "126e",
+      "name": "Winona",
+      "weight": {
+        "grams": 3.5
+      },
+      "classification": "Mesosiderite",
+      "locality": "Coconino County, Arizona",
+      "year": "1928",
+      "catalogPage": 103,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Winona",
+        "meteoriteCode": "24285",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24285",
+        "alternateNameNote": "The verified local CSV identifies Official Winona, code 24285, a 1928 Arizona winonaite with 24 kg mass. The official checker returns Winona as Official, and the detail page confirms the exact name, year, state, mass, and winonaite identity. The source's Coconino County locality and historical mesosiderite classification are preserved."
+      }
+    },
+    {
+      "id": "obs-d041475d-e759-45af-b020-29c888c36015",
+      "catalogId": "nininger-1950",
+      "designation": "126f",
+      "name": "Winona",
+      "weight": {
+        "grams": 4.2
+      },
+      "classification": "Mesosiderite",
+      "locality": "Coconino County, Arizona",
+      "year": "1928",
+      "catalogPage": 103,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Winona",
+        "meteoriteCode": "24285",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24285",
+        "alternateNameNote": "The verified local CSV identifies Official Winona, code 24285, a 1928 Arizona winonaite with 24 kg mass. The official checker returns Winona as Official, and the detail page confirms the exact name, year, state, mass, and winonaite identity. The source's Coconino County locality and historical mesosiderite classification are preserved."
+      }
+    },
+    {
+      "id": "obs-5db87a2d-9fd0-44be-878c-d1a0a067a70f",
+      "catalogId": "nininger-1950",
+      "designation": "126d",
+      "name": "Winona",
+      "weight": {
+        "grams": 9.8
+      },
+      "classification": "Mesosiderite",
+      "locality": "Coconino County, Arizona",
+      "year": "1928",
+      "catalogPage": 103,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Winona",
+        "meteoriteCode": "24285",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24285",
+        "alternateNameNote": "The verified local CSV identifies Official Winona, code 24285, a 1928 Arizona winonaite with 24 kg mass. The official checker returns Winona as Official, and the detail page confirms the exact name, year, state, mass, and winonaite identity. The source's Coconino County locality and historical mesosiderite classification are preserved."
+      }
+    },
+    {
+      "id": "obs-1b26cead-5c8e-4792-8983-da72b83484b3",
+      "catalogId": "nininger-1950",
+      "designation": "126c",
+      "name": "Winona",
+      "weight": {
+        "grams": 10.6
+      },
+      "classification": "Mesosiderite",
+      "locality": "Coconino County, Arizona",
+      "year": "1928",
+      "catalogPage": 103,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Winona",
+        "meteoriteCode": "24285",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24285",
+        "alternateNameNote": "The verified local CSV identifies Official Winona, code 24285, a 1928 Arizona winonaite with 24 kg mass. The official checker returns Winona as Official, and the detail page confirms the exact name, year, state, mass, and winonaite identity. The source's Coconino County locality and historical mesosiderite classification are preserved."
+      }
+    },
+    {
+      "id": "obs-ffed220b-f643-4ede-9665-e0a84b071708",
+      "catalogId": "nininger-1950",
+      "designation": "126b",
+      "name": "Winona",
+      "weight": {
+        "grams": 20.4
+      },
+      "classification": "Mesosiderite",
+      "locality": "Coconino County, Arizona",
+      "year": "1928",
+      "catalogPage": 103,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Winona",
+        "meteoriteCode": "24285",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24285",
+        "alternateNameNote": "The verified local CSV identifies Official Winona, code 24285, a 1928 Arizona winonaite with 24 kg mass. The official checker returns Winona as Official, and the detail page confirms the exact name, year, state, mass, and winonaite identity. The source's Coconino County locality and historical mesosiderite classification are preserved."
+      }
+    },
+    {
+      "id": "obs-69054add-882d-414c-8090-ca8cac651ab4",
+      "catalogId": "nininger-1950",
+      "designation": "126a",
+      "name": "Winona",
+      "weight": {
+        "grams": 33.8
+      },
+      "classification": "Mesosiderite",
+      "locality": "Coconino County, Arizona",
+      "year": "1928",
+      "catalogPage": 103,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Winona",
+        "meteoriteCode": "24285",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24285",
+        "alternateNameNote": "The verified local CSV identifies Official Winona, code 24285, a 1928 Arizona winonaite with 24 kg mass. The official checker returns Winona as Official, and the detail page confirms the exact name, year, state, mass, and winonaite identity. The source's Coconino County locality and historical mesosiderite classification are preserved."
+      }
+    },
+    {
+      "id": "obs-5d5e7012-7abc-41c4-8e25-fca9deaaa0a8",
+      "catalogId": "nininger-1950",
+      "designation": "126.8",
+      "name": "Winona",
+      "weight": {
+        "grams": 280
+      },
+      "classification": "Mesosiderite",
+      "locality": "Coconino County, Arizona",
+      "year": "1928",
+      "catalogPage": 103,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Winona",
+        "meteoriteCode": "24285",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24285",
+        "alternateNameNote": "The verified local CSV identifies Official Winona, code 24285, a 1928 Arizona winonaite with 24 kg mass. The official checker returns Winona as Official, and the detail page confirms the exact name, year, state, mass, and winonaite identity. The source's Coconino County locality and historical mesosiderite classification are preserved."
+      }
+    },
+    {
       "id": "obs-2160fc32-7906-457c-a299-8debf6d568a1",
       "catalogId": "nininger-1950",
       "designation": "127a",
@@ -33344,6 +33513,279 @@
         "meteoriteCode": "24195",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24195",
         "alternateNameNote": "The verified local CSV identifies Official Waconda, code 24195. The official checker returns Waconda as Official, and the detail page confirms the exact name, 1873 Kansas L6 identity, 50 kg mass, and Mitchell County synonym. The source's historical classification is preserved."
+      }
+    },
+    {
+      "id": "obs-c84346f3-ba6a-4818-a0b5-2892ae2bb015",
+      "catalogId": "nininger-1950",
+      "designation": "128oo",
+      "name": "Xiquipilco",
+      "weight": {
+        "grams": 94
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Mexico State, Mexico",
+      "year": "before 1776",
+      "catalogPage": 103,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toluca",
+        "meteoriteCode": "24018",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
+        "alternateNameNote": "The verified local CSV identifies Official Toluca, code 24018, a Mexican Iron, IAB-sLL found in 1776 with 3 t mass. The official checker returns Xiquipilco as a partial name with one containing record, and the Toluca detail page explicitly lists Xiquipilco as a synonym while confirming the year, country, iron identity, and coordinates. The source's Syn: Toluca statement, 18,000 kg total, and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-ef3807d0-713d-4986-92ac-3f8f1bd20734",
+      "catalogId": "nininger-1950",
+      "designation": "128x",
+      "name": "Xiquipilco",
+      "weight": {
+        "grams": 380
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Mexico State, Mexico",
+      "year": "before 1776",
+      "catalogPage": 103,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toluca",
+        "meteoriteCode": "24018",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
+        "alternateNameNote": "The verified local CSV identifies Official Toluca, code 24018, a Mexican Iron, IAB-sLL found in 1776 with 3 t mass. The official checker returns Xiquipilco as a partial name with one containing record, and the Toluca detail page explicitly lists Xiquipilco as a synonym while confirming the year, country, iron identity, and coordinates. The source's Syn: Toluca statement, 18,000 kg total, and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-a811401d-36cb-4214-b753-a9626c01ce6a",
+      "catalogId": "nininger-1950",
+      "designation": "128yy",
+      "name": "Xiquipilco",
+      "weight": {
+        "grams": 553
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Mexico State, Mexico",
+      "year": "before 1776",
+      "catalogPage": 103,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toluca",
+        "meteoriteCode": "24018",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
+        "alternateNameNote": "The verified local CSV identifies Official Toluca, code 24018, a Mexican Iron, IAB-sLL found in 1776 with 3 t mass. The official checker returns Xiquipilco as a partial name with one containing record, and the Toluca detail page explicitly lists Xiquipilco as a synonym while confirming the year, country, iron identity, and coordinates. The source's Syn: Toluca statement, 18,000 kg total, and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-c387458b-1627-4812-bd2d-0bdde48118d7",
+      "catalogId": "nininger-1950",
+      "designation": "128w",
+      "name": "Xiquipilco",
+      "weight": {
+        "grams": 733
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Mexico State, Mexico",
+      "year": "before 1776",
+      "catalogPage": 103,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toluca",
+        "meteoriteCode": "24018",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
+        "alternateNameNote": "The verified local CSV identifies Official Toluca, code 24018, a Mexican Iron, IAB-sLL found in 1776 with 3 t mass. The official checker returns Xiquipilco as a partial name with one containing record, and the Toluca detail page explicitly lists Xiquipilco as a synonym while confirming the year, country, iron identity, and coordinates. The source's Syn: Toluca statement, 18,000 kg total, and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-8881f53a-a744-4af1-bf0b-d6fca507b665",
+      "catalogId": "nininger-1950",
+      "designation": "128v",
+      "name": "Xiquipilco",
+      "weight": {
+        "grams": 862.5
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Mexico State, Mexico",
+      "year": "before 1776",
+      "catalogPage": 103,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toluca",
+        "meteoriteCode": "24018",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
+        "alternateNameNote": "The verified local CSV identifies Official Toluca, code 24018, a Mexican Iron, IAB-sLL found in 1776 with 3 t mass. The official checker returns Xiquipilco as a partial name with one containing record, and the Toluca detail page explicitly lists Xiquipilco as a synonym while confirming the year, country, iron identity, and coordinates. The source's Syn: Toluca statement, 18,000 kg total, and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-de1db07e-d200-47d7-9d2b-3870a09d2863",
+      "catalogId": "nininger-1950",
+      "designation": "128s",
+      "name": "Xiquipilco",
+      "weight": {
+        "grams": 1100
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Mexico State, Mexico",
+      "year": "before 1776",
+      "catalogPage": 103,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toluca",
+        "meteoriteCode": "24018",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
+        "alternateNameNote": "The verified local CSV identifies Official Toluca, code 24018, a Mexican Iron, IAB-sLL found in 1776 with 3 t mass. The official checker returns Xiquipilco as a partial name with one containing record, and the Toluca detail page explicitly lists Xiquipilco as a synonym while confirming the year, country, iron identity, and coordinates. The source's Syn: Toluca statement, 18,000 kg total, and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-af8e5d2e-4a66-48f6-85e6-36c6df54f29c",
+      "catalogId": "nininger-1950",
+      "designation": "128iii",
+      "name": "Xiquipilco",
+      "weight": {
+        "grams": 2419
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Mexico State, Mexico",
+      "year": "before 1776",
+      "catalogPage": 103,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toluca",
+        "meteoriteCode": "24018",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
+        "alternateNameNote": "The verified local CSV identifies Official Toluca, code 24018, a Mexican Iron, IAB-sLL found in 1776 with 3 t mass. The official checker returns Xiquipilco as a partial name with one containing record, and the Toluca detail page explicitly lists Xiquipilco as a synonym while confirming the year, country, iron identity, and coordinates. The source's Syn: Toluca statement, 18,000 kg total, and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-641f4b85-f8b5-4b82-a7fc-882eeb84c360",
+      "catalogId": "nininger-1950",
+      "designation": "128i",
+      "name": "Xiquipilco",
+      "weight": {
+        "grams": 2489
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Mexico State, Mexico",
+      "year": "before 1776",
+      "catalogPage": 103,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toluca",
+        "meteoriteCode": "24018",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
+        "alternateNameNote": "The verified local CSV identifies Official Toluca, code 24018, a Mexican Iron, IAB-sLL found in 1776 with 3 t mass. The official checker returns Xiquipilco as a partial name with one containing record, and the Toluca detail page explicitly lists Xiquipilco as a synonym while confirming the year, country, iron identity, and coordinates. The source's Syn: Toluca statement, 18,000 kg total, and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-ba7b1d52-8527-4fb7-a674-f7c1ea7542f3",
+      "catalogId": "nininger-1950",
+      "designation": "128fff",
+      "name": "Xiquipilco",
+      "weight": {
+        "grams": 2504
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Mexico State, Mexico",
+      "year": "before 1776",
+      "catalogPage": 103,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toluca",
+        "meteoriteCode": "24018",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
+        "alternateNameNote": "The verified local CSV identifies Official Toluca, code 24018, a Mexican Iron, IAB-sLL found in 1776 with 3 t mass. The official checker returns Xiquipilco as a partial name with one containing record, and the Toluca detail page explicitly lists Xiquipilco as a synonym while confirming the year, country, iron identity, and coordinates. The source's Syn: Toluca statement, 18,000 kg total, and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-b33e9ad7-3026-47e5-946a-394a1f3e4463",
+      "catalogId": "nininger-1950",
+      "designation": "128nn",
+      "name": "Xiquipilco",
+      "weight": {
+        "grams": 3960
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Mexico State, Mexico",
+      "year": "before 1776",
+      "catalogPage": 103,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toluca",
+        "meteoriteCode": "24018",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
+        "alternateNameNote": "The verified local CSV identifies Official Toluca, code 24018, a Mexican Iron, IAB-sLL found in 1776 with 3 t mass. The official checker returns Xiquipilco as a partial name with one containing record, and the Toluca detail page explicitly lists Xiquipilco as a synonym while confirming the year, country, iron identity, and coordinates. The source's Syn: Toluca statement, 18,000 kg total, and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-571c8299-e697-4032-aa3a-ee4dedf3855e",
+      "catalogId": "nininger-1950",
+      "designation": "128a",
+      "name": "Xiquipilco",
+      "weight": {
+        "grams": 9396
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Mexico State, Mexico",
+      "year": "before 1776",
+      "catalogPage": 103,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toluca",
+        "meteoriteCode": "24018",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
+        "alternateNameNote": "The verified local CSV identifies Official Toluca, code 24018, a Mexican Iron, IAB-sLL found in 1776 with 3 t mass. The official checker returns Xiquipilco as a partial name with one containing record, and the Toluca detail page explicitly lists Xiquipilco as a synonym while confirming the year, country, iron identity, and coordinates. The source's Syn: Toluca statement, 18,000 kg total, and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-7985ae3c-1c29-4b1b-85d5-f9dfdd7f8f1a",
+      "catalogId": "nininger-1950",
+      "designation": "128ww",
+      "name": "Xiquipilco",
+      "weight": {
+        "grams": 13816
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Mexico State, Mexico",
+      "year": "before 1776",
+      "catalogPage": 103,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toluca",
+        "meteoriteCode": "24018",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
+        "alternateNameNote": "The verified local CSV identifies Official Toluca, code 24018, a Mexican Iron, IAB-sLL found in 1776 with 3 t mass. The official checker returns Xiquipilco as a partial name with one containing record, and the Toluca detail page explicitly lists Xiquipilco as a synonym while confirming the year, country, iron identity, and coordinates. The source's Syn: Toluca statement, 18,000 kg total, and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-342f4ca3-9855-499d-aa0e-e5cba7a6e466",
+      "catalogId": "nininger-1950",
+      "designation": "128LL",
+      "name": "Xiquipilco",
+      "weight": {
+        "grams": 20838
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Mexico State, Mexico",
+      "year": "before 1776",
+      "catalogPage": 103,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toluca",
+        "meteoriteCode": "24018",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
+        "alternateNameNote": "The verified local CSV identifies Official Toluca, code 24018, a Mexican Iron, IAB-sLL found in 1776 with 3 t mass. The official checker returns Xiquipilco as a partial name with one containing record, and the Toluca detail page explicitly lists Xiquipilco as a synonym while confirming the year, country, iron identity, and coordinates. The source's Syn: Toluca statement, 18,000 kg total, and historical classification are preserved."
       }
     },
     {
@@ -34457,6 +34899,27 @@
         "meteoriteCode": "22393",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22393",
         "alternateNameNote": "The verified local valid-name CSV identifies Official Ransom as code 22393, a Kansas H4 with 15 kg mass at 38° 37′ N., 99° 56′ W. The official checker returns Ransom as Official, and the detail page confirms the exact name, 1938 database year, state, classification, mass, and exact printed coordinates. The source's Recognized wording is preserved."
+      }
+    },
+    {
+      "id": "obs-7f9eabdc-f992-4908-b8e1-eda7595929b0",
+      "catalogId": "nininger-1950",
+      "designation": "143a",
+      "name": "Woodward County",
+      "weight": {
+        "grams": 296
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Oklahoma; 36° 29′ N., 90° 16′ W.",
+      "year": "before 1933",
+      "catalogPage": 103,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Woodward County",
+        "meteoriteCode": "24333",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24333",
+        "alternateNameNote": "The verified local CSV identifies Official Woodward County, code 24333, a 1923 Oklahoma H4 with 45.5 kg mass. The official checker returns Woodward County as Official, and the detail page confirms the exact name, state, H4 identity, mass, and Alva synonym. The source's Known before 1933 wording and historical classification are preserved. Its visibly printed 90° 16′ W. longitude conflicts with MetBull's 99° 30′ W.; the printed value is preserved."
       }
     },
     {
@@ -44351,6 +44814,27 @@
       }
     },
     {
+      "id": "obs-f7eb022b-a95f-4970-9f8a-f3f38e19d090",
+      "catalogId": "nininger-1950",
+      "designation": "393.1",
+      "name": "Wood's Mountain",
+      "weight": {
+        "grams": 113
+      },
+      "classification": "Iron. Finest octahedrite",
+      "locality": "McDowell County, North Carolina",
+      "year": "1918",
+      "catalogPage": 103,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Wood's Mountain",
+        "meteoriteCode": "24332",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24332",
+        "alternateNameNote": "The verified local CSV identifies Official Wood's Mountain, code 24332, a 1918 North Carolina Iron, IVA with 3,867 gram mass. The official checker returns Wood's Mountain as Official, and the detail page confirms the exact name, year, state, iron identity, and McDowell County synonym. The source's 3,017 gram total and historical finest-octahedrite classification are preserved."
+      }
+    },
+    {
       "id": "obs-a66bbe9a-6bf4-4e30-b44c-a3418b112147",
       "catalogId": "nininger-1950",
       "designation": "394.1",
@@ -45314,6 +45798,27 @@
         "meteoriteCode": "10945",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10945",
         "alternateNameNote": "The verified local CSV and checker identify exact Official Goodland, code 10945. The detail page confirms the Kansas L4, 101° 40′ W. longitude, near-identical latitude, and approximately 3.6 kg mass but reports year found 1923; the source's 39° 20′ N. and Recognized 1938 are preserved without reconciliation."
+      }
+    },
+    {
+      "id": "obs-28590e58-7b77-45dc-bd42-779b2021401d",
+      "catalogId": "nininger-1950",
+      "designation": "426.1",
+      "name": "Wray",
+      "weight": {
+        "grams": 250.3
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "Yuma County, Colorado; 40° 4′ N., 102° 11′ W.",
+      "year": "1936",
+      "catalogPage": 103,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Wray (a)",
+        "meteoriteCode": "24338",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24338",
+        "alternateNameNote": "The official checker returns bare Wray as partial, with two records. The verified CSV and detail page identify Official Wray (a), code 24338, a 1936 Colorado H4-an with 281.7 gram mass near the printed location. Wray (b), code 24339, is a distinct 1938 3.88 kg L5; its official writeup states that the earlier H-chondrite listed as Wray was renamed Wray (a). The source's recognition year and historical classification are preserved."
       }
     },
     {
@@ -47624,6 +48129,27 @@
         "meteoriteCode": "5349",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5349",
         "alternateNameNote": "The official checker returns Chicora; the Pennsylvania locality, 1938 fall, and 303 gram total agree."
+      }
+    },
+    {
+      "id": "obs-a07447bf-d8f1-4dec-9223-80e2e99a7a3a",
+      "catalogId": "nininger-1950",
+      "designation": "501.1",
+      "name": "Wilmot",
+      "weight": {
+        "grams": 1204.5
+      },
+      "classification": "Stone. Chondrite. (Possibly veined intermediate chondrite.)",
+      "locality": "Cowley County, Kansas; 37° 23′ N., 96° 53′ W.",
+      "year": "1944",
+      "catalogPage": 103,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Wilmot",
+        "meteoriteCode": "24280",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24280",
+        "alternateNameNote": "The verified local CSV identifies Official Wilmot, code 24280, a 1944 Kansas H6 with 2 kg mass. The official checker returns Wilmot as Official, and the detail page confirms the exact name, year, state, mass, exact printed coordinates, and Cowley County synonym. The source's historical classification is preserved."
       }
     },
     {
