@@ -407,14 +407,15 @@
           100,
           101,
           102,
-          103
+          103,
+          104
         ],
-        "sourcePageCount": 78,
-        "recordCount": 1653,
-        "recordsWithDesignation": 1627,
-        "recordsWithWeight": 1584,
+        "sourcePageCount": 79,
+        "recordCount": 1678,
+        "recordsWithDesignation": 1652,
+        "recordsWithWeight": 1609,
         "confidenceCounts": {
-          "high": 1653,
+          "high": 1678,
           "medium": 0,
           "low": 0
         },
@@ -422,11 +423,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 3565,
-    "recordsWithDesignation": 3370,
-    "recordsWithWeight": 3368,
+    "recordCount": 3590,
+    "recordsWithDesignation": 3395,
+    "recordsWithWeight": 3393,
     "confidenceCounts": {
-      "high": 3565,
+      "high": 3590,
       "medium": 0,
       "low": 0
     }
@@ -33537,6 +33538,27 @@
       }
     },
     {
+      "id": "obs-95633a07-99ef-4980-9c63-7b0e382b7655",
+      "catalogId": "nininger-1950",
+      "designation": "128qq",
+      "name": "Xiquipilco",
+      "weight": {
+        "grams": 172.5
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Mexico State, Mexico",
+      "year": "before 1776",
+      "catalogPage": 104,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toluca",
+        "meteoriteCode": "24018",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
+        "alternateNameNote": "The adjacent reviewed heading establishes Xiquipilco. The verified local CSV identifies Official Toluca, code 24018, a Mexican Iron, IAB-sLL found in 1776 with 3 t mass. The official checker returns Xiquipilco as an exact synonym of Toluca, and the detail page explicitly lists Xiquipilco while confirming the year, country, iron identity, and coordinates. The source's 18,000 kg total and historical classification are preserved."
+      }
+    },
+    {
       "id": "obs-ef3807d0-713d-4986-92ac-3f8f1bd20734",
       "catalogId": "nininger-1950",
       "designation": "128x",
@@ -33600,6 +33622,27 @@
       }
     },
     {
+      "id": "obs-b6e212a6-9f55-4322-b998-a5d6d2d20beb",
+      "catalogId": "nininger-1950",
+      "designation": "128ttt",
+      "name": "Xiquipilco",
+      "weight": {
+        "grams": 841
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Mexico State, Mexico",
+      "year": "before 1776",
+      "catalogPage": 104,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toluca",
+        "meteoriteCode": "24018",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
+        "alternateNameNote": "The adjacent reviewed heading establishes Xiquipilco. The verified local CSV identifies Official Toluca, code 24018, a Mexican Iron, IAB-sLL found in 1776 with 3 t mass. The official checker returns Xiquipilco as an exact synonym of Toluca, and the detail page explicitly lists Xiquipilco while confirming the year, country, iron identity, and coordinates. The source's 18,000 kg total and historical classification are preserved."
+      }
+    },
+    {
       "id": "obs-8881f53a-a744-4af1-bf0b-d6fca507b665",
       "catalogId": "nininger-1950",
       "designation": "128v",
@@ -33618,6 +33661,27 @@
         "meteoriteCode": "24018",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
         "alternateNameNote": "The verified local CSV identifies Official Toluca, code 24018, a Mexican Iron, IAB-sLL found in 1776 with 3 t mass. The official checker returns Xiquipilco as a partial name with one containing record, and the Toluca detail page explicitly lists Xiquipilco as a synonym while confirming the year, country, iron identity, and coordinates. The source's Syn: Toluca statement, 18,000 kg total, and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-21519d9b-207e-41ab-87cb-dbc4572dfd65",
+      "catalogId": "nininger-1950",
+      "designation": "128xx",
+      "name": "Xiquipilco",
+      "weight": {
+        "grams": 925.5
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Mexico State, Mexico",
+      "year": "before 1776",
+      "catalogPage": 104,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toluca",
+        "meteoriteCode": "24018",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
+        "alternateNameNote": "The adjacent reviewed heading establishes Xiquipilco. The verified local CSV identifies Official Toluca, code 24018, a Mexican Iron, IAB-sLL found in 1776 with 3 t mass. The official checker returns Xiquipilco as an exact synonym of Toluca, and the detail page explicitly lists Xiquipilco while confirming the year, country, iron identity, and coordinates. The source's 18,000 kg total and historical classification are preserved."
       }
     },
     {
@@ -33786,6 +33850,321 @@
         "meteoriteCode": "24018",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
         "alternateNameNote": "The verified local CSV identifies Official Toluca, code 24018, a Mexican Iron, IAB-sLL found in 1776 with 3 t mass. The official checker returns Xiquipilco as a partial name with one containing record, and the Toluca detail page explicitly lists Xiquipilco as a synonym while confirming the year, country, iron identity, and coordinates. The source's Syn: Toluca statement, 18,000 kg total, and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-2876e07c-c5c0-4375-bc2c-74b1023ae3f2",
+      "catalogId": "nininger-1950",
+      "designation": "128.10",
+      "name": "Xiquipilco",
+      "weight": {
+        "grams": 702.5
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Mexico State, Mexico",
+      "year": "before 1776",
+      "catalogPage": 104,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toluca",
+        "meteoriteCode": "24018",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
+        "alternateNameNote": "The adjacent reviewed heading establishes Xiquipilco. The verified local CSV identifies Official Toluca, code 24018, a Mexican Iron, IAB-sLL found in 1776 with 3 t mass. The official checker returns Xiquipilco as an exact synonym of Toluca, and the detail page explicitly lists Xiquipilco while confirming the year, country, iron identity, and coordinates. The source's 18,000 kg total and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-5c25d641-c7dd-48dc-b288-79e9b78de9a1",
+      "catalogId": "nininger-1950",
+      "designation": "128.38",
+      "name": "Xiquipilco",
+      "weight": {
+        "grams": 407.7
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Mexico State, Mexico",
+      "year": "before 1776",
+      "catalogPage": 104,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toluca",
+        "meteoriteCode": "24018",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
+        "alternateNameNote": "The adjacent reviewed heading establishes Xiquipilco. The verified local CSV identifies Official Toluca, code 24018, a Mexican Iron, IAB-sLL found in 1776 with 3 t mass. The official checker returns Xiquipilco as an exact synonym of Toluca, and the detail page explicitly lists Xiquipilco while confirming the year, country, iron identity, and coordinates. The source's 18,000 kg total and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-95b3cb26-bfb4-4c30-9334-6506290a5b20",
+      "catalogId": "nininger-1950",
+      "designation": "128.42",
+      "name": "Xiquipilco",
+      "weight": {
+        "grams": 404
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Mexico State, Mexico",
+      "year": "before 1776",
+      "catalogPage": 104,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toluca",
+        "meteoriteCode": "24018",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
+        "alternateNameNote": "The adjacent reviewed heading establishes Xiquipilco. The verified local CSV identifies Official Toluca, code 24018, a Mexican Iron, IAB-sLL found in 1776 with 3 t mass. The official checker returns Xiquipilco as an exact synonym of Toluca, and the detail page explicitly lists Xiquipilco while confirming the year, country, iron identity, and coordinates. The source's 18,000 kg total and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-815d3a16-cdc8-49e6-8611-7c4132369100",
+      "catalogId": "nininger-1950",
+      "designation": "128.94",
+      "name": "Xiquipilco",
+      "weight": {
+        "grams": 1517.5
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Mexico State, Mexico",
+      "year": "before 1776",
+      "catalogPage": 104,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toluca",
+        "meteoriteCode": "24018",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
+        "alternateNameNote": "The adjacent reviewed heading establishes Xiquipilco. The verified local CSV identifies Official Toluca, code 24018, a Mexican Iron, IAB-sLL found in 1776 with 3 t mass. The official checker returns Xiquipilco as an exact synonym of Toluca, and the detail page explicitly lists Xiquipilco while confirming the year, country, iron identity, and coordinates. The source's 18,000 kg total and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-b7b9a2f2-7c1d-425f-81ff-25eed47b006f",
+      "catalogId": "nininger-1950",
+      "designation": "128.133",
+      "name": "Xiquipilco",
+      "weight": {
+        "grams": 8590
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Mexico State, Mexico",
+      "year": "before 1776",
+      "catalogPage": 104,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toluca",
+        "meteoriteCode": "24018",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
+        "alternateNameNote": "The adjacent reviewed heading establishes Xiquipilco. The verified local CSV identifies Official Toluca, code 24018, a Mexican Iron, IAB-sLL found in 1776 with 3 t mass. The official checker returns Xiquipilco as an exact synonym of Toluca, and the detail page explicitly lists Xiquipilco while confirming the year, country, iron identity, and coordinates. The source's 18,000 kg total and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-37abc041-b4ac-400d-8681-957bfcf7e337",
+      "catalogId": "nininger-1950",
+      "designation": "128.147",
+      "name": "Xiquipilco",
+      "weight": {
+        "grams": 1380
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Mexico State, Mexico",
+      "year": "before 1776",
+      "catalogPage": 104,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toluca",
+        "meteoriteCode": "24018",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
+        "alternateNameNote": "The adjacent reviewed heading establishes Xiquipilco. The verified local CSV identifies Official Toluca, code 24018, a Mexican Iron, IAB-sLL found in 1776 with 3 t mass. The official checker returns Xiquipilco as an exact synonym of Toluca, and the detail page explicitly lists Xiquipilco while confirming the year, country, iron identity, and coordinates. The source's 18,000 kg total and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-27720f34-4142-43f9-b264-6fc021ac6e67",
+      "catalogId": "nininger-1950",
+      "designation": "128.172",
+      "name": "Xiquipilco",
+      "weight": {
+        "grams": 842
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Mexico State, Mexico",
+      "year": "before 1776",
+      "catalogPage": 104,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toluca",
+        "meteoriteCode": "24018",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
+        "alternateNameNote": "The adjacent reviewed heading establishes Xiquipilco. The verified local CSV identifies Official Toluca, code 24018, a Mexican Iron, IAB-sLL found in 1776 with 3 t mass. The official checker returns Xiquipilco as an exact synonym of Toluca, and the detail page explicitly lists Xiquipilco while confirming the year, country, iron identity, and coordinates. The source's 18,000 kg total and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-f7398c49-01ad-46ec-9269-83f59d772aab",
+      "catalogId": "nininger-1950",
+      "designation": "128.175",
+      "name": "Xiquipilco",
+      "weight": {
+        "grams": 831.7
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Mexico State, Mexico",
+      "year": "before 1776",
+      "catalogPage": 104,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toluca",
+        "meteoriteCode": "24018",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
+        "alternateNameNote": "The adjacent reviewed heading establishes Xiquipilco. The verified local CSV identifies Official Toluca, code 24018, a Mexican Iron, IAB-sLL found in 1776 with 3 t mass. The official checker returns Xiquipilco as an exact synonym of Toluca, and the detail page explicitly lists Xiquipilco while confirming the year, country, iron identity, and coordinates. The source's 18,000 kg total and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-8ab76777-d69c-4e23-ae32-5dbd215dabfe",
+      "catalogId": "nininger-1950",
+      "designation": "128.176",
+      "name": "Xiquipilco",
+      "weight": {
+        "grams": 90826
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Mexico State, Mexico",
+      "year": "before 1776",
+      "catalogPage": 104,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toluca",
+        "meteoriteCode": "24018",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
+        "alternateNameNote": "The adjacent reviewed heading establishes Xiquipilco. The verified local CSV identifies Official Toluca, code 24018, a Mexican Iron, IAB-sLL found in 1776 with 3 t mass. The official checker returns Xiquipilco as an exact synonym of Toluca, and the detail page explicitly lists Xiquipilco while confirming the year, country, iron identity, and coordinates. The source's 18,000 kg total and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-c324722b-9f44-4fb5-b021-276f5a93809f",
+      "catalogId": "nininger-1950",
+      "designation": "128.177",
+      "name": "Xiquipilco",
+      "weight": {
+        "grams": 368
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Mexico State, Mexico",
+      "year": "before 1776",
+      "catalogPage": 104,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toluca",
+        "meteoriteCode": "24018",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
+        "alternateNameNote": "The adjacent reviewed heading establishes Xiquipilco. The verified local CSV identifies Official Toluca, code 24018, a Mexican Iron, IAB-sLL found in 1776 with 3 t mass. The official checker returns Xiquipilco as an exact synonym of Toluca, and the detail page explicitly lists Xiquipilco while confirming the year, country, iron identity, and coordinates. The source's 18,000 kg total and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-fe7bddcb-8fee-4c8c-bc39-e3b757b27f0a",
+      "catalogId": "nininger-1950",
+      "designation": "128.178",
+      "name": "Xiquipilco",
+      "weight": {
+        "grams": 336
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Mexico State, Mexico",
+      "year": "before 1776",
+      "catalogPage": 104,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toluca",
+        "meteoriteCode": "24018",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
+        "alternateNameNote": "The adjacent reviewed heading establishes Xiquipilco. The verified local CSV identifies Official Toluca, code 24018, a Mexican Iron, IAB-sLL found in 1776 with 3 t mass. The official checker returns Xiquipilco as an exact synonym of Toluca, and the detail page explicitly lists Xiquipilco while confirming the year, country, iron identity, and coordinates. The source's 18,000 kg total and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-964af1a7-3e7d-43c1-9c15-aa9415225b64",
+      "catalogId": "nininger-1950",
+      "designation": "128.179",
+      "name": "Xiquipilco",
+      "weight": {
+        "grams": 131
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Mexico State, Mexico",
+      "year": "before 1776",
+      "catalogPage": 104,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toluca",
+        "meteoriteCode": "24018",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
+        "alternateNameNote": "The adjacent reviewed heading establishes Xiquipilco. The verified local CSV identifies Official Toluca, code 24018, a Mexican Iron, IAB-sLL found in 1776 with 3 t mass. The official checker returns Xiquipilco as an exact synonym of Toluca, and the detail page explicitly lists Xiquipilco while confirming the year, country, iron identity, and coordinates. The source's 18,000 kg total and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-18373c27-3b7b-4fdf-9f61-57c27781b0a2",
+      "catalogId": "nininger-1950",
+      "designation": "128.186",
+      "name": "Xiquipilco",
+      "weight": {
+        "grams": 60.3
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Mexico State, Mexico",
+      "year": "before 1776",
+      "catalogPage": 104,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toluca",
+        "meteoriteCode": "24018",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
+        "alternateNameNote": "The adjacent reviewed heading establishes Xiquipilco. The verified local CSV identifies Official Toluca, code 24018, a Mexican Iron, IAB-sLL found in 1776 with 3 t mass. The official checker returns Xiquipilco as an exact synonym of Toluca, and the detail page explicitly lists Xiquipilco while confirming the year, country, iron identity, and coordinates. The source's 18,000 kg total and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-a74be5c4-5180-44d2-b9ef-0f24b88866e1",
+      "catalogId": "nininger-1950",
+      "designation": "129a",
+      "name": "Yanhuitlan",
+      "weight": {
+        "grams": 291
+      },
+      "classification": "Iron. Fine octahedrite",
+      "locality": "Oaxaca, Mexico",
+      "year": "before 1825",
+      "catalogPage": 104,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Yanhuitlan",
+        "meteoriteCode": "30349",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=30349",
+        "alternateNameNote": "The verified local CSV identifies Official Yanhuitlan, code 30349, an Oaxaca Iron, IVA found in 1825 with 421 kg mass. The official exact-name checker returns Yanhuitlan as Official, and the detail page confirms the exact name, year, Oaxaca locality, iron identity, mass, and all five printed synonyms. The source's Known before 1825 wording and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-bfc35c64-66e2-4a6b-9774-83fce1aba2b0",
+      "catalogId": "nininger-1950",
+      "designation": "130a",
+      "name": "Zacatecas",
+      "weight": {
+        "grams": 61
+      },
+      "classification": "Iron. Brecciated octahedrite",
+      "locality": "Zacatecas, Mexico",
+      "year": "before 1792",
+      "catalogPage": 104,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Zacatecas (1792)",
+        "meteoriteCode": "30381",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=30381",
+        "alternateNameNote": "The official exact-name checker has no bare Zacatecas record or synonym; its containing-name result has Zacatecas (1792) and Zacatecas (1969). The verified local CSV and code 30381 detail page identify Official Zacatecas (1792), whose Zacatecas locality, early date, iron identity, and exact 1 t mass agree with the source and exclude the 1969 6.66 kg iron. The source's Known before 1792 wording and historical classification are preserved."
       }
     },
     {
@@ -35319,6 +35698,48 @@
         "meteoriteCode": "5062",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5062",
         "alternateNameNote": "The Trier and large metal-rich mass context identify official Bitburg. Source says known before 1805, 1,600 kg., and Pallasite; MetBull gives 1805, 1.5 t, and Iron, IAB complex. The source remarks that both specimens show artificial heating effects."
+      }
+    },
+    {
+      "id": "obs-66ec752e-f42f-4201-b51a-b5d9a2104ea2",
+      "catalogId": "nininger-1950",
+      "designation": "157b",
+      "name": "Youndegin",
+      "weight": {
+        "grams": 47
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Avon, South West Division, West Australia",
+      "year": "1884",
+      "catalogPage": 104,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Youndegin",
+        "meteoriteCode": "30374",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=30374",
+        "alternateNameNote": "The verified local CSV identifies Official Youndegin, code 30374, a Western Australian Iron, IAB-MG found in 1884 with 3.8 t mass. The official exact-name checker returns Youndegin as Official, and the detail page confirms the exact name, year, Western Australia, iron identity, and Penkarring Rock synonym. The source's Avon locality, historical classification, and 1,136.2 kg total are preserved."
+      }
+    },
+    {
+      "id": "obs-56ebc945-690e-4443-a79b-5f99e6e5f24f",
+      "catalogId": "nininger-1950",
+      "designation": "157a",
+      "name": "Youndegin",
+      "weight": {
+        "grams": 514
+      },
+      "classification": "Iron. Coarse octahedrite",
+      "locality": "Avon, South West Division, West Australia",
+      "year": "1884",
+      "catalogPage": 104,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Youndegin",
+        "meteoriteCode": "30374",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=30374",
+        "alternateNameNote": "The verified local CSV identifies Official Youndegin, code 30374, a Western Australian Iron, IAB-MG found in 1884 with 3.8 t mass. The official exact-name checker returns Youndegin as Official, and the detail page confirms the exact name, year, Western Australia, iron identity, and Penkarring Rock synonym. The source's Avon locality, historical classification, and 1,136.2 kg total are preserved."
       }
     },
     {
@@ -40656,6 +41077,48 @@
       }
     },
     {
+      "id": "obs-900ea5e1-8608-4bdc-8bee-cfb3f9ddf50c",
+      "catalogId": "nininger-1950",
+      "designation": "259a",
+      "name": "Yatoor",
+      "weight": {
+        "grams": 16.1
+      },
+      "classification": "Stone. Spherical chondrite",
+      "locality": "Nellore, Madras, India",
+      "year": "1852",
+      "catalogPage": 104,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Yatoor",
+        "meteoriteCode": "30358",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=30358",
+        "alternateNameNote": "The verified local CSV identifies Official Yatoor, code 30358, an 1852 Indian H5 fall with 13.6 kg mass. The official exact-name checker returns Yatoor as Official, and the detail page confirms the exact name, fall, year, Andhra Pradesh locality, H5 identity, mass, and Nellore and Yatur synonyms. The historical Madras geography, event details, and classification are preserved."
+      }
+    },
+    {
+      "id": "obs-152e7a49-5029-473c-aecc-35609485e4cc",
+      "catalogId": "nininger-1950",
+      "designation": "259b",
+      "name": "Yatoor",
+      "weight": {
+        "grams": 26.2
+      },
+      "classification": "Stone. Spherical chondrite",
+      "locality": "Nellore, Madras, India",
+      "year": "1852",
+      "catalogPage": 104,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Yatoor",
+        "meteoriteCode": "30358",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=30358",
+        "alternateNameNote": "The verified local CSV identifies Official Yatoor, code 30358, an 1852 Indian H5 fall with 13.6 kg mass. The official exact-name checker returns Yatoor as Official, and the detail page confirms the exact name, fall, year, Andhra Pradesh locality, H5 identity, mass, and Nellore and Yatur synonyms. The historical Madras geography, event details, and classification are preserved."
+      }
+    },
+    {
       "id": "obs-13b4db2d-19c7-4c97-8cf8-5a9a617b7482",
       "catalogId": "nininger-1950",
       "designation": "260.1",
@@ -42690,6 +43153,27 @@
         "meteoriteCode": "18023",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18023",
         "alternateNameNote": "The checker treats bare Orange River as a partial name with two candidates. The verified local CSV and code 18023 detail page identify Official Orange River (iron); the source's 1855 South African iron identity, 149 kg total, and Griqualand synonym distinguish it from doubtful Orange River (stone), an 1887 8 gram fall. The official 148.8 kg mass differs slightly from the source total, which is preserved."
+      }
+    },
+    {
+      "id": "obs-236e4ed1-540a-485f-8ae2-13ae8627860d",
+      "catalogId": "nininger-1950",
+      "designation": "323.1",
+      "name": "York",
+      "weight": {
+        "grams": 78
+      },
+      "classification": "Stone. Chondrite",
+      "locality": "York County, Nebraska; 40° 52′ N., 97° 36′ W.",
+      "year": "1928",
+      "catalogPage": 104,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "York (stone)",
+        "meteoriteCode": "30368",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=30368",
+        "alternateNameNote": "The official exact-name checker has no bare York record or synonym, while its containing-name result includes York (iron) and York (stone). The verified local CSV and code 30368 detail page identify Official York (stone), whose 1928 Nebraska L6 identity, 1,440 gram mass, and exact printed coordinates distinguish the 1878 835 gram York iron. The source's bare name, recognition year, and historical classification are preserved."
       }
     },
     {
@@ -73854,6 +74338,48 @@
         "meteoriteCode": "11872",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11872",
         "alternateNameNote": "The source prints a designation-only Fused Rock row with no weight; none is inferred. Henbury remains exact official code 11872."
+      }
+    },
+    {
+      "id": "obs-265ad0c8-b3d9-44ed-b70a-7acd30c97de0",
+      "catalogId": "nininger-1950",
+      "designation": "X128e",
+      "name": "Xiquipilco",
+      "weight": {
+        "grams": 375.1
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Mexico State, Mexico",
+      "year": "before 1776",
+      "catalogPage": 104,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toluca",
+        "meteoriteCode": "24018",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
+        "alternateNameNote": "The adjacent reviewed heading establishes Xiquipilco. The verified local CSV identifies Official Toluca, code 24018, a Mexican Iron, IAB-sLL found in 1776 with 3 t mass. The official checker returns Xiquipilco as an exact synonym of Toluca, and the detail page explicitly lists Xiquipilco while confirming the year, country, iron identity, and coordinates. The source's 18,000 kg total and historical classification are preserved."
+      }
+    },
+    {
+      "id": "obs-b538e561-f23d-454d-ae87-5ea61f362ca7",
+      "catalogId": "nininger-1950",
+      "designation": "X128a",
+      "name": "Xiquipilco",
+      "weight": {
+        "grams": 378.4
+      },
+      "classification": "Iron. Medium octahedrite",
+      "locality": "Mexico State, Mexico",
+      "year": "before 1776",
+      "catalogPage": 104,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toluca",
+        "meteoriteCode": "24018",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
+        "alternateNameNote": "The adjacent reviewed heading establishes Xiquipilco. The verified local CSV identifies Official Toluca, code 24018, a Mexican Iron, IAB-sLL found in 1776 with 3 t mass. The official checker returns Xiquipilco as an exact synonym of Toluca, and the detail page explicitly lists Xiquipilco while confirming the year, country, iron identity, and coordinates. The source's 18,000 kg total and historical classification are preserved."
       }
     },
     {
