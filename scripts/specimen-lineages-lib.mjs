@@ -189,6 +189,7 @@ export function flattenMassObservations(catalog) {
   for (const record of catalog.records) {
     const descriptor = descriptors.get(record.catalogId);
     assert(descriptor, `record ${record.id} refers to unknown catalog ${record.catalogId}`);
+    if (!record.metbull || typeof record.metbull !== "object") continue;
     if (descriptor.recordModel === "specimen") {
       add(record, descriptor, { designation: record.designation ?? null, designationPath: record.designation === null ? null : "designation", massGrams: record.weight?.grams, massPath: "weight.grams" });
     } else if (descriptor.recordModel === "catalog-item") {

@@ -1,14 +1,14 @@
 # Historical Meteorite Collection
 
 <!-- release-summary:readme-overview:start -->
-This repository is a dependency-free, facts-only index of 3,625 source observations from 8 historical meteorite catalogs. The coordinated catalog uses public metadata schema 6 and supports 4 source-specific record models: `catalog-item`, `catalog-number`, `collection-entry`, `specimen`.
+This repository is a dependency-free, facts-only index of 4,467 source observations from 13 historical meteorite catalogs. The coordinated catalog uses public metadata schema 6 and supports 4 source-specific record models: `catalog-item`, `catalog-number`, `collection-entry`, `specimen`.
 <!-- release-summary:readme-overview:end -->
 
 The repository also publishes [`data/specimen-lineages.json`](./data/specimen-lineages.json), a deterministic index that distinguishes same collection inventory IDs across consecutive editions from possible matches across separate collection sources. Same-inventory continuity is series-scoped and does not infer custody or ownership. Cross-source candidates retain public review decisions from [`data/specimen-lineage-reviews.json`](./data/specimen-lineage-reviews.json) and do not assert physical identity, custody, or ownership transfer.
 
 A searchable transcription of the 1976 Huss Meteorite Collection catalog, compiled and published by Glenn Huss.
 
-The other configured sources identify their compilers without inferring a publisher: Jean Andre Henri Lucas for 1813; E. F. F. Chladni, with a Vienna appendix by Karl von Schreibers, for 1819; E. F. F. Chladni for 1825; Edmund Otis Hovey for 1896; H. H. Nininger for 1933; H. H. Nininger and Addie D. Nininger for 1950; and Glenn I. Huss for 1986.
+The other configured sources identify their compilers without inferring a publisher: Jean Andre Henri Lucas for 1813; E. F. F. Chladni, with a Vienna appendix by Karl von Schreibers, for 1819; E. F. F. Chladni for 1825; Wilhelm Haidinger for 1859; Otto Buchner for 1863; A. E. Nordenskiöld for 1870; Valentine Ball for 1882; F. W. Clarke for 1886; Edmund Otis Hovey for 1896; H. H. Nininger for 1933; H. H. Nininger and Addie D. Nininger for 1950; and Glenn I. Huss for 1986.
 
 The site supports catalog filtering, model-aware search, segment-aware H-designation search, numeric gram ranges across scalar and nested masses, six deterministic sort orders, URL-persisted filters, incremental rendering, and rights-gated source folios. Catalog facts and folio authorization are validated separately.
 
@@ -91,20 +91,25 @@ The current catalog contains:
 <!-- release-summary:readme-catalog-table:start -->
 | `catalogId` | Record model | Records | Metadata source pages | Pages cited by records |
 | --- | --- | ---: | ---: | ---: |
+| `ball-1882` | `collection-entry` | 44 | 4 | 2 |
+| `buchner-1863` | `collection-entry` | 185 | 5 | 5 |
 | `chladni-1819` | `collection-entry` | 74 | 12 | 12 |
 | `chladni-1825` | `collection-entry` | 42 | 41 | 33 |
+| `haidinger-1859` | `collection-entry` | 137 | 6 | 5 |
 | `hovey-1896` | `catalog-number` | 25 | 7 | 7 |
 | `huss-1976` | `specimen` | 1,078 | 46 | 46 |
 | `huss-1986` | `specimen` | 544 | 21 | 21 |
 | `lucas-1813` | `collection-entry` | 13 | 3 | 3 |
 | `nininger-1933` | `catalog-item` | 171 | 20 | 11 |
 | `nininger-1950` | `specimen` | 1,678 | 79 | 79 |
-| **Total** |  | **3,625** | **229** | **212** |
+| `nordenskiold-1870` | `collection-entry` | 127 | 10 | 10 |
+| `usnm-1886` | `collection-entry` | 349 | 11 | 11 |
+| **Total** |  | **4,467** | **265** | **245** |
 <!-- release-summary:readme-catalog-table:end -->
 
 Metadata source-page coverage is not a claim that every covered page contains a record. Some covered pages are introductory or narrative-only.
 
-Chladni 1825 pages 200-207 are introductory folios. Nininger 1933 includes printed pages 1-20; pages 12-20 are narrative-only, and the printed catalog numbering skips item 139.
+Chladni 1825 pages 200-207 are introductory folios. Haidinger 1859 page 21 introduces the holdings list, whose entries begin on page 22. Buchner 1863 covers the Vienna register on Roman pages XIII-XVII, from Alais through Hemalga. Nininger 1933 includes printed pages 1-20; pages 12-20 are narrative-only, and the printed catalog numbering skips item 139.
 
 <!-- release-summary:readme-nininger-coverage:start -->
 `nininger-1933` has 171 records; its metadata source pages span 1-20, and its record citations span 1-11. `nininger-1950` has 1,678 records; its metadata source pages span 26-104, and its record citations span 26-104.
@@ -127,7 +132,7 @@ matchType, canonicalName, meteoriteCode, metbullUrl, alternateNameNote
 The historical `name`, designation/catalog identifier fields, printed private weight strings, and numeric source weights are never replaced by this object. The website labels the source catalog name and shows a separate linked **Current Meteoritical Bulletin name** only when a reviewed canonical name differs. No client, build, or export path fuzzy-matches names or infers identity.
 
 <!-- release-summary:readme-metbull:start -->
-The current release includes reviewed MetBull harmonization for 3,625 of 3,625 records: 3,496 have a resolved current identity and 129 remain explicitly unresolved. 7 records currently have a null `name` value.
+The current release includes reviewed MetBull harmonization for 3,625 of 4,467 records: 3,496 have a resolved current identity and 129 remain explicitly unresolved. 9 records currently have a null `name` value.
 <!-- release-summary:readme-metbull:end -->
 
 Validated continuation evidence recovers formerly blank source names where supported; it does not infer modern identity.
@@ -161,25 +166,30 @@ Any missing, blocked, incomplete, contradictory, malformed, or unsafe value deni
 <!-- release-summary:readme-folio-table:start -->
 | `catalogId` | Policy | Rights status | Public folios |
 | --- | --- | --- | ---: |
+| `ball-1882` | blocked | undetermined | 0 |
+| `buchner-1863` | blocked | undetermined | 0 |
 | `chladni-1819` | display | public-domain | 12 |
 | `chladni-1825` | blocked | undetermined | 0 |
+| `haidinger-1859` | display | public-domain | 6 |
 | `hovey-1896` | display | public-domain | 7 |
 | `huss-1976` | blocked | undetermined | 0 |
 | `huss-1986` | blocked | undetermined | 0 |
 | `lucas-1813` | display | public-domain | 3 |
 | `nininger-1933` | display | no-copyright-us | 21 |
 | `nininger-1950` | blocked | undetermined | 0 |
-| **Total** |  |  | **43** |
+| `nordenskiold-1870` | blocked | undetermined | 0 |
+| `usnm-1886` | blocked | undetermined | 0 |
+| **Total** |  |  | **49** |
 <!-- release-summary:readme-folio-table:end -->
 
-Hovey folios use the exact Smithsonian-contributed volume at [Biodiversity Heritage Library item 335869](https://www.biodiversitylibrary.org/item/335869), whose metadata marks the volume public domain. Nininger display is based on a documented search that found no renewal for the exact 1933 offprint; its status is specific to United States copyright review and is not a general ownership claim.
+Haidinger folios use the exact 1859 volume at [Internet Archive item sitzungsberichte34kais](https://archive.org/details/sitzungsberichte34kais), whose metadata states `NOT_IN_COPYRIGHT`. Hovey folios use the exact Smithsonian-contributed volume at [Biodiversity Heritage Library item 335869](https://www.biodiversitylibrary.org/item/335869), whose metadata marks the volume public domain. Nininger display is based on a documented search that found no renewal for the exact 1933 offprint; its status is specific to United States copyright review and is not a general ownership claim.
 
 ## Private Material
 
 Raw OCR, verbatim notes, uncertainty details, source filenames, private record page IDs, dedicated display-weight and `weightText` fields, acquisition files, unreviewed scans, and private derivative manifests are excluded from `catalog.json`. Independently structured factual description prose may retain source-reported historical mass statements.
 
 <!-- release-summary:readme-public-folios:start -->
-Reviewed folio `pageId` values are intentionally public in `folios.json`, and the public repository contains only the 43 selected, manifest-verified folio derivatives under `assets/folios/`.
+Reviewed folio `pageId` values are intentionally public in `folios.json`, and the public repository contains only the 49 selected, manifest-verified folio derivatives under `assets/folios/`.
 <!-- release-summary:readme-public-folios:end -->
 
 The public client has no fallback loader for private data. If `catalog.json` is missing or invalid, the interface shows an accessible error state. Failure of the optional folio manifest leaves factual records available without folio controls.

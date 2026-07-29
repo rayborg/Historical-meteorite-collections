@@ -1280,6 +1280,7 @@ function expectedPossibleRelationships(sourceRecords) {
 function lineageMassObservationCount(sourceRecords) {
   let count = 0;
   sourceRecords.forEach((record) => {
+    if (!record.metbull || typeof record.metbull !== "object") return;
     if (record.recordModel === "specimen") count += Number.isFinite(record.weight.grams) ? 1 : 0;
     else if (record.recordModel === "catalog-item") count += record.holdings.filter((holding) => Number.isFinite(holding.weight.grams)).length;
     else count += record.holdings.reduce((sum, holding) => sum + holding.weights.filter((weight) => Number.isFinite(weight.grams)).length, 0);

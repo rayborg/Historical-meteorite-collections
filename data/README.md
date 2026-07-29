@@ -1,36 +1,43 @@
 # Public Catalog Data
 
 <!-- release-summary:data-overview:start -->
-`catalog.json` is a schema-6 facts-only dataset containing 3,625 source observations from 8 historical meteorite catalogs. `folios.json` is a separate schema-2, deny-by-default display manifest with 43 reviewed page entries.
+`catalog.json` is a schema-6 facts-only dataset containing 4,467 source observations from 13 historical meteorite catalogs. `folios.json` is a separate schema-2, deny-by-default display manifest with 49 reviewed page entries.
 <!-- release-summary:data-overview:end -->
 
 A searchable transcription of the 1976 Huss Meteorite Collection catalog, compiled and published by Glenn Huss.
 
-The other configured descriptors identify their compilers without inferring a publisher: Jean Andre Henri Lucas for 1813; E. F. F. Chladni, with a Vienna appendix by Karl von Schreibers, for 1819; E. F. F. Chladni for 1825; Edmund Otis Hovey for 1896; H. H. Nininger for 1933; H. H. Nininger and Addie D. Nininger for 1950; and Glenn I. Huss for 1986.
+The other configured descriptors identify their compilers without inferring a publisher: Jean Andre Henri Lucas for 1813; E. F. F. Chladni, with a Vienna appendix by Karl von Schreibers, for 1819; E. F. F. Chladni for 1825; Wilhelm Haidinger for 1859; Otto Buchner for 1863; A. E. Nordenskiöld for 1870; Valentine Ball for 1882; F. W. Clarke for 1886; Edmund Otis Hovey for 1896; H. H. Nininger for 1933; H. H. Nininger and Addie D. Nininger for 1950; and Glenn I. Huss for 1986.
 
 <!-- release-summary:data-catalog-table:start -->
 | `catalogId` | Record model | Records | Metadata source pages | Pages cited by records |
 | --- | --- | ---: | ---: | ---: |
+| `ball-1882` | `collection-entry` | 44 | 4 | 2 |
+| `buchner-1863` | `collection-entry` | 185 | 5 | 5 |
 | `chladni-1819` | `collection-entry` | 74 | 12 | 12 |
 | `chladni-1825` | `collection-entry` | 42 | 41 | 33 |
+| `haidinger-1859` | `collection-entry` | 137 | 6 | 5 |
 | `hovey-1896` | `catalog-number` | 25 | 7 | 7 |
 | `huss-1976` | `specimen` | 1,078 | 46 | 46 |
 | `huss-1986` | `specimen` | 544 | 21 | 21 |
 | `lucas-1813` | `collection-entry` | 13 | 3 | 3 |
 | `nininger-1933` | `catalog-item` | 171 | 20 | 11 |
 | `nininger-1950` | `specimen` | 1,678 | 79 | 79 |
-| **Total** |  | **3,625** | **229** | **212** |
+| `nordenskiold-1870` | `collection-entry` | 127 | 10 | 10 |
+| `usnm-1886` | `collection-entry` | 349 | 11 | 11 |
+| **Total** |  | **4,467** | **265** | **245** |
 <!-- release-summary:data-catalog-table:end -->
 
 Metadata source-page coverage is not a count of pages cited by records. Some covered pages are introductory or narrative-only.
 
-Chladni 1825 pages 200-207 are introductory folios. `nininger-1933` includes printed pages 1-20; pages 12-20 are narrative-only, and the printed catalog numbering skips item 139.
+Chladni 1825 pages 200-207 are introductory folios. `haidinger-1859` page 21 introduces the holdings list, whose entries begin on page 22. `buchner-1863` covers the Vienna register on Roman pages XIII-XVII, from Alais through Hemalga. `nininger-1933` includes printed pages 1-20; pages 12-20 are narrative-only, and the printed catalog numbering skips item 139.
 
 <!-- release-summary:data-nininger-coverage:start -->
 `nininger-1933` has 171 records; its metadata source pages span 1-20, and its record citations span 1-11. `nininger-1950` has 1,678 records; its metadata source pages span 26-104, and its record citations span 26-104.
 <!-- release-summary:data-nininger-coverage:end -->
 
 `nininger-1933` covers printed pages 1-20, and the reviewed `nininger-1950` collection-catalog range covers printed pages 26-104 through its terminal entry. These ranges summarize current metadata and citations without merging source observations.
+
+`bibliography-master-list.html` is the public browser view of the canonical bibliography controls. Its single `Historical source mentions` column lists every applicable Buchner 1863, Wülfing 1897, and Spencer 1949 locator as compact labeled lines in that order. A blank means no qualifying direct mention was established.
 
 ## Catalog Contract
 
@@ -69,7 +76,7 @@ Each holding has exactly `description`, `provenance`, `count`, and `weights`; ea
 
 ### Collection Entry
 
-Used by Lucas and both Chladni catalogs:
+Used by Lucas, both Chladni catalogs, Haidinger, Buchner, Nordenskiöld, Ball, and Clarke:
 
 ```text
 id, catalogId, entryOrder, reportedNumber, catalogPages, section,
@@ -156,18 +163,23 @@ The deployment-specific `scripts/folio-release-lock.json` pins every catalog pol
 <!-- release-summary:data-folio-table:start -->
 | `catalogId` | Display policy | Rights status | Pages |
 | --- | --- | --- | ---: |
+| `ball-1882` | blocked | undetermined | 0 |
+| `buchner-1863` | blocked | undetermined | 0 |
 | `chladni-1819` | display | public-domain | 12 |
 | `chladni-1825` | blocked | undetermined | 0 |
+| `haidinger-1859` | display | public-domain | 6 |
 | `hovey-1896` | display | public-domain | 7 |
 | `huss-1976` | blocked | undetermined | 0 |
 | `huss-1986` | blocked | undetermined | 0 |
 | `lucas-1813` | display | public-domain | 3 |
 | `nininger-1933` | display | no-copyright-us | 21 |
 | `nininger-1950` | blocked | undetermined | 0 |
-| **Total** |  |  | **43** |
+| `nordenskiold-1870` | blocked | undetermined | 0 |
+| `usnm-1886` | blocked | undetermined | 0 |
+| **Total** |  |  | **49** |
 <!-- release-summary:data-folio-table:end -->
 
-Hovey pages come from [BHL item 335869](https://www.biodiversitylibrary.org/item/335869), contributed by Smithsonian Libraries and Archives and marked public domain. Nininger display follows a documented United States renewal search for the exact 1933 offprint. Rights status is copy- and jurisdiction-specific and is never inferred from age.
+Haidinger pages come from [Internet Archive item sitzungsberichte34kais](https://archive.org/details/sitzungsberichte34kais), whose metadata states `NOT_IN_COPYRIGHT`. Hovey pages come from [BHL item 335869](https://www.biodiversitylibrary.org/item/335869), contributed by Smithsonian Libraries and Archives and marked public domain. Nininger display follows a documented United States renewal search for the exact 1933 offprint. Rights status is copy- and jurisdiction-specific and is never inferred from age.
 
 ## Validation
 

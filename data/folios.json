@@ -1,6 +1,16 @@
 {
   "schemaVersion": 2,
   "catalogs": {
+    "ball-1882": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "pages": []
+    },
+    "buchner-1863": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "pages": []
+    },
     "chladni-1819": {
       "displayPolicy": "display",
       "rightsStatus": "public-domain",
@@ -95,6 +105,54 @@
       "displayPolicy": "blocked",
       "rightsStatus": "undetermined",
       "pages": []
+    },
+    "haidinger-1859": {
+      "displayPolicy": "display",
+      "rightsStatus": "public-domain",
+      "pages": [
+        {
+          "pageId": "haidinger-1859-page-0021",
+          "catalogPage": 21,
+          "pageLabel": "21",
+          "image": "assets/folios/haidinger-1859/haidinger-1859-page-0021.webp",
+          "alt": "Die Meteoriten des k. k. Hof-Mineralien-Cabinetes am 7. Jänner 1859, chronologisch geordnet (1859), page 21"
+        },
+        {
+          "pageId": "haidinger-1859-page-0022",
+          "catalogPage": 22,
+          "pageLabel": "22",
+          "image": "assets/folios/haidinger-1859/haidinger-1859-page-0022.webp",
+          "alt": "Die Meteoriten des k. k. Hof-Mineralien-Cabinetes am 7. Jänner 1859, chronologisch geordnet (1859), page 22"
+        },
+        {
+          "pageId": "haidinger-1859-page-0023",
+          "catalogPage": 23,
+          "pageLabel": "23",
+          "image": "assets/folios/haidinger-1859/haidinger-1859-page-0023.webp",
+          "alt": "Die Meteoriten des k. k. Hof-Mineralien-Cabinetes am 7. Jänner 1859, chronologisch geordnet (1859), page 23"
+        },
+        {
+          "pageId": "haidinger-1859-page-0024",
+          "catalogPage": 24,
+          "pageLabel": "24",
+          "image": "assets/folios/haidinger-1859/haidinger-1859-page-0024.webp",
+          "alt": "Die Meteoriten des k. k. Hof-Mineralien-Cabinetes am 7. Jänner 1859, chronologisch geordnet (1859), page 24"
+        },
+        {
+          "pageId": "haidinger-1859-page-0025",
+          "catalogPage": 25,
+          "pageLabel": "25",
+          "image": "assets/folios/haidinger-1859/haidinger-1859-page-0025.webp",
+          "alt": "Die Meteoriten des k. k. Hof-Mineralien-Cabinetes am 7. Jänner 1859, chronologisch geordnet (1859), page 25"
+        },
+        {
+          "pageId": "haidinger-1859-page-0026",
+          "catalogPage": 26,
+          "pageLabel": "26",
+          "image": "assets/folios/haidinger-1859/haidinger-1859-page-0026.webp",
+          "alt": "Die Meteoriten des k. k. Hof-Mineralien-Cabinetes am 7. Jänner 1859, chronologisch geordnet (1859), page 26"
+        }
+      ]
     },
     "hovey-1896": {
       "displayPolicy": "display",
@@ -342,6 +400,16 @@
       ]
     },
     "nininger-1950": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "pages": []
+    },
+    "nordenskiold-1870": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "pages": []
+    },
+    "usnm-1886": {
       "displayPolicy": "blocked",
       "rightsStatus": "undetermined",
       "pages": []

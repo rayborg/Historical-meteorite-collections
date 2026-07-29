@@ -68,8 +68,8 @@ test("publishes locked source and relationship counts", () => {
   assert.equal(flattenInventoryObservations(catalog).length, 3627);
   assert.deepEqual(published.metadata.source, {
     catalogSchemaVersion: 6,
-    recordCount: 3625,
-    catalogCount: 8,
+    recordCount: 4467,
+    catalogCount: 13,
     flattenedMassObservationCount: 3636,
     inventoryObservationCount: 3627,
   });
@@ -104,6 +104,13 @@ test("publishes locked source and relationship counts", () => {
       { catalogPair: "nininger-1933|nininger-1950", sameInventoryCount: 193, possibleMatchCount: 0 },
     ],
   });
+});
+
+test("excludes weighted observations without reviewed MetBull mappings", () => {
+  const changed = clone(catalog);
+  const weighted = changed.records.find((record) => record.metbull && record.weight?.grams !== null);
+  delete weighted.metbull;
+  assert.equal(flattenMassObservations(changed).length, flattenMassObservations(catalog).length - 1);
 });
 
 test("inventory IDs apply Unicode, case, whitespace, and Huss marker normalization without changing source designations", () => {
