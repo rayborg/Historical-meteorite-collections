@@ -6,7 +6,7 @@
       "catalogSchemaVersion": 6,
       "recordCount": 4467,
       "catalogCount": 13,
-      "flattenedMassObservationCount": 3636,
+      "flattenedMassObservationCount": 3916,
       "inventoryObservationCount": 3627
     },
     "collectionSeries": [
@@ -54,13 +54,13 @@
       ]
     },
     "counts": {
-      "relationshipCount": 240,
+      "relationshipCount": 241,
       "sameInventoryRelationshipCount": 195,
-      "possibleMatchRelationshipCount": 45,
-      "unreviewedPossibleMatchCount": 45,
-      "exactMassPossibleMatchCount": 18,
+      "possibleMatchRelationshipCount": 46,
+      "unreviewedPossibleMatchCount": 46,
+      "exactMassPossibleMatchCount": 19,
       "nearMassPossibleMatchCount": 27,
-      "metbullIdentityPossibleMatchCount": 45,
+      "metbullIdentityPossibleMatchCount": 46,
       "normalizedNameIdentityPossibleMatchCount": 0,
       "sameDesignationPossibleMatchCount": 0,
       "designationFamilyPossibleMatchCount": 0,
@@ -70,7 +70,7 @@
       "omittedAmbiguousInventoryKeyCount": 0,
       "possibleMatchEvidenceStrength": {
         "multiple-matching-facts": 0,
-        "two-matching-facts": 18,
+        "two-matching-facts": 19,
         "limited-matching-evidence": 27
       },
       "catalogPairs": [
@@ -113,6 +113,11 @@
           "catalogPair": "nininger-1933|nininger-1950",
           "sameInventoryCount": 193,
           "possibleMatchCount": 0
+        },
+        {
+          "catalogPair": "nininger-1933|usnm-1886",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 1
         }
       ]
     }
@@ -2871,6 +2876,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=nininger-1950&q=record%20id%20obs-26467652-c6ed-4133-8dc7-8b40bb0e625c#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-d1593254-0450-540e-b4da-c6df90f12fe2",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Toluca",
+      "catalogPair": "nininger-1933|usnm-1886",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "24018",
+        "canonicalName": "Toluca"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-addaeff7-7c92-5a70-ba4f-11b40dc9a030",
+          "recordId": "obs-0a354d21-2cbe-47c0-bb70-3b4d07d54c6c",
+          "catalogId": "usnm-1886",
+          "catalogLabel": "The Meteorite Collection in the U. S. National Museum; a Catalogue of Meteorites Represented November 1, 1886 (1886)",
+          "catalogYear": 1886,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 42",
+          "sourceName": "Toluca",
+          "canonicalName": "Toluca",
+          "meteoriteCode": "24018",
+          "designation": null,
+          "massGrams": 850,
+          "kind": null,
+          "count": 1,
+          "catalogSearchUrl": "./index.html?catalog=usnm-1886&q=record%20id%20obs-0a354d21-2cbe-47c0-bb70-3b4d07d54c6c#catalog"
+        },
+        {
+          "id": "mass-observation-fbfcbcac-ad82-56e1-ac38-7ddf533a7bfd",
+          "recordId": "obs-11b69576-1fd1-46e9-9aa6-721fd3e4a86d",
+          "catalogId": "nininger-1933",
+          "catalogLabel": "The Nininger Collection of Meteorites with Descriptions of the Huizopa and Pojoaque Meteorites (1933)",
+          "catalogYear": 1933,
+          "recordModel": "catalog-item",
+          "designationPath": "holdings[30].designation",
+          "massPath": "holdings[30].weight.grams",
+          "sourceRecordLabel": "Catalog item 172",
+          "sourceName": "Xiquipilco",
+          "canonicalName": "Toluca",
+          "meteoriteCode": "24018",
+          "designation": "128uuu",
+          "massGrams": 850,
+          "kind": "specimen",
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=nininger-1933&q=record%20id%20obs-11b69576-1fd1-46e9-9aa6-721fd3e4a86d#catalog"
         }
       ]
     },

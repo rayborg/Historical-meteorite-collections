@@ -64,23 +64,23 @@ test("build is deterministic, canonical, and identical to the published file", (
 });
 
 test("publishes locked source and relationship counts", () => {
-  assert.equal(flattenMassObservations(catalog).length, 3636);
+  assert.equal(flattenMassObservations(catalog).length, 3916);
   assert.equal(flattenInventoryObservations(catalog).length, 3627);
   assert.deepEqual(published.metadata.source, {
     catalogSchemaVersion: 6,
     recordCount: 4467,
     catalogCount: 13,
-    flattenedMassObservationCount: 3636,
+    flattenedMassObservationCount: 3916,
     inventoryObservationCount: 3627,
   });
   assert.deepEqual(published.metadata.counts, {
-    relationshipCount: 240,
+    relationshipCount: 241,
     sameInventoryRelationshipCount: 195,
-    possibleMatchRelationshipCount: 45,
-    unreviewedPossibleMatchCount: 45,
-    exactMassPossibleMatchCount: 18,
+    possibleMatchRelationshipCount: 46,
+    unreviewedPossibleMatchCount: 46,
+    exactMassPossibleMatchCount: 19,
     nearMassPossibleMatchCount: 27,
-    metbullIdentityPossibleMatchCount: 45,
+    metbullIdentityPossibleMatchCount: 46,
     normalizedNameIdentityPossibleMatchCount: 0,
     sameDesignationPossibleMatchCount: 0,
     designationFamilyPossibleMatchCount: 0,
@@ -90,7 +90,7 @@ test("publishes locked source and relationship counts", () => {
     omittedAmbiguousInventoryKeyCount: 0,
     possibleMatchEvidenceStrength: {
       "multiple-matching-facts": 0,
-      "two-matching-facts": 18,
+      "two-matching-facts": 19,
       "limited-matching-evidence": 27,
     },
     catalogPairs: [
@@ -102,6 +102,7 @@ test("publishes locked source and relationship counts", () => {
       { catalogPair: "huss-1976|nininger-1950", sameInventoryCount: 0, possibleMatchCount: 12 },
       { catalogPair: "huss-1986|nininger-1950", sameInventoryCount: 0, possibleMatchCount: 28 },
       { catalogPair: "nininger-1933|nininger-1950", sameInventoryCount: 193, possibleMatchCount: 0 },
+      { catalogPair: "nininger-1933|usnm-1886", sameInventoryCount: 0, possibleMatchCount: 1 },
     ],
   });
 });
@@ -155,7 +156,7 @@ test("same-series continuity survives missing mass while possible matches requir
   const relationship = rebuilt.relationships.find((item) => item.relationship === "same-inventory" && item.collectionSeries.inventoryId === "h160.1");
   assert.ok(relationship);
   assert(relationship.observations.some(({ massGrams }) => massGrams === null));
-  assert.equal(rebuilt.metadata.source.flattenedMassObservationCount, 3635);
+  assert.equal(rebuilt.metadata.source.flattenedMassObservationCount, 3915);
 
   for (const possible of possibleRelationships()) {
     const [left, right] = possible.observations;
@@ -205,7 +206,7 @@ test("Nininger 108b collision resolves only Sandia and ambiguous collisions are 
 });
 
 test("cross-series possible matching retains reviewed identity plus exact or near mass", () => {
-  assert.equal(possibleRelationships().length, 45);
+  assert.equal(possibleRelationships().length, 46);
   assert(possibleRelationships().every(({ basis, status }) => basis === "reviewed-identity-and-reported-mass" && status === "possible"));
   assert(possibleRelationships().some(({ evidence }) => evidence.massMatch === "exact"));
   assert(possibleRelationships().some(({ evidence }) => evidence.massMatch === "near"));
@@ -270,7 +271,7 @@ test("reviews apply only to possible candidates", () => {
   };
   const rebuilt = buildSpecimenLineages(catalog, reviews);
   assert.equal(rebuilt.relationships.find(({ id }) => id === target.id).review.status, "reviewed");
-  assert.equal(rebuilt.metadata.counts.unreviewedPossibleMatchCount, 44);
+  assert.equal(rebuilt.metadata.counts.unreviewedPossibleMatchCount, 45);
   assert.throws(() => buildSpecimenLineages(catalog, {
     schemaVersion: 1,
     reviews: [{ ...reviews.reviews[0], candidateId: sameInventory("huss", "h160.1").id }],

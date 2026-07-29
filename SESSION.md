@@ -32,7 +32,7 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 - Nininger coverage is derived without page-boundary assumptions: `nininger-1933` has 171 records; its metadata source pages span 1-20, and its record citations span 1-11. `nininger-1950` has 1,678 records; its metadata source pages span 26-104, and its record citations span 26-104.
 - Public folios use schema 2 and expose 49 display pages across 5 catalogs: `chladni-1819` (12 pages, `public-domain`); `haidinger-1859` (6 pages, `public-domain`); `hovey-1896` (7 pages, `public-domain`); `lucas-1813` (3 pages, `public-domain`); `nininger-1933` (21 pages, `no-copyright-us`).
 - Blocked folio catalogs are: `ball-1882` (0 pages, `undetermined`); `buchner-1863` (0 pages, `undetermined`); `chladni-1825` (0 pages, `undetermined`); `huss-1976` (0 pages, `undetermined`); `huss-1986` (0 pages, `undetermined`); `nininger-1950` (0 pages, `undetermined`); `nordenskiold-1870` (0 pages, `undetermined`); `usnm-1886` (0 pages, `undetermined`).
-- Reviewed MetBull harmonization covers 3,625 of 4,467 records: 3,496 resolved and 129 explicitly unresolved.
+- Reviewed MetBull harmonization covers 4,059 of 4,467 records: 3,930 resolved and 129 explicitly unresolved.
 - Records currently having a null `name` value: 9.
 <!-- release-summary:session-current-state:end -->
 

@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260729-1";
+const CACHE_VERSION = "20260729-2";
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "designation-asc";
 const VALID_SORTS = new Set([
@@ -650,6 +650,26 @@ function catalogLabel(descriptor, catalogId = "") {
   const compiler = cleanText(descriptor?.compiler);
   const year = Number.isInteger(descriptor?.year) ? String(descriptor.year) : null;
   return compiler && year ? `${compiler} (${year})` : compiler || year || cleanText(catalogId) || "Catalog";
+}
+
+function catalogDropdownLabel(descriptor, catalogId = "") {
+  const id = cleanText(catalogId || descriptor?.id);
+  const idMatch = id?.match(/^(.+?)-(\d{4})$/u);
+  const sourceId = idMatch?.[1] || id;
+  const sourceAliases = {
+    "nordenskiold": "Nordenskiöld",
+    "usnm": "USNM"
+  };
+  const source = sourceAliases[sourceId] || sourceId
+    ?.split("-")
+    .filter(Boolean)
+    .map((part) => `${part.charAt(0).toLocaleUpperCase()}${part.slice(1)}`)
+    .join(" ");
+  const year = Number.isInteger(descriptor?.year)
+    ? String(descriptor.year)
+    : cleanText(descriptor?.year) || idMatch?.[2];
+  if (source && year) return `${source} (${year})`;
+  return source || catalogLabel(descriptor, id || "");
 }
 
 function formatSourcePageCoverage(sourcePages) {
@@ -1844,7 +1864,7 @@ function populateCatalogFilter() {
     .map(([catalogId, descriptor]) => {
       const option = document.createElement("option");
       option.value = catalogId;
-      option.textContent = catalogLabel(descriptor, catalogId);
+      option.textContent = catalogDropdownLabel(descriptor, catalogId);
       return option;
     });
   elements.catalog.replaceChildren(new Option("All source catalogs", ""), ...options);
@@ -2320,6 +2340,7 @@ if (typeof module !== "undefined" && module.exports) {
     calculateStatistics,
     calculateLineageCounts,
     chronologicalEarlierPair,
+    catalogDropdownLabel,
     catalogLabel,
     catalogSelectorEntries,
     catalogSummaryEntries,

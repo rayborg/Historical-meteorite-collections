@@ -34,7 +34,7 @@ node scripts/validate-public-catalog.mjs
 node scripts/test-multicatalog.cjs
 ```
 
-The validator checks both synthetic rejection fixtures and the real catalog, manifest, and folio files. The runtime harness contains 108 tests.
+The validator checks both synthetic rejection fixtures and the real catalog, manifest, and folio files. The runtime harness contains 110 tests.
 
 After changing either public data file, run `node scripts/sync-release-summary.mjs --write`; use `--json` to inspect the derived release summary without changing documentation.
 
@@ -132,7 +132,7 @@ matchType, canonicalName, meteoriteCode, metbullUrl, alternateNameNote
 The historical `name`, designation/catalog identifier fields, printed private weight strings, and numeric source weights are never replaced by this object. The website labels the source catalog name and shows a separate linked **Current Meteoritical Bulletin name** only when a reviewed canonical name differs. No client, build, or export path fuzzy-matches names or infers identity.
 
 <!-- release-summary:readme-metbull:start -->
-The current release includes reviewed MetBull harmonization for 3,625 of 4,467 records: 3,496 have a resolved current identity and 129 remain explicitly unresolved. 9 records currently have a null `name` value.
+The current release includes reviewed MetBull harmonization for 4,059 of 4,467 records: 3,930 have a resolved current identity and 129 remain explicitly unresolved. 9 records currently have a null `name` value.
 <!-- release-summary:readme-metbull:end -->
 
 Validated continuation evidence recovers formerly blank source names where supported; it does not infer modern identity.

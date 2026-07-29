@@ -19,8 +19,8 @@ test("links the cabinet homepage to the published bibliography", async () => {
 
 test("publishes a safe and accessible bibliography table", async () => {
   const bibliography = await readFile(bibliographyPath, "utf8");
-  assert.equal((bibliography.match(/data-control="MCB-\d+"/g) || []).length, 265);
-  assert.match(bibliography, /<strong>265<\/strong><span>Total controls<\/span>/);
+  assert.equal((bibliography.match(/data-control="MCB-\d+"/g) || []).length, 264);
+  assert.match(bibliography, /<strong>264<\/strong><span>Total controls<\/span>/);
   assert.match(bibliography, /class="table-wrap" role="region" aria-label="Bibliography master list; scroll horizontally to see all columns" tabindex="0"/);
   assert.match(bibliography, /\.table-wrap:focus-visible \{[^}]*outline:/);
 

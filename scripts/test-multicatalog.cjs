@@ -765,6 +765,34 @@ test("catalog selector and summaries retain descriptor model identity", () => {
   assert.deepEqual(app.catalogSummaryEntries(registry).map(({ observationCount }) => observationCount), [2, 2, 6, 2, 3]);
 });
 
+test("catalog dropdown labels are concise and leave summary titles unchanged", () => {
+  const descriptors = [
+    { id: "lucas-1813", year: 1813, label: "Tableau méthodique des espèces minérales, seconde partie (1813)" },
+    { id: "chladni-1819", year: 1819, label: "Ueber Feuer-Meteore (1819)" },
+    { id: "chladni-1825", year: 1825, label: "Beschreibung seiner Sammlung (1825)" },
+    { id: "haidinger-1859", year: 1859, label: "Die Meteoriten des k. k. Hof-Mineralien-Cabinetes (1859)" },
+    { id: "buchner-1863", year: 1863, label: "Die Meteoriten in Sammlungen (1863)" },
+    { id: "nordenskiold-1870", year: 1870, label: "Förteckning på meteoriter (1870)" },
+    { id: "ball-1882", year: 1882, label: "Catalogue of the Examples of Meteoric Falls (1882)" },
+    { id: "usnm-1886", year: 1886, label: "The Meteorite Collection in the U. S. National Museum (1886)" },
+    { id: "hovey-1896", year: 1896, label: "Catalogue of meteorites in the AMNH (1896)" },
+    { id: "nininger-1933", year: 1933, label: "The Nininger Collection (1933)" },
+    { id: "nininger-1950", year: 1950, label: "The Nininger Collection (1950)" },
+    { id: "huss-1976", year: 1976, label: "Huss Meteorite Collection catalog (1976)" },
+    { id: "huss-1986", year: 1986, label: "The Second Huss Collection of Meteorites (1986)" }
+  ];
+  const labels = descriptors.map((descriptor) => app.catalogDropdownLabel(descriptor, descriptor.id));
+  assert.deepEqual(labels, [
+    "Lucas (1813)", "Chladni (1819)", "Chladni (1825)", "Haidinger (1859)", "Buchner (1863)",
+    "Nordenskiöld (1870)", "Ball (1882)", "USNM (1886)", "Hovey (1896)", "Nininger (1933)",
+    "Nininger (1950)", "Huss (1976)", "Huss (1986)"
+  ]);
+  assert.equal(new Set(labels).size, descriptors.length);
+  assert.deepEqual(app.catalogSummaryEntries(descriptors).map(({ label }) => label), descriptors.map(({ label }) => label));
+  assert.equal(app.catalogDropdownLabel({ year: 2001 }, "natural-history-2001"), "Natural History (2001)");
+  assert.equal(app.catalogDropdownLabel({ label: "Future catalog" }), "Future catalog");
+});
+
 test("URL filter behavior and cache version remain stable", () => {
   const registry = app.normalizeCatalogRegistry(fixture.metadata);
   const html = readFileSync(join(__dirname, "..", "index.html"), "utf8");
@@ -773,7 +801,7 @@ test("URL filter behavior and cache version remain stable", () => {
     query: "catalog item 2", catalog: "nininger-1933", min: "3", max: "12", sort: "weight-desc"
   });
   assert.equal(app.serializeUrlFilters(parsed).toString(), "q=catalog+item+2&catalog=nininger-1933&min=3&max=12&sort=weight-desc");
-  assert.equal(app.CACHE_VERSION, "20260729-1");
+  assert.equal(app.CACHE_VERSION, "20260729-2");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.CACHE_VERSION}`));
 });
