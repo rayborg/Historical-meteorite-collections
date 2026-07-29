@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260728-4";
+const CACHE_VERSION = "20260729-1";
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "designation-asc";
 const VALID_SORTS = new Set([
@@ -230,7 +230,8 @@ const elements = typeof document === "undefined" ? null : {
     specimens: document.querySelector("#stat-specimens"),
     names: document.querySelector("#stat-names"),
     pages: document.querySelector("#stat-pages"),
-    mass: document.querySelector("#stat-mass")
+    mass: document.querySelector("#stat-mass"),
+    catalogs: document.querySelector("#stat-catalogs")
   }
 };
 
@@ -1784,9 +1785,11 @@ function updateStatistics() {
   elements.stats.names.textContent = integerFormat.format(statistics.names);
   elements.stats.pages.textContent = integerFormat.format(statistics.pages);
   elements.stats.mass.textContent = formatMass(statistics.grams);
+  elements.stats.catalogs.textContent = integerFormat.format(statistics.catalogs);
 }
 
 function calculateStatistics(sourceRecords) {
+  const catalogs = new Set(sourceRecords.map((record) => cleanText(record.catalogId)).filter(Boolean));
   const names = new Set(sourceRecords.map((record) => searchable(record.name)).filter(Boolean));
   const pages = new Set(sourceRecords.flatMap((record) => cleanText(record.catalogId)
     ? recordCatalogPages(record).map((page) => `${record.catalogId}\u0000${page}`)
@@ -1795,6 +1798,7 @@ function calculateStatistics(sourceRecords) {
   return {
     observations: sourceRecords.length,
     specimens: sourceRecords.length,
+    catalogs: catalogs.size,
     names: names.size,
     pages: pages.size,
     grams: masses.reduce((sum, grams) => sum + grams, 0)

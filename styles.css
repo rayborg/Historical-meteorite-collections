@@ -145,7 +145,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible
 .page-shell { position: relative; z-index: 4; width: min(90rem, calc(100% - 3rem)); margin: -3.5rem auto 0; }
 .statistics {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   color: var(--paper-light);
   background: var(--oxblood-dark);
   border: 1px solid #b18c4e;
@@ -384,8 +384,9 @@ dialog::backdrop { background: rgba(24, 19, 14, .84); backdrop-filter: blur(2px)
   .collector-artifact { display: none; }
   .page-shell { width: min(100% - 1.25rem, 40rem); }
   .statistics { grid-template-columns: 1fr 1fr; }
-  .statistics div:nth-child(3)::before { display: none; }
+  .statistics div:nth-child(2n + 1)::before { display: none; }
   .statistics div:nth-child(n + 3) { border-top: 1px solid rgba(225, 201, 157, .3); }
+  .statistics div:last-child { grid-column: 1 / -1; }
   .source-summary { margin-top: 3.5rem; }
   .catalog-summary-list { grid-template-columns: 1fr; }
   .catalog-tools { margin-top: 3.5rem; }

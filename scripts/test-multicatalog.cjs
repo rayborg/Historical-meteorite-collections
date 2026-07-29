@@ -730,8 +730,20 @@ test("statistics keep parent observations and sum every holding mass once", () =
   const statistics = app.calculateStatistics(preparedRecords());
   assert.equal(statistics.observations, 15);
   assert.equal(statistics.specimens, 15);
+  assert.equal(statistics.catalogs, 5);
   assert.equal(statistics.grams, 520.45);
   assert.equal(statistics.pages, 15);
+});
+
+test("statistics expose the responsive catalog-count tile", () => {
+  const root = join(__dirname, "..");
+  const html = readFileSync(join(root, "index.html"), "utf8");
+  const styles = readFileSync(join(root, "styles.css"), "utf8");
+  const script = readFileSync(join(root, "app.js"), "utf8");
+  assert.match(html, /id="stat-catalogs"[^>]*>-[^<]*<\/strong><span>catalogs included<\/span>/);
+  assert.match(styles, /grid-template-columns:\s*repeat\(5, minmax\(0, 1fr\)\)/);
+  assert.match(styles, /\.statistics div:last-child\s*\{[^}]*grid-column:\s*1 \/ -1;/s);
+  assert.match(script, /elements\.stats\.catalogs\.textContent = integerFormat\.format\(statistics\.catalogs\)/);
 });
 
 test("holding labels are concise for count, cast, and aggregate rows", () => {
@@ -761,7 +773,7 @@ test("URL filter behavior and cache version remain stable", () => {
     query: "catalog item 2", catalog: "nininger-1933", min: "3", max: "12", sort: "weight-desc"
   });
   assert.equal(app.serializeUrlFilters(parsed).toString(), "q=catalog+item+2&catalog=nininger-1933&min=3&max=12&sort=weight-desc");
-  assert.equal(app.CACHE_VERSION, "20260728-4");
+  assert.equal(app.CACHE_VERSION, "20260729-1");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.CACHE_VERSION}`));
 });
@@ -1122,6 +1134,7 @@ test("statistics count the same page number separately in different catalogs", (
     { catalogId: "second", catalogPage: 27, name: "Beta", weight: { grams: 2 } }
   ]);
   assert.equal(statistics.observations, 2);
+  assert.equal(statistics.catalogs, 2);
   assert.equal(statistics.pages, 2);
 });
 
