@@ -762,7 +762,7 @@ test("catalog selector and summaries retain descriptor model identity", () => {
   assert.equal(registry["nininger-1933"].recordModel, "catalog-item");
   assert.equal(registry["hovey-1896"].recordModel, "catalog-number");
   assert.equal(registry["museum-1914"].recordModel, "collection-entry");
-  assert.deepEqual(app.catalogSummaryEntries(registry).map(({ observationCount }) => observationCount), [2, 2, 6, 2, 3]);
+  assert.deepEqual(app.catalogSummaryEntries(registry).map(({ observationCount }) => observationCount), [2, 3, 6, 2, 2]);
 });
 
 test("catalog dropdown labels are concise and leave summary titles unchanged", () => {
@@ -776,6 +776,8 @@ test("catalog dropdown labels are concise and leave summary titles unchanged", (
     { id: "ball-1882", year: 1882, label: "Catalogue of the Examples of Meteoric Falls (1882)" },
     { id: "usnm-1886", year: 1886, label: "The Meteorite Collection in the U. S. National Museum (1886)" },
     { id: "hovey-1896", year: 1896, label: "Catalogue of meteorites in the AMNH (1896)" },
+    { id: "washington-1897", year: 1897, label: "Catalogue of the Collection of Meteorites in the Peabody Museum (1897)" },
+    { id: "hogbom-1902", year: 1902, label: "Verzeichniss über die Meteoriten des Mineralogischen Instituts (1902)" },
     { id: "nininger-1933", year: 1933, label: "The Nininger Collection (1933)" },
     { id: "nininger-1950", year: 1950, label: "The Nininger Collection (1950)" },
     { id: "huss-1976", year: 1976, label: "Huss Meteorite Collection catalog (1976)" },
@@ -784,7 +786,8 @@ test("catalog dropdown labels are concise and leave summary titles unchanged", (
   const labels = descriptors.map((descriptor) => app.catalogDropdownLabel(descriptor, descriptor.id));
   assert.deepEqual(labels, [
     "Lucas (1813)", "Chladni (1819)", "Chladni (1825)", "Haidinger (1859)", "Buchner (1863)",
-    "Nordenskiöld (1870)", "Ball (1882)", "USNM (1886)", "Hovey (1896)", "Nininger (1933)",
+    "Nordenskiöld (1870)", "Ball (1882)", "USNM (1886)", "Hovey (1896)", "Washington (1897)",
+    "Högbom (1902)", "Nininger (1933)",
     "Nininger (1950)", "Huss (1976)", "Huss (1986)"
   ]);
   assert.equal(new Set(labels).size, descriptors.length);
@@ -801,7 +804,7 @@ test("URL filter behavior and cache version remain stable", () => {
     query: "catalog item 2", catalog: "nininger-1933", min: "3", max: "12", sort: "weight-desc"
   });
   assert.equal(app.serializeUrlFilters(parsed).toString(), "q=catalog+item+2&catalog=nininger-1933&min=3&max=12&sort=weight-desc");
-  assert.equal(app.CACHE_VERSION, "20260729-2");
+  assert.equal(app.CACHE_VERSION, "20260730-1");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.CACHE_VERSION}`));
 });
@@ -1008,14 +1011,16 @@ test("duplicate labels retain distinct disambiguation inputs and catalog IDs", (
   assert.notEqual(registry["huss-1976"].displayLabel, registry["huss-1986"].displayLabel);
 });
 
-test("catalog selector orders public sources chronologically without changing source order", () => {
+test("catalog selector and summary order public sources chronologically without changing source data", () => {
   const registry = app.normalizeCatalogRegistry(fixture.metadata);
   const sourceOrder = fixture.metadata.catalogs.map(({ id }) => id);
   assert.deepEqual(app.catalogSelectorEntries(registry).map(([id]) => id), [
     "hovey-1896", "museum-1914", "nininger-1933", "huss-1976", "huss-1986"
   ]);
   assert.deepEqual(fixture.metadata.catalogs.map(({ id }) => id), sourceOrder);
-  assert.deepEqual(app.catalogSummaryEntries(registry).map(({ id }) => id), sourceOrder);
+  assert.deepEqual(app.catalogSummaryEntries(registry).map(({ id }) => id), [
+    "hovey-1896", "museum-1914", "nininger-1933", "huss-1976", "huss-1986"
+  ]);
 });
 
 test("catalog selector breaks publication-year ties by display label then catalog ID", () => {

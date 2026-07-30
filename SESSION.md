@@ -1,6 +1,6 @@
 # Project Session Memory
 
-Last updated: 2026-07-29
+Last updated: 2026-07-30
 
 ## Mission
 
@@ -9,7 +9,7 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 ## Current State
 
 <!-- release-summary:session-current-state:start -->
-- Schema 6 contains 4,467 facts-only records across 13 catalogs.
+- Schema 6 contains 4,754 facts-only records across 15 catalogs.
 
 | `catalogId` | Record model | Records | Metadata source pages | Pages cited by records |
 | --- | --- | ---: | ---: | ---: |
@@ -18,6 +18,7 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 | `chladni-1819` | `collection-entry` | 74 | 12 | 12 |
 | `chladni-1825` | `collection-entry` | 42 | 41 | 33 |
 | `haidinger-1859` | `collection-entry` | 137 | 6 | 5 |
+| `hogbom-1902` | `collection-entry` | 86 | 3 | 2 |
 | `hovey-1896` | `catalog-number` | 25 | 7 | 7 |
 | `huss-1976` | `specimen` | 1,078 | 46 | 46 |
 | `huss-1986` | `specimen` | 544 | 21 | 21 |
@@ -26,14 +27,15 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 | `nininger-1950` | `specimen` | 1,678 | 79 | 79 |
 | `nordenskiold-1870` | `collection-entry` | 127 | 10 | 10 |
 | `usnm-1886` | `collection-entry` | 349 | 11 | 11 |
-| **Total** |  | **4,467** | **265** | **245** |
+| `washington-1897` | `collection-entry` | 201 | 4 | 4 |
+| **Total** |  | **4,754** | **272** | **251** |
 
-- Metadata covers 265 catalog-scoped source pages; records cite 245 of them.
+- Metadata covers 272 catalog-scoped source pages; records cite 251 of them.
 - Nininger coverage is derived without page-boundary assumptions: `nininger-1933` has 171 records; its metadata source pages span 1-20, and its record citations span 1-11. `nininger-1950` has 1,678 records; its metadata source pages span 26-104, and its record citations span 26-104.
 - Public folios use schema 2 and expose 49 display pages across 5 catalogs: `chladni-1819` (12 pages, `public-domain`); `haidinger-1859` (6 pages, `public-domain`); `hovey-1896` (7 pages, `public-domain`); `lucas-1813` (3 pages, `public-domain`); `nininger-1933` (21 pages, `no-copyright-us`).
-- Blocked folio catalogs are: `ball-1882` (0 pages, `undetermined`); `buchner-1863` (0 pages, `undetermined`); `chladni-1825` (0 pages, `undetermined`); `huss-1976` (0 pages, `undetermined`); `huss-1986` (0 pages, `undetermined`); `nininger-1950` (0 pages, `undetermined`); `nordenskiold-1870` (0 pages, `undetermined`); `usnm-1886` (0 pages, `undetermined`).
-- Reviewed MetBull harmonization covers 4,059 of 4,467 records: 3,930 resolved and 129 explicitly unresolved.
-- Records currently having a null `name` value: 9.
+- Blocked folio catalogs are: `ball-1882` (0 pages, `undetermined`); `buchner-1863` (0 pages, `undetermined`); `chladni-1825` (0 pages, `undetermined`); `hogbom-1902` (0 pages, `undetermined`); `huss-1976` (0 pages, `undetermined`); `huss-1986` (0 pages, `undetermined`); `nininger-1950` (0 pages, `undetermined`); `nordenskiold-1870` (0 pages, `undetermined`); `usnm-1886` (0 pages, `undetermined`); `washington-1897` (0 pages, `undetermined`).
+- Reviewed MetBull harmonization covers 4,059 of 4,754 records: 3,930 resolved and 129 explicitly unresolved.
+- Records currently having a null `name` value: 13.
 <!-- release-summary:session-current-state:end -->
 
 - Chladni 1825 pages 200-207 are introductory folios.
@@ -42,17 +44,15 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 - Validated continuation evidence recovers formerly blank source names where supported, without inferring modern identity. Reviewed historical entries that genuinely print no separate proper source name retain null names and unresolved reviews.
 - `scripts/folio-release-lock.json` pins the reviewed rights evidence, ordered page IDs, and SHA-256 digest of every public folio.
 
-## Latest Completed Catalog
+## Latest Completed Catalogs
 
-- `MCB-20` is integrated as `buchner-1863`: Otto Buchner, *Die Meteoriten in Sammlungen, ihre Geschichte, mineralogische und chemische Beschaffenheit* (1863), specifically the embedded Vienna register under "System von P. Partsch" on Roman pages XIII-XVII.
-- The public catalog contains 185 ordered `collection-entry` records: 22, 52, 48, 52, and 11 by page. It begins at Alais and ends at Hemalga before "System von G. Rose." Section counts are I.A.a 3, I.A.b 2, I.B.a 11, I.B.b 101, II.A 5, and II.B 63.
-- `reportedNumber` remains null because the right-margin integers are monograph page locators, not row numbers. Dates, source sections, and Vienna holding status are retained without modern class, locality, weight, piece-count, provenance, or MetBull inference. Seven source-marked date uncertainties occur at orders 26, 40, 45, 76, 92, 114, and 117.
-- The preface's statement of 194 Vienna fall localities is not reconciled by a row-level key; the bounded register visibly contains 185 rows, so no nine missing entries were invented.
-- Buchner folios remain blocked with undetermined rights and no public images. Only independently structured facts were exported; private images, raw text, source filenames, notes, locators, and uncertainty details remain private.
+- `MCB-80` is integrated as `washington-1897`: Henry S. Washington, *Catalogue of the Collection of Meteorites in the Peabody Museum of Yale University* (1897), with 201 ordered `collection-entry` records citing printed pages 83-86.
+- `MCB-93` is integrated as `hogbom-1902`: A. G. Högbom, *Verzeichniss über die Meteoriten des Mineralogischen Instituts an der Universität Upsala* (1902), with 86 ordered `collection-entry` records citing printed pages 284-286.
+- Both catalogs are facts-only, add no MetBull mappings, and retain blocked folio policies with undetermined rights and no public images.
 
 ## Active Work State
 
-- The MCB-20 facts-only integration remains uncommitted and unpushed on branch `publish-nininger-pages-public` in `/private/var/folders/wp/r0y6_l7x6bz_0md8jcfjtsgr0000gp/T/opencode/hmc-public-publish`; its private source counterpart remains in the sibling `hmc-private-publish` worktree on branch `publish-nininger-pages`. Preserve both dirty worktrees before rebasing or regeneration.
+- The Washington 1897 and Högbom 1902 facts-only public integration remains uncommitted and unpushed. Preserve the dirty worktree before rebasing or regeneration.
 - No release-blocking validation issue remains. Any future public change must still be produced from the private canonical data and pass deterministic byte comparison and the facts-only privacy checks.
 
 ## Preservation And Data Rules
@@ -101,8 +101,8 @@ Distinct specimens with the same meteorite name and similar mass must not be col
 ## Immediate Next Steps
 
 1. Preserve the current uncommitted private/public catalog diffs. Commit or push only when explicitly requested.
-2. Keep MCB-20 folios blocked unless a separate catalog-specific rights review explicitly authorizes an exact ordered page set; source age or Internet Archive availability alone is insufficient.
-3. Select the next processable bibliography control only after preserving and validating the current 13-catalog release candidate.
+2. Keep MCB-80 and MCB-93 folios blocked unless separate catalog-specific rights reviews explicitly authorize exact ordered page sets; source age or Internet Archive availability alone is insufficient.
+3. Select the next processable bibliography control only after preserving and validating the current 15-catalog release candidate.
 4. Resolve the missing scan for `SP1949-0039` (currently MCB-107) and correct the source evidence for MCB-4 and MCB-5 when primary evidence is available.
 5. Keep schema 6 validation, deterministic private/public equality, release summaries, lineage checks, folio hashes, Node tests, runtime checks, and the facts-only privacy boundary green for every future release.
 

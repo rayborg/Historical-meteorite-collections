@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260729-2";
+const CACHE_VERSION = "20260730-1";
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "designation-asc";
 const VALID_SORTS = new Set([
@@ -657,6 +657,7 @@ function catalogDropdownLabel(descriptor, catalogId = "") {
   const idMatch = id?.match(/^(.+?)-(\d{4})$/u);
   const sourceId = idMatch?.[1] || id;
   const sourceAliases = {
+    "hogbom": "Högbom",
     "nordenskiold": "Nordenskiöld",
     "usnm": "USNM"
   };
@@ -693,8 +694,10 @@ function formatSourcePageCoverage(sourcePages) {
 }
 
 function catalogSummaryEntries(catalogs) {
-  const descriptors = Array.isArray(catalogs) ? catalogs : Object.values(catalogs || {});
-  return descriptors.map((descriptor) => ({
+  const entries = Array.isArray(catalogs)
+    ? catalogs.map((descriptor) => [descriptor.id, descriptor])
+    : Object.entries(catalogs || {});
+  return entries.sort(compareCatalogEntries).map(([, descriptor]) => ({
     id: descriptor.id,
     label: cleanText(descriptor.label) || catalogLabel(descriptor, descriptor.id),
     year: descriptor.year,
@@ -1852,7 +1855,11 @@ function weightSortValue(record, descending) {
 }
 
 function catalogSelectorEntries(catalogs) {
-  return Object.entries(catalogs || {}).sort(([leftId, left], [rightId, right]) =>
+  return Object.entries(catalogs || {}).sort(compareCatalogEntries);
+}
+
+function compareCatalogEntries([leftId, left], [rightId, right]) {
+  return (
     left.year - right.year ||
     collator.compare(catalogLabel(left, leftId), catalogLabel(right, rightId)) ||
     collator.compare(leftId, rightId)

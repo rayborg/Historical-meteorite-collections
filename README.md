@@ -1,14 +1,14 @@
 # Historical Meteorite Collection
 
 <!-- release-summary:readme-overview:start -->
-This repository is a dependency-free, facts-only index of 4,467 source observations from 13 historical meteorite catalogs. The coordinated catalog uses public metadata schema 6 and supports 4 source-specific record models: `catalog-item`, `catalog-number`, `collection-entry`, `specimen`.
+This repository is a dependency-free, facts-only index of 4,754 source observations from 15 historical meteorite catalogs. The coordinated catalog uses public metadata schema 6 and supports 4 source-specific record models: `catalog-item`, `catalog-number`, `collection-entry`, `specimen`.
 <!-- release-summary:readme-overview:end -->
 
 The repository also publishes [`data/specimen-lineages.json`](./data/specimen-lineages.json), a deterministic index that distinguishes same collection inventory IDs across consecutive editions from possible matches across separate collection sources. Same-inventory continuity is series-scoped and does not infer custody or ownership. Cross-source candidates retain public review decisions from [`data/specimen-lineage-reviews.json`](./data/specimen-lineage-reviews.json) and do not assert physical identity, custody, or ownership transfer.
 
 A searchable transcription of the 1976 Huss Meteorite Collection catalog, compiled and published by Glenn Huss.
 
-The other configured sources identify their compilers without inferring a publisher: Jean Andre Henri Lucas for 1813; E. F. F. Chladni, with a Vienna appendix by Karl von Schreibers, for 1819; E. F. F. Chladni for 1825; Wilhelm Haidinger for 1859; Otto Buchner for 1863; A. E. Nordenskiöld for 1870; Valentine Ball for 1882; F. W. Clarke for 1886; Edmund Otis Hovey for 1896; H. H. Nininger for 1933; H. H. Nininger and Addie D. Nininger for 1950; and Glenn I. Huss for 1986.
+The other configured sources identify their compilers without inferring a publisher: Jean Andre Henri Lucas for 1813; E. F. F. Chladni, with a Vienna appendix by Karl von Schreibers, for 1819; E. F. F. Chladni for 1825; Wilhelm Haidinger for 1859; Otto Buchner for 1863; A. E. Nordenskiöld for 1870; Valentine Ball for 1882; F. W. Clarke for 1886; Edmund Otis Hovey for 1896; Henry S. Washington for 1897; A. G. Högbom for 1902; H. H. Nininger for 1933; H. H. Nininger and Addie D. Nininger for 1950; and Glenn I. Huss for 1986.
 
 The site supports catalog filtering, model-aware search, segment-aware H-designation search, numeric gram ranges across scalar and nested masses, six deterministic sort orders, URL-persisted filters, incremental rendering, and rights-gated source folios. Catalog facts and folio authorization are validated separately.
 
@@ -96,6 +96,7 @@ The current catalog contains:
 | `chladni-1819` | `collection-entry` | 74 | 12 | 12 |
 | `chladni-1825` | `collection-entry` | 42 | 41 | 33 |
 | `haidinger-1859` | `collection-entry` | 137 | 6 | 5 |
+| `hogbom-1902` | `collection-entry` | 86 | 3 | 2 |
 | `hovey-1896` | `catalog-number` | 25 | 7 | 7 |
 | `huss-1976` | `specimen` | 1,078 | 46 | 46 |
 | `huss-1986` | `specimen` | 544 | 21 | 21 |
@@ -104,7 +105,8 @@ The current catalog contains:
 | `nininger-1950` | `specimen` | 1,678 | 79 | 79 |
 | `nordenskiold-1870` | `collection-entry` | 127 | 10 | 10 |
 | `usnm-1886` | `collection-entry` | 349 | 11 | 11 |
-| **Total** |  | **4,467** | **265** | **245** |
+| `washington-1897` | `collection-entry` | 201 | 4 | 4 |
+| **Total** |  | **4,754** | **272** | **251** |
 <!-- release-summary:readme-catalog-table:end -->
 
 Metadata source-page coverage is not a claim that every covered page contains a record. Some covered pages are introductory or narrative-only.
@@ -132,7 +134,7 @@ matchType, canonicalName, meteoriteCode, metbullUrl, alternateNameNote
 The historical `name`, designation/catalog identifier fields, printed private weight strings, and numeric source weights are never replaced by this object. The website labels the source catalog name and shows a separate linked **Current Meteoritical Bulletin name** only when a reviewed canonical name differs. No client, build, or export path fuzzy-matches names or infers identity.
 
 <!-- release-summary:readme-metbull:start -->
-The current release includes reviewed MetBull harmonization for 4,059 of 4,467 records: 3,930 have a resolved current identity and 129 remain explicitly unresolved. 9 records currently have a null `name` value.
+The current release includes reviewed MetBull harmonization for 4,059 of 4,754 records: 3,930 have a resolved current identity and 129 remain explicitly unresolved. 13 records currently have a null `name` value.
 <!-- release-summary:readme-metbull:end -->
 
 Validated continuation evidence recovers formerly blank source names where supported; it does not infer modern identity.
@@ -171,6 +173,7 @@ Any missing, blocked, incomplete, contradictory, malformed, or unsafe value deni
 | `chladni-1819` | display | public-domain | 12 |
 | `chladni-1825` | blocked | undetermined | 0 |
 | `haidinger-1859` | display | public-domain | 6 |
+| `hogbom-1902` | blocked | undetermined | 0 |
 | `hovey-1896` | display | public-domain | 7 |
 | `huss-1976` | blocked | undetermined | 0 |
 | `huss-1986` | blocked | undetermined | 0 |
@@ -179,6 +182,7 @@ Any missing, blocked, incomplete, contradictory, malformed, or unsafe value deni
 | `nininger-1950` | blocked | undetermined | 0 |
 | `nordenskiold-1870` | blocked | undetermined | 0 |
 | `usnm-1886` | blocked | undetermined | 0 |
+| `washington-1897` | blocked | undetermined | 0 |
 | **Total** |  |  | **49** |
 <!-- release-summary:readme-folio-table:end -->
 

@@ -56,6 +56,13 @@
         "haidinger-1859-page-0026"
       ]
     },
+    "hogbom-1902": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "basis": null,
+      "basisUrl": null,
+      "pageIds": []
+    },
     "hovey-1896": {
       "displayPolicy": "display",
       "rightsStatus": "public-domain",
@@ -140,6 +147,13 @@
       "pageIds": []
     },
     "usnm-1886": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "basis": null,
+      "basisUrl": null,
+      "pageIds": []
+    },
+    "washington-1897": {
       "displayPolicy": "blocked",
       "rightsStatus": "undetermined",
       "basis": null,
