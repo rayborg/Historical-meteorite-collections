@@ -25,6 +25,7 @@ test("publishes a safe and accessible bibliography table", async () => {
   assert.match(bibliography, /\.table-wrap:focus-visible \{[^}]*outline:/);
   assert.match(bibliography, /data-control="MCB-80"[^\n]*processing-cell complete[^\n]*Washington 1897/);
   assert.match(bibliography, /data-control="MCB-93"[^\n]*processing-cell complete[^\n]*Högbom 1902/);
+  assert.match(bibliography, /data-control="MCB-94"[^\n]*processing-cell complete[^\n]*Farrington 1903/);
 
   const sourceLinks = bibliography.match(/<a href="https:\/\//g) || [];
   const namedSourceLinks = bibliography.match(/target="_blank" rel="noreferrer" aria-label="Open(?: \d+)? source for MCB-\d+:/g) || [];

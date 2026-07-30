@@ -778,6 +778,7 @@ test("catalog dropdown labels are concise and leave summary titles unchanged", (
     { id: "hovey-1896", year: 1896, label: "Catalogue of meteorites in the AMNH (1896)" },
     { id: "washington-1897", year: 1897, label: "Catalogue of the Collection of Meteorites in the Peabody Museum (1897)" },
     { id: "hogbom-1902", year: 1902, label: "Verzeichniss über die Meteoriten des Mineralogischen Instituts (1902)" },
+    { id: "farrington-1903", year: 1903, label: "Catalogue of the Collection of Meteorites, May 1, 1903 (1903)" },
     { id: "nininger-1933", year: 1933, label: "The Nininger Collection (1933)" },
     { id: "nininger-1950", year: 1950, label: "The Nininger Collection (1950)" },
     { id: "huss-1976", year: 1976, label: "Huss Meteorite Collection catalog (1976)" },
@@ -787,7 +788,7 @@ test("catalog dropdown labels are concise and leave summary titles unchanged", (
   assert.deepEqual(labels, [
     "Lucas (1813)", "Chladni (1819)", "Chladni (1825)", "Haidinger (1859)", "Buchner (1863)",
     "Nordenskiöld (1870)", "Ball (1882)", "USNM (1886)", "Hovey (1896)", "Washington (1897)",
-    "Högbom (1902)", "Nininger (1933)",
+    "Högbom (1902)", "Farrington (1903)", "Nininger (1933)",
     "Nininger (1950)", "Huss (1976)", "Huss (1986)"
   ]);
   assert.equal(new Set(labels).size, descriptors.length);

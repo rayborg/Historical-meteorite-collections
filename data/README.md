@@ -1,12 +1,12 @@
 # Public Catalog Data
 
 <!-- release-summary:data-overview:start -->
-`catalog.json` is a schema-6 facts-only dataset containing 4,754 source observations from 15 historical meteorite catalogs. `folios.json` is a separate schema-2, deny-by-default display manifest with 49 reviewed page entries.
+`catalog.json` is a schema-6 facts-only dataset containing 5,005 source observations from 16 historical meteorite catalogs. `folios.json` is a separate schema-2, deny-by-default display manifest with 49 reviewed page entries.
 <!-- release-summary:data-overview:end -->
 
 A searchable transcription of the 1976 Huss Meteorite Collection catalog, compiled and published by Glenn Huss.
 
-The other configured descriptors identify their compilers without inferring a publisher: Jean Andre Henri Lucas for 1813; E. F. F. Chladni, with a Vienna appendix by Karl von Schreibers, for 1819; E. F. F. Chladni for 1825; Wilhelm Haidinger for 1859; Otto Buchner for 1863; A. E. Nordenskiöld for 1870; Valentine Ball for 1882; F. W. Clarke for 1886; Edmund Otis Hovey for 1896; Henry S. Washington for 1897; A. G. Högbom for 1902; H. H. Nininger for 1933; H. H. Nininger and Addie D. Nininger for 1950; and Glenn I. Huss for 1986.
+The other configured descriptors identify their compilers without inferring a publisher: Jean Andre Henri Lucas for 1813; E. F. F. Chladni, with a Vienna appendix by Karl von Schreibers, for 1819; E. F. F. Chladni for 1825; Wilhelm Haidinger for 1859; Otto Buchner for 1863; A. E. Nordenskiöld for 1870; Valentine Ball for 1882; F. W. Clarke for 1886; Edmund Otis Hovey for 1896; Henry S. Washington for 1897; A. G. Högbom for 1902; Oliver Cummings Farrington for 1903; H. H. Nininger for 1933; H. H. Nininger and Addie D. Nininger for 1950; and Glenn I. Huss for 1986.
 
 <!-- release-summary:data-catalog-table:start -->
 | `catalogId` | Record model | Records | Metadata source pages | Pages cited by records |
@@ -15,6 +15,7 @@ The other configured descriptors identify their compilers without inferring a pu
 | `buchner-1863` | `collection-entry` | 185 | 5 | 5 |
 | `chladni-1819` | `collection-entry` | 74 | 12 | 12 |
 | `chladni-1825` | `collection-entry` | 42 | 41 | 33 |
+| `farrington-1903` | `collection-entry` | 251 | 38 | 38 |
 | `haidinger-1859` | `collection-entry` | 137 | 6 | 5 |
 | `hogbom-1902` | `collection-entry` | 86 | 3 | 2 |
 | `hovey-1896` | `catalog-number` | 25 | 7 | 7 |
@@ -26,7 +27,7 @@ The other configured descriptors identify their compilers without inferring a pu
 | `nordenskiold-1870` | `collection-entry` | 127 | 10 | 10 |
 | `usnm-1886` | `collection-entry` | 349 | 11 | 11 |
 | `washington-1897` | `collection-entry` | 201 | 4 | 4 |
-| **Total** |  | **4,754** | **272** | **251** |
+| **Total** |  | **5,005** | **310** | **289** |
 <!-- release-summary:data-catalog-table:end -->
 
 Metadata source-page coverage is not a count of pages cited by records. Some covered pages are introductory or narrative-only.
@@ -169,6 +170,7 @@ The deployment-specific `scripts/folio-release-lock.json` pins every catalog pol
 | `buchner-1863` | blocked | undetermined | 0 |
 | `chladni-1819` | display | public-domain | 12 |
 | `chladni-1825` | blocked | undetermined | 0 |
+| `farrington-1903` | blocked | undetermined | 0 |
 | `haidinger-1859` | display | public-domain | 6 |
 | `hogbom-1902` | blocked | undetermined | 0 |
 | `hovey-1896` | display | public-domain | 7 |

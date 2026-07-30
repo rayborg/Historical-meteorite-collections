@@ -9,7 +9,7 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 ## Current State
 
 <!-- release-summary:session-current-state:start -->
-- Schema 6 contains 4,754 facts-only records across 15 catalogs.
+- Schema 6 contains 5,005 facts-only records across 16 catalogs.
 
 | `catalogId` | Record model | Records | Metadata source pages | Pages cited by records |
 | --- | --- | ---: | ---: | ---: |
@@ -17,6 +17,7 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 | `buchner-1863` | `collection-entry` | 185 | 5 | 5 |
 | `chladni-1819` | `collection-entry` | 74 | 12 | 12 |
 | `chladni-1825` | `collection-entry` | 42 | 41 | 33 |
+| `farrington-1903` | `collection-entry` | 251 | 38 | 38 |
 | `haidinger-1859` | `collection-entry` | 137 | 6 | 5 |
 | `hogbom-1902` | `collection-entry` | 86 | 3 | 2 |
 | `hovey-1896` | `catalog-number` | 25 | 7 | 7 |
@@ -28,13 +29,13 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 | `nordenskiold-1870` | `collection-entry` | 127 | 10 | 10 |
 | `usnm-1886` | `collection-entry` | 349 | 11 | 11 |
 | `washington-1897` | `collection-entry` | 201 | 4 | 4 |
-| **Total** |  | **4,754** | **272** | **251** |
+| **Total** |  | **5,005** | **310** | **289** |
 
-- Metadata covers 272 catalog-scoped source pages; records cite 251 of them.
+- Metadata covers 310 catalog-scoped source pages; records cite 289 of them.
 - Nininger coverage is derived without page-boundary assumptions: `nininger-1933` has 171 records; its metadata source pages span 1-20, and its record citations span 1-11. `nininger-1950` has 1,678 records; its metadata source pages span 26-104, and its record citations span 26-104.
 - Public folios use schema 2 and expose 49 display pages across 5 catalogs: `chladni-1819` (12 pages, `public-domain`); `haidinger-1859` (6 pages, `public-domain`); `hovey-1896` (7 pages, `public-domain`); `lucas-1813` (3 pages, `public-domain`); `nininger-1933` (21 pages, `no-copyright-us`).
-- Blocked folio catalogs are: `ball-1882` (0 pages, `undetermined`); `buchner-1863` (0 pages, `undetermined`); `chladni-1825` (0 pages, `undetermined`); `hogbom-1902` (0 pages, `undetermined`); `huss-1976` (0 pages, `undetermined`); `huss-1986` (0 pages, `undetermined`); `nininger-1950` (0 pages, `undetermined`); `nordenskiold-1870` (0 pages, `undetermined`); `usnm-1886` (0 pages, `undetermined`); `washington-1897` (0 pages, `undetermined`).
-- Reviewed MetBull harmonization covers 4,059 of 4,754 records: 3,930 resolved and 129 explicitly unresolved.
+- Blocked folio catalogs are: `ball-1882` (0 pages, `undetermined`); `buchner-1863` (0 pages, `undetermined`); `chladni-1825` (0 pages, `undetermined`); `farrington-1903` (0 pages, `undetermined`); `hogbom-1902` (0 pages, `undetermined`); `huss-1976` (0 pages, `undetermined`); `huss-1986` (0 pages, `undetermined`); `nininger-1950` (0 pages, `undetermined`); `nordenskiold-1870` (0 pages, `undetermined`); `usnm-1886` (0 pages, `undetermined`); `washington-1897` (0 pages, `undetermined`).
+- Reviewed MetBull harmonization covers 4,059 of 5,005 records: 3,930 resolved and 129 explicitly unresolved.
 - Records currently having a null `name` value: 13.
 <!-- release-summary:session-current-state:end -->
 
@@ -46,13 +47,12 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 
 ## Latest Completed Catalogs
 
-- `MCB-80` is integrated as `washington-1897`: Henry S. Washington, *Catalogue of the Collection of Meteorites in the Peabody Museum of Yale University* (1897), with 201 ordered `collection-entry` records citing printed pages 83-86.
-- `MCB-93` is integrated as `hogbom-1902`: A. G. Högbom, *Verzeichniss über die Meteoriten des Mineralogischen Instituts an der Universität Upsala* (1902), with 86 ordered `collection-entry` records citing printed pages 284-286.
-- Both catalogs are facts-only, add no MetBull mappings, and retain blocked folio policies with undetermined rights and no public images.
+- `MCB-94` is integrated as `farrington-1903`: Oliver Cummings Farrington, *Catalogue of the Collection of Meteorites, May 1, 1903* (1903), with 251 ordered `collection-entry` records citing printed pages 83-120.
+- The catalog is facts-only, adds no MetBull mappings, and retains a blocked folio policy with undetermined rights and no public images.
 
 ## Active Work State
 
-- The Washington 1897 and Högbom 1902 facts-only public integration remains uncommitted and unpushed. Preserve the dirty worktree before rebasing or regeneration.
+- The Farrington 1903 facts-only public integration remains uncommitted and unpushed. Preserve the dirty worktree before rebasing or regeneration.
 - No release-blocking validation issue remains. Any future public change must still be produced from the private canonical data and pass deterministic byte comparison and the facts-only privacy checks.
 
 ## Preservation And Data Rules
@@ -101,8 +101,8 @@ Distinct specimens with the same meteorite name and similar mass must not be col
 ## Immediate Next Steps
 
 1. Preserve the current uncommitted private/public catalog diffs. Commit or push only when explicitly requested.
-2. Keep MCB-80 and MCB-93 folios blocked unless separate catalog-specific rights reviews explicitly authorize exact ordered page sets; source age or Internet Archive availability alone is insufficient.
-3. Select the next processable bibliography control only after preserving and validating the current 15-catalog release candidate.
+2. Keep MCB-94 folios blocked unless a separate catalog-specific rights review explicitly authorizes an exact ordered page set; source age or Internet Archive availability alone is insufficient.
+3. Select the next processable bibliography control only after preserving and validating the current 16-catalog release candidate.
 4. Resolve the missing scan for `SP1949-0039` (currently MCB-107) and correct the source evidence for MCB-4 and MCB-5 when primary evidence is available.
 5. Keep schema 6 validation, deterministic private/public equality, release summaries, lineage checks, folio hashes, Node tests, runtime checks, and the facts-only privacy boundary green for every future release.
 
