@@ -6,7 +6,7 @@ Run from the repository root:
 node scripts/test-multicatalog.cjs
 ```
 
-The real release includes 2,169 ASU September 2024 facts-only records with 2,166 unique designations, only `91`, `157`, and `607` duplicated, no MetBull mappings, and a blocked/undetermined zero-page folio policy. Runtime dropdown coverage requires the concise label `ASU (2024)`.
+The real release includes 2,169 ASU September 2024 facts-only records with 2,166 unique designations, only `91`, `157`, and `607` duplicated, 2,088 reviewed exact-name MetBull mappings, 81 pending observations without canonical identity, and a blocked/undetermined zero-page folio policy. Runtime dropdown coverage requires the concise label `ASU (2024)`.
 
 The harness uses only Node built-ins and the CommonJS exports from `app.js`. Its schema-6 fixture covers all four record models with two `specimen` Huss descriptors, one `catalog-item` Nininger descriptor, one synthetic `catalog-number` Hovey descriptor, and one synthetic `collection-entry` museum-register descriptor. The 15 records include three collection entries with duplicate or absent reported numbers, ordered entry identities, normalized holding masses, and single- or cross-page citations. The Hovey records include a cross-page `[149, 150]` citation, a count-22 group with one 212.6 g mass, and a count-2 group with ordered 24.7 g and 11.4 g masses. Every synthetic descriptor is blocked/undetermined for folio display. Optional MetBull fixtures verify exact reviewed fields, search behavior, and fail-closed unresolved identities. The real release includes one designation-bearing specimen with a source-omitted mass: Appley Bridge `199.1` remains `weight.grams: null`.
 

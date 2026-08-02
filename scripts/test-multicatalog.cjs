@@ -238,6 +238,8 @@ test("validates, prepares, and searches explicit reviewed MetBull harmonization"
   assert.equal(prepared.metbull.canonicalName, "Current Alpha Name");
   assert.equal(app.metbullUrlForCode("12345"), "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12345");
   assert.equal(app.matchesSearch(prepared, "Current Alpha"), true);
+  assert.equal(app.matchesSearch(prepared, "Current Alp"), true);
+  assert.equal(app.matchesSearch(prepared, "urrent Alpha"), false);
   assert.equal(app.matchesSearch(prepared, "historical name"), true);
 
   const caseCandidate = clone(fixture);
@@ -676,6 +678,27 @@ test("search covers catalog items and rendered holding facts", () => {
   assert.deepEqual(ids(records.filter((record) => app.matchesSearch(record, "count 4"))), ["nininger-item-4"]);
 });
 
+test("ordinary text search matches normalized token prefixes instead of token interiors", () => {
+  const [allende, alais] = prepareSpecimens([
+    specimenSource({
+      id: "allende", designation: "H1", name: "Állende-Sur", locality: "Chihuahua, México"
+    }),
+    specimenSource({
+      id: "alais", designation: "H2", name: "Alais", locality: "Von selbst zerfallenden Substanz"
+    })
+  ]);
+
+  assert.equal(app.matchesSearch(allende, "Allende"), true);
+  assert.equal(app.matchesSearch(allende, "Allen"), true);
+  assert.equal(app.matchesSearch(allende, "ÁLLEN, CHIH."), true);
+  assert.equal(app.matchesSearch(allende, "H1 allen"), true);
+  assert.equal(app.matchesSearch(allende, "llende"), false);
+  assert.equal(app.matchesSearch(allende, "H1 llende"), false);
+  assert.equal(app.matchesSearch(alais, "Allende"), false);
+  assert.equal(app.matchesSearch(alais, "zerfall"), true);
+  assert.equal(app.matchesSearch(alais, "fallenden"), false);
+});
+
 test("numeric-leading holding codes match exactly after case and space normalization", () => {
   const records = recordsFor("nininger-1933");
   const specimen = prepareSpecimens([specimenSource({ id: "direct-26a", designation: "26a" })])[0];
@@ -806,7 +829,7 @@ test("URL filter behavior and cache version remain stable", () => {
     query: "catalog item 2", catalog: "nininger-1933", min: "3", max: "12", sort: "weight-desc"
   });
   assert.equal(app.serializeUrlFilters(parsed).toString(), "q=catalog+item+2&catalog=nininger-1933&min=3&max=12&sort=weight-desc");
-  assert.equal(app.CACHE_VERSION, "20260802-1");
+  assert.equal(app.CACHE_VERSION, "20260802-2");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.CACHE_VERSION}`));
 });

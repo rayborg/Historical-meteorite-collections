@@ -1,0 +1,67 @@
+name: Catalog or search correction
+description: Report an error in a catalog record, canonical name, or search result.
+title: "[Correction]: "
+assignees:
+  - rayborg
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping improve this factual index. Please provide public, verifiable evidence for the proposed correction. GitHub requires an account to submit this form and applies its abuse controls; do not include private or sensitive information.
+  - type: dropdown
+    id: issue-type
+    attributes:
+      label: Issue type
+      description: Choose the part of the public index that needs correction.
+      options:
+        - Catalog record or transcription
+        - Canonical meteorite name
+        - Search result or discoverability
+    validations:
+      required: true
+  - type: input
+    id: affected-url
+    attributes:
+      label: Affected page or record URL
+      description: Link directly to the public page or record where possible.
+      placeholder: https://rayborg.github.io/Historical-meteorite-collections/...
+    validations:
+      required: true
+  - type: input
+    id: record-identifier
+    attributes:
+      label: Catalog or record identifier
+      description: Provide the catalog ID, record ID, designation, or search query that identifies the problem.
+      placeholder: Catalog ID, record ID, designation, or exact search query
+    validations:
+      required: true
+  - type: textarea
+    id: observed-problem
+    attributes:
+      label: Observed problem
+      description: Describe what the site currently shows and why it appears incorrect.
+    validations:
+      required: true
+  - type: textarea
+    id: expected-correction
+    attributes:
+      label: Expected correction
+      description: State the specific corrected value or search behavior you expect.
+    validations:
+      required: true
+  - type: textarea
+    id: supporting-evidence
+    attributes:
+      label: Supporting evidence
+      description: Cite public catalog pages, Meteoritical Bulletin records, or other authoritative sources. Include links when available.
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmations
+      options:
+        - label: I checked existing issues and did not find an open report for this correction.
+          required: true
+        - label: I have not included email addresses, private correspondence, credentials, or other sensitive/private data.
+          required: true

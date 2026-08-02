@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260802-1";
+const CACHE_VERSION = "20260802-2";
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "designation-asc";
 const VALID_SORTS = new Set([
@@ -300,6 +300,11 @@ function numericLeadingHoldingCode(value) {
   return /^\d+[a-z]+$/.test(normalized) ? normalized : null;
 }
 
+function matchesTokenPrefixes(haystack, queryTerms) {
+  const haystackTerms = haystack.split(/\s+/);
+  return queryTerms.every((term) => haystackTerms.some((candidate) => candidate.startsWith(term)));
+}
+
 function matchesSearch(record, rawQuery) {
   const query = searchable(rawQuery);
   if (!query) return true;
@@ -374,7 +379,7 @@ function matchesSearch(record, rawQuery) {
         parsedQuery.textTerms.length === 0 &&
         query.split(/\s+/).every((term) => haystackTerms.has(term));
     }
-    return parsedQuery.textTerms.every((term) => haystack.includes(term));
+    return matchesTokenPrefixes(haystack, parsedQuery.textTerms);
   }
 
   const queryDesignation = genericDesignation(rawQuery);
@@ -419,7 +424,7 @@ function matchesSearch(record, rawQuery) {
     record.dateOfDiscovery,
     record.eventDate
   ].filter(Boolean).join(" "));
-  return query.split(/\s+/).every((term) => haystack.includes(term));
+  return matchesTokenPrefixes(haystack, query.split(/\s+/));
 }
 
 function recordDesignations(record) {

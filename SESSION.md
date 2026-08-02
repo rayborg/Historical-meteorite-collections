@@ -39,7 +39,7 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 - Nininger coverage is derived without page-boundary assumptions: `nininger-1933` has 171 records; its metadata source pages span 1-20, and its record citations span 1-11. `nininger-1950` has 1,678 records; its metadata source pages span 26-104, and its record citations span 26-104.
 - Public folios use schema 2 and expose 49 display pages across 5 catalogs: `chladni-1819` (12 pages, `public-domain`); `haidinger-1859` (6 pages, `public-domain`); `hovey-1896` (7 pages, `public-domain`); `lucas-1813` (3 pages, `public-domain`); `nininger-1933` (21 pages, `no-copyright-us`).
 - Blocked folio catalogs are: `asu-2024-09` (0 pages, `undetermined`); `ball-1882` (0 pages, `undetermined`); `buchner-1863` (0 pages, `undetermined`); `chladni-1825` (0 pages, `undetermined`); `farrington-1903` (0 pages, `undetermined`); `hogbom-1902` (0 pages, `undetermined`); `huss-1976` (0 pages, `undetermined`); `huss-1986` (0 pages, `undetermined`); `mason-1964` (0 pages, `undetermined`); `nininger-1950` (0 pages, `undetermined`); `nordenskiold-1870` (0 pages, `undetermined`); `schreiter-1912` (0 pages, `undetermined`); `tassin-1902` (0 pages, `undetermined`); `usnm-1886` (0 pages, `undetermined`); `washington-1897` (0 pages, `undetermined`).
-- Reviewed MetBull harmonization covers 4,059 of 9,050 records: 3,930 resolved and 129 explicitly unresolved.
+- Reviewed MetBull harmonization covers 7,826 of 9,050 records: 7,697 resolved and 129 explicitly unresolved.
 - Records currently having a null `name` value: 13.
 <!-- release-summary:session-current-state:end -->
 
@@ -48,8 +48,8 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 - Schreiter 1912 metadata spans pages 58-75; its 162 entries cite pages 66-73.
 - Mason 1964 metadata spans pages 1-40; its 1,374 catalog-number observations cite 33 of those pages.
 - ASU September 2024 has 2,169 facts-only specimen observations across 53 pages, 2,166 unique designations, and only the designations `91`, `157`, and `607` duplicated.
-- ASU has no MetBull mappings or public image assets and remains folio-blocked with undetermined rights.
-- ASU adds no generated lineage observation or relationship; the 241-relationship set is unchanged, while source metadata now records 9,050 records across 20 catalogs.
+- ASU has 2,088 reviewed exact-name MetBull mappings and 81 pending observations that carry no canonical identity. It has no public image assets and remains folio-blocked with undetermined rights.
+- The regenerated lineage index contains 422 relationships: 195 same-inventory relationships and 227 unreviewed possible cross-source matches. ASU participates in 8 possible matches but is not a registered edition series.
 - Nininger 1933 includes printed pages 1-20; pages 12-20 are narrative-only, and the printed catalog numbering skips item 139.
 - The latest release candidate passes the runtime suite and integrated public validator; both must continue to pass before release.
 - Validated continuation evidence recovers formerly blank source names where supported, without inferring modern identity. Reviewed historical entries that genuinely print no separate proper source name retain null names and unresolved reviews.
@@ -62,7 +62,7 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 - `MCB-117` is integrated as `schreiter-1912`: R. Schreiter, *Die Meteoriten des Kgl. Mineralogischen Museums in Dresden* (1912), with 162 ordered `collection-entry` records citing printed pages 66-73.
 - `MCB-86` is integrated as `tassin-1902`: Wirt Tassin, *Descriptive Catalogue of the Meteorite Collection in the United States National Museum to January 1, 1902* (1902), with 340 ordered `collection-entry` records citing printed pages 675-698.
 - `MCB-94` is integrated as `farrington-1903`: Oliver Cummings Farrington, *Catalogue of the Collection of Meteorites, May 1, 1903* (1903), with 251 ordered `collection-entry` records citing printed pages 83-120.
-- All five catalogs are facts-only, add no MetBull mappings, and retain blocked folio policies with undetermined rights and no public images.
+- All five catalogs are facts-only and retain blocked folio policies with undetermined rights and no public images. Reviewed exact-name MetBull coverage resolves ASU 2,088, Mason 1,099, Schreiter 72, Tassin 192, and Farrington 170 observations; pending observations carry no canonical identity.
 
 ## Active Work State
 
