@@ -68,8 +68,8 @@ test("publishes locked source and relationship counts", () => {
   assert.equal(flattenInventoryObservations(catalog).length, 3627);
   assert.deepEqual(published.metadata.source, {
     catalogSchemaVersion: 6,
-    recordCount: 5345,
-    catalogCount: 17,
+    recordCount: 5507,
+    catalogCount: 18,
     flattenedMassObservationCount: 3916,
     inventoryObservationCount: 3627,
   });

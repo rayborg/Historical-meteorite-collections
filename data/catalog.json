@@ -611,6 +611,44 @@
         "rightsStatus": "undetermined"
       },
       {
+        "id": "schreiter-1912",
+        "recordModel": "collection-entry",
+        "label": "Die Meteoriten des Kgl. Mineralogischen Museums in Dresden (1912)",
+        "compiler": "R. Schreiter",
+        "year": 1912,
+        "sourcePages": [
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          73,
+          74,
+          75
+        ],
+        "sourcePageCount": 18,
+        "recordCount": 162,
+        "recordsWithDesignation": 0,
+        "recordsWithWeight": 162,
+        "confidenceCounts": {
+          "high": 162,
+          "medium": 0,
+          "low": 0
+        },
+        "folioDisplayPolicy": "blocked",
+        "rightsStatus": "undetermined"
+      },
+      {
         "id": "tassin-1902",
         "recordModel": "collection-entry",
         "label": "Descriptive Catalogue of the Meteorite Collection in the United States National Museum to January 1, 1902 (1902)",
@@ -712,11 +750,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 5345,
+    "recordCount": 5507,
     "recordsWithDesignation": 3430,
-    "recordsWithWeight": 4798,
+    "recordsWithWeight": 4960,
     "confidenceCounts": {
-      "high": 5333,
+      "high": 5495,
       "medium": 12,
       "low": 0
     }
@@ -106437,6 +106475,4729 @@
       "classification": "Jernmeteorit",
       "locality": null,
       "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f1221a7a-5bab-4ca4-a19b-417dc1e04a97",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 1,
+      "reportedNumber": null,
+      "catalogPages": [
+        66
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Billitonit",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 10.5
+            },
+            {
+              "grams": 23
+            },
+            {
+              "grams": 56.5
+            }
+          ]
+        }
+      ],
+      "name": "Billitonit",
+      "classification": "1. Tektite oder Glasmeteorite",
+      "locality": "Dendang, Billiton, Java",
+      "eventDate": "?",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-eba8faa8-d8c2-4171-a1fc-277aa4165316",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 2,
+      "reportedNumber": null,
+      "catalogPages": [
+        66
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Moldavit",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 1
+            },
+            {
+              "grams": 1.5
+            },
+            {
+              "grams": 3.5
+            },
+            {
+              "grams": 6.5
+            },
+            {
+              "grams": 8.5
+            },
+            {
+              "grams": 8.5
+            },
+            {
+              "grams": 9
+            },
+            {
+              "grams": 9.5
+            }
+          ]
+        }
+      ],
+      "name": "Moldavit",
+      "classification": "1. Tektite oder Glasmeteorite",
+      "locality": "Moldauthein, Budweis, Böhmen, Österreich",
+      "eventDate": "?",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d3fb9303-524d-497a-a5b0-9033a2d7a73a",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 3,
+      "reportedNumber": null,
+      "catalogPages": [
+        66
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Bishopville",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 2
+            }
+          ]
+        }
+      ],
+      "name": "Bishopville",
+      "classification": "2. Steinmeteorite; A. Achondrite; a) Chladnit (Chl)",
+      "locality": "Sumterville, Süd-Carolina, Vereinigte Staaten",
+      "eventDate": "25. III. 1843",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-52c4232c-a33e-4174-ae38-44902ca4de14",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 4,
+      "reportedNumber": null,
+      "catalogPages": [
+        66
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Shalka",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 9.3
+            }
+          ]
+        }
+      ],
+      "name": "Shalka",
+      "classification": "2. Steinmeteorite; A. Achondrite; a) Chladnit (Chl)",
+      "locality": "Bissempore, Bancoorah, Bengalen, Ostindien",
+      "eventDate": "30. XI. 1850",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-9582a879-6e62-406c-b7fc-aad462864d12",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 5,
+      "reportedNumber": null,
+      "catalogPages": [
+        66
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Jelica",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 36.3
+            },
+            {
+              "grams": 162.5
+            }
+          ]
+        }
+      ],
+      "name": "Jelica",
+      "classification": "2. Steinmeteorite; A. Achondrite; b) Amphoterit (Am)",
+      "locality": "Jezevica, Čačak, Serbien",
+      "eventDate": "1. XII. 1889",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-bb19b3c0-e67c-4cee-9381-6cc694d2feea",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 6,
+      "reportedNumber": null,
+      "catalogPages": [
+        66
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Manbhoom",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 0.7
+            }
+          ]
+        }
+      ],
+      "name": "Manbhoom",
+      "classification": "2. Steinmeteorite; A. Achondrite; b) Amphoterit (Am)",
+      "locality": "Manbazar, Pargana, Bengalen, Ostindien",
+      "eventDate": "22. XII. 1863",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b001eadc-8c40-4b43-9bca-a0924140092f",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 7,
+      "reportedNumber": null,
+      "catalogPages": [
+        66
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Jonzac",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 1.2
+            }
+          ]
+        }
+      ],
+      "name": "Jonzac",
+      "classification": "2. Steinmeteorite; A. Achondrite; c) Eukrit (Eu)",
+      "locality": "Barbezieux, Charente inférieure, Frankreich",
+      "eventDate": "13. VI. 1819",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-7b6eaded-ec86-4418-a0e6-ad3c210b3168",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 8,
+      "reportedNumber": null,
+      "catalogPages": [
+        66
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Stannern",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 400
+            }
+          ]
+        }
+      ],
+      "name": "Stannern",
+      "classification": "2. Steinmeteorite; A. Achondrite; c) Eukrit (Eu)",
+      "locality": "Iglau, Mähren, Österreich",
+      "eventDate": "22. V. 1808",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-042e033f-316f-4b35-8e4a-6eb07a4c91fa",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 9,
+      "reportedNumber": null,
+      "catalogPages": [
+        66
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Siena",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 1.1
+            },
+            {
+              "grams": 53.5
+            }
+          ]
+        }
+      ],
+      "name": "Siena",
+      "classification": "2. Steinmeteorite; B. Chondrite; a) Howarditischer Chondrit (Cho)",
+      "locality": "Cosona, Pienza, Toscana, Italien",
+      "eventDate": "16. VI. 1794",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-bd84399a-4660-41b4-bd3a-18a1d3f69146",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 10,
+      "reportedNumber": null,
+      "catalogPages": [
+        66
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Cabezzo de Mayo",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 22.5
+            },
+            {
+              "grams": 25
+            },
+            {
+              "grams": 106.7
+            }
+          ]
+        }
+      ],
+      "name": "Cabezzo de Mayo",
+      "classification": "2. Steinmeteorite; B. Chondrite; b) Weißer Chondrit (Cw)",
+      "locality": "Muros, Murcia, Spanien",
+      "eventDate": "18. VIII. 1870",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-54128d46-372b-4cde-904c-f6271e2b3001",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 11,
+      "reportedNumber": null,
+      "catalogPages": [
+        66
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Kaande (Oesel Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 0.1
+            }
+          ]
+        }
+      ],
+      "name": "Kaande (Oesel Bw.)",
+      "classification": "2. Steinmeteorite; B. Chondrite; b) Weißer Chondrit (Cw)",
+      "locality": "Insel Oesel, Livland, Rußland",
+      "eventDate": "11. V. 1855",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-ba71331d-e9f9-4319-b7d2-66abfc8b1bf8",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 12,
+      "reportedNumber": null,
+      "catalogPages": [
+        66
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Lançon Bw.",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 0.8
+            },
+            {
+              "grams": 0.9
+            }
+          ]
+        }
+      ],
+      "name": "Lançon Bw.",
+      "classification": "2. Steinmeteorite; B. Chondrite; b) Weißer Chondrit (Cw)",
+      "locality": "Aix-en-Provence, Bouches-du-Rhône, Frankreich",
+      "eventDate": "20. VI. 1897",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-146e7287-b7cf-4803-9a64-c33e2e5a9bb5",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 13,
+      "reportedNumber": null,
+      "catalogPages": [
+        66
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Mauerkirchen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 5.4
+            }
+          ]
+        }
+      ],
+      "name": "Mauerkirchen",
+      "classification": "2. Steinmeteorite; B. Chondrite; b) Weißer Chondrit (Cw)",
+      "locality": "Altkirchen, Innviertel, Österreich",
+      "eventDate": "20. XI. 1768",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-9b58ba89-72b2-47e8-8b5e-7443093feab5",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 14,
+      "reportedNumber": null,
+      "catalogPages": [
+        66
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Mordvinovka (Pawlograd Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 214.5
+            }
+          ]
+        }
+      ],
+      "name": "Mordvinovka (Pawlograd Bw.)",
+      "classification": "2. Steinmeteorite; B. Chondrite; b) Weißer Chondrit (Cw)",
+      "locality": "Berdjansk, Ekaterinoslaw, Rußland",
+      "eventDate": "19. V. 1826",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6c97f089-5cca-4c3c-8806-049becc7937a",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 15,
+      "reportedNumber": null,
+      "catalogPages": [
+        66
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Girgenti",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 86.5
+            }
+          ]
+        }
+      ],
+      "name": "Girgenti",
+      "classification": "2. Steinmeteorite; B. Chondrite; c) Weißer Chondrit, geadert (Cwa)",
+      "locality": "Sizilien, Italien",
+      "eventDate": "10. II. 1853",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a3df0f5e-9498-48a3-ac2c-36f5d3fb602b",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 16,
+      "reportedNumber": null,
+      "catalogPages": [
+        66
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Groß-Liebenthal",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 0.5
+            }
+          ]
+        }
+      ],
+      "name": "Groß-Liebenthal",
+      "classification": "2. Steinmeteorite; B. Chondrite; c) Weißer Chondrit, geadert (Cwa)",
+      "locality": "Odessa, Cherson, Rußland",
+      "eventDate": "19. XI. 1881",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-60a72c79-921d-4dc5-8d70-6aabb5e7a45c",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 17,
+      "reportedNumber": null,
+      "catalogPages": [
+        66
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Hartford (Linn County Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 20.3
+            },
+            {
+              "grams": 84
+            }
+          ]
+        }
+      ],
+      "name": "Hartford (Linn County Bw.)",
+      "classification": "2. Steinmeteorite; B. Chondrite; c) Weißer Chondrit, geadert (Cwa)",
+      "locality": "Marion, Jowa, Vereinigte Staaten",
+      "eventDate": "25. II. 1847",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-af55a23b-e6b9-4b23-90ba-1e5724d34c68",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 18,
+      "reportedNumber": null,
+      "catalogPages": [
+        66
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Kuleschowska",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 149
+            }
+          ]
+        }
+      ],
+      "name": "Kuleschowska",
+      "classification": "2. Steinmeteorite; B. Chondrite; c) Weißer Chondrit, geadert (Cwa)",
+      "locality": "Romen, Poltawa, Rußland",
+      "eventDate": "12. III. 1811",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f842ad8b-6a1f-4f31-9eea-898b44d189f3",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 19,
+      "reportedNumber": null,
+      "catalogPages": [
+        66
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Mócs",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 44
+            },
+            {
+              "grams": 102.8
+            },
+            {
+              "grams": 157.5
+            }
+          ]
+        }
+      ],
+      "name": "Mócs",
+      "classification": "2. Steinmeteorite; B. Chondrite; c) Weißer Chondrit, geadert (Cwa)",
+      "locality": "Klausenburg, Siebenbürgen, Ungarn",
+      "eventDate": "3. II. 1882",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-37a4434f-28f9-4747-ab92-1718d7f36582",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 20,
+      "reportedNumber": null,
+      "catalogPages": [
+        66
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Politz",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 418.5
+            }
+          ]
+        }
+      ],
+      "name": "Politz",
+      "classification": "2. Steinmeteorite; B. Chondrite; c) Weißer Chondrit, geadert (Cwa)",
+      "locality": "Köstritz, Gera, Reuß j. L., Deutschland",
+      "eventDate": "13. X. 1819",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a8b537fe-9ffb-4716-85a0-1db255ea73ef",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 21,
+      "reportedNumber": null,
+      "catalogPages": [
+        67
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Scheikar-Stattan (Buschhof Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 4.4
+            }
+          ]
+        }
+      ],
+      "name": "Scheikar-Stattan (Buschhof Bw.)",
+      "classification": "2. Steinmeteorite; B. Chondrite; c) Weißer Chondrit, geadert (Cwa)",
+      "locality": "Jakobstadt, Kurland, Rußland",
+      "eventDate": "2. VI. 1863",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-9e968894-bd5a-405a-821d-2266a8734191",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 22,
+      "reportedNumber": null,
+      "catalogPages": [
+        67
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Wold Cottage",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 13.3
+            }
+          ]
+        }
+      ],
+      "name": "Wold Cottage",
+      "classification": "2. Steinmeteorite; B. Chondrite; c) Weißer Chondrit, geadert (Cwa)",
+      "locality": "Wold Newton, Yorkshire, Großbritannien",
+      "eventDate": "13. XII. 1795",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c1f888f8-b3f5-4d47-b399-d905fcee331b",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 23,
+      "reportedNumber": null,
+      "catalogPages": [
+        67
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Lissa (+ Cwa)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 11.2
+            }
+          ]
+        }
+      ],
+      "name": "Lissa (+ Cwa)",
+      "classification": "2. Steinmeteorite; B. Chondrite; d) Weißer Chondrit, breccienähnlich (Cwb)",
+      "locality": "Bunzlau, Böhmen, Österreich",
+      "eventDate": "3. IX. 1808",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8059a8d8-b35a-4780-a295-e9f1a830258f",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 24,
+      "reportedNumber": null,
+      "catalogPages": [
+        67
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Alfianello",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 12.5
+            },
+            {
+              "grams": 73.9
+            },
+            {
+              "grams": 241
+            }
+          ]
+        }
+      ],
+      "name": "Alfianello",
+      "classification": "2. Steinmeteorite; B. Chondrite; e) Intermediärer Chondrit (Ci)",
+      "locality": "Brescia, Cremona, Italien",
+      "eventDate": "16. II. 1883",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b1b97d49-376d-48ed-ae5a-9f46989314b3",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 25,
+      "reportedNumber": null,
+      "catalogPages": [
+        67
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Dhurmsala",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 166.5
+            },
+            {
+              "grams": 203
+            }
+          ]
+        }
+      ],
+      "name": "Dhurmsala",
+      "classification": "2. Steinmeteorite; B. Chondrite; e) Intermediärer Chondrit (Ci)",
+      "locality": "Lahore, Kangra, Punjab, Ostindien",
+      "eventDate": "14. VII. 1860",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-ca99288b-b47a-4f57-ad42-ceaca60b9856",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 26,
+      "reportedNumber": null,
+      "catalogPages": [
+        67
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Agen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 0.4
+            }
+          ]
+        }
+      ],
+      "name": "Agen",
+      "classification": "2. Steinmeteorite; B. Chondrite; f) Intermediärer Chondrit, geadert (Cia)",
+      "locality": "Monclar, Tormeins, Lot-et-Garonne, Frankreich",
+      "eventDate": "5. IX. 1814",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6284df02-63a4-4aef-b344-dadf8109ada2",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 27,
+      "reportedNumber": null,
+      "catalogPages": [
+        67
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Château-Renard",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 0.9
+            },
+            {
+              "grams": 12.7
+            },
+            {
+              "grams": 32
+            }
+          ]
+        }
+      ],
+      "name": "Château-Renard",
+      "classification": "2. Steinmeteorite; B. Chondrite; f) Intermediärer Chondrit, geadert (Cia)",
+      "locality": "Montargis, Loiret, Frankreich",
+      "eventDate": "12. VI. 1841",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c71dcd06-9f25-4687-bc47-01e1d367a8f7",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 28,
+      "reportedNumber": null,
+      "catalogPages": [
+        67
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Nerft",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 6.5
+            },
+            {
+              "grams": 76.5
+            }
+          ]
+        }
+      ],
+      "name": "Nerft",
+      "classification": "2. Steinmeteorite; B. Chondrite; f) Intermediärer Chondrit, geadert (Cia)",
+      "locality": "Swajahn, Kurland, Rußland",
+      "eventDate": "12. IV. 1864",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-83f41a92-ccc2-4c69-abb6-9899aa278d03",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 29,
+      "reportedNumber": null,
+      "catalogPages": [
+        67
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "New Concord",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 7.1
+            },
+            {
+              "grams": 41
+            }
+          ]
+        }
+      ],
+      "name": "New Concord",
+      "classification": "2. Steinmeteorite; B. Chondrite; f) Intermediärer Chondrit, geadert (Cia)",
+      "locality": "Zanesville, Muscingum, Ohio, Vereinigte Staaten",
+      "eventDate": "1. V. 1860",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-11e4ce68-7bc4-4f05-bbd6-5d2bd4aebacd",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 30,
+      "reportedNumber": null,
+      "catalogPages": [
+        67
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "L’Aigle",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 22.5
+            },
+            {
+              "grams": 72
+            },
+            {
+              "grams": 80.5
+            },
+            {
+              "grams": 84
+            },
+            {
+              "grams": 117
+            }
+          ]
+        }
+      ],
+      "name": "L’Aigle",
+      "classification": "2. Steinmeteorite; B. Chondrite; g) Intermediärer Chondrit, breccienähnlich (Cib)",
+      "locality": "Normandie, Frankreich",
+      "eventDate": "26. IV. 1803",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b36ba938-e0b4-4104-af81-a689e0bc0d2d",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 31,
+      "reportedNumber": null,
+      "catalogPages": [
+        67
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Knyahinya",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 27.3
+            },
+            {
+              "grams": 32.5
+            },
+            {
+              "grams": 89.5
+            },
+            {
+              "grams": 267
+            }
+          ]
+        }
+      ],
+      "name": "Knyahinya",
+      "classification": "2. Steinmeteorite; B. Chondrite; h) Grauer Chondrit (Cg)",
+      "locality": "Berezna, Unghvar, Ungarn",
+      "eventDate": "9. VI. 1866",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-fd7934e8-928e-48c1-9c8d-14b2fbbdb9b4",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 32,
+      "reportedNumber": null,
+      "catalogPages": [
+        67
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Zavid Bw.",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 18.5
+            }
+          ]
+        }
+      ],
+      "name": "Zavid Bw.",
+      "classification": "2. Steinmeteorite; B. Chondrite; h) Grauer Chondrit (Cg)",
+      "locality": "Rozanj, Zwornik, Bosnien",
+      "eventDate": "1. VIII. 1897",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-0b1a4b0c-1291-4679-a22b-9aac72e2bf3b",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 33,
+      "reportedNumber": null,
+      "catalogPages": [
+        67
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Barbotan",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 13.2
+            }
+          ]
+        }
+      ],
+      "name": "Barbotan",
+      "classification": "2. Steinmeteorite; B. Chondrite; i) Grauer Chondrit, geadert (Cga)",
+      "locality": "Roquefort, Lot-et-Garonne u. Landes, Frankreich",
+      "eventDate": "24. VII. 1790",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-0fbdb227-0734-4964-8a86-5219af6d9ece",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 34,
+      "reportedNumber": null,
+      "catalogPages": [
+        67
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Charsonville",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 60.2
+            }
+          ]
+        }
+      ],
+      "name": "Charsonville",
+      "classification": "2. Steinmeteorite; B. Chondrite; i) Grauer Chondrit, geadert (Cga)",
+      "locality": "Meung-sur-Loire, Loiret, Frankreich",
+      "eventDate": "23. XI. 1810",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d9188cf5-9ac8-4678-8922-de4697c54aa8",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 35,
+      "reportedNumber": null,
+      "catalogPages": [
+        67
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Lasdany (Lixna Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 11.2
+            },
+            {
+              "grams": 317
+            }
+          ]
+        }
+      ],
+      "name": "Lasdany (Lixna Bw.)",
+      "classification": "2. Steinmeteorite; B. Chondrite; i) Grauer Chondrit, geadert (Cga)",
+      "locality": "Dünaburg, Witebsk, Rußland",
+      "eventDate": "12. VII. 1820",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-efe87584-a3bf-45e5-93e4-8cde6813181e",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 36,
+      "reportedNumber": null,
+      "catalogPages": [
+        67
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Monroe (Cabarras County Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 7.5
+            }
+          ]
+        }
+      ],
+      "name": "Monroe (Cabarras County Bw.)",
+      "classification": "2. Steinmeteorite; B. Chondrite; i) Grauer Chondrit, geadert (Cga)",
+      "locality": "Cabarras, Nord-Carolina, Vereinigte Staaten",
+      "eventDate": "31. X. 1849",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-90d96469-96f7-4508-a5bd-c598e23121e5",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 37,
+      "reportedNumber": null,
+      "catalogPages": [
+        67
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Parnallee",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 66.5
+            }
+          ]
+        }
+      ],
+      "name": "Parnallee",
+      "classification": "2. Steinmeteorite; B. Chondrite; i) Grauer Chondrit, geadert (Cga)",
+      "locality": "Madura, Ostindien",
+      "eventDate": "28. II. 1857",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-cf2850c0-7337-43c8-a4cf-b102a6247e74",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 38,
+      "reportedNumber": null,
+      "catalogPages": [
+        67
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Saurette (Apt Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 0.1
+            }
+          ]
+        }
+      ],
+      "name": "Saurette (Apt Bw.)",
+      "classification": "2. Steinmeteorite; B. Chondrite; i) Grauer Chondrit, geadert (Cga)",
+      "locality": "Apt, Vaucluse, Frankreich",
+      "eventDate": "8. X. 1803",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e8636295-aa3a-4371-b3a5-f400da286714",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 39,
+      "reportedNumber": null,
+      "catalogPages": [
+        67
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Chantonnay",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 2.5
+            },
+            {
+              "grams": 14
+            },
+            {
+              "grams": 37
+            }
+          ]
+        }
+      ],
+      "name": "Chantonnay",
+      "classification": "2. Steinmeteorite; B. Chondrite; k) Grauer Chondrit, breccienähnlich (Cgb)",
+      "locality": "Nantes, La Rochelle, Vendée, Frankreich",
+      "eventDate": "5. VIII. 1812",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-37121463-1e90-4965-96cb-caad4f79fcec",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 40,
+      "reportedNumber": null,
+      "catalogPages": [
+        67
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Doroninsk",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 1.9
+            }
+          ]
+        }
+      ],
+      "name": "Doroninsk",
+      "classification": "2. Steinmeteorite; B. Chondrite; k) Grauer Chondrit, breccienähnlich (Cgb)",
+      "locality": "Daurien, Irkutsk, Sibirien, Rußland",
+      "eventDate": "6. IV. 1805",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-af3e3aba-601b-4f1c-bc73-3b41a4acc224",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 41,
+      "reportedNumber": null,
+      "catalogPages": [
+        67
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Elgueras (Cangas de Onis Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 73.5
+            }
+          ]
+        }
+      ],
+      "name": "Elgueras (Cangas de Onis Bw.)",
+      "classification": "2. Steinmeteorite; B. Chondrite; k) Grauer Chondrit, breccienähnlich (Cgb)",
+      "locality": "Cangas de Onis, Oviedo, Spanien",
+      "eventDate": "6. XII. 1866",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-932db3d8-a347-4c58-90f2-45e8bb74649d",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 42,
+      "reportedNumber": null,
+      "catalogPages": [
+        68
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Homestead (West Liberty Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 3.4
+            },
+            {
+              "grams": 28.5
+            },
+            {
+              "grams": 990
+            }
+          ]
+        }
+      ],
+      "name": "Homestead (West Liberty Bw.)",
+      "classification": "2. Steinmeteorite; B. Chondrite; k) Grauer Chondrit, breccienähnlich (Cgb)",
+      "locality": "West Liberty, Jowa, Vereinigte Staaten",
+      "eventDate": "12. II. 1875",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-fdb5b3c1-cac1-413c-bf00-49fb6921e757",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 43,
+      "reportedNumber": null,
+      "catalogPages": [
+        68
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Mezö-Madarasz",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 11.5
+            },
+            {
+              "grams": 98
+            }
+          ]
+        }
+      ],
+      "name": "Mezö-Madarasz",
+      "classification": "2. Steinmeteorite; B. Chondrite; k) Grauer Chondrit, breccienähnlich (Cgb)",
+      "locality": "Nagy-Völgy, Maros, Siebenbürgen, Ungarn",
+      "eventDate": "4. IX. 1852",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-9b052e5c-947c-483b-97ae-d79b79ce6f86",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 44,
+      "reportedNumber": null,
+      "catalogPages": [
+        68
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Molina",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 1.3
+            }
+          ]
+        }
+      ],
+      "name": "Molina",
+      "classification": "2. Steinmeteorite; B. Chondrite; k) Grauer Chondrit, breccienähnlich (Cgb)",
+      "locality": "Murcia, Spanien",
+      "eventDate": "24. XII. 1858",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c510d1fb-5e36-4824-899d-dbb558851e93",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 45,
+      "reportedNumber": null,
+      "catalogPages": [
+        68
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Pultusk",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 10.5
+            },
+            {
+              "grams": 17.8
+            },
+            {
+              "grams": 19.8
+            },
+            {
+              "grams": 111.5
+            },
+            {
+              "grams": 187
+            },
+            {
+              "grams": 352
+            }
+          ]
+        }
+      ],
+      "name": "Pultusk",
+      "classification": "2. Steinmeteorite; B. Chondrite; k) Grauer Chondrit, breccienähnlich (Cgb)",
+      "locality": "Ostrolenka, Polen, Rußland",
+      "eventDate": "30. I. 1868",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8d5ae26e-26f5-4811-a7ba-f5719f201429",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 46,
+      "reportedNumber": null,
+      "catalogPages": [
+        68
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Ställdalen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 0.2
+            },
+            {
+              "grams": 115
+            }
+          ]
+        }
+      ],
+      "name": "Ställdalen",
+      "classification": "2. Steinmeteorite; B. Chondrite; k) Grauer Chondrit, breccienähnlich (Cgb)",
+      "locality": "Nya-Kopparberg, Dalekarlien, Schweden",
+      "eventDate": "28. VI. 1876",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d94c4ddc-4085-4658-818b-d7dd3946d1bd",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 47,
+      "reportedNumber": null,
+      "catalogPages": [
+        68
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Tom Hannock Creek",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 6.1
+            }
+          ]
+        }
+      ],
+      "name": "Tom Hannock Creek",
+      "classification": "2. Steinmeteorite; B. Chondrite; k) Grauer Chondrit, breccienähnlich (Cgb)",
+      "locality": "Renssela, New-York, Vereinigte Staaten",
+      "eventDate": "Fund 1863",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-205de97f-a7f1-43a8-aaa4-f62a97e2d4c0",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 48,
+      "reportedNumber": null,
+      "catalogPages": [
+        68
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Baratta",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 22.5
+            }
+          ]
+        }
+      ],
+      "name": "Baratta",
+      "classification": "2. Steinmeteorite; B. Chondrite; l) Schwarzer Chondrit (Cs)",
+      "locality": "Deniliquin, Neu-Süd-Wales, Australien",
+      "eventDate": "? V. 1845",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b17ab3f4-e212-4adb-9bcc-5b6d3c651819",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 49,
+      "reportedNumber": null,
+      "catalogPages": [
+        68
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Farmington (Washington Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 396
+            }
+          ]
+        }
+      ],
+      "name": "Farmington (Washington Bw.)",
+      "classification": "2. Steinmeteorite; B. Chondrite; l) Schwarzer Chondrit (Cs)",
+      "locality": "Washington, Kansas, Vereinigte Staaten",
+      "eventDate": "25. VI. 1890",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-9b4b806a-7023-4c84-ac41-eff61de34715",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 50,
+      "reportedNumber": null,
+      "catalogPages": [
+        68
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Mac Kinney",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 56.5
+            },
+            {
+              "grams": 98
+            }
+          ]
+        }
+      ],
+      "name": "Mac Kinney",
+      "classification": "2. Steinmeteorite; B. Chondrite; l) Schwarzer Chondrit (Cs)",
+      "locality": "Collen, Texas, Vereinigte Staaten",
+      "eventDate": "1870",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-77606b27-d05a-4055-8392-2272f5f9ab1e",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 51,
+      "reportedNumber": null,
+      "catalogPages": [
+        68
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Renazzo",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 8.2
+            }
+          ]
+        }
+      ],
+      "name": "Renazzo",
+      "classification": "2. Steinmeteorite; B. Chondrite; l) Schwarzer Chondrit (Cs)",
+      "locality": "Cento, Ferrara, Italien",
+      "eventDate": "15. I. 1824",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-cbf00129-2a4d-4225-b998-de1216198f03",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 52,
+      "reportedNumber": null,
+      "catalogPages": [
+        68
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Alais",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 0.3
+            }
+          ]
+        }
+      ],
+      "name": "Alais",
+      "classification": "2. Steinmeteorite; B. Chondrite; m) Kohliger Chondrit (K)",
+      "locality": "Vezenobres, Alais, Gard, Frankreich",
+      "eventDate": "15. III. 1806",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-bcce2177-a9d9-4250-99c4-3843c72c4570",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 53,
+      "reportedNumber": null,
+      "catalogPages": [
+        68
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Nagaya",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 1.4
+            }
+          ]
+        }
+      ],
+      "name": "Nagaya",
+      "classification": "2. Steinmeteorite; B. Chondrite; m) Kohliger Chondrit (K)",
+      "locality": "Entre Rios, Argentinien",
+      "eventDate": "1. VII. 1879",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6609c91a-5724-48aa-956f-1a49c5448f4e",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 54,
+      "reportedNumber": null,
+      "catalogPages": [
+        68
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Orgueil",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 1.4
+            }
+          ]
+        }
+      ],
+      "name": "Orgueil",
+      "classification": "2. Steinmeteorite; B. Chondrite; m) Kohliger Chondrit (K)",
+      "locality": "Montauban, Tarn-et-Garonne, Frankreich",
+      "eventDate": "14. V. 1864",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-5e51fae5-b329-4449-b35b-ce184cd18c7d",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 55,
+      "reportedNumber": null,
+      "catalogPages": [
+        68
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Indarch",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 19.5
+            }
+          ]
+        }
+      ],
+      "name": "Indarch",
+      "classification": "2. Steinmeteorite; B. Chondrite; n) Kohliger Kügelchen-Chondrit (Kc)",
+      "locality": "Hankendy, Schuscha, Transkaukasien, Rußland",
+      "eventDate": "7. IV. 1891",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-287eaf14-6660-4537-81dd-fae3ef18cd29",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 56,
+      "reportedNumber": null,
+      "catalogPages": [
+        68
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Antifona (Collescipoli Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 5
+            },
+            {
+              "grams": 44.6
+            }
+          ]
+        }
+      ],
+      "name": "Antifona (Collescipoli Bw.)",
+      "classification": "2. Steinmeteorite; B. Chondrite; o) Kügelchen-Chondrit (Cc)",
+      "locality": "Terni, Spoleto, Italien",
+      "eventDate": "3. II. 1890",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-17767bca-2b5a-48f1-b785-b96909ce2124",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 57,
+      "reportedNumber": null,
+      "catalogPages": [
+        68
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Ausson",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 1.2
+            },
+            {
+              "grams": 106
+            }
+          ]
+        }
+      ],
+      "name": "Ausson",
+      "classification": "2. Steinmeteorite; B. Chondrite; o) Kügelchen-Chondrit (Cc)",
+      "locality": "Montrejeau, Haute-Garonne, Frankreich",
+      "eventDate": "9. XII. 1858",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-2b0ad916-771b-4ac7-91cf-1bcdc9b8e698",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 58,
+      "reportedNumber": null,
+      "catalogPages": [
+        68
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Bjurböle Bw.",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 51.5
+            }
+          ]
+        }
+      ],
+      "name": "Bjurböle Bw.",
+      "classification": "2. Steinmeteorite; B. Chondrite; o) Kügelchen-Chondrit (Cc)",
+      "locality": "Borgå, Finland, Rußland",
+      "eventDate": "12. III. 1899",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f3650488-f964-4a54-8c33-69895618053d",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 59,
+      "reportedNumber": null,
+      "catalogPages": [
+        68
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Borkut",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 1.8
+            }
+          ]
+        }
+      ],
+      "name": "Borkut",
+      "classification": "2. Steinmeteorite; B. Chondrite; o) Kügelchen-Chondrit (Cc)",
+      "locality": "Szigeth, Marmaros, Ungarn",
+      "eventDate": "13. X. 1852",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8b0de12a-cafb-4039-9c3e-929c8e9d84b0",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 60,
+      "reportedNumber": null,
+      "catalogPages": [
+        68
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Hessle",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 137.5
+            }
+          ]
+        }
+      ],
+      "name": "Hessle",
+      "classification": "2. Steinmeteorite; B. Chondrite; o) Kügelchen-Chondrit (Cc)",
+      "locality": "Söder, Hafsla-Viken, Upsala, Schweden",
+      "eventDate": "1. I. 1869",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-1cd1b275-8d80-4e5e-a3f0-13744af02078",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 61,
+      "reportedNumber": null,
+      "catalogPages": [
+        68
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Misshof (Baldohn Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 164.5
+            }
+          ]
+        }
+      ],
+      "name": "Misshof (Baldohn Bw.)",
+      "classification": "2. Steinmeteorite; B. Chondrite; o) Kügelchen-Chondrit (Cc)",
+      "locality": "Baldohn, Kurland, Rußland",
+      "eventDate": "10. IV. 1890",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-64b9b9a6-35f7-4abc-b461-bc77e928931b",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 62,
+      "reportedNumber": null,
+      "catalogPages": [
+        68
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Pine Bluff (Little Piney Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 11.2
+            }
+          ]
+        }
+      ],
+      "name": "Pine Bluff (Little Piney Bw.)",
+      "classification": "2. Steinmeteorite; B. Chondrite; o) Kügelchen-Chondrit (Cc)",
+      "locality": "Waynesville, Pulaski, Missouri, Vereinigte Staaten",
+      "eventDate": "13. II. 1839",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d18e994a-b315-4792-95cf-2fe5b1ef2ab1",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 63,
+      "reportedNumber": null,
+      "catalogPages": [
+        68
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Sarbanovac (Sokobanja Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 233.5
+            }
+          ]
+        }
+      ],
+      "name": "Sarbanovac (Sokobanja Bw.)",
+      "classification": "2. Steinmeteorite; B. Chondrite; o) Kügelchen-Chondrit (Cc)",
+      "locality": "Sokobanja, Alexinac, Serbien",
+      "eventDate": "3. X. 1877",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-3045503c-dd3a-436f-b3e3-fc227c643f4c",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 64,
+      "reportedNumber": null,
+      "catalogPages": [
+        68
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Timochin",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 5.5
+            }
+          ]
+        }
+      ],
+      "name": "Timochin",
+      "classification": "2. Steinmeteorite; B. Chondrite; o) Kügelchen-Chondrit (Cc)",
+      "locality": "Juchnow, Smolensk, Rußland",
+      "eventDate": "25. III. 1807",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-5f5cb73e-6747-43f5-8262-1a2be1135336",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 65,
+      "reportedNumber": null,
+      "catalogPages": [
+        68
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Torre (Assisi Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 40.6
+            }
+          ]
+        }
+      ],
+      "name": "Torre (Assisi Bw.)",
+      "classification": "2. Steinmeteorite; B. Chondrite; o) Kügelchen-Chondrit (Cc)",
+      "locality": "Assisi, Perugia, Italien",
+      "eventDate": "24. V. 1886",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-621dd693-4df4-4524-acd3-c50a7955e89d",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 66,
+      "reportedNumber": null,
+      "catalogPages": [
+        69
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Trenzano",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 10.4
+            },
+            {
+              "grams": 45
+            },
+            {
+              "grams": 164
+            }
+          ]
+        }
+      ],
+      "name": "Trenzano",
+      "classification": "2. Steinmeteorite; B. Chondrite; p) Kügelchen-Chondrit, geadert (Cca)",
+      "locality": "Brescia, Chiari, Italien",
+      "eventDate": "12. XI. 1856",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-85986d63-3b1b-44c1-ab31-6a1b7e1c5f7f",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 67,
+      "reportedNumber": null,
+      "catalogPages": [
+        69
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Bath",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 35.7
+            },
+            {
+              "grams": 39
+            }
+          ]
+        }
+      ],
+      "name": "Bath",
+      "classification": "2. Steinmeteorite; B. Chondrite; q) Kügelchen-Chondrit, breccienähnlich (Ccb)",
+      "locality": "Aberdeen, Dacota, Vereinigte Staaten",
+      "eventDate": "29. VIII. 1892",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-32a12b2b-86f9-4ad7-be1d-65419f5bc05c",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 68,
+      "reportedNumber": null,
+      "catalogPages": [
+        69
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Cereseto",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 0.7
+            },
+            {
+              "grams": 1.2
+            }
+          ]
+        }
+      ],
+      "name": "Cereseto",
+      "classification": "2. Steinmeteorite; B. Chondrite; q) Kügelchen-Chondrit, breccienähnlich (Ccb)",
+      "locality": "Casale, Piemont, Italien",
+      "eventDate": "17. VII. 1840",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e683c4b8-7f4d-4272-af95-59430222a1d0",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 69,
+      "reportedNumber": null,
+      "catalogPages": [
+        69
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Forest (Winnebago County Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 14.2
+            },
+            {
+              "grams": 14.8
+            },
+            {
+              "grams": 51.4
+            }
+          ]
+        }
+      ],
+      "name": "Forest (Winnebago County Bw.)",
+      "classification": "2. Steinmeteorite; B. Chondrite; q) Kügelchen-Chondrit, breccienähnlich (Ccb)",
+      "locality": "Winnebago, Iowa, Vereinigte Staaten",
+      "eventDate": "2. V. 1890",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-7c428e7e-6e86-4537-a8d5-81a761ec15db",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 70,
+      "reportedNumber": null,
+      "catalogPages": [
+        69
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Gnarrenburg (Bremervörde Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 0.3
+            }
+          ]
+        }
+      ],
+      "name": "Gnarrenburg (Bremervörde Bw.)",
+      "classification": "2. Steinmeteorite; B. Chondrite; q) Kügelchen-Chondrit, breccienähnlich (Ccb)",
+      "locality": "Landdrostei Stade, Hannover, Deutschland",
+      "eventDate": "13. V. 1855",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-09c2c2c5-6159-4959-963d-5464130f9d96",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 71,
+      "reportedNumber": null,
+      "catalogPages": [
+        69
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Kesen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 5.3
+            },
+            {
+              "grams": 77
+            }
+          ]
+        }
+      ],
+      "name": "Kesen",
+      "classification": "2. Steinmeteorite; B. Chondrite; q) Kügelchen-Chondrit, breccienähnlich (Ccb)",
+      "locality": "Kesen, Iwate, Japan",
+      "eventDate": "13. VI. 1850",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-2c639570-12b0-466d-8f6b-d6c1ef6accad",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 72,
+      "reportedNumber": null,
+      "catalogPages": [
+        69
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Krawin (Tabor Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 0.3
+            },
+            {
+              "grams": 3.2
+            }
+          ]
+        }
+      ],
+      "name": "Krawin (Tabor Bw.)",
+      "classification": "2. Steinmeteorite; B. Chondrite; q) Kügelchen-Chondrit, breccienähnlich (Ccb)",
+      "locality": "Bechin, Böhmen, Österreich",
+      "eventDate": "3. VII. 1753",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b3c6f52c-7aff-46f6-ad49-f3968df4b554",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 73,
+      "reportedNumber": null,
+      "catalogPages": [
+        69
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Mooresfort",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 6.2
+            }
+          ]
+        }
+      ],
+      "name": "Mooresfort",
+      "classification": "2. Steinmeteorite; B. Chondrite; q) Kügelchen-Chondrit, breccienähnlich (Ccb)",
+      "locality": "Tipperary, Irland, Großbritannien",
+      "eventDate": "? VIII. 1810",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-eacf676c-d91b-47e7-bf52-6753ce8679ca",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 74,
+      "reportedNumber": null,
+      "catalogPages": [
+        69
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Ochansk (Taborg Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 8.4
+            },
+            {
+              "grams": 11
+            },
+            {
+              "grams": 16.3
+            },
+            {
+              "grams": 17.8
+            },
+            {
+              "grams": 28.5
+            }
+          ]
+        }
+      ],
+      "name": "Ochansk (Taborg Bw.)",
+      "classification": "2. Steinmeteorite; B. Chondrite; q) Kügelchen-Chondrit, breccienähnlich (Ccb)",
+      "locality": "Taborg, Perm, Rußland",
+      "eventDate": "30. VIII. 1887",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a96f8f5a-7720-4e6b-866f-67371022c63c",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 75,
+      "reportedNumber": null,
+      "catalogPages": [
+        69
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Waconda",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 1.6
+            },
+            {
+              "grams": 17.7
+            },
+            {
+              "grams": 19.1
+            }
+          ]
+        }
+      ],
+      "name": "Waconda",
+      "classification": "2. Steinmeteorite; B. Chondrite; q) Kügelchen-Chondrit, breccienähnlich (Ccb)",
+      "locality": "Mitchell, Kansas, Vereinigte Staaten",
+      "eventDate": "Fund 1874",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a14edbe5-3176-406f-8984-6a897759a204",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 76,
+      "reportedNumber": null,
+      "catalogPages": [
+        69
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Weston",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 8.7
+            },
+            {
+              "grams": 49
+            }
+          ]
+        }
+      ],
+      "name": "Weston",
+      "classification": "2. Steinmeteorite; B. Chondrite; q) Kügelchen-Chondrit, breccienähnlich (Ccb)",
+      "locality": "Fairfield, Connecticut, Vereinigte Staaten",
+      "eventDate": "14. XII. 1807",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8f21e2c0-afc4-4df3-8f60-68fa41d8f862",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 77,
+      "reportedNumber": null,
+      "catalogPages": [
+        69
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Allegan Bw.",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 9.4
+            },
+            {
+              "grams": 18
+            }
+          ]
+        }
+      ],
+      "name": "Allegan Bw.",
+      "classification": "2. Steinmeteorite; B. Chondrite; r) Ornansit (Cco)",
+      "locality": "Allegan, Michigan, Vereinigte Staaten",
+      "eventDate": "10. VII. 1899",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-381f13a6-d1a3-4435-aba9-4a3118cdd9cb",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 78,
+      "reportedNumber": null,
+      "catalogPages": [
+        69
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Beaver Creek",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 28.2
+            }
+          ]
+        }
+      ],
+      "name": "Beaver Creek",
+      "classification": "2. Steinmeteorite; B. Chondrite; s) Kristallinischer Kügelchen-Chondrit (Cck)",
+      "locality": "Kootenai, Britisch-Columbia, Britisch-Amerika",
+      "eventDate": "26. V. 1893",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f5d05331-e686-4c9f-8227-5ff5667e88a6",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 79,
+      "reportedNumber": null,
+      "catalogPages": [
+        69
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Menow (Klein-Menow Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 18.5
+            }
+          ]
+        }
+      ],
+      "name": "Menow (Klein-Menow Bw.)",
+      "classification": "2. Steinmeteorite; B. Chondrite; s) Kristallinischer Kügelchen-Chondrit (Cck)",
+      "locality": "Fürstenberg, Mecklenburg-Strelitz, Deutschland",
+      "eventDate": "7. X. 1862",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-50a106bc-b577-465c-bfec-dd27a88dea7c",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 80,
+      "reportedNumber": null,
+      "catalogPages": [
+        69
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Salin-Township Bw.",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 8
+            }
+          ]
+        }
+      ],
+      "name": "Salin-Township Bw.",
+      "classification": "2. Steinmeteorite; B. Chondrite; s) Kristallinischer Kügelchen-Chondrit (Cck)",
+      "locality": "Sheridan, Kansas, Vereinigte Staaten",
+      "eventDate": "15. XI. 1898 ?",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-732e864c-3a69-4482-8793-0d287526a125",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 81,
+      "reportedNumber": null,
+      "catalogPages": [
+        69
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Alastoewa (Djati Pengilon Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 433
+            }
+          ]
+        }
+      ],
+      "name": "Alastoewa (Djati Pengilon Bw.)",
+      "classification": "2. Steinmeteorite; B. Chondrite; t) Kristallinischer Chondrit (Ck)",
+      "locality": "Gendingen, Ngawi, Java",
+      "eventDate": "19. III. 1884",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-83f1fc2f-4814-40b6-bbe9-e0601f773994",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 82,
+      "reportedNumber": null,
+      "catalogPages": [
+        69
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Carcote",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 19.2
+            }
+          ]
+        }
+      ],
+      "name": "Carcote",
+      "classification": "2. Steinmeteorite; B. Chondrite; t) Kristallinischer Chondrit (Ck)",
+      "locality": "Wüstencordillere, Chile",
+      "eventDate": "Bekannt seit 1888",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-ff090705-8a58-4d18-96e5-da3b6f765e36",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 83,
+      "reportedNumber": null,
+      "catalogPages": [
+        69
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Gilgoin Station",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 26.2
+            }
+          ]
+        }
+      ],
+      "name": "Gilgoin Station",
+      "classification": "2. Steinmeteorite; B. Chondrite; t) Kristallinischer Chondrit (Ck)",
+      "locality": "Brewarina, Neu-Südwales, Australien",
+      "eventDate": "Beschrieben 1889",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-0ae4def7-3f1a-4f3f-8af5-64a84b11a1c5",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 84,
+      "reportedNumber": null,
+      "catalogPages": [
+        69
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Hvittis Bw.",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 36.2
+            }
+          ]
+        }
+      ],
+      "name": "Hvittis Bw.",
+      "classification": "2. Steinmeteorite; B. Chondrite; t) Kristallinischer Chondrit (Ck)",
+      "locality": "Abo-Björneborg, Finland, Rußland",
+      "eventDate": "21. X. 1901",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f690df70-89f7-4b3e-9a9c-c88e75d9bbbf",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 85,
+      "reportedNumber": null,
+      "catalogPages": [
+        69
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Kernouvé (Cléguérec Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 11.4
+            }
+          ]
+        }
+      ],
+      "name": "Kernouvé (Cléguérec Bw.)",
+      "classification": "2. Steinmeteorite; B. Chondrite; t) Kristallinischer Chondrit (Ck)",
+      "locality": "Morbihan, Bretagne, Frankreich",
+      "eventDate": "22. V. 1869",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-2eac497f-1a1e-4292-bc19-c68733932660",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 86,
+      "reportedNumber": null,
+      "catalogPages": [
+        69
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Long Island",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 0.3
+            },
+            {
+              "grams": 79.5
+            }
+          ]
+        }
+      ],
+      "name": "Long Island",
+      "classification": "2. Steinmeteorite; B. Chondrite; t) Kristallinischer Chondrit (Ck)",
+      "locality": "Phillips, Kansas, Vereinigte Staaten",
+      "eventDate": "Fund 1892",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-0835dfac-63ac-428c-9f5f-6883402a0126",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 87,
+      "reportedNumber": null,
+      "catalogPages": [
+        69
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Pillistfer",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 76
+            }
+          ]
+        }
+      ],
+      "name": "Pillistfer",
+      "classification": "2. Steinmeteorite; B. Chondrite; t) Kristallinischer Chondrit (Ck)",
+      "locality": "Fellin, Livland, Rußland",
+      "eventDate": "8. VIII. 1863",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-fb2b4d93-dd00-4f04-ab94-66caf2d70d04",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 88,
+      "reportedNumber": null,
+      "catalogPages": [
+        69
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Bluff",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 48.5
+            },
+            {
+              "grams": 123
+            }
+          ]
+        }
+      ],
+      "name": "Bluff",
+      "classification": "2. Steinmeteorite; B. Chondrite; u) Kristallinischer Chondrit, breccienähnlich (Ckb)",
+      "locality": "Lagrange, Fayette, Texas, Vereinigte Staaten",
+      "eventDate": "Fund 1878",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-bc0f9de8-1f1e-4015-9231-25fbf78b3737",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 89,
+      "reportedNumber": null,
+      "catalogPages": [
+        70
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Ensisheim",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 73
+            }
+          ]
+        }
+      ],
+      "name": "Ensisheim",
+      "classification": "2. Steinmeteorite; B. Chondrite; u) Kristallinischer Chondrit, breccienähnlich (Ckb)",
+      "locality": "Sundgau, Oberelsaß, Deutschland",
+      "eventDate": "16. XI. 1492",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-2d829d9a-442f-40b0-ab2b-3aea85bf4002",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 90,
+      "reportedNumber": null,
+      "catalogPages": [
+        70
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Crab Orchard (Powder Mill Creek Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 354.5
+            }
+          ]
+        }
+      ],
+      "name": "Crab Orchard (Powder Mill Creek Bw.)",
+      "classification": "2. Steinmeteorite; C. Siderolithe; Mesosiderit (M)",
+      "locality": "Rockwood, Tennessee, Vereinigte Staaten",
+      "eventDate": "Fund 1887",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-27cd41a8-ab9a-4dc5-aaca-2e5acc3db8e5",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 91,
+      "reportedNumber": null,
+      "catalogPages": [
+        70
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Estherville",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 52
+            }
+          ]
+        }
+      ],
+      "name": "Estherville",
+      "classification": "2. Steinmeteorite; C. Siderolithe; Mesosiderit (M)",
+      "locality": "Emmet, Jowa, Vereinigte Staaten",
+      "eventDate": "10. V. 1879",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-61f12497-25cc-49bc-8aac-852dec094746",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 92,
+      "reportedNumber": null,
+      "catalogPages": [
+        70
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Hainholz",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 2.8
+            },
+            {
+              "grams": 55.3
+            }
+          ]
+        }
+      ],
+      "name": "Hainholz",
+      "classification": "2. Steinmeteorite; C. Siderolithe; Mesosiderit (M)",
+      "locality": "Minden, Westfalen, Preußen, Deutschland",
+      "eventDate": "Fund 1856",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-36cf8fef-061c-48c1-882f-e1a7865a8d9c",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 93,
+      "reportedNumber": null,
+      "catalogPages": [
+        70
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Inca",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 19.8
+            }
+          ]
+        }
+      ],
+      "name": "Inca",
+      "classification": "2. Steinmeteorite; C. Siderolithe; Mesosiderit (M)",
+      "locality": "Llano del Inca, Chile",
+      "eventDate": "Bekannt seit 1888",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-825b80b2-a2f3-47d5-a624-c1fb41adc499",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 94,
+      "reportedNumber": null,
+      "catalogPages": [
+        70
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Mincy",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 31
+            }
+          ]
+        }
+      ],
+      "name": "Mincy",
+      "classification": "2. Steinmeteorite; C. Siderolithe; Mesosiderit (M)",
+      "locality": "Forsyth, Missouri, Vereinigte Staaten",
+      "eventDate": "Fund 1856",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-724f7eb1-794c-4920-a4b0-9551d929b080",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 95,
+      "reportedNumber": null,
+      "catalogPages": [
+        70
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Morristown",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 8.4
+            },
+            {
+              "grams": 118.6
+            }
+          ]
+        }
+      ],
+      "name": "Morristown",
+      "classification": "2. Steinmeteorite; C. Siderolithe; Mesosiderit (M)",
+      "locality": "Hamblen, Tennessee, Vereinigte Staaten",
+      "eventDate": "Fund 1887",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-947b3d3c-b025-4d55-811a-8859c96a788b",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 96,
+      "reportedNumber": null,
+      "catalogPages": [
+        70
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Vaca muerta",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 5.1
+            }
+          ]
+        }
+      ],
+      "name": "Vaca muerta",
+      "classification": "2. Steinmeteorite; C. Siderolithe; Mesosiderit (M)",
+      "locality": "Llano del Inca, Chile",
+      "eventDate": "Bekannt seit 1861",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-02af6762-116a-48d4-b2a0-0f2af5c9b87b",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 97,
+      "reportedNumber": null,
+      "catalogPages": [
+        70
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Steinbach",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 578
+            }
+          ]
+        }
+      ],
+      "name": "Steinbach",
+      "classification": "3. Eisenmeteorite; A. Lithosiderite; a) Siderophyr (S)",
+      "locality": "Johanngeorgenstadt, Sachsen, Deutschland",
+      "eventDate": "Fund 1724",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a3e5603f-86df-43f2-a0a2-eafacbfba588",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 98,
+      "reportedNumber": null,
+      "catalogPages": [
+        70
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Anderson (Brenham Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 103.5
+            }
+          ]
+        }
+      ],
+      "name": "Anderson (Brenham Bw.)",
+      "classification": "3. Eisenmeteorite; A. Lithosiderite; b) Pallasit (P)",
+      "locality": "Hamilton, Ohio, Vereinigte Staaten",
+      "eventDate": "(Prähistorisch) Fund 1882",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-13513c50-aa39-4366-ae38-4d743c862d50",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 99,
+      "reportedNumber": null,
+      "catalogPages": [
+        70
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Eagle (Eagle Station Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 85.6
+            }
+          ]
+        }
+      ],
+      "name": "Eagle (Eagle Station Bw.)",
+      "classification": "3. Eisenmeteorite; A. Lithosiderite; b) Pallasit (P)",
+      "locality": "Carrol, Kentucky, Vereinigte Staaten",
+      "eventDate": "Fund 1880",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a324b8f6-792b-4664-bbe1-61b0b63e66da",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 100,
+      "reportedNumber": null,
+      "catalogPages": [
+        70
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Imilac",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 13.1
+            },
+            {
+              "grams": 523.8
+            }
+          ]
+        }
+      ],
+      "name": "Imilac",
+      "classification": "3. Eisenmeteorite; A. Lithosiderite; b) Pallasit (P)",
+      "locality": "Salina de Atacama, Bolivia",
+      "eventDate": "1800 ? Beschrieben 1828",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f3928669-61c6-46b3-97fe-79cd1c19a6e3",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 101,
+      "reportedNumber": null,
+      "catalogPages": [
+        70
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Krasnojarsk",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 1.7
+            },
+            {
+              "grams": 76.7
+            },
+            {
+              "grams": 78.7
+            },
+            {
+              "grams": 85
+            },
+            {
+              "grams": 198
+            }
+          ]
+        },
+        {
+          "description": "Nickeleisengerüst; Krasnojarsk",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 36.5
+            }
+          ]
+        }
+      ],
+      "name": "Krasnojarsk",
+      "classification": "3. Eisenmeteorite; A. Lithosiderite; b) Pallasit (P)",
+      "locality": "Jenisseisk, Sibirien, Rußland",
+      "eventDate": "Fund 1749",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-5fd6cfe3-2126-4fba-ac2b-952ae908ddda",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 102,
+      "reportedNumber": null,
+      "catalogPages": [
+        70
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Marjalahti",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 62.5
+            }
+          ]
+        }
+      ],
+      "name": "Marjalahti",
+      "classification": "3. Eisenmeteorite; A. Lithosiderite; b) Pallasit (P)",
+      "locality": "Viborg, Finland, Rußland",
+      "eventDate": "1. VI. 1902",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-1d560f6b-784c-4bf1-b3c2-c673238403ea",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 103,
+      "reportedNumber": null,
+      "catalogPages": [
+        70
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Rokicky (Brahin Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 1.8
+            }
+          ]
+        }
+      ],
+      "name": "Rokicky (Brahin Bw.)",
+      "classification": "3. Eisenmeteorite; A. Lithosiderite; b) Pallasit (P); Olivinkörner",
+      "locality": "Mozyrz, Minsk, Rußland",
+      "eventDate": "Fund 1810",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-2e3465cb-518e-49a2-a232-bccf845d3701",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 104,
+      "reportedNumber": null,
+      "catalogPages": [
+        70
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Albacher Mühle (Bitburg Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 176.8
+            }
+          ]
+        }
+      ],
+      "name": "Albacher Mühle (Bitburg Bw.)",
+      "classification": "3. Eisenmeteorite; A. Lithosiderite; c) Pallasit, breccienähnlich (Pb)",
+      "locality": "Trier, Niederrhein, Preußen, Deutschland",
+      "eventDate": "Fund 1802",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a1366859-fdda-484b-b225-e329bbf45cc5",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 105,
+      "reportedNumber": null,
+      "catalogPages": [
+        70
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Brenham (Brenham Township Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 80
+            },
+            {
+              "grams": 84.5
+            }
+          ]
+        }
+      ],
+      "name": "Brenham (Brenham Township Bw.)",
+      "classification": "3. Eisenmeteorite; A. Lithosiderite; c) Pallasit, breccienähnlich (Pb)",
+      "locality": "Kiowa, Kansas, Vereinigte Staaten",
+      "eventDate": "Fund 1885",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-1201e4db-8004-4efb-9610-cef29d1b7cf5",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 106,
+      "reportedNumber": null,
+      "catalogPages": [
+        70
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Carlton",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 18
+            },
+            {
+              "grams": 102.5
+            }
+          ]
+        }
+      ],
+      "name": "Carlton",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; a) Oktaedrite mit feinsten Lamellen (Off)",
+      "locality": "Hamilton, Texas, Vereinigte Staaten",
+      "eventDate": "Fund 1887",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b4a39dd9-658a-4fd4-96bc-aa2ed10a1ca1",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 107,
+      "reportedNumber": null,
+      "catalogPages": [
+        71
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Ranchito",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 146
+            }
+          ]
+        }
+      ],
+      "name": "Ranchito",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; a) Oktaedrite mit feinsten Lamellen (Off)",
+      "locality": "Bacubirito, Sinalva, Mexico",
+      "eventDate": "Fund 1871",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-bd0cc444-ba91-4aad-aa3d-a0e8d8bf0c80",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 108,
+      "reportedNumber": null,
+      "catalogPages": [
+        71
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Richmond-Mukerop",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 16605
+            }
+          ]
+        }
+      ],
+      "name": "Richmond-Mukerop",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; a) Oktaedrite mit feinsten Lamellen (Off)",
+      "locality": "Mukerop-Bassin, Gibeon, Deutsch-Südwestafrika",
+      "eventDate": "Fall 1903 ?",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d02bcb58-bf0a-479e-bc6f-a86af057aaa1",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 109,
+      "reportedNumber": null,
+      "catalogPages": [
+        71
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Salt River",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 19.5
+            }
+          ]
+        }
+      ],
+      "name": "Salt River",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; a) Oktaedrite mit feinsten Lamellen (Off)",
+      "locality": "Kentucky, Vereinigte Staaten",
+      "eventDate": "Beschrieben 1850",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-2a0846bf-02f6-4622-b868-f52dfeb2e720",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 110,
+      "reportedNumber": null,
+      "catalogPages": [
+        71
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Tazewell",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 55.8
+            }
+          ]
+        }
+      ],
+      "name": "Tazewell",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; a) Oktaedrite mit feinsten Lamellen (Off)",
+      "locality": "Claiborne, Tennessee, Vereinigte Staaten",
+      "eventDate": "Fund 1853",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-1330a864-31b3-4ca6-aa93-88ce0d739b5d",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 111,
+      "reportedNumber": null,
+      "catalogPages": [
+        71
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Werchne Dnieprowsk",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 35.3
+            }
+          ]
+        }
+      ],
+      "name": "Werchne Dnieprowsk",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; a) Oktaedrite mit feinsten Lamellen (Off)",
+      "locality": "Angistinowka, Ekaterinoslaw, Rußland",
+      "eventDate": "Fund 1876",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-92420c0c-6b7b-4a4b-9ceb-f1cb128aebf5",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 112,
+      "reportedNumber": null,
+      "catalogPages": [
+        71
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Amalia Farm",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 1550
+            }
+          ]
+        }
+      ],
+      "name": "Amalia Farm",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; b) Oktaedrite mit feinen Lamellen (Of)",
+      "locality": "Gibeon, Deutsch-Südwestafrika",
+      "eventDate": "Fund ?",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-fbfae286-7a18-4ad4-b46a-018c7b1b3889",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 113,
+      "reportedNumber": null,
+      "catalogPages": [
+        71
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Bückeberg (Obernkirchen Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 25.8
+            }
+          ]
+        }
+      ],
+      "name": "Bückeberg (Obernkirchen Bw.)",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; b) Oktaedrite mit feinen Lamellen (Of)",
+      "locality": "Schaumburg, Oldenburg, Deutschland",
+      "eventDate": "Fund 1863",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-67e635e7-ce06-4294-a7b9-7147feb17b9a",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 114,
+      "reportedNumber": null,
+      "catalogPages": [
+        71
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Madoc",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 43.4
+            }
+          ]
+        }
+      ],
+      "name": "Madoc",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; b) Oktaedrite mit feinen Lamellen (Of)",
+      "locality": "Montreal, Ober-Canada, Britisch Amerika",
+      "eventDate": "Fund 1854",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-3ca7f3a5-5cc5-4ec6-8eec-666d316d5c6f",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 115,
+      "reportedNumber": null,
+      "catalogPages": [
+        71
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Putnam County",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 27.2
+            }
+          ]
+        }
+      ],
+      "name": "Putnam County",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; b) Oktaedrite mit feinen Lamellen (Of)",
+      "locality": "Milledgeville, Georgia, Vereinigte Staaten",
+      "eventDate": "Fund 1839",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-97b3a9c9-9576-42b8-a1b8-c3fb714e6c04",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 116,
+      "reportedNumber": null,
+      "catalogPages": [
+        71
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Russel Gulch",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 28.3
+            }
+          ]
+        }
+      ],
+      "name": "Russel Gulch",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; b) Oktaedrite mit feinen Lamellen (Of)",
+      "locality": "Gilpin Pillars, Central City, Vereinigte Staaten",
+      "eventDate": "Fund 1863",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-79bc1e04-3ec3-441b-9266-b5f6bb94850f",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 117,
+      "reportedNumber": null,
+      "catalogPages": [
+        71
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Saint Genevieve County Bw.",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 358
+            }
+          ]
+        }
+      ],
+      "name": "Saint Genevieve County Bw.",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; b) Oktaedrite mit feinen Lamellen (Of)",
+      "locality": "Missouri, Vereinigte Staaten",
+      "eventDate": "Fund 1888",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b51ae948-f2e7-4132-bd50-e65c3b24a33c",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 118,
+      "reportedNumber": null,
+      "catalogPages": [
+        71
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Burlington",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 15.3
+            }
+          ]
+        }
+      ],
+      "name": "Burlington",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; c) Oktaedrite mit mittl. Lamellen (Om)",
+      "locality": "Otsego, New-York, Vereinigte Staaten",
+      "eventDate": "Fund vor 1819",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6b948268-ea75-47c3-8e74-7b501ffa2dd5",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 119,
+      "reportedNumber": null,
+      "catalogPages": [
+        71
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Carthago",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 141
+            },
+            {
+              "grams": 910
+            }
+          ]
+        }
+      ],
+      "name": "Carthago",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; c) Oktaedrite mit mittl. Lamellen (Om)",
+      "locality": "ConeyFork, Smith, Tennessee, Vereinigte Staaten",
+      "eventDate": "Fund 1840",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f6557f0f-8def-4e14-a9c0-cb54310e8886",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 120,
+      "reportedNumber": null,
+      "catalogPages": [
+        71
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Dalton (Whitfield County Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 22.8
+            }
+          ]
+        }
+      ],
+      "name": "Dalton (Whitfield County Bw.)",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; c) Oktaedrite mit mittl. Lamellen (Om)",
+      "locality": "Whitfield, Georgia, Vereinigte Staaten",
+      "eventDate": "Fund 1877",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-94f70fc5-4b11-4872-ad01-3cc610d14ceb",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 121,
+      "reportedNumber": null,
+      "catalogPages": [
+        71
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Elbogen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 1.7
+            },
+            {
+              "grams": 2.7
+            },
+            {
+              "grams": 4
+            },
+            {
+              "grams": 5.4
+            },
+            {
+              "grams": 13.8
+            },
+            {
+              "grams": 66.8
+            }
+          ]
+        }
+      ],
+      "name": "Elbogen",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; c) Oktaedrite mit mittl. Lamellen (Om)",
+      "locality": "Böhmen, Österreich",
+      "eventDate": "Fund vor 1400 ?",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-bfb7de33-d3d2-46b1-806d-d19c3035e327",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 122,
+      "reportedNumber": null,
+      "catalogPages": [
+        71
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Emmetsburg",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 2
+            }
+          ]
+        }
+      ],
+      "name": "Emmetsburg",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; c) Oktaedrite mit mittl. Lamellen (Om)",
+      "locality": "Frederick, Maryland, Vereinigte Staaten",
+      "eventDate": "Fund 1854",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-237c7a77-3264-4c00-9183-0e02209b9d08",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 123,
+      "reportedNumber": null,
+      "catalogPages": [
+        71
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Fort Pierre (Nebraska Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 8.7
+            }
+          ]
+        }
+      ],
+      "name": "Fort Pierre (Nebraska Bw.)",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; c) Oktaedrite mit mittl. Lamellen (Om)",
+      "locality": "Nebraska, Missouri, Vereinigte Staaten",
+      "eventDate": "Fund 1856",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-58101de9-266e-428b-b7e5-7d272db6c8ba",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 124,
+      "reportedNumber": null,
+      "catalogPages": [
+        71
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Glorietta Mountain",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 73.5
+            }
+          ]
+        }
+      ],
+      "name": "Glorietta Mountain",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; c) Oktaedrite mit mittl. Lamellen (Om)",
+      "locality": "Canoncito, Santa Fé, Neu-Mexico, Verein. Staaten",
+      "eventDate": "Fund 1884",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c1167a4d-4d80-4ff5-bd08-8604572fdc8b",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 125,
+      "reportedNumber": null,
+      "catalogPages": [
+        71
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Ivanpah",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 4.1
+            }
+          ]
+        }
+      ],
+      "name": "Ivanpah",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; c) Oktaedrite mit mittl. Lamellen (Om)",
+      "locality": "San Bernardino, Californien, Vereinigte Staaten",
+      "eventDate": "1880",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-7b61c450-d054-492c-b978-9e3cae129b6a",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 126,
+      "reportedNumber": null,
+      "catalogPages": [
+        71
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Joe Wright (Independence County Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 7.5
+            },
+            {
+              "grams": 38.9
+            }
+          ]
+        }
+      ],
+      "name": "Joe Wright (Independence County Bw.)",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; c) Oktaedrite mit mittl. Lamellen (Om)",
+      "locality": "Independence, Arkansas, Vereinigte Staaten",
+      "eventDate": "Fund 1884",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-972ddac6-95ad-47a9-b407-2ae7114ef494",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 127,
+      "reportedNumber": null,
+      "catalogPages": [
+        71
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Kokstad",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 59.5
+            }
+          ]
+        }
+      ],
+      "name": "Kokstad",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; c) Oktaedrite mit mittl. Lamellen (Om)",
+      "locality": "Griqualand Ost, Südafrika",
+      "eventDate": "Bekannt seit 1887",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-78a4b57b-c4f6-483a-a12d-d4ab9a93c8b1",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 128,
+      "reportedNumber": null,
+      "catalogPages": [
+        71
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Las Salinas",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 3515
+            }
+          ]
+        }
+      ],
+      "name": "Las Salinas",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; c) Oktaedrite mit mittl. Lamellen (Om)",
+      "locality": "Antofogasta, Calama, Chile",
+      "eventDate": "Fund 1905",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-775eb922-abd9-42ad-a2a2-b68744ada5c9",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 129,
+      "reportedNumber": null,
+      "catalogPages": [
+        71
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Lenarto",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 34.7
+            },
+            {
+              "grams": 99.1
+            }
+          ]
+        }
+      ],
+      "name": "Lenarto",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; c) Oktaedrite mit mittl. Lamellen (Om)",
+      "locality": "Bartfeld, Laros, Ungarn",
+      "eventDate": "Fund 1814",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-7fcb3a2b-5929-479c-804c-6d1f71238e02",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 130,
+      "reportedNumber": null,
+      "catalogPages": [
+        71
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Merceditas",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 36
+            },
+            {
+              "grams": 111.5
+            }
+          ]
+        }
+      ],
+      "name": "Merceditas",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; c) Oktaedrite mit mittl. Lamellen (Om)",
+      "locality": "Santiago, Chile",
+      "eventDate": "Bekannt 1884",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8dabff87-f5f7-470d-b49d-c3ea1e078e70",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 131,
+      "reportedNumber": null,
+      "catalogPages": [
+        72
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Misteca (Oaxaca Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 65.5
+            }
+          ]
+        }
+      ],
+      "name": "Misteca (Oaxaca Bw.)",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; c) Oktaedrite mit mittl. Lamellen (Om)",
+      "locality": "Oaxaca, Yanhuitlan, Mexico",
+      "eventDate": "Beschrieben 1804",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-ccb35961-8226-4546-8838-e9686cb8d3d2",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 132,
+      "reportedNumber": null,
+      "catalogPages": [
+        72
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Roebourne Bw.",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 173
+            }
+          ]
+        }
+      ],
+      "name": "Roebourne Bw.",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; c) Oktaedrite mit mittl. Lamellen (Om)",
+      "locality": "Hammersley Range, Queensland, Nordwestaustralien",
+      "eventDate": "Fund 1894",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-460a0675-01eb-4280-96be-221a0310388f",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 133,
+      "reportedNumber": null,
+      "catalogPages": [
+        72
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Ruffs Mountain",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 62
+            }
+          ]
+        }
+      ],
+      "name": "Ruffs Mountain",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; c) Oktaedrite mit mittl. Lamellen (Om)",
+      "locality": "Lexington, Süd-Carolina, Vereinigte Staaten",
+      "eventDate": "Beschrieben 1850",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-4ff3c3db-9813-459b-8d03-ce6202d890df",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 134,
+      "reportedNumber": null,
+      "catalogPages": [
+        72
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "San Angelo Bw.",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 67
+            }
+          ]
+        }
+      ],
+      "name": "San Angelo Bw.",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; c) Oktaedrite mit mittl. Lamellen (Om)",
+      "locality": "Tom Green, Texas, Vereinigte Staaten",
+      "eventDate": "Fund 1897",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-53abb779-3a8f-4cfa-b4de-05bd43feef11",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 135,
+      "reportedNumber": null,
+      "catalogPages": [
+        72
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Staunton",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 128.5
+            },
+            {
+              "grams": 200
+            }
+          ]
+        }
+      ],
+      "name": "Staunton",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; c) Oktaedrite mit mittl. Lamellen (Om)",
+      "locality": "Augusta, Virginia, Vereinigte Staaten",
+      "eventDate": "Fund 1858",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b5349c6b-a2c4-46c0-8ef8-f97573e760a7",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 136,
+      "reportedNumber": null,
+      "catalogPages": [
+        72
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Toluca",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 96.5
+            },
+            {
+              "grams": 178
+            },
+            {
+              "grams": 235
+            }
+          ]
+        }
+      ],
+      "name": "Toluca",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; c) Oktaedrite mit mittl. Lamellen (Om)",
+      "locality": "Xiquipilco, Tolucatal, Mexico",
+      "eventDate": "Fund 1784",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e82beec8-9678-48c5-807d-06a491076a65",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 137,
+      "reportedNumber": null,
+      "catalogPages": [
+        72
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Werchne Udinsk",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 54.4
+            }
+          ]
+        }
+      ],
+      "name": "Werchne Udinsk",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; c) Oktaedrite mit mittl. Lamellen (Om)",
+      "locality": "Nirofluß, Sibirien, Rußland",
+      "eventDate": "Fund 1854",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-2e713207-cf92-4a46-abf7-8de4133a3ee3",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 138,
+      "reportedNumber": null,
+      "catalogPages": [
+        72
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Bemdegó",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 390
+            }
+          ]
+        }
+      ],
+      "name": "Bemdegó",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; d) Oktaedrite mit groben Lamellen (Og)",
+      "locality": "Bahia, Brasilien",
+      "eventDate": "Fund 1784",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-5f066816-f0d9-4087-84d3-91829b8573b2",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 139,
+      "reportedNumber": null,
+      "catalogPages": [
+        72
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Bohumilitz",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 37.2
+            }
+          ]
+        }
+      ],
+      "name": "Bohumilitz",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; d) Oktaedrite mit groben Lamellen (Og)",
+      "locality": "Winterberg, Prachin, Böhmen, Österreich",
+      "eventDate": "Fund 1829",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c1a2713c-3887-43a5-898d-49fd8a6f92a2",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 140,
+      "reportedNumber": null,
+      "catalogPages": [
+        72
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Cañon Diablo",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 81.9
+            },
+            {
+              "grams": 9420
+            }
+          ]
+        }
+      ],
+      "name": "Cañon Diablo",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; d) Oktaedrite mit groben Lamellen (Og)",
+      "locality": "Arizona, Neu-Mexico, Vereinigte Staaten",
+      "eventDate": "Fund 1891",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c109c545-f194-4f1f-a16b-6aab2609ca57",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 141,
+      "reportedNumber": null,
+      "catalogPages": [
+        72
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Cosbys Creek (Cocke County Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 4.5
+            }
+          ]
+        }
+      ],
+      "name": "Cosbys Creek (Cocke County Bw.)",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; d) Oktaedrite mit groben Lamellen (Og)",
+      "locality": "Tennessee, Vereinigte Staaten",
+      "eventDate": "Beschrieben 1840",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-5a059132-c88e-48fa-8ef2-dc03ac54b1f5",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 142,
+      "reportedNumber": null,
+      "catalogPages": [
+        72
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Magura (Arva Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 14
+            },
+            {
+              "grams": 34.5
+            },
+            {
+              "grams": 96
+            },
+            {
+              "grams": 135
+            },
+            {
+              "grams": 1005
+            }
+          ]
+        },
+        {
+          "description": "Schreibersit; Magura (Arva Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 25.1
+            }
+          ]
+        }
+      ],
+      "name": "Magura (Arva Bw.)",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; d) Oktaedrite mit groben Lamellen (Og)",
+      "locality": "Szlanicza, Arva, Ungarn",
+      "eventDate": "Fund 1840 ?",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e9396eb6-6d0a-43f8-8926-e2ac316a2743",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 143,
+      "reportedNumber": null,
+      "catalogPages": [
+        72
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Penkarring Rock (Youndegin Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 22.7
+            }
+          ]
+        }
+      ],
+      "name": "Penkarring Rock (Youndegin Bw.)",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; d) Oktaedrite mit groben Lamellen (Og)",
+      "locality": "Youndegin, Westaustralien",
+      "eventDate": "Fund 1884",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-0a982af4-cee8-4208-b95f-af81c3d49369",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 144,
+      "reportedNumber": null,
+      "catalogPages": [
+        72
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Sarepta",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 89.7
+            }
+          ]
+        },
+        {
+          "description": "Drehspäne; Sarepta",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 14.5
+            }
+          ]
+        }
+      ],
+      "name": "Sarepta",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; d) Oktaedrite mit groben Lamellen (Og)",
+      "locality": "Astrachan, Saratow, Rußland",
+      "eventDate": "Fund 1854",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-535c3121-dd16-498e-ba74-b9c5d6e5976c",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 145,
+      "reportedNumber": null,
+      "catalogPages": [
+        72
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Wichita County (Brazos Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 45
+            }
+          ]
+        }
+      ],
+      "name": "Wichita County (Brazos Bw.)",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; d) Oktaedrite mit groben Lamellen (Og)",
+      "locality": "Wichita, Texas, Vereinigte Staaten",
+      "eventDate": "Fund 1836",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-7ce2f138-b42c-4234-857c-b443baae96ed",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 146,
+      "reportedNumber": null,
+      "catalogPages": [
+        72
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Mount Joy",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 615
+            }
+          ]
+        }
+      ],
+      "name": "Mount Joy",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; e) Oktaedrite mit gröbsten Lamellen (Ogg)",
+      "locality": "Adams, Pennsylvanien, Vereinigte Staaten",
+      "eventDate": "Fund 1887",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a2594e6f-b5c4-4b9b-8b98-845ff663b0f3",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 147,
+      "reportedNumber": null,
+      "catalogPages": [
+        72
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Nelson County",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 42
+            }
+          ]
+        }
+      ],
+      "name": "Nelson County",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; e) Oktaedrite mit gröbsten Lamellen (Ogg)",
+      "locality": "Bardstown, Kentucky, Vereinigte Staaten",
+      "eventDate": "Fund 1860",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-afbba258-6e41-4378-9678-8a889f99dda8",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 148,
+      "reportedNumber": null,
+      "catalogPages": [
+        72
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Seeläsgen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 74.5
+            },
+            {
+              "grams": 397
+            },
+            {
+              "grams": 471
+            },
+            {
+              "grams": 476.5
+            },
+            {
+              "grams": 526
+            },
+            {
+              "grams": 636
+            }
+          ]
+        }
+      ],
+      "name": "Seeläsgen",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; e) Oktaedrite mit gröbsten Lamellen (Ogg)",
+      "locality": "Schwiebus, Preußen, Deutschland",
+      "eventDate": "Fund 1847",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c8590f07-1d1b-4a5e-b3e7-792d0d8c57d7",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 149,
+      "reportedNumber": null,
+      "catalogPages": [
+        72
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Copiapo",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 339.5
+            }
+          ]
+        }
+      ],
+      "name": "Copiapo",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; f) Breccienähnlicher Oktaedrit, Copiapogruppe (Obc)",
+      "locality": "Santiago, Chile",
+      "eventDate": "Fund 1863",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-0497b25d-41fe-4321-ac4f-637ecd493f57",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 150,
+      "reportedNumber": null,
+      "catalogPages": [
+        73
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Zacatecas",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 86.2
+            }
+          ]
+        }
+      ],
+      "name": "Zacatecas",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; I. Oktaedrite; g) Breccienähnlicher Oktaedrit, Zacatecasgruppe (Obz)",
+      "locality": "Veta Grande, Mexico",
+      "eventDate": "Fund 1520 ?",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-061048d2-c82a-4da4-b380-4e39a389c241",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 151,
+      "reportedNumber": null,
+      "catalogPages": [
+        73
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Auburn",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 9.3
+            }
+          ]
+        }
+      ],
+      "name": "Auburn",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; II. Hexaedrite; a) Normale Hexaedrite (H)",
+      "locality": "Macon, Alabama, Vereinigte Staaten",
+      "eventDate": "Fund 1867",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c07fdf57-2dea-4127-af5b-0aa759ca0e88",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 152,
+      "reportedNumber": null,
+      "catalogPages": [
+        73
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Braunau",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 235
+            }
+          ]
+        }
+      ],
+      "name": "Braunau",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; II. Hexaedrite; a) Normale Hexaedrite (H)",
+      "locality": "Königgrätz, Böhmen, Österreich",
+      "eventDate": "14. VII. 1847",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-697db940-84d5-4d30-814d-c4232ec39035",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 153,
+      "reportedNumber": null,
+      "catalogPages": [
+        73
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Coahuila",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 31.4
+            },
+            {
+              "grams": 162
+            },
+            {
+              "grams": 913
+            }
+          ]
+        }
+      ],
+      "name": "Coahuila",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; II. Hexaedrite; a) Normale Hexaedrite (H)",
+      "locality": "Santa Rosa, Chihuahua, Mexico",
+      "eventDate": "Bekannt 1837",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6821b20b-1e1e-47f5-a775-9f899b119b6e",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 154,
+      "reportedNumber": null,
+      "catalogPages": [
+        73
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Fort Duncan",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 539
+            }
+          ]
+        }
+      ],
+      "name": "Fort Duncan",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; II. Hexaedrite; a) Normale Hexaedrite (H)",
+      "locality": "Texas, Vereinigte Staaten",
+      "eventDate": "Bekannt 1852",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c2f5e8b9-dece-4d75-94d2-ee76fb0241d7",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 155,
+      "reportedNumber": null,
+      "catalogPages": [
+        73
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Hex River Mountains",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 25.2
+            }
+          ]
+        }
+      ],
+      "name": "Hex River Mountains",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; II. Hexaedrite; a) Normale Hexaedrite (H)",
+      "locality": "Kapland, Südafrika",
+      "eventDate": "Fund 1882",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-32cd9044-bd70-495f-8c4b-d8a52d345e4b",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 156,
+      "reportedNumber": null,
+      "catalogPages": [
+        73
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Kendall County",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 110.3
+            }
+          ]
+        }
+      ],
+      "name": "Kendall County",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; II. Hexaedrite; b) Körnige (breccienförmige) Hexaedrite (Hb)",
+      "locality": "Bexar, Texas, Vereinigte Staaten",
+      "eventDate": "Bekannt 1887",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6711fa80-7f23-4c0d-9d84-dff469dd76a0",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 157,
+      "reportedNumber": null,
+      "catalogPages": [
+        73
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Mejillones",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 37.4
+            }
+          ]
+        }
+      ],
+      "name": "Mejillones",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; II. Hexaedrite; b) Körnige (breccienförmige) Hexaedrite (Hb)",
+      "locality": "Atacama, Bolivia",
+      "eventDate": "1874 ?",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-adb98a00-e0ab-4ef0-9ba6-352703d8c7be",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 158,
+      "reportedNumber": null,
+      "catalogPages": [
+        73
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "São Julião",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 0.4
+            },
+            {
+              "grams": 1.9
+            },
+            {
+              "grams": 95.5
+            },
+            {
+              "grams": 175
+            }
+          ]
+        },
+        {
+          "description": "Schreibersit; São Julião",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 3.2
+            }
+          ]
+        }
+      ],
+      "name": "São Julião",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; II. Hexaedrite; b) Körnige (breccienförmige) Hexaedrite (Hb)",
+      "locality": "Ponte de Lima, Minho, Portugal",
+      "eventDate": "Fund 1883",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-3790eec7-13e0-40d5-aada-0198e808d8db",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 159,
+      "reportedNumber": null,
+      "catalogPages": [
+        73
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Babbs Mill",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 3.6
+            }
+          ]
+        }
+      ],
+      "name": "Babbs Mill",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; III. Ataxite; a) Babbs Mill-Gruppe (Db)",
+      "locality": "Green, Tennessee, Vereinigte Staaten",
+      "eventDate": "Fund 1842",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-484b2d60-0739-4a89-bb07-d9caa2d980f5",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 160,
+      "reportedNumber": null,
+      "catalogPages": [
+        73
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Nenntmannsdorf",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 12
+            },
+            {
+              "grams": 44.2
+            },
+            {
+              "grams": 11550
+            }
+          ]
+        }
+      ],
+      "name": "Nenntmannsdorf",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; III. Ataxite; b) Nedagollagruppe (Dn)",
+      "locality": "Pirna, Sachsen, Deutschland",
+      "eventDate": "Fund 1872",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-ddd9d02d-9010-46b2-a4c2-aaa90a724b39",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 161,
+      "reportedNumber": null,
+      "catalogPages": [
+        73
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Rasgata",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 1.1
+            },
+            {
+              "grams": 2.4
+            }
+          ]
+        }
+      ],
+      "name": "Rasgata",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; III. Ataxite; b) Nedagollagruppe (Dn)",
+      "locality": "Santa Fé de Bogota, Columbien",
+      "eventDate": "Fund 1810",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-5dc986e5-c762-40f1-b6f6-022d1fd20cca",
+      "catalogId": "schreiter-1912",
+      "entryOrder": 162,
+      "reportedNumber": null,
+      "catalogPages": [
+        73
+      ],
+      "section": "I. Meteoritenverzeichnis, petrographisch geordnet.",
+      "holdings": [
+        {
+          "description": "Muchachos (Tucson Bw.)",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 82
+            }
+          ]
+        }
+      ],
+      "name": "Muchachos (Tucson Bw.)",
+      "classification": "3. Eisenmeteorite; B. Meteoreisen; III. Ataxite; c) Muchachosgruppe (Dm)",
+      "locality": "Berg Sante Rita, Pima, Mexico",
+      "eventDate": "Fund 1660",
       "confidence": "high"
     },
     {
