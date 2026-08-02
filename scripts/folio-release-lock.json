@@ -1,6 +1,13 @@
 {
   "schemaVersion": 1,
   "catalogs": {
+    "asu-2024-09": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "basis": null,
+      "basisUrl": null,
+      "pageIds": []
+    },
     "ball-1882": {
       "displayPolicy": "blocked",
       "rightsStatus": "undetermined",

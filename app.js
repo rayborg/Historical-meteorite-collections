@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260730-1";
+const CACHE_VERSION = "20260802-1";
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "designation-asc";
 const VALID_SORTS = new Set([
@@ -654,9 +654,10 @@ function catalogLabel(descriptor, catalogId = "") {
 
 function catalogDropdownLabel(descriptor, catalogId = "") {
   const id = cleanText(catalogId || descriptor?.id);
-  const idMatch = id?.match(/^(.+?)-(\d{4})$/u);
+  const idMatch = id?.match(/^(.+?)-(\d{4})(?:-\d{2})?$/u);
   const sourceId = idMatch?.[1] || id;
   const sourceAliases = {
+    "asu": "ASU",
     "hogbom": "Högbom",
     "nordenskiold": "Nordenskiöld",
     "usnm": "USNM"

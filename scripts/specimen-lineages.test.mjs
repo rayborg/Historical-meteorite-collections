@@ -68,8 +68,8 @@ test("publishes locked source and relationship counts", () => {
   assert.equal(flattenInventoryObservations(catalog).length, 3627);
   assert.deepEqual(published.metadata.source, {
     catalogSchemaVersion: 6,
-    recordCount: 6881,
-    catalogCount: 19,
+    recordCount: 9050,
+    catalogCount: 20,
     flattenedMassObservationCount: 3916,
     inventoryObservationCount: 3627,
   });
@@ -105,6 +105,19 @@ test("publishes locked source and relationship counts", () => {
       { catalogPair: "nininger-1933|usnm-1886", sameInventoryCount: 0, possibleMatchCount: 1 },
     ],
   });
+});
+
+test("ASU September 2024 remains facts-only and outside lineage inputs", () => {
+  const asu = catalog.records.filter(({ catalogId }) => catalogId === "asu-2024-09");
+  const designationCounts = new Map();
+  asu.forEach(({ designation }) => designationCounts.set(designation, (designationCounts.get(designation) || 0) + 1));
+
+  assert.equal(asu.length, 2169);
+  assert.equal(designationCounts.size, 2166);
+  assert.deepEqual([...designationCounts].filter(([, count]) => count > 1), [["91", 2], ["157", 2], ["607", 2]]);
+  assert.ok(asu.every((record) => !Object.hasOwn(record, "metbull")));
+  assert.ok(published.relationships.every(({ observations }) =>
+    observations.every(({ catalogId }) => catalogId !== "asu-2024-09")));
 });
 
 test("excludes weighted observations without reviewed MetBull mappings", () => {
