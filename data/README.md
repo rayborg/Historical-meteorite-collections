@@ -1,12 +1,12 @@
 # Public Catalog Data
 
 <!-- release-summary:data-overview:start -->
-`catalog.json` is a schema-6 facts-only dataset containing 5,005 source observations from 16 historical meteorite catalogs. `folios.json` is a separate schema-2, deny-by-default display manifest with 49 reviewed page entries.
+`catalog.json` is a schema-6 facts-only dataset containing 5,345 source observations from 17 historical meteorite catalogs. `folios.json` is a separate schema-2, deny-by-default display manifest with 49 reviewed page entries.
 <!-- release-summary:data-overview:end -->
 
 A searchable transcription of the 1976 Huss Meteorite Collection catalog, compiled and published by Glenn Huss.
 
-The other configured descriptors identify their compilers without inferring a publisher: Jean Andre Henri Lucas for 1813; E. F. F. Chladni, with a Vienna appendix by Karl von Schreibers, for 1819; E. F. F. Chladni for 1825; Wilhelm Haidinger for 1859; Otto Buchner for 1863; A. E. Nordenskiöld for 1870; Valentine Ball for 1882; F. W. Clarke for 1886; Edmund Otis Hovey for 1896; Henry S. Washington for 1897; A. G. Högbom for 1902; Oliver Cummings Farrington for 1903; H. H. Nininger for 1933; H. H. Nininger and Addie D. Nininger for 1950; and Glenn I. Huss for 1986.
+The other configured descriptors identify their compilers without inferring a publisher: Jean Andre Henri Lucas for 1813; E. F. F. Chladni, with a Vienna appendix by Karl von Schreibers, for 1819; E. F. F. Chladni for 1825; Wilhelm Haidinger for 1859; Otto Buchner for 1863; A. E. Nordenskiöld for 1870; Valentine Ball for 1882; F. W. Clarke for 1886; Edmund Otis Hovey for 1896; Henry S. Washington for 1897; Wirt Tassin for 1902; A. G. Högbom for 1902; Oliver Cummings Farrington for 1903; H. H. Nininger for 1933; H. H. Nininger and Addie D. Nininger for 1950; and Glenn I. Huss for 1986.
 
 <!-- release-summary:data-catalog-table:start -->
 | `catalogId` | Record model | Records | Metadata source pages | Pages cited by records |
@@ -25,14 +25,15 @@ The other configured descriptors identify their compilers without inferring a pu
 | `nininger-1933` | `catalog-item` | 171 | 20 | 11 |
 | `nininger-1950` | `specimen` | 1,678 | 79 | 79 |
 | `nordenskiold-1870` | `collection-entry` | 127 | 10 | 10 |
+| `tassin-1902` | `collection-entry` | 340 | 26 | 24 |
 | `usnm-1886` | `collection-entry` | 349 | 11 | 11 |
 | `washington-1897` | `collection-entry` | 201 | 4 | 4 |
-| **Total** |  | **5,005** | **310** | **289** |
+| **Total** |  | **5,345** | **336** | **313** |
 <!-- release-summary:data-catalog-table:end -->
 
 Metadata source-page coverage is not a count of pages cited by records. Some covered pages are introductory or narrative-only.
 
-Chladni 1825 pages 200-207 are introductory folios. `haidinger-1859` page 21 introduces the holdings list, whose entries begin on page 22. `buchner-1863` covers the Vienna register on Roman pages XIII-XVII, from Alais through Hemalga. `nininger-1933` includes printed pages 1-20; pages 12-20 are narrative-only, and the printed catalog numbering skips item 139.
+Chladni 1825 pages 200-207 are introductory folios. `haidinger-1859` page 21 introduces the holdings list, whose entries begin on page 22. `buchner-1863` covers the Vienna register on Roman pages XIII-XVII, from Alais through Hemalga. `tassin-1902` metadata includes plate page 671 and introductory page 673; its 340 entries cite pages 675-698. `nininger-1933` includes printed pages 1-20; pages 12-20 are narrative-only, and the printed catalog numbering skips item 139.
 
 <!-- release-summary:data-nininger-coverage:start -->
 `nininger-1933` has 171 records; its metadata source pages span 1-20, and its record citations span 1-11. `nininger-1950` has 1,678 records; its metadata source pages span 26-104, and its record citations span 26-104.
@@ -79,7 +80,7 @@ Each holding has exactly `description`, `provenance`, `count`, and `weights`; ea
 
 ### Collection Entry
 
-Used by Lucas, both Chladni catalogs, Haidinger, Buchner, Nordenskiöld, Ball, and Clarke:
+Used by Lucas, both Chladni catalogs, Haidinger, Buchner, Nordenskiöld, Ball, Clarke, Washington, Tassin, Högbom, and Farrington:
 
 ```text
 id, catalogId, entryOrder, reportedNumber, catalogPages, section,
@@ -180,6 +181,7 @@ The deployment-specific `scripts/folio-release-lock.json` pins every catalog pol
 | `nininger-1933` | display | no-copyright-us | 21 |
 | `nininger-1950` | blocked | undetermined | 0 |
 | `nordenskiold-1870` | blocked | undetermined | 0 |
+| `tassin-1902` | blocked | undetermined | 0 |
 | `usnm-1886` | blocked | undetermined | 0 |
 | `washington-1897` | blocked | undetermined | 0 |
 | **Total** |  |  | **49** |
@@ -193,12 +195,11 @@ Run from the repository root:
 
 ```sh
 node scripts/sync-release-summary.mjs --check
-node --test scripts/sync-release-summary.test.mjs
 node scripts/build-specimen-lineages.mjs --check
 node scripts/validate-specimen-lineages.mjs
-node --test scripts/specimen-lineages.test.mjs
 node scripts/validate-public-catalog.mjs
 node scripts/test-multicatalog.cjs
+node --test scripts/*.test.mjs
 ```
 
 Use `node scripts/validate-public-catalog.mjs --synthetic-only` to run the strict schema and rejection fixtures without reading the real catalog, manifest, or folio files.

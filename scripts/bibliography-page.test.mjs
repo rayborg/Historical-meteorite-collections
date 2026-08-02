@@ -24,6 +24,7 @@ test("publishes a safe and accessible bibliography table", async () => {
   assert.match(bibliography, /class="table-wrap" role="region" aria-label="Bibliography master list; scroll horizontally to see all columns" tabindex="0"/);
   assert.match(bibliography, /\.table-wrap:focus-visible \{[^}]*outline:/);
   assert.match(bibliography, /data-control="MCB-80"[^\n]*processing-cell complete[^\n]*Washington 1897/);
+  assert.match(bibliography, /data-control="MCB-86"[^\n]*processing-cell complete[^\n]*Tassin 1902/);
   assert.match(bibliography, /data-control="MCB-93"[^\n]*processing-cell complete[^\n]*Högbom 1902/);
   assert.match(bibliography, /data-control="MCB-94"[^\n]*processing-cell complete[^\n]*Farrington 1903/);
 
