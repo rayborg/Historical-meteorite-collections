@@ -28,6 +28,8 @@ test("publishes a safe and accessible bibliography table", async () => {
   assert.match(bibliography, /data-control="MCB-93"[^\n]*processing-cell complete[^\n]*Högbom 1902/);
   assert.match(bibliography, /data-control="MCB-94"[^\n]*processing-cell complete[^\n]*Farrington 1903/);
   assert.match(bibliography, /data-control="MCB-117"[^\n]*processing-cell complete[^\n]*Schreiter 1912/);
+  assert.match(bibliography, /data-control="MCB-175"[^\n]*The Meteorite and Tektite Collection of the American Museum of Natural History[^\n]*processing-cell complete[^\n]*Mason 1964/);
+  assert.doesNotMatch(bibliography, /Catalogue of Meteorites in the American Museum of Natural History/);
 
   const sourceLinks = bibliography.match(/<a href="https:\/\//g) || [];
   const namedSourceLinks = bibliography.match(/target="_blank" rel="noreferrer" aria-label="Open(?: \d+)? source for MCB-\d+:/g) || [];

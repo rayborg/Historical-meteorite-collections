@@ -256,6 +256,11 @@
         }
       ]
     },
+    "mason-1964": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "pages": []
+    },
     "nininger-1933": {
       "displayPolicy": "display",
       "rightsStatus": "no-copyright-us",
