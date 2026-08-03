@@ -804,7 +804,7 @@ test("catalog dropdown labels are concise and leave summary titles unchanged", (
     { id: "farrington-1903", year: 1903, label: "Catalogue of the Meteorite Collection of the Field Columbian Museum, May 1, 1903 (1903)" },
     { id: "palache-1926", year: 1926, label: "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)" },
     { id: "nininger-1933", year: 1933, label: "The Nininger Collection (1933)" },
-    { id: "barnes-1940", year: 1940, label: "Catalogue of Texas Meteorites (1940)" },
+    { id: "barnes-1940", year: 1940, label: "Catalogue of Texas Meteorites and Their Known Specimen Holdings: University of Texas Bureau of Economic Geology (1940)" },
     { id: "nininger-1950", year: 1950, label: "The Nininger Collection (1950)" },
     { id: "huss-1976", year: 1976, label: "Huss Meteorite Collection catalog (1976)" },
     { id: "huss-1986", year: 1986, label: "The Second Huss Collection of Meteorites (1986)" },
