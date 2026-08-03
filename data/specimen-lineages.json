@@ -4,9 +4,9 @@
     "scope": "series-inventory-and-cross-source-candidates",
     "source": {
       "catalogSchemaVersion": 6,
-      "recordCount": 9050,
-      "catalogCount": 20,
-      "flattenedMassObservationCount": 7976,
+      "recordCount": 9120,
+      "catalogCount": 21,
+      "flattenedMassObservationCount": 8179,
       "inventoryObservationCount": 3627
     },
     "collectionSeries": [
@@ -54,13 +54,13 @@
       ]
     },
     "counts": {
-      "relationshipCount": 422,
+      "relationshipCount": 464,
       "sameInventoryRelationshipCount": 195,
-      "possibleMatchRelationshipCount": 227,
-      "unreviewedPossibleMatchCount": 227,
-      "exactMassPossibleMatchCount": 184,
-      "nearMassPossibleMatchCount": 43,
-      "metbullIdentityPossibleMatchCount": 227,
+      "possibleMatchRelationshipCount": 269,
+      "unreviewedPossibleMatchCount": 269,
+      "exactMassPossibleMatchCount": 218,
+      "nearMassPossibleMatchCount": 51,
+      "metbullIdentityPossibleMatchCount": 269,
       "normalizedNameIdentityPossibleMatchCount": 0,
       "sameDesignationPossibleMatchCount": 0,
       "designationFamilyPossibleMatchCount": 0,
@@ -70,8 +70,8 @@
       "omittedAmbiguousInventoryKeyCount": 0,
       "possibleMatchEvidenceStrength": {
         "multiple-matching-facts": 0,
-        "two-matching-facts": 184,
-        "limited-matching-evidence": 43
+        "two-matching-facts": 218,
+        "limited-matching-evidence": 51
       },
       "catalogPairs": [
         {
@@ -83,6 +83,36 @@
           "catalogPair": "asu-2024-09|nininger-1950",
           "sameInventoryCount": 0,
           "possibleMatchCount": 7
+        },
+        {
+          "catalogPair": "barnes-1940|farrington-1903",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 8
+        },
+        {
+          "catalogPair": "barnes-1940|mason-1964",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 16
+        },
+        {
+          "catalogPair": "barnes-1940|nininger-1933",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 7
+        },
+        {
+          "catalogPair": "barnes-1940|nininger-1950",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 9
+        },
+        {
+          "catalogPair": "barnes-1940|tassin-1902",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 1
+        },
+        {
+          "catalogPair": "barnes-1940|usnm-1886",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 1
         },
         {
           "catalogPair": "farrington-1903|mason-1964",
@@ -738,6 +768,235 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=mason-1964&q=record%20id%20obs-be30b8c2-4371-4e36-a899-4ae1763557ee#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-0849ecf9-9f1c-5ef1-ad99-a263fca90a71",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "McKinney",
+      "catalogPair": "barnes-1940|mason-1964",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "15463",
+        "canonicalName": "McKinney"
+      },
+      "evidence": {
+        "strength": "limited-matching-evidence",
+        "massMatch": "near",
+        "absoluteDifferenceGrams": 0.5,
+        "relativeDifference": 0.0007898894154818325,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "near-reported-mass"
+        ],
+        "cautionCodes": [
+          "near-reported-mass",
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-162ba279-940f-556d-bf33-3af107bdbc13",
+          "recordId": "obs-f76d7501-85ee-482e-95ed-0445a33735cd",
+          "catalogId": "mason-1964",
+          "catalogLabel": "The Meteorite and Tektite Collection of the American Museum of Natural History (1964)",
+          "catalogYear": 1964,
+          "recordModel": "catalog-number",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Catalog no. 595",
+          "sourceName": "McKinney",
+          "canonicalName": "McKinney",
+          "meteoriteCode": "15463",
+          "designation": null,
+          "massGrams": 633,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=mason-1964&q=record%20id%20obs-f76d7501-85ee-482e-95ed-0445a33735cd#catalog"
+        },
+        {
+          "id": "mass-observation-6d0bcfba-57b8-5d94-b125-0bd536f5a3b9",
+          "recordId": "obs-17d07f62-a9ce-4e9a-a1df-3ee8f4d43fd5",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[3].weights[1].grams",
+          "sourceRecordLabel": "Collection entry 39",
+          "sourceName": "McKinney",
+          "canonicalName": "McKinney",
+          "meteoriteCode": "15463",
+          "designation": null,
+          "massGrams": 632.5,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-17d07f62-a9ce-4e9a-a1df-3ee8f4d43fd5#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-08e49277-9ae8-5d75-9ab0-e5e8a998fa29",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Florence",
+      "catalogPair": "barnes-1940|nininger-1950",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "10111",
+        "canonicalName": "Florence"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-16c57bb9-9d9b-59dc-ac6d-f041524d64ab",
+          "recordId": "obs-13875b9e-ff39-45e4-91d7-0ef8e86f6d5f",
+          "catalogId": "nininger-1950",
+          "catalogLabel": "The Nininger Collection of Meteorites (1950)",
+          "catalogYear": 1950,
+          "recordModel": "specimen",
+          "designationPath": "designation",
+          "massPath": "weight.grams",
+          "sourceRecordLabel": "218a",
+          "sourceName": "Florence",
+          "canonicalName": "Florence",
+          "meteoriteCode": "10111",
+          "designation": "218a",
+          "massGrams": 50,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=nininger-1950&q=record%20id%20obs-13875b9e-ff39-45e4-91d7-0ef8e86f6d5f#catalog"
+        },
+        {
+          "id": "mass-observation-e3eecf9d-bb8c-57c1-bde5-068b502fa7e1",
+          "recordId": "obs-5af9df5b-94d1-4d06-b0aa-556621bec8ed",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 25",
+          "sourceName": "Florence",
+          "canonicalName": "Florence",
+          "meteoriteCode": "10111",
+          "designation": null,
+          "massGrams": 50,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-5af9df5b-94d1-4d06-b0aa-556621bec8ed#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-092472d1-1556-561e-9fbf-467dca677d8a",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "McKinney",
+      "catalogPair": "barnes-1940|farrington-1903",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "15463",
+        "canonicalName": "McKinney"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-6ccb45a7-0cf4-5ff8-a9df-f383647a701c",
+          "recordId": "obs-17d07f62-a9ce-4e9a-a1df-3ee8f4d43fd5",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[4].grams",
+          "sourceRecordLabel": "Collection entry 39",
+          "sourceName": "McKinney",
+          "canonicalName": "McKinney",
+          "meteoriteCode": "15463",
+          "designation": null,
+          "massGrams": 72,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-17d07f62-a9ce-4e9a-a1df-3ee8f4d43fd5#catalog"
+        },
+        {
+          "id": "mass-observation-94c84879-aa2d-5cf2-ba67-3ef1db1e8b2d",
+          "recordId": "obs-24aca1c5-1c3c-4aab-a996-55db53dd6a07",
+          "catalogId": "farrington-1903",
+          "catalogLabel": "Catalogue of the Collection of Meteorites, May 1, 1903 (1903)",
+          "catalogYear": 1903,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 152",
+          "sourceName": "McKinney",
+          "canonicalName": "McKinney",
+          "meteoriteCode": "15463",
+          "designation": null,
+          "massGrams": 72,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=farrington-1903&q=record%20id%20obs-24aca1c5-1c3c-4aab-a996-55db53dd6a07#catalog"
         }
       ]
     },
@@ -1657,6 +1916,82 @@
       ]
     },
     {
+      "id": "possible-lineage-1a537ee7-091f-5187-adb9-5c9c3d8d60f6",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Denton County",
+      "catalogPair": "barnes-1940|usnm-1886",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "6659",
+        "canonicalName": "Denton County"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-3c399b09-3f88-58a7-9df5-cd362435adda",
+          "recordId": "obs-42188afc-1304-4f49-8c38-225615c6b247",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 20",
+          "sourceName": "Denton County",
+          "canonicalName": "Denton County",
+          "meteoriteCode": "6659",
+          "designation": null,
+          "massGrams": 7.97,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-42188afc-1304-4f49-8c38-225615c6b247#catalog"
+        },
+        {
+          "id": "mass-observation-8fcd7d67-c13b-5bda-a33e-0933ec9735ae",
+          "recordId": "obs-9f94cec5-db62-4d0b-937a-1048dc2c4210",
+          "catalogId": "usnm-1886",
+          "catalogLabel": "The Meteorite Collection in the U. S. National Museum; a Catalogue of Meteorites Represented November 1, 1886 (1886)",
+          "catalogYear": 1886,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 183",
+          "sourceName": "Denton County",
+          "canonicalName": "Denton County",
+          "meteoriteCode": "6659",
+          "designation": null,
+          "massGrams": 7.97,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=usnm-1886&q=record%20id%20obs-9f94cec5-db62-4d0b-937a-1048dc2c4210#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-1b1b0ddb-8a42-5c82-9d09-eb1c41dd8f65",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -2496,6 +2831,82 @@
       ]
     },
     {
+      "id": "possible-lineage-26729898-4794-5721-93d1-300fc485a44a",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Burkett",
+      "catalogPair": "barnes-1940|mason-1964",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "5170",
+        "canonicalName": "Burkett"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-47a2c654-f2c3-51c6-8551-c4feb374d4d9",
+          "recordId": "obs-01cc98eb-511b-41af-8f67-84826cab6d4d",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 11",
+          "sourceName": "Burkett",
+          "canonicalName": "Burkett",
+          "meteoriteCode": "5170",
+          "designation": null,
+          "massGrams": 3071,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-01cc98eb-511b-41af-8f67-84826cab6d4d#catalog"
+        },
+        {
+          "id": "mass-observation-7075df0a-b995-5db1-9669-7d77bfe73909",
+          "recordId": "obs-2d96a3ea-22b0-4861-8550-a0e18530e19c",
+          "catalogId": "mason-1964",
+          "catalogLabel": "The Meteorite and Tektite Collection of the American Museum of Natural History (1964)",
+          "catalogYear": 1964,
+          "recordModel": "catalog-number",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Catalog no. 284",
+          "sourceName": "Burkett",
+          "canonicalName": "Burkett",
+          "meteoriteCode": "5170",
+          "designation": null,
+          "massGrams": 3071,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=mason-1964&q=record%20id%20obs-2d96a3ea-22b0-4861-8550-a0e18530e19c#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-26a82960-5382-5f1a-b09f-4f5280e11259",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -2797,6 +3208,83 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=nininger-1950&q=record%20id%20obs-972420bc-0c76-4f78-a612-abfbda4a13ea#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-28063132-bbf5-5d9b-a8dd-b44c5b598ec1",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Carlton",
+      "catalogPair": "barnes-1940|mason-1964",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "5277",
+        "canonicalName": "Carlton"
+      },
+      "evidence": {
+        "strength": "limited-matching-evidence",
+        "massMatch": "near",
+        "absoluteDifferenceGrams": 0.5,
+        "relativeDifference": 0.0007633587786259542,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "near-reported-mass"
+        ],
+        "cautionCodes": [
+          "near-reported-mass",
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-955aeb56-0071-5cc2-af54-d3861b07e494",
+          "recordId": "obs-226ca4fa-32b5-4085-9b1d-6692384fd648",
+          "catalogId": "mason-1964",
+          "catalogLabel": "The Meteorite and Tektite Collection of the American Museum of Natural History (1964)",
+          "catalogYear": 1964,
+          "recordModel": "catalog-number",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Catalog no. 112",
+          "sourceName": "Carlton",
+          "canonicalName": "Carlton",
+          "meteoriteCode": "5277",
+          "designation": null,
+          "massGrams": 655,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=mason-1964&q=record%20id%20obs-226ca4fa-32b5-4085-9b1d-6692384fd648#catalog"
+        },
+        {
+          "id": "mass-observation-da1facf1-5b90-5641-b9ff-abea9f267450",
+          "recordId": "obs-0c2340e4-7f1d-49aa-b6cb-ed7fa21eb4f6",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[5].weights[2].grams",
+          "sourceRecordLabel": "Collection entry 12",
+          "sourceName": "Carlton",
+          "canonicalName": "Carlton",
+          "meteoriteCode": "5277",
+          "designation": null,
+          "massGrams": 654.5,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-0c2340e4-7f1d-49aa-b6cb-ed7fa21eb4f6#catalog"
         }
       ]
     },
@@ -3258,6 +3746,82 @@
       ]
     },
     {
+      "id": "possible-lineage-2f4ab4a5-0d84-5a30-b493-292336869928",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Kendall County",
+      "catalogPair": "barnes-1940|farrington-1903",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "12274",
+        "canonicalName": "Kendall County"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-836b3fc9-9c66-5308-9400-1e33348d050d",
+          "recordId": "obs-e76be193-934c-4937-a7fd-96ba27516154",
+          "catalogId": "farrington-1903",
+          "catalogLabel": "Catalogue of the Collection of Meteorites, May 1, 1903 (1903)",
+          "catalogYear": 1903,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 122",
+          "sourceName": "Kendall County",
+          "canonicalName": "Kendall County",
+          "meteoriteCode": "12274",
+          "designation": null,
+          "massGrams": 118,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=farrington-1903&q=record%20id%20obs-e76be193-934c-4937-a7fd-96ba27516154#catalog"
+        },
+        {
+          "id": "mass-observation-cc58eacd-47ee-547e-87b6-8dc149d0cfa3",
+          "recordId": "obs-fbf1f7ea-6bf7-4112-b75e-141baa666b94",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[10].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 33",
+          "sourceName": "Kendall County",
+          "canonicalName": "Kendall County",
+          "meteoriteCode": "12274",
+          "designation": null,
+          "massGrams": 118,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-fbf1f7ea-6bf7-4112-b75e-141baa666b94#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-30673c2c-51af-5a91-8afd-8b8a0cd07bc2",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -3407,6 +3971,83 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=nininger-1950&q=record%20id%20obs-6ebf989f-2c39-4c42-9b1c-ab71aa403493#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-3348132a-6a1d-5bbf-adf2-9a182da9474c",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Mart",
+      "catalogPair": "barnes-1940|mason-1964",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "15435",
+        "canonicalName": "Mart"
+      },
+      "evidence": {
+        "strength": "limited-matching-evidence",
+        "massMatch": "near",
+        "absoluteDifferenceGrams": 0.4000000000000057,
+        "relativeDifference": 0.001976284584980265,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "near-reported-mass"
+        ],
+        "cautionCodes": [
+          "near-reported-mass",
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-038377ce-f863-5555-9cf8-dd10bda3218f",
+          "recordId": "obs-d3470da0-fa69-45f2-a1c8-dbaf3e35d4a0",
+          "catalogId": "mason-1964",
+          "catalogLabel": "The Meteorite and Tektite Collection of the American Museum of Natural History (1964)",
+          "catalogYear": 1964,
+          "recordModel": "catalog-number",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Catalog no. 119",
+          "sourceName": "Mart",
+          "canonicalName": "Mart",
+          "meteoriteCode": "15435",
+          "designation": null,
+          "massGrams": 202,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=mason-1964&q=record%20id%20obs-d3470da0-fa69-45f2-a1c8-dbaf3e35d4a0#catalog"
+        },
+        {
+          "id": "mass-observation-ec77543b-ad2c-563a-a9cc-456339426b3e",
+          "recordId": "obs-3edc5faa-afd3-49f0-8d0e-54668dc77109",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[3].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 38",
+          "sourceName": "Mart",
+          "canonicalName": "Mart",
+          "meteoriteCode": "15435",
+          "designation": null,
+          "massGrams": 202.4,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-3edc5faa-afd3-49f0-8d0e-54668dc77109#catalog"
         }
       ]
     },
@@ -4022,6 +4663,82 @@
       ]
     },
     {
+      "id": "possible-lineage-3cf6b65b-a909-54d2-9a36-9c749733593d",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Red River",
+      "catalogPair": "barnes-1940|farrington-1903",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "22548",
+        "canonicalName": "Red River"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-18d224f7-2f3a-5c26-bba6-5d13cd4c0434",
+          "recordId": "obs-e2b4f522-b31d-4dcb-9cf6-7b8ba35da649",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[6].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 51",
+          "sourceName": "Red River",
+          "canonicalName": "Red River",
+          "meteoriteCode": "22548",
+          "designation": null,
+          "massGrams": 55,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-e2b4f522-b31d-4dcb-9cf6-7b8ba35da649#catalog"
+        },
+        {
+          "id": "mass-observation-3e14c8ca-2f53-5e99-87b0-9262247dd9fa",
+          "recordId": "obs-e9365741-a0c3-41f8-ac03-b726321c7e4f",
+          "catalogId": "farrington-1903",
+          "catalogLabel": "Catalogue of the Collection of Meteorites, May 1, 1903 (1903)",
+          "catalogYear": 1903,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 198",
+          "sourceName": "Red River",
+          "canonicalName": "Red River",
+          "meteoriteCode": "22548",
+          "designation": null,
+          "massGrams": 55,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=farrington-1903&q=record%20id%20obs-e9365741-a0c3-41f8-ac03-b726321c7e4f#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-3fdd6eb4-e15e-575b-9562-d70a68118b79",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -4171,6 +4888,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=nininger-1950&q=record%20id%20obs-f98f2605-a890-4004-b12b-5a0d2524323e#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-442a427b-61e4-596f-8705-5711d48f0958",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Wichita County",
+      "catalogPair": "barnes-1940|farrington-1903",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "24257",
+        "canonicalName": "Wichita County"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-66e17e33-7f50-5721-9850-9772fe38f755",
+          "recordId": "obs-c8d83a23-73a6-4896-b62e-54410eb00c01",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[7].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 69",
+          "sourceName": "Wichita County",
+          "canonicalName": "Wichita County",
+          "meteoriteCode": "24257",
+          "designation": null,
+          "massGrams": 1396,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-c8d83a23-73a6-4896-b62e-54410eb00c01#catalog"
+        },
+        {
+          "id": "mass-observation-efd61bfe-7b72-5e7c-83cd-f4c18df3a97e",
+          "recordId": "obs-9e93d510-2dc8-40c8-8f72-b2a0d58587d1",
+          "catalogId": "farrington-1903",
+          "catalogLabel": "Catalogue of the Collection of Meteorites, May 1, 1903 (1903)",
+          "catalogYear": 1903,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 245",
+          "sourceName": "Wichita County",
+          "canonicalName": "Wichita County",
+          "meteoriteCode": "24257",
+          "designation": null,
+          "massGrams": 1396,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=farrington-1903&q=record%20id%20obs-9e93d510-2dc8-40c8-8f72-b2a0d58587d1#catalog"
         }
       ]
     },
@@ -4404,6 +5197,82 @@
       ]
     },
     {
+      "id": "possible-lineage-4a7c6b83-e644-512e-8da6-219c7f1f3154",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Kendall County",
+      "catalogPair": "barnes-1940|tassin-1902",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "12274",
+        "canonicalName": "Kendall County"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-2f17382d-69dd-50ff-a80c-ed410380a73b",
+          "recordId": "obs-150ba208-5c7c-4962-872e-24c6e59f03b8",
+          "catalogId": "tassin-1902",
+          "catalogLabel": "Descriptive Catalogue of the Meteorite Collection in the United States National Museum to January 1, 1902 (1902)",
+          "catalogYear": 1902,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 156",
+          "sourceName": "Kendall County",
+          "canonicalName": "Kendall County",
+          "meteoriteCode": "12274",
+          "designation": null,
+          "massGrams": 767,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=tassin-1902&q=record%20id%20obs-150ba208-5c7c-4962-872e-24c6e59f03b8#catalog"
+        },
+        {
+          "id": "mass-observation-5ecda8d8-0c6c-57e9-9b7b-577f536a2730",
+          "recordId": "obs-fbf1f7ea-6bf7-4112-b75e-141baa666b94",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[7].weights[1].grams",
+          "sourceRecordLabel": "Collection entry 33",
+          "sourceName": "Kendall County",
+          "canonicalName": "Kendall County",
+          "meteoriteCode": "12274",
+          "designation": null,
+          "massGrams": 767,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-fbf1f7ea-6bf7-4112-b75e-141baa666b94#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-4b38bc4a-49c8-5278-8d33-ece1ab0b1233",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -4480,6 +5349,82 @@
       ]
     },
     {
+      "id": "possible-lineage-4beaf920-0c14-5045-bfa5-a403b5ebd93e",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Estacado",
+      "catalogPair": "barnes-1940|nininger-1933",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "10057",
+        "canonicalName": "Estacado"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-3256f9b8-ed25-5c91-96a1-3063f89c9e8c",
+          "recordId": "obs-3b2450c6-c510-40c0-91f0-312e51030c4d",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[5].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 24",
+          "sourceName": "Estacado",
+          "canonicalName": "Estacado",
+          "meteoriteCode": "10057",
+          "designation": null,
+          "massGrams": 13750,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-3b2450c6-c510-40c0-91f0-312e51030c4d#catalog"
+        },
+        {
+          "id": "mass-observation-6b1e6d79-30d6-5720-acfd-b5cb7745a883",
+          "recordId": "obs-58f00e4f-a565-4496-9f22-40e7c2218d8a",
+          "catalogId": "nininger-1933",
+          "catalogLabel": "The Nininger Collection of Meteorites with Descriptions of the Huizopa and Pojoaque Meteorites (1933)",
+          "catalogYear": 1933,
+          "recordModel": "catalog-item",
+          "designationPath": "holdings[0].designation",
+          "massPath": "holdings[0].weight.grams",
+          "sourceRecordLabel": "Catalog item 60",
+          "sourceName": "Estacado",
+          "canonicalName": "Estacado",
+          "meteoriteCode": "10057",
+          "designation": "44a",
+          "massGrams": 13750,
+          "kind": "specimen",
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=nininger-1933&q=record%20id%20obs-58f00e4f-a565-4496-9f22-40e7c2218d8a#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-4c76f073-8508-5241-a6bc-c8ea887833fb",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -4552,6 +5497,83 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=tassin-1902&q=record%20id%20obs-77ef8735-a78f-4f8c-b815-a1e132340c47#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-4d74ccc8-0cef-5ee5-b839-2673d44af798",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "McKinney",
+      "catalogPair": "barnes-1940|mason-1964",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "15463",
+        "canonicalName": "McKinney"
+      },
+      "evidence": {
+        "strength": "limited-matching-evidence",
+        "massMatch": "near",
+        "absoluteDifferenceGrams": 0.10000000000002274,
+        "relativeDifference": 0.00030581039755358635,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "near-reported-mass"
+        ],
+        "cautionCodes": [
+          "near-reported-mass",
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-84056fcb-e1b5-52a3-b343-8e1f7606bebe",
+          "recordId": "obs-17d07f62-a9ce-4e9a-a1df-3ee8f4d43fd5",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[3].weights[3].grams",
+          "sourceRecordLabel": "Collection entry 39",
+          "sourceName": "McKinney",
+          "canonicalName": "McKinney",
+          "meteoriteCode": "15463",
+          "designation": null,
+          "massGrams": 326.9,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-17d07f62-a9ce-4e9a-a1df-3ee8f4d43fd5#catalog"
+        },
+        {
+          "id": "mass-observation-91b34607-627a-5f8e-818a-0ecaca4b8799",
+          "recordId": "obs-99d2c25c-4f07-4f89-8729-3026414e5f11",
+          "catalogId": "mason-1964",
+          "catalogLabel": "The Meteorite and Tektite Collection of the American Museum of Natural History (1964)",
+          "catalogYear": 1964,
+          "recordModel": "catalog-number",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Catalog no. 2177",
+          "sourceName": "McKinney",
+          "canonicalName": "McKinney",
+          "meteoriteCode": "15463",
+          "designation": null,
+          "massGrams": 327,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=mason-1964&q=record%20id%20obs-99d2c25c-4f07-4f89-8729-3026414e5f11#catalog"
         }
       ]
     },
@@ -5241,6 +6263,82 @@
       ]
     },
     {
+      "id": "possible-lineage-519e8b72-4ac6-5c00-8439-c2dc8a6a1bc5",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "San Angelo",
+      "catalogPair": "barnes-1940|mason-1964",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "23117",
+        "canonicalName": "San Angelo"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-8745c52f-de8e-5c34-be6d-4027df63afed",
+          "recordId": "obs-014fa351-665c-4bcb-b83f-3610f0ff425c",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 54",
+          "sourceName": "San Angelo",
+          "canonicalName": "San Angelo",
+          "meteoriteCode": "23117",
+          "designation": null,
+          "massGrams": 610,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-014fa351-665c-4bcb-b83f-3610f0ff425c#catalog"
+        },
+        {
+          "id": "mass-observation-e53d8b24-f97f-5c77-83d6-c5102f282cab",
+          "recordId": "obs-f2293133-c872-4297-a79d-4ee6135910e3",
+          "catalogId": "mason-1964",
+          "catalogLabel": "The Meteorite and Tektite Collection of the American Museum of Natural History (1964)",
+          "catalogYear": 1964,
+          "recordModel": "catalog-number",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Catalog no. 120",
+          "sourceName": "San Angelo",
+          "canonicalName": "San Angelo",
+          "meteoriteCode": "23117",
+          "designation": null,
+          "massGrams": 610,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=mason-1964&q=record%20id%20obs-f2293133-c872-4297-a79d-4ee6135910e3#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-52acf50f-c13c-5504-8d28-99497a829bff",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -5621,6 +6719,82 @@
       ]
     },
     {
+      "id": "possible-lineage-571a2c17-560f-571a-b7ae-0bbd8224f274",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Carlton",
+      "catalogPair": "barnes-1940|mason-1964",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "5277",
+        "canonicalName": "Carlton"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-be4fef75-0a55-518a-afeb-2a61aa6f292c",
+          "recordId": "obs-0c2340e4-7f1d-49aa-b6cb-ed7fa21eb4f6",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[5].weights[4].grams",
+          "sourceRecordLabel": "Collection entry 12",
+          "sourceName": "Carlton",
+          "canonicalName": "Carlton",
+          "meteoriteCode": "5277",
+          "designation": null,
+          "massGrams": 9.5,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-0c2340e4-7f1d-49aa-b6cb-ed7fa21eb4f6#catalog"
+        },
+        {
+          "id": "mass-observation-e2d32cd9-ab9c-5d39-90ee-97bf8d8012c6",
+          "recordId": "obs-0f2e2468-c906-460f-83b3-bd0f6043a8a2",
+          "catalogId": "mason-1964",
+          "catalogLabel": "The Meteorite and Tektite Collection of the American Museum of Natural History (1964)",
+          "catalogYear": 1964,
+          "recordModel": "catalog-number",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Catalog no. 2559",
+          "sourceName": "Carlton",
+          "canonicalName": "Carlton",
+          "meteoriteCode": "5277",
+          "designation": null,
+          "massGrams": 9.5,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=mason-1964&q=record%20id%20obs-0f2e2468-c906-460f-83b3-bd0f6043a8a2#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-5ac621e7-33a6-5255-ad44-c4e65c24f076",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -5693,6 +6867,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=usnm-1886&q=record%20id%20obs-a31465a7-eae5-42cd-9c12-c20b528185c6#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-5b240531-4eb7-559f-a01a-c2a298dcf792",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Red River",
+      "catalogPair": "barnes-1940|nininger-1950",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "22548",
+        "canonicalName": "Red River"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-3446c4f4-138c-5724-bf5e-f7f239eaf0fb",
+          "recordId": "obs-e2b4f522-b31d-4dcb-9cf6-7b8ba35da649",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[5].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 51",
+          "sourceName": "Red River",
+          "canonicalName": "Red River",
+          "meteoriteCode": "22548",
+          "designation": null,
+          "massGrams": 96,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-e2b4f522-b31d-4dcb-9cf6-7b8ba35da649#catalog"
+        },
+        {
+          "id": "mass-observation-9dca8e95-b820-5ebb-8968-695c5839296e",
+          "recordId": "obs-afe2c243-4f78-4aa5-8496-e85a8df1d66a",
+          "catalogId": "nininger-1950",
+          "catalogLabel": "The Nininger Collection of Meteorites (1950)",
+          "catalogYear": 1950,
+          "recordModel": "specimen",
+          "designationPath": "designation",
+          "massPath": "weight.grams",
+          "sourceRecordLabel": "252a",
+          "sourceName": "Red River",
+          "canonicalName": "Red River",
+          "meteoriteCode": "22548",
+          "designation": "252a",
+          "massGrams": 96,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=nininger-1950&q=record%20id%20obs-afe2c243-4f78-4aa5-8496-e85a8df1d66a#catalog"
         }
       ]
     },
@@ -5845,6 +7095,82 @@
           "kind": null,
           "count": 1,
           "catalogSearchUrl": "./index.html?catalog=usnm-1886&q=record%20id%20obs-190bbfd0-4486-46f1-ae43-a616d3557b29#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-5d3df30a-89d6-5fd5-b4c8-0c759c4f3836",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Ballinger",
+      "catalogPair": "barnes-1940|nininger-1950",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "4930",
+        "canonicalName": "Ballinger"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-46016871-c596-5f66-bfb0-95ca90425630",
+          "recordId": "obs-4df16972-ab0b-4d79-a551-44035766f079",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[5].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 4",
+          "sourceName": "Ballinger",
+          "canonicalName": "Ballinger",
+          "meteoriteCode": "4930",
+          "designation": null,
+          "massGrams": 120,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-4df16972-ab0b-4d79-a551-44035766f079#catalog"
+        },
+        {
+          "id": "mass-observation-782daaa7-6683-588b-8fe2-6d722e36397e",
+          "recordId": "obs-c6c6359c-a66a-4efe-ae83-0b0a27cfd976",
+          "catalogId": "nininger-1950",
+          "catalogLabel": "The Nininger Collection of Meteorites (1950)",
+          "catalogYear": 1950,
+          "recordModel": "specimen",
+          "designationPath": "designation",
+          "massPath": "weight.grams",
+          "sourceRecordLabel": "12a",
+          "sourceName": "Ballinger",
+          "canonicalName": "Ballinger",
+          "meteoriteCode": "4930",
+          "designation": "12a",
+          "massGrams": 120,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=nininger-1950&q=record%20id%20obs-c6c6359c-a66a-4efe-ae83-0b0a27cfd976#catalog"
         }
       ]
     },
@@ -6384,6 +7710,82 @@
       ]
     },
     {
+      "id": "possible-lineage-6bb2cc10-b0d5-5cf7-8894-07ea30d09261",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "McKinney",
+      "catalogPair": "barnes-1940|mason-1964",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "15463",
+        "canonicalName": "McKinney"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-aa37251c-bc5d-50cb-8a85-5ba15e18f1c4",
+          "recordId": "obs-d47213fd-3794-4242-bf87-41cae2abac6c",
+          "catalogId": "mason-1964",
+          "catalogLabel": "The Meteorite and Tektite Collection of the American Museum of Natural History (1964)",
+          "catalogYear": 1964,
+          "recordModel": "catalog-number",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Catalog no. 1037",
+          "sourceName": "McKinney",
+          "canonicalName": "McKinney",
+          "meteoriteCode": "15463",
+          "designation": null,
+          "massGrams": 2750,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=mason-1964&q=record%20id%20obs-d47213fd-3794-4242-bf87-41cae2abac6c#catalog"
+        },
+        {
+          "id": "mass-observation-bded7fa5-53eb-5153-be8b-cc645e8969e7",
+          "recordId": "obs-17d07f62-a9ce-4e9a-a1df-3ee8f4d43fd5",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[3].weights[2].grams",
+          "sourceRecordLabel": "Collection entry 39",
+          "sourceName": "McKinney",
+          "canonicalName": "McKinney",
+          "meteoriteCode": "15463",
+          "designation": null,
+          "massGrams": 2750,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-17d07f62-a9ce-4e9a-a1df-3ee8f4d43fd5#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-6c4e5f8b-50da-52c4-b18f-3119c3876b5a",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -6838,6 +8240,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=nininger-1950&q=record%20id%20obs-3c272197-815e-4095-8069-c577422a657a#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-6fd54d96-78ec-5a01-8ee1-b479164cd040",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Estacado",
+      "catalogPair": "barnes-1940|nininger-1950",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "10057",
+        "canonicalName": "Estacado"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-07b21748-86a7-5a0b-b983-65064bebc405",
+          "recordId": "obs-0e27dbc2-a844-4a4d-b595-bc4d3e582286",
+          "catalogId": "nininger-1950",
+          "catalogLabel": "The Nininger Collection of Meteorites (1950)",
+          "catalogYear": 1950,
+          "recordModel": "specimen",
+          "designationPath": "designation",
+          "massPath": "weight.grams",
+          "sourceRecordLabel": "44a",
+          "sourceName": "Estacado",
+          "canonicalName": "Estacado",
+          "meteoriteCode": "10057",
+          "designation": "44a",
+          "massGrams": 13750,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=nininger-1950&q=record%20id%20obs-0e27dbc2-a844-4a4d-b595-bc4d3e582286#catalog"
+        },
+        {
+          "id": "mass-observation-ac4e26e8-d848-5545-902e-51d664ebf0a9",
+          "recordId": "obs-3b2450c6-c510-40c0-91f0-312e51030c4d",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[5].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 24",
+          "sourceName": "Estacado",
+          "canonicalName": "Estacado",
+          "meteoriteCode": "10057",
+          "designation": null,
+          "massGrams": 13750,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-3b2450c6-c510-40c0-91f0-312e51030c4d#catalog"
         }
       ]
     },
@@ -7378,6 +8856,82 @@
       ]
     },
     {
+      "id": "possible-lineage-7460b1ed-0554-5a30-9813-8ddb10fcc905",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Burkett",
+      "catalogPair": "barnes-1940|mason-1964",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "5170",
+        "canonicalName": "Burkett"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-17e56ede-e487-5542-977a-af7a80621809",
+          "recordId": "obs-42288b79-b9a7-4a5d-a78f-ac7e51d92c88",
+          "catalogId": "mason-1964",
+          "catalogLabel": "The Meteorite and Tektite Collection of the American Museum of Natural History (1964)",
+          "catalogYear": 1964,
+          "recordModel": "catalog-number",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Catalog no. 859",
+          "sourceName": "Burkett",
+          "canonicalName": "Burkett",
+          "meteoriteCode": "5170",
+          "designation": null,
+          "massGrams": 2773,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=mason-1964&q=record%20id%20obs-42288b79-b9a7-4a5d-a78f-ac7e51d92c88#catalog"
+        },
+        {
+          "id": "mass-observation-52261b1a-f8f4-5342-97db-82f24dd8b9bc",
+          "recordId": "obs-01cc98eb-511b-41af-8f67-84826cab6d4d",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[1].grams",
+          "sourceRecordLabel": "Collection entry 11",
+          "sourceName": "Burkett",
+          "canonicalName": "Burkett",
+          "meteoriteCode": "5170",
+          "designation": null,
+          "massGrams": 2773,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-01cc98eb-511b-41af-8f67-84826cab6d4d#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-75d257e1-88c6-5e1c-91d4-8d675d2619d4",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -7680,6 +9234,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=nininger-1950&q=record%20id%20obs-c4187196-28c1-49e4-b238-783b3ae4313c#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-7be48b88-923d-5577-bd10-ece589638bd3",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Kendall County",
+      "catalogPair": "barnes-1940|nininger-1950",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "12274",
+        "canonicalName": "Kendall County"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-90cdb710-7d8d-5720-a686-fe38f0b5f7f1",
+          "recordId": "obs-fbf1f7ea-6bf7-4112-b75e-141baa666b94",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[9].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 33",
+          "sourceName": "Kendall County",
+          "canonicalName": "Kendall County",
+          "meteoriteCode": "12274",
+          "designation": null,
+          "massGrams": 118,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-fbf1f7ea-6bf7-4112-b75e-141baa666b94#catalog"
+        },
+        {
+          "id": "mass-observation-ffbbae64-a1eb-58e1-97ef-437e4af500bf",
+          "recordId": "obs-dd385349-b807-4f97-9cc4-27dd106247f2",
+          "catalogId": "nininger-1950",
+          "catalogLabel": "The Nininger Collection of Meteorites (1950)",
+          "catalogYear": 1950,
+          "recordModel": "specimen",
+          "designationPath": "designation",
+          "massPath": "weight.grams",
+          "sourceRecordLabel": "67a",
+          "sourceName": "Kendall County",
+          "canonicalName": "Kendall County",
+          "meteoriteCode": "12274",
+          "designation": "67a",
+          "massGrams": 118,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=nininger-1950&q=record%20id%20obs-dd385349-b807-4f97-9cc4-27dd106247f2#catalog"
         }
       ]
     },
@@ -8676,6 +10306,82 @@
       ]
     },
     {
+      "id": "possible-lineage-849a1c17-4a74-53d4-a36d-a576888a7eb4",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Carlton",
+      "catalogPair": "barnes-1940|farrington-1903",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "5277",
+        "canonicalName": "Carlton"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-32da5ec4-ba53-5ef9-8589-6141a0295ece",
+          "recordId": "obs-0c2340e4-7f1d-49aa-b6cb-ed7fa21eb4f6",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 12",
+          "sourceName": "Carlton",
+          "canonicalName": "Carlton",
+          "meteoriteCode": "5277",
+          "designation": null,
+          "massGrams": 3406,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-0c2340e4-7f1d-49aa-b6cb-ed7fa21eb4f6#catalog"
+        },
+        {
+          "id": "mass-observation-428cd6cf-b952-5cf3-9482-9ab3e78fb4f6",
+          "recordId": "obs-d010cf8c-c927-4650-a209-4d35440d1dc5",
+          "catalogId": "farrington-1903",
+          "catalogLabel": "Catalogue of the Collection of Meteorites, May 1, 1903 (1903)",
+          "catalogYear": 1903,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 45",
+          "sourceName": "Carlton",
+          "canonicalName": "Carlton",
+          "meteoriteCode": "5277",
+          "designation": null,
+          "massGrams": 3406,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=farrington-1903&q=record%20id%20obs-d010cf8c-c927-4650-a209-4d35440d1dc5#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-849fc7ad-583a-587a-b9e9-2d4d31c100ff",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -9437,6 +11143,82 @@
       ]
     },
     {
+      "id": "possible-lineage-8eb84460-ad25-5161-a7b6-74b85e38a37d",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Kendall County",
+      "catalogPair": "barnes-1940|nininger-1933",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "12274",
+        "canonicalName": "Kendall County"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-793506f1-4c82-5e32-8747-03a31bc2532c",
+          "recordId": "obs-6493a154-d3d9-4993-b72f-32e9e2d1af5d",
+          "catalogId": "nininger-1933",
+          "catalogLabel": "The Nininger Collection of Meteorites with Descriptions of the Huizopa and Pojoaque Meteorites (1933)",
+          "catalogYear": 1933,
+          "recordModel": "catalog-item",
+          "designationPath": "holdings[0].designation",
+          "massPath": "holdings[0].weight.grams",
+          "sourceRecordLabel": "Catalog item 87",
+          "sourceName": "Kendall County",
+          "canonicalName": "Kendall County",
+          "meteoriteCode": "12274",
+          "designation": "67a",
+          "massGrams": 118,
+          "kind": "specimen",
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=nininger-1933&q=record%20id%20obs-6493a154-d3d9-4993-b72f-32e9e2d1af5d#catalog"
+        },
+        {
+          "id": "mass-observation-f1fa092b-fd60-5655-a7e7-e2b30067cd72",
+          "recordId": "obs-fbf1f7ea-6bf7-4112-b75e-141baa666b94",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[10].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 33",
+          "sourceName": "Kendall County",
+          "canonicalName": "Kendall County",
+          "meteoriteCode": "12274",
+          "designation": null,
+          "massGrams": 118,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-fbf1f7ea-6bf7-4112-b75e-141baa666b94#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-8f337da3-8030-5836-bfbd-ac4facded126",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -9589,6 +11371,158 @@
       ]
     },
     {
+      "id": "possible-lineage-9114ec6c-35c8-53b1-84d9-d372a379324e",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Kendall County",
+      "catalogPair": "barnes-1940|nininger-1933",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "12274",
+        "canonicalName": "Kendall County"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-4ec9f613-8d5d-5850-b476-382af0dc077e",
+          "recordId": "obs-6493a154-d3d9-4993-b72f-32e9e2d1af5d",
+          "catalogId": "nininger-1933",
+          "catalogLabel": "The Nininger Collection of Meteorites with Descriptions of the Huizopa and Pojoaque Meteorites (1933)",
+          "catalogYear": 1933,
+          "recordModel": "catalog-item",
+          "designationPath": "holdings[0].designation",
+          "massPath": "holdings[0].weight.grams",
+          "sourceRecordLabel": "Catalog item 87",
+          "sourceName": "Kendall County",
+          "canonicalName": "Kendall County",
+          "meteoriteCode": "12274",
+          "designation": "67a",
+          "massGrams": 118,
+          "kind": "specimen",
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=nininger-1933&q=record%20id%20obs-6493a154-d3d9-4993-b72f-32e9e2d1af5d#catalog"
+        },
+        {
+          "id": "mass-observation-6f27f838-6746-530c-b5a2-3769a829a0cb",
+          "recordId": "obs-fbf1f7ea-6bf7-4112-b75e-141baa666b94",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[9].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 33",
+          "sourceName": "Kendall County",
+          "canonicalName": "Kendall County",
+          "meteoriteCode": "12274",
+          "designation": null,
+          "massGrams": 118,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-fbf1f7ea-6bf7-4112-b75e-141baa666b94#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-913ad4d1-b1f6-55bf-b063-fdbbc8e108a9",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Carlton",
+      "catalogPair": "barnes-1940|nininger-1950",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "5277",
+        "canonicalName": "Carlton"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-257a889b-a4b8-5b2d-82e7-69ab0ad1542e",
+          "recordId": "obs-0c2340e4-7f1d-49aa-b6cb-ed7fa21eb4f6",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[6].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 12",
+          "sourceName": "Carlton",
+          "canonicalName": "Carlton",
+          "meteoriteCode": "5277",
+          "designation": null,
+          "massGrams": 1305,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-0c2340e4-7f1d-49aa-b6cb-ed7fa21eb4f6#catalog"
+        },
+        {
+          "id": "mass-observation-a00d4a5b-c05e-5d94-ac5d-80c2c08b0c95",
+          "recordId": "obs-1d00a73a-25ac-40da-ad6f-bf7e98c743c7",
+          "catalogId": "nininger-1950",
+          "catalogLabel": "The Nininger Collection of Meteorites (1950)",
+          "catalogYear": 1950,
+          "recordModel": "specimen",
+          "designationPath": "designation",
+          "massPath": "weight.grams",
+          "sourceRecordLabel": "35a",
+          "sourceName": "Carlton",
+          "canonicalName": "Carlton",
+          "meteoriteCode": "5277",
+          "designation": "35a",
+          "massGrams": 1305,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=nininger-1950&q=record%20id%20obs-1d00a73a-25ac-40da-ad6f-bf7e98c743c7#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-91df2a72-25b6-50bb-bcb9-aa650f4f499a",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -9661,6 +11595,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=tassin-1902&q=record%20id%20obs-ec546be2-6041-4cd5-819e-161480e5c02c#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-9207c907-564b-5e76-a762-9e2bcc1ccda8",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Carlton",
+      "catalogPair": "barnes-1940|nininger-1933",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "5277",
+        "canonicalName": "Carlton"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-1ec00b00-2172-54e4-aff8-c1eeeed82308",
+          "recordId": "obs-0c2340e4-7f1d-49aa-b6cb-ed7fa21eb4f6",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[6].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 12",
+          "sourceName": "Carlton",
+          "canonicalName": "Carlton",
+          "meteoriteCode": "5277",
+          "designation": null,
+          "massGrams": 1305,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-0c2340e4-7f1d-49aa-b6cb-ed7fa21eb4f6#catalog"
+        },
+        {
+          "id": "mass-observation-63f626d0-d6d2-5beb-9678-186d818c39e0",
+          "recordId": "obs-996c8ab3-dd1c-4ddc-b5e0-7d396ee571b1",
+          "catalogId": "nininger-1933",
+          "catalogLabel": "The Nininger Collection of Meteorites with Descriptions of the Huizopa and Pojoaque Meteorites (1933)",
+          "catalogYear": 1933,
+          "recordModel": "catalog-item",
+          "designationPath": "holdings[0].designation",
+          "massPath": "holdings[0].weight.grams",
+          "sourceRecordLabel": "Catalog item 32",
+          "sourceName": "Carlton",
+          "canonicalName": "Carlton",
+          "meteoriteCode": "5277",
+          "designation": "35a",
+          "massGrams": 1305,
+          "kind": "specimen",
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=nininger-1933&q=record%20id%20obs-996c8ab3-dd1c-4ddc-b5e0-7d396ee571b1#catalog"
         }
       ]
     },
@@ -10735,6 +12745,82 @@
       ]
     },
     {
+      "id": "possible-lineage-a1bb65f1-6ad9-5288-9337-0cf9c0885dd1",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Davis Mountains",
+      "catalogPair": "barnes-1940|mason-1964",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "6615",
+        "canonicalName": "Davis Mountains"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-1f5ac488-ec28-5e6b-970e-4dcd56f06734",
+          "recordId": "obs-4b6153bb-5006-47be-a7f2-8f179fc13eb2",
+          "catalogId": "mason-1964",
+          "catalogLabel": "The Meteorite and Tektite Collection of the American Museum of Natural History (1964)",
+          "catalogYear": 1964,
+          "recordModel": "catalog-number",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Catalog no. 276",
+          "sourceName": "Davis Mountains",
+          "canonicalName": "Davis Mountains",
+          "meteoriteCode": "6615",
+          "designation": null,
+          "massGrams": 28,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=mason-1964&q=record%20id%20obs-4b6153bb-5006-47be-a7f2-8f179fc13eb2#catalog"
+        },
+        {
+          "id": "mass-observation-81c89178-ed48-5b49-8d3b-bad1e1c88b8a",
+          "recordId": "obs-caae563a-ab41-40b4-8c8a-1fd61c872906",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[3].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 19",
+          "sourceName": "Davis Mountains",
+          "canonicalName": "Davis Mountains",
+          "meteoriteCode": "6615",
+          "designation": null,
+          "massGrams": 28,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-caae563a-ab41-40b4-8c8a-1fd61c872906#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-a5df6bff-75b7-5759-a7cc-7253d8b52dc6",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -10808,6 +12894,82 @@
           "kind": "specimen",
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=nininger-1933&q=record%20id%20obs-94345139-a6aa-40b2-b646-601455e2b311#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-a7f0a628-4623-54e0-8318-81e1e3800fb5",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Mart",
+      "catalogPair": "barnes-1940|nininger-1950",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "15435",
+        "canonicalName": "Mart"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-7ba81577-7e1c-54d7-b7ba-697543d759f1",
+          "recordId": "obs-6c0583b5-11b7-41a4-a207-1eeea24c53cd",
+          "catalogId": "nininger-1950",
+          "catalogLabel": "The Nininger Collection of Meteorites (1950)",
+          "catalogYear": 1950,
+          "recordModel": "specimen",
+          "designationPath": "designation",
+          "massPath": "weight.grams",
+          "sourceRecordLabel": "82a",
+          "sourceName": "Mart",
+          "canonicalName": "Mart",
+          "meteoriteCode": "15435",
+          "designation": "82a",
+          "massGrams": 473,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=nininger-1950&q=record%20id%20obs-6c0583b5-11b7-41a4-a207-1eeea24c53cd#catalog"
+        },
+        {
+          "id": "mass-observation-e23abd50-dc2b-57c4-8b99-9a2c78cccdac",
+          "recordId": "obs-3edc5faa-afd3-49f0-8d0e-54668dc77109",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[5].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 38",
+          "sourceName": "Mart",
+          "canonicalName": "Mart",
+          "meteoriteCode": "15435",
+          "designation": null,
+          "massGrams": 473,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-3edc5faa-afd3-49f0-8d0e-54668dc77109#catalog"
         }
       ]
     },
@@ -11497,6 +13659,82 @@
       ]
     },
     {
+      "id": "possible-lineage-ada6c8af-cf7f-54d7-b7d8-7e23cf1fcc6f",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Mart",
+      "catalogPair": "barnes-1940|nininger-1933",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "15435",
+        "canonicalName": "Mart"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-23da437b-83a5-52c1-a339-ddaec30dc4b5",
+          "recordId": "obs-09109976-10e2-46fe-a410-1ea7f5cdf5db",
+          "catalogId": "nininger-1933",
+          "catalogLabel": "The Nininger Collection of Meteorites with Descriptions of the Huizopa and Pojoaque Meteorites (1933)",
+          "catalogYear": 1933,
+          "recordModel": "catalog-item",
+          "designationPath": "holdings[0].designation",
+          "massPath": "holdings[0].weight.grams",
+          "sourceRecordLabel": "Catalog item 99",
+          "sourceName": "Mart",
+          "canonicalName": "Mart",
+          "meteoriteCode": "15435",
+          "designation": "82a",
+          "massGrams": 473,
+          "kind": "specimen",
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=nininger-1933&q=record%20id%20obs-09109976-10e2-46fe-a410-1ea7f5cdf5db#catalog"
+        },
+        {
+          "id": "mass-observation-a8fcb51b-673c-5135-a93e-cd8e632aeb10",
+          "recordId": "obs-3edc5faa-afd3-49f0-8d0e-54668dc77109",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[5].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 38",
+          "sourceName": "Mart",
+          "canonicalName": "Mart",
+          "meteoriteCode": "15435",
+          "designation": null,
+          "massGrams": 473,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-3edc5faa-afd3-49f0-8d0e-54668dc77109#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-adc18362-a269-5959-b6da-dca215164ade",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -11955,6 +14193,82 @@
       ]
     },
     {
+      "id": "possible-lineage-b54f2cbc-65f6-521b-adaa-46c0764d1507",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Kendall County",
+      "catalogPair": "barnes-1940|farrington-1903",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "12274",
+        "canonicalName": "Kendall County"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-2800c584-e691-55ae-99aa-e10256b70e12",
+          "recordId": "obs-fbf1f7ea-6bf7-4112-b75e-141baa666b94",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[9].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 33",
+          "sourceName": "Kendall County",
+          "canonicalName": "Kendall County",
+          "meteoriteCode": "12274",
+          "designation": null,
+          "massGrams": 118,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-fbf1f7ea-6bf7-4112-b75e-141baa666b94#catalog"
+        },
+        {
+          "id": "mass-observation-678a08b5-5244-5216-96b2-31dd04ee28fd",
+          "recordId": "obs-e76be193-934c-4937-a7fd-96ba27516154",
+          "catalogId": "farrington-1903",
+          "catalogLabel": "Catalogue of the Collection of Meteorites, May 1, 1903 (1903)",
+          "catalogYear": 1903,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 122",
+          "sourceName": "Kendall County",
+          "canonicalName": "Kendall County",
+          "meteoriteCode": "12274",
+          "designation": null,
+          "massGrams": 118,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=farrington-1903&q=record%20id%20obs-e76be193-934c-4937-a7fd-96ba27516154#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-b5802642-9a3c-5fb7-91c7-0a9bc42419f4",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -12179,6 +14493,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=usnm-1886&q=record%20id%20obs-5536c38d-e0bf-4fbf-a10a-70982bc8f60f#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-b731b6b7-aacf-5928-8b03-aa41756f2d47",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "San Angelo",
+      "catalogPair": "barnes-1940|nininger-1950",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "23117",
+        "canonicalName": "San Angelo"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-3e02836e-6810-5ab0-a657-f3c1e5c9c8c1",
+          "recordId": "obs-5ca55361-a00e-4fbc-98c1-9ba6e7cef4c9",
+          "catalogId": "nininger-1950",
+          "catalogLabel": "The Nininger Collection of Meteorites (1950)",
+          "catalogYear": 1950,
+          "recordModel": "specimen",
+          "designationPath": "designation",
+          "massPath": "weight.grams",
+          "sourceRecordLabel": "159.2",
+          "sourceName": "San Angelo",
+          "canonicalName": "San Angelo",
+          "meteoriteCode": "23117",
+          "designation": "159.2",
+          "massGrams": 528,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=nininger-1950&q=record%20id%20obs-5ca55361-a00e-4fbc-98c1-9ba6e7cef4c9#catalog"
+        },
+        {
+          "id": "mass-observation-fadca1ed-69f7-5a33-a9bc-5f8ec028abf3",
+          "recordId": "obs-014fa351-665c-4bcb-b83f-3610f0ff425c",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[7].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 54",
+          "sourceName": "San Angelo",
+          "canonicalName": "San Angelo",
+          "meteoriteCode": "23117",
+          "designation": null,
+          "massGrams": 528,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-014fa351-665c-4bcb-b83f-3610f0ff425c#catalog"
         }
       ]
     },
@@ -12412,6 +14802,82 @@
       ]
     },
     {
+      "id": "possible-lineage-baba6b02-4667-5ea5-840f-7554697cce56",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Kendall County",
+      "catalogPair": "barnes-1940|nininger-1950",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "12274",
+        "canonicalName": "Kendall County"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-dc43ce67-cdb5-5b90-b27e-a685ce8daecb",
+          "recordId": "obs-dd385349-b807-4f97-9cc4-27dd106247f2",
+          "catalogId": "nininger-1950",
+          "catalogLabel": "The Nininger Collection of Meteorites (1950)",
+          "catalogYear": 1950,
+          "recordModel": "specimen",
+          "designationPath": "designation",
+          "massPath": "weight.grams",
+          "sourceRecordLabel": "67a",
+          "sourceName": "Kendall County",
+          "canonicalName": "Kendall County",
+          "meteoriteCode": "12274",
+          "designation": "67a",
+          "massGrams": 118,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=nininger-1950&q=record%20id%20obs-dd385349-b807-4f97-9cc4-27dd106247f2#catalog"
+        },
+        {
+          "id": "mass-observation-e5261851-ffcf-5e80-becd-dd7f72f0cbeb",
+          "recordId": "obs-fbf1f7ea-6bf7-4112-b75e-141baa666b94",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[10].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 33",
+          "sourceName": "Kendall County",
+          "canonicalName": "Kendall County",
+          "meteoriteCode": "12274",
+          "designation": null,
+          "massGrams": 118,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-fbf1f7ea-6bf7-4112-b75e-141baa666b94#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-bb12db49-70db-5665-92a0-3c72fd884495",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -12485,6 +14951,83 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=usnm-1886&q=record%20id%20obs-c0207353-d367-444f-a657-67cb1bca05de#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-bd7f6c2b-fb83-5da5-af08-cc70fd7f3360",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Carlton",
+      "catalogPair": "barnes-1940|mason-1964",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "5277",
+        "canonicalName": "Carlton"
+      },
+      "evidence": {
+        "strength": "limited-matching-evidence",
+        "massMatch": "near",
+        "absoluteDifferenceGrams": 0.1000000000003638,
+        "relativeDifference": 0.000023490721165225228,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "near-reported-mass"
+        ],
+        "cautionCodes": [
+          "near-reported-mass",
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-c3835d57-86d8-59a0-b792-72573462d5e9",
+          "recordId": "obs-9ab7e303-64b6-49aa-af10-432a0a90aead",
+          "catalogId": "mason-1964",
+          "catalogLabel": "The Meteorite and Tektite Collection of the American Museum of Natural History (1964)",
+          "catalogYear": 1964,
+          "recordModel": "catalog-number",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Catalog no. 116",
+          "sourceName": "Carlton",
+          "canonicalName": "Carlton",
+          "meteoriteCode": "5277",
+          "designation": null,
+          "massGrams": 4257,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=mason-1964&q=record%20id%20obs-9ab7e303-64b6-49aa-af10-432a0a90aead#catalog"
+        },
+        {
+          "id": "mass-observation-f2691ced-1737-5a37-9a50-686a9114e532",
+          "recordId": "obs-0c2340e4-7f1d-49aa-b6cb-ed7fa21eb4f6",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[5].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 12",
+          "sourceName": "Carlton",
+          "canonicalName": "Carlton",
+          "meteoriteCode": "5277",
+          "designation": null,
+          "massGrams": 4256.9,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-0c2340e4-7f1d-49aa-b6cb-ed7fa21eb4f6#catalog"
         }
       ]
     },
@@ -13554,6 +16097,82 @@
       ]
     },
     {
+      "id": "possible-lineage-c98f0160-66db-5027-80c8-a9f93d91b20a",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Ballinger",
+      "catalogPair": "barnes-1940|nininger-1933",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "4930",
+        "canonicalName": "Ballinger"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-b6272680-0db6-5f02-b7bb-18e7a5cb631f",
+          "recordId": "obs-0224ebfb-9ac1-4c83-b544-915946e32c1d",
+          "catalogId": "nininger-1933",
+          "catalogLabel": "The Nininger Collection of Meteorites with Descriptions of the Huizopa and Pojoaque Meteorites (1933)",
+          "catalogYear": 1933,
+          "recordModel": "catalog-item",
+          "designationPath": "holdings[0].designation",
+          "massPath": "holdings[0].weight.grams",
+          "sourceRecordLabel": "Catalog item 13",
+          "sourceName": "Ballinger",
+          "canonicalName": "Ballinger",
+          "meteoriteCode": "4930",
+          "designation": "12a",
+          "massGrams": 120,
+          "kind": "specimen",
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=nininger-1933&q=record%20id%20obs-0224ebfb-9ac1-4c83-b544-915946e32c1d#catalog"
+        },
+        {
+          "id": "mass-observation-ecbb4a56-bab1-5747-9312-208c689aa8fa",
+          "recordId": "obs-4df16972-ab0b-4d79-a551-44035766f079",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[5].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 4",
+          "sourceName": "Ballinger",
+          "canonicalName": "Ballinger",
+          "meteoriteCode": "4930",
+          "designation": null,
+          "massGrams": 120,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-4df16972-ab0b-4d79-a551-44035766f079#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-c9be8b6c-bb61-534c-b3cf-97a03e192d44",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -13859,6 +16478,82 @@
       ]
     },
     {
+      "id": "possible-lineage-cf51d90e-716a-56b2-8294-1c1a8871e985",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Carlton",
+      "catalogPair": "barnes-1940|nininger-1933",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "5277",
+        "canonicalName": "Carlton"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-08f1c4d6-2977-53fe-a096-919c327919c7",
+          "recordId": "obs-0c2340e4-7f1d-49aa-b6cb-ed7fa21eb4f6",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[7].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 12",
+          "sourceName": "Carlton",
+          "canonicalName": "Carlton",
+          "meteoriteCode": "5277",
+          "designation": null,
+          "massGrams": 50,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-0c2340e4-7f1d-49aa-b6cb-ed7fa21eb4f6#catalog"
+        },
+        {
+          "id": "mass-observation-a12e01ad-f664-576e-8cde-83c15c4ddda8",
+          "recordId": "obs-996c8ab3-dd1c-4ddc-b5e0-7d396ee571b1",
+          "catalogId": "nininger-1933",
+          "catalogLabel": "The Nininger Collection of Meteorites with Descriptions of the Huizopa and Pojoaque Meteorites (1933)",
+          "catalogYear": 1933,
+          "recordModel": "catalog-item",
+          "designationPath": "holdings[2].designation",
+          "massPath": "holdings[2].weight.grams",
+          "sourceRecordLabel": "Catalog item 32",
+          "sourceName": "Carlton",
+          "canonicalName": "Carlton",
+          "meteoriteCode": "5277",
+          "designation": "35c",
+          "massGrams": 50,
+          "kind": "specimen",
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=nininger-1933&q=record%20id%20obs-996c8ab3-dd1c-4ddc-b5e0-7d396ee571b1#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-d1593254-0450-540e-b4da-c6df90f12fe2",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -14160,6 +16855,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=tassin-1902&q=record%20id%20obs-38fbb7d8-ae04-4e22-8376-07f8fec5b14c#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-d27ae36d-e716-5adf-bd4d-99329e0679b6",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Kendall County",
+      "catalogPair": "barnes-1940|mason-1964",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "12274",
+        "canonicalName": "Kendall County"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-6956303e-bde3-5e72-8908-07a061ff4cbd",
+          "recordId": "obs-fbf1f7ea-6bf7-4112-b75e-141baa666b94",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[5].weights[1].grams",
+          "sourceRecordLabel": "Collection entry 33",
+          "sourceName": "Kendall County",
+          "canonicalName": "Kendall County",
+          "meteoriteCode": "12274",
+          "designation": null,
+          "massGrams": 368,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-fbf1f7ea-6bf7-4112-b75e-141baa666b94#catalog"
+        },
+        {
+          "id": "mass-observation-d7735316-81db-5ced-bd93-e088f50b2bf3",
+          "recordId": "obs-5e8a83c5-0927-4c2b-9861-efc9058f8f35",
+          "catalogId": "mason-1964",
+          "catalogLabel": "The Meteorite and Tektite Collection of the American Museum of Natural History (1964)",
+          "catalogYear": 1964,
+          "recordModel": "catalog-number",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Catalog no. 710",
+          "sourceName": "Kendall County",
+          "canonicalName": "Kendall County",
+          "meteoriteCode": "12274",
+          "designation": null,
+          "massGrams": 368,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=mason-1964&q=record%20id%20obs-5e8a83c5-0927-4c2b-9861-efc9058f8f35#catalog"
         }
       ]
     },
@@ -15004,6 +17775,83 @@
       ]
     },
     {
+      "id": "possible-lineage-da82a685-586b-59e0-9cbf-b7ac7464a86d",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "San Angelo",
+      "catalogPair": "barnes-1940|mason-1964",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "23117",
+        "canonicalName": "San Angelo"
+      },
+      "evidence": {
+        "strength": "limited-matching-evidence",
+        "massMatch": "near",
+        "absoluteDifferenceGrams": 0.30000000000001137,
+        "relativeDifference": 0.0013157894736842604,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "near-reported-mass"
+        ],
+        "cautionCodes": [
+          "near-reported-mass",
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-7513e0a9-d59d-5549-ae75-fa3fafc88a61",
+          "recordId": "obs-2482095a-c616-4ea3-88e0-917d46fc81e7",
+          "catalogId": "mason-1964",
+          "catalogLabel": "The Meteorite and Tektite Collection of the American Museum of Natural History (1964)",
+          "catalogYear": 1964,
+          "recordModel": "catalog-number",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Catalog no. 711",
+          "sourceName": "San Angelo",
+          "canonicalName": "San Angelo",
+          "meteoriteCode": "23117",
+          "designation": null,
+          "massGrams": 228,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=mason-1964&q=record%20id%20obs-2482095a-c616-4ea3-88e0-917d46fc81e7#catalog"
+        },
+        {
+          "id": "mass-observation-8a415ec2-e3ad-562a-915a-a483003db8c6",
+          "recordId": "obs-014fa351-665c-4bcb-b83f-3610f0ff425c",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[2].weights[1].grams",
+          "sourceRecordLabel": "Collection entry 54",
+          "sourceName": "San Angelo",
+          "canonicalName": "San Angelo",
+          "meteoriteCode": "23117",
+          "designation": null,
+          "massGrams": 227.7,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-014fa351-665c-4bcb-b83f-3610f0ff425c#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-dc269432-d999-524a-a9d0-5807d0ef11e7",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -15616,6 +18464,82 @@
       ]
     },
     {
+      "id": "possible-lineage-e71e057e-fdec-5f7b-907f-571b87f13350",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "San Angelo",
+      "catalogPair": "barnes-1940|farrington-1903",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "23117",
+        "canonicalName": "San Angelo"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-147cee46-b61e-51ec-a85f-08e9f095b395",
+          "recordId": "obs-014fa351-665c-4bcb-b83f-3610f0ff425c",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 54",
+          "sourceName": "San Angelo",
+          "canonicalName": "San Angelo",
+          "meteoriteCode": "23117",
+          "designation": null,
+          "massGrams": 1501,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-014fa351-665c-4bcb-b83f-3610f0ff425c#catalog"
+        },
+        {
+          "id": "mass-observation-e36a64e2-e687-5576-9c31-e63984647a6f",
+          "recordId": "obs-de812bf8-ce0f-4389-8ab8-77ce89c67270",
+          "catalogId": "farrington-1903",
+          "catalogLabel": "Catalogue of the Collection of Meteorites, May 1, 1903 (1903)",
+          "catalogYear": 1903,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 205",
+          "sourceName": "San Angelo",
+          "canonicalName": "San Angelo",
+          "meteoriteCode": "23117",
+          "designation": null,
+          "massGrams": 1501,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=farrington-1903&q=record%20id%20obs-de812bf8-ce0f-4389-8ab8-77ce89c67270#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-e9146da6-4186-5b73-83bb-9aa61f967fe5",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -15688,6 +18612,83 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=usnm-1886&q=record%20id%20obs-196dadd6-212a-4e41-b2f7-a88d0f8277a4#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-e97ffe2b-7558-5af5-9a9b-152a2bb7b403",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Red River",
+      "catalogPair": "barnes-1940|mason-1964",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "22548",
+        "canonicalName": "Red River"
+      },
+      "evidence": {
+        "strength": "limited-matching-evidence",
+        "massMatch": "near",
+        "absoluteDifferenceGrams": 0.19999999999998863,
+        "relativeDifference": 0.0011890606420926792,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "near-reported-mass"
+        ],
+        "cautionCodes": [
+          "near-reported-mass",
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-7eca6568-d09a-55dc-a280-2f85e2d6c56f",
+          "recordId": "obs-e2b4f522-b31d-4dcb-9cf6-7b8ba35da649",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[2].weights[1].grams",
+          "sourceRecordLabel": "Collection entry 51",
+          "sourceName": "Red River",
+          "canonicalName": "Red River",
+          "meteoriteCode": "22548",
+          "designation": null,
+          "massGrams": 168.2,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-e2b4f522-b31d-4dcb-9cf6-7b8ba35da649#catalog"
+        },
+        {
+          "id": "mass-observation-9a4c4dc1-64b4-53a8-b85c-bfa28fe1ae57",
+          "recordId": "obs-a25b1f5e-0514-4d86-9252-92e74e6501be",
+          "catalogId": "mason-1964",
+          "catalogLabel": "The Meteorite and Tektite Collection of the American Museum of Natural History (1964)",
+          "catalogYear": 1964,
+          "recordModel": "catalog-number",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Catalog no. 707",
+          "sourceName": "Red River",
+          "canonicalName": "Red River",
+          "meteoriteCode": "22548",
+          "designation": null,
+          "massGrams": 168,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=mason-1964&q=record%20id%20obs-a25b1f5e-0514-4d86-9252-92e74e6501be#catalog"
         }
       ]
     },
@@ -16455,6 +19456,82 @@
       ]
     },
     {
+      "id": "possible-lineage-f33e7ccc-2d78-5e52-a007-fc11567d5c8a",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Denton County",
+      "catalogPair": "barnes-1940|mason-1964",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "6659",
+        "canonicalName": "Denton County"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-6c9083c9-7d61-569b-a86b-c22b2c175c64",
+          "recordId": "obs-831c8d5f-05a4-4c3d-bc38-105427bf9056",
+          "catalogId": "mason-1964",
+          "catalogLabel": "The Meteorite and Tektite Collection of the American Museum of Natural History (1964)",
+          "catalogYear": 1964,
+          "recordModel": "catalog-number",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Catalog no. 114",
+          "sourceName": "Denton County",
+          "canonicalName": "Denton County",
+          "meteoriteCode": "6659",
+          "designation": null,
+          "massGrams": 13,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=mason-1964&q=record%20id%20obs-831c8d5f-05a4-4c3d-bc38-105427bf9056#catalog"
+        },
+        {
+          "id": "mass-observation-e0c2aa82-6c43-5dda-9362-f95ad5e78644",
+          "recordId": "obs-42188afc-1304-4f49-8c38-225615c6b247",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 20",
+          "sourceName": "Denton County",
+          "canonicalName": "Denton County",
+          "meteoriteCode": "6659",
+          "designation": null,
+          "massGrams": 13,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-42188afc-1304-4f49-8c38-225615c6b247#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-f409e7a1-92d1-53df-82e5-364551c977a7",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -17065,6 +20142,83 @@
       ]
     },
     {
+      "id": "possible-lineage-fa370e7e-d11f-55a5-9bc2-210af70ffa77",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Wichita County",
+      "catalogPair": "barnes-1940|mason-1964",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "24257",
+        "canonicalName": "Wichita County"
+      },
+      "evidence": {
+        "strength": "limited-matching-evidence",
+        "massMatch": "near",
+        "absoluteDifferenceGrams": 1.5,
+        "relativeDifference": 0.0009017132551848512,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "near-reported-mass"
+        ],
+        "cautionCodes": [
+          "near-reported-mass",
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-2898602f-4afb-59e9-83ff-8156fc895553",
+          "recordId": "obs-c8d83a23-73a6-4896-b62e-54410eb00c01",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 69",
+          "sourceName": "Wichita County",
+          "canonicalName": "Wichita County",
+          "meteoriteCode": "24257",
+          "designation": null,
+          "massGrams": 1663.5,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-c8d83a23-73a6-4896-b62e-54410eb00c01#catalog"
+        },
+        {
+          "id": "mass-observation-c1709365-b840-53ef-a4df-fcb134eb2834",
+          "recordId": "obs-b2a2f62a-0acf-42b4-be45-db11c901e76a",
+          "catalogId": "mason-1964",
+          "catalogLabel": "The Meteorite and Tektite Collection of the American Museum of Natural History (1964)",
+          "catalogYear": 1964,
+          "recordModel": "catalog-number",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Catalog no. 712",
+          "sourceName": "Wichita County",
+          "canonicalName": "Wichita County",
+          "meteoriteCode": "24257",
+          "designation": null,
+          "massGrams": 1662,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=mason-1964&q=record%20id%20obs-b2a2f62a-0acf-42b4-be45-db11c901e76a#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-fb352793-609d-536b-8001-4141e34ca699",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -17367,6 +20521,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=usnm-1886&q=record%20id%20obs-ce5b7993-0510-481f-a1bc-ace2af38f445#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-fe932d9a-11af-51e8-bf49-8aceb87512a2",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Denton County",
+      "catalogPair": "barnes-1940|farrington-1903",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "6659",
+        "canonicalName": "Denton County"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-384870ec-d073-5d58-a0a9-1e28fc81aa10",
+          "recordId": "obs-42188afc-1304-4f49-8c38-225615c6b247",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[4].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 20",
+          "sourceName": "Denton County",
+          "canonicalName": "Denton County",
+          "meteoriteCode": "6659",
+          "designation": null,
+          "massGrams": 3,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-42188afc-1304-4f49-8c38-225615c6b247#catalog"
+        },
+        {
+          "id": "mass-observation-d024bc97-6f08-51af-a695-b133941fd056",
+          "recordId": "obs-ef7a63dd-961a-4733-8e3e-557c18fad3f1",
+          "catalogId": "farrington-1903",
+          "catalogLabel": "Catalogue of the Collection of Meteorites, May 1, 1903 (1903)",
+          "catalogYear": 1903,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 71",
+          "sourceName": "Denton County",
+          "canonicalName": "Denton County",
+          "meteoriteCode": "6659",
+          "designation": null,
+          "massGrams": 3,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=farrington-1903&q=record%20id%20obs-ef7a63dd-961a-4733-8e3e-557c18fad3f1#catalog"
         }
       ]
     },

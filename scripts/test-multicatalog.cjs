@@ -803,6 +803,7 @@ test("catalog dropdown labels are concise and leave summary titles unchanged", (
     { id: "hogbom-1902", year: 1902, label: "Verzeichniss über die Meteoriten des Mineralogischen Instituts (1902)" },
     { id: "farrington-1903", year: 1903, label: "Catalogue of the Collection of Meteorites, May 1, 1903 (1903)" },
     { id: "nininger-1933", year: 1933, label: "The Nininger Collection (1933)" },
+    { id: "barnes-1940", year: 1940, label: "Catalogue of Texas Meteorites (1940)" },
     { id: "nininger-1950", year: 1950, label: "The Nininger Collection (1950)" },
     { id: "huss-1976", year: 1976, label: "Huss Meteorite Collection catalog (1976)" },
     { id: "huss-1986", year: 1986, label: "The Second Huss Collection of Meteorites (1986)" },
@@ -813,7 +814,7 @@ test("catalog dropdown labels are concise and leave summary titles unchanged", (
     "Lucas (1813)", "Chladni (1819)", "Chladni (1825)", "Haidinger (1859)", "Buchner (1863)",
     "Nordenskiöld (1870)", "Ball (1882)", "USNM (1886)", "Hovey (1896)", "Washington (1897)",
     "Högbom (1902)", "Farrington (1903)", "Nininger (1933)",
-    "Nininger (1950)", "Huss (1976)", "Huss (1986)", "ASU (2024)"
+    "Barnes (1940)", "Nininger (1950)", "Huss (1976)", "Huss (1986)", "ASU (2024)"
   ]);
   assert.equal(new Set(labels).size, descriptors.length);
   assert.deepEqual(app.catalogSummaryEntries(descriptors).map(({ label }) => label), descriptors.map(({ label }) => label));
@@ -829,7 +830,7 @@ test("URL filter behavior and cache version remain stable", () => {
     query: "catalog item 2", catalog: "nininger-1933", min: "3", max: "12", sort: "weight-desc"
   });
   assert.equal(app.serializeUrlFilters(parsed).toString(), "q=catalog+item+2&catalog=nininger-1933&min=3&max=12&sort=weight-desc");
-  assert.equal(app.CACHE_VERSION, "20260802-2");
+  assert.equal(app.CACHE_VERSION, "20260802-3");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.CACHE_VERSION}`));
 });

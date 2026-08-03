@@ -133,6 +133,56 @@
         "rightsStatus": "undetermined"
       },
       {
+        "id": "barnes-1940",
+        "recordModel": "collection-entry",
+        "label": "Catalogue of Texas Meteorites (1940)",
+        "compiler": "Virgil E. Barnes",
+        "year": 1940,
+        "sourcePages": [
+          583,
+          584,
+          585,
+          586,
+          587,
+          588,
+          589,
+          590,
+          591,
+          592,
+          593,
+          594,
+          595,
+          596,
+          597,
+          598,
+          599,
+          600,
+          601,
+          602,
+          603,
+          604,
+          605,
+          606,
+          607,
+          608,
+          609,
+          610,
+          611,
+          612
+        ],
+        "sourcePageCount": 30,
+        "recordCount": 70,
+        "recordsWithDesignation": 0,
+        "recordsWithWeight": 48,
+        "confidenceCounts": {
+          "high": 70,
+          "medium": 0,
+          "low": 0
+        },
+        "folioDisplayPolicy": "blocked",
+        "rightsStatus": "undetermined"
+      },
+      {
         "id": "buchner-1863",
         "recordModel": "collection-entry",
         "label": "Die Meteoriten in Sammlungen, ihre Geschichte, mineralogische und chemische Beschaffenheit (1863)",
@@ -883,11 +933,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 9050,
+    "recordCount": 9120,
     "recordsWithDesignation": 5599,
-    "recordsWithWeight": 8420,
+    "recordsWithWeight": 8468,
     "confidenceCounts": {
-      "high": 9035,
+      "high": 9105,
       "medium": 15,
       "low": 0
     }
@@ -166396,6 +166446,4208 @@
       "locality": "U.S.A.",
       "eventDate": null,
       "confidence": "medium"
+    },
+    {
+      "id": "obs-7d4775d6-ae1a-405a-88fd-cd759a532db4",
+      "catalogId": "barnes-1940",
+      "entryOrder": 1,
+      "reportedNumber": null,
+      "catalogPages": [
+        589
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Collection material",
+          "provenance": "Nininger Collection",
+          "count": null,
+          "weights": []
+        },
+        {
+          "description": "Specimen",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 1077
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Field Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 140
+            }
+          ]
+        }
+      ],
+      "name": "Adrian",
+      "classification": "Stone; Chondrite",
+      "locality": "Deaf Smith County.",
+      "eventDate": "Found: 1936.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Adrian",
+        "meteoriteCode": "388",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=388",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-8912ed9f-c788-4f76-954d-0451285b68a4",
+      "catalogId": "barnes-1940",
+      "entryOrder": 2,
+      "reportedNumber": null,
+      "catalogPages": [
+        589
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": "Texas Observers Collection",
+          "count": null,
+          "weights": [
+            {
+              "grams": 1409
+            }
+          ]
+        }
+      ],
+      "name": "Allen",
+      "classification": "Stone; Chondrite",
+      "locality": "Collin County.",
+      "eventDate": "Found: About 1923. Recognized: 1938.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Allen",
+        "meteoriteCode": "2277",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2277",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-1acdfb20-c24b-44be-b179-e8f164db7de2",
+      "catalogId": "barnes-1940",
+      "entryOrder": 3,
+      "reportedNumber": null,
+      "catalogPages": [
+        590
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 173
+            }
+          ]
+        }
+      ],
+      "name": "Alpine",
+      "classification": "Iron; Ataxite",
+      "locality": "Brewster County.",
+      "eventDate": "Found: 1915.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-4df16972-ab0b-4d79-a551-44035766f079",
+      "catalogId": "barnes-1940",
+      "entryOrder": 4,
+      "reportedNumber": null,
+      "catalogPages": [
+        590
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 470
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Bureau of Economic Geology, The University of Texas",
+          "count": null,
+          "weights": [
+            {
+              "grams": 80
+            }
+          ]
+        },
+        {
+          "description": "Complete slice",
+          "provenance": "Harvard Min. Mus.",
+          "count": null,
+          "weights": []
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Amer. Mus. Nat. Hist.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 73.4
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Field Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 53
+            },
+            {
+              "grams": 70
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Nininger Collection",
+          "count": null,
+          "weights": [
+            {
+              "grams": 120
+            }
+          ]
+        }
+      ],
+      "name": "Ballinger",
+      "classification": "Iron; Hexahedrite",
+      "locality": "Runnels County.",
+      "eventDate": "Found: 1927.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Ballinger",
+        "meteoriteCode": "4930",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4930",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-1bbaca77-76d6-4944-96ff-4fb1bc454c31",
+      "catalogId": "barnes-1940",
+      "entryOrder": 5,
+      "reportedNumber": null,
+      "catalogPages": [
+        590
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Collection material",
+          "provenance": "Dept. of Geology, The University of Texas",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Bartlett",
+      "classification": "Iron; Octahedrite",
+      "locality": "Bell County.",
+      "eventDate": "Recognized: 1938.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bartlett",
+        "meteoriteCode": "4953",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4953",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-a002c17e-024e-40c9-8fff-95f5cc523c2d",
+      "catalogId": "barnes-1940",
+      "entryOrder": 6,
+      "reportedNumber": null,
+      "catalogPages": [
+        590
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Stones",
+          "provenance": "Field Museum",
+          "count": 2,
+          "weights": [
+            {
+              "grams": 1557
+            },
+            {
+              "grams": 1516
+            }
+          ]
+        },
+        {
+          "description": "Stone",
+          "provenance": "U. S. Nat. Mus.",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 1815
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Nininger Collection",
+          "count": null,
+          "weights": [
+            {
+              "grams": 185
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Texas Observers Collection",
+          "count": null,
+          "weights": [
+            {
+              "grams": 75
+            }
+          ]
+        }
+      ],
+      "name": "Blanket",
+      "classification": "Stone",
+      "locality": "Brown County.",
+      "eventDate": "Fell: 10:30 P.M., May 30, 1909.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Blanket",
+        "meteoriteCode": "5071",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5071",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-d5e02183-37af-43ad-943f-88b97d3573b4",
+      "catalogId": "barnes-1940",
+      "entryOrder": 7,
+      "reportedNumber": null,
+      "catalogPages": [
+        590,
+        591
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Specimens",
+          "provenance": "British Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 12401
+            },
+            {
+              "grams": 132
+            },
+            {
+              "grams": 6
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Field Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 10985
+            },
+            {
+              "grams": 2934
+            },
+            {
+              "grams": 5556
+            },
+            {
+              "grams": 7483
+            },
+            {
+              "grams": 8619
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Amer. Mus. Nat. Hist.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 1108.3
+            },
+            {
+              "grams": 12318
+            },
+            {
+              "grams": 48.8
+            },
+            {
+              "grams": 3176
+            },
+            {
+              "grams": 194.7
+            },
+            {
+              "grams": 121.3
+            },
+            {
+              "grams": 80.6
+            },
+            {
+              "grams": 18.3
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Bureau of Economic Geology, The University of Texas",
+          "count": null,
+          "weights": [
+            {
+              "grams": 8000
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Vienna Nat. Hist. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 258
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Univ. of Minn. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 7250
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 8953
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Harvard Min. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 8040
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Weidhaas Collection",
+          "count": null,
+          "weights": [
+            {
+              "grams": 816
+            },
+            {
+              "grams": 32
+            },
+            {
+              "grams": 28
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Texas Observers Collection",
+          "count": null,
+          "weights": [
+            {
+              "grams": 13500
+            },
+            {
+              "grams": 174
+            },
+            {
+              "grams": 5
+            }
+          ]
+        }
+      ],
+      "name": "Bluff",
+      "classification": "Stone; Chondrite",
+      "locality": "Fayette County.",
+      "eventDate": "Found: 1878.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f86a9fb0-c1ac-42c3-9d4c-058b932d3967",
+      "catalogId": "barnes-1940",
+      "entryOrder": 8,
+      "reportedNumber": null,
+      "catalogPages": [
+        591
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 800
+            }
+          ]
+        }
+      ],
+      "name": "Boerne",
+      "classification": "Stone; Chondrite",
+      "locality": "Kendall County.",
+      "eventDate": "Found: 1884.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-925d797c-e75e-4248-a20d-96b8d5ba6e3e",
+      "catalogId": "barnes-1940",
+      "entryOrder": 9,
+      "reportedNumber": null,
+      "catalogPages": [
+        591
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Collection material",
+          "provenance": "Nininger Collection",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Brady",
+      "classification": "Stone",
+      "locality": "McCulloch County.",
+      "eventDate": "Found: 1937.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brady",
+        "meteoriteCode": "5129",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5129",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-8d086e5f-39dc-48eb-8335-d4ab57c129b3",
+      "catalogId": "barnes-1940",
+      "entryOrder": 10,
+      "reportedNumber": null,
+      "catalogPages": [
+        591
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Collection material",
+          "provenance": "Nininger Collection",
+          "count": null,
+          "weights": []
+        },
+        {
+          "description": "Specimen",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 25
+            }
+          ]
+        }
+      ],
+      "name": "Brownfield",
+      "classification": "Stone",
+      "locality": "Terry County.",
+      "eventDate": "Found: 1937.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-01cc98eb-511b-41af-8f67-84826cab6d4d",
+      "catalogId": "barnes-1940",
+      "entryOrder": 11,
+      "reportedNumber": null,
+      "catalogPages": [
+        591
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Specimens",
+          "provenance": "Amer. Mus. Nat. Hist.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 3071
+            },
+            {
+              "grams": 2773
+            },
+            {
+              "grams": 833
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Nininger Collection",
+          "count": null,
+          "weights": []
+        },
+        {
+          "description": "Specimen",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 823
+            }
+          ]
+        }
+      ],
+      "name": "Burkett",
+      "classification": "Iron; Octahedrite",
+      "locality": "Coleman County.",
+      "eventDate": "Found: October, 1913.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Burkett",
+        "meteoriteCode": "5170",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5170",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-0c2340e4-7f1d-49aa-b6cb-ed7fa21eb4f6",
+      "catalogId": "barnes-1940",
+      "entryOrder": 12,
+      "reportedNumber": null,
+      "catalogPages": [
+        591,
+        592
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Specimens",
+          "provenance": "Field Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 3406
+            },
+            {
+              "grams": 3175
+            },
+            {
+              "grams": 2721
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Vienna Nat. Hist. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 7500
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Harvard Min. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 3284
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 1420
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "British Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 6180
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Amer. Mus. Nat. Hist.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 4256.9
+            },
+            {
+              "grams": 5570
+            },
+            {
+              "grams": 654.5
+            },
+            {
+              "grams": 52.3
+            },
+            {
+              "grams": 9.5
+            },
+            {
+              "grams": 4.5
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Nininger Collection",
+          "count": null,
+          "weights": [
+            {
+              "grams": 1305
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Texas Observers Collection",
+          "count": null,
+          "weights": [
+            {
+              "grams": 50
+            }
+          ]
+        }
+      ],
+      "name": "Carlton",
+      "classification": "Iron; Octahedrite",
+      "locality": "Hamilton County.",
+      "eventDate": "Found: 1887.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Carlton",
+        "meteoriteCode": "5277",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5277",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-108c0def-fe19-4708-a244-767e6946304b",
+      "catalogId": "barnes-1940",
+      "entryOrder": 13,
+      "reportedNumber": null,
+      "catalogPages": [
+        592
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Portion of 5.53-kg stone",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 2800
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Baylor University, Waco, Texas",
+          "count": null,
+          "weights": [
+            {
+              "grams": 1640
+            }
+          ]
+        },
+        {
+          "description": "Main mass",
+          "provenance": "Ward’s Nat. Sci. Estab.",
+          "count": null,
+          "weights": []
+        },
+        {
+          "description": "Stone",
+          "provenance": "Bureau of Economic Geology, The University of Texas",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 11540
+            }
+          ]
+        },
+        {
+          "description": "Slice",
+          "provenance": "Nininger Collection",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Cedar",
+      "classification": "Stone; Chondrite",
+      "locality": "Fayette County.",
+      "eventDate": "Found: 1890 or 1900.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-84801cf6-f2cd-4cfb-98d3-51d9494263e0",
+      "catalogId": "barnes-1940",
+      "entryOrder": 14,
+      "reportedNumber": null,
+      "catalogPages": [
+        592
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Collection material",
+          "provenance": "Nininger Collection",
+          "count": null,
+          "weights": []
+        },
+        {
+          "description": "Collection material",
+          "provenance": "Gillespie Collection",
+          "count": null,
+          "weights": []
+        },
+        {
+          "description": "Specimen",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 1528
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Field Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 623
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Floyd V. Studer Collection, Panhandle Plains Historical Society Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 81
+            }
+          ]
+        }
+      ],
+      "name": "Channing",
+      "classification": "Stone",
+      "locality": "Hartley County.",
+      "eventDate": "Found: 1936.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Channing",
+        "meteoriteCode": "5324",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5324",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-167b7df6-5878-46ed-b6a3-4381efe37f17",
+      "catalogId": "barnes-1940",
+      "entryOrder": 15,
+      "reportedNumber": null,
+      "catalogPages": [
+        592
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Collection material",
+          "provenance": "Texas Observers Collection",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Cleburne",
+      "classification": "Iron; Octahedrite",
+      "locality": "Johnson County.",
+      "eventDate": "Found: About 1907. Recognized: 1934.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Cleburne",
+        "meteoriteCode": "5377",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5377",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-95da4e05-29ba-4102-9e82-a700b4114372",
+      "catalogId": "barnes-1940",
+      "entryOrder": 16,
+      "reportedNumber": null,
+      "catalogPages": [
+        592,
+        593
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": "Vienna",
+          "count": null,
+          "weights": [
+            {
+              "grams": 13029
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "British Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 4520
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "v. Braun",
+          "count": null,
+          "weights": [
+            {
+              "grams": 3025
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Amer. Mus. Nat. Hist.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 291
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Vienna Nat. Hist. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 99
+            },
+            {
+              "grams": 183
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 258
+            },
+            {
+              "grams": 116
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Harvard Min. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 331
+            },
+            {
+              "grams": 56
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Field Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 104
+            },
+            {
+              "grams": 434
+            },
+            {
+              "grams": 12
+            }
+          ]
+        },
+        {
+          "description": "Slice",
+          "provenance": "Nininger Collection",
+          "count": null,
+          "weights": [
+            {
+              "grams": 383
+            }
+          ]
+        }
+      ],
+      "name": "Coahuila",
+      "classification": "Iron; Hexahedrite",
+      "locality": "Mexico.",
+      "eventDate": "Found: 1882.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-474441f7-3552-4469-bf50-ed635d91379c",
+      "catalogId": "barnes-1940",
+      "entryOrder": 17,
+      "reportedNumber": null,
+      "catalogPages": [
+        593
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Collection material",
+          "provenance": "Bureau of Economic Geology, The University of Texas",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Concho",
+      "classification": "Stone; Chondrite",
+      "locality": "Glasscock County.",
+      "eventDate": "Recognized: 1939 (original discovery date unknown).",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Concho",
+        "meteoriteCode": "5417",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5417",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-5b22db32-2b78-4a23-b045-e29bd2da5b0d",
+      "catalogId": "barnes-1940",
+      "entryOrder": 18,
+      "reportedNumber": null,
+      "catalogPages": [
+        593
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Collection material",
+          "provenance": "Bureau of Economic Geology, The University of Texas",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Cuero",
+      "classification": "Stone; Chondrite",
+      "locality": "DeWitt County.",
+      "eventDate": "Found: May 16, 1936.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Cuero",
+        "meteoriteCode": "5493",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5493",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-caae563a-ab41-40b4-8c8a-1fd61c872906",
+      "catalogId": "barnes-1940",
+      "entryOrder": 19,
+      "reportedNumber": null,
+      "catalogPages": [
+        593
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Specimens",
+          "provenance": "Field Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 689460
+            },
+            {
+              "grams": 460
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "British Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 41
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Amer. Mus. Nat. Hist.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 27.5
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 28
+            }
+          ]
+        },
+        {
+          "description": "Slice",
+          "provenance": "Nininger Collection",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Davis Mountains",
+      "classification": "Iron; Octahedrite",
+      "locality": "Jeff Davis County.",
+      "eventDate": "Found: 1903.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Davis Mountains",
+        "meteoriteCode": "6615",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=6615",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-42188afc-1304-4f49-8c38-225615c6b247",
+      "catalogId": "barnes-1940",
+      "entryOrder": 20,
+      "reportedNumber": null,
+      "catalogPages": [
+        593
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": "British Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 122
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Amer. Mus. Nat. Hist.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 13
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 7.97
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Harvard Min. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 49
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Field Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 3
+            },
+            {
+              "grams": 25
+            },
+            {
+              "grams": 17
+            }
+          ]
+        }
+      ],
+      "name": "Denton County",
+      "classification": "Iron; Octahedrite",
+      "locality": null,
+      "eventDate": "Found: About 1856.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Denton County",
+        "meteoriteCode": "6659",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=6659",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-3fdad1ac-8c91-496c-af32-ddf25a0938ac",
+      "catalogId": "barnes-1940",
+      "entryOrder": 21,
+      "reportedNumber": null,
+      "catalogPages": [
+        593,
+        594
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Complete mass",
+          "provenance": "Texas Memorial Museum, Austin",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 776
+            }
+          ]
+        },
+        {
+          "description": "Mass",
+          "provenance": "Bureau of Economic Geology, The University of Texas",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 1100
+            }
+          ]
+        },
+        {
+          "description": "Masses",
+          "provenance": "Harvard Min. Mus.",
+          "count": 2,
+          "weights": [
+            {
+              "grams": 907.18474
+            },
+            {
+              "grams": 2721.55422
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 5783
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Field Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 315
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Texas Observers Collection",
+          "count": 65,
+          "weights": [
+            {
+              "grams": 14300
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Nininger Collection",
+          "count": null,
+          "weights": [
+            {
+              "grams": 2661
+            }
+          ]
+        }
+      ],
+      "name": "Deport",
+      "classification": "Iron; Octahedrite",
+      "locality": "Red River County.",
+      "eventDate": "Found: 1926 and later. Recognized: 1932.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Deport",
+        "meteoriteCode": "6662",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=6662",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-cfaf12c8-7135-4aff-808b-205b8c2a3b32",
+      "catalogId": "barnes-1940",
+      "entryOrder": 22,
+      "reportedNumber": null,
+      "catalogPages": [
+        594
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Complete mass",
+          "provenance": "Amer. Mus. Nat. Hist.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Dexter",
+      "classification": "Iron; Octahedrite",
+      "locality": "Cooke County.",
+      "eventDate": "Found: 1889.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dexter",
+        "meteoriteCode": "6697",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=6697",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-e607efc3-e648-4033-82c3-27ffdda254b7",
+      "catalogId": "barnes-1940",
+      "entryOrder": 23,
+      "reportedNumber": null,
+      "catalogPages": [
+        594
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Collection material",
+          "provenance": "Bureau of Economic Geology, The University of Texas, Austin",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Elton",
+      "classification": "Iron",
+      "locality": "Dickens County.",
+      "eventDate": "Found: About 1936. Recognized: April, 1938.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Elton",
+        "meteoriteCode": "10029",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10029",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-3b2450c6-c510-40c0-91f0-312e51030c4d",
+      "catalogId": "barnes-1940",
+      "entryOrder": 24,
+      "reportedNumber": null,
+      "catalogPages": [
+        594
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Specimens",
+          "provenance": "Field Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 103200
+            },
+            {
+              "grams": 15402
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "British Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 17103
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Amer. Mus. Nat. Hist.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 122500
+            },
+            {
+              "grams": 419.6
+            },
+            {
+              "grams": 148.2
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 9900
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Harvard Min. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 17800
+            },
+            {
+              "grams": 230
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Nininger Collection",
+          "count": null,
+          "weights": [
+            {
+              "grams": 13750
+            },
+            {
+              "grams": 1085
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Texas Observers Collection",
+          "count": null,
+          "weights": [
+            {
+              "grams": 802
+            },
+            {
+              "grams": 380
+            },
+            {
+              "grams": 71
+            },
+            {
+              "grams": 43
+            }
+          ]
+        }
+      ],
+      "name": "Estacado",
+      "classification": "Stone; Chondrite",
+      "locality": "Hale County.",
+      "eventDate": "Found: 1883.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Estacado",
+        "meteoriteCode": "10057",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10057",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-5af9df5b-94d1-4d06-b0aa-556621bec8ed",
+      "catalogId": "barnes-1940",
+      "entryOrder": 25,
+      "reportedNumber": null,
+      "catalogPages": [
+        594
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 1405
+            }
+          ]
+        },
+        {
+          "description": "One-half",
+          "provenance": "Dept. of Geology, The University of Texas",
+          "count": null,
+          "weights": []
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Nininger Collection",
+          "count": null,
+          "weights": [
+            {
+              "grams": 50
+            }
+          ]
+        }
+      ],
+      "name": "Florence",
+      "classification": "Stone; Chondrite",
+      "locality": "Williamson County.",
+      "eventDate": "Fell: About 8 P.M., Jan. 21, 1922.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Florence",
+        "meteoriteCode": "10111",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10111",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-344de21c-d95b-4dbd-9acc-70b33d7ac02e",
+      "catalogId": "barnes-1940",
+      "entryOrder": 26,
+      "reportedNumber": null,
+      "catalogPages": [
+        594,
+        595
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": "Texas Observers Collection",
+          "count": null,
+          "weights": [
+            {
+              "grams": 12500
+            }
+          ]
+        },
+        {
+          "description": "Fragment",
+          "provenance": "Nininger Collection",
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Floydada",
+      "classification": "Iron; Octahedrite",
+      "locality": "Floyd County.",
+      "eventDate": "Found: 1938.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-40993750-aeda-42d7-ba74-bc0b5093e56a",
+      "catalogId": "barnes-1940",
+      "entryOrder": 27,
+      "reportedNumber": null,
+      "catalogPages": [
+        595
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Collection material",
+          "provenance": "Texas Observers Collection",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Glen Rose",
+      "classification": "Iron",
+      "locality": "Somervell County.",
+      "eventDate": "Found: About 1934. Recognized: 1936.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-853f7646-cf10-4bc5-bc5d-82b61121d89a",
+      "catalogId": "barnes-1940",
+      "entryOrder": 28,
+      "reportedNumber": null,
+      "catalogPages": [
+        595
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Main mass",
+          "provenance": "Nininger and Gillespie collections",
+          "count": null,
+          "weights": []
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Field Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 780
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 1107
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Texas Observers Collection",
+          "count": null,
+          "weights": [
+            {
+              "grams": 948
+            }
+          ]
+        }
+      ],
+      "name": "Gruver",
+      "classification": "Stone; Chondrite",
+      "locality": "Hansford County.",
+      "eventDate": "Found: 1934.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Gruver",
+        "meteoriteCode": "11428",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11428",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-07e4344b-0d79-41db-b32e-377d97e35324",
+      "catalogId": "barnes-1940",
+      "entryOrder": 29,
+      "reportedNumber": null,
+      "catalogPages": [
+        595
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 188
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Nininger Collection",
+          "count": null,
+          "weights": []
+        },
+        {
+          "description": "Main mass",
+          "provenance": "Wichita University",
+          "count": null,
+          "weights": []
+        },
+        {
+          "description": "Main mass",
+          "provenance": "Bingham Collection",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Hale Center No. 1",
+      "classification": "Stone; Chondrite",
+      "locality": "Hale County.",
+      "eventDate": "Found: 1936.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-251812ce-ef3a-443b-930a-0f9de6142733",
+      "catalogId": "barnes-1940",
+      "entryOrder": 30,
+      "reportedNumber": null,
+      "catalogPages": [
+        595
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 326
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Nininger Collection",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Hale Center No. 2",
+      "classification": "Stone; Chondrite",
+      "locality": "Hale County.",
+      "eventDate": "Found: 1936.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-853e9454-a03a-4fd7-8806-cf3daba1f362",
+      "catalogId": "barnes-1940",
+      "entryOrder": 31,
+      "reportedNumber": null,
+      "catalogPages": [
+        595
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": "Amer. Mus. Nat. Hist.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 179.4
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 99
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Vienna Nat. Hist. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 6
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Field Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 11
+            }
+          ]
+        }
+      ],
+      "name": "Iredell",
+      "classification": "Iron; Hexahedrite",
+      "locality": "Bosque County.",
+      "eventDate": "Found: June, 1898.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Iredell",
+        "meteoriteCode": "12046",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12046",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-819c9d4b-42e6-4993-8768-0f090a726bf1",
+      "catalogId": "barnes-1940",
+      "entryOrder": 32,
+      "reportedNumber": null,
+      "catalogPages": [
+        596
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Collection material",
+          "provenance": "Texas Observers Collection",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Junction",
+      "classification": "Stone",
+      "locality": "Kimble County.",
+      "eventDate": "Found: About 1932. Recognized: 1938.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Junction",
+        "meteoriteCode": "12212",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12212",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-fbf1f7ea-6bf7-4112-b75e-141baa666b94",
+      "catalogId": "barnes-1940",
+      "entryOrder": 33,
+      "reportedNumber": null,
+      "catalogPages": [
+        596
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": "Vienna",
+          "count": null,
+          "weights": [
+            {
+              "grams": 10702
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Budapest",
+          "count": null,
+          "weights": [
+            {
+              "grams": 582
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "British Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 556
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Prague",
+          "count": null,
+          "weights": [
+            {
+              "grams": 345
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Paris",
+          "count": null,
+          "weights": [
+            {
+              "grams": 270
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Amer. Mus. Nat. Hist.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 170.4
+            },
+            {
+              "grams": 368
+            },
+            {
+              "grams": 629.5
+            },
+            {
+              "grams": 625
+            },
+            {
+              "grams": 11.5
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Vienna Nat. Hist. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 299
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 1165
+            },
+            {
+              "grams": 767
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Harvard Min. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 494
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Nininger Collection",
+          "count": null,
+          "weights": [
+            {
+              "grams": 118
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Field Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 118
+            },
+            {
+              "grams": 286
+            },
+            {
+              "grams": 410
+            }
+          ]
+        }
+      ],
+      "name": "Kendall County",
+      "classification": "Iron; Hexahedrite",
+      "locality": null,
+      "eventDate": "Known: 1887.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Kendall County",
+        "meteoriteCode": "12274",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12274",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-ade3bd8b-ce4c-4096-afd0-f1ca0b090883",
+      "catalogId": "barnes-1940",
+      "entryOrder": 34,
+      "reportedNumber": null,
+      "catalogPages": [
+        596
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": "J. J. King; on display at Texas Memorial Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 1588
+            }
+          ]
+        },
+        {
+          "description": "Stones",
+          "provenance": "Texas Observers Collection",
+          "count": 12,
+          "weights": []
+        }
+      ],
+      "name": "Kendleton",
+      "classification": "Stone; Chondrite",
+      "locality": "Fort Bend County.",
+      "eventDate": "Fell: 7.25 P.M., May 2, 1939.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Kendleton",
+        "meteoriteCode": "12275",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12275",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-7c0f88ff-dabb-4fa4-afed-10792c094336",
+      "catalogId": "barnes-1940",
+      "entryOrder": 35,
+      "reportedNumber": null,
+      "catalogPages": [
+        596
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Collection material",
+          "provenance": "Bureau of Economic Geology, The University of Texas",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Kimble County",
+      "classification": "Stone; Chondrite",
+      "locality": null,
+      "eventDate": "Found: 1918. Recognized: 1936.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Kimble County",
+        "meteoriteCode": "12311",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12311",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-ab2b517c-c454-492a-af84-8cce2f1afcc4",
+      "catalogId": "barnes-1940",
+      "entryOrder": 36,
+      "reportedNumber": null,
+      "catalogPages": [
+        596
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Collection material",
+          "provenance": "Texas Observers Collection",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Kirbyville",
+      "classification": "Stone",
+      "locality": "Jasper County.",
+      "eventDate": "Fell: About 3.30 P.M., Nov. 12, 1906.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Kirbyville",
+        "meteoriteCode": "12321",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12321",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-840a7bc6-f226-4397-a0c9-eb24aadbbf52",
+      "catalogId": "barnes-1940",
+      "entryOrder": 37,
+      "reportedNumber": null,
+      "catalogPages": [
+        597
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Collection material",
+          "provenance": "Nininger Collection",
+          "count": null,
+          "weights": []
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Floyd V. Studer Collection, Panhandle Plains Historical Society Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 20.5
+            }
+          ]
+        }
+      ],
+      "name": "Laketon",
+      "classification": "Stone",
+      "locality": "Gray County.",
+      "eventDate": "Found: 1937.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Laketon",
+        "meteoriteCode": "12448",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12448",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-3edc5faa-afd3-49f0-8d0e-54668dc77109",
+      "catalogId": "barnes-1940",
+      "entryOrder": 38,
+      "reportedNumber": null,
+      "catalogPages": [
+        597
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": "Baylor University, Waco, Texas",
+          "count": null,
+          "weights": [
+            {
+              "grams": 3740
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "British Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 430
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 458
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Amer. Mus. Nat. Hist.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 202.4
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Field Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 1132
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Nininger Collection",
+          "count": null,
+          "weights": [
+            {
+              "grams": 473
+            }
+          ]
+        }
+      ],
+      "name": "Mart",
+      "classification": "Iron; Octahedrite",
+      "locality": "McLennan County.",
+      "eventDate": "Found: 1898.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Mart",
+        "meteoriteCode": "15435",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15435",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-17d07f62-a9ce-4e9a-a1df-3ee8f4d43fd5",
+      "catalogId": "barnes-1940",
+      "entryOrder": 39,
+      "reportedNumber": null,
+      "catalogPages": [
+        597
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Specimens",
+          "provenance": "Field Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 52
+            },
+            {
+              "grams": 163
+            },
+            {
+              "grams": 2491
+            },
+            {
+              "grams": 2610
+            },
+            {
+              "grams": 72
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Vienna",
+          "count": null,
+          "weights": [
+            {
+              "grams": 40000
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "British Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 999
+            },
+            {
+              "grams": 290
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Amer. Mus. Nat. Hist.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 1686.3
+            },
+            {
+              "grams": 632.5
+            },
+            {
+              "grams": 2750
+            },
+            {
+              "grams": 326.9
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Vienna Nat. Hist. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 300
+            },
+            {
+              "grams": 250
+            },
+            {
+              "grams": 351
+            },
+            {
+              "grams": 301
+            },
+            {
+              "grams": 280
+            },
+            {
+              "grams": 260
+            },
+            {
+              "grams": 300
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 1400
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Harvard Min. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 594
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Witte Museum, San Antonio",
+          "count": null,
+          "weights": [
+            {
+              "grams": 350
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Nininger Collection",
+          "count": null,
+          "weights": [
+            {
+              "grams": 14000
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Weidhaas Collection",
+          "count": null,
+          "weights": [
+            {
+              "grams": 81.5
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Texas Observers Collection",
+          "count": null,
+          "weights": [
+            {
+              "grams": 2450
+            },
+            {
+              "grams": 1800
+            }
+          ]
+        }
+      ],
+      "name": "McKinney",
+      "classification": "Stone; Chondrite",
+      "locality": "Collin County.",
+      "eventDate": "Found: 1870.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "McKinney",
+        "meteoriteCode": "15463",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15463",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-ccb15091-90a7-4e88-8155-6637b3573305",
+      "catalogId": "barnes-1940",
+      "entryOrder": 40,
+      "reportedNumber": null,
+      "catalogPages": [
+        597
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Main mass",
+          "provenance": "Nininger Collection",
+          "count": null,
+          "weights": []
+        },
+        {
+          "description": "Specimen",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 1160
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Floyd V. Studer Collection, Panhandle Plains Historical Society Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 53
+            }
+          ]
+        }
+      ],
+      "name": "Miami",
+      "classification": "Stone",
+      "locality": "Roberts County.",
+      "eventDate": "Found: 1930. Recognized: 1937.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Miami",
+        "meteoriteCode": "16630",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16630",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-ad5ad034-632b-477f-a903-7cd058bc57a0",
+      "catalogId": "barnes-1940",
+      "entryOrder": 41,
+      "reportedNumber": null,
+      "catalogPages": [
+        597,
+        598
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Collection material",
+          "provenance": "Nininger Collection",
+          "count": null,
+          "weights": []
+        },
+        {
+          "description": "Specimen",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 873
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Texas Observers Collection",
+          "count": null,
+          "weights": [
+            {
+              "grams": 577
+            }
+          ]
+        }
+      ],
+      "name": "Monahans",
+      "classification": "Iron; Ataxite",
+      "locality": "Ward County.",
+      "eventDate": "Found: 1938.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-0a914ae8-dd68-4ceb-9fcb-c709725f266a",
+      "catalogId": "barnes-1940",
+      "entryOrder": 42,
+      "reportedNumber": null,
+      "catalogPages": [
+        598
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Collection material",
+          "provenance": "Texas Observers Collection",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Nazareth",
+      "classification": "Stone",
+      "locality": "Castro County.",
+      "eventDate": "Found: 1938.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c330173d-6578-4558-88cc-4b18ccbecaea",
+      "catalogId": "barnes-1940",
+      "entryOrder": 43,
+      "reportedNumber": null,
+      "catalogPages": [
+        598
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Complete mass",
+          "provenance": "Texas Memorial Museum, Austin",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Nordheim",
+      "classification": "Iron; Ataxite",
+      "locality": "DeWitt County.",
+      "eventDate": "Found: August, 1932.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Nordheim",
+        "meteoriteCode": "16992",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16992",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-23d69e7d-dff9-4808-b52f-f34737b91bcc",
+      "catalogId": "barnes-1940",
+      "entryOrder": 44,
+      "reportedNumber": null,
+      "catalogPages": [
+        598
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Specimens",
+          "provenance": "Bureau of Economic Geology, The University of Texas",
+          "count": null,
+          "weights": [
+            {
+              "grams": 206
+            },
+            {
+              "grams": 123.5
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Bureau of Economic Geology, The University of Texas",
+          "count": 11,
+          "weights": [
+            {
+              "grams": 47000
+            }
+          ]
+        },
+        {
+          "description": "Masses",
+          "provenance": "Nininger Collection",
+          "count": 27,
+          "weights": []
+        },
+        {
+          "description": "Masses",
+          "provenance": "Gillespie Collection",
+          "count": 18,
+          "weights": []
+        },
+        {
+          "description": "Specimen",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 2345
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "H. A. Ward",
+          "count": null,
+          "weights": [
+            {
+              "grams": 453.6
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Field Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 11
+            },
+            {
+              "grams": 6.2
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Lona O’Neal, Odessa",
+          "count": null,
+          "weights": [
+            {
+              "grams": 1125
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Stuart H. Perry Collection, Adrian, Michigan",
+          "count": null,
+          "weights": [
+            {
+              "grams": 3270
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Texas Observers Collection",
+          "count": null,
+          "weights": [
+            {
+              "grams": 3780
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Floyd V. Studer Collection, Panhandle Plains Historical Society Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 991
+            }
+          ]
+        }
+      ],
+      "name": "Odessa",
+      "classification": "Iron; Octahedrite",
+      "locality": "Ector County.",
+      "eventDate": "Found: Before 1922 and since.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-3af74097-1b86-4a98-ba10-13ccf53e80c2",
+      "catalogId": "barnes-1940",
+      "entryOrder": 45,
+      "reportedNumber": null,
+      "catalogPages": [
+        598
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Collection material",
+          "provenance": "College of Mines and Metallurgy, El Paso, Texas",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Ozona",
+      "classification": "Stone; Chondrite",
+      "locality": "Crockett County.",
+      "eventDate": "Found: 1929. Recognized: 1939.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Ozona",
+        "meteoriteCode": "18066",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18066",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-04bfb964-c808-480c-9f0e-b925c89f74e6",
+      "catalogId": "barnes-1940",
+      "entryOrder": 46,
+      "reportedNumber": null,
+      "catalogPages": [
+        598
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": "Texas Observers Collection",
+          "count": null,
+          "weights": [
+            {
+              "grams": 2826
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Texas A. & M. College",
+          "count": null,
+          "weights": [
+            {
+              "grams": 27
+            }
+          ]
+        }
+      ],
+      "name": "Palo Duro",
+      "classification": "Iron; Octahedrite",
+      "locality": "Armstrong County.",
+      "eventDate": "Found: 1934.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a41a7f55-cf00-4cf2-a635-2756db55016e",
+      "catalogId": "barnes-1940",
+      "entryOrder": 47,
+      "reportedNumber": null,
+      "catalogPages": [
+        599
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 628
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Nininger Collection",
+          "count": null,
+          "weights": [
+            {
+              "grams": 39
+            }
+          ]
+        }
+      ],
+      "name": "Peck’s Spring",
+      "classification": "Stone; Chondrite",
+      "locality": "Midland County.",
+      "eventDate": "Found: May 15, 1926.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-62f6b701-7511-4bb5-a5e4-642d97c8409c",
+      "catalogId": "barnes-1940",
+      "entryOrder": 48,
+      "reportedNumber": null,
+      "catalogPages": [
+        599
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Specimens",
+          "provenance": "Field Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 3855
+            },
+            {
+              "grams": 368
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "British Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 766
+            },
+            {
+              "grams": 87
+            },
+            {
+              "grams": 56
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Amer. Mus. Nat. Hist.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 336
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Vienna Nat. Hist. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 87
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Univ. of Minn. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 24.6
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 163
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Harvard Min. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 195
+            },
+            {
+              "grams": 99
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Weidhaas Collection",
+          "count": null,
+          "weights": [
+            {
+              "grams": 38
+            },
+            {
+              "grams": 19
+            }
+          ]
+        }
+      ],
+      "name": "Pipe Creek",
+      "classification": "Stone; Chondrite",
+      "locality": "Bandera County.",
+      "eventDate": "Found: 1887.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Pipe Creek",
+        "meteoriteCode": "18830",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18830",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-fb6dc1bc-9ece-493d-8da1-0206e23ed2c0",
+      "catalogId": "barnes-1940",
+      "entryOrder": 49,
+      "reportedNumber": null,
+      "catalogPages": [
+        599
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": "Field Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 1602
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Amer. Mus. Nat. Hist.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 194.7
+            },
+            {
+              "grams": 1461
+            },
+            {
+              "grams": 595.5
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Lazard Cahn",
+          "count": null,
+          "weights": [
+            {
+              "grams": 7000
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 4770
+            },
+            {
+              "grams": 5467
+            },
+            {
+              "grams": 4592
+            }
+          ]
+        },
+        {
+          "description": "Specimens; at one time about 500 individuals, now 200 individuals",
+          "provenance": "Nininger Collection",
+          "count": 200,
+          "weights": []
+        },
+        {
+          "description": "Specimen",
+          "provenance": "British Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 2800
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Harvard Min. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 1250
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Stuart H. Perry Collection, Adrian, Michigan",
+          "count": null,
+          "weights": [
+            {
+              "grams": 2500
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Philadelphia Acad. Nat. Sci.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 175
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Texas Observers Collection",
+          "count": null,
+          "weights": [
+            {
+              "grams": 9000
+            },
+            {
+              "grams": 5890
+            },
+            {
+              "grams": 3400
+            },
+            {
+              "grams": 1980
+            },
+            {
+              "grams": 1415
+            },
+            {
+              "grams": 976
+            },
+            {
+              "grams": 761
+            },
+            {
+              "grams": 718
+            },
+            {
+              "grams": 673
+            },
+            {
+              "grams": 366
+            },
+            {
+              "grams": 153
+            },
+            {
+              "grams": 127
+            },
+            {
+              "grams": 17.8
+            },
+            {
+              "grams": 9.5
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Floyd V. Studer Collection, Panhandle Plains Historical Society Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 1359
+            }
+          ]
+        }
+      ],
+      "name": "Plainview",
+      "classification": "Stone; Chondrite",
+      "locality": "Hale County.",
+      "eventDate": "Found: 1913 and later.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d59905a9-2c15-4c2a-bc6b-ac2922e37802",
+      "catalogId": "barnes-1940",
+      "entryOrder": 50,
+      "reportedNumber": null,
+      "catalogPages": [
+        599
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 1965
+            }
+          ]
+        }
+      ],
+      "name": "Plantersville",
+      "classification": "Stone; Chondrite",
+      "locality": "Grimes County.",
+      "eventDate": "Fell: 4 P.M., Sept. 4, 1930.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Plantersville",
+        "meteoriteCode": "18846",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18846",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-e2b4f522-b31d-4dcb-9cf6-7b8ba35da649",
+      "catalogId": "barnes-1940",
+      "entryOrder": 51,
+      "reportedNumber": null,
+      "catalogPages": [
+        600
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Main mass",
+          "provenance": "Yale University Mus.",
+          "count": null,
+          "weights": []
+        },
+        {
+          "description": "Specimens",
+          "provenance": "British Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 424
+            },
+            {
+              "grams": 83
+            },
+            {
+              "grams": 0.5
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Amer. Mus. Nat. Hist.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 79.7
+            },
+            {
+              "grams": 168.2
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 77
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Harvard Min. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 1740
+            },
+            {
+              "grams": 22
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Nininger Collection",
+          "count": null,
+          "weights": [
+            {
+              "grams": 96
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Field Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 55
+            },
+            {
+              "grams": 32
+            },
+            {
+              "grams": 22
+            }
+          ]
+        }
+      ],
+      "name": "Red River",
+      "classification": "Iron; Octahedrite",
+      "locality": "Texas.",
+      "eventDate": "Found: 1808.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Red River",
+        "meteoriteCode": "22548",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22548",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-29b9d715-9e49-45d6-89be-a9713e403c52",
+      "catalogId": "barnes-1940",
+      "entryOrder": 52,
+      "reportedNumber": null,
+      "catalogPages": [
+        600
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Main mass",
+          "provenance": "Dept. of Geology, The University of Texas",
+          "count": null,
+          "weights": []
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Nininger Collection",
+          "count": null,
+          "weights": [
+            {
+              "grams": 15
+            }
+          ]
+        }
+      ],
+      "name": "Rosebud",
+      "classification": "Stone; Chondrite",
+      "locality": "Milam County.",
+      "eventDate": "Found: About 1905.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-1fc30407-483b-4fd0-8064-e219633bbd2b",
+      "catalogId": "barnes-1940",
+      "entryOrder": 53,
+      "reportedNumber": null,
+      "catalogPages": [
+        600
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Collection material",
+          "provenance": "Texas Observers Collection",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Round Top",
+      "classification": "Stone",
+      "locality": "Fayette County.",
+      "eventDate": "Found: 1934. Recognized: 1937.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-014fa351-665c-4bcb-b83f-3610f0ff425c",
+      "catalogId": "barnes-1940",
+      "entryOrder": 54,
+      "reportedNumber": null,
+      "catalogPages": [
+        600
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Specimens",
+          "provenance": "Field Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 1501
+            },
+            {
+              "grams": 1814
+            },
+            {
+              "grams": 2551
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "British Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 771
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Amer. Mus. Nat. Hist.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 610
+            },
+            {
+              "grams": 227.7
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Vienna Nat. Hist. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 184
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 2725
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Harvard Min. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 295
+            }
+          ]
+        },
+        {
+          "description": "One-third of mass",
+          "provenance": "Dept. of Geology, The University of Texas",
+          "count": null,
+          "weights": []
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Nininger Collection",
+          "count": null,
+          "weights": [
+            {
+              "grams": 528
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Texas Observers Collection",
+          "count": null,
+          "weights": [
+            {
+              "grams": 2123
+            },
+            {
+              "grams": 72
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Floyd V. Studer Collection, Panhandle Plains Historical Society Museum",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "San Angelo",
+      "classification": "Iron; Octahedrite",
+      "locality": "Tom Green County.",
+      "eventDate": "Found: 1897.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "San Angelo",
+        "meteoriteCode": "23117",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23117",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-e7a0bd9e-7f85-4ba0-a020-d7103141e63a",
+      "catalogId": "barnes-1940",
+      "entryOrder": 55,
+      "reportedNumber": null,
+      "catalogPages": [
+        601
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Collection material",
+          "provenance": "College of Mines and Metallurgy, El Paso, Texas",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Sanderson",
+      "classification": "Iron",
+      "locality": "Terrell County.",
+      "eventDate": "Found: March, 1936.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Sanderson",
+        "meteoriteCode": "23135",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23135",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-cd04f87e-e918-41c9-bd54-3e538072099e",
+      "catalogId": "barnes-1940",
+      "entryOrder": 56,
+      "reportedNumber": null,
+      "catalogPages": [
+        601
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": "Amer. Mus. Nat. Hist.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 49.7
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Vienna Nat. Hist. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 4
+            }
+          ]
+        }
+      ],
+      "name": "San Pedro Springs",
+      "classification": "Stone; Chondrite",
+      "locality": "Bexar County.",
+      "eventDate": "Found: 1887.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "San Pedro Springs",
+        "meteoriteCode": "23131",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23131",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-644c81ef-cebe-4b13-82f8-69ae1471261e",
+      "catalogId": "barnes-1940",
+      "entryOrder": 57,
+      "reportedNumber": null,
+      "catalogPages": [
+        601
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": "George F. Kunz Collection; now in possession of Ernest Weidhaas, New York",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Schertz",
+      "classification": "Iron",
+      "locality": "Guadalupe County.",
+      "eventDate": "Found: Prior to changing the village name “Cut Off” to Schertz.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-fcc279e2-d646-4159-89aa-1f2a4bbf37ae",
+      "catalogId": "barnes-1940",
+      "entryOrder": 58,
+      "reportedNumber": null,
+      "catalogPages": [
+        601
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Collection material",
+          "provenance": "Texas Observers Collection",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Shafter Lake",
+      "classification": "Stone; Chondrite",
+      "locality": "Andrews County.",
+      "eventDate": "Found: About 1933. Recognized: 1936.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Shafter Lake",
+        "meteoriteCode": "23513",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23513",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-c3c0b34d-1470-489c-9fc8-91e1c2dbc919",
+      "catalogId": "barnes-1940",
+      "entryOrder": 59,
+      "reportedNumber": null,
+      "catalogPages": [
+        601
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Slice",
+          "provenance": "Harvard Min. Mus.",
+          "count": null,
+          "weights": []
+        },
+        {
+          "description": "Slice",
+          "provenance": "H. G. Fales Collection",
+          "count": null,
+          "weights": []
+        },
+        {
+          "description": "Slice",
+          "provenance": "British Museum",
+          "count": null,
+          "weights": []
+        },
+        {
+          "description": "Specimen",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 1189
+            }
+          ]
+        },
+        {
+          "description": "Main mass",
+          "provenance": "Nininger Collection",
+          "count": null,
+          "weights": []
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Field Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 290
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Texas Observers Collection",
+          "count": null,
+          "weights": [
+            {
+              "grams": 291
+            }
+          ]
+        }
+      ],
+      "name": "Shallowater",
+      "classification": "Stone; Chladnite",
+      "locality": "Lubbock County.",
+      "eventDate": "Found: 1936.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Shallowater",
+        "meteoriteCode": "23522",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23522",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-d828d59f-c1f0-4dcc-8105-a612249b0360",
+      "catalogId": "barnes-1940",
+      "entryOrder": 60,
+      "reportedNumber": null,
+      "catalogPages": [
+        601
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Collection material",
+          "provenance": "Texas Observers Collection",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Silverton",
+      "classification": "Stone",
+      "locality": "Briscoe County.",
+      "eventDate": "Found: 1938.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-1ea64560-e9b3-4b9b-a7fc-09128be75713",
+      "catalogId": "barnes-1940",
+      "entryOrder": 61,
+      "reportedNumber": null,
+      "catalogPages": [
+        602
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Collection material",
+          "provenance": "Texas Observers Collection",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Somervell County",
+      "classification": "Stony-iron; Pallasite",
+      "locality": null,
+      "eventDate": "Found: About 1919. Recognized: 1937.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Somervell County",
+        "meteoriteCode": "23665",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23665",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-f1fae9ee-3699-4d7f-9ca1-3fb47296963d",
+      "catalogId": "barnes-1940",
+      "entryOrder": 62,
+      "reportedNumber": null,
+      "catalogPages": [
+        602
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Collection material",
+          "provenance": "Nininger Collection",
+          "count": null,
+          "weights": []
+        },
+        {
+          "description": "Specimen",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 877
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Field Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 764
+            }
+          ]
+        },
+        {
+          "description": "One-half of mass",
+          "provenance": "W. F. Bingham Collection",
+          "count": null,
+          "weights": []
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Texas Observers Collection",
+          "count": null,
+          "weights": [
+            {
+              "grams": 2010
+            }
+          ]
+        }
+      ],
+      "name": "Spearman",
+      "classification": "Iron; Octahedrite",
+      "locality": "Hansford County.",
+      "eventDate": "Recognized: 1934.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Spearman",
+        "meteoriteCode": "23687",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23687",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-e0cf5125-c83f-457f-affb-c47a49e5863c",
+      "catalogId": "barnes-1940",
+      "entryOrder": 63,
+      "reportedNumber": null,
+      "catalogPages": [
+        602
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Collection material",
+          "provenance": "Nininger Collection",
+          "count": null,
+          "weights": []
+        },
+        {
+          "description": "Collection material",
+          "provenance": "Gillespie Collection",
+          "count": null,
+          "weights": []
+        },
+        {
+          "description": "Specimen",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 423
+            }
+          ]
+        },
+        {
+          "description": "Fragments",
+          "provenance": "Texas Technological College",
+          "count": 2,
+          "weights": []
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Floyd V. Studer Collection, Panhandle Plains Historical Society Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 163
+            },
+            {
+              "grams": 54.5
+            }
+          ]
+        },
+        {
+          "description": "Stone",
+          "provenance": "Texas Observers Collection",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 1786
+            }
+          ]
+        }
+      ],
+      "name": "Texline",
+      "classification": "Stone; Chondrite",
+      "locality": "Dallam County.",
+      "eventDate": "Found: July, 1937.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Texline",
+        "meteoriteCode": "23906",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23906",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-1bba6079-f983-4c0b-9ffb-d6277a7572fe",
+      "catalogId": "barnes-1940",
+      "entryOrder": 64,
+      "reportedNumber": null,
+      "catalogPages": [
+        602
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Main mass",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 1996
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Amer. Mus. Nat. Hist.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 10.7
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Nininger Collection",
+          "count": null,
+          "weights": [
+            {
+              "grams": 185
+            }
+          ]
+        }
+      ],
+      "name": "Travis County",
+      "classification": "Stone; Chondrite",
+      "locality": null,
+      "eventDate": "Found: 1889.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e0b057b6-d538-4407-b301-d46f8bc6564c",
+      "catalogId": "barnes-1940",
+      "entryOrder": 65,
+      "reportedNumber": null,
+      "catalogPages": [
+        602,
+        603
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": "Bureau of Economic Geology, The University of Texas",
+          "count": null,
+          "weights": [
+            {
+              "grams": 625
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 114
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Field Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 43.2
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Texas Observers Collection",
+          "count": null,
+          "weights": [
+            {
+              "grams": 187.5
+            }
+          ]
+        }
+      ],
+      "name": "Troup",
+      "classification": "Stone; Chondrite",
+      "locality": "Smith County.",
+      "eventDate": "Fell: 8:30 A.M., April 26, 1917.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Troup",
+        "meteoriteCode": "24054",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24054",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-b83e8871-728c-4a41-a3f8-e1ea9e63df14",
+      "catalogId": "barnes-1940",
+      "entryOrder": 66,
+      "reportedNumber": null,
+      "catalogPages": [
+        603
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Stone",
+          "provenance": "Bureau of Economic Geology, The University of Texas",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 14880
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Harvard Min. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 8860
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 7200
+            },
+            {
+              "grams": 819
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Texas Observers Collection",
+          "count": 157,
+          "weights": [
+            {
+              "grams": 141000
+            }
+          ]
+        },
+        {
+          "description": "Individuals",
+          "provenance": "Nininger Collection",
+          "count": 15,
+          "weights": []
+        },
+        {
+          "description": "Stratford material",
+          "provenance": "Nininger Collection",
+          "count": null,
+          "weights": [
+            {
+              "grams": 5438
+            }
+          ]
+        }
+      ],
+      "name": "Tulia",
+      "classification": "Stone; Chondrite",
+      "locality": "Swisher and Castro counties.",
+      "eventDate": "Found: February and July, 1917.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8fa02c56-f230-4d66-96be-4143ca90a87b",
+      "catalogId": "barnes-1940",
+      "entryOrder": 67,
+      "reportedNumber": null,
+      "catalogPages": [
+        603
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Collection material",
+          "provenance": "Texas Observers Collection",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Uvalde",
+      "classification": "Stone; Chondrite",
+      "locality": "Uvalde County.",
+      "eventDate": "Found: About 1915. Recognized: 1938.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Uvalde",
+        "meteoriteCode": "24137",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24137",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-f348b7bb-5608-44e8-a6bb-e3f85fcb2f92",
+      "catalogId": "barnes-1940",
+      "entryOrder": 68,
+      "reportedNumber": null,
+      "catalogPages": [
+        603
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Collection material",
+          "provenance": "Texas Observers Collection",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Vigo Park",
+      "classification": "Stone",
+      "locality": "Briscoe County.",
+      "eventDate": "Found: 1934. Recognized: 1938.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Vigo Park",
+        "meteoriteCode": "24175",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24175",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-c8d83a23-73a6-4896-b62e-54410eb00c01",
+      "catalogId": "barnes-1940",
+      "entryOrder": 69,
+      "reportedNumber": null,
+      "catalogPages": [
+        603,
+        604
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Main mass",
+          "provenance": "Bureau of Economic Geology",
+          "count": null,
+          "weights": [
+            {
+              "grams": 101200
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "British Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 1377
+            },
+            {
+              "grams": 20.5
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Amer. Mus. Nat. Hist.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 1663.5
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Vienna Nat. Hist. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 428
+            },
+            {
+              "grams": 168
+            },
+            {
+              "grams": 44
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "U. S. Nat. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 2361
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Philadelphia Acad. Nat. Sci.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 406
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Harvard Min. Mus.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 1800
+            }
+          ]
+        },
+        {
+          "description": "Specimens",
+          "provenance": "Field Museum",
+          "count": null,
+          "weights": [
+            {
+              "grams": 1396
+            },
+            {
+              "grams": 2466
+            },
+            {
+              "grams": 115
+            }
+          ]
+        }
+      ],
+      "name": "Wichita County",
+      "classification": "Iron; Octahedrite",
+      "locality": null,
+      "eventDate": "Found: 1836.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Wichita County",
+        "meteoriteCode": "24257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24257",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-ea556021-38ba-4611-bd6c-a40efad5a1e1",
+      "catalogId": "barnes-1940",
+      "entryOrder": 70,
+      "reportedNumber": null,
+      "catalogPages": [
+        604
+      ],
+      "section": "Meteorites",
+      "holdings": [
+        {
+          "description": "Main mass",
+          "provenance": "Amer. Mus. Nat. Hist.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 140600
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": "Amer. Mus. Nat. Hist.",
+          "count": null,
+          "weights": [
+            {
+              "grams": 115.9
+            }
+          ]
+        }
+      ],
+      "name": "Ysleta",
+      "classification": "Iron; Octahedrite",
+      "locality": "El Paso County.",
+      "eventDate": "Known: 1914.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Ysleta",
+        "meteoriteCode": "30375",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=30375",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-bbb3902a-6956-42f6-b722-7273a30daeee",
