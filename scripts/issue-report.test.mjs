@@ -17,7 +17,7 @@ function fieldBlock(form, id) {
 test("footer links directly to the correction form in a safe new tab", async () => {
   const html = await readFile(path.join(projectRoot, "index.html"), "utf8");
   assert.match(html, /<a class="issue-report-link" href="https:\/\/github\.com\/rayborg\/Historical-meteorite-collections\/issues\/new\?template=data-error\.yml" target="_blank" rel="noopener noreferrer" aria-label="[^"]+\(opens in a new tab\)">Report a catalog or search correction<\/a>/);
-  assert.match(html, /styles\.css\?v=20260802-5/);
+  assert.match(html, /styles\.css\?v=20260803-1/);
 });
 
 test("issue form assigns actionable structured correction reports to the owner", async () => {

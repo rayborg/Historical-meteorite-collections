@@ -801,7 +801,7 @@ test("catalog dropdown labels are concise and leave summary titles unchanged", (
     { id: "hovey-1896", year: 1896, label: "Catalogue of meteorites in the AMNH (1896)" },
     { id: "washington-1897", year: 1897, label: "Catalogue of the Collection of Meteorites in the Peabody Museum (1897)" },
     { id: "hogbom-1902", year: 1902, label: "Verzeichniss über die Meteoriten des Mineralogischen Instituts (1902)" },
-    { id: "farrington-1903", year: 1903, label: "Catalogue of the Collection of Meteorites, May 1, 1903 (1903)" },
+    { id: "farrington-1903", year: 1903, label: "Catalogue of the Meteorite Collection of the Field Columbian Museum, May 1, 1903 (1903)" },
     { id: "palache-1926", year: 1926, label: "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)" },
     { id: "nininger-1933", year: 1933, label: "The Nininger Collection (1933)" },
     { id: "barnes-1940", year: 1940, label: "Catalogue of Texas Meteorites (1940)" },
@@ -832,7 +832,7 @@ test("URL filter behavior and cache version remain stable", () => {
     query: "catalog item 2", catalog: "nininger-1933", min: "3", max: "12", sort: "weight-desc"
   });
   assert.equal(app.serializeUrlFilters(parsed).toString(), "q=catalog+item+2&catalog=nininger-1933&min=3&max=12&sort=weight-desc");
-  assert.equal(app.CACHE_VERSION, "20260802-5");
+  assert.equal(app.CACHE_VERSION, "20260803-1");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.CACHE_VERSION}`));
 });
@@ -873,6 +873,7 @@ test("HTML and runtime contain accessible multi-holding card behavior", () => {
   assert.match(html, /<ol class="holdings-list" role="list"><\/ol>/);
   assert.match(html, /Source catalog name/);
   assert.match(html, /Current Meteoritical Bulletin name/);
+  assert.match(html, /An open-source project started by Raymond Borges Hink in July 2026\./);
   assert.match(html, /Designation \/ catalog number, ascending/);
   assert.match(script, /recordWeight\.remove\(\)/);
   assert.match(script, /record\.metbull\.canonicalName !== record\.name/);
@@ -889,6 +890,17 @@ test("HTML and runtime contain accessible multi-holding card behavior", () => {
   assert.match(script, /citedPages\.join\(", "\)/);
   assert.match(script, /holdings\.forEach\(\(holding\) =>/);
   assert.match(script, /"Unnumbered"/);
+});
+
+test("default cross-catalog order is alphabetical by source name", () => {
+  const records = prepareSpecimens([
+    specimenSource({ id: "punctuated-designation", designation: "(2)H9.83", name: "Dimitt (a)" }),
+    specimenSource({ id: "alphabetical-name", designation: "H1", name: "Aachener Masse" })
+  ]);
+  assert.equal(app.DEFAULT_SORT, "name-asc");
+  assert.deepEqual(ids(app.filterRecords(records, filters({ sort: app.DEFAULT_SORT }))), [
+    "alphabetical-name", "punctuated-designation"
+  ]);
 });
 
 test("result grid layout isolates card heights and widens exactly one result", () => {
@@ -1177,7 +1189,7 @@ test("URL filters discard crossed minimum and maximum ranges", () => {
     { query: "H27", catalog: "huss-1976", min: "", max: "", sort: "name-asc" });
   assert.equal(app.serializeUrlFilters({
     query: "H27", catalog: "huss-1976", min: "50", max: "10", sort: "name-asc"
-  }).toString(), "q=H27&catalog=huss-1976&sort=name-asc");
+  }).toString(), "q=H27&catalog=huss-1976");
 });
 
 test("URL catalog IDs disambiguate catalogs that share a display label", () => {
