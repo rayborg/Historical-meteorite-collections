@@ -75,9 +75,9 @@ test("main template presents relationship-specific compact lineage copy", async 
   assert.match(source, /Possible match · Reported mass:/);
   assert.doesNotMatch(source, /\.innerHTML\b/);
   assert.match(css, /\.earlier-records \{/);
-  assert.equal(app.CACHE_VERSION, "20260802-3");
-  assert.match(html, /styles\.css\?v=20260802-3/);
-  assert.match(html, /app\.js\?v=20260802-3/);
+  assert.equal(app.CACHE_VERSION, "20260802-4");
+  assert.match(html, /styles\.css\?v=20260802-4/);
+  assert.match(html, /app\.js\?v=20260802-4/);
   for (const file of ["possible-specimen-lineages.html", "possible-specimen-lineages.css", "possible-specimen-lineages.js"]) {
     await assert.rejects(access(path.join(projectRoot, file)));
   }
@@ -101,6 +101,19 @@ test("real catalog Allende search retains reviewed names and synonyms without Al
   ]);
   assert(!matchingIds.includes("obs-abc02f34-6bbf-48de-8486-8d1ec3b6e43e"));
   assert(!matchingIds.includes("obs-0e1dcf64-48f0-43d7-b39b-b6325a07c16e"));
+});
+
+test("real release locks all catalogs and the chronological Palache dropdown entry", () => {
+  const entries = app.catalogSelectorEntries(registry);
+  assert.equal(entries.length, 22);
+  assert.deepEqual(entries.map(([id]) => id), [
+    "lucas-1813", "chladni-1819", "chladni-1825", "haidinger-1859", "buchner-1863",
+    "nordenskiold-1870", "ball-1882", "usnm-1886", "hovey-1896", "washington-1897",
+    "tassin-1902", "hogbom-1902", "farrington-1903", "schreiter-1912", "palache-1926",
+    "nininger-1933", "barnes-1940", "nininger-1950", "mason-1964", "huss-1976",
+    "huss-1986", "asu-2024-09",
+  ]);
+  assert.equal(app.catalogDropdownLabel(registry["palache-1926"], "palache-1926"), "Palache (1926)");
 });
 
 test("chronological mapping copies pairs and excludes equal-year comparisons", () => {
@@ -181,7 +194,7 @@ test("review outcomes apply only to possible matches and not-supported entries a
 
   const notSupported = clone(retained);
   possible(notSupported).review.outcome = "not-supported";
-  assert.equal(entryCount(app.deriveEarlierRecordIndex(notSupported, records, registry)), 463);
+  assert.equal(entryCount(app.deriveEarlierRecordIndex(notSupported, records, registry)), 502);
 
   const confirmed = clone(retained);
   possible(confirmed).review.outcome = "confirmed";
@@ -192,14 +205,14 @@ test("real data maps only later records without mutation and matches the locked 
   const before = JSON.stringify(lineageData);
   const index = app.deriveEarlierRecordIndex(lineageData, records, registry);
   assert.equal(JSON.stringify(lineageData), before);
-  assert.equal(index.size, 405);
-  assert.equal(entryCount(index), 464);
-  assert.equal(Math.max(...[...index.values()].map((entries) => entries.length)), 5);
+  assert.equal(index.size, 420);
+  assert.equal(entryCount(index), 503);
+  assert.equal(Math.max(...[...index.values()].map((entries) => entries.length)), 7);
   const distribution = [...index.values()].reduce((counts, entries) => {
     counts[entries.length] = (counts[entries.length] || 0) + 1;
     return counts;
   }, {});
-  assert.deepEqual(distribution, { 1: 356, 2: 43, 3: 3, 4: 2, 5: 1 });
+  assert.deepEqual(distribution, { 1: 358, 2: 51, 3: 5, 4: 4, 5: 1, 7: 1 });
   assert.ok(records.some((record) => !index.has(record.id)));
 });
 
@@ -237,7 +250,7 @@ test("Sandia receives 108b continuity while Rosebud receives none", () => {
   assert.equal(index.has(rosebud.id), false);
 });
 
-test("all 464 earlier links resolve to exact public source records", () => {
+test("all 503 earlier links resolve to exact public source records", () => {
   const index = app.deriveEarlierRecordIndex(lineageData, records, registry);
   for (const entries of index.values()) {
     for (const entry of entries) {
@@ -250,10 +263,10 @@ test("all 464 earlier links resolve to exact public source records", () => {
       assert.deepEqual(destinationIds, [entry.recordId], `${entry.catalogSearchUrl} did not resolve exactly to ${entry.recordId}`);
     }
   }
-  assert.equal(entryCount(index), 464);
+  assert.equal(entryCount(index), 503);
 });
 
-test("all 928 published observation links resolve to exact public source records", () => {
+test("all 1006 published observation links resolve to exact public source records", () => {
   let count = 0;
   for (const relationship of lineageData.relationships) {
     for (const observation of relationship.observations) {
@@ -268,7 +281,7 @@ test("all 928 published observation links resolve to exact public source records
       assert.deepEqual(destinationIds, [observation.recordId], `${observation.catalogSearchUrl} did not resolve exactly`);
     }
   }
-  assert.equal(count, 928);
+  assert.equal(count, 1006);
 });
 
 test("optional fetch failures and malformed payloads return an empty enhancement", async () => {

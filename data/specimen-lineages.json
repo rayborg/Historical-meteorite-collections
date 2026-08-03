@@ -4,9 +4,9 @@
     "scope": "series-inventory-and-cross-source-candidates",
     "source": {
       "catalogSchemaVersion": 6,
-      "recordCount": 9120,
-      "catalogCount": 21,
-      "flattenedMassObservationCount": 8179,
+      "recordCount": 9481,
+      "catalogCount": 22,
+      "flattenedMassObservationCount": 8745,
       "inventoryObservationCount": 3627
     },
     "collectionSeries": [
@@ -54,24 +54,24 @@
       ]
     },
     "counts": {
-      "relationshipCount": 464,
+      "relationshipCount": 503,
       "sameInventoryRelationshipCount": 195,
-      "possibleMatchRelationshipCount": 269,
-      "unreviewedPossibleMatchCount": 269,
-      "exactMassPossibleMatchCount": 218,
-      "nearMassPossibleMatchCount": 51,
-      "metbullIdentityPossibleMatchCount": 269,
+      "possibleMatchRelationshipCount": 308,
+      "unreviewedPossibleMatchCount": 308,
+      "exactMassPossibleMatchCount": 256,
+      "nearMassPossibleMatchCount": 52,
+      "metbullIdentityPossibleMatchCount": 308,
       "normalizedNameIdentityPossibleMatchCount": 0,
       "sameDesignationPossibleMatchCount": 0,
       "designationFamilyPossibleMatchCount": 0,
-      "aggregateOrMultiplePossibleMatchCount": 20,
+      "aggregateOrMultiplePossibleMatchCount": 22,
       "castPossibleMatchCount": 0,
       "identityResolvedInventoryCollisionCount": 1,
       "omittedAmbiguousInventoryKeyCount": 0,
       "possibleMatchEvidenceStrength": {
         "multiple-matching-facts": 0,
-        "two-matching-facts": 218,
-        "limited-matching-evidence": 51
+        "two-matching-facts": 256,
+        "limited-matching-evidence": 52
       },
       "catalogPairs": [
         {
@@ -83,6 +83,11 @@
           "catalogPair": "asu-2024-09|nininger-1950",
           "sameInventoryCount": 0,
           "possibleMatchCount": 7
+        },
+        {
+          "catalogPair": "asu-2024-09|palache-1926",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 2
         },
         {
           "catalogPair": "barnes-1940|farrington-1903",
@@ -103,6 +108,11 @@
           "catalogPair": "barnes-1940|nininger-1950",
           "sameInventoryCount": 0,
           "possibleMatchCount": 9
+        },
+        {
+          "catalogPair": "barnes-1940|palache-1926",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 15
         },
         {
           "catalogPair": "barnes-1940|tassin-1902",
@@ -135,6 +145,11 @@
           "possibleMatchCount": 1
         },
         {
+          "catalogPair": "farrington-1903|palache-1926",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 4
+        },
+        {
           "catalogPair": "farrington-1903|schreiter-1912",
           "sameInventoryCount": 0,
           "possibleMatchCount": 1
@@ -148,6 +163,11 @@
           "catalogPair": "hogbom-1902|mason-1964",
           "sameInventoryCount": 0,
           "possibleMatchCount": 2
+        },
+        {
+          "catalogPair": "hogbom-1902|palache-1926",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 1
         },
         {
           "catalogPair": "hovey-1896|huss-1986",
@@ -215,6 +235,11 @@
           "possibleMatchCount": 10
         },
         {
+          "catalogPair": "mason-1964|palache-1926",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 6
+        },
+        {
           "catalogPair": "mason-1964|schreiter-1912",
           "sameInventoryCount": 0,
           "possibleMatchCount": 1
@@ -225,9 +250,29 @@
           "possibleMatchCount": 0
         },
         {
+          "catalogPair": "nininger-1933|palache-1926",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 1
+        },
+        {
           "catalogPair": "nininger-1933|usnm-1886",
           "sameInventoryCount": 0,
           "possibleMatchCount": 1
+        },
+        {
+          "catalogPair": "nininger-1950|palache-1926",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 2
+        },
+        {
+          "catalogPair": "nordenskiold-1870|palache-1926",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 4
+        },
+        {
+          "catalogPair": "palache-1926|washington-1897",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 4
         },
         {
           "catalogPair": "tassin-1902|usnm-1886",
@@ -772,6 +817,82 @@
       ]
     },
     {
+      "id": "possible-lineage-07d25e84-e227-5bc7-b826-616f8ab398d7",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "McKinney",
+      "catalogPair": "barnes-1940|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "15463",
+        "canonicalName": "McKinney"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-546a59bd-8b28-520b-bb71-3e026b4bdc34",
+          "recordId": "obs-5d182692-52fe-4c54-a6c3-05cee9aecd86",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[1].grams",
+          "sourceRecordLabel": "Collection entry 206",
+          "sourceName": "McKinney",
+          "canonicalName": "McKinney",
+          "meteoriteCode": "15463",
+          "designation": null,
+          "massGrams": 594,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-5d182692-52fe-4c54-a6c3-05cee9aecd86#catalog"
+        },
+        {
+          "id": "mass-observation-713bb1ac-c892-57dd-a0ab-49fe18f18d3d",
+          "recordId": "obs-17d07f62-a9ce-4e9a-a1df-3ee8f4d43fd5",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[6].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 39",
+          "sourceName": "McKinney",
+          "canonicalName": "McKinney",
+          "meteoriteCode": "15463",
+          "designation": null,
+          "massGrams": 594,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-17d07f62-a9ce-4e9a-a1df-3ee8f4d43fd5#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-0849ecf9-9f1c-5ef1-ad99-a263fca90a71",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -845,6 +966,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-17d07f62-a9ce-4e9a-a1df-3ee8f4d43fd5#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-086de2a1-b589-550e-bed2-0fa45273f3ba",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Pipe Creek",
+      "catalogPair": "barnes-1940|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "18830",
+        "canonicalName": "Pipe Creek"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-9b7fefee-3762-5996-8a1c-d375ce590760",
+          "recordId": "obs-973f37c6-62ee-48b6-a5d3-1a00eb3520dc",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 255",
+          "sourceName": "Pipe Creek",
+          "canonicalName": "Pipe Creek",
+          "meteoriteCode": "18830",
+          "designation": null,
+          "massGrams": 195,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-973f37c6-62ee-48b6-a5d3-1a00eb3520dc#catalog"
+        },
+        {
+          "id": "mass-observation-c8ebfee9-39f8-572d-8c93-a1c7de963fbe",
+          "recordId": "obs-62f6b701-7511-4bb5-a5e4-642d97c8409c",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[6].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 48",
+          "sourceName": "Pipe Creek",
+          "canonicalName": "Pipe Creek",
+          "meteoriteCode": "18830",
+          "designation": null,
+          "massGrams": 195,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-62f6b701-7511-4bb5-a5e4-642d97c8409c#catalog"
         }
       ]
     },
@@ -1001,6 +1198,82 @@
       ]
     },
     {
+      "id": "possible-lineage-0a4656bf-9541-57a9-a8a6-5bfe46e2fe91",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Denton County",
+      "catalogPair": "barnes-1940|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "6659",
+        "canonicalName": "Denton County"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-6ae71ca5-c5bb-54ef-96fa-b84986888b8c",
+          "recordId": "obs-80293bce-b239-42d3-821a-62889d0e57a4",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[1].grams",
+          "sourceRecordLabel": "Collection entry 104",
+          "sourceName": "Denton County",
+          "canonicalName": "Denton County",
+          "meteoriteCode": "6659",
+          "designation": null,
+          "massGrams": 49,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-80293bce-b239-42d3-821a-62889d0e57a4#catalog"
+        },
+        {
+          "id": "mass-observation-74f25c16-4e30-5c1d-a20c-a5abbcc4f34e",
+          "recordId": "obs-42188afc-1304-4f49-8c38-225615c6b247",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[3].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 20",
+          "sourceName": "Denton County",
+          "canonicalName": "Denton County",
+          "meteoriteCode": "6659",
+          "designation": null,
+          "massGrams": 49,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-42188afc-1304-4f49-8c38-225615c6b247#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-0a94a938-a7ec-5a62-a12b-44a99f878ddd",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -1150,6 +1423,83 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=nininger-1950&q=record%20id%20obs-6f40703f-b865-437e-b91d-a04da868d0cd#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-0b0eb7f9-19e5-572d-a041-49c82cdfd91f",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Scottsville",
+      "catalogPair": "mason-1964|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "23466",
+        "canonicalName": "Scottsville"
+      },
+      "evidence": {
+        "strength": "limited-matching-evidence",
+        "massMatch": "near",
+        "absoluteDifferenceGrams": 1,
+        "relativeDifference": 0.0018726591760299626,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "near-reported-mass"
+        ],
+        "cautionCodes": [
+          "near-reported-mass",
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-a959b78e-a1a7-50c8-9e43-f401e6531156",
+          "recordId": "obs-033592be-81b7-4797-9c48-da50b3d20dc8",
+          "catalogId": "mason-1964",
+          "catalogLabel": "The Meteorite and Tektite Collection of the American Museum of Natural History (1964)",
+          "catalogYear": 1964,
+          "recordModel": "catalog-number",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Catalog no. 50",
+          "sourceName": "Scottsville",
+          "canonicalName": "Scottsville",
+          "meteoriteCode": "23466",
+          "designation": null,
+          "massGrams": 533,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=mason-1964&q=record%20id%20obs-033592be-81b7-4797-9c48-da50b3d20dc8#catalog"
+        },
+        {
+          "id": "mass-observation-ba8ed3f7-877d-5f5b-b180-6615683bd0b6",
+          "recordId": "obs-ebf0141c-54e0-4951-8c7e-827c00b54120",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 296",
+          "sourceName": "Scottsville",
+          "canonicalName": "Scottsville",
+          "meteoriteCode": "23466",
+          "designation": null,
+          "massGrams": 534,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-ebf0141c-54e0-4951-8c7e-827c00b54120#catalog"
         }
       ]
     },
@@ -1608,6 +1958,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=usnm-1886&q=record%20id%20obs-72c8c8bb-4ca8-4207-aedd-27b08459d3b6#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-1524ddf6-c4f5-58b2-9180-7a959f33962e",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Buschhof",
+      "catalogPair": "palache-1926|washington-1897",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "5178",
+        "canonicalName": "Buschhof"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-c9d72d6e-053e-5e6c-bedc-e06c9db7e641",
+          "recordId": "obs-e1549753-0fd9-461a-8c6e-5b274159288b",
+          "catalogId": "washington-1897",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Peabody Museum of Yale University (1897)",
+          "catalogYear": 1897,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[1].grams",
+          "sourceRecordLabel": "Collection entry 60",
+          "sourceName": "Buschhof",
+          "canonicalName": "Buschhof",
+          "meteoriteCode": "5178",
+          "designation": null,
+          "massGrams": 22,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=washington-1897&q=record%20id%20obs-e1549753-0fd9-461a-8c6e-5b274159288b#catalog"
+        },
+        {
+          "id": "mass-observation-ecdfaf83-e05c-5e70-b49a-f1a780c0d75b",
+          "recordId": "obs-29b21870-b964-4a5d-92d6-1c1f8f6852b7",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 51",
+          "sourceName": "Buschhof",
+          "canonicalName": "Buschhof",
+          "meteoriteCode": "5178",
+          "designation": null,
+          "massGrams": 22,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-29b21870-b964-4a5d-92d6-1c1f8f6852b7#catalog"
         }
       ]
     },
@@ -2298,6 +2724,82 @@
       ]
     },
     {
+      "id": "possible-lineage-1bd17228-3362-523e-94fc-82a06ae3ebac",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Siena",
+      "catalogPair": "nordenskiold-1870|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "23586",
+        "canonicalName": "Siena"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-26ed06f8-e120-55db-a43a-33dfefb0cfa0",
+          "recordId": "obs-0b937c23-5480-491a-b504-f26ed2d196a7",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 306",
+          "sourceName": "Siena",
+          "canonicalName": "Siena",
+          "meteoriteCode": "23586",
+          "designation": null,
+          "massGrams": 5,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-0b937c23-5480-491a-b504-f26ed2d196a7#catalog"
+        },
+        {
+          "id": "mass-observation-645a8595-0ed6-59a4-b60e-50dea5943787",
+          "recordId": "obs-1c2a83f3-5f0b-4fc9-b9bc-b9ff5e155388",
+          "catalogId": "nordenskiold-1870",
+          "catalogLabel": "Förteckning på meteoriter i Riksmusei mineralogiska samlingar (1870)",
+          "catalogYear": 1870,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 7",
+          "sourceName": "Siena",
+          "canonicalName": "Siena",
+          "meteoriteCode": "23586",
+          "designation": null,
+          "massGrams": 5,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=nordenskiold-1870&q=record%20id%20obs-1c2a83f3-5f0b-4fc9-b9bc-b9ff5e155388#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-1eb66d43-b47f-5022-8bbb-3703556a4ea0",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -2446,6 +2948,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=nininger-1950&q=record%20id%20obs-358a5f03-2208-478f-9fea-c33ec382e2dd#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-1ff29245-feb9-5578-af2b-f12eabbd8a0c",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Chinautla",
+      "catalogPair": "mason-1964|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "5352",
+        "canonicalName": "Chinautla"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-071e2b4e-9dd9-5579-a81e-d358edef4274",
+          "recordId": "obs-af5fce1c-8e90-4d95-9541-4294b5971ef7",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[1].grams",
+          "sourceRecordLabel": "Collection entry 77",
+          "sourceName": "Chinautla",
+          "canonicalName": "Chinautla",
+          "meteoriteCode": "5352",
+          "designation": null,
+          "massGrams": 95,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-af5fce1c-8e90-4d95-9541-4294b5971ef7#catalog"
+        },
+        {
+          "id": "mass-observation-790a781c-8a2d-5f68-8e35-af18b2452d31",
+          "recordId": "obs-8cd6e3d8-a0c3-4acd-81e1-05b6382b810e",
+          "catalogId": "mason-1964",
+          "catalogLabel": "The Meteorite and Tektite Collection of the American Museum of Natural History (1964)",
+          "catalogYear": 1964,
+          "recordModel": "catalog-number",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Catalog no. 2230",
+          "sourceName": "Chinautla",
+          "canonicalName": "Chinautla",
+          "meteoriteCode": "5352",
+          "designation": null,
+          "massGrams": 95,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=mason-1964&q=record%20id%20obs-8cd6e3d8-a0c3-4acd-81e1-05b6382b810e#catalog"
         }
       ]
     },
@@ -3746,6 +4324,82 @@
       ]
     },
     {
+      "id": "possible-lineage-2e6b2ccf-0a70-557a-8cf9-5d302392202e",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Tadjera",
+      "catalogPair": "asu-2024-09|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "23778",
+        "canonicalName": "Tadjera"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-62c68e80-8912-577d-8958-be40dc554b56",
+          "recordId": "obs-6f073417-1954-4f8f-beea-3b305f2337c9",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[1].grams",
+          "sourceRecordLabel": "Collection entry 321",
+          "sourceName": "Tadjera",
+          "canonicalName": "Tadjera",
+          "meteoriteCode": "23778",
+          "designation": null,
+          "massGrams": 27,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-6f073417-1954-4f8f-beea-3b305f2337c9#catalog"
+        },
+        {
+          "id": "mass-observation-b7248cab-b054-52f8-8d7b-7fcd5242c4f5",
+          "recordId": "obs-85be8996-8e40-4c40-b0d3-82a754498f10",
+          "catalogId": "asu-2024-09",
+          "catalogLabel": "Arizona State University Meteorite Collection Catalog (2024)",
+          "catalogYear": 2024,
+          "recordModel": "specimen",
+          "designationPath": "designation",
+          "massPath": "weight.grams",
+          "sourceRecordLabel": "949",
+          "sourceName": "Tadjera",
+          "canonicalName": "Tadjera",
+          "meteoriteCode": "23778",
+          "designation": "949",
+          "massGrams": 27,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=asu-2024-09&q=record%20id%20obs-85be8996-8e40-4c40-b0d3-82a754498f10#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-2f4ab4a5-0d84-5a30-b493-292336869928",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -3818,6 +4472,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-fbf1f7ea-6bf7-4112-b75e-141baa666b94#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-306154cb-fc22-5b0c-8dc1-f5ac5722e3cb",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Mooresfort",
+      "catalogPair": "farrington-1903|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "16737",
+        "canonicalName": "Mooresfort"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-405bce13-3827-5557-8ccd-3a23f9d7a5c2",
+          "recordId": "obs-aafc4023-602b-4a53-813d-116139808ae0",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 219",
+          "sourceName": "Mooresfort",
+          "canonicalName": "Mooresfort",
+          "meteoriteCode": "16737",
+          "designation": null,
+          "massGrams": 7,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-aafc4023-602b-4a53-813d-116139808ae0#catalog"
+        },
+        {
+          "id": "mass-observation-7b72a21e-d972-5a5d-85a6-80c1513b79e4",
+          "recordId": "obs-91776ffe-dba3-4259-b389-36de20934750",
+          "catalogId": "farrington-1903",
+          "catalogLabel": "Catalogue of the Collection of Meteorites, May 1, 1903 (1903)",
+          "catalogYear": 1903,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 161",
+          "sourceName": "Mooresfort",
+          "canonicalName": "Mooresfort",
+          "meteoriteCode": "16737",
+          "designation": null,
+          "massGrams": 7,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=farrington-1903&q=record%20id%20obs-91776ffe-dba3-4259-b389-36de20934750#catalog"
         }
       ]
     },
@@ -5045,6 +5775,82 @@
       ]
     },
     {
+      "id": "possible-lineage-46576052-0e43-5a52-aa7f-c4bd7161ffed",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Wichita County",
+      "catalogPair": "barnes-1940|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "24257",
+        "canonicalName": "Wichita County"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-03ba92be-5ebd-5443-a277-fcbb9085b085",
+          "recordId": "obs-c908cb9d-b0b1-404b-b2c1-cd93430fd1f2",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 353",
+          "sourceName": "Wichita County",
+          "canonicalName": "Wichita County",
+          "meteoriteCode": "24257",
+          "designation": null,
+          "massGrams": 1800,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-c908cb9d-b0b1-404b-b2c1-cd93430fd1f2#catalog"
+        },
+        {
+          "id": "mass-observation-9fbc1b7e-d62d-5098-a0f4-d04ea04bf147",
+          "recordId": "obs-c8d83a23-73a6-4896-b62e-54410eb00c01",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[6].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 69",
+          "sourceName": "Wichita County",
+          "canonicalName": "Wichita County",
+          "meteoriteCode": "24257",
+          "designation": null,
+          "massGrams": 1800,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-c8d83a23-73a6-4896-b62e-54410eb00c01#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-4691ddd7-2fa8-5e3f-816d-02b5906154db",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -5193,6 +5999,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=tassin-1902&q=record%20id%20obs-c80ade4c-0f49-4d1d-bf88-5320bc348fd3#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-49b0173a-74da-5923-bcb1-b9ce96390c9e",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Farmington",
+      "catalogPair": "farrington-1903|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "10074",
+        "canonicalName": "Farmington"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-5d32bbcb-ec9a-5da6-8b45-1c7a3b56f079",
+          "recordId": "obs-d238bc77-604e-4168-bf7a-eca35588c66a",
+          "catalogId": "farrington-1903",
+          "catalogLabel": "Catalogue of the Collection of Meteorites, May 1, 1903 (1903)",
+          "catalogYear": 1903,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[5].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 85",
+          "sourceName": "Farmington",
+          "canonicalName": "Farmington",
+          "meteoriteCode": "10074",
+          "designation": null,
+          "massGrams": 2792,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=farrington-1903&q=record%20id%20obs-d238bc77-604e-4168-bf7a-eca35588c66a#catalog"
+        },
+        {
+          "id": "mass-observation-8829d895-e1a4-5534-8470-d171f363e88d",
+          "recordId": "obs-a819cf29-fe4a-422b-85fb-5fdbdc052bf9",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 124",
+          "sourceName": "Farmington",
+          "canonicalName": "Farmington",
+          "meteoriteCode": "10074",
+          "designation": null,
+          "massGrams": 2792,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-a819cf29-fe4a-422b-85fb-5fdbdc052bf9#catalog"
         }
       ]
     },
@@ -6339,6 +7221,82 @@
       ]
     },
     {
+      "id": "possible-lineage-521585d6-5a98-5e55-82de-98498fb0a9c1",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Duruma",
+      "catalogPair": "mason-1964|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "7752",
+        "canonicalName": "Duruma"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-af31c9d3-3b73-5106-b979-e349d48c8cde",
+          "recordId": "obs-eb6a71b0-a8fc-42ea-988c-a77ff0fcba9a",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 112",
+          "sourceName": "Duruma",
+          "canonicalName": "Duruma",
+          "meteoriteCode": "7752",
+          "designation": null,
+          "massGrams": 1,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-eb6a71b0-a8fc-42ea-988c-a77ff0fcba9a#catalog"
+        },
+        {
+          "id": "mass-observation-e1c89bea-3b3c-5ebc-942b-99c5ce7c5de4",
+          "recordId": "obs-e466d523-81dd-4541-9921-e22655a919f7",
+          "catalogId": "mason-1964",
+          "catalogLabel": "The Meteorite and Tektite Collection of the American Museum of Natural History (1964)",
+          "catalogYear": 1964,
+          "recordModel": "catalog-number",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Catalog no. 446",
+          "sourceName": "Duruma",
+          "canonicalName": "Duruma",
+          "meteoriteCode": "7752",
+          "designation": null,
+          "massGrams": 1,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=mason-1964&q=record%20id%20obs-e466d523-81dd-4541-9921-e22655a919f7#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-52acf50f-c13c-5504-8d28-99497a829bff",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -7175,6 +8133,82 @@
       ]
     },
     {
+      "id": "possible-lineage-5d504c9c-5388-5dff-83a6-78feba7cd67b",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Durala",
+      "catalogPair": "mason-1964|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "7750",
+        "canonicalName": "Durala"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-c90ac0c7-cd8a-5a45-ab6c-66f17079c88e",
+          "recordId": "obs-bddf6a0e-8132-45a2-bcf5-4e5ab99c6c8f",
+          "catalogId": "mason-1964",
+          "catalogLabel": "The Meteorite and Tektite Collection of the American Museum of Natural History (1964)",
+          "catalogYear": 1964,
+          "recordModel": "catalog-number",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Catalog no. 445",
+          "sourceName": "Durala",
+          "canonicalName": "Durala",
+          "meteoriteCode": "7750",
+          "designation": null,
+          "massGrams": 36,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=mason-1964&q=record%20id%20obs-bddf6a0e-8132-45a2-bcf5-4e5ab99c6c8f#catalog"
+        },
+        {
+          "id": "mass-observation-f2d14bbf-b037-59d1-b18b-4aece97e05fc",
+          "recordId": "obs-02ac1992-78d4-4e69-83f7-8ce5e0ae65ad",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[1].grams",
+          "sourceRecordLabel": "Collection entry 111",
+          "sourceName": "Durala",
+          "canonicalName": "Durala",
+          "meteoriteCode": "7750",
+          "designation": null,
+          "massGrams": 36,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-02ac1992-78d4-4e69-83f7-8ce5e0ae65ad#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-5eb3ae08-2f31-59a1-b00d-0ed023be4be1",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -7327,6 +8361,82 @@
       ]
     },
     {
+      "id": "possible-lineage-606dddbe-7fa0-575b-8847-b7ce5dae3618",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "San Angelo",
+      "catalogPair": "barnes-1940|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "23117",
+        "canonicalName": "San Angelo"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-8f198d44-7f2b-59d1-b472-446c086c50f6",
+          "recordId": "obs-014fa351-665c-4bcb-b83f-3610f0ff425c",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[5].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 54",
+          "sourceName": "San Angelo",
+          "canonicalName": "San Angelo",
+          "meteoriteCode": "23117",
+          "designation": null,
+          "massGrams": 295,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-014fa351-665c-4bcb-b83f-3610f0ff425c#catalog"
+        },
+        {
+          "id": "mass-observation-df6f163d-9e09-54d2-a5ac-31b0e628238b",
+          "recordId": "obs-6c70229d-7935-414c-a7db-df5a743fd951",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[1].grams",
+          "sourceRecordLabel": "Collection entry 287",
+          "sourceName": "San Angelo",
+          "canonicalName": "San Angelo",
+          "meteoriteCode": "23117",
+          "designation": null,
+          "massGrams": 295,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-6c70229d-7935-414c-a7db-df5a743fd951#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-618cb1d6-9a4d-5763-a7af-1d022033ae5a",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -7399,6 +8509,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=usnm-1886&q=record%20id%20obs-24e840fa-7ccc-42e3-be12-24ef32286d2a#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-6422ea78-f771-5e27-ae46-293c1789e3f1",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Siena",
+      "catalogPair": "nordenskiold-1870|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "23586",
+        "canonicalName": "Siena"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-56153d01-051d-50ae-a9b2-5c042b4301b9",
+          "recordId": "obs-0b937c23-5480-491a-b504-f26ed2d196a7",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[1].grams",
+          "sourceRecordLabel": "Collection entry 306",
+          "sourceName": "Siena",
+          "canonicalName": "Siena",
+          "meteoriteCode": "23586",
+          "designation": null,
+          "massGrams": 5,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-0b937c23-5480-491a-b504-f26ed2d196a7#catalog"
+        },
+        {
+          "id": "mass-observation-ad4be980-d918-59ec-b570-a294508787e3",
+          "recordId": "obs-1c2a83f3-5f0b-4fc9-b9bc-b9ff5e155388",
+          "catalogId": "nordenskiold-1870",
+          "catalogLabel": "Förteckning på meteoriter i Riksmusei mineralogiska samlingar (1870)",
+          "catalogYear": 1870,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 7",
+          "sourceName": "Siena",
+          "canonicalName": "Siena",
+          "meteoriteCode": "23586",
+          "designation": null,
+          "massGrams": 5,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=nordenskiold-1870&q=record%20id%20obs-1c2a83f3-5f0b-4fc9-b9bc-b9ff5e155388#catalog"
         }
       ]
     },
@@ -7556,6 +8742,82 @@
       ]
     },
     {
+      "id": "possible-lineage-67189c40-57c0-578e-9a5c-2c57e0530024",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Buschhof",
+      "catalogPair": "palache-1926|washington-1897",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "5178",
+        "canonicalName": "Buschhof"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-ac6019b2-5f58-5b8e-9cfe-ae39a22e947b",
+          "recordId": "obs-29b21870-b964-4a5d-92d6-1c1f8f6852b7",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[1].grams",
+          "sourceRecordLabel": "Collection entry 51",
+          "sourceName": "Buschhof",
+          "canonicalName": "Buschhof",
+          "meteoriteCode": "5178",
+          "designation": null,
+          "massGrams": 22,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-29b21870-b964-4a5d-92d6-1c1f8f6852b7#catalog"
+        },
+        {
+          "id": "mass-observation-f66e5f06-ea30-5b37-a011-ecbb43cae7f9",
+          "recordId": "obs-e1549753-0fd9-461a-8c6e-5b274159288b",
+          "catalogId": "washington-1897",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Peabody Museum of Yale University (1897)",
+          "catalogYear": 1897,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[1].grams",
+          "sourceRecordLabel": "Collection entry 60",
+          "sourceName": "Buschhof",
+          "canonicalName": "Buschhof",
+          "meteoriteCode": "5178",
+          "designation": null,
+          "massGrams": 22,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=washington-1897&q=record%20id%20obs-e1549753-0fd9-461a-8c6e-5b274159288b#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-67859b7f-143e-590c-9af5-7dde56210f2d",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -7706,6 +8968,234 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=nininger-1950&q=record%20id%20obs-c84346f3-ba6a-4818-a0b5-2892ae2bb015#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-68089747-a936-53cd-807b-ee7e65b15314",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Buschhof",
+      "catalogPair": "palache-1926|washington-1897",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "5178",
+        "canonicalName": "Buschhof"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-8e8daef6-fc2d-51e1-83cc-3972ec53f4a4",
+          "recordId": "obs-e1549753-0fd9-461a-8c6e-5b274159288b",
+          "catalogId": "washington-1897",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Peabody Museum of Yale University (1897)",
+          "catalogYear": 1897,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 60",
+          "sourceName": "Buschhof",
+          "canonicalName": "Buschhof",
+          "meteoriteCode": "5178",
+          "designation": null,
+          "massGrams": 22,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=washington-1897&q=record%20id%20obs-e1549753-0fd9-461a-8c6e-5b274159288b#catalog"
+        },
+        {
+          "id": "mass-observation-f5a0efd2-c2c5-5a5a-a119-776412c26ae3",
+          "recordId": "obs-29b21870-b964-4a5d-92d6-1c1f8f6852b7",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[1].grams",
+          "sourceRecordLabel": "Collection entry 51",
+          "sourceName": "Buschhof",
+          "canonicalName": "Buschhof",
+          "meteoriteCode": "5178",
+          "designation": null,
+          "massGrams": 22,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-29b21870-b964-4a5d-92d6-1c1f8f6852b7#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-68963c34-a20b-56a0-82df-3676021146de",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Buschhof",
+      "catalogPair": "palache-1926|washington-1897",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "5178",
+        "canonicalName": "Buschhof"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-20360874-f48b-50c5-9ffa-0aa964f9b889",
+          "recordId": "obs-e1549753-0fd9-461a-8c6e-5b274159288b",
+          "catalogId": "washington-1897",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Peabody Museum of Yale University (1897)",
+          "catalogYear": 1897,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 60",
+          "sourceName": "Buschhof",
+          "canonicalName": "Buschhof",
+          "meteoriteCode": "5178",
+          "designation": null,
+          "massGrams": 22,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=washington-1897&q=record%20id%20obs-e1549753-0fd9-461a-8c6e-5b274159288b#catalog"
+        },
+        {
+          "id": "mass-observation-8648a9f3-5f87-51e0-8c2f-7b86586a2386",
+          "recordId": "obs-29b21870-b964-4a5d-92d6-1c1f8f6852b7",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 51",
+          "sourceName": "Buschhof",
+          "canonicalName": "Buschhof",
+          "meteoriteCode": "5178",
+          "designation": null,
+          "massGrams": 22,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-29b21870-b964-4a5d-92d6-1c1f8f6852b7#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-69033cd4-33be-54b9-b7e3-2e965d0e30a0",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Carlton",
+      "catalogPair": "barnes-1940|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "5277",
+        "canonicalName": "Carlton"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-04639d1d-c1bf-596d-8ce3-fe838145fbb0",
+          "recordId": "obs-72c1b23f-8607-479a-a6e9-318540e38bfa",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 61",
+          "sourceName": "Carlton",
+          "canonicalName": "Carlton",
+          "meteoriteCode": "5277",
+          "designation": null,
+          "massGrams": 3284,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-72c1b23f-8607-479a-a6e9-318540e38bfa#catalog"
+        },
+        {
+          "id": "mass-observation-5f8fa992-aa25-5bb0-bcfa-2ba83aea73a0",
+          "recordId": "obs-0c2340e4-7f1d-49aa-b6cb-ed7fa21eb4f6",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 12",
+          "sourceName": "Carlton",
+          "canonicalName": "Carlton",
+          "meteoriteCode": "5277",
+          "designation": null,
+          "massGrams": 3284,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-0c2340e4-7f1d-49aa-b6cb-ed7fa21eb4f6#catalog"
         }
       ]
     },
@@ -9161,6 +10651,82 @@
       ]
     },
     {
+      "id": "possible-lineage-7a95ddfe-85fa-573f-908c-5822f46b0c5e",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Kendall County",
+      "catalogPair": "barnes-1940|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "12274",
+        "canonicalName": "Kendall County"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-bb627c27-d69f-5d53-8f51-6b66ff86e0ca",
+          "recordId": "obs-fbf1f7ea-6bf7-4112-b75e-141baa666b94",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[8].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 33",
+          "sourceName": "Kendall County",
+          "canonicalName": "Kendall County",
+          "meteoriteCode": "12274",
+          "designation": null,
+          "massGrams": 494,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-fbf1f7ea-6bf7-4112-b75e-141baa666b94#catalog"
+        },
+        {
+          "id": "mass-observation-cb258363-34a6-500f-8faf-40ece3b64385",
+          "recordId": "obs-87dfdaf5-3caa-4e97-8de3-bfdae84561ed",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[1].grams",
+          "sourceRecordLabel": "Collection entry 167",
+          "sourceName": "Kendall County",
+          "canonicalName": "Kendall County",
+          "meteoriteCode": "12274",
+          "designation": null,
+          "massGrams": 494,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-87dfdaf5-3caa-4e97-8de3-bfdae84561ed#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-7b244cd1-d004-5924-bad0-4b76675af136",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -9234,6 +10800,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=nininger-1950&q=record%20id%20obs-c4187196-28c1-49e4-b238-783b3ae4313c#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-7ba7fb57-808d-516b-b132-6a005a70f23d",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Duruma",
+      "catalogPair": "mason-1964|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "7752",
+        "canonicalName": "Duruma"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-44c060d7-efa1-5dda-b1b6-f9fc360d7251",
+          "recordId": "obs-eb6a71b0-a8fc-42ea-988c-a77ff0fcba9a",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[1].grams",
+          "sourceRecordLabel": "Collection entry 112",
+          "sourceName": "Duruma",
+          "canonicalName": "Duruma",
+          "meteoriteCode": "7752",
+          "designation": null,
+          "massGrams": 1,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-eb6a71b0-a8fc-42ea-988c-a77ff0fcba9a#catalog"
+        },
+        {
+          "id": "mass-observation-de1bd5dc-d601-57ec-b2d0-27866041e5f2",
+          "recordId": "obs-e466d523-81dd-4541-9921-e22655a919f7",
+          "catalogId": "mason-1964",
+          "catalogLabel": "The Meteorite and Tektite Collection of the American Museum of Natural History (1964)",
+          "catalogYear": 1964,
+          "recordModel": "catalog-number",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Catalog no. 446",
+          "sourceName": "Duruma",
+          "canonicalName": "Duruma",
+          "meteoriteCode": "7752",
+          "designation": null,
+          "massGrams": 1,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=mason-1964&q=record%20id%20obs-e466d523-81dd-4541-9921-e22655a919f7#catalog"
         }
       ]
     },
@@ -12210,6 +13852,82 @@
       ]
     },
     {
+      "id": "possible-lineage-97cac085-866d-5416-a693-969eb7b0e4c7",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Bielokrynitschie",
+      "catalogPair": "nininger-1950|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "5043",
+        "canonicalName": "Bielokrynitschie"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-1c48066b-ba8a-52e0-86dc-d56971ffbd7f",
+          "recordId": "obs-1f399c82-2ba3-4d6f-8fe8-d04300a93ea7",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[1].grams",
+          "sourceRecordLabel": "Collection entry 37",
+          "sourceName": "Bielokrynitschie",
+          "canonicalName": "Bielokrynitschie",
+          "meteoriteCode": "5043",
+          "designation": null,
+          "massGrams": 9,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-1f399c82-2ba3-4d6f-8fe8-d04300a93ea7#catalog"
+        },
+        {
+          "id": "mass-observation-5ca7f714-87d2-5cb9-94ae-ee072ebccdb8",
+          "recordId": "obs-81b280a4-ebe6-4214-b529-2d3ac8112661",
+          "catalogId": "nininger-1950",
+          "catalogLabel": "The Nininger Collection of Meteorites (1950)",
+          "catalogYear": 1950,
+          "recordModel": "specimen",
+          "designationPath": "designation",
+          "massPath": "weight.grams",
+          "sourceRecordLabel": "150a",
+          "sourceName": "Bielokrynitsche",
+          "canonicalName": "Bielokrynitschie",
+          "meteoriteCode": "5043",
+          "designation": "150a",
+          "massGrams": 9,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=nininger-1950&q=record%20id%20obs-81b280a4-ebe6-4214-b529-2d3ac8112661#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-97ff0f4a-258d-53ee-a3fc-1497f4805d92",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -12669,6 +14387,82 @@
       ]
     },
     {
+      "id": "possible-lineage-9ed4f37c-44a8-5c97-b6a5-e0622cdf3cd9",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "McKinney",
+      "catalogPair": "barnes-1940|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "15463",
+        "canonicalName": "McKinney"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-3926ab13-7ab6-5e27-a707-564e088a5c05",
+          "recordId": "obs-17d07f62-a9ce-4e9a-a1df-3ee8f4d43fd5",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[6].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 39",
+          "sourceName": "McKinney",
+          "canonicalName": "McKinney",
+          "meteoriteCode": "15463",
+          "designation": null,
+          "massGrams": 594,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-17d07f62-a9ce-4e9a-a1df-3ee8f4d43fd5#catalog"
+        },
+        {
+          "id": "mass-observation-64c30621-d05e-5b82-90e4-9f74f05785d8",
+          "recordId": "obs-5d182692-52fe-4c54-a6c3-05cee9aecd86",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 206",
+          "sourceName": "McKinney",
+          "canonicalName": "McKinney",
+          "meteoriteCode": "15463",
+          "designation": null,
+          "massGrams": 594,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-5d182692-52fe-4c54-a6c3-05cee9aecd86#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-9f7729e6-8ff6-57c1-8122-3e742a05fa84",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -12817,6 +14611,159 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-caae563a-ab41-40b4-8c8a-1fd61c872906#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-a2d921a7-1e0b-5544-8bb2-358b8eff28a6",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Carlton",
+      "catalogPair": "barnes-1940|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "5277",
+        "canonicalName": "Carlton"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-bd3e8b0f-29c5-51fe-b768-501a2d32351e",
+          "recordId": "obs-72c1b23f-8607-479a-a6e9-318540e38bfa",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[1].grams",
+          "sourceRecordLabel": "Collection entry 61",
+          "sourceName": "Carlton",
+          "canonicalName": "Carlton",
+          "meteoriteCode": "5277",
+          "designation": null,
+          "massGrams": 3284,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-72c1b23f-8607-479a-a6e9-318540e38bfa#catalog"
+        },
+        {
+          "id": "mass-observation-d554fd38-11ca-5df4-9f2c-bed17422b0a1",
+          "recordId": "obs-0c2340e4-7f1d-49aa-b6cb-ed7fa21eb4f6",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 12",
+          "sourceName": "Carlton",
+          "canonicalName": "Carlton",
+          "meteoriteCode": "5277",
+          "designation": null,
+          "massGrams": 3284,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-0c2340e4-7f1d-49aa-b6cb-ed7fa21eb4f6#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-a48f4733-2bed-50be-8c08-cb1df702897f",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Tabor",
+      "catalogPair": "nordenskiold-1870|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "23776",
+        "canonicalName": "Tabor"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing",
+          "aggregate-or-multiple"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-cd83f6bd-7b48-5e0f-90ba-2b8e1b6bf3c9",
+          "recordId": "obs-a84bbbc5-97e9-406a-aff4-4163f28921e8",
+          "catalogId": "nordenskiold-1870",
+          "catalogLabel": "Förteckning på meteoriter i Riksmusei mineralogiska samlingar (1870)",
+          "catalogYear": 1870,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 2",
+          "sourceName": "Tabor",
+          "canonicalName": "Tabor",
+          "meteoriteCode": "23776",
+          "designation": null,
+          "massGrams": 14,
+          "kind": null,
+          "count": 2,
+          "catalogSearchUrl": "./index.html?catalog=nordenskiold-1870&q=record%20id%20obs-a84bbbc5-97e9-406a-aff4-4163f28921e8#catalog"
+        },
+        {
+          "id": "mass-observation-dc9aa96b-d83b-5877-b2e2-65f1b5b6aa59",
+          "recordId": "obs-bfc64e90-c132-41f9-bbbf-194508afe7a1",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[1].grams",
+          "sourceRecordLabel": "Collection entry 320",
+          "sourceName": "Tabor",
+          "canonicalName": "Tabor",
+          "meteoriteCode": "23776",
+          "designation": null,
+          "massGrams": 14,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-bfc64e90-c132-41f9-bbbf-194508afe7a1#catalog"
         }
       ]
     },
@@ -13122,6 +15069,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=tassin-1902&q=record%20id%20obs-ae46abc3-ea6b-401f-8e02-30c244ac10dc#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-a926d1eb-12dd-5f89-b526-b0110bdeca38",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Barbotan",
+      "catalogPair": "hogbom-1902|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "4942",
+        "canonicalName": "Barbotan"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-705b2363-11a2-5a3d-ab3e-1c2ed520386a",
+          "recordId": "obs-a03af55f-73fb-4e8e-ae2a-d1982e0bfce0",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 28",
+          "sourceName": "Barbotan",
+          "canonicalName": "Barbotan",
+          "meteoriteCode": "4942",
+          "designation": null,
+          "massGrams": 10,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-a03af55f-73fb-4e8e-ae2a-d1982e0bfce0#catalog"
+        },
+        {
+          "id": "mass-observation-ac8963d4-d514-5eb8-8201-e2678b40fdd2",
+          "recordId": "obs-09617228-7783-47e2-b313-c02ab19e521f",
+          "catalogId": "hogbom-1902",
+          "catalogLabel": "Verzeichniss über die Meteoriten des Mineralogischen Instituts an der Universität Upsala (1902)",
+          "catalogYear": 1902,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 5",
+          "sourceName": "Barbotan",
+          "canonicalName": "Barbotan",
+          "meteoriteCode": "4942",
+          "designation": null,
+          "massGrams": 10,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=hogbom-1902&q=record%20id%20obs-09617228-7783-47e2-b313-c02ab19e521f#catalog"
         }
       ]
     },
@@ -14117,6 +16140,82 @@
       ]
     },
     {
+      "id": "possible-lineage-b47c7e6b-cec5-5b09-9f54-5d04a1018b55",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Tadjera",
+      "catalogPair": "asu-2024-09|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "23778",
+        "canonicalName": "Tadjera"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-6102e445-7a1d-543a-89b0-2c64b2cfe755",
+          "recordId": "obs-6f073417-1954-4f8f-beea-3b305f2337c9",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 321",
+          "sourceName": "Tadjera",
+          "canonicalName": "Tadjera",
+          "meteoriteCode": "23778",
+          "designation": null,
+          "massGrams": 27,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-6f073417-1954-4f8f-beea-3b305f2337c9#catalog"
+        },
+        {
+          "id": "mass-observation-7fb1047f-4370-5abc-a015-3b126ed8c6fa",
+          "recordId": "obs-85be8996-8e40-4c40-b0d3-82a754498f10",
+          "catalogId": "asu-2024-09",
+          "catalogLabel": "Arizona State University Meteorite Collection Catalog (2024)",
+          "catalogYear": 2024,
+          "recordModel": "specimen",
+          "designationPath": "designation",
+          "massPath": "weight.grams",
+          "sourceRecordLabel": "949",
+          "sourceName": "Tadjera",
+          "canonicalName": "Tadjera",
+          "meteoriteCode": "23778",
+          "designation": "949",
+          "massGrams": 27,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=asu-2024-09&q=record%20id%20obs-85be8996-8e40-4c40-b0d3-82a754498f10#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-b4d2cd7d-18b2-5486-88db-6a4ade098d55",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -14569,6 +16668,159 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-014fa351-665c-4bcb-b83f-3610f0ff425c#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-b73bec40-14c8-5a5d-848e-22221927d92d",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Tabor",
+      "catalogPair": "nordenskiold-1870|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "23776",
+        "canonicalName": "Tabor"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing",
+          "aggregate-or-multiple"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-1497e658-3e64-50ac-8294-8e7741503f23",
+          "recordId": "obs-bfc64e90-c132-41f9-bbbf-194508afe7a1",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 320",
+          "sourceName": "Tabor",
+          "canonicalName": "Tabor",
+          "meteoriteCode": "23776",
+          "designation": null,
+          "massGrams": 14,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-bfc64e90-c132-41f9-bbbf-194508afe7a1#catalog"
+        },
+        {
+          "id": "mass-observation-41fbc2c4-c938-5a78-9703-8967215e63fd",
+          "recordId": "obs-a84bbbc5-97e9-406a-aff4-4163f28921e8",
+          "catalogId": "nordenskiold-1870",
+          "catalogLabel": "Förteckning på meteoriter i Riksmusei mineralogiska samlingar (1870)",
+          "catalogYear": 1870,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 2",
+          "sourceName": "Tabor",
+          "canonicalName": "Tabor",
+          "meteoriteCode": "23776",
+          "designation": null,
+          "massGrams": 14,
+          "kind": null,
+          "count": 2,
+          "catalogSearchUrl": "./index.html?catalog=nordenskiold-1870&q=record%20id%20obs-a84bbbc5-97e9-406a-aff4-4163f28921e8#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-b8211b6d-7aec-5381-8fc3-94dfaabf51ae",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Kendall County",
+      "catalogPair": "barnes-1940|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "12274",
+        "canonicalName": "Kendall County"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-2ee986d3-eb83-5b21-bf9c-aa2fd9388738",
+          "recordId": "obs-fbf1f7ea-6bf7-4112-b75e-141baa666b94",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[8].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 33",
+          "sourceName": "Kendall County",
+          "canonicalName": "Kendall County",
+          "meteoriteCode": "12274",
+          "designation": null,
+          "massGrams": 494,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-fbf1f7ea-6bf7-4112-b75e-141baa666b94#catalog"
+        },
+        {
+          "id": "mass-observation-bff83feb-73ec-5d9d-828b-485e589d8007",
+          "recordId": "obs-87dfdaf5-3caa-4e97-8de3-bfdae84561ed",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 167",
+          "sourceName": "Kendall County",
+          "canonicalName": "Kendall County",
+          "meteoriteCode": "12274",
+          "designation": null,
+          "massGrams": 494,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-87dfdaf5-3caa-4e97-8de3-bfdae84561ed#catalog"
         }
       ]
     },
@@ -15485,6 +17737,234 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=huss-1986&q=record%20id%20obs-8ebdda94-d269-42c3-8372-2752d2a6b9f0#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-bfa4653a-8c1f-5754-abc7-5dcc21e38057",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Ensisheim",
+      "catalogPair": "farrington-1903|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "10039",
+        "canonicalName": "Ensisheim"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-4aae55c1-83b8-50f3-90af-bf9895a0b783",
+          "recordId": "obs-43d6c2fe-be9b-4d2e-93a1-eecea0e09c9a",
+          "catalogId": "farrington-1903",
+          "catalogLabel": "Catalogue of the Collection of Meteorites, May 1, 1903 (1903)",
+          "catalogYear": 1903,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 81",
+          "sourceName": "Ensisheim",
+          "canonicalName": "Ensisheim",
+          "meteoriteCode": "10039",
+          "designation": null,
+          "massGrams": 22,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=farrington-1903&q=record%20id%20obs-43d6c2fe-be9b-4d2e-93a1-eecea0e09c9a#catalog"
+        },
+        {
+          "id": "mass-observation-eb245bbf-7094-568f-87d7-396653abf6f7",
+          "recordId": "obs-a308632e-b38e-4286-a7e8-bd3e81732245",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 119",
+          "sourceName": "Ensisheim",
+          "canonicalName": "Ensisheim",
+          "meteoriteCode": "10039",
+          "designation": null,
+          "massGrams": 22,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-a308632e-b38e-4286-a7e8-bd3e81732245#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-c17dca33-0372-5f52-9c65-405bbc86db73",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Chinautla",
+      "catalogPair": "mason-1964|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "5352",
+        "canonicalName": "Chinautla"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-2557b8f1-91c9-5fb1-8d87-c1573800e6fc",
+          "recordId": "obs-8cd6e3d8-a0c3-4acd-81e1-05b6382b810e",
+          "catalogId": "mason-1964",
+          "catalogLabel": "The Meteorite and Tektite Collection of the American Museum of Natural History (1964)",
+          "catalogYear": 1964,
+          "recordModel": "catalog-number",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Catalog no. 2230",
+          "sourceName": "Chinautla",
+          "canonicalName": "Chinautla",
+          "meteoriteCode": "5352",
+          "designation": null,
+          "massGrams": 95,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=mason-1964&q=record%20id%20obs-8cd6e3d8-a0c3-4acd-81e1-05b6382b810e#catalog"
+        },
+        {
+          "id": "mass-observation-6eb73d2c-6342-56aa-8f3e-d52931d91220",
+          "recordId": "obs-af5fce1c-8e90-4d95-9541-4294b5971ef7",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 77",
+          "sourceName": "Chinautla",
+          "canonicalName": "Chinautla",
+          "meteoriteCode": "5352",
+          "designation": null,
+          "massGrams": 95,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-af5fce1c-8e90-4d95-9541-4294b5971ef7#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-c3885d36-e0f7-52e2-acd5-d2e96365791e",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Wichita County",
+      "catalogPair": "barnes-1940|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "24257",
+        "canonicalName": "Wichita County"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-2059383d-1498-5375-a8d6-f87880f95371",
+          "recordId": "obs-c908cb9d-b0b1-404b-b2c1-cd93430fd1f2",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[1].grams",
+          "sourceRecordLabel": "Collection entry 353",
+          "sourceName": "Wichita County",
+          "canonicalName": "Wichita County",
+          "meteoriteCode": "24257",
+          "designation": null,
+          "massGrams": 1800,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-c908cb9d-b0b1-404b-b2c1-cd93430fd1f2#catalog"
+        },
+        {
+          "id": "mass-observation-f4c17f23-fd88-5afe-9cd8-a4182f5a1a46",
+          "recordId": "obs-c8d83a23-73a6-4896-b62e-54410eb00c01",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[6].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 69",
+          "sourceName": "Wichita County",
+          "canonicalName": "Wichita County",
+          "meteoriteCode": "24257",
+          "designation": null,
+          "massGrams": 1800,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-c8d83a23-73a6-4896-b62e-54410eb00c01#catalog"
         }
       ]
     },
@@ -17775,6 +20255,82 @@
       ]
     },
     {
+      "id": "possible-lineage-da194efc-be10-58b4-bbea-d84645527f5f",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Searsmont",
+      "catalogPair": "nininger-1950|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "23472",
+        "canonicalName": "Searsmont"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-001aae7a-7b3e-5baf-82bd-57a39b662710",
+          "recordId": "obs-fce8aa2c-20bf-4392-ae2d-ee58cd3ce480",
+          "catalogId": "nininger-1950",
+          "catalogLabel": "The Nininger Collection of Meteorites (1950)",
+          "catalogYear": 1950,
+          "recordModel": "specimen",
+          "designationPath": "designation",
+          "massPath": "weight.grams",
+          "sourceRecordLabel": "105.2",
+          "sourceName": "Searsmont",
+          "canonicalName": "Searsmont",
+          "meteoriteCode": "23472",
+          "designation": "105.2",
+          "massGrams": 50,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=nininger-1950&q=record%20id%20obs-fce8aa2c-20bf-4392-ae2d-ee58cd3ce480#catalog"
+        },
+        {
+          "id": "mass-observation-9767f7aa-f2af-5370-8946-82095d5ee494",
+          "recordId": "obs-53753946-e663-48a5-8516-470733107354",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[1].grams",
+          "sourceRecordLabel": "Collection entry 297",
+          "sourceName": "Searsmont",
+          "canonicalName": "Searsmont",
+          "meteoriteCode": "23472",
+          "designation": null,
+          "massGrams": 50,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-53753946-e663-48a5-8516-470733107354#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-da82a685-586b-59e0-9cbf-b7ac7464a86d",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -18154,6 +20710,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=washington-1897&q=record%20id%20obs-3fc13285-b27e-4cf2-bab9-b86895ccf77e#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-e0fd087a-d052-55cb-8ef0-bdf4ed8c0e11",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Mooresfort",
+      "catalogPair": "farrington-1903|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "16737",
+        "canonicalName": "Mooresfort"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-a38bbf09-4bc1-5dc7-af65-8e0905515f90",
+          "recordId": "obs-91776ffe-dba3-4259-b389-36de20934750",
+          "catalogId": "farrington-1903",
+          "catalogLabel": "Catalogue of the Collection of Meteorites, May 1, 1903 (1903)",
+          "catalogYear": 1903,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 161",
+          "sourceName": "Mooresfort",
+          "canonicalName": "Mooresfort",
+          "meteoriteCode": "16737",
+          "designation": null,
+          "massGrams": 7,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=farrington-1903&q=record%20id%20obs-91776ffe-dba3-4259-b389-36de20934750#catalog"
+        },
+        {
+          "id": "mass-observation-d67b1627-45ea-5bd1-b4d7-ebf9094684ea",
+          "recordId": "obs-aafc4023-602b-4a53-813d-116139808ae0",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[1].grams",
+          "sourceRecordLabel": "Collection entry 219",
+          "sourceName": "Mooresfort",
+          "canonicalName": "Mooresfort",
+          "meteoriteCode": "16737",
+          "designation": null,
+          "massGrams": 7,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-aafc4023-602b-4a53-813d-116139808ae0#catalog"
         }
       ]
     },
@@ -18846,6 +21478,82 @@
       ]
     },
     {
+      "id": "possible-lineage-ea86849d-0b09-51ff-a19e-71a19a6f6059",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Red River",
+      "catalogPair": "barnes-1940|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "22548",
+        "canonicalName": "Red River"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-6a5ac7d9-8a9c-51d6-8c25-d5c9f17b3cf2",
+          "recordId": "obs-e2b4f522-b31d-4dcb-9cf6-7b8ba35da649",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[4].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 51",
+          "sourceName": "Red River",
+          "canonicalName": "Red River",
+          "meteoriteCode": "22548",
+          "designation": null,
+          "massGrams": 1740,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-e2b4f522-b31d-4dcb-9cf6-7b8ba35da649#catalog"
+        },
+        {
+          "id": "mass-observation-a4665bc1-1691-5744-98bc-75d68a2c3640",
+          "recordId": "obs-5a3440ef-7bb2-4bf2-b779-cabef86c4c51",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 266",
+          "sourceName": "Red River",
+          "canonicalName": "Red River",
+          "meteoriteCode": "22548",
+          "designation": null,
+          "massGrams": 1740,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-5a3440ef-7bb2-4bf2-b779-cabef86c4c51#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-ebde819f-c790-5da1-9c8c-87b33acfec7d",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -19375,6 +22083,82 @@
           "kind": null,
           "count": 1,
           "catalogSearchUrl": "./index.html?catalog=usnm-1886&q=record%20id%20obs-81041b95-4263-4da7-9ce1-969a9dcca4f9#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-f1c63ce3-c6f5-52a8-9223-5c22efd1543c",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Bielokrynitschie",
+      "catalogPair": "nininger-1933|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "5043",
+        "canonicalName": "Bielokrynitschie"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-5c55ac73-465a-5003-a57a-d5a47c85d693",
+          "recordId": "obs-66d35f21-bc7c-4108-8228-769b719e8426",
+          "catalogId": "nininger-1933",
+          "catalogLabel": "The Nininger Collection of Meteorites with Descriptions of the Huizopa and Pojoaque Meteorites (1933)",
+          "catalogYear": 1933,
+          "recordModel": "catalog-item",
+          "designationPath": "holdings[0].designation",
+          "massPath": "holdings[0].weight.grams",
+          "sourceRecordLabel": "Catalog item 17",
+          "sourceName": "Bielokrynitsche",
+          "canonicalName": "Bielokrynitschie",
+          "meteoriteCode": "5043",
+          "designation": "150a",
+          "massGrams": 9,
+          "kind": "specimen",
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=nininger-1933&q=record%20id%20obs-66d35f21-bc7c-4108-8228-769b719e8426#catalog"
+        },
+        {
+          "id": "mass-observation-dca99b6d-dd95-5d91-8685-a80b344e3f2c",
+          "recordId": "obs-1f399c82-2ba3-4d6f-8fe8-d04300a93ea7",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[1].grams",
+          "sourceRecordLabel": "Collection entry 37",
+          "sourceName": "Bielokrynitschie",
+          "canonicalName": "Bielokrynitschie",
+          "meteoriteCode": "5043",
+          "designation": null,
+          "massGrams": 9,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-1f399c82-2ba3-4d6f-8fe8-d04300a93ea7#catalog"
         }
       ]
     },
@@ -19914,6 +22698,82 @@
       ]
     },
     {
+      "id": "possible-lineage-f7a2659e-d5fd-5318-bd47-0b28bd21ac79",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Estacado",
+      "catalogPair": "barnes-1940|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "10057",
+        "canonicalName": "Estacado"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-19fb715e-6511-57f5-988f-4fc3b334e309",
+          "recordId": "obs-81f227eb-2ad5-4656-ae93-f0f12b68d4b8",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 122",
+          "sourceName": "Estacado",
+          "canonicalName": "Estacado",
+          "meteoriteCode": "10057",
+          "designation": null,
+          "massGrams": 17800,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-81f227eb-2ad5-4656-ae93-f0f12b68d4b8#catalog"
+        },
+        {
+          "id": "mass-observation-23e09bde-d25b-5102-a8ec-b6c0a2590110",
+          "recordId": "obs-3b2450c6-c510-40c0-91f0-312e51030c4d",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[4].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 24",
+          "sourceName": "Estacado",
+          "canonicalName": "Estacado",
+          "meteoriteCode": "10057",
+          "designation": null,
+          "massGrams": 17800,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-3b2450c6-c510-40c0-91f0-312e51030c4d#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-f954bc95-e631-51db-9cc7-fe48e664f4bd",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -20215,6 +23075,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=mason-1964&q=record%20id%20obs-b2a2f62a-0acf-42b4-be45-db11c901e76a#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-fb26b730-c6d0-558a-8f42-58627927e79e",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "San Angelo",
+      "catalogPair": "barnes-1940|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "23117",
+        "canonicalName": "San Angelo"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-38f2259f-4c79-5cb8-94b3-53df17a6e6c3",
+          "recordId": "obs-014fa351-665c-4bcb-b83f-3610f0ff425c",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[5].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 54",
+          "sourceName": "San Angelo",
+          "canonicalName": "San Angelo",
+          "meteoriteCode": "23117",
+          "designation": null,
+          "massGrams": 295,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-014fa351-665c-4bcb-b83f-3610f0ff425c#catalog"
+        },
+        {
+          "id": "mass-observation-6535352b-8af2-5462-a75d-765682816c02",
+          "recordId": "obs-6c70229d-7935-414c-a7db-df5a743fd951",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 287",
+          "sourceName": "San Angelo",
+          "canonicalName": "San Angelo",
+          "meteoriteCode": "23117",
+          "designation": null,
+          "massGrams": 295,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-6c70229d-7935-414c-a7db-df5a743fd951#catalog"
         }
       ]
     },
@@ -20597,6 +23533,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=farrington-1903&q=record%20id%20obs-ef7a63dd-961a-4733-8e3e-557c18fad3f1#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-ff3c8df1-f5d1-5dbf-86b3-4b739360e031",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Denton County",
+      "catalogPair": "barnes-1940|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "6659",
+        "canonicalName": "Denton County"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-dee103b5-cc22-50c4-b5a3-458ae1702185",
+          "recordId": "obs-42188afc-1304-4f49-8c38-225615c6b247",
+          "catalogId": "barnes-1940",
+          "catalogLabel": "Catalogue of Texas Meteorites (1940)",
+          "catalogYear": 1940,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[3].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 20",
+          "sourceName": "Denton County",
+          "canonicalName": "Denton County",
+          "meteoriteCode": "6659",
+          "designation": null,
+          "massGrams": 49,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-42188afc-1304-4f49-8c38-225615c6b247#catalog"
+        },
+        {
+          "id": "mass-observation-eb40330f-1e8c-50cd-878d-eac67c04f9ae",
+          "recordId": "obs-80293bce-b239-42d3-821a-62889d0e57a4",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 104",
+          "sourceName": "Denton County",
+          "canonicalName": "Denton County",
+          "meteoriteCode": "6659",
+          "designation": null,
+          "massGrams": 49,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-80293bce-b239-42d3-821a-62889d0e57a4#catalog"
         }
       ]
     },

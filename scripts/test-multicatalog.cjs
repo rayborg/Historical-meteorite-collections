@@ -802,6 +802,7 @@ test("catalog dropdown labels are concise and leave summary titles unchanged", (
     { id: "washington-1897", year: 1897, label: "Catalogue of the Collection of Meteorites in the Peabody Museum (1897)" },
     { id: "hogbom-1902", year: 1902, label: "Verzeichniss über die Meteoriten des Mineralogischen Instituts (1902)" },
     { id: "farrington-1903", year: 1903, label: "Catalogue of the Collection of Meteorites, May 1, 1903 (1903)" },
+    { id: "palache-1926", year: 1926, label: "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)" },
     { id: "nininger-1933", year: 1933, label: "The Nininger Collection (1933)" },
     { id: "barnes-1940", year: 1940, label: "Catalogue of Texas Meteorites (1940)" },
     { id: "nininger-1950", year: 1950, label: "The Nininger Collection (1950)" },
@@ -813,7 +814,7 @@ test("catalog dropdown labels are concise and leave summary titles unchanged", (
   assert.deepEqual(labels, [
     "Lucas (1813)", "Chladni (1819)", "Chladni (1825)", "Haidinger (1859)", "Buchner (1863)",
     "Nordenskiöld (1870)", "Ball (1882)", "USNM (1886)", "Hovey (1896)", "Washington (1897)",
-    "Högbom (1902)", "Farrington (1903)", "Nininger (1933)",
+    "Högbom (1902)", "Farrington (1903)", "Palache (1926)", "Nininger (1933)",
     "Barnes (1940)", "Nininger (1950)", "Huss (1976)", "Huss (1986)", "ASU (2024)"
   ]);
   assert.equal(new Set(labels).size, descriptors.length);
@@ -830,7 +831,7 @@ test("URL filter behavior and cache version remain stable", () => {
     query: "catalog item 2", catalog: "nininger-1933", min: "3", max: "12", sort: "weight-desc"
   });
   assert.equal(app.serializeUrlFilters(parsed).toString(), "q=catalog+item+2&catalog=nininger-1933&min=3&max=12&sort=weight-desc");
-  assert.equal(app.CACHE_VERSION, "20260802-3");
+  assert.equal(app.CACHE_VERSION, "20260802-4");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.CACHE_VERSION}`));
 });
