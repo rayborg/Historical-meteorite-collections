@@ -31,6 +31,7 @@ test("publishes a safe and accessible bibliography table", async () => {
   assert.match(bibliography, /data-control="MCB-141"[^\n]*Catalogue of the collection of meteorites in the Mineralogical Museum of Harvard University[^\n]*SP1949-0125[^\n]*processing-cell complete[^\n]*Palache 1926/);
   assert.match(bibliography, /data-control="MCB-165"[^\n]*Catalogue of Texas meteorites[^\n]*processing-cell complete[^\n]*Barnes 1940/);
   assert.match(bibliography, /data-control="MCB-175"[^\n]*The Meteorite and Tektite Collection of the American Museum of Natural History[^\n]*processing-cell complete[^\n]*Mason 1964/);
+  assert.match(bibliography, /data-control="MCB-197"[^\n]*1996-01-31[^\n]*Meteorite Catalogue of the Kanagawa Prefectural Museum of Natural History \/ 隕石目録[^\n]*processing-cell complete[^\n]*Kanagawa 1996/);
   assert.match(bibliography, /data-control="MCB-204"[^\n]*2024-09[^\n]*Arizona State University Meteorite Collection Catalog[^\n]*processing-cell complete[^\n]*ASU September 2024/);
   assert.doesNotMatch(bibliography, /Catalogue of Meteorites in the American Museum of Natural History/);
   assert.doesNotMatch(bibliography, /<title>Arizona State University Meteorite Collection Catalog<\/title>/);
@@ -40,7 +41,7 @@ test("publishes a safe and accessible bibliography table", async () => {
   assert.ok(sourceLinks.length > 0);
   assert.equal(namedSourceLinks.length, sourceLinks.length);
 
-  for (const privateMarker of ["/private/", "/Users/", "source-images/", "localPath", "sha256", "data/ocr/"]) {
+  for (const privateMarker of ["ML-CONFIRMED-027", "ACQ-20260723-024", "/private/", "/Users/", "source-images/", "localPath", "sha256", "data/ocr/"]) {
     assert.ok(!bibliography.includes(privateMarker), `Published bibliography contains private marker ${privateMarker}`);
   }
 });

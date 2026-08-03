@@ -75,9 +75,9 @@ test("main template presents relationship-specific compact lineage copy", async 
   assert.match(source, /Possible match · Reported mass:/);
   assert.doesNotMatch(source, /\.innerHTML\b/);
   assert.match(css, /\.earlier-records \{/);
-  assert.equal(app.CACHE_VERSION, "20260802-4");
-  assert.match(html, /styles\.css\?v=20260802-4/);
-  assert.match(html, /app\.js\?v=20260802-4/);
+  assert.equal(app.CACHE_VERSION, "20260802-5");
+  assert.match(html, /styles\.css\?v=20260802-5/);
+  assert.match(html, /app\.js\?v=20260802-5/);
   for (const file of ["possible-specimen-lineages.html", "possible-specimen-lineages.css", "possible-specimen-lineages.js"]) {
     await assert.rejects(access(path.join(projectRoot, file)));
   }
@@ -98,22 +98,27 @@ test("real catalog Allende search retains reviewed names and synonyms without Al
     "h103-17-cb961468f9f6",
     "h103-22-d78f7e67779d",
     "h103-47-ee11bee3d660",
+    "obs-10e6e6ad-97b3-48d2-b149-52b7b29058da",
+    "obs-125ad40d-286a-4ca2-b3be-829da898df97",
+    "obs-3a77f20d-b292-4da2-a28a-4fbdb6620717",
+    "obs-6b74d083-3119-4899-8f8b-4ee40c6bcb67",
   ]);
   assert(!matchingIds.includes("obs-abc02f34-6bbf-48de-8486-8d1ec3b6e43e"));
   assert(!matchingIds.includes("obs-0e1dcf64-48f0-43d7-b39b-b6325a07c16e"));
 });
 
-test("real release locks all catalogs and the chronological Palache dropdown entry", () => {
+test("real release locks all catalogs and the chronological Kanagawa dropdown entry", () => {
   const entries = app.catalogSelectorEntries(registry);
-  assert.equal(entries.length, 22);
+  assert.equal(entries.length, 23);
   assert.deepEqual(entries.map(([id]) => id), [
     "lucas-1813", "chladni-1819", "chladni-1825", "haidinger-1859", "buchner-1863",
     "nordenskiold-1870", "ball-1882", "usnm-1886", "hovey-1896", "washington-1897",
     "tassin-1902", "hogbom-1902", "farrington-1903", "schreiter-1912", "palache-1926",
     "nininger-1933", "barnes-1940", "nininger-1950", "mason-1964", "huss-1976",
-    "huss-1986", "asu-2024-09",
+    "huss-1986", "kanagawa-1996", "asu-2024-09",
   ]);
   assert.equal(app.catalogDropdownLabel(registry["palache-1926"], "palache-1926"), "Palache (1926)");
+  assert.equal(app.catalogDropdownLabel(registry["kanagawa-1996"], "kanagawa-1996"), "Kanagawa (1996)");
 });
 
 test("chronological mapping copies pairs and excludes equal-year comparisons", () => {

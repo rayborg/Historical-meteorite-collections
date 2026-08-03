@@ -113,6 +113,13 @@
       "basisUrl": null,
       "pageIds": []
     },
+    "kanagawa-1996": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "basis": null,
+      "basisUrl": null,
+      "pageIds": []
+    },
     "lucas-1813": {
       "displayPolicy": "display",
       "rightsStatus": "public-domain",

@@ -22,6 +22,7 @@ const schema = JSON.parse(await readFile(new URL("../data/specimen-lineages.sche
 const reviewSource = JSON.parse(await readFile(new URL("../data/specimen-lineage-reviews.json", import.meta.url), "utf8"));
 const reviewSchema = JSON.parse(await readFile(new URL("../data/specimen-lineage-reviews.schema.json", import.meta.url), "utf8"));
 const folios = JSON.parse(await readFile(new URL("../data/folios.json", import.meta.url), "utf8"));
+const folioReleaseLock = JSON.parse(await readFile(new URL("./folio-release-lock.json", import.meta.url), "utf8"));
 
 function clone(value) {
   return structuredClone(value);
@@ -65,13 +66,13 @@ test("build is deterministic, canonical, and identical to the published file", (
 });
 
 test("publishes locked source and relationship counts", () => {
-  assert.equal(flattenMassObservations(catalog).length, 8745);
+  assert.equal(flattenMassObservations(catalog).length, 8827);
   assert.equal(flattenInventoryObservations(catalog).length, 3627);
   assert.deepEqual(published.metadata.source, {
     catalogSchemaVersion: 6,
-    recordCount: 9481,
-    catalogCount: 22,
-    flattenedMassObservationCount: 8745,
+    recordCount: 9713,
+    catalogCount: 23,
+    flattenedMassObservationCount: 8827,
     inventoryObservationCount: 3627,
   });
   assert.deepEqual(published.metadata.counts, {
@@ -196,8 +197,8 @@ test("Palache publishes only locked facts and blocked folios", () => {
     "id", "locality", "name", "reportedNumber", "section",
   ].sort();
 
-  assert.equal(catalog.metadata.catalogs.length, 22);
-  assert.equal(catalog.records.length, 9481);
+  assert.equal(catalog.metadata.catalogs.length, 23);
+  assert.equal(catalog.records.length, 9713);
   assert.deepEqual(descriptor.sourcePages, [151, 152, 153, 154, 155, 156, 157, 158, 159]);
   assert.equal(descriptor.sourcePageCount, 9);
   assert.equal(descriptor.recordCount, 361);
@@ -230,10 +231,10 @@ test("Palache publishes only locked facts and blocked folios", () => {
   }
 
   const allReviewed = catalog.records.filter((record) => Object.hasOwn(record, "metbull"));
-  assert.equal(allReviewed.length, 8159);
+  assert.equal(allReviewed.length, 8227);
   assert.equal(allReviewed.filter(({ metbull }) => metbull.matchType === "unresolved").length, 129);
-  assert.equal(allReviewed.filter(({ metbull }) => metbull.matchType !== "unresolved").length, 8030);
-  assert.equal(catalog.records.length - allReviewed.length, 1322);
+  assert.equal(allReviewed.filter(({ metbull }) => metbull.matchType !== "unresolved").length, 8098);
+  assert.equal(catalog.records.length - allReviewed.length, 1486);
 });
 
 test("Palache has no same-inventory continuity and only unreviewed possible candidates", () => {
@@ -253,6 +254,96 @@ test("Palache has no same-inventory continuity and only unreviewed possible cand
   );
   assert(!published.relationships.some(({ relationship, observations }) =>
     relationship === "same-inventory" && observations.some(({ catalogId }) => catalogId === "palache-1926")));
+});
+
+test("Kanagawa publishes only the approved controlled facts with no glass mappings, folios, or lineages", () => {
+  const descriptor = catalog.metadata.catalogs.find(({ id }) => id === "kanagawa-1996");
+  const records = catalog.records.filter(({ catalogId }) => catalogId === "kanagawa-1996");
+  const meteorites = records.filter(({ entryOrder }) => entryOrder <= 80);
+  const glass = records.filter(({ entryOrder }) => entryOrder >= 81);
+  const holdings = records.flatMap(({ holdings: values }) => values);
+  const weights = holdings.flatMap(({ weights: values }) => values);
+  const reviewed = records.filter((record) => Object.hasOwn(record, "metbull"));
+  const baseRecordKeys = [
+    "catalogId", "catalogPages", "classification", "confidence", "entryOrder", "eventDate", "holdings",
+    "id", "locality", "name", "reportedNumber", "section",
+  ].sort();
+
+  assert.deepEqual(Object.keys(descriptor).sort(), [
+    "compiler", "confidenceCounts", "folioDisplayPolicy", "id", "label", "recordCount", "recordModel",
+    "recordsWithDesignation", "recordsWithWeight", "rightsStatus", "sourcePageCount", "sourcePages", "year",
+  ]);
+  assert.equal(descriptor.compiler, "Kanagawa Prefectural Museum of Natural History");
+  assert.equal(descriptor.label, "Meteorite Catalogue of the Kanagawa Prefectural Museum of Natural History (1996)");
+  assert.equal(descriptor.recordModel, "collection-entry");
+  assert.deepEqual(descriptor.sourcePages, [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 24]);
+  assert.equal(descriptor.recordCount, 232);
+  assert.equal(descriptor.recordsWithWeight, 213);
+  assert.equal(records.length, 232);
+  assert.equal(meteorites.length, 80);
+  assert.equal(glass.length, 152);
+  assert.equal(records[0].name, "Orgueil");
+  assert.equal(records.at(-1).name, "Philippinite");
+  assert.deepEqual([...new Set(records.flatMap(({ catalogPages }) => catalogPages))], descriptor.sourcePages);
+  assert(meteorites.every(({ section }) => section.split(" | ").length === 2));
+  assert(glass.every(({ section }) => section === "IV. テクタイト目録"));
+  assert.deepEqual(
+    holdings.reduce((counts, { description }) => ({ ...counts, [description]: (counts[description] || 0) + 1 }), {}),
+    { Specimen: 212, "Thin section": 19, "Specimen group": 1 },
+  );
+  assert.equal(holdings.length, 232);
+  assert.equal(weights.length, 243);
+  assert.equal(Math.round(weights.reduce((sum, { grams }) => sum + grams, 0) * 100) / 100, 2688123.61);
+  assert.equal(reviewed.length, 68);
+  assert(reviewed.every(({ entryOrder, metbull }) => entryOrder <= 80 && metbull.matchType === "exact"));
+  assert.equal(records.length - reviewed.length, 164);
+  assert(glass.every((record) => !Object.hasOwn(record, "metbull")));
+
+  for (const record of records) {
+    const expectedKeys = Object.hasOwn(record, "metbull") ? [...baseRecordKeys, "metbull"].sort() : baseRecordKeys;
+    assert.deepEqual(Object.keys(record).sort(), expectedKeys);
+    assert.equal(record.holdings.length, 1);
+    assert.deepEqual(Object.keys(record.holdings[0]).sort(), ["count", "description", "provenance", "weights"]);
+    record.holdings[0].weights.forEach((weight) => assert.deepEqual(Object.keys(weight), ["grams"]));
+  }
+
+  const abbott = records.find(({ reportedNumber }) => reportedNumber === "NLM000042");
+  assert.equal(abbott.eventDate, "951年～1960年に発見");
+  assert.equal(records.find(({ reportedNumber }) => reportedNumber === "NLM001147").name, "Australia (tektite)");
+  assert.equal(records.find(({ reportedNumber }) => reportedNumber === "NLM001148").name, "Australia (tektite)");
+
+  const forbiddenKeys = new Set([
+    "dimensions", "displayWeight", "image", "images", "manifest", "media", "note", "notes", "ocr",
+    "pageId", "pageIds", "path", "qa", "sourceDescription", "sourceFile", "sourcePath", "weightText",
+  ]);
+  const visit = (value) => {
+    if (Array.isArray(value)) return value.forEach(visit);
+    if (value === null || typeof value !== "object") return;
+    for (const [key, child] of Object.entries(value)) {
+      assert(!forbiddenKeys.has(key), `Kanagawa public record contains blocked key ${key}`);
+      visit(child);
+    }
+  };
+  records.forEach(visit);
+  assert.doesNotMatch(JSON.stringify(records), /(?:\/private\/|\/Users\/|data\/ocr\/|assets\/kanagawa-1996|assets\/folios\/kanagawa-1996|\.pdf|\.png|\.webp)/iu);
+
+  assert.deepEqual(folios.catalogs["kanagawa-1996"], {
+    displayPolicy: "blocked",
+    rightsStatus: "undetermined",
+    pages: [],
+  });
+  assert.deepEqual(folioReleaseLock.catalogs["kanagawa-1996"], {
+    displayPolicy: "blocked",
+    rightsStatus: "undetermined",
+    basis: null,
+    basisUrl: null,
+    pageIds: [],
+  });
+  assert(!folioReleaseLock.assets.some(({ path }) => path.includes("kanagawa-1996")));
+  assert(!published.metadata.collectionSeries.some(({ catalogIds }) => catalogIds.includes("kanagawa-1996")));
+  assert(!published.relationships.some(({ observations }) =>
+    observations.some(({ catalogId }) => catalogId === "kanagawa-1996")));
+  assert.equal(catalog.records.filter(({ catalogId }) => catalogId !== "kanagawa-1996").length, 9481);
 });
 
 test("excludes weighted observations without reviewed MetBull mappings", () => {
@@ -304,7 +395,7 @@ test("same-series continuity survives missing mass while possible matches requir
   const relationship = rebuilt.relationships.find((item) => item.relationship === "same-inventory" && item.collectionSeries.inventoryId === "h160.1");
   assert.ok(relationship);
   assert(relationship.observations.some(({ massGrams }) => massGrams === null));
-  assert.equal(rebuilt.metadata.source.flattenedMassObservationCount, 8744);
+  assert.equal(rebuilt.metadata.source.flattenedMassObservationCount, 8826);
 
   for (const possible of possibleRelationships()) {
     const [left, right] = possible.observations;

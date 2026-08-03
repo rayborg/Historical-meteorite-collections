@@ -542,6 +542,46 @@
         "rightsStatus": "undetermined"
       },
       {
+        "id": "kanagawa-1996",
+        "recordModel": "collection-entry",
+        "label": "Meteorite Catalogue of the Kanagawa Prefectural Museum of Natural History (1996)",
+        "compiler": "Kanagawa Prefectural Museum of Natural History",
+        "year": 1996,
+        "sourcePages": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          24
+        ],
+        "sourcePageCount": 20,
+        "recordCount": 232,
+        "recordsWithDesignation": 0,
+        "recordsWithWeight": 213,
+        "confidenceCounts": {
+          "high": 232,
+          "medium": 0,
+          "low": 0
+        },
+        "folioDisplayPolicy": "blocked",
+        "rightsStatus": "undetermined"
+      },
+      {
         "id": "lucas-1813",
         "recordModel": "collection-entry",
         "label": "Tableau méthodique des espèces minérales, seconde partie (1813)",
@@ -962,11 +1002,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 9481,
+    "recordCount": 9713,
     "recordsWithDesignation": 5599,
-    "recordsWithWeight": 8829,
+    "recordsWithWeight": 9042,
     "confidenceCounts": {
-      "high": 9466,
+      "high": 9698,
       "medium": 15,
       "low": 0
     }
@@ -195223,6 +195263,6772 @@
       "classification": "Obz",
       "locality": "Mexiko",
       "eventDate": "(1792)",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8dcade16-b86a-4904-880c-c96ba26683bb",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 1,
+      "reportedNumber": "NLM000001",
+      "catalogPages": [
+        4
+      ],
+      "section": "1. 石質隕石，コンドライト，炭素質コンドライト | Stony Meteorite, Chondrite, Carbonaceous Chondrite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 0.8
+            }
+          ]
+        }
+      ],
+      "name": "Orgueil",
+      "classification": "CI",
+      "locality": "Montauban, Tarn-Garonne, France (43° 53′ N, 1° 23′ E)",
+      "eventDate": "1864年5月14日午後8時に落下",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Orgueil",
+        "meteoriteCode": "18026",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18026",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-4f1d05c5-84f9-4925-a6f0-fc8d896c4a01",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 2,
+      "reportedNumber": "NLM000002",
+      "catalogPages": [
+        4
+      ],
+      "section": "1. 石質隕石，コンドライト，炭素質コンドライト | Stony Meteorite, Chondrite, Carbonaceous Chondrite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 30
+            }
+          ]
+        }
+      ],
+      "name": "Mighei",
+      "classification": "CM2",
+      "locality": "Olviopol, Kherson, Ukraine, USSR (48° 4′ N, 30° 58′ E)",
+      "eventDate": "1889年6月18日午前8時30分に落下",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Mighei",
+        "meteoriteCode": "16634",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16634",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-54f21207-5728-4348-95ea-a3694169df45",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 3,
+      "reportedNumber": "NLM000003",
+      "catalogPages": [
+        5
+      ],
+      "section": "1. 石質隕石，コンドライト，炭素質コンドライト | Stony Meteorite, Chondrite, Carbonaceous Chondrite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 136
+            }
+          ]
+        }
+      ],
+      "name": "Murchison",
+      "classification": "CM2",
+      "locality": "Victoria, Australia (36° 37′ S, 145° 12′ E)",
+      "eventDate": "1969年1月8日午前10時45分－11時に落下",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Murchison",
+        "meteoriteCode": "16875",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16875",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-29cb43d0-a7a3-44f3-86d7-bc858249e7ed",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 4,
+      "reportedNumber": "NLM000004",
+      "catalogPages": [
+        5
+      ],
+      "section": "1. 石質隕石，コンドライト，炭素質コンドライト | Stony Meteorite, Chondrite, Carbonaceous Chondrite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 75
+            }
+          ]
+        }
+      ],
+      "name": "Murchison",
+      "classification": "CM2",
+      "locality": "Victoria, Australia (36° 37′ S, 145° 12′ E)",
+      "eventDate": "1969年1月8日午前10時45分－11時に落下",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Murchison",
+        "meteoriteCode": "16875",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16875",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-92c066cd-6a55-4698-ae1d-9f0659ac0308",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 5,
+      "reportedNumber": "NLM000005",
+      "catalogPages": [
+        5
+      ],
+      "section": "1. 石質隕石，コンドライト，炭素質コンドライト | Stony Meteorite, Chondrite, Carbonaceous Chondrite",
+      "holdings": [
+        {
+          "description": "Thin section",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Murchison",
+      "classification": "CM2",
+      "locality": "Victoria, Australia (36° 37′ S, 145° 12′ E)",
+      "eventDate": "1969年1月8日午前10時45分－11時に落下",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Murchison",
+        "meteoriteCode": "16875",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16875",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-2f7a4b54-632a-4828-8849-0167bfc878f4",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 6,
+      "reportedNumber": "NLM000006",
+      "catalogPages": [
+        5
+      ],
+      "section": "1. 石質隕石，コンドライト，炭素質コンドライト | Stony Meteorite, Chondrite, Carbonaceous Chondrite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 8
+            }
+          ]
+        }
+      ],
+      "name": "Murray",
+      "classification": "CM2",
+      "locality": "Calloway County, Kentucky, U. S. A. (36° 36′ N, 88° 6′ W)",
+      "eventDate": "1950年11月20日午前1時35分に落下",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Murray",
+        "meteoriteCode": "16882",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16882",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-8d8b0227-8a46-4b8c-8f13-92f65f11c344",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 7,
+      "reportedNumber": "NLM000007",
+      "catalogPages": [
+        5
+      ],
+      "section": "1. 石質隕石，コンドライト，炭素質コンドライト | Stony Meteorite, Chondrite, Carbonaceous Chondrite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 17
+            }
+          ]
+        }
+      ],
+      "name": "Isna",
+      "classification": "CO3",
+      "locality": "Luxor, Egypt (24° 50′ N, 31° 40′ E)",
+      "eventDate": "1970年に発見",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Isna",
+        "meteoriteCode": "12051",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12051",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-10e6e6ad-97b3-48d2-b149-52b7b29058da",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 8,
+      "reportedNumber": "NLM000008",
+      "catalogPages": [
+        5
+      ],
+      "section": "1. 石質隕石，コンドライト，炭素質コンドライト | Stony Meteorite, Chondrite, Carbonaceous Chondrite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 4500
+            }
+          ]
+        }
+      ],
+      "name": "Allende",
+      "classification": "CV3",
+      "locality": "Chihuahua, Mexico (26° 58′ N, 105° 19′ W)",
+      "eventDate": "1969年2月8日午前1時5分に落下",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Allende",
+        "meteoriteCode": "2278",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2278",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-125ad40d-286a-4ca2-b3be-829da898df97",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 9,
+      "reportedNumber": "NLM000009",
+      "catalogPages": [
+        5
+      ],
+      "section": "1. 石質隕石，コンドライト，炭素質コンドライト | Stony Meteorite, Chondrite, Carbonaceous Chondrite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 2880
+            }
+          ]
+        }
+      ],
+      "name": "Allende",
+      "classification": "CV3",
+      "locality": "Chihuahua, Mexico (26° 58′ N, 105° 19′ W)",
+      "eventDate": "1969年2月8日午前1時5分に落下",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Allende",
+        "meteoriteCode": "2278",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2278",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-3a77f20d-b292-4da2-a28a-4fbdb6620717",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 10,
+      "reportedNumber": "NLM000010",
+      "catalogPages": [
+        5
+      ],
+      "section": "1. 石質隕石，コンドライト，炭素質コンドライト | Stony Meteorite, Chondrite, Carbonaceous Chondrite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 232
+            }
+          ]
+        }
+      ],
+      "name": "Allende",
+      "classification": "CV3",
+      "locality": "Chihuahua, Mexico (26° 58′ N, 105° 19′ W)",
+      "eventDate": "1969年2月8日午前1時5分に落下",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Allende",
+        "meteoriteCode": "2278",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2278",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-6b74d083-3119-4899-8f8b-4ee40c6bcb67",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 11,
+      "reportedNumber": "NLM000011",
+      "catalogPages": [
+        5
+      ],
+      "section": "1. 石質隕石，コンドライト，炭素質コンドライト | Stony Meteorite, Chondrite, Carbonaceous Chondrite",
+      "holdings": [
+        {
+          "description": "Thin section",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Allende",
+      "classification": "CV3",
+      "locality": "Chihuahua, Mexico (26° 58′ N, 105° 19′ W)",
+      "eventDate": "1969年2月8日午前1時5分に落下",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Allende",
+        "meteoriteCode": "2278",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2278",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-fe6362c3-38e6-4b27-82a8-ea3c5acf6127",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 12,
+      "reportedNumber": "NLM000012",
+      "catalogPages": [
+        5
+      ],
+      "section": "1. 石質隕石，コンドライト，炭素質コンドライト | Stony Meteorite, Chondrite, Carbonaceous Chondrite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 3
+            }
+          ]
+        }
+      ],
+      "name": "Vigarano",
+      "classification": "CV3",
+      "locality": "Ferrara, Emilia, Italy (44° 51′ N, 11° 24′ E)",
+      "eventDate": "1910年1月22日午後9時30分に落下",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Vigarano",
+        "meteoriteCode": "24174",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24174",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-c15fb346-309c-46ff-befa-746cdfef2de6",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 13,
+      "reportedNumber": "NLM000013",
+      "catalogPages": [
+        5
+      ],
+      "section": "1. 石質隕石，コンドライト，炭素質コンドライト | Stony Meteorite, Chondrite, Carbonaceous Chondrite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 12
+            }
+          ]
+        }
+      ],
+      "name": "Maralinga",
+      "classification": "C4 (CK4)",
+      "locality": "Nullarbor Plain, Western and Southern Australia (30° 18′ S, 131° 16′ E)",
+      "eventDate": "1974年に発見",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Maralinga",
+        "meteoriteCode": "15412",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15412",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-7cf628ab-ee0f-4bee-acab-9bbe4c91ff76",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 14,
+      "reportedNumber": "NLM000014",
+      "catalogPages": [
+        5
+      ],
+      "section": "1. 石質隕石，コンドライト，炭素質コンドライト | Stony Meteorite, Chondrite, Carbonaceous Chondrite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 2.6
+            }
+          ]
+        }
+      ],
+      "name": "Karoonda",
+      "classification": "C5",
+      "locality": "Buccleuch County, South Australia, Australia (35° 5′ N, 139° 55′ E)",
+      "eventDate": "1930年11月25日午後10時53分に落下",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Karoonda",
+        "meteoriteCode": "12264",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12264",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-9685362e-7ad0-475c-adf6-147db5d324b3",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 15,
+      "reportedNumber": "NLM000015",
+      "catalogPages": [
+        6
+      ],
+      "section": "2. 石質隕石，コンドライト，アンホテライト | Stony Meteorite, Chondrite, Amphoterite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 25
+            }
+          ]
+        }
+      ],
+      "name": "Parnallee",
+      "classification": "LL3",
+      "locality": "Madura district, Tamil Naudu, India (9° 14′ N, 78° 21′ E)",
+      "eventDate": "1857年2月28日午後0時に落下",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Parnallee",
+        "meteoriteCode": "18108",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18108",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-c6023016-f71a-4222-80a0-4da985cbc4ea",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 16,
+      "reportedNumber": "NLM000016",
+      "catalogPages": [
+        6
+      ],
+      "section": "2. 石質隕石，コンドライト，アンホテライト | Stony Meteorite, Chondrite, Amphoterite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 28
+            }
+          ]
+        }
+      ],
+      "name": "Kelly",
+      "classification": "LL4, brecciated",
+      "locality": "Logan County, Colorado, U. S. A. (40° 28′ N, 103° 2′ W)",
+      "eventDate": "1937年に発見",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Kelly",
+        "meteoriteCode": "12273",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12273",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-09e6a28f-3c09-4862-88a1-b71b13ad0ce0",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 17,
+      "reportedNumber": "NLM000017",
+      "catalogPages": [
+        6
+      ],
+      "section": "2. 石質隕石，コンドライト，アンホテライト | Stony Meteorite, Chondrite, Amphoterite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 10
+            }
+          ]
+        }
+      ],
+      "name": "Kelly",
+      "classification": "LL4, brecciated",
+      "locality": "Logan County, Colorado, U. S. A. (40° 28′ N, 103° 2′ W)",
+      "eventDate": "1937年に発見",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Kelly",
+        "meteoriteCode": "12273",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12273",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-235ad5d7-6098-4669-81d5-48000b30f9fc",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 18,
+      "reportedNumber": "NLM000018",
+      "catalogPages": [
+        6
+      ],
+      "section": "2. 石質隕石，コンドライト，アンホテライト | Stony Meteorite, Chondrite, Amphoterite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 17
+            }
+          ]
+        }
+      ],
+      "name": "Kelly",
+      "classification": "LL4, brecciated",
+      "locality": "Logan County, Colorado, U. S. A. (40° 28′ N, 103° 2′ W)",
+      "eventDate": "1937年に発見",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Kelly",
+        "meteoriteCode": "12273",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12273",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-c9c2ab92-367a-40f1-9cbc-b8355c400469",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 19,
+      "reportedNumber": "NLM000019",
+      "catalogPages": [
+        6
+      ],
+      "section": "2. 石質隕石，コンドライト，アンホテライト | Stony Meteorite, Chondrite, Amphoterite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 296
+            }
+          ]
+        }
+      ],
+      "name": "Tuxtuac",
+      "classification": "LL5",
+      "locality": "Zacatecas, Mexico (21° 40′ N, 103° 22′ W)",
+      "eventDate": "1975年10月16日午後4時20分に落下",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Tuxtuac",
+        "meteoriteCode": "24086",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24086",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-7183cd8e-43a3-4d3c-b73e-378c6e204db9",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 20,
+      "reportedNumber": "NLM000020",
+      "catalogPages": [
+        6
+      ],
+      "section": "2. 石質隕石，コンドライト，アンホテライト | Stony Meteorite, Chondrite, Amphoterite",
+      "holdings": [
+        {
+          "description": "Thin section",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Tuxtuac",
+      "classification": "LL5",
+      "locality": "Zacatecas, Mexico (21° 40′ N, 103° 22′ W)",
+      "eventDate": "1975年10月16日午後4時20分に落下",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Tuxtuac",
+        "meteoriteCode": "24086",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24086",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-e2f7fd95-96ea-46a6-9849-b58c17d8b9a2",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 21,
+      "reportedNumber": "NLM000021",
+      "catalogPages": [
+        6
+      ],
+      "section": "2. 石質隕石，コンドライト，アンホテライト | Stony Meteorite, Chondrite, Amphoterite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 310
+            }
+          ]
+        }
+      ],
+      "name": "Naryilco",
+      "classification": "LL6",
+      "locality": "Queensland, Australia (28° 36′ S, 141° 9′ E)",
+      "eventDate": "1975年に発見",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Naryilco",
+        "meteoriteCode": "16918",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16918",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-bed4091b-547c-4e09-862d-bf9fddbb02cd",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 22,
+      "reportedNumber": "NLM000022",
+      "catalogPages": [
+        6
+      ],
+      "section": "2. 石質隕石，コンドライト，アンホテライト | Stony Meteorite, Chondrite, Amphoterite",
+      "holdings": [
+        {
+          "description": "Thin section",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Naryilco",
+      "classification": "LL6",
+      "locality": "Queensland, Australia (28° 36′ S, 141° 9′ E)",
+      "eventDate": "1975年に発見",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Naryilco",
+        "meteoriteCode": "16918",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16918",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-16743bc6-a63e-4aff-823d-785de9cafb47",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 23,
+      "reportedNumber": "NLM000023",
+      "catalogPages": [
+        6
+      ],
+      "section": "3. 石質隕石，コンドライト，ハイパーシン・コンドライト | Stony Meteorite, Chondrite, Hypersthene Chondrite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 298
+            }
+          ]
+        }
+      ],
+      "name": "Moorabie",
+      "classification": "L3",
+      "locality": "New South Wales, Australia (30° 6′ S, 141° 4′ E)",
+      "eventDate": "1965年以前に発見",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Moorabie",
+        "meteoriteCode": "16735",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16735",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-9677f1b5-929c-44dc-9b7d-b56aec5d1a36",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 24,
+      "reportedNumber": "NLM000024",
+      "catalogPages": [
+        6
+      ],
+      "section": "3. 石質隕石，コンドライト，ハイパーシン・コンドライト | Stony Meteorite, Chondrite, Hypersthene Chondrite",
+      "holdings": [
+        {
+          "description": "Thin section",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Moorabie",
+      "classification": "L3",
+      "locality": "New South Wales, Australia (30° 6′ S, 141° 4′ E)",
+      "eventDate": "1965年以前に発見",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Moorabie",
+        "meteoriteCode": "16735",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16735",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-78acb285-1ace-493f-925c-b86d7f0edc30",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 25,
+      "reportedNumber": "NLM000025",
+      "catalogPages": [
+        6
+      ],
+      "section": "3. 石質隕石，コンドライト，ハイパーシン・コンドライト | Stony Meteorite, Chondrite, Hypersthene Chondrite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 100
+            }
+          ]
+        }
+      ],
+      "name": "Tennasilm",
+      "classification": "L4, veined",
+      "locality": "Pskov, Estonian SSR, USSR (58° 21′ N, 26° 57′ E)",
+      "eventDate": "1872年6月28日午後0時に落下",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Tennasilm",
+        "meteoriteCode": "23898",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23898",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-fe2d5a93-93e9-42ff-80f5-f39f690af805",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 26,
+      "reportedNumber": "NLM000026",
+      "catalogPages": [
+        6
+      ],
+      "section": "3. 石質隕石，コンドライト，ハイパーシン・コンドライト | Stony Meteorite, Chondrite, Hypersthene Chondrite",
+      "holdings": [
+        {
+          "description": "Thin section",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Bjurbole",
+      "classification": "L4, friable",
+      "locality": "Borga, Nyland, Finland (60° 24′ N, 25° 48′ E)",
+      "eventDate": "1899年3月12日午後10時30分に落下",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-03249086-c10a-4fc5-85e6-5380af4c3363",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 27,
+      "reportedNumber": "NLM000027",
+      "catalogPages": [
+        6,
+        7
+      ],
+      "section": "3. 石質隕石，コンドライト，ハイパーシン・コンドライト | Stony Meteorite, Chondrite, Hypersthene Chondrite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 35000
+            }
+          ]
+        }
+      ],
+      "name": "Marlow",
+      "classification": "L5",
+      "locality": "Stephens County, Oklahoma, U. S. A. (34° 36′ N, 97° 55′ W)",
+      "eventDate": "1936年2月に発見",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Marlow",
+        "meteoriteCode": "15428",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15428",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-31443f05-e4ea-4de0-83d1-7263111b3a28",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 28,
+      "reportedNumber": "NLM000028",
+      "catalogPages": [
+        7
+      ],
+      "section": "3. 石質隕石，コンドライト，ハイパーシン・コンドライト | Stony Meteorite, Chondrite, Hypersthene Chondrite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 700
+            }
+          ]
+        }
+      ],
+      "name": "Marlow",
+      "classification": "L5",
+      "locality": "Stephens County, Oklahoma, U. S. A. (34° 36′ N, 97° 55′ W)",
+      "eventDate": "1936年2月に発見",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Marlow",
+        "meteoriteCode": "15428",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15428",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-b5be2e5d-d5c4-44ec-af63-3428b64932b6",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 29,
+      "reportedNumber": "NLM000029",
+      "catalogPages": [
+        7
+      ],
+      "section": "3. 石質隕石，コンドライト，ハイパーシン・コンドライト | Stony Meteorite, Chondrite, Hypersthene Chondrite",
+      "holdings": [
+        {
+          "description": "Thin section",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Marlow",
+      "classification": "L5",
+      "locality": "Stephens County, Oklahoma, U. S. A. (34° 36′ N, 97° 55′ W)",
+      "eventDate": "1936年2月に発見",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Marlow",
+        "meteoriteCode": "15428",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15428",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-a62a2cfe-7c4a-4777-b877-794759873a8a",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 30,
+      "reportedNumber": "NLM000030",
+      "catalogPages": [
+        7
+      ],
+      "section": "3. 石質隕石，コンドライト，ハイパーシン・コンドライト | Stony Meteorite, Chondrite, Hypersthene Chondrite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 84
+            }
+          ]
+        }
+      ],
+      "name": "Tsarev",
+      "classification": "L5",
+      "locality": "Volgograd district, Federated SSR, USSR (48° 42′ N, 45° 42′ E)",
+      "eventDate": "1968年に発見、1979年に確認",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Tsarev",
+        "meteoriteCode": "24058",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24058",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-b8dc2bcd-474e-4837-a09b-31aa3876604f",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 31,
+      "reportedNumber": "NLM000031",
+      "catalogPages": [
+        7
+      ],
+      "section": "3. 石質隕石，コンドライト，ハイパーシン・コンドライト | Stony Meteorite, Chondrite, Hypersthene Chondrite",
+      "holdings": [
+        {
+          "description": "Thin section",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Beaver",
+      "classification": "L5",
+      "locality": "Beaver County, Oklahoma, U. A. S. (36° 48′ N, 100° 32′ W)",
+      "eventDate": "1940年頃に発見、1981年に確認",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Beaver",
+        "meteoriteCode": "4985",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4985",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-10d4ea3b-8782-4fb5-83d1-9e0f27f35d99",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 32,
+      "reportedNumber": "NLM000032",
+      "catalogPages": [
+        7
+      ],
+      "section": "3. 石質隕石，コンドライト，ハイパーシン・コンドライト | Stony Meteorite, Chondrite, Hypersthene Chondrite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 387
+            }
+          ]
+        }
+      ],
+      "name": "Tenham",
+      "classification": "L6, veined",
+      "locality": "South Gregory, Queensland, Australia (25° 44′ S, 142° 57′ E)",
+      "eventDate": "1879年春深夜に落下",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Tenham",
+        "meteoriteCode": "23897",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23897",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-c0c0277a-0cf7-4caf-9c4f-bcc2f22f8393",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 33,
+      "reportedNumber": "NLM000033",
+      "catalogPages": [
+        7
+      ],
+      "section": "3. 石質隕石，コンドライト，ハイパーシン・コンドライト | Stony Meteorite, Chondrite, Hypersthene Chondrite",
+      "holdings": [
+        {
+          "description": "Thin section",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Tenham",
+      "classification": "L6, veined",
+      "locality": "South Gregory, Queensland, Australia (25° 44′ S, 142° 57′ E)",
+      "eventDate": "1879年春深夜に落下",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Tenham",
+        "meteoriteCode": "23897",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23897",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-2d86adab-cbc1-4429-8c1e-305f3aecb5ed",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 34,
+      "reportedNumber": "NLM000034",
+      "catalogPages": [
+        7
+      ],
+      "section": "3. 石質隕石，コンドライト，ハイパーシン・コンドライト | Stony Meteorite, Chondrite, Hypersthene Chondrite",
+      "holdings": [
+        {
+          "description": "Thin section",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "La Criolla",
+      "classification": "L6",
+      "locality": "15km WNW Concordia, Entre Rios Province, Argentina (31° 14′ S, 58° 10′ W)",
+      "eventDate": "1985年1月6日夜に落下",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "La Criolla",
+        "meteoriteCode": "12396",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12396",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-d71d724b-593c-413f-8e5f-97b1ebb76699",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 35,
+      "reportedNumber": "NLM000035",
+      "catalogPages": [
+        7
+      ],
+      "section": "4. 石質隕石，コンドライト，ブロンザイト・コンドライト | Stony Meteorite, Chondrite, Bronzite Chondrite",
+      "holdings": [
+        {
+          "description": "Thin section",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Brownfield",
+      "classification": "H3",
+      "locality": "Terry County, Texas, U. S. A. (33° 13′ N, 102° 11′ W)",
+      "eventDate": "1937年に発見",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8baff3aa-8f56-4203-8cd7-1a24eb65bcbe",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 36,
+      "reportedNumber": "NLM000036",
+      "catalogPages": [
+        7
+      ],
+      "section": "4. 石質隕石，コンドライト，ブロンザイト・コンドライト | Stony Meteorite, Chondrite, Bronzite Chondrite",
+      "holdings": [
+        {
+          "description": "Thin section",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Tulia (a)",
+      "classification": "H3-4",
+      "locality": "Swisher County, Texas, U. S. A. (34° 37′ N, 101° 57′ W)",
+      "eventDate": "1917年に発見",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Tulia (a)",
+        "meteoriteCode": "24066",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24066",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-26c33055-23b6-4a44-84d7-5617d43c43d3",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 37,
+      "reportedNumber": "NLM000037",
+      "catalogPages": [
+        7
+      ],
+      "section": "4. 石質隕石，コンドライト，ブロンザイト・コンドライト | Stony Meteorite, Chondrite, Bronzite Chondrite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 306
+            }
+          ]
+        }
+      ],
+      "name": "Salaices",
+      "classification": "H4",
+      "locality": "Chihuahua, Mexico (27° 0′ N, 105° 15′ W)",
+      "eventDate": "1971年に発見",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Salaices",
+        "meteoriteCode": "23105",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23105",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-4caa5afb-8699-4804-8599-6b7d2cf31ed9",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 38,
+      "reportedNumber": "NLM000038",
+      "catalogPages": [
+        7
+      ],
+      "section": "4. 石質隕石，コンドライト，ブロンザイト・コンドライト | Stony Meteorite, Chondrite, Bronzite Chondrite",
+      "holdings": [
+        {
+          "description": "Thin section",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Wellman (c)",
+      "classification": "H4",
+      "locality": "Terry County, Texas, U. S. A. (ほぼ33° 2′ N, 102° 20′ W)",
+      "eventDate": "1964年に発見、1964年に確認",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Wellman (c)",
+        "meteoriteCode": "24239",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24239",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-36f313ac-af00-4a17-b17e-98d809236e32",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 39,
+      "reportedNumber": "NLM000039",
+      "catalogPages": [
+        7,
+        8
+      ],
+      "section": "4. 石質隕石，コンドライト，ブロンザイト・コンドライト | Stony Meteorite, Chondrite, Bronzite Chondrite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 640
+            }
+          ]
+        }
+      ],
+      "name": "Plainview (1917)",
+      "classification": "H5, brecciated",
+      "locality": "Hale County, Texas, U. S. A. (34° 7′ N, 101° 47′ W)",
+      "eventDate": "1917年に発見",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Plainview (1917)",
+        "meteoriteCode": "18841",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18841",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-b9011149-c969-427f-9dbc-655bb87b393f",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 40,
+      "reportedNumber": "NLM000040",
+      "catalogPages": [
+        8
+      ],
+      "section": "4. 石質隕石，コンドライト，ブロンザイト・コンドライト | Stony Meteorite, Chondrite, Bronzite Chondrite",
+      "holdings": [
+        {
+          "description": "Thin section",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Jilin",
+      "classification": "H5",
+      "locality": "Jilin, China (44° 0′ N, 126° 30′ E)",
+      "eventDate": "1976年3月8日午後3時0分に落下",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Jilin",
+        "meteoriteCode": "12171",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12171",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-30795cfc-67b7-46c8-9bcc-873a97c0bbe2",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 41,
+      "reportedNumber": "NLM000041",
+      "catalogPages": [
+        8
+      ],
+      "section": "4. 石質隕石，コンドライト，ブロンザイト・コンドライト | Stony Meteorite, Chondrite, Bronzite Chondrite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 44
+            }
+          ]
+        }
+      ],
+      "name": "Chiang Khan",
+      "classification": "H6",
+      "locality": "Loei, Thailand (17° 54′ N, 101° 38′ E)",
+      "eventDate": "1981年11月17日午前5時30分に落下",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Chiang Khan",
+        "meteoriteCode": "5345",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5345",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-68472695-85fc-4fa2-8153-145bc25d8586",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 42,
+      "reportedNumber": "NLM000042",
+      "catalogPages": [
+        8
+      ],
+      "section": "4. 石質隕石，コンドライト，ブロンザイト・コンドライト | Stony Meteorite, Chondrite, Bronzite Chondrite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 91
+            }
+          ]
+        }
+      ],
+      "name": "Abbott",
+      "classification": "H6",
+      "locality": "Colfax County, New Mexico, U. S. A. (36° 18′ N, 104° 17′ W)",
+      "eventDate": "951年～1960年に発見",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c7504d87-a678-4959-b576-a55da6361b2e",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 43,
+      "reportedNumber": "NLM000043",
+      "catalogPages": [
+        8
+      ],
+      "section": "5. 石質隕石，コンドライト，エンスタタイト・コンドライト | Stony Meteorite, Chondrite, Enstatite Chondrite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 21
+            }
+          ]
+        }
+      ],
+      "name": "Pillistfer",
+      "classification": "E6",
+      "locality": "Vohma, Estonian SSR, USSR (58° 40′ N, 25° 44′ E)",
+      "eventDate": "1868年8月8日午後0時30分に落下",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c6f17403-456c-4e55-a467-debcb63af245",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 44,
+      "reportedNumber": "NLM000044",
+      "catalogPages": [
+        8
+      ],
+      "section": "5. 石質隕石，コンドライト，エンスタタイト・コンドライト | Stony Meteorite, Chondrite, Enstatite Chondrite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 43.8
+            }
+          ]
+        }
+      ],
+      "name": "Eagle",
+      "classification": "EL6",
+      "locality": "Cass County, Nebraska, U.S.A. (40° 46′45″ N, 96° 27′54″ W)",
+      "eventDate": "1946年10月1～15日に落下",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-add095f7-82d9-4d5e-acf3-4d86ce125850",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 45,
+      "reportedNumber": "NLM000045",
+      "catalogPages": [
+        8
+      ],
+      "section": "6. 石質隕石，エイコンドライト | Stony Meteorite, Achondrite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 208
+            }
+          ]
+        }
+      ],
+      "name": "Pena Blanca Spring",
+      "classification": "aubrite",
+      "locality": "Marathon, Brewster County, Texas, U. S. A. (30° 7.5′ N, 103° 7′ W)",
+      "eventDate": "1946年8月2日正午に落下",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-675287ac-bc2a-40dc-b5a9-5ec111873755",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 46,
+      "reportedNumber": "NLM000046",
+      "catalogPages": [
+        8
+      ],
+      "section": "6. 石質隕石，エイコンドライト | Stony Meteorite, Achondrite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 14
+            }
+          ]
+        }
+      ],
+      "name": "Kenna",
+      "classification": "ureilite",
+      "locality": "Roosevelt County, New Mexico, U. S. A. (3° 54′ N, 103° 33.2′ W)",
+      "eventDate": "1972年頃に発見",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Kenna",
+        "meteoriteCode": "12277",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12277",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-dea87255-e4fe-4bfd-8e19-b72f73eb492b",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 47,
+      "reportedNumber": "NLM000047",
+      "catalogPages": [
+        8
+      ],
+      "section": "6. 石質隕石，エイコンドライト | Stony Meteorite, Achondrite",
+      "holdings": [
+        {
+          "description": "Thin section",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Kenna",
+      "classification": "ureilite",
+      "locality": "Roosevelt County, New Mexico, U. S. A. (3° 54′ N, 103° 33.2′ W)",
+      "eventDate": "1972年頃に発見",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Kenna",
+        "meteoriteCode": "12277",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12277",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-5667a9dc-4bfc-4c95-9ac5-ee41b53ada46",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 48,
+      "reportedNumber": "NLM000048",
+      "catalogPages": [
+        8
+      ],
+      "section": "7. 石質隕石，エイコンドライト，HED | Stony Meteorite, Achondrite, Howardite-Eucrite-Diogenite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 11
+            }
+          ]
+        }
+      ],
+      "name": "Hughes (004)",
+      "classification": "howardite",
+      "locality": "Nullabor, South Australia, Australia (30° 35.11′ S, 129° 35.20′ E)",
+      "eventDate": "1991年6月に発見",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c7b56734-2545-4298-bec7-d10525716880",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 49,
+      "reportedNumber": "NLM000049",
+      "catalogPages": [
+        8,
+        9
+      ],
+      "section": "7. 石質隕石，エイコンドライト，HED | Stony Meteorite, Achondrite, Howardite-Eucrite-Diogenite",
+      "holdings": [
+        {
+          "description": "Thin section",
+          "provenance": null,
+          "count": 1,
+          "weights": []
+        }
+      ],
+      "name": "Hughes (004)",
+      "classification": "howardite",
+      "locality": "Nullabor, South Australia, Australia (30° 35.11′ S, 129° 35.20′ E)",
+      "eventDate": "1991年6月に発見",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-2216d28f-6210-4253-811f-0638337a9dd1",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 50,
+      "reportedNumber": "NLM000050",
+      "catalogPages": [
+        9
+      ],
+      "section": "7. 石質隕石，エイコンドライト，HED | Stony Meteorite, Achondrite, Howardite-Eucrite-Diogenite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 198
+            }
+          ]
+        }
+      ],
+      "name": "Millbillillie",
+      "classification": "eucrite",
+      "locality": "Wiluna District, Western Australia, Australia (26° 27′ S, 120° 22′ E)",
+      "eventDate": "1960年10月午後1時頃に落下、1970年に回収",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Millbillillie",
+        "meteoriteCode": "16643",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16643",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-ae399d74-a56b-4f58-bd03-4e810125d0ec",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 51,
+      "reportedNumber": "NLM000051",
+      "catalogPages": [
+        9
+      ],
+      "section": "7. 石質隕石，エイコンドライト，HED | Stony Meteorite, Achondrite, Howardite-Eucrite-Diogenite",
+      "holdings": [
+        {
+          "description": "Thin section",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Millbillillie",
+      "classification": "eucrite",
+      "locality": "Wiluna District, Western Australia, Australia (26° 27′ S, 120° 22′ E)",
+      "eventDate": "1960年10月午後1時頃に落下、1970年に回収",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Millbillillie",
+        "meteoriteCode": "16643",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16643",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-76585a34-1230-4573-89ab-b8ec872ba596",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 52,
+      "reportedNumber": "NLM000052",
+      "catalogPages": [
+        9
+      ],
+      "section": "7. 石質隕石，エイコンドライト，HED | Stony Meteorite, Achondrite, Howardite-Eucrite-Diogenite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 12.7
+            }
+          ]
+        }
+      ],
+      "name": "Juvinas",
+      "classification": "eucrite",
+      "locality": "Libonnes, Entraigues, Ardeche, France (44° 43′ N, 4° 18′ E)",
+      "eventDate": "1821年6月15日午後3時に落下",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Juvinas",
+        "meteoriteCode": "12214",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12214",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-866dca2f-5d2f-4161-9200-3d8ab781c357",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 53,
+      "reportedNumber": "NLM000053",
+      "catalogPages": [
+        9
+      ],
+      "section": "7. 石質隕石，エイコンドライト，HED | Stony Meteorite, Achondrite, Howardite-Eucrite-Diogenite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 12.8
+            }
+          ]
+        }
+      ],
+      "name": "Camel Donga",
+      "classification": "eucrite",
+      "locality": "Nullarbor Plain, Western Australia, Australia (30° 19′ S, 126° 37′ E)",
+      "eventDate": "1984年1月に発見",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Camel Donga",
+        "meteoriteCode": "5204",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5204",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-93e11274-2619-4540-b189-9293d1a89451",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 54,
+      "reportedNumber": "NLM000054",
+      "catalogPages": [
+        9
+      ],
+      "section": "7. 石質隕石，エイコンドライト，HED | Stony Meteorite, Achondrite, Howardite-Eucrite-Diogenite",
+      "holdings": [
+        {
+          "description": "Thin section",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Camel Donga",
+      "classification": "eucrite",
+      "locality": "Nullarbor Plain, Western Australia, Australia (30° 19′ S, 126° 37′ E)",
+      "eventDate": "1984年1月に発見",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Camel Donga",
+        "meteoriteCode": "5204",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5204",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-da173f6a-1093-4d85-adcb-b9f2edcb5a58",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 55,
+      "reportedNumber": "NLM000055",
+      "catalogPages": [
+        9
+      ],
+      "section": "7. 石質隕石，エイコンドライト，HED | Stony Meteorite, Achondrite, Howardite-Eucrite-Diogenite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 15.4
+            }
+          ]
+        }
+      ],
+      "name": "Stannern",
+      "classification": "eucrite",
+      "locality": "Iglau, Jihomoravsky, Czechoslovakia (49° 17′ N, 15° 34′ E)",
+      "eventDate": "1808年5月22日午前6時に落下",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Stannern",
+        "meteoriteCode": "23713",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23713",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-05aeadd6-b37a-4214-a63d-81d8dfe3a14a",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 56,
+      "reportedNumber": "NLM000056",
+      "catalogPages": [
+        9
+      ],
+      "section": "7. 石質隕石，エイコンドライト，HED | Stony Meteorite, Achondrite, Howardite-Eucrite-Diogenite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 68
+            }
+          ]
+        }
+      ],
+      "name": "Johnstown",
+      "classification": "diogenite",
+      "locality": "Weld County, Colorado, U.S.A. (40° 21′ N, 104° 54′ W)",
+      "eventDate": "1924年7月6日午後4時20分に落下",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Johnstown",
+        "meteoriteCode": "12198",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12198",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-8f42fffd-de8d-49f9-953e-0b7da2ff6727",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 57,
+      "reportedNumber": "NLM000057",
+      "catalogPages": [
+        9
+      ],
+      "section": "8. 石質隕石，エイコンドライト，SNC | Stony Meteorite, Achondrite, Shergottite-Nakhla-Chassignite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 880
+            }
+          ]
+        }
+      ],
+      "name": "Zagami",
+      "classification": "shergottite",
+      "locality": "Katsina Province, Nigeria (11° 44′ N, 7° 5′ E)",
+      "eventDate": "1962年10月3日に落下",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Zagami",
+        "meteoriteCode": "30386",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=30386",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-0da3fa03-68b5-4237-a4fd-c2b1e83322e0",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 58,
+      "reportedNumber": "NLM000058",
+      "catalogPages": [
+        9
+      ],
+      "section": "8. 石質隕石，エイコンドライト，SNC | Stony Meteorite, Achondrite, Shergottite-Nakhla-Chassignite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 9
+            }
+          ]
+        }
+      ],
+      "name": "Nakhla",
+      "classification": "nakhlite",
+      "locality": "Abu Hommos, Alexandria, Egypt (31° 19′ N, 30° 21′ E)",
+      "eventDate": "1911年6月28日午前9時に落下",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Nakhla",
+        "meteoriteCode": "16898",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16898",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-121cbc41-f805-4734-a6c7-d76f980aee63",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 59,
+      "reportedNumber": "NLM000059",
+      "catalogPages": [
+        9
+      ],
+      "section": "9. 石鉄隕石 | Stony-iron Meteorite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 123
+            }
+          ]
+        }
+      ],
+      "name": "Vaca Muerta",
+      "classification": "mesosiderite",
+      "locality": "Taltal, Atacama, Chile (ほぼ25° 45′ S, 70° 30′ W)",
+      "eventDate": "1861年に発見、同年に確認",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Vaca Muerta",
+        "meteoriteCode": "24142",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24142",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-2ae25d9d-5aea-4367-a1d3-1acc0a21167f",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 60,
+      "reportedNumber": "NLM000060",
+      "catalogPages": [
+        9,
+        10
+      ],
+      "section": "9. 石鉄隕石 | Stony-iron Meteorite",
+      "holdings": [
+        {
+          "description": "Thin section",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Vaca Muerta",
+      "classification": "mesosiderite",
+      "locality": "Taltal, Atacama, Chile (ほぼ25° 45′ S, 70° 30′ W)",
+      "eventDate": "1861年に発見、同年に確認",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Vaca Muerta",
+        "meteoriteCode": "24142",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24142",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-ec6609da-10ad-4397-a70f-a89951778aba",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 61,
+      "reportedNumber": "NLM000061",
+      "catalogPages": [
+        10
+      ],
+      "section": "9. 石鉄隕石 | Stony-iron Meteorite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 140
+            }
+          ]
+        }
+      ],
+      "name": "Ahumada",
+      "classification": "pallasite",
+      "locality": "Chihuahua, Mexico (ほぼ30° 42′ N, 105° 30′ W)",
+      "eventDate": "1909年に発見",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Ahumada",
+        "meteoriteCode": "419",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=419",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-3d2e52db-f9d0-4f49-b1a6-60801d79321b",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 62,
+      "reportedNumber": "NLM000062",
+      "catalogPages": [
+        10
+      ],
+      "section": "9. 石鉄隕石 | Stony-iron Meteorite",
+      "holdings": [
+        {
+          "description": "Specimen group",
+          "provenance": null,
+          "count": 31,
+          "weights": [
+            {
+              "grams": 4340
+            },
+            {
+              "grams": 3430
+            },
+            {
+              "grams": 3300
+            },
+            {
+              "grams": 3100
+            },
+            {
+              "grams": 1940
+            },
+            {
+              "grams": 1450
+            },
+            {
+              "grams": 1520
+            },
+            {
+              "grams": 1140
+            },
+            {
+              "grams": 780
+            },
+            {
+              "grams": 830
+            },
+            {
+              "grams": 740
+            },
+            {
+              "grams": 850
+            },
+            {
+              "grams": 760
+            },
+            {
+              "grams": 670
+            },
+            {
+              "grams": 800
+            },
+            {
+              "grams": 800
+            },
+            {
+              "grams": 760
+            },
+            {
+              "grams": 550
+            },
+            {
+              "grams": 760
+            },
+            {
+              "grams": 560
+            },
+            {
+              "grams": 460
+            },
+            {
+              "grams": 740
+            },
+            {
+              "grams": 540
+            },
+            {
+              "grams": 690
+            },
+            {
+              "grams": 860
+            },
+            {
+              "grams": 370
+            },
+            {
+              "grams": 370
+            },
+            {
+              "grams": 180
+            },
+            {
+              "grams": 90
+            },
+            {
+              "grams": 130
+            },
+            {
+              "grams": 80
+            }
+          ]
+        }
+      ],
+      "name": "Admire",
+      "classification": "pallasite",
+      "locality": "Lyon County, Kansas, U.S.A. (ほぼ38° 42′ N, 96° 6′ W)",
+      "eventDate": "1881年に発見",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Admire",
+        "meteoriteCode": "380",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=380",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-70fb0499-2589-46d2-832d-df5f16061d79",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 63,
+      "reportedNumber": "NLM000063",
+      "catalogPages": [
+        10
+      ],
+      "section": "10. 鉄隕石 | Iron Meteorite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 15000
+            }
+          ]
+        }
+      ],
+      "name": "Odessa",
+      "classification": "IA, octahedrite, coarse (1.7mm)",
+      "locality": "Ector County, Texas, U.S.A. (31° 4′ N, 102° 24′ W)",
+      "eventDate": "1922年以前に発見",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-43b0c00a-a085-4361-8aa9-aa9b87007a93",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 64,
+      "reportedNumber": "NLM000064",
+      "catalogPages": [
+        10
+      ],
+      "section": "10. 鉄隕石 | Iron Meteorite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 11000
+            }
+          ]
+        }
+      ],
+      "name": "Campo del Cielo",
+      "classification": "IA, octahedrite, coarse (3.0mm) with silicate inclusions",
+      "locality": "Gran Chaco Gualamba, Chaco, Argentina (27° 28′ S, 60° 35′ W)",
+      "eventDate": "1576年に発見",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Campo del Cielo",
+        "meteoriteCode": "5247",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5247",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-8fdd7671-64aa-47c8-9b23-c6bbb4113ef9",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 65,
+      "reportedNumber": "NLM000065",
+      "catalogPages": [
+        10
+      ],
+      "section": "10. 鉄隕石 | Iron Meteorite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 256
+            }
+          ]
+        }
+      ],
+      "name": "Zagora",
+      "classification": "IAB, octahedrite, with silicate inclusions",
+      "locality": "Ouarzazate, Morocco (30° 22′ N, 5° 51′ W)",
+      "eventDate": "1987年に発見",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Zagora",
+        "meteoriteCode": "30387",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=30387",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-cdaf7e06-2c70-41b3-98a7-21b09f74ed1e",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 66,
+      "reportedNumber": "NLM000066",
+      "catalogPages": [
+        10,
+        11
+      ],
+      "section": "10. 鉄隕石 | Iron Meteorite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 692
+            }
+          ]
+        }
+      ],
+      "name": "Arispe",
+      "classification": "IC, octahedrite, coarse (2.9mm)",
+      "locality": "Sonora, Mexico (30° 20′ N, 109° 59′ W)",
+      "eventDate": "1896年に発見",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Arispe",
+        "meteoriteCode": "2332",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2332",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-f017bbd0-a2b1-4b79-a98a-0821ca7fe5d0",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 67,
+      "reportedNumber": "NLM000067",
+      "catalogPages": [
+        11
+      ],
+      "section": "10. 鉄隕石 | Iron Meteorite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 1080
+            }
+          ]
+        }
+      ],
+      "name": "North Chile",
+      "classification": "IIA, hexahedrite",
+      "locality": "Antofagasta, Chile (ほぼ23° S, 69° W)",
+      "eventDate": "1875年に発見",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "North Chile",
+        "meteoriteCode": "17001",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17001",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-3d6c9c43-8e37-4c67-8cc9-f2150456beca",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 68,
+      "reportedNumber": "NLM000068",
+      "catalogPages": [
+        11
+      ],
+      "section": "10. 鉄隕石 | Iron Meteorite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 756
+            }
+          ]
+        }
+      ],
+      "name": "Sikhote-Alin",
+      "classification": "IIB, octahedrite, coarsest (9mm)",
+      "locality": "Maritime Territory, Federated SSR, USSR (46° 9′ 36″ N, 134° 39′ 12″ E)",
+      "eventDate": "1947年2月12日午前10時38分に落下",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Sikhote-Alin",
+        "meteoriteCode": "23593",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23593",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-0e976e5a-0955-4e34-bf7c-9cd5488978ee",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 69,
+      "reportedNumber": "NLM000069",
+      "catalogPages": [
+        11
+      ],
+      "section": "10. 鉄隕石 | Iron Meteorite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 49
+            }
+          ]
+        }
+      ],
+      "name": "Carbo",
+      "classification": "IID, octahedrite, medium (0.9mm)",
+      "locality": "Sonora, Mexico (29° 40′ N, 111° 30′ W)",
+      "eventDate": "1923年に発見",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Carbo",
+        "meteoriteCode": "5266",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5266",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-125bb917-4388-435a-85d4-0d99915aadf9",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 70,
+      "reportedNumber": "NLM000070",
+      "catalogPages": [
+        11
+      ],
+      "section": "10. 鉄隕石 | Iron Meteorite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 1354
+            }
+          ]
+        }
+      ],
+      "name": "Watson",
+      "classification": "IIE, octahedrite, with silicate inclusions",
+      "locality": "South Australia, Australia (30° 30′ S, 131° 33′ E)",
+      "eventDate": "1972年に発見",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-417289d6-86f6-4411-a77e-c669739c95d2",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 71,
+      "reportedNumber": "NLM000071",
+      "catalogPages": [
+        11
+      ],
+      "section": "10. 鉄隕石 | Iron Meteorite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 48
+            }
+          ]
+        }
+      ],
+      "name": "Cape York",
+      "classification": "IIIA, octahedrite, medium (1.2mm)",
+      "locality": "West Greenland, Greenland, Denmark (76° 8′ N, 64° 56′ E)",
+      "eventDate": "1818年に発見",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-be3ade9e-5493-4360-ad88-cd7e28d28e9b",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 72,
+      "reportedNumber": "NLM000072",
+      "catalogPages": [
+        11
+      ],
+      "section": "10. 鉄隕石 | Iron Meteorite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 257
+            }
+          ]
+        }
+      ],
+      "name": "Acuna",
+      "classification": "IIIB, octahedrite, medium (0.6mm)",
+      "locality": "Coahuila, Mexico (29° 19′ N, 100° 58′ W)",
+      "eventDate": "1981年に発見",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8a9295a0-3fe0-4b8b-9c89-d1a387c3e731",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 73,
+      "reportedNumber": "NLM000073",
+      "catalogPages": [
+        11
+      ],
+      "section": "10. 鉄隕石 | Iron Meteorite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 228
+            }
+          ]
+        }
+      ],
+      "name": "Jaralito",
+      "classification": "IIICD, octahedrite, coarse (1.9mm)",
+      "locality": "Jaralito, Durango, Mexico (26° 15′ 57″ N, 103° 53′ 6″ E)",
+      "eventDate": "1977年11月に発見",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Jaralito",
+        "meteoriteCode": "12073",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12073",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-cfc3bf91-7574-49df-9496-f15aba2c6e01",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 74,
+      "reportedNumber": "NLM000074",
+      "catalogPages": [
+        11
+      ],
+      "section": "10. 鉄隕石 | Iron Meteorite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 68
+            }
+          ]
+        }
+      ],
+      "name": "Staunton",
+      "classification": "IIIE, octahedrite, coarse (1.6mm)",
+      "locality": "Augusta County, Virginia, U.S.A. (38° 13′ N, 79° 3′ W)",
+      "eventDate": "1869年に発見",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Staunton",
+        "meteoriteCode": "23716",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23716",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-efcd06f2-5b0a-45fe-974a-66b6da2d7648",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 75,
+      "reportedNumber": "NLM000075",
+      "catalogPages": [
+        11
+      ],
+      "section": "10. 鉄隕石 | Iron Meteorite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 74
+            }
+          ]
+        }
+      ],
+      "name": "Nelson County",
+      "classification": "IIIF, octahedrite, coarse (1〜10mm)",
+      "locality": "Kentucky, U.S.A. (37° 45′ N, 85° 30′ W)",
+      "eventDate": "1856年に発見",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Nelson County",
+        "meteoriteCode": "16942",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16942",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-ce6e96b5-b16b-46cc-b2a2-174a6e534fb0",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 76,
+      "reportedNumber": "NLM000076",
+      "catalogPages": [
+        11
+      ],
+      "section": "10. 鉄隕石 | Iron Meteorite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 43.6
+            }
+          ]
+        }
+      ],
+      "name": "La Grange",
+      "classification": "IVA, octahedrite, fine (0.27mm)",
+      "locality": "Oldham County, Kentucky, U.S.A. (38° 24′ N, 85° 22′ W)",
+      "eventDate": "1860年に発見",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "La Grange",
+        "meteoriteCode": "12399",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12399",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-07593957-2102-4b5d-bd50-b77f30e75f55",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 77,
+      "reportedNumber": "NLM000077",
+      "catalogPages": [
+        12
+      ],
+      "section": "10. 鉄隕石 | Iron Meteorite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 70000
+            }
+          ]
+        }
+      ],
+      "name": "Gibeon",
+      "classification": "IVA, octahedrite, fine (0.30mm)",
+      "locality": "Great Nama Land, Namibia (ほぼ25° 30′ S, 18° E)",
+      "eventDate": "1836年以前に発見",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Gibeon",
+        "meteoriteCode": "10912",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10912",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-79a5511c-aeec-427b-a17d-0d5e36e0b0d5",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 78,
+      "reportedNumber": "NLM000078",
+      "catalogPages": [
+        12
+      ],
+      "section": "10. 鉄隕石 | Iron Meteorite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 55
+            }
+          ]
+        }
+      ],
+      "name": "Iquique",
+      "classification": "IVB, ataxite, Ni-rich",
+      "locality": "Pampa del Tamarugal, Tarapaca, Chile (20° 11′ S, 69° 44′ W)",
+      "eventDate": "1871年に発見",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Iquique",
+        "meteoriteCode": "12045",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12045",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-6e5945c3-a74a-4d32-972c-1f160fb09297",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 79,
+      "reportedNumber": "NLM000079",
+      "catalogPages": [
+        12
+      ],
+      "section": "10. 鉄隕石 | Iron Meteorite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 580
+            }
+          ]
+        }
+      ],
+      "name": "Santiago Papasquiero",
+      "classification": "anomalous, ataxite",
+      "locality": "Durango, Mexico (ほぼ24° 30′ N, 106° W)",
+      "eventDate": "1958年頃に発見",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Santiago Papasquiero",
+        "meteoriteCode": "23169",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23169",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-c88efaaa-c35d-453f-9bc6-347a1bfd5a69",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 80,
+      "reportedNumber": "NLM000080",
+      "catalogPages": [
+        12
+      ],
+      "section": "10. 鉄隕石 | Iron Meteorite",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 2500000
+            }
+          ]
+        }
+      ],
+      "name": "Mundrabilla",
+      "classification": "anomalous, octahedrite, sulfide and silicate inclusions",
+      "locality": "Nullarbor Plain, Western Australia, Australia (30° 47′ S, 127° 33′ E)",
+      "eventDate": "1911年に発見",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Mundrabilla",
+        "meteoriteCode": "16852",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16852",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-33d24625-7f52-43ec-b02a-6899ed2b7998",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 81,
+      "reportedNumber": "NLM001001",
+      "catalogPages": [
+        12
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 2950
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-720172a4-573c-4587-b90f-b7eba8c604e3",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 82,
+      "reportedNumber": "NLM001002",
+      "catalogPages": [
+        12
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 246
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-2fe16187-f9a1-43d7-8b08-dd94b13c9d39",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 83,
+      "reportedNumber": "NLM001003",
+      "catalogPages": [
+        12
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 116
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-2149329d-b6ef-416e-8654-a514444abea4",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 84,
+      "reportedNumber": "NLM001004",
+      "catalogPages": [
+        12
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 83
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-2496cef1-c9a8-4520-8006-292527a95942",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 85,
+      "reportedNumber": "NLM001005",
+      "catalogPages": [
+        12,
+        13
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 116
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-bfb9ee75-5044-42d4-b3f1-b7ea8bf7942b",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 86,
+      "reportedNumber": "NLM001006",
+      "catalogPages": [
+        13
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 101
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-5e801853-9b73-4795-b9e2-797da90bb54d",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 87,
+      "reportedNumber": "NLM001007",
+      "catalogPages": [
+        13
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 54
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-9e92c057-e2af-4476-8eee-9becafdf9cc6",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 88,
+      "reportedNumber": "NLM001008",
+      "catalogPages": [
+        13
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 82
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-26e1e3c7-b328-45ae-8acc-ecf66d26dc8c",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 89,
+      "reportedNumber": "NLM001009",
+      "catalogPages": [
+        13
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 76
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-9dabc029-d634-4743-b769-af99733e6d75",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 90,
+      "reportedNumber": "NLM001010",
+      "catalogPages": [
+        13
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 25
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-dc94ec88-529b-45f1-b703-377431b78f75",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 91,
+      "reportedNumber": "NLM001011",
+      "catalogPages": [
+        13
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 38
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-0bc7b8aa-24a5-4fe2-9820-af0808310967",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 92,
+      "reportedNumber": "NLM001012",
+      "catalogPages": [
+        13
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 14
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-5f76bbe7-cbe9-4743-b487-7676483bf38b",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 93,
+      "reportedNumber": "NLM001013",
+      "catalogPages": [
+        13
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 15
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e9579e1b-e09e-4ecd-b945-c71c0e2cb3f4",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 94,
+      "reportedNumber": "NLM001014",
+      "catalogPages": [
+        13
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 11
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c43f30ea-a5dc-4f48-9eba-352ba88d6989",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 95,
+      "reportedNumber": "NLM001015",
+      "catalogPages": [
+        13
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 18
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-cbfbdcab-f5f3-4606-b9fa-9623a30678a8",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 96,
+      "reportedNumber": "NLM001016",
+      "catalogPages": [
+        13
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 12
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-287141c2-ddd3-4f0e-96fd-89d608fbc658",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 97,
+      "reportedNumber": "NLM001017",
+      "catalogPages": [
+        13
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 7
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-924f6e94-74b2-4076-bd8d-d9d8478709ff",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 98,
+      "reportedNumber": "NLM001018",
+      "catalogPages": [
+        13
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 12
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-4d41bf5f-684f-412f-bd97-47dcca999177",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 99,
+      "reportedNumber": "NLM001019",
+      "catalogPages": [
+        13
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 17
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8ed31f35-c2c5-4bee-8133-0f94dc42f993",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 100,
+      "reportedNumber": "NLM001020",
+      "catalogPages": [
+        14
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 9
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-ba39e5f0-d472-4d22-97b0-b4c5888c8348",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 101,
+      "reportedNumber": "NLM001021",
+      "catalogPages": [
+        14
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 12
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-ba01d66f-5160-4ec3-baa7-f777cfac587d",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 102,
+      "reportedNumber": "NLM001022",
+      "catalogPages": [
+        14
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 11
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-885a162c-f25e-41f7-8353-8989e08d8f40",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 103,
+      "reportedNumber": "NLM001023",
+      "catalogPages": [
+        14
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 14
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-59570a24-a37a-4bd4-93cd-9c6bf129cff5",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 104,
+      "reportedNumber": "NLM001024",
+      "catalogPages": [
+        14
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 12
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-7e5543db-6e18-4030-9210-99e49baffafc",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 105,
+      "reportedNumber": "NLM001025",
+      "catalogPages": [
+        14
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 17
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-669b077c-657e-4c9b-9bb4-5771c913353f",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 106,
+      "reportedNumber": "NLM001026",
+      "catalogPages": [
+        14
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 15
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-993e6630-f8e8-4bc1-ae78-a2862259874f",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 107,
+      "reportedNumber": "NLM001027",
+      "catalogPages": [
+        14
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 17
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e3307271-bec5-41f6-b389-b835b4b4721d",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 108,
+      "reportedNumber": "NLM001028",
+      "catalogPages": [
+        14
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 11
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-bb128978-5079-4d3f-a168-54b664b2b02a",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 109,
+      "reportedNumber": "NLM001029",
+      "catalogPages": [
+        14
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 15
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6472216e-c671-4808-9cfd-514ed8ade0db",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 110,
+      "reportedNumber": "NLM001030",
+      "catalogPages": [
+        14
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 15
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-446f67a9-667a-4cf2-919c-ce9722aef5c3",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 111,
+      "reportedNumber": "NLM001031",
+      "catalogPages": [
+        14
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 13
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-9f4ccf46-07e9-49cd-bcc4-d835b9b486e1",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 112,
+      "reportedNumber": "NLM001032",
+      "catalogPages": [
+        14
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 12
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-237d31a2-96de-4826-ba60-9a723b8b7c4d",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 113,
+      "reportedNumber": "NLM001033",
+      "catalogPages": [
+        14
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 12
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-0554bb0a-6918-4e1b-aa90-6a9bda67367b",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 114,
+      "reportedNumber": "NLM001034",
+      "catalogPages": [
+        15
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 8
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-4c2545d7-cc24-4e66-b0dd-004a9edbd572",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 115,
+      "reportedNumber": "NLM001035",
+      "catalogPages": [
+        15
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 11
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e94a93bd-52ab-4c13-bb6d-3670a959294b",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 116,
+      "reportedNumber": "NLM001036",
+      "catalogPages": [
+        15
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 8
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-7ac5f5a3-5647-4d59-815c-e59ab515bd56",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 117,
+      "reportedNumber": "NLM001037",
+      "catalogPages": [
+        15
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 13
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-517de8cd-1591-4b90-89da-0d0f692ff552",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 118,
+      "reportedNumber": "NLM001038",
+      "catalogPages": [
+        15
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 7
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e986457b-1e98-4a8f-83fe-88ca62b9cfad",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 119,
+      "reportedNumber": "NLM001039",
+      "catalogPages": [
+        15
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 10
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a40d8e1c-954b-4b09-99d9-f3c59e445884",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 120,
+      "reportedNumber": "NLM001040",
+      "catalogPages": [
+        15
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 11
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-05657597-a0e4-4083-8c44-8329ac03c3e0",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 121,
+      "reportedNumber": "NLM001041",
+      "catalogPages": [
+        15
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 10
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-4507df05-e942-4259-9934-6c3b13ab446e",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 122,
+      "reportedNumber": "NLM001042",
+      "catalogPages": [
+        15
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 12
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a4fb6cd7-3c8b-430c-a6fc-31e1885f9940",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 123,
+      "reportedNumber": "NLM001043",
+      "catalogPages": [
+        15
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 10
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-99008462-71aa-4829-814b-7e9ac927302f",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 124,
+      "reportedNumber": "NLM001044",
+      "catalogPages": [
+        15
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 6
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d5676b4a-933a-40a4-8d23-f38b4a0562f1",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 125,
+      "reportedNumber": "NLM001045",
+      "catalogPages": [
+        15
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 7
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-418d79fc-f9fe-4435-8cc5-520ecdaf8d66",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 126,
+      "reportedNumber": "NLM001046",
+      "catalogPages": [
+        15
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 8
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-83297b4e-7ffe-4b4b-974b-607fce7e2a42",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 127,
+      "reportedNumber": "NLM001047",
+      "catalogPages": [
+        15
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 7
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e60e2c06-9690-48e5-bcce-e9e0660fc94b",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 128,
+      "reportedNumber": "NLM001048",
+      "catalogPages": [
+        15,
+        16
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 11
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c0769452-9608-4400-95d9-62359c0d4402",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 129,
+      "reportedNumber": "NLM001049",
+      "catalogPages": [
+        16
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 11
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c3c5fb2d-dfc5-403e-b8cb-fe013e34c928",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 130,
+      "reportedNumber": "NLM001050",
+      "catalogPages": [
+        16
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 11
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-7eb67331-b8bf-41c3-a607-262c6936ee61",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 131,
+      "reportedNumber": "NLM001051",
+      "catalogPages": [
+        16
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 10
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8b3506e1-3808-42f7-b547-1c0810308d1a",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 132,
+      "reportedNumber": "NLM001052",
+      "catalogPages": [
+        16
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 9
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6dc53779-bd75-4423-bea6-55b636628126",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 133,
+      "reportedNumber": "NLM001053",
+      "catalogPages": [
+        16
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 9
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-2be2acb5-f5ae-4c07-b689-e4779fae75d2",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 134,
+      "reportedNumber": "NLM001054",
+      "catalogPages": [
+        16
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 8
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-1b2b5a1b-9557-4c22-a8ee-ee88a819f8eb",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 135,
+      "reportedNumber": "NLM001055",
+      "catalogPages": [
+        16
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 6
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-fb38002e-b0a2-453f-a181-ba6cb3d9d926",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 136,
+      "reportedNumber": "NLM001056",
+      "catalogPages": [
+        16
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 8
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-ca753c32-e8ce-4f0f-bd3b-eff1a5d59a67",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 137,
+      "reportedNumber": "NLM001057",
+      "catalogPages": [
+        16
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 4
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f4f8e5d5-8d29-4525-86d3-c300a113c2ee",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 138,
+      "reportedNumber": "NLM001058",
+      "catalogPages": [
+        16
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 10
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-536b865b-6bc1-48ba-9f98-70a92395f653",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 139,
+      "reportedNumber": "NLM001059",
+      "catalogPages": [
+        16
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 6
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-37c74473-bc35-4bc1-b564-8e9ec68c1762",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 140,
+      "reportedNumber": "NLM001060",
+      "catalogPages": [
+        16
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 5
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f2c13d8e-5735-47fc-946b-2d1a767c6682",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 141,
+      "reportedNumber": "NLM001061",
+      "catalogPages": [
+        16
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 6
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8b9ac54b-c701-47a0-bffc-378687365518",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 142,
+      "reportedNumber": "NLM001062",
+      "catalogPages": [
+        16,
+        17
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 6
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f845596f-e49e-494b-8a3f-ff9ff2048acb",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 143,
+      "reportedNumber": "NLM001063",
+      "catalogPages": [
+        17
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 7
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-988e1f4e-c391-4d82-9f1f-3673d2d0b585",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 144,
+      "reportedNumber": "NLM001064",
+      "catalogPages": [
+        17
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 6
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-3ab04ca0-c46a-422c-8a32-1643b15587e1",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 145,
+      "reportedNumber": "NLM001065",
+      "catalogPages": [
+        17
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 5
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b54964a4-619e-488a-bb52-fb41c178ba5a",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 146,
+      "reportedNumber": "NLM001066",
+      "catalogPages": [
+        17
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 3
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-9fc8fccb-cd5a-4335-9fe0-36be857fd735",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 147,
+      "reportedNumber": "NLM001067",
+      "catalogPages": [
+        17
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 3
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-588ac1bd-b712-4f3a-9345-397b8588d506",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 148,
+      "reportedNumber": "NLM001068",
+      "catalogPages": [
+        17
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 4
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f6aeadec-d234-4698-b6e7-976b4fa1a51b",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 149,
+      "reportedNumber": "NLM001069",
+      "catalogPages": [
+        17
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 5
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-9305a4d8-ed55-4d80-9cc3-8094476b20b8",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 150,
+      "reportedNumber": "NLM001070",
+      "catalogPages": [
+        17
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 5
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-55c23d30-59eb-4915-9e44-4d55a5c38112",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 151,
+      "reportedNumber": "NLM001071",
+      "catalogPages": [
+        17
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 4
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a8ec4193-c196-4824-af02-ce54ec4ca30b",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 152,
+      "reportedNumber": "NLM001072",
+      "catalogPages": [
+        17
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 3
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-bbc6665f-fb33-4428-bb8c-94ac172a2134",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 153,
+      "reportedNumber": "NLM001073",
+      "catalogPages": [
+        17
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 5
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-20a95e45-855b-45c7-a3cb-a2e495f1a1b8",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 154,
+      "reportedNumber": "NLM001074",
+      "catalogPages": [
+        17
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 2
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-9bd38b2d-d00d-4bd4-b3de-3b79f7c05c8e",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 155,
+      "reportedNumber": "NLM001075",
+      "catalogPages": [
+        17
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 3
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6179c60e-c386-4175-8e89-5ecd2dc3c7ed",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 156,
+      "reportedNumber": "NLM001076",
+      "catalogPages": [
+        17,
+        18
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 4
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e93f4eb5-0946-449e-9f7a-fa21ec7bebc3",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 157,
+      "reportedNumber": "NLM001077",
+      "catalogPages": [
+        18
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 5
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-06d6aa77-bd0d-4005-8079-eb547e715d88",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 158,
+      "reportedNumber": "NLM001078",
+      "catalogPages": [
+        18
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 5
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-87d2d8b5-385c-449b-8976-e908996c8e71",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 159,
+      "reportedNumber": "NLM001079",
+      "catalogPages": [
+        18
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 4
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-9a9f90fe-ed41-4aa9-9533-c467fb352944",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 160,
+      "reportedNumber": "NLM001080",
+      "catalogPages": [
+        18
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 5
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-42c80b50-4a6e-44b8-99bb-2f64fab89d55",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 161,
+      "reportedNumber": "NLM001081",
+      "catalogPages": [
+        18
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 5
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-bbd75a15-a37d-46a4-846d-7489ef7852a0",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 162,
+      "reportedNumber": "NLM001082",
+      "catalogPages": [
+        18
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 4
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-ab3d90ff-2893-4a4a-b4eb-728b3ce5cc03",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 163,
+      "reportedNumber": "NLM001083",
+      "catalogPages": [
+        18
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 3
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-965c23c6-1ac0-43bb-bdc4-22f5fa0fd962",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 164,
+      "reportedNumber": "NLM001084",
+      "catalogPages": [
+        18
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 6
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-78a73181-acf2-48c9-b7fc-5a6a83633465",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 165,
+      "reportedNumber": "NLM001085",
+      "catalogPages": [
+        18
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 4
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-701d36c7-e066-4c1a-a7ac-9d650d575d46",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 166,
+      "reportedNumber": "NLM001086",
+      "catalogPages": [
+        18
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 5
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-ddb1c561-e613-431a-9000-0a3c5336ea64",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 167,
+      "reportedNumber": "NLM001087",
+      "catalogPages": [
+        18
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 3
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-cc41b64a-6f1e-4d27-8834-81a7401efb3d",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 168,
+      "reportedNumber": "NLM001088",
+      "catalogPages": [
+        18
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 2
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-08b84705-951f-4599-92c8-a5cb2571c72c",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 169,
+      "reportedNumber": "NLM001089",
+      "catalogPages": [
+        18
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 2
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-9ad67e03-0b0e-444c-9b10-9d28c15b8453",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 170,
+      "reportedNumber": "NLM001090",
+      "catalogPages": [
+        18,
+        19
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 3
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-cfb7e09f-6de5-42a8-88a4-4b5384b0a96f",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 171,
+      "reportedNumber": "NLM001091",
+      "catalogPages": [
+        19
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 1
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f6cf75f5-7bb3-42e6-8ebc-b4fb9ba71f5f",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 172,
+      "reportedNumber": "NLM001092",
+      "catalogPages": [
+        19
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 3
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b9aa0560-c0ab-44ef-9d15-f6c2e820c866",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 173,
+      "reportedNumber": "NLM001093",
+      "catalogPages": [
+        19
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 3
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-11a5aa1d-3352-44c2-b918-469ee02c0438",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 174,
+      "reportedNumber": "NLM001094",
+      "catalogPages": [
+        19
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 2
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e37e713d-7926-4718-af32-0b3a4813ab9c",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 175,
+      "reportedNumber": "NLM001095",
+      "catalogPages": [
+        19
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 2
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-eecee98d-cbf6-45c9-b9c8-c63b20a11ffc",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 176,
+      "reportedNumber": "NLM001096",
+      "catalogPages": [
+        19
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 3
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a84b088e-1f39-47bd-aa3a-13b3f87d64ec",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 177,
+      "reportedNumber": "NLM001097",
+      "catalogPages": [
+        19
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 1
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-ef967425-81a6-476f-ad62-69643d70daec",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 178,
+      "reportedNumber": "NLM001098",
+      "catalogPages": [
+        19
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 2
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f04c5f80-16d2-41fd-99a3-46a4f14465b0",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 179,
+      "reportedNumber": "NLM001099",
+      "catalogPages": [
+        19
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 2
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-5c286132-f26b-406e-95d6-6ccd949247fd",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 180,
+      "reportedNumber": "NLM001100",
+      "catalogPages": [
+        19
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 2
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c3d845f6-b88b-4c6b-b4c1-f795207afb14",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 181,
+      "reportedNumber": "NLM001101",
+      "catalogPages": [
+        19
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 1
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-fcf09da6-0ef1-4b3d-bb11-1f1a51d28cde",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 182,
+      "reportedNumber": "NLM001102",
+      "catalogPages": [
+        19
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 1
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-0a4d8de1-94a6-4d1e-9285-a152f5bf3262",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 183,
+      "reportedNumber": "NLM001103",
+      "catalogPages": [
+        19
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 1
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f86d59b4-84e9-48c1-a95f-01bcf47d855b",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 184,
+      "reportedNumber": "NLM001104",
+      "catalogPages": [
+        19,
+        20
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 1
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-474aae2e-70e5-45e3-a6c0-2504fdc3b22e",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 185,
+      "reportedNumber": "NLM001105",
+      "catalogPages": [
+        20
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 2
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-4183b08b-c503-440f-9071-464001e61ed4",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 186,
+      "reportedNumber": "NLM001106",
+      "catalogPages": [
+        20
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 2
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-ac477d62-8200-4b0c-a30d-6e9f0db6bcb2",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 187,
+      "reportedNumber": "NLM001107",
+      "catalogPages": [
+        20
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 1
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-1b6f4702-3a3e-4263-9f97-86e0383c22e6",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 188,
+      "reportedNumber": "NLM001108",
+      "catalogPages": [
+        20
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 1
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite",
+      "classification": null,
+      "locality": "Paurin, Thailand",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-5a1b0274-705c-40a2-9ecf-307ae96f5e71",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 189,
+      "reportedNumber": "NLM001109",
+      "catalogPages": [
+        20
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 8
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6c3d3aa2-8a86-40dc-a1dc-3a5b5182cba0",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 190,
+      "reportedNumber": "NLM001110",
+      "catalogPages": [
+        20
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 11
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-bf18e0bf-fd63-4c38-ac8a-9b44cd3e8133",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 191,
+      "reportedNumber": "NLM001111",
+      "catalogPages": [
+        20
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 7
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6efc0a73-62d1-4177-ae91-0afe6dcfeaeb",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 192,
+      "reportedNumber": "NLM001112",
+      "catalogPages": [
+        20
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 12
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a464e412-a7bc-4329-900a-6c0e44fdebac",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 193,
+      "reportedNumber": "NLM001113",
+      "catalogPages": [
+        20
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 10
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e28abcd7-0d58-40a9-8321-c37f6a40350c",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 194,
+      "reportedNumber": "NLM001114",
+      "catalogPages": [
+        20
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 10
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-49264e51-18ae-4a11-94e9-618a056b4b2c",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 195,
+      "reportedNumber": "NLM001115",
+      "catalogPages": [
+        20
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 8
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-7b587675-d72d-4267-a7a3-f14f001ed9d3",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 196,
+      "reportedNumber": "NLM001116",
+      "catalogPages": [
+        20
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 4
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f59cfe8c-ba66-4af4-867c-b9d951d187a0",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 197,
+      "reportedNumber": "NLM001117",
+      "catalogPages": [
+        20
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 10
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-5b00c916-a837-403e-b0ac-07f475973221",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 198,
+      "reportedNumber": "NLM001118",
+      "catalogPages": [
+        21
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 10
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-404fe1ba-2d1e-4037-8d73-e67cc89a2e1b",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 199,
+      "reportedNumber": "NLM001119",
+      "catalogPages": [
+        21
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 8
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-07140328-d2fb-40a3-9f06-062514cfd238",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 200,
+      "reportedNumber": "NLM001120",
+      "catalogPages": [
+        21
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 8
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-dc1f93d8-2daa-48f1-9ea0-e2280c78e186",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 201,
+      "reportedNumber": "NLM001121",
+      "catalogPages": [
+        21
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 6
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-0d505c6b-0a63-4edf-b784-41f5e48e7e40",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 202,
+      "reportedNumber": "NLM001122",
+      "catalogPages": [
+        21
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 10
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-4490e9e5-302c-4038-afc8-b8f8d6935a69",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 203,
+      "reportedNumber": "NLM001123",
+      "catalogPages": [
+        21
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 4
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-ec9c77ca-bd25-4091-8b70-f652298d1fb7",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 204,
+      "reportedNumber": "NLM001124",
+      "catalogPages": [
+        21
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 4
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-deb9fd2d-13be-4d33-8885-790316fdd557",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 205,
+      "reportedNumber": "NLM001125",
+      "catalogPages": [
+        21
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 8
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-7de19168-65a2-4794-9e62-14031c1062ce",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 206,
+      "reportedNumber": "NLM001126",
+      "catalogPages": [
+        21
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 4
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c85fe543-0589-42d5-b6d6-ad3c4e97e5c0",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 207,
+      "reportedNumber": "NLM001127",
+      "catalogPages": [
+        21
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 6
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6e95e433-02f4-4bfc-9e64-b65d3306140b",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 208,
+      "reportedNumber": "NLM001128",
+      "catalogPages": [
+        21
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 6
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-bede5029-fd75-4f27-b64d-cbe2e2475708",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 209,
+      "reportedNumber": "NLM001129",
+      "catalogPages": [
+        21
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 4
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-74e331fd-c843-4e45-a91c-f5cdaca8d386",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 210,
+      "reportedNumber": "NLM001130",
+      "catalogPages": [
+        21
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 1
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-09fdb9f3-27e2-4007-b691-0d38a3fb195b",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 211,
+      "reportedNumber": "NLM001131",
+      "catalogPages": [
+        21,
+        22
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 4
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-5f382890-1852-4079-9370-9192dd653e08",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 212,
+      "reportedNumber": "NLM001132",
+      "catalogPages": [
+        22
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 2
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-162a027d-df78-40e6-9168-f2ed860d14d8",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 213,
+      "reportedNumber": "NLM001133",
+      "catalogPages": [
+        22
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 2
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-52759a52-8399-42b1-b4ad-6689cf95060b",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 214,
+      "reportedNumber": "NLM001134",
+      "catalogPages": [
+        22
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 13
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-14e18f3e-7409-48a3-8ac8-630b2ebecfaf",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 215,
+      "reportedNumber": "NLM001135",
+      "catalogPages": [
+        22
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 9
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c29f44ef-9a3d-4eed-bb76-a9e8a06680d2",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 216,
+      "reportedNumber": "NLM001136",
+      "catalogPages": [
+        22
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 11
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-45a3fb0d-18e7-44bc-93d5-09fac2fb7388",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 217,
+      "reportedNumber": "NLM001137",
+      "catalogPages": [
+        22
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 5
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b0cf880d-f48e-435a-bc7f-ec3b39cd0334",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 218,
+      "reportedNumber": "NLM001138",
+      "catalogPages": [
+        22
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 5
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d7472317-93a1-49dd-b892-b789c20f7e47",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 219,
+      "reportedNumber": "NLM001139",
+      "catalogPages": [
+        22
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 2
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-62c13d96-9ccd-46a4-a3d3-bdfcfb66bd54",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 220,
+      "reportedNumber": "NLM001140",
+      "catalogPages": [
+        22
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 1
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b63ab1f8-0bed-43a8-a4e8-b10af8b0b0a9",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 221,
+      "reportedNumber": "NLM001141",
+      "catalogPages": [
+        22
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 1
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-65b06f32-9d45-40ea-a09e-a5512cea3137",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 222,
+      "reportedNumber": "NLM001142",
+      "catalogPages": [
+        22
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 1
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f3845986-0f05-4b37-a42d-72776c47bb1a",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 223,
+      "reportedNumber": "NLM001143",
+      "catalogPages": [
+        22
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 0.5
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-142b58c6-e565-4ebb-8a1e-95e9b6bad1d9",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 224,
+      "reportedNumber": "NLM001144",
+      "catalogPages": [
+        22
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 29
+            }
+          ]
+        }
+      ],
+      "name": "Moldavite に伴う含礫砂岩",
+      "classification": null,
+      "locality": "Bohemia, Czechoslovakia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6d630c65-fb17-466f-a9ab-54e45263e982",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 225,
+      "reportedNumber": "NLM001145",
+      "catalogPages": [
+        24
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 1.1
+            }
+          ]
+        }
+      ],
+      "name": "Bediasite (tektite)",
+      "classification": null,
+      "locality": "Texas, U.S.A.",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-3ad6896a-bfb4-4f2f-a55f-cfe4fadd4be3",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 226,
+      "reportedNumber": "NLM001146",
+      "catalogPages": [
+        24
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 42
+            }
+          ]
+        }
+      ],
+      "name": "Indochinite (tektite)",
+      "classification": null,
+      "locality": "中華人民共和国、広東省、陽江",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d622585d-5717-463b-a354-3d94e935d31a",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 227,
+      "reportedNumber": "NLM001147",
+      "catalogPages": [
+        24
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 1.6
+            }
+          ]
+        }
+      ],
+      "name": "Australia (tektite)",
+      "classification": null,
+      "locality": "Motpins Station, South Australia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-db8a3f90-a763-475a-a318-7fc90b5568b0",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 228,
+      "reportedNumber": "NLM001148",
+      "catalogPages": [
+        24
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 1.8
+            }
+          ]
+        }
+      ],
+      "name": "Australia (tektite)",
+      "classification": null,
+      "locality": "Motpins Station, South Australia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-2225f144-c34a-4e2c-952b-5836d9d6dc0a",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 229,
+      "reportedNumber": "NLM001149",
+      "catalogPages": [
+        24
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 6.75
+            }
+          ]
+        }
+      ],
+      "name": "Darwin Glass (natural glass)",
+      "classification": null,
+      "locality": "Mount Darwin, Tasmania, Australia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-29e1c13d-3abb-476c-8a4a-bdb467eb46e1",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 230,
+      "reportedNumber": "NLM001150",
+      "catalogPages": [
+        24
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 0.52
+            }
+          ]
+        }
+      ],
+      "name": "Tektite",
+      "classification": null,
+      "locality": "Wabar Gate, Saudi Arabia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-3e7ca698-32f6-4cbf-ac9f-f20358121a62",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 231,
+      "reportedNumber": "NLM001151",
+      "catalogPages": [
+        24
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 5.64
+            }
+          ]
+        }
+      ],
+      "name": "Philippinite",
+      "classification": null,
+      "locality": "Coco Grove, Luzon, Philippine",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-2062340b-f173-4998-909d-347a7d205331",
+      "catalogId": "kanagawa-1996",
+      "entryOrder": 232,
+      "reportedNumber": "NLM001152",
+      "catalogPages": [
+        24
+      ],
+      "section": "IV. テクタイト目録",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 128
+            }
+          ]
+        }
+      ],
+      "name": "Philippinite",
+      "classification": null,
+      "locality": "Coco Grove, Luzon, Philippine",
+      "eventDate": null,
       "confidence": "high"
     },
     {
