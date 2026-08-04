@@ -121,6 +121,11 @@
       "rightsStatus": "undetermined",
       "pages": []
     },
+    "farrington-1916": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "pages": []
+    },
     "haidinger-1859": {
       "displayPolicy": "display",
       "rightsStatus": "public-domain",
@@ -470,6 +475,11 @@
       "pages": []
     },
     "usnm-1886": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "pages": []
+    },
+    "ward-1904": {
       "displayPolicy": "blocked",
       "rightsStatus": "undetermined",
       "pages": []

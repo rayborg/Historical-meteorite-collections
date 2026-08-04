@@ -63,6 +63,13 @@
       "basisUrl": null,
       "pageIds": []
     },
+    "farrington-1916": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "basis": null,
+      "basisUrl": null,
+      "pageIds": []
+    },
     "haidinger-1859": {
       "displayPolicy": "display",
       "rightsStatus": "public-domain",
@@ -224,6 +231,13 @@
       "pageIds": []
     },
     "usnm-1886": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "basis": null,
+      "basisUrl": null,
+      "pageIds": []
+    },
+    "ward-1904": {
       "displayPolicy": "blocked",
       "rightsStatus": "undetermined",
       "basis": null,

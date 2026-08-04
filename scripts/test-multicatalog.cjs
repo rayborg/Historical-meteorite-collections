@@ -906,7 +906,7 @@ test("URL filter behavior and cache version remain stable", () => {
     query: "catalog item 2", catalog: "nininger-1933", min: "3", max: "12", sort: "weight-desc"
   });
   assert.equal(app.serializeUrlFilters(parsed).toString(), "q=catalog+item+2&catalog=nininger-1933&min=3&max=12&sort=weight-desc");
-  assert.equal(app.CACHE_VERSION, "20260803-1");
+  assert.equal(app.CACHE_VERSION, "20260804-1");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.CACHE_VERSION}`));
 });

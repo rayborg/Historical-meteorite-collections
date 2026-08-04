@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260803-1";
+const CACHE_VERSION = "20260804-1";
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "name-asc";
 const VALID_SORTS = new Set([
