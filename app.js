@@ -188,7 +188,24 @@ const IMAGE_LIKE_STRING =
   /\.(?:arw|avif|bmp|cr2|cr3|csv|dat|dng|docx?|gif|heic|heif|hocr|jpe?g|jsonl?|log|md|nef|ocr|orf|pdf|pef|png|raf|rtf|rw2|srw|svg|text|tiff?|tsv|txt|webp|xml|ya?ml)(?=$|[^A-Za-z0-9])|\b(?:dscn?|img|pxl)[_-]?\d{3,}\b/iu;
 const OCR_BATCH_OR_CAMERA_TIMESTAMP =
   /\b(?:ocr[\s_-]*)?batch[\s_-]*\d{1,5}(?:\.[A-Za-z0-9]{2,5})?\b|\b(?:19|20)\d{6}[_-]\d{6}(?:[_-]\d+)?(?:\.[A-Za-z0-9]{2,5})?\b/iu;
-const PATH_LIKE_STRING = /(?:^|[\s"'(])(?:[A-Za-z][A-Za-z\d+.-]*:\/\/|\/{1,2}|\.{1,2}[\\/]|~[\\/]|[A-Za-z]:[\\/]|(?:assets?|files?|folios?|images?|scans?|source[\s_-]*images?)[\\/])|\\/iu;
+const FACTUAL_FORMULA_TOKENS = Object.freeze([
+  "/Tii-vJatllO", "/-I", "/Nickel iron", "/?e/ermces", "(.\\l2O3)", "\\ 1.753",
+  "D?i\\\\hvQQ", "\\i.", "\\N.", "\\N\\\\\\\\^m", "\\\\.", "\\iin.",
+]);
+const FACTUAL_FORMULA_UNSAFE_PREFIXES = Object.freeze([
+  "C:", "file:", "https:", "ftp:", "scheme:",
+]);
+const FACTUAL_FORMULA_VALID_SUFFIXES = Object.freeze([
+  "", " factual", ",", ";", ".", "!", "?", "—", ".—", ", factual",
+]);
+const FACTUAL_FORMULA_INVALID_SUFFIXES = Object.freeze([
+  "/private", "\\private", ".private", ",/private", ",\\private", ";/private", ";\\private",
+  "./private", ".\\private", " /private", " \\private", ",.private",
+]);
+const PATH_TOKEN_LEADING_CHAR = /[A-Za-z0-9._~\\/-]/u;
+const TERMINAL_PUNCTUATION = /\p{P}/u;
+const STRICT_PATH_LIKE_STRING =
+  /[A-Za-z][A-Za-z\d+.-]*:\/\/|(?:^|[^A-Za-z0-9._~-])(?:(?:[\\/]{2}(?=\S)|[\\/](?![\\/])(?=\S))|\.{1,2}[\\/](?=\S)|~[\\/]|[A-Za-z]:[\\/]|(?:assets?|files?|folios?|images?|scans?|source[\s_-]*images?)[\\/])/iu;
 const HOLDING_PRIVATE_LANGUAGE = /\bocr\b|\b(?:review(?:er)?|research|transcript(?:ion)?|verbatim|working|private)[\s_-]+notes?\b|\bpage[\s_-]*(?:id|identifier)\b|\bpage[_-]\d+\b|\b(?:private[\s_-]*source|source[\s_-]*page)\b/iu;
 const HOLDING_PRIVATE_DOCUMENT = /(?:^|[\s"'(])(?:source|private|data)[\\/][^\s"')]+|\.(?:dat|csv|docx?|json|md|odt|rtf|txt|xlsx?|xml)(?=$|[^A-Za-z0-9])/iu;
 const HOLDING_WEIGHT_DISPLAY = /\b\d[\d,.]*\s+(?:g|grs?|grams?|kg|kgs?|kilograms?)\.?(?![A-Za-z0-9])/iu;
@@ -474,11 +491,58 @@ function normalizedText(value) {
   return typeof value === "string" ? value.normalize("NFC").replace(/\s+/gu, " ").trim() : null;
 }
 
+function hasFormulaLeadingBoundary(value, index) {
+  return index === 0 || (value[index - 1] !== ":" && !PATH_TOKEN_LEADING_CHAR.test(value[index - 1]));
+}
+
+function hasFormulaTrailingBoundary(value, index) {
+  if (index === value.length) return true;
+  if (/\s/u.test(value[index])) return true;
+  if (!TERMINAL_PUNCTUATION.test(value[index])) return false;
+  let cursor = index;
+  while (cursor < value.length && TERMINAL_PUNCTUATION.test(value[cursor])) {
+    if (value[cursor] === "/" || value[cursor] === "\\") return false;
+    cursor += 1;
+  }
+  return cursor === value.length || /\s/u.test(value[cursor]);
+}
+
+function maskFactualFormulaTokens(value) {
+  const intervals = [];
+  for (const token of FACTUAL_FORMULA_TOKENS) {
+    let index = -1;
+    while ((index = value.indexOf(token, index + 1)) !== -1) {
+      if (!hasFormulaLeadingBoundary(value, index)) {
+        if (value[index - 1] === ":") return null;
+        continue;
+      }
+      const end = index + token.length;
+      if (!hasFormulaTrailingBoundary(value, end)) return null;
+      intervals.push([index, end]);
+    }
+  }
+  if (intervals.length === 0) return value;
+  intervals.sort(([left], [right]) => left - right);
+  let cursor = 0;
+  let masked = "";
+  for (const [start, end] of intervals) {
+    if (start < cursor) continue;
+    masked += value.slice(cursor, start) + " ".repeat(end - start);
+    cursor = end;
+  }
+  return masked + value.slice(cursor);
+}
+
+function containsUnsafePath(value) {
+  const masked = maskFactualFormulaTokens(value);
+  return masked === null || STRICT_PATH_LIKE_STRING.test(masked);
+}
+
 function isLeakageSafeText(value) {
   return typeof value === "string" && value === normalizedText(value) &&
     !/[\p{Cc}\p{Cf}]/u.test(value) && !PRIVATE_LABEL.test(value) &&
     !PRIVATE_LANGUAGE.test(value) && !IMAGE_LIKE_STRING.test(value) &&
-    !OCR_BATCH_OR_CAMERA_TIMESTAMP.test(value) && !PATH_LIKE_STRING.test(value);
+    !OCR_BATCH_OR_CAMERA_TIMESTAMP.test(value) && !containsUnsafePath(value);
 }
 
 function isLeakageSafeHoldingText(value, allowWeightDisplay = false) {
@@ -2350,6 +2414,10 @@ if (typeof module !== "undefined" && module.exports) {
   module.exports = {
     CACHE_VERSION,
     DEFAULT_SORT,
+    FACTUAL_FORMULA_INVALID_SUFFIXES,
+    FACTUAL_FORMULA_TOKENS,
+    FACTUAL_FORMULA_UNSAFE_PREFIXES,
+    FACTUAL_FORMULA_VALID_SUFFIXES,
     calculateStatistics,
     calculateLineageCounts,
     chronologicalEarlierPair,
@@ -2359,6 +2427,7 @@ if (typeof module !== "undefined" && module.exports) {
     catalogSummaryEntries,
     catalogNumberHoldingDetails,
     compareRecords,
+    containsUnsafePath,
     designationComponents,
     deriveEarlierRecordIndex,
     filterRecords,

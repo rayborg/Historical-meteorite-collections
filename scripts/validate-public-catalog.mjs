@@ -2,7 +2,17 @@ import { createHash } from "node:crypto";
 import { lstat, mkdtemp, mkdir, readFile, readdir, rm, symlink, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, join, relative, sep } from "node:path";
+import { createRequire } from "node:module";
 import { fileURLToPath } from "node:url";
+
+const require = createRequire(import.meta.url);
+const {
+  FACTUAL_FORMULA_INVALID_SUFFIXES,
+  FACTUAL_FORMULA_TOKENS,
+  FACTUAL_FORMULA_UNSAFE_PREFIXES,
+  FACTUAL_FORMULA_VALID_SUFFIXES,
+  containsUnsafePath,
+} = require("../app.js");
 
 const CATALOG_URL = new URL("../data/catalog.json", import.meta.url);
 const FOLIOS_URL = new URL("../data/folios.json", import.meta.url);
@@ -86,8 +96,6 @@ const IMAGE_LIKE_STRING =
   /\.(?:arw|avif|bmp|cr2|cr3|csv|dat|dng|docx?|gif|heic|heif|hocr|jpe?g|jsonl?|log|md|nef|ocr|orf|pdf|pef|png|raf|rtf|rw2|srw|svg|text|tiff?|tsv|txt|webp|xml|ya?ml)(?=$|[^A-Za-z0-9])|\b(?:dscn?|img|pxl)[_-]?\d{3,}\b/iu;
 const OCR_BATCH_OR_CAMERA_TIMESTAMP =
   /\b(?:ocr[\s_-]*)?batch[\s_-]*\d{1,5}(?:\.[A-Za-z0-9]{2,5})?\b|\b(?:19|20)\d{6}[_-]\d{6}(?:[_-]\d+)?(?:\.[A-Za-z0-9]{2,5})?\b/iu;
-const PATH_LIKE_STRING =
-  /(?:^|[\s"'(])(?:[A-Za-z][A-Za-z\d+.-]*:\/\/|\/{1,2}|\.{1,2}[\\/]|~[\\/]|[A-Za-z]:[\\/]|(?:assets?|files?|folios?|images?|scans?|source[\s_-]*images?)[\\/])|\\/iu;
 const HOLDING_PRIVATE_LANGUAGE =
   /\bocr\b|\b(?:review(?:er)?|research|transcript(?:ion)?|verbatim|working|private)[\s_-]+notes?\b|\bpage[\s_-]*(?:id|identifier)\b|\bpage[_-]\d+\b|\b(?:private[\s_-]*source|source[\s_-]*page)\b/iu;
 const HOLDING_PRIVATE_DOCUMENT =
@@ -165,7 +173,7 @@ function rejectCatalogExcludedContent(value, path = "catalog") {
     assert(!PRIVATE_LANGUAGE.test(value), `${path} contains private-source language`);
     assert(!IMAGE_LIKE_STRING.test(value), `${path} contains an image-like or source-document filename`);
     assert(!OCR_BATCH_OR_CAMERA_TIMESTAMP.test(value), `${path} contains an OCR batch or camera timestamp filename`);
-    assert(!PATH_LIKE_STRING.test(value), `${path} contains a file path`);
+    assert(!containsUnsafePath(value), `${path} contains a file path`);
     return;
   }
   if (Array.isArray(value)) {
@@ -1022,10 +1030,79 @@ function runSyntheticCatalogTests(modelFixture) {
     ["private label", "Notes"],
     ["OCR batch identifier", "batch-4"],
   ]) assertCatalogRejection(({ data }) => { data.records[0].locality = value; }, description);
+  for (const [description, value] of [
+    ["rooted private path", "/private"],
+    ["rooted Users path", "/Users"],
+    ["arbitrary rooted path", "/secret"],
+    ["rooted temporary path", "/tmp"],
+    ["rooted configuration path", "/etc"],
+    ["rooted home path", "/home"],
+    ["rooted variable-data path", "/var"],
+    ["rooted administrator path", "/root"],
+    ["rooted volume path", "/Volumes"],
+    ["network root path", "//server"],
+    ["network formula lookalike path", "//Tii-vJatllO"],
+    ["parent-relative slash path", "../private"],
+    ["parent-relative backslash path", "..\\private"],
+    ["parent-relative slash formula lookalike", "../l2O3)"],
+    ["parent-relative backslash formula lookalike", "..\\l2O3)"],
+    ["current-relative slash path", "./private"],
+    ["current-relative backslash path", ".\\private"],
+    ["current-relative slash formula lookalike", "./l2O3)"],
+    ["UNC server path", "\\\\server"],
+    ["UNC share path", "\\\\server\\share"],
+    ["Windows root-relative private path", "\\private"],
+    ["arbitrary Windows root-relative path", "\\secret"],
+    ["Tii formula slash continuation", "/Tii-vJatllO/private"],
+    ["Tii formula backslash continuation", "/Tii-vJatllO\\private"],
+    ["dash-I formula slash continuation", "/-I/private"],
+    ["dash-I formula backslash continuation", "/-I\\private"],
+    ["Nickel formula slash continuation", "/Nickel iron/private"],
+    ["Nickel formula backslash continuation", "/Nickel iron\\private"],
+    ["Nickel formula dotted continuation", "/Nickel iron.private"],
+    ["alumina formula slash continuation", "(.\\l2O3)/private"],
+    ["alumina formula backslash continuation", "(.\\l2O3)\\private"],
+    ["alumina formula dotted continuation", "(.\\l2O3).private"],
+    ["citation-i slash continuation", "\\i./private"],
+    ["citation-i backslash continuation", "\\i.\\private"],
+    ["citation-N slash continuation", "\\N./private"],
+    ["citation-N backslash continuation", "\\N.\\private"],
+    ["citation-Higgins slash continuation", "\\N\\\\\\\\^m/private"],
+    ["citation-Higgins backslash continuation", "\\N\\\\\\\\^m\\private"],
+    ["citation-Ward slash continuation", "\\\\./private"],
+    ["citation-Ward backslash continuation", "\\\\.\\private"],
+    ["UNC citation-i lookalike", "\\\\i."],
+    ["UNC citation-N lookalike", "\\\\N."],
+    ["UNC citation-Higgins lookalike", "\\\\N\\\\\\\\^m"],
+    ["Tii punctuated slash continuation", "/Tii-vJatllO,/private"],
+    ["Tii punctuated backslash continuation", "/Tii-vJatllO,\\private"],
+    ["dash-I punctuated slash continuation", "/-I,/private"],
+    ["dash-I punctuated backslash continuation", "/-I,\\private"],
+    ["Nickel punctuated slash continuation", "/Nickel iron,/private"],
+    ["Nickel punctuated backslash continuation", "/Nickel iron,\\private"],
+    ["alumina punctuated slash continuation", "(.\\l2O3),/private"],
+    ["alumina punctuated backslash continuation", "(.\\l2O3),\\private"],
+  ]) assertCatalogRejection(({ data }) => { data.records[0].locality = value; }, description);
+  for (const token of FACTUAL_FORMULA_TOKENS) {
+    for (const suffix of FACTUAL_FORMULA_INVALID_SUFFIXES) {
+      assertCatalogRejection(
+        ({ data }) => { data.records[0].locality = `${token}${suffix}`; },
+        `factual formula path continuation: ${token}${suffix}`,
+      );
+    }
+  }
+  for (const token of FACTUAL_FORMULA_TOKENS.filter((value) => /^[\\/]/u.test(value))) {
+    for (const prefix of FACTUAL_FORMULA_UNSAFE_PREFIXES) {
+      assertCatalogRejection(
+        ({ data }) => { data.records[0].locality = `${prefix}${token}`; },
+        `drive/scheme-prefixed factual formula: ${prefix}${token}`,
+      );
+    }
+  }
   assertCatalogRejection(({ data }) => { data.records[0].rawOcr = "unpublished text"; }, "raw OCR key");
   assertCatalogRejection(({ data }) => { data.metadata.catalogs[0].sourceFilename = "page-1.dat"; }, "source filename key");
   assert(baselineAllowCount === 2, `expected 2 baseline catalog allows, got ${baselineAllowCount}`);
-  assert(baselineRejectionCount === 57, `expected 57 baseline catalog rejections, got ${baselineRejectionCount}`);
+  assert(baselineRejectionCount === 302, `expected 302 baseline catalog rejections, got ${baselineRejectionCount}`);
 
   const modelFolios = blockedFolios(modelFixture.metadata);
   validatePublicCatalog(modelFixture, modelFolios, "synthetic valid model-aware fixture");
@@ -1076,6 +1153,28 @@ function runSyntheticCatalogTests(modelFixture) {
   boundaryAggregate.description = "a series of 15 individuals";
   validatePublicCatalog(holdingPrivacyBoundary, modelFolios, "synthetic legitimate holding privacy boundaries");
   holdingPrivacyAllowCount += 1;
+  for (const formula of FACTUAL_FORMULA_TOKENS) {
+    for (const suffix of FACTUAL_FORMULA_VALID_SUFFIXES) {
+      const formulaBoundary = clone(modelFixture);
+      formulaBoundary.records.find(({ id }) => id === "nininger-item-3").holdings[0].description = `${formula}${suffix}`;
+      validatePublicCatalog(formulaBoundary, modelFolios, `synthetic factual formula boundary: ${formula}${suffix}`);
+      holdingPrivacyAllowCount += 1;
+    }
+  }
+  const calciumFormulaBoundary = clone(modelFixture);
+  calciumFormulaBoundary.records.find(({ id }) => id === "nininger-item-3").holdings[0].description = "Calcium \\ 1.753";
+  validatePublicCatalog(calciumFormulaBoundary, modelFolios, "synthetic Calcium formula boundary");
+  holdingPrivacyAllowCount += 1;
+  const escapedWeightBoundary = clone(modelFixture);
+  escapedWeightBoundary.records.find(({ id }) => id === "nininger-item-3").holdings[0].description = "Weight \\\\ pounds";
+  validatePublicCatalog(escapedWeightBoundary, modelFolios, "synthetic escaped weight boundary");
+  holdingPrivacyAllowCount += 1;
+  for (const prose of ["Formula: /Tii-vJatllO", "Citation: \\N."]) {
+    const colonBoundary = clone(modelFixture);
+    colonBoundary.records.find(({ id }) => id === "nininger-item-3").holdings[0].description = prose;
+    validatePublicCatalog(colonBoundary, modelFolios, `synthetic formula after colon and whitespace: ${prose}`);
+    holdingPrivacyAllowCount += 1;
+  }
 
   const assertModelRejection = (description, mutate) => {
     const candidate = clone(modelFixture);

@@ -382,6 +382,58 @@ test("privacy rejects remain recursive through holding fields", () => {
   }
 });
 
+test("runtime rejects rooted, relative, UNC, and formula-continuation path probes", () => {
+  for (const value of [
+    "/private", "/Users", "/secret", "/tmp", "/etc", "/home", "/var", "/root", "/Volumes",
+    "//server", "//Tii-vJatllO", "../private", "..\\private", "../l2O3)", "..\\l2O3)",
+    "./private", ".\\private", "./l2O3)", "\\\\server", "\\\\server\\share", "\\private", "\\secret",
+    "/Tii-vJatllO/private", "/Tii-vJatllO\\private", "/-I/private", "/-I\\private",
+    "/Nickel iron/private", "/Nickel iron\\private", "/Nickel iron.private",
+    "(.\\l2O3)/private", "(.\\l2O3)\\private", "(.\\l2O3).private",
+    "\\i./private", "\\i.\\private", "\\N./private", "\\N.\\private",
+    "\\N\\\\\\\\^m/private", "\\N\\\\\\\\^m\\private", "\\\\./private", "\\\\.\\private",
+    "\\\\i.", "\\\\N.", "\\\\N\\\\\\\\^m",
+    "/Tii-vJatllO,/private", "/Tii-vJatllO,\\private", "/-I,/private", "/-I,\\private",
+    "/Nickel iron,/private", "/Nickel iron,\\private", "(.\\l2O3),/private", "(.\\l2O3),\\private"
+  ]) {
+    const candidate = clone(fixture);
+    recordById(candidate, "nininger-item-1").holdings[0].description = value;
+    assert.throws(() => app.validateCatalog(candidate), /facts-only schema/, value);
+  }
+});
+
+test("runtime and build-time path logic share a locked factual formula allowlist", () => {
+  assert.deepEqual(app.FACTUAL_FORMULA_TOKENS, [
+    "/Tii-vJatllO", "/-I", "/Nickel iron", "/?e/ermces", "(.\\l2O3)", "\\ 1.753",
+    "D?i\\\\hvQQ", "\\i.", "\\N.", "\\N\\\\\\\\^m", "\\\\.", "\\iin.",
+  ]);
+  assert.deepEqual(app.FACTUAL_FORMULA_UNSAFE_PREFIXES, ["C:", "file:", "https:", "ftp:", "scheme:"]);
+  const root = join(__dirname, "..");
+  const validator = readFileSync(join(root, "scripts", "validate-public-catalog.mjs"), "utf8");
+  assert.match(validator, /FACTUAL_FORMULA_TOKENS,[\s\S]*containsUnsafePath,[\s\S]*require\("\.\.\/app\.js"\)/u);
+  assert.doesNotMatch(validator, /const (?:FACTUAL_FORMULA_TOKENS|PATH_LIKE_STRING|STRICT_PATH_LIKE_STRING)/u);
+});
+
+test("every factual formula token rejects every generated path continuation", () => {
+  for (const token of app.FACTUAL_FORMULA_TOKENS) {
+    for (const suffix of app.FACTUAL_FORMULA_INVALID_SUFFIXES) {
+      const candidate = clone(fixture);
+      recordById(candidate, "nininger-item-1").holdings[0].description = `${token}${suffix}`;
+      assert.throws(() => app.validateCatalog(candidate), /facts-only schema/, `${token}${suffix}`);
+    }
+  }
+});
+
+test("every slash or backslash formula token rejects every drive or scheme prefix", () => {
+  for (const token of app.FACTUAL_FORMULA_TOKENS.filter((value) => /^[\\/]/u.test(value))) {
+    for (const prefix of app.FACTUAL_FORMULA_UNSAFE_PREFIXES) {
+      const candidate = clone(fixture);
+      recordById(candidate, "nininger-item-1").holdings[0].description = `${prefix}${token}`;
+      assert.throws(() => app.validateCatalog(candidate), /facts-only schema/, `${prefix}${token}`);
+    }
+  }
+});
+
 for (const value of [
   "OCR line 4",
   "Reviewer note: uncertain",
@@ -411,6 +463,24 @@ test("holding privacy permits factual designation and description boundaries", (
   recordById(candidate, "nininger-item-2").holdings[1].designation = "128 s";
   recordById(candidate, "nininger-item-2").holdings[1].description = "a series of 15 individuals";
   assert.equal(app.validateCatalog(candidate), candidate);
+  for (const formula of app.FACTUAL_FORMULA_TOKENS) {
+    for (const suffix of app.FACTUAL_FORMULA_VALID_SUFFIXES) {
+      const formulaCandidate = clone(fixture);
+      recordById(formulaCandidate, "nininger-item-3").holdings[0].description = `${formula}${suffix}`;
+      assert.equal(app.validateCatalog(formulaCandidate), formulaCandidate, `${formula}${suffix}`);
+    }
+  }
+  const calciumFormula = clone(fixture);
+  recordById(calciumFormula, "nininger-item-3").holdings[0].description = "Calcium \\ 1.753";
+  assert.equal(app.validateCatalog(calciumFormula), calciumFormula);
+  const escapedWeight = clone(fixture);
+  recordById(escapedWeight, "nininger-item-3").holdings[0].description = "Weight \\\\ pounds";
+  assert.equal(app.validateCatalog(escapedWeight), escapedWeight);
+  for (const prose of ["Formula: /Tii-vJatllO", "Citation: \\N."]) {
+    const colonBoundary = clone(fixture);
+    recordById(colonBoundary, "nininger-item-3").holdings[0].description = prose;
+    assert.equal(app.validateCatalog(colonBoundary), colonBoundary, prose);
+  }
 });
 
 test("metadata summaries use holding designation and mass presence", () => {
@@ -802,8 +872,11 @@ test("catalog dropdown labels are concise and leave summary titles unchanged", (
     { id: "washington-1897", year: 1897, label: "Catalogue of the Collection of Meteorites in the Peabody Museum (1897)" },
     { id: "hogbom-1902", year: 1902, label: "Verzeichniss über die Meteoriten des Mineralogischen Instituts (1902)" },
     { id: "farrington-1903", year: 1903, label: "Catalogue of the Meteorite Collection of the Field Columbian Museum, May 1, 1903 (1903)" },
+    { id: "merrill-1916", year: 1916, label: "Handbook and Descriptive Catalogue of the Meteorite Collections in the United States National Museum (1916)" },
+    { id: "prior-1923", year: 1923, label: "Catalogue of Meteorites: global survey with British Museum representation status (1923)" },
     { id: "palache-1926", year: 1926, label: "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)" },
     { id: "nininger-1933", year: 1933, label: "The Nininger Collection (1933)" },
+    { id: "reeds-1937", year: 1937, label: "Catalogue of the Meteorites in the American Museum of Natural History as of October 1, 1935 (1937)" },
     { id: "barnes-1940", year: 1940, label: "Catalogue of Texas Meteorites and Their Known Specimen Holdings: University of Texas Bureau of Economic Geology (1940)" },
     { id: "nininger-1950", year: 1950, label: "The Nininger Collection (1950)" },
     { id: "huss-1976", year: 1976, label: "Huss Meteorite Collection catalog (1976)" },
@@ -815,7 +888,8 @@ test("catalog dropdown labels are concise and leave summary titles unchanged", (
   assert.deepEqual(labels, [
     "Lucas (1813)", "Chladni (1819)", "Chladni (1825)", "Haidinger (1859)", "Buchner (1863)",
     "Nordenskiöld (1870)", "Ball (1882)", "USNM (1886)", "Hovey (1896)", "Washington (1897)",
-    "Högbom (1902)", "Farrington (1903)", "Palache (1926)", "Nininger (1933)",
+    "Högbom (1902)", "Farrington (1903)", "Merrill (1916)", "Prior (1923)", "Palache (1926)",
+    "Nininger (1933)", "Reeds (1937)",
     "Barnes (1940)", "Nininger (1950)", "Huss (1976)", "Huss (1986)", "Kanagawa (1996)", "ASU (2024)"
   ]);
   assert.equal(new Set(labels).size, descriptors.length);

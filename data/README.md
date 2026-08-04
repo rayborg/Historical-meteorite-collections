@@ -1,12 +1,12 @@
 # Public Catalog Data
 
 <!-- release-summary:data-overview:start -->
-`catalog.json` is a schema-6 facts-only dataset containing 9,713 source observations from 23 historical meteorite catalogs. `folios.json` is a separate schema-2, deny-by-default display manifest with 49 reviewed page entries.
+`catalog.json` is a schema-6 facts-only dataset containing 11,722 source observations from 26 historical meteorite catalogs. `folios.json` is a separate schema-2, deny-by-default display manifest with 49 reviewed page entries.
 <!-- release-summary:data-overview:end -->
 
 A searchable transcription of the 1976 Huss Meteorite Collection catalog, compiled and published by Glenn Huss.
 
-The other configured descriptors identify their compilers without inferring a publisher: Jean Andre Henri Lucas for 1813; E. F. F. Chladni, with a Vienna appendix by Karl von Schreibers, for 1819; E. F. F. Chladni for 1825; Wilhelm Haidinger for 1859; Otto Buchner for 1863; A. E. Nordenskiöld for 1870; Valentine Ball for 1882; F. W. Clarke for 1886; Edmund Otis Hovey for 1896; Henry S. Washington for 1897; Wirt Tassin for 1902; A. G. Högbom for 1902; Oliver Cummings Farrington for 1903; R. Schreiter for 1912; Charles Palache for 1926; H. H. Nininger for 1933; Virgil E. Barnes for 1940; H. H. Nininger and Addie D. Nininger for 1950; Brian Mason for 1964; Glenn I. Huss for 1986; the Kanagawa Prefectural Museum of Natural History for 1996; and the Buseck Center for Meteorite Studies, Arizona State University, for the September 2024 ASU dataset.
+The other configured descriptors identify their compilers without inferring a publisher: Jean Andre Henri Lucas for 1813; E. F. F. Chladni, with a Vienna appendix by Karl von Schreibers, for 1819; E. F. F. Chladni for 1825; Wilhelm Haidinger for 1859; Otto Buchner for 1863; A. E. Nordenskiöld for 1870; Valentine Ball for 1882; F. W. Clarke for 1886; Edmund Otis Hovey for 1896; Henry S. Washington for 1897; Wirt Tassin for 1902; A. G. Högbom for 1902; Oliver Cummings Farrington for 1903; R. Schreiter for 1912; George P. Merrill for 1916; G. T. Prior for 1923; Charles Palache for 1926; H. H. Nininger for 1933; Chester A. Reeds for 1937; Virgil E. Barnes for 1940; H. H. Nininger and Addie D. Nininger for 1950; Brian Mason for 1964; Glenn I. Huss for 1986; the Kanagawa Prefectural Museum of Natural History for 1996; and the Buseck Center for Meteorite Studies, Arizona State University, for the September 2024 ASU dataset.
 
 <!-- release-summary:data-catalog-table:start -->
 | `catalogId` | Record model | Records | Metadata source pages | Pages cited by records |
@@ -26,20 +26,23 @@ The other configured descriptors identify their compilers without inferring a pu
 | `kanagawa-1996` | `collection-entry` | 232 | 20 | 20 |
 | `lucas-1813` | `collection-entry` | 13 | 3 | 3 |
 | `mason-1964` | `catalog-number` | 1,374 | 40 | 33 |
+| `merrill-1916` | `collection-entry` | 560 | 170 | 170 |
 | `nininger-1933` | `catalog-item` | 171 | 20 | 11 |
 | `nininger-1950` | `specimen` | 1,678 | 79 | 79 |
 | `nordenskiold-1870` | `collection-entry` | 127 | 10 | 10 |
 | `palache-1926` | `collection-entry` | 361 | 9 | 8 |
+| `prior-1923` | `collection-entry` | 949 | 196 | 196 |
+| `reeds-1937` | `collection-entry` | 500 | 156 | 111 |
 | `schreiter-1912` | `collection-entry` | 162 | 18 | 8 |
 | `tassin-1902` | `collection-entry` | 340 | 26 | 24 |
 | `usnm-1886` | `collection-entry` | 349 | 11 | 11 |
 | `washington-1897` | `collection-entry` | 201 | 4 | 4 |
-| **Total** |  | **9,713** | **506** | **451** |
+| **Total** |  | **11,722** | **1,028** | **928** |
 <!-- release-summary:data-catalog-table:end -->
 
 Metadata source-page coverage is not a count of pages cited by records. Some covered pages are introductory or narrative-only.
 
-Chladni 1825 pages 200-207 are introductory folios. `haidinger-1859` page 21 introduces the holdings list, whose entries begin on page 22. `buchner-1863` covers the Vienna register on Roman pages XIII-XVII, from Alais through Hemalga. `tassin-1902` metadata includes plate page 671 and introductory page 673; its 340 entries cite pages 675-698. `schreiter-1912` metadata spans pages 58-75; its 162 entries cite pages 66-73. `palache-1926` has 361 facts-only collection entries across nine metadata pages, 151-159; page 151 is introduction-only and records cite pages 152-159. Its 361 holdings contain 717 numeric gram values totaling 2,695,373.57 g, with 285 reviewed exact-name MetBull mappings and 76 pending observations. `barnes-1940` spans pages 583-612 and contributes 70 facts-only collection entries, including 48 reviewed exact-name MetBull mappings and 22 pending observations without canonical identity. `kanagawa-1996` represents *Meteorite Catalogue of the Kanagawa Prefectural Museum of Natural History / 隕石目録*, issued 1996-01-31, with 232 facts-only collection entries on pages 4-22 and 24: 80 meteorite and 152 tektite/natural-glass observations. Its holdings use only `Specimen`, `Thin section`, or `Specimen group`; 68 entries have reviewed exact MetBull mappings and 164 remain pending. `mason-1964` metadata spans pages 1-40; its 1,374 entries cite 33 of those pages. `asu-2024-09` contributes 2,169 facts-only records citing all 53 dataset pages, with 2,166 unique designations and only `91`, `157`, and `607` duplicated. `nininger-1933` includes printed pages 1-20; pages 12-20 are narrative-only, and the printed catalog numbering skips item 139.
+Chladni 1825 pages 200-207 are introductory folios. `haidinger-1859` page 21 introduces the holdings list, whose entries begin on page 22. `buchner-1863` covers the Vienna register on Roman pages XIII-XVII, from Alais through Hemalga. `tassin-1902` metadata includes plate page 671 and introductory page 673; its 340 entries cite pages 675-698. `schreiter-1912` metadata spans pages 58-75; its 162 entries cite pages 66-73. `merrill-1916` contributes 560 facts-only collection entries citing 170 pages, all pending mapping review. `prior-1923` contributes 949 facts-only collection entries citing all 196 metadata pages, with 758 reviewed exact-name mappings and 191 pending observations. `reeds-1937` contributes 500 facts-only collection entries across 156 metadata pages; records cite 111 pages, with 390 reviewed exact-name mappings and 110 pending observations. `palache-1926` has 361 facts-only collection entries across nine metadata pages, 151-159; page 151 is introduction-only and records cite pages 152-159. Its 361 holdings contain 717 numeric gram values totaling 2,695,373.57 g, with 285 reviewed exact-name MetBull mappings and 76 pending observations. `barnes-1940` spans pages 583-612 and contributes 70 facts-only collection entries, including 48 reviewed exact-name MetBull mappings and 22 pending observations without canonical identity. `kanagawa-1996` represents *Meteorite Catalogue of the Kanagawa Prefectural Museum of Natural History / 隕石目録*, issued 1996-01-31, with 232 facts-only collection entries on pages 4-22 and 24: 80 meteorite and 152 tektite/natural-glass observations. Its holdings use only `Specimen`, `Thin section`, or `Specimen group`; 68 entries have reviewed exact MetBull mappings and 164 remain pending. `mason-1964` metadata spans pages 1-40; its 1,374 entries cite 33 of those pages. `asu-2024-09` contributes 2,169 facts-only records citing all 53 dataset pages, with 2,166 unique designations and only `91`, `157`, and `607` duplicated. `nininger-1933` includes printed pages 1-20; pages 12-20 are narrative-only, and the printed catalog numbering skips item 139.
 
 <!-- release-summary:data-nininger-coverage:start -->
 `nininger-1933` has 171 records; its metadata source pages span 1-20, and its record citations span 1-11. `nininger-1950` has 1,678 records; its metadata source pages span 26-104, and its record citations span 26-104.
@@ -86,7 +89,7 @@ Each holding has exactly `description`, `provenance`, `count`, and `weights`; ea
 
 ### Collection Entry
 
-Used by Lucas, both Chladni catalogs, Haidinger, Buchner, Nordenskiöld, Ball, Clarke, Washington, Tassin, Högbom, Farrington, Schreiter, Palache, and Barnes:
+Used by Lucas, both Chladni catalogs, Haidinger, Buchner, Nordenskiöld, Ball, Clarke, Washington, Tassin, Högbom, Farrington, Schreiter, Merrill, Prior, Palache, Nininger, Reeds, Barnes, and Kanagawa:
 
 ```text
 id, catalogId, entryOrder, reportedNumber, catalogPages, section,
@@ -99,7 +102,7 @@ Strings are NFC-normalized and whitespace-collapsed. Numeric grams are finite an
 
 Every model permits an optional reviewed `metbull` object with exactly `matchType`, `canonicalName`, `meteoriteCode`, `metbullUrl`, and `alternateNameNote`. Resolved mappings require a canonical name, positive decimal code string, and exact `https://www.lpi.usra.edu/meteor/metbull.cfm?code=<code>` URL. Unresolved mappings cannot claim any canonical identity. This additive layer does not alter source names, catalog identifiers, holdings, or weights and is never populated by fuzzy matching.
 
-The current release contains 8,227 reviewed mappings: 8,098 resolved and 129 unresolved. The remaining 1,486 records are pending observations without reviewed mappings.
+The current release contains 9,375 reviewed mappings: 9,246 resolved and 129 unresolved. The remaining 2,347 records are pending observations without reviewed mappings.
 
 Validated continuation evidence recovers formerly blank source names only where supported. Reviewed historical entries that genuinely print no separate proper source name retain null names and unresolved reviews without an inferred modern identity.
 
@@ -138,7 +141,7 @@ metbull.metbullUrl
 metbull.alternateNameNote
 ```
 
-Raw OCR, private notes, source filenames, private record page IDs, dedicated display-weight and `weightText` fields, uncertainty fields, acquisition metadata, and private paths are excluded from `catalog.json`. Barnes source material, OCR, notes, and assets remain private, with zero public Barnes folios. Palache source PDF and images, OCR/transcription, raw text, notes, source typography, filenames, page IDs, derivatives, manifests, and uncertainty internals also remain private; `palache-1926` is blocked/undetermined with zero public folios or media assets. Kanagawa source PDF and images, OCR, source prose, dimensions, notes, derivatives, manifest, paths, QA page, private page IDs, folios, and media are excluded; `kanagawa-1996` is blocked/undetermined and publishes only structured facts with controlled descriptions. Independently structured factual description prose may retain source-reported historical mass statements. Reviewed `pageId` values are intentionally public in `folios.json`.
+Raw OCR, private notes, source filenames, private record page IDs, dedicated display-weight and `weightText` fields, uncertainty fields, acquisition metadata, and private paths are excluded from `catalog.json`. Merrill, Prior, and Reeds source files, OCR, private notes, paths, folios, and media remain excluded; all three are blocked/undetermined with zero public folios. Barnes source material, OCR, notes, and assets remain private, with zero public Barnes folios. Palache source PDF and images, OCR/transcription, raw text, notes, source typography, filenames, page IDs, derivatives, manifests, and uncertainty internals also remain private; `palache-1926` is blocked/undetermined with zero public folios or media assets. Kanagawa source PDF and images, OCR, source prose, dimensions, notes, derivatives, manifest, paths, QA page, private page IDs, folios, and media are excluded; `kanagawa-1996` is blocked/undetermined and publishes only structured facts with controlled descriptions. Independently structured factual description prose may retain source-reported historical mass statements. Reviewed `pageId` values are intentionally public in `folios.json`.
 
 ## Specimen Lineages
 
@@ -154,7 +157,7 @@ Across different collection namespaces, `possible-match` retains the reviewed id
 
 The generator flattens every numeric mass without multiplying by holding count. Scalar specimen masses use `weight.grams`; catalog-item masses use `holdings[i].weight.grams`; catalog-number and collection-entry masses use `holdings[i].weights[j].grams`. Inventory observations additionally retain the exact `designationPath`, including observations whose source mass is null. Every generated observation and runtime card link uses the project-relative `record id <recordId>` query, so duplicate source labels or designations still resolve to exactly one public record.
 
-The current public input produces 8,827 flattened mass observations and 3,627 inventory observations. It publishes 503 relationships: 195 same-inventory relationships and 308 possible cross-source matches. The same-inventory total comprises 2 Huss and 193 Nininger relationships; one duplicated key is identity-resolved and none are omitted as ambiguous. The 308 possible matches include 256 exact-mass and 52 near-mass candidates, all currently unreviewed and based on reviewed MetBull identity. Palache 1926 participates in 39 possible matches (38 exact mass and 1 near mass), Barnes 1940 participates in 57, and ASU September 2024 participates in 10. Kanagawa 1996 contributes no relationship pairs, is not a registered edition series, and has no same-inventory claim; its tektite/natural-glass entries have no mappings or relationships. All 503 pre-Kanagawa relationships remain parsed-identical.
+The current public input produces 12,551 flattened mass observations and 3,627 inventory observations. It publishes 1,252 relationships: 195 same-inventory relationships and 1,057 possible cross-source matches. The same-inventory total comprises 2 Huss and 193 Nininger relationships; one duplicated key is identity-resolved and none are omitted as ambiguous. The 1,057 possible matches include 845 exact-mass and 212 near-mass candidates, all currently unreviewed and based on reviewed MetBull identity. Merrill 1916 participates in no candidates, Prior 1923 participates in 53 (52 exact and 1 near), and Reeds 1937 participates in 702 (543 exact and 159 near). Palache 1926 participates in 60, Barnes 1940 in 101, and ASU September 2024 in 13. Kanagawa 1996 contributes no relationship pairs, is not a registered edition series, and has no same-inventory claim; its tektite/natural-glass entries have no mappings or relationships.
 
 Relationship and observation IDs are UUIDv5 values under the fixed namespace `65b19e0b-1f86-5ca5-a65b-81c38ec53040`. They use only public record IDs, exact designation or mass paths, series IDs, and normalized inventory IDs as applicable, not names, masses, evidence, review state, score, or output order. The browser validator independently reconstructs the complete inventory and possible-match endpoint sets and rederives every relationship and observation UUID before displaying this optional enhancement. Regenerate with `node scripts/build-specimen-lineages.mjs`; use `--check` to detect byte drift. Validate independently with `node scripts/validate-specimen-lineages.mjs`.
 
@@ -190,10 +193,13 @@ The deployment-specific `scripts/folio-release-lock.json` pins every catalog pol
 | `kanagawa-1996` | blocked | undetermined | 0 |
 | `lucas-1813` | display | public-domain | 3 |
 | `mason-1964` | blocked | undetermined | 0 |
+| `merrill-1916` | blocked | undetermined | 0 |
 | `nininger-1933` | display | no-copyright-us | 21 |
 | `nininger-1950` | blocked | undetermined | 0 |
 | `nordenskiold-1870` | blocked | undetermined | 0 |
 | `palache-1926` | blocked | undetermined | 0 |
+| `prior-1923` | blocked | undetermined | 0 |
+| `reeds-1937` | blocked | undetermined | 0 |
 | `schreiter-1912` | blocked | undetermined | 0 |
 | `tassin-1902` | blocked | undetermined | 0 |
 | `usnm-1886` | blocked | undetermined | 0 |

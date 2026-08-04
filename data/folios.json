@@ -276,6 +276,11 @@
       "rightsStatus": "undetermined",
       "pages": []
     },
+    "merrill-1916": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "pages": []
+    },
     "nininger-1933": {
       "displayPolicy": "display",
       "rightsStatus": "no-copyright-us",
@@ -440,6 +445,16 @@
       "pages": []
     },
     "palache-1926": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "pages": []
+    },
+    "prior-1923": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "pages": []
+    },
+    "reeds-1937": {
       "displayPolicy": "blocked",
       "rightsStatus": "undetermined",
       "pages": []

@@ -1,6 +1,6 @@
 # Project Session Memory
 
-Last updated: 2026-08-02
+Last updated: 2026-08-04
 
 ## Mission
 
@@ -9,7 +9,7 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 ## Current State
 
 <!-- release-summary:session-current-state:start -->
-- Schema 6 contains 9,713 facts-only records across 23 catalogs.
+- Schema 6 contains 11,722 facts-only records across 26 catalogs.
 
 | `catalogId` | Record model | Records | Metadata source pages | Pages cited by records |
 | --- | --- | ---: | ---: | ---: |
@@ -28,25 +28,28 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 | `kanagawa-1996` | `collection-entry` | 232 | 20 | 20 |
 | `lucas-1813` | `collection-entry` | 13 | 3 | 3 |
 | `mason-1964` | `catalog-number` | 1,374 | 40 | 33 |
+| `merrill-1916` | `collection-entry` | 560 | 170 | 170 |
 | `nininger-1933` | `catalog-item` | 171 | 20 | 11 |
 | `nininger-1950` | `specimen` | 1,678 | 79 | 79 |
 | `nordenskiold-1870` | `collection-entry` | 127 | 10 | 10 |
 | `palache-1926` | `collection-entry` | 361 | 9 | 8 |
+| `prior-1923` | `collection-entry` | 949 | 196 | 196 |
+| `reeds-1937` | `collection-entry` | 500 | 156 | 111 |
 | `schreiter-1912` | `collection-entry` | 162 | 18 | 8 |
 | `tassin-1902` | `collection-entry` | 340 | 26 | 24 |
 | `usnm-1886` | `collection-entry` | 349 | 11 | 11 |
 | `washington-1897` | `collection-entry` | 201 | 4 | 4 |
-| **Total** |  | **9,713** | **506** | **451** |
+| **Total** |  | **11,722** | **1,028** | **928** |
 
-- Metadata covers 506 catalog-scoped source pages; records cite 451 of them.
+- Metadata covers 1,028 catalog-scoped source pages; records cite 928 of them.
 - Nininger coverage is derived without page-boundary assumptions: `nininger-1933` has 171 records; its metadata source pages span 1-20, and its record citations span 1-11. `nininger-1950` has 1,678 records; its metadata source pages span 26-104, and its record citations span 26-104.
 - Public folios use schema 2 and expose 49 display pages across 5 catalogs: `chladni-1819` (12 pages, `public-domain`); `haidinger-1859` (6 pages, `public-domain`); `hovey-1896` (7 pages, `public-domain`); `lucas-1813` (3 pages, `public-domain`); `nininger-1933` (21 pages, `no-copyright-us`).
-- Blocked folio catalogs are: `asu-2024-09` (0 pages, `undetermined`); `ball-1882` (0 pages, `undetermined`); `barnes-1940` (0 pages, `undetermined`); `buchner-1863` (0 pages, `undetermined`); `chladni-1825` (0 pages, `undetermined`); `farrington-1903` (0 pages, `undetermined`); `hogbom-1902` (0 pages, `undetermined`); `huss-1976` (0 pages, `undetermined`); `huss-1986` (0 pages, `undetermined`); `kanagawa-1996` (0 pages, `undetermined`); `mason-1964` (0 pages, `undetermined`); `nininger-1950` (0 pages, `undetermined`); `nordenskiold-1870` (0 pages, `undetermined`); `palache-1926` (0 pages, `undetermined`); `schreiter-1912` (0 pages, `undetermined`); `tassin-1902` (0 pages, `undetermined`); `usnm-1886` (0 pages, `undetermined`); `washington-1897` (0 pages, `undetermined`).
-- Reviewed MetBull harmonization covers 8,227 of 9,713 records: 8,098 resolved and 129 explicitly unresolved.
+- Blocked folio catalogs are: `asu-2024-09` (0 pages, `undetermined`); `ball-1882` (0 pages, `undetermined`); `barnes-1940` (0 pages, `undetermined`); `buchner-1863` (0 pages, `undetermined`); `chladni-1825` (0 pages, `undetermined`); `farrington-1903` (0 pages, `undetermined`); `hogbom-1902` (0 pages, `undetermined`); `huss-1976` (0 pages, `undetermined`); `huss-1986` (0 pages, `undetermined`); `kanagawa-1996` (0 pages, `undetermined`); `mason-1964` (0 pages, `undetermined`); `merrill-1916` (0 pages, `undetermined`); `nininger-1950` (0 pages, `undetermined`); `nordenskiold-1870` (0 pages, `undetermined`); `palache-1926` (0 pages, `undetermined`); `prior-1923` (0 pages, `undetermined`); `reeds-1937` (0 pages, `undetermined`); `schreiter-1912` (0 pages, `undetermined`); `tassin-1902` (0 pages, `undetermined`); `usnm-1886` (0 pages, `undetermined`); `washington-1897` (0 pages, `undetermined`).
+- Reviewed MetBull harmonization covers 9,375 of 11,722 records: 9,246 resolved and 129 explicitly unresolved.
 - Records currently having a null `name` value: 13.
 <!-- release-summary:session-current-state:end -->
 
-- The remaining 1,486 records are pending observations without reviewed MetBull mappings.
+- The remaining 2,347 records are pending observations without reviewed MetBull mappings.
 - Chladni 1825 pages 200-207 are introductory folios.
 - Tassin 1902 metadata includes plate page 671 and introductory page 673; its 340 entries cite pages 675-698.
 - Schreiter 1912 metadata spans pages 58-75; its 162 entries cite pages 66-73.
@@ -56,7 +59,8 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 - Barnes 1940 has 70 facts-only collection entries across metadata pages 583-612, with 48 reviewed exact-name MetBull mappings and 22 pending observations that carry no canonical identity. Its source material, OCR, notes, and assets remain private; it has no public folios and remains blocked with undetermined rights.
 - Palache 1926 has 361 facts-only collection entries and holdings across nine metadata pages, 151-159. Introduction-only page 151 has no records; records cite pages 152-159. Its holdings contain 717 numeric gram values totaling 2,695,373.57 g, with 285 reviewed exact-name MetBull mappings and 76 pending observations. Its source PDF and images, OCR/transcription, raw text, notes, source typography, filenames, page IDs, derivatives, manifests, and uncertainty internals remain private; it has no public media and remains folio-blocked with undetermined rights.
 - Kanagawa 1996 has 232 facts-only collection entries and holdings on all 20 pages 4-22 and 24: 80 meteorite and 152 tektite/natural-glass observations. Its 243 gram values total 2,688,123.61 g across 213 weighted records. Controlled descriptions comprise 212 `Specimen`, 19 `Thin section`, and 1 `Specimen group`; 68 entries have reviewed exact MetBull mappings and 164 remain pending. Source PDF and images, OCR, source prose, dimensions, notes, derivatives, manifest, paths, QA page, private page IDs, folios, and media remain excluded, and its folio is blocked/undetermined.
-- The regenerated lineage index contains 503 relationships: 195 same-inventory relationships and 308 unreviewed possible cross-source matches. All 503 pre-Kanagawa relationships remain parsed-identical. Palache participates in 39 possible matches (38 exact mass and 1 near mass), Barnes participates in 57, and ASU participates in 10; Kanagawa participates in zero. Kanagawa is not a registered edition series, has no same-inventory claim, and its tektite/natural-glass entries have no mappings or relationships.
+- Merrill 1916 has 560 facts-only collection entries citing 170 pages; all 560 observations remain pending mapping review. Prior 1923 has 949 facts-only collection entries citing all 196 metadata pages, with 758 reviewed exact-name mappings and 191 pending observations. Reeds 1937 has 500 facts-only collection entries citing 111 of 156 metadata pages, with 390 reviewed exact-name mappings and 110 pending observations. All three are blocked/undetermined with empty folios and no public images.
+- The regenerated lineage index contains 1,252 relationships: 195 same-inventory relationships and 1,057 unreviewed possible cross-source matches. The possible matches comprise 845 exact-mass and 212 near-mass candidates. Merrill participates in zero, Prior in 53, Reeds in 702, Palache in 60, Barnes in 101, ASU in 13, and Kanagawa in zero. Merrill, Prior, Reeds, and Kanagawa are not registered edition series and have no same-inventory claims.
 - Nininger 1933 includes printed pages 1-20; pages 12-20 are narrative-only, and the printed catalog numbering skips item 139.
 - The latest release candidate passes the runtime suite and integrated public validator; both must continue to pass before release.
 - Validated continuation evidence recovers formerly blank source names where supported, without inferring modern identity. Reviewed historical entries that genuinely print no separate proper source name retain null names and unresolved reviews.
@@ -64,6 +68,9 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 
 ## Latest Completed Catalogs
 
+- `merrill-1916` integrates George P. Merrill, *Handbook and Descriptive Catalogue of the Meteorite Collections in the United States National Museum* (1916), with 560 facts-only `collection-entry` observations citing 170 pages.
+- `prior-1923` integrates G. T. Prior, *Catalogue of Meteorites* (1923), with 949 facts-only `collection-entry` observations citing all 196 metadata pages, 758 reviewed exact-name MetBull mappings, and 191 pending observations.
+- `reeds-1937` integrates Chester A. Reeds, *Catalogue of the Meteorites in the American Museum of Natural History as of October 1, 1935* (1937), with 500 facts-only `collection-entry` observations, 390 reviewed exact-name MetBull mappings, and 110 pending observations.
 - `MCB-141` is integrated as `palache-1926`: Charles Palache, *Catalogue of the collection of meteorites in the Mineralogical Museum of Harvard University* (1926), with 361 facts-only `collection-entry` observations across metadata pages 151-159 and record citations on pages 152-159.
 - `MCB-165` is integrated as `barnes-1940`: Virgil E. Barnes, *Catalogue of Texas Meteorites* (1940), with 70 facts-only `collection-entry` observations across metadata pages 583-612, 48 reviewed exact-name MetBull mappings, and 22 pending observations without canonical identity.
 - `MCB-197` is integrated as `kanagawa-1996`: the Kanagawa Prefectural Museum of Natural History, *Meteorite Catalogue of the Kanagawa Prefectural Museum of Natural History / 隕石目録* (issued 1996-01-31), with 232 facts-only `collection-entry` observations on pages 4-22 and 24.
@@ -72,11 +79,11 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 - `MCB-117` is integrated as `schreiter-1912`: R. Schreiter, *Die Meteoriten des Kgl. Mineralogischen Museums in Dresden* (1912), with 162 ordered `collection-entry` records citing printed pages 66-73.
 - `MCB-86` is integrated as `tassin-1902`: Wirt Tassin, *Descriptive Catalogue of the Meteorite Collection in the United States National Museum to January 1, 1902* (1902), with 340 ordered `collection-entry` records citing printed pages 675-698.
 - `MCB-94` is integrated as `farrington-1903`: Oliver Cummings Farrington, *Catalogue of the Collection of Meteorites, May 1, 1903* (1903), with 251 ordered `collection-entry` records citing printed pages 83-120.
-- All eight catalogs are facts-only and retain blocked folio policies with undetermined rights and no public images. Reviewed exact-name MetBull coverage resolves Palache 285, Barnes 48, Kanagawa 68, ASU 2,088, Mason 1,099, Schreiter 72, Tassin 192, and Farrington 170 observations; pending observations carry no canonical identity.
+- All eleven catalogs are facts-only and retain blocked folio policies with undetermined rights and no public images. Reviewed exact-name MetBull coverage resolves Merrill 0, Prior 758, Reeds 390, Palache 285, Barnes 48, Kanagawa 68, ASU 2,088, Mason 1,099, Schreiter 72, Tassin 192, and Farrington 170 observations; pending observations carry no canonical identity.
 
 ## Active Work State
 
-- Private canonical Kanagawa commit `1d01b18` is pushed. The 23-catalog Kanagawa facts-only public release is the current uncommitted release candidate; preserve this dirty worktree before rebasing or regeneration.
+- Private canonical commit `244ed62` is pushed. The 26-catalog Merrill/Prior/Reeds facts-only public release is the current uncommitted release candidate; preserve this dirty worktree before rebasing or regeneration.
 - No release-blocking validation issue remains. Any future public change must still be produced from the private canonical data and pass deterministic byte comparison and the facts-only privacy checks.
 
 ## Preservation And Data Rules
@@ -124,9 +131,9 @@ Distinct specimens with the same meteorite name and similar mass must not be col
 
 ## Immediate Next Steps
 
-1. Preserve the current uncommitted 23-catalog Kanagawa public release candidate. Commit or push only when explicitly requested.
-2. Keep MCB-86, MCB-94, MCB-117, MCB-141, MCB-165, MCB-175, MCB-197, and MCB-204 folios blocked unless separate catalog-specific rights reviews explicitly authorize exact ordered page sets; source age or online availability alone is insufficient.
-3. Select the next processable bibliography control only after preserving and validating the current 23-catalog release candidate.
+1. Preserve the current uncommitted 26-catalog Merrill/Prior/Reeds public release candidate. Commit or push only when explicitly requested.
+2. Keep all currently blocked catalogs, including Merrill 1916, Prior 1923, and Reeds 1937, blocked unless separate catalog-specific rights reviews explicitly authorize exact ordered page sets; source age or online availability alone is insufficient.
+3. Select the next processable bibliography control only after preserving and validating the current 26-catalog release candidate.
 4. Resolve the missing scan for `SP1949-0039` (currently MCB-107) and correct the source evidence for MCB-4 and MCB-5 when primary evidence is available.
 5. Keep schema 6 validation, deterministic private/public equality, release summaries, lineage checks, folio hashes, Node tests, runtime checks, and the facts-only privacy boundary green for every future release.
 

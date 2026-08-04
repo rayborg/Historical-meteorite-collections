@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
@@ -66,79 +67,42 @@ test("build is deterministic, canonical, and identical to the published file", (
 });
 
 test("publishes locked source and relationship counts", () => {
-  assert.equal(flattenMassObservations(catalog).length, 8827);
+  assert.equal(flattenMassObservations(catalog).length, 12551);
   assert.equal(flattenInventoryObservations(catalog).length, 3627);
   assert.deepEqual(published.metadata.source, {
     catalogSchemaVersion: 6,
-    recordCount: 9713,
-    catalogCount: 23,
-    flattenedMassObservationCount: 8827,
+    recordCount: 11722,
+    catalogCount: 26,
+    flattenedMassObservationCount: 12551,
     inventoryObservationCount: 3627,
   });
-  assert.deepEqual(published.metadata.counts, {
-    relationshipCount: 503,
+  const { catalogPairs, ...counts } = published.metadata.counts;
+  assert.deepEqual(counts, {
+    relationshipCount: 1252,
     sameInventoryRelationshipCount: 195,
-    possibleMatchRelationshipCount: 308,
-    unreviewedPossibleMatchCount: 308,
-    exactMassPossibleMatchCount: 256,
-    nearMassPossibleMatchCount: 52,
-    metbullIdentityPossibleMatchCount: 308,
+    possibleMatchRelationshipCount: 1057,
+    unreviewedPossibleMatchCount: 1057,
+    exactMassPossibleMatchCount: 845,
+    nearMassPossibleMatchCount: 212,
+    metbullIdentityPossibleMatchCount: 1057,
     normalizedNameIdentityPossibleMatchCount: 0,
     sameDesignationPossibleMatchCount: 0,
     designationFamilyPossibleMatchCount: 0,
-    aggregateOrMultiplePossibleMatchCount: 22,
+    aggregateOrMultiplePossibleMatchCount: 25,
     castPossibleMatchCount: 0,
     identityResolvedInventoryCollisionCount: 1,
     omittedAmbiguousInventoryKeyCount: 0,
     possibleMatchEvidenceStrength: {
       "multiple-matching-facts": 0,
-      "two-matching-facts": 256,
-      "limited-matching-evidence": 52,
+      "two-matching-facts": 845,
+      "limited-matching-evidence": 212,
     },
-    catalogPairs: [
-      { catalogPair: "asu-2024-09|nininger-1933", sameInventoryCount: 0, possibleMatchCount: 1 },
-      { catalogPair: "asu-2024-09|nininger-1950", sameInventoryCount: 0, possibleMatchCount: 7 },
-      { catalogPair: "asu-2024-09|palache-1926", sameInventoryCount: 0, possibleMatchCount: 2 },
-      { catalogPair: "barnes-1940|farrington-1903", sameInventoryCount: 0, possibleMatchCount: 8 },
-      { catalogPair: "barnes-1940|mason-1964", sameInventoryCount: 0, possibleMatchCount: 16 },
-      { catalogPair: "barnes-1940|nininger-1933", sameInventoryCount: 0, possibleMatchCount: 7 },
-      { catalogPair: "barnes-1940|nininger-1950", sameInventoryCount: 0, possibleMatchCount: 9 },
-      { catalogPair: "barnes-1940|palache-1926", sameInventoryCount: 0, possibleMatchCount: 15 },
-      { catalogPair: "barnes-1940|tassin-1902", sameInventoryCount: 0, possibleMatchCount: 1 },
-      { catalogPair: "barnes-1940|usnm-1886", sameInventoryCount: 0, possibleMatchCount: 1 },
-      { catalogPair: "farrington-1903|mason-1964", sameInventoryCount: 0, possibleMatchCount: 2 },
-      { catalogPair: "farrington-1903|nininger-1933", sameInventoryCount: 0, possibleMatchCount: 2 },
-      { catalogPair: "farrington-1903|nininger-1950", sameInventoryCount: 0, possibleMatchCount: 7 },
-      { catalogPair: "farrington-1903|nordenskiold-1870", sameInventoryCount: 0, possibleMatchCount: 1 },
-      { catalogPair: "farrington-1903|palache-1926", sameInventoryCount: 0, possibleMatchCount: 4 },
-      { catalogPair: "farrington-1903|schreiter-1912", sameInventoryCount: 0, possibleMatchCount: 1 },
-      { catalogPair: "farrington-1903|tassin-1902", sameInventoryCount: 0, possibleMatchCount: 1 },
-      { catalogPair: "hogbom-1902|mason-1964", sameInventoryCount: 0, possibleMatchCount: 2 },
-      { catalogPair: "hogbom-1902|palache-1926", sameInventoryCount: 0, possibleMatchCount: 1 },
-      { catalogPair: "hovey-1896|huss-1986", sameInventoryCount: 0, possibleMatchCount: 1 },
-      { catalogPair: "hovey-1896|mason-1964", sameInventoryCount: 0, possibleMatchCount: 3 },
-      { catalogPair: "hovey-1896|nininger-1933", sameInventoryCount: 0, possibleMatchCount: 1 },
-      { catalogPair: "hovey-1896|nininger-1950", sameInventoryCount: 0, possibleMatchCount: 2 },
-      { catalogPair: "huss-1976|huss-1986", sameInventoryCount: 2, possibleMatchCount: 0 },
-      { catalogPair: "huss-1976|mason-1964", sameInventoryCount: 0, possibleMatchCount: 1 },
-      { catalogPair: "huss-1976|nininger-1933", sameInventoryCount: 0, possibleMatchCount: 1 },
-      { catalogPair: "huss-1976|nininger-1950", sameInventoryCount: 0, possibleMatchCount: 12 },
-      { catalogPair: "huss-1986|mason-1964", sameInventoryCount: 0, possibleMatchCount: 6 },
-      { catalogPair: "huss-1986|nininger-1950", sameInventoryCount: 0, possibleMatchCount: 28 },
-      { catalogPair: "huss-1986|washington-1897", sameInventoryCount: 0, possibleMatchCount: 2 },
-      { catalogPair: "mason-1964|nininger-1933", sameInventoryCount: 0, possibleMatchCount: 2 },
-      { catalogPair: "mason-1964|nininger-1950", sameInventoryCount: 0, possibleMatchCount: 10 },
-      { catalogPair: "mason-1964|palache-1926", sameInventoryCount: 0, possibleMatchCount: 6 },
-      { catalogPair: "mason-1964|schreiter-1912", sameInventoryCount: 0, possibleMatchCount: 1 },
-      { catalogPair: "nininger-1933|nininger-1950", sameInventoryCount: 193, possibleMatchCount: 0 },
-      { catalogPair: "nininger-1933|palache-1926", sameInventoryCount: 0, possibleMatchCount: 1 },
-      { catalogPair: "nininger-1933|usnm-1886", sameInventoryCount: 0, possibleMatchCount: 1 },
-      { catalogPair: "nininger-1950|palache-1926", sameInventoryCount: 0, possibleMatchCount: 2 },
-      { catalogPair: "nordenskiold-1870|palache-1926", sameInventoryCount: 0, possibleMatchCount: 4 },
-      { catalogPair: "palache-1926|washington-1897", sameInventoryCount: 0, possibleMatchCount: 4 },
-      { catalogPair: "tassin-1902|usnm-1886", sameInventoryCount: 0, possibleMatchCount: 132 },
-    ],
   });
+  assert.equal(catalogPairs.length, 66);
+  assert.equal(
+    createHash("sha256").update(JSON.stringify(catalogPairs)).digest("hex"),
+    "a96d3c69cf9505389258f8273ac0427d68ba4df986ac42d236e3b29bb867d390",
+  );
 });
 
 test("ASU September 2024 retains source facts while reviewed mappings enable lineage candidates", () => {
@@ -151,13 +115,13 @@ test("ASU September 2024 retains source facts while reviewed mappings enable lin
   assert.deepEqual([...designationCounts].filter(([, count]) => count > 1), [["91", 2], ["157", 2], ["607", 2]]);
   assert.equal(asu.filter((record) => Object.hasOwn(record, "metbull")).length, 2088);
   assert.equal(published.relationships.filter(({ observations }) =>
-    observations.some(({ catalogId }) => catalogId === "asu-2024-09")).length, 10);
+    observations.some(({ catalogId }) => catalogId === "asu-2024-09")).length, 13);
 });
 
 test("Barnes participates only in unreviewed reviewed-identity-and-mass candidates", () => {
   const relationships = published.relationships.filter(({ observations }) =>
     observations.some(({ catalogId }) => catalogId === "barnes-1940"));
-  assert.equal(relationships.length, 57);
+  assert.equal(relationships.length, 101);
   assert(relationships.every(({ relationship, basis, status, review, identity }) =>
     relationship === "possible-match" && basis === "reviewed-identity-and-reported-mass" &&
     status === "possible" && review.status === "unreviewed" && identity.method === "metbull-code"));
@@ -166,7 +130,7 @@ test("Barnes participates only in unreviewed reviewed-identity-and-mass candidat
       counts[evidence.massMatch] += 1;
       return counts;
     }, { exact: 0, near: 0 }),
-    { exact: 49, near: 8 },
+    { exact: 93, near: 8 },
   );
   assert.deepEqual(
     relationships.reduce((counts, { catalogPair }) => {
@@ -179,6 +143,8 @@ test("Barnes participates only in unreviewed reviewed-identity-and-mass candidat
       "barnes-1940|nininger-1933": 7,
       "barnes-1940|nininger-1950": 9,
       "barnes-1940|palache-1926": 15,
+      "barnes-1940|prior-1923": 15,
+      "barnes-1940|reeds-1937": 29,
       "barnes-1940|tassin-1902": 1,
       "barnes-1940|usnm-1886": 1,
     },
@@ -197,8 +163,8 @@ test("Palache publishes only locked facts and blocked folios", () => {
     "id", "locality", "name", "reportedNumber", "section",
   ].sort();
 
-  assert.equal(catalog.metadata.catalogs.length, 23);
-  assert.equal(catalog.records.length, 9713);
+  assert.equal(catalog.metadata.catalogs.length, 26);
+  assert.equal(catalog.records.length, 11722);
   assert.deepEqual(descriptor.sourcePages, [151, 152, 153, 154, 155, 156, 157, 158, 159]);
   assert.equal(descriptor.sourcePageCount, 9);
   assert.equal(descriptor.recordCount, 361);
@@ -231,16 +197,16 @@ test("Palache publishes only locked facts and blocked folios", () => {
   }
 
   const allReviewed = catalog.records.filter((record) => Object.hasOwn(record, "metbull"));
-  assert.equal(allReviewed.length, 8227);
+  assert.equal(allReviewed.length, 9375);
   assert.equal(allReviewed.filter(({ metbull }) => metbull.matchType === "unresolved").length, 129);
-  assert.equal(allReviewed.filter(({ metbull }) => metbull.matchType !== "unresolved").length, 8098);
-  assert.equal(catalog.records.length - allReviewed.length, 1486);
+  assert.equal(allReviewed.filter(({ metbull }) => metbull.matchType !== "unresolved").length, 9246);
+  assert.equal(catalog.records.length - allReviewed.length, 2347);
 });
 
 test("Palache has no same-inventory continuity and only unreviewed possible candidates", () => {
   const relationships = published.relationships.filter(({ observations }) =>
     observations.some(({ catalogId }) => catalogId === "palache-1926"));
-  assert.equal(relationships.length, 39);
+  assert.equal(relationships.length, 60);
   assert(!published.metadata.collectionSeries.some(({ catalogIds }) => catalogIds.includes("palache-1926")));
   assert(relationships.every(({ relationship, basis, status, review, identity }) =>
     relationship === "possible-match" && basis === "reviewed-identity-and-reported-mass" &&
@@ -250,7 +216,7 @@ test("Palache has no same-inventory continuity and only unreviewed possible cand
       counts[evidence.massMatch] += 1;
       return counts;
     }, { exact: 0, near: 0 }),
-    { exact: 38, near: 1 },
+    { exact: 58, near: 2 },
   );
   assert(!published.relationships.some(({ relationship, observations }) =>
     relationship === "same-inventory" && observations.some(({ catalogId }) => catalogId === "palache-1926")));
@@ -343,7 +309,46 @@ test("Kanagawa publishes only the approved controlled facts with no glass mappin
   assert(!published.metadata.collectionSeries.some(({ catalogIds }) => catalogIds.includes("kanagawa-1996")));
   assert(!published.relationships.some(({ observations }) =>
     observations.some(({ catalogId }) => catalogId === "kanagawa-1996")));
-  assert.equal(catalog.records.filter(({ catalogId }) => catalogId !== "kanagawa-1996").length, 9481);
+  assert.equal(catalog.records.filter(({ catalogId }) => catalogId !== "kanagawa-1996").length, 11490);
+});
+
+test("Merrill, Prior, and Reeds publish locked facts with blocked folios and derived lineages", () => {
+  const expected = {
+    "merrill-1916": { records: 560, reviewed: 0, pending: 560, relationships: 0 },
+    "prior-1923": { records: 949, reviewed: 758, pending: 191, relationships: 53 },
+    "reeds-1937": { records: 500, reviewed: 390, pending: 110, relationships: 702 },
+  };
+
+  for (const [catalogId, counts] of Object.entries(expected)) {
+    const descriptor = catalog.metadata.catalogs.find(({ id }) => id === catalogId);
+    const records = catalog.records.filter((record) => record.catalogId === catalogId);
+    const reviewed = records.filter((record) => Object.hasOwn(record, "metbull"));
+    const relationships = published.relationships.filter(({ observations }) =>
+      observations.some((observation) => observation.catalogId === catalogId));
+
+    assert.equal(descriptor.recordModel, "collection-entry");
+    assert.equal(descriptor.recordCount, counts.records);
+    assert.equal(records.length, counts.records);
+    assert.equal(reviewed.length, counts.reviewed);
+    assert.equal(records.length - reviewed.length, counts.pending);
+    assert(reviewed.every(({ metbull }) => metbull.matchType !== "unresolved"));
+    assert.equal(relationships.length, counts.relationships);
+    assert(relationships.every(({ relationship, review }) =>
+      relationship === "possible-match" && review.status === "unreviewed"));
+    assert.deepEqual(folios.catalogs[catalogId], {
+      displayPolicy: "blocked",
+      rightsStatus: "undetermined",
+      pages: [],
+    });
+    assert.deepEqual(folioReleaseLock.catalogs[catalogId], {
+      displayPolicy: "blocked",
+      rightsStatus: "undetermined",
+      basis: null,
+      basisUrl: null,
+      pageIds: [],
+    });
+    assert(!folioReleaseLock.assets.some(({ path }) => path.includes(catalogId)));
+  }
 });
 
 test("excludes weighted observations without reviewed MetBull mappings", () => {
@@ -395,7 +400,7 @@ test("same-series continuity survives missing mass while possible matches requir
   const relationship = rebuilt.relationships.find((item) => item.relationship === "same-inventory" && item.collectionSeries.inventoryId === "h160.1");
   assert.ok(relationship);
   assert(relationship.observations.some(({ massGrams }) => massGrams === null));
-  assert.equal(rebuilt.metadata.source.flattenedMassObservationCount, 8826);
+  assert.equal(rebuilt.metadata.source.flattenedMassObservationCount, 12550);
 
   for (const possible of possibleRelationships()) {
     const [left, right] = possible.observations;
@@ -445,7 +450,7 @@ test("Nininger 108b collision resolves only Sandia and ambiguous collisions are 
 });
 
 test("cross-series possible matching retains reviewed identity plus exact or near mass", () => {
-  assert.equal(possibleRelationships().length, 308);
+  assert.equal(possibleRelationships().length, 1057);
   assert(possibleRelationships().every(({ basis, status }) => basis === "reviewed-identity-and-reported-mass" && status === "possible"));
   assert(possibleRelationships().some(({ evidence }) => evidence.massMatch === "exact"));
   assert(possibleRelationships().some(({ evidence }) => evidence.massMatch === "near"));
@@ -510,7 +515,7 @@ test("reviews apply only to possible candidates", () => {
   };
   const rebuilt = buildSpecimenLineages(catalog, reviews);
   assert.equal(rebuilt.relationships.find(({ id }) => id === target.id).review.status, "reviewed");
-  assert.equal(rebuilt.metadata.counts.unreviewedPossibleMatchCount, 307);
+  assert.equal(rebuilt.metadata.counts.unreviewedPossibleMatchCount, 1056);
   assert.throws(() => buildSpecimenLineages(catalog, {
     schemaVersion: 1,
     reviews: [{ ...reviews.reviews[0], candidateId: sameInventory("huss", "h160.1").id }],

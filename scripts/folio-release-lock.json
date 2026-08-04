@@ -138,6 +138,13 @@
       "basisUrl": null,
       "pageIds": []
     },
+    "merrill-1916": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "basis": null,
+      "basisUrl": null,
+      "pageIds": []
+    },
     "nininger-1933": {
       "displayPolicy": "display",
       "rightsStatus": "no-copyright-us",
@@ -182,6 +189,20 @@
       "pageIds": []
     },
     "palache-1926": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "basis": null,
+      "basisUrl": null,
+      "pageIds": []
+    },
+    "prior-1923": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "basis": null,
+      "basisUrl": null,
+      "pageIds": []
+    },
+    "reeds-1937": {
       "displayPolicy": "blocked",
       "rightsStatus": "undetermined",
       "basis": null,
