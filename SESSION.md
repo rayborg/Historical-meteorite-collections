@@ -1,6 +1,6 @@
 # Project Session Memory
 
-Last updated: 2026-08-04
+Last updated: 2026-08-05
 
 ## Mission
 
@@ -88,7 +88,7 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 
 ## Active Work State
 
-- Private canonical commit `83a4f55` is pushed. The 28-catalog Ward/Farrington facts-only public release is the current uncommitted release candidate; preserve this dirty worktree before rebasing or regeneration.
+- Private canonical commit `01b5a80` is the source for the current uncommitted facts-only correction candidate. It corrects four Tassin, Reeds, and Merrill observations without changing the 28-catalog, 13,157-record scope or the 49 reviewed public folios.
 - No release-blocking validation issue remains. Any future public change must still be produced from the private canonical data and pass deterministic byte comparison and the facts-only privacy checks.
 
 ## Preservation And Data Rules

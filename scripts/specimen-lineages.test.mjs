@@ -352,6 +352,93 @@ test("Merrill, Prior, and Reeds publish locked facts with blocked folios and der
   }
 });
 
+test("publishes the corrected Tassin, Reeds, and distinct Merrill observations", () => {
+  const recordById = new Map(catalog.records.map((record) => [record.id, record]));
+  const tassin = recordById.get("obs-15cdc5bc-ea7d-4585-a49a-c341e9e8f465");
+  assert.equal(tassin.catalogId, "tassin-1902");
+  assert.equal(tassin.entryOrder, 334);
+  assert.equal(tassin.name, "Wichita County");
+  assert.deepEqual(tassin.catalogPages, [698]);
+  assert.deepEqual(tassin.holdings[1], {
+    description: "Weight, 212.4 grams. (a) Section with original and etched surface; weight, 143 grams; (b) section as above; weight, 69.40 grams. Both show coarse Widmannstättian figures, with nodules of troilite and flakes of schreibersite.",
+    provenance: "The Shepard Collection, No. 26.",
+    count: 2,
+    weights: [{ grams: 212.4 }, { grams: 143 }, { grams: 69.4 }],
+  });
+
+  const reeds = recordById.get("obs-54b330c6-ef57-4899-bbe4-d952fa024fa9");
+  assert.deepEqual({
+    catalogId: reeds.catalogId,
+    entryOrder: reeds.entryOrder,
+    catalogPages: reeds.catalogPages,
+    name: reeds.name,
+    classification: reeds.classification,
+    locality: reeds.locality,
+    eventDate: reeds.eventDate,
+    holding: reeds.holdings[0],
+  }, {
+    catalogId: "reeds-1937",
+    entryOrder: 203,
+    catalogPages: [579],
+    name: "Ibbenbühren",
+    classification: "Aerolite: Diogenite (hypersthene-achondrite) Chl.",
+    locality: "Westphalia, Prussia, Germany",
+    eventDate: "Fell: 1870, June 17, 2 P.M.",
+    holding: {
+      description: "(461) 0.18 gm.",
+      provenance: null,
+      count: null,
+      weights: [{ grams: 0.18 }],
+    },
+  });
+
+  const merrillIds = [
+    "obs-a0e7dd8b-7e93-4348-82c9-6e43f04c328f",
+    "obs-34a0884f-e8e1-48da-908c-a670851b8821",
+  ];
+  const merrill = merrillIds.map((id) => recordById.get(id));
+  assert.equal(new Set(merrill.map(({ id }) => id)).size, 2);
+  assert.deepEqual(merrill.map(({ id, entryOrder, catalogPages, section, name, classification, locality, eventDate, holdings }) => ({
+    id,
+    entryOrder,
+    catalogPages,
+    section,
+    name,
+    classification,
+    locality,
+    eventDate,
+    count: holdings[0].count,
+    weights: holdings[0].weights,
+  })), [
+    {
+      id: merrillIds[0],
+      entryOrder: 316,
+      catalogPages: [170],
+      section: "A. Museum Collection",
+      name: "WICHITA COUNTY (BRAZOS RIVER)",
+      classification: "Iron, Og",
+      locality: "TEXAS",
+      eventDate: "Date of fall uncertain; first known in 1836.",
+      count: 2,
+      weights: [{ grams: 20.8 }, { grams: 143 }],
+    },
+    {
+      id: merrillIds[1],
+      entryOrder: 556,
+      catalogPages: [198],
+      section: "B. The C. U. Shepard Collection",
+      name: "WICHITA COUNTY (BRAZOS RIVER)",
+      classification: "Iron, Og",
+      locality: "TEXAS",
+      eventDate: "Found in 1836.",
+      count: 2,
+      weights: [{ grams: 143 }, { grams: 69.4 }],
+    },
+  ]);
+  assert.match(merrill[0].holdings[0].description, /^Iron, Og\..*first known in 1836\..*Red River.*p\. 285\.$/u);
+  assert.match(merrill[1].holdings[0].description, /Widmanstätten/u);
+});
+
 test("Ward and Farrington 1916 publish exact facts with blocked folios and no same-inventory claims", () => {
   const expected = {
     "ward-1904": {

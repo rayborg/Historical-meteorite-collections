@@ -243839,7 +243839,7 @@
       "section": "A. Museum Collection",
       "holdings": [
         {
-          "description": "Iror, Og. Two slices, one 4 by 1 by 0.7 cm., weighing 20.8 grams, and one, 5 by 5 cm., weighing 143 grams. Date of fall uncertain first known in 183G. Original weight unknown, but not far from 160 kilograms, as given by Mallet. Analysis by this authority yielded Per cent. Iron (Fe) 90. 7G9 Nickel (Ni) 8. .342 Cobalt (Co) .2G5 Manganese (iMn) Trace. Copper (Cu) .018 Tin (Sn) .004 Phosphorus (P) .141 Sulphur (S) .016 Graphitie carbon (C) .190 Silica (Si02) \\ 132 Magnetic ii'on oxidel 99. 877 Specific gravity at 24° C, 7.841. It has been suggested that this iron may have been a part of the same fall as the Ked River or Cross Timbers mass found about 1808. — References. B. F. Shumard, Trans. St. Louis Acad. Sci., vol. 1, 185G-60, p. 622. J. W. Mallet, Amer. Journ. Sci., vol. 28, 1884, p.",
+          "description": "Iron, Og. Two slices, one 4 by 1 by 0.7 cm., weighing 20.8 grams, and one, 5 by 5 cm., weighing 143 grams. Date of fall uncertain; first known in 1836. Original weight unknown, but not far from 160 kilograms, as given by Mallet. Analysis by this authority yielded Per cent. Iron (Fe) 90.769 Nickel (Ni) 8.342 Cobalt (Co) .265 Manganese (Mn) Trace. Copper (Cu) .018 Tin (Sn) .004 Phosphorus (P) .141 Sulphur (S) .016 Graphitic carbon (C) .190 Silica (SiO2) Magnetic iron oxide .132 99.877 Specific gravity at 24° C, 7.841. It has been suggested that this iron may have been a part of the same fall as the Red River or Cross Timbers mass found about 1808. References.—B. F. Shumard, Trans. St. Louis Acad. Sci., vol. 1, 1856-60, p. 622. J. W. Mallet, Amer. Journ. Sci., vol. 28, 1884, p. 285.",
           "provenance": null,
           "count": 2,
           "weights": [
@@ -243853,9 +243853,9 @@
         }
       ],
       "name": "WICHITA COUNTY (BRAZOS RIVER)",
-      "classification": "Iror, Og",
+      "classification": "Iron, Og",
       "locality": "TEXAS",
-      "eventDate": "Date of fall uncertain.",
+      "eventDate": "Date of fall uncertain; first known in 1836.",
       "confidence": "high"
     },
     {
@@ -250400,7 +250400,7 @@
       "section": "B. The C. U. Shepard Collection",
       "holdings": [
         {
-          "description": "Iron, Og. Two sections, one with original and etched surface, weighing 143 grams, and another weighing 69.40 grams. Both show coarse Widmanstatten figures with nodules of troilite and flakes of schreibersite. Found in 1836.",
+          "description": "Iron, Og. Two sections, one with original and etched surface, weighing 143 grams, and another weighing 69.40 grams. Both show coarse Widmanstätten figures with nodules of troilite and flakes of schreibersite. Found in 1836.",
           "provenance": null,
           "count": 2,
           "weights": [
@@ -250413,7 +250413,7 @@
           ]
         }
       ],
-      "name": "\"WICHITA COUNTY (BRAZOS RIVER)",
+      "name": "WICHITA COUNTY (BRAZOS RIVER)",
       "classification": "Iron, Og",
       "locality": "TEXAS",
       "eventDate": "Found in 1836.",
@@ -327170,7 +327170,7 @@
           ]
         }
       ],
-      "name": "[bbenbuihren",
+      "name": "Ibbenbühren",
       "classification": "Aerolite: Diogenite (hypersthene-achondrite) Chl.",
       "locality": "Westphalia, Prussia, Germany",
       "eventDate": "Fell: 1870, June 17, 2 P.M.",
@@ -359223,7 +359223,7 @@
         {
           "description": "Weight, 212.4 grams. (a) Section with original and etched surface; weight, 143 grams; (b) section as above; weight, 69.40 grams. Both show coarse Widmannstättian figures, with nodules of troilite and flakes of schreibersite.",
           "provenance": "The Shepard Collection, No. 26.",
-          "count": null,
+          "count": 2,
           "weights": [
             {
               "grams": 212.4
