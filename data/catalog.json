@@ -1662,6 +1662,27 @@
         "rightsStatus": "undetermined"
       },
       {
+        "id": "ward-1881",
+        "recordModel": "collection-entry",
+        "label": "Meteorites, in Ward's Natural Science Bulletin, volume 1 number 1 (1881)",
+        "compiler": "Henry A. Ward",
+        "year": 1881,
+        "sourcePages": [
+          4
+        ],
+        "sourcePageCount": 1,
+        "recordCount": 3,
+        "recordsWithDesignation": 0,
+        "recordsWithWeight": 0,
+        "confidenceCounts": {
+          "high": 3,
+          "medium": 0,
+          "low": 0
+        },
+        "folioDisplayPolicy": "blocked",
+        "rightsStatus": "undetermined"
+      },
+      {
         "id": "ward-1904",
         "recordModel": "collection-entry",
         "label": "Catalogue of the Ward-Coonley Collection of Meteorites (1904)",
@@ -1780,11 +1801,11 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 13157,
+    "recordCount": 13160,
     "recordsWithDesignation": 5599,
     "recordsWithWeight": 11969,
     "confidenceCounts": {
-      "high": 11860,
+      "high": 11863,
       "medium": 1297,
       "low": 0
     }
@@ -370288,6 +370309,87 @@
       "name": "Yarra Yarra River",
       "classification": "Iron",
       "locality": "Australia",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-ba4b83e0-f5cd-499d-aec2-ceb8b8285b0a",
+      "catalogId": "ward-1881",
+      "entryOrder": 1,
+      "reportedNumber": null,
+      "catalogPages": [
+        4
+      ],
+      "section": "IRONS.",
+      "holdings": [
+        {
+          "description": "Slices of various sizes polished and etched, $1.50 — $2.00 per ounce",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        },
+        {
+          "description": "turnings, 75 cts. per ounce",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Augusta Co.",
+      "classification": "IRONS.",
+      "locality": "Va.",
+      "eventDate": "Found in 1858 or 1859",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b1be1364-10b5-4695-9053-743e6e4d6852",
+      "catalogId": "ward-1881",
+      "entryOrder": 2,
+      "reportedNumber": null,
+      "catalogPages": [
+        4
+      ],
+      "section": "IRONS.",
+      "holdings": [
+        {
+          "description": "Slices polished and etched, $2.00 per ounce",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Bates Co.",
+      "classification": "IRONS.",
+      "locality": "Missouri.",
+      "eventDate": "Found in 1875",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d3754743-885c-4a80-a57d-e44af0011d20",
+      "catalogId": "ward-1881",
+      "entryOrder": 3,
+      "reportedNumber": null,
+      "catalogPages": [
+        4
+      ],
+      "section": "IRONS.",
+      "holdings": [
+        {
+          "description": "Polished slices, 50—75 cts. per ounce",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        },
+        {
+          "description": "turnings, 30 cts. per ounce",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Cohahuila",
+      "classification": "IRONS.",
+      "locality": "Mexico.",
       "eventDate": null,
       "confidence": "high"
     },

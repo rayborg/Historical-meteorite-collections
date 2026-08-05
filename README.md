@@ -1,14 +1,14 @@
 # Historical Meteorite Collection
 
 <!-- release-summary:readme-overview:start -->
-This repository is a dependency-free, facts-only index of 13,157 source observations from 28 historical meteorite catalogs. The coordinated catalog uses public metadata schema 6 and supports 4 source-specific record models: `catalog-item`, `catalog-number`, `collection-entry`, `specimen`.
+This repository is a dependency-free, facts-only index of 13,160 source observations from 29 historical meteorite catalogs. The coordinated catalog uses public metadata schema 6 and supports 4 source-specific record models: `catalog-item`, `catalog-number`, `collection-entry`, `specimen`.
 <!-- release-summary:readme-overview:end -->
 
 The repository also publishes [`data/specimen-lineages.json`](./data/specimen-lineages.json), a deterministic index that distinguishes same collection inventory IDs across consecutive editions from possible matches across separate collection sources. Same-inventory continuity is series-scoped and does not infer custody or ownership. Cross-source candidates retain public review decisions from [`data/specimen-lineage-reviews.json`](./data/specimen-lineage-reviews.json) and do not assert physical identity, custody, or ownership transfer.
 
 A searchable transcription of the 1976 Huss Meteorite Collection catalog, compiled and published by Glenn Huss.
 
-The other configured sources identify their compilers without inferring a publisher: Jean Andre Henri Lucas for 1813; E. F. F. Chladni, with a Vienna appendix by Karl von Schreibers, for 1819; E. F. F. Chladni for 1825; Wilhelm Haidinger for 1859; Otto Buchner for 1863; A. E. Nordenskiöld for 1870; Valentine Ball for 1882; F. W. Clarke for 1886; Edmund Otis Hovey for 1896; Henry S. Washington for 1897; Wirt Tassin for 1902; A. G. Högbom for 1902; Oliver Cummings Farrington for 1903; Henry A. Ward for 1904; R. Schreiter for 1912; Oliver Cummings Farrington for 1916; George P. Merrill for 1916; G. T. Prior for 1923; Charles Palache for 1926; H. H. Nininger for 1933; Chester A. Reeds for 1937; Virgil E. Barnes for 1940; H. H. Nininger and Addie D. Nininger for 1950; Brian Mason for 1964; Glenn I. Huss for 1986; the Kanagawa Prefectural Museum of Natural History for 1996; and the Buseck Center for Meteorite Studies, Arizona State University, for the September 2024 ASU dataset.
+The other configured sources identify their compilers without inferring a publisher: Jean Andre Henri Lucas for 1813; E. F. F. Chladni, with a Vienna appendix by Karl von Schreibers, for 1819; E. F. F. Chladni for 1825; Wilhelm Haidinger for 1859; Otto Buchner for 1863; A. E. Nordenskiöld for 1870; Henry A. Ward for 1881; Valentine Ball for 1882; F. W. Clarke for 1886; Edmund Otis Hovey for 1896; Henry S. Washington for 1897; Wirt Tassin for 1902; A. G. Högbom for 1902; Oliver Cummings Farrington for 1903; Henry A. Ward for 1904; R. Schreiter for 1912; Oliver Cummings Farrington for 1916; George P. Merrill for 1916; G. T. Prior for 1923; Charles Palache for 1926; H. H. Nininger for 1933; Chester A. Reeds for 1937; Virgil E. Barnes for 1940; H. H. Nininger and Addie D. Nininger for 1950; Brian Mason for 1964; Glenn I. Huss for 1986; the Kanagawa Prefectural Museum of Natural History for 1996; and the Buseck Center for Meteorite Studies, Arizona State University, for the September 2024 ASU dataset.
 
 The site supports catalog filtering, model-aware search, segment-aware H-designation search, numeric gram ranges across scalar and nested masses, six deterministic sort orders, URL-persisted filters, incremental rendering, and rights-gated source folios. Catalog facts and folio authorization are validated separately.
 
@@ -116,9 +116,10 @@ The current catalog contains:
 | `schreiter-1912` | `collection-entry` | 162 | 18 | 8 |
 | `tassin-1902` | `collection-entry` | 340 | 26 | 24 |
 | `usnm-1886` | `collection-entry` | 349 | 11 | 11 |
+| `ward-1881` | `collection-entry` | 3 | 1 | 1 |
 | `ward-1904` | `collection-entry` | 697 | 74 | 74 |
 | `washington-1897` | `collection-entry` | 201 | 4 | 4 |
-| **Total** |  | **13,157** | **1,184** | **1,080** |
+| **Total** |  | **13,160** | **1,185** | **1,081** |
 <!-- release-summary:readme-catalog-table:end -->
 
 Metadata source-page coverage is not a claim that every covered page contains a record. Some covered pages are introductory or narrative-only.
@@ -148,10 +149,10 @@ matchType, canonicalName, meteoriteCode, metbullUrl, alternateNameNote
 The historical `name`, designation/catalog identifier fields, printed private weight strings, and numeric source weights are never replaced by this object. The website labels the source catalog name and shows a separate linked **Current Meteoritical Bulletin name** only when a reviewed canonical name differs. No client, build, or export path fuzzy-matches names or infers identity.
 
 <!-- release-summary:readme-metbull:start -->
-The current release includes reviewed MetBull harmonization for 9,893 of 13,157 records: 9,764 have a resolved current identity and 129 remain explicitly unresolved. 13 records currently have a null `name` value.
+The current release includes reviewed MetBull harmonization for 9,893 of 13,160 records: 9,764 have a resolved current identity and 129 remain explicitly unresolved. 13 records currently have a null `name` value.
 <!-- release-summary:readme-metbull:end -->
 
-The remaining 3,264 records are pending observations without reviewed MetBull mappings.
+The remaining 3,267 records are pending observations without reviewed MetBull mappings.
 
 Validated continuation evidence recovers formerly blank source names where supported; it does not infer modern identity.
 
@@ -210,6 +211,7 @@ Any missing, blocked, incomplete, contradictory, malformed, or unsafe value deni
 | `schreiter-1912` | blocked | undetermined | 0 |
 | `tassin-1902` | blocked | undetermined | 0 |
 | `usnm-1886` | blocked | undetermined | 0 |
+| `ward-1881` | blocked | undetermined | 0 |
 | `ward-1904` | blocked | undetermined | 0 |
 | `washington-1897` | blocked | undetermined | 0 |
 | **Total** |  |  | **49** |

@@ -71,8 +71,8 @@ test("publishes locked source and relationship counts", () => {
   assert.equal(flattenInventoryObservations(catalog).length, 3627);
   assert.deepEqual(published.metadata.source, {
     catalogSchemaVersion: 6,
-    recordCount: 13157,
-    catalogCount: 28,
+    recordCount: 13160,
+    catalogCount: 29,
     flattenedMassObservationCount: 13522,
     inventoryObservationCount: 3627,
   });
@@ -164,8 +164,8 @@ test("Palache publishes only locked facts and blocked folios", () => {
     "id", "locality", "name", "reportedNumber", "section",
   ].sort();
 
-  assert.equal(catalog.metadata.catalogs.length, 28);
-  assert.equal(catalog.records.length, 13157);
+  assert.equal(catalog.metadata.catalogs.length, 29);
+  assert.equal(catalog.records.length, 13160);
   assert.deepEqual(descriptor.sourcePages, [151, 152, 153, 154, 155, 156, 157, 158, 159]);
   assert.equal(descriptor.sourcePageCount, 9);
   assert.equal(descriptor.recordCount, 361);
@@ -201,7 +201,7 @@ test("Palache publishes only locked facts and blocked folios", () => {
   assert.equal(allReviewed.length, 9893);
   assert.equal(allReviewed.filter(({ metbull }) => metbull.matchType === "unresolved").length, 129);
   assert.equal(allReviewed.filter(({ metbull }) => metbull.matchType !== "unresolved").length, 9764);
-  assert.equal(catalog.records.length - allReviewed.length, 3264);
+  assert.equal(catalog.records.length - allReviewed.length, 3267);
 });
 
 test("Palache has no same-inventory continuity and only unreviewed possible candidates", () => {
@@ -310,7 +310,7 @@ test("Kanagawa publishes only the approved controlled facts with no glass mappin
   assert(!published.metadata.collectionSeries.some(({ catalogIds }) => catalogIds.includes("kanagawa-1996")));
   assert(!published.relationships.some(({ observations }) =>
     observations.some(({ catalogId }) => catalogId === "kanagawa-1996")));
-  assert.equal(catalog.records.filter(({ catalogId }) => catalogId !== "kanagawa-1996").length, 12925);
+  assert.equal(catalog.records.filter(({ catalogId }) => catalogId !== "kanagawa-1996").length, 12928);
 });
 
 test("Merrill, Prior, and Reeds publish locked facts with blocked folios and derived lineages", () => {
@@ -437,6 +437,60 @@ test("publishes the corrected Tassin, Reeds, and distinct Merrill observations",
   ]);
   assert.match(merrill[0].holdings[0].description, /^Iron, Og\..*first known in 1836\..*Red River.*p\. 285\.$/u);
   assert.match(merrill[1].holdings[0].description, /Widmanstätten/u);
+});
+
+test("Ward 1881 publishes only priced offerings with blocked folios and no lineage claims", () => {
+  const catalogId = "ward-1881";
+  const descriptor = catalog.metadata.catalogs.find(({ id }) => id === catalogId);
+  const records = catalog.records.filter((record) => record.catalogId === catalogId);
+  const holdings = records.flatMap((record) => record.holdings);
+  const relationships = published.relationships.filter(({ observations }) =>
+    observations.some((observation) => observation.catalogId === catalogId));
+  const recordIds = [
+    "obs-ba4b83e0-f5cd-499d-aec2-ceb8b8285b0a",
+    "obs-b1be1364-10b5-4695-9053-743e6e4d6852",
+    "obs-d3754743-885c-4a80-a57d-e44af0011d20",
+  ];
+
+  assert.deepEqual(descriptor, {
+    id: catalogId,
+    recordModel: "collection-entry",
+    label: "Meteorites, in Ward's Natural Science Bulletin, volume 1 number 1 (1881)",
+    compiler: "Henry A. Ward",
+    year: 1881,
+    sourcePages: [4],
+    sourcePageCount: 1,
+    recordCount: 3,
+    recordsWithDesignation: 0,
+    recordsWithWeight: 0,
+    confidenceCounts: { high: 3, medium: 0, low: 0 },
+    folioDisplayPolicy: "blocked",
+    rightsStatus: "undetermined",
+  });
+  assert.deepEqual(records.map(({ id }) => id), recordIds);
+  assert.deepEqual(records.map(({ entryOrder }) => entryOrder), [1, 2, 3]);
+  assert(records.every(({ catalogPages, reportedNumber, section, confidence, metbull }) =>
+    JSON.stringify(catalogPages) === "[4]" && reportedNumber === null && section === "IRONS." &&
+    confidence === "high" && metbull === undefined));
+  assert.equal(holdings.length, 5);
+  assert(holdings.every(({ provenance, count, weights, description }) =>
+    provenance === null && count === null && weights.length === 0 && /(?:\$|cts\.)/u.test(description)));
+  assert.deepEqual(folios.catalogs[catalogId], {
+    displayPolicy: "blocked",
+    rightsStatus: "undetermined",
+    pages: [],
+  });
+  assert.deepEqual(folioReleaseLock.catalogs[catalogId], {
+    displayPolicy: "blocked",
+    rightsStatus: "undetermined",
+    basis: null,
+    basisUrl: null,
+    pageIds: [],
+  });
+  assert(!folioReleaseLock.assets.some(({ path }) => path.includes(catalogId)));
+  assert(!published.metadata.collectionSeries.some(({ catalogIds }) => catalogIds.includes(catalogId)));
+  assert.equal(relationships.length, 0);
+  assert.doesNotMatch(JSON.stringify(records), /(?:ocr|raw(?:Text|Record)|source(?:File|Path|Image)|imageId|acquisition|review|manifest|\/private\/|\/Users\/|\.(?:pdf|png|webp))/iu);
 });
 
 test("Ward and Farrington 1916 publish exact facts with blocked folios and no same-inventory claims", () => {

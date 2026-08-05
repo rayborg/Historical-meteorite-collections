@@ -109,15 +109,16 @@ test("real catalog Allende search retains reviewed names and synonyms without Al
 
 test("real release locks all catalogs and chronological dropdown entries", () => {
   const entries = app.catalogSelectorEntries(registry);
-  assert.equal(entries.length, 28);
+  assert.equal(entries.length, 29);
   assert.deepEqual(entries.map(([id]) => id), [
     "lucas-1813", "chladni-1819", "chladni-1825", "haidinger-1859", "buchner-1863",
-    "nordenskiold-1870", "ball-1882", "usnm-1886", "hovey-1896", "washington-1897",
+    "nordenskiold-1870", "ward-1881", "ball-1882", "usnm-1886", "hovey-1896", "washington-1897",
     "tassin-1902", "hogbom-1902", "farrington-1903", "ward-1904", "schreiter-1912", "farrington-1916", "merrill-1916",
     "prior-1923", "palache-1926", "nininger-1933", "reeds-1937", "barnes-1940", "nininger-1950", "mason-1964", "huss-1976",
     "huss-1986", "kanagawa-1996", "asu-2024-09",
   ]);
   assert.equal(app.catalogDropdownLabel(registry["merrill-1916"], "merrill-1916"), "Merrill (1916)");
+  assert.equal(app.catalogDropdownLabel(registry["ward-1881"], "ward-1881"), "Ward (1881)");
   assert.equal(app.catalogDropdownLabel(registry["ward-1904"], "ward-1904"), "Ward (1904)");
   assert.equal(app.catalogDropdownLabel(registry["farrington-1916"], "farrington-1916"), "Farrington (1916)");
   assert.equal(app.catalogDropdownLabel(registry["prior-1923"], "prior-1923"), "Prior (1923)");
