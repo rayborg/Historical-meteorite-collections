@@ -4,9 +4,9 @@
     "scope": "series-inventory-and-cross-source-candidates",
     "source": {
       "catalogSchemaVersion": 6,
-      "recordCount": 13160,
-      "catalogCount": 29,
-      "flattenedMassObservationCount": 13522,
+      "recordCount": 13365,
+      "catalogCount": 30,
+      "flattenedMassObservationCount": 13672,
       "inventoryObservationCount": 3627
     },
     "collectionSeries": [
@@ -54,26 +54,31 @@
       ]
     },
     "counts": {
-      "relationshipCount": 1466,
+      "relationshipCount": 1482,
       "sameInventoryRelationshipCount": 195,
-      "possibleMatchRelationshipCount": 1271,
-      "unreviewedPossibleMatchCount": 1271,
-      "exactMassPossibleMatchCount": 1050,
-      "nearMassPossibleMatchCount": 221,
-      "metbullIdentityPossibleMatchCount": 1271,
+      "possibleMatchRelationshipCount": 1287,
+      "unreviewedPossibleMatchCount": 1287,
+      "exactMassPossibleMatchCount": 1065,
+      "nearMassPossibleMatchCount": 222,
+      "metbullIdentityPossibleMatchCount": 1287,
       "normalizedNameIdentityPossibleMatchCount": 0,
       "sameDesignationPossibleMatchCount": 0,
       "designationFamilyPossibleMatchCount": 0,
-      "aggregateOrMultiplePossibleMatchCount": 38,
+      "aggregateOrMultiplePossibleMatchCount": 39,
       "castPossibleMatchCount": 0,
       "identityResolvedInventoryCollisionCount": 1,
       "omittedAmbiguousInventoryKeyCount": 0,
       "possibleMatchEvidenceStrength": {
         "multiple-matching-facts": 0,
-        "two-matching-facts": 1050,
-        "limited-matching-evidence": 221
+        "two-matching-facts": 1065,
+        "limited-matching-evidence": 222
       },
       "catalogPairs": [
+        {
+          "catalogPair": "asu-2024-09|foote-1912",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 1
+        },
         {
           "catalogPair": "asu-2024-09|nininger-1933",
           "sameInventoryCount": 0,
@@ -155,6 +160,11 @@
           "possibleMatchCount": 132
         },
         {
+          "catalogPair": "farrington-1903|foote-1912",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 3
+        },
+        {
           "catalogPair": "farrington-1903|mason-1964",
           "sameInventoryCount": 0,
           "possibleMatchCount": 2
@@ -198,6 +208,11 @@
           "catalogPair": "farrington-1903|tassin-1902",
           "sameInventoryCount": 0,
           "possibleMatchCount": 1
+        },
+        {
+          "catalogPair": "farrington-1916|foote-1912",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 2
         },
         {
           "catalogPair": "farrington-1916|hogbom-1902",
@@ -253,6 +268,31 @@
           "catalogPair": "farrington-1916|washington-1897",
           "sameInventoryCount": 0,
           "possibleMatchCount": 4
+        },
+        {
+          "catalogPair": "foote-1912|mason-1964",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 1
+        },
+        {
+          "catalogPair": "foote-1912|nordenskiold-1870",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 1
+        },
+        {
+          "catalogPair": "foote-1912|prior-1923",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 2
+        },
+        {
+          "catalogPair": "foote-1912|reeds-1937",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 5
+        },
+        {
+          "catalogPair": "foote-1912|tassin-1902",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 1
         },
         {
           "catalogPair": "hogbom-1902|mason-1964",
@@ -4436,6 +4476,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-42188afc-1304-4f49-8c38-225615c6b247#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-0a850c5d-bc29-5fd4-a18a-cf0dc30a051e",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Waconda",
+      "catalogPair": "foote-1912|prior-1923",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "24195",
+        "canonicalName": "Waconda"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-7b533c2d-3e1b-5812-ae62-895aa3726dd8",
+          "recordId": "obs-1f7fedfa-de57-4b46-95c1-0d6e330f63d2",
+          "catalogId": "foote-1912",
+          "catalogLabel": "The Foote Collection of Meteorites (1912)",
+          "catalogYear": 1912,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 74",
+          "sourceName": "Waconda",
+          "canonicalName": "Waconda",
+          "meteoriteCode": "24195",
+          "designation": null,
+          "massGrams": 11,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=foote-1912&q=record%20id%20obs-1f7fedfa-de57-4b46-95c1-0d6e330f63d2#catalog"
+        },
+        {
+          "id": "mass-observation-80ff79b0-42d3-5d2a-90d4-7c79406bc893",
+          "recordId": "obs-9fa5eddd-5006-4b5a-8cdc-4e842e6611d7",
+          "catalogId": "prior-1923",
+          "catalogLabel": "Catalogue of Meteorites: global survey with British Museum representation status (1923)",
+          "catalogYear": 1923,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[1].grams",
+          "sourceRecordLabel": "Collection entry 816",
+          "sourceName": "Waconda",
+          "canonicalName": "Waconda",
+          "meteoriteCode": "24195",
+          "designation": null,
+          "massGrams": 11,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=prior-1923&q=record%20id%20obs-9fa5eddd-5006-4b5a-8cdc-4e842e6611d7#catalog"
         }
       ]
     },
@@ -14960,6 +15076,82 @@
       ]
     },
     {
+      "id": "possible-lineage-25410411-db75-5d68-99d9-090ddc9ea666",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Chantonnay",
+      "catalogPair": "farrington-1903|foote-1912",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "5325",
+        "canonicalName": "Chantonnay"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-86f36a86-fdb3-5d0b-bec5-25359faa015c",
+          "recordId": "obs-da70dcc3-bf9c-45dd-89be-86cc7c90145a",
+          "catalogId": "farrington-1903",
+          "catalogLabel": "Catalogue of the Meteorite Collection of the Field Columbian Museum, May 1, 1903 (1903)",
+          "catalogYear": 1903,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 50",
+          "sourceName": "Chantonnay",
+          "canonicalName": "Chantonnay",
+          "meteoriteCode": "5325",
+          "designation": null,
+          "massGrams": 2,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=farrington-1903&q=record%20id%20obs-da70dcc3-bf9c-45dd-89be-86cc7c90145a#catalog"
+        },
+        {
+          "id": "mass-observation-a17bba15-57b8-5e14-b9b9-84474b772ef5",
+          "recordId": "obs-466ed24b-4d12-45f7-ba58-d4e9509b1e20",
+          "catalogId": "foote-1912",
+          "catalogLabel": "The Foote Collection of Meteorites (1912)",
+          "catalogYear": 1912,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 38",
+          "sourceName": "Chantonnay",
+          "canonicalName": "Chantonnay",
+          "meteoriteCode": "5325",
+          "designation": null,
+          "massGrams": 2,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=foote-1912&q=record%20id%20obs-466ed24b-4d12-45f7-ba58-d4e9509b1e20#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-259d3037-9c3f-50f4-b20c-ee3cfffcb064",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -22888,6 +23080,83 @@
       ]
     },
     {
+      "id": "possible-lineage-3e9adf55-ed9a-5742-9b73-94d5cfc4936f",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Holbrook",
+      "catalogPair": "foote-1912|reeds-1937",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "11894",
+        "canonicalName": "Holbrook"
+      },
+      "evidence": {
+        "strength": "limited-matching-evidence",
+        "massMatch": "near",
+        "absoluteDifferenceGrams": 0.30000000000001137,
+        "relativeDifference": 0.0006666666666666919,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "near-reported-mass"
+        ],
+        "cautionCodes": [
+          "near-reported-mass",
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-51d0afd2-c0c2-58de-a224-e81c960c2993",
+          "recordId": "obs-4ea7b777-d981-4e93-8ecf-ca1c9eb3fdea",
+          "catalogId": "reeds-1937",
+          "catalogLabel": "Catalogue of the Meteorites in the American Museum of Natural History as of October 1, 1935 (1937)",
+          "catalogYear": 1937,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 195",
+          "sourceName": "Holbrook",
+          "canonicalName": "Holbrook",
+          "meteoriteCode": "11894",
+          "designation": null,
+          "massGrams": 449.7,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=reeds-1937&q=record%20id%20obs-4ea7b777-d981-4e93-8ecf-ca1c9eb3fdea#catalog"
+        },
+        {
+          "id": "mass-observation-dc3dee55-c9f8-5f4f-8c9b-b42c1dbb2b9c",
+          "recordId": "obs-3c40f43d-bd04-4363-81ec-f327975254d5",
+          "catalogId": "foote-1912",
+          "catalogLabel": "The Foote Collection of Meteorites (1912)",
+          "catalogYear": 1912,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[7].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 81",
+          "sourceName": "Holbrook",
+          "canonicalName": "Holbrook",
+          "meteoriteCode": "11894",
+          "designation": null,
+          "massGrams": 450,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=foote-1912&q=record%20id%20obs-3c40f43d-bd04-4363-81ec-f327975254d5#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-3ebe6cb1-44e1-50fc-8c70-f68f86c7bdd0",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -26321,6 +26590,82 @@
       ]
     },
     {
+      "id": "possible-lineage-48a0e9c0-d6e0-5fff-afca-60b821c7940c",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Bethlehem",
+      "catalogPair": "foote-1912|reeds-1937",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "5032",
+        "canonicalName": "Bethlehem"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-20e52305-9e49-5e2e-9c1b-c9b819d315a1",
+          "recordId": "obs-de105f12-e89a-4195-a759-a672847a3316",
+          "catalogId": "foote-1912",
+          "catalogLabel": "The Foote Collection of Meteorites (1912)",
+          "catalogYear": 1912,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 80",
+          "sourceName": "Bethlehem",
+          "canonicalName": "Bethlehem",
+          "meteoriteCode": "5032",
+          "designation": null,
+          "massGrams": 0.5,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=foote-1912&q=record%20id%20obs-de105f12-e89a-4195-a759-a672847a3316#catalog"
+        },
+        {
+          "id": "mass-observation-9f0c1385-5736-56a8-acf4-0d7c0a9d59da",
+          "recordId": "obs-983ca951-4c2b-4b2b-b078-4cabb6e9c912",
+          "catalogId": "reeds-1937",
+          "catalogLabel": "Catalogue of the Meteorites in the American Museum of Natural History as of October 1, 1935 (1937)",
+          "catalogYear": 1937,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 53",
+          "sourceName": "Bethlehem",
+          "canonicalName": "Bethlehem",
+          "meteoriteCode": "5032",
+          "designation": null,
+          "massGrams": 0.5,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=reeds-1937&q=record%20id%20obs-983ca951-4c2b-4b2b-b078-4cabb6e9c912#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-48a9ab49-0be0-5a17-b35f-99a778c1a14b",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -28904,6 +29249,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-3b2450c6-c510-40c0-91f0-312e51030c4d#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-4e4d09c2-6bdb-58c9-9f54-63135512b6e3",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Chantonnay",
+      "catalogPair": "farrington-1916|foote-1912",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "5325",
+        "canonicalName": "Chantonnay"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-2cf9933f-b9ce-5d5b-a3c1-f49e3dcb5fe0",
+          "recordId": "obs-466ed24b-4d12-45f7-ba58-d4e9509b1e20",
+          "catalogId": "foote-1912",
+          "catalogLabel": "The Foote Collection of Meteorites (1912)",
+          "catalogYear": 1912,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 38",
+          "sourceName": "Chantonnay",
+          "canonicalName": "Chantonnay",
+          "meteoriteCode": "5325",
+          "designation": null,
+          "massGrams": 2,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=foote-1912&q=record%20id%20obs-466ed24b-4d12-45f7-ba58-d4e9509b1e20#catalog"
+        },
+        {
+          "id": "mass-observation-7d96909d-abe3-50ee-8f1e-47dce43cdbc1",
+          "recordId": "obs-9101a923-1552-4d0c-b085-9eddc92a330f",
+          "catalogId": "farrington-1916",
+          "catalogLabel": "Catalogue of the Collection of Meteorites (1916)",
+          "catalogYear": 1916,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 122",
+          "sourceName": "Chantonnay",
+          "canonicalName": "Chantonnay",
+          "meteoriteCode": "5325",
+          "designation": null,
+          "massGrams": 2,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=farrington-1916&q=record%20id%20obs-9101a923-1552-4d0c-b085-9eddc92a330f#catalog"
         }
       ]
     },
@@ -38201,6 +38622,82 @@
       ]
     },
     {
+      "id": "possible-lineage-6553306a-1086-52d9-8ea3-abc5c68987fc",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Colfax",
+      "catalogPair": "farrington-1903|foote-1912",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "5402",
+        "canonicalName": "Colfax"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-bc742979-8b04-59f3-96dc-0983f2bde751",
+          "recordId": "obs-bcbc8f17-a668-4f9f-84c9-90ca9f8ebf27",
+          "catalogId": "foote-1912",
+          "catalogLabel": "The Foote Collection of Meteorites (1912)",
+          "catalogYear": 1912,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 129",
+          "sourceName": "Colfax",
+          "canonicalName": "Colfax",
+          "meteoriteCode": "5402",
+          "designation": null,
+          "massGrams": 61,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=foote-1912&q=record%20id%20obs-bcbc8f17-a668-4f9f-84c9-90ca9f8ebf27#catalog"
+        },
+        {
+          "id": "mass-observation-f0f57166-7d15-58b4-b7a7-749b9da21361",
+          "recordId": "obs-a5353cdb-7628-4770-bdb3-3fafcba685c2",
+          "catalogId": "farrington-1903",
+          "catalogLabel": "Catalogue of the Meteorite Collection of the Field Columbian Museum, May 1, 1903 (1903)",
+          "catalogYear": 1903,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 61",
+          "sourceName": "Colfax",
+          "canonicalName": "Colfax",
+          "meteoriteCode": "5402",
+          "designation": null,
+          "massGrams": 61,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=farrington-1903&q=record%20id%20obs-a5353cdb-7628-4770-bdb3-3fafcba685c2#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-655740ad-a04a-5fbb-964f-dda81a5ea8b3",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -42237,6 +42734,82 @@
       ]
     },
     {
+      "id": "possible-lineage-6f4e1501-4165-590b-9132-728e212111c1",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Warrenton",
+      "catalogPair": "farrington-1903|foote-1912",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "24215",
+        "canonicalName": "Warrenton"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-32b32477-5deb-5d4d-a30d-1f855f31df8c",
+          "recordId": "obs-61871a04-3a6d-44a8-896f-a182fe0ac4b9",
+          "catalogId": "farrington-1903",
+          "catalogLabel": "Catalogue of the Meteorite Collection of the Field Columbian Museum, May 1, 1903 (1903)",
+          "catalogYear": 1903,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 242",
+          "sourceName": "Warrenton",
+          "canonicalName": "Warrenton",
+          "meteoriteCode": "24215",
+          "designation": null,
+          "massGrams": 5,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=farrington-1903&q=record%20id%20obs-61871a04-3a6d-44a8-896f-a182fe0ac4b9#catalog"
+        },
+        {
+          "id": "mass-observation-6073e937-8e46-56b5-b8da-11a6b8828c2a",
+          "recordId": "obs-4c7dc42d-2144-4f8d-a10a-ed876945b103",
+          "catalogId": "foote-1912",
+          "catalogLabel": "The Foote Collection of Meteorites (1912)",
+          "catalogYear": 1912,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 78",
+          "sourceName": "Warrenton",
+          "canonicalName": "Warrenton",
+          "meteoriteCode": "24215",
+          "designation": null,
+          "massGrams": 5,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=foote-1912&q=record%20id%20obs-4c7dc42d-2144-4f8d-a10a-ed876945b103#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-6f54bdfa-2779-5a34-9845-7c62a43b648e",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -45207,6 +45780,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=huss-1986&q=record%20id%20obs-11df1a31-5759-4e7b-b25c-6ab0f317a2b1#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-7604af44-fe2c-5805-9388-d6d480772da7",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Bethlehem",
+      "catalogPair": "asu-2024-09|foote-1912",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "5032",
+        "canonicalName": "Bethlehem"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-15ab059a-075d-5706-b166-83bfcc205202",
+          "recordId": "obs-de105f12-e89a-4195-a759-a672847a3316",
+          "catalogId": "foote-1912",
+          "catalogLabel": "The Foote Collection of Meteorites (1912)",
+          "catalogYear": 1912,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 80",
+          "sourceName": "Bethlehem",
+          "canonicalName": "Bethlehem",
+          "meteoriteCode": "5032",
+          "designation": null,
+          "massGrams": 0.5,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=foote-1912&q=record%20id%20obs-de105f12-e89a-4195-a759-a672847a3316#catalog"
+        },
+        {
+          "id": "mass-observation-682c3c2d-d27e-5e1e-ab26-c81e07e2fdf3",
+          "recordId": "obs-72d8b1d1-4a06-4a70-bf61-9eca94634565",
+          "catalogId": "asu-2024-09",
+          "catalogLabel": "Arizona State University Meteorite Collection Catalog (2024)",
+          "catalogYear": 2024,
+          "recordModel": "specimen",
+          "designationPath": "designation",
+          "massPath": "weight.grams",
+          "sourceRecordLabel": "1118",
+          "sourceName": "Bethlehem",
+          "canonicalName": "Bethlehem",
+          "meteoriteCode": "5032",
+          "designation": "1118",
+          "massGrams": 0.5,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=asu-2024-09&q=record%20id%20obs-72d8b1d1-4a06-4a70-bf61-9eca94634565#catalog"
         }
       ]
     },
@@ -58391,6 +59040,82 @@
       ]
     },
     {
+      "id": "possible-lineage-97393333-de35-5bd7-bfba-70131ee37702",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Alais",
+      "catalogPair": "foote-1912|nordenskiold-1870",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "448",
+        "canonicalName": "Alais"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-357ed3a2-8b0e-511c-aca6-6510a2929a6e",
+          "recordId": "obs-99141ca0-42bf-48de-8cac-8cb6c8752f3b",
+          "catalogId": "nordenskiold-1870",
+          "catalogLabel": "Förteckning på meteoriter i Riksmusei mineralogiska samlingar (1870)",
+          "catalogYear": 1870,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 12",
+          "sourceName": "Alais",
+          "canonicalName": "Alais",
+          "meteoriteCode": "448",
+          "designation": null,
+          "massGrams": 3,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=nordenskiold-1870&q=record%20id%20obs-99141ca0-42bf-48de-8cac-8cb6c8752f3b#catalog"
+        },
+        {
+          "id": "mass-observation-ecb95d7c-9590-5bbf-ba40-e82887a4cf21",
+          "recordId": "obs-5e433a0e-5098-48f0-89d2-617c44675963",
+          "catalogId": "foote-1912",
+          "catalogLabel": "The Foote Collection of Meteorites (1912)",
+          "catalogYear": 1912,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 46",
+          "sourceName": "Alais",
+          "canonicalName": "Alais",
+          "meteoriteCode": "448",
+          "designation": null,
+          "massGrams": 3,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=foote-1912&q=record%20id%20obs-5e433a0e-5098-48f0-89d2-617c44675963#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-97527ad1-5299-5f97-bf60-84cce2da2743",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -62576,6 +63301,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-e2b4f522-b31d-4dcb-9cf6-7b8ba35da649#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-a34fa0db-f71f-52d7-a9c9-bafe4bc73581",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Albareto",
+      "catalogPair": "foote-1912|reeds-1937",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "453",
+        "canonicalName": "Albareto"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-94b1254d-9427-558c-babe-57f781654488",
+          "recordId": "obs-9163bcc1-47d6-488e-9dbb-77f6da5492aa",
+          "catalogId": "reeds-1937",
+          "catalogLabel": "Catalogue of the Meteorites in the American Museum of Natural History as of October 1, 1935 (1937)",
+          "catalogYear": 1937,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 11",
+          "sourceName": "Albareto",
+          "canonicalName": "Albareto",
+          "meteoriteCode": "453",
+          "designation": null,
+          "massGrams": 2,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=reeds-1937&q=record%20id%20obs-9163bcc1-47d6-488e-9dbb-77f6da5492aa#catalog"
+        },
+        {
+          "id": "mass-observation-d698275c-025e-5698-83e7-73ff4ccda010",
+          "recordId": "obs-c1246191-a230-4267-a706-63d71f7ac574",
+          "catalogId": "foote-1912",
+          "catalogLabel": "The Foote Collection of Meteorites (1912)",
+          "catalogYear": 1912,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 52",
+          "sourceName": "Albareto",
+          "canonicalName": "Albareto",
+          "meteoriteCode": "453",
+          "designation": null,
+          "massGrams": 2,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=foote-1912&q=record%20id%20obs-c1246191-a230-4267-a706-63d71f7ac574#catalog"
         }
       ]
     },
@@ -66770,6 +67571,82 @@
       ]
     },
     {
+      "id": "possible-lineage-af17165d-688b-563f-9e6c-38b3d9b7ce60",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Albareto",
+      "catalogPair": "foote-1912|prior-1923",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "453",
+        "canonicalName": "Albareto"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-4bcf405f-a1f6-5417-a18d-79e090196fcd",
+          "recordId": "obs-0b5e9fa6-cb83-4f69-a07d-a92721daeee0",
+          "catalogId": "prior-1923",
+          "catalogLabel": "Catalogue of Meteorites: global survey with British Museum representation status (1923)",
+          "catalogYear": 1923,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[1].grams",
+          "sourceRecordLabel": "Collection entry 11",
+          "sourceName": "Albareto",
+          "canonicalName": "Albareto",
+          "meteoriteCode": "453",
+          "designation": null,
+          "massGrams": 2,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=prior-1923&q=record%20id%20obs-0b5e9fa6-cb83-4f69-a07d-a92721daeee0#catalog"
+        },
+        {
+          "id": "mass-observation-73e43e09-8621-52fd-bd94-f05a3c2297e0",
+          "recordId": "obs-c1246191-a230-4267-a706-63d71f7ac574",
+          "catalogId": "foote-1912",
+          "catalogLabel": "The Foote Collection of Meteorites (1912)",
+          "catalogYear": 1912,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 52",
+          "sourceName": "Albareto",
+          "canonicalName": "Albareto",
+          "meteoriteCode": "453",
+          "designation": null,
+          "massGrams": 2,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=foote-1912&q=record%20id%20obs-c1246191-a230-4267-a706-63d71f7ac574#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-af2a0118-3f7a-51a5-8c7d-4bd4c4133f1e",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -69890,6 +70767,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=reeds-1937&q=record%20id%20obs-bba183ee-3fb1-4aa3-88a3-f6f8d5a927e8#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-b7bd6687-3b62-5c1f-9dc0-5bf243c3fc27",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Girgenti",
+      "catalogPair": "farrington-1916|foote-1912",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "10917",
+        "canonicalName": "Girgenti"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-84b3058e-806c-5039-81e5-d5b16994abd5",
+          "recordId": "obs-dd71f965-2114-45a3-acd5-118ac12f7734",
+          "catalogId": "foote-1912",
+          "catalogLabel": "The Foote Collection of Meteorites (1912)",
+          "catalogYear": 1912,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 14",
+          "sourceName": "Girgenti",
+          "canonicalName": "Girgenti",
+          "meteoriteCode": "10917",
+          "designation": null,
+          "massGrams": 29,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=foote-1912&q=record%20id%20obs-dd71f965-2114-45a3-acd5-118ac12f7734#catalog"
+        },
+        {
+          "id": "mass-observation-a32886fc-3918-54d9-b478-f48fd759782f",
+          "recordId": "obs-02012fc9-7b5e-4d21-a3c1-5b53c2e789c6",
+          "catalogId": "farrington-1916",
+          "catalogLabel": "Catalogue of the Collection of Meteorites (1916)",
+          "catalogYear": 1916,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 220",
+          "sourceName": "Girgenti",
+          "canonicalName": "Girgenti",
+          "meteoriteCode": "10917",
+          "designation": null,
+          "massGrams": 29,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=farrington-1916&q=record%20id%20obs-02012fc9-7b5e-4d21-a3c1-5b53c2e789c6#catalog"
         }
       ]
     },
@@ -85204,6 +86157,83 @@
       ]
     },
     {
+      "id": "possible-lineage-dfc290ad-e684-5029-8922-d452774c48eb",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Cold Bokkeveld",
+      "catalogPair": "foote-1912|tassin-1902",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "5397",
+        "canonicalName": "Cold Bokkeveld"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing",
+          "aggregate-or-multiple"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-01f93813-cea9-5297-a71e-9bf9500abb36",
+          "recordId": "obs-f3796e12-69c8-43a3-9f9c-94c68f440fd8",
+          "catalogId": "tassin-1902",
+          "catalogLabel": "Descriptive Catalogue of the Meteorite Collection in the United States National Museum to January 1, 1902 (1902)",
+          "catalogYear": 1902,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 77",
+          "sourceName": "Cold Bokkeveld",
+          "canonicalName": "Cold Bokkeveld",
+          "meteoriteCode": "5397",
+          "designation": null,
+          "massGrams": 4,
+          "kind": null,
+          "count": 2,
+          "catalogSearchUrl": "./index.html?catalog=tassin-1902&q=record%20id%20obs-f3796e12-69c8-43a3-9f9c-94c68f440fd8#catalog"
+        },
+        {
+          "id": "mass-observation-d9a6e2d0-a7b4-5065-8ab6-22acab3d9f73",
+          "recordId": "obs-d28d4d29-ac31-42e8-b3ab-67d5c72809af",
+          "catalogId": "foote-1912",
+          "catalogLabel": "The Foote Collection of Meteorites (1912)",
+          "catalogYear": 1912,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 47",
+          "sourceName": "Cold Bokkeveld",
+          "canonicalName": "Cold Bokkeveld",
+          "meteoriteCode": "5397",
+          "designation": null,
+          "massGrams": 4,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=foote-1912&q=record%20id%20obs-d28d4d29-ac31-42e8-b3ab-67d5c72809af#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-e016b1ea-c580-51e0-a306-80a55bcce160",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -86952,6 +87982,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=reeds-1937&q=record%20id%20obs-a64e460d-ddbc-4509-91d2-bdca07486cae#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-e4f21ccb-67de-50a8-bc9b-397251d19563",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Orvinio",
+      "catalogPair": "foote-1912|mason-1964",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "18034",
+        "canonicalName": "Orvinio"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-3fb015dc-7419-5851-821e-3efbf96e2da5",
+          "recordId": "obs-1a9de64e-b8a1-40f6-a39b-69da3238acb5",
+          "catalogId": "foote-1912",
+          "catalogLabel": "The Foote Collection of Meteorites (1912)",
+          "catalogYear": 1912,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 41",
+          "sourceName": "Orvinio",
+          "canonicalName": "Orvinio",
+          "meteoriteCode": "18034",
+          "designation": null,
+          "massGrams": 2.9,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=foote-1912&q=record%20id%20obs-1a9de64e-b8a1-40f6-a39b-69da3238acb5#catalog"
+        },
+        {
+          "id": "mass-observation-59ae8782-94cf-5999-975a-6da824164d2b",
+          "recordId": "obs-9417d54a-ef32-478c-b441-fd0180574625",
+          "catalogId": "mason-1964",
+          "catalogLabel": "The Meteorite and Tektite Collection of the American Museum of Natural History (1964)",
+          "catalogYear": 1964,
+          "recordModel": "catalog-number",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Catalog no. 521",
+          "sourceName": "Orvinio",
+          "canonicalName": "Orvinio",
+          "meteoriteCode": "18034",
+          "designation": null,
+          "massGrams": 2.9,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=mason-1964&q=record%20id%20obs-9417d54a-ef32-478c-b441-fd0180574625#catalog"
         }
       ]
     },
@@ -94582,6 +95688,82 @@
       ]
     },
     {
+      "id": "possible-lineage-f856e4cc-df89-5ec6-84ee-178a65ec0241",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Albareto",
+      "catalogPair": "foote-1912|reeds-1937",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "453",
+        "canonicalName": "Albareto"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-40b56229-f235-5d94-8e85-f0c9ad55e9f9",
+          "recordId": "obs-9163bcc1-47d6-488e-9dbb-77f6da5492aa",
+          "catalogId": "reeds-1937",
+          "catalogLabel": "Catalogue of the Meteorites in the American Museum of Natural History as of October 1, 1935 (1937)",
+          "catalogYear": 1937,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 11",
+          "sourceName": "Albareto",
+          "canonicalName": "Albareto",
+          "meteoriteCode": "453",
+          "designation": null,
+          "massGrams": 2,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=reeds-1937&q=record%20id%20obs-9163bcc1-47d6-488e-9dbb-77f6da5492aa#catalog"
+        },
+        {
+          "id": "mass-observation-a0833ac9-af50-54f3-aee2-0c16456548a1",
+          "recordId": "obs-c1246191-a230-4267-a706-63d71f7ac574",
+          "catalogId": "foote-1912",
+          "catalogLabel": "The Foote Collection of Meteorites (1912)",
+          "catalogYear": 1912,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 52",
+          "sourceName": "Albareto",
+          "canonicalName": "Albareto",
+          "meteoriteCode": "453",
+          "designation": null,
+          "massGrams": 2,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=foote-1912&q=record%20id%20obs-c1246191-a230-4267-a706-63d71f7ac574#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-f86f8cf1-960b-5f88-9bcc-f35f157f120d",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -97325,6 +98507,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=nininger-1950&q=record%20id%20obs-50f37f26-16ee-4353-8a81-89b64f0e083f#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-ff84c338-3441-509a-b86b-7fce8f9d09f3",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Cold Bokkeveld",
+      "catalogPair": "foote-1912|reeds-1937",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "5397",
+        "canonicalName": "Cold Bokkeveld"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-8dec6a42-5299-53ac-b0dd-d4c75d1598db",
+          "recordId": "obs-d6372c63-fbb6-4844-8a1f-18982c167778",
+          "catalogId": "reeds-1937",
+          "catalogLabel": "Catalogue of the Meteorites in the American Museum of Natural History as of October 1, 1935 (1937)",
+          "catalogYear": 1937,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 108",
+          "sourceName": "Cold Bokkeveld",
+          "canonicalName": "Cold Bokkeveld",
+          "meteoriteCode": "5397",
+          "designation": null,
+          "massGrams": 4,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=reeds-1937&q=record%20id%20obs-d6372c63-fbb6-4844-8a1f-18982c167778#catalog"
+        },
+        {
+          "id": "mass-observation-90e48eb9-79e9-5c29-a0a2-596a9deefbe2",
+          "recordId": "obs-d28d4d29-ac31-42e8-b3ab-67d5c72809af",
+          "catalogId": "foote-1912",
+          "catalogLabel": "The Foote Collection of Meteorites (1912)",
+          "catalogYear": 1912,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 47",
+          "sourceName": "Cold Bokkeveld",
+          "canonicalName": "Cold Bokkeveld",
+          "meteoriteCode": "5397",
+          "designation": null,
+          "massGrams": 4,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=foote-1912&q=record%20id%20obs-d28d4d29-ac31-42e8-b3ab-67d5c72809af#catalog"
         }
       ]
     },

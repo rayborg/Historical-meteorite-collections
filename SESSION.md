@@ -9,7 +9,7 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 ## Current State
 
 <!-- release-summary:session-current-state:start -->
-- Schema 6 contains 13,160 facts-only records across 29 catalogs.
+- Schema 6 contains 13,365 facts-only records across 30 catalogs.
 
 | `catalogId` | Record model | Records | Metadata source pages | Pages cited by records |
 | --- | --- | ---: | ---: | ---: |
@@ -21,6 +21,7 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 | `chladni-1825` | `collection-entry` | 42 | 41 | 33 |
 | `farrington-1903` | `collection-entry` | 251 | 38 | 38 |
 | `farrington-1916` | `collection-entry` | 738 | 82 | 78 |
+| `foote-1912` | `collection-entry` | 205 | 35 | 25 |
 | `haidinger-1859` | `collection-entry` | 137 | 6 | 5 |
 | `hogbom-1902` | `collection-entry` | 86 | 3 | 2 |
 | `hovey-1896` | `catalog-number` | 25 | 7 | 7 |
@@ -42,17 +43,17 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 | `ward-1881` | `collection-entry` | 3 | 1 | 1 |
 | `ward-1904` | `collection-entry` | 697 | 74 | 74 |
 | `washington-1897` | `collection-entry` | 201 | 4 | 4 |
-| **Total** |  | **13,160** | **1,185** | **1,081** |
+| **Total** |  | **13,365** | **1,220** | **1,106** |
 
-- Metadata covers 1,185 catalog-scoped source pages; records cite 1,081 of them.
+- Metadata covers 1,220 catalog-scoped source pages; records cite 1,106 of them.
 - Nininger coverage is derived without page-boundary assumptions: `nininger-1933` has 171 records; its metadata source pages span 1-20, and its record citations span 1-11. `nininger-1950` has 1,678 records; its metadata source pages span 26-104, and its record citations span 26-104.
 - Public folios use schema 2 and expose 49 display pages across 5 catalogs: `chladni-1819` (12 pages, `public-domain`); `haidinger-1859` (6 pages, `public-domain`); `hovey-1896` (7 pages, `public-domain`); `lucas-1813` (3 pages, `public-domain`); `nininger-1933` (21 pages, `no-copyright-us`).
-- Blocked folio catalogs are: `asu-2024-09` (0 pages, `undetermined`); `ball-1882` (0 pages, `undetermined`); `barnes-1940` (0 pages, `undetermined`); `buchner-1863` (0 pages, `undetermined`); `chladni-1825` (0 pages, `undetermined`); `farrington-1903` (0 pages, `undetermined`); `farrington-1916` (0 pages, `undetermined`); `hogbom-1902` (0 pages, `undetermined`); `huss-1976` (0 pages, `undetermined`); `huss-1986` (0 pages, `undetermined`); `kanagawa-1996` (0 pages, `undetermined`); `mason-1964` (0 pages, `undetermined`); `merrill-1916` (0 pages, `undetermined`); `nininger-1950` (0 pages, `undetermined`); `nordenskiold-1870` (0 pages, `undetermined`); `palache-1926` (0 pages, `undetermined`); `prior-1923` (0 pages, `undetermined`); `reeds-1937` (0 pages, `undetermined`); `schreiter-1912` (0 pages, `undetermined`); `tassin-1902` (0 pages, `undetermined`); `usnm-1886` (0 pages, `undetermined`); `ward-1881` (0 pages, `undetermined`); `ward-1904` (0 pages, `undetermined`); `washington-1897` (0 pages, `undetermined`).
-- Reviewed MetBull harmonization covers 9,893 of 13,160 records: 9,764 resolved and 129 explicitly unresolved.
+- Blocked folio catalogs are: `asu-2024-09` (0 pages, `undetermined`); `ball-1882` (0 pages, `undetermined`); `barnes-1940` (0 pages, `undetermined`); `buchner-1863` (0 pages, `undetermined`); `chladni-1825` (0 pages, `undetermined`); `farrington-1903` (0 pages, `undetermined`); `farrington-1916` (0 pages, `undetermined`); `foote-1912` (0 pages, `undetermined`); `hogbom-1902` (0 pages, `undetermined`); `huss-1976` (0 pages, `undetermined`); `huss-1986` (0 pages, `undetermined`); `kanagawa-1996` (0 pages, `undetermined`); `mason-1964` (0 pages, `undetermined`); `merrill-1916` (0 pages, `undetermined`); `nininger-1950` (0 pages, `undetermined`); `nordenskiold-1870` (0 pages, `undetermined`); `palache-1926` (0 pages, `undetermined`); `prior-1923` (0 pages, `undetermined`); `reeds-1937` (0 pages, `undetermined`); `schreiter-1912` (0 pages, `undetermined`); `tassin-1902` (0 pages, `undetermined`); `usnm-1886` (0 pages, `undetermined`); `ward-1881` (0 pages, `undetermined`); `ward-1904` (0 pages, `undetermined`); `washington-1897` (0 pages, `undetermined`).
+- Reviewed MetBull harmonization covers 10,025 of 13,365 records: 9,896 resolved and 129 explicitly unresolved.
 - Records currently having a null `name` value: 13.
 <!-- release-summary:session-current-state:end -->
 
-- The remaining 3,267 records are pending observations without reviewed MetBull mappings.
+- The remaining 3,340 records are pending observations without reviewed MetBull mappings.
 - Chladni 1825 pages 200-207 are introductory folios.
 - Tassin 1902 metadata includes plate page 671 and introductory page 673; its 340 entries cite pages 675-698.
 - Schreiter 1912 metadata spans pages 58-75; its 162 entries cite pages 66-73.
@@ -64,7 +65,8 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 - Kanagawa 1996 has 232 facts-only collection entries and holdings on all 20 pages 4-22 and 24: 80 meteorite and 152 tektite/natural-glass observations. Its 243 gram values total 2,688,123.61 g across 213 weighted records. Controlled descriptions comprise 212 `Specimen`, 19 `Thin section`, and 1 `Specimen group`; 68 entries have reviewed exact MetBull mappings and 164 remain pending. Source PDF and images, OCR, source prose, dimensions, notes, derivatives, manifest, paths, QA page, private page IDs, folios, and media remain excluded, and its folio is blocked/undetermined.
 - Merrill 1916 has 560 facts-only collection entries citing 170 pages; all 560 observations remain pending mapping review. Prior 1923 has 949 facts-only collection entries citing all 196 metadata pages, with 758 reviewed exact-name mappings and 191 pending observations. Reeds 1937 has 500 facts-only collection entries citing 111 of 156 metadata pages, with 390 reviewed exact-name mappings and 110 pending observations. All three are blocked/undetermined with empty folios and no public images.
 - Ward 1881 has 3 facts-only collection entries citing its single metadata page; all 3 remain pending mapping review. Ward 1904 has 697 facts-only collection entries citing all 74 metadata pages, with 49 reviewed exact-name mappings and 648 pending observations. Farrington 1916 has 738 facts-only collection entries citing 78 of 82 metadata pages, with 469 reviewed exact-name mappings and 269 pending observations. All three are blocked/undetermined with empty folios and no public images.
-- The regenerated lineage index contains 1,466 relationships: 195 same-inventory relationships and 1,271 unreviewed possible cross-source matches. The possible matches comprise 1,050 exact-mass and 221 near-mass candidates. Farrington 1916 participates in 214 possible matches, while Ward 1881 and Ward 1904 each participate in zero. None of these three catalogs is a registered edition series, and none has a same-inventory claim.
+- Foote 1912 has 205 facts-only collection entries across 35 metadata pages, with records citing 25 pages, 227 holdings and numeric gram values, 132 reviewed exact-name mappings, and 73 pending observations. Its source material and media remain private, and its folio is blocked/undetermined with zero pages.
+- The regenerated lineage index contains 1,482 relationships: 195 same-inventory relationships and 1,287 unreviewed possible cross-source matches. The possible matches comprise 1,065 exact-mass and 222 near-mass candidates. Foote participates in 16 possible matches, 15 exact-mass and 1 near-mass, while adding no same-inventory claim.
 - Nininger 1933 includes printed pages 1-20; pages 12-20 are narrative-only, and the printed catalog numbering skips item 139.
 - The latest release candidate passes the runtime suite and integrated public validator; both must continue to pass before release.
 - Validated continuation evidence recovers formerly blank source names where supported, without inferring modern identity. Reviewed historical entries that genuinely print no separate proper source name retain null names and unresolved reviews.
@@ -72,6 +74,7 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 
 ## Latest Completed Catalogs
 
+- `foote-1912` integrates Warren M. Foote, *The Foote Collection of Meteorites* (1912), with 205 facts-only `collection-entry` observations, 132 reviewed exact-name MetBull mappings, and 73 pending observations.
 - `ward-1881` integrates Henry A. Ward, *Meteorites, in Ward's Natural Science Bulletin, volume 1 number 1* (1881), with 3 facts-only `collection-entry` observations on page 4, all pending MetBull mapping review.
 - `ward-1904` integrates Henry A. Ward, *Catalogue of the Ward-Coonley Collection of Meteorites* (1904), with 697 facts-only `collection-entry` observations, 49 reviewed exact-name MetBull mappings, and 648 pending observations.
 - `farrington-1916` integrates Oliver Cummings Farrington, *Catalogue of the Collection of Meteorites* (1916), with 738 facts-only `collection-entry` observations, 469 reviewed exact-name MetBull mappings, and 269 pending observations.
@@ -86,11 +89,11 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 - `MCB-117` is integrated as `schreiter-1912`: R. Schreiter, *Die Meteoriten des Kgl. Mineralogischen Museums in Dresden* (1912), with 162 ordered `collection-entry` records citing printed pages 66-73.
 - `MCB-86` is integrated as `tassin-1902`: Wirt Tassin, *Descriptive Catalogue of the Meteorite Collection in the United States National Museum to January 1, 1902* (1902), with 340 ordered `collection-entry` records citing printed pages 675-698.
 - `MCB-94` is integrated as `farrington-1903`: Oliver Cummings Farrington, *Catalogue of the Collection of Meteorites, May 1, 1903* (1903), with 251 ordered `collection-entry` records citing printed pages 83-120.
-- All fourteen catalogs are facts-only and retain blocked folio policies with undetermined rights and no public images. Reviewed exact-name MetBull coverage resolves Ward 1881 0, Ward 1904 49, Farrington 1916 469, Merrill 0, Prior 758, Reeds 390, Palache 285, Barnes 48, Kanagawa 68, ASU 2,088, Mason 1,099, Schreiter 72, Tassin 192, and Farrington 1903 170 observations; pending observations carry no canonical identity.
+- All fifteen catalogs are facts-only and retain blocked folio policies with undetermined rights and no public images. Reviewed exact-name MetBull coverage resolves Foote 132, Ward 1881 0, Ward 1904 49, Farrington 1916 469, Merrill 0, Prior 758, Reeds 390, Palache 285, Barnes 48, Kanagawa 68, ASU 2,088, Mason 1,099, Schreiter 72, Tassin 192, and Farrington 1903 170 observations; pending observations carry no canonical identity.
 
 ## Active Work State
 
-- Private canonical commit `1c855b14fd443db02389276f8e3aa5b850ac56b6` is the source for the current uncommitted Ward 1881 facts-only candidate. It contains 29 catalogs and 13,160 records while retaining 49 reviewed public folios.
+- Private canonical commit `7f7657705f16f75893fb381beb0875df1897b4d3` is the source for the current uncommitted Foote 1912 facts-only candidate. It contains 30 catalogs and 13,365 records while retaining 49 reviewed public folios.
 - No release-blocking validation issue remains. Any future public change must still be produced from the private canonical data and pass deterministic byte comparison and the facts-only privacy checks.
 
 ## Preservation And Data Rules
@@ -138,9 +141,9 @@ Distinct specimens with the same meteorite name and similar mass must not be col
 
 ## Immediate Next Steps
 
-1. Preserve the current uncommitted 29-catalog Ward 1881 public release candidate. Commit or push only when explicitly requested.
-2. Keep all currently blocked catalogs, including Ward 1904 and Farrington 1916, blocked unless separate catalog-specific rights reviews explicitly authorize exact ordered page sets; source age or online availability alone is insufficient.
-3. Select the next processable bibliography control only after preserving and validating the current 29-catalog release candidate.
+1. Preserve the current uncommitted 30-catalog Foote 1912 public release candidate. Commit or push only when explicitly requested.
+2. Keep all currently blocked catalogs, including Foote 1912, Ward 1904, and Farrington 1916, blocked unless separate catalog-specific rights reviews explicitly authorize exact ordered page sets; source age or online availability alone is insufficient.
+3. Select the next processable bibliography control only after preserving and validating the current 30-catalog release candidate.
 4. Resolve the missing scan for `SP1949-0039` (currently MCB-107) and correct the source evidence for MCB-4 and MCB-5 when primary evidence is available.
 5. Keep schema 6 validation, deterministic private/public equality, release summaries, lineage checks, folio hashes, Node tests, runtime checks, and the facts-only privacy boundary green for every future release.
 
