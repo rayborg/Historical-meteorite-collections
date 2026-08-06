@@ -8,8 +8,8 @@
   <meta name="theme-color" content="#2d241b">
   <title>The Meteorite Cabinet | Historical Collection Index</title>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=20260804-1">
-  <script src="./app.js?v=20260804-1" defer></script>
+  <link rel="stylesheet" href="./styles.css?v=20260805-1">
+  <script src="./app.js?v=20260805-1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#catalog">Skip to catalog</a>
@@ -39,14 +39,17 @@
         <p class="eyebrow">Source register</p>
         <h2 id="source-summary-heading">Catalogs in this edition</h2>
         <p>Catalog observations remain attributed to their individual historical sources.</p>
-        <a class="master-list-link" href="./data/bibliography-master-list.html">
-          <strong>Browse the bibliography master list</strong>
-          <span>264 controls, source links, acquisition status, and catalog processing progress</span>
-        </a>
+        <div class="source-register-links">
+          <a class="master-list-link" href="./catalogs.html">
+            <strong>Browse the catalog directory</strong>
+            <span>Catalog descriptions, source coverage, and authorized folio images</span>
+          </a>
+          <a class="master-list-link" href="./data/bibliography-master-list.html">
+            <strong>Browse the bibliography master list</strong>
+            <span>264 controls, source links, acquisition status, and catalog processing progress</span>
+          </a>
+        </div>
       </header>
-      <div id="catalog-summary" aria-busy="true">
-        <p class="catalog-summary-status" role="status">Reading catalog metadata...</p>
-      </div>
     </section>
 
     <section class="catalog-tools" aria-labelledby="catalog-heading">

@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260804-1";
+const CACHE_VERSION = "20260805-1";
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "name-asc";
 const VALID_SORTS = new Set([
@@ -213,7 +213,7 @@ const integerFormat = new Intl.NumberFormat("en-US");
 const massFormat = new Intl.NumberFormat("en-US", { maximumFractionDigits: 3 });
 const collator = new Intl.Collator("en", { sensitivity: "base", numeric: true });
 
-const elements = typeof document === "undefined" ? null : {
+const elements = typeof document === "undefined" || !document.querySelector("#filter-form") ? null : {
   form: document.querySelector("#filter-form"),
   catalogSummary: document.querySelector("#catalog-summary"),
   search: document.querySelector("#search"),
@@ -1622,7 +1622,7 @@ function normalizeFolioAlt(value) {
 
 function isValidFolioAlt(value) {
   const normalized = normalizeFolioAlt(value);
-  return normalized !== null && value === normalized;
+  return normalized !== null && value === normalized && isLeakageSafeText(value);
 }
 
 function isValidFolioPageId(value) {
@@ -1797,7 +1797,7 @@ async function loadData() {
     if (!response.ok) throw new Error(`The public catalog request returned status ${response.status}.`);
     const catalog = validateCatalog(await response.json());
     catalogRegistry = normalizeCatalogRegistry(catalog.metadata);
-    renderCatalogSummary(catalogRegistry);
+    if (elements.catalogSummary) renderCatalogSummary(catalogRegistry);
     records = catalog.records.map((record, index) => prepareRecord(record, index, catalogRegistry));
     if (!records.length) throw new Error("The public catalog contains no source observations.");
     populateCatalogFilter();
@@ -1814,7 +1814,7 @@ async function loadData() {
       if (currentLoadToken !== loadToken) return;
       folioManifest = manifest;
       if (manifest) {
-        renderCatalogSummary(catalogRegistry);
+        if (elements.catalogSummary) renderCatalogSummary(catalogRegistry);
         render();
       }
     });
@@ -1844,12 +1844,14 @@ function setLoadingState() {
   elements.showMore.hidden = true;
   elements.empty.hidden = true;
   elements.error.hidden = true;
-  const summaryStatus = document.createElement("p");
-  summaryStatus.className = "catalog-summary-status";
-  summaryStatus.setAttribute("role", "status");
-  summaryStatus.textContent = "Reading catalog metadata...";
-  elements.catalogSummary.replaceChildren(summaryStatus);
-  elements.catalogSummary.setAttribute("aria-busy", "true");
+  if (elements.catalogSummary) {
+    const summaryStatus = document.createElement("p");
+    summaryStatus.className = "catalog-summary-status";
+    summaryStatus.setAttribute("role", "status");
+    summaryStatus.textContent = "Reading catalog metadata...";
+    elements.catalogSummary.replaceChildren(summaryStatus);
+    elements.catalogSummary.setAttribute("aria-busy", "true");
+  }
 }
 
 function showError(error) {
@@ -1863,12 +1865,14 @@ function showError(error) {
   elements.empty.hidden = true;
   elements.errorMessage.textContent = error.message || "The public catalog data is presently unavailable.";
   elements.error.hidden = false;
-  const summaryStatus = document.createElement("p");
-  summaryStatus.className = "catalog-summary-status";
-  summaryStatus.setAttribute("role", "status");
-  summaryStatus.textContent = "Catalog source details are unavailable.";
-  elements.catalogSummary.replaceChildren(summaryStatus);
-  elements.catalogSummary.setAttribute("aria-busy", "false");
+  if (elements.catalogSummary) {
+    const summaryStatus = document.createElement("p");
+    summaryStatus.className = "catalog-summary-status";
+    summaryStatus.setAttribute("role", "status");
+    summaryStatus.textContent = "Catalog source details are unavailable.";
+    elements.catalogSummary.replaceChildren(summaryStatus);
+    elements.catalogSummary.setAttribute("aria-busy", "false");
+  }
   elements.errorHeading.focus();
 }
 
@@ -2035,6 +2039,24 @@ function isSingleResultCount(count) {
   return count === 1;
 }
 
+function metbullPanelDetails(record) {
+  if (!record?.metbull) return null;
+  if (record.metbull.matchType === "unresolved") {
+    return {
+      label: "Meteoritical Bulletin review",
+      canonicalName: null,
+      url: null,
+      note: record.metbull.alternateNameNote || "No current Meteoritical Bulletin name was resolved in this review."
+    };
+  }
+  return {
+    label: "Current Meteoritical Bulletin name",
+    canonicalName: record.metbull.canonicalName,
+    url: record.metbull.metbullUrl,
+    note: record.metbull.alternateNameNote
+  };
+}
+
 function createRecordCard(record) {
   const card = elements.template.content.firstElementChild.cloneNode(true);
   const catalogItem = record.recordModel === "catalog-item";
@@ -2050,20 +2072,18 @@ function createRecordCard(record) {
         : record.designation || "No printed designation";
   card.querySelector(".record-name").textContent = record.name ? displayText(record.name) : "Name not recorded";
   const metbull = card.querySelector(".metbull-name");
-  const hasDifferentCanonicalName = record.metbull?.canonicalName && record.metbull.canonicalName !== record.name;
-  const hasReviewNote = Boolean(record.metbull?.alternateNameNote);
-  if (hasDifferentCanonicalName || hasReviewNote) {
-    const label = metbull.querySelector("span");
-    label.textContent = hasDifferentCanonicalName ? "Current Meteoritical Bulletin name" : "Meteoritical Bulletin review";
+  const metbullDetails = metbullPanelDetails(record);
+  if (metbullDetails) {
+    metbull.querySelector("span").textContent = metbullDetails.label;
     const link = metbull.querySelector("a");
-    if (record.metbull.canonicalName) {
-      link.textContent = hasDifferentCanonicalName ? displayText(record.metbull.canonicalName) : "View official MetBull record";
-      link.href = record.metbull.metbullUrl;
+    if (metbullDetails.canonicalName) {
+      link.textContent = displayText(metbullDetails.canonicalName);
+      link.href = metbullDetails.url;
     } else {
       link.remove();
     }
     const note = metbull.querySelector("p");
-    if (record.metbull.alternateNameNote) note.textContent = displayText(record.metbull.alternateNameNote);
+    if (metbullDetails.note) note.textContent = displayText(metbullDetails.note);
     else note.remove();
     metbull.hidden = false;
   } else {
@@ -2410,6 +2430,17 @@ if (elements) {
   loadData();
 }
 
+const publicRuntime = {
+  catalogLabel,
+  catalogSummaryEntries,
+  getAuthorizedFolioPages,
+  normalizeCatalogRegistry,
+  validateCatalog,
+  validateFolioManifest
+};
+
+if (typeof window !== "undefined") window.HMCPublicRuntime = Object.freeze(publicRuntime);
+
 if (typeof module !== "undefined" && module.exports) {
   module.exports = {
     CACHE_VERSION,
@@ -2445,6 +2476,7 @@ if (typeof module !== "undefined" && module.exports) {
     isSafeFolioPath,
     isValidFolioAlt,
     matchesSearch,
+    metbullPanelDetails,
     loadEarlierRecordIndex,
     normalizeWeightRange,
     normalizeFolioAlt,

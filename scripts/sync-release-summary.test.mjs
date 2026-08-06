@@ -128,8 +128,8 @@ test("locks the production next-three release summary", () => {
     recordCount: 13542,
     sourcePageCount: 1284,
     citedPageCount: 1137,
-    metbull: { reviewed: 10078, resolved: 9949, unresolved: 129 },
-    pending: 3464,
+    metbull: { reviewed: 10202, resolved: 10056, unresolved: 146 },
+    pending: 3340,
     folioCatalogCount: 33,
     folioPageCount: 49,
   });

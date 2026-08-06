@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Catalog sources included in The Meteorite Cabinet historical collection index.">
+  <meta name="author" content="Raymond Borges Hink">
+  <meta name="theme-color" content="#2d241b">
+  <title>Catalog Directory | The Meteorite Cabinet</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css?v=20260805-1">
+  <script src="./app.js?v=20260805-1" defer></script>
+  <script src="./catalogs.js?v=20260805-1" defer></script>
+</head>
+<body class="catalog-directory-page">
+  <a class="skip-link" href="#catalog-directory">Skip to catalog directory</a>
+
+  <header class="masthead">
+    <div class="masthead-rule" aria-hidden="true"><span>&#10022;</span></div>
+    <div class="masthead-inner">
+      <p class="kicker">The Meteorite Cabinet</p>
+      <h1><span>Source</span> Catalog Directory</h1>
+      <p class="deck">The historical catalogs represented in the public factual index.</p>
+    </div>
+    <img class="collector-artifact" src="./meteorite-collector-artifact-v1.svg" alt="" aria-hidden="true">
+  </header>
+
+  <main id="catalog-directory" class="page-shell catalog-directory-shell" tabindex="-1">
+    <section class="source-summary" aria-labelledby="catalog-directory-heading">
+      <header>
+        <p class="eyebrow">Source register</p>
+        <h2 id="catalog-directory-heading">Catalogs in this edition</h2>
+        <p>Each card reports the catalog description, compiler, cited source-page coverage, and number of indexed observations. Source images appear only where public display is authorized.</p>
+        <p class="catalog-directory-actions"><a href="./index.html#catalog">Back to the searchable register</a></p>
+      </header>
+
+      <p id="catalog-directory-status" class="catalog-directory-status" role="status" aria-live="polite">Reading catalog metadata...</p>
+      <div id="catalog-directory-list" aria-busy="true"></div>
+      <div id="catalog-directory-error" class="empty-state error-state catalog-directory-error" role="alert" hidden>
+        <span aria-hidden="true">!</span>
+        <h3 id="catalog-directory-error-heading" tabindex="-1">The catalog directory could not be opened</h3>
+        <p>The public catalog metadata is presently unavailable.</p>
+        <button id="catalog-directory-retry" class="button" type="button">Try again</button>
+      </div>
+      <noscript><p class="empty-state">JavaScript is required to validate and display the public catalog directory.</p></noscript>
+    </section>
+  </main>
+
+  <footer>
+    <p><i aria-hidden="true"></i> Historical Meteorite Collection <i aria-hidden="true"></i></p>
+    <p>Independent facts-only index of catalog observations with source-level attribution. Source rights and folio eligibility are assessed catalog by catalog; see <a href="./NOTICE.md">NOTICE</a>.</p>
+  </footer>
+
+  <dialog id="folio-dialog" aria-labelledby="folio-dialog-title">
+    <div class="dialog-frame">
+      <header>
+        <div>
+          <p id="folio-dialog-catalog"></p>
+          <h2 id="folio-dialog-title">Catalog folio</h2>
+        </div>
+        <button id="folio-dialog-close" class="dialog-close" type="button" aria-label="Close folio viewer">&times;</button>
+      </header>
+      <figure>
+        <div class="dialog-image-wrap">
+          <img id="folio-dialog-image" alt="">
+          <p id="folio-image-status" role="status" aria-live="polite"></p>
+        </div>
+        <figcaption id="folio-dialog-caption"></figcaption>
+      </figure>
+      <nav class="dialog-nav" aria-label="Catalog folio pages">
+        <button id="previous-folio" type="button">Previous folio</button>
+        <span id="folio-position" aria-live="polite"></span>
+        <button id="next-folio" type="button">Next folio</button>
+      </nav>
+    </div>
+  </dialog>
+</body>
+</html>

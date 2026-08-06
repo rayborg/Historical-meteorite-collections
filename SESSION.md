@@ -1,6 +1,6 @@
 # Project Session Memory
 
-Last updated: 2026-08-05
+Last updated: 2026-08-06
 
 ## Mission
 
@@ -52,11 +52,11 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 - Nininger coverage is derived without page-boundary assumptions: `nininger-1933` has 171 records; its metadata source pages span 1-20, and its record citations span 1-11. `nininger-1950` has 1,678 records; its metadata source pages span 26-104, and its record citations span 26-104.
 - Public folios use schema 2 and expose 49 display pages across 5 catalogs: `chladni-1819` (12 pages, `public-domain`); `haidinger-1859` (6 pages, `public-domain`); `hovey-1896` (7 pages, `public-domain`); `lucas-1813` (3 pages, `public-domain`); `nininger-1933` (21 pages, `no-copyright-us`).
 - Blocked folio catalogs are: `anderson-1913` (0 pages, `undetermined`); `astapovich-1938` (0 pages, `undetermined`); `asu-2024-09` (0 pages, `undetermined`); `ball-1882` (0 pages, `undetermined`); `barnes-1940` (0 pages, `undetermined`); `buchner-1863` (0 pages, `undetermined`); `chladni-1825` (0 pages, `undetermined`); `farrington-1903` (0 pages, `undetermined`); `farrington-1916` (0 pages, `undetermined`); `foote-1912` (0 pages, `undetermined`); `hogbom-1902` (0 pages, `undetermined`); `huss-1976` (0 pages, `undetermined`); `huss-1986` (0 pages, `undetermined`); `kanagawa-1996` (0 pages, `undetermined`); `kantor-1920` (0 pages, `undetermined`); `mason-1964` (0 pages, `undetermined`); `merrill-1916` (0 pages, `undetermined`); `nininger-1950` (0 pages, `undetermined`); `nordenskiold-1870` (0 pages, `undetermined`); `palache-1926` (0 pages, `undetermined`); `prior-1923` (0 pages, `undetermined`); `reeds-1937` (0 pages, `undetermined`); `schreiter-1912` (0 pages, `undetermined`); `tassin-1902` (0 pages, `undetermined`); `usnm-1886` (0 pages, `undetermined`); `ward-1881` (0 pages, `undetermined`); `ward-1904` (0 pages, `undetermined`); `washington-1897` (0 pages, `undetermined`).
-- Reviewed MetBull harmonization covers 10,078 of 13,542 records: 9,949 resolved and 129 explicitly unresolved.
+- Reviewed MetBull harmonization covers 10,202 of 13,542 records: 10,056 resolved and 146 explicitly unresolved.
 - Records currently having a null `name` value: 13.
 <!-- release-summary:session-current-state:end -->
 
-- The remaining 3,464 records are pending observations without reviewed MetBull mappings.
+- The remaining 3,340 records are pending observations without reviewed MetBull mappings.
 - Chladni 1825 pages 200-207 are introductory folios.
 - Tassin 1902 metadata includes plate page 671 and introductory page 673; its 340 entries cite pages 675-698.
 - Schreiter 1912 metadata spans pages 58-75; its 162 entries cite pages 66-73.
@@ -69,7 +69,7 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 - Merrill 1916 has 560 facts-only collection entries citing 170 pages; all 560 observations remain pending mapping review. Prior 1923 has 949 facts-only collection entries citing all 196 metadata pages, with 758 reviewed exact-name mappings and 191 pending observations. Reeds 1937 has 500 facts-only collection entries citing 111 of 156 metadata pages, with 390 reviewed exact-name mappings and 110 pending observations. All three are blocked/undetermined with empty folios and no public images.
 - Ward 1881 has 3 facts-only collection entries citing its single metadata page; all 3 remain pending mapping review. Ward 1904 has 697 facts-only collection entries citing all 74 metadata pages, with 49 reviewed exact-name mappings and 648 pending observations. Farrington 1916 has 738 facts-only collection entries citing 78 of 82 metadata pages, with 469 reviewed exact-name mappings and 269 pending observations. All three are blocked/undetermined with empty folios and no public images.
 - Foote 1912 has 205 facts-only collection entries across 35 metadata pages, with records citing 25 pages, 227 holdings and numeric gram values, 132 reviewed exact-name mappings, and 73 pending observations. Its source material and media remain private, and its folio is blocked/undetermined with zero pages.
-- Anderson 1913 has 57 facts-only entries with 24 reviewed exact-name mappings and 33 pending observations; Kantor 1920 has 30 entries with 12 reviewed exact-name mappings and 18 pending observations; Astapovich 1938 has 90 entries with 17 reviewed exact-name mappings and 73 pending observations. All three are blocked/undetermined with empty folios and no public images.
+- Anderson 1913 has 57 fully reviewed facts-only entries (52 resolved and 5 unresolved); Kantor 1920 has 30 fully reviewed entries (27 resolved and 3 unresolved); Astapovich 1938 has 90 fully reviewed entries (81 resolved and 9 unresolved). All three are blocked/undetermined with empty folios and no public images.
 - The regenerated lineage index contains 1,482 relationships: 195 same-inventory relationships and 1,287 unreviewed possible cross-source matches. The possible matches comprise 1,065 exact-mass and 222 near-mass candidates. Anderson, Kantor, and Astapovich add no relationship; all baseline relationship objects remain unchanged.
 - Nininger 1933 includes printed pages 1-20; pages 12-20 are narrative-only, and the printed catalog numbering skips item 139.
 - The latest release candidate passes the runtime suite and integrated public validator; both must continue to pass before release.
@@ -78,9 +78,9 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 
 ## Latest Completed Catalogs
 
-- `anderson-1913` integrates C. Anderson, *A Catalogue and Bibliography of Australian Meteorites, with Census and Taxonomy* (1913), with 57 facts-only `collection-entry` observations, 24 reviewed exact-name mappings, and 33 pending observations.
-- `kantor-1920` integrates M. Kantor, *Guía y catálogo de la colección de meteoritos existentes en el Museo de La Plata, con especial mención de los meteoritos argentinos* (1920), with 30 facts-only `collection-entry` observations, 12 reviewed exact-name mappings, and 18 pending observations.
-- `astapovich-1938` integrates I. S. Astapowitsch, *A List of the Meteorites of the Soviet Union* (1938), with 90 facts-only `collection-entry` observations, 17 reviewed exact-name mappings, and 73 pending observations.
+- `anderson-1913` integrates C. Anderson, *A Catalogue and Bibliography of Australian Meteorites, with Census and Taxonomy* (1913), with 57 fully reviewed facts-only `collection-entry` observations: 52 resolved and 5 unresolved.
+- `kantor-1920` integrates M. Kantor, *Guía y catálogo de la colección de meteoritos existentes en el Museo de La Plata, con especial mención de los meteoritos argentinos* (1920), with 30 fully reviewed facts-only `collection-entry` observations: 27 resolved and 3 unresolved.
+- `astapovich-1938` integrates I. S. Astapowitsch, *A List of the Meteorites of the Soviet Union* (1938), with 90 fully reviewed facts-only `collection-entry` observations: 81 resolved and 9 unresolved.
 - `foote-1912` integrates Warren M. Foote, *The Foote Collection of Meteorites* (1912), with 205 facts-only `collection-entry` observations, 132 reviewed exact-name MetBull mappings, and 73 pending observations.
 - `ward-1881` integrates Henry A. Ward, *Meteorites, in Ward's Natural Science Bulletin, volume 1 number 1* (1881), with 3 facts-only `collection-entry` observations on page 4, all pending MetBull mapping review.
 - `ward-1904` integrates Henry A. Ward, *Catalogue of the Ward-Coonley Collection of Meteorites* (1904), with 697 facts-only `collection-entry` observations, 49 reviewed exact-name MetBull mappings, and 648 pending observations.
@@ -96,11 +96,12 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 - `MCB-117` is integrated as `schreiter-1912`: R. Schreiter, *Die Meteoriten des Kgl. Mineralogischen Museums in Dresden* (1912), with 162 ordered `collection-entry` records citing printed pages 66-73.
 - `MCB-86` is integrated as `tassin-1902`: Wirt Tassin, *Descriptive Catalogue of the Meteorite Collection in the United States National Museum to January 1, 1902* (1902), with 340 ordered `collection-entry` records citing printed pages 675-698.
 - `MCB-94` is integrated as `farrington-1903`: Oliver Cummings Farrington, *Catalogue of the Collection of Meteorites, May 1, 1903* (1903), with 251 ordered `collection-entry` records citing printed pages 83-120.
-- All eighteen catalogs are facts-only and retain blocked folio policies with undetermined rights and no public images. Reviewed exact-name MetBull coverage additionally resolves Anderson 24, Kantor 12, and Astapovich 17 observations; pending observations carry no canonical identity.
+- All eighteen catalogs are facts-only and retain blocked folio policies with undetermined rights and no public images. Anderson, Kantor, and Astapovich are now fully reviewed with 160 resolved and 17 unresolved observations; unresolved reviews carry no canonical identity.
 
 ## Active Work State
 
-- Accepted private source commit `6629a61` is the source for the current 33-catalog, 13,542-record facts-only public candidate, which retains 49 reviewed public folios.
+- Accepted private source commit `1180719` is the source for the current 33-catalog, 13,542-record facts-only public candidate, which retains 49 reviewed public folios.
+- Every reviewed record card now exposes its MetBull review: resolved canonical names are linked even when equal to source names, and unresolved reviews are explicitly shown without a link. The homepage links to the dedicated 33-card catalog directory and separately to the bibliography master list.
 - No release-blocking validation issue remains. Any future public change must still be produced from the private canonical data and pass deterministic byte comparison and the facts-only privacy checks.
 
 ## Preservation And Data Rules

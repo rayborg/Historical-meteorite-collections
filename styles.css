@@ -171,6 +171,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible
 .source-summary > header h2 { margin: 0; font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 400; }
 .source-summary > header h2::after { content: "◆"; display: block; margin: .65rem 0; color: var(--brass); font-size: .55rem; }
 .source-summary > header > p:not(.eyebrow) { margin: 0; color: var(--ink-soft); font-size: .88rem; font-style: italic; }
+.source-register-links { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; }
 .master-list-link {
   display: inline-flex;
   flex-direction: column;
@@ -202,6 +203,15 @@ button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible
 .catalog-summary-card dt { color: var(--ink-soft); font-size: .62rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 .catalog-summary-card dd { min-width: 0; margin: 0; font-size: .82rem; line-height: 1.35; overflow-wrap: anywhere; }
 .catalog-summary-status { margin: 0; padding: 1.5rem; color: var(--ink-soft); font-style: italic; text-align: center; border: 1px solid var(--rule); }
+.catalog-directory-page .masthead { min-height: 25rem; padding-bottom: 6rem; }
+.catalog-directory-shell { padding: 2.5rem; background: rgba(232, 220, 193, .96); border: 1px solid #ad9b78; box-shadow: 0 1rem 2rem rgba(30, 21, 13, .2); }
+.catalog-directory-shell .source-summary { margin-top: 0; }
+.catalog-directory-shell .source-summary > header { max-width: 52rem; }
+.catalog-directory-actions { margin-top: 1rem; }
+.catalog-directory-actions a { color: var(--oxblood-dark); font-size: .78rem; font-weight: 700; }
+.catalog-directory-status { margin: 1.5rem 0 0; padding: 1.5rem; color: var(--ink-soft); font-style: italic; text-align: center; border: 1px solid var(--rule); }
+.catalog-directory-error { margin-top: 1.5rem; }
+.catalog-directory-page > footer { margin-top: 5rem; }
 
 .catalog-tools { margin-top: 4rem; padding-bottom: 3rem; border-bottom: 3px double var(--rule); }
 .section-heading { text-align: center; }
@@ -399,7 +409,10 @@ dialog::backdrop { background: rgba(24, 19, 14, .84); backdrop-filter: blur(2px)
   .statistics div:nth-child(n + 3) { border-top: 1px solid rgba(225, 201, 157, .3); }
   .statistics div:last-child { grid-column: 1 / -1; }
   .source-summary { margin-top: 3.5rem; }
+  .source-register-links { flex-direction: column; align-items: stretch; }
+  .master-list-link { width: 100%; }
   .catalog-summary-list { grid-template-columns: 1fr; }
+  .catalog-directory-shell { padding: 1.5rem .8rem; }
   .catalog-tools { margin-top: 3.5rem; }
   .filters { grid-template-columns: 1fr; }
   .search-field { grid-column: auto; }

@@ -28,7 +28,7 @@ This edition also indexes *Meteorite Catalogue of the Kanagawa Prefectural Museu
 
 This edition also indexes the September 2024 Arizona State University dataset under the bibliography control heading “Arizona State University Meteorite Collection Catalog,” configured as compiled by the Buseck Center for Meteorite Studies, Arizona State University. The control heading identifies the dataset and is not asserted as PDF title metadata.
 
-The current facts-only payload was generated from accepted private source commit `6629a61`.
+The current facts-only payload was generated from accepted private source commit `1180719`.
 
 ## Facts-Only Scope
 
@@ -40,7 +40,7 @@ The current repository edition distributes 13,542 structured, facts-only source 
 Metadata covers 1,284 catalog-scoped source pages, of which 1,137 are cited by records. Source-page coverage is not a claim that every covered page contains an observation. `nininger-1933` has 171 records; its metadata source pages span 1-20, and its record citations span 1-11. `nininger-1950` has 1,678 records; its metadata source pages span 26-104, and its record citations span 26-104.
 <!-- release-summary:notice-coverage:end -->
 
-Reviewed MetBull harmonization covers 10,078 records: 9,949 resolved and 129 unresolved. The remaining 3,464 records are pending observations without reviewed mappings.
+Reviewed MetBull harmonization covers 10,202 records: 10,056 resolved and 146 unresolved. The remaining 3,340 records are pending observations without reviewed mappings. The public interface gives every reviewed record a MetBull panel: resolved canonical names are linked even when equal to the historical source name, while unresolved reviews remain unlinked. A dedicated catalog directory presents the 33 source cards and only rights-authorized folio actions; the homepage links to it separately from the bibliography master list.
 
 Some covered pages are introductory or narrative-only. Nininger 1933 covers printed pages 1-20, and the reviewed Nininger 1950 collection-catalog range covers printed pages 26-104 through its terminal entry.
 
@@ -52,7 +52,7 @@ Ward 1881 has 3 facts-only records citing its single metadata page; all 3 remain
 
 Foote 1912 has 205 facts-only records across 35 metadata pages, with records citing 25 pages, 132 reviewed exact-name mappings, and 73 pending observations.
 
-Anderson 1913 has 57 facts-only records citing pages 54-66, with 24 reviewed exact-name mappings and 33 pending observations. Kantor 1920 has 30 facts-only records citing pages 107-122, with 12 reviewed exact-name mappings and 18 pending observations. Astapovich 1938 has 90 facts-only records citing pages 195-196, with 17 reviewed exact-name mappings and 73 pending observations.
+Anderson 1913 has 57 fully reviewed facts-only records citing pages 54-66: 52 resolved and 5 unresolved. Kantor 1920 has 30 fully reviewed facts-only records citing pages 107-122: 27 resolved and 3 unresolved. Astapovich 1938 has 90 fully reviewed facts-only records citing pages 195-196: 81 resolved and 9 unresolved.
 
 Validated continuation evidence recovers formerly blank source names only where supported. Reviewed historical entries that genuinely print no separate proper source name retain null names without an inferred modern identity.
 

@@ -906,7 +906,7 @@ test("URL filter behavior and cache version remain stable", () => {
     query: "catalog item 2", catalog: "nininger-1933", min: "3", max: "12", sort: "weight-desc"
   });
   assert.equal(app.serializeUrlFilters(parsed).toString(), "q=catalog+item+2&catalog=nininger-1933&min=3&max=12&sort=weight-desc");
-  assert.equal(app.CACHE_VERSION, "20260804-1");
+  assert.equal(app.CACHE_VERSION, "20260805-1");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.CACHE_VERSION}`));
 });
@@ -950,9 +950,10 @@ test("HTML and runtime contain accessible multi-holding card behavior", () => {
   assert.match(html, /An open-source project started by Raymond Borges Hink in July 2026\./);
   assert.match(html, /Designation \/ catalog number, ascending/);
   assert.match(script, /recordWeight\.remove\(\)/);
-  assert.match(script, /record\.metbull\.canonicalName !== record\.name/);
+  assert.match(script, /function metbullPanelDetails\(record\)/);
+  assert.match(script, /canonicalName: record\.metbull\.canonicalName/);
   assert.match(script, /Meteoritical Bulletin review/);
-  assert.match(script, /link\.href = record\.metbull\.metbullUrl/);
+  assert.match(script, /link\.href = metbullDetails\.url/);
   assert.match(script, /`Catalog item \$\{record\.catalogItem\}`/);
   assert.match(script, /`Catalog no\. \$\{record\.catalogNumber\}`/);
   assert.match(script, /`Reported no\. \$\{record\.reportedNumber\}`/);

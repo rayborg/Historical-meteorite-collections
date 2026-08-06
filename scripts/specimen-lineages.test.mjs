@@ -67,13 +67,13 @@ test("build is deterministic, canonical, and identical to the published file", (
 });
 
 test("publishes locked source and relationship counts", () => {
-  assert.equal(flattenMassObservations(catalog).length, 13686);
+  assert.equal(flattenMassObservations(catalog).length, 13706);
   assert.equal(flattenInventoryObservations(catalog).length, 3627);
   assert.deepEqual(published.metadata.source, {
     catalogSchemaVersion: 6,
     recordCount: 13542,
     catalogCount: 33,
-    flattenedMassObservationCount: 13686,
+    flattenedMassObservationCount: 13706,
     inventoryObservationCount: 3627,
   });
   const { catalogPairs, ...counts } = published.metadata.counts;
@@ -198,10 +198,10 @@ test("Palache publishes only locked facts and blocked folios", () => {
   }
 
   const allReviewed = catalog.records.filter((record) => Object.hasOwn(record, "metbull"));
-  assert.equal(allReviewed.length, 10078);
-  assert.equal(allReviewed.filter(({ metbull }) => metbull.matchType === "unresolved").length, 129);
-  assert.equal(allReviewed.filter(({ metbull }) => metbull.matchType !== "unresolved").length, 9949);
-  assert.equal(catalog.records.length - allReviewed.length, 3464);
+  assert.equal(allReviewed.length, 10202);
+  assert.equal(allReviewed.filter(({ metbull }) => metbull.matchType === "unresolved").length, 146);
+  assert.equal(allReviewed.filter(({ metbull }) => metbull.matchType !== "unresolved").length, 10056);
+  assert.equal(catalog.records.length - allReviewed.length, 3340);
 });
 
 test("Palache has no same-inventory continuity and only unreviewed possible candidates", () => {
@@ -635,39 +635,45 @@ test("Foote 1912 publishes only accepted facts, exact mappings, blocked folios, 
   assert.doesNotMatch(JSON.stringify(records), /(?:\/private\/|\/Users\/|source-images|assets\/foote-1912|assets\/folios\/foote-1912|\.(?:pdf|png|webp|txt|csv))/iu);
 });
 
-test("Anderson, Astapovich, and Kantor publish exact facts without media or lineage additions", () => {
+test("Anderson, Astapovich, and Kantor publish complete reviewed mappings without media or lineage additions", () => {
   const expected = {
     "anderson-1913": {
       records: 57,
-      reviewed: 24,
-      pending: 33,
+      resolved: 52,
+      unresolved: 5,
       sourcePages: 26,
       citedPages: 13,
       holdings: 57,
       weights: 0,
-      recordsHash: "95f2597b66fd7fabd35240a9f321f405f13d83a61458771c4e86623fd66c1164",
+      recordsHash: "420a21059cbc5d451acbe1c405aaf92c5ca4583fa0a56f59ed67c39a850550a9",
+      nonMappingHash: "198ce66e2916b185429f0396a1a10e425469e4e52c0e30877e5912c2563e03c5",
+      mappingsHash: "e038837b2765ac0461d8a1705197df3eca6bef173a3b6b4488aff43e14ae41e9",
       idsHash: "38d3a837c8057c6a0f246d7f4deeed43a05a4ab7acc6f68f525788606cdf853c",
     },
     "astapovich-1938": {
       records: 90,
-      reviewed: 17,
-      pending: 73,
+      resolved: 81,
+      unresolved: 9,
       sourcePages: 3,
       citedPages: 2,
       holdings: 90,
       weights: 0,
-      recordsHash: "7d342e049b52ef28a3bfa9aa4537f1c11c2b8a15ebd136634702c44c0b48fe9c",
+      recordsHash: "d7131106981cd98b11220559ac314bb624f095648aa9411fd67b2a2d8feefdaf",
+      nonMappingHash: "2635eac5edb9d283724a2122a734ced3bb72c83190829acb7672027f94dad9ba",
+      mappingsHash: "b7e6c4d1a104246a8d67fea30207a4e7c08fb1f7face39194cc3c5cc831715c9",
       idsHash: "0797dd7e5cf66d3df763baf54774bf5ab750043e1e196469200b801554a3545b",
     },
     "kantor-1920": {
       records: 30,
-      reviewed: 12,
-      pending: 18,
+      resolved: 27,
+      unresolved: 3,
       sourcePages: 35,
       citedPages: 16,
       holdings: 34,
       weights: 34,
-      recordsHash: "bcbe4a023a8e3cdafd41c86c19a33d96cff13e7b33089ac0bcdb59169f9f68a9",
+      recordsHash: "219ac98d8a68faaa6f9741958c4f8ac28d002f2d3615400becc285e83bb46b80",
+      nonMappingHash: "3b0afddc30a1f4f87e55c1dfba828be802ee5311c3b49c4b4338688686c2c11f",
+      mappingsHash: "ec3cc0e6cc7956b460ca9db43d9d81a778e2a34784126b9b69fce672c08f6890",
       idsHash: "31a86211b4ce6dafd97bbcf3d7229b2bc3a12c438948d707353fce7e25464755",
     },
   };
@@ -685,12 +691,18 @@ test("Anderson, Astapovich, and Kantor publish exact facts without media or line
     assert.equal(descriptor.sourcePageCount, counts.sourcePages);
     assert.equal(records.length, counts.records);
     assert.equal(new Set(records.flatMap(({ catalogPages }) => catalogPages)).size, counts.citedPages);
-    assert.equal(reviewed.length, counts.reviewed);
-    assert(reviewed.every(({ metbull }) => metbull.matchType === "exact"));
-    assert.equal(records.length - reviewed.length, counts.pending);
+    assert.equal(reviewed.length, counts.resolved + counts.unresolved);
+    assert.equal(reviewed.filter(({ metbull }) => metbull.matchType === "unresolved").length, counts.unresolved);
+    assert.equal(reviewed.filter(({ metbull }) => metbull.matchType !== "unresolved").length, counts.resolved);
+    assert.equal(records.length - reviewed.length, 0);
     assert.equal(holdings.length, counts.holdings);
     assert.equal(weights.length, counts.weights);
     assert.equal(createHash("sha256").update(JSON.stringify(records)).digest("hex"), counts.recordsHash);
+    assert.equal(
+      createHash("sha256").update(JSON.stringify(records.map(({ metbull: _metbull, ...record }) => record))).digest("hex"),
+      counts.nonMappingHash,
+    );
+    assert.equal(createHash("sha256").update(JSON.stringify(records.map(({ metbull }) => metbull))).digest("hex"), counts.mappingsHash);
     assert.equal(createHash("sha256").update(JSON.stringify(records.map(({ id }) => id))).digest("hex"), counts.idsHash);
     assert.deepEqual(folios.catalogs[catalogId], {
       displayPolicy: "blocked",
@@ -775,7 +787,7 @@ test("same-series continuity survives missing mass while possible matches requir
   const relationship = rebuilt.relationships.find((item) => item.relationship === "same-inventory" && item.collectionSeries.inventoryId === "h160.1");
   assert.ok(relationship);
   assert(relationship.observations.some(({ massGrams }) => massGrams === null));
-  assert.equal(rebuilt.metadata.source.flattenedMassObservationCount, 13685);
+  assert.equal(rebuilt.metadata.source.flattenedMassObservationCount, 13705);
 
   for (const possible of possibleRelationships()) {
     const [left, right] = possible.observations;

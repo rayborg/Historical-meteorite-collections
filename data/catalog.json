@@ -166205,7 +166205,14 @@
       "classification": "Siderite.",
       "locality": "Near Barraba (Lat. 30° 22′S, Long. 150° 36′E), New South Wales (exact locality unknown).",
       "eventDate": null,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Bingera",
+        "meteoriteCode": "5050",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5050",
+        "alternateNameNote": "The checker maps Barraba directly to Bingera, and the Bingera detail page lists Barraba as a synonym."
+      }
     },
     {
       "id": "obs-f9ab2f4f-c305-4b89-8849-bde364675db4",
@@ -166228,7 +166235,14 @@
       "classification": "Aerolite. Brecciated grey chondrite, Cgb (Brezina); black chondrite, Cs (Klein); intermediate chondrite, Ci (Farrington).",
       "locality": "Barratta Station (Lat. 35° 5′S, Long. 144° 36′E), thirty-five miles north-west of Deniliquin, New South Wales.",
       "eventDate": "F. J. Wynne, 1852.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Barratta",
+        "meteoriteCode": "4951",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4951",
+        "alternateNameNote": "Anderson numbers four masses under the Barratta heading; No. 1 also gives Deniliquin, which the checker and detail page map to Barratta."
+      }
     },
     {
       "id": "obs-8c7ea3b6-5cd4-4a0e-91c0-af0b680b8f0d",
@@ -166251,7 +166265,14 @@
       "classification": "As No. 1.",
       "locality": "Near No. 1.",
       "eventDate": null,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Barratta",
+        "meteoriteCode": "4951",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4951",
+        "alternateNameNote": "Anderson explicitly says this numbered mass is as No. 1 and near No. 1."
+      }
     },
     {
       "id": "obs-cb835822-9de4-4dfe-ba9a-c042e61bd222",
@@ -166274,7 +166295,14 @@
       "classification": "As No. 1.",
       "locality": "Near No. 1.",
       "eventDate": null,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Barratta",
+        "meteoriteCode": "4951",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4951",
+        "alternateNameNote": "Anderson explicitly says this numbered mass is as No. 1 and near No. 1."
+      }
     },
     {
       "id": "obs-32a0a415-a364-443f-906a-1aa3f03eae7e",
@@ -166297,7 +166325,14 @@
       "classification": "As No. 1.",
       "locality": "Near No. 1.",
       "eventDate": null,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Barratta",
+        "meteoriteCode": "4951",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4951",
+        "alternateNameNote": "Anderson explicitly says this numbered mass is as No. 1 and near No. 1."
+      }
     },
     {
       "id": "obs-bf8d2d2b-28cc-4346-b015-55e34cdf99fd",
@@ -166320,7 +166355,14 @@
       "classification": "Siderite. Broad octahedrite, Og (Brezina); broadest octahedrite, Ogg (Klein).",
       "locality": "About two miles east of Beaconsfield Station (Lat. 38° 31′S, Long. 145° 30′E), Co. Mornington, Victoria.",
       "eventDate": "— Feltus.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Cranbourne",
+        "meteoriteCode": "5463",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5463",
+        "alternateNameNote": "The checker maps Beaconsfield directly to Cranbourne, and the detail page lists Beaconsfield as a synonym."
+      }
     },
     {
       "id": "obs-af0454c6-9a88-4835-a9c6-da87adb1a245",
@@ -166343,7 +166385,14 @@
       "classification": "Siderolite.",
       "locality": "Seven miles from Bendock (Lat. 37° 11′S, Long. 148° 58′E), Co. Croajingolong, Victoria.",
       "eventDate": "About 1899.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bendock",
+        "meteoriteCode": "5016",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5016",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-0d3dffda-3af7-4d4d-b99f-d64d70543eeb",
@@ -166426,7 +166475,14 @@
       "classification": "Siderite. Medium octahedrite, Om.",
       "locality": "Blue Tier (Lat. 41° 0′S, Long. 148° 0′E about), Co. Dorset, north-east coast of Tasmania.",
       "eventDate": "Party of miners, some years previous to 1893.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Blue Tier",
+        "meteoriteCode": "5077",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5077",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-6e400b41-2cf1-4831-b64a-cf9e0ce4bf41",
@@ -166569,7 +166625,14 @@
       "classification": "Siderite. Broad octahedrite, Og.",
       "locality": "Cranbourne (Lat. 38° 11′S, Long. 145° 20′E), Co. Mornington, Victoria.",
       "eventDate": "Known 1854.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Cranbourne",
+        "meteoriteCode": "5463",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5463",
+        "alternateNameNote": "Anderson numbers this Cranbourne mass and gives Bruce; the detail page lists Bruce as a Cranbourne synonym."
+      }
     },
     {
       "id": "obs-a5c963f5-be68-472e-a301-71e108fc9d6f",
@@ -166592,7 +166655,14 @@
       "classification": "As No. 1.",
       "locality": "Six miles north of No. 1 (Lat. 38° 8′S, Long. 145° 22′E).",
       "eventDate": "Known 1854.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Cranbourne",
+        "meteoriteCode": "5463",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5463",
+        "alternateNameNote": "Anderson says this mass is as No. 1 and gives Abel; the detail page lists Abel as a Cranbourne synonym."
+      }
     },
     {
       "id": "obs-9422ca67-8a47-4fb3-9099-a2e6549f7946",
@@ -166615,7 +166685,14 @@
       "classification": "Aerolite.",
       "locality": "Eli Elwah Station, fifteen miles west of Hay (Lat. 34° 30′S, Long. 144° 56′E), New South Wales.",
       "eventDate": "? Known 1889 (9, p. 306).",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Eli Elwah",
+        "meteoriteCode": "10013",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10013",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-c045a8e3-0b05-4e74-8cdc-bfac1dfd36d7",
@@ -166668,7 +166745,14 @@
       "classification": "Aerolite. Crystalline chondrite, Ck (Brezina); black chondrite, Cs (Klein).",
       "locality": "Gilgoin Station (Lat. 30° 35′S, Long. 147° 12′E), forty miles south-east of Brewarrina, New South Wales.",
       "eventDate": "1888 or 1889.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Gilgoin",
+        "meteoriteCode": "10915",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10915",
+        "alternateNameNote": "Anderson's six numbered Gilgoin masses form one explicit source family."
+      }
     },
     {
       "id": "obs-9409e612-bbac-43e2-b81f-67f7234580bd",
@@ -166691,7 +166775,14 @@
       "classification": "As No. 1.",
       "locality": "Two miles south of Gilgoin, No. 1.",
       "eventDate": null,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Gilgoin",
+        "meteoriteCode": "10915",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10915",
+        "alternateNameNote": "Anderson explicitly says this numbered mass is as No. 1 and two miles south of it."
+      }
     },
     {
       "id": "obs-8e67e99f-881a-43c6-a970-a42dc661a261",
@@ -166714,7 +166805,14 @@
       "classification": null,
       "locality": null,
       "eventDate": null,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Gilgoin",
+        "meteoriteCode": "10915",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10915",
+        "alternateNameNote": "Anderson continues the explicit six-mass Gilgoin numbering without introducing another locality."
+      }
     },
     {
       "id": "obs-f0e4e84d-ef4a-4927-9f25-9c60e2550501",
@@ -166737,7 +166835,14 @@
       "classification": null,
       "locality": null,
       "eventDate": null,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Gilgoin",
+        "meteoriteCode": "10915",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10915",
+        "alternateNameNote": "Anderson continues the explicit six-mass Gilgoin numbering without introducing another locality."
+      }
     },
     {
       "id": "obs-fbf1eede-e3eb-49a7-9bd1-7c9463c2ef24",
@@ -166760,7 +166865,14 @@
       "classification": null,
       "locality": null,
       "eventDate": null,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Gilgoin",
+        "meteoriteCode": "10915",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10915",
+        "alternateNameNote": "Anderson continues the explicit six-mass Gilgoin numbering without introducing another locality."
+      }
     },
     {
       "id": "obs-a042caf2-9630-4447-91be-8dd7d083e951",
@@ -166783,7 +166895,14 @@
       "classification": null,
       "locality": null,
       "eventDate": null,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Gilgoin",
+        "meteoriteCode": "10915",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10915",
+        "alternateNameNote": "Anderson completes the explicit six-mass Gilgoin numbering without introducing another locality."
+      }
     },
     {
       "id": "obs-a3a056a9-0867-4538-8a22-fd99dadfa5ce",
@@ -166806,7 +166925,14 @@
       "classification": "Aerolite (?)",
       "locality": "Haddon, Grenville Co., Victoria.",
       "eventDate": null,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "Checker returned Unknown. Anderson labels the row doubtful and says there is no reliable evidence that the material was meteoritic; no Official CSV/detail identity is supportable."
+      }
     },
     {
       "id": "obs-d6b1e01e-7598-4315-b899-45a8889000bd",
@@ -166830,7 +166956,14 @@
       "classification": "Aerolite.",
       "locality": "Pevensey Station, Old Man Plain, ten miles below Hay (Lat. 34° 30′S, Long. 144° 56′E), in a paddock fifteen miles south of the Murrumbidgee River, New South Wales.",
       "eventDate": "1868-1870.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Pevensey",
+        "meteoriteCode": "18805",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18805",
+        "alternateNameNote": "Anderson says this second Hay should preferably be called Pevensey; the Pevensey detail page lists Hay as a synonym."
+      }
     },
     {
       "id": "obs-3adccb01-67f1-497a-b95e-6f9d17b52719",
@@ -166913,7 +167046,14 @@
       "classification": "Siderite.",
       "locality": "Langwarrin (Lat. 38° 10′S, Long. 145° 10′E), Co. Mornington, Victoria.",
       "eventDate": "A. H. Padley, 1886.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Cranbourne",
+        "meteoriteCode": "5463",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5463",
+        "alternateNameNote": "The checker maps Langwarrin to Cranbourne, the detail page lists it as a synonym, and Anderson notes it may be part of Cranbourne."
+      }
     },
     {
       "id": "obs-d1766b3a-236a-4e9b-bec0-51cd4f3679d9",
@@ -166966,7 +167106,14 @@
       "classification": null,
       "locality": "Two days march beyond the Isaacs River, the first branch of the MacKenzie River, Queensland.",
       "eventDate": null,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "Checker returned Partial name. The only live contains result is unapproved Pseudo record Le Gould's Stone, code 12747; it is absent from the pinned Official CSV, so no approved identity can be assigned."
+      }
     },
     {
       "id": "obs-10a305ec-0d7a-4829-8a26-72e633de0c7f",
@@ -166989,7 +167136,14 @@
       "classification": "Siderolite. Mesosiderite, M.",
       "locality": "Macquarie River (Lat. 31° 30′S, Long. 152° 56′E), New South Wales.",
       "eventDate": "1857.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "Checker classifies the exact name as Pseudo/Pseudometeorite, not Official. No matching Official CSV row exists, so Anderson's claimed mesosiderite cannot receive an approved identity."
+      }
     },
     {
       "id": "obs-9df37504-c460-4c58-bfc4-a5f69a6808da",
@@ -167072,7 +167226,14 @@
       "classification": "Siderite. Broadest octahedrite, Ogg (Brezina, Klein); broad octahedrite, Og (Farrington).",
       "locality": "Mooranoppin, fifty miles west of Coolgardie (Lat. 32° 0′S, Long. 119° 25′E), Western Australia.",
       "eventDate": "An aboriginal, in or before 1893.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Youndegin",
+        "meteoriteCode": "30374",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=30374",
+        "alternateNameNote": "The checker maps Mooranoppin directly to Youndegin, and the detail page lists Mooranoppin as a synonym."
+      }
     },
     {
       "id": "obs-6740c25d-7d0c-4f65-b895-972526657586",
@@ -167125,7 +167286,14 @@
       "classification": "Siderite.",
       "locality": "Mt. Dooling, north Yilgarn, Western Australia.",
       "eventDate": "1910.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Mount Dooling",
+        "meteoriteCode": "16771",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16771",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-6290917e-0de0-4391-8c06-83f997d8d806",
@@ -167178,7 +167346,14 @@
       "classification": "Siderite. Broad octahedrite, Og.",
       "locality": "Twenty-five miles south-east of Mount Stirling (Lat. 31° 58′S, Long. 117° 55′E), one hundred and thirty miles east of Perth, Western Australia.",
       "eventDate": "Known 1892.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Youndegin",
+        "meteoriteCode": "30374",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=30374",
+        "alternateNameNote": "The checker maps Mount Stirling directly to Youndegin, and the detail page lists Mount Stirling as a synonym."
+      }
     },
     {
       "id": "obs-b338f180-1cdd-4664-b176-88e5e517eb50",
@@ -167201,7 +167376,14 @@
       "classification": "Siderite. Finest octahedrite, Off (Brezina, Klein); fine octahedrite, Of (Farrington).",
       "locality": "South Queensland, three miles north of Mungindi (Lat. 29° 0′S, Long. 149° 0′E), New South Wales.",
       "eventDate": "Louis Troutman, early in 1897.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Mungindi",
+        "meteoriteCode": "16872",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16872",
+        "alternateNameNote": "Anderson explicitly groups the two numbered masses under Mungindi."
+      }
     },
     {
       "id": "obs-13714810-5c38-4f12-a5a1-7e3cc471bbf2",
@@ -167344,7 +167526,14 @@
       "classification": null,
       "locality": "Premier Downs, Nullarbor Plains, Eucla Division, Western Australia.",
       "eventDate": "1911.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "Checker returned Partial name with two Official candidates, Premier Downs 001 and 002. Their 1989/2008 dates postdate Anderson's two 1911 specimens, so both conflict and the source row remains ambiguous."
+      }
     },
     {
       "id": "obs-68ac5bca-70a2-4fb5-bdf1-984da06608d7",
@@ -167367,7 +167556,14 @@
       "classification": "Siderite. Broad octahedrite, Og.",
       "locality": "South Queensland (exact locality unknown).",
       "eventDate": null,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "Checker returned Partial name. Search results include Hamilton (Queensland), a 1966 L6 incompatible with the pre-1913 iron, and a Queensland synonym for Gladstone (iron), officially found in 1915 after Anderson's publication. No non-conflicting identity is established."
+      }
     },
     {
       "id": "obs-fd110a95-5ce9-4a11-9062-871f4623d5dc",
@@ -167450,7 +167646,14 @@
       "classification": "Siderite. Broadest octahedrite, Ogg.",
       "locality": "Between Temora (Lat. 34° 12′S, Long. 147° 26′E) and Cootamundra, New South Wales.",
       "eventDate": "Party of miners, 1890.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Narraburra",
+        "meteoriteCode": "16915",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16915",
+        "alternateNameNote": "The checker maps Temora directly to Narraburra, and the Narraburra detail page lists Temora as a synonym."
+      }
     },
     {
       "id": "obs-415cae0d-8d97-4b7a-9780-96f07ffc8e7b",
@@ -167503,7 +167706,14 @@
       "classification": "Aerolite.",
       "locality": "Windorah (Lat. 25° 25′S, Long. 142° 40′E), Diamantina District, Queensland.",
       "eventDate": null,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Tenham",
+        "meteoriteCode": "23897",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23897",
+        "alternateNameNote": "The checker maps Warbreccan directly to Tenham, and the Tenham detail page lists Warbreccan as a synonym."
+      }
     },
     {
       "id": "obs-c96b9723-9c63-4162-84fc-e1c388c7453d",
@@ -167556,7 +167766,14 @@
       "classification": "Siderite. Broad octahedrite, Og.",
       "locality": "Three-quarters of a mile north-west of Penkarring Rock (Lat. 31° 30′S, Long. 117° 30′E), Sub-district Youndegin, about seventy miles east of York, Western Australia.",
       "eventDate": "Alfred Eaton, June 5, 1884.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Youndegin",
+        "meteoriteCode": "30374",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=30374",
+        "alternateNameNote": "Anderson numbers this Youndegin mass and gives Penkarring Rock; the checker and detail page map Penkarring Rock to Youndegin."
+      }
     },
     {
       "id": "obs-2f48b5d6-7854-4b67-9692-e1c86ba612ea",
@@ -167579,7 +167796,14 @@
       "classification": "As No. 1.",
       "locality": "Youndegin, Western Australia.",
       "eventDate": "Louis Knoop, 1891.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Youndegin",
+        "meteoriteCode": "30374",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=30374",
+        "alternateNameNote": "Anderson explicitly says this numbered Youndegin mass is as No. 1 and locates it at Youndegin."
+      }
     },
     {
       "id": "obs-70cf89ed-e47d-4d94-8820-4c609f17afdf",
@@ -167602,7 +167826,14 @@
       "classification": "As No. 1.",
       "locality": "Youndegin, Western Australia.",
       "eventDate": "Louis Knoop, 1892.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Youndegin",
+        "meteoriteCode": "30374",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=30374",
+        "alternateNameNote": "Anderson explicitly says this numbered Youndegin mass is as No. 1 and locates it at Youndegin."
+      }
     },
     {
       "id": "obs-16d182d1-1ad6-411b-931f-44ab2fa4db19",
@@ -167625,7 +167856,14 @@
       "classification": "O",
       "locality": null,
       "eventDate": "1891",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toubil River",
+        "meteoriteCode": "24034",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24034",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Toubil River; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-afffb3c1-8063-43af-a0ac-0ab5eb1beef8",
@@ -167648,7 +167886,14 @@
       "classification": "O",
       "locality": null,
       "eventDate": "1890",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Augustinovka",
+        "meteoriteCode": "4898",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4898",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Augustinovka; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-41481df9-6143-480a-b126-fa511eb3c684",
@@ -167671,7 +167916,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1900 July 7",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Alexandrovsky",
+        "meteoriteCode": "465",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=465",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Alexandrovsky; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-e26dc071-2b7c-4ff7-a764-ca64fe6c2741",
@@ -167694,7 +167946,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1898",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Andryushki",
+        "meteoriteCode": "2297",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2297",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Andryushki; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-b843fb0c-c451-4092-b1f0-79e1681c4bf6",
@@ -167747,7 +168006,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1796 Jan. 15",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Bjelaja Zerkov",
+        "meteoriteCode": "5063",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5063",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Bjelaja Zerkov; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-3936c181-2fae-4c60-8e3b-349402c399ad",
@@ -167770,7 +168036,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1887 Jan. 1",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Bielokrynitschie",
+        "meteoriteCode": "5043",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5043",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Bielokrynitschie; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-63e2c718-0d8d-4f77-ba7a-b4612b96b5c0",
@@ -167793,7 +168066,14 @@
       "classification": "P",
       "locality": null,
       "eventDate": "1878",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The checker reports the name as a synonym of two official meteorites, Berdyansk and Pavlograd. The source says a 1878 pallasite find, conflicting with both candidates (1843 L6 find and 1826 L6 fall), so identity is ambiguous."
+      }
     },
     {
       "id": "obs-50f4eaf7-5bde-4f75-9e4f-47214601a548",
@@ -167816,7 +168096,14 @@
       "classification": "O",
       "locality": null,
       "eventDate": "1888",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Bischtübe",
+        "meteoriteCode": "5057",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5057",
+        "alternateNameNote": "The live detail page identifies Official Bischtübe (1888, Kazakhstan, iron) and lists Bischtuebe/Bishtiube spelling variants; the source is an 1888 octahedrite in the Soviet list."
+      }
     },
     {
       "id": "obs-2493865c-205b-460b-b494-0c63cf0c703d",
@@ -167839,7 +168126,14 @@
       "classification": "O",
       "locality": null,
       "eventDate": "after 1900",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Veliko-Nikolaevsky Priisk",
+        "meteoriteCode": "24157",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24157",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Veliko-Nikolaevsky Priisk; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-0c1f7f1f-d778-41f0-b253-65313b30680e",
@@ -167862,7 +168156,14 @@
       "classification": "H",
       "locality": null,
       "eventDate": "1916 Oct. 18, 11h 47m",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Boguslavka",
+        "meteoriteCode": "5098",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5098",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Boguslavka; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-af0a1c72-7fe1-4472-8063-bbff3e34ff4b",
@@ -167885,7 +168186,14 @@
       "classification": "O",
       "locality": null,
       "eventDate": "1909",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The checker returns Unknown. Official Bodaibo is a plausible transliteration and iron, but its official find year is 1907 while the source says 1909; no checker synonym or detail-page alias resolves the conflict."
+      }
     },
     {
       "id": "obs-17ed2544-b1e3-4128-9de6-160d42c6306b",
@@ -167938,7 +168246,14 @@
       "classification": "O",
       "locality": null,
       "eventDate": "1885",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The checker points to Angara, whose live detail page is Pseudo and which is absent from the pinned Official CSV; no approved canonical identity can be assigned."
+      }
     },
     {
       "id": "obs-370347e7-f0c3-4332-8d63-49d2a5e564fa",
@@ -168021,7 +168336,14 @@
       "classification": "P",
       "locality": null,
       "eventDate": "1810",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Brahin",
+        "meteoriteCode": "5130",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5130",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Brahin; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-fedf645e-823d-4415-b5fc-eedd38bbe2b0",
@@ -168074,7 +168396,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1929 Mar. 1, 5h 24m",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Khmelevka",
+        "meteoriteCode": "12297",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12297",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Khmelevka; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-409f0610-ced2-44a8-b8d8-6d4f463eef01",
@@ -168157,7 +168486,14 @@
       "classification": "H",
       "locality": null,
       "eventDate": "1910",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Dorofeevka",
+        "meteoriteCode": "7717",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=7717",
+        "alternateNameNote": "The live detail page and pinned CSV identify Official Dorofeevka, a 1910 Kazakhstan iron; source year, historical hexahedrite type, and Soviet context agree."
+      }
     },
     {
       "id": "obs-6e44f6e9-213b-4511-87ab-5857fbc6216e",
@@ -168180,7 +168516,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1925 Feb. 8-9",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The checker calls Erofeewka a synonym of Official Erofeevka, but the source records a 8–9 February 1925 fall while the official record is a 1937 find; the event conflict prevents resolution."
+      }
     },
     {
       "id": "obs-2343c8bd-f359-44c5-8d02-641f7ea425fc",
@@ -168233,7 +168576,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1881 Nov. 19, 6h 30m",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Grossliebenthal",
+        "meteoriteCode": "11208",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11208",
+        "alternateNameNote": "The live detail page and pinned CSV identify Official Grossliebenthal, an 1881 Ukraine L6 fall; the source gives the same fall year and date and differs only by the omitted h."
+      }
     },
     {
       "id": "obs-32db4e00-d3cb-4b71-b7f6-2d26b7e42927",
@@ -168286,7 +168636,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1936 May 29, 19h 34m",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Ichkala",
+        "meteoriteCode": "11995",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11995",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Ichkala; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-0c23d24c-95dc-4651-ac1b-f6571048b5be",
@@ -168309,7 +168666,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "after 1900",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The checker calls Kawkas a synonym of Official Berdyansk, but the source says found after 1900 while the official record is an 1843 find; the event-year conflict prevents resolution."
+      }
     },
     {
       "id": "obs-f3ac6c78-b2fc-463b-b52a-59f07f783d4e",
@@ -168362,7 +168726,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1937 Sep. 14",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Kainsaz",
+        "meteoriteCode": "12229",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12229",
+        "alternateNameNote": "The live detail page identifies Official Kainsaz and lists Kaïnsas as a synonym; the source date 14 September 1937 and chondrite type agree."
+      }
     },
     {
       "id": "obs-509128fe-7bee-439b-a44e-027709c36e2b",
@@ -168385,7 +168756,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1937 May 12",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Kaptal-Aryk",
+        "meteoriteCode": "12253",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12253",
+        "alternateNameNote": "The live checker explicitly returns the source name as Variant of Official Kaptal-Aryk; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-827b7810-0e33-4d80-a3d7-6e7f6cb80eb7",
@@ -168468,7 +168846,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1918 Feb. 27, 12h 45m",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Glasatovo",
+        "meteoriteCode": "10926",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10926",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Glasatovo; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-c8a95139-d38c-4262-bb3c-b1c2c4013dee",
@@ -168521,7 +168906,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1829 Sept. ?",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Krasnoi-Ugol",
+        "meteoriteCode": "12355",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12355",
+        "alternateNameNote": "The live detail page identifies Official Krasnoi-Ugol and lists Krasnyi Ugol as a synonym; the source and official record agree on the 1829 Russian chondrite fall."
+      }
     },
     {
       "id": "obs-9d87fae6-0076-4500-9f46-c3133cb52209",
@@ -168544,7 +168936,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1811 Mar. 12, 11h",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Kuleschovka",
+        "meteoriteCode": "12370",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12370",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Kuleschovka; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-ecadebe4-cc89-48d0-b342-88edcb9dab75",
@@ -168567,7 +168966,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1932 May 26, 17h 30m",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Kuznetzovo",
+        "meteoriteCode": "12385",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12385",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Kuznetzovo; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-ce170eac-269b-4148-a421-2eb70433feb8",
@@ -168620,7 +169026,14 @@
       "classification": "O?",
       "locality": null,
       "eventDate": "1925",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Lebedinnyi",
+        "meteoriteCode": "12754",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12754",
+        "alternateNameNote": "The live detail page and pinned CSV identify Official Lebedinnyi, a 1925 Russian iron; source year, octahedrite type, and Soviet context agree."
+      }
     },
     {
       "id": "obs-f569baaf-1ae6-4072-81a6-a0a41e4f42cc",
@@ -168643,7 +169056,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1900 Aug. 23, 21h",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Leonovka",
+        "meteoriteCode": "12765",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12765",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Leonovka; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-f3a77947-ea43-4dd8-8d40-a0b208126c8a",
@@ -168666,7 +169086,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1904",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The checker returns Unknown. The Lipovsky detail page lists Lipowsky Chutor/Lipovskii Khutor variants and agrees on 1904, but the source explicitly says chondrite while Official Lipovsky is a pallasite; the conflicting unknown remains unresolved."
+      }
     },
     {
       "id": "obs-89d9f5db-872e-48ed-b586-fd8b00dd0451",
@@ -168689,7 +169116,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1936 Apr. 2",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Yurtuk",
+        "meteoriteCode": "30378",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=30378",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Yurtuk; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-4b8df727-fdb8-4469-9d57-c0f425e15fbb",
@@ -168712,7 +169146,14 @@
       "classification": "P",
       "locality": null,
       "eventDate": "after 1900",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The checker returns Unknown. A live name search links Malyi Altai to Official Krasnojarsk, but the source says found after 1900 while Krasnojarsk is an 1749 find; this conflicts and duplicates the separately listed Medwedewa identity."
+      }
     },
     {
       "id": "obs-f843da16-0aaa-4cb7-9b92-c67906f49e35",
@@ -168735,7 +169176,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1927 May 15",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Mamra Springs",
+        "meteoriteCode": "15401",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15401",
+        "alternateNameNote": "Although the batch checker labels Mamra a partial name, the live name search and Official Mamra Springs detail page explicitly list Mamra as a synonym; the 15 May 1927 Kazakhstan chondrite fall agrees."
+      }
     },
     {
       "id": "obs-c941ae32-76f4-4b88-aa5d-e0e98dda2531",
@@ -168758,7 +169206,14 @@
       "classification": "P",
       "locality": null,
       "eventDate": "1749",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Krasnojarsk",
+        "meteoriteCode": "12356",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12356",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Krasnojarsk; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-9c4e9cbe-1205-462a-a2f4-d4f1852871a9",
@@ -168781,7 +169236,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1889 June 18, 8h 30m",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Mighei",
+        "meteoriteCode": "16634",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16634",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Mighei; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-4e6dbc95-ec0d-41c8-9b45-f467bd379169",
@@ -168804,7 +169266,14 @@
       "classification": "O",
       "locality": null,
       "eventDate": "1883",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The checker points to Angara, whose live detail page is Pseudo and which is absent from the pinned Official CSV; no approved canonical identity can be assigned."
+      }
     },
     {
       "id": "obs-b788ee13-fbfe-41e8-852d-6fa92797e018",
@@ -168827,7 +169296,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1846",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Netschaëvo",
+        "meteoriteCode": "16949",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16949",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Netschaëvo; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-967620fe-d4fc-4786-ab58-f5dc1f0e5c09",
@@ -168850,7 +169326,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1935 Aug. 4, 16h",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Nikolaevka",
+        "meteoriteCode": "16976",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16976",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Nikolaevka; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-e10c5f44-e377-4f74-8b04-7253c7dafbb3",
@@ -168873,7 +169356,14 @@
       "classification": "O",
       "locality": null,
       "eventDate": "1854",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "translated-or-older-name",
+        "canonicalName": "Verkhne Udinsk",
+        "meteoriteCode": "24166",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24166",
+        "alternateNameNote": "The live Official Verkhne Udinsk detail page explicitly lists Niro and Verchne-Udinsk as synonyms; the source and official record agree on a Russian 1854 iron."
+      }
     },
     {
       "id": "obs-22d2981d-8990-4ae0-9888-969290b3ce4e",
@@ -168896,7 +169386,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1886 Sep. 4",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Novo-Urei",
+        "meteoriteCode": "17933",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17933",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Novo-Urei; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-6b4f16f8-e14c-4d81-82ab-8d3037f60ccd",
@@ -168919,7 +169416,14 @@
       "classification": "O",
       "locality": null,
       "eventDate": "after 1900",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Norin-Shibir",
+        "meteoriteCode": "16995",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16995",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Norin-Shibir; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-237c1bf9-9bed-4f57-beea-ae5fa3e5815e",
@@ -168942,7 +169446,14 @@
       "classification": "O",
       "locality": null,
       "eventDate": "1876",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Nochtuisk",
+        "meteoriteCode": "16986",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16986",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Nochtuisk; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-88ab5c0a-8ed0-4f84-8ba8-f2a4d2092486",
@@ -168965,7 +169476,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1928",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Orlovka",
+        "meteoriteCode": "18029",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18029",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Orlovka; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-f64989db-9179-475c-89f7-fd7ed4eec004",
@@ -169018,7 +169536,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1871",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Oczeretna",
+        "meteoriteCode": "17981",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17981",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Oczeretna; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-9cb2cc90-293e-4acd-be70-f0982fb5a55d",
@@ -169041,7 +169566,14 @@
       "classification": "Go",
       "locality": null,
       "eventDate": "1882 Aug. 2, 17h",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Pavlovka",
+        "meteoriteCode": "18177",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18177",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Pavlovka; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-33e12888-71a1-40bf-9689-2cfc14e1ac55",
@@ -169064,7 +169596,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1826 May 19",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Pavlograd",
+        "meteoriteCode": "18176",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18176",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Pavlograd; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-31dddcb4-6268-4f33-b460-ebb55dfc4420",
@@ -169087,7 +169626,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1933 Dec. 26, 18h",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Pervomaisky",
+        "meteoriteCode": "18798",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18798",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Pervomaisky; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-10d3b2ea-9809-4df6-98d7-f0f3337b8914",
@@ -169110,7 +169656,14 @@
       "classification": "Ac",
       "locality": null,
       "eventDate": "1916",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Petropavlovka",
+        "meteoriteCode": "18802",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18802",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Petropavlovka; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-8c5a449d-97ad-4d05-96e8-181d0205e595",
@@ -169133,7 +169686,14 @@
       "classification": "O",
       "locality": null,
       "eventDate": "1841",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Petropavlovsk",
+        "meteoriteCode": "18803",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18803",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Petropavlovsk; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-7a484fd5-9baf-4b34-b8fa-75a0067a947b",
@@ -169156,7 +169716,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1878 Nov. 20, 15h",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Rakovka",
+        "meteoriteCode": "22376",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22376",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Rakovka; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-8ed81674-8ad7-4d11-9772-e0a3fcccb693",
@@ -169179,7 +169746,14 @@
       "classification": "O",
       "locality": null,
       "eventDate": "1933 Aug. 8, 20h",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Repeev Khutor",
+        "meteoriteCode": "22590",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22590",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Repeev Khutor; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-0c4fefec-584b-436d-bbb3-08108d8f6b23",
@@ -169202,7 +169776,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1914 Apr. 9, 13h 30m",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Ryechki",
+        "meteoriteCode": "22791",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22791",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Ryechki; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-ddbcf685-b96b-4c6c-b1b4-1e81000a4e37",
@@ -169225,7 +169806,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1894 July 27",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Savtschenskoje",
+        "meteoriteCode": "23190",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23190",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Savtschenskoje; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-50c38d69-1763-4d4d-9b6f-ec4a2fd4d4bd",
@@ -169248,7 +169836,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1918 Sep. 6, 15h",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Saratov",
+        "meteoriteCode": "23176",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23176",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Saratov; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-d6b5b5ca-1219-4e97-9026-e07f81f6fcc5",
@@ -169301,7 +169896,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1874 May 11, 23h 45m",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Sevrukovo",
+        "meteoriteCode": "23509",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23509",
+        "alternateNameNote": "The live Official Sevrukovo detail page lists Sewrukowo as a synonym; the source and official record agree on the 11 May 1874 Russian chondrite fall."
+      }
     },
     {
       "id": "obs-8a777ac2-c4d1-488d-990b-24bf1a76337d",
@@ -169354,7 +169956,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1857 Mar. 24, 17h",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Stavropol",
+        "meteoriteCode": "23717",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23717",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Stavropol; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-c29281c0-5f1d-41f4-9c7a-f509c2be14ee",
@@ -169377,7 +169986,14 @@
       "classification": "C?",
       "locality": null,
       "eventDate": "1933 Oct. 2, 6h",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "translated-or-older-name",
+        "canonicalName": "Pesyanoe",
+        "meteoriteCode": "18799",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18799",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Pesyanoe; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-d9bac57a-b126-484e-83d8-c1fa7b136923",
@@ -169400,7 +170016,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1935 Apr. 10",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Sungach",
+        "meteoriteCode": "23745",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23745",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Sungach; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-ef9aa023-83f4-4c1b-9e1d-13e76e3b98ee",
@@ -169423,7 +170046,14 @@
       "classification": "O",
       "locality": null,
       "eventDate": "1873",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Ssyromolotovo",
+        "meteoriteCode": "23694",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23694",
+        "alternateNameNote": "The live detail page and pinned CSV identify Official Ssyromolotovo, a 1873 Russian iron, consistent with the source year and octahedrite type."
+      }
     },
     {
       "id": "obs-995511a0-64f1-4167-b5a9-91aa8bff6a92",
@@ -169446,7 +170076,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "after 1900",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Tarbagatai",
+        "meteoriteCode": "23878",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23878",
+        "alternateNameNote": "The live detail page and pinned CSV identify Official Tarbagatai, a 1912 Russian L5; 1912 satisfies the source’s after-1900 date and the chondrite type agrees."
+      }
     },
     {
       "id": "obs-1c3ee7fc-a06e-44eb-938a-0b45f32a42b3",
@@ -169469,7 +170106,14 @@
       "classification": "Ac",
       "locality": null,
       "eventDate": "1904 May 20",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Barnaul",
+        "meteoriteCode": "4947",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4947",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Barnaul; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-b1468da2-44ee-4265-b5d6-12f91c2ce2b2",
@@ -169492,7 +170136,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1807 Mar. 25, 15h",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Timochin",
+        "meteoriteCode": "24004",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24004",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Timochin; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-c4c4e372-2665-4fff-8709-ac6e850d97d2",
@@ -169515,7 +170166,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1905 Jan. 17, 21h 30m",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Tomakovka",
+        "meteoriteCode": "24019",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24019",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Tomakovka; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-ac9a542a-1289-44fd-be2b-ebafb77b3c9a",
@@ -169538,7 +170196,14 @@
       "classification": "At",
       "locality": null,
       "eventDate": "1913",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Chinga",
+        "meteoriteCode": "5353",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5353",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Chinga; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-c907bb8f-48b7-4256-9312-f480796e77e5",
@@ -169561,7 +170226,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1899",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "translated-or-older-name",
+        "canonicalName": "Kissij",
+        "meteoriteCode": "12324",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12324",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Kissij; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-ce2fc75d-c584-459e-969f-93d76e454c56",
@@ -169584,7 +170256,14 @@
       "classification": "O",
       "locality": null,
       "eventDate": "1891",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Toubil River",
+        "meteoriteCode": "24034",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24034",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Toubil River; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-0ed7fcf0-b37d-4d19-b49c-efb25b7a969d",
@@ -169607,7 +170286,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1824 Mar. 1, 7h",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Tounkin",
+        "meteoriteCode": "24037",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24037",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Tounkin; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-5d62085e-1c74-48df-9015-226884c5c8e0",
@@ -169630,7 +170316,14 @@
       "classification": "O",
       "locality": null,
       "eventDate": "1885",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The checker points to Angara, whose live detail page is Pseudo and which is absent from the pinned Official CSV; no approved canonical identity can be assigned."
+      }
     },
     {
       "id": "obs-249b51a8-c191-46aa-bb58-66f9951a880a",
@@ -169653,7 +170346,14 @@
       "classification": "Ac",
       "locality": null,
       "eventDate": "1876 June 19, 14h",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Vavilovka",
+        "meteoriteCode": "24154",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24154",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Vavilovka; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-f5c33d70-4db3-4540-b51e-52edd0407895",
@@ -169676,7 +170376,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1843 Nov. 12, 12h",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Verkhne Tschirskaia",
+        "meteoriteCode": "24165",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24165",
+        "alternateNameNote": "The live Official Verkhne Tschirskaia detail page explicitly lists Werchne Tschirskaja as a synonym; the source and official record agree on the 12 November 1843 Russian chondrite fall."
+      }
     },
     {
       "id": "obs-1e249e76-b845-47bc-883c-4126849d86b5",
@@ -169699,7 +170406,14 @@
       "classification": "P",
       "locality": null,
       "eventDate": "1885",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Pavlodar (pallasite)",
+        "meteoriteCode": "18174",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18174",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Pavlodar (pallasite); the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-044d9e76-6376-4607-9186-a1f00e77da09",
@@ -169722,7 +170436,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1818 Apr. 11",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Zaborzika",
+        "meteoriteCode": "30379",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=30379",
+        "alternateNameNote": "The live Official Zaborzika detail page explicitly lists both Zaborica and Saboriza as synonyms; the source and official record agree on the 11 April 1818 Ukraine chondrite fall."
+      }
     },
     {
       "id": "obs-37c68530-4e0b-4a83-b9aa-cf2cb94a0f8f",
@@ -169745,7 +170466,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1787 Oct. 12, 15h",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Kharkov",
+        "meteoriteCode": "12291",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12291",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Kharkov; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-065a84dc-96d0-4d05-a54e-ebb8ab9dff99",
@@ -169768,7 +170496,14 @@
       "classification": "Go",
       "locality": null,
       "eventDate": "1858 Aug.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Zmenj",
+        "meteoriteCode": "30411",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=30411",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Zmenj; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-e4ea64d7-83e5-4cd3-bcbd-f6dcb3e475ff",
@@ -169791,7 +170526,14 @@
       "classification": "C",
       "locality": null,
       "eventDate": "1938 Jan. 11, 14h 30m",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Lavrentievka",
+        "meteoriteCode": "12743",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12743",
+        "alternateNameNote": "The live checker explicitly returns the source name as Synonym of Official Lavrentievka; the pinned CSV and re-fetched detail page confirm code, canonical name, and Official status, with source event/context reviewed."
+      }
     },
     {
       "id": "obs-e08dc432-efc7-4a5a-a2a5-5cff04828a8c",
@@ -244926,7 +245668,14 @@
       "classification": "Hierro meteórico (siderita)",
       "locality": "Caperr, río Senguerr, Chubut; longitud 70°20' Oeste y latitud 45°15' Sud.",
       "eventDate": null,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Caperr",
+        "meteoriteCode": "5263",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5263",
+        "alternateNameNote": "The live checker identifies Caperr Aiken solely as a synonym of Caperr."
+      }
     },
     {
       "id": "obs-36d9bf73-2e2a-4390-9d04-a96051e1a0a2",
@@ -244954,7 +245703,14 @@
       "classification": "Hierro meteórico (siderita)",
       "locality": "Otumpa, Gran Chaco.",
       "eventDate": null,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Campo del Cielo",
+        "meteoriteCode": "5247",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5247",
+        "alternateNameNote": "The checker maps Otumpa solely to Campo del Cielo, and Kantor explicitly says Otumpa appears in catalogs as Campo del Cielo."
+      }
     },
     {
       "id": "obs-ae30e7db-80c3-4c9e-b861-18b8ccd4a652",
@@ -245090,7 +245846,14 @@
       "classification": "Meteorito carbonoso",
       "locality": "A 30 leguas del Uruguay, no lejos de Nogoyá, provincia de Entre Ríos.",
       "eventDate": null,
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Nogoya",
+        "meteoriteCode": "16989",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16989",
+        "alternateNameNote": "The exact accented form is Unknown; the official name omits the accent."
+      }
     },
     {
       "id": "obs-3210798e-eafc-4e68-90d7-77e5f7374e63",
@@ -245118,7 +245881,14 @@
       "classification": "Meteorito fósil",
       "locality": "Cercanías de Luján, provincia de Buenos Aires; 6 metros de profundidad en terreno cuaternario no removido.",
       "eventDate": null,
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Lujan",
+        "meteoriteCode": "14752",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=14752",
+        "alternateNameNote": "The exact accented form is Unknown; official Lujan omits the accent."
+      }
     },
     {
       "id": "obs-740f9319-c559-4564-97b0-f0e850c1a974",
@@ -245146,7 +245916,14 @@
       "classification": "Piedra meteórica (aerolito)",
       "locality": "Inmediaciones de la estación Cacharí, partido del Azul, provincia de Buenos Aires; a un metro y medio de profundidad.",
       "eventDate": null,
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Cachari",
+        "meteoriteCode": "5189",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5189",
+        "alternateNameNote": "The exact accented form is Unknown; official Cachari omits the accent."
+      }
     },
     {
       "id": "obs-45638db9-a152-4044-bcb9-311dc29a697e",
@@ -245251,7 +246028,14 @@
       "classification": "Hierro meteórico (siderita)",
       "locality": "Mountains Kapland, Africa.",
       "eventDate": null,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "translated-or-older-name",
+        "canonicalName": "Hex River Mountains",
+        "meteoriteCode": "11880",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11880",
+        "alternateNameNote": "The checker finds one containing name; Kantor's following words, Mountains Kapland, complete and independently identify the official entry."
+      }
     },
     {
       "id": "obs-cd764153-71a6-467c-b997-3d8c3e6b833b",
@@ -245312,7 +246096,14 @@
       "classification": "Hierro meteórico (siderita)",
       "locality": "Moscou.",
       "eventDate": null,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "No official identity is assigned. A sounds-like search finds Rousoumousky only as a synonym of pseudo Agricultural College, not an approved meteorite."
+      }
     },
     {
       "id": "obs-a43c6c19-cb9d-4bd1-a66f-03d9793dec9a",
@@ -245339,7 +246130,14 @@
       "classification": "Siderolita",
       "locality": "Miney, Estados Unidos.",
       "eventDate": null,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Mincy",
+        "meteoriteCode": "16694",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16694",
+        "alternateNameNote": "Missouri is an ambiguous checker synonym, but Kantor's printed locality Miney, 1857 date, and siderolite type uniquely select Mincy and reject Little Piney."
+      }
     },
     {
       "id": "obs-61173860-455d-4ebf-9db9-1410f3570f38",
@@ -245366,7 +246164,14 @@
       "classification": "Siderolita",
       "locality": "Siberia.",
       "eventDate": null,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Krasnojarsk",
+        "meteoriteCode": "12356",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12356",
+        "alternateNameNote": "The checker and detail page directly identify Krasnoiarsk as a synonym of Krasnojarsk."
+      }
     },
     {
       "id": "obs-179e8e0a-dfa5-4d01-9e83-7defd11aba96",
@@ -245437,7 +246242,14 @@
       "classification": "Siderolita",
       "locality": "Noruega.",
       "eventDate": null,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "translated-or-older-name",
+        "canonicalName": "Finmarken",
+        "meteoriteCode": "10103",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10103",
+        "alternateNameNote": "The exact composite form is Unknown; Finmarken is Official and its detail page lists Alten as a synonym."
+      }
     },
     {
       "id": "obs-6cd66355-b028-4a60-85c9-cdbaddc3973b",
@@ -245464,7 +246276,14 @@
       "classification": "Piedra meteórica (aerolito), condrita brechada esferolítica",
       "locality": "Oschansk-Perm, Rusia.",
       "eventDate": null,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Ochansk",
+        "meteoriteCode": "17979",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17979",
+        "alternateNameNote": "The checker maps Tabory solely to Ochansk, whose detail page explicitly lists Tabory."
+      }
     },
     {
       "id": "obs-e9f2af3b-ae9f-441a-bf6c-12ae3cb22f39",
@@ -245491,7 +246310,14 @@
       "classification": "Piedra meteórica (aerolito), condrita cristalina",
       "locality": "Kansas.",
       "eventDate": null,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "translated-or-older-name",
+        "canonicalName": "Oakley (stone)",
+        "meteoriteCode": "17973",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17973",
+        "alternateNameNote": "The source's stone type, Kansas locality, and 1895 date select Oakley (stone), not Oakley (iron)."
+      }
     },
     {
       "id": "obs-3438cbd9-145c-4686-a877-8e5452b389a6",
@@ -245552,7 +246378,14 @@
       "classification": "Piedra meteórica (aerolito), condrita esférica",
       "locality": "Lancé, Pont Loiselle, Prunay, Loire et Chaire, Francia.",
       "eventDate": null,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Lancé",
+        "meteoriteCode": "12455",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12455",
+        "alternateNameNote": "The checker maps Authon solely to Lancé, whose detail page explicitly lists Authon."
+      }
     },
     {
       "id": "obs-4012c4a3-9456-483c-bb14-ecec4a75757b",
@@ -245579,7 +246412,14 @@
       "classification": "Condrita esférica",
       "locality": "Finlandia.",
       "eventDate": null,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Bjurböle",
+        "meteoriteCode": "5064",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5064",
+        "alternateNameNote": "The checker maps Bjurboele solely to Bjurböle, whose detail page explicitly lists Bjurboele."
+      }
     },
     {
       "id": "obs-110e663e-2828-4b03-8fba-46621eb2fca7",
@@ -245718,7 +246558,14 @@
       "classification": "Piedra meteórica (aerolito), condrita intermediaria",
       "locality": "Barratta, New South Wales, Australia.",
       "eventDate": null,
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Barratta",
+        "meteoriteCode": "4951",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4951",
+        "alternateNameNote": "The checker maps Deniliquin solely to Barratta, whose detail page explicitly lists Deniliquin."
+      }
     },
     {
       "id": "obs-1c3559b4-ef90-457b-aab4-7f6017c7f541",
@@ -245779,7 +246626,14 @@
       "classification": "Piedra meteórica (aerolito)",
       "locality": "Kansas, Estados Unidos.",
       "eventDate": null,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "No official identity is assigned because the checker exposes three qualified official names and Kantor's 1897 date matches none."
+      }
     },
     {
       "id": "obs-bcdb1ae5-bdb9-4cb8-9334-40a80326cd5c",
@@ -245806,7 +246660,14 @@
       "classification": "Meteorito; classification not printed in the acquisition statement",
       "locality": "Bahía, Brasil.",
       "eventDate": null,
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Bendegó",
+        "meteoriteCode": "5015",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5015",
+        "alternateNameNote": "The checker directly identifies Bendego as a variant of official Bendegó."
+      }
     },
     {
       "id": "obs-61dfdde3-e70e-4100-8435-82aad88bae73",
@@ -245843,7 +246704,14 @@
       "classification": "Meteorito; classification not printed in the acquisition statement",
       "locality": "Not printed in the acquisition statement.",
       "eventDate": null,
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "No official identity is assigned: unaccented Tarapaca is Doubtful and is also a synonym shared by La Primitiva and Tamarugal."
+      }
     },
     {
       "id": "obs-8b0778b6-4c26-4062-8b12-73ac05ac659e",
