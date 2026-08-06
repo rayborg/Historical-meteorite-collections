@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260805-1";
+const CACHE_VERSION = "20260806-1";
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "name-asc";
 const VALID_SORTS = new Set([
@@ -2144,6 +2144,9 @@ function createRecordCard(record) {
 }
 
 function renderEarlierRecords(card, entries) {
+  const lineageRow = card.querySelector(".lineage-row");
+  lineageRow.querySelector("dd").textContent = formatLineageSummary(entries.length);
+  lineageRow.classList.toggle("unknown", !entries.length);
   const section = card.querySelector(".earlier-records");
   if (!entries.length) {
     section.remove();
@@ -2168,6 +2171,11 @@ function renderEarlierRecords(card, entries) {
     list.append(item);
   });
   section.hidden = false;
+}
+
+function formatLineageSummary(count) {
+  if (!count) return "No lineage known";
+  return `${integerFormat.format(count)} earlier lineage ${count === 1 ? "record" : "records"}`;
 }
 
 function holdingDetails(holding) {
@@ -2462,6 +2470,7 @@ if (typeof module !== "undefined" && module.exports) {
     designationComponents,
     deriveEarlierRecordIndex,
     filterRecords,
+    formatLineageSummary,
     formatMass,
     formatEarlierRecordMass,
     formatSourcePageCoverage,

@@ -66,6 +66,7 @@ test("main template presents relationship-specific compact lineage copy", async 
     readFile(path.join(projectRoot, "app.js"), "utf8"),
   ]);
   assert.doesNotMatch(html, /possible-specimen-lineages\.html/);
+  assert.match(html, /<div class="lineage-row"><dt>Lineage<\/dt><dd><\/dd><\/div>/);
   assert.match(html, /<section class="earlier-records" hidden>/);
   assert.match(html, /Same-inventory links identify collection inventory continuity\./);
   assert.match(html, /Possible matches do not prove physical identity\./);
@@ -75,12 +76,18 @@ test("main template presents relationship-specific compact lineage copy", async 
   assert.match(source, /Possible match · Reported mass:/);
   assert.doesNotMatch(source, /\.innerHTML\b/);
   assert.match(css, /\.earlier-records \{/);
-  assert.equal(app.CACHE_VERSION, "20260805-1");
-  assert.match(html, /styles\.css\?v=20260805-1/);
-  assert.match(html, /app\.js\?v=20260805-1/);
+  assert.equal(app.CACHE_VERSION, "20260806-1");
+  assert.match(html, /styles\.css\?v=20260806-1/);
+  assert.match(html, /app\.js\?v=20260806-1/);
   for (const file of ["possible-specimen-lineages.html", "possible-specimen-lineages.css", "possible-specimen-lineages.js"]) {
     await assert.rejects(access(path.join(projectRoot, file)));
   }
+});
+
+test("every card receives a concise lineage summary", () => {
+  assert.equal(app.formatLineageSummary(0), "No lineage known");
+  assert.equal(app.formatLineageSummary(1), "1 earlier lineage record");
+  assert.equal(app.formatLineageSummary(98), "98 earlier lineage records");
 });
 
 test("real catalog Allende search retains reviewed names and synonyms without Alais infix matches", () => {
