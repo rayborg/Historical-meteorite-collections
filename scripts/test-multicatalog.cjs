@@ -53,7 +53,7 @@ function recordById(catalog, recordId) {
 }
 
 function filters(overrides = {}) {
-  return { query: "", catalog: null, min: null, max: null, sort: "designation-asc", ...overrides };
+  return { query: "", catalog: null, min: null, max: null, lineageOnly: false, sort: "designation-asc", ...overrides };
 }
 
 function specimenSource({
@@ -898,17 +898,37 @@ test("catalog dropdown labels are concise and leave summary titles unchanged", (
   assert.equal(app.catalogDropdownLabel({ label: "Future catalog" }), "Future catalog");
 });
 
-test("URL filter behavior and cache version remain stable", () => {
+test("URL filters strictly round-trip lineage state and cache version remains stable", () => {
   const registry = app.normalizeCatalogRegistry(fixture.metadata);
   const html = readFileSync(join(__dirname, "..", "index.html"), "utf8");
-  const parsed = app.parseUrlFilters("?q=catalog+item+2&catalog=nininger-1933&min=3&max=12&sort=weight-desc", registry);
+  const parsed = app.parseUrlFilters("?q=catalog+item+2&catalog=nininger-1933&min=3&max=12&lineage=1&sort=weight-desc", registry);
   assert.deepEqual(parsed, {
-    query: "catalog item 2", catalog: "nininger-1933", min: "3", max: "12", sort: "weight-desc"
+    query: "catalog item 2", catalog: "nininger-1933", min: "3", max: "12", lineageOnly: true, sort: "weight-desc"
   });
-  assert.equal(app.serializeUrlFilters(parsed).toString(), "q=catalog+item+2&catalog=nininger-1933&min=3&max=12&sort=weight-desc");
-  assert.equal(app.CACHE_VERSION, "20260806-1");
+  assert.equal(app.serializeUrlFilters(parsed).toString(), "q=catalog+item+2&catalog=nininger-1933&min=3&max=12&lineage=1&sort=weight-desc");
+  for (const search of ["", "?lineage=0", "?lineage=true", "?lineage=1&lineage=1", "?lineage=1&lineage=0"]) {
+    assert.equal(app.parseUrlFilters(search, registry).lineageOnly, false, search);
+  }
+  assert.equal(app.CACHE_VERSION, "20260806-2");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.CACHE_VERSION}`));
+});
+
+test("lineage-only filtering fails closed and composes with every record filter", () => {
+  const records = preparedRecords();
+  const target = records.find(({ catalogId, name }) => catalogId === "nininger-1933" && name);
+  const lineageIndex = new Map([[target.id, [{ relationship: "possible-match" }]]]);
+  const composed = filters({
+    query: target.name,
+    catalog: target.catalogId,
+    min: 0,
+    max: 1_000_000,
+    lineageOnly: true,
+    sort: "name-desc"
+  });
+  assert.deepEqual(ids(app.filterRecords(records, composed)), []);
+  assert.deepEqual(ids(app.filterRecords(records, composed, new Map([[target.id, []]]))), []);
+  assert.deepEqual(ids(app.filterRecords(records, composed, lineageIndex)), [target.id]);
 });
 
 test("runtime rejects deterministic specimen order violations", () => {
@@ -1254,14 +1274,14 @@ test("an empty catalog filter retains matching records from every catalog", () =
 test("URL filters discard unknown catalogs and malformed values", () => {
   const registry = app.normalizeCatalogRegistry(fixture.metadata);
   assert.deepEqual(app.parseUrlFilters("?catalog=missing&min=-1&max=NaN&sort=unknown", registry),
-    { query: "", catalog: "", min: "", max: "", sort: app.DEFAULT_SORT });
+    { query: "", catalog: "", min: "", max: "", lineageOnly: false, sort: app.DEFAULT_SORT });
   assert.equal(app.serializeUrlFilters({ query: "", catalog: "", min: "-1", max: "Infinity", sort: "unknown" }).toString(), "");
 });
 
 test("URL filters discard crossed minimum and maximum ranges", () => {
   const registry = app.normalizeCatalogRegistry(fixture.metadata);
   assert.deepEqual(app.parseUrlFilters("?q=H27&catalog=huss-1976&min=50&max=10&sort=name-asc", registry),
-    { query: "H27", catalog: "huss-1976", min: "", max: "", sort: "name-asc" });
+    { query: "H27", catalog: "huss-1976", min: "", max: "", lineageOnly: false, sort: "name-asc" });
   assert.equal(app.serializeUrlFilters({
     query: "H27", catalog: "huss-1976", min: "50", max: "10", sort: "name-asc"
   }).toString(), "q=H27&catalog=huss-1976");

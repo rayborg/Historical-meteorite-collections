@@ -100,7 +100,7 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 
 ## Active Work State
 
-- Accepted private source commit `1180719` is the source for the current 33-catalog, 13,542-record facts-only public candidate, which retains 49 reviewed public folios.
+- Accepted private source commit `0ce726a` is the source for the current 33-catalog, 13,542-record facts-only public candidate. It retains the identity review accepted at `1180719`, adds the source-name audit corrections, and retains 49 reviewed public folios.
 - Every reviewed record card now exposes its MetBull review: resolved canonical names are linked even when equal to source names, and unresolved reviews are explicitly shown without a link. The homepage links to the dedicated 33-card catalog directory and separately to the bibliography master list.
 - No release-blocking validation issue remains. Any future public change must still be produced from the private canonical data and pass deterministic byte comparison and the facts-only privacy checks.
 

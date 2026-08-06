@@ -76,12 +76,25 @@ test("main template presents relationship-specific compact lineage copy", async 
   assert.match(source, /Possible match · Reported mass:/);
   assert.doesNotMatch(source, /\.innerHTML\b/);
   assert.match(css, /\.earlier-records \{/);
-  assert.equal(app.CACHE_VERSION, "20260806-1");
-  assert.match(html, /styles\.css\?v=20260806-1/);
-  assert.match(html, /app\.js\?v=20260806-1/);
+  assert.equal(app.CACHE_VERSION, "20260806-2");
+  assert.match(html, /styles\.css\?v=20260806-2/);
+  assert.match(html, /app\.js\?v=20260806-2/);
   for (const file of ["possible-specimen-lineages.html", "possible-specimen-lineages.css", "possible-specimen-lineages.js"]) {
     await assert.rejects(access(path.join(projectRoot, file)));
   }
+});
+
+test("lineage filter markup and asynchronous settlement remain fail-closed", async () => {
+  const [html, source] = await Promise.all([
+    readFile(path.join(projectRoot, "index.html"), "utf8"),
+    readFile(path.join(projectRoot, "app.js"), "utf8"),
+  ]);
+  assert.match(html, /<label class="lineage-field">\s*<input id="lineage-only" name="lineage" type="checkbox" value="1">\s*<span>Known or suspected lineage only<\/span>\s*<\/label>/);
+  assert.match(source, /filterRecords\(records, currentFilters\(\), earlierRecordsByLaterId\)/);
+  assert.match(source, /if \(index\.size \|\| elements\.lineageOnly\.checked\) render\(\);/);
+  assert.match(source, /filters\.lineageOnly \|\| filters\.sort !== DEFAULT_SORT/);
+  assert.match(source, /function clearFilters\(\) \{\s*elements\.form\.reset\(\);/);
+  assert.doesNotMatch(source, /\.innerHTML\b/);
 });
 
 test("every card receives a concise lineage summary", () => {

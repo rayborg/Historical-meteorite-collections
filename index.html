@@ -8,8 +8,8 @@
   <meta name="theme-color" content="#2d241b">
   <title>The Meteorite Cabinet | Historical Collection Index</title>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=20260806-1">
-  <script src="./app.js?v=20260806-1" defer></script>
+  <link rel="stylesheet" href="./styles.css?v=20260806-2">
+  <script src="./app.js?v=20260806-2" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#catalog">Skip to catalog</a>
@@ -34,15 +34,15 @@
       <div><strong id="stat-catalogs">-</strong><span>catalogs included</span></div>
     </section>
 
-    <section class="source-summary" aria-labelledby="source-summary-heading">
+    <section class="source-summary homepage-source-summary" aria-labelledby="source-summary-heading">
       <header>
-        <p class="eyebrow">Source register</p>
-        <h2 id="source-summary-heading">Catalogs in this edition</h2>
-        <p>Catalog observations remain attributed to their individual historical sources.</p>
+        <div>
+          <p class="eyebrow">Source register</p>
+          <h2 id="source-summary-heading">Catalogs in this edition</h2>
+        </div>
         <div class="source-register-links">
           <a class="master-list-link" href="./catalogs.html">
             <strong>Browse the catalog directory</strong>
-            <span>Catalog descriptions, source coverage, and authorized folio images</span>
           </a>
         </div>
       </header>
@@ -97,6 +97,11 @@
               <option value="weight-desc">Weight, heaviest first</option>
             </select>
           </span>
+        </label>
+
+        <label class="lineage-field">
+          <input id="lineage-only" name="lineage" type="checkbox" value="1">
+          <span>Known or suspected lineage only</span>
         </label>
       </form>
     </section>

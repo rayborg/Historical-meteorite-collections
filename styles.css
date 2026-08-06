@@ -187,6 +187,12 @@ button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible
 .master-list-link strong { font-size: .9rem; font-weight: 700; }
 .master-list-link span { color: #d8c7a4; font-size: .7rem; }
 .master-list-link:hover { background: var(--oxblood); }
+.homepage-source-summary { margin-top: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--rule); }
+.homepage-source-summary > header { max-width: none; margin: 0; display: flex; justify-content: space-between; align-items: center; gap: 1rem; text-align: left; }
+.homepage-source-summary > header .eyebrow { margin-bottom: .15rem; }
+.homepage-source-summary > header h2 { font-size: 1.35rem; line-height: 1.15; }
+.homepage-source-summary > header h2::after { content: none; }
+.homepage-source-summary .master-list-link { margin-top: 0; padding: .5rem .75rem; }
 .catalog-summary-list { margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; list-style: none; }
 .catalog-summary-card {
   position: relative;
@@ -213,10 +219,14 @@ button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible
 .catalog-directory-error { margin-top: 1.5rem; }
 .catalog-directory-page > footer { margin-top: 5rem; }
 
-.catalog-tools { margin-top: 4rem; padding-bottom: 3rem; border-bottom: 3px double var(--rule); }
+.catalog-tools { margin-top: 1rem; padding-bottom: 1.5rem; border-bottom: 3px double var(--rule); }
 .section-heading { text-align: center; }
 .section-heading h2 { margin: 0; font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; }
 .section-heading h2::after { content: "◆"; display: block; margin: .75rem 0 1.8rem; color: var(--brass); font-size: .6rem; }
+.catalog-tools > .section-heading { display: flex; align-items: baseline; gap: .7rem; margin-bottom: .85rem; text-align: left; }
+.catalog-tools > .section-heading p { margin: 0; }
+.catalog-tools > .section-heading h2 { font-size: 1.6rem; line-height: 1.15; }
+.catalog-tools > .section-heading h2::after { content: none; }
 .filters { display: grid; grid-template-columns: minmax(16rem, 1.4fr) minmax(13rem, .8fr) minmax(21rem, 1fr) minmax(14rem, .8fr); gap: 1.2rem; align-items: end; }
 .filters > label, .weight-range label { min-width: 0; display: block; }
 .filters label > span:first-child, .weight-range legend {
@@ -259,6 +269,8 @@ button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible
 .number-wrap input::-webkit-inner-spin-button { appearance: none; }
 .number-wrap b { padding-right: .8rem; color: var(--ink-soft); font-size: .75rem; font-weight: 400; }
 .range-rule { height: 1px; margin-bottom: 1.6rem; background: var(--rule); }
+.filters > .lineage-field { grid-column: 1 / -1; width: fit-content; display: flex; align-items: center; gap: .55rem; margin-top: -.35rem; padding: .25rem 0; color: var(--ink-soft); font-size: .78rem; font-weight: 700; cursor: pointer; }
+.lineage-field input { width: 1.1rem; height: 1.1rem; margin: 0; accent-color: var(--oxblood); }
 
 .results-section { padding: 3rem 0 6rem; }
 .results-bar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 1rem; margin-bottom: 1.3rem; }
@@ -409,11 +421,17 @@ dialog::backdrop { background: rgba(24, 19, 14, .84); backdrop-filter: blur(2px)
   .statistics div:nth-child(n + 3) { border-top: 1px solid rgba(225, 201, 157, .3); }
   .statistics div:last-child { grid-column: 1 / -1; }
   .source-summary { margin-top: 3.5rem; }
+  .homepage-source-summary { margin-top: 1rem; padding-bottom: .75rem; }
+  .homepage-source-summary > header { align-items: flex-start; }
+  .homepage-source-summary > header h2 { font-size: 1.15rem; }
   .source-register-links { flex-direction: column; align-items: stretch; }
   .master-list-link { width: 100%; }
+  .homepage-source-summary .master-list-link { width: auto; text-align: center; }
   .catalog-summary-list { grid-template-columns: 1fr; }
   .catalog-directory-shell { padding: 1.5rem .8rem; }
-  .catalog-tools { margin-top: 3.5rem; }
+  .catalog-tools { margin-top: .75rem; padding-bottom: 1.25rem; }
+  .catalog-tools > .section-heading { margin-bottom: .65rem; }
+  .catalog-tools > .section-heading h2 { font-size: 1.4rem; }
   .filters { grid-template-columns: 1fr; }
   .search-field { grid-column: auto; }
   .catalog-grid { grid-template-columns: 1fr; }

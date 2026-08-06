@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "catalogSha256": "3928a876a73c3ae74e9a822df0c2bded3f0cdfeb506874ebec4fc3877017a811",
+  "metadataSha256": "6a822b004eed7dd6df16113176dafa9c0fb031dc2c518bc45a9e91a7db4af069",
+  "orderedIdsSha256": "8233646f91d118e126b445f67ecba25feffcee5c09322db41249ff2292233e84",
+  "nonNameRecordsSha256": "9bd4924bde912921e2e33dcbc83fcbf1fe4d3056d12fce970e3470008fe301ad",
+  "correctedProjectionSha256": "cf6b47b02d135f2743a963b956a31940257065ed88dd2dc9ab8e8551d91512c4",
+  "recordIdsByCatalog": {
+    "mason-1964": [
+      "obs-f7b2e969-5e94-4b79-bbf5-7bf577561ffe"
+    ],
+    "farrington-1916": [
+      "obs-4d541a68-85bd-4b8a-8542-2a39e1fea60c",
+      "obs-61f8e572-e5bf-4553-b51a-dd88ae123cad",
+      "obs-118c100b-a5c3-40f1-bb1c-b20b99e37a3c",
+      "obs-2b1ea259-cd9c-4d37-8409-d5283ae5399d",
+      "obs-c6fadd8e-6ff6-4bf7-80ec-084725aa3497",
+      "obs-3d94eceb-be30-46a4-a619-ddf1a8086090",
+      "obs-0577ac03-62c6-4177-bbb5-d8805f7de30d",
+      "obs-fb19d818-66db-4df4-b372-2c885bb5aba7",
+      "obs-ec8895b4-0108-42c6-ba74-6e8d9658cd5f",
+      "obs-0d661627-c136-4a1e-b7d9-747d56b4b3ad",
+      "obs-479e54c5-45f9-4a6e-90cd-e634f21114ee"
+    ],
+    "foote-1912": [
+      "obs-c6fe50b4-19d1-44e4-9a4f-91689203ceb8"
+    ],
+    "merrill-1916": [
+      "obs-a25fab99-b474-4471-abf3-c473f2a096db",
+      "obs-91dab598-5063-40c3-84cd-c1a196862352",
+      "obs-05be463f-c5d3-4d14-8946-57d8dbfa8f4c",
+      "obs-bfa52642-753d-4afe-b1c6-ab9e14989515",
+      "obs-576d2343-826b-4272-9dea-0172f8dd2a9e",
+      "obs-4c232a20-5a11-446d-ad31-beb155d9d44f",
+      "obs-6b775bfc-3ab0-4715-ac46-f5517724a5d1",
+      "obs-a2feeb82-c544-41dd-a3d3-28041aa6c9e4",
+      "obs-0a87552b-14ad-4103-a61e-925571d2bd6c",
+      "obs-93994313-1874-4c71-92bd-3b2025c4f4f5",
+      "obs-ce781e23-0ac5-49cf-88eb-d331bb591105",
+      "obs-18de7b20-8fd1-4ca8-ae5c-1f9a238c7d5d",
+      "obs-60f84d87-e4b9-4179-90e5-8f88effacaff",
+      "obs-4b8fca9d-3958-4975-afa3-c0db360199fa",
+      "obs-229e8bde-c5a4-45d7-bd1a-8a17f094a850",
+      "obs-530607ec-6994-4ac9-bbf6-102d729bb715",
+      "obs-d6ea1c46-a6cf-45c1-9d07-1d057fbf694c",
+      "obs-527e4d43-1335-4de2-89f8-0af64767afa9",
+      "obs-aded08a0-6982-4da0-998e-820e206f2188",
+      "obs-c91da6ba-3e29-43b5-a75f-f91900882224",
+      "obs-593dd8aa-c160-4b0f-a848-8c019f67cee7",
+      "obs-130e25fd-81ea-4088-aa5a-b01dfce09132",
+      "obs-672e6be3-64b8-4e89-8b73-400466a074c8",
+      "obs-e033b62a-70f0-4cfa-b709-5cc951cfd0dc",
+      "obs-5189f7a4-68d9-4a4e-81a9-6a911f913eec",
+      "obs-921ad5c4-45a1-4df8-a53e-a0a804a715dd",
+      "obs-b404a7b5-8916-4bbf-b7e1-e47976b0d829",
+      "obs-21ffb75b-32ec-484a-a2a0-44a81802febe",
+      "obs-78b72da6-3488-4540-86bd-3723e3fb3983",
+      "obs-6f2b19d4-eab3-4d70-b9f1-96f55d83656d",
+      "obs-b087e9e8-844b-4139-8f8d-9a2e7d6ecd82",
+      "obs-0520f6ee-95b7-4d1f-9c59-701a6a32dfe9",
+      "obs-92946d8c-03b3-48e0-bda2-a168dbf6cf81",
+      "obs-51815df1-915e-4106-a05b-e1f547427da1",
+      "obs-311798bb-115b-413c-98d9-2a3a3c0b22b1",
+      "obs-f9827afa-4968-4f87-b987-248196e67bc2",
+      "obs-d4bb094f-0fcb-47fa-9fbe-bb4b5c2db507",
+      "obs-03b3bdbf-fcf9-4344-943b-fb99545ef10a",
+      "obs-84c8ef06-2cfd-43b1-81f7-28516c0a262c",
+      "obs-309cee69-8c37-4206-96fe-ca09d44a88fc",
+      "obs-430e6934-48bc-42df-9d0e-9a4e0576fa4f",
+      "obs-ab54bacb-6b26-452a-be55-0f275e6d9ce0",
+      "obs-e01c81dc-7922-4271-9709-a01d023dfbe0",
+      "obs-7a79455b-10bb-4701-8c08-31f1474645de",
+      "obs-7fd08f17-1480-46af-823e-29eef281d1ff",
+      "obs-389742cf-c787-4f87-b2a7-9e88bdc66f3a",
+      "obs-bd9bcd93-8f47-43ff-a6fa-bd5d58ee4cc3",
+      "obs-79ef20ea-bcd4-423e-bf74-49795100cc2e",
+      "obs-4c9bed90-bfa3-4950-9f7a-f29b7ca351d3",
+      "obs-35b8e21d-0ac0-47f0-8b6f-4cb935289335",
+      "obs-cc73981c-f5ea-4089-ad6d-df22147f055c",
+      "obs-8e49a7c3-6108-4ca5-8aeb-bb2fdd0e03f7",
+      "obs-ec004aba-bd21-4db1-9d10-cf05de2a160e",
+      "obs-7d1a771c-da69-42ab-ad6c-0fc907471d22",
+      "obs-ea58bd81-b7e5-4c89-9d7a-99823cd99503",
+      "obs-450ee972-0512-4433-a3d2-6b960c663fad",
+      "obs-9b2b642e-e2af-4458-8d83-cb7e82a4eacc",
+      "obs-249b9990-7a31-4084-8eea-4b36590ab5e8"
+    ],
+    "prior-1923": [
+      "obs-02572323-9cf1-43fc-86d4-1ab2971b0313"
+    ],
+    "reeds-1937": [
+      "obs-dc26a516-55a0-4ffd-b31b-8673384fd92a",
+      "obs-d0fa7bc6-6f31-4e70-891d-ee035ae224ee",
+      "obs-83b14a1c-26e5-4f4b-b470-300fe71477f1",
+      "obs-1d2f532b-062d-4bd1-bf84-818e22d35400",
+      "obs-1e4d4dfa-9279-4993-9086-f9499d3beeee",
+      "obs-4a37bcfa-25dc-4946-adcf-13f2b9ea9eb9",
+      "obs-afc9e097-4165-4014-9fc8-be5c0fb650ea",
+      "obs-de95d443-2232-476d-8589-337b596e31a9",
+      "obs-343aa2a5-9de6-4d5c-90ad-14a345e2cbaf",
+      "obs-1c03babd-23a0-4c5d-b392-9ef0cf271b83",
+      "obs-cc2672ec-0cb0-4963-bc6e-d32464e14598",
+      "obs-e05e5012-3b61-4a56-aa7e-23ab54cf001a"
+    ],
+    "tassin-1902": [
+      "obs-2a1e66c1-d758-4f88-9e58-18bf8947ea20"
+    ],
+    "ward-1904": [
+      "obs-b9908014-0a97-4d7c-8546-5f2e24c0af2f"
+    ]
+  }
+}

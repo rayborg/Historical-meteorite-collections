@@ -28,7 +28,7 @@ This edition also indexes *Meteorite Catalogue of the Kanagawa Prefectural Museu
 
 This edition also indexes the September 2024 Arizona State University dataset under the bibliography control heading “Arizona State University Meteorite Collection Catalog,” configured as compiled by the Buseck Center for Meteorite Studies, Arizona State University. The control heading identifies the dataset and is not asserted as PDF title metadata.
 
-The current facts-only payload was generated from accepted private source commit `1180719`.
+The current facts-only payload was generated from accepted private source commit `0ce726a`, which retains the identity review accepted at `1180719` and adds the source-name audit corrections.
 
 ## Facts-Only Scope
 

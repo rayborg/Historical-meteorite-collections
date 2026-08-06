@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260806-1";
+const CACHE_VERSION = "20260806-2";
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "name-asc";
 const VALID_SORTS = new Set([
@@ -220,6 +220,7 @@ const elements = typeof document === "undefined" || !document.querySelector("#fi
   catalog: document.querySelector("#catalog-filter"),
   min: document.querySelector("#min-weight"),
   max: document.querySelector("#max-weight"),
+  lineageOnly: document.querySelector("#lineage-only"),
   sort: document.querySelector("#sort"),
   results: document.querySelector("#results"),
   count: document.querySelector("#result-count"),
@@ -1808,7 +1809,7 @@ async function loadData() {
     loadEarlierRecordIndex(records, catalogRegistry).then((index) => {
       if (currentLoadToken !== loadToken) return;
       earlierRecordsByLaterId = index;
-      if (index.size) render();
+      if (index.size || elements.lineageOnly.checked) render();
     });
     loadFolioManifest().then((manifest) => {
       if (currentLoadToken !== loadToken) return;
@@ -1970,17 +1971,19 @@ function currentFilters() {
     catalog: elements.catalog.value && Object.hasOwn(catalogRegistry, elements.catalog.value) ? elements.catalog.value : null,
     min: Number.isFinite(min) ? min : null,
     max: Number.isFinite(max) ? max : null,
+    lineageOnly: elements.lineageOnly.checked,
     sort: VALID_SORTS.has(elements.sort.value) ? elements.sort.value : DEFAULT_SORT
   };
 }
 
-function filterRecords(sourceRecords, filters) {
+function filterRecords(sourceRecords, filters, lineageIndex = new Map()) {
   return sourceRecords.filter((record) => {
     const weightMatches = (filters.min === null && filters.max === null) || recordMasses(record).some((grams) =>
       (filters.min === null || grams >= filters.min) && (filters.max === null || grams <= filters.max)
     );
     const catalogMatches = !filters.catalog || record.catalogId === filters.catalog;
-    return catalogMatches && weightMatches && matchesSearch(record, filters.query);
+    const lineageMatches = filters.lineageOnly !== true || (lineageIndex.get(record.id)?.length || 0) > 0;
+    return catalogMatches && weightMatches && lineageMatches && matchesSearch(record, filters.query);
   }).sort((a, b) => compareRecords(a, b, filters.sort));
 }
 
@@ -2015,7 +2018,7 @@ function compareRecords(a, b, sort) {
 }
 
 function render() {
-  const matches = filterRecords(records, currentFilters());
+  const matches = filterRecords(records, currentFilters(), earlierRecordsByLaterId);
   const visibleRecords = matches.slice(0, visibleLimit);
   const fragment = document.createDocumentFragment();
   visibleRecords.forEach((record) => fragment.append(createRecordCard(record)));
@@ -2285,7 +2288,7 @@ function moveFolio(direction) {
 
 function hasActiveFilters() {
   const filters = currentFilters();
-  return Boolean(filters.query || filters.catalog || filters.min !== null || filters.max !== null || filters.sort !== DEFAULT_SORT);
+  return Boolean(filters.query || filters.catalog || filters.min !== null || filters.max !== null || filters.lineageOnly || filters.sort !== DEFAULT_SORT);
 }
 
 function clearFilters() {
@@ -2329,6 +2332,7 @@ function serializeUrlFilters(filters) {
   if (filters.catalog) params.set("catalog", filters.catalog);
   if (min !== "") params.set("min", String(min));
   if (max !== "") params.set("max", String(max));
+  if (filters.lineageOnly === true) params.set("lineage", "1");
   if (VALID_SORTS.has(filters.sort) && filters.sort !== DEFAULT_SORT) params.set("sort", filters.sort);
   return params;
 }
@@ -2336,6 +2340,7 @@ function serializeUrlFilters(filters) {
 function parseUrlFilters(search, registry = {}) {
   const params = new URLSearchParams(search);
   const catalog = params.get("catalog") || "";
+  const lineage = params.getAll("lineage");
   const { min, max } = normalizeWeightRange(params.get("min"), params.get("max"));
   const sort = params.get("sort") || DEFAULT_SORT;
   return {
@@ -2343,6 +2348,7 @@ function parseUrlFilters(search, registry = {}) {
     catalog: Object.hasOwn(registry, catalog) ? catalog : "",
     min,
     max,
+    lineageOnly: lineage.length === 1 && lineage[0] === "1",
     sort: VALID_SORTS.has(sort) ? sort : DEFAULT_SORT
   };
 }
@@ -2353,6 +2359,7 @@ function applyUrlState() {
   elements.catalog.value = filters.catalog;
   elements.min.value = filters.min;
   elements.max.value = filters.max;
+  elements.lineageOnly.checked = filters.lineageOnly;
   elements.sort.value = filters.sort;
 }
 
@@ -2386,6 +2393,12 @@ if (elements) {
   });
   elements.min.addEventListener("input", scheduleRender);
   elements.max.addEventListener("input", scheduleRender);
+  elements.lineageOnly.addEventListener("change", () => {
+    if (validateWeights()) {
+      visibleLimit = PAGE_SIZE;
+      render();
+    }
+  });
   elements.sort.addEventListener("change", () => {
     if (validateWeights()) {
       visibleLimit = PAGE_SIZE;

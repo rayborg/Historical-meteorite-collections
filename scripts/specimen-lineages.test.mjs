@@ -503,7 +503,7 @@ test("Ward and Farrington 1916 publish exact facts with blocked folios and no sa
       citedPages: 74,
       recordsWithWeight: 608,
       relationships: 0,
-      recordsHash: "67fed1ddc30204a2cb338727a1d4a9d349e24b95976edcf11835cebbf0df362b",
+      recordsHash: "49d4e0838397ec89eb78aff4d501079ba89e53769d15fd7bc9ea69578a8639b9",
       idsHash: "4613f97ab8fabbd19e071a083e5ef2fed9c2619b1e8b456e4597ac072b6b4609",
     },
     "farrington-1916": {
@@ -514,7 +514,7 @@ test("Ward and Farrington 1916 publish exact facts with blocked folios and no sa
       citedPages: 78,
       recordsWithWeight: 723,
       relationships: 216,
-      recordsHash: "0088e7f9005c9e22345596a47228a7d699684fc297bf3d25e6daafc985907e19",
+      recordsHash: "e98ce3ee6af094bdd0708ad1eae0eb8d2e1b6857ed7f1c5158154649ae8392df",
       idsHash: "45ec57f34d7baff5aab5edeb19f85e977b6fddf975e1ebd63c9e74fc93db9f37",
     },
   };
@@ -589,7 +589,7 @@ test("Foote 1912 publishes only accepted facts, exact mappings, blocked folios, 
   assert(reviewed.every(({ metbull }) => metbull.matchType === "exact"));
   assert.equal(records.length - reviewed.length, 73);
   assert.equal(createHash("sha256").update(JSON.stringify(records)).digest("hex"),
-    "e315441ca2d1f4213b3419e10c6adf93f3923bb98c177c9a29e8397f901e63f8");
+    "e1644d64ed608c2fd43f4e70d9d16a7ffbd4349d8fbafce864048fd560d18d20");
   assert.equal(createHash("sha256").update(JSON.stringify(records.map(({ id }) => id))).digest("hex"),
     "f9a132049c177873564708bd1a3d5f72a628ab2726c7081a74f5d7e96542568b");
 
@@ -727,7 +727,7 @@ test("Anderson, Astapovich, and Kantor publish complete reviewed mappings withou
   );
   assert.equal(
     createHash("sha256").update(JSON.stringify(catalog.records.filter(({ catalogId }) => !newCatalogIds.has(catalogId)))).digest("hex"),
-    "3ff62704e6270ccfbb0b856a0a06229dc25af056c0a73a0776f4a0bb699ac9a2",
+    "78c0a7003a020e9ef1853732f2026a636183e27a163ab29b58373132a62aa9e9",
   );
   assert.equal(
     createHash("sha256").update(JSON.stringify(published.relationships)).digest("hex"),

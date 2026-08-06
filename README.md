@@ -10,7 +10,7 @@ A searchable transcription of the 1976 Huss Meteorite Collection catalog, compil
 
 The other configured sources identify their compilers without inferring a publisher: Jean Andre Henri Lucas for 1813; E. F. F. Chladni, with a Vienna appendix by Karl von Schreibers, for 1819; E. F. F. Chladni for 1825; Wilhelm Haidinger for 1859; Otto Buchner for 1863; A. E. Nordenskiöld for 1870; Henry A. Ward for 1881; Valentine Ball for 1882; F. W. Clarke for 1886; Edmund Otis Hovey for 1896; Henry S. Washington for 1897; Wirt Tassin for 1902; A. G. Högbom for 1902; Oliver Cummings Farrington for 1903; Henry A. Ward for 1904; R. Schreiter for 1912; Warren M. Foote for 1912; C. Anderson for 1913; Oliver Cummings Farrington for 1916; George P. Merrill for 1916; M. Kantor for 1920; G. T. Prior for 1923; Charles Palache for 1926; H. H. Nininger for 1933; Chester A. Reeds for 1937; I. S. Astapowitsch for 1938; Virgil E. Barnes for 1940; H. H. Nininger and Addie D. Nininger for 1950; Brian Mason for 1964; Glenn I. Huss for 1986; the Kanagawa Prefectural Museum of Natural History for 1996; and the Buseck Center for Meteorite Studies, Arizona State University, for the September 2024 ASU dataset.
 
-This public facts-only release was generated from accepted private source commit `1180719`.
+This public facts-only release was generated from accepted private source commit `0ce726a`, which retains the identity review accepted at `1180719` and adds the source-name audit corrections.
 
 The site supports catalog filtering, model-aware search, segment-aware H-designation search, numeric gram ranges across scalar and nested masses, six deterministic sort orders, URL-persisted filters, incremental rendering, and rights-gated source folios. The homepage links to a dedicated catalog directory that presents every catalog card and its authorized folio actions; the bibliography master list remains a separate resource. Catalog facts and folio authorization are validated separately.
 
@@ -35,7 +35,7 @@ node scripts/test-multicatalog.cjs
 node --test scripts/*.test.mjs
 ```
 
-The validator checks both synthetic rejection fixtures and the real catalog, manifest, and folio files. The runtime harness contains 116 tests.
+The validator checks both synthetic rejection fixtures and the real catalog, manifest, and folio files. The runtime harness contains 117 tests.
 
 After changing either public data file, run `node scripts/sync-release-summary.mjs --write`; use `--json` to inspect the derived release summary without changing documentation.
 
