@@ -8,12 +8,12 @@ const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "
 const indexPath = path.join(projectRoot, "index.html");
 const bibliographyPath = path.join(projectRoot, "data", "bibliography-master-list.html");
 
-test("links the cabinet homepage to the published bibliography", async () => {
+test("keeps the published bibliography available without linking it from the homepage", async () => {
   const [index, bibliography] = await Promise.all([
     readFile(indexPath, "utf8"),
     readFile(bibliographyPath, "utf8"),
   ]);
-  assert.match(index, /href="\.\/data\/bibliography-master-list\.html"/);
+  assert.doesNotMatch(index, /href="\.\/data\/bibliography-master-list\.html"/);
   assert.match(bibliography, /href="\.\.\/index\.html">← Back to The Meteorite Cabinet<\/a>/);
 });
 

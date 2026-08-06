@@ -162,9 +162,9 @@ test("homepage and catalog page markup keep navigation and UI states accessible"
     readFile(path.join(projectRoot, "app.js"), "utf8"),
     readFile(path.join(projectRoot, "styles.css"), "utf8")
   ]);
-  assert.equal((index.match(/class="master-list-link"/g) || []).length, 2);
+  assert.equal((index.match(/class="master-list-link"/g) || []).length, 1);
   assert.match(index, /href="\.\/catalogs\.html"/);
-  assert.match(index, /href="\.\/data\/bibliography-master-list\.html"/);
+  assert.doesNotMatch(index, /href="\.\/data\/bibliography-master-list\.html"/);
   assert.doesNotMatch(index, /id="catalog-summary"/);
   assert.match(appSource, /if \(elements\.catalogSummary\) renderCatalogSummary/);
 
