@@ -12,6 +12,8 @@ This edition also indexes *Die Meteoriten des Kgl. Mineralogischen Museums in Dr
 
 This edition also indexes *The Foote Collection of Meteorites* (1912), configured as compiled by Warren M. Foote, with 205 facts-only collection entries.
 
+This edition also indexes *A Catalogue and Bibliography of Australian Meteorites, with Census and Taxonomy* (1913), configured as compiled by C. Anderson, with 57 facts-only collection entries; *Guía y catálogo de la colección de meteoritos existentes en el Museo de La Plata, con especial mención de los meteoritos argentinos* (1920), configured as compiled by M. Kantor, with 30 facts-only collection entries; and *A List of the Meteorites of the Soviet Union* (1938), configured as compiled by I. S. Astapowitsch, with 90 facts-only collection entries.
+
 This edition also indexes *Meteorites, in Ward's Natural Science Bulletin, volume 1 number 1* (1881), configured as compiled by Henry A. Ward, with 3 facts-only collection entries; *Catalogue of the Ward-Coonley Collection of Meteorites* (1904), configured as compiled by Henry A. Ward, with 697 facts-only collection entries; and *Catalogue of the Collection of Meteorites* (1916), configured as compiled by Oliver Cummings Farrington, with 738 facts-only collection entries.
 
 This edition also indexes *The Meteorite and Tektite Collection of the American Museum of Natural History* (1964), configured as compiled by Brian Mason.
@@ -26,17 +28,19 @@ This edition also indexes *Meteorite Catalogue of the Kanagawa Prefectural Museu
 
 This edition also indexes the September 2024 Arizona State University dataset under the bibliography control heading “Arizona State University Meteorite Collection Catalog,” configured as compiled by the Buseck Center for Meteorite Studies, Arizona State University. The control heading identifies the dataset and is not asserted as PDF title metadata.
 
+The current facts-only payload was generated from accepted private source commit `6629a61`.
+
 ## Facts-Only Scope
 
 <!-- release-summary:notice-facts:start -->
-The current repository edition distributes 13,365 structured, facts-only source observations from 30 catalogs under metadata schema version 6. It supports 4 source-specific record models: `catalog-item`, `catalog-number`, `collection-entry`, `specimen`. Records are source observations rather than canonical meteorites or inferred physical specimens, and `catalogId` identifies each source.
+The current repository edition distributes 13,542 structured, facts-only source observations from 33 catalogs under metadata schema version 6. It supports 4 source-specific record models: `catalog-item`, `catalog-number`, `collection-entry`, `specimen`. Records are source observations rather than canonical meteorites or inferred physical specimens, and `catalogId` identifies each source.
 <!-- release-summary:notice-facts:end -->
 
 <!-- release-summary:notice-coverage:start -->
-Metadata covers 1,220 catalog-scoped source pages, of which 1,106 are cited by records. Source-page coverage is not a claim that every covered page contains an observation. `nininger-1933` has 171 records; its metadata source pages span 1-20, and its record citations span 1-11. `nininger-1950` has 1,678 records; its metadata source pages span 26-104, and its record citations span 26-104.
+Metadata covers 1,284 catalog-scoped source pages, of which 1,137 are cited by records. Source-page coverage is not a claim that every covered page contains an observation. `nininger-1933` has 171 records; its metadata source pages span 1-20, and its record citations span 1-11. `nininger-1950` has 1,678 records; its metadata source pages span 26-104, and its record citations span 26-104.
 <!-- release-summary:notice-coverage:end -->
 
-Reviewed MetBull harmonization covers 10,025 records: 9,896 resolved and 129 unresolved. The remaining 3,340 records are pending observations without reviewed mappings.
+Reviewed MetBull harmonization covers 10,078 records: 9,949 resolved and 129 unresolved. The remaining 3,464 records are pending observations without reviewed mappings.
 
 Some covered pages are introductory or narrative-only. Nininger 1933 covers printed pages 1-20, and the reviewed Nininger 1950 collection-catalog range covers printed pages 26-104 through its terminal entry.
 
@@ -48,6 +52,8 @@ Ward 1881 has 3 facts-only records citing its single metadata page; all 3 remain
 
 Foote 1912 has 205 facts-only records across 35 metadata pages, with records citing 25 pages, 132 reviewed exact-name mappings, and 73 pending observations.
 
+Anderson 1913 has 57 facts-only records citing pages 54-66, with 24 reviewed exact-name mappings and 33 pending observations. Kantor 1920 has 30 facts-only records citing pages 107-122, with 12 reviewed exact-name mappings and 18 pending observations. Astapovich 1938 has 90 facts-only records citing pages 195-196, with 17 reviewed exact-name mappings and 73 pending observations.
+
 Validated continuation evidence recovers formerly blank source names only where supported. Reviewed historical entries that genuinely print no separate proper source name retain null names without an inferred modern identity.
 
 Raw OCR and other private material remain excluded from the public data and repository distribution, including private source scans, source filenames, verbatim notes, private paths, and research or transcription archives. Barnes source material, OCR, notes, and assets remain private; Barnes is folio-blocked with undetermined rights and has no public image assets. Palache is published only as independently structured facts: its source PDF and images, OCR/transcription, raw text, notes, source typography, filenames, page IDs, derivatives, manifests, and uncertainty internals remain private; its folio is blocked with undetermined rights and has no public media assets. Kanagawa is likewise limited to structured facts with controlled descriptions: source PDF and images, OCR, source prose, dimensions, notes, derivatives, manifest, paths, QA page, private page IDs, folios, and media remain excluded; it is folio-blocked with undetermined rights. ASU September 2024 is facts-only, has 2,088 reviewed exact-name MetBull mappings and 81 pending observations without canonical identity, and remains folio-blocked with undetermined rights and no public ASU image assets. The public repository includes only the separately reviewed folio derivatives described below; their inclusion does not make excluded source or working material public.
@@ -56,6 +62,8 @@ Merrill, Prior, and Reeds are likewise facts-only releases. Their source files, 
 
 Foote 1912, Ward 1881, Ward 1904, and Farrington 1916 are facts-only releases. Their source images, OCR batches, source filenames, private notes, paths, acquisition material, folios, and media remain excluded; all four catalogs are folio-blocked with undetermined rights and have no public image assets.
 
+Anderson 1913, Kantor 1920, and Astapovich 1938 are facts-only releases. Their source images, OCR, source filenames, private notes, paths, folios, and media remain excluded; all three catalogs are blocked with undetermined rights and have no public image assets.
+
 Folio display is controlled separately by the schema-version-2 rights manifest. Every displayed page has exactly these keys: `pageId`, `catalogPage`, `pageLabel`, `image`, and `alt`; no omitted or additional page keys are accepted. `catalogPage` may be null for unnumbered front matter, and `image` must be an approved relative `.webp` path rooted under `assets/folios/<catalogId>/` and named for the authorized `pageId`. The manifest is deny by default: any missing, blocked, incomplete, contradictory, malformed, unsafe, or unreviewed value denies folio display without preventing facts-only catalog data from loading. Eligibility is never inferred from publication year, apparent age, metadata, or the presence of local files.
 
 ## Rights Status
@@ -63,7 +71,7 @@ Folio display is controlled separately by the schema-version-2 rights manifest. 
 <!-- release-summary:notice-folios:start -->
 The repository publicly provides 49 reviewed folio derivatives: `chladni-1819` (12 pages, `public-domain`); `haidinger-1859` (6 pages, `public-domain`); `hovey-1896` (7 pages, `public-domain`); `lucas-1813` (3 pages, `public-domain`); `nininger-1933` (21 pages, `no-copyright-us`).
 
-Catalogs remaining blocked with undetermined rights and no public folio pages are: `asu-2024-09` (0 pages, `undetermined`); `ball-1882` (0 pages, `undetermined`); `barnes-1940` (0 pages, `undetermined`); `buchner-1863` (0 pages, `undetermined`); `chladni-1825` (0 pages, `undetermined`); `farrington-1903` (0 pages, `undetermined`); `farrington-1916` (0 pages, `undetermined`); `foote-1912` (0 pages, `undetermined`); `hogbom-1902` (0 pages, `undetermined`); `huss-1976` (0 pages, `undetermined`); `huss-1986` (0 pages, `undetermined`); `kanagawa-1996` (0 pages, `undetermined`); `mason-1964` (0 pages, `undetermined`); `merrill-1916` (0 pages, `undetermined`); `nininger-1950` (0 pages, `undetermined`); `nordenskiold-1870` (0 pages, `undetermined`); `palache-1926` (0 pages, `undetermined`); `prior-1923` (0 pages, `undetermined`); `reeds-1937` (0 pages, `undetermined`); `schreiter-1912` (0 pages, `undetermined`); `tassin-1902` (0 pages, `undetermined`); `usnm-1886` (0 pages, `undetermined`); `ward-1881` (0 pages, `undetermined`); `ward-1904` (0 pages, `undetermined`); `washington-1897` (0 pages, `undetermined`).
+Catalogs remaining blocked with undetermined rights and no public folio pages are: `anderson-1913` (0 pages, `undetermined`); `astapovich-1938` (0 pages, `undetermined`); `asu-2024-09` (0 pages, `undetermined`); `ball-1882` (0 pages, `undetermined`); `barnes-1940` (0 pages, `undetermined`); `buchner-1863` (0 pages, `undetermined`); `chladni-1825` (0 pages, `undetermined`); `farrington-1903` (0 pages, `undetermined`); `farrington-1916` (0 pages, `undetermined`); `foote-1912` (0 pages, `undetermined`); `hogbom-1902` (0 pages, `undetermined`); `huss-1976` (0 pages, `undetermined`); `huss-1986` (0 pages, `undetermined`); `kanagawa-1996` (0 pages, `undetermined`); `kantor-1920` (0 pages, `undetermined`); `mason-1964` (0 pages, `undetermined`); `merrill-1916` (0 pages, `undetermined`); `nininger-1950` (0 pages, `undetermined`); `nordenskiold-1870` (0 pages, `undetermined`); `palache-1926` (0 pages, `undetermined`); `prior-1923` (0 pages, `undetermined`); `reeds-1937` (0 pages, `undetermined`); `schreiter-1912` (0 pages, `undetermined`); `tassin-1902` (0 pages, `undetermined`); `usnm-1886` (0 pages, `undetermined`); `ward-1881` (0 pages, `undetermined`); `ward-1904` (0 pages, `undetermined`); `washington-1897` (0 pages, `undetermined`).
 <!-- release-summary:notice-folios:end -->
 
 Haidinger folios come from Internet Archive item sitzungsberichte34kais, whose metadata states `NOT_IN_COPYRIGHT`. Hovey folios come from Biodiversity Heritage Library item 335869, contributed by Smithsonian Libraries and Archives and marked public domain. Nininger display follows a documented United States no-renewal search for the exact 1933 offprint. Raw scans, OCR, filenames, and other private source material for blocked catalogs remain excluded.

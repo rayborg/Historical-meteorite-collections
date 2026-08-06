@@ -67,13 +67,13 @@ test("build is deterministic, canonical, and identical to the published file", (
 });
 
 test("publishes locked source and relationship counts", () => {
-  assert.equal(flattenMassObservations(catalog).length, 13672);
+  assert.equal(flattenMassObservations(catalog).length, 13686);
   assert.equal(flattenInventoryObservations(catalog).length, 3627);
   assert.deepEqual(published.metadata.source, {
     catalogSchemaVersion: 6,
-    recordCount: 13365,
-    catalogCount: 30,
-    flattenedMassObservationCount: 13672,
+    recordCount: 13542,
+    catalogCount: 33,
+    flattenedMassObservationCount: 13686,
     inventoryObservationCount: 3627,
   });
   const { catalogPairs, ...counts } = published.metadata.counts;
@@ -164,8 +164,8 @@ test("Palache publishes only locked facts and blocked folios", () => {
     "id", "locality", "name", "reportedNumber", "section",
   ].sort();
 
-  assert.equal(catalog.metadata.catalogs.length, 30);
-  assert.equal(catalog.records.length, 13365);
+  assert.equal(catalog.metadata.catalogs.length, 33);
+  assert.equal(catalog.records.length, 13542);
   assert.deepEqual(descriptor.sourcePages, [151, 152, 153, 154, 155, 156, 157, 158, 159]);
   assert.equal(descriptor.sourcePageCount, 9);
   assert.equal(descriptor.recordCount, 361);
@@ -198,10 +198,10 @@ test("Palache publishes only locked facts and blocked folios", () => {
   }
 
   const allReviewed = catalog.records.filter((record) => Object.hasOwn(record, "metbull"));
-  assert.equal(allReviewed.length, 10025);
+  assert.equal(allReviewed.length, 10078);
   assert.equal(allReviewed.filter(({ metbull }) => metbull.matchType === "unresolved").length, 129);
-  assert.equal(allReviewed.filter(({ metbull }) => metbull.matchType !== "unresolved").length, 9896);
-  assert.equal(catalog.records.length - allReviewed.length, 3340);
+  assert.equal(allReviewed.filter(({ metbull }) => metbull.matchType !== "unresolved").length, 9949);
+  assert.equal(catalog.records.length - allReviewed.length, 3464);
 });
 
 test("Palache has no same-inventory continuity and only unreviewed possible candidates", () => {
@@ -310,7 +310,7 @@ test("Kanagawa publishes only the approved controlled facts with no glass mappin
   assert(!published.metadata.collectionSeries.some(({ catalogIds }) => catalogIds.includes("kanagawa-1996")));
   assert(!published.relationships.some(({ observations }) =>
     observations.some(({ catalogId }) => catalogId === "kanagawa-1996")));
-  assert.equal(catalog.records.filter(({ catalogId }) => catalogId !== "kanagawa-1996").length, 13133);
+  assert.equal(catalog.records.filter(({ catalogId }) => catalogId !== "kanagawa-1996").length, 13310);
 });
 
 test("Merrill, Prior, and Reeds publish locked facts with blocked folios and derived lineages", () => {
@@ -635,6 +635,97 @@ test("Foote 1912 publishes only accepted facts, exact mappings, blocked folios, 
   assert.doesNotMatch(JSON.stringify(records), /(?:\/private\/|\/Users\/|source-images|assets\/foote-1912|assets\/folios\/foote-1912|\.(?:pdf|png|webp|txt|csv))/iu);
 });
 
+test("Anderson, Astapovich, and Kantor publish exact facts without media or lineage additions", () => {
+  const expected = {
+    "anderson-1913": {
+      records: 57,
+      reviewed: 24,
+      pending: 33,
+      sourcePages: 26,
+      citedPages: 13,
+      holdings: 57,
+      weights: 0,
+      recordsHash: "95f2597b66fd7fabd35240a9f321f405f13d83a61458771c4e86623fd66c1164",
+      idsHash: "38d3a837c8057c6a0f246d7f4deeed43a05a4ab7acc6f68f525788606cdf853c",
+    },
+    "astapovich-1938": {
+      records: 90,
+      reviewed: 17,
+      pending: 73,
+      sourcePages: 3,
+      citedPages: 2,
+      holdings: 90,
+      weights: 0,
+      recordsHash: "7d342e049b52ef28a3bfa9aa4537f1c11c2b8a15ebd136634702c44c0b48fe9c",
+      idsHash: "0797dd7e5cf66d3df763baf54774bf5ab750043e1e196469200b801554a3545b",
+    },
+    "kantor-1920": {
+      records: 30,
+      reviewed: 12,
+      pending: 18,
+      sourcePages: 35,
+      citedPages: 16,
+      holdings: 34,
+      weights: 34,
+      recordsHash: "bcbe4a023a8e3cdafd41c86c19a33d96cff13e7b33089ac0bcdb59169f9f68a9",
+      idsHash: "31a86211b4ce6dafd97bbcf3d7229b2bc3a12c438948d707353fce7e25464755",
+    },
+  };
+  const newCatalogIds = new Set(Object.keys(expected));
+
+  for (const [catalogId, counts] of Object.entries(expected)) {
+    const descriptor = catalog.metadata.catalogs.find(({ id }) => id === catalogId);
+    const records = catalog.records.filter((record) => record.catalogId === catalogId);
+    const reviewed = records.filter((record) => Object.hasOwn(record, "metbull"));
+    const holdings = records.flatMap((record) => record.holdings);
+    const weights = holdings.flatMap((holding) => holding.weights);
+
+    assert.equal(descriptor.recordModel, "collection-entry");
+    assert.equal(descriptor.recordCount, counts.records);
+    assert.equal(descriptor.sourcePageCount, counts.sourcePages);
+    assert.equal(records.length, counts.records);
+    assert.equal(new Set(records.flatMap(({ catalogPages }) => catalogPages)).size, counts.citedPages);
+    assert.equal(reviewed.length, counts.reviewed);
+    assert(reviewed.every(({ metbull }) => metbull.matchType === "exact"));
+    assert.equal(records.length - reviewed.length, counts.pending);
+    assert.equal(holdings.length, counts.holdings);
+    assert.equal(weights.length, counts.weights);
+    assert.equal(createHash("sha256").update(JSON.stringify(records)).digest("hex"), counts.recordsHash);
+    assert.equal(createHash("sha256").update(JSON.stringify(records.map(({ id }) => id))).digest("hex"), counts.idsHash);
+    assert.deepEqual(folios.catalogs[catalogId], {
+      displayPolicy: "blocked",
+      rightsStatus: "undetermined",
+      pages: [],
+    });
+    assert.deepEqual(folioReleaseLock.catalogs[catalogId], {
+      displayPolicy: "blocked",
+      rightsStatus: "undetermined",
+      basis: null,
+      basisUrl: null,
+      pageIds: [],
+    });
+    assert(!folioReleaseLock.assets.some(({ path }) => path.includes(catalogId)));
+    assert(!published.relationships.some(({ observations }) =>
+      observations.some((observation) => observation.catalogId === catalogId)));
+  }
+
+  assert.equal(
+    createHash("sha256").update(JSON.stringify(catalog.metadata.catalogs.filter(({ id }) => !newCatalogIds.has(id)))).digest("hex"),
+    "e9e3eb1a8612408ff4bb8d953db2cb6a51abef19298f0d7aa7318132199dae27",
+  );
+  assert.equal(
+    createHash("sha256").update(JSON.stringify(catalog.records.filter(({ catalogId }) => !newCatalogIds.has(catalogId)))).digest("hex"),
+    "3ff62704e6270ccfbb0b856a0a06229dc25af056c0a73a0776f4a0bb699ac9a2",
+  );
+  assert.equal(
+    createHash("sha256").update(JSON.stringify(published.relationships)).digest("hex"),
+    "269e43c29c66d9ead0f5c528f38cf0a2c1ab78037409b36a1c9edfd890d457ad",
+  );
+
+  const serialized = JSON.stringify(catalog.records.filter(({ catalogId }) => newCatalogIds.has(catalogId)));
+  assert.doesNotMatch(serialized, /(?:\/private\/|\/Users\/|source-images|data\/ocr|assets\/|file:\/\/|\.(?:pdf|png|webp|tiff?|txt|csv))/iu);
+});
+
 test("excludes weighted observations without reviewed MetBull mappings", () => {
   const changed = clone(catalog);
   const weighted = changed.records.find((record) => record.metbull && record.weight?.grams !== null);
@@ -684,7 +775,7 @@ test("same-series continuity survives missing mass while possible matches requir
   const relationship = rebuilt.relationships.find((item) => item.relationship === "same-inventory" && item.collectionSeries.inventoryId === "h160.1");
   assert.ok(relationship);
   assert(relationship.observations.some(({ massGrams }) => massGrams === null));
-  assert.equal(rebuilt.metadata.source.flattenedMassObservationCount, 13671);
+  assert.equal(rebuilt.metadata.source.flattenedMassObservationCount, 13685);
 
   for (const possible of possibleRelationships()) {
     const [left, right] = possible.observations;

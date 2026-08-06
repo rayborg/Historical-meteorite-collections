@@ -36,6 +36,75 @@
     ],
     "catalogs": [
       {
+        "id": "anderson-1913",
+        "recordModel": "collection-entry",
+        "label": "A Catalogue and Bibliography of Australian Meteorites, with Census and Taxonomy (1913)",
+        "compiler": "C. Anderson",
+        "year": 1913,
+        "sourcePages": [
+          1,
+          26,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          73,
+          74,
+          75,
+          76
+        ],
+        "sourcePageCount": 26,
+        "recordCount": 57,
+        "recordsWithDesignation": 0,
+        "recordsWithWeight": 0,
+        "confidenceCounts": {
+          "high": 57,
+          "medium": 0,
+          "low": 0
+        },
+        "folioDisplayPolicy": "blocked",
+        "rightsStatus": "undetermined"
+      },
+      {
+        "id": "astapovich-1938",
+        "recordModel": "collection-entry",
+        "label": "A List of the Meteorites of the Soviet Union (1938)",
+        "compiler": "I. S. Astapowitsch",
+        "year": 1938,
+        "sourcePages": [
+          195,
+          196,
+          197
+        ],
+        "sourcePageCount": 3,
+        "recordCount": 90,
+        "recordsWithDesignation": 0,
+        "recordsWithWeight": 0,
+        "confidenceCounts": {
+          "high": 90,
+          "medium": 0,
+          "low": 0
+        },
+        "folioDisplayPolicy": "blocked",
+        "rightsStatus": "undetermined"
+      },
+      {
         "id": "asu-2024-09",
         "recordModel": "specimen",
         "label": "Arizona State University Meteorite Collection Catalog (2024)",
@@ -733,6 +802,61 @@
         "confidenceCounts": {
           "high": 232,
           "medium": 0,
+          "low": 0
+        },
+        "folioDisplayPolicy": "blocked",
+        "rightsStatus": "undetermined"
+      },
+      {
+        "id": "kantor-1920",
+        "recordModel": "collection-entry",
+        "label": "Guía y catálogo de la colección de meteoritos existentes en el Museo de La Plata, con especial mención de los meteoritos argentinos (1920)",
+        "compiler": "M. Kantor",
+        "year": 1920,
+        "sourcePages": [
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118,
+          119,
+          120,
+          121,
+          122,
+          123,
+          124,
+          125,
+          167,
+          168,
+          169,
+          170,
+          171,
+          172
+        ],
+        "sourcePageCount": 35,
+        "recordCount": 30,
+        "recordsWithDesignation": 0,
+        "recordsWithWeight": 30,
+        "confidenceCounts": {
+          "high": 21,
+          "medium": 9,
           "low": 0
         },
         "folioDisplayPolicy": "blocked",
@@ -1856,12 +1980,12 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 13365,
+    "recordCount": 13542,
     "recordsWithDesignation": 5599,
-    "recordsWithWeight": 12174,
+    "recordsWithWeight": 12204,
     "confidenceCounts": {
-      "high": 12068,
-      "medium": 1297,
+      "high": 12236,
+      "medium": 1306,
       "low": 0
     }
   },
@@ -166001,6 +166125,3675 @@
       }
     },
     {
+      "id": "obs-725eab11-ce66-43fb-be5b-8158faeb20a6",
+      "catalogId": "anderson-1913",
+      "entryOrder": 1,
+      "reportedNumber": null,
+      "catalogPages": [
+        54
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "South Australian Museum, Adelaide.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Arltunga",
+      "classification": "Siderite.",
+      "locality": "Two miles south of Government Cyanide Works, Arltunga (Lat. 23° 30′S, Long. 134° 40′E, about), South Australia.",
+      "eventDate": "Dan Pedler, about 1908.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Arltunga",
+        "meteoriteCode": "2334",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2334",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-9ef0cdbd-5271-41eb-8fc0-fcc09923eb5d",
+      "catalogId": "anderson-1913",
+      "entryOrder": 2,
+      "reportedNumber": null,
+      "catalogPages": [
+        54
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Ward-Coonley, Rochester, U.S.A.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Ballinoo",
+      "classification": "Siderite. Finest octahedrite, Off.",
+      "locality": "Ten miles south of Ballinoo (Lat. 23° 30′S, Long. 116° 30′E), Murchison River, Western Australia.",
+      "eventDate": "George Denmack, 1892.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Ballinoo",
+        "meteoriteCode": "4931",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4931",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-c241ddc3-f333-427d-8767-97daf2e03325",
+      "catalogId": "anderson-1913",
+      "entryOrder": 3,
+      "reportedNumber": null,
+      "catalogPages": [
+        54
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Mining and Geological Museum, Sydney; H. M. Porter, Torrington, New South Wales; Hofmuseum, Vienna.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Barraba",
+      "classification": "Siderite.",
+      "locality": "Near Barraba (Lat. 30° 22′S, Long. 150° 36′E), New South Wales (exact locality unknown).",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f9ab2f4f-c305-4b89-8849-bde364675db4",
+      "catalogId": "anderson-1913",
+      "entryOrder": 4,
+      "reportedNumber": null,
+      "catalogPages": [
+        54
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Australian Museum, Sydney.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Barratta No. 1",
+      "classification": "Aerolite. Brecciated grey chondrite, Cgb (Brezina); black chondrite, Cs (Klein); intermediate chondrite, Ci (Farrington).",
+      "locality": "Barratta Station (Lat. 35° 5′S, Long. 144° 36′E), thirty-five miles north-west of Deniliquin, New South Wales.",
+      "eventDate": "F. J. Wynne, 1852.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8c7ea3b6-5cd4-4a0e-91c0-af0b680b8f0d",
+      "catalogId": "anderson-1913",
+      "entryOrder": 5,
+      "reportedNumber": null,
+      "catalogPages": [
+        55
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Australian Museum, Sydney.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Barratta No. 2",
+      "classification": "As No. 1.",
+      "locality": "Near No. 1.",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-cb835822-9de4-4dfe-ba9a-c042e61bd222",
+      "catalogId": "anderson-1913",
+      "entryOrder": 6,
+      "reportedNumber": null,
+      "catalogPages": [
+        55
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Australian Museum, Sydney.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Barratta No. 3",
+      "classification": "As No. 1.",
+      "locality": "Near No. 1.",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-32a0a415-a364-443f-906a-1aa3f03eae7e",
+      "catalogId": "anderson-1913",
+      "entryOrder": 7,
+      "reportedNumber": null,
+      "catalogPages": [
+        55
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Ward-Coonley, Rochester, U.S.A.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Barratta No. 4",
+      "classification": "As No. 1.",
+      "locality": "Near No. 1.",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-bf8d2d2b-28cc-4346-b015-55e34cdf99fd",
+      "catalogId": "anderson-1913",
+      "entryOrder": 8,
+      "reportedNumber": null,
+      "catalogPages": [
+        55
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Krantz Mineralien-Contor, Bonn, Germany.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Beaconsfield",
+      "classification": "Siderite. Broad octahedrite, Og (Brezina); broadest octahedrite, Ogg (Klein).",
+      "locality": "About two miles east of Beaconsfield Station (Lat. 38° 31′S, Long. 145° 30′E), Co. Mornington, Victoria.",
+      "eventDate": "— Feltus.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-af0454c6-9a88-4835-a9c6-da87adb1a245",
+      "catalogId": "anderson-1913",
+      "entryOrder": 9,
+      "reportedNumber": null,
+      "catalogPages": [
+        55
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Bendock",
+      "classification": "Siderolite.",
+      "locality": "Seven miles from Bendock (Lat. 37° 11′S, Long. 148° 58′E), Co. Croajingolong, Victoria.",
+      "eventDate": "About 1899.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-0d3dffda-3af7-4d4d-b99f-d64d70543eeb",
+      "catalogId": "anderson-1913",
+      "entryOrder": 10,
+      "reportedNumber": null,
+      "catalogPages": [
+        56
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Australian Museum, and Technological Museum, Sydney.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Binda",
+      "classification": "Aerolite. Achondrite (Eukrite, Eu.).",
+      "locality": "Binda (Lat. 34° 18′S, Long. 149° 25′E), near Crookwell, New South Wales.",
+      "eventDate": "Alick McCormack, June 5th, 1912.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Binda",
+        "meteoriteCode": "5049",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5049",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-9ba1ee28-32d2-4a06-8377-ad50cfacb697",
+      "catalogId": "anderson-1913",
+      "entryOrder": 11,
+      "reportedNumber": null,
+      "catalogPages": [
+        56
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Mining and Geological Museum, Sydney; Hofmuseum, Vienna.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Bingera",
+      "classification": "Siderite. Granular Hexahedrite, Ha.",
+      "locality": "Bingera (Lat. 29° 48′S, Long. 150° 33′E), New South Wales.",
+      "eventDate": "1880.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bingera",
+        "meteoriteCode": "5050",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5050",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-0a2a88cc-b13f-4702-a7e1-9b98ebf35e53",
+      "catalogId": "anderson-1913",
+      "entryOrder": 12,
+      "reportedNumber": null,
+      "catalogPages": [
+        56
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Mrs. W. F. Petterd, Launceston, Tasmania.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Blue Tier",
+      "classification": "Siderite. Medium octahedrite, Om.",
+      "locality": "Blue Tier (Lat. 41° 0′S, Long. 148° 0′E about), Co. Dorset, north-east coast of Tasmania.",
+      "eventDate": "Party of miners, some years previous to 1893.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6e400b41-2cf1-4831-b64a-cf9e0ce4bf41",
+      "catalogId": "anderson-1913",
+      "entryOrder": 13,
+      "reportedNumber": null,
+      "catalogPages": [
+        56
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Technological Museum, Sydney.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Boogaldi",
+      "classification": "Siderite. Fine octahedrite, Of.",
+      "locality": "Two miles from Boogaldi Post Office, fifteen miles from Coonabarabran (Lat. 31° 18′S, Long. 149° 5′E), New South Wales.",
+      "eventDate": "— Gould, Jan. 1900.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Boogaldi",
+        "meteoriteCode": "5107",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5107",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-89f51de1-dc1d-4960-b7ce-bd83246db17c",
+      "catalogId": "anderson-1913",
+      "entryOrder": 14,
+      "reportedNumber": null,
+      "catalogPages": [
+        57
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "South Australian Museum, Adelaide.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Cadell",
+      "classification": "Aerolite?",
+      "locality": "Three miles from Morgan (Lat. 34° S, Long. 139° 45′E), east side of River Murray, Hundred of Cadell, South Australia.",
+      "eventDate": "April 14th, 1910.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Cadell",
+        "meteoriteCode": "5193",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5193",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-bd8822d0-960b-4d4d-84bf-e1f7f511e6e3",
+      "catalogId": "anderson-1913",
+      "entryOrder": 15,
+      "reportedNumber": null,
+      "catalogPages": [
+        57
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Mrs. W. F. Petterd, Launceston, Tasmania.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Castray River",
+      "classification": "Siderite.",
+      "locality": "Bank of the Castray River, tributary of the Heazlewood River, North-West Tasmania.",
+      "eventDate": "A miner, 1899.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Castray River",
+        "meteoriteCode": "5294",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5294",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-95354fd0-0af0-4cbf-ada2-b40a6db82512",
+      "catalogId": "anderson-1913",
+      "entryOrder": 16,
+      "reportedNumber": null,
+      "catalogPages": [
+        57
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Mining and Geological Museum, Sydney; Hofmuseum, Vienna.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Cowra",
+      "classification": "Siderite. Finest octahedrite, Off.",
+      "locality": "Summit of Battery Mountain, Junction of Burrowa and Lachlan Rivers, near Cowra (Lat. 33° 52′S, Long. 148° 45′E), New South Wales.",
+      "eventDate": "John O'Shaughnessy, before 1888.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Cowra",
+        "meteoriteCode": "5458",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5458",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-459ebad0-1bd7-49a6-8f8e-369ec73abd1b",
+      "catalogId": "anderson-1913",
+      "entryOrder": 17,
+      "reportedNumber": null,
+      "catalogPages": [
+        57
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "British Museum (Nat. Hist.), London.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Cranbourne No. 1",
+      "classification": "Siderite. Broad octahedrite, Og.",
+      "locality": "Cranbourne (Lat. 38° 11′S, Long. 145° 20′E), Co. Mornington, Victoria.",
+      "eventDate": "Known 1854.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a5c963f5-be68-472e-a301-71e108fc9d6f",
+      "catalogId": "anderson-1913",
+      "entryOrder": 18,
+      "reportedNumber": null,
+      "catalogPages": [
+        58
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "National Museum, Melbourne.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Cranbourne No. 2",
+      "classification": "As No. 1.",
+      "locality": "Six miles north of No. 1 (Lat. 38° 8′S, Long. 145° 22′E).",
+      "eventDate": "Known 1854.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-9422ca67-8a47-4fb3-9099-a2e6549f7946",
+      "catalogId": "anderson-1913",
+      "entryOrder": 19,
+      "reportedNumber": null,
+      "catalogPages": [
+        58
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "British Museum (Nat. Hist.), London.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Eli Elwah",
+      "classification": "Aerolite.",
+      "locality": "Eli Elwah Station, fifteen miles west of Hay (Lat. 34° 30′S, Long. 144° 56′E), New South Wales.",
+      "eventDate": "? Known 1889 (9, p. 306).",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c045a8e3-0b05-4e74-8cdc-bfac1dfd36d7",
+      "catalogId": "anderson-1913",
+      "entryOrder": 20,
+      "reportedNumber": null,
+      "catalogPages": [
+        58
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Emmaville",
+      "classification": "Aerolite.",
+      "locality": "Near Emmaville (Lat. 29° 14′S, Long. 151° 45′E), New South Wales.",
+      "eventDate": "About 1900.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Emmaville",
+        "meteoriteCode": "10033",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10033",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-38d94a53-e244-4261-a949-a7ea3160036e",
+      "catalogId": "anderson-1913",
+      "entryOrder": 21,
+      "reportedNumber": null,
+      "catalogPages": [
+        58
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Australian Museum, Sydney.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Gilgoin No. 1",
+      "classification": "Aerolite. Crystalline chondrite, Ck (Brezina); black chondrite, Cs (Klein).",
+      "locality": "Gilgoin Station (Lat. 30° 35′S, Long. 147° 12′E), forty miles south-east of Brewarrina, New South Wales.",
+      "eventDate": "1888 or 1889.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-9409e612-bbac-43e2-b81f-67f7234580bd",
+      "catalogId": "anderson-1913",
+      "entryOrder": 22,
+      "reportedNumber": null,
+      "catalogPages": [
+        59
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Australian Museum, Sydney.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Gilgoin No. 2",
+      "classification": "As No. 1.",
+      "locality": "Two miles south of Gilgoin, No. 1.",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8e67e99f-881a-43c6-a970-a42dc661a261",
+      "catalogId": "anderson-1913",
+      "entryOrder": 23,
+      "reportedNumber": null,
+      "catalogPages": [
+        59
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Ward-Coonley, Rochester, U.S.A.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Gilgoin No. 3",
+      "classification": null,
+      "locality": null,
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f0e4e84d-ef4a-4927-9f25-9c60e2550501",
+      "catalogId": "anderson-1913",
+      "entryOrder": 24,
+      "reportedNumber": null,
+      "catalogPages": [
+        59
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Ward-Coonley, Rochester, U.S.A.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Gilgoin No. 4",
+      "classification": null,
+      "locality": null,
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-fbf1eede-e3eb-49a7-9bd1-7c9463c2ef24",
+      "catalogId": "anderson-1913",
+      "entryOrder": 25,
+      "reportedNumber": null,
+      "catalogPages": [
+        59
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Ward-Coonley, Rochester, U.S.A.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Gilgoin No. 5",
+      "classification": null,
+      "locality": null,
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a042caf2-9630-4447-91be-8dd7d083e951",
+      "catalogId": "anderson-1913",
+      "entryOrder": 26,
+      "reportedNumber": null,
+      "catalogPages": [
+        59
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Mining and Geological Museum, Sydney.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Gilgoin No. 6",
+      "classification": null,
+      "locality": null,
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a3a056a9-0867-4538-8a22-fd99dadfa5ce",
+      "catalogId": "anderson-1913",
+      "entryOrder": 27,
+      "reportedNumber": null,
+      "catalogPages": [
+        59
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Haddon",
+      "classification": "Aerolite (?)",
+      "locality": "Haddon, Grenville Co., Victoria.",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d6b1e01e-7598-4315-b899-45a8889000bd",
+      "catalogId": "anderson-1913",
+      "entryOrder": 28,
+      "reportedNumber": null,
+      "catalogPages": [
+        59,
+        60
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "— Godfrey, Melbourne.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Hay",
+      "classification": "Aerolite.",
+      "locality": "Pevensey Station, Old Man Plain, ten miles below Hay (Lat. 34° 30′S, Long. 144° 56′E), in a paddock fifteen miles south of the Murrumbidgee River, New South Wales.",
+      "eventDate": "1868-1870.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-3adccb01-67f1-497a-b95e-6f9d17b52719",
+      "catalogId": "anderson-1913",
+      "entryOrder": 29,
+      "reportedNumber": null,
+      "catalogPages": [
+        60
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Mining and Geological Museum, Sydney.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Hermitage Plains",
+      "classification": "Aerolite.",
+      "locality": "Hermitage Plains, twenty miles south-east of Canbelego (Lat. 31° 28′S, Long. 146° 41′E about).",
+      "eventDate": "1909.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Hermitage Plains",
+        "meteoriteCode": "11877",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11877",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-ab771a27-88be-4707-afc8-edc499df7ce6",
+      "catalogId": "anderson-1913",
+      "entryOrder": 30,
+      "reportedNumber": null,
+      "catalogPages": [
+        60
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "South Australian Museum, Adelaide.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Kulnine",
+      "classification": "Siderolite (?).",
+      "locality": "Kulnine Run, Victoria, near Wentworth (Lat. 34° 8′S, Long. 141° 56′E), New South Wales.",
+      "eventDate": "Known 1886; first seen by J. L. Thompson.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Kulnine",
+        "meteoriteCode": "12372",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12372",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-a3074bed-b977-4141-8dc9-d8656298d1b8",
+      "catalogId": "anderson-1913",
+      "entryOrder": 31,
+      "reportedNumber": null,
+      "catalogPages": [
+        60
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "National Museum, Melbourne.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Langwarrin",
+      "classification": "Siderite.",
+      "locality": "Langwarrin (Lat. 38° 10′S, Long. 145° 10′E), Co. Mornington, Victoria.",
+      "eventDate": "A. H. Padley, 1886.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d1766b3a-236a-4e9b-bec0-51cd4f3679d9",
+      "catalogId": "anderson-1913",
+      "entryOrder": 32,
+      "reportedNumber": null,
+      "catalogPages": [
+        60
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Mrs. W. F. Petterd, Launceston, Tasmania.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Lefroy",
+      "classification": "Siderite.",
+      "locality": "Lefroy (Lat. 41° 9′S, Long. 146° 58′E), Co. Dorset, twenty-seven miles north-west of Launceston, Tasmania.",
+      "eventDate": "A prospector, 1904.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Lefroy",
+        "meteoriteCode": "12757",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12757",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-c69e8022-b6ca-4429-af51-2d7ece7b0d93",
+      "catalogId": "anderson-1913",
+      "entryOrder": 33,
+      "reportedNumber": null,
+      "catalogPages": [
+        61
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Le Gould",
+      "classification": null,
+      "locality": "Two days march beyond the Isaacs River, the first branch of the MacKenzie River, Queensland.",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-10a305ec-0d7a-4829-8a26-72e633de0c7f",
+      "catalogId": "anderson-1913",
+      "entryOrder": 34,
+      "reportedNumber": null,
+      "catalogPages": [
+        61
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Ward-Coonley, Rochester, U.S.A.; Berlin Museum.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Macquarie River",
+      "classification": "Siderolite. Mesosiderite, M.",
+      "locality": "Macquarie River (Lat. 31° 30′S, Long. 152° 56′E), New South Wales.",
+      "eventDate": "1857.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-9df37504-c460-4c58-bfc4-a5f69a6808da",
+      "catalogId": "anderson-1913",
+      "entryOrder": 35,
+      "reportedNumber": null,
+      "catalogPages": [
+        61
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Mining and Geological Museum, Sydney.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Molong",
+      "classification": "Siderolite. Pallasite.",
+      "locality": "E. Farrell's Selection, Portion 218, Pa. Molong, Co. Ashburnham, New South Wales.",
+      "eventDate": "John Williams, August 1912.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Molong",
+        "meteoriteCode": "16716",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16716",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-2f65b087-5c72-4878-b0d0-10e4624be5d2",
+      "catalogId": "anderson-1913",
+      "entryOrder": 36,
+      "reportedNumber": null,
+      "catalogPages": [
+        61
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Technological Museum, Sydney.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Moonbi",
+      "classification": "Siderite. Fine octahedrite, Of.",
+      "locality": "Moonbi Range, eighteen miles from Moonbi (Lat. 31° 9′S, Long. 151° 1′E), New South Wales.",
+      "eventDate": "— Langston, 1892.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Moonbi",
+        "meteoriteCode": "16734",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16734",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-7bc12058-4d27-421e-86eb-1951b89e41a6",
+      "catalogId": "anderson-1913",
+      "entryOrder": 37,
+      "reportedNumber": null,
+      "catalogPages": [
+        61
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Ward-Coonley, Rochester, U.S.A.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Mooranoppin",
+      "classification": "Siderite. Broadest octahedrite, Ogg (Brezina, Klein); broad octahedrite, Og (Farrington).",
+      "locality": "Mooranoppin, fifty miles west of Coolgardie (Lat. 32° 0′S, Long. 119° 25′E), Western Australia.",
+      "eventDate": "An aboriginal, in or before 1893.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6740c25d-7d0c-4f65-b895-972526657586",
+      "catalogId": "anderson-1913",
+      "entryOrder": 38,
+      "reportedNumber": null,
+      "catalogPages": [
+        62
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Mining and Geological Museum, Sydney.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Mount Browne",
+      "classification": "Aerolite. Spherulitic chondrite, Cc.",
+      "locality": "Mount Browne (Lat. 29° 45′S, Long. 141° 46′E), Co. Evelyn, New South Wales.",
+      "eventDate": "W. Jordan; fell July 17, 1902.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Mount Browne",
+        "meteoriteCode": "16766",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16766",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-fb6be261-c1de-4320-94f1-da09c48a0351",
+      "catalogId": "anderson-1913",
+      "entryOrder": 39,
+      "reportedNumber": null,
+      "catalogPages": [
+        62
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Geological Survey Museum, Perth, Western Australia.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Mount Dooling",
+      "classification": "Siderite.",
+      "locality": "Mt. Dooling, north Yilgarn, Western Australia.",
+      "eventDate": "1910.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6290917e-0de0-4391-8c06-83f997d8d806",
+      "catalogId": "anderson-1913",
+      "entryOrder": 40,
+      "reportedNumber": null,
+      "catalogPages": [
+        62
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Mining and Geological Museum, Sydney.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Mount Dyrring",
+      "classification": "Siderolite. Pallasite-Krasnojarsk group, Pk.",
+      "locality": "Mount Dyrring (32° 30′S, 151° 10′E), eight miles north of Bridgman, Singleton District, New South Wales.",
+      "eventDate": "An aboriginal, in 1903.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Mount Dyrring",
+        "meteoriteCode": "16772",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16772",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-b12bf62c-a4bc-4197-bd39-ee1b9f38998c",
+      "catalogId": "anderson-1913",
+      "entryOrder": 41,
+      "reportedNumber": null,
+      "catalogPages": [
+        62
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Australian Museum, Sydney.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Mount Stirling",
+      "classification": "Siderite. Broad octahedrite, Og.",
+      "locality": "Twenty-five miles south-east of Mount Stirling (Lat. 31° 58′S, Long. 117° 55′E), one hundred and thirty miles east of Perth, Western Australia.",
+      "eventDate": "Known 1892.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b338f180-1cdd-4664-b176-88e5e517eb50",
+      "catalogId": "anderson-1913",
+      "entryOrder": 42,
+      "reportedNumber": null,
+      "catalogPages": [
+        63
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Mining and Geological Museum, Sydney.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Mungindi Nos. 1 and 2",
+      "classification": "Siderite. Finest octahedrite, Off (Brezina, Klein); fine octahedrite, Of (Farrington).",
+      "locality": "South Queensland, three miles north of Mungindi (Lat. 29° 0′S, Long. 149° 0′E), New South Wales.",
+      "eventDate": "Louis Troutman, early in 1897.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-13714810-5c38-4f12-a5a1-7e3cc471bbf2",
+      "catalogId": "anderson-1913",
+      "entryOrder": 43,
+      "reportedNumber": null,
+      "catalogPages": [
+        63
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "School of Mines and Industries Museum, Adelaide.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Murnpeowie",
+      "classification": "Siderite.",
+      "locality": "Beltana Pastoral Co.'s Murnpeowie Run (Lat. 29° 35′S, Long. 139° 54′E about), South Australia.",
+      "eventDate": "A. Hamblin and others, Aug. 1909.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Murnpeowie",
+        "meteoriteCode": "16878",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16878",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-c2a88a46-cb08-43ac-88e8-6e9469cd0be8",
+      "catalogId": "anderson-1913",
+      "entryOrder": 44,
+      "reportedNumber": null,
+      "catalogPages": [
+        63
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Australian Museum, Sydney.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Narraburra",
+      "classification": "Siderite. Finest octahedrite, Off.",
+      "locality": "Narraburra or Yeo Yeo Creek, twelve miles east of Temora (Lat. 34° 10′S, Long. 147° 43′E), New South Wales.",
+      "eventDate": "— O'Brien, 1855.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Narraburra",
+        "meteoriteCode": "16915",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16915",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-e5b05bbf-b829-4220-9f66-3418c400006e",
+      "catalogId": "anderson-1913",
+      "entryOrder": 45,
+      "reportedNumber": null,
+      "catalogPages": [
+        63
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Australian Museum, Sydney; Ward-Coonley, Rochester, U.S.A.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Nocoleche",
+      "classification": "Siderite. Medium octahedrite, Om.",
+      "locality": "Five miles south-west of Nocoleche Station, near Wanaaring (Lat. 29° 35′S, Long. 144° 10′E), forty miles north-west of Bourke, New South Wales.",
+      "eventDate": "Known 1895.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Nocoleche",
+        "meteoriteCode": "16987",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16987",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-c5b8f73e-0408-4fb5-b684-20156455a389",
+      "catalogId": "anderson-1913",
+      "entryOrder": 46,
+      "reportedNumber": null,
+      "catalogPages": [
+        64
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Geological Survey Museum, Perth, Western Australia.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Nuleri",
+      "classification": "Siderite. Octahedrite.",
+      "locality": "Two hundred miles east of Mount Sir Samuel, Nuleri Land District, Western Australia.",
+      "eventDate": "A prospector, in or before 1902.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Nuleri",
+        "meteoriteCode": "17939",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17939",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-56435428-0f8b-4a1a-8e42-f10565753ace",
+      "catalogId": "anderson-1913",
+      "entryOrder": 47,
+      "reportedNumber": null,
+      "catalogPages": [
+        64
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Geological Survey Museum, Perth, Western Australia.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Premier Downs",
+      "classification": null,
+      "locality": "Premier Downs, Nullarbor Plains, Eucla Division, Western Australia.",
+      "eventDate": "1911.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-68ac5bca-70a2-4fb5-bdf1-984da06608d7",
+      "catalogId": "anderson-1913",
+      "entryOrder": 48,
+      "reportedNumber": null,
+      "catalogPages": [
+        64
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Queensland Museum, Brisbane; Ward-Coonley, Rochester, U.S.A.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Queensland",
+      "classification": "Siderite. Broad octahedrite, Og.",
+      "locality": "South Queensland (exact locality unknown).",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-fd110a95-5ce9-4a11-9062-871f4623d5dc",
+      "catalogId": "anderson-1913",
+      "entryOrder": 49,
+      "reportedNumber": null,
+      "catalogPages": [
+        64
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "South Australian Museum, Adelaide; main mass was sent to Germany.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Rhine Villa",
+      "classification": "Siderite. Medium octahedrite, Om (Brezina); broad octahedrite, Og (Klein).",
+      "locality": "Rhine Villa, Hundred of Angas, about fifty miles north-east of Adelaide, South Australia.",
+      "eventDate": "H. W. Payne, before Nov., 1900.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Rhine Villa",
+        "meteoriteCode": "22594",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22594",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-a55d8463-de41-4432-82de-a0c23f333228",
+      "catalogId": "anderson-1913",
+      "entryOrder": 50,
+      "reportedNumber": null,
+      "catalogPages": [
+        65
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Ward-Coonley, Rochester, U.S.A.; Field Museum, Chicago.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Roebourne",
+      "classification": "Siderite. Medium octahedrite, Om.",
+      "locality": "Two hundred miles south-east of Roebourne (Lat. 22° 20′S, Long. 118° 0′E), and eight miles from the Hammersley Range, Western Australia.",
+      "eventDate": "H. Reginald Hester, 1892.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Roebourne",
+        "meteoriteCode": "22644",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22644",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-4be42ee9-93ba-4f36-a1ea-52049a08c984",
+      "catalogId": "anderson-1913",
+      "entryOrder": 51,
+      "reportedNumber": null,
+      "catalogPages": [
+        65
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Mining and Geological Museum, Sydney; Hofmuseum, Vienna; Ward-Coonley, Rochester, U.S.A.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Temora",
+      "classification": "Siderite. Broadest octahedrite, Ogg.",
+      "locality": "Between Temora (Lat. 34° 12′S, Long. 147° 26′E) and Cootamundra, New South Wales.",
+      "eventDate": "Party of miners, 1890.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-415cae0d-8d97-4b7a-9780-96f07ffc8e7b",
+      "catalogId": "anderson-1913",
+      "entryOrder": 52,
+      "reportedNumber": null,
+      "catalogPages": [
+        65
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "A. Liversidge.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Thunda",
+      "classification": "Siderite. Medium octahedrite, Om.",
+      "locality": "Thunda, Windorah (Lat. 25° 25′S, Long. 142° 40′E), Diamantina District, Queensland.",
+      "eventDate": null,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Thunda",
+        "meteoriteCode": "23978",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23978",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-83277d11-a2b9-498e-b7e3-df92ae5c0999",
+      "catalogId": "anderson-1913",
+      "entryOrder": 53,
+      "reportedNumber": null,
+      "catalogPages": [
+        65
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "British Museum (Nat. Hist.), London.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Warbreccan",
+      "classification": "Aerolite.",
+      "locality": "Windorah (Lat. 25° 25′S, Long. 142° 40′E), Diamantina District, Queensland.",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c96b9723-9c63-4162-84fc-e1c388c7453d",
+      "catalogId": "anderson-1913",
+      "entryOrder": 54,
+      "reportedNumber": null,
+      "catalogPages": [
+        66
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "South Australian Museum, Adelaide.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Yardea",
+      "classification": "Siderite. Medium octahedrite, Om.",
+      "locality": "Four miles south of Yardea Station (Lat. 32° 20′S, Long. 136° 0′E), Gawler Range, South Australia.",
+      "eventDate": "James Martlew, November, 1875.",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Yardea",
+        "meteoriteCode": "30351",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=30351",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-236621b2-b61e-4205-b603-64f1f897109f",
+      "catalogId": "anderson-1913",
+      "entryOrder": 55,
+      "reportedNumber": null,
+      "catalogPages": [
+        66
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "British Museum (Nat. Hist.), London; National Museum, Melbourne.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Youndegin No. 1",
+      "classification": "Siderite. Broad octahedrite, Og.",
+      "locality": "Three-quarters of a mile north-west of Penkarring Rock (Lat. 31° 30′S, Long. 117° 30′E), Sub-district Youndegin, about seventy miles east of York, Western Australia.",
+      "eventDate": "Alfred Eaton, June 5, 1884.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-2f48b5d6-7854-4b67-9692-e1c86ba612ea",
+      "catalogId": "anderson-1913",
+      "entryOrder": 56,
+      "reportedNumber": null,
+      "catalogPages": [
+        66
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "J. R. Gregory, London; Ward-Coonley, Rochester, U.S.A.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Youndegin No. 2",
+      "classification": "As No. 1.",
+      "locality": "Youndegin, Western Australia.",
+      "eventDate": "Louis Knoop, 1891.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-70cf89ed-e47d-4d94-8820-4c609f17afdf",
+      "catalogId": "anderson-1913",
+      "entryOrder": 57,
+      "reportedNumber": null,
+      "catalogPages": [
+        66
+      ],
+      "section": "Australian meteorite catalogue",
+      "holdings": [
+        {
+          "description": "Collection holding",
+          "provenance": "Hofmuseum, Vienna.",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Youndegin No. 3",
+      "classification": "As No. 1.",
+      "locality": "Youndegin, Western Australia.",
+      "eventDate": "Louis Knoop, 1892.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-16d182d1-1ad6-411b-931f-44ab2fa4db19",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 1,
+      "reportedNumber": "1",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Abakan",
+      "classification": "O",
+      "locality": null,
+      "eventDate": "1891",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-afffb3c1-8063-43af-a0ac-0ab5eb1beef8",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 2,
+      "reportedNumber": "2",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Augustinowka",
+      "classification": "O",
+      "locality": null,
+      "eventDate": "1890",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-41481df9-6143-480a-b126-fa511eb3c684",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 3,
+      "reportedNumber": "3",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Leningrad University",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Alexandrowskij Chutor",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1900 July 7",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e26dc071-2b7c-4ff7-a764-ca64fe6c2741",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 4,
+      "reportedNumber": "4",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Andrjuschki",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1898",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b843fb0c-c451-4092-b1f0-79e1681c4bf6",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 5,
+      "reportedNumber": "5",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Bachmut",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1814 Feb. 15, 12h",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bachmut",
+        "meteoriteCode": "4917",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4917",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-37b8a67d-4ffd-4662-8b76-3c196212e516",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 6,
+      "reportedNumber": "6",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Belaja Zerkow",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1796 Jan. 15",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-3936c181-2fae-4c60-8e3b-349402c399ad",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 7,
+      "reportedNumber": "7",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Belokrinitschje",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1887 Jan. 1",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-63e2c718-0d8d-4f77-ba7a-b4612b96b5c0",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 8,
+      "reportedNumber": "8",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Leningrad University",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Berdjansk",
+      "classification": "P",
+      "locality": null,
+      "eventDate": "1878",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-50f4eaf7-5bde-4f75-9e4f-47214601a548",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 9,
+      "reportedNumber": "9",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Bisch-Tübe",
+      "classification": "O",
+      "locality": null,
+      "eventDate": "1888",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-2493865c-205b-460b-b494-0c63cf0c703d",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 10,
+      "reportedNumber": "10",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Birüssa",
+      "classification": "O",
+      "locality": null,
+      "eventDate": "after 1900",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-0c1f7f1f-d778-41f0-b253-65313b30680e",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 11,
+      "reportedNumber": "11",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Boguslawka",
+      "classification": "H",
+      "locality": null,
+      "eventDate": "1916 Oct. 18, 11h 47m",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-af0a1c72-7fe1-4472-8063-bbff3e34ff4b",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 12,
+      "reportedNumber": "12",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Bodajbo",
+      "classification": "O",
+      "locality": null,
+      "eventDate": "1909",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-17ed2544-b1e3-4128-9de6-160d42c6306b",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 13,
+      "reportedNumber": "13",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Boriskino",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1930 Apr. 20, 13h 30m",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Boriskino",
+        "meteoriteCode": "5112",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5112",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-253131d4-c676-46d9-8817-38037afbdb3a",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 14,
+      "reportedNumber": "14",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Borowaja",
+      "classification": "O",
+      "locality": null,
+      "eventDate": "1885",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-370347e7-f0c3-4332-8d63-49d2a5e564fa",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 15,
+      "reportedNumber": "15",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Leningrad University",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Borodino",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1812 Sep. 5, 1h",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Borodino",
+        "meteoriteCode": "5114",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5114",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-bcb63604-f1a5-412f-a661-0b81640bd2ca",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 16,
+      "reportedNumber": "16",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Botschetschki",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1823 (End of year)",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Botschetschki",
+        "meteoriteCode": "5117",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5117",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-15774fd9-3a19-4899-9f48-570cabca8593",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 17,
+      "reportedNumber": "17",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Bragin",
+      "classification": "P",
+      "locality": null,
+      "eventDate": "1810",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-fedf645e-823d-4415-b5fc-eedd38bbe2b0",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 18,
+      "reportedNumber": "18",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Brient",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1933 Apr. 19",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Brient",
+        "meteoriteCode": "5140",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5140",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-f3a826b4-9d5b-4c03-ba73-114a84ab6ec0",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 19,
+      "reportedNumber": "19",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Chmelewka",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1929 Mar. 1, 5h 24m",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-409f0610-ced2-44a8-b8d8-6d4f463eef01",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 20,
+      "reportedNumber": "20",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Demina",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1911 Sep. 6, 15h 30m",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Demina",
+        "meteoriteCode": "6649",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=6649",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-32cd6e63-7dca-43a6-bc93-34c0b6c569f1",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 21,
+      "reportedNumber": "21",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Doroninsk",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1805 Apr. 6, 17h",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Doroninsk",
+        "meteoriteCode": "7718",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=7718",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-7b5b2f7c-ac2f-4fa5-85b0-527dd00b8a8b",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 22,
+      "reportedNumber": "22",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Dorofeewka",
+      "classification": "H",
+      "locality": null,
+      "eventDate": "1910",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6e44f6e9-213b-4511-87ab-5857fbc6216e",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 23,
+      "reportedNumber": "23",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Erofeewka",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1925 Feb. 8-9",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-2343c8bd-f359-44c5-8d02-641f7ea425fc",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 24,
+      "reportedNumber": "24",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Grosnaja",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1861 June 28, 19h",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Grosnaja",
+        "meteoriteCode": "11206",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11206",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-f534362f-bde7-418a-98e3-420b3dd89263",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 25,
+      "reportedNumber": "25",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Odessa University",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Grossliebental",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1881 Nov. 19, 6h 30m",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-32db4e00-d3cb-4b71-b7f6-2d26b7e42927",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 26,
+      "reportedNumber": "26",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Indarch",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1891 Apr. 7, 20h 10m",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Indarch",
+        "meteoriteCode": "12027",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12027",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-1e5f4f6a-c528-44ab-a5d1-3944343a9989",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 27,
+      "reportedNumber": "27",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Itschkala",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1936 May 29, 19h 34m",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-0c23d24c-95dc-4651-ac1b-f6571048b5be",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 28,
+      "reportedNumber": "28",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Kawkas",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "after 1900",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f3ac6c78-b2fc-463b-b52a-59f07f783d4e",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 29,
+      "reportedNumber": "29",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Kagarlyk",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1908 June 30(?)",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Kagarlyk",
+        "meteoriteCode": "12227",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12227",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-62f67d6b-f524-45a0-8400-6f74fa006752",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 30,
+      "reportedNumber": "30",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Kainsas",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1937 Sep. 14",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-509128fe-7bee-439b-a44e-027709c36e2b",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 31,
+      "reportedNumber": "31",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Kaptal Aryk",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1937 May 12",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-827b7810-0e33-4d80-a3d7-6e7f6cb80eb7",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 32,
+      "reportedNumber": "32",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Karagai",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "after 1900",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Karagai",
+        "meteoriteCode": "12255",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12255",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-9bfce89e-0df2-4f68-9c0b-d97e39b717c1",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 33,
+      "reportedNumber": "33",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Karakol",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1840 May 9, 12h",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Karakol",
+        "meteoriteCode": "12256",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12256",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-f7aeb691-a575-4a06-a393-b537151f16a7",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 34,
+      "reportedNumber": "34",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Kaschin",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1918 Feb. 27, 12h 45m",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c8a95139-d38c-4262-bb3c-b1c2c4013dee",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 35,
+      "reportedNumber": "35",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Budapest",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Kikino",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1809",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Kikino",
+        "meteoriteCode": "12306",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12306",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-a6b6c363-3481-4e44-b38f-5187d3016a67",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 36,
+      "reportedNumber": "36",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Krasnyj Ugol",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1829 Sept. ?",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-9d87fae6-0076-4500-9f46-c3133cb52209",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 37,
+      "reportedNumber": "37",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Kuleschewka",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1811 Mar. 12, 11h",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-ecadebe4-cc89-48d0-b342-88edcb9dab75",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 38,
+      "reportedNumber": "38",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Kusnezowo",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1932 May 26, 17h 30m",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-ce170eac-269b-4148-a421-2eb70433feb8",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 39,
+      "reportedNumber": "39",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Kulp",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1906 Mar. 29",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Kulp",
+        "meteoriteCode": "12373",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12373",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-51d098f9-1957-45f4-b3b7-98e0879c3b80",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 40,
+      "reportedNumber": "40",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Unidentified museum holding",
+          "provenance": null,
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Lebedinnyj",
+      "classification": "O?",
+      "locality": null,
+      "eventDate": "1925",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f569baaf-1ae6-4072-81a6-a0a41e4f42cc",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 41,
+      "reportedNumber": "41",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Leonowka",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1900 Aug. 23, 21h",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f3a77947-ea43-4dd8-8d40-a0b208126c8a",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 42,
+      "reportedNumber": "42",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Charkov University",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Lipowskij Chutor",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1904",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-89d9f5db-872e-48ed-b586-fd8b00dd0451",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 43,
+      "reportedNumber": "43",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Lubimowka",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1936 Apr. 2",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-4b8df727-fdb8-4469-9d57-c0f425e15fbb",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 44,
+      "reportedNumber": "44",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Malyj Altaj",
+      "classification": "P",
+      "locality": null,
+      "eventDate": "after 1900",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f843da16-0aaa-4cb7-9b92-c67906f49e35",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 45,
+      "reportedNumber": "45",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Mamra",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1927 May 15",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c941ae32-76f4-4b88-aa5d-e0e98dda2531",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 46,
+      "reportedNumber": "46",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Medwedewa",
+      "classification": "P",
+      "locality": null,
+      "eventDate": "1749",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-9c4e9cbe-1205-462a-a2f4-d4f1852871a9",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 47,
+      "reportedNumber": "47",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Odessa University",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Migei",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1889 June 18, 8h 30m",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-4e6dbc95-ec0d-41c8-9b45-f467bd379169",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 48,
+      "reportedNumber": "48",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Muroznaja",
+      "classification": "O",
+      "locality": null,
+      "eventDate": "1883",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b788ee13-fbfe-41e8-852d-6fa92797e018",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 49,
+      "reportedNumber": "49",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Netschajewo",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1846",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-967620fe-d4fc-4786-ab58-f5dc1f0e5c09",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 50,
+      "reportedNumber": "50",
+      "catalogPages": [
+        195
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Nikolajewka",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1935 Aug. 4, 16h",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e10c5f44-e377-4f74-8b04-7253c7dafbb3",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 51,
+      "reportedNumber": "51",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Niro (Werchne- Udinsk)",
+      "classification": "O",
+      "locality": null,
+      "eventDate": "1854",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-22d2981d-8990-4ae0-9888-969290b3ce4e",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 52,
+      "reportedNumber": "52",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Leningrad University",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Novyj Urej",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1886 Sep. 4",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6b4f16f8-e14c-4d81-82ab-8d3037f60ccd",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 53,
+      "reportedNumber": "53",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Norin-Schibir",
+      "classification": "O",
+      "locality": null,
+      "eventDate": "after 1900",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-237c1bf9-9bed-4f57-beea-ae5fa3e5815e",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 54,
+      "reportedNumber": "54",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "London",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Nochtujsk",
+      "classification": "O",
+      "locality": null,
+      "eventDate": "1876",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-88ab5c0a-8ed0-4f84-8ba8-f2a4d2092486",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 55,
+      "reportedNumber": "55",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Orlowka",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1928",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f64989db-9179-475c-89f7-fd7ed4eec004",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 56,
+      "reportedNumber": "56",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Ochansk",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1887 Aug. 30, 13h",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Ochansk",
+        "meteoriteCode": "17979",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17979",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-90a271e4-c0d5-4386-b161-18d174735163",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 57,
+      "reportedNumber": "57",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "London",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Otscheretnaja",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1871",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-9cb2cc90-293e-4acd-be70-f0982fb5a55d",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 58,
+      "reportedNumber": "58",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Budapest",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Pawlowka",
+      "classification": "Go",
+      "locality": null,
+      "eventDate": "1882 Aug. 2, 17h",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-33e12888-71a1-40bf-9689-2cfc14e1ac55",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 59,
+      "reportedNumber": "59",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Tartu",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Pawlograd",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1826 May 19",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-31dddcb4-6268-4f33-b460-ebb55dfc4420",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 60,
+      "reportedNumber": "60",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Perwomajskij",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1933 Dec. 26, 18h",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-10d3b2ea-9809-4df6-98d7-f0f3337b8914",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 61,
+      "reportedNumber": "61",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Petropawlowka",
+      "classification": "Ac",
+      "locality": null,
+      "eventDate": "1916",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8c5a449d-97ad-4d05-96e8-181d0205e595",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 62,
+      "reportedNumber": "62",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Leningrad University",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Petropawlowsk",
+      "classification": "O",
+      "locality": null,
+      "eventDate": "1841",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-7a484fd5-9baf-4b34-b8fa-75a0067a947b",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 63,
+      "reportedNumber": "63",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Moscow University",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Rakowka",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1878 Nov. 20, 15h",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8ed81674-8ad7-4d11-9772-e0a3fcccb693",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 64,
+      "reportedNumber": "64",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Repeew Chutor",
+      "classification": "O",
+      "locality": null,
+      "eventDate": "1933 Aug. 8, 20h",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-0c4fefec-584b-436d-bbb3-08108d8f6b23",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 65,
+      "reportedNumber": "65",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Retschki",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1914 Apr. 9, 13h 30m",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-ddbcf685-b96b-4c6c-b1b4-1e81000a4e37",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 66,
+      "reportedNumber": "66",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Odessa University",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Sawtschenskoje",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1894 July 27",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-50c38d69-1763-4d4d-9b6f-ec4a2fd4d4bd",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 67,
+      "reportedNumber": "67",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Saratow",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1918 Sep. 6, 15h",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d6b5b5ca-1219-4e97-9026-e07f81f6fcc5",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 68,
+      "reportedNumber": "68",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Sarepta",
+      "classification": "O",
+      "locality": null,
+      "eventDate": "1854",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Sarepta",
+        "meteoriteCode": "23178",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23178",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-cac14ee9-8b37-4887-923c-4dc1c8dc5a48",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 69,
+      "reportedNumber": "69",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Sewrükowo",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1874 May 11, 23h 45m",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8a777ac2-c4d1-488d-990b-24bf1a76337d",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 70,
+      "reportedNumber": "70",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Slobodka",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1818 Aug. 10",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Slobodka",
+        "meteoriteCode": "23645",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23645",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-1bec7319-a36b-4a8c-9757-9570adf9a268",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 71,
+      "reportedNumber": "71",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Stawropol",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1857 Mar. 24, 17h",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c29281c0-5f1d-41f4-9c7a-f509c2be14ee",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 72,
+      "reportedNumber": "72",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Staroje Pesjanoje",
+      "classification": "C?",
+      "locality": null,
+      "eventDate": "1933 Oct. 2, 6h",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d9bac57a-b126-484e-83d8-c1fa7b136923",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 73,
+      "reportedNumber": "73",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Sungatsch",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1935 Apr. 10",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-ef9aa023-83f4-4c1b-9e1d-13e76e3b98ee",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 74,
+      "reportedNumber": "74",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Ssyromolotowo",
+      "classification": "O",
+      "locality": null,
+      "eventDate": "1873",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-995511a0-64f1-4167-b5a9-91aa8bff6a92",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 75,
+      "reportedNumber": "75",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Tarbagataj",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "after 1900",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-1c3ee7fc-a06e-44eb-938a-0b45f32a42b3",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 76,
+      "reportedNumber": "76",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Teleutskoje Osero",
+      "classification": "Ac",
+      "locality": null,
+      "eventDate": "1904 May 20",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b1468da2-44ee-4265-b5d6-12f91c2ce2b2",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 77,
+      "reportedNumber": "77",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Timochina",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1807 Mar. 25, 15h",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c4c4e372-2665-4fff-8709-ac6e850d97d2",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 78,
+      "reportedNumber": "78",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Tomakowka",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1905 Jan. 17, 21h 30m",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-ac9a542a-1289-44fd-be2b-ebafb77b3c9a",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 79,
+      "reportedNumber": "79",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Tschinge",
+      "classification": "At",
+      "locality": null,
+      "eventDate": "1913",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c907bb8f-48b7-4256-9312-f480796e77e5",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 80,
+      "reportedNumber": "80",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Kazan University",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Tschuwaschskije Kissy",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1899",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-ce2fc75d-c584-459e-969f-93d76e454c56",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 81,
+      "reportedNumber": "81",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Tubil",
+      "classification": "O",
+      "locality": null,
+      "eventDate": "1891",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-0ed7fcf0-b37d-4d19-b49c-efb25b7a969d",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 82,
+      "reportedNumber": "82",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Vienna",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Tunka",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1824 Mar. 1, 7h",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-5d62085e-1c74-48df-9015-226884c5c8e0",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 83,
+      "reportedNumber": "83",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Uderei",
+      "classification": "O",
+      "locality": null,
+      "eventDate": "1885",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-249b51a8-c191-46aa-bb58-66f9951a880a",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 84,
+      "reportedNumber": "84",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Odessa University",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Wawilowka",
+      "classification": "Ac",
+      "locality": null,
+      "eventDate": "1876 June 19, 14h",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f5c33d70-4db3-4540-b51e-52edd0407895",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 85,
+      "reportedNumber": "85",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Werchne- Tschirskaja",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1843 Nov. 12, 12h",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-1e249e76-b845-47bc-883c-4126849d86b5",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 86,
+      "reportedNumber": "86",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Yamyschewa",
+      "classification": "P",
+      "locality": null,
+      "eventDate": "1885",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-044d9e76-6376-4607-9186-a1f00e77da09",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 87,
+      "reportedNumber": "87",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Zaborica (Saboriza)",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1818 Apr. 11",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-37c68530-4e0b-4a83-b9aa-cf2cb94a0f8f",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 88,
+      "reportedNumber": "88",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Zigajlowka",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1787 Oct. 12, 15h",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-065a84dc-96d0-4d05-a54e-ebb8ab9dff99",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 89,
+      "reportedNumber": "89",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Vienna",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Zmeni",
+      "classification": "Go",
+      "locality": null,
+      "eventDate": "1858 Aug.",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e4ea64d7-83e5-4cd3-bcbd-f6dcb3e475ff",
+      "catalogId": "astapovich-1938",
+      "entryOrder": 90,
+      "reportedNumber": "90",
+      "catalogPages": [
+        196
+      ],
+      "section": "Soviet Union meteorite list",
+      "holdings": [
+        {
+          "description": "Museum holding",
+          "provenance": "Lomonossov's Institute of the Academy of Sciences, Moscow",
+          "count": null,
+          "weights": []
+        }
+      ],
+      "name": "Laurentjewka",
+      "classification": "C",
+      "locality": null,
+      "eventDate": "1938 Jan. 11, 14h 30m",
+      "confidence": "high"
+    },
+    {
       "id": "obs-e08dc432-efc7-4a5a-a2a5-5cff04828a8c",
       "catalogId": "ball-1882",
       "entryOrder": 1,
@@ -241105,6 +244898,952 @@
       "locality": "Coco Grove, Luzon, Philippine",
       "eventDate": null,
       "confidence": "high"
+    },
+    {
+      "id": "obs-8a2c7865-6048-4576-b52f-17bc489d3506",
+      "catalogId": "kantor-1920",
+      "entryOrder": 1,
+      "reportedNumber": "1",
+      "catalogPages": [
+        107,
+        108,
+        109
+      ],
+      "section": "Argentine catalog",
+      "holdings": [
+        {
+          "description": "Museo de La Plata specimen",
+          "provenance": "Museo de La Plata",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 114000
+            }
+          ]
+        }
+      ],
+      "name": "Caperr Aiken",
+      "classification": "Hierro meteórico (siderita)",
+      "locality": "Caperr, río Senguerr, Chubut; longitud 70°20' Oeste y latitud 45°15' Sud.",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-36d9bf73-2e2a-4390-9d04-a96051e1a0a2",
+      "catalogId": "kantor-1920",
+      "entryOrder": 2,
+      "reportedNumber": "2",
+      "catalogPages": [
+        109,
+        110
+      ],
+      "section": "Argentine catalog",
+      "holdings": [
+        {
+          "description": "Museo de La Plata specimen",
+          "provenance": "Museo de La Plata",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 870
+            }
+          ]
+        }
+      ],
+      "name": "Otumpa",
+      "classification": "Hierro meteórico (siderita)",
+      "locality": "Otumpa, Gran Chaco.",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-ae30e7db-80c3-4c9e-b861-18b8ccd4a652",
+      "catalogId": "kantor-1920",
+      "entryOrder": 3,
+      "reportedNumber": "3",
+      "catalogPages": [
+        110,
+        111
+      ],
+      "section": "Argentine catalog",
+      "holdings": [
+        {
+          "description": "Museo de La Plata specimen",
+          "provenance": "Museo de La Plata",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 1110
+            }
+          ]
+        }
+      ],
+      "name": "Puerta de Arauco",
+      "classification": "Hierro meteórico (siderita)",
+      "locality": "La Rioja, camino de Carrizal a Tinogasta.",
+      "eventDate": null,
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Puerta de Arauco",
+        "meteoriteCode": "18896",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18896",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-a5428012-22b5-4825-bb96-0b0cf78fb8a1",
+      "catalogId": "kantor-1920",
+      "entryOrder": 4,
+      "reportedNumber": "4",
+      "catalogPages": [
+        111,
+        112
+      ],
+      "section": "Argentine catalog",
+      "holdings": [
+        {
+          "description": "Museo de La Plata specimen",
+          "provenance": "Museo de La Plata",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 11800
+            }
+          ]
+        }
+      ],
+      "name": "Indio Rico",
+      "classification": "Piedra meteórica",
+      "locality": "Estancia Indio Rico, Pringles, provincia de Buenos Aires.",
+      "eventDate": null,
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Indio Rico",
+        "meteoriteCode": "12032",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12032",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-d61f22a8-0f69-4f1a-ae84-81f84e2bb36f",
+      "catalogId": "kantor-1920",
+      "entryOrder": 5,
+      "reportedNumber": "5",
+      "catalogPages": [
+        112,
+        113
+      ],
+      "section": "Argentine catalog",
+      "holdings": [
+        {
+          "description": "Museo de La Plata specimen",
+          "provenance": "Museo de La Plata",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 25200
+            }
+          ]
+        }
+      ],
+      "name": "El Perdido",
+      "classification": "Piedra meteórica",
+      "locality": "Campo a 10 kilómetros de la estación El Perdido del ferrocarril del Sud, entre Irene y Dorrego, cerca de Bahía Blanca.",
+      "eventDate": null,
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "El Perdido",
+        "meteoriteCode": "7813",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=7813",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-a4b47ae2-439a-4fd0-bcb6-ed7d30e7c57c",
+      "catalogId": "kantor-1920",
+      "entryOrder": 6,
+      "reportedNumber": "6",
+      "catalogPages": [
+        113,
+        114,
+        115,
+        116,
+        117
+      ],
+      "section": "Argentine catalog",
+      "holdings": [
+        {
+          "description": "Museo de La Plata specimen",
+          "provenance": "Museo de La Plata",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 12
+            }
+          ]
+        }
+      ],
+      "name": "Nogoyá",
+      "classification": "Meteorito carbonoso",
+      "locality": "A 30 leguas del Uruguay, no lejos de Nogoyá, provincia de Entre Ríos.",
+      "eventDate": null,
+      "confidence": "medium"
+    },
+    {
+      "id": "obs-3210798e-eafc-4e68-90d7-77e5f7374e63",
+      "catalogId": "kantor-1920",
+      "entryOrder": 7,
+      "reportedNumber": "7",
+      "catalogPages": [
+        117,
+        118
+      ],
+      "section": "Argentine catalog",
+      "holdings": [
+        {
+          "description": "Museo de La Plata specimen",
+          "provenance": "Museo de La Plata",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 33.32
+            }
+          ]
+        }
+      ],
+      "name": "Luján",
+      "classification": "Meteorito fósil",
+      "locality": "Cercanías de Luján, provincia de Buenos Aires; 6 metros de profundidad en terreno cuaternario no removido.",
+      "eventDate": null,
+      "confidence": "medium"
+    },
+    {
+      "id": "obs-740f9319-c559-4564-97b0-f0e850c1a974",
+      "catalogId": "kantor-1920",
+      "entryOrder": 8,
+      "reportedNumber": "8",
+      "catalogPages": [
+        118,
+        119
+      ],
+      "section": "Argentine catalog",
+      "holdings": [
+        {
+          "description": "Museo de La Plata specimen",
+          "provenance": "Museo de La Plata",
+          "count": null,
+          "weights": [
+            {
+              "grams": 21400
+            }
+          ]
+        }
+      ],
+      "name": "Cacharí",
+      "classification": "Piedra meteórica (aerolito)",
+      "locality": "Inmediaciones de la estación Cacharí, partido del Azul, provincia de Buenos Aires; a un metro y medio de profundidad.",
+      "eventDate": null,
+      "confidence": "medium"
+    },
+    {
+      "id": "obs-45638db9-a152-4044-bcb9-311dc29a697e",
+      "catalogId": "kantor-1920",
+      "entryOrder": 9,
+      "reportedNumber": "9",
+      "catalogPages": [
+        120
+      ],
+      "section": "Foreign catalog",
+      "holdings": [
+        {
+          "description": "Museo de La Plata specimen",
+          "provenance": "Museo de La Plata",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 97
+            }
+          ]
+        }
+      ],
+      "name": "Misteca",
+      "classification": "Hierro meteórico (siderita)",
+      "locality": "Oaxaca, Méjico.",
+      "eventDate": null,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Misteca",
+        "meteoriteCode": "16705",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16705",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-b194b5e4-265b-44e9-a59e-8ef420e5cd58",
+      "catalogId": "kantor-1920",
+      "entryOrder": 10,
+      "reportedNumber": "10 y 11",
+      "catalogPages": [
+        120
+      ],
+      "section": "Foreign catalog",
+      "holdings": [
+        {
+          "description": "Museo de La Plata specimen",
+          "provenance": "Museo de La Plata",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 250
+            }
+          ]
+        },
+        {
+          "description": "Museo de La Plata specimen",
+          "provenance": "Museo de La Plata",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 12
+            }
+          ]
+        }
+      ],
+      "name": "Toluca",
+      "classification": "Hierro meteórico (siderita)",
+      "locality": "Méjico.",
+      "eventDate": null,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Toluca",
+        "meteoriteCode": "24018",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24018",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-1a3871c4-0c05-4503-8fdc-581cf01b3728",
+      "catalogId": "kantor-1920",
+      "entryOrder": 11,
+      "reportedNumber": "12",
+      "catalogPages": [
+        120
+      ],
+      "section": "Foreign catalog",
+      "holdings": [
+        {
+          "description": "Museo de La Plata specimen",
+          "provenance": "Museo de La Plata",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 85
+            }
+          ]
+        }
+      ],
+      "name": "Hex River",
+      "classification": "Hierro meteórico (siderita)",
+      "locality": "Mountains Kapland, Africa.",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-cd764153-71a6-467c-b997-3d8c3e6b833b",
+      "catalogId": "kantor-1920",
+      "entryOrder": 12,
+      "reportedNumber": "13",
+      "catalogPages": [
+        120
+      ],
+      "section": "Foreign catalog",
+      "holdings": [
+        {
+          "description": "Museo de La Plata specimen",
+          "provenance": "Museo de La Plata",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 60
+            }
+          ]
+        }
+      ],
+      "name": "Nelson County",
+      "classification": "Hierro meteórico (siderita)",
+      "locality": "Estados Unidos.",
+      "eventDate": null,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Nelson County",
+        "meteoriteCode": "16942",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16942",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-fd20acf7-fbfa-4128-9b32-a6df635f58a5",
+      "catalogId": "kantor-1920",
+      "entryOrder": 13,
+      "reportedNumber": "14",
+      "catalogPages": [
+        120
+      ],
+      "section": "Foreign catalog",
+      "holdings": [
+        {
+          "description": "Museo de La Plata specimen",
+          "provenance": "Museo de La Plata",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 725
+            }
+          ]
+        }
+      ],
+      "name": "Roussoumuski",
+      "classification": "Hierro meteórico (siderita)",
+      "locality": "Moscou.",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a43c6c19-cb9d-4bd1-a66f-03d9793dec9a",
+      "catalogId": "kantor-1920",
+      "entryOrder": 14,
+      "reportedNumber": "15",
+      "catalogPages": [
+        120
+      ],
+      "section": "Foreign catalog",
+      "holdings": [
+        {
+          "description": "Museo de La Plata specimen",
+          "provenance": "Museo de La Plata",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 81
+            }
+          ]
+        }
+      ],
+      "name": "Missouri",
+      "classification": "Siderolita",
+      "locality": "Miney, Estados Unidos.",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-61173860-455d-4ebf-9db9-1410f3570f38",
+      "catalogId": "kantor-1920",
+      "entryOrder": 15,
+      "reportedNumber": "16",
+      "catalogPages": [
+        120
+      ],
+      "section": "Foreign catalog",
+      "holdings": [
+        {
+          "description": "Museo de La Plata specimen",
+          "provenance": "Museo de La Plata",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 27
+            }
+          ]
+        }
+      ],
+      "name": "Krasnoiarsk",
+      "classification": "Siderolita",
+      "locality": "Siberia.",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-179e8e0a-dfa5-4d01-9e83-7defd11aba96",
+      "catalogId": "kantor-1920",
+      "entryOrder": 16,
+      "reportedNumber": "17",
+      "catalogPages": [
+        120
+      ],
+      "section": "Foreign catalog",
+      "holdings": [
+        {
+          "description": "Museo de La Plata specimen",
+          "provenance": "Museo de La Plata",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 11
+            }
+          ]
+        }
+      ],
+      "name": "Vaca Muerta",
+      "classification": "Siderolita",
+      "locality": "Sierra de Chaco, Chile.",
+      "eventDate": null,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Vaca Muerta",
+        "meteoriteCode": "24142",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24142",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-2da70964-2497-4dba-bfe7-d22b448666d3",
+      "catalogId": "kantor-1920",
+      "entryOrder": 17,
+      "reportedNumber": "18 y 19",
+      "catalogPages": [
+        120
+      ],
+      "section": "Foreign catalog",
+      "holdings": [
+        {
+          "description": "Museo de La Plata specimen",
+          "provenance": "Museo de La Plata",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 40
+            }
+          ]
+        },
+        {
+          "description": "Museo de La Plata specimen",
+          "provenance": "Museo de La Plata",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 22
+            }
+          ]
+        }
+      ],
+      "name": "Alten Finmarken",
+      "classification": "Siderolita",
+      "locality": "Noruega.",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6cd66355-b028-4a60-85c9-cdbaddc3973b",
+      "catalogId": "kantor-1920",
+      "entryOrder": 18,
+      "reportedNumber": "20",
+      "catalogPages": [
+        121
+      ],
+      "section": "Foreign catalog",
+      "holdings": [
+        {
+          "description": "Museo de La Plata specimen",
+          "provenance": "Museo de La Plata",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 60
+            }
+          ]
+        }
+      ],
+      "name": "Tabory",
+      "classification": "Piedra meteórica (aerolito), condrita brechada esferolítica",
+      "locality": "Oschansk-Perm, Rusia.",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e9f2af3b-ae9f-441a-bf6c-12ae3cb22f39",
+      "catalogId": "kantor-1920",
+      "entryOrder": 19,
+      "reportedNumber": "21",
+      "catalogPages": [
+        121
+      ],
+      "section": "Foreign catalog",
+      "holdings": [
+        {
+          "description": "Museo de La Plata specimen",
+          "provenance": "Museo de La Plata",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 5
+            }
+          ]
+        }
+      ],
+      "name": "Oakley",
+      "classification": "Piedra meteórica (aerolito), condrita cristalina",
+      "locality": "Kansas.",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-3438cbd9-145c-4686-a877-8e5452b389a6",
+      "catalogId": "kantor-1920",
+      "entryOrder": 20,
+      "reportedNumber": "22",
+      "catalogPages": [
+        121
+      ],
+      "section": "Foreign catalog",
+      "holdings": [
+        {
+          "description": "Museo de La Plata specimen",
+          "provenance": "Museo de La Plata",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 6
+            }
+          ]
+        }
+      ],
+      "name": "Kernouve",
+      "classification": "Piedra meteórica (aerolito), condrita cristalina",
+      "locality": "Cléguérec, Vanne, Francia.",
+      "eventDate": null,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Kernouve",
+        "meteoriteCode": "12284",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12284",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-dbf8db4f-cb58-4eb4-8195-5c344a8bbe16",
+      "catalogId": "kantor-1920",
+      "entryOrder": 21,
+      "reportedNumber": "23",
+      "catalogPages": [
+        121
+      ],
+      "section": "Foreign catalog",
+      "holdings": [
+        {
+          "description": "Museo de La Plata specimen",
+          "provenance": "Museo de La Plata",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 16
+            }
+          ]
+        }
+      ],
+      "name": "Authon",
+      "classification": "Piedra meteórica (aerolito), condrita esférica",
+      "locality": "Lancé, Pont Loiselle, Prunay, Loire et Chaire, Francia.",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-4012c4a3-9456-483c-bb14-ecec4a75757b",
+      "catalogId": "kantor-1920",
+      "entryOrder": 22,
+      "reportedNumber": "24",
+      "catalogPages": [
+        121
+      ],
+      "section": "Foreign catalog",
+      "holdings": [
+        {
+          "description": "Museo de La Plata specimen",
+          "provenance": "Museo de La Plata",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 108
+            }
+          ]
+        }
+      ],
+      "name": "Bjurboele",
+      "classification": "Condrita esférica",
+      "locality": "Finlandia.",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-110e663e-2828-4b03-8fba-46621eb2fca7",
+      "catalogId": "kantor-1920",
+      "entryOrder": 23,
+      "reportedNumber": "25",
+      "catalogPages": [
+        121
+      ],
+      "section": "Foreign catalog",
+      "holdings": [
+        {
+          "description": "Museo de La Plata specimen",
+          "provenance": "Museo de La Plata",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 16
+            }
+          ]
+        }
+      ],
+      "name": "La Bécasse",
+      "classification": "Piedra meteórica (aerolito)",
+      "locality": "Indre, Francia.",
+      "eventDate": null,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "La Bécasse",
+        "meteoriteCode": "12392",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12392",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-e4f0c4c4-3753-48bf-bdac-ac7b417acfe4",
+      "catalogId": "kantor-1920",
+      "entryOrder": 24,
+      "reportedNumber": "26",
+      "catalogPages": [
+        121
+      ],
+      "section": "Foreign catalog",
+      "holdings": [
+        {
+          "description": "Museo de La Plata specimen",
+          "provenance": "Museo de La Plata",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 77
+            }
+          ]
+        }
+      ],
+      "name": "Mocs",
+      "classification": "Piedra meteórica (aerolito)",
+      "locality": "Kolos, Hungría.",
+      "eventDate": null,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Mocs",
+        "meteoriteCode": "16709",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16709",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-7c405dea-cb79-4533-a824-e619228515b8",
+      "catalogId": "kantor-1920",
+      "entryOrder": 25,
+      "reportedNumber": "27 y 28",
+      "catalogPages": [
+        121
+      ],
+      "section": "Foreign catalog",
+      "holdings": [
+        {
+          "description": "Museo de La Plata specimen",
+          "provenance": "Museo de La Plata",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 21
+            }
+          ]
+        },
+        {
+          "description": "Museo de La Plata specimen",
+          "provenance": "Museo de La Plata",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 3
+            }
+          ]
+        }
+      ],
+      "name": "Pultusk",
+      "classification": "Piedra meteórica (aerolito)",
+      "locality": "Ostrolenko, Polonia.",
+      "eventDate": null,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Pultusk",
+        "meteoriteCode": "18901",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18901",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-2695c052-5658-4574-9790-40841849b986",
+      "catalogId": "kantor-1920",
+      "entryOrder": 26,
+      "reportedNumber": "29",
+      "catalogPages": [
+        121
+      ],
+      "section": "Foreign catalog",
+      "holdings": [
+        {
+          "description": "Museo de La Plata specimen",
+          "provenance": "Museo de La Plata",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 275
+            }
+          ]
+        }
+      ],
+      "name": "Deniliquin",
+      "classification": "Piedra meteórica (aerolito), condrita intermediaria",
+      "locality": "Barratta, New South Wales, Australia.",
+      "eventDate": null,
+      "confidence": "medium"
+    },
+    {
+      "id": "obs-1c3559b4-ef90-457b-aab4-7f6017c7f541",
+      "catalogId": "kantor-1920",
+      "entryOrder": 27,
+      "reportedNumber": "30",
+      "catalogPages": [
+        122
+      ],
+      "section": "Foreign catalog",
+      "holdings": [
+        {
+          "description": "Museo de La Plata specimen",
+          "provenance": "Museo de La Plata",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 4
+            }
+          ]
+        }
+      ],
+      "name": "New Concord",
+      "classification": "Piedra meteórica (aerolito), condrita intermediaria",
+      "locality": "Ohio, Estados Unidos.",
+      "eventDate": null,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "New Concord",
+        "meteoriteCode": "16953",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16953",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-7b554145-1ae1-48fa-87ef-80a285124d21",
+      "catalogId": "kantor-1920",
+      "entryOrder": 28,
+      "reportedNumber": "31",
+      "catalogPages": [
+        122
+      ],
+      "section": "Foreign catalog",
+      "holdings": [
+        {
+          "description": "Museo de La Plata specimen",
+          "provenance": "Museo de La Plata",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 585
+            }
+          ]
+        }
+      ],
+      "name": "Ness County",
+      "classification": "Piedra meteórica (aerolito)",
+      "locality": "Kansas, Estados Unidos.",
+      "eventDate": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-bcdb1ae5-bdb9-4cb8-9334-40a80326cd5c",
+      "catalogId": "kantor-1920",
+      "entryOrder": 29,
+      "reportedNumber": null,
+      "catalogPages": [
+        122
+      ],
+      "section": "Recent acquisitions",
+      "holdings": [
+        {
+          "description": "Museo de La Plata specimen",
+          "provenance": "Museo de La Plata",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 1371
+            }
+          ]
+        }
+      ],
+      "name": "Bendego",
+      "classification": "Meteorito; classification not printed in the acquisition statement",
+      "locality": "Bahía, Brasil.",
+      "eventDate": null,
+      "confidence": "medium"
+    },
+    {
+      "id": "obs-61dfdde3-e70e-4100-8435-82aad88bae73",
+      "catalogId": "kantor-1920",
+      "entryOrder": 30,
+      "reportedNumber": null,
+      "catalogPages": [
+        122
+      ],
+      "section": "Recent acquisitions",
+      "holdings": [
+        {
+          "description": "Museo de La Plata specimen",
+          "provenance": "Museo de La Plata",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 5400
+            }
+          ]
+        },
+        {
+          "description": "Museo de La Plata specimen",
+          "provenance": "Museo de La Plata",
+          "count": 1,
+          "weights": [
+            {
+              "grams": 715
+            }
+          ]
+        }
+      ],
+      "name": "Tarapacá",
+      "classification": "Meteorito; classification not printed in the acquisition statement",
+      "locality": "Not printed in the acquisition statement.",
+      "eventDate": null,
+      "confidence": "medium"
     },
     {
       "id": "obs-8b0778b6-4c26-4062-8b12-73ac05ac659e",

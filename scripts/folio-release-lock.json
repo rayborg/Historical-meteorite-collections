@@ -1,6 +1,20 @@
 {
   "schemaVersion": 1,
   "catalogs": {
+    "anderson-1913": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "basis": null,
+      "basisUrl": null,
+      "pageIds": []
+    },
+    "astapovich-1938": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "basis": null,
+      "basisUrl": null,
+      "pageIds": []
+    },
     "asu-2024-09": {
       "displayPolicy": "blocked",
       "rightsStatus": "undetermined",
@@ -128,6 +142,13 @@
       "pageIds": []
     },
     "kanagawa-1996": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "basis": null,
+      "basisUrl": null,
+      "pageIds": []
+    },
+    "kantor-1920": {
       "displayPolicy": "blocked",
       "rightsStatus": "undetermined",
       "basis": null,

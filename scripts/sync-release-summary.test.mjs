@@ -16,6 +16,11 @@ import {
   syncDocuments,
 } from "./sync-release-summary.mjs";
 
+const [productionCatalog, productionFolios] = await Promise.all([
+  readFile(new URL("../data/catalog.json", import.meta.url), "utf8").then(JSON.parse),
+  readFile(new URL("../data/folios.json", import.meta.url), "utf8").then(JSON.parse),
+]);
+
 function fixture() {
   return {
     catalog: {
@@ -102,6 +107,47 @@ test("derives release counts, page spans, MetBull status, and folios from record
   assert.deepEqual(summary.folios.catalogs.map(({ catalogId }) => catalogId), ["nininger-alpha", "nininger-beta"]);
   assert.equal(summary.folios.pageCount, folios.catalogs["nininger-alpha"].pages.length);
   assert.equal(summary.folios.displayCatalogCount, 1);
+});
+
+test("locks the production next-three release summary", () => {
+  const summary = buildReleaseSummary(productionCatalog, productionFolios);
+
+  assert.deepEqual({
+    schemaVersion: summary.schemaVersion,
+    catalogCount: summary.catalogCount,
+    recordCount: summary.recordCount,
+    sourcePageCount: summary.sourcePageCount,
+    citedPageCount: summary.citedPageCount,
+    metbull: summary.metbull,
+    pending: summary.recordCount - summary.metbull.reviewed,
+    folioCatalogCount: summary.folios.catalogs.length,
+    folioPageCount: summary.folios.pageCount,
+  }, {
+    schemaVersion: 6,
+    catalogCount: 33,
+    recordCount: 13542,
+    sourcePageCount: 1284,
+    citedPageCount: 1137,
+    metbull: { reviewed: 10078, resolved: 9949, unresolved: 129 },
+    pending: 3464,
+    folioCatalogCount: 33,
+    folioPageCount: 49,
+  });
+  assert.deepEqual(
+    summary.catalogs
+      .filter(({ catalogId }) => ["anderson-1913", "astapovich-1938", "kantor-1920"].includes(catalogId))
+      .map(({ catalogId, recordCount, sourcePageCount, citedPageCount }) => ({
+        catalogId,
+        recordCount,
+        sourcePageCount,
+        citedPageCount,
+      })),
+    [
+      { catalogId: "anderson-1913", recordCount: 57, sourcePageCount: 26, citedPageCount: 13 },
+      { catalogId: "astapovich-1938", recordCount: 90, sourcePageCount: 3, citedPageCount: 2 },
+      { catalogId: "kantor-1920", recordCount: 30, sourcePageCount: 35, citedPageCount: 16 },
+    ],
+  );
 });
 
 test("does not trust descriptor aggregate counts", () => {

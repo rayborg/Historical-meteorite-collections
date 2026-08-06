@@ -109,14 +109,18 @@ test("real catalog Allende search retains reviewed names and synonyms without Al
 
 test("real release locks all catalogs and chronological dropdown entries", () => {
   const entries = app.catalogSelectorEntries(registry);
-  assert.equal(entries.length, 30);
+  assert.equal(entries.length, 33);
   assert.deepEqual(entries.map(([id]) => id), [
     "lucas-1813", "chladni-1819", "chladni-1825", "haidinger-1859", "buchner-1863",
     "nordenskiold-1870", "ward-1881", "ball-1882", "usnm-1886", "hovey-1896", "washington-1897",
-    "tassin-1902", "hogbom-1902", "farrington-1903", "ward-1904", "schreiter-1912", "foote-1912", "farrington-1916", "merrill-1916",
-    "prior-1923", "palache-1926", "nininger-1933", "reeds-1937", "barnes-1940", "nininger-1950", "mason-1964", "huss-1976",
-    "huss-1986", "kanagawa-1996", "asu-2024-09",
+    "tassin-1902", "hogbom-1902", "farrington-1903", "ward-1904", "schreiter-1912", "foote-1912",
+    "anderson-1913", "farrington-1916", "merrill-1916", "kantor-1920", "prior-1923", "palache-1926",
+    "nininger-1933", "reeds-1937", "astapovich-1938", "barnes-1940", "nininger-1950", "mason-1964",
+    "huss-1976", "huss-1986", "kanagawa-1996", "asu-2024-09",
   ]);
+  assert.equal(app.catalogDropdownLabel(registry["anderson-1913"], "anderson-1913"), "Anderson (1913)");
+  assert.equal(app.catalogDropdownLabel(registry["kantor-1920"], "kantor-1920"), "Kantor (1920)");
+  assert.equal(app.catalogDropdownLabel(registry["astapovich-1938"], "astapovich-1938"), "Astapovich (1938)");
   assert.equal(app.catalogDropdownLabel(registry["merrill-1916"], "merrill-1916"), "Merrill (1916)");
   assert.equal(app.catalogDropdownLabel(registry["ward-1881"], "ward-1881"), "Ward (1881)");
   assert.equal(app.catalogDropdownLabel(registry["ward-1904"], "ward-1904"), "Ward (1904)");
@@ -126,6 +130,32 @@ test("real release locks all catalogs and chronological dropdown entries", () =>
   assert.equal(app.catalogDropdownLabel(registry["palache-1926"], "palache-1926"), "Palache (1926)");
   assert.equal(app.catalogDropdownLabel(registry["reeds-1937"], "reeds-1937"), "Reeds (1937)");
   assert.equal(app.catalogDropdownLabel(registry["kanagawa-1996"], "kanagawa-1996"), "Kanagawa (1996)");
+});
+
+test("new facts-only catalogs filter, search, sort, and retain catalog-scoped pages", () => {
+  const expected = {
+    "anderson-1913": { count: 57, query: "Arltunga", id: "obs-725eab11-ce66-43fb-be5b-8158faeb20a6", pages: [54] },
+    "astapovich-1938": { count: 90, query: "Laurentjewka", id: "obs-e4ea64d7-83e5-4cd3-bcbd-f6dcb3e475ff", pages: [196] },
+    "kantor-1920": { count: 30, query: "Caperr Aiken", id: "obs-8a2c7865-6048-4576-b52f-17bc489d3506", pages: [107, 108, 109] },
+  };
+
+  for (const [catalogId, item] of Object.entries(expected)) {
+    const filtered = app.filterRecords(records, { query: "", catalog: catalogId, min: null, max: null, sort: app.DEFAULT_SORT });
+    assert.equal(filtered.length, item.count);
+    const searched = app.filterRecords(records, { query: item.query, catalog: catalogId, min: null, max: null, sort: app.DEFAULT_SORT });
+    assert.deepEqual(searched.map(({ id }) => id), [item.id]);
+    assert.deepEqual(app.recordCatalogPages(searched[0]), item.pages);
+  }
+
+  const weighted = app.filterRecords(records, {
+    query: "",
+    catalog: "kantor-1920",
+    min: null,
+    max: null,
+    sort: "weight-desc",
+  });
+  assert.equal(weighted[0].id, expected["kantor-1920"].id);
+  assert.deepEqual(app.recordMasses(weighted[0]), [114000]);
 });
 
 test("chronological mapping copies pairs and excludes equal-year comparisons", () => {
