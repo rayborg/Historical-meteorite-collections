@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:hmc:schema:specimen-card-projections:1",
-  "title": "Historical Meteorite Collection reviewed specimen-card display projections",
+  "$id": "urn:hmc:schema:specimen-card-projections:2",
+  "title": "Historical Meteorite Collection reviewed atomic specimen-card display projections",
   "type": "object",
   "additionalProperties": false,
   "required": ["metadata", "projections"],
@@ -9,8 +9,8 @@
     "metadata": { "$ref": "#/$defs/metadata" },
     "projections": {
       "type": "array",
-      "minItems": 1699,
-      "maxItems": 1699,
+      "minItems": 1790,
+      "maxItems": 1790,
       "items": { "$ref": "#/$defs/projection" }
     }
   },
@@ -18,27 +18,27 @@
     "metadata": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["schemaVersion", "scope", "catalogSchemaVersion", "sourceRecordCount", "sourceCatalogSha256", "projectionCount", "projectedCardCount"],
+      "required": ["schemaVersion", "scope", "catalogSchemaVersion", "sourceRecordCount", "sourceCatalogSha256", "projectionCount", "atomicCardCount", "sourceContextCardCount"],
       "properties": {
-        "schemaVersion": { "const": 1 },
-        "scope": { "const": "reviewed-specimen-card-display-projections" },
+        "schemaVersion": { "const": 2 },
+        "scope": { "const": "reviewed-atomic-specimen-card-display-projections" },
         "catalogSchemaVersion": { "const": 6 },
         "sourceRecordCount": { "const": 13542 },
         "sourceCatalogSha256": { "const": "3928a876a73c3ae74e9a822df0c2bded3f0cdfeb506874ebec4fc3877017a811" },
-        "projectionCount": { "const": 1699 },
-        "projectedCardCount": { "const": 6316 }
+        "projectionCount": { "const": 1790 },
+        "atomicCardCount": { "const": 6403 },
+        "sourceContextCardCount": { "const": 1510 }
       }
     },
     "projection": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["parentRecordId", "retainParentContext", "cards"],
+      "required": ["parentRecordId", "cards"],
       "properties": {
         "parentRecordId": {
           "type": "string",
           "pattern": "^obs-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
         },
-        "retainParentContext": { "type": "boolean" },
         "cards": {
           "type": "array",
           "minItems": 1,
@@ -49,16 +49,35 @@
     "card": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["holdingPath", "massPath"],
+      "required": ["holdingPath", "clause", "massPath"],
       "properties": {
         "holdingPath": {
           "type": "string",
           "pattern": "^holdings\\[(0|[1-9][0-9]*)\\]$"
         },
+        "clause": { "$ref": "#/$defs/clause" },
         "massPath": {
-          "type": "string",
-          "pattern": "^holdings\\[(0|[1-9][0-9]*)\\]\\.(?:weight|weights\\[(0|[1-9][0-9]*)\\])\\.grams$"
+          "anyOf": [
+            { "type": "null" },
+            {
+              "type": "string",
+              "pattern": "^holdings\\[(0|[1-9][0-9]*)\\]\\.(?:weight|weights\\[(0|[1-9][0-9]*)\\])\\.grams$"
+            }
+          ]
         }
+      }
+    },
+    "clause": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["textPath", "start", "end"],
+      "properties": {
+        "textPath": {
+          "type": "string",
+          "pattern": "^holdings\\[(0|[1-9][0-9]*)\\]\\.(?:description|designation)$"
+        },
+        "start": { "type": "integer", "minimum": 0 },
+        "end": { "type": "integer", "minimum": 1 }
       }
     }
   }

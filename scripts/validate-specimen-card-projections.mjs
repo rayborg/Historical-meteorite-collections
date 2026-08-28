@@ -6,24 +6,44 @@ const LOCKS = Object.freeze({
   catalogSchemaVersion: 6,
   sourceRecordCount: 13542,
   sourceCatalogSha256: "3928a876a73c3ae74e9a822df0c2bded3f0cdfeb506874ebec4fc3877017a811",
-  projectionCount: 1699,
-  projectedCardCount: 6316,
-  projectionSetSha256: "25203ba07c606acfa9d128916ccd3cec0ea349db92a09602076d61d51fbb3aef",
+  projectionCount: 1790,
+  atomicCardCount: 6403,
+  sourceContextCardCount: 1510,
+  projectionSetSha256: "f7fab83f8153cb843ddfb20f78ac943edc325fb12b6f9eab70414575a5919086",
+});
+export const REVIEWED_AUDIT_COVERAGE = Object.freeze({
+  candidateCount: 1038,
+  candidateSetSha256: "b9befbead26b076d3c9c7a80e0da7d685a2a79f35674016d197239004bcae786",
+  projectedParentCount: 370,
+  contextOnlyExcludedParentCount: 668,
+  atomicCardCount: 1056,
+  massBoundCardCount: 922,
+  masslessCardCount: 134,
+  sourceContextCardCount: 370,
+  boundaries: Object.freeze([
+    Object.freeze({ name: "prior", candidates: 226, projected: 223, excluded: 3, cards: 665, candidateSetSha256: "2b2bf8a08e85f756b61180385b8de61632dc4becc23b63160546ebe0785f7f78" }),
+    Object.freeze({ name: "palache-merrill", candidates: 462, projected: 71, excluded: 391, cards: 126, candidateSetSha256: "db490176b7293d4b4ac2d5f6fe79dc7e156682bce800170f034a6b7225161024" }),
+    Object.freeze({ name: "remaining", candidates: 294, projected: 26, excluded: 268, cards: 55, candidateSetSha256: "ac440ebe856454ec4bfcd8f612ced0b62860f11ee6745e171a058a6286faaad3" }),
+    Object.freeze({ name: "multiholding", candidates: 56, projected: 50, excluded: 6, cards: 210, candidateSetSha256: "5591fb03e3b5beb601ba9f5735e760f238b607541edecdad014d402a8ff8f22f" }),
+  ]),
 });
 const PRIOR_630_ID = "obs-344d0b6d-920e-403f-8fd5-c113fc05291d";
+const PRIOR_630_CARDS_SHA256 = "839f6cb10b69c5fff3418ed5d0b17143442b18384b3084a5479435ba3077f9c7";
 const REEDS_366_ID = "obs-b02789ea-869e-447a-97cc-28c2c6900e88";
-const REEDS_366_MASSES = [28.9, 310.1, 142, 30, 9.6, 124.5, 2.3, 128.5, 658.7, 51.2];
 const ROOT_KEYS = ["metadata", "projections"];
 const METADATA_KEYS = [
   "schemaVersion", "scope", "catalogSchemaVersion", "sourceRecordCount", "sourceCatalogSha256",
-  "projectionCount", "projectedCardCount",
+  "projectionCount", "atomicCardCount", "sourceContextCardCount",
 ];
-const PROJECTION_KEYS = ["parentRecordId", "retainParentContext", "cards"];
-const CARD_KEYS = ["holdingPath", "massPath"];
+const PROJECTION_KEYS = ["parentRecordId", "cards"];
+const CARD_KEYS = ["holdingPath", "clause", "massPath"];
+const CLAUSE_KEYS = ["textPath", "start", "end"];
 const HOLDING_PATH = /^holdings\[(0|[1-9][0-9]*)\]$/u;
+const TEXT_PATH = /^holdings\[(0|[1-9][0-9]*)\]\.(description|designation)$/u;
 const ARRAY_MASS_PATH = /^holdings\[(0|[1-9][0-9]*)\]\.weights\[(0|[1-9][0-9]*)\]\.grams$/u;
 const SCALAR_MASS_PATH = /^holdings\[(0|[1-9][0-9]*)\]\.weight\.grams$/u;
 const RECORD_ID = /^obs-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/u;
+const MEANINGFUL_TEXT = /[\p{L}\p{N}]/u;
 
 function fail(message) {
   throw new Error(`specimen-card projections invalid: ${message}`);
@@ -41,36 +61,99 @@ function sha256(value) {
   return createHash("sha256").update(value).digest("hex");
 }
 
-function massEntries(record, recordModel) {
-  return record.holdings.flatMap((holding, holdingIndex) => {
-    if (recordModel === "catalog-item") {
-      return Number.isFinite(holding.weight?.grams)
-        ? [[`holdings[${holdingIndex}].weight.grams`, holding.weight.grams]]
-        : [];
+function resolvePath(value, path) {
+  return path.match(/[A-Za-z]+|[0-9]+/gu).reduce((current, key) => current?.[key], value);
+}
+
+function splitsSurrogatePair(text, index) {
+  if (index <= 0 || index >= text.length) return false;
+  const before = text.charCodeAt(index - 1);
+  const after = text.charCodeAt(index);
+  return before >= 0xd800 && before <= 0xdbff && after >= 0xdc00 && after <= 0xdfff;
+}
+
+function compareCards(left, right) {
+  const leftHolding = Number(left.holdingPath.match(HOLDING_PATH)[1]);
+  const rightHolding = Number(right.holdingPath.match(HOLDING_PATH)[1]);
+  if (leftHolding !== rightHolding) return leftHolding - rightHolding;
+  if (left.clause.textPath !== right.clause.textPath) return left.clause.textPath < right.clause.textPath ? -1 : 1;
+  if (left.clause.start !== right.clause.start) return left.clause.start - right.clause.start;
+  if (left.clause.end !== right.clause.end) return left.clause.end - right.clause.end;
+  const leftMass = left.massPath || "";
+  const rightMass = right.massPath || "";
+  return leftMass < rightMass ? -1 : leftMass > rightMass ? 1 : 0;
+}
+
+function numericMassPaths(holding, holdingPath, recordModel) {
+  if (recordModel === "catalog-item") {
+    return Number.isFinite(holding.weight?.grams) ? [`${holdingPath}.weight.grams`] : [];
+  }
+  return (holding.weights || []).flatMap((weight, index) =>
+    Number.isFinite(weight.grams) ? [`${holdingPath}.weights[${index}].grams`] : []);
+}
+
+export function deriveSourceContext(projection, record, recordModel) {
+  const selectedHoldings = new Set(projection.cards.map(({ holdingPath }) => holdingPath));
+  const selectedMasses = new Set(projection.cards.flatMap(({ massPath }) => massPath === null ? [] : [massPath]));
+  const spansByTextPath = new Map();
+  for (const card of projection.cards) {
+    const spans = spansByTextPath.get(card.clause.textPath) || [];
+    spans.push([card.clause.start, card.clause.end]);
+    spansByTextPath.set(card.clause.textPath, spans);
+  }
+
+  for (const [holdingIndex, holding] of record.holdings.entries()) {
+    const holdingPath = `holdings[${holdingIndex}]`;
+    if (!selectedHoldings.has(holdingPath)) return true;
+    for (const field of ["designation", "description", "provenance"]) {
+      const text = holding[field];
+      if (typeof text !== "string" || !MEANINGFUL_TEXT.test(text)) continue;
+      const spans = spansByTextPath.get(`${holdingPath}.${field}`) || [];
+      if (spans.length === 0) return true;
+      let offset = 0;
+      for (const [start, end] of spans) {
+        if (MEANINGFUL_TEXT.test(text.slice(offset, start))) return true;
+        offset = end;
+      }
+      if (MEANINGFUL_TEXT.test(text.slice(offset))) return true;
     }
-    return (holding.weights || []).flatMap((weight, weightIndex) => Number.isFinite(weight.grams)
-      ? [[`holdings[${holdingIndex}].weights[${weightIndex}].grams`, weight.grams]]
-      : []);
-  });
+    if (Number.isInteger(holding.count) && holding.count > 1) return true;
+    if (numericMassPaths(holding, holdingPath, recordModel).some((path) => !selectedMasses.has(path))) return true;
+  }
+  return false;
 }
 
 function parseCard(card, record, recordModel, location) {
   assertExactKeys(card, CARD_KEYS, location);
-  if (typeof card.holdingPath !== "string" || typeof card.massPath !== "string") fail(`${location} paths must be strings`);
+  assertExactKeys(card.clause, CLAUSE_KEYS, `${location}.clause`);
+  if (typeof card.holdingPath !== "string") fail(`${location}.holdingPath must be a string`);
   const holdingMatch = card.holdingPath.match(HOLDING_PATH);
   if (!holdingMatch) fail(`${location}.holdingPath is malformed`);
-  const massMatch = card.massPath.match(recordModel === "catalog-item" ? SCALAR_MASS_PATH : ARRAY_MASS_PATH);
-  if (!massMatch) fail(`${location}.massPath is unsupported for ${recordModel}`);
   const holdingIndex = Number(holdingMatch[1]);
-  const massHoldingIndex = Number(massMatch[1]);
-  if (holdingIndex !== massHoldingIndex) fail(`${location} holdingPath and massPath refer to different holdings`);
   const holding = record.holdings[holdingIndex];
   if (!holding) fail(`${location}.holdingPath is dangling`);
   if (recordModel === "catalog-item" && holding.kind !== "specimen") fail(`${location} resolves to a non-specimen catalog item`);
-  const weightIndex = recordModel === "catalog-item" ? -1 : Number(massMatch[2]);
-  const mass = recordModel === "catalog-item" ? holding.weight?.grams : holding.weights?.[weightIndex]?.grams;
+
+  const textMatch = typeof card.clause.textPath === "string" ? card.clause.textPath.match(TEXT_PATH) : null;
+  if (!textMatch) fail(`${location}.clause.textPath is malformed or unsupported`);
+  if (Number(textMatch[1]) !== holdingIndex) fail(`${location}.clause.textPath refers to a different holding`);
+  const text = resolvePath(record, card.clause.textPath);
+  if (typeof text !== "string") fail(`${location}.clause.textPath does not resolve to text`);
+  const { start, end } = card.clause;
+  if (!Number.isInteger(start) || !Number.isInteger(end) || start < 0 || end <= start || end > text.length) {
+    fail(`${location}.clause must be a nonempty UTF-16 half-open range within its source text`);
+  }
+  if (splitsSurrogatePair(text, start) || splitsSurrogatePair(text, end)) fail(`${location}.clause splits a UTF-16 surrogate pair`);
+  if (!MEANINGFUL_TEXT.test(text.slice(start, end))) fail(`${location}.clause has no alphanumeric source content`);
+
+  if (card.massPath === null) return { holdingIndex, text, mass: null };
+  if (typeof card.massPath !== "string") fail(`${location}.massPath must be a string or null`);
+  const massMatch = card.massPath.match(recordModel === "catalog-item" ? SCALAR_MASS_PATH : ARRAY_MASS_PATH);
+  if (!massMatch) fail(`${location}.massPath is unsupported for ${recordModel}`);
+  if (Number(massMatch[1]) !== holdingIndex) fail(`${location}.massPath refers to a different holding`);
+  const mass = resolvePath(record, card.massPath);
   if (!Number.isFinite(mass) || mass <= 0) fail(`${location}.massPath does not resolve to a positive numeric mass`);
-  return { holdingIndex, weightIndex, mass };
+  return { holdingIndex, text, mass };
 }
 
 export function serializeSpecimenCardProjections(document) {
@@ -81,13 +164,14 @@ export function validateSpecimenCardProjections(document, catalog, catalogText) 
   assertExactKeys(document, ROOT_KEYS, "root");
   assertExactKeys(document.metadata, METADATA_KEYS, "metadata");
   const expectedMetadata = {
-    schemaVersion: 1,
-    scope: "reviewed-specimen-card-display-projections",
+    schemaVersion: 2,
+    scope: "reviewed-atomic-specimen-card-display-projections",
     catalogSchemaVersion: LOCKS.catalogSchemaVersion,
     sourceRecordCount: LOCKS.sourceRecordCount,
     sourceCatalogSha256: LOCKS.sourceCatalogSha256,
     projectionCount: LOCKS.projectionCount,
-    projectedCardCount: LOCKS.projectedCardCount,
+    atomicCardCount: LOCKS.atomicCardCount,
+    sourceContextCardCount: LOCKS.sourceContextCardCount,
   };
   for (const key of METADATA_KEYS) {
     if (document.metadata[key] !== expectedMetadata[key]) fail(`metadata.${key} differs from the production lock`);
@@ -100,71 +184,81 @@ export function validateSpecimenCardProjections(document, catalog, catalogText) 
   const catalogModels = new Map(catalog.metadata.catalogs.map(({ id, recordModel }) => [id, recordModel]));
   const records = new Map(catalog.records.map((record, index) => [record.id, { record, index }]));
   const seenParents = new Set();
-  const seenMassPaths = new Set();
   let previousRecordIndex = -1;
-  let projectedCardCount = 0;
+  let atomicCardCount = 0;
+  let massBoundCardCount = 0;
+  let masslessCardCount = 0;
+  let sourceContextCardCount = 0;
 
   for (const [projectionIndex, projection] of document.projections.entries()) {
     const location = `projections[${projectionIndex}]`;
     assertExactKeys(projection, PROJECTION_KEYS, location);
     if (typeof projection.parentRecordId !== "string" || !RECORD_ID.test(projection.parentRecordId)) fail(`${location}.parentRecordId is invalid`);
-    if (projection.parentRecordId === PRIOR_630_ID) fail("Prior entry 630 is explicitly excluded from projections");
     if (seenParents.has(projection.parentRecordId)) fail(`${location}.parentRecordId is duplicated`);
     seenParents.add(projection.parentRecordId);
     const source = records.get(projection.parentRecordId);
     if (!source) fail(`${location}.parentRecordId is dangling`);
     if (source.index <= previousRecordIndex) fail("projections are not ordered by canonical parent order");
     previousRecordIndex = source.index;
-    if (typeof projection.retainParentContext !== "boolean") fail(`${location}.retainParentContext must be boolean`);
     if (!Array.isArray(projection.cards) || projection.cards.length === 0) fail(`${location}.cards must be nonempty`);
-    if (!projection.retainParentContext && projection.cards.length === 1) fail(`${location} would produce one display unit with no residual`);
     const recordModel = catalogModels.get(source.record.catalogId);
     if (!new Set(["catalog-item", "catalog-number", "collection-entry"]).has(recordModel)) fail(`${location} has unsupported record model ${recordModel}`);
 
-    let previousHoldingIndex = -1;
-    let previousWeightIndex = -1;
-    const selectedHoldingIndexes = new Set();
-    const selectedMassPaths = new Set();
+    const seenMassPaths = new Set();
+    const priorSpansByTextPath = new Map();
+    let previousCard = null;
     for (const [cardIndex, card] of projection.cards.entries()) {
       const cardLocation = `${location}.cards[${cardIndex}]`;
-      const parsed = parseCard(card, source.record, recordModel, cardLocation);
-      if (parsed.holdingIndex < previousHoldingIndex ||
-          (parsed.holdingIndex === previousHoldingIndex && parsed.weightIndex <= previousWeightIndex)) {
-        fail(`${location}.cards are not ordered by holding then weight index`);
-      }
-      previousHoldingIndex = parsed.holdingIndex;
-      previousWeightIndex = parsed.weightIndex;
-      selectedHoldingIndexes.add(parsed.holdingIndex);
-      if (selectedMassPaths.has(card.massPath) || seenMassPaths.has(`${projection.parentRecordId}\0${card.massPath}`)) {
-        fail(`${cardLocation}.massPath is duplicated`);
-      }
-      selectedMassPaths.add(card.massPath);
-      seenMassPaths.add(`${projection.parentRecordId}\0${card.massPath}`);
-    }
-    projectedCardCount += projection.cards.length;
-
-    if (!projection.retainParentContext) {
-      const numericMassPaths = massEntries(source.record, recordModel).map(([path]) => path);
-      if (selectedHoldingIndexes.size !== source.record.holdings.length ||
-          numericMassPaths.length !== selectedMassPaths.size ||
-          numericMassPaths.some((path) => !selectedMassPaths.has(path))) {
-        fail(`${location} may omit parent context only when every holding and numeric mass is exhausted`);
+      parseCard(card, source.record, recordModel, cardLocation);
+      if (previousCard && compareCards(previousCard, card) >= 0) fail(`${location}.cards are not in canonical holding and span order`);
+      previousCard = card;
+      const priorEnd = priorSpansByTextPath.get(card.clause.textPath);
+      if (priorEnd !== undefined && card.clause.start < priorEnd) fail(`${cardLocation}.clause overlaps another card clause`);
+      priorSpansByTextPath.set(card.clause.textPath, card.clause.end);
+      if (card.massPath === null) {
+        masslessCardCount++;
+      } else {
+        if (seenMassPaths.has(card.massPath)) fail(`${cardLocation}.massPath is duplicated`);
+        seenMassPaths.add(card.massPath);
+        massBoundCardCount++;
       }
     }
+    atomicCardCount += projection.cards.length;
+    const hasSourceContext = deriveSourceContext(projection, source.record, recordModel);
+    if (hasSourceContext) sourceContextCardCount++;
+    if (projection.cards.length + Number(hasSourceContext) < 2) fail(`${location} would produce fewer than two display units`);
   }
 
-  if (projectedCardCount !== LOCKS.projectedCardCount) fail("projected card count differs from metadata");
+  if (atomicCardCount !== LOCKS.atomicCardCount) fail("atomic card count differs from metadata");
+  if (sourceContextCardCount !== LOCKS.sourceContextCardCount) fail("derived source context count differs from metadata");
+  const prior = document.projections.find(({ parentRecordId }) => parentRecordId === PRIOR_630_ID);
+  const priorSource = records.get(PRIOR_630_ID);
+  if (!prior || prior.cards.length !== 17 || prior.cards.filter(({ massPath }) => massPath !== null).length !== 12 ||
+      prior.cards.filter(({ massPath }) => massPath === null).length !== 5 ||
+      !deriveSourceContext(prior, priorSource.record, catalogModels.get(priorSource.record.catalogId)) ||
+      sha256(JSON.stringify(prior.cards)) !== PRIOR_630_CARDS_SHA256) {
+    fail("Prior entry 630 exact 17-card plus context lock is missing or malformed");
+  }
   const reeds = document.projections.find(({ parentRecordId }) => parentRecordId === REEDS_366_ID);
-  if (!reeds || reeds.retainParentContext || reeds.cards.length !== REEDS_366_MASSES.length) fail("Reeds entry 366 lock is missing or malformed");
-  const reedsRecord = records.get(REEDS_366_ID).record;
-  const reedsMasses = reeds.cards.map((card, index) => parseCard(card, reedsRecord, "collection-entry", `Reeds 366 cards[${index}]`).mass);
-  if (reedsMasses.some((mass, index) => mass !== REEDS_366_MASSES[index])) fail("Reeds entry 366 ordered masses differ from the production lock");
+  const reedsSource = records.get(REEDS_366_ID);
+  if (!reeds || reeds.cards.length !== 10 || deriveSourceContext(reeds, reedsSource.record, catalogModels.get(reedsSource.record.catalogId))) {
+    fail("Reeds entry 366 ten-card no-context lock is missing or malformed");
+  }
+  for (const [index, card] of reeds.cards.entries()) {
+    const text = reedsSource.record.holdings[index]?.description;
+    if (card.holdingPath !== `holdings[${index}]` || card.clause.textPath !== `holdings[${index}].description` ||
+        card.clause.start !== 0 || card.clause.end !== text?.length || card.massPath !== `holdings[${index}].weights[0].grams`) {
+      fail("Reeds entry 366 cards are not full ordered holding clauses");
+    }
+  }
   if (sha256(JSON.stringify(document.projections)) !== LOCKS.projectionSetSha256) fail("projection set differs from the reviewed production lock");
 
   return {
     projectionCount: document.projections.length,
-    projectedCardCount,
-    retainedParentContextCount: document.projections.filter(({ retainParentContext }) => retainParentContext).length,
+    atomicCardCount,
+    massBoundCardCount,
+    masslessCardCount,
+    sourceContextCardCount,
   };
 }
 
@@ -178,5 +272,5 @@ if (isMain) {
   const document = JSON.parse(projectionText);
   const result = validateSpecimenCardProjections(document, JSON.parse(sourceCatalogText), sourceCatalogText);
   if (projectionText !== serializeSpecimenCardProjections(document)) fail("projection JSON is not deterministically serialized");
-  console.log(`validated ${result.projectionCount} specimen-card projections (${result.projectedCardCount} cards, ${result.retainedParentContextCount} retaining parent context)`);
+  console.log(`validated ${result.projectionCount} atomic specimen-card projections (${result.atomicCardCount} atomic cards, ${result.sourceContextCardCount} source-context cards)`);
 }

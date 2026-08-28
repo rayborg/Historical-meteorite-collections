@@ -1,7 +1,7 @@
 "use strict";
 
 const CACHE_VERSION = "20260806-2";
-const ASSET_CACHE_VERSION = "20260806-2-cards";
+const ASSET_CACHE_VERSION = "20260806-2-atomic-cards";
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "name-asc";
 const VALID_SORTS = new Set([
@@ -136,13 +136,14 @@ const FOLIO_RIGHTS_STATUSES = new Set(["undetermined", "public-domain", "no-copy
 const FOLIO_DISPLAY_RIGHTS_STATUSES = new Set(["public-domain", "no-copyright-us"]);
 const SPECIMEN_CARD_ROOT_FIELDS = new Set(["metadata", "projections"]);
 const SPECIMEN_CARD_METADATA_FIELDS = new Set([
-  "schemaVersion", "scope", "catalogSchemaVersion", "sourceRecordCount", "sourceCatalogSha256", "projectionCount", "projectedCardCount"
+  "schemaVersion", "scope", "catalogSchemaVersion", "sourceRecordCount", "sourceCatalogSha256", "projectionCount", "atomicCardCount", "sourceContextCardCount"
 ]);
-const SPECIMEN_CARD_PROJECTION_FIELDS = new Set(["parentRecordId", "retainParentContext", "cards"]);
-const SPECIMEN_CARD_FIELDS = new Set(["holdingPath", "massPath"]);
+const SPECIMEN_CARD_PROJECTION_FIELDS = new Set(["parentRecordId", "cards"]);
+const SPECIMEN_CARD_FIELDS = new Set(["holdingPath", "clause", "massPath"]);
+const SPECIMEN_CARD_CLAUSE_FIELDS = new Set(["textPath", "start", "end"]);
 const SHA256_HEX = /^[0-9a-f]{64}$/u;
 const SPECIMEN_CARD_SOURCE_CATALOG_SHA256 = "3928a876a73c3ae74e9a822df0c2bded3f0cdfeb506874ebec4fc3877017a811";
-const SPECIMEN_CARD_PROJECTION_SET_SHA256 = "25203ba07c606acfa9d128916ccd3cec0ea349db92a09602076d61d51fbb3aef";
+const SPECIMEN_CARD_PROJECTION_SET_SHA256 = "f7fab83f8153cb843ddfb20f78ac943edc325fb12b6f9eab70414575a5919086";
 const LINEAGE_ROOT_FIELDS = new Set(["metadata", "relationships"]);
 const LINEAGE_METADATA_FIELDS = new Set(["schemaVersion", "scope", "source", "collectionSeries", "methodology", "counts"]);
 const LINEAGE_SOURCE_FIELDS = new Set(["catalogSchemaVersion", "recordCount", "catalogCount", "flattenedMassObservationCount", "inventoryObservationCount"]);
@@ -1661,52 +1662,97 @@ function resolveSpecimenCardSelection(record, holdingPath, massPath) {
   return Number.isFinite(grams) ? { holding, holdingIndex, weightIndex, grams } : null;
 }
 
+function specimenCardHolding(record, holdingPath) {
+  if (!Array.isArray(record?.holdings) || typeof holdingPath !== "string") return null;
+  const match = holdingPath.match(/^holdings\[([0-9]+)\]$/u);
+  if (!match) return null;
+  const holdingIndex = Number(match[1]);
+  const holding = record.holdings[holdingIndex];
+  return holding ? { holding, holdingIndex } : null;
+}
+
+function splitsSurrogatePair(text, offset) {
+  if (offset <= 0 || offset >= text.length) return false;
+  const left = text.charCodeAt(offset - 1);
+  const right = text.charCodeAt(offset);
+  return left >= 0xd800 && left <= 0xdbff && right >= 0xdc00 && right <= 0xdfff;
+}
+
+function resolveSpecimenCardClause(record, card) {
+  const resolved = specimenCardHolding(record, card?.holdingPath);
+  const textMatch = typeof card?.clause?.textPath === "string"
+    ? card.clause.textPath.match(/^holdings\[([0-9]+)\]\.(description|designation)$/u)
+    : null;
+  if (!resolved || !hasExactFields(card.clause, SPECIMEN_CARD_CLAUSE_FIELDS) || !textMatch ||
+      Number(textMatch[1]) !== resolved.holdingIndex) return null;
+  const sourceText = resolved.holding[textMatch[2]];
+  const { start, end } = card.clause;
+  if (typeof sourceText !== "string" || !Number.isInteger(start) || !Number.isInteger(end) ||
+      start < 0 || start >= end || end > sourceText.length || splitsSurrogatePair(sourceText, start) ||
+      splitsSurrogatePair(sourceText, end)) return null;
+  const text = sourceText.slice(start, end);
+  return /[\p{L}\p{N}]/u.test(text) ? { ...resolved, sourceText, text } : null;
+}
+
+function compareSpecimenCards(left, right) {
+  const leftHolding = Number(left.holdingPath.match(/^holdings\[([0-9]+)\]$/u)[1]);
+  const rightHolding = Number(right.holdingPath.match(/^holdings\[([0-9]+)\]$/u)[1]);
+  if (leftHolding !== rightHolding) return leftHolding - rightHolding;
+  if (left.clause.textPath !== right.clause.textPath) return left.clause.textPath < right.clause.textPath ? -1 : 1;
+  return left.clause.start - right.clause.start || left.clause.end - right.clause.end ||
+    String(left.massPath || "").localeCompare(String(right.massPath || ""));
+}
+
 function validateSpecimenCardManifest(manifest, sourceRecords, options = {}) {
   if (!hasExactFields(manifest, SPECIMEN_CARD_ROOT_FIELDS) || !Array.isArray(manifest.projections) ||
       !hasExactFields(manifest.metadata, SPECIMEN_CARD_METADATA_FIELDS) || !Array.isArray(sourceRecords)) return false;
   const metadata = manifest.metadata;
   const catalogSchemaVersion = options.catalogSchemaVersion ?? 6;
-  if (metadata.schemaVersion !== 1 || metadata.scope !== "reviewed-specimen-card-display-projections" ||
+  if (metadata.schemaVersion !== 2 || metadata.scope !== "reviewed-atomic-specimen-card-display-projections" ||
       metadata.catalogSchemaVersion !== catalogSchemaVersion || metadata.sourceRecordCount !== sourceRecords.length ||
       !SHA256_HEX.test(metadata.sourceCatalogSha256) || !Number.isInteger(metadata.projectionCount) ||
-      metadata.projectionCount !== manifest.projections.length || !Number.isInteger(metadata.projectedCardCount) ||
-      metadata.projectedCardCount < 0) return false;
+      metadata.projectionCount !== manifest.projections.length || !Number.isInteger(metadata.atomicCardCount) ||
+      metadata.atomicCardCount < 0 || !Number.isInteger(metadata.sourceContextCardCount) ||
+      metadata.sourceContextCardCount < 0 || metadata.sourceContextCardCount > manifest.projections.length) return false;
   if (options.sourceCatalogSha256 !== undefined && metadata.sourceCatalogSha256 !== options.sourceCatalogSha256) return false;
 
   const recordsById = new Map(sourceRecords.map((record, index) => [record.id, { record, index }]));
   if (recordsById.size !== sourceRecords.length) return false;
   const parentIds = new Set();
   let previousParentIndex = -1;
-  let projectedCardCount = 0;
+  let atomicCardCount = 0;
+  let sourceContextCardCount = 0;
   for (const projection of manifest.projections) {
     if (!hasExactFields(projection, SPECIMEN_CARD_PROJECTION_FIELDS) || !LINEAGE_RECORD_ID.test(projection.parentRecordId) ||
-        parentIds.has(projection.parentRecordId) || typeof projection.retainParentContext !== "boolean" ||
+        parentIds.has(projection.parentRecordId) ||
         !Array.isArray(projection.cards) || projection.cards.length === 0) return false;
     const source = recordsById.get(projection.parentRecordId);
     if (!source || source.index <= previousParentIndex || !["catalog-item", "catalog-number", "collection-entry"].includes(source.record.recordModel)) return false;
     previousParentIndex = source.index;
     parentIds.add(projection.parentRecordId);
     const selectedMassPaths = new Set();
-    const selectedHoldingPaths = new Set();
-    let previousPosition = [-1, -1];
+    let previousCard = null;
+    const previousEndsByTextPath = new Map();
     for (const card of projection.cards) {
-      if (!hasExactFields(card, SPECIMEN_CARD_FIELDS) || selectedMassPaths.has(card.massPath)) return false;
-      const resolved = resolveSpecimenCardSelection(source.record, card.holdingPath, card.massPath);
-      if (!resolved || resolved.grams < 0) return false;
-      const position = [resolved.holdingIndex, resolved.weightIndex];
-      if (position[0] < previousPosition[0] || (position[0] === previousPosition[0] && position[1] <= previousPosition[1])) return false;
-      previousPosition = position;
-      selectedMassPaths.add(card.massPath);
-      selectedHoldingPaths.add(card.holdingPath);
+      if (!hasExactFields(card, SPECIMEN_CARD_FIELDS) || (card.massPath !== null && selectedMassPaths.has(card.massPath))) return false;
+      const clause = resolveSpecimenCardClause(source.record, card);
+      if (!clause) return false;
+      if (source.record.recordModel === "catalog-item" && clause.holding.kind !== "specimen") return false;
+      const selection = card.massPath === null ? null : resolveSpecimenCardSelection(source.record, card.holdingPath, card.massPath);
+      if (card.massPath !== null && (!selection || selection.grams <= 0)) return false;
+      if (previousCard && compareSpecimenCards(previousCard, card) >= 0) return false;
+      const previousEnd = previousEndsByTextPath.get(card.clause.textPath);
+      if (previousEnd !== undefined && card.clause.start < previousEnd) return false;
+      previousEndsByTextPath.set(card.clause.textPath, card.clause.end);
+      previousCard = card;
+      if (card.massPath !== null) selectedMassPaths.add(card.massPath);
     }
-    if (!projection.retainParentContext) {
-      const sourceMasses = specimenCardSourceMasses(source.record);
-      if (sourceMasses.length !== selectedMassPaths.size || sourceMasses.some(({ massPath }) => !selectedMassPaths.has(massPath)) ||
-          source.record.holdings.some((holding, holdingIndex) => !selectedHoldingPaths.has(`holdings[${holdingIndex}]`))) return false;
-    }
-    projectedCardCount += projection.cards.length;
+    const hasSourceContext = specimenCardContextEntries(source.record, projection).length > 0;
+    if (projection.cards.length + Number(hasSourceContext) < 2) return false;
+    atomicCardCount += projection.cards.length;
+    if (hasSourceContext) sourceContextCardCount += 1;
   }
-  return projectedCardCount === metadata.projectedCardCount;
+  return atomicCardCount === metadata.atomicCardCount && sourceContextCardCount === metadata.sourceContextCardCount;
 }
 
 function deriveSpecimenCardProjectionIndex(manifest, sourceRecords, options = {}) {
@@ -1738,40 +1784,96 @@ async function sha256Text(value, cryptoObject = globalThis.crypto) {
 function parentSpecimenCardDescriptor(parentRecord) {
   return {
     parentRecord,
+    kind: "parent",
     holdingPath: null,
     massPath: null,
+    clauseText: null,
     sourcePosition: 0,
-    residual: false,
     projected: false,
     specimenCount: 1,
-    projectedMassPaths: []
+    projectedMassPaths: [],
+    contextEntries: []
   };
+}
+
+function meaningfulContextSegment(text) {
+  return typeof text === "string" && /[\p{L}\p{N}]/u.test(text);
+}
+
+function specimenCardContextEntries(record, projection) {
+  const spansByTextPath = new Map();
+  projection.cards.forEach((card) => {
+    const spans = spansByTextPath.get(card.clause.textPath) || [];
+    spans.push([card.clause.start, card.clause.end]);
+    spansByTextPath.set(card.clause.textPath, spans);
+  });
+  const selectedHoldings = new Set(projection.cards.map(({ holdingPath }) => holdingPath));
+  const projectedMassPaths = new Set(projection.cards.map(({ massPath }) => massPath).filter(Boolean));
+  const sourceMassesByHolding = new Map();
+  specimenCardSourceMasses(record).forEach((mass) => {
+    const entries = sourceMassesByHolding.get(mass.holdingPath) || [];
+    entries.push(mass);
+    sourceMassesByHolding.set(mass.holdingPath, entries);
+  });
+  return record.holdings.flatMap((holding, holdingIndex) => {
+    const holdingPath = `holdings[${holdingIndex}]`;
+    const entries = [];
+    for (const field of ["designation", "description", "provenance"]) {
+      const sourceText = holding[field];
+      if (!meaningfulContextSegment(sourceText)) continue;
+      const spans = spansByTextPath.get(`${holdingPath}.${field}`) || [];
+      let offset = 0;
+      spans.forEach(([start, end]) => {
+        const text = sourceText.slice(offset, start);
+        if (meaningfulContextSegment(text)) entries.push({ type: "segment", holdingPath, textPath: `${holdingPath}.${field}`, text });
+        offset = end;
+      });
+      const text = sourceText.slice(offset);
+      if (meaningfulContextSegment(text)) entries.push({ type: "segment", holdingPath, textPath: `${holdingPath}.${field}`, text });
+    }
+    if (!selectedHoldings.has(holdingPath) && holding.kind && holding.kind !== "specimen") {
+      entries.push({ type: "fact", holdingPath, label: "Holding type", text: capitalize(holding.kind) });
+    }
+    if (Number.isInteger(holding.count) && holding.count > 1) {
+      entries.push({ type: "fact", holdingPath, label: "Reported count", text: String(holding.count) });
+    }
+    (sourceMassesByHolding.get(holdingPath) || []).forEach((mass) => {
+      if (!projectedMassPaths.has(mass.massPath)) entries.push({ type: "mass", ...mass });
+    });
+    return entries;
+  });
 }
 
 function expandSpecimenCardDescriptors(sourceRecords, projectionIndex = new Map()) {
   return sourceRecords.flatMap((parentRecord) => {
     const projection = projectionIndex.get(parentRecord.id);
     if (!projection) return [parentSpecimenCardDescriptor(parentRecord)];
-    const projectedMassPaths = projection.cards.map(({ massPath }) => massPath);
+    const projectedMassPaths = projection.cards.map(({ massPath }) => massPath).filter(Boolean);
     const cards = projection.cards.map((card, sourcePosition) => ({
       parentRecord,
+      kind: "atomic",
       holdingPath: card.holdingPath,
       massPath: card.massPath,
+      clause: card.clause,
+      clauseText: resolveSpecimenCardClause(parentRecord, card).text,
       sourcePosition,
-      residual: false,
       projected: true,
       specimenCount: projection.cards.length,
-      projectedMassPaths
+      projectedMassPaths,
+      contextEntries: []
     }));
-    if (projection.retainParentContext) cards.push({
+    const contextEntries = specimenCardContextEntries(parentRecord, projection);
+    if (contextEntries.length) cards.push({
       parentRecord,
+      kind: "context",
       holdingPath: null,
       massPath: null,
+      clauseText: null,
       sourcePosition: projection.cards.length,
-      residual: true,
       projected: true,
       specimenCount: projection.cards.length,
-      projectedMassPaths
+      projectedMassPaths,
+      contextEntries
     });
     return cards;
   });
@@ -1779,22 +1881,23 @@ function expandSpecimenCardDescriptors(sourceRecords, projectionIndex = new Map(
 
 function specimenCardDescriptorMasses(descriptor) {
   if (!descriptor?.parentRecord) return [];
-  if (descriptor.massPath) {
+  if (descriptor.kind === "atomic") {
+    if (descriptor.massPath === null) return [];
     const selection = resolveSpecimenCardSelection(descriptor.parentRecord, descriptor.holdingPath, descriptor.massPath);
     return selection ? [selection.grams] : [];
   }
-  if (descriptor.residual) {
-    const projected = new Set(descriptor.projectedMassPaths);
-    return specimenCardSourceMasses(descriptor.parentRecord).filter(({ massPath }) => !projected.has(massPath)).map(({ grams }) => grams);
-  }
+  if (descriptor.kind === "context") return descriptor.contextEntries.filter(({ type }) => type === "mass").map(({ grams }) => grams);
   return recordMasses(descriptor.parentRecord);
 }
 
 function lineageEntriesForSpecimenCard(descriptor, entries) {
   if (!descriptor?.projected) return entries;
-  const projected = new Set(descriptor.projectedMassPaths);
-  if (descriptor.residual) return entries.filter((entry) => !projected.has(entry.massPath));
-  return entries.filter((entry) => entry.massPath === descriptor.massPath);
+  if (descriptor.kind === "atomic") return descriptor.massPath === null ? [] : entries.filter((entry) => entry.massPath === descriptor.massPath);
+  if (descriptor.kind === "context") {
+    const contextMassPaths = new Set(descriptor.contextEntries.filter(({ type }) => type === "mass").map(({ massPath }) => massPath));
+    return entries.filter((entry) => contextMassPaths.has(entry.massPath));
+  }
+  return [];
 }
 
 function filterSpecimenCardDescriptors(descriptors, filters, lineageIndex = new Map()) {
@@ -1816,19 +1919,13 @@ function paginateSpecimenCardDescriptors(descriptors, limit = PAGE_SIZE) {
 function specimenCardDescriptorHoldings(descriptor) {
   const record = descriptor.parentRecord;
   if (!descriptor.projected) return record.holdings;
-  if (descriptor.massPath) {
-    const selection = resolveSpecimenCardSelection(record, descriptor.holdingPath, descriptor.massPath);
-    if (!selection) return [];
-    if (record.recordModel === "catalog-item") return [selection.holding];
-    return [{ ...selection.holding, weights: [{ grams: selection.grams }] }];
-  }
-  const projected = new Set(descriptor.projectedMassPaths);
-  return record.holdings.flatMap((holding, holdingIndex) => {
-    const holdingPath = `holdings[${holdingIndex}]`;
-    if (record.recordModel === "catalog-item") return projected.has(`${holdingPath}.weight.grams`) ? [] : [holding];
-    const weights = holding.weights.filter((weight, weightIndex) => !projected.has(`${holdingPath}.weights[${weightIndex}].grams`));
-    return weights.length || holding.weights.length === 0 ? [{ ...holding, weights }] : [];
-  });
+  if (descriptor.kind === "atomic") return [{
+    type: "clause",
+    holdingPath: descriptor.holdingPath,
+    text: descriptor.clauseText,
+    grams: specimenCardDescriptorMasses(descriptor)[0] ?? null
+  }];
+  return descriptor.kind === "context" ? descriptor.contextEntries : [];
 }
 
 function isSafeFolioPath(value, catalogId, pageId) {
@@ -2309,8 +2406,8 @@ function createRecordCard(recordOrDescriptor) {
   const catalogItem = record.recordModel === "catalog-item";
   const catalogNumber = record.recordModel === "catalog-number";
   const collectionEntry = record.recordModel === "collection-entry";
-  card.classList.toggle("projected-specimen-card", descriptor.projected && !descriptor.residual);
-  card.classList.toggle("residual-specimen-card", descriptor.residual);
+  card.classList.toggle("projected-specimen-card", descriptor.kind === "atomic");
+  card.classList.toggle("source-context-card", descriptor.kind === "context");
   card.classList.toggle("catalog-item-card", catalogItem || catalogNumber || collectionEntry);
   card.querySelector(".designation").textContent = descriptor.projected
     ? lineageRecordLabel(record)
@@ -2322,10 +2419,10 @@ function createRecordCard(recordOrDescriptor) {
           ? record.reportedNumber ? `Reported no. ${record.reportedNumber}` : `Collection entry ${record.entryOrder}`
           : record.designation || "No printed designation";
   const specimenPosition = card.querySelector(".specimen-position");
-  if (descriptor.residual) {
-    specimenPosition.textContent = "Other source-reported holdings";
+  if (descriptor.kind === "context") {
+    specimenPosition.textContent = "Source context, not an individual specimen";
     specimenPosition.hidden = false;
-  } else if (descriptor.projected) {
+  } else if (descriptor.kind === "atomic") {
     specimenPosition.textContent = `Specimen ${descriptor.sourcePosition + 1} of ${descriptor.specimenCount}`;
     specimenPosition.hidden = false;
   } else {
@@ -2354,8 +2451,8 @@ function createRecordCard(recordOrDescriptor) {
   if (catalogItem || catalogNumber || collectionEntry) {
     recordWeight.remove();
     const holdings = specimenCardDescriptorHoldings(descriptor);
-    if (holdings.length) renderHoldings(card, holdings, record.recordModel,
-      descriptor.residual ? "Other source-reported holdings" : descriptor.projected ? "Specimen holding" : "Holdings");
+    if (holdings.length && descriptor.projected) renderProjectedSpecimenCardContent(card, holdings, descriptor.kind);
+    else if (holdings.length) renderHoldings(card, holdings, record.recordModel, "Holdings");
     else card.querySelector(".record-holdings").remove();
   } else {
     recordWeight.querySelector("strong").textContent = record.weight.grams === null
@@ -2484,6 +2581,39 @@ function renderHoldings(card, holdings, recordModel = "catalog-item", headingTex
       const description = document.createElement("p");
       description.textContent = details.join(" · ");
       item.append(description);
+    }
+    list.append(item);
+  });
+  section.hidden = false;
+}
+
+function renderProjectedSpecimenCardContent(card, entries, kind) {
+  const section = card.querySelector(".record-holdings");
+  section.querySelector("h4").textContent = kind === "atomic" ? "Specimen clause" : "Source context";
+  const list = section.querySelector(".holdings-list");
+  entries.forEach((entry) => {
+    const item = document.createElement("li");
+    item.className = `projected-content-${entry.type}`;
+    if (entry.type === "clause" || entry.type === "segment") {
+      const text = document.createElement("p");
+      text.className = entry.type === "clause" ? "specimen-clause" : "source-context-segment";
+      text.textContent = entry.text;
+      item.append(text);
+      if (entry.type === "clause" && Number.isFinite(entry.grams)) {
+        const mass = document.createElement("span");
+        mass.className = "holding-mass";
+        mass.textContent = formatMass(entry.grams);
+        item.append(mass);
+      }
+    } else {
+      const heading = document.createElement("div");
+      const label = document.createElement("strong");
+      const value = document.createElement(entry.type === "mass" ? "span" : "p");
+      label.textContent = entry.type === "mass" ? "Reported mass" : entry.label;
+      value.textContent = entry.type === "mass" ? formatMass(entry.grams) : entry.text;
+      if (entry.type === "mass") value.className = "holding-mass";
+      heading.append(label, value);
+      item.append(heading);
     }
     list.append(item);
   });
@@ -2784,6 +2914,7 @@ if (typeof module !== "undefined" && module.exports) {
     recordCatalogPages,
     recordMasses,
     resolveSpecimenCardSelection,
+    resolveSpecimenCardClause,
     searchable,
     sha256Text,
     serializeUrlFilters,
@@ -2791,6 +2922,7 @@ if (typeof module !== "undefined" && module.exports) {
     paginateSpecimenCardDescriptors,
     specimenCardDescriptorHoldings,
     specimenCardDescriptorMasses,
+    specimenCardContextEntries,
     specimenCardSourceMasses,
     weightSortValue,
     validateCatalog,

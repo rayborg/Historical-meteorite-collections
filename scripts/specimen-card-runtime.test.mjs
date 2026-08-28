@@ -26,7 +26,7 @@ function projectionResponse(value) {
   return { ok: true, text: async () => JSON.stringify(value) };
 }
 
-function weightedRecord(id, masses, order = 0) {
+function weightedRecord(id, holdingCount, order = 0) {
   return {
     id,
     catalogId: "synthetic-1937",
@@ -35,11 +35,11 @@ function weightedRecord(id, masses, order = 0) {
     reportedNumber: null,
     catalogPages: [1],
     section: "Synthetic section",
-    holdings: masses.map((grams, index) => ({
+    holdings: Array.from({ length: holdingCount }, (_, index) => ({
       description: `Holding ${index + 1}`,
       provenance: null,
       count: null,
-      weights: [{ grams }],
+      weights: [{ grams: index + 1 }],
     })),
     name: `Synthetic ${order + 1}`,
     classification: null,
@@ -50,40 +50,81 @@ function weightedRecord(id, masses, order = 0) {
   };
 }
 
-function card(holdingIndex, weightIndex = 0) {
+function fullCard(record, holdingIndex, massPath = `holdings[${holdingIndex}].weights[0].grams`) {
   return {
     holdingPath: `holdings[${holdingIndex}]`,
-    massPath: `holdings[${holdingIndex}].weights[${weightIndex}].grams`,
+    clause: {
+      textPath: `holdings[${holdingIndex}].description`,
+      start: 0,
+      end: record.holdings[holdingIndex].description.length,
+    },
+    massPath,
   };
 }
 
 function syntheticManifest(sourceRecords, projections) {
   return {
     metadata: {
-      schemaVersion: 1,
-      scope: "reviewed-specimen-card-display-projections",
+      schemaVersion: 2,
+      scope: "reviewed-atomic-specimen-card-display-projections",
       catalogSchemaVersion: 6,
       sourceRecordCount: sourceRecords.length,
       sourceCatalogSha256: "0".repeat(64),
       projectionCount: projections.length,
-      projectedCardCount: projections.reduce((sum, projection) => sum + projection.cards.length, 0),
+      atomicCardCount: projections.reduce((sum, projection) => sum + projection.cards.length, 0),
+      sourceContextCardCount: projections.filter((projection) => {
+        const record = sourceRecords.find(({ id }) => id === projection.parentRecordId);
+        return app.specimenCardContextEntries(record, projection).length > 0;
+      }).length,
     },
     projections,
   };
 }
 
-test("real reviewed projections validate exact metadata and source hash", () => {
-  assert.equal(sourceCatalogSha256, manifest.metadata.sourceCatalogSha256);
-  assert.equal(app.validateSpecimenCardManifest(manifest, records, { sourceCatalogSha256 }), true);
-  assert.equal(app.deriveSpecimenCardProjectionIndex(manifest, records, { sourceCatalogSha256 }).size, 1699);
+test("schema-2 contract is closed and has no schema-1 fallback", () => {
+  const parent = weightedRecord("schema-parent", 2);
+  const projection = { parentRecordId: parent.id, cards: [fullCard(parent, 0), fullCard(parent, 1)] };
+  const document = syntheticManifest([parent], [projection]);
+  assert.equal(app.validateSpecimenCardManifest(document, [parent]), true);
 
-  const forged = structuredClone(manifest);
-  forged.metadata.privateAuditPath = "/private/audit.json";
-  assert.equal(app.validateSpecimenCardManifest(forged, records), false);
-  assert.equal(app.validateSpecimenCardManifest(manifest, records, { sourceCatalogSha256: "f".repeat(64) }), false);
+  for (const mutate of [
+    (value) => { value.metadata.schemaVersion = 1; },
+    (value) => { value.metadata.scope = "reviewed-specimen-card-display-projections"; },
+    (value) => { value.metadata.atomicCardCount += 1; },
+    (value) => { value.metadata.sourceContextCardCount += 1; },
+    (value) => { value.metadata.privatePath = "/private/review.json"; },
+    (value) => { value.projections[0].retainParentContext = false; },
+    (value) => { value.projections[0].cards[0].text = "forged"; },
+    (value) => { value.projections[0].cards[0].clause.extra = true; },
+  ]) {
+    const changed = structuredClone(document);
+    mutate(changed);
+    assert.equal(app.validateSpecimenCardManifest(changed, [parent]), false);
+  }
+
+  const single = weightedRecord("single-parent", 1);
+  assert.equal(app.validateSpecimenCardManifest(
+    syntheticManifest([single], [{ parentRecordId: single.id, cards: [fullCard(single, 0)] }]), [single]
+  ), false);
 });
 
-test("runtime rejects non-specimen catalog-item holdings", () => {
+test("span validation rejects empty, reversed, overlapping, reordered, and surrogate-splitting clauses", () => {
+  const parent = weightedRecord("span-parent", 1);
+  parent.holdings[0].description = "A😀B clause";
+  const validCards = [
+    { holdingPath: "holdings[0]", clause: { textPath: "holdings[0].description", start: 0, end: 4 }, massPath: null },
+    { holdingPath: "holdings[0]", clause: { textPath: "holdings[0].description", start: 4, end: 11 }, massPath: "holdings[0].weights[0].grams" },
+  ];
+  const make = (cards) => syntheticManifest([parent], [{ parentRecordId: parent.id, cards }]);
+  assert.equal(app.validateSpecimenCardManifest(make(validCards), [parent]), true);
+  assert.equal(app.validateSpecimenCardManifest(make([{ ...validCards[0], clause: { ...validCards[0].clause, end: 0 } }]), [parent]), false);
+  assert.equal(app.validateSpecimenCardManifest(make([{ ...validCards[0], clause: { ...validCards[0].clause, start: 4, end: 3 } }]), [parent]), false);
+  assert.equal(app.validateSpecimenCardManifest(make([{ ...validCards[0], clause: { ...validCards[0].clause, end: 5 } }, validCards[1]]), [parent]), false);
+  assert.equal(app.validateSpecimenCardManifest(make([...validCards].reverse()), [parent]), false);
+  assert.equal(app.validateSpecimenCardManifest(make([{ ...validCards[0], clause: { ...validCards[0].clause, end: 2 } }]), [parent]), false);
+});
+
+test("runtime rejects atomic cards for non-specimen catalog-item holdings", () => {
   const parent = {
     id: "catalog-item-parent",
     catalogId: "synthetic-1933",
@@ -100,87 +141,141 @@ test("runtime rejects non-specimen catalog-item holdings", () => {
   };
   const projection = {
     parentRecordId: parent.id,
-    retainParentContext: true,
-    cards: [{ holdingPath: "holdings[0]", massPath: "holdings[0].weight.grams" }],
+    cards: [{
+      holdingPath: "holdings[0]",
+      clause: { textPath: "holdings[0].description", start: 0, end: 9 },
+      massPath: null,
+    }],
   };
   assert.equal(app.validateSpecimenCardManifest(syntheticManifest([parent], [projection]), [parent]), false);
 });
 
-test("Reeds collection entry 366 expands to ten exact cards in source order", () => {
+test("Prior entry 630 derives seventeen exact atomic clauses and one ordered context card", () => {
+  const prior = records.find((record) => record.catalogId === "prior-1923" && record.entryOrder === 630);
+  const projection = manifest.projections.find(({ parentRecordId }) => parentRecordId === prior.id);
+  const document = syntheticManifest([prior], [projection]);
+  assert.equal(app.validateSpecimenCardManifest(document, [prior]), true);
+  const descriptors = app.expandSpecimenCardDescriptors([prior], app.deriveSpecimenCardProjectionIndex(document, [prior]));
+  assert.equal(descriptors.length, 18);
+  assert.equal(descriptors.filter(({ kind }) => kind === "atomic").length, 17);
+  assert.equal(descriptors.filter(({ kind }) => kind === "context").length, 1);
+  assert.deepEqual(descriptors.slice(0, 17).map(({ clauseText }) => clauseText), projection.cards.map(({ clause }) =>
+    prior.holdings[0].description.slice(clause.start, clause.end)));
+  assert.equal(descriptors.slice(0, 17).filter(({ massPath }) => massPath === null).length, 5);
+  assert.deepEqual(descriptors.slice(0, 17).map(app.specimenCardDescriptorMasses),
+    [[9095], [3545], [845], [793], [538], [425], [], [], [158], [145], [], [1111], [108], [], [821], [76], []]);
+
+  const context = descriptors[17];
+  assert.deepEqual(context.contextEntries.filter(({ type }) => type === "segment").map(({ text }) => text), [
+    prior.holdings[0].description.slice(0, 77),
+    prior.holdings[0].description.slice(536, 743),
+  ]);
+  assert.deepEqual(app.specimenCardDescriptorMasses(context), [64, 999, 50, 243]);
+
+  const lineageIndex = app.deriveEarlierRecordIndex(lineageData, records, registry);
+  const entries = lineageIndex.get(prior.id);
+  assert.equal(entries.length, 2);
+  assert.deepEqual(descriptors.map((descriptor) => app.lineageEntriesForSpecimenCard(descriptor, entries).length),
+    [0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+});
+
+test("Reeds entry 366 derives ten full-description cards with exact masses and no context", () => {
   const reeds = records.find((record) => record.catalogId === "reeds-1937" && record.entryOrder === 366);
-  const index = app.deriveSpecimenCardProjectionIndex(manifest, records);
-  const descriptors = app.expandSpecimenCardDescriptors([reeds], index);
+  const projection = { parentRecordId: reeds.id, cards: reeds.holdings.map((holding, index) => fullCard(reeds, index)) };
+  const document = syntheticManifest([reeds], [projection]);
+  assert.equal(app.validateSpecimenCardManifest(document, [reeds]), true);
+  const descriptors = app.expandSpecimenCardDescriptors([reeds], app.deriveSpecimenCardProjectionIndex(document, [reeds]));
   assert.equal(descriptors.length, 10);
-  assert.deepEqual(descriptors.map(({ parentRecord }) => parentRecord), Array(10).fill(reeds));
-  assert.deepEqual(descriptors.map(({ sourcePosition }) => sourcePosition), [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  assert(descriptors.every(({ kind }) => kind === "atomic"));
+  assert.deepEqual(descriptors.map(({ clauseText }) => clauseText), reeds.holdings.map(({ description }) => description));
   assert.deepEqual(descriptors.map((descriptor) => app.specimenCardDescriptorMasses(descriptor)[0]),
     [28.9, 310.1, 142, 30, 9.6, 124.5, 2.3, 128.5, 658.7, 51.2]);
-  assert(descriptors.every(({ residual }) => residual === false));
 });
 
-test("unprojected parents remain one canonical card and statistics remain parent-based", () => {
-  const prior = records.find((record) => record.catalogId === "prior-1923");
-  const descriptors = app.expandSpecimenCardDescriptors([prior], new Map());
-  assert.equal(descriptors.length, 1);
-  assert.equal(descriptors[0].parentRecord, prior);
-  assert.equal(descriptors[0].projected, false);
-  assert.deepEqual(app.calculateStatistics([prior]), app.calculateStatistics(descriptors.map(({ parentRecord }) => parentRecord)));
-});
-
-test("partial projections add a residual with only unmatched holdings and masses", () => {
-  const parent = weightedRecord("partial-parent", [10, 20, 30]);
-  const projection = { parentRecordId: parent.id, retainParentContext: true, cards: [card(0), card(1)] };
-  const document = syntheticManifest([parent], [projection]);
-  assert.equal(app.validateSpecimenCardManifest(document, [parent]), true);
-  const descriptors = app.expandSpecimenCardDescriptors([parent], app.deriveSpecimenCardProjectionIndex(document, [parent]));
-  assert.equal(descriptors.length, 3);
-  assert.deepEqual(descriptors.map(app.specimenCardDescriptorMasses), [[10], [20], [30]]);
-  assert.equal(descriptors[2].residual, true);
-  assert.deepEqual(app.specimenCardDescriptorHoldings(descriptors[2]), [parent.holdings[2]]);
-
-  projection.retainParentContext = false;
-  assert.equal(app.validateSpecimenCardManifest(document, [parent]), false);
-});
-
-test("weight filtering applies to selected card and residual masses", () => {
-  const parent = weightedRecord("weight-parent", [10, 20, 30]);
-  const projection = { parentRecordId: parent.id, retainParentContext: true, cards: [card(0), card(1)] };
+test("context partition keeps complement segments separate and includes only unmatched holdings and masses", () => {
+  const parent = weightedRecord("context-parent", 2);
+  parent.holdings[0].description = "Preamble. Clause one. Middle. Clause two. Tail.";
+  parent.holdings[0].weights.push({ grams: 99 });
+  parent.holdings[1].provenance = "Separate source fact";
+  parent.holdings[1].count = 2;
+  const firstStart = parent.holdings[0].description.indexOf("Clause one.");
+  const secondStart = parent.holdings[0].description.indexOf("Clause two.");
+  const projection = {
+    parentRecordId: parent.id,
+    cards: [
+      { holdingPath: "holdings[0]", clause: { textPath: "holdings[0].description", start: firstStart, end: firstStart + 11 }, massPath: "holdings[0].weights[0].grams" },
+      { holdingPath: "holdings[0]", clause: { textPath: "holdings[0].description", start: secondStart, end: secondStart + 11 }, massPath: null },
+    ],
+  };
   const document = syntheticManifest([parent], [projection]);
   const descriptors = app.expandSpecimenCardDescriptors([parent], app.deriveSpecimenCardProjectionIndex(document, [parent]));
-  const exactTwenty = app.filterSpecimenCardDescriptors(descriptors, { min: 20, max: 20, lineageOnly: false });
-  const residualThirty = app.filterSpecimenCardDescriptors(descriptors, { min: 25, max: 35, lineageOnly: false });
-  assert.deepEqual(exactTwenty.map(({ massPath }) => massPath), [card(1).massPath]);
-  assert.deepEqual(residualThirty.map(({ residual }) => residual), [true]);
+  const context = descriptors.at(-1);
+  assert.equal(context.kind, "context");
+  assert.deepEqual(context.contextEntries.filter(({ type }) => type === "segment").map(({ text }) => text),
+    ["Preamble. ", " Middle. ", " Tail.", "Holding 2", "Separate source fact"]);
+  assert.deepEqual(context.contextEntries.filter(({ type }) => type === "fact").map(({ label, text }) => [label, text]),
+    [["Reported count", "2"]]);
+  assert.deepEqual(context.contextEntries.filter(({ type }) => type === "mass").map(({ grams }) => grams), [99, 2]);
 });
 
-test("lineage routes only by exact later mass path, never equal mass value", () => {
-  const parent = weightedRecord("lineage-parent", [50, 50, 75]);
-  const projection = { parentRecordId: parent.id, retainParentContext: true, cards: [card(0), card(1)] };
+test("massless atomic cards remain visible without a range and are excluded by any range", () => {
+  const parent = weightedRecord("massless-parent", 1);
+  parent.holdings[0].description = "Massless. Weighted.";
+  const projection = {
+    parentRecordId: parent.id,
+    cards: [
+      { holdingPath: "holdings[0]", clause: { textPath: "holdings[0].description", start: 0, end: 9 }, massPath: null },
+      { holdingPath: "holdings[0]", clause: { textPath: "holdings[0].description", start: 10, end: 19 }, massPath: "holdings[0].weights[0].grams" },
+    ],
+  };
+  const document = syntheticManifest([parent], [projection]);
+  const descriptors = app.expandSpecimenCardDescriptors([parent], app.deriveSpecimenCardProjectionIndex(document, [parent]));
+  const noRange = app.filterSpecimenCardDescriptors(descriptors, { min: null, max: null, lineageOnly: false });
+  const ranged = app.filterSpecimenCardDescriptors(descriptors, { min: 0, max: 10, lineageOnly: false });
+  assert.equal(noRange.filter(({ kind }) => kind === "atomic").length, 2);
+  assert.deepEqual(ranged.filter(({ kind }) => kind === "atomic").map(({ massPath }) => massPath), ["holdings[0].weights[0].grams"]);
+});
+
+test("lineage routes by exact non-null mass path and context receives unmatched paths only", () => {
+  const parent = weightedRecord("lineage-parent", 1);
+  parent.holdings[0].description = "First. Second.";
+  parent.holdings[0].weights = [{ grams: 50 }, { grams: 50 }, { grams: 75 }];
+  const projection = {
+    parentRecordId: parent.id,
+    cards: [
+      { holdingPath: "holdings[0]", clause: { textPath: "holdings[0].description", start: 0, end: 6 }, massPath: "holdings[0].weights[0].grams" },
+      { holdingPath: "holdings[0]", clause: { textPath: "holdings[0].description", start: 7, end: 14 }, massPath: null },
+    ],
+  };
   const document = syntheticManifest([parent], [projection]);
   const descriptors = app.expandSpecimenCardDescriptors([parent], app.deriveSpecimenCardProjectionIndex(document, [parent]));
   const entries = [
-    { relationshipId: "first", massPath: card(0).massPath },
-    { relationshipId: "second", massPath: card(1).massPath },
-    { relationshipId: "remaining", massPath: card(2).massPath },
+    { relationshipId: "selected", massPath: "holdings[0].weights[0].grams" },
+    { relationshipId: "equal-unmatched", massPath: "holdings[0].weights[1].grams" },
+    { relationshipId: "remaining", massPath: "holdings[0].weights[2].grams" },
   ];
-  assert.deepEqual(app.lineageEntriesForSpecimenCard(descriptors[0], entries).map(({ relationshipId }) => relationshipId), ["first"]);
-  assert.deepEqual(app.lineageEntriesForSpecimenCard(descriptors[1], entries).map(({ relationshipId }) => relationshipId), ["second"]);
-  assert.deepEqual(app.lineageEntriesForSpecimenCard(descriptors[2], entries).map(({ relationshipId }) => relationshipId), ["remaining"]);
+  assert.deepEqual(app.lineageEntriesForSpecimenCard(descriptors[0], entries).map(({ relationshipId }) => relationshipId), ["selected"]);
+  assert.deepEqual(app.lineageEntriesForSpecimenCard(descriptors[1], entries), []);
+  assert.deepEqual(app.lineageEntriesForSpecimenCard(descriptors[2], entries).map(({ relationshipId }) => relationshipId), ["equal-unmatched", "remaining"]);
 });
 
-test("derived lineage entries retain their exact later mass path", () => {
-  const index = app.deriveEarlierRecordIndex(lineageData, records, registry);
-  const entries = [...index.values()].flat();
-  assert(entries.length > 0);
-  assert(entries.every((entry) => typeof entry.massPath === "string" && entry.massPath.endsWith("grams")));
+test("search, statistics, result observations, and citations remain parent-based", () => {
+  const parent = weightedRecord("parent-based", 2);
+  const projection = { parentRecordId: parent.id, cards: parent.holdings.map((holding, index) => fullCard(parent, index)) };
+  const document = syntheticManifest([parent], [projection]);
+  const descriptors = app.expandSpecimenCardDescriptors([parent], app.deriveSpecimenCardProjectionIndex(document, [parent]));
+  assert.equal(descriptors.length, 2);
+  assert.deepEqual(app.calculateStatistics([parent]), app.calculateStatistics(descriptors.map(({ parentRecord }) => parentRecord).slice(0, 1)));
+  assert.match(source, /const parentMatches = filterRecords\(records,/u);
+  assert.match(source, /new Set\(displayCards\.map\(\(\{ parentRecord \}\) => parentRecord\.id\)\)/u);
+  assert.match(source, /const citedPages = recordCatalogPages\(record\);/u);
 });
 
-test("1,360 display cards paginate to 120 before card creation", () => {
-  const sourceRecords = Array.from({ length: 136 }, (_, index) => weightedRecord(`bulk-${String(index).padStart(4, "0")}`, Array.from({ length: 10 }, (__, mass) => mass + 1), index));
+test("1,360 atomic descriptors paginate before DOM card creation", () => {
+  const sourceRecords = Array.from({ length: 136 }, (_, index) => weightedRecord(`bulk-${String(index).padStart(4, "0")}`, 10, index));
   const projections = sourceRecords.map((record) => ({
     parentRecordId: record.id,
-    retainParentContext: false,
-    cards: record.holdings.map((holding, index) => card(index)),
+    cards: record.holdings.map((holding, index) => fullCard(record, index)),
   }));
   const document = syntheticManifest(sourceRecords, projections);
   const descriptors = app.expandSpecimenCardDescriptors(sourceRecords, app.deriveSpecimenCardProjectionIndex(document, sourceRecords));
@@ -191,31 +286,43 @@ test("1,360 display cards paginate to 120 before card creation", () => {
   assert.doesNotMatch(source, /displayCards\.forEach\([^\n]*createRecordCard/u);
 });
 
-test("optional loading is digest-bound, fails closed, and rendering remains text-only", async () => {
+test("digest lock loads the exact set and fails closed to parent cards on mismatch", async () => {
+  const parent = weightedRecord("digest-parent", 1);
+  const document = syntheticManifest([parent], [{ parentRecordId: parent.id, cards: [fullCard(parent, 0)] }]);
+  document.metadata.sourceCatalogSha256 = sourceCatalogSha256;
   const options = { sourceCatalogSha256, sha256 };
-  const loaded = await app.loadSpecimenCardProjectionIndex(records, async () => projectionResponse(manifest), options);
-  const failed = await app.loadSpecimenCardProjectionIndex(records, async () => { throw new Error("offline"); }, options);
-  const missing = await app.loadSpecimenCardProjectionIndex(records, async () => ({ ok: false }), options);
-  const malformed = await app.loadSpecimenCardProjectionIndex(records, async () => projectionResponse({ metadata: {}, projections: [] }), options);
-  const staleCatalog = await app.loadSpecimenCardProjectionIndex(records, async () => projectionResponse(manifest), {
+  assert.equal((await app.loadSpecimenCardProjectionIndex(records, async () => projectionResponse(manifest), options)).size, manifest.metadata.projectionCount);
+  assert.equal((await app.loadSpecimenCardProjectionIndex([parent], async () => { throw new Error("offline"); }, options)).size, 0);
+  assert.equal((await app.loadSpecimenCardProjectionIndex([parent], async () => ({ ok: false }), options)).size, 0);
+  assert.equal((await app.loadSpecimenCardProjectionIndex([parent], async () => projectionResponse({ metadata: {}, projections: [] }), options)).size, 0);
+  assert.equal((await app.loadSpecimenCardProjectionIndex([parent], async () => projectionResponse(document), {
     sourceCatalogSha256: "f".repeat(64), sha256,
-  });
+  })).size, 0);
   const altered = structuredClone(manifest);
-  altered.projections[0].retainParentContext = !altered.projections[0].retainParentContext;
-  const alteredSet = await app.loadSpecimenCardProjectionIndex(records, async () => projectionResponse(altered), options);
-  const priorInserted = structuredClone(manifest);
-  priorInserted.projections[0].parentRecordId = "obs-344d0b6d-920e-403f-8fd5-c113fc05291d";
-  const forgedPrior = await app.loadSpecimenCardProjectionIndex(records, async () => projectionResponse(priorInserted), options);
-  assert.equal(loaded.size, 1699);
-  assert.equal(failed.size, 0);
-  assert.equal(missing.size, 0);
-  assert.equal(malformed.size, 0);
-  assert.equal(staleCatalog.size, 0);
-  assert.equal(alteredSet.size, 0);
-  assert.equal(forgedPrior.size, 0);
+  altered.projections[0].cards[0].clause.end -= 1;
+  assert.equal((await app.loadSpecimenCardProjectionIndex(records, async () => projectionResponse(altered), options)).size, 0);
+  assert.equal(app.SPECIMEN_CARD_PROJECTION_SET_SHA256, "f7fab83f8153cb843ddfb20f78ac943edc325fb12b6f9eab70414575a5919086");
+});
+
+test("rendering is text-only, labels context cards explicitly, and cache keys are synchronized", () => {
   assert.doesNotMatch(source, /\.innerHTML\b/u);
+  assert.match(source, /Source context, not an individual specimen/u);
+  assert.match(source, /specimenPosition\.textContent = `Specimen \$\{descriptor\.sourcePosition \+ 1\} of \$\{descriptor\.specimenCount\}`/u);
   assert.match(html, /<p class="specimen-position" hidden><\/p>/u);
-  assert.match(html, /styles\.css\?v=20260806-2-cards/u);
-  assert.match(html, /app\.js\?v=20260806-2-cards/u);
-  assert.equal(app.ASSET_CACHE_VERSION, "20260806-2-cards");
+  assert.match(html, /styles\.css\?v=20260806-2-atomic-cards/u);
+  assert.match(html, /app\.js\?v=20260806-2-atomic-cards/u);
+  assert.equal(app.ASSET_CACHE_VERSION, "20260806-2-atomic-cards");
+});
+
+test("production projection fixture validates when the schema-2 data dependency is present", {
+  skip: manifest.metadata.schemaVersion !== 2 ? "schema-2 projection data has not landed in this worktree" : false,
+}, () => {
+  assert.equal(sourceCatalogSha256, manifest.metadata.sourceCatalogSha256);
+  assert.equal(app.validateSpecimenCardManifest(manifest, records, { sourceCatalogSha256 }), true);
+  const index = app.deriveSpecimenCardProjectionIndex(manifest, records, { sourceCatalogSha256 });
+  assert.equal(index.size, manifest.metadata.projectionCount);
+  const projectedRecords = records.filter(({ id }) => index.has(id));
+  const descriptors = app.expandSpecimenCardDescriptors(projectedRecords, index);
+  assert.equal(descriptors.filter(({ kind }) => kind === "atomic").length, manifest.metadata.atomicCardCount);
+  assert.equal(descriptors.filter(({ kind }) => kind === "context").length, manifest.metadata.sourceContextCardCount);
 });

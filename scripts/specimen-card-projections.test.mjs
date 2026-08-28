@@ -4,6 +4,8 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 import {
+  REVIEWED_AUDIT_COVERAGE,
+  deriveSourceContext,
   serializeSpecimenCardProjections,
   validateSpecimenCardProjections,
 } from "./validate-specimen-card-projections.mjs";
@@ -14,6 +16,7 @@ const catalogText = await readFile(new URL("../data/catalog.json", import.meta.u
 const catalog = JSON.parse(catalogText);
 const schema = JSON.parse(await readFile(new URL("../data/specimen-card-projections.schema.json", import.meta.url), "utf8"));
 const recordById = new Map(catalog.records.map((record) => [record.id, record]));
+const modelByCatalog = new Map(catalog.metadata.catalogs.map(({ id, recordModel }) => [id, recordModel]));
 const PRIOR_630_ID = "obs-344d0b6d-920e-403f-8fd5-c113fc05291d";
 const REEDS_366_ID = "obs-b02789ea-869e-447a-97cc-28c2c6900e88";
 
@@ -21,7 +24,7 @@ function clone(value = published) {
   return structuredClone(value);
 }
 
-function mutate(label, callback, pattern = /invalid|differs|must|dangling|duplicated|ordered|lock|unsupported|exhausted/iu) {
+function mutate(label, callback, pattern = /invalid|differs|must|dangling|duplicated|ordered|lock|unsupported|overlap|display units|range|different holding/iu) {
   const changed = clone();
   callback(changed);
   assert.throws(() => validateSpecimenCardProjections(changed, catalog, catalogText), pattern, label);
@@ -31,25 +34,36 @@ function resolve(record, path) {
   return path.match(/[A-Za-z]+|[0-9]+/gu).reduce((value, key) => value?.[key], record);
 }
 
+function cardTuple(card) {
+  const massMatch = card.massPath?.match(/weights\[([0-9]+)\]/u);
+  return [card.clause.start, card.clause.end, massMatch ? Number(massMatch[1]) : null];
+}
+
 test("production manifest is deterministic and validates against the locked catalog", () => {
   assert.deepEqual(validateSpecimenCardProjections(published, catalog, catalogText), {
-    projectionCount: 1699,
-    projectedCardCount: 6316,
-    retainedParentContextCount: 807,
+    projectionCount: 1790,
+    atomicCardCount: 6403,
+    massBoundCardCount: 6269,
+    masslessCardCount: 134,
+    sourceContextCardCount: 1510,
   });
   assert.equal(serializeSpecimenCardProjections(published), projectionText);
   assert.equal(createHash("sha256").update(catalogText).digest("hex"), published.metadata.sourceCatalogSha256);
-  assert.equal(createHash("sha256").update(projectionText).digest("hex"), "5fce5d3b44d55616325e4678146a459dc2c98f9b20bb8b47324f3494ea5b16ba");
+  assert.equal(createHash("sha256").update(JSON.stringify(published.projections)).digest("hex"), "f7fab83f8153cb843ddfb20f78ac943edc325fb12b6f9eab70414575a5919086");
+  assert.equal(createHash("sha256").update(projectionText).digest("hex"), "ee269c8521e0982aede4796f4ac5db39b13cd7e4f4b3e9f812db4a116ddf47bd");
 });
 
-test("schema is a closed, count-locked projection contract", () => {
+test("schema is a closed schema-2 count-locked atomic projection contract", () => {
   assert.equal(schema.$schema, "https://json-schema.org/draft/2020-12/schema");
-  assert.equal(schema.$id, "urn:hmc:schema:specimen-card-projections:1");
+  assert.equal(schema.$id, "urn:hmc:schema:specimen-card-projections:2");
   assert.deepEqual(schema.required, ["metadata", "projections"]);
-  assert.equal(schema.properties.projections.minItems, 1699);
-  assert.equal(schema.properties.projections.maxItems, 1699);
-  assert.equal(schema.$defs.metadata.properties.sourceRecordCount.const, 13542);
-  assert.equal(schema.$defs.metadata.properties.projectedCardCount.const, 6316);
+  assert.equal(schema.properties.projections.minItems, 1790);
+  assert.equal(schema.properties.projections.maxItems, 1790);
+  assert.equal(schema.$defs.metadata.properties.atomicCardCount.const, 6403);
+  assert.equal(schema.$defs.metadata.properties.sourceContextCardCount.const, 1510);
+  assert.deepEqual(schema.$defs.projection.required, ["parentRecordId", "cards"]);
+  assert.deepEqual(schema.$defs.card.required, ["holdingPath", "clause", "massPath"]);
+  assert.deepEqual(schema.$defs.clause.required, ["textPath", "start", "end"]);
   const visit = (value) => {
     if (Array.isArray(value)) return value.forEach(visit);
     if (value === null || typeof value !== "object") return;
@@ -59,51 +73,111 @@ test("schema is a closed, count-locked projection contract", () => {
   visit(schema);
 });
 
-test("every card path resolves exactly and follows source model and canonical order", () => {
-  const modelByCatalog = new Map(catalog.metadata.catalogs.map(({ id, recordModel }) => [id, recordModel]));
+test("embedded audit boundaries reconcile all four reviewed candidate sets", () => {
+  assert.deepEqual(REVIEWED_AUDIT_COVERAGE, {
+    candidateCount: 1038,
+    candidateSetSha256: "b9befbead26b076d3c9c7a80e0da7d685a2a79f35674016d197239004bcae786",
+    projectedParentCount: 370,
+    contextOnlyExcludedParentCount: 668,
+    atomicCardCount: 1056,
+    massBoundCardCount: 922,
+    masslessCardCount: 134,
+    sourceContextCardCount: 370,
+    boundaries: [
+      { name: "prior", candidates: 226, projected: 223, excluded: 3, cards: 665, candidateSetSha256: "2b2bf8a08e85f756b61180385b8de61632dc4becc23b63160546ebe0785f7f78" },
+      { name: "palache-merrill", candidates: 462, projected: 71, excluded: 391, cards: 126, candidateSetSha256: "db490176b7293d4b4ac2d5f6fe79dc7e156682bce800170f034a6b7225161024" },
+      { name: "remaining", candidates: 294, projected: 26, excluded: 268, cards: 55, candidateSetSha256: "ac440ebe856454ec4bfcd8f612ced0b62860f11ee6745e171a058a6286faaad3" },
+      { name: "multiholding", candidates: 56, projected: 50, excluded: 6, cards: 210, candidateSetSha256: "5591fb03e3b5beb601ba9f5735e760f238b607541edecdad014d402a8ff8f22f" },
+    ],
+  });
+  assert.equal(REVIEWED_AUDIT_COVERAGE.boundaries.reduce((count, boundary) => count + boundary.candidates, 0), REVIEWED_AUDIT_COVERAGE.candidateCount);
+  assert.equal(REVIEWED_AUDIT_COVERAGE.boundaries.reduce((count, boundary) => count + boundary.projected, 0), REVIEWED_AUDIT_COVERAGE.projectedParentCount);
+  assert.equal(REVIEWED_AUDIT_COVERAGE.boundaries.reduce((count, boundary) => count + boundary.excluded, 0), REVIEWED_AUDIT_COVERAGE.contextOnlyExcludedParentCount);
+  assert.equal(REVIEWED_AUDIT_COVERAGE.boundaries.reduce((count, boundary) => count + boundary.cards, 0), REVIEWED_AUDIT_COVERAGE.atomicCardCount);
+});
+
+test("every clause and optional mass resolves exactly in canonical UTF-16 order", () => {
   const sourceOrder = new Map(catalog.records.map(({ id }, index) => [id, index]));
   let priorOrder = -1;
-  const references = new Set();
+  let cardCount = 0;
+  let contextCount = 0;
   for (const projection of published.projections) {
     const record = recordById.get(projection.parentRecordId);
     assert.ok(record);
     assert(sourceOrder.get(record.id) > priorOrder);
     priorOrder = sourceOrder.get(record.id);
-    const model = modelByCatalog.get(record.catalogId);
-    let previous = [-1, -1];
+    const references = new Set();
+    const spansByPath = new Map();
+    let previous = [-1, "", -1, -1];
     for (const card of projection.cards) {
-      assert.strictEqual(resolve(record, card.holdingPath), resolve(record, card.massPath.replace(/\.(?:weight|weights\[[0-9]+\])\.grams$/u, "")));
-      assert(Number.isFinite(resolve(record, card.massPath)));
-      assert.match(card.massPath, model === "catalog-item"
-        ? /^holdings\[[0-9]+\]\.weight\.grams$/u
-        : /^holdings\[[0-9]+\]\.weights\[[0-9]+\]\.grams$/u);
-      const indexes = [...card.massPath.matchAll(/[0-9]+/gu)].map(([value]) => Number(value));
-      const order = [indexes[0], indexes[1] ?? -1];
-      assert(order[0] > previous[0] || (order[0] === previous[0] && order[1] > previous[1]));
+      const holdingIndex = Number(card.holdingPath.match(/[0-9]+/u)[0]);
+      const textIndex = Number(card.clause.textPath.match(/[0-9]+/u)[0]);
+      assert.equal(holdingIndex, textIndex);
+      const text = resolve(record, card.clause.textPath);
+      assert.equal(typeof text, "string");
+      assert(card.clause.start >= 0 && card.clause.start < card.clause.end && card.clause.end <= text.length);
+      assert.match(text.slice(card.clause.start, card.clause.end), /[\p{L}\p{N}]/u);
+      for (const boundary of [card.clause.start, card.clause.end]) {
+        if (boundary > 0 && boundary < text.length) {
+          assert(!(text.charCodeAt(boundary - 1) >= 0xd800 && text.charCodeAt(boundary - 1) <= 0xdbff &&
+            text.charCodeAt(boundary) >= 0xdc00 && text.charCodeAt(boundary) <= 0xdfff));
+        }
+      }
+      const order = [holdingIndex, card.clause.textPath, card.clause.start, card.clause.end];
+      assert(order[0] > previous[0] ||
+        (order[0] === previous[0] && (order[1] > previous[1] ||
+          (order[1] === previous[1] && (order[2] > previous[2] ||
+            (order[2] === previous[2] && order[3] > previous[3]))))));
       previous = order;
-      const reference = `${record.id}\0${card.massPath}`;
-      assert(!references.has(reference));
-      references.add(reference);
+      const spans = spansByPath.get(card.clause.textPath) || [];
+      assert(spans.every(([start, end]) => card.clause.end <= start || card.clause.start >= end));
+      spans.push([card.clause.start, card.clause.end]);
+      spansByPath.set(card.clause.textPath, spans);
+      if (card.massPath !== null) {
+        assert(Number.isFinite(resolve(record, card.massPath)) && resolve(record, card.massPath) > 0);
+        assert.equal(Number(card.massPath.match(/[0-9]+/u)[0]), holdingIndex);
+        assert(!references.has(card.massPath));
+        references.add(card.massPath);
+      }
+      cardCount++;
     }
+    const hasContext = deriveSourceContext(projection, record, modelByCatalog.get(record.catalogId));
+    contextCount += Number(hasContext);
+    assert(projection.cards.length + Number(hasContext) >= 2);
   }
-  assert.equal(references.size, 6316);
+  assert.equal(cardCount, 6403);
+  assert.equal(contextCount, 1510);
 });
 
-test("Reeds entry 366 has exactly ten ordered cards and no residual; Prior entry 630 is absent", () => {
+test("Prior 630 has exact 17 reviewed clauses plus context; Reeds 366 has ten full holdings and no context", () => {
+  const prior = published.projections.find(({ parentRecordId }) => parentRecordId === PRIOR_630_ID);
+  assert.deepEqual(prior.cards.map(cardTuple), [
+    [77, 123, 0], [126, 163, 1], [165, 201, 2], [203, 239, 3], [241, 259, 4], [261, 279, 5],
+    [281, 300, null], [303, 336, null], [338, 356, 6], [358, 376, 7], [378, 415, null], [417, 436, 8],
+    [438, 456, 9], [458, 477, null], [479, 497, 10], [499, 516, 11], [518, 536, null],
+  ]);
+  assert(deriveSourceContext(prior, recordById.get(PRIOR_630_ID), "collection-entry"));
+  const priorText = recordById.get(PRIOR_630_ID).holdings[0].description;
+  assert.match(priorText.slice(prior.cards.at(-1).clause.end), /27 stones|total weight|12 small stones/iu);
+
   const reeds = published.projections.find(({ parentRecordId }) => parentRecordId === REEDS_366_ID);
-  assert.ok(reeds);
-  assert.equal(reeds.retainParentContext, false);
-  assert.deepEqual(reeds.cards.map(({ holdingPath }) => holdingPath), Array.from({ length: 10 }, (_, index) => `holdings[${index}]`));
-  assert.deepEqual(reeds.cards.map(({ massPath }) => resolve(recordById.get(REEDS_366_ID), massPath)),
-    [28.9, 310.1, 142, 30, 9.6, 124.5, 2.3, 128.5, 658.7, 51.2]);
-  assert(!published.projections.some(({ parentRecordId }) => parentRecordId === PRIOR_630_ID));
+  assert.equal(reeds.cards.length, 10);
+  for (const [index, card] of reeds.cards.entries()) {
+    const holding = recordById.get(REEDS_366_ID).holdings[index];
+    assert.deepEqual(card, {
+      holdingPath: `holdings[${index}]`,
+      clause: { textPath: `holdings[${index}].description`, start: 0, end: holding.description.length },
+      massPath: `holdings[${index}].weights[0].grams`,
+    });
+  }
+  assert.equal(deriveSourceContext(reeds, recordById.get(REEDS_366_ID), "collection-entry"), false);
 });
 
-test("manifest exposes only projection identifiers and paths, with no prose or private material", () => {
+test("manifest exposes only identifiers, paths, and numeric boundaries without copied prose or private fields", () => {
   const allowedKeys = new Set([
     "metadata", "projections", "schemaVersion", "scope", "catalogSchemaVersion", "sourceRecordCount",
-    "sourceCatalogSha256", "projectionCount", "projectedCardCount", "parentRecordId", "retainParentContext",
-    "cards", "holdingPath", "massPath",
+    "sourceCatalogSha256", "projectionCount", "atomicCardCount", "sourceContextCardCount", "parentRecordId",
+    "cards", "holdingPath", "clause", "textPath", "start", "end", "massPath",
   ]);
   const visit = (value) => {
     if (Array.isArray(value)) return value.forEach(visit);
@@ -114,71 +188,84 @@ test("manifest exposes only projection identifiers and paths, with no prose or p
     }
   };
   visit(published);
-  assert.doesNotMatch(projectionText, /(?:description|label|source(?:File|Path)|notes?|urls?|images?|private|\/Users\/|\/private\/|\.pdf|\.png|\.webp)/iu);
-});
-
-test("cards exclude casts, aggregates, and scalar group totals", () => {
-  for (const projection of published.projections) {
-    const record = recordById.get(projection.parentRecordId);
-    const cardsByHolding = Map.groupBy(projection.cards, ({ holdingPath }) => holdingPath);
-    for (const [holdingPath, cards] of cardsByHolding) {
-      const holding = resolve(record, holdingPath);
-      if (holding.kind !== undefined) assert.equal(holding.kind, "specimen");
-      if (holding.count > 1) {
-        assert(cards.every(({ massPath }) => massPath.includes(".weights[")));
-        assert.equal(cards.length, holding.weights.length);
-        assert(holding.weights.length > 1);
-      }
-    }
-  }
+  assert.doesNotMatch(projectionText, /(?:label|source(?:File|Path)|notes?|urls?|images?|private|\/Users\/|\/private\/|\.pdf|\.png|\.webp|reason|evidence|disposition)/iu);
 });
 
 test("rejects wrong metadata, extra fields, free text, and altered source bytes", () => {
-  for (const key of ["schemaVersion", "scope", "catalogSchemaVersion", "sourceRecordCount", "sourceCatalogSha256", "projectionCount", "projectedCardCount"]) {
+  for (const key of ["schemaVersion", "scope", "catalogSchemaVersion", "sourceRecordCount", "sourceCatalogSha256", "projectionCount", "atomicCardCount", "sourceContextCardCount"]) {
     mutate(`wrong ${key}`, (value) => { value.metadata[key] = key === "scope" ? "other" : 0; });
   }
   mutate("extra root key", (value) => { value.description = "private prose"; }, /exactly keys/iu);
   mutate("extra metadata key", (value) => { value.metadata.sourcePath = "/private/catalog.json"; }, /exactly keys/iu);
-  mutate("extra projection key", (value) => { value.projections[0].label = "specimen"; }, /exactly keys/iu);
+  mutate("extra projection key", (value) => { value.projections[0].retainParentContext = true; }, /exactly keys/iu);
   mutate("extra card key", (value) => { value.projections[0].cards[0].note = "review note"; }, /exactly keys/iu);
+  mutate("extra clause key", (value) => { value.projections[0].cards[0].clause.text = "copied prose"; }, /exactly keys/iu);
   assert.throws(() => validateSpecimenCardProjections(published, catalog, `${catalogText} `), /SHA-256/iu);
 });
 
-test("rejects duplicate, dangling, reordered, malformed, mismatched, and model-incompatible paths", () => {
+test("rejects duplicate, dangling, reordered, malformed, mismatched, and overlapping references", () => {
   mutate("duplicate parent", (value) => { value.projections[1].parentRecordId = value.projections[0].parentRecordId; });
   mutate("dangling parent", (value) => { value.projections[0].parentRecordId = "obs-00000000-0000-4000-8000-000000000000"; });
   mutate("reordered parents", (value) => { [value.projections[0], value.projections[1]] = [value.projections[1], value.projections[0]]; });
-  mutate("duplicate mass", (value) => { value.projections[0].cards[1] = clone(value.projections[0].cards[0]); });
   mutate("reordered cards", (value) => { value.projections.find(({ cards }) => cards.length > 1).cards.reverse(); });
-  mutate("mismatched holding", (value) => { value.projections[0].cards[0].holdingPath = "holdings[1]"; });
-  mutate("dangling holding", (value) => { value.projections[0].cards[0].holdingPath = "holdings[999]"; value.projections[0].cards[0].massPath = "holdings[999].weight.grams"; });
-  mutate("malformed path", (value) => { value.projections[0].cards[0].holdingPath = "/holdings/0"; });
-  mutate("wrong model path", (value) => { value.projections[0].cards[0].massPath = "holdings[0].weights[0].grams"; });
-  mutate("cast path", (value) => {
+  mutate("dangling holding", (value) => { const card = value.projections[0].cards[0]; card.holdingPath = "holdings[999]"; card.clause.textPath = "holdings[999].description"; });
+  mutate("malformed holding path", (value) => { value.projections[0].cards[0].holdingPath = "/holdings/0"; });
+  mutate("mismatched text holding", (value) => { value.projections[0].cards[0].clause.textPath = "holdings[1].designation"; });
+  mutate("unsupported text field", (value) => { value.projections[0].cards[0].clause.textPath = "holdings[0].provenance"; });
+  mutate("empty range", (value) => { value.projections[0].cards[0].clause.end = value.projections[0].cards[0].clause.start; });
+  mutate("out of bounds range", (value) => { value.projections[0].cards[0].clause.end = 999999; });
+  mutate("overlapping clauses", (value) => {
+    const prior = value.projections.find(({ parentRecordId }) => parentRecordId === PRIOR_630_ID);
+    prior.cards[1].clause.start = prior.cards[0].clause.end - 1;
+  }, /overlap|canonical/iu);
+});
+
+test("rejects invalid, duplicate, mismatched, and non-specimen mass bindings", () => {
+  mutate("duplicate mass", (value) => {
+    const prior = value.projections.find(({ parentRecordId }) => parentRecordId === PRIOR_630_ID);
+    prior.cards[1].massPath = prior.cards[0].massPath;
+  }, /duplicated|canonical/iu);
+  mutate("mismatched mass holding", (value) => {
+    const reeds = value.projections.find(({ parentRecordId }) => parentRecordId === REEDS_366_ID);
+    reeds.cards[0].massPath = "holdings[1].weights[0].grams";
+  });
+  mutate("dangling mass", (value) => {
+    const prior = value.projections.find(({ parentRecordId }) => parentRecordId === PRIOR_630_ID);
+    prior.cards[0].massPath = "holdings[0].weights[999].grams";
+  }, /positive numeric mass/iu);
+  mutate("wrong model path", (value) => { value.projections[0].cards[0].massPath = "holdings[0].weights[0].grams"; }, /unsupported/iu);
+  mutate("cast catalog item", (value) => {
     const projection = value.projections.find(({ parentRecordId }) => parentRecordId === "obs-11bc479c-55f1-43c6-a7d6-f55931c6b4ca");
-    projection.cards[0] = { holdingPath: "holdings[2]", massPath: "holdings[2].weight.grams" };
+    const holding = recordById.get(projection.parentRecordId).holdings[2];
+    projection.cards[0] = {
+      holdingPath: "holdings[2]",
+      clause: { textPath: "holdings[2].designation", start: 0, end: holding.designation.length },
+      massPath: "holdings[2].weight.grams",
+    };
   }, /non-specimen/iu);
 });
 
-test("rejects unsafe residual changes, Prior insertion, Reeds mutations, and reviewed-set drift", () => {
-  mutate("single display without residual", (value) => {
-    const projection = value.projections.find(({ retainParentContext, cards }) => retainParentContext && cards.length === 1);
-    projection.retainParentContext = false;
-  }, /one display unit/iu);
-  mutate("false exhaustive flag becomes residual", (value) => {
-    value.projections.find(({ retainParentContext }) => !retainParentContext).retainParentContext = true;
-  }, /reviewed production lock/iu);
-  mutate("Prior entry 630 insertion", (value) => { value.projections[0].parentRecordId = PRIOR_630_ID; }, /Prior entry 630/iu);
-  mutate("Reeds residual", (value) => {
-    value.projections.find(({ parentRecordId }) => parentRecordId === REEDS_366_ID).retainParentContext = true;
+test("rejects Prior, Reeds, context-count, card-count, and reviewed-set drift", () => {
+  mutate("Prior massless clause removed", (value) => {
+    value.projections.find(({ parentRecordId }) => parentRecordId === PRIOR_630_ID).cards.splice(6, 1);
+    value.metadata.atomicCardCount--;
+  }, /Prior entry 630|production lock|atomic card count/iu);
+  mutate("Prior group endpoint selected", (value) => {
+    const prior = value.projections.find(({ parentRecordId }) => parentRecordId === PRIOR_630_ID);
+    prior.cards[16].massPath = "holdings[0].weights[12].grams";
+  }, /Prior entry 630/iu);
+  mutate("Reeds span shortened", (value) => {
+    value.projections.find(({ parentRecordId }) => parentRecordId === REEDS_366_ID).cards[0].clause.end--;
   }, /Reeds entry 366/iu);
   mutate("Reeds card removed", (value) => {
     value.projections.find(({ parentRecordId }) => parentRecordId === REEDS_366_ID).cards.pop();
-    value.metadata.projectedCardCount--;
-  });
-  mutate("reviewed path changed to another resolving mass", (value) => {
-    const projection = value.projections.find(({ cards }) => cards.length >= 3);
-    projection.cards.splice(1, 1);
-    value.metadata.projectedCardCount--;
-  });
+    value.metadata.atomicCardCount--;
+  }, /Reeds entry 366|atomic.?card.?count/iu);
+  mutate("derived context changed", (value) => { value.metadata.sourceContextCardCount--; });
+  mutate("reviewed span changed", (value) => {
+    const projection = value.projections.find((candidate) => candidate.cards.length > 2 &&
+      ![PRIOR_630_ID, REEDS_366_ID].includes(candidate.parentRecordId) &&
+      deriveSourceContext(candidate, recordById.get(candidate.parentRecordId), modelByCatalog.get(recordById.get(candidate.parentRecordId).catalogId)));
+    projection.cards[0].clause.end--;
+  }, /reviewed production lock/iu);
 });
