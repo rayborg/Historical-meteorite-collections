@@ -162,6 +162,12 @@ Ward 1904 and Farrington 1916 source images, OCR batches, source filenames, priv
 
 Anderson 1913, Kantor 1920, and Astapovich 1938 source images, OCR, source filenames, private notes, paths, folios, and media are excluded. All three publish structured facts only and remain blocked/undetermined with zero public folios.
 
+## Specimen Card Projections
+
+`specimen-card-projections.json` is a schema-1, display-only positive allowlist. Each card references an immutable parent observation and exact public `holdingPath` and `massPath`; it never creates a new observation ID or changes `catalog.json`. The manifest contains 1,699 reviewed parent projections and 6,316 individual mass cards. A `retainParentContext` value of `true` requires a residual card for source material that was not reviewed as an individual specimen.
+
+Projection order follows canonical parent order and then source holding and weight order. Exact mass paths also scope displayed lineage. Ranges, totals, grouped counts, casts, aggregates, uncertain values, and other unsupported material are not converted into specimen cards. Reeds 1937 entry 366 is locked to ten ordered cards, while Prior 1923 entry 630 is explicitly excluded from projection. Parent observation counts, statistics, citations, folio authorization, and lineage records remain unchanged.
+
 ## Specimen Lineages
 
 `specimen-lineages.json` is a generated public relationship layer. Schema version 2 explicitly distinguishes `same-inventory` relationships from `possible-match` relationships. `specimen-lineages.schema.json` is its machine-readable JSON Schema 2020-12 contract, while the dependency-free custom validator is authoritative for exact keys, cross-field coherence, source derivation, namespace separation, ambiguity handling, and canonical ordering. Every displayed observation is derived from `catalog.json`; source designations, names, masses, and other source facts remain unchanged.
@@ -243,6 +249,7 @@ Run from the repository root:
 node scripts/sync-release-summary.mjs --check
 node scripts/build-specimen-lineages.mjs --check
 node scripts/validate-specimen-lineages.mjs
+node scripts/validate-specimen-card-projections.mjs
 node scripts/validate-public-catalog.mjs
 node scripts/test-multicatalog.cjs
 node --test scripts/*.test.mjs

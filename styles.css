@@ -298,6 +298,8 @@ button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible
 .record-heading { min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .8rem; padding-bottom: .85rem; border-bottom: 3px double var(--rule); }
 .record-heading > div { min-width: 0; }
 .designation { margin: 0 0 .15rem; color: var(--oxblood); font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.specimen-position { width: fit-content; margin: .4rem 0 .15rem; padding: .16rem .38rem; color: var(--paper-light); background: var(--oxblood-dark); font-size: .61rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
+.residual-specimen-card .specimen-position { color: var(--oxblood-dark); background: rgba(154, 119, 55, .14); border: 1px solid rgba(118, 47, 45, .3); }
 .source-name-label { margin: .55rem 0 .08rem; color: var(--ink-soft); font-size: .56rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
 .record-name { margin: 0; font-size: clamp(1.2rem, 1.8vw, 1.55rem); font-weight: 400; line-height: 1.08; word-break: keep-all; overflow-wrap: normal; hyphens: none; }
 .metbull-name { margin-top: .7rem; padding: .55rem .65rem; background: rgba(154, 119, 55, .09); border-left: 2px solid var(--brass); }

@@ -8,8 +8,8 @@
   <meta name="theme-color" content="#2d241b">
   <title>The Meteorite Cabinet | Historical Collection Index</title>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=20260806-2">
-  <script src="./app.js?v=20260806-2" defer></script>
+  <link rel="stylesheet" href="./styles.css?v=20260806-2-cards">
+  <script src="./app.js?v=20260806-2-cards" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#catalog">Skip to catalog</a>
@@ -117,7 +117,7 @@
 
       <p id="status" class="status" role="status" aria-live="polite">Opening the factual index...</p>
       <div id="results" class="catalog-grid" aria-busy="true"></div>
-      <div class="more-row"><button id="show-more" class="button secondary-button" type="button" hidden>Show more observations</button></div>
+      <div class="more-row"><button id="show-more" class="button secondary-button" type="button" hidden>Show more cards</button></div>
 
       <div id="empty-state" class="empty-state" hidden>
         <span aria-hidden="true">&#10022;</span>
@@ -149,6 +149,7 @@
       <header class="record-heading">
         <div>
           <p class="designation"></p>
+          <p class="specimen-position" hidden></p>
           <p class="source-name-label">Source catalog name</p>
           <h3 class="record-name"></h3>
           <div class="metbull-name" hidden>

@@ -4,7 +4,7 @@
 This repository is a dependency-free, facts-only index of 13,542 source observations from 33 historical meteorite catalogs. The coordinated catalog uses public metadata schema 6 and supports 4 source-specific record models: `catalog-item`, `catalog-number`, `collection-entry`, `specimen`.
 <!-- release-summary:readme-overview:end -->
 
-The repository also publishes [`data/specimen-lineages.json`](./data/specimen-lineages.json), a deterministic index that distinguishes same collection inventory IDs across consecutive editions from possible matches across separate collection sources. Same-inventory continuity is series-scoped and does not infer custody or ownership. Cross-source candidates retain public review decisions from [`data/specimen-lineage-reviews.json`](./data/specimen-lineage-reviews.json) and do not assert physical identity, custody, or ownership transfer.
+The repository also publishes [`data/specimen-lineages.json`](./data/specimen-lineages.json), a deterministic index that distinguishes same collection inventory IDs across consecutive editions from possible matches across separate collection sources. Same-inventory continuity is series-scoped and does not infer custody or ownership. Cross-source candidates retain public review decisions from [`data/specimen-lineage-reviews.json`](./data/specimen-lineage-reviews.json) and do not assert physical identity, custody, or ownership transfer. The separate [`data/specimen-card-projections.json`](./data/specimen-card-projections.json) manifest identifies reviewed source holdings that may be displayed as individual specimen cards without splitting or replacing their parent observations.
 
 A searchable transcription of the 1976 Huss Meteorite Collection catalog, compiled and published by Glenn Huss.
 
@@ -30,6 +30,7 @@ Validate the complete public package with:
 node scripts/sync-release-summary.mjs --check
 node scripts/build-specimen-lineages.mjs --check
 node scripts/validate-specimen-lineages.mjs
+node scripts/validate-specimen-card-projections.mjs
 node scripts/validate-public-catalog.mjs
 node scripts/test-multicatalog.cjs
 node --test scripts/*.test.mjs
@@ -146,6 +147,12 @@ Nininger 1933 covers printed pages 1-20, and the reviewed Nininger 1950 collecti
 
 Records are source observations, not canonical meteorites or physical specimens. Equal names, designations, masses, or page numbers do not merge observations across catalogs. Statistics count each parent record once and sum every reported numeric mass once without multiplying by holding count.
 
+### Reviewed Specimen Cards
+
+`specimen-card-projections.json` is a display-only, positive allowlist. Its schema-1 entries reference an immutable parent observation and exact public holding and mass paths; they do not create observation or canonical-specimen IDs. Reviewed individual masses render as adjacent cards in source order. When a parent also contains grouped, aggregate, cast, range, total, uncertain, or otherwise unprojected material, one residual context card preserves that material without treating it as an individual specimen.
+
+The manifest currently covers 1,699 parent observations and 6,316 reviewed mass cards. Reeds 1937 entry 366 renders ten ordered holding cards. Prior 1923 entry 630 remains a single parent card because its normalized values mix direct specimens with uncertain values, ranges, grouped counts, and aggregate totals. Search results continue to count distinct parent observations, homepage statistics remain based on all 13,542 parent observations, citations remain parent-scoped, and lineage is routed only by an exact mass path.
+
 ### Reviewed MetBull Harmonization
 
 Any of the four record models may additionally carry one optional `metbull` object:
@@ -245,7 +252,7 @@ Anderson 1913, Kantor 1920, and Astapovich 1938 are also facts-only releases. Th
 Reviewed folio `pageId` values are intentionally public in `folios.json`, and the public repository contains only the 49 selected, manifest-verified folio derivatives under `assets/folios/`.
 <!-- release-summary:readme-public-folios:end -->
 
-The public client has no fallback loader for private data. If `catalog.json` is missing or invalid, the interface shows an accessible error state. Failure of the optional folio manifest leaves factual records available without folio controls.
+The public client has no fallback loader for private data. If `catalog.json` is missing or invalid, the interface shows an accessible error state. Failure of the optional folio or specimen-card projection manifest leaves factual parent records available without that enhancement.
 
 ## Limitations
 
