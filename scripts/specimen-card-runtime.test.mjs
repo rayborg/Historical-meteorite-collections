@@ -162,6 +162,7 @@ test("Prior entry 630 derives seventeen exact atomic clauses and one ordered con
   assert.deepEqual(descriptors.slice(0, 17).map(({ clauseText }) => clauseText), projection.cards.map(({ clause }) =>
     prior.holdings[0].description.slice(clause.start, clause.end)));
   assert.equal(descriptors.slice(0, 17).filter(({ massPath }) => massPath === null).length, 5);
+  assert(descriptors.slice(0, 17).every((descriptor) => app.specimenCardPositionLabel(descriptor) === null));
   assert.deepEqual(descriptors.slice(0, 17).map(app.specimenCardDescriptorMasses),
     [[9095], [3545], [845], [793], [538], [425], [], [], [158], [145], [], [1111], [108], [], [821], [76], []]);
 
@@ -177,6 +178,19 @@ test("Prior entry 630 derives seventeen exact atomic clauses and one ordered con
   assert.equal(entries.length, 2);
   assert.deepEqual(descriptors.map((descriptor) => app.lineageEntriesForSpecimenCard(descriptor, entries).length),
     [0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+});
+
+test("position labels appear only for duplicate normalized masses within one parent", () => {
+  const parent = weightedRecord("duplicate-mass-parent", 3);
+  parent.holdings[1].weights[0].grams = parent.holdings[0].weights[0].grams;
+  const projection = { parentRecordId: parent.id, cards: parent.holdings.map((holding, index) => fullCard(parent, index)) };
+  const document = syntheticManifest([parent], [projection]);
+  const descriptors = app.expandSpecimenCardDescriptors([parent], app.deriveSpecimenCardProjectionIndex(document, [parent]));
+  assert.deepEqual(descriptors.map(app.specimenCardPositionLabel), [
+    "Specimen 1 of 2 with this reported mass",
+    "Specimen 2 of 2 with this reported mass",
+    null,
+  ]);
 });
 
 test("Reeds entry 366 derives ten full-description cards with exact masses and no context", () => {
@@ -304,14 +318,14 @@ test("digest lock loads the exact set and fails closed to parent cards on mismat
   assert.equal(app.SPECIMEN_CARD_PROJECTION_SET_SHA256, "f7fab83f8153cb843ddfb20f78ac943edc325fb12b6f9eab70414575a5919086");
 });
 
-test("rendering is text-only, labels context cards explicitly, and cache keys are synchronized", () => {
+test("rendering is text-only, labels only context and duplicate-mass cards, and cache keys are synchronized", () => {
   assert.doesNotMatch(source, /\.innerHTML\b/u);
   assert.match(source, /Source context, not an individual specimen/u);
-  assert.match(source, /specimenPosition\.textContent = `Specimen \$\{descriptor\.sourcePosition \+ 1\} of \$\{descriptor\.specimenCount\}`/u);
+  assert.match(source, /with this reported mass/u);
   assert.match(html, /<p class="specimen-position" hidden><\/p>/u);
-  assert.match(html, /styles\.css\?v=20260806-2-atomic-cards/u);
-  assert.match(html, /app\.js\?v=20260806-2-atomic-cards/u);
-  assert.equal(app.ASSET_CACHE_VERSION, "20260806-2-atomic-cards");
+  assert.match(html, /styles\.css\?v=20260806-2-atomic-cards-2/u);
+  assert.match(html, /app\.js\?v=20260806-2-atomic-cards-2/u);
+  assert.equal(app.ASSET_CACHE_VERSION, "20260806-2-atomic-cards-2");
 });
 
 test("production projection fixture validates when the schema-2 data dependency is present", {

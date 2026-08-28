@@ -1,7 +1,7 @@
 "use strict";
 
 const CACHE_VERSION = "20260806-2";
-const ASSET_CACHE_VERSION = "20260806-2-atomic-cards";
+const ASSET_CACHE_VERSION = "20260806-2-atomic-cards-2";
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "name-asc";
 const VALID_SORTS = new Set([
@@ -1860,8 +1860,25 @@ function expandSpecimenCardDescriptors(sourceRecords, projectionIndex = new Map(
       projected: true,
       specimenCount: projection.cards.length,
       projectedMassPaths,
-      contextEntries: []
+      contextEntries: [],
+      duplicateMassPosition: null,
+      duplicateMassCount: 1
     }));
+    const cardsByMass = new Map();
+    cards.forEach((descriptor) => {
+      const [grams] = specimenCardDescriptorMasses(descriptor);
+      if (!Number.isFinite(grams)) return;
+      const matchingCards = cardsByMass.get(grams) || [];
+      matchingCards.push(descriptor);
+      cardsByMass.set(grams, matchingCards);
+    });
+    cardsByMass.forEach((matchingCards) => {
+      if (matchingCards.length < 2) return;
+      matchingCards.forEach((descriptor, index) => {
+        descriptor.duplicateMassPosition = index + 1;
+        descriptor.duplicateMassCount = matchingCards.length;
+      });
+    });
     const contextEntries = specimenCardContextEntries(parentRecord, projection);
     if (contextEntries.length) cards.push({
       parentRecord,
@@ -1873,10 +1890,18 @@ function expandSpecimenCardDescriptors(sourceRecords, projectionIndex = new Map(
       projected: true,
       specimenCount: projection.cards.length,
       projectedMassPaths,
-      contextEntries
+      contextEntries,
+      duplicateMassPosition: null,
+      duplicateMassCount: 1
     });
     return cards;
   });
+}
+
+function specimenCardPositionLabel(descriptor) {
+  if (descriptor?.kind === "context") return "Source context, not an individual specimen";
+  if (descriptor?.kind !== "atomic" || descriptor.duplicateMassCount < 2 || descriptor.duplicateMassPosition === null) return null;
+  return `Specimen ${descriptor.duplicateMassPosition} of ${descriptor.duplicateMassCount} with this reported mass`;
 }
 
 function specimenCardDescriptorMasses(descriptor) {
@@ -2419,11 +2444,9 @@ function createRecordCard(recordOrDescriptor) {
           ? record.reportedNumber ? `Reported no. ${record.reportedNumber}` : `Collection entry ${record.entryOrder}`
           : record.designation || "No printed designation";
   const specimenPosition = card.querySelector(".specimen-position");
-  if (descriptor.kind === "context") {
-    specimenPosition.textContent = "Source context, not an individual specimen";
-    specimenPosition.hidden = false;
-  } else if (descriptor.kind === "atomic") {
-    specimenPosition.textContent = `Specimen ${descriptor.sourcePosition + 1} of ${descriptor.specimenCount}`;
+  const specimenPositionLabel = specimenCardPositionLabel(descriptor);
+  if (specimenPositionLabel) {
+    specimenPosition.textContent = specimenPositionLabel;
     specimenPosition.hidden = false;
   } else {
     specimenPosition.remove();
@@ -2922,6 +2945,7 @@ if (typeof module !== "undefined" && module.exports) {
     paginateSpecimenCardDescriptors,
     specimenCardDescriptorHoldings,
     specimenCardDescriptorMasses,
+    specimenCardPositionLabel,
     specimenCardContextEntries,
     specimenCardSourceMasses,
     weightSortValue,
