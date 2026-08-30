@@ -16,8 +16,11 @@ function fieldBlock(form, id) {
   return match[0];
 }
 
-test("footer button opens an accessible dialog with a noscript direct-link fallback", async () => {
-  const html = await readFile(path.join(projectRoot, "index.html"), "utf8");
+test("footer button remains visible in the viewport and opens an accessible dialog with a noscript fallback", async () => {
+  const [html, styles] = await Promise.all([
+    readFile(path.join(projectRoot, "index.html"), "utf8"),
+    readFile(path.join(projectRoot, "styles.css"), "utf8"),
+  ]);
   assert.match(html, /<button id="issue-report-open"[^>]*type="button">Report a website issue<\/button>/);
   assert.match(html, /<dialog id="issue-report-dialog" aria-labelledby="issue-report-title" aria-describedby="issue-report-description">/);
   assert.match(html, /id="issue-report-error"[^>]*role="alert" aria-live="assertive" hidden/);
@@ -25,9 +28,14 @@ test("footer button opens an accessible dialog with a noscript direct-link fallb
   assert.match(html, /<noscript>[\s\S]*href="https:\/\/github\.com\/rayborg\/Historical-meteorite-collections\/issues\/new\?template=data-error\.yml" target="_blank" rel="noopener noreferrer"/);
   assert.match(html, /GitHub account and login are required/);
   assert.match(html, /Reports are stored as public GitHub issues/);
-  assert.match(html, /styles\.css\?v=20260830-madrid-1/);
-  assert.match(html, /app\.js\?v=20260830-madrid-1/);
-  assert.equal(app.ASSET_CACHE_VERSION, "20260830-madrid-1");
+  assert.match(styles, /body > footer \.issue-report-action \{[^}]*position: fixed;[^}]*z-index: 50;[^}]*right: [^;]+;[^}]*bottom: [^;]+;/);
+  assert.match(styles, /body > footer \.issue-report-button:focus-visible \{ outline: 2px solid #e2c997; outline-offset: 3px; \}/);
+  assert.match(styles, /body:has\(dialog\[open\]\) > footer \.issue-report-action \{ visibility: hidden; \}/);
+  assert.match(styles, /@media \(max-width: 700px\)[\s\S]*body > footer \.issue-report-action \{[^}]*width: min\(9\.75rem, calc\(100vw - 1\.3rem\)\);/);
+  assert.match(styles, /@media \(max-width: 700px\)[\s\S]*body > footer \.issue-report-button \{[^}]*width: 100%;[^}]*font-size: \.72rem;/);
+  assert.match(html, /styles\.css\?v=20260830-ui-fix-1/);
+  assert.match(html, /app\.js\?v=20260830-ui-fix-1/);
+  assert.equal(app.ASSET_CACHE_VERSION, "20260830-ui-fix-1");
 });
 
 test("anti-spam gate accepts only a correct, human-paced, empty-honeypot submission", () => {

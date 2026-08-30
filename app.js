@@ -1,7 +1,7 @@
 "use strict";
 
 const CACHE_VERSION = "20260806-2";
-const ASSET_CACHE_VERSION = "20260830-madrid-1";
+const ASSET_CACHE_VERSION = "20260830-ui-fix-1";
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "name-asc";
 const ISSUE_FORM_URL = "https://github.com/rayborg/Historical-meteorite-collections/issues/new?template=data-error.yml";
@@ -2457,6 +2457,12 @@ function isSingleResultCount(count) {
   return count === 1;
 }
 
+function namesAreDisplayEquivalent(sourceName, canonicalName) {
+  if (typeof sourceName !== "string" || typeof canonicalName !== "string") return false;
+  const normalizedDisplayName = (value) => value.normalize("NFC").trim().replace(/\s+/gu, " ").toLocaleLowerCase("en-US");
+  return normalizedDisplayName(sourceName) === normalizedDisplayName(canonicalName);
+}
+
 function metbullPanelDetails(record) {
   if (!record?.metbull) return null;
   if (record.metbull.matchType === "unresolved") {
@@ -2467,6 +2473,7 @@ function metbullPanelDetails(record) {
       note: record.metbull.alternateNameNote || "No current Meteoritical Bulletin name was resolved in this review."
     };
   }
+  if (namesAreDisplayEquivalent(record.name, record.metbull.canonicalName)) return null;
   return {
     label: "Current Meteoritical Bulletin name",
     canonicalName: record.metbull.canonicalName,
@@ -3045,6 +3052,7 @@ if (typeof module !== "undefined" && module.exports) {
     isValidFolioAlt,
     matchesSearch,
     metbullPanelDetails,
+    namesAreDisplayEquivalent,
     loadEarlierRecordIndex,
     loadSpecimenCardProjectionIndex,
     normalizeWeightRange,

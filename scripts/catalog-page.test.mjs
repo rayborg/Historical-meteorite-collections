@@ -25,7 +25,14 @@ function fetchFixture(catalogPayload = catalog, folioPayload = folios) {
   });
 }
 
-test("reviewed cards expose exact and alias canonical names while unresolved cards have no link", () => {
+test("reviewed cards suppress display-equivalent names while retaining aliases and unresolved reviews", () => {
+  assert.equal(app.namesAreDisplayEquivalent("Aba Panu", "Aba Panu"), true);
+  assert.equal(app.namesAreDisplayEquivalent("ABA PANU", "aba panu"), true);
+  assert.equal(app.namesAreDisplayEquivalent("  Aba\t\nPanu  ", "Aba Panu"), true);
+  assert.equal(app.namesAreDisplayEquivalent("Can\u0303on Diablo", "Cañon Diablo"), true);
+  assert.equal(app.namesAreDisplayEquivalent("Aba Panu", "Aba Panu II"), false);
+  assert.equal(app.namesAreDisplayEquivalent(null, "Aba Panu"), false);
+
   const exact = app.metbullPanelDetails({
     name: "Allende",
     metbull: {
@@ -35,12 +42,7 @@ test("reviewed cards expose exact and alias canonical names while unresolved car
       alternateNameNote: null
     }
   });
-  assert.deepEqual(exact, {
-    label: "Current Meteoritical Bulletin name",
-    canonicalName: "Allende",
-    url: "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2278",
-    note: null
-  });
+  assert.equal(exact, null);
 
   const alias = app.metbullPanelDetails({
     name: "Canyon Diablo (Cañon Diablo)",
@@ -68,17 +70,23 @@ test("reviewed cards expose exact and alias canonical names while unresolved car
   assert.equal(app.metbullPanelDetails({ name: "Unreviewed" }), null);
 });
 
-test("production cards expose every reviewed mapping, including equal canonical names and unresolved reviews", () => {
+test("production cards suppress equal canonical names, including Aba Panu, while retaining other reviews", () => {
   const reviewed = catalog.records.filter((record) => record.metbull);
   const targetIds = new Set(["anderson-1913", "astapovich-1938", "kantor-1920"]);
   const target = reviewed.filter((record) => targetIds.has(record.catalogId));
   const resolved = reviewed.filter(({ metbull }) => metbull.matchType !== "unresolved");
   const unresolved = reviewed.filter(({ metbull }) => metbull.matchType === "unresolved");
+  const equivalent = resolved.filter((record) => app.namesAreDisplayEquivalent(record.name, record.metbull.canonicalName));
 
   assert.deepEqual(
     { reviewed: reviewed.length, resolved: resolved.length, unresolved: unresolved.length, pending: catalog.records.length - reviewed.length },
     { reviewed: 10332, resolved: 10140, unresolved: 192, pending: 3340 }
   );
+  assert.deepEqual({ equivalent: equivalent.length, substantive: resolved.length - equivalent.length }, { equivalent: 9041, substantive: 1099 });
+  const abaPanu = catalog.records.find(({ id }) => id === "obs-bc3edcf5-25d8-4921-8ace-ceedd6882e3b");
+  assert.equal(abaPanu.name, "Aba Panu");
+  assert.equal(abaPanu.metbull.canonicalName, "Aba Panu");
+  assert.equal(app.metbullPanelDetails(abaPanu), null);
   assert.deepEqual(
     {
       reviewed: target.length,
@@ -89,12 +97,15 @@ test("production cards expose every reviewed mapping, including equal canonical 
   );
   for (const record of reviewed) {
     const details = app.metbullPanelDetails(record);
-    assert.ok(details, record.id);
     if (record.metbull.matchType === "unresolved") {
+      assert.ok(details, record.id);
       assert.equal(details.canonicalName, null, record.id);
       assert.equal(details.url, null, record.id);
       assert.ok(details.note, record.id);
+    } else if (app.namesAreDisplayEquivalent(record.name, record.metbull.canonicalName)) {
+      assert.equal(details, null, record.id);
     } else {
+      assert.ok(details, record.id);
       assert.equal(details.canonicalName, record.metbull.canonicalName, record.id);
       assert.equal(details.url, record.metbull.metbullUrl, record.id);
     }
@@ -187,9 +198,9 @@ test("homepage and catalog page markup keep navigation and UI states accessible"
   assert.match(html, /id="catalog-directory-list" aria-busy="true"/);
   assert.match(html, /id="catalog-directory-error"[^>]*role="alert"[^>]*hidden/);
   assert.match(html, /<noscript><p class="empty-state">/);
-  assert.match(html, /catalogs\.js\?v=20260830-madrid-1/);
-  assert.match(html, /app\.js\?v=20260830-madrid-1/);
-  assert.match(html, /styles\.css\?v=20260830-madrid-1/);
+  assert.match(html, /catalogs\.js\?v=20260830-ui-fix-1/);
+  assert.match(html, /app\.js\?v=20260830-ui-fix-1/);
+  assert.match(html, /styles\.css\?v=20260830-ui-fix-1/);
   assert.doesNotMatch(source, /\.innerHTML\b/);
   assert.match(source, /\.textContent = summary\.label/);
   assert.doesNotMatch(source, /error\.message/);
