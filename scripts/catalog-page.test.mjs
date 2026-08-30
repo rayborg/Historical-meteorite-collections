@@ -77,7 +77,7 @@ test("production cards expose every reviewed mapping, including equal canonical 
 
   assert.deepEqual(
     { reviewed: reviewed.length, resolved: resolved.length, unresolved: unresolved.length, pending: catalog.records.length - reviewed.length },
-    { reviewed: 10202, resolved: 10056, unresolved: 146, pending: 3340 }
+    { reviewed: 10332, resolved: 10140, unresolved: 192, pending: 3340 }
   );
   assert.deepEqual(
     {
@@ -104,13 +104,13 @@ test("production cards expose every reviewed mapping, including equal canonical 
 test("production catalog directory preserves all canonical cards and authorized actions", async () => {
   const directory = await catalogPage.loadCatalogDirectoryData(fetchFixture());
   const expected = app.catalogSummaryEntries(app.normalizeCatalogRegistry(catalog.metadata));
-  assert.equal(directory.entries.length, 33);
+  assert.equal(directory.entries.length, 34);
   assert.deepEqual(directory.entries.map(({ folios: _pages, ...summary }) => summary), expected);
   assert.deepEqual(directory.entries.map(({ id }) => id), [
     "lucas-1813", "chladni-1819", "chladni-1825", "haidinger-1859", "buchner-1863",
     "nordenskiold-1870", "ward-1881", "ball-1882", "usnm-1886", "hovey-1896", "washington-1897",
     "tassin-1902", "hogbom-1902", "farrington-1903", "ward-1904", "schreiter-1912", "foote-1912",
-    "anderson-1913", "farrington-1916", "merrill-1916", "kantor-1920", "prior-1923", "palache-1926",
+    "anderson-1913", "farrington-1916", "merrill-1916", "kantor-1920", "prior-1923", "madrid-1923", "palache-1926",
     "nininger-1933", "reeds-1937", "astapovich-1938", "barnes-1940", "nininger-1950", "mason-1964",
     "huss-1976", "huss-1986", "kanagawa-1996", "asu-2024-09"
   ]);
@@ -123,6 +123,16 @@ test("production catalog directory preserves all canonical cards and authorized 
     "nininger-1933": 21
   });
   assert.equal(browseable.reduce((sum, { folios: pages }) => sum + pages.length, 0), 49);
+  const madrid = directory.entries.find(({ id }) => id === "madrid-1923");
+  assert.deepEqual(madrid, {
+    id: "madrid-1923",
+    label: "Los Meteoritos del Museo de Madrid (1923)",
+    year: 1923,
+    compiler: "Lucas Fernández Navarro",
+    pageCoverage: "224–233 (10 pages)",
+    observationCount: 130,
+    folios: []
+  });
   assert(browseable.every(({ folios: pages }) => pages.every(({ image, catalogId, pageId }) =>
     image === `assets/folios/${catalogId}/${pageId}.webp`
   )));
@@ -177,9 +187,9 @@ test("homepage and catalog page markup keep navigation and UI states accessible"
   assert.match(html, /id="catalog-directory-list" aria-busy="true"/);
   assert.match(html, /id="catalog-directory-error"[^>]*role="alert"[^>]*hidden/);
   assert.match(html, /<noscript><p class="empty-state">/);
-  assert.match(html, /catalogs\.js\?v=20260806-2/);
-  assert.match(html, /app\.js\?v=20260806-2/);
-  assert.match(html, /styles\.css\?v=20260806-2/);
+  assert.match(html, /catalogs\.js\?v=20260830-madrid-1/);
+  assert.match(html, /app\.js\?v=20260830-madrid-1/);
+  assert.match(html, /styles\.css\?v=20260830-madrid-1/);
   assert.doesNotMatch(source, /\.innerHTML\b/);
   assert.match(source, /\.textContent = summary\.label/);
   assert.doesNotMatch(source, /error\.message/);

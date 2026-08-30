@@ -4,6 +4,7 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 import {
+  MADRID_AUDIT_COVERAGE,
   REVIEWED_AUDIT_COVERAGE,
   deriveSourceContext,
   serializeSpecimenCardProjections,
@@ -19,6 +20,7 @@ const recordById = new Map(catalog.records.map((record) => [record.id, record]))
 const modelByCatalog = new Map(catalog.metadata.catalogs.map(({ id, recordModel }) => [id, recordModel]));
 const PRIOR_630_ID = "obs-344d0b6d-920e-403f-8fd5-c113fc05291d";
 const REEDS_366_ID = "obs-b02789ea-869e-447a-97cc-28c2c6900e88";
+const madridIds = new Set(catalog.records.filter(({ catalogId }) => catalogId === "madrid-1923").map(({ id }) => id));
 
 function clone(value = published) {
   return structuredClone(value);
@@ -41,26 +43,26 @@ function cardTuple(card) {
 
 test("production manifest is deterministic and validates against the locked catalog", () => {
   assert.deepEqual(validateSpecimenCardProjections(published, catalog, catalogText), {
-    projectionCount: 1790,
-    atomicCardCount: 6403,
-    massBoundCardCount: 6269,
+    projectionCount: 1813,
+    atomicCardCount: 6457,
+    massBoundCardCount: 6323,
     masslessCardCount: 134,
-    sourceContextCardCount: 1510,
+    sourceContextCardCount: 1515,
   });
   assert.equal(serializeSpecimenCardProjections(published), projectionText);
   assert.equal(createHash("sha256").update(catalogText).digest("hex"), published.metadata.sourceCatalogSha256);
-  assert.equal(createHash("sha256").update(JSON.stringify(published.projections)).digest("hex"), "f7fab83f8153cb843ddfb20f78ac943edc325fb12b6f9eab70414575a5919086");
-  assert.equal(createHash("sha256").update(projectionText).digest("hex"), "ee269c8521e0982aede4796f4ac5db39b13cd7e4f4b3e9f812db4a116ddf47bd");
+  assert.equal(createHash("sha256").update(JSON.stringify(published.projections)).digest("hex"), "3edca8ec748beb5b9d2cb74871ad5c56082a5beced28e75c006a85f745999fa3");
+  assert.equal(createHash("sha256").update(projectionText).digest("hex"), "b5d5de4bd01756727ee5796978a0873cf79311415adceb6c5335abd457831485");
 });
 
 test("schema is a closed schema-2 count-locked atomic projection contract", () => {
   assert.equal(schema.$schema, "https://json-schema.org/draft/2020-12/schema");
   assert.equal(schema.$id, "urn:hmc:schema:specimen-card-projections:2");
   assert.deepEqual(schema.required, ["metadata", "projections"]);
-  assert.equal(schema.properties.projections.minItems, 1790);
-  assert.equal(schema.properties.projections.maxItems, 1790);
-  assert.equal(schema.$defs.metadata.properties.atomicCardCount.const, 6403);
-  assert.equal(schema.$defs.metadata.properties.sourceContextCardCount.const, 1510);
+  assert.equal(schema.properties.projections.minItems, 1813);
+  assert.equal(schema.properties.projections.maxItems, 1813);
+  assert.equal(schema.$defs.metadata.properties.atomicCardCount.const, 6457);
+  assert.equal(schema.$defs.metadata.properties.sourceContextCardCount.const, 1515);
   assert.deepEqual(schema.$defs.projection.required, ["parentRecordId", "cards"]);
   assert.deepEqual(schema.$defs.card.required, ["holdingPath", "clause", "massPath"]);
   assert.deepEqual(schema.$defs.clause.required, ["textPath", "start", "end"]);
@@ -94,6 +96,34 @@ test("embedded audit boundaries reconcile all four reviewed candidate sets", () 
   assert.equal(REVIEWED_AUDIT_COVERAGE.boundaries.reduce((count, boundary) => count + boundary.projected, 0), REVIEWED_AUDIT_COVERAGE.projectedParentCount);
   assert.equal(REVIEWED_AUDIT_COVERAGE.boundaries.reduce((count, boundary) => count + boundary.excluded, 0), REVIEWED_AUDIT_COVERAGE.contextOnlyExcludedParentCount);
   assert.equal(REVIEWED_AUDIT_COVERAGE.boundaries.reduce((count, boundary) => count + boundary.cards, 0), REVIEWED_AUDIT_COVERAGE.atomicCardCount);
+});
+
+test("Madrid projects exactly 23 multi-holding parents into 54 atomic specimen cards plus five contexts", () => {
+  assert.deepEqual(MADRID_AUDIT_COVERAGE, {
+    parentObservationCount: 130,
+    holdingCount: 168,
+    continuationHoldingCount: 38,
+    projectedParentCount: 23,
+    atomicCardCount: 54,
+    groupedSourceContextHoldingCount: 7,
+    sourceContextCardCount: 5,
+    projectionSetSha256: "6678ff3d2401a92001d0b44a93ed71c322c5b3ecf2d0c512256e00dea8eeb5d9",
+  });
+  const madridRecords = catalog.records.filter(({ catalogId }) => catalogId === "madrid-1923");
+  const projections = published.projections.filter(({ parentRecordId }) => madridIds.has(parentRecordId));
+  const projectionById = new Map(projections.map((projection) => [projection.parentRecordId, projection]));
+  assert.equal(madridRecords.filter(({ holdings }) => holdings.length > 1).length, 23);
+  assert(madridRecords.filter(({ holdings }) => holdings.length === 1).every(({ id }) => !projectionById.has(id)));
+  assert.equal(projections.reduce((count, { cards }) => count + cards.length, 0), 54);
+  assert.equal(projections.filter((projection) =>
+    deriveSourceContext(projection, recordById.get(projection.parentRecordId), "collection-entry")).length, 5);
+  for (const projection of projections) {
+    const record = recordById.get(projection.parentRecordId);
+    assert.deepEqual(projection.cards.map(({ holdingPath }) => holdingPath), record.holdings
+      .map((holding, index) => holding.description === "Specimen" ? `holdings[${index}]` : null)
+      .filter(Boolean));
+    assert(projection.cards.every((card) => resolve(record, card.clause.textPath) === "Specimen"));
+  }
 });
 
 test("every clause and optional mass resolves exactly in canonical UTF-16 order", () => {
@@ -145,8 +175,8 @@ test("every clause and optional mass resolves exactly in canonical UTF-16 order"
     contextCount += Number(hasContext);
     assert(projection.cards.length + Number(hasContext) >= 2);
   }
-  assert.equal(cardCount, 6403);
-  assert.equal(contextCount, 1510);
+  assert.equal(cardCount, 6457);
+  assert.equal(contextCount, 1515);
 });
 
 test("Prior 630 has exact 17 reviewed clauses plus context; Reeds 366 has ten full holdings and no context", () => {
@@ -268,4 +298,15 @@ test("rejects Prior, Reeds, context-count, card-count, and reviewed-set drift", 
       deriveSourceContext(candidate, recordById.get(candidate.parentRecordId), modelByCatalog.get(recordById.get(candidate.parentRecordId).catalogId)));
     projection.cards[0].clause.end--;
   }, /reviewed production lock/iu);
+  mutate("Madrid grouped holding projected atomically", (value) => {
+    const madrid = value.projections.find(({ parentRecordId }) => parentRecordId === "obs-ffa86dbe-b5f3-413b-913c-deb60966c05d");
+    madrid.cards[1].holdingPath = "holdings[2]";
+    madrid.cards[1].clause.textPath = "holdings[2].description";
+    madrid.cards[1].clause.end = "Specimen group".length;
+    madrid.cards[1].massPath = "holdings[2].weights[0].grams";
+  }, /Madrid atomic paths/iu);
+  mutate("Madrid multi-holding parent omitted", (value) => {
+    const index = value.projections.findIndex(({ parentRecordId }) => madridIds.has(parentRecordId));
+    value.projections.splice(index, 1);
+  }, /projection array count|production lock|Madrid multi-holding parent/iu);
 });

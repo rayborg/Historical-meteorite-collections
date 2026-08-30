@@ -9,8 +9,8 @@
     "metadata": { "$ref": "#/$defs/metadata" },
     "projections": {
       "type": "array",
-      "minItems": 1790,
-      "maxItems": 1790,
+      "minItems": 1813,
+      "maxItems": 1813,
       "items": { "$ref": "#/$defs/projection" }
     }
   },
@@ -23,11 +23,11 @@
         "schemaVersion": { "const": 2 },
         "scope": { "const": "reviewed-atomic-specimen-card-display-projections" },
         "catalogSchemaVersion": { "const": 6 },
-        "sourceRecordCount": { "const": 13542 },
-        "sourceCatalogSha256": { "const": "3928a876a73c3ae74e9a822df0c2bded3f0cdfeb506874ebec4fc3877017a811" },
-        "projectionCount": { "const": 1790 },
-        "atomicCardCount": { "const": 6403 },
-        "sourceContextCardCount": { "const": 1510 }
+        "sourceRecordCount": { "const": 13672 },
+        "sourceCatalogSha256": { "const": "849971ad45e48141c013c9aecfd195cc2bef44d0fd948c21607be35693aa9b0a" },
+        "projectionCount": { "const": 1813 },
+        "atomicCardCount": { "const": 6457 },
+        "sourceContextCardCount": { "const": 1515 }
       }
     },
     "projection": {

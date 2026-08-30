@@ -4,12 +4,12 @@ import { pathToFileURL } from "node:url";
 
 const LOCKS = Object.freeze({
   catalogSchemaVersion: 6,
-  sourceRecordCount: 13542,
-  sourceCatalogSha256: "3928a876a73c3ae74e9a822df0c2bded3f0cdfeb506874ebec4fc3877017a811",
-  projectionCount: 1790,
-  atomicCardCount: 6403,
-  sourceContextCardCount: 1510,
-  projectionSetSha256: "f7fab83f8153cb843ddfb20f78ac943edc325fb12b6f9eab70414575a5919086",
+  sourceRecordCount: 13672,
+  sourceCatalogSha256: "849971ad45e48141c013c9aecfd195cc2bef44d0fd948c21607be35693aa9b0a",
+  projectionCount: 1813,
+  atomicCardCount: 6457,
+  sourceContextCardCount: 1515,
+  projectionSetSha256: "3edca8ec748beb5b9d2cb74871ad5c56082a5beced28e75c006a85f745999fa3",
 });
 export const REVIEWED_AUDIT_COVERAGE = Object.freeze({
   candidateCount: 1038,
@@ -26,6 +26,16 @@ export const REVIEWED_AUDIT_COVERAGE = Object.freeze({
     Object.freeze({ name: "remaining", candidates: 294, projected: 26, excluded: 268, cards: 55, candidateSetSha256: "ac440ebe856454ec4bfcd8f612ced0b62860f11ee6745e171a058a6286faaad3" }),
     Object.freeze({ name: "multiholding", candidates: 56, projected: 50, excluded: 6, cards: 210, candidateSetSha256: "5591fb03e3b5beb601ba9f5735e760f238b607541edecdad014d402a8ff8f22f" }),
   ]),
+});
+export const MADRID_AUDIT_COVERAGE = Object.freeze({
+  parentObservationCount: 130,
+  holdingCount: 168,
+  continuationHoldingCount: 38,
+  projectedParentCount: 23,
+  atomicCardCount: 54,
+  groupedSourceContextHoldingCount: 7,
+  sourceContextCardCount: 5,
+  projectionSetSha256: "6678ff3d2401a92001d0b44a93ed71c322c5b3ecf2d0c512256e00dea8eeb5d9",
 });
 const PRIOR_630_ID = "obs-344d0b6d-920e-403f-8fd5-c113fc05291d";
 const PRIOR_630_CARDS_SHA256 = "839f6cb10b69c5fff3418ed5d0b17143442b18384b3084a5479435ba3077f9c7";
@@ -250,6 +260,58 @@ export function validateSpecimenCardProjections(document, catalog, catalogText) 
         card.clause.start !== 0 || card.clause.end !== text?.length || card.massPath !== `holdings[${index}].weights[0].grams`) {
       fail("Reeds entry 366 cards are not full ordered holding clauses");
     }
+  }
+  const madridRecords = catalog.records.filter(({ catalogId }) => catalogId === "madrid-1923");
+  const madridIds = new Set(madridRecords.map(({ id }) => id));
+  const madridProjections = document.projections.filter(({ parentRecordId }) => madridIds.has(parentRecordId));
+  const madridProjectionById = new Map(madridProjections.map((projection) => [projection.parentRecordId, projection]));
+  let madridHoldingCount = 0;
+  let madridAtomicCardCount = 0;
+  let madridGroupedContextHoldingCount = 0;
+  let madridSourceContextCardCount = 0;
+  for (const record of madridRecords) {
+    madridHoldingCount += record.holdings.length;
+    const projection = madridProjectionById.get(record.id);
+    if (record.holdings.length === 1) {
+      if (projection) fail(`Madrid one-holding parent ${record.id} must remain an unprojected parent card`);
+      continue;
+    }
+    if (!projection) fail(`Madrid multi-holding parent ${record.id} is missing its atomic projection`);
+    const expectedCards = [];
+    for (const [holdingIndex, holding] of record.holdings.entries()) {
+      if (holding.description === "Specimen") {
+        if (holding.count !== 1 || holding.weights.length !== 1 || !Number.isFinite(holding.weights[0]?.grams)) {
+          fail(`Madrid controlled specimen holding ${record.id}:${holdingIndex} is malformed`);
+        }
+        expectedCards.push({
+          holdingPath: `holdings[${holdingIndex}]`,
+          clause: { textPath: `holdings[${holdingIndex}].description`, start: 0, end: holding.description.length },
+          massPath: `holdings[${holdingIndex}].weights[0].grams`,
+        });
+      } else if (holding.description === "Specimen group") {
+        madridGroupedContextHoldingCount++;
+      } else {
+        fail(`Madrid holding ${record.id}:${holdingIndex} is outside the controlled specimen vocabulary`);
+      }
+    }
+    if (JSON.stringify(projection.cards) !== JSON.stringify(expectedCards)) {
+      fail(`Madrid atomic paths differ from the controlled specimen holdings for ${record.id}`);
+    }
+    madridAtomicCardCount += projection.cards.length;
+    madridSourceContextCardCount += Number(deriveSourceContext(projection, record, "collection-entry"));
+  }
+  const madridActual = {
+    parentObservationCount: madridRecords.length,
+    holdingCount: madridHoldingCount,
+    continuationHoldingCount: madridHoldingCount - madridRecords.length,
+    projectedParentCount: madridProjections.length,
+    atomicCardCount: madridAtomicCardCount,
+    groupedSourceContextHoldingCount: madridGroupedContextHoldingCount,
+    sourceContextCardCount: madridSourceContextCardCount,
+    projectionSetSha256: sha256(JSON.stringify(madridProjections)),
+  };
+  for (const [key, expected] of Object.entries(MADRID_AUDIT_COVERAGE)) {
+    if (madridActual[key] !== expected) fail(`Madrid ${key} differs from the reviewed audit lock`);
   }
   if (sha256(JSON.stringify(document.projections)) !== LOCKS.projectionSetSha256) fail("projection set differs from the reviewed production lock");
 

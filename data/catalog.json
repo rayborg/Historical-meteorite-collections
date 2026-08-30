@@ -886,6 +886,36 @@
         "rightsStatus": "public-domain"
       },
       {
+        "id": "madrid-1923",
+        "recordModel": "collection-entry",
+        "label": "Los Meteoritos del Museo de Madrid (1923)",
+        "compiler": "Lucas Fernández Navarro",
+        "year": 1923,
+        "sourcePages": [
+          224,
+          225,
+          226,
+          227,
+          228,
+          229,
+          230,
+          231,
+          232,
+          233
+        ],
+        "sourcePageCount": 10,
+        "recordCount": 130,
+        "recordsWithDesignation": 0,
+        "recordsWithWeight": 130,
+        "confidenceCounts": {
+          "high": 125,
+          "medium": 5,
+          "low": 0
+        },
+        "folioDisplayPolicy": "blocked",
+        "rightsStatus": "undetermined"
+      },
+      {
         "id": "mason-1964",
         "recordModel": "catalog-number",
         "label": "The Meteorite and Tektite Collection of the American Museum of Natural History (1964)",
@@ -1980,12 +2010,12 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 13542,
+    "recordCount": 13672,
     "recordsWithDesignation": 5599,
-    "recordsWithWeight": 12204,
+    "recordsWithWeight": 12334,
     "confidenceCounts": {
-      "high": 12236,
-      "medium": 1306,
+      "high": 12361,
+      "medium": 1311,
       "low": 0
     }
   },
@@ -247122,6 +247152,4806 @@
         "canonicalName": "Krasnojarsk",
         "meteoriteCode": "12356",
         "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12356",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-372abd41-af95-475b-8e7e-0217930035cc",
+      "catalogId": "madrid-1923",
+      "entryOrder": 1,
+      "reportedNumber": null,
+      "catalogPages": [
+        226
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 17.49
+            }
+          ]
+        }
+      ],
+      "name": "Admire",
+      "classification": "Litosiderito, tipo Palasita.",
+      "locality": "Osage, Condado de Lyon, Kansas (E. U. N. A.).",
+      "eventDate": "1901",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker links this name to Admire, but the source event year 1901 conflicts with the official year 1881. The identity remains unresolved conservatively."
+      }
+    },
+    {
+      "id": "obs-a6a576fb-4a5c-42b0-ad4d-b71a78632453",
+      "catalogId": "madrid-1923",
+      "entryOrder": 2,
+      "reportedNumber": null,
+      "catalogPages": [
+        226
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 14.69
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 0.86
+            }
+          ]
+        }
+      ],
+      "name": "Agen",
+      "classification": "Litito, tipo Cantonita.",
+      "locality": "Castelmoron, Lot et Guronne (Francia).",
+      "eventDate": "5-IX-1814",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Agen",
+        "meteoriteCode": "392",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=392",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-b27f11ff-9365-4d54-94ee-61149501fccc",
+      "catalogId": "madrid-1923",
+      "entryOrder": 3,
+      "reportedNumber": null,
+      "catalogPages": [
+        226
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 86.25
+            }
+          ]
+        }
+      ],
+      "name": "Alfianello",
+      "classification": "Litito, tipo Luceita.",
+      "locality": "Brescia, Lombardía (Italia).",
+      "eventDate": "16-II-1883",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Alfianello",
+        "meteoriteCode": "466",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=466",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-0d99c75f-7448-49da-9751-79de491a6a9d",
+      "catalogId": "madrid-1923",
+      "entryOrder": 4,
+      "reportedNumber": null,
+      "catalogPages": [
+        226
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 73
+            }
+          ]
+        }
+      ],
+      "name": "Alten",
+      "classification": "Litosiderito, tipo Palasita.",
+      "locality": "Finmarks-Plateau (Noruega).",
+      "eventDate": "IX-1902",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Finmarken",
+        "meteoriteCode": "10103",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10103",
+        "alternateNameNote": "The live official checker directly identifies Alten as a synonym of Finmarken; the official detail record confirms the canonical name and compatible source facts."
+      }
+    },
+    {
+      "id": "obs-026ce552-3cc1-4c1e-b8b6-034e0e801593",
+      "catalogId": "madrid-1923",
+      "entryOrder": 5,
+      "reportedNumber": null,
+      "catalogPages": [
+        226
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 25.52
+            }
+          ]
+        }
+      ],
+      "name": "Allegan",
+      "classification": "Litito, tipo Montrejita.",
+      "locality": "Condado de Allegan, Michigan (E. U. N. A.).",
+      "eventDate": "10-VII-1899",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Allegan",
+        "meteoriteCode": "2276",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2276",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-ba0226b0-4412-4c16-9624-95c87bb8ce72",
+      "catalogId": "madrid-1923",
+      "entryOrder": 6,
+      "reportedNumber": null,
+      "catalogPages": [
+        226
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 102.94
+            }
+          ]
+        }
+      ],
+      "name": "Augustinowka",
+      "classification": "Siderito, tipo Caillita.",
+      "locality": "Ekaterinoslaw (Ukraina).",
+      "eventDate": "1890",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Augustinovka",
+        "meteoriteCode": "4898",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4898",
+        "alternateNameNote": "The live official checker directly identifies Augustinowka as a synonym of Augustinovka; the official detail record confirms the canonical name and compatible source facts."
+      }
+    },
+    {
+      "id": "obs-9525427e-9a78-417d-82a6-25a18cc07d1e",
+      "catalogId": "madrid-1923",
+      "entryOrder": 7,
+      "reportedNumber": null,
+      "catalogPages": [
+        226
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen group",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 2.82
+            }
+          ]
+        }
+      ],
+      "name": "Aumières",
+      "classification": "Litito, tipo Luceita.",
+      "locality": "Massegros, Lozére (Francia).",
+      "eventDate": "4-VI-1842",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Aumieres",
+        "meteoriteCode": "4900",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4900",
+        "alternateNameNote": "The live official checker directly identifies Aumières as a synonym of Aumieres; the official detail record confirms the canonical name and compatible source facts."
+      }
+    },
+    {
+      "id": "obs-342ba577-f9cb-4fd7-bbbe-34c9ed6dd7f3",
+      "catalogId": "madrid-1923",
+      "entryOrder": 8,
+      "reportedNumber": null,
+      "catalogPages": [
+        226
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 8.04
+            }
+          ]
+        }
+      ],
+      "name": "Ausson",
+      "classification": "Litito, tipo Montrejita.",
+      "locality": "Montréjeau, Haute Garonne (Francia).",
+      "eventDate": "9-XII-1858",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Ausson",
+        "meteoriteCode": "4903",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4903",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-967c86e4-f682-4b26-8114-b29c6d30f2dd",
+      "catalogId": "madrid-1923",
+      "entryOrder": 9,
+      "reportedNumber": null,
+      "catalogPages": [
+        226
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 98.8
+            }
+          ]
+        }
+      ],
+      "name": "Ballinoo",
+      "classification": "Siderito, tipo Carltonita.",
+      "locality": "Murchison River (Australia W.).",
+      "eventDate": "1893",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker links this name to Ballinoo, but the source event year 1893 conflicts with the official year 1892. The identity remains unresolved conservatively."
+      }
+    },
+    {
+      "id": "obs-7693a91e-7fa8-4286-88e7-5acfed7cd15d",
+      "catalogId": "madrid-1923",
+      "entryOrder": 10,
+      "reportedNumber": null,
+      "catalogPages": [
+        226
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 61.2
+            }
+          ]
+        }
+      ],
+      "name": "Bath",
+      "classification": "Litito, tipo Limerickita.",
+      "locality": "Condado de Brown, Dakota S. (E. U. N. A.).",
+      "eventDate": "27-VIII-1892",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bath",
+        "meteoriteCode": "4974",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4974",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-15cd88c1-c26d-4ef9-8276-7b7cb2ba1800",
+      "catalogId": "madrid-1923",
+      "entryOrder": 11,
+      "reportedNumber": null,
+      "catalogPages": [
+        226
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen group",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 4.43
+            }
+          ]
+        }
+      ],
+      "name": "Beaconsfield",
+      "classification": "Siderito, tipo Arvaita.",
+      "locality": "Cranbourne, Mornington, Victoria. (Australia)",
+      "eventDate": "»",
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Cranbourne",
+        "meteoriteCode": "5463",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5463",
+        "alternateNameNote": "The live official checker directly identifies Beaconsfield as a synonym of Cranbourne; the official detail record confirms the canonical name and compatible source facts."
+      }
+    },
+    {
+      "id": "obs-a1efab96-eb4f-49e4-a164-5439f2738964",
+      "catalogId": "madrid-1923",
+      "entryOrder": 12,
+      "reportedNumber": null,
+      "catalogPages": [
+        226
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 93.75
+            }
+          ]
+        }
+      ],
+      "name": "Bella Roca",
+      "classification": "Siderito, tipo Rocita.",
+      "locality": "S.ª de San Francisco, Durango (Méjico)",
+      "eventDate": "1888",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bella Roca",
+        "meteoriteCode": "5003",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5003",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-a846e61e-82d5-4e36-aae3-1887aa8087a0",
+      "catalogId": "madrid-1923",
+      "entryOrder": 13,
+      "reportedNumber": null,
+      "catalogPages": [
+        226
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen group",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 2.09
+            }
+          ]
+        }
+      ],
+      "name": "Bishopville",
+      "classification": "Litito, tipo Chladnita.",
+      "locality": "Condado de Sumter, Carolina S. (E. U. N. A.).",
+      "eventDate": "25-III-1843",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bishopville",
+        "meteoriteCode": "5059",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5059",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-0aa08d25-c1ab-4b5c-97d9-3e32b978852b",
+      "catalogId": "madrid-1923",
+      "entryOrder": 14,
+      "reportedNumber": null,
+      "catalogPages": [
+        226
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen group",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 306
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 127.4
+            }
+          ]
+        }
+      ],
+      "name": "Bjurboele",
+      "classification": "Litito, tipo Montrejita.",
+      "locality": "Cerca de Borga, Costa S. (Finlandia)",
+      "eventDate": "12-III-1899",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Bjurböle",
+        "meteoriteCode": "5064",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5064",
+        "alternateNameNote": "The live official checker directly identifies Bjurboele as a synonym of Bjurböle; the official detail record confirms the canonical name and compatible source facts."
+      }
+    },
+    {
+      "id": "obs-76eb771b-37f0-4849-a7ac-ea60888bc264",
+      "catalogId": "madrid-1923",
+      "entryOrder": 15,
+      "reportedNumber": null,
+      "catalogPages": [
+        226
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 16.8
+            }
+          ]
+        }
+      ],
+      "name": "Bluff",
+      "classification": "Litito, tipo Erxlebenita.",
+      "locality": "Lagrange, Fayette, Texas (E. U. N. A.).",
+      "eventDate": "1878",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker returned Partial name (54 meteorite(s) contain \"Bluff\"). The packet forbids resolving partial or ambiguous names; no candidate is selected from spelling, locality, type, date, or mass."
+      }
+    },
+    {
+      "id": "obs-dff37673-b2d1-4cc0-a8fb-626ea354dfb0",
+      "catalogId": "madrid-1923",
+      "entryOrder": 16,
+      "reportedNumber": null,
+      "catalogPages": [
+        227
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 21.39
+            }
+          ]
+        }
+      ],
+      "name": "Brentham",
+      "classification": "Litosiderito, tipo Kiowita.",
+      "locality": "Condado de Kiowa, Kansas (E. U. N. A.).",
+      "eventDate": "1890",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker returned Unknown. No identity is inferred from spelling similarity, locality, type, date, or mass."
+      }
+    },
+    {
+      "id": "obs-0c769056-7f0e-45a4-bbb6-73eea20dfd7e",
+      "catalogId": "madrid-1923",
+      "entryOrder": 17,
+      "reportedNumber": null,
+      "catalogPages": [
+        227
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 167.06
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 17.12
+            }
+          ]
+        }
+      ],
+      "name": "Cabezo de Mayo",
+      "classification": "Litito, Tipo Luceita.",
+      "locality": "Murcia (España).",
+      "eventDate": "18-VIII-1870",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Cabezo de Mayo",
+        "meteoriteCode": "5185",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5185",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-d3316eb1-ce14-411a-882d-e267843f2e79",
+      "catalogId": "madrid-1923",
+      "entryOrder": 18,
+      "reportedNumber": null,
+      "catalogPages": [
+        227
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 10812
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 3627
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 422
+            }
+          ]
+        }
+      ],
+      "name": "Cangas de Onís",
+      "classification": "Litito, tipo Mesminita.",
+      "locality": "Oviedo (España).",
+      "eventDate": "6-XII-1866",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker returned Unknown. No identity is inferred from spelling similarity, locality, type, date, or mass."
+      }
+    },
+    {
+      "id": "obs-a5a678f2-46ec-416f-b001-8c7a53bb38f5",
+      "catalogId": "madrid-1923",
+      "entryOrder": 19,
+      "reportedNumber": null,
+      "catalogPages": [
+        227
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 553
+            }
+          ]
+        }
+      ],
+      "name": "Cañellas",
+      "classification": "Litito, tipo Cañellita.",
+      "locality": "Barcelona (España).",
+      "eventDate": "14-V-1861",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Cañellas",
+        "meteoriteCode": "5251",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5251",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-0ad43878-67a4-41bf-8247-cccf5115f143",
+      "catalogId": "madrid-1923",
+      "entryOrder": 20,
+      "reportedNumber": null,
+      "catalogPages": [
+        227
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 1675
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 1020
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 27.33
+            }
+          ]
+        }
+      ],
+      "name": "Cañón Diablo",
+      "classification": "Siderito, tipo Arvaíta.",
+      "locality": "Conconino, Arizona Central (E. U. N. A.).",
+      "eventDate": "1891",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker returned Unknown. No identity is inferred from spelling similarity, locality, type, date, or mass."
+      }
+    },
+    {
+      "id": "obs-c66b9aa6-4ea2-4cde-852f-cf624c47358c",
+      "catalogId": "madrid-1923",
+      "entryOrder": 21,
+      "reportedNumber": null,
+      "catalogPages": [
+        227
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 130.55
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 20.55
+            }
+          ]
+        }
+      ],
+      "name": "Carlton",
+      "classification": "Siderito, tipo Carltonita.",
+      "locality": "Condado de Hamilton, Texas Central (E. U. N. A.).",
+      "eventDate": "1887",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Carlton",
+        "meteoriteCode": "5277",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5277",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-d2506c51-d050-4ffc-9c7e-744d06ab295a",
+      "catalogId": "madrid-1923",
+      "entryOrder": 22,
+      "reportedNumber": null,
+      "catalogPages": [
+        227
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 17.83
+            }
+          ]
+        }
+      ],
+      "name": "Collescipoli",
+      "classification": "Litito, Limerickita.",
+      "locality": "Terni, Perugia, Umbria (Italia).",
+      "eventDate": "3-II-1890",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Collescipoli",
+        "meteoriteCode": "5403",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5403",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-d4f40e8b-946e-49da-ad2f-e7696f86c18e",
+      "catalogId": "madrid-1923",
+      "entryOrder": 23,
+      "reportedNumber": null,
+      "catalogPages": [
+        227
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 41.42
+            }
+          ]
+        }
+      ],
+      "name": "Crab Orchard",
+      "classification": "Litosiderito, tipo Logroñita.",
+      "locality": "Rockwood Furnace, Tennessee (E. U. N. A.).",
+      "eventDate": "1887",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Crab Orchard",
+        "meteoriteCode": "5461",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5461",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-f33f4be0-5937-44c3-bf0c-0efb1b850a9f",
+      "catalogId": "madrid-1923",
+      "entryOrder": 24,
+      "reportedNumber": null,
+      "catalogPages": [
+        227
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 1297
+            }
+          ]
+        }
+      ],
+      "name": "Cuba",
+      "classification": "Siderito, tipo.",
+      "locality": "Departamento Oriental (República de Cuba).",
+      "eventDate": "1872",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker links this name to Cuba, but the source event year 1872 conflicts with the official year 1871. The identity remains unresolved conservatively."
+      }
+    },
+    {
+      "id": "obs-30e58969-2523-4e1f-b3f7-f81674f25465",
+      "catalogId": "madrid-1923",
+      "entryOrder": 25,
+      "reportedNumber": null,
+      "catalogPages": [
+        227
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 20.43
+            }
+          ]
+        }
+      ],
+      "name": "Charcas",
+      "classification": "Siderito, tipo Caillita.",
+      "locality": "San Luis de Potosí (Méjico).",
+      "eventDate": "1804",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Charcas",
+        "meteoriteCode": "5326",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5326",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-99cb6817-f620-4e66-8a37-36833787ecbb",
+      "catalogId": "madrid-1923",
+      "entryOrder": 26,
+      "reportedNumber": null,
+      "catalogPages": [
+        227
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen group",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 3.77
+            }
+          ]
+        }
+      ],
+      "name": "Châteaurenard",
+      "classification": "Litito, tipo Aumalita.",
+      "locality": "Montargis, Loiret (Francia).",
+      "eventDate": "12-VI-1841",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker returned Unknown. No identity is inferred from spelling similarity, locality, type, date, or mass."
+      }
+    },
+    {
+      "id": "obs-148f21ce-fc84-4c1b-b9dc-53f2816f35b3",
+      "catalogId": "madrid-1923",
+      "entryOrder": 27,
+      "reportedNumber": null,
+      "catalogPages": [
+        227
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 75.62
+            }
+          ]
+        }
+      ],
+      "name": "Chesterville",
+      "classification": "Siderito, tipo Braunita.",
+      "locality": "Chester, Carolina S. (E. U. N. A.)",
+      "eventDate": "1847",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker links this name to Chesterville, but the source event year 1847 conflicts with the official year 1849. The identity remains unresolved conservatively."
+      }
+    },
+    {
+      "id": "obs-0cbcf909-d673-42a2-a67c-1a0fa5424a69",
+      "catalogId": "madrid-1923",
+      "entryOrder": 28,
+      "reportedNumber": null,
+      "catalogPages": [
+        227
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 510
+            }
+          ]
+        }
+      ],
+      "name": "Dhurmsala",
+      "classification": "Litito, tipo Aumalita.",
+      "locality": "Kangra, Punjab (India).",
+      "eventDate": "14-VII-1860",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Dhurmsala",
+        "meteoriteCode": "7640",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=7640",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-1dcb5914-17ef-40ac-b31d-848a329717d2",
+      "catalogId": "madrid-1923",
+      "entryOrder": 29,
+      "reportedNumber": null,
+      "catalogPages": [
+        227
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 17.5
+            }
+          ]
+        }
+      ],
+      "name": "Doña Inés",
+      "classification": "Litosiderito, tipo Inesita.",
+      "locality": "Cerro de Atacama (Chile).",
+      "eventDate": "1888",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker returned Unknown. No identity is inferred from spelling similarity, locality, type, date, or mass."
+      }
+    },
+    {
+      "id": "obs-30316bbd-2137-4084-8fce-1b673a772bcd",
+      "catalogId": "madrid-1923",
+      "entryOrder": 30,
+      "reportedNumber": null,
+      "catalogPages": [
+        227
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 37.32
+            }
+          ]
+        }
+      ],
+      "name": "El Inca",
+      "classification": "Siderito, tipo Schwetzita.",
+      "locality": "Pampas de Tamarugal, Iquique. (Chile).",
+      "eventDate": "1903",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker returned Partial name (1 meteorite(s) contain \"El Inca\"). The packet forbids resolving partial or ambiguous names; no candidate is selected from spelling, locality, type, date, or mass."
+      }
+    },
+    {
+      "id": "obs-d437147e-0656-4dca-8226-fd0ac20924ea",
+      "catalogId": "madrid-1923",
+      "entryOrder": 31,
+      "reportedNumber": null,
+      "catalogPages": [
+        227
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 6.18
+            }
+          ]
+        }
+      ],
+      "name": "Ensisheim",
+      "classification": "Litito, tipo Erxlebenita.",
+      "locality": "Alsacia (Francia).",
+      "eventDate": "16-XI-1492",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Ensisheim",
+        "meteoriteCode": "10039",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10039",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-5c982e12-5346-46d8-80d1-a01c66a26fba",
+      "catalogId": "madrid-1923",
+      "entryOrder": 32,
+      "reportedNumber": null,
+      "catalogPages": [
+        227
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 135.63
+            }
+          ]
+        }
+      ],
+      "name": "Ergheo",
+      "classification": "Litito, tipo Tadjerita.",
+      "locality": "Barawa, Somalilandia (Africa E.).",
+      "eventDate": "VII-1889",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Ergheo",
+        "meteoriteCode": "10044",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10044",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-952bec20-8747-41b4-8dc8-0d380b93ab71",
+      "catalogId": "madrid-1923",
+      "entryOrder": 33,
+      "reportedNumber": null,
+      "catalogPages": [
+        227
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 206
+            }
+          ]
+        }
+      ],
+      "name": "Estacado",
+      "classification": "Litito, tipo Erxlebenita.",
+      "locality": "Condado de Hale, Texas. (E. U. N. A.)",
+      "eventDate": "1882",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker links this name to Estacado, but the source event year 1882 conflicts with the official year 1883. The identity remains unresolved conservatively."
+      }
+    },
+    {
+      "id": "obs-01c45543-1649-4f97-9be1-012f8fc87cca",
+      "catalogId": "madrid-1923",
+      "entryOrder": 34,
+      "reportedNumber": null,
+      "catalogPages": [
+        228
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 79.14
+            }
+          ]
+        }
+      ],
+      "name": "Estherville",
+      "classification": "Litosiderito, tipo Esthervillita.",
+      "locality": "Condado de Emmet, Iowa (E. U. N. A.)",
+      "eventDate": "10-V-1879",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Estherville",
+        "meteoriteCode": "10059",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10059",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-3c446b11-e40b-48bc-901a-676fe882edee",
+      "catalogId": "madrid-1923",
+      "entryOrder": 35,
+      "reportedNumber": null,
+      "catalogPages": [
+        228
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 7.5
+            }
+          ]
+        }
+      ],
+      "name": "Farmington",
+      "classification": "Litito, tipo Bokkevelita.",
+      "locality": "Condado de Washington, Kansas (E. U. N. A.)",
+      "eventDate": "25-VI-1890",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Farmington",
+        "meteoriteCode": "10074",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10074",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-2202fdfd-edbe-4f52-8cc7-83c019254c07",
+      "catalogId": "madrid-1923",
+      "entryOrder": 36,
+      "reportedNumber": null,
+      "catalogPages": [
+        228
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 138.5
+            }
+          ]
+        }
+      ],
+      "name": "Fisher",
+      "classification": "Litito, tipo Aumalita.",
+      "locality": "Condado de Polk, Minnesota. (E. U. N. A.)",
+      "eventDate": "9-IV-1894",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Fisher",
+        "meteoriteCode": "10107",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10107",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-14d9b90a-a767-4244-ae9c-573a491a14de",
+      "catalogId": "madrid-1923",
+      "entryOrder": 37,
+      "reportedNumber": null,
+      "catalogPages": [
+        228
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 489
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 135.5
+            }
+          ]
+        }
+      ],
+      "name": "Forest",
+      "classification": "Litito, tipo Cantonita.",
+      "locality": "Forest City, Winnebago, Iowa (E. U. N. A.)",
+      "eventDate": "2-V-1890",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker returned Partial name (6 meteorite(s) contain \"Forest\"). The packet forbids resolving partial or ambiguous names; no candidate is selected from spelling, locality, type, date, or mass."
+      }
+    },
+    {
+      "id": "obs-ca22e934-6150-4b6f-a3ed-5d73e615f55f",
+      "catalogId": "madrid-1923",
+      "entryOrder": 38,
+      "reportedNumber": null,
+      "catalogPages": [
+        228
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 182.5
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 40.35
+            }
+          ]
+        }
+      ],
+      "name": "Fort Duncan",
+      "classification": "Siderito (Tipo Braunita.)",
+      "locality": "Condado de Maverick, Texas S. (E. U. N. A.).",
+      "eventDate": "1882",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker links this name to Coahuila, but the source event year 1882 conflicts with the official year 1837. The identity remains unresolved conservatively."
+      }
+    },
+    {
+      "id": "obs-8b271078-72ac-40d9-9286-10df270167a9",
+      "catalogId": "madrid-1923",
+      "entryOrder": 39,
+      "reportedNumber": null,
+      "catalogPages": [
+        228
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 9.19
+            }
+          ]
+        }
+      ],
+      "name": "Garraf",
+      "classification": "Litito, tipo Luceita.",
+      "locality": "Barcelona (España).",
+      "eventDate": "1905",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Garraf",
+        "meteoriteCode": "10863",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10863",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-2c99ddae-9e4a-44b9-97fe-782748dedc5d",
+      "catalogId": "madrid-1923",
+      "entryOrder": 40,
+      "reportedNumber": null,
+      "catalogPages": [
+        228
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 85.02
+            }
+          ]
+        }
+      ],
+      "name": "Gerona",
+      "classification": "Litito, tipo Cantonita.",
+      "locality": "Fuente de la Pólvora, Gerona (España).",
+      "eventDate": "1900",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker links this name to Gerona, but the source event year 1900 conflicts with the official year 1899. The identity remains unresolved conservatively."
+      }
+    },
+    {
+      "id": "obs-453dfad7-5686-4876-b757-011e291a1db5",
+      "catalogId": "madrid-1923",
+      "entryOrder": 41,
+      "reportedNumber": null,
+      "catalogPages": [
+        228
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 10.86
+            }
+          ]
+        }
+      ],
+      "name": "Gilgoin",
+      "classification": "Litito, tipo Erxlebenita.",
+      "locality": "Station. Breawarrina, Nueva Gales S. (Australia)",
+      "eventDate": "1889",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Gilgoin",
+        "meteoriteCode": "10915",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10915",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-d17e265e-563b-42e5-a50a-6ab723584afb",
+      "catalogId": "madrid-1923",
+      "entryOrder": 42,
+      "reportedNumber": null,
+      "catalogPages": [
+        228
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 30.5
+            }
+          ]
+        }
+      ],
+      "name": "Glorieta",
+      "classification": "Siderito, tipo Caillita.",
+      "locality": "Cañoncito, St.ª Fe, Nueva Méjico (E. U. N. A.)",
+      "eventDate": "1884",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker returned Partial name (1 meteorite(s) contain \"Glorieta\"). The packet forbids resolving partial or ambiguous names; no candidate is selected from spelling, locality, type, date, or mass."
+      }
+    },
+    {
+      "id": "obs-7b47901e-4c13-4072-8838-e2fe7f56873e",
+      "catalogId": "madrid-1923",
+      "entryOrder": 43,
+      "reportedNumber": null,
+      "catalogPages": [
+        228
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 6.67
+            }
+          ]
+        }
+      ],
+      "name": "Grand Rapids",
+      "classification": "Siderito, tipo Jewelita.",
+      "locality": "Condado de Kent, Michigan (E. U. N. A.)",
+      "eventDate": "1883",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Grand Rapids",
+        "meteoriteCode": "10955",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10955",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-92ae7592-8df3-4aad-aafe-597354f04c52",
+      "catalogId": "madrid-1923",
+      "entryOrder": 44,
+      "reportedNumber": null,
+      "catalogPages": [
+        228
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 29400
+            }
+          ]
+        },
+        {
+          "description": "Specimen group",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 190
+            }
+          ]
+        },
+        {
+          "description": "Specimen group",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 190
+            }
+          ]
+        }
+      ],
+      "name": "Guareña",
+      "classification": "Litito, tipo Erxlebenita.",
+      "locality": "Badajoz (España).",
+      "eventDate": "20-VI-1892",
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Guareña",
+        "meteoriteCode": "11439",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11439",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-75921e82-4c27-4fce-a266-cc76efdf8bd3",
+      "catalogId": "madrid-1923",
+      "entryOrder": 45,
+      "reportedNumber": null,
+      "catalogPages": [
+        228
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 7.5
+            }
+          ]
+        }
+      ],
+      "name": "Hainholz",
+      "classification": "Litosiderito, tipo Logroñita.",
+      "locality": "Minden, Westfalia, Prusia",
+      "eventDate": "1857",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker links this name to Hainholz, but the source event year 1857 conflicts with the official year 1856. The identity remains unresolved conservatively."
+      }
+    },
+    {
+      "id": "obs-78414499-7934-41c3-8576-f778274ec8b5",
+      "catalogId": "madrid-1923",
+      "entryOrder": 46,
+      "reportedNumber": null,
+      "catalogPages": [
+        228
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 51.07
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 35
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 2.67
+            }
+          ]
+        }
+      ],
+      "name": "Hessle",
+      "classification": "Litito, tipo Montrejita.",
+      "locality": "Arnö, Upsala (Suecia).",
+      "eventDate": "1-I-1869",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Hessle",
+        "meteoriteCode": "11878",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11878",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-38382ab3-efd7-49ae-98ae-d0b141201600",
+      "catalogId": "madrid-1923",
+      "entryOrder": 47,
+      "reportedNumber": null,
+      "catalogPages": [
+        228
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 87.92
+            }
+          ]
+        }
+      ],
+      "name": "Homestead",
+      "classification": "Litito, tipo Limerickita.",
+      "locality": "Condado de Iowa, Iowa (E. U. N. A.)",
+      "eventDate": "12-II-1875",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Homestead",
+        "meteoriteCode": "11901",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11901",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-da2ca30d-7c72-443d-ba17-a99367818143",
+      "catalogId": "madrid-1923",
+      "entryOrder": 48,
+      "reportedNumber": null,
+      "catalogPages": [
+        228
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 6.19
+            }
+          ]
+        }
+      ],
+      "name": "Honolulu",
+      "classification": "Litito, tipo Luceita.",
+      "locality": "Islas de Hawaii (Polinesia)",
+      "eventDate": "27-IX-1825",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Honolulu",
+        "meteoriteCode": "11904",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11904",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-89e47692-a0a4-4623-876f-19bb70442853",
+      "catalogId": "madrid-1923",
+      "entryOrder": 49,
+      "reportedNumber": null,
+      "catalogPages": [
+        228
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 100.77
+            }
+          ]
+        }
+      ],
+      "name": "Imilac",
+      "classification": "Litosiderito, tipo Atacamaita.",
+      "locality": "Atacama (Chile).",
+      "eventDate": "1822",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Imilac",
+        "meteoriteCode": "12025",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12025",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-389d1d9f-d919-4311-91a5-16f2148d97fc",
+      "catalogId": "madrid-1923",
+      "entryOrder": 50,
+      "reportedNumber": null,
+      "catalogPages": [
+        228
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen group",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 3.59
+            }
+          ]
+        }
+      ],
+      "name": "Juvinas",
+      "classification": "Litito, tipo Eukrita.",
+      "locality": "Ardèche (Francia).",
+      "eventDate": "15-VI-1821",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Juvinas",
+        "meteoriteCode": "12214",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12214",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-af91f100-c6d8-4582-a3c4-215df0b944e9",
+      "catalogId": "madrid-1923",
+      "entryOrder": 51,
+      "reportedNumber": null,
+      "catalogPages": [
+        229
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 15.18
+            }
+          ]
+        }
+      ],
+      "name": "Kenton County",
+      "classification": "Siderito, tipo Caillita.",
+      "locality": "Independencia, Kentucky (E. U. N. A.).",
+      "eventDate": "1889",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Kenton County",
+        "meteoriteCode": "12280",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12280",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-5c8896f7-b208-411e-8b15-6e77ab8bff49",
+      "catalogId": "madrid-1923",
+      "entryOrder": 52,
+      "reportedNumber": null,
+      "catalogPages": [
+        229
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 60.44
+            }
+          ]
+        }
+      ],
+      "name": "Kernouvé",
+      "classification": "Litito, tipo Erxlebenita.",
+      "locality": "Cléquérec, Morbihan (Francia).",
+      "eventDate": "22-V-1869",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Kernouve",
+        "meteoriteCode": "12284",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12284",
+        "alternateNameNote": "The live official checker directly identifies Kernouvé as a synonym of Kernouve; the official detail record confirms the canonical name and compatible source facts."
+      }
+    },
+    {
+      "id": "obs-cfd25943-2d1d-4a12-af7a-cf2f00cdac3e",
+      "catalogId": "madrid-1923",
+      "entryOrder": 53,
+      "reportedNumber": null,
+      "catalogPages": [
+        229
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 28.41
+            }
+          ]
+        }
+      ],
+      "name": "Kesen",
+      "classification": "Litito, tipo Aumalita.",
+      "locality": "Choyenji, Kesen, Hondo (Japón).",
+      "eventDate": "13-VI-1850",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Kesen",
+        "meteoriteCode": "12286",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12286",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-ed6e5794-d594-47ff-9e72-60b80d511a96",
+      "catalogId": "madrid-1923",
+      "entryOrder": 54,
+      "reportedNumber": null,
+      "catalogPages": [
+        229
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 15.95
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 10.07
+            }
+          ]
+        }
+      ],
+      "name": "Knyahinya",
+      "classification": "Litito, tipo Laiglita.",
+      "locality": "Nagy Berezna, Rutenia (Checo-Eslovaquia)",
+      "eventDate": "9-VI-1866",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Knyahinya",
+        "meteoriteCode": "12335",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12335",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-18eec876-f73e-40ff-979b-a720135041b6",
+      "catalogId": "madrid-1923",
+      "entryOrder": 55,
+      "reportedNumber": null,
+      "catalogPages": [
+        229
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 259
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 29.52
+            }
+          ]
+        }
+      ],
+      "name": "Krasnojarsk",
+      "classification": "Litosiderito, tipo Palasita.",
+      "locality": "Gobierno de Yeniseí (Siberia Central).",
+      "eventDate": "1749",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Krasnojarsk",
+        "meteoriteCode": "12356",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12356",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-80457d2f-bcfd-410e-ab8c-40e9dc7af865",
+      "catalogId": "madrid-1923",
+      "entryOrder": 56,
+      "reportedNumber": null,
+      "catalogPages": [
+        229
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 75.34
+            }
+          ]
+        }
+      ],
+      "name": "La Grange",
+      "classification": "Siderito, tipo Jewelita.",
+      "locality": "Condado de Oldham, Kentucky (E. U. N. A.).",
+      "eventDate": "1860",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "La Grange",
+        "meteoriteCode": "12399",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12399",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-c945e986-aeba-49d8-b825-fc2dcce2dc90",
+      "catalogId": "madrid-1923",
+      "entryOrder": 57,
+      "reportedNumber": null,
+      "catalogPages": [
+        229
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 17.5
+            }
+          ]
+        }
+      ],
+      "name": "L'Aigle",
+      "classification": "Litito, tipo Laiglita.",
+      "locality": "Orne (Francia).",
+      "eventDate": "26-IV-1803",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "L'Aigle",
+        "meteoriteCode": "12434",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12434",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-e89cd894-cc48-4bfb-91df-6e6832650334",
+      "catalogId": "madrid-1923",
+      "entryOrder": 58,
+      "reportedNumber": null,
+      "catalogPages": [
+        229
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 82.05
+            }
+          ]
+        }
+      ],
+      "name": "Lancé",
+      "classification": "Litito, tipo Stauropolita.",
+      "locality": "Authon, Loir et Cher (Francia).",
+      "eventDate": "23-VII-1872",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Lancé",
+        "meteoriteCode": "12455",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12455",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-af79653a-f22b-411d-b5c2-024b040eee16",
+      "catalogId": "madrid-1923",
+      "entryOrder": 59,
+      "reportedNumber": null,
+      "catalogPages": [
+        229
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen group",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 6.29
+            }
+          ]
+        }
+      ],
+      "name": "Lanzon",
+      "classification": "Litito, tipo Cantonita.",
+      "locality": "Aix. Bouches du Rhône (Francia).",
+      "eventDate": "20-VI-1897",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker returned Unknown. No identity is inferred from spelling similarity, locality, type, date, or mass."
+      }
+    },
+    {
+      "id": "obs-7dae4d1c-5f93-4606-ac89-ca0689a8ef44",
+      "catalogId": "madrid-1923",
+      "entryOrder": 60,
+      "reportedNumber": null,
+      "catalogPages": [
+        229
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 59.1
+            }
+          ]
+        }
+      ],
+      "name": "Linn-County",
+      "classification": "Litito, tipo Luceita.",
+      "locality": "Marion, Iowa (E. U. N. A.)",
+      "eventDate": "25-II-1847",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker returned Unknown. No identity is inferred from spelling similarity, locality, type, date, or mass."
+      }
+    },
+    {
+      "id": "obs-b9418aaa-85a2-47a4-a020-1849c29d30da",
+      "catalogId": "madrid-1923",
+      "entryOrder": 61,
+      "reportedNumber": null,
+      "catalogPages": [
+        229
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen group",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 5.19
+            }
+          ]
+        }
+      ],
+      "name": "Lissa",
+      "classification": "Litito, tipo Luceita.",
+      "locality": "Bunzlau, Silesia (Alemania).",
+      "eventDate": "3-IX-1808",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Lissa",
+        "meteoriteCode": "14661",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=14661",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-e8313498-7a6b-4031-8658-7f5d0c694e92",
+      "catalogId": "madrid-1923",
+      "entryOrder": 62,
+      "reportedNumber": null,
+      "catalogPages": [
+        229
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 7.56
+            }
+          ]
+        }
+      ],
+      "name": "Lixna",
+      "classification": "Litito, tipo Cantonita.",
+      "locality": "Lasdany, Curlandia (Rusia).",
+      "eventDate": "12-VII-1820",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Lixna",
+        "meteoriteCode": "14670",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=14670",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-f57881cd-9138-43d4-bb70-bf9966209f2b",
+      "catalogId": "madrid-1923",
+      "entryOrder": 63,
+      "reportedNumber": null,
+      "catalogPages": [
+        229
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 25.4
+            }
+          ]
+        }
+      ],
+      "name": "Los Martínez",
+      "classification": "Litito, tipo Cantonita.",
+      "locality": "Corvera, Murcia (España)",
+      "eventDate": "V-1894",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker returned Unknown. No identity is inferred from spelling similarity, locality, type, date, or mass."
+      }
+    },
+    {
+      "id": "obs-2a88217a-e7b4-4c0e-bf49-656a8364f525",
+      "catalogId": "madrid-1923",
+      "entryOrder": 64,
+      "reportedNumber": null,
+      "catalogPages": [
+        229
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 33.8
+            }
+          ]
+        }
+      ],
+      "name": "Llano del Inca",
+      "classification": "Litosiderito, tipo Inesita.",
+      "locality": "Desierto de Atacama (Chile).",
+      "eventDate": "1888",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker links this name to Vaca Muerta, but the source event year 1888 conflicts with the official year 1861. The identity remains unresolved conservatively."
+      }
+    },
+    {
+      "id": "obs-5fd60cc5-81c0-4bbc-935b-1541a1530620",
+      "catalogId": "madrid-1923",
+      "entryOrder": 65,
+      "reportedNumber": null,
+      "catalogPages": [
+        229
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 475
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 20.19
+            }
+          ]
+        }
+      ],
+      "name": "Mac Kinney",
+      "classification": "Litito, tipo Tadjerita.",
+      "locality": "Condado de Collin, Texas. (E. U. N. A.)",
+      "eventDate": "1870",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker returned Unknown. No identity is inferred from spelling similarity, locality, type, date, or mass."
+      }
+    },
+    {
+      "id": "obs-ffa86dbe-b5f3-413b-913c-deb60966c05d",
+      "catalogId": "madrid-1923",
+      "entryOrder": 66,
+      "reportedNumber": null,
+      "catalogPages": [
+        229
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 143.84
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 44.88
+            }
+          ]
+        },
+        {
+          "description": "Specimen group",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 27.73
+            }
+          ]
+        }
+      ],
+      "name": "Madrid",
+      "classification": "Litito, tipo Cantonita.",
+      "locality": "(España).",
+      "eventDate": "10-II-1896",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Madrid",
+        "meteoriteCode": "15382",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15382",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-7d2cbe96-d3ce-4450-947a-811141f891bd",
+      "catalogId": "madrid-1923",
+      "entryOrder": 67,
+      "reportedNumber": null,
+      "catalogPages": [
+        229
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 1.06
+            }
+          ]
+        }
+      ],
+      "name": "Mauerkirchen",
+      "classification": "Litito, tipo Luceita.",
+      "locality": "(Austria)",
+      "eventDate": "20-XI-1768",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Mauerkirchen",
+        "meteoriteCode": "15446",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15446",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-73c076da-1660-40c6-ac11-4bc7ec265a76",
+      "catalogId": "madrid-1923",
+      "entryOrder": 68,
+      "reportedNumber": null,
+      "catalogPages": [
+        229
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 26.01
+            }
+          ]
+        }
+      ],
+      "name": "Merceditas",
+      "classification": "Siderito, tipo Caillita.",
+      "locality": "Chanaral (Chile N.).",
+      "eventDate": "1884",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Merceditas",
+        "meteoriteCode": "15487",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15487",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-97c760da-bf59-4780-88e9-7c41739889f7",
+      "catalogId": "madrid-1923",
+      "entryOrder": 69,
+      "reportedNumber": null,
+      "catalogPages": [
+        229
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 33.18
+            }
+          ]
+        }
+      ],
+      "name": "Mezó Madaras",
+      "classification": "Litito, tipo Parnalita.",
+      "locality": "Transilvania (Rumania).",
+      "eventDate": "4-IX-1852",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker returned Unknown. No identity is inferred from spelling similarity, locality, type, date, or mass."
+      }
+    },
+    {
+      "id": "obs-2bf77b9a-3ac6-42e2-b5fe-a7973fa647a1",
+      "catalogId": "madrid-1923",
+      "entryOrder": 70,
+      "reportedNumber": null,
+      "catalogPages": [
+        230
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 137.2
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 47.28
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 45.55
+            }
+          ]
+        }
+      ],
+      "name": "Mincy",
+      "classification": "Litosiderito, tipo Logroñita.",
+      "locality": "Condado de Taney, Missouri (E. U. N. A.).",
+      "eventDate": "1857",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Mincy",
+        "meteoriteCode": "16694",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16694",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-4f378eca-f442-441f-b8b9-bb8320844986",
+      "catalogId": "madrid-1923",
+      "entryOrder": 71,
+      "reportedNumber": null,
+      "catalogPages": [
+        230
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 589.2
+            }
+          ]
+        }
+      ],
+      "name": "Misteca",
+      "classification": "Siderito, tipo Caillita.",
+      "locality": "Estado de Oaxaca (Méjico).",
+      "eventDate": "1804",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Misteca",
+        "meteoriteCode": "16705",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16705",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-ab7d2924-3490-4fb7-acca-4f0a8a3fa198",
+      "catalogId": "madrid-1923",
+      "entryOrder": 72,
+      "reportedNumber": null,
+      "catalogPages": [
+        230
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 164.5
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 143.42
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 76.55
+            }
+          ]
+        }
+      ],
+      "name": "Mocs",
+      "classification": "Litito, tipo Cantonita.",
+      "locality": "Siebenburgen, Transilvania (Rumania).",
+      "eventDate": "3-II-1882",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Mocs",
+        "meteoriteCode": "16709",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16709",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-681d29e3-062d-43a9-92ce-49788fde90f6",
+      "catalogId": "madrid-1923",
+      "entryOrder": 73,
+      "reportedNumber": null,
+      "catalogPages": [
+        230
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 19
+            }
+          ]
+        }
+      ],
+      "name": "Moldauthein",
+      "classification": "Litito, tipo Moldavita (?)",
+      "locality": "Bohemia (Checo-Eslovaquia).",
+      "eventDate": "»",
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker returned Unknown. No identity is inferred from spelling similarity, locality, type, date, or mass."
+      }
+    },
+    {
+      "id": "obs-b0913bad-1d40-415a-a7de-6cb635d34ca7",
+      "catalogId": "madrid-1923",
+      "entryOrder": 74,
+      "reportedNumber": null,
+      "catalogPages": [
+        230
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 113725
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 1185
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 594
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 407
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 79.35
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 60.3
+            }
+          ]
+        },
+        {
+          "description": "Specimen group",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 103
+            }
+          ]
+        }
+      ],
+      "name": "Molina",
+      "classification": "Litito, tipo Cantonita.",
+      "locality": "Murcia (España).",
+      "eventDate": "24-XII-1858",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Molina",
+        "meteoriteCode": "16715",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16715",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-4cc8850e-3eb9-4c5d-bc92-b8fd07459d17",
+      "catalogId": "madrid-1923",
+      "entryOrder": 75,
+      "reportedNumber": null,
+      "catalogPages": [
+        230
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 1.73
+            }
+          ]
+        }
+      ],
+      "name": "Monroe",
+      "classification": "Litito, tipo Erxlebenita.",
+      "locality": "Condado de la Unión, Carolina N. (E. U. N. A.).",
+      "eventDate": "31-III-1849",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Monroe",
+        "meteoriteCode": "16720",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16720",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-a1abe32a-9d4c-484d-8bc4-a1db17b1e275",
+      "catalogId": "madrid-1923",
+      "entryOrder": 76,
+      "reportedNumber": null,
+      "catalogPages": [
+        230
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 86.65
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 74.3
+            }
+          ]
+        }
+      ],
+      "name": "Montes Sacramento",
+      "classification": "Siderito, tipo Caillita.",
+      "locality": "Lincoln, Nuevo Méjico (E. U. N. A.)",
+      "eventDate": "1896",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker returned Unknown. No identity is inferred from spelling similarity, locality, type, date, or mass."
+      }
+    },
+    {
+      "id": "obs-936e6d35-e69e-4014-86b3-92bac2686ce1",
+      "catalogId": "madrid-1923",
+      "entryOrder": 77,
+      "reportedNumber": null,
+      "catalogPages": [
+        230
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 75.87
+            }
+          ]
+        }
+      ],
+      "name": "Morristown",
+      "classification": "Litosiderito, tipo Logroñita.",
+      "locality": "Hamblen, Tennessee (E. U. N. A.).",
+      "eventDate": "1887",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Morristown",
+        "meteoriteCode": "16750",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16750",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-6b68a82f-706e-4196-8bff-921b42ea4f59",
+      "catalogId": "madrid-1923",
+      "entryOrder": 78,
+      "reportedNumber": null,
+      "catalogPages": [
+        230
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 9.89
+            }
+          ]
+        }
+      ],
+      "name": "Mount Joy",
+      "classification": "Siderito, tipo Kendalita.",
+      "locality": "Gettysburg, Pensilvania (E. U. N. A.).",
+      "eventDate": "1887",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Mount Joy",
+        "meteoriteCode": "16779",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16779",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-caffaa52-d7b7-472e-883f-e5c81237de70",
+      "catalogId": "madrid-1923",
+      "entryOrder": 79,
+      "reportedNumber": null,
+      "catalogPages": [
+        230
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 727
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 405
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 51.64
+            }
+          ]
+        }
+      ],
+      "name": "Mukerop",
+      "classification": "Siderito, tipo Bendegita.",
+      "locality": "Bethany, Gibeon (Africa SW.).",
+      "eventDate": "1899",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker links this name to Gibeon, but the source event year 1899 conflicts with the official year 1836. The identity remains unresolved conservatively."
+      }
+    },
+    {
+      "id": "obs-5bf8d9f6-8b70-40c5-8d1f-1ce199dc85a4",
+      "catalogId": "madrid-1923",
+      "entryOrder": 80,
+      "reportedNumber": null,
+      "catalogPages": [
+        230
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 19.46
+            }
+          ]
+        }
+      ],
+      "name": "Murphy",
+      "classification": "Siderito, tipo Braunita.",
+      "locality": "Cherokee, Carolina N. (E. U. N. A.)",
+      "eventDate": "1859",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker links this name to Murphy, but the source event year 1859 conflicts with the official year 1899. The identity remains unresolved conservatively."
+      }
+    },
+    {
+      "id": "obs-afa93554-42dd-4eea-86e0-5884d7b4f8eb",
+      "catalogId": "madrid-1923",
+      "entryOrder": 81,
+      "reportedNumber": null,
+      "catalogPages": [
+        230
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 26.49
+            }
+          ]
+        }
+      ],
+      "name": "Nejed",
+      "classification": "Siderito, tipo Bendegita.",
+      "locality": "Wadee Banee Khaled (Arabia Central)",
+      "eventDate": "1863",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker returned Partial name (1 meteorite(s) contain \"Nejed\"). The packet forbids resolving partial or ambiguous names; no candidate is selected from spelling, locality, type, date, or mass."
+      }
+    },
+    {
+      "id": "obs-21ce201b-5473-4304-addc-3976f208b80b",
+      "catalogId": "madrid-1923",
+      "entryOrder": 82,
+      "reportedNumber": null,
+      "catalogPages": [
+        230
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 79.86
+            }
+          ]
+        }
+      ],
+      "name": "New Concord",
+      "classification": "Litito, tipo Aumalita.",
+      "locality": "Guernesey, Ohío. (E. U. N. A.).",
+      "eventDate": "1-V-1860",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "New Concord",
+        "meteoriteCode": "16953",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16953",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-209e5bea-c0ab-4e55-aac1-84835fae6bb0",
+      "catalogId": "madrid-1923",
+      "entryOrder": 83,
+      "reportedNumber": null,
+      "catalogPages": [
+        230
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 7862
+            }
+          ]
+        }
+      ],
+      "name": "Nulles",
+      "classification": "Litito, tipo Cantonita.",
+      "locality": "Tarragona (España).",
+      "eventDate": "5-XI-1851",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Nulles",
+        "meteoriteCode": "17959",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17959",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-7e4e8c8f-c648-43b2-84a6-94604bf35179",
+      "catalogId": "madrid-1923",
+      "entryOrder": 84,
+      "reportedNumber": null,
+      "catalogPages": [
+        230
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 22.57
+            }
+          ]
+        }
+      ],
+      "name": "Ogi",
+      "classification": "Litito, tipo Montrejita.",
+      "locality": "Provincia de Hizen (Japón).",
+      "eventDate": "1730 ?",
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker links this name to Ogi, but the source event year 1730 conflicts with the official year 1741. The identity remains unresolved conservatively."
+      }
+    },
+    {
+      "id": "obs-fe07ed2d-7ad6-4f2e-83f9-4aa01d0d3b11",
+      "catalogId": "madrid-1923",
+      "entryOrder": 85,
+      "reportedNumber": null,
+      "catalogPages": [
+        231
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen group",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 9.5
+            }
+          ]
+        }
+      ],
+      "name": "Orgueil",
+      "classification": "Litito, tipo Orgueillita.",
+      "locality": "Tarn et Garonne (Francia)",
+      "eventDate": "14-V-1864",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Orgueil",
+        "meteoriteCode": "18026",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18026",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-6bf3a825-8e33-46eb-853c-4845a602d975",
+      "catalogId": "madrid-1923",
+      "entryOrder": 86,
+      "reportedNumber": null,
+      "catalogPages": [
+        231
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 229.22
+            }
+          ]
+        }
+      ],
+      "name": "Oroville",
+      "classification": "Siderito, tipo Caillita.",
+      "locality": "Butte, California N. (E. U. N. A.).",
+      "eventDate": "1893",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Oroville",
+        "meteoriteCode": "18032",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18032",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-3f49be8f-c85c-4bc8-bd23-637300d6793c",
+      "catalogId": "madrid-1923",
+      "entryOrder": 87,
+      "reportedNumber": null,
+      "catalogPages": [
+        231
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 15.68
+            }
+          ]
+        }
+      ],
+      "name": "Oviedo",
+      "classification": "Litito, tipo Luceita.",
+      "locality": "(España).",
+      "eventDate": "5-VIII-1856",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Oviedo",
+        "meteoriteCode": "18058",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18058",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-71f42ebc-60a6-4f5f-ab8a-4d65be1f9c00",
+      "catalogId": "madrid-1923",
+      "entryOrder": 88,
+      "reportedNumber": null,
+      "catalogPages": [
+        231
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 84.34
+            }
+          ]
+        }
+      ],
+      "name": "Parnallé",
+      "classification": "Litito, tipo Parnalita.",
+      "locality": "Madura, Presidencia de Madrás (India).",
+      "eventDate": "28-II-1857",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker returned Unknown. No identity is inferred from spelling similarity, locality, type, date, or mass."
+      }
+    },
+    {
+      "id": "obs-2c4f185d-f9e2-48b1-b353-f82bebf5c9c7",
+      "catalogId": "madrid-1923",
+      "entryOrder": 89,
+      "reportedNumber": null,
+      "catalogPages": [
+        231
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 27.05
+            }
+          ]
+        }
+      ],
+      "name": "Pavlowka",
+      "classification": "Litito, tipo Howardita.",
+      "locality": "Balaschew, Saratow (Rusia).",
+      "eventDate": "2-VIII-1882",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker returned Unknown. No identity is inferred from spelling similarity, locality, type, date, or mass."
+      }
+    },
+    {
+      "id": "obs-667382d3-cb07-469c-8fc8-295b4ef6582e",
+      "catalogId": "madrid-1923",
+      "entryOrder": 90,
+      "reportedNumber": null,
+      "catalogPages": [
+        231
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 26.16
+            }
+          ]
+        }
+      ],
+      "name": "Pawlograd",
+      "classification": "Litito, tipo Luceita.",
+      "locality": "Yekaterinosslaw (Ukraina).",
+      "eventDate": "19-V-1826",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Pavlograd",
+        "meteoriteCode": "18176",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18176",
+        "alternateNameNote": "The live official checker directly identifies Pawlograd as a synonym of Pavlograd; the official detail record confirms the canonical name and compatible source facts."
+      }
+    },
+    {
+      "id": "obs-81719ece-bf8b-4255-9f74-a073bfe93e4a",
+      "catalogId": "madrid-1923",
+      "entryOrder": 91,
+      "reportedNumber": null,
+      "catalogPages": [
+        231
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 3.49
+            }
+          ]
+        }
+      ],
+      "name": "Petersburg",
+      "classification": "Litito, tipo Howardita.",
+      "locality": "Licoln, Tennessee (E. U. N. A.).",
+      "eventDate": "5-VIII-1855",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Petersburg",
+        "meteoriteCode": "18801",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18801",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-c75e5ca4-2724-4669-8bed-63e547306ad3",
+      "catalogId": "madrid-1923",
+      "entryOrder": 92,
+      "reportedNumber": null,
+      "catalogPages": [
+        231
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 31.01
+            }
+          ]
+        }
+      ],
+      "name": "Plymouth",
+      "classification": "Siderito, tipo Braunita.",
+      "locality": "Marshall, Indiana (E. U. N. A.).",
+      "eventDate": "1893",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Plymouth",
+        "meteoriteCode": "18850",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18850",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-ceb71374-6334-4e51-8ac4-b34676658f65",
+      "catalogId": "madrid-1923",
+      "entryOrder": 93,
+      "reportedNumber": null,
+      "catalogPages": [
+        231
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 44.3
+            }
+          ]
+        }
+      ],
+      "name": "Puerta de Arauco",
+      "classification": "Siderito, tipo Caillita.",
+      "locality": "Rioja (Argentina).",
+      "eventDate": "1904",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Puerta de Arauco",
+        "meteoriteCode": "18896",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18896",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-11e94095-7a3d-4a0f-b69d-47ee9ee45763",
+      "catalogId": "madrid-1923",
+      "entryOrder": 94,
+      "reportedNumber": null,
+      "catalogPages": [
+        231
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 508
+            }
+          ]
+        },
+        {
+          "description": "Specimen group",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 35.83
+            }
+          ]
+        },
+        {
+          "description": "Specimen group",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 9.58
+            }
+          ]
+        }
+      ],
+      "name": "Pultusk",
+      "classification": "Litito, tipo Cantonita.",
+      "locality": "(Polonia).",
+      "eventDate": "30-I-1868",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Pultusk",
+        "meteoriteCode": "18901",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=18901",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-fa7e4840-64a5-4747-b970-bb99d87c3fed",
+      "catalogId": "madrid-1923",
+      "entryOrder": 95,
+      "reportedNumber": null,
+      "catalogPages": [
+        231
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 41.55
+            }
+          ]
+        }
+      ],
+      "name": "Putnam County",
+      "classification": "Siderito, tipo Dicksonita.",
+      "locality": "Georgia (E. U. N. A.).",
+      "eventDate": "1854",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker links this name to Putnam County, but the source event year 1854 conflicts with the official year 1839. The identity remains unresolved conservatively."
+      }
+    },
+    {
+      "id": "obs-4dd06b27-f9d5-46e7-b50e-57704959b623",
+      "catalogId": "madrid-1923",
+      "entryOrder": 96,
+      "reportedNumber": null,
+      "catalogPages": [
+        231
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 8.67
+            }
+          ]
+        }
+      ],
+      "name": "Quesa",
+      "classification": "Siderito, tipo Caillita.",
+      "locality": "Valencia (España).",
+      "eventDate": "1-VIII-1898",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Quesa",
+        "meteoriteCode": "22360",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22360",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-2d2d2254-4ebb-4bfa-a780-9e5745ea0008",
+      "catalogId": "madrid-1923",
+      "entryOrder": 97,
+      "reportedNumber": null,
+      "catalogPages": [
+        231
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 45.72
+            }
+          ]
+        }
+      ],
+      "name": "Rakowka",
+      "classification": "Litito, tipo Aumalita.",
+      "locality": "Gobierno de Tula (Rusia).",
+      "eventDate": "20-XI-1878",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Rakovka",
+        "meteoriteCode": "22376",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22376",
+        "alternateNameNote": "The live official checker directly identifies Rakowka as a synonym of Rakovka; the official detail record confirms the canonical name and compatible source facts."
+      }
+    },
+    {
+      "id": "obs-7a483624-a0fb-4f07-a194-286184747368",
+      "catalogId": "madrid-1923",
+      "entryOrder": 98,
+      "reportedNumber": null,
+      "catalogPages": [
+        231
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 8.72
+            }
+          ]
+        }
+      ],
+      "name": "Rittersgrün",
+      "classification": "Litosiderito, tipo Rittersgrunita.",
+      "locality": "Sajonia. Checo-Eslovaquia.",
+      "eventDate": "1861",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker links this name to Steinbach, but the source event year 1861 conflicts with the official year 1724. The broad source type also conflicts with the official classification. The identity remains unresolved conservatively."
+      }
+    },
+    {
+      "id": "obs-6ea96043-cdc0-4ce6-a588-c15e3ad97d09",
+      "catalogId": "madrid-1923",
+      "entryOrder": 99,
+      "reportedNumber": null,
+      "catalogPages": [
+        231
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 165
+            }
+          ]
+        }
+      ],
+      "name": "Rodeo",
+      "classification": "Siderito, tipo Caillita.",
+      "locality": "Estado de Durango (Méjico)",
+      "eventDate": "1850",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker links this name to Rodeo, but the source event year 1850 conflicts with the official year 1852. The identity remains unresolved conservatively."
+      }
+    },
+    {
+      "id": "obs-6dfd76c6-bfac-410c-ba21-a18ceb5661cd",
+      "catalogId": "madrid-1923",
+      "entryOrder": 100,
+      "reportedNumber": null,
+      "catalogPages": [
+        231
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 237
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 0.55
+            }
+          ]
+        }
+      ],
+      "name": "Ruff's Mountain",
+      "classification": "Siderito, tipo Caillita.",
+      "locality": "Lexington, Carolina S. (E. U. N. A.).",
+      "eventDate": "1850",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker links this name to Ruff's Mountain, but the source event year 1850 conflicts with the official year 1844. The identity remains unresolved conservatively."
+      }
+    },
+    {
+      "id": "obs-da71ef70-5174-42f8-b352-cb506fa0e4b3",
+      "catalogId": "madrid-1923",
+      "entryOrder": 101,
+      "reportedNumber": null,
+      "catalogPages": [
+        231
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 162.41
+            }
+          ]
+        }
+      ],
+      "name": "San Angelo",
+      "classification": "Siderito, tipo Caillita.",
+      "locality": "Tom Green, Texas Central (E. U. N. A.).",
+      "eventDate": "1897",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "San Angelo",
+        "meteoriteCode": "23117",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23117",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-fece1c29-03b9-4a90-9231-e1b4cdaf1fcb",
+      "catalogId": "madrid-1923",
+      "entryOrder": 102,
+      "reportedNumber": null,
+      "catalogPages": [
+        231
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 172.6
+            }
+          ]
+        }
+      ],
+      "name": "Sainte Geneviève",
+      "classification": "Siderito, tipo Caillita.",
+      "locality": "Missouri (E. U. N. A.).",
+      "eventDate": "1888",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker returned Unknown. No identity is inferred from spelling similarity, locality, type, date, or mass."
+      }
+    },
+    {
+      "id": "obs-ce168a90-bd61-4016-be3a-77c098ec2fb5",
+      "catalogId": "madrid-1923",
+      "entryOrder": 103,
+      "reportedNumber": null,
+      "catalogPages": [
+        231
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 70.86
+            }
+          ]
+        }
+      ],
+      "name": "Santa Catharina",
+      "classification": "Siderito, tipo Catarinita.",
+      "locality": "Morro de Rocio (Brasil.).",
+      "eventDate": "1875",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Santa Catharina",
+        "meteoriteCode": "23162",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23162",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-b01d9ba6-d5d9-4268-9928-c31dbb00595a",
+      "catalogId": "madrid-1923",
+      "entryOrder": 104,
+      "reportedNumber": null,
+      "catalogPages": [
+        231
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 65.61
+            }
+          ]
+        }
+      ],
+      "name": "Sao Juliao de Moreira",
+      "classification": "Siderito, tipo Nelsonita.",
+      "locality": "Ponte de Lima (Portugal).",
+      "eventDate": "1883",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "São Julião de Moreira",
+        "meteoriteCode": "23172",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23172",
+        "alternateNameNote": "The live official checker directly identifies this spelling as a variant of São Julião de Moreira; the official detail record confirms the canonical spelling and compatible source facts."
+      }
+    },
+    {
+      "id": "obs-15a57764-674c-41ea-b050-af2fa3420f3d",
+      "catalogId": "madrid-1923",
+      "entryOrder": 105,
+      "reportedNumber": null,
+      "catalogPages": [
+        232
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 152.41
+            }
+          ]
+        }
+      ],
+      "name": "Schwetz",
+      "classification": "Siderito, tipo Schwetzita.",
+      "locality": "Kulmerlandia (Prusia)",
+      "eventDate": "1850",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Schwetz",
+        "meteoriteCode": "23461",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23461",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-f1dab2f6-ab7b-44b7-bf3f-609ff38e1702",
+      "catalogId": "madrid-1923",
+      "entryOrder": 106,
+      "reportedNumber": null,
+      "catalogPages": [
+        232
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 9.25
+            }
+          ]
+        }
+      ],
+      "name": "Searsmont",
+      "classification": "Litito, tipo Montrejita.",
+      "locality": "Waldo, Maine (E. U. N. A.).",
+      "eventDate": "21-V-1871",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Searsmont",
+        "meteoriteCode": "23472",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23472",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-2288968f-2e1d-4ef8-bf9f-3548bac04561",
+      "catalogId": "madrid-1923",
+      "entryOrder": 107,
+      "reportedNumber": null,
+      "catalogPages": [
+        232
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 26.7
+            }
+          ]
+        }
+      ],
+      "name": "Seeläsgen",
+      "classification": "Siderito, tipo Bendegita.",
+      "locality": "Brandenburgo (Alemania).",
+      "eventDate": "1847",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Seeläsgen",
+        "meteoriteCode": "23474",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23474",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-4d225efc-8e0b-46a4-92b2-b4dc04167eb9",
+      "catalogId": "madrid-1923",
+      "entryOrder": 108,
+      "reportedNumber": null,
+      "catalogPages": [
+        232
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 27.53
+            }
+          ]
+        }
+      ],
+      "name": "Senhadja",
+      "classification": "Litito, tipo Aumalita.",
+      "locality": "Aumale (Argelia).",
+      "eventDate": "25-VIII-1865",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Aumale",
+        "meteoriteCode": "4899",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4899",
+        "alternateNameNote": "The live official checker directly identifies Senhadja as a synonym of Aumale; the official detail record confirms the canonical name and compatible source facts."
+      }
+    },
+    {
+      "id": "obs-d0a66154-94ab-4596-a29f-99b861d73ccf",
+      "catalogId": "madrid-1923",
+      "entryOrder": 109,
+      "reportedNumber": null,
+      "catalogPages": [
+        232
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 86.33
+            }
+          ]
+        }
+      ],
+      "name": "Sevilla",
+      "classification": "Litito, tipo Montrejita.",
+      "locality": "(España).",
+      "eventDate": "1-XI-1862",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Sevilla",
+        "meteoriteCode": "23508",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23508",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-89d8aa18-bd34-4127-9f22-7c57fa46fec9",
+      "catalogId": "madrid-1923",
+      "entryOrder": 110,
+      "reportedNumber": null,
+      "catalogPages": [
+        232
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 2227
+            }
+          ]
+        }
+      ],
+      "name": "Sigena",
+      "classification": "Litito, tipo Sigenita.",
+      "locality": "Villanueva de Sigena, Huesca (España).",
+      "eventDate": "17-XI-1773",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Sena",
+        "meteoriteCode": "23495",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23495",
+        "alternateNameNote": "The live official checker directly identifies Sigena as a synonym of Sena; the official detail record confirms the canonical name and compatible source facts."
+      }
+    },
+    {
+      "id": "obs-c699b75c-5cd4-4232-8c8f-be06359b20a5",
+      "catalogId": "madrid-1923",
+      "entryOrder": 111,
+      "reportedNumber": null,
+      "catalogPages": [
+        232
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 117.96
+            }
+          ]
+        }
+      ],
+      "name": "Soko Banja",
+      "classification": "Litito; tipo Banjita.",
+      "locality": "Aleksinac (Yugo-Eslavia).",
+      "eventDate": "13-X 1877",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Soko-Banja",
+        "meteoriteCode": "23661",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23661",
+        "alternateNameNote": "The live official checker directly identifies this spelling as a variant of Soko-Banja; the official detail record confirms the canonical spelling and compatible source facts."
+      }
+    },
+    {
+      "id": "obs-5e310d4c-ba40-4aa7-b325-c49f0e7b44c9",
+      "catalogId": "madrid-1923",
+      "entryOrder": 112,
+      "reportedNumber": null,
+      "catalogPages": [
+        232
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 15.03
+            }
+          ]
+        }
+      ],
+      "name": "Stalldalen",
+      "classification": "Litito, tipo Cantonita.",
+      "locality": "Kopparberget, Orebro (Suecia).",
+      "eventDate": "28-VI-1876",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "corrected-spelling",
+        "canonicalName": "Ställdalen",
+        "meteoriteCode": "23712",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23712",
+        "alternateNameNote": "The live official checker directly identifies this spelling as a variant of Ställdalen; the official detail record confirms the canonical spelling and compatible source facts."
+      }
+    },
+    {
+      "id": "obs-fd204eba-f48e-4f36-a2af-d4a6f6c3f76b",
+      "catalogId": "madrid-1923",
+      "entryOrder": 113,
+      "reportedNumber": null,
+      "catalogPages": [
+        232
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen group",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 2.99
+            }
+          ]
+        }
+      ],
+      "name": "Staunern",
+      "classification": "Litito, tipo Eukrita.",
+      "locality": "Iglau, Moravia (Checo-Eslovaquia).",
+      "eventDate": "22-V-1808",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker returned Unknown. No identity is inferred from spelling similarity, locality, type, date, or mass."
+      }
+    },
+    {
+      "id": "obs-6cb21070-1518-4e1c-a8ec-4ed7167b0da2",
+      "catalogId": "madrid-1923",
+      "entryOrder": 114,
+      "reportedNumber": null,
+      "catalogPages": [
+        232
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen group",
+          "provenance": null,
+          "count": null,
+          "weights": [
+            {
+              "grams": 4.71
+            }
+          ]
+        }
+      ],
+      "name": "Tabory",
+      "classification": "Litito, tipo Cañellita.",
+      "locality": "Ochanks, Perm (Rusia).",
+      "eventDate": "30-VIII-1877",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker links this name to Ochansk, but the source event year 1877 conflicts with the official year 1887. The identity remains unresolved conservatively."
+      }
+    },
+    {
+      "id": "obs-ff734fbb-5f00-4d93-a54a-5f1657af6b32",
+      "catalogId": "madrid-1923",
+      "entryOrder": 115,
+      "reportedNumber": null,
+      "catalogPages": [
+        232
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 107.78
+            }
+          ]
+        }
+      ],
+      "name": "Tazewell",
+      "classification": "Siderito, tipo Tazewelita.",
+      "locality": "Claiborne, Tennessee (E. U. N. A.).",
+      "eventDate": "1853",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Tazewell",
+        "meteoriteCode": "23891",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23891",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-a5dea444-9034-47fb-8194-7bd736164b5f",
+      "catalogId": "madrid-1923",
+      "entryOrder": 116,
+      "reportedNumber": null,
+      "catalogPages": [
+        232
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 874
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 449
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 121.69
+            }
+          ]
+        }
+      ],
+      "name": "Toluca",
+      "classification": "Siderito, tipo Caillita.",
+      "locality": "Xiquipilco (Méjico).",
+      "eventDate": "1784",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker links this name to Toluca, but the source event year 1784 conflicts with the official year 1776. The identity remains unresolved conservatively."
+      }
+    },
+    {
+      "id": "obs-302c3226-3c83-4e57-a110-5b01d72f2da4",
+      "catalogId": "madrid-1923",
+      "entryOrder": 117,
+      "reportedNumber": null,
+      "catalogPages": [
+        232
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 105.4
+            }
+          ]
+        }
+      ],
+      "name": "Trenton",
+      "classification": "Siderito, tipo Caillita.",
+      "locality": "Washington, Wisconsin (E. U. N. A.)",
+      "eventDate": "1858",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Trenton",
+        "meteoriteCode": "24045",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24045",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-1c968650-65c0-42a3-a494-11c921865521",
+      "catalogId": "madrid-1923",
+      "entryOrder": 118,
+      "reportedNumber": null,
+      "catalogPages": [
+        232
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 14.28
+            }
+          ]
+        }
+      ],
+      "name": "Trenzano",
+      "classification": "Litito, tipo Sigenita.",
+      "locality": "Brescia, Lombardía (Italia).",
+      "eventDate": "12-XI-1856",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Trenzano",
+        "meteoriteCode": "24046",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24046",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-5f507d05-ea40-4aa6-b11d-31ff47ec26af",
+      "catalogId": "madrid-1923",
+      "entryOrder": 119,
+      "reportedNumber": null,
+      "catalogPages": [
+        232
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 26.32
+            }
+          ]
+        }
+      ],
+      "name": "Tucson",
+      "classification": "Siderito, tipo Tucsonita.",
+      "locality": "Estado de Sonora (Méjico).",
+      "eventDate": "1851",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker links this name to Tucson, but the source event year 1851 conflicts with the official year 1850. The identity remains unresolved conservatively."
+      }
+    },
+    {
+      "id": "obs-95f70590-2a89-4648-8d1a-78b3253a6e8a",
+      "catalogId": "madrid-1923",
+      "entryOrder": 120,
+      "reportedNumber": null,
+      "catalogPages": [
+        232
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 1.98
+            }
+          ]
+        }
+      ],
+      "name": "Tula",
+      "classification": "Litosiderito, tipo Tulita.",
+      "locality": "Netschaevo (Rusia).",
+      "eventDate": "1846",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker returned Partial name (1 meteorite(s) contain \"Tula\"). The packet forbids resolving partial or ambiguous names; no candidate is selected from spelling, locality, type, date, or mass."
+      }
+    },
+    {
+      "id": "obs-d7991c08-1d2f-44ec-b1dc-a89d63ee5d58",
+      "catalogId": "madrid-1923",
+      "entryOrder": 121,
+      "reportedNumber": null,
+      "catalogPages": [
+        232
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 15.12
+            }
+          ]
+        }
+      ],
+      "name": "Vaca Muerta",
+      "classification": "Litosiderito, tipo Logroñita.",
+      "locality": "S.ª del Chaco, Atacama. (Chile)",
+      "eventDate": "1861",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Vaca Muerta",
+        "meteoriteCode": "24142",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24142",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-2801d4e3-423a-48a2-9568-527dd4be0780",
+      "catalogId": "madrid-1923",
+      "entryOrder": 122,
+      "reportedNumber": null,
+      "catalogPages": [
+        232
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 1740
+            }
+          ]
+        }
+      ],
+      "name": "Varea",
+      "classification": "Litosiderito, tipo Logroñita.",
+      "locality": "Logroño (España).",
+      "eventDate": "4-VII-1842",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Barea",
+        "meteoriteCode": "4946",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4946",
+        "alternateNameNote": "The live official checker directly identifies Varea as a synonym of Barea; the official detail record confirms the canonical name and compatible source facts."
+      }
+    },
+    {
+      "id": "obs-a1093bd4-31ec-4b17-8c92-dc9263e92bb1",
+      "catalogId": "madrid-1923",
+      "entryOrder": 123,
+      "reportedNumber": null,
+      "catalogPages": [
+        232
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 92.2
+            }
+          ]
+        }
+      ],
+      "name": "Vigarano",
+      "classification": "Litito, tipo Tadjerita.",
+      "locality": "Mainardi, Ferrara (Italia).",
+      "eventDate": "22-I-1910",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Vigarano",
+        "meteoriteCode": "24174",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24174",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-bbd6cea6-8739-468d-85af-869f318b3cfb",
+      "catalogId": "madrid-1923",
+      "entryOrder": 124,
+      "reportedNumber": null,
+      "catalogPages": [
+        232
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 15.35
+            }
+          ]
+        }
+      ],
+      "name": "Vouillé",
+      "classification": "Litito, tipo Aumalita.",
+      "locality": "Poitiers, Vienne (Francia).",
+      "eventDate": "18 V-1853",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker links this name to Vouillé, but the source event year 1853 conflicts with the official year 1831. The identity remains unresolved conservatively."
+      }
+    },
+    {
+      "id": "obs-1bef9b07-7960-48ef-bc43-b2eba29a2025",
+      "catalogId": "madrid-1923",
+      "entryOrder": 125,
+      "reportedNumber": null,
+      "catalogPages": [
+        232
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 94.77
+            }
+          ]
+        }
+      ],
+      "name": "Werchne Udinsk",
+      "classification": "Siderito, tipo Schwetzita.",
+      "locality": "Transbaicalia (Siberia).",
+      "eventDate": "1854",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker returned Unknown. No identity is inferred from spelling similarity, locality, type, date, or mass."
+      }
+    },
+    {
+      "id": "obs-da1d24eb-6e0d-4828-972a-3927acad8d80",
+      "catalogId": "madrid-1923",
+      "entryOrder": 126,
+      "reportedNumber": null,
+      "catalogPages": [
+        233
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 29.05
+            }
+          ]
+        }
+      ],
+      "name": "Wichita",
+      "classification": "Siderito, tipo Arvaita.",
+      "locality": "Texas (E. U. N. A.).",
+      "eventDate": "1836",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker links this name to Wichita, but the source event year 1836 conflicts with the official year 1971. The broad source type also conflicts with the official classification. The identity remains unresolved conservatively."
+      }
+    },
+    {
+      "id": "obs-d14a6550-d17a-4d65-9ae6-64dc7b202000",
+      "catalogId": "madrid-1923",
+      "entryOrder": 127,
+      "reportedNumber": null,
+      "catalogPages": [
+        233
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 11.69
+            }
+          ]
+        }
+      ],
+      "name": "Ygast",
+      "classification": "Meteorito dudoso.",
+      "locality": "Livonia (República Latvia).",
+      "eventDate": "17-V-1855",
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker returned Unknown. No identity is inferred from spelling similarity, locality, type, date, or mass."
+      }
+    },
+    {
+      "id": "obs-e0ca18c0-3bc6-4226-9b2e-7a1093ec8220",
+      "catalogId": "madrid-1923",
+      "entryOrder": 128,
+      "reportedNumber": null,
+      "catalogPages": [
+        233
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 27.38
+            }
+          ]
+        }
+      ],
+      "name": "Youndegin",
+      "classification": "Siderito, tipo Arvaita.",
+      "locality": "York, Avon (Australia W.).",
+      "eventDate": "1884",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Youndegin",
+        "meteoriteCode": "30374",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=30374",
+        "alternateNameNote": null
+      }
+    },
+    {
+      "id": "obs-bff5d133-c385-49f6-b1cb-37a93193f618",
+      "catalogId": "madrid-1923",
+      "entryOrder": 129,
+      "reportedNumber": null,
+      "catalogPages": [
+        233
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 17.94
+            }
+          ]
+        }
+      ],
+      "name": "Zacatecas",
+      "classification": "Siderito, tipo Caillita.",
+      "locality": "(Méjico).",
+      "eventDate": "1792",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "unresolved",
+        "canonicalName": null,
+        "meteoriteCode": null,
+        "metbullUrl": null,
+        "alternateNameNote": "The live checker returned Partial name (2 meteorite(s) contain \"Zacatecas\"). The packet forbids resolving partial or ambiguous names; no candidate is selected from spelling, locality, type, date, or mass."
+      }
+    },
+    {
+      "id": "obs-ce7ab2b2-df5a-42cb-880f-a486cfe06f67",
+      "catalogId": "madrid-1923",
+      "entryOrder": 130,
+      "reportedNumber": null,
+      "catalogPages": [
+        233
+      ],
+      "section": "Madrid museum collection",
+      "holdings": [
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 85.5
+            }
+          ]
+        },
+        {
+          "description": "Specimen",
+          "provenance": null,
+          "count": 1,
+          "weights": [
+            {
+              "grams": 66.48
+            }
+          ]
+        }
+      ],
+      "name": "Zavid",
+      "classification": "Litito, tipo Aumalita.",
+      "locality": "Bosnia (Yugo-Eslavia).",
+      "eventDate": "1-VIII-1897",
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Zavid",
+        "meteoriteCode": "30396",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=30396",
         "alternateNameNote": null
       }
     },

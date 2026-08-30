@@ -1,7 +1,7 @@
 "use strict";
 
 const CACHE_VERSION = "20260806-2";
-const ASSET_CACHE_VERSION = "20260830-issue-report-1";
+const ASSET_CACHE_VERSION = "20260830-madrid-1";
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "name-asc";
 const ISSUE_FORM_URL = "https://github.com/rayborg/Historical-meteorite-collections/issues/new?template=data-error.yml";
@@ -144,8 +144,8 @@ const SPECIMEN_CARD_PROJECTION_FIELDS = new Set(["parentRecordId", "cards"]);
 const SPECIMEN_CARD_FIELDS = new Set(["holdingPath", "clause", "massPath"]);
 const SPECIMEN_CARD_CLAUSE_FIELDS = new Set(["textPath", "start", "end"]);
 const SHA256_HEX = /^[0-9a-f]{64}$/u;
-const SPECIMEN_CARD_SOURCE_CATALOG_SHA256 = "3928a876a73c3ae74e9a822df0c2bded3f0cdfeb506874ebec4fc3877017a811";
-const SPECIMEN_CARD_PROJECTION_SET_SHA256 = "f7fab83f8153cb843ddfb20f78ac943edc325fb12b6f9eab70414575a5919086";
+const SPECIMEN_CARD_SOURCE_CATALOG_SHA256 = "849971ad45e48141c013c9aecfd195cc2bef44d0fd948c21607be35693aa9b0a";
+const SPECIMEN_CARD_PROJECTION_SET_SHA256 = "3edca8ec748beb5b9d2cb74871ad5c56082a5beced28e75c006a85f745999fa3";
 const LINEAGE_ROOT_FIELDS = new Set(["metadata", "relationships"]);
 const LINEAGE_METADATA_FIELDS = new Set(["schemaVersion", "scope", "source", "collectionSeries", "methodology", "counts"]);
 const LINEAGE_SOURCE_FIELDS = new Set(["catalogSchemaVersion", "recordCount", "catalogCount", "flattenedMassObservationCount", "inventoryObservationCount"]);

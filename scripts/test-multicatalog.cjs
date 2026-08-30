@@ -874,6 +874,7 @@ test("catalog dropdown labels are concise and leave summary titles unchanged", (
     { id: "farrington-1903", year: 1903, label: "Catalogue of the Meteorite Collection of the Field Columbian Museum, May 1, 1903 (1903)" },
     { id: "merrill-1916", year: 1916, label: "Handbook and Descriptive Catalogue of the Meteorite Collections in the United States National Museum (1916)" },
     { id: "prior-1923", year: 1923, label: "Catalogue of Meteorites: global survey with British Museum representation status (1923)" },
+    { id: "madrid-1923", year: 1923, label: "Los Meteoritos del Museo de Madrid (1923)" },
     { id: "palache-1926", year: 1926, label: "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)" },
     { id: "nininger-1933", year: 1933, label: "The Nininger Collection (1933)" },
     { id: "reeds-1937", year: 1937, label: "Catalogue of the Meteorites in the American Museum of Natural History as of October 1, 1935 (1937)" },
@@ -888,7 +889,7 @@ test("catalog dropdown labels are concise and leave summary titles unchanged", (
   assert.deepEqual(labels, [
     "Lucas (1813)", "Chladni (1819)", "Chladni (1825)", "Haidinger (1859)", "Buchner (1863)",
     "Nordenskiöld (1870)", "Ball (1882)", "USNM (1886)", "Hovey (1896)", "Washington (1897)",
-    "Högbom (1902)", "Farrington (1903)", "Merrill (1916)", "Prior (1923)", "Palache (1926)",
+    "Högbom (1902)", "Farrington (1903)", "Merrill (1916)", "Prior (1923)", "Madrid (1923)", "Palache (1926)",
     "Nininger (1933)", "Reeds (1937)",
     "Barnes (1940)", "Nininger (1950)", "Huss (1976)", "Huss (1986)", "Kanagawa (1996)", "ASU (2024)"
   ]);
@@ -910,7 +911,7 @@ test("URL filters strictly round-trip lineage state and cache version remains st
     assert.equal(app.parseUrlFilters(search, registry).lineageOnly, false, search);
   }
   assert.equal(app.CACHE_VERSION, "20260806-2");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260830-issue-report-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260830-madrid-1");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.ASSET_CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.ASSET_CACHE_VERSION}`));
 });

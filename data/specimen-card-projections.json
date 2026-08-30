@@ -3,11 +3,11 @@
     "schemaVersion": 2,
     "scope": "reviewed-atomic-specimen-card-display-projections",
     "catalogSchemaVersion": 6,
-    "sourceRecordCount": 13542,
-    "sourceCatalogSha256": "3928a876a73c3ae74e9a822df0c2bded3f0cdfeb506874ebec4fc3877017a811",
-    "projectionCount": 1790,
-    "atomicCardCount": 6403,
-    "sourceContextCardCount": 1510
+    "sourceRecordCount": 13672,
+    "sourceCatalogSha256": "849971ad45e48141c013c9aecfd195cc2bef44d0fd948c21607be35693aa9b0a",
+    "projectionCount": 1813,
+    "atomicCardCount": 6457,
+    "sourceContextCardCount": 1515
   },
   "projections": [
     {
@@ -18679,6 +18679,607 @@
             "textPath": "holdings[1].description",
             "start": 0,
             "end": 26
+          },
+          "massPath": "holdings[1].weights[0].grams"
+        }
+      ]
+    },
+    {
+      "parentRecordId": "obs-a6a576fb-4a5c-42b0-ad4d-b71a78632453",
+      "cards": [
+        {
+          "holdingPath": "holdings[0]",
+          "clause": {
+            "textPath": "holdings[0].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[0].weights[0].grams"
+        },
+        {
+          "holdingPath": "holdings[1]",
+          "clause": {
+            "textPath": "holdings[1].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[1].weights[0].grams"
+        }
+      ]
+    },
+    {
+      "parentRecordId": "obs-0aa08d25-c1ab-4b5c-97d9-3e32b978852b",
+      "cards": [
+        {
+          "holdingPath": "holdings[1]",
+          "clause": {
+            "textPath": "holdings[1].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[1].weights[0].grams"
+        }
+      ]
+    },
+    {
+      "parentRecordId": "obs-0c769056-7f0e-45a4-bbb6-73eea20dfd7e",
+      "cards": [
+        {
+          "holdingPath": "holdings[0]",
+          "clause": {
+            "textPath": "holdings[0].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[0].weights[0].grams"
+        },
+        {
+          "holdingPath": "holdings[1]",
+          "clause": {
+            "textPath": "holdings[1].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[1].weights[0].grams"
+        }
+      ]
+    },
+    {
+      "parentRecordId": "obs-d3316eb1-ce14-411a-882d-e267843f2e79",
+      "cards": [
+        {
+          "holdingPath": "holdings[0]",
+          "clause": {
+            "textPath": "holdings[0].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[0].weights[0].grams"
+        },
+        {
+          "holdingPath": "holdings[1]",
+          "clause": {
+            "textPath": "holdings[1].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[1].weights[0].grams"
+        },
+        {
+          "holdingPath": "holdings[2]",
+          "clause": {
+            "textPath": "holdings[2].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[2].weights[0].grams"
+        }
+      ]
+    },
+    {
+      "parentRecordId": "obs-0ad43878-67a4-41bf-8247-cccf5115f143",
+      "cards": [
+        {
+          "holdingPath": "holdings[0]",
+          "clause": {
+            "textPath": "holdings[0].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[0].weights[0].grams"
+        },
+        {
+          "holdingPath": "holdings[1]",
+          "clause": {
+            "textPath": "holdings[1].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[1].weights[0].grams"
+        },
+        {
+          "holdingPath": "holdings[2]",
+          "clause": {
+            "textPath": "holdings[2].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[2].weights[0].grams"
+        }
+      ]
+    },
+    {
+      "parentRecordId": "obs-c66b9aa6-4ea2-4cde-852f-cf624c47358c",
+      "cards": [
+        {
+          "holdingPath": "holdings[0]",
+          "clause": {
+            "textPath": "holdings[0].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[0].weights[0].grams"
+        },
+        {
+          "holdingPath": "holdings[1]",
+          "clause": {
+            "textPath": "holdings[1].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[1].weights[0].grams"
+        }
+      ]
+    },
+    {
+      "parentRecordId": "obs-14d9b90a-a767-4244-ae9c-573a491a14de",
+      "cards": [
+        {
+          "holdingPath": "holdings[0]",
+          "clause": {
+            "textPath": "holdings[0].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[0].weights[0].grams"
+        },
+        {
+          "holdingPath": "holdings[1]",
+          "clause": {
+            "textPath": "holdings[1].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[1].weights[0].grams"
+        }
+      ]
+    },
+    {
+      "parentRecordId": "obs-ca22e934-6150-4b6f-a3ed-5d73e615f55f",
+      "cards": [
+        {
+          "holdingPath": "holdings[0]",
+          "clause": {
+            "textPath": "holdings[0].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[0].weights[0].grams"
+        },
+        {
+          "holdingPath": "holdings[1]",
+          "clause": {
+            "textPath": "holdings[1].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[1].weights[0].grams"
+        }
+      ]
+    },
+    {
+      "parentRecordId": "obs-92ae7592-8df3-4aad-aafe-597354f04c52",
+      "cards": [
+        {
+          "holdingPath": "holdings[0]",
+          "clause": {
+            "textPath": "holdings[0].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[0].weights[0].grams"
+        }
+      ]
+    },
+    {
+      "parentRecordId": "obs-78414499-7934-41c3-8576-f778274ec8b5",
+      "cards": [
+        {
+          "holdingPath": "holdings[0]",
+          "clause": {
+            "textPath": "holdings[0].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[0].weights[0].grams"
+        },
+        {
+          "holdingPath": "holdings[1]",
+          "clause": {
+            "textPath": "holdings[1].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[1].weights[0].grams"
+        },
+        {
+          "holdingPath": "holdings[2]",
+          "clause": {
+            "textPath": "holdings[2].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[2].weights[0].grams"
+        }
+      ]
+    },
+    {
+      "parentRecordId": "obs-ed6e5794-d594-47ff-9e72-60b80d511a96",
+      "cards": [
+        {
+          "holdingPath": "holdings[0]",
+          "clause": {
+            "textPath": "holdings[0].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[0].weights[0].grams"
+        },
+        {
+          "holdingPath": "holdings[1]",
+          "clause": {
+            "textPath": "holdings[1].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[1].weights[0].grams"
+        }
+      ]
+    },
+    {
+      "parentRecordId": "obs-18eec876-f73e-40ff-979b-a720135041b6",
+      "cards": [
+        {
+          "holdingPath": "holdings[0]",
+          "clause": {
+            "textPath": "holdings[0].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[0].weights[0].grams"
+        },
+        {
+          "holdingPath": "holdings[1]",
+          "clause": {
+            "textPath": "holdings[1].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[1].weights[0].grams"
+        }
+      ]
+    },
+    {
+      "parentRecordId": "obs-5fd60cc5-81c0-4bbc-935b-1541a1530620",
+      "cards": [
+        {
+          "holdingPath": "holdings[0]",
+          "clause": {
+            "textPath": "holdings[0].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[0].weights[0].grams"
+        },
+        {
+          "holdingPath": "holdings[1]",
+          "clause": {
+            "textPath": "holdings[1].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[1].weights[0].grams"
+        }
+      ]
+    },
+    {
+      "parentRecordId": "obs-ffa86dbe-b5f3-413b-913c-deb60966c05d",
+      "cards": [
+        {
+          "holdingPath": "holdings[0]",
+          "clause": {
+            "textPath": "holdings[0].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[0].weights[0].grams"
+        },
+        {
+          "holdingPath": "holdings[1]",
+          "clause": {
+            "textPath": "holdings[1].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[1].weights[0].grams"
+        }
+      ]
+    },
+    {
+      "parentRecordId": "obs-2bf77b9a-3ac6-42e2-b5fe-a7973fa647a1",
+      "cards": [
+        {
+          "holdingPath": "holdings[0]",
+          "clause": {
+            "textPath": "holdings[0].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[0].weights[0].grams"
+        },
+        {
+          "holdingPath": "holdings[1]",
+          "clause": {
+            "textPath": "holdings[1].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[1].weights[0].grams"
+        },
+        {
+          "holdingPath": "holdings[2]",
+          "clause": {
+            "textPath": "holdings[2].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[2].weights[0].grams"
+        }
+      ]
+    },
+    {
+      "parentRecordId": "obs-ab7d2924-3490-4fb7-acca-4f0a8a3fa198",
+      "cards": [
+        {
+          "holdingPath": "holdings[0]",
+          "clause": {
+            "textPath": "holdings[0].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[0].weights[0].grams"
+        },
+        {
+          "holdingPath": "holdings[1]",
+          "clause": {
+            "textPath": "holdings[1].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[1].weights[0].grams"
+        },
+        {
+          "holdingPath": "holdings[2]",
+          "clause": {
+            "textPath": "holdings[2].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[2].weights[0].grams"
+        }
+      ]
+    },
+    {
+      "parentRecordId": "obs-b0913bad-1d40-415a-a7de-6cb635d34ca7",
+      "cards": [
+        {
+          "holdingPath": "holdings[0]",
+          "clause": {
+            "textPath": "holdings[0].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[0].weights[0].grams"
+        },
+        {
+          "holdingPath": "holdings[1]",
+          "clause": {
+            "textPath": "holdings[1].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[1].weights[0].grams"
+        },
+        {
+          "holdingPath": "holdings[2]",
+          "clause": {
+            "textPath": "holdings[2].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[2].weights[0].grams"
+        },
+        {
+          "holdingPath": "holdings[3]",
+          "clause": {
+            "textPath": "holdings[3].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[3].weights[0].grams"
+        },
+        {
+          "holdingPath": "holdings[4]",
+          "clause": {
+            "textPath": "holdings[4].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[4].weights[0].grams"
+        },
+        {
+          "holdingPath": "holdings[5]",
+          "clause": {
+            "textPath": "holdings[5].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[5].weights[0].grams"
+        }
+      ]
+    },
+    {
+      "parentRecordId": "obs-a1abe32a-9d4c-484d-8bc4-a1db17b1e275",
+      "cards": [
+        {
+          "holdingPath": "holdings[0]",
+          "clause": {
+            "textPath": "holdings[0].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[0].weights[0].grams"
+        },
+        {
+          "holdingPath": "holdings[1]",
+          "clause": {
+            "textPath": "holdings[1].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[1].weights[0].grams"
+        }
+      ]
+    },
+    {
+      "parentRecordId": "obs-caffaa52-d7b7-472e-883f-e5c81237de70",
+      "cards": [
+        {
+          "holdingPath": "holdings[0]",
+          "clause": {
+            "textPath": "holdings[0].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[0].weights[0].grams"
+        },
+        {
+          "holdingPath": "holdings[1]",
+          "clause": {
+            "textPath": "holdings[1].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[1].weights[0].grams"
+        },
+        {
+          "holdingPath": "holdings[2]",
+          "clause": {
+            "textPath": "holdings[2].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[2].weights[0].grams"
+        }
+      ]
+    },
+    {
+      "parentRecordId": "obs-11e94095-7a3d-4a0f-b69d-47ee9ee45763",
+      "cards": [
+        {
+          "holdingPath": "holdings[0]",
+          "clause": {
+            "textPath": "holdings[0].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[0].weights[0].grams"
+        }
+      ]
+    },
+    {
+      "parentRecordId": "obs-6dfd76c6-bfac-410c-ba21-a18ceb5661cd",
+      "cards": [
+        {
+          "holdingPath": "holdings[0]",
+          "clause": {
+            "textPath": "holdings[0].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[0].weights[0].grams"
+        },
+        {
+          "holdingPath": "holdings[1]",
+          "clause": {
+            "textPath": "holdings[1].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[1].weights[0].grams"
+        }
+      ]
+    },
+    {
+      "parentRecordId": "obs-a5dea444-9034-47fb-8194-7bd736164b5f",
+      "cards": [
+        {
+          "holdingPath": "holdings[0]",
+          "clause": {
+            "textPath": "holdings[0].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[0].weights[0].grams"
+        },
+        {
+          "holdingPath": "holdings[1]",
+          "clause": {
+            "textPath": "holdings[1].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[1].weights[0].grams"
+        },
+        {
+          "holdingPath": "holdings[2]",
+          "clause": {
+            "textPath": "holdings[2].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[2].weights[0].grams"
+        }
+      ]
+    },
+    {
+      "parentRecordId": "obs-ce7ab2b2-df5a-42cb-880f-a486cfe06f67",
+      "cards": [
+        {
+          "holdingPath": "holdings[0]",
+          "clause": {
+            "textPath": "holdings[0].description",
+            "start": 0,
+            "end": 8
+          },
+          "massPath": "holdings[0].weights[0].grams"
+        },
+        {
+          "holdingPath": "holdings[1]",
+          "clause": {
+            "textPath": "holdings[1].description",
+            "start": 0,
+            "end": 8
           },
           "massPath": "holdings[1].weights[0].grams"
         }

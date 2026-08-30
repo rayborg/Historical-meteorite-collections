@@ -4,9 +4,9 @@
     "scope": "series-inventory-and-cross-source-candidates",
     "source": {
       "catalogSchemaVersion": 6,
-      "recordCount": 13542,
-      "catalogCount": 33,
-      "flattenedMassObservationCount": 13706,
+      "recordCount": 13672,
+      "catalogCount": 34,
+      "flattenedMassObservationCount": 13874,
       "inventoryObservationCount": 3627
     },
     "collectionSeries": [
@@ -54,13 +54,13 @@
       ]
     },
     "counts": {
-      "relationshipCount": 1482,
+      "relationshipCount": 1485,
       "sameInventoryRelationshipCount": 195,
-      "possibleMatchRelationshipCount": 1287,
-      "unreviewedPossibleMatchCount": 1287,
-      "exactMassPossibleMatchCount": 1065,
-      "nearMassPossibleMatchCount": 222,
-      "metbullIdentityPossibleMatchCount": 1287,
+      "possibleMatchRelationshipCount": 1290,
+      "unreviewedPossibleMatchCount": 1290,
+      "exactMassPossibleMatchCount": 1067,
+      "nearMassPossibleMatchCount": 223,
+      "metbullIdentityPossibleMatchCount": 1290,
       "normalizedNameIdentityPossibleMatchCount": 0,
       "sameDesignationPossibleMatchCount": 0,
       "designationFamilyPossibleMatchCount": 0,
@@ -70,8 +70,8 @@
       "omittedAmbiguousInventoryKeyCount": 0,
       "possibleMatchEvidenceStrength": {
         "multiple-matching-facts": 0,
-        "two-matching-facts": 1065,
-        "limited-matching-evidence": 222
+        "two-matching-facts": 1067,
+        "limited-matching-evidence": 223
       },
       "catalogPairs": [
         {
@@ -383,6 +383,21 @@
           "catalogPair": "huss-1986|washington-1897",
           "sameInventoryCount": 0,
           "possibleMatchCount": 2
+        },
+        {
+          "catalogPair": "madrid-1923|nininger-1950",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 1
+        },
+        {
+          "catalogPair": "madrid-1923|prior-1923",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 1
+        },
+        {
+          "catalogPair": "madrid-1923|reeds-1937",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 1
         },
         {
           "catalogPair": "mason-1964|nininger-1933",
@@ -15152,6 +15167,82 @@
       ]
     },
     {
+      "id": "possible-lineage-25604c9c-ede0-5e95-91c9-31ef5eea4846",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Krasnojarsk",
+      "catalogPair": "madrid-1923|prior-1923",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "12356",
+        "canonicalName": "Krasnojarsk"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-38c9c0fd-9b43-5e53-9640-2a8244705d6b",
+          "recordId": "obs-478d1364-e01b-4a1a-98ac-dd354e55004c",
+          "catalogId": "prior-1923",
+          "catalogLabel": "Catalogue of Meteorites: global survey with British Museum representation status (1923)",
+          "catalogYear": 1923,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[1].grams",
+          "sourceRecordLabel": "Collection entry 400",
+          "sourceName": "Krasnojarsk",
+          "canonicalName": "Krasnojarsk",
+          "meteoriteCode": "12356",
+          "designation": null,
+          "massGrams": 259,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=prior-1923&q=record%20id%20obs-478d1364-e01b-4a1a-98ac-dd354e55004c#catalog"
+        },
+        {
+          "id": "mass-observation-ea01bad5-bdf8-5808-9741-666511cca55d",
+          "recordId": "obs-18eec876-f73e-40ff-979b-a720135041b6",
+          "catalogId": "madrid-1923",
+          "catalogLabel": "Los Meteoritos del Museo de Madrid (1923)",
+          "catalogYear": 1923,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 55",
+          "sourceName": "Krasnojarsk",
+          "canonicalName": "Krasnojarsk",
+          "meteoriteCode": "12356",
+          "designation": null,
+          "massGrams": 259,
+          "kind": null,
+          "count": 1,
+          "catalogSearchUrl": "./index.html?catalog=madrid-1923&q=record%20id%20obs-18eec876-f73e-40ff-979b-a720135041b6#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-259d3037-9c3f-50f4-b20c-ee3cfffcb064",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -15910,6 +16001,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=reeds-1937&q=record%20id%20obs-6c195002-8dc8-427e-ba79-ee69fb006d92#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-2709b0f4-0449-5479-8656-9169a571ca3e",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Hessle",
+      "catalogPair": "madrid-1923|nininger-1950",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "11878",
+        "canonicalName": "Hessle"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-aa857d5f-8e79-5853-94b7-466a9826669b",
+          "recordId": "obs-3f601dd3-e261-4390-8681-323ac7d4bc32",
+          "catalogId": "nininger-1950",
+          "catalogLabel": "The Nininger Collection of Meteorites (1950)",
+          "catalogYear": 1950,
+          "recordModel": "specimen",
+          "designationPath": "designation",
+          "massPath": "weight.grams",
+          "sourceRecordLabel": "263.2",
+          "sourceName": "Hessle",
+          "canonicalName": "Hessle",
+          "meteoriteCode": "11878",
+          "designation": "263.2",
+          "massGrams": 35,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=nininger-1950&q=record%20id%20obs-3f601dd3-e261-4390-8681-323ac7d4bc32#catalog"
+        },
+        {
+          "id": "mass-observation-c775ed28-0005-5f4d-b775-685f67c5f747",
+          "recordId": "obs-78414499-7934-41c3-8576-f778274ec8b5",
+          "catalogId": "madrid-1923",
+          "catalogLabel": "Los Meteoritos del Museo de Madrid (1923)",
+          "catalogYear": 1923,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 46",
+          "sourceName": "Hessle",
+          "canonicalName": "Hessle",
+          "meteoriteCode": "11878",
+          "designation": null,
+          "massGrams": 35,
+          "kind": null,
+          "count": 1,
+          "catalogSearchUrl": "./index.html?catalog=madrid-1923&q=record%20id%20obs-78414499-7934-41c3-8576-f778274ec8b5#catalog"
         }
       ]
     },
@@ -87905,6 +88072,83 @@
           "kind": null,
           "count": 2,
           "catalogSearchUrl": "./index.html?catalog=tassin-1902&q=record%20id%20obs-eae6b2d3-b524-4264-bdac-275a790a62fb#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-e475f000-2878-5489-94dc-334c84ca8d33",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Mocs",
+      "catalogPair": "madrid-1923|reeds-1937",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "16709",
+        "canonicalName": "Mocs"
+      },
+      "evidence": {
+        "strength": "limited-matching-evidence",
+        "massMatch": "near",
+        "absoluteDifferenceGrams": 0.19999999999998863,
+        "relativeDifference": 0.001215805471124551,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "near-reported-mass"
+        ],
+        "cautionCodes": [
+          "near-reported-mass",
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "unreviewed",
+        "outcome": null,
+        "reviewedOn": null,
+        "publicNote": null,
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-9f46cb4d-6755-5fa7-8ac2-e5b069f12fd7",
+          "recordId": "obs-bba183ee-3fb1-4aa3-88a3-f6f8d5a927e8",
+          "catalogId": "reeds-1937",
+          "catalogLabel": "Catalogue of the Meteorites in the American Museum of Natural History as of October 1, 1935 (1937)",
+          "catalogYear": 1937,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[6].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 289",
+          "sourceName": "Mocs",
+          "canonicalName": "Mocs",
+          "meteoriteCode": "16709",
+          "designation": null,
+          "massGrams": 164.3,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=reeds-1937&q=record%20id%20obs-bba183ee-3fb1-4aa3-88a3-f6f8d5a927e8#catalog"
+        },
+        {
+          "id": "mass-observation-e3c1b19c-872f-5f29-9a2b-181dcdfd138e",
+          "recordId": "obs-ab7d2924-3490-4fb7-acca-4f0a8a3fa198",
+          "catalogId": "madrid-1923",
+          "catalogLabel": "Los Meteoritos del Museo de Madrid (1923)",
+          "catalogYear": 1923,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 72",
+          "sourceName": "Mocs",
+          "canonicalName": "Mocs",
+          "meteoriteCode": "16709",
+          "designation": null,
+          "massGrams": 164.5,
+          "kind": null,
+          "count": 1,
+          "catalogSearchUrl": "./index.html?catalog=madrid-1923&q=record%20id%20obs-ab7d2924-3490-4fb7-acca-4f0a8a3fa198#catalog"
         }
       ]
     },

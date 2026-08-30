@@ -25,9 +25,9 @@ test("footer button opens an accessible dialog with a noscript direct-link fallb
   assert.match(html, /<noscript>[\s\S]*href="https:\/\/github\.com\/rayborg\/Historical-meteorite-collections\/issues\/new\?template=data-error\.yml" target="_blank" rel="noopener noreferrer"/);
   assert.match(html, /GitHub account and login are required/);
   assert.match(html, /Reports are stored as public GitHub issues/);
-  assert.match(html, /styles\.css\?v=20260830-issue-report-1/);
-  assert.match(html, /app\.js\?v=20260830-issue-report-1/);
-  assert.equal(app.ASSET_CACHE_VERSION, "20260830-issue-report-1");
+  assert.match(html, /styles\.css\?v=20260830-madrid-1/);
+  assert.match(html, /app\.js\?v=20260830-madrid-1/);
+  assert.equal(app.ASSET_CACHE_VERSION, "20260830-madrid-1");
 });
 
 test("anti-spam gate accepts only a correct, human-paced, empty-honeypot submission", () => {

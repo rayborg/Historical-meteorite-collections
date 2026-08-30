@@ -109,7 +109,7 @@ test("derives release counts, page spans, MetBull status, and folios from record
   assert.equal(summary.folios.displayCatalogCount, 1);
 });
 
-test("locks the production next-three release summary", () => {
+test("locks the production Madrid release summary", () => {
   const summary = buildReleaseSummary(productionCatalog, productionFolios);
 
   assert.deepEqual({
@@ -124,13 +124,13 @@ test("locks the production next-three release summary", () => {
     folioPageCount: summary.folios.pageCount,
   }, {
     schemaVersion: 6,
-    catalogCount: 33,
-    recordCount: 13542,
-    sourcePageCount: 1284,
-    citedPageCount: 1137,
-    metbull: { reviewed: 10202, resolved: 10056, unresolved: 146 },
+    catalogCount: 34,
+    recordCount: 13672,
+    sourcePageCount: 1294,
+    citedPageCount: 1145,
+    metbull: { reviewed: 10332, resolved: 10140, unresolved: 192 },
     pending: 3340,
-    folioCatalogCount: 33,
+    folioCatalogCount: 34,
     folioPageCount: 49,
   });
   assert.deepEqual(
@@ -147,6 +147,20 @@ test("locks the production next-three release summary", () => {
       { catalogId: "astapovich-1938", recordCount: 90, sourcePageCount: 3, citedPageCount: 2 },
       { catalogId: "kantor-1920", recordCount: 30, sourcePageCount: 35, citedPageCount: 16 },
     ],
+  );
+  assert.deepEqual(
+    summary.catalogs.find(({ catalogId }) => catalogId === "madrid-1923"),
+    {
+      catalogId: "madrid-1923",
+      label: "Los Meteoritos del Museo de Madrid (1923)",
+      year: 1923,
+      recordModel: "collection-entry",
+      recordCount: 130,
+      sourcePageCount: 10,
+      sourcePageRange: { min: 224, max: 233 },
+      citedPageCount: 8,
+      citedPageRange: { min: 226, max: 233 },
+    },
   );
 });
 

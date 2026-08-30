@@ -315,7 +315,8 @@ test("digest lock loads the exact set and fails closed to parent cards on mismat
   const altered = structuredClone(manifest);
   altered.projections[0].cards[0].clause.end -= 1;
   assert.equal((await app.loadSpecimenCardProjectionIndex(records, async () => projectionResponse(altered), options)).size, 0);
-  assert.equal(app.SPECIMEN_CARD_PROJECTION_SET_SHA256, "f7fab83f8153cb843ddfb20f78ac943edc325fb12b6f9eab70414575a5919086");
+  assert.equal(app.SPECIMEN_CARD_SOURCE_CATALOG_SHA256, "849971ad45e48141c013c9aecfd195cc2bef44d0fd948c21607be35693aa9b0a");
+  assert.equal(app.SPECIMEN_CARD_PROJECTION_SET_SHA256, "3edca8ec748beb5b9d2cb74871ad5c56082a5beced28e75c006a85f745999fa3");
 });
 
 test("rendering is text-only, labels only context and duplicate-mass cards, and cache keys are synchronized", () => {
@@ -323,9 +324,9 @@ test("rendering is text-only, labels only context and duplicate-mass cards, and 
   assert.match(source, /Source context, not an individual specimen/u);
   assert.match(source, /with this reported mass/u);
   assert.match(html, /<p class="specimen-position" hidden><\/p>/u);
-  assert.match(html, /styles\.css\?v=20260830-issue-report-1/u);
-  assert.match(html, /app\.js\?v=20260830-issue-report-1/u);
-  assert.equal(app.ASSET_CACHE_VERSION, "20260830-issue-report-1");
+  assert.match(html, /styles\.css\?v=20260830-madrid-1/u);
+  assert.match(html, /app\.js\?v=20260830-madrid-1/u);
+  assert.equal(app.ASSET_CACHE_VERSION, "20260830-madrid-1");
 });
 
 test("production projection fixture validates when the schema-2 data dependency is present", {
@@ -339,4 +340,34 @@ test("production projection fixture validates when the schema-2 data dependency 
   const descriptors = app.expandSpecimenCardDescriptors(projectedRecords, index);
   assert.equal(descriptors.filter(({ kind }) => kind === "atomic").length, manifest.metadata.atomicCardCount);
   assert.equal(descriptors.filter(({ kind }) => kind === "context").length, manifest.metadata.sourceContextCardCount);
+});
+
+test("Madrid runtime keeps parent statistics while loading reviewed atomic cards and eligible earlier lineages", async () => {
+  const madridRecords = records.filter(({ catalogId }) => catalogId === "madrid-1923");
+  const projectionIndex = await app.loadSpecimenCardProjectionIndex(records, async () => projectionResponse(manifest), {
+    sourceCatalogSha256,
+    sha256,
+  });
+  const madridDescriptors = app.expandSpecimenCardDescriptors(madridRecords, projectionIndex);
+  const madridRecordIds = new Set(madridRecords.map(({ id }) => id));
+  const madridRelationships = lineageData.relationships.filter(({ observations }) =>
+    observations.some(({ recordId }) => madridRecordIds.has(recordId)));
+  const lineageIndex = await app.loadEarlierRecordIndex(records, registry, async () => ({
+    ok: true,
+    json: async () => lineageData,
+  }));
+  const loadedRelationshipIds = new Set([...lineageIndex.values()].flatMap((entries) =>
+    entries.map(({ relationshipId }) => relationshipId)));
+
+  assert.equal(app.calculateStatistics(records).observations, 13672);
+  assert.equal(app.calculateStatistics(records).catalogs, 34);
+  assert.equal(madridRecords.filter(({ id }) => projectionIndex.has(id)).length, 23);
+  assert.equal(madridDescriptors.filter(({ kind }) => kind === "atomic").length, 54);
+  assert.equal(madridDescriptors.filter(({ kind }) => kind === "context").length, 5);
+  assert.equal(madridRelationships.length, 3);
+  assert(madridRelationships.every(({ relationship, review }) =>
+    relationship === "possible-match" && review.status === "unreviewed"));
+  assert.equal(madridRelationships.filter(({ id }) => loadedRelationshipIds.has(id)).length, 2);
+  assert.equal(madridRelationships.find(({ catalogPair }) => catalogPair === "madrid-1923|prior-1923")
+    .observations.every(({ catalogYear }) => catalogYear === 1923), true);
 });

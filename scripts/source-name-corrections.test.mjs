@@ -18,8 +18,8 @@ function jsonSha256(value) {
 test("locks the accepted 86-record source-name correction projection without non-name drift", () => {
   assert.equal(fixture.schemaVersion, 1);
   assert.equal(sha256(catalogText), fixture.catalogSha256);
-  assert.equal(catalog.metadata.catalogs.length, 33);
-  assert.equal(catalog.records.length, 13542);
+  assert.equal(catalog.metadata.catalogs.length, 34);
+  assert.equal(catalog.records.length, 13672);
   assert.equal(jsonSha256(catalog.metadata), fixture.metadataSha256);
   assert.equal(jsonSha256(catalog.records.map(({ id }) => id)), fixture.orderedIdsSha256);
   assert.equal(jsonSha256(catalog.records.map(({ name: _name, ...record }) => record)), fixture.nonNameRecordsSha256);
