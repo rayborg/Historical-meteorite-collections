@@ -1,5 +1,5 @@
-name: Catalog or search correction
-description: Report an error in a catalog record, canonical name, or search result.
+name: Catalog, search, or website issue
+description: Report an error in a catalog record, canonical name, search result, or website behavior.
 title: "[Correction]: "
 assignees:
   - rayborg
@@ -17,6 +17,8 @@ body:
         - Catalog record or transcription
         - Canonical meteorite name
         - Search result or discoverability
+        - Website behavior or accessibility
+        - General website issue
     validations:
       required: true
   - type: input

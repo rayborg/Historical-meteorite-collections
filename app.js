@@ -1,9 +1,11 @@
 "use strict";
 
 const CACHE_VERSION = "20260806-2";
-const ASSET_CACHE_VERSION = "20260806-2-atomic-cards-2";
+const ASSET_CACHE_VERSION = "20260830-issue-report-1";
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "name-asc";
+const ISSUE_FORM_URL = "https://github.com/rayborg/Historical-meteorite-collections/issues/new?template=data-error.yml";
+const ISSUE_REPORT_MINIMUM_ELAPSED_MS = 3000;
 const VALID_SORTS = new Set([
   "designation-asc",
   "designation-desc",
@@ -224,6 +226,43 @@ const integerFormat = new Intl.NumberFormat("en-US");
 const massFormat = new Intl.NumberFormat("en-US", { maximumFractionDigits: 3 });
 const collator = new Intl.Collator("en", { sensitivity: "base", numeric: true });
 
+function secureRandomInteger(minimum, maximum, fillRandomValues = (values) => globalThis.crypto.getRandomValues(values)) {
+  if (!Number.isInteger(minimum) || !Number.isInteger(maximum) || minimum > maximum) {
+    throw new RangeError("Random integer bounds must be ordered integers.");
+  }
+  const range = maximum - minimum + 1;
+  if (range < 1 || range > 0x100000000) throw new RangeError("Random integer range is too large.");
+  const upperLimit = Math.floor(0x100000000 / range) * range;
+  const values = new Uint32Array(1);
+  do fillRandomValues(values); while (values[0] >= upperLimit);
+  return minimum + (values[0] % range);
+}
+
+function createIssueReportChallenge(randomInteger = secureRandomInteger) {
+  const left = randomInteger(2, 12);
+  const right = randomInteger(2, 12);
+  return { left, right, answer: left + right };
+}
+
+function evaluateIssueReportGate({
+  answer,
+  expectedAnswer,
+  honeypot = "",
+  openedAt,
+  now,
+  minimumElapsedMs = ISSUE_REPORT_MINIMUM_ELAPSED_MS
+}) {
+  if (String(honeypot).trim()) return { ok: false, reason: "honeypot" };
+  if (!Number.isFinite(openedAt) || !Number.isFinite(now) || now - openedAt < minimumElapsedMs) {
+    return { ok: false, reason: "too-fast" };
+  }
+  const submittedAnswer = String(answer ?? "").trim();
+  if (!/^\d+$/u.test(submittedAnswer) || !Number.isInteger(expectedAnswer) || Number(submittedAnswer) !== expectedAnswer) {
+    return { ok: false, reason: "wrong-answer" };
+  }
+  return { ok: true, reason: "success" };
+}
+
 const elements = typeof document === "undefined" || !document.querySelector("#filter-form") ? null : {
   form: document.querySelector("#filter-form"),
   catalogSummary: document.querySelector("#catalog-summary"),
@@ -255,6 +294,15 @@ const elements = typeof document === "undefined" || !document.querySelector("#fi
   previousFolio: document.querySelector("#previous-folio"),
   nextFolio: document.querySelector("#next-folio"),
   folioPosition: document.querySelector("#folio-position"),
+  issueReportOpen: document.querySelector("#issue-report-open"),
+  issueReportDialog: document.querySelector("#issue-report-dialog"),
+  issueReportClose: document.querySelector("#issue-report-close"),
+  issueReportCancel: document.querySelector("#issue-report-cancel"),
+  issueReportForm: document.querySelector("#issue-report-form"),
+  issueReportQuestion: document.querySelector("#issue-report-question"),
+  issueReportAnswer: document.querySelector("#issue-report-answer"),
+  issueReportHoneypot: document.querySelector("#issue-report-website"),
+  issueReportError: document.querySelector("#issue-report-error"),
   stats: {
     specimens: document.querySelector("#stat-specimens"),
     names: document.querySelector("#stat-names"),
@@ -272,6 +320,9 @@ let specimenCardProjectionsByParentId = new Map();
 let activeFolioPages = [];
 let activeFolioIndex = -1;
 let folioOpener = null;
+let issueReportOpener = null;
+let issueReportChallenge = null;
+let issueReportOpenedAt = 0;
 let visibleLimit = PAGE_SIZE;
 let renderTimer;
 let loadToken = 0;
@@ -2669,6 +2720,58 @@ function openFolioDialog(catalogId, pageReference, opener) {
   elements.dialog.showModal();
 }
 
+function setIssueReportChallenge() {
+  issueReportChallenge = createIssueReportChallenge();
+  issueReportOpenedAt = Date.now();
+  elements.issueReportQuestion.textContent = `Anti-spam check: What is ${issueReportChallenge.left} + ${issueReportChallenge.right}?`;
+}
+
+function openIssueReportDialog(opener) {
+  issueReportOpener = opener;
+  elements.issueReportForm.reset();
+  elements.issueReportAnswer.removeAttribute("aria-invalid");
+  elements.issueReportError.hidden = true;
+  elements.issueReportError.textContent = "";
+  setIssueReportChallenge();
+  elements.issueReportDialog.showModal();
+  elements.issueReportAnswer.focus();
+}
+
+function showIssueReportError(message, answerIsInvalid = false) {
+  elements.issueReportError.textContent = message;
+  elements.issueReportError.hidden = false;
+  if (answerIsInvalid) elements.issueReportAnswer.setAttribute("aria-invalid", "true");
+  else elements.issueReportAnswer.removeAttribute("aria-invalid");
+  elements.issueReportAnswer.focus();
+}
+
+function submitIssueReport(event) {
+  event.preventDefault();
+  const result = evaluateIssueReportGate({
+    answer: elements.issueReportAnswer.value,
+    expectedAnswer: issueReportChallenge?.answer,
+    honeypot: elements.issueReportHoneypot.value,
+    openedAt: issueReportOpenedAt,
+    now: Date.now()
+  });
+  if (result.reason === "honeypot") {
+    showIssueReportError("The anti-spam check could not be completed.");
+    return;
+  }
+  if (result.reason === "too-fast") {
+    showIssueReportError("Please take at least three seconds to complete the anti-spam check.");
+    return;
+  }
+  if (result.reason === "wrong-answer") {
+    elements.issueReportAnswer.value = "";
+    setIssueReportChallenge();
+    showIssueReportError("That answer was not correct. Try the new addition question.", true);
+    return;
+  }
+  window.open(ISSUE_FORM_URL, "_blank", "noopener,noreferrer");
+  elements.issueReportDialog.close();
+}
+
 function folioPageLabel(folio, index) {
   if (folio.pageLabel) return folio.pageLabel;
   if (folio.catalogPage !== null) return `Page ${folio.catalogPage}`;
@@ -2791,6 +2894,21 @@ function normalizeWeightRange(minimum, maximum) {
 }
 
 if (elements) {
+  elements.issueReportOpen.addEventListener("click", () => openIssueReportDialog(elements.issueReportOpen));
+  elements.issueReportClose.addEventListener("click", () => elements.issueReportDialog.close());
+  elements.issueReportCancel.addEventListener("click", () => elements.issueReportDialog.close());
+  elements.issueReportForm.addEventListener("submit", submitIssueReport);
+  elements.issueReportDialog.addEventListener("click", (event) => {
+    if (event.target === elements.issueReportDialog) elements.issueReportDialog.close();
+  });
+  elements.issueReportDialog.addEventListener("close", () => {
+    elements.issueReportForm.reset();
+    elements.issueReportError.hidden = true;
+    issueReportChallenge = null;
+    issueReportOpenedAt = 0;
+    if (issueReportOpener?.isConnected) issueReportOpener.focus();
+    issueReportOpener = null;
+  });
   elements.dialogImage.addEventListener("load", () => {
     elements.dialogImageStatus.textContent = "";
   });
@@ -2869,6 +2987,8 @@ if (elements) {
 const publicRuntime = {
   catalogLabel,
   catalogSummaryEntries,
+  createIssueReportChallenge,
+  evaluateIssueReportGate,
   getAuthorizedFolioPages,
   normalizeCatalogRegistry,
   validateSpecimenCardManifest,
@@ -2883,6 +3003,8 @@ if (typeof module !== "undefined" && module.exports) {
     ASSET_CACHE_VERSION,
     CACHE_VERSION,
     DEFAULT_SORT,
+    ISSUE_FORM_URL,
+    ISSUE_REPORT_MINIMUM_ELAPSED_MS,
     SPECIMEN_CARD_PROJECTION_SET_SHA256,
     SPECIMEN_CARD_SOURCE_CATALOG_SHA256,
     FACTUAL_FORMULA_INVALID_SUFFIXES,
@@ -2891,6 +3013,7 @@ if (typeof module !== "undefined" && module.exports) {
     FACTUAL_FORMULA_VALID_SUFFIXES,
     calculateStatistics,
     calculateLineageCounts,
+    createIssueReportChallenge,
     chronologicalEarlierPair,
     catalogDropdownLabel,
     catalogLabel,
@@ -2903,6 +3026,7 @@ if (typeof module !== "undefined" && module.exports) {
     deriveEarlierRecordIndex,
     deriveSpecimenCardProjectionIndex,
     expandSpecimenCardDescriptors,
+    evaluateIssueReportGate,
     filterRecords,
     filterSpecimenCardDescriptors,
     formatLineageSummary,
@@ -2939,6 +3063,7 @@ if (typeof module !== "undefined" && module.exports) {
     resolveSpecimenCardSelection,
     resolveSpecimenCardClause,
     searchable,
+    secureRandomInteger,
     sha256Text,
     serializeUrlFilters,
     lineageEntriesForSpecimenCard,

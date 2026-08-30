@@ -323,9 +323,9 @@ test("rendering is text-only, labels only context and duplicate-mass cards, and 
   assert.match(source, /Source context, not an individual specimen/u);
   assert.match(source, /with this reported mass/u);
   assert.match(html, /<p class="specimen-position" hidden><\/p>/u);
-  assert.match(html, /styles\.css\?v=20260806-2-atomic-cards-2/u);
-  assert.match(html, /app\.js\?v=20260806-2-atomic-cards-2/u);
-  assert.equal(app.ASSET_CACHE_VERSION, "20260806-2-atomic-cards-2");
+  assert.match(html, /styles\.css\?v=20260830-issue-report-1/u);
+  assert.match(html, /app\.js\?v=20260830-issue-report-1/u);
+  assert.equal(app.ASSET_CACHE_VERSION, "20260830-issue-report-1");
 });
 
 test("production projection fixture validates when the schema-2 data dependency is present", {

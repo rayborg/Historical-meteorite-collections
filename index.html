@@ -8,8 +8,8 @@
   <meta name="theme-color" content="#2d241b">
   <title>The Meteorite Cabinet | Historical Collection Index</title>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=20260806-2-atomic-cards-2">
-  <script src="./app.js?v=20260806-2-atomic-cards-2" defer></script>
+  <link rel="stylesheet" href="./styles.css?v=20260830-issue-report-1">
+  <script src="./app.js?v=20260830-issue-report-1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#catalog">Skip to catalog</a>
@@ -140,7 +140,8 @@
   <footer>
     <p><i aria-hidden="true"></i> Historical Meteorite Collection <i aria-hidden="true"></i></p>
     <p>Independent facts-only index of catalog observations with source-level attribution. Source rights and folio eligibility are assessed catalog by catalog; see <a href="./NOTICE.md">NOTICE</a>.</p>
-    <p class="issue-report-action"><a class="issue-report-link" href="https://github.com/rayborg/Historical-meteorite-collections/issues/new?template=data-error.yml" target="_blank" rel="noopener noreferrer" aria-label="Report a catalog or search correction on GitHub (opens in a new tab)">Report a catalog or search correction</a></p>
+    <p class="issue-report-action"><button id="issue-report-open" class="issue-report-button" type="button">Report a website issue</button></p>
+    <noscript><p class="issue-report-fallback"><a href="https://github.com/rayborg/Historical-meteorite-collections/issues/new?template=data-error.yml" target="_blank" rel="noopener noreferrer">Report a website issue on GitHub (opens in a new tab)</a></p></noscript>
     <p class="artifact-credit">Meteorite collector artifact produced by Raymond Borges Hink.</p>
   </footer>
 
@@ -181,6 +182,38 @@
       </footer>
     </article>
   </template>
+
+  <dialog id="issue-report-dialog" aria-labelledby="issue-report-title" aria-describedby="issue-report-description">
+    <div class="dialog-frame issue-report-frame">
+      <header>
+        <div>
+          <p>Public issue intake</p>
+          <h2 id="issue-report-title">Report a website issue</h2>
+        </div>
+        <button id="issue-report-close" class="dialog-close" type="button" aria-label="Close issue report dialog">&times;</button>
+      </header>
+      <div class="issue-report-content">
+        <p id="issue-report-description">Reports are stored as public GitHub issues. A GitHub account and login are required to submit the issue form, where GitHub applies its abuse controls.</p>
+        <p>Do not include email addresses, contact details, private correspondence, credentials, or other private or sensitive data.</p>
+      <form id="issue-report-form" class="issue-report-form" novalidate>
+          <div class="issue-report-honeypot" aria-hidden="true">
+            <label for="issue-report-website">Leave this field empty</label>
+            <input id="issue-report-website" name="website" type="text" autocomplete="off" tabindex="-1">
+          </div>
+          <label class="issue-report-challenge" for="issue-report-answer">
+            <span id="issue-report-question">Anti-spam check</span>
+            <input id="issue-report-answer" name="answer" type="text" inputmode="numeric" pattern="[0-9]+" autocomplete="off" required aria-describedby="issue-report-help issue-report-error">
+          </label>
+          <p id="issue-report-help" class="issue-report-help">Answer the addition question, then continue to the public GitHub issue form.</p>
+          <p id="issue-report-error" class="issue-report-error" role="alert" aria-live="assertive" hidden></p>
+          <div class="issue-report-actions">
+            <button class="button" type="submit">Continue to GitHub</button>
+            <button id="issue-report-cancel" class="button secondary-button" type="button">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </dialog>
 
   <dialog id="folio-dialog" aria-labelledby="folio-dialog-title">
     <div class="dialog-frame">
