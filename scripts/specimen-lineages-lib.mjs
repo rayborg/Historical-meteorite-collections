@@ -172,7 +172,7 @@ function makeObservation(record, descriptor, { designation, designationPath, mas
 }
 
 function catalogDescriptors(catalog) {
-  assert(catalog?.metadata?.schemaVersion === 6, "catalog metadata schemaVersion must be 6");
+  assert(catalog?.metadata?.schemaVersion === 7, "catalog metadata schemaVersion must be 7");
   assert(Array.isArray(catalog.metadata.catalogs), "catalog metadata catalogs must be an array");
   assert(Array.isArray(catalog.records), "catalog records must be an array");
   const descriptors = new Map(catalog.metadata.catalogs.map((descriptor) => [descriptor.id, descriptor]));
@@ -202,13 +202,16 @@ export function flattenMassObservations(catalog) {
         count: holding.count,
       }));
     } else if (descriptor.recordModel === "catalog-number" || descriptor.recordModel === "collection-entry") {
-      record.holdings.forEach((holding, holdingIndex) => holding.weights.forEach((weight, weightIndex) => add(record, descriptor, {
-        designation: null,
-        designationPath: null,
-        massGrams: weight.grams,
-        massPath: `holdings[${holdingIndex}].weights[${weightIndex}].grams`,
-        count: holding.count,
-      })));
+      record.holdings.forEach((holding, holdingIndex) => holding.weights.forEach((weight, weightIndex) => {
+        if (weight.kind !== undefined && weight.kind !== "individual-holding") return;
+        add(record, descriptor, {
+          designation: null,
+          designationPath: null,
+          massGrams: weight.grams,
+          massPath: `holdings[${holdingIndex}].weights[${weightIndex}].grams`,
+          count: holding.count,
+        });
+      }));
     } else {
       throw new Error(`unknown record model for ${record.id}: ${descriptor.recordModel}`);
     }

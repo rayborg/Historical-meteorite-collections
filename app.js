@@ -1,7 +1,7 @@
 "use strict";
 
-const CACHE_VERSION = "20260806-2";
-const ASSET_CACHE_VERSION = "20260830-ui-fix-1";
+const CACHE_VERSION = "20260830-1";
+const ASSET_CACHE_VERSION = "20260830-schema7-hamburg-2";
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "name-asc";
 const ISSUE_FORM_URL = "https://github.com/rayborg/Historical-meteorite-collections/issues/new?template=data-error.yml";
@@ -64,11 +64,22 @@ const COLLECTION_ENTRY_RECORD_FIELDS = new Set([
   "eventDate",
   "confidence"
 ]);
+const HAMBURG_COLLECTION_ENTRY_RECORD_FIELDS = new Set([
+  ...COLLECTION_ENTRY_RECORD_FIELDS,
+  "reportedTotalWeight",
+  "publicationState",
+  "amendments"
+]);
 const METBULL_FIELDS = new Set(["matchType", "canonicalName", "meteoriteCode", "metbullUrl", "alternateNameNote"]);
 const METBULL_MATCH_TYPES = new Set(["exact", "case-normalized-exact", "historical-alias", "corrected-spelling", "translated-or-older-name", "unresolved"]);
 const HOLDING_FIELDS = new Set(["designation", "kind", "description", "count", "weight"]);
 const CATALOG_NUMBER_HOLDING_FIELDS = new Set(["description", "provenance", "count", "weights"]);
+const HAMBURG_HOLDING_FIELDS = new Set([
+  "description", "provenance", "count", "weights", "reportedTotalWeight", "representations"
+]);
 const HOLDING_KINDS = new Set(["specimen", "cast", "aggregate"]);
+const HAMBURG_WEIGHT_KINDS = new Set(["individual-holding", "aggregate-holding", "associated-material"]);
+const HAMBURG_PUBLICATION_STATES = new Set(["base-register", "supplement"]);
 const RECORD_MODEL_ORDER = ["catalog-item", "specimen", "catalog-number", "collection-entry"];
 const RECORD_MODELS = new Set(RECORD_MODEL_ORDER);
 const FACTUAL_FIELDS = [
@@ -88,6 +99,13 @@ const FACTUAL_FIELDS = [
   "holdings[].count",
   "holdings[].weight.grams",
   "holdings[].weights[].grams",
+  "holdings[].weights[].kind",
+  "holdings[].reportedTotalWeight.grams",
+  "holdings[].representations[].kind",
+  "holdings[].representations[].count",
+  "reportedTotalWeight.grams",
+  "publicationState",
+  "amendments[]",
   "classification",
   "locality",
   "year",
@@ -144,8 +162,8 @@ const SPECIMEN_CARD_PROJECTION_FIELDS = new Set(["parentRecordId", "cards"]);
 const SPECIMEN_CARD_FIELDS = new Set(["holdingPath", "clause", "massPath"]);
 const SPECIMEN_CARD_CLAUSE_FIELDS = new Set(["textPath", "start", "end"]);
 const SHA256_HEX = /^[0-9a-f]{64}$/u;
-const SPECIMEN_CARD_SOURCE_CATALOG_SHA256 = "849971ad45e48141c013c9aecfd195cc2bef44d0fd948c21607be35693aa9b0a";
-const SPECIMEN_CARD_PROJECTION_SET_SHA256 = "3edca8ec748beb5b9d2cb74871ad5c56082a5beced28e75c006a85f745999fa3";
+const SPECIMEN_CARD_SOURCE_CATALOG_SHA256 = "91694659e5f7210db10ffc42873c54d5d38d3e5a485d51c38072746faa7f41e0";
+const SPECIMEN_CARD_PROJECTION_SET_SHA256 = "5a0f8a6c1ae135f24be54186f9b474e84ec67c248a5621fe098ad598e3f8cb85";
 const LINEAGE_ROOT_FIELDS = new Set(["metadata", "relationships"]);
 const LINEAGE_METADATA_FIELDS = new Set(["schemaVersion", "scope", "source", "collectionSeries", "methodology", "counts"]);
 const LINEAGE_SOURCE_FIELDS = new Set(["catalogSchemaVersion", "recordCount", "catalogCount", "flattenedMassObservationCount", "inventoryObservationCount"]);
@@ -646,6 +664,36 @@ function hasValidMetbull(value, sourceName) {
     namesAgree;
 }
 
+function hasValidHamburgHolding(holding) {
+  if (!hasExactFields(holding, HAMBURG_HOLDING_FIELDS) || holding.description === "" ||
+      !isLeakageSafeHoldingText(holding.description, true) || holding.provenance !== null ||
+      (holding.count !== null && (!Number.isInteger(holding.count) || holding.count <= 0)) ||
+      !Array.isArray(holding.weights) || !Array.isArray(holding.representations)) return false;
+  if (!holding.weights.every((weight) => hasExactFields(weight, new Set(["grams", "kind"])) &&
+      Number.isFinite(weight.grams) && weight.grams >= 0 && HAMBURG_WEIGHT_KINDS.has(weight.kind))) return false;
+  if (holding.reportedTotalWeight !== null && (!hasExactFields(holding.reportedTotalWeight, new Set(["grams"])) ||
+      !Number.isFinite(holding.reportedTotalWeight.grams) || holding.reportedTotalWeight.grams < 0)) return false;
+  return holding.representations.every((representation) =>
+    hasExactFields(representation, new Set(["kind", "count"])) && representation.kind === "thin-section" &&
+    Number.isInteger(representation.count) && representation.count > 0
+  );
+}
+
+function hasValidHamburgAmendments(record) {
+  if (!Array.isArray(record.amendments) || record.amendments.length !== (record.entryOrder === 105 ? 1 : 0)) return false;
+  if (!record.amendments.length) return true;
+  const amendment = record.amendments[0];
+  if (!(hasExactFields(amendment, new Set([
+    "kind", "effectiveDate", "targetHolding", "targetComponentOrder", "targetWeight", "resultingState",
+    "destination", "baseObservationRetained"
+  ])) && amendment.kind === "disposal-by-exchange" && amendment.effectiveDate === "1913-08" &&
+    amendment.targetHolding === "Gibeon, Deutsch-Südwestafrika" && amendment.targetComponentOrder === 5 &&
+    hasExactFields(amendment.targetWeight, new Set(["grams"])) && amendment.targetWeight.grams === 14500 &&
+    amendment.resultingState === "disposed" && amendment.destination === null && amendment.baseObservationRetained === true)) return false;
+  const targetComponent = record.holdings?.[1]?.weights?.[amendment.targetComponentOrder - 1];
+  return targetComponent?.kind === "individual-holding" && targetComponent.grams === amendment.targetWeight.grams;
+}
+
 function recordFields(record, baseFields) {
   const fields = new Set(baseFields);
   if (Object.hasOwn(record, "metbull")) fields.add("metbull");
@@ -904,7 +952,7 @@ function createCatalogRegistry(descriptors) {
 function normalizeCatalogRegistry(metadata) {
   requireSchema(isPlainObject(metadata) && isLeakageSafeTree(metadata));
   requireSchema(hasExactFields(metadata, CANONICAL_METADATA_FIELDS));
-  requireSchema(metadata.schemaVersion === 6 && metadata.scope === "facts-only" && hasFactualFields(metadata.factualFields));
+  requireSchema(metadata.schemaVersion === 7 && metadata.scope === "facts-only" && hasFactualFields(metadata.factualFields));
   requireSchema(Array.isArray(metadata.catalogs) && metadata.catalogs.length > 0 && hasValidSummary(metadata));
   metadata.catalogs.forEach(validateCanonicalDescriptor);
   requireSchema(new Set(metadata.catalogs.map((descriptor) => descriptor.id)).size === metadata.catalogs.length);
@@ -949,7 +997,8 @@ function validateCatalog(catalog) {
         ? hasExactFields(record, recordFields(record, CATALOG_ITEM_RECORD_FIELDS))
         : recordModel === "catalog-number"
           ? hasExactFields(record, recordFields(record, CATALOG_NUMBER_RECORD_FIELDS))
-          : hasExactFields(record, recordFields(record, COLLECTION_ENTRY_RECORD_FIELDS)));
+          : hasExactFields(record, recordFields(record, record.catalogId === "hamburg-1913"
+            ? HAMBURG_COLLECTION_ENTRY_RECORD_FIELDS : COLLECTION_ENTRY_RECORD_FIELDS)));
     const dateField = recordModel === "catalog-number" ? "dateOfDiscovery" :
       recordModel === "collection-entry" ? "eventDate" : "year";
     ["name", "classification", "locality", dateField].forEach((field) =>
@@ -1008,6 +1057,10 @@ function validateCatalog(catalog) {
       }
       requireSchema(Array.isArray(record.holdings) && record.holdings.length > 0);
       record.holdings.forEach((holding) => {
+        if (record.catalogId === "hamburg-1913") {
+          requireSchema(hasValidHamburgHolding(holding));
+          return;
+        }
         requireSchema(hasExactFields(holding, CATALOG_NUMBER_HOLDING_FIELDS));
         requireSchema(holding.description !== "" && isLeakageSafeHoldingText(holding.description, true));
         requireSchema(holding.provenance === null || (holding.provenance !== "" && isLeakageSafeHoldingText(holding.provenance, true)));
@@ -1017,6 +1070,13 @@ function validateCatalog(catalog) {
           hasExactFields(weight, new Set(["grams"])) && Number.isFinite(weight.grams) && weight.grams >= 0
         ));
       });
+      if (record.catalogId === "hamburg-1913") {
+        requireSchema(record.reportedTotalWeight === null ||
+          (hasExactFields(record.reportedTotalWeight, new Set(["grams"])) &&
+            Number.isFinite(record.reportedTotalWeight.grams) && record.reportedTotalWeight.grams >= 0));
+        requireSchema(HAMBURG_PUBLICATION_STATES.has(record.publicationState));
+        requireSchema(hasValidHamburgAmendments(record));
+      }
     }
     if (recordModel === "catalog-number" || recordModel === "collection-entry") {
       requireSchema(Array.isArray(record.catalogPages) && record.catalogPages.length > 0 && record.catalogPages.every((page, pageIndex) =>
@@ -1033,7 +1093,7 @@ function validateCatalog(catalog) {
     summary.recordCount += 1;
     summary.confidenceCounts[record.confidence] += 1;
     if (recordDesignations(record).length) summary.recordsWithDesignation += 1;
-    if (recordMasses(record).length) summary.recordsWithWeight += 1;
+    if (recordSchemaMasses(record).length) summary.recordsWithWeight += 1;
   });
 
   requireSchema(catalog.metadata.recordCount === catalog.records.length);
@@ -1114,7 +1174,7 @@ function resolveLineageObservation(record, designationPath, massPath) {
   const match = massPath.match(/^holdings\[([0-9]+)\]\.weights\[([0-9]+)\]\.grams$/u);
   const holding = match ? record.holdings[Number(match[1])] : null;
   const weight = holding && match ? holding.weights[Number(match[2])] : null;
-  return weight ? {
+  return weight && (!weight.kind || weight.kind === "individual-holding") ? {
     massGrams: weight.grams,
     designation: null,
     kind: null,
@@ -1397,8 +1457,10 @@ function lineageMassEndpoints(sourceRecords) {
     } else if (record.recordModel === "catalog-item") {
       record.holdings.forEach((holding, index) => add(record, holding.weight.grams, `holdings[${index}].weight.grams`));
     } else {
-      record.holdings.forEach((holding, holdingIndex) => holding.weights.forEach((weight, weightIndex) =>
-        add(record, weight.grams, `holdings[${holdingIndex}].weights[${weightIndex}].grams`)));
+      record.holdings.forEach((holding, holdingIndex) => holding.weights.forEach((weight, weightIndex) => {
+        if (weight.kind && weight.kind !== "individual-holding") return;
+        add(record, weight.grams, `holdings[${holdingIndex}].weights[${weightIndex}].grams`);
+      }));
     }
   });
   return endpoints;
@@ -1441,7 +1503,8 @@ function lineageMassObservationCount(sourceRecords) {
     if (!record.metbull || typeof record.metbull !== "object") return;
     if (record.recordModel === "specimen") count += Number.isFinite(record.weight.grams) ? 1 : 0;
     else if (record.recordModel === "catalog-item") count += record.holdings.filter((holding) => Number.isFinite(holding.weight.grams)).length;
-    else count += record.holdings.reduce((sum, holding) => sum + holding.weights.filter((weight) => Number.isFinite(weight.grams)).length, 0);
+    else count += record.holdings.reduce((sum, holding) => sum + holding.weights.filter((weight) =>
+      Number.isFinite(weight.grams) && (!weight.kind || weight.kind === "individual-holding")).length, 0);
   });
   return count;
 }
@@ -1473,7 +1536,7 @@ function validateLineageCandidates(lineageData, sourceRecords, registry) {
   const inventorySummary = expectedSameInventoryRelationships(sourceRecords);
   const expectedPossible = expectedPossibleRelationships(sourceRecords);
   const inventoryObservationCount = lineageInventoryEndpoints(sourceRecords).length;
-  requireLineage(metadata.source.catalogSchemaVersion === 6 && metadata.source.recordCount === sourceRecords.length &&
+  requireLineage(metadata.source.catalogSchemaVersion === 7 && metadata.source.recordCount === sourceRecords.length &&
     metadata.source.catalogCount === Object.keys(registry).length && metadata.source.flattenedMassObservationCount === lineageMassObservationCount(sourceRecords) &&
     metadata.source.inventoryObservationCount === inventoryObservationCount);
   const relationshipIds = new Set();
@@ -1688,6 +1751,7 @@ function specimenCardSourceMasses(record) {
       holdingPath,
       massPath: `${holdingPath}.weights[${weightIndex}].grams`,
       grams: weight.grams,
+      kind: weight.kind || null,
       holdingIndex,
       weightIndex
     })).filter(({ grams }) => Number.isFinite(grams)) : [];
@@ -1709,8 +1773,16 @@ function resolveSpecimenCardSelection(record, holdingPath, massPath) {
   const massMatch = massPath.match(/^holdings\[([0-9]+)\]\.weights\[([0-9]+)\]\.grams$/u);
   if (!massMatch || Number(massMatch[1]) !== holdingIndex) return null;
   const weightIndex = Number(massMatch[2]);
-  const grams = holding.weights?.[weightIndex]?.grams;
-  return Number.isFinite(grams) ? { holding, holdingIndex, weightIndex, grams } : null;
+  const weight = holding.weights?.[weightIndex];
+  const grams = weight?.grams;
+  if (record.catalogId === "hamburg-1913" && weight?.kind !== "individual-holding") return null;
+  return Number.isFinite(grams) ? { holding, holdingIndex, weightIndex, grams, kind: weight.kind || null } : null;
+}
+
+function isHamburgAtomicRecord(record) {
+  const holding = record?.holdings?.[0];
+  return record?.catalogId === "hamburg-1913" && record.holdings.length === 1 && holding.count === 1 &&
+    holding.weights.length === 1 && holding.weights[0].kind === "individual-holding" && record.amendments.length === 0;
 }
 
 function specimenCardHolding(record, holdingPath) {
@@ -1758,7 +1830,7 @@ function validateSpecimenCardManifest(manifest, sourceRecords, options = {}) {
   if (!hasExactFields(manifest, SPECIMEN_CARD_ROOT_FIELDS) || !Array.isArray(manifest.projections) ||
       !hasExactFields(manifest.metadata, SPECIMEN_CARD_METADATA_FIELDS) || !Array.isArray(sourceRecords)) return false;
   const metadata = manifest.metadata;
-  const catalogSchemaVersion = options.catalogSchemaVersion ?? 6;
+  const catalogSchemaVersion = options.catalogSchemaVersion ?? 7;
   if (metadata.schemaVersion !== 2 || metadata.scope !== "reviewed-atomic-specimen-card-display-projections" ||
       metadata.catalogSchemaVersion !== catalogSchemaVersion || metadata.sourceRecordCount !== sourceRecords.length ||
       !SHA256_HEX.test(metadata.sourceCatalogSha256) || !Number.isInteger(metadata.projectionCount) ||
@@ -1797,6 +1869,13 @@ function validateSpecimenCardManifest(manifest, sourceRecords, options = {}) {
       previousEndsByTextPath.set(card.clause.textPath, card.clause.end);
       previousCard = card;
       if (card.massPath !== null) selectedMassPaths.add(card.massPath);
+    }
+    if (source.record.catalogId === "hamburg-1913") {
+      const holding = source.record.holdings[0];
+      const card = projection.cards[0];
+      if (!isHamburgAtomicRecord(source.record) || projection.cards.length !== 1 || card.holdingPath !== "holdings[0]" ||
+          card.clause.textPath !== "holdings[0].description" || card.clause.start !== 0 ||
+          card.clause.end !== holding.description.length || card.massPath !== "holdings[0].weights[0].grams") return false;
     }
     const hasSourceContext = specimenCardContextEntries(source.record, projection).length > 0;
     if (projection.cards.length + Number(hasSourceContext) < 2) return false;
@@ -1885,14 +1964,25 @@ function specimenCardContextEntries(record, projection) {
     if (!selectedHoldings.has(holdingPath) && holding.kind && holding.kind !== "specimen") {
       entries.push({ type: "fact", holdingPath, label: "Holding type", text: capitalize(holding.kind) });
     }
-    if (Number.isInteger(holding.count) && holding.count > 1) {
+    if (Number.isInteger(holding.count) && (holding.count > 1 || record.catalogId === "hamburg-1913")) {
       entries.push({ type: "fact", holdingPath, label: "Reported count", text: String(holding.count) });
     }
     (sourceMassesByHolding.get(holdingPath) || []).forEach((mass) => {
       if (!projectedMassPaths.has(mass.massPath)) entries.push({ type: "mass", ...mass });
     });
+    if (record.catalogId === "hamburg-1913") {
+      if (holding.reportedTotalWeight) entries.push({
+        type: "fact", holdingPath, label: "Holding reported total", text: formatMass(holding.reportedTotalWeight.grams)
+      });
+      holding.representations.forEach((representation) => entries.push({
+        type: "fact", holdingPath, label: "Representation",
+        text: `${integerFormat.format(representation.count)} ${representation.count === 1 ? "thin section" : "thin sections"}`
+      }));
+    }
     return entries;
-  });
+  }).concat(record.catalogId === "hamburg-1913" ? hamburgRecordFacts(record).map(({ label, value }) => ({
+    type: "fact", holdingPath: null, label, text: value
+  })) : []);
 }
 
 function expandSpecimenCardDescriptors(sourceRecords, projectionIndex = new Map()) {
@@ -1962,7 +2052,8 @@ function specimenCardDescriptorMasses(descriptor) {
     const selection = resolveSpecimenCardSelection(descriptor.parentRecord, descriptor.holdingPath, descriptor.massPath);
     return selection ? [selection.grams] : [];
   }
-  if (descriptor.kind === "context") return descriptor.contextEntries.filter(({ type }) => type === "mass").map(({ grams }) => grams);
+  if (descriptor.kind === "context") return descriptor.contextEntries
+    .filter(({ type, kind }) => type === "mass" && kind !== "associated-material").map(({ grams }) => grams);
   return recordMasses(descriptor.parentRecord);
 }
 
@@ -1999,7 +2090,8 @@ function specimenCardDescriptorHoldings(descriptor) {
     type: "clause",
     holdingPath: descriptor.holdingPath,
     text: descriptor.clauseText,
-    grams: specimenCardDescriptorMasses(descriptor)[0] ?? null
+    grams: specimenCardDescriptorMasses(descriptor)[0] ?? null,
+    componentKind: resolveSpecimenCardSelection(record, descriptor.holdingPath, descriptor.massPath)?.kind || null
   }];
   return descriptor.kind === "context" ? descriptor.contextEntries : [];
 }
@@ -2128,7 +2220,17 @@ function prepareRecord(source, index, registry = catalogRegistry) {
       description: cleanText(holding.description),
       provenance: cleanText(holding.provenance),
       count: holding.count,
-      weights: holding.weights.map((weight) => ({ grams: Number(weight.grams) }))
+      weights: holding.weights.map((weight) => ({
+        grams: Number(weight.grams),
+        ...(weight.kind ? { kind: weight.kind } : {})
+      })),
+      ...(record.catalogId === "hamburg-1913" ? {
+        reportedTotalWeight: holding.reportedTotalWeight === null ? null : { grams: Number(holding.reportedTotalWeight.grams) },
+        representations: holding.representations.map((representation) => ({
+          kind: representation.kind,
+          count: representation.count
+        }))
+      } : {})
     }));
     if (recordModel === "catalog-number") {
       record.catalogNumber = cleanText(source.catalogNumber);
@@ -2138,6 +2240,14 @@ function prepareRecord(source, index, registry = catalogRegistry) {
       record.reportedNumber = cleanText(source.reportedNumber);
       record.section = cleanText(source.section);
       record.eventDate = cleanText(source.eventDate);
+      if (record.catalogId === "hamburg-1913") {
+        record.reportedTotalWeight = source.reportedTotalWeight === null ? null : { grams: Number(source.reportedTotalWeight.grams) };
+        record.publicationState = source.publicationState;
+        record.amendments = source.amendments.map((amendment) => ({
+          ...amendment,
+          targetWeight: { grams: Number(amendment.targetWeight.grams) }
+        }));
+      }
     }
   } else {
     record.year = cleanText(source.year);
@@ -2164,7 +2274,9 @@ function prepareRecord(source, index, registry = catalogRegistry) {
       holding.description,
       holding.provenance,
       holding.kind === "specimen" ? null : holding.kind,
-      holding.count === null ? null : `count ${holding.count}`
+      holding.count === null ? null : `count ${holding.count}`,
+      ...(holding.weights || []).map((weight) => weight.kind),
+      ...(holding.representations || []).flatMap((representation) => [representation.kind, representation.count])
     ]),
     record.name,
     record.metbull?.canonicalName,
@@ -2175,6 +2287,14 @@ function prepareRecord(source, index, registry = catalogRegistry) {
     record.dateOfDiscovery,
     record.eventDate,
     record.section,
+    record.publicationState,
+    ...(record.amendments || []).flatMap((amendment) => [
+      amendment.kind, amendment.effectiveDate, amendment.targetHolding, amendment.resultingState
+    ]),
+    ...(record.catalogId === "hamburg-1913" ? [
+      ...record.holdings.flatMap(hamburgHoldingDetails),
+      ...hamburgRecordFacts(record).flatMap(({ label, value }) => [label, value])
+    ] : []),
     record.catalogId,
     record.catalogLabel
   ].filter(Boolean).join(" "));
@@ -2307,6 +2427,15 @@ function calculateStatistics(sourceRecords) {
 }
 
 function recordMasses(record) {
+  if (Array.isArray(record?.holdings)) {
+    return record.holdings.flatMap((holding) => Array.isArray(holding.weights)
+      ? holding.weights.filter((weight) => weight.kind !== "associated-material").map((weight) => weight.grams).filter(Number.isFinite)
+      : [holding.weight?.grams].filter(Number.isFinite));
+  }
+  return Number.isFinite(record?.weight?.grams) ? [record.weight.grams] : [];
+}
+
+function recordSchemaMasses(record) {
   if (Array.isArray(record?.holdings)) {
     return record.holdings.flatMap((holding) => Array.isArray(holding.weights)
       ? holding.weights.map((weight) => weight.grams).filter(Number.isFinite)
@@ -2558,6 +2687,18 @@ function createRecordCard(recordOrDescriptor) {
     if (!record.section) sectionRow.classList.add("unknown");
     sectionRow.append(term, description);
     card.querySelector(".record-meta").append(sectionRow);
+    if (record.catalogId === "hamburg-1913") {
+      hamburgRecordFacts(record).forEach(({ label, value }) => {
+        const row = document.createElement("div");
+        row.className = "hamburg-fact-row";
+        const factTerm = document.createElement("dt");
+        const factDescription = document.createElement("dd");
+        factTerm.textContent = label;
+        factDescription.textContent = value;
+        row.append(factTerm, factDescription);
+        card.querySelector(".record-meta").append(row);
+      });
+    }
   }
   const sourceLabel = record.catalogLabel || catalogLabel(catalogRegistry[record.catalogId], record.catalogId);
   const citedPages = recordCatalogPages(record);
@@ -2630,11 +2771,47 @@ function holdingDetails(holding) {
 }
 
 function catalogNumberHoldingDetails(holding) {
+  if (Array.isArray(holding.representations)) return hamburgHoldingDetails(holding);
   const details = [];
   if (holding.provenance) details.push(`Provenance: ${displayText(holding.provenance)}`);
   if (holding.count !== null) details.push(`Reported count: ${integerFormat.format(holding.count)}`);
   if (holding.weights.length) details.push(`Masses: ${holding.weights.map(({ grams }) => formatMass(grams)).join(", ")}`);
   return details;
+}
+
+function hamburgWeightKindLabel(kind) {
+  return {
+    "individual-holding": "Individual holding",
+    "aggregate-holding": "Aggregate holding",
+    "associated-material": "Associated material"
+  }[kind] || kind;
+}
+
+function hamburgHoldingDetails(holding) {
+  const details = [];
+  if (holding.count !== null) details.push(`Reported count: ${integerFormat.format(holding.count)}`);
+  if (holding.weights.length) details.push(`Components: ${holding.weights.map((weight) =>
+    `${hamburgWeightKindLabel(weight.kind)}: ${formatMass(weight.grams)}`).join("; ")}`);
+  if (holding.reportedTotalWeight) details.push(`Reported total: ${formatMass(holding.reportedTotalWeight.grams)}`);
+  if (holding.representations.length) details.push(`Representations: ${holding.representations.map((representation) =>
+    `${integerFormat.format(representation.count)} ${representation.count === 1 ? "thin section" : "thin sections"}`).join(", ")}`);
+  return details;
+}
+
+function hamburgRecordFacts(record) {
+  const facts = [{
+    label: "Publication",
+    value: record.publicationState === "supplement" ? "August 1913 supplement" : "Base register"
+  }];
+  if (record.reportedTotalWeight) facts.push({
+    label: "Observation reported total",
+    value: formatMass(record.reportedTotalWeight.grams)
+  });
+  record.amendments.forEach((amendment) => facts.push({
+    label: amendment.baseObservationRetained ? "Amendment (base observation retained)" : "Amendment",
+    value: `August 1913: ${formatMass(amendment.targetWeight.grams)} component identified as ${displayText(amendment.targetHolding)} disposed by exchange; destination not recorded.`
+  }));
+  return facts;
 }
 
 function renderHoldings(card, holdings, recordModel = "catalog-item", headingText = "Holdings") {
@@ -2686,11 +2863,19 @@ function renderProjectedSpecimenCardContent(card, entries, kind) {
         mass.textContent = formatMass(entry.grams);
         item.append(mass);
       }
+      if (entry.type === "clause" && entry.componentKind) {
+        const componentKind = document.createElement("p");
+        componentKind.className = "component-kind";
+        componentKind.textContent = `Component: ${hamburgWeightKindLabel(entry.componentKind)}`;
+        item.append(componentKind);
+      }
     } else {
       const heading = document.createElement("div");
       const label = document.createElement("strong");
       const value = document.createElement(entry.type === "mass" ? "span" : "p");
-      label.textContent = entry.type === "mass" ? "Reported mass" : entry.label;
+      label.textContent = entry.type === "mass"
+        ? entry.kind ? hamburgWeightKindLabel(entry.kind) : "Reported mass"
+        : entry.label;
       value.textContent = entry.type === "mass" ? formatMass(entry.grams) : entry.text;
       if (entry.type === "mass") value.className = "holding-mass";
       heading.append(label, value);
@@ -3043,6 +3228,8 @@ if (typeof module !== "undefined" && module.exports) {
     getAuthorizedFolio,
     getAuthorizedFolioPages,
     genericDesignation,
+    hamburgHoldingDetails,
+    hamburgRecordFacts,
     holdingDetails,
     hasMatchingFolioPolicy,
     isDesignationQuery,
@@ -3068,6 +3255,7 @@ if (typeof module !== "undefined" && module.exports) {
     recordDesignations,
     recordCatalogPages,
     recordMasses,
+    recordSchemaMasses,
     resolveSpecimenCardSelection,
     resolveSpecimenCardClause,
     searchable,

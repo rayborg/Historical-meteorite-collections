@@ -33,10 +33,16 @@ const COLLECTION_ENTRY_KEYS = [
   "id", "catalogId", "entryOrder", "reportedNumber", "catalogPages", "section", "holdings", "name", "classification", "locality",
   "eventDate", "confidence",
 ];
+const HAMBURG_COLLECTION_ENTRY_KEYS = [
+  ...COLLECTION_ENTRY_KEYS, "reportedTotalWeight", "publicationState", "amendments",
+];
 const METBULL_KEYS = ["matchType", "canonicalName", "meteoriteCode", "metbullUrl", "alternateNameNote"];
 const METBULL_MATCH_TYPES = ["exact", "case-normalized-exact", "historical-alias", "corrected-spelling", "translated-or-older-name", "unresolved"];
 const HOLDING_KEYS = ["designation", "kind", "description", "count", "weight"];
 const CATALOG_NUMBER_HOLDING_KEYS = ["description", "provenance", "count", "weights"];
+const HAMBURG_HOLDING_KEYS = [
+  "description", "provenance", "count", "weights", "reportedTotalWeight", "representations",
+];
 const HOLDING_KINDS = ["specimen", "cast", "aggregate"];
 const RECORD_MODELS = ["catalog-item", "specimen", "catalog-number", "collection-entry"];
 const FACTUAL_FIELDS = [
@@ -56,6 +62,13 @@ const FACTUAL_FIELDS = [
   "holdings[].count",
   "holdings[].weight.grams",
   "holdings[].weights[].grams",
+  "holdings[].weights[].kind",
+  "holdings[].reportedTotalWeight.grams",
+  "holdings[].representations[].kind",
+  "holdings[].representations[].count",
+  "reportedTotalWeight.grams",
+  "publicationState",
+  "amendments[]",
   "classification",
   "locality",
   "year",
@@ -243,12 +256,12 @@ function assertCountSummary(value, path) {
 
 function validateMetadata(metadata, path) {
   assertExactKeys(metadata, METADATA_KEYS, path);
-  assert(metadata.schemaVersion === 6, `${path}.schemaVersion must be 6`);
+  assert(metadata.schemaVersion === 7, `${path}.schemaVersion must be 7`);
   assert(metadata.scope === "facts-only", `${path}.scope must be facts-only`);
   assert(
     Array.isArray(metadata.factualFields) && metadata.factualFields.length === FACTUAL_FIELDS.length &&
       metadata.factualFields.every((field, index) => field === FACTUAL_FIELDS[index]),
-    `${path}.factualFields does not match the schema 6 public record models`,
+    `${path}.factualFields does not match the schema 7 public record models`,
   );
   assertCountSummary(metadata, path);
   assert(Array.isArray(metadata.catalogs) && metadata.catalogs.length > 0, `${path}.catalogs must be a nonempty array`);
@@ -416,6 +429,35 @@ function validateCatalogNumberHolding(holding, path, allowEmptyWeights = false) 
   });
 }
 
+function validateHamburgHolding(holding, path) {
+  assertExactKeys(holding, HAMBURG_HOLDING_KEYS, path);
+  assertString(holding.description, `${path}.description`);
+  assertHoldingText(holding.description, `${path}.description`, true);
+  assert(holding.provenance === null, `${path}.provenance must be null`);
+  assert(holding.count === null || (Number.isInteger(holding.count) && holding.count > 0),
+    `${path}.count must be a positive integer or null`);
+  assert(Array.isArray(holding.weights), `${path}.weights must be an ordered array`);
+  holding.weights.forEach((weight, weightIndex) => {
+    const weightPath = `${path}.weights[${weightIndex}]`;
+    assertExactKeys(weight, ["grams", "kind"], weightPath);
+    assert(Number.isFinite(weight.grams) && weight.grams >= 0, `${weightPath}.grams must be finite and nonnegative`);
+    assert(["individual-holding", "aggregate-holding", "associated-material"].includes(weight.kind),
+      `${weightPath}.kind is invalid`);
+  });
+  if (holding.reportedTotalWeight !== null) {
+    assertExactKeys(holding.reportedTotalWeight, ["grams"], `${path}.reportedTotalWeight`);
+    assert(Number.isFinite(holding.reportedTotalWeight.grams) && holding.reportedTotalWeight.grams >= 0,
+      `${path}.reportedTotalWeight.grams must be finite and nonnegative`);
+  }
+  assert(Array.isArray(holding.representations), `${path}.representations must be an array`);
+  holding.representations.forEach((representation, representationIndex) => {
+    const representationPath = `${path}.representations[${representationIndex}]`;
+    assertExactKeys(representation, ["kind", "count"], representationPath);
+    assert(representation.kind === "thin-section" && Number.isInteger(representation.count) && representation.count > 0,
+      `${representationPath} must be a counted thin section`);
+  });
+}
+
 function validatePublicCatalog(data, folios, path = "catalog") {
   rejectCatalogExcludedContent(data, path);
   assertExactKeys(data, ["metadata", "records"], path);
@@ -447,7 +489,8 @@ function validatePublicCatalog(data, folios, path = "catalog") {
       ? SPECIMEN_KEYS
       : recordModel === "catalog-item"
         ? CATALOG_ITEM_KEYS
-        : recordModel === "catalog-number" ? CATALOG_NUMBER_KEYS : COLLECTION_ENTRY_KEYS)];
+        : recordModel === "catalog-number" ? CATALOG_NUMBER_KEYS
+          : record.catalogId === "hamburg-1913" ? HAMBURG_COLLECTION_ENTRY_KEYS : COLLECTION_ENTRY_KEYS)];
     if (Object.hasOwn(record, "metbull")) expectedRecordKeys.push("metbull");
     assertExactKeys(record, expectedRecordKeys, recordPath);
     assertString(record.id, `${recordPath}.id`);
@@ -507,8 +550,37 @@ function validatePublicCatalog(data, folios, path = "catalog") {
         assertString(record[field], `${recordPath}.${field}`, true);
       }
       assert(Array.isArray(record.holdings) && record.holdings.length > 0, `${recordPath}.holdings must be nonempty`);
-      record.holdings.forEach((holding, holdingIndex) =>
-        validateCatalogNumberHolding(holding, `${recordPath}.holdings[${holdingIndex}]`, true));
+      record.holdings.forEach((holding, holdingIndex) => record.catalogId === "hamburg-1913"
+        ? validateHamburgHolding(holding, `${recordPath}.holdings[${holdingIndex}]`)
+        : validateCatalogNumberHolding(holding, `${recordPath}.holdings[${holdingIndex}]`, true));
+      if (record.catalogId === "hamburg-1913") {
+        if (record.reportedTotalWeight !== null) {
+          assertExactKeys(record.reportedTotalWeight, ["grams"], `${recordPath}.reportedTotalWeight`);
+          assert(Number.isFinite(record.reportedTotalWeight.grams) && record.reportedTotalWeight.grams >= 0,
+            `${recordPath}.reportedTotalWeight.grams must be finite and nonnegative`);
+        }
+        assert(["base-register", "supplement"].includes(record.publicationState),
+          `${recordPath}.publicationState is invalid`);
+        assert(Array.isArray(record.amendments), `${recordPath}.amendments must be an array`);
+        assert(record.amendments.length === (record.entryOrder === 105 ? 1 : 0),
+          `${recordPath}.amendments has an invalid count`);
+        if (record.amendments.length) {
+          const amendment = record.amendments[0];
+          assertExactKeys(amendment, [
+            "kind", "effectiveDate", "targetHolding", "targetComponentOrder", "targetWeight", "resultingState",
+            "destination", "baseObservationRetained",
+          ], `${recordPath}.amendments[0]`);
+          assert(amendment.kind === "disposal-by-exchange" && amendment.effectiveDate === "1913-08" &&
+            amendment.targetHolding === "Gibeon, Deutsch-Südwestafrika" && amendment.targetComponentOrder === 5 &&
+            amendment.resultingState === "disposed" && amendment.destination === null &&
+            amendment.baseObservationRetained === true, `${recordPath}.amendments[0] changed factual state`);
+          assertExactKeys(amendment.targetWeight, ["grams"], `${recordPath}.amendments[0].targetWeight`);
+          assert(amendment.targetWeight.grams === 14500, `${recordPath}.amendments[0].targetWeight changed`);
+          const targetComponent = record.holdings[1]?.weights[amendment.targetComponentOrder - 1];
+          assert(targetComponent?.kind === "individual-holding" && targetComponent.grams === amendment.targetWeight.grams,
+            `${recordPath}.amendments[0] must target the existing individual component at the reported order and mass`);
+        }
+      }
     }
     if (recordModel === "catalog-number" || recordModel === "collection-entry") {
       assert(Array.isArray(record.catalogPages) && record.catalogPages.length > 0,
@@ -821,7 +893,7 @@ function multiCatalogFixture() {
   return {
     data: {
       metadata: {
-        schemaVersion: 6,
+        schemaVersion: 7,
         scope: "facts-only",
         factualFields: [...FACTUAL_FIELDS],
         catalogs: [
@@ -1292,7 +1364,7 @@ function runSyntheticCatalogTests(modelFixture) {
     catalogNumberRejectionCount += 1;
   };
   const hoveyRecord = (records, id = "hovey-catalog-z9") => records.find((record) => record.id === id);
-  assertCatalogNumberRejection("older metadata under schema 6", ({ metadata }) => { metadata.schemaVersion = 5; });
+  assertCatalogNumberRejection("older metadata under schema 7", ({ metadata }) => { metadata.schemaVersion = 6; });
   assertCatalogNumberRejection("empty catalog number", ({ records }) => { hoveyRecord(records).catalogNumber = ""; });
   assertCatalogNumberRejection("nonnull non-string catalog number", ({ records }) => { hoveyRecord(records).catalogNumber = 9; });
   assertCatalogNumberRejection("duplicate catalog number within one catalog", ({ records }) => {
@@ -1734,7 +1806,7 @@ console.log(
   `${catalogFixtureStats.holdingPrivacyAllowCount} holding-privacy boundary allow, ` +
   `${catalogFixtureStats.modelRejectionCount} model/holding rejections, ` +
   `${catalogFixtureStats.catalogNumberRejectionCount} catalog-number rejections, ` +
-  `${catalogFixtureStats.collectionEntryRejectionCount} collection-entry/schema-6 rejections, ` +
+  `${catalogFixtureStats.collectionEntryRejectionCount} collection-entry/schema-7 rejections, ` +
   `${metbullFixtureStats.allowCount} MetBull allows, ${metbullFixtureStats.rejectionCount} MetBull rejections, ` +
   `${folioFixtureStats.allowCount} folio allows, ${folioFixtureStats.rejectionCount} folio rejections, ` +
   `${folioFileFixtureStats.allowCount} folio-file allows, ${folioFileFixtureStats.rejectionCount} folio-file rejections passed.`,
@@ -1753,7 +1825,7 @@ if (!SYNTHETIC_ONLY) {
   );
   console.log(
     `Validated data/catalog.json and data/folios.json: ${deployedStats.recordCount} records across ` +
-    `${deployedStats.catalogCount} schema 6 facts-only catalogs, ${totalPageCount} metadata source pages, ` +
+    `${deployedStats.catalogCount} schema 7 facts-only catalogs, ${totalPageCount} metadata source pages, ` +
     `${deployedStats.folioStats.pageEntryCount} displayable folio pages with locked SHA-256 assets.`,
   );
   for (const [catalogId, { descriptor }] of deployedStats.metadataByCatalog) {

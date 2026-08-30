@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "schemaVersion": 6,
+    "schemaVersion": 7,
     "scope": "facts-only",
     "factualFields": [
       "id",
@@ -19,6 +19,13 @@
       "holdings[].count",
       "holdings[].weight.grams",
       "holdings[].weights[].grams",
+      "holdings[].weights[].kind",
+      "holdings[].reportedTotalWeight.grams",
+      "holdings[].representations[].kind",
+      "holdings[].representations[].count",
+      "reportedTotalWeight.grams",
+      "publicationState",
+      "amendments[]",
       "classification",
       "locality",
       "year",

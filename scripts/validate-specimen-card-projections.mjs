@@ -3,13 +3,13 @@ import { readFile } from "node:fs/promises";
 import { pathToFileURL } from "node:url";
 
 const LOCKS = Object.freeze({
-  catalogSchemaVersion: 6,
-  sourceRecordCount: 13672,
-  sourceCatalogSha256: "849971ad45e48141c013c9aecfd195cc2bef44d0fd948c21607be35693aa9b0a",
-  projectionCount: 1813,
-  atomicCardCount: 6457,
-  sourceContextCardCount: 1515,
-  projectionSetSha256: "3edca8ec748beb5b9d2cb74871ad5c56082a5beced28e75c006a85f745999fa3",
+  catalogSchemaVersion: 7,
+  sourceRecordCount: 13819,
+  sourceCatalogSha256: "91694659e5f7210db10ffc42873c54d5d38d3e5a485d51c38072746faa7f41e0",
+  projectionCount: 1917,
+  atomicCardCount: 6561,
+  sourceContextCardCount: 1619,
+  projectionSetSha256: "5a0f8a6c1ae135f24be54186f9b474e84ec67c248a5621fe098ad598e3f8cb85",
 });
 export const REVIEWED_AUDIT_COVERAGE = Object.freeze({
   candidateCount: 1038,
@@ -36,6 +36,16 @@ export const MADRID_AUDIT_COVERAGE = Object.freeze({
   groupedSourceContextHoldingCount: 7,
   sourceContextCardCount: 5,
   projectionSetSha256: "6678ff3d2401a92001d0b44a93ed71c322c5b3ecf2d0c512256e00dea8eeb5d9",
+});
+export const HAMBURG_AUDIT_COVERAGE = Object.freeze({
+  parentObservationCount: 147,
+  holdingCount: 151,
+  componentWeightCount: 227,
+  projectedParentCount: 104,
+  atomicCardCount: 104,
+  groupedSourceContextCount: 43,
+  thinSectionCount: 26,
+  projectionSetSha256: "bb773cc5bda10ffb38bd1550601fb294ddd9ca496f34ffe81ac9eb7d1024560c",
 });
 const PRIOR_630_ID = "obs-344d0b6d-920e-403f-8fd5-c113fc05291d";
 const PRIOR_630_CARDS_SHA256 = "839f6cb10b69c5fff3418ed5d0b17143442b18384b3084a5479435ba3077f9c7";
@@ -106,6 +116,7 @@ export function deriveSourceContext(projection, record, recordModel) {
   const selectedHoldings = new Set(projection.cards.map(({ holdingPath }) => holdingPath));
   const selectedMasses = new Set(projection.cards.flatMap(({ massPath }) => massPath === null ? [] : [massPath]));
   const spansByTextPath = new Map();
+  if (Object.hasOwn(record, "publicationState") || (record.amendments?.length ?? 0) > 0) return true;
   for (const card of projection.cards) {
     const spans = spansByTextPath.get(card.clause.textPath) || [];
     spans.push([card.clause.start, card.clause.end]);
@@ -163,6 +174,10 @@ function parseCard(card, record, recordModel, location) {
   if (Number(massMatch[1]) !== holdingIndex) fail(`${location}.massPath refers to a different holding`);
   const mass = resolvePath(record, card.massPath);
   if (!Number.isFinite(mass) || mass <= 0) fail(`${location}.massPath does not resolve to a positive numeric mass`);
+  if (recordModel === "collection-entry" && holding.weights?.[Number(massMatch[2])]?.kind !== undefined &&
+      holding.weights[Number(massMatch[2])].kind !== "individual-holding") {
+    fail(`${location}.massPath resolves to a non-individual component`);
+  }
   return { holdingIndex, text, mass };
 }
 
@@ -312,6 +327,56 @@ export function validateSpecimenCardProjections(document, catalog, catalogText) 
   };
   for (const [key, expected] of Object.entries(MADRID_AUDIT_COVERAGE)) {
     if (madridActual[key] !== expected) fail(`Madrid ${key} differs from the reviewed audit lock`);
+  }
+  const hamburgRecords = catalog.records.filter(({ catalogId }) => catalogId === "hamburg-1913");
+  const hamburgIds = new Set(hamburgRecords.map(({ id }) => id));
+  const hamburgProjections = document.projections.filter(({ parentRecordId }) => hamburgIds.has(parentRecordId));
+  const hamburgProjectionById = new Map(hamburgProjections.map((projection) => [projection.parentRecordId, projection]));
+  let hamburgHoldingCount = 0;
+  let hamburgComponentWeightCount = 0;
+  let hamburgAtomicCardCount = 0;
+  let hamburgGroupedSourceContextCount = 0;
+  let hamburgThinSectionCount = 0;
+  for (const record of hamburgRecords) {
+    hamburgHoldingCount += record.holdings.length;
+    hamburgComponentWeightCount += record.holdings.reduce((count, holding) => count + holding.weights.length, 0);
+    hamburgThinSectionCount += record.holdings.flatMap(({ representations }) => representations)
+      .reduce((count, representation) => count + representation.count, 0);
+    const atomic = record.holdings.length === 1 && record.holdings[0].count === 1 &&
+      record.holdings[0].weights.length === 1 && record.holdings[0].weights[0].kind === "individual-holding" &&
+      record.amendments.length === 0;
+    const projection = hamburgProjectionById.get(record.id);
+    if (!atomic) {
+      hamburgGroupedSourceContextCount++;
+      if (projection) fail(`Hamburg grouped/context parent ${record.id} must not have an atomic projection`);
+      continue;
+    }
+    if (!projection) fail(`Hamburg audited atomic parent ${record.id} is missing its projection`);
+    const expectedCard = {
+      holdingPath: "holdings[0]",
+      clause: { textPath: "holdings[0].description", start: 0, end: record.holdings[0].description.length },
+      massPath: "holdings[0].weights[0].grams",
+    };
+    if (JSON.stringify(projection.cards) !== JSON.stringify([expectedCard])) {
+      fail(`Hamburg atomic path differs from the reviewed source holding for ${record.id}`);
+    }
+    if (!deriveSourceContext(projection, record, "collection-entry")) {
+      fail(`Hamburg atomic parent ${record.id} must retain its source context`);
+    }
+    hamburgAtomicCardCount++;
+  }
+  const hamburgActual = {
+    parentObservationCount: hamburgRecords.length,
+    holdingCount: hamburgHoldingCount,
+    componentWeightCount: hamburgComponentWeightCount,
+    projectedParentCount: hamburgProjections.length,
+    atomicCardCount: hamburgAtomicCardCount,
+    groupedSourceContextCount: hamburgGroupedSourceContextCount,
+    thinSectionCount: hamburgThinSectionCount,
+    projectionSetSha256: sha256(JSON.stringify(hamburgProjections)),
+  };
+  for (const [key, expected] of Object.entries(HAMBURG_AUDIT_COVERAGE)) {
+    if (hamburgActual[key] !== expected) fail(`Hamburg ${key} differs from the reviewed audit lock`);
   }
   if (sha256(JSON.stringify(document.projections)) !== LOCKS.projectionSetSha256) fail("projection set differs from the reviewed production lock");
 

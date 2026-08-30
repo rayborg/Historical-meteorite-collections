@@ -1,12 +1,12 @@
 # Public Catalog Data
 
 <!-- release-summary:data-overview:start -->
-`catalog.json` is a schema-6 facts-only dataset containing 13,672 source observations from 34 historical meteorite catalogs. `folios.json` is a separate schema-2, deny-by-default display manifest with 49 reviewed page entries.
+`catalog.json` is a schema-7 facts-only dataset containing 13,819 source observations from 35 historical meteorite catalogs. `folios.json` is a separate schema-2, deny-by-default display manifest with 49 reviewed page entries.
 <!-- release-summary:data-overview:end -->
 
 A searchable transcription of the 1976 Huss Meteorite Collection catalog, compiled and published by Glenn Huss.
 
-The other configured descriptors identify their compilers without inferring a publisher: Jean Andre Henri Lucas for 1813; E. F. F. Chladni, with a Vienna appendix by Karl von Schreibers, for 1819; E. F. F. Chladni for 1825; Wilhelm Haidinger for 1859; Otto Buchner for 1863; A. E. Nordenskiöld for 1870; Henry A. Ward for 1881; Valentine Ball for 1882; F. W. Clarke for 1886; Edmund Otis Hovey for 1896; Henry S. Washington for 1897; Wirt Tassin for 1902; A. G. Högbom for 1902; Oliver Cummings Farrington for 1903; Henry A. Ward for 1904; R. Schreiter for 1912; Warren M. Foote for 1912; C. Anderson for 1913; Oliver Cummings Farrington for 1916; George P. Merrill for 1916; M. Kantor for 1920; G. T. Prior for 1923; Lucas Fernández Navarro for the Madrid catalog of 1923; Charles Palache for 1926; H. H. Nininger for 1933; Chester A. Reeds for 1937; I. S. Astapowitsch for 1938; Virgil E. Barnes for 1940; H. H. Nininger and Addie D. Nininger for 1950; Brian Mason for 1964; Glenn I. Huss for 1986; the Kanagawa Prefectural Museum of Natural History for 1996; and the Buseck Center for Meteorite Studies, Arizona State University, for the September 2024 ASU dataset.
+The other configured descriptors identify their compilers without inferring a publisher: Jean Andre Henri Lucas for 1813; E. F. F. Chladni, with a Vienna appendix by Karl von Schreibers, for 1819; E. F. F. Chladni for 1825; Wilhelm Haidinger for 1859; Otto Buchner for 1863; A. E. Nordenskiöld for 1870; Henry A. Ward for 1881; Valentine Ball for 1882; F. W. Clarke for 1886; Edmund Otis Hovey for 1896; Henry S. Washington for 1897; Wirt Tassin for 1902; A. G. Högbom for 1902; Oliver Cummings Farrington for 1903; Henry A. Ward for 1904; R. Schreiter for 1912; Warren M. Foote for 1912; C. Anderson and E. Horn for their respective 1913 catalogs; Oliver Cummings Farrington for 1916; George P. Merrill for 1916; M. Kantor for 1920; G. T. Prior for 1923; Lucas Fernández Navarro for the Madrid catalog of 1923; Charles Palache for 1926; H. H. Nininger for 1933; Chester A. Reeds for 1937; I. S. Astapowitsch for 1938; Virgil E. Barnes for 1940; H. H. Nininger and Addie D. Nininger for 1950; Brian Mason for 1964; Glenn I. Huss for 1986; the Kanagawa Prefectural Museum of Natural History for 1996; and the Buseck Center for Meteorite Studies, Arizona State University, for the September 2024 ASU dataset.
 
 The current public data was generated from the accepted canonical source integrations and retains their reviewed identity and source-name decisions.
 
@@ -25,6 +25,7 @@ The current public data was generated from the accepted canonical source integra
 | `farrington-1916` | `collection-entry` | 738 | 82 | 78 |
 | `foote-1912` | `collection-entry` | 205 | 35 | 25 |
 | `haidinger-1859` | `collection-entry` | 137 | 6 | 5 |
+| `hamburg-1913` | `collection-entry` | 147 | 27 | 11 |
 | `hogbom-1902` | `collection-entry` | 86 | 3 | 2 |
 | `hovey-1896` | `catalog-number` | 25 | 7 | 7 |
 | `huss-1976` | `specimen` | 1,078 | 46 | 46 |
@@ -47,7 +48,7 @@ The current public data was generated from the accepted canonical source integra
 | `ward-1881` | `collection-entry` | 3 | 1 | 1 |
 | `ward-1904` | `collection-entry` | 697 | 74 | 74 |
 | `washington-1897` | `collection-entry` | 201 | 4 | 4 |
-| **Total** |  | **13,672** | **1,294** | **1,145** |
+| **Total** |  | **13,819** | **1,321** | **1,156** |
 <!-- release-summary:data-catalog-table:end -->
 
 Metadata source-page coverage is not a count of pages cited by records. Some covered pages are introductory or narrative-only.
@@ -57,6 +58,8 @@ Metadata source-page coverage is not a count of pages cited by records. Some cov
 `foote-1912` contributes 205 facts-only collection entries across 35 metadata pages, with records citing 25 pages. Its 227 holdings contain 227 numeric gram values, 132 records have reviewed exact-name mappings, and 73 remain pending. It has a blocked/undetermined zero-page folio policy and no public media.
 
 `anderson-1913` contributes 57 fully reviewed facts-only collection entries citing pages 54-66: 52 resolved and 5 unresolved. `kantor-1920` contributes 30 fully reviewed entries citing pages 107-122: 27 resolved and 3 unresolved, with 34 numeric gram values totaling 184,497.32 g. `astapovich-1938` contributes 90 fully reviewed entries citing pages 195-196: 81 resolved and 9 unresolved. All three have blocked/undetermined zero-page folio policies and no public media.
+
+`hamburg-1913`, configured as compiled by E. Horn, contributes 147 fully reviewed observations from 151 holdings and 227 components, including 26 thin sections: 98 reviews are resolved and 49 unresolved. Records cite base-register pages 156-165 and the August 1913 Holbrook supplement on page 283. The calculated base-component sum of 748,304.8 g is distinct from the printed 748,304.9 g total. Applying the source-reported disposal of one 14,500 g Gibeon component and adding the 51-stone, 490.6 g Holbrook supplement yields 734,295.4 g, distinct from the printed revised total of 734,295.5 g. The catalog is blocked/undetermined with no public folios or assets.
 
 `madrid-1923`, compiled by Lucas Fernández Navarro, contributes 130 fully reviewed facts-only collection entries citing pages 226-233 within metadata pages 224-233. Its 168 holdings and weights comprise 151 `Specimen` and 17 `Specimen group` descriptions and total 190,083.41 g. That figure is derived from the detailed holdings and remains distinct from the source's narrative collection-total claim. The review resolves 84 entries and leaves 46 explicitly unresolved. The catalog is blocked/undetermined with no public folios, media, source scans, OCR, notes, or private evidence.
 
@@ -72,7 +75,7 @@ Chladni 1825 pages 200-207 are introductory folios. `haidinger-1859` page 21 int
 
 ## Catalog Contract
 
-The root contains exactly `metadata` and `records`. `metadata.schemaVersion` is 6 and each catalog descriptor declares one of four `recordModel` values.
+The root contains exactly `metadata` and `records`. `metadata.schemaVersion` is 7 and each catalog descriptor declares one of four `recordModel` values.
 
 ### Specimen
 
@@ -107,20 +110,22 @@ Each holding has exactly `description`, `provenance`, `count`, and `weights`; ea
 
 ### Collection Entry
 
-Used by Lucas, both Chladni catalogs, Haidinger, Buchner, Nordenskiöld, Ball, Clarke, Washington, Tassin, Högbom, Ward, both Farrington catalogs, Schreiter, Foote, Anderson, Merrill, Kantor, Prior, Madrid, Palache, Nininger, Reeds, Astapovich, Barnes, and Kanagawa:
+Used by Lucas, both Chladni catalogs, Haidinger, Buchner, Nordenskiöld, Ball, Clarke, Washington, Tassin, Högbom, Ward, both Farrington catalogs, Schreiter, Foote, Anderson, Hamburg, Merrill, Kantor, Prior, Madrid, Palache, Nininger, Reeds, Astapovich, Barnes, and Kanagawa:
 
 ```text
 id, catalogId, entryOrder, reportedNumber, catalogPages, section,
 holdings, name, classification, locality, eventDate, confidence
 ```
 
-Each holding has exactly `description`, `provenance`, `count`, and `weights`; numeric weights are `{ grams }`. The array may be empty when a historical or ambiguous mass has no supported numeric conversion; independently structured factual description prose may still retain the source-reported mass statement. `entryOrder` preserves source order. `reportedNumber` is nullable opaque text and need not be unique.
+Each holding has `description`, `provenance`, `count`, and `weights`; every numeric weight contains `grams`. The array may be empty when a historical or ambiguous mass has no supported numeric conversion; independently structured factual description prose may still retain the source-reported mass statement. `entryOrder` preserves source order. `reportedNumber` is nullable opaque text and need not be unique.
+
+Schema 7 permits Hamburg's reviewed additive weight semantics: weights may include `kind`; holdings may include `reportedTotalWeight` and `representations`; and records may include `reportedTotalWeight`, `publicationState`, and `amendments`. They distinguish individual from aggregate weights, base-register observations from supplements, and source-reported amendments from the unchanged base observation.
 
 Strings are NFC-normalized and whitespace-collapsed. Numeric grams are finite and nonnegative. Confidence is `high`, `medium`, or `low`. Model-specific ordering is deterministic. Statistics count parent records as observations, flatten nested masses, and never multiply a reported mass by holding count.
 
 Every model permits an optional reviewed `metbull` object with exactly `matchType`, `canonicalName`, `meteoriteCode`, `metbullUrl`, and `alternateNameNote`. Resolved mappings require a canonical name, positive decimal code string, and exact `https://www.lpi.usra.edu/meteor/metbull.cfm?code=<code>` URL. Unresolved mappings cannot claim any canonical identity. This additive layer does not alter source names, catalog identifiers, holdings, or weights and is never populated by fuzzy matching. The public card renderer links resolved canonical names only when they differ substantively from the displayed source name; Unicode NFC, collapsed whitespace, and locale-aware lowercase comparison suppresses redundant equal-name panels. Unresolved reviews remain visible without a link. The dedicated catalog directory renders all descriptor cards separately from the homepage search and bibliography master list.
 
-The current release contains 10,332 reviewed mappings: 10,140 resolved and 192 unresolved. The remaining 3,340 records are pending observations without reviewed mappings.
+The current release contains 10,479 reviewed mappings: 10,238 resolved and 241 unresolved. The remaining 3,340 records are pending observations without reviewed mappings.
 
 Validated continuation evidence recovers formerly blank source names only where supported. Reviewed historical entries that genuinely print no separate proper source name retain null names and unresolved reviews without an inferred modern identity.
 
@@ -143,6 +148,13 @@ holdings[].provenance
 holdings[].count
 holdings[].weight.grams
 holdings[].weights[].grams
+holdings[].weights[].kind
+holdings[].reportedTotalWeight.grams
+holdings[].representations[].kind
+holdings[].representations[].count
+reportedTotalWeight.grams
+publicationState
+amendments[]
 classification
 locality
 year
@@ -165,9 +177,11 @@ Ward 1904 and Farrington 1916 source images, OCR batches, source filenames, priv
 
 Anderson 1913, Kantor 1920, and Astapovich 1938 source images, OCR, source filenames, private notes, paths, folios, and media are excluded. All three publish structured facts only and remain blocked/undetermined with zero public folios.
 
+Hamburg 1913 source scans, OCR, transcription files, private notes and evidence, filenames, paths, folios, and media are excluded. It publishes only independently structured facts and public citations, remains blocked/undetermined, and has zero public folios or assets.
+
 ## Specimen Card Projections
 
-`specimen-card-projections.json` is a schema-2, display-only positive allowlist. Each card references an immutable parent observation, an exact public `holdingPath`, and a reviewed UTF-16 clause span in that holding's public description or designation. Its nullable `massPath` binds at most one normalized mass. The manifest never creates a new observation ID, changes `catalog.json`, or copies source prose. It contains 1,813 reviewed parent projections, 6,457 atomic specimen cards, and 1,515 derived source-context cards; 134 atomic cards preserve source-supported uncertain-size clauses without claiming normalized grams.
+`specimen-card-projections.json` is a schema-2, display-only positive allowlist. Each card references an immutable parent observation, an exact public `holdingPath`, and a reviewed UTF-16 clause span in that holding's public description or designation. Its nullable `massPath` binds at most one normalized mass. The manifest never creates a new observation ID, changes `catalog.json`, or copies source prose. It contains 1,917 reviewed parent projections, 6,561 atomic specimen cards, and 1,619 derived source-context cards; 134 atomic cards preserve source-supported uncertain-size clauses without claiming normalized grams. Hamburg contributes 104 atomic cards and 43 grouped source-context cards.
 
 Projection order follows canonical parent, holding, and clause order. Exact non-null mass paths also scope displayed lineage. Ranges, totals, grouped counts, casts, aggregates, and unsupported material remain in a separately labelled source-context card. Madrid's 23 multi-holding parents produce 54 atomic cards and 5 context cards; grouped holdings remain source context. Reeds 1937 entry 366 is locked to ten ordered atomic cards without context. Prior 1923 entry 630 is locked to seventeen direct specimen clauses and one context card: twelve clauses bind normalized masses, five preserve uncertain source-reported sizes without normalized grams, and the four normalized range endpoints and totals remain context. Parent observation counts, statistics, citations, folio authorization, and lineage records remain unchanged.
 
@@ -185,7 +199,7 @@ Across different collection namespaces, `possible-match` retains the reviewed id
 
 The generator flattens every numeric mass without multiplying by holding count. Scalar specimen masses use `weight.grams`; catalog-item masses use `holdings[i].weight.grams`; catalog-number and collection-entry masses use `holdings[i].weights[j].grams`. Inventory observations additionally retain the exact `designationPath`, including observations whose source mass is null. Every generated observation and runtime card link uses the project-relative `record id <recordId>` query, so duplicate source labels or designations still resolve to exactly one public record.
 
-The current public input produces 13,874 flattened mass observations and 3,627 inventory observations. It publishes 1,485 relationships: 195 same-inventory relationships and 1,290 possible cross-source matches. The same-inventory total comprises 2 Huss and 193 Nininger relationships; one duplicated key is identity-resolved and none are omitted as ambiguous. The possible matches include 1,067 exact-mass and 223 near-mass candidates, all currently unreviewed and based on reviewed MetBull identity. Madrid adds exactly three unreviewed possible matches, one each with Nininger 1950, Prior 1923, and Reeds 1937, and no same-inventory claim. Foote participates in 16 candidates, 15 exact-mass and 1 near-mass.
+The current public input produces 14,092 flattened mass observations and 3,627 inventory observations. It publishes 1,489 relationships: 195 same-inventory relationships and 1,294 possible cross-source matches. The same-inventory total comprises 2 Huss and 193 Nininger relationships; one duplicated key is identity-resolved and none are omitted as ambiguous. The possible matches include 1,071 exact-mass and 223 near-mass candidates: 1,290 remain unreviewed, while Hamburg adds four reviewed candidates retained as possible. These reviewed candidates remain non-identity, non-custody, and non-ownership claims. Madrid adds exactly three unreviewed possible matches, one each with Nininger 1950, Prior 1923, and Reeds 1937, and no same-inventory claim. Foote participates in 16 candidates, 15 exact-mass and 1 near-mass.
 
 Relationship and observation IDs are UUIDv5 values under the fixed namespace `65b19e0b-1f86-5ca5-a65b-81c38ec53040`. They use only public record IDs, exact designation or mass paths, series IDs, and normalized inventory IDs as applicable, not names, masses, evidence, review state, score, or output order. The browser validator independently reconstructs the complete inventory and possible-match endpoint sets and rederives every relationship and observation UUID before displaying this optional enhancement. Regenerate with `node scripts/build-specimen-lineages.mjs`; use `--check` to detect byte drift. Validate independently with `node scripts/validate-specimen-lineages.mjs`.
 
@@ -218,6 +232,7 @@ The deployment-specific `scripts/folio-release-lock.json` pins every catalog pol
 | `farrington-1916` | blocked | undetermined | 0 |
 | `foote-1912` | blocked | undetermined | 0 |
 | `haidinger-1859` | display | public-domain | 6 |
+| `hamburg-1913` | blocked | undetermined | 0 |
 | `hogbom-1902` | blocked | undetermined | 0 |
 | `hovey-1896` | display | public-domain | 7 |
 | `huss-1976` | blocked | undetermined | 0 |

@@ -4,6 +4,7 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 import {
+  HAMBURG_AUDIT_COVERAGE,
   MADRID_AUDIT_COVERAGE,
   REVIEWED_AUDIT_COVERAGE,
   deriveSourceContext,
@@ -21,6 +22,7 @@ const modelByCatalog = new Map(catalog.metadata.catalogs.map(({ id, recordModel 
 const PRIOR_630_ID = "obs-344d0b6d-920e-403f-8fd5-c113fc05291d";
 const REEDS_366_ID = "obs-b02789ea-869e-447a-97cc-28c2c6900e88";
 const madridIds = new Set(catalog.records.filter(({ catalogId }) => catalogId === "madrid-1923").map(({ id }) => id));
+const hamburgIds = new Set(catalog.records.filter(({ catalogId }) => catalogId === "hamburg-1913").map(({ id }) => id));
 
 function clone(value = published) {
   return structuredClone(value);
@@ -43,26 +45,26 @@ function cardTuple(card) {
 
 test("production manifest is deterministic and validates against the locked catalog", () => {
   assert.deepEqual(validateSpecimenCardProjections(published, catalog, catalogText), {
-    projectionCount: 1813,
-    atomicCardCount: 6457,
-    massBoundCardCount: 6323,
+    projectionCount: 1917,
+    atomicCardCount: 6561,
+    massBoundCardCount: 6427,
     masslessCardCount: 134,
-    sourceContextCardCount: 1515,
+    sourceContextCardCount: 1619,
   });
   assert.equal(serializeSpecimenCardProjections(published), projectionText);
   assert.equal(createHash("sha256").update(catalogText).digest("hex"), published.metadata.sourceCatalogSha256);
-  assert.equal(createHash("sha256").update(JSON.stringify(published.projections)).digest("hex"), "3edca8ec748beb5b9d2cb74871ad5c56082a5beced28e75c006a85f745999fa3");
-  assert.equal(createHash("sha256").update(projectionText).digest("hex"), "b5d5de4bd01756727ee5796978a0873cf79311415adceb6c5335abd457831485");
+  assert.equal(createHash("sha256").update(JSON.stringify(published.projections)).digest("hex"), "5a0f8a6c1ae135f24be54186f9b474e84ec67c248a5621fe098ad598e3f8cb85");
+  assert.equal(createHash("sha256").update(projectionText).digest("hex"), "e3dc109dfdea2305951caaf7d793290203ee40cb900ded4d3783f6c2306e0adb");
 });
 
 test("schema is a closed schema-2 count-locked atomic projection contract", () => {
   assert.equal(schema.$schema, "https://json-schema.org/draft/2020-12/schema");
   assert.equal(schema.$id, "urn:hmc:schema:specimen-card-projections:2");
   assert.deepEqual(schema.required, ["metadata", "projections"]);
-  assert.equal(schema.properties.projections.minItems, 1813);
-  assert.equal(schema.properties.projections.maxItems, 1813);
-  assert.equal(schema.$defs.metadata.properties.atomicCardCount.const, 6457);
-  assert.equal(schema.$defs.metadata.properties.sourceContextCardCount.const, 1515);
+  assert.equal(schema.properties.projections.minItems, 1917);
+  assert.equal(schema.properties.projections.maxItems, 1917);
+  assert.equal(schema.$defs.metadata.properties.atomicCardCount.const, 6561);
+  assert.equal(schema.$defs.metadata.properties.sourceContextCardCount.const, 1619);
   assert.deepEqual(schema.$defs.projection.required, ["parentRecordId", "cards"]);
   assert.deepEqual(schema.$defs.card.required, ["holdingPath", "clause", "massPath"]);
   assert.deepEqual(schema.$defs.clause.required, ["textPath", "start", "end"]);
@@ -126,6 +128,25 @@ test("Madrid projects exactly 23 multi-holding parents into 54 atomic specimen c
   }
 });
 
+test("Hamburg projects only 104 audited individual holdings and retains all source context", () => {
+  assert.deepEqual(HAMBURG_AUDIT_COVERAGE, {
+    parentObservationCount: 147,
+    holdingCount: 151,
+    componentWeightCount: 227,
+    projectedParentCount: 104,
+    atomicCardCount: 104,
+    groupedSourceContextCount: 43,
+    thinSectionCount: 26,
+    projectionSetSha256: "bb773cc5bda10ffb38bd1550601fb294ddd9ca496f34ffe81ac9eb7d1024560c",
+  });
+  const projections = published.projections.filter(({ parentRecordId }) => hamburgIds.has(parentRecordId));
+  assert.equal(projections.length, 104);
+  assert(projections.every(({ cards }) => cards.length === 1));
+  assert(projections.every((projection) =>
+    deriveSourceContext(projection, recordById.get(projection.parentRecordId), "collection-entry")));
+  assert(!projections.some(({ parentRecordId }) => recordById.get(parentRecordId).entryOrder === 147));
+});
+
 test("every clause and optional mass resolves exactly in canonical UTF-16 order", () => {
   const sourceOrder = new Map(catalog.records.map(({ id }, index) => [id, index]));
   let priorOrder = -1;
@@ -175,8 +196,8 @@ test("every clause and optional mass resolves exactly in canonical UTF-16 order"
     contextCount += Number(hasContext);
     assert(projection.cards.length + Number(hasContext) >= 2);
   }
-  assert.equal(cardCount, 6457);
-  assert.equal(contextCount, 1515);
+  assert.equal(cardCount, 6561);
+  assert.equal(contextCount, 1619);
 });
 
 test("Prior 630 has exact 17 reviewed clauses plus context; Reeds 366 has ten full holdings and no context", () => {

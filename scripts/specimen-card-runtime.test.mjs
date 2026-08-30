@@ -67,7 +67,7 @@ function syntheticManifest(sourceRecords, projections) {
     metadata: {
       schemaVersion: 2,
       scope: "reviewed-atomic-specimen-card-display-projections",
-      catalogSchemaVersion: 6,
+      catalogSchemaVersion: 7,
       sourceRecordCount: sourceRecords.length,
       sourceCatalogSha256: "0".repeat(64),
       projectionCount: projections.length,
@@ -315,8 +315,8 @@ test("digest lock loads the exact set and fails closed to parent cards on mismat
   const altered = structuredClone(manifest);
   altered.projections[0].cards[0].clause.end -= 1;
   assert.equal((await app.loadSpecimenCardProjectionIndex(records, async () => projectionResponse(altered), options)).size, 0);
-  assert.equal(app.SPECIMEN_CARD_SOURCE_CATALOG_SHA256, "849971ad45e48141c013c9aecfd195cc2bef44d0fd948c21607be35693aa9b0a");
-  assert.equal(app.SPECIMEN_CARD_PROJECTION_SET_SHA256, "3edca8ec748beb5b9d2cb74871ad5c56082a5beced28e75c006a85f745999fa3");
+  assert.equal(app.SPECIMEN_CARD_SOURCE_CATALOG_SHA256, "91694659e5f7210db10ffc42873c54d5d38d3e5a485d51c38072746faa7f41e0");
+  assert.equal(app.SPECIMEN_CARD_PROJECTION_SET_SHA256, "5a0f8a6c1ae135f24be54186f9b474e84ec67c248a5621fe098ad598e3f8cb85");
 });
 
 test("rendering is text-only, labels only context and duplicate-mass cards, and cache keys are synchronized", () => {
@@ -324,9 +324,9 @@ test("rendering is text-only, labels only context and duplicate-mass cards, and 
   assert.match(source, /Source context, not an individual specimen/u);
   assert.match(source, /with this reported mass/u);
   assert.match(html, /<p class="specimen-position" hidden><\/p>/u);
-  assert.match(html, /styles\.css\?v=20260830-ui-fix-1/u);
-  assert.match(html, /app\.js\?v=20260830-ui-fix-1/u);
-  assert.equal(app.ASSET_CACHE_VERSION, "20260830-ui-fix-1");
+  assert.match(html, /styles\.css\?v=20260830-schema7-hamburg-2/u);
+  assert.match(html, /app\.js\?v=20260830-schema7-hamburg-2/u);
+  assert.equal(app.ASSET_CACHE_VERSION, "20260830-schema7-hamburg-2");
 });
 
 test("production projection fixture validates when the schema-2 data dependency is present", {
@@ -359,8 +359,8 @@ test("Madrid runtime keeps parent statistics while loading reviewed atomic cards
   const loadedRelationshipIds = new Set([...lineageIndex.values()].flatMap((entries) =>
     entries.map(({ relationshipId }) => relationshipId)));
 
-  assert.equal(app.calculateStatistics(records).observations, 13672);
-  assert.equal(app.calculateStatistics(records).catalogs, 34);
+  assert.equal(app.calculateStatistics(records).observations, 13819);
+  assert.equal(app.calculateStatistics(records).catalogs, 35);
   assert.equal(madridRecords.filter(({ id }) => projectionIndex.has(id)).length, 23);
   assert.equal(madridDescriptors.filter(({ kind }) => kind === "atomic").length, 54);
   assert.equal(madridDescriptors.filter(({ kind }) => kind === "context").length, 5);

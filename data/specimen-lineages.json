@@ -3,10 +3,10 @@
     "schemaVersion": 2,
     "scope": "series-inventory-and-cross-source-candidates",
     "source": {
-      "catalogSchemaVersion": 6,
-      "recordCount": 13672,
-      "catalogCount": 34,
-      "flattenedMassObservationCount": 13874,
+      "catalogSchemaVersion": 7,
+      "recordCount": 13819,
+      "catalogCount": 35,
+      "flattenedMassObservationCount": 14092,
       "inventoryObservationCount": 3627
     },
     "collectionSeries": [
@@ -54,23 +54,23 @@
       ]
     },
     "counts": {
-      "relationshipCount": 1485,
+      "relationshipCount": 1489,
       "sameInventoryRelationshipCount": 195,
-      "possibleMatchRelationshipCount": 1290,
+      "possibleMatchRelationshipCount": 1294,
       "unreviewedPossibleMatchCount": 1290,
-      "exactMassPossibleMatchCount": 1067,
+      "exactMassPossibleMatchCount": 1071,
       "nearMassPossibleMatchCount": 223,
-      "metbullIdentityPossibleMatchCount": 1290,
+      "metbullIdentityPossibleMatchCount": 1294,
       "normalizedNameIdentityPossibleMatchCount": 0,
       "sameDesignationPossibleMatchCount": 0,
       "designationFamilyPossibleMatchCount": 0,
-      "aggregateOrMultiplePossibleMatchCount": 39,
+      "aggregateOrMultiplePossibleMatchCount": 41,
       "castPossibleMatchCount": 0,
       "identityResolvedInventoryCollisionCount": 1,
       "omittedAmbiguousInventoryKeyCount": 0,
       "possibleMatchEvidenceStrength": {
         "multiple-matching-facts": 0,
-        "two-matching-facts": 1067,
+        "two-matching-facts": 1071,
         "limited-matching-evidence": 223
       },
       "catalogPairs": [
@@ -165,6 +165,11 @@
           "possibleMatchCount": 3
         },
         {
+          "catalogPair": "farrington-1903|hamburg-1913",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 1
+        },
+        {
           "catalogPair": "farrington-1903|mason-1964",
           "sameInventoryCount": 0,
           "possibleMatchCount": 2
@@ -213,6 +218,11 @@
           "catalogPair": "farrington-1916|foote-1912",
           "sameInventoryCount": 0,
           "possibleMatchCount": 2
+        },
+        {
+          "catalogPair": "farrington-1916|hamburg-1913",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 1
         },
         {
           "catalogPair": "farrington-1916|hogbom-1902",
@@ -291,6 +301,16 @@
         },
         {
           "catalogPair": "foote-1912|tassin-1902",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 1
+        },
+        {
+          "catalogPair": "hamburg-1913|reeds-1937",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 1
+        },
+        {
+          "catalogPair": "hamburg-1913|schreiter-1912",
           "sameInventoryCount": 0,
           "possibleMatchCount": 1
         },
@@ -36427,6 +36447,92 @@
       ]
     },
     {
+      "id": "possible-lineage-608f7f25-dcbd-50b0-a8cd-1f3f6a587c60",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Fisher",
+      "catalogPair": "hamburg-1913|reeds-1937",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "10107",
+        "canonicalName": "Fisher"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing",
+          "aggregate-or-multiple"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-08-30",
+        "publicNote": "Fisher, Polk County, Minnesota, and 1894 agree; the current endpoint has reviewed MetBull code 10107. Hamburg 1850 g equals Reeds holding *(1030) 1850 g.",
+        "citations": [
+          {
+            "label": "Meteoritical Bulletin: Fisher",
+            "url": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10107"
+          },
+          {
+            "label": "Horn 1913 Hamburg catalog",
+            "url": "https://archive.org/details/jahrbuchderhambu305689111912hamb"
+          }
+        ]
+      },
+      "observations": [
+        {
+          "id": "mass-observation-a3ed094e-8ce9-51c9-87d9-a573351c12cc",
+          "recordId": "obs-4ecacb0a-2949-4b1f-a8be-1872d5426a24",
+          "catalogId": "reeds-1937",
+          "catalogLabel": "Catalogue of the Meteorites in the American Museum of Natural History as of October 1, 1935 (1937)",
+          "catalogYear": 1937,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 165",
+          "sourceName": "Fisher",
+          "canonicalName": "Fisher",
+          "meteoriteCode": "10107",
+          "designation": null,
+          "massGrams": 1850,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=reeds-1937&q=record%20id%20obs-4ecacb0a-2949-4b1f-a8be-1872d5426a24#catalog"
+        },
+        {
+          "id": "mass-observation-a8add13b-aaa2-521e-b603-786666046ea0",
+          "recordId": "obs-8ee67c26-4bc2-4989-8e72-41424adf0818",
+          "catalogId": "hamburg-1913",
+          "catalogLabel": "Die Meteoritensammlung des Mineralogisch-Geologischen Instituts zu Hamburg (1913)",
+          "catalogYear": 1913,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 28",
+          "sourceName": "Fisher",
+          "canonicalName": "Fisher",
+          "meteoriteCode": "10107",
+          "designation": null,
+          "massGrams": 1850,
+          "kind": null,
+          "count": 2,
+          "catalogSearchUrl": "./index.html?catalog=hamburg-1913&q=record%20id%20obs-8ee67c26-4bc2-4989-8e72-41424adf0818#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-60f5f78c-281a-5f93-83cf-405aa5ba6e62",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -50514,6 +50620,91 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=reeds-1937&q=record%20id%20obs-054f329c-90e0-4225-9d6c-f6679283e2b4#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-823b0536-7cef-5d01-9243-9a5941a0ac1e",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "N'Goureyma",
+      "catalogPair": "farrington-1916|hamburg-1913",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "16968",
+        "canonicalName": "N'Goureyma"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-08-30",
+        "publicNote": "N’Goureyma, Sudan, and 15 June 1900 agree; the current endpoint has reviewed MetBull code 16968. Hamburg 882 g equals Farrington Cat. No. 978, full-sized etched section, 882 g.",
+        "citations": [
+          {
+            "label": "Meteoritical Bulletin: N'Goureyma",
+            "url": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16968"
+          },
+          {
+            "label": "Horn 1913 Hamburg catalog",
+            "url": "https://archive.org/details/jahrbuchderhambu305689111912hamb"
+          }
+        ]
+      },
+      "observations": [
+        {
+          "id": "mass-observation-1672e3f5-69bb-58dd-971f-b5ab2b401f70",
+          "recordId": "obs-c4fed780-a62e-4606-9c19-5d35f4e7d7db",
+          "catalogId": "hamburg-1913",
+          "catalogLabel": "Die Meteoritensammlung des Mineralogisch-Geologischen Instituts zu Hamburg (1913)",
+          "catalogYear": 1913,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 137",
+          "sourceName": "N'Goureyma",
+          "canonicalName": "N'Goureyma",
+          "meteoriteCode": "16968",
+          "designation": null,
+          "massGrams": 882,
+          "kind": null,
+          "count": 1,
+          "catalogSearchUrl": "./index.html?catalog=hamburg-1913&q=record%20id%20obs-c4fed780-a62e-4606-9c19-5d35f4e7d7db#catalog"
+        },
+        {
+          "id": "mass-observation-dca39830-c449-550e-b007-aae008292323",
+          "recordId": "obs-e3d600c1-c7c8-4099-a430-5256370c25f3",
+          "catalogId": "farrington-1916",
+          "catalogLabel": "Catalogue of the Collection of Meteorites (1916)",
+          "catalogYear": 1916,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 431",
+          "sourceName": "N'Goureyma",
+          "canonicalName": "N'Goureyma",
+          "meteoriteCode": "16968",
+          "designation": null,
+          "massGrams": 882,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=farrington-1916&q=record%20id%20obs-e3d600c1-c7c8-4099-a430-5256370c25f3#catalog"
         }
       ]
     },
@@ -64691,6 +64882,91 @@
       ]
     },
     {
+      "id": "possible-lineage-a680d0c9-1a24-56a6-ad79-53871ad78f08",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Bremervörde",
+      "catalogPair": "farrington-1903|hamburg-1913",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "5135",
+        "canonicalName": "Bremervörde"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-08-30",
+        "publicNote": "Gnarrenburg/Bremervörde and 13 May 1855 agree; the current endpoint has reviewed MetBull code 5135. Both observations scope an individual fragment at 0.5 g.",
+        "citations": [
+          {
+            "label": "Meteoritical Bulletin: Bremervörde",
+            "url": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5135"
+          },
+          {
+            "label": "Horn 1913 Hamburg catalog",
+            "url": "https://archive.org/details/jahrbuchderhambu305689111912hamb"
+          }
+        ]
+      },
+      "observations": [
+        {
+          "id": "mass-observation-5002b8d0-89c5-5b6e-a301-8bb7241d216b",
+          "recordId": "obs-92db624b-6c1d-4e71-82c6-888c2dc0c34e",
+          "catalogId": "farrington-1903",
+          "catalogLabel": "Catalogue of the Meteorite Collection of the Field Columbian Museum, May 1, 1903 (1903)",
+          "catalogYear": 1903,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 37",
+          "sourceName": "Bremervörde",
+          "canonicalName": "Bremervörde",
+          "meteoriteCode": "5135",
+          "designation": null,
+          "massGrams": 0.5,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=farrington-1903&q=record%20id%20obs-92db624b-6c1d-4e71-82c6-888c2dc0c34e#catalog"
+        },
+        {
+          "id": "mass-observation-73e06e02-d89d-5dde-a8a1-bbe4634aee72",
+          "recordId": "obs-dcbfe54c-edf7-410a-9d8c-1fa1ebecd85e",
+          "catalogId": "hamburg-1913",
+          "catalogLabel": "Die Meteoritensammlung des Mineralogisch-Geologischen Instituts zu Hamburg (1913)",
+          "catalogYear": 1913,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 52",
+          "sourceName": "Gnarrenburg",
+          "canonicalName": "Bremervörde",
+          "meteoriteCode": "5135",
+          "designation": null,
+          "massGrams": 0.5,
+          "kind": null,
+          "count": 1,
+          "catalogSearchUrl": "./index.html?catalog=hamburg-1913&q=record%20id%20obs-dcbfe54c-edf7-410a-9d8c-1fa1ebecd85e#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-a6ac84e0-d2fc-5b86-be06-9cd4279707b1",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -75203,6 +75479,92 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-af5fce1c-8e90-4d95-9541-4294b5971ef7#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-c1b3af31-9650-5b33-937c-3903cc5d09aa",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Agen",
+      "catalogPair": "hamburg-1913|schreiter-1912",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "392",
+        "canonicalName": "Agen"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing",
+          "aggregate-or-multiple"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-08-30",
+        "publicNote": "Agen, Lot-et-Garonne, and 5 September 1814 agree; the current endpoint has reviewed MetBull code 392. Both masses are individually scoped 0.4 g.",
+        "citations": [
+          {
+            "label": "Meteoritical Bulletin: Agen",
+            "url": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=392"
+          },
+          {
+            "label": "Horn 1913 Hamburg catalog",
+            "url": "https://archive.org/details/jahrbuchderhambu305689111912hamb"
+          }
+        ]
+      },
+      "observations": [
+        {
+          "id": "mass-observation-842a82b3-307a-5b61-99ea-545c6931a3f0",
+          "recordId": "obs-ca99288b-b47a-4f57-ad42-ceaca60b9856",
+          "catalogId": "schreiter-1912",
+          "catalogLabel": "Die Meteoriten des Kgl. Mineralogischen Museums in Dresden (1912)",
+          "catalogYear": 1912,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 26",
+          "sourceName": "Agen",
+          "canonicalName": "Agen",
+          "meteoriteCode": "392",
+          "designation": null,
+          "massGrams": 0.4,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=schreiter-1912&q=record%20id%20obs-ca99288b-b47a-4f57-ad42-ceaca60b9856#catalog"
+        },
+        {
+          "id": "mass-observation-ec097af1-1369-5034-9c26-9f6b46a9b5a7",
+          "recordId": "obs-304c57cd-b41c-4ae4-83f1-9dfdb1471c43",
+          "catalogId": "hamburg-1913",
+          "catalogLabel": "Die Meteoritensammlung des Mineralogisch-Geologischen Instituts zu Hamburg (1913)",
+          "catalogYear": 1913,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[1].grams",
+          "sourceRecordLabel": "Collection entry 20",
+          "sourceName": "Agen",
+          "canonicalName": "Agen",
+          "meteoriteCode": "392",
+          "designation": null,
+          "massGrams": 0.4,
+          "kind": null,
+          "count": 3,
+          "catalogSearchUrl": "./index.html?catalog=hamburg-1913&q=record%20id%20obs-304c57cd-b41c-4ae4-83f1-9dfdb1471c43#catalog"
         }
       ]
     },

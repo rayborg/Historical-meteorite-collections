@@ -1,4 +1,69 @@
 {
   "schemaVersion": 1,
-  "reviews": []
+  "reviews": [
+    {
+      "candidateId": "possible-lineage-608f7f25-dcbd-50b0-a8cd-1f3f6a587c60",
+      "outcome": "retain-as-possible",
+      "reviewedOn": "2026-08-30",
+      "publicNote": "Fisher, Polk County, Minnesota, and 1894 agree; the current endpoint has reviewed MetBull code 10107. Hamburg 1850 g equals Reeds holding *(1030) 1850 g.",
+      "citations": [
+        {
+          "label": "Meteoritical Bulletin: Fisher",
+          "url": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10107"
+        },
+        {
+          "label": "Horn 1913 Hamburg catalog",
+          "url": "https://archive.org/details/jahrbuchderhambu305689111912hamb"
+        }
+      ]
+    },
+    {
+      "candidateId": "possible-lineage-823b0536-7cef-5d01-9243-9a5941a0ac1e",
+      "outcome": "retain-as-possible",
+      "reviewedOn": "2026-08-30",
+      "publicNote": "N’Goureyma, Sudan, and 15 June 1900 agree; the current endpoint has reviewed MetBull code 16968. Hamburg 882 g equals Farrington Cat. No. 978, full-sized etched section, 882 g.",
+      "citations": [
+        {
+          "label": "Meteoritical Bulletin: N'Goureyma",
+          "url": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16968"
+        },
+        {
+          "label": "Horn 1913 Hamburg catalog",
+          "url": "https://archive.org/details/jahrbuchderhambu305689111912hamb"
+        }
+      ]
+    },
+    {
+      "candidateId": "possible-lineage-a680d0c9-1a24-56a6-ad79-53871ad78f08",
+      "outcome": "retain-as-possible",
+      "reviewedOn": "2026-08-30",
+      "publicNote": "Gnarrenburg/Bremervörde and 13 May 1855 agree; the current endpoint has reviewed MetBull code 5135. Both observations scope an individual fragment at 0.5 g.",
+      "citations": [
+        {
+          "label": "Meteoritical Bulletin: Bremervörde",
+          "url": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5135"
+        },
+        {
+          "label": "Horn 1913 Hamburg catalog",
+          "url": "https://archive.org/details/jahrbuchderhambu305689111912hamb"
+        }
+      ]
+    },
+    {
+      "candidateId": "possible-lineage-c1b3af31-9650-5b33-937c-3903cc5d09aa",
+      "outcome": "retain-as-possible",
+      "reviewedOn": "2026-08-30",
+      "publicNote": "Agen, Lot-et-Garonne, and 5 September 1814 agree; the current endpoint has reviewed MetBull code 392. Both masses are individually scoped 0.4 g.",
+      "citations": [
+        {
+          "label": "Meteoritical Bulletin: Agen",
+          "url": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=392"
+        },
+        {
+          "label": "Horn 1913 Hamburg catalog",
+          "url": "https://archive.org/details/jahrbuchderhambu305689111912hamb"
+        }
+      ]
+    }
+  ]
 }
