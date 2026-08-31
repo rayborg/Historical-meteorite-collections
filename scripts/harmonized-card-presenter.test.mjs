@@ -30,7 +30,6 @@ const DTO_KEYS = [
 ];
 const STANDARD_SPECIMEN_LABELS = ["Class", "Specimen form", "Source locality", "Event", "Lineage", "Specimen weight"];
 const STANDARD_OBSERVATION_LABELS = ["Class", "Source locality", "Event"];
-const HODGE_LABELS = ["Australian Museum representation", "Represented occurrences", "Not represented occurrences"];
 const SEMANTIC_LABELS = {
   "direct-specimen": "Specimen.",
   "projected-atomic-specimen": "Individual specimen.",
@@ -113,7 +112,6 @@ test("every production card uses the approved fact order, values, missing behavi
     const expectedLabels = [
       ...(currentName ? ["Current Meteoritical Bulletin name"] : []),
       ...(specimen ? STANDARD_SPECIMEN_LABELS : STANDARD_OBSERVATION_LABELS),
-      ...(dto.kind === "regional-observation" ? HODGE_LABELS : []),
     ];
     assert.deepEqual(dto.facts.map(({ label }) => label), expectedLabels, record.id);
     assert.equal(dto.sourceName, (record.recordModel === "table-a-specimen" ? record.specimenId : record.name) || "Not recorded", record.id);
@@ -158,7 +156,7 @@ test("specimen mass and lineage facts resolve exactly from source and projection
   }
 });
 
-test("observation cards omit specimen claims and all citations and Hodge facts remain exact", () => {
+test("observation cards omit specimen claims and catalog-specific facts", () => {
   for (const descriptor of descriptors) {
     const record = descriptor.parentRecord;
     const dto = present(descriptor);
@@ -170,9 +168,7 @@ test("observation cards omit specimen claims and all citations and Hodge facts r
     if (["collection-observation", "regional-observation"].includes(dto.kind)) {
       assert.equal(dto.facts.some(({ label }) => ["Specimen form", "Lineage", "Specimen weight"].includes(label)), false, record.id);
     }
-    if (dto.kind === "regional-observation") {
-      assert.deepEqual(dto.facts.slice(-3), app.regionalCensusFacts(record), record.id);
-    }
+    assert.equal(dto.facts.some(({ label }) => /Australian Museum|occurrences/u.test(label)), false, record.id);
   }
 });
 
@@ -211,7 +207,7 @@ test("locality, coordinates, MetBull data, and prose cannot create an individual
 
 test("catalog-specific source facts stay out of cards while representative hidden facts remain searchable", () => {
   const allowed = new Set([
-    "Current Meteoritical Bulletin name", ...STANDARD_SPECIMEN_LABELS, ...STANDARD_OBSERVATION_LABELS, ...HODGE_LABELS
+    "Current Meteoritical Bulletin name", ...STANDARD_SPECIMEN_LABELS, ...STANDARD_OBSERVATION_LABELS
   ]);
   for (const descriptor of descriptors) {
     assert(present(descriptor).facts.every(({ label }) => allowed.has(label)), descriptor.parentRecord.id);
@@ -259,13 +255,13 @@ test("accessible shell, responsive breakpoints, approved cache, and immutable da
   assert.match(styles, /@media \(max-width: 700px\)[\s\S]*\.catalog-grid \{ grid-template-columns: 1fr; \}/u);
   assert.match(styles, /@media \(max-width: 420px\)[\s\S]*\.record-card \{ padding-inline: 1rem; \}/u);
   assert.match(styles, /@media \(max-width: 320px\)[\s\S]*\.record-meta div \{ grid-template-columns: minmax\(0, 1fr\);/u);
-  assert.equal(app.CACHE_VERSION, "20260831-harmonized-cards-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260831-harmonized-cards-1");
+  assert.equal(app.CACHE_VERSION, "20260831-harmonized-cards-2");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260831-harmonized-cards-2");
   for (const document of [html, catalogsHtml]) {
-    assert.match(document, /styles\.css\?v=20260831-harmonized-cards-1/u);
-    assert.match(document, /app\.js\?v=20260831-harmonized-cards-1/u);
+    assert.match(document, /styles\.css\?v=20260831-harmonized-cards-2/u);
+    assert.match(document, /app\.js\?v=20260831-harmonized-cards-2/u);
   }
-  assert.match(catalogsHtml, /catalogs\.js\?v=20260831-harmonized-cards-1/u);
+  assert.match(catalogsHtml, /catalogs\.js\?v=20260831-harmonized-cards-2/u);
   assert.deepEqual({
     catalog: sha256(catalogText),
     projections: sha256(projectionText),

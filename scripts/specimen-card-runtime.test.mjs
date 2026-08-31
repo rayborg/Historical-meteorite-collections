@@ -337,9 +337,9 @@ test("rendering is text-only, omits context cards, and synchronizes cache keys",
   assert.match(html, /<p class="record-semantic-label"><\/p>/u);
   assert.match(html, /<dl class="record-meta" aria-label="Catalog record details"><\/dl>/u);
   assert.doesNotMatch(html, /specimen-position|record-holdings|earlier-records/u);
-  assert.match(html, /styles\.css\?v=20260831-harmonized-cards-1/u);
-  assert.match(html, /app\.js\?v=20260831-harmonized-cards-1/u);
-  assert.equal(app.ASSET_CACHE_VERSION, "20260831-harmonized-cards-1");
+  assert.match(html, /styles\.css\?v=20260831-harmonized-cards-2/u);
+  assert.match(html, /app\.js\?v=20260831-harmonized-cards-2/u);
+  assert.equal(app.ASSET_CACHE_VERSION, "20260831-harmonized-cards-2");
 });
 
 test("production projection fixture validates when the schema-3 data dependency is present", {

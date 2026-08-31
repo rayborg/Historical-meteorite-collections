@@ -947,8 +947,8 @@ test("URL filters strictly round-trip lineage state and cache version remains st
   for (const search of ["", "?lineage=0", "?lineage=true", "?lineage=1&lineage=1", "?lineage=1&lineage=0"]) {
     assert.equal(app.parseUrlFilters(search, registry).lineageOnly, false, search);
   }
-  assert.equal(app.CACHE_VERSION, "20260831-harmonized-cards-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260831-harmonized-cards-1");
+  assert.equal(app.CACHE_VERSION, "20260831-harmonized-cards-2");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260831-harmonized-cards-2");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.ASSET_CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.ASSET_CACHE_VERSION}`));
 });

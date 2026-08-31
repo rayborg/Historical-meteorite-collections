@@ -61,7 +61,7 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 <!-- release-summary:session-current-state:end -->
 
 - The remaining 3,639 records are pending observations without reviewed MetBull mappings.
-- Hodge-Smith 1939 contributes 84 `regional-census-fact` observations: 77 numbered Australian falls and 7 additional falls, with 58 resolved reviews and 26 pending records. They expose controlled Australian Museum representation status and occurrence counts but no specimen, holding, mass, custody, or ownership claim.
+- Hodge-Smith 1939 contributes 84 `regional-census-fact` observations: 77 numbered Australian falls and 7 additional falls, with 58 resolved reviews and 26 pending records. Controlled Australian Museum representation facts remain searchable source data but are omitted from harmonized cards; no specimen, holding, mass, custody, or ownership claim is made.
 - Victoria Land 1982 contributes 273 individual `table-a-specimen` observations from Table A on cited pages 89-92. Exact specimen IDs, one mass per specimen, classifications, localities, mineral chemistry, weathering, and citations are public; MetBull/current-name and lineage claims are absent. The masses total 969,562.2 g and are counted once each.
 - Chladni 1825 pages 200-207 are introductory folios.
 - Tassin 1902 metadata includes plate page 671 and introductory page 673; its 340 entries cite pages 675-698.

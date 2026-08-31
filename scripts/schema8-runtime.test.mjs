@@ -88,7 +88,7 @@ test("Table A validation fails closed on specimen, mass, composition, locality, 
   }
 });
 
-test("all Hodge-Smith observations present only regional facts and every visible fact is searchable", () => {
+test("all Hodge-Smith source facts remain searchable but representation counters stay off cards", () => {
   assert.equal(hodge.length, 84);
   assert(hodge.every((record) => record.recordModel === "regional-census-fact"));
   assert(hodge.every((record) => !("holdings" in record) && !("weight" in record) && app.recordMasses(record).length === 0));
@@ -108,6 +108,10 @@ test("all Hodge-Smith observations present only regional facts and every visible
     { label: "Represented occurrences", value: String(mixed.australianMuseumRepresentation.representedOccurrences) },
     { label: "Not represented occurrences", value: String(mixed.australianMuseumRepresentation.notRepresentedOccurrences) },
   ]);
+  for (const record of hodge) {
+    const dto = app.presentHarmonizedCard(record);
+    assert.equal(dto.facts.some(({ label }) => /Australian Museum|occurrences/u.test(label)), false, record.id);
+  }
   const reviewed = hodge.filter((record) => record.metbull);
   assert.equal(reviewed.length, 58);
   assert(reviewed.every((record) => app.namesAreDisplayEquivalent(record.name, record.metbull.canonicalName)));
@@ -183,10 +187,10 @@ test("schema 8 card semantics, cache keys, responsive layout, and privacy bounda
   assert.equal(victoriaDto.facts.some(({ label }) => label === "Coordinate"), false);
   assert.match(styles, /@media \(max-width: 700px\)[\s\S]*\.catalog-grid \{ grid-template-columns: 1fr; \}/u);
   assert.match(styles, /@media \(max-width: 320px\)[\s\S]*\.record-meta div \{ grid-template-columns: minmax\(0, 1fr\);/u);
-  assert.equal(app.CACHE_VERSION, "20260831-harmonized-cards-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260831-harmonized-cards-1");
-  assert.match(html, /styles\.css\?v=20260831-harmonized-cards-1/u);
-  assert.match(html, /app\.js\?v=20260831-harmonized-cards-1/u);
+  assert.equal(app.CACHE_VERSION, "20260831-harmonized-cards-2");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260831-harmonized-cards-2");
+  assert.match(html, /styles\.css\?v=20260831-harmonized-cards-2/u);
+  assert.match(html, /app\.js\?v=20260831-harmonized-cards-2/u);
   const newSourceRecords = catalog.records.filter(({ catalogId }) => ["hodge-smith-1939", "victoria-land-1982"].includes(catalogId));
   assert.doesNotMatch(JSON.stringify(newSourceRecords), /(?:raw[ _-]*ocr|\/private\/|\/Users\/|source[ _-]*image|scan[ _-]*(?:file|path)|research[ _-]*notes?)/iu);
 });

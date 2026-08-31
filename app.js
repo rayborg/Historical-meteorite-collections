@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260831-harmonized-cards-1";
+const CACHE_VERSION = "20260831-harmonized-cards-2";
 const ASSET_CACHE_VERSION = CACHE_VERSION;
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "name-asc";
@@ -2891,12 +2891,6 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
       value: lineageEntries.length ? formatLineageSummary(lineageEntries.length) : "Not recorded"
     });
     facts.push({ label: "Specimen weight", value: formatMass(grams) });
-  }
-
-  if (kind === HARMONIZED_CARD_KINDS.regional) {
-    regionalCensusFacts(record).forEach(({ label, value }) => {
-      if (value !== null && value !== undefined) facts.push({ label, value });
-    });
   }
 
   return {
