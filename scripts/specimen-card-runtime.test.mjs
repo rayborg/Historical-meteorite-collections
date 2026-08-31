@@ -325,9 +325,9 @@ test("rendering is text-only, omits context cards, and synchronizes cache keys",
   assert.doesNotMatch(source, /source-context-card/u);
   assert.match(source, /with this reported mass/u);
   assert.match(html, /<p class="specimen-position" hidden><\/p>/u);
-  assert.match(html, /styles\.css\?v=20260831-atomic-only-1/u);
-  assert.match(html, /app\.js\?v=20260831-atomic-only-1/u);
-  assert.equal(app.ASSET_CACHE_VERSION, "20260831-atomic-only-1");
+  assert.match(html, /styles\.css\?v=20260831-fact-layout-1/u);
+  assert.match(html, /app\.js\?v=20260831-fact-layout-1/u);
+  assert.equal(app.ASSET_CACHE_VERSION, "20260831-fact-layout-1");
 });
 
 test("production projection fixture validates when the schema-2 data dependency is present", {

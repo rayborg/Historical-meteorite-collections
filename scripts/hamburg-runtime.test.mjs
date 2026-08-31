@@ -32,6 +32,11 @@ test("projected component labels wrap onto their own row at every viewport", () 
   assert.match(styles, /\.holdings-list \.projected-content-clause \{[^}]*flex-wrap: wrap;/u);
 });
 
+test("long Hamburg fact labels stack above values instead of sharing narrow columns", () => {
+  assert.match(styles, /\.record-meta \.hamburg-fact-row \{[^}]*grid-template-columns: minmax\(0, 1fr\);/u);
+  assert.match(styles, /\.record-meta \.hamburg-fact-row dt \{[^}]*overflow-wrap: anywhere;/u);
+});
+
 test("schema7 runtime validates and preserves Hamburg additive facts", () => {
   assert.equal(app.validateCatalog(catalog), catalog);
   assert.equal(hamburg.length, 147);

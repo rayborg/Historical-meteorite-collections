@@ -1,7 +1,7 @@
 "use strict";
 
 const CACHE_VERSION = "20260830-1";
-const ASSET_CACHE_VERSION = "20260831-atomic-only-1";
+const ASSET_CACHE_VERSION = "20260831-fact-layout-1";
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "name-asc";
 const ISSUE_FORM_URL = "https://github.com/rayborg/Historical-meteorite-collections/issues/new?template=data-error.yml";
