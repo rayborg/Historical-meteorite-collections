@@ -55,7 +55,7 @@ test("production manifest is deterministic and validates against the locked cata
   assert.equal(createHash("sha256").update(catalogText).digest("hex"), published.metadata.sourceCatalogSha256);
   assert.equal(createHash("sha256").update(JSON.stringify(published.projections)).digest("hex"), "45490022fc876f4df62c07110b3fa40a04c0a1edc6aec26797d616f7c159c263");
   assert.equal(createHash("sha256").update(JSON.stringify(published.projections.filter(({ parentRecordId }) => !hamburgIds.has(parentRecordId)))).digest("hex"), "3edca8ec748beb5b9d2cb74871ad5c56082a5beced28e75c006a85f745999fa3");
-  assert.equal(createHash("sha256").update(projectionText).digest("hex"), "7b51a9fcd0395d84b277cd2d183afbc32edb5b2e2c68e5fabca7aaabea80d339");
+  assert.equal(createHash("sha256").update(projectionText).digest("hex"), "dae6d445f610b2a51d07c68ba54dfa42ce69db97f35740293996c5e75b6e4afe");
 });
 
 test("schema is a closed schema-3 count-locked atomic projection contract", () => {
@@ -66,6 +66,10 @@ test("schema is a closed schema-3 count-locked atomic projection contract", () =
   assert.equal(schema.properties.projections.maxItems, 1955);
   assert.equal(schema.$defs.metadata.properties.atomicCardCount.const, 6675);
   assert.equal(schema.$defs.metadata.properties.sourceContextCardCount.const, 1657);
+  assert.equal(schema.$defs.metadata.properties.catalogSchemaVersion.const, 8);
+  assert.equal(schema.$defs.metadata.properties.sourceRecordCount.const, 14176);
+  assert.equal(schema.$defs.metadata.properties.sourceCatalogSha256.const,
+    "46d8ea050f428cfd4ab633c7e29da1493aaef413cd6da0dc1054ec6275823584");
   assert.deepEqual(schema.$defs.projection.required, ["parentRecordId", "cards"]);
   assert.deepEqual(schema.$defs.card.oneOf, [
     { $ref: "#/$defs/clauseCard" },
@@ -82,6 +86,15 @@ test("schema is a closed schema-3 count-locked atomic projection contract", () =
     Object.values(value).forEach(visit);
   };
   visit(schema);
+});
+
+test("schema-8 source additions create no synthetic specimen-card projections", () => {
+  const newRecordIds = new Set(catalog.records.filter(({ catalogId }) =>
+    ["hodge-smith-1939", "victoria-land-1982"].includes(catalogId)).map(({ id }) => id));
+  assert.equal(newRecordIds.size, 357);
+  assert(!published.projections.some(({ parentRecordId }) => newRecordIds.has(parentRecordId)));
+  assert.equal(published.metadata.catalogSchemaVersion, 8);
+  assert.equal(published.metadata.sourceRecordCount, 14176);
 });
 
 test("embedded audit boundaries reconcile all four reviewed candidate sets", () => {
@@ -281,6 +294,7 @@ test("rejects wrong metadata, extra fields, free text, and altered source bytes"
   for (const key of ["schemaVersion", "scope", "catalogSchemaVersion", "sourceRecordCount", "sourceCatalogSha256", "projectionCount", "atomicCardCount", "sourceContextCardCount"]) {
     mutate(`wrong ${key}`, (value) => { value.metadata[key] = key === "scope" ? "other" : 0; });
   }
+  mutate("schema-7 compatibility metadata", (value) => { value.metadata.catalogSchemaVersion = 7; });
   mutate("extra root key", (value) => { value.description = "private prose"; }, /exactly keys/iu);
   mutate("extra metadata key", (value) => { value.metadata.sourcePath = "/private/catalog.json"; }, /exactly keys/iu);
   mutate("extra projection key", (value) => { value.projections[0].retainParentContext = true; }, /exactly keys/iu);

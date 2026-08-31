@@ -67,7 +67,7 @@ function syntheticManifest(sourceRecords, projections) {
     metadata: {
       schemaVersion: 3,
       scope: "reviewed-atomic-specimen-card-display-projections",
-      catalogSchemaVersion: 7,
+      catalogSchemaVersion: 8,
       sourceRecordCount: sourceRecords.length,
       sourceCatalogSha256: "0".repeat(64),
       projectionCount: projections.length,
@@ -89,6 +89,7 @@ test("schema-3 contract is closed and has no schema-2 fallback", () => {
 
   for (const mutate of [
     (value) => { value.metadata.schemaVersion = 2; },
+    (value) => { value.metadata.catalogSchemaVersion = 7; },
     (value) => { value.metadata.scope = "reviewed-specimen-card-display-projections"; },
     (value) => { value.metadata.atomicCardCount += 1; },
     (value) => { value.metadata.sourceContextCardCount += 1; },
@@ -323,7 +324,7 @@ test("digest lock loads the exact set and fails closed to parent cards on mismat
   const altered = structuredClone(manifest);
   altered.projections[0].cards[0].clause.end -= 1;
   assert.equal((await app.loadSpecimenCardProjectionIndex(records, async () => projectionResponse(altered), options)).size, 0);
-  assert.equal(app.SPECIMEN_CARD_SOURCE_CATALOG_SHA256, "91694659e5f7210db10ffc42873c54d5d38d3e5a485d51c38072746faa7f41e0");
+  assert.equal(app.SPECIMEN_CARD_SOURCE_CATALOG_SHA256, "46d8ea050f428cfd4ab633c7e29da1493aaef413cd6da0dc1054ec6275823584");
   assert.equal(app.SPECIMEN_CARD_PROJECTION_SET_SHA256, "45490022fc876f4df62c07110b3fa40a04c0a1edc6aec26797d616f7c159c263");
 });
 
@@ -335,9 +336,9 @@ test("rendering is text-only, omits context cards, and synchronizes cache keys",
   assert.match(source, /weighted \? "Specimen weight" : "Specimen details"/u);
   assert.match(source, /with this reported mass/u);
   assert.match(html, /<p class="specimen-position" hidden><\/p>/u);
-  assert.match(html, /styles\.css\?v=20260831-specimen-cards-1/u);
-  assert.match(html, /app\.js\?v=20260831-specimen-cards-1/u);
-  assert.equal(app.ASSET_CACHE_VERSION, "20260831-specimen-cards-1");
+  assert.match(html, /styles\.css\?v=20260831-schema8-2/u);
+  assert.match(html, /app\.js\?v=20260831-schema8-2/u);
+  assert.equal(app.ASSET_CACHE_VERSION, "20260831-schema8-2");
 });
 
 test("production projection fixture validates when the schema-3 data dependency is present", {
@@ -375,8 +376,8 @@ test("Madrid runtime keeps parent statistics while loading reviewed atomic cards
   const loadedRelationshipIds = new Set([...lineageIndex.values()].flatMap((entries) =>
     entries.map(({ relationshipId }) => relationshipId)));
 
-  assert.equal(app.calculateStatistics(records).observations, 13819);
-  assert.equal(app.calculateStatistics(records).catalogs, 35);
+  assert.equal(app.calculateStatistics(records).observations, 14176);
+  assert.equal(app.calculateStatistics(records).catalogs, 37);
   assert.equal(madridRecords.filter(({ id }) => projectionIndex.has(id)).length, 23);
   assert.equal(madridDescriptors.filter(({ kind }) => kind === "atomic").length, 54);
   assert.equal(madridDescriptors.filter(({ kind }) => kind === "context").length, 0);

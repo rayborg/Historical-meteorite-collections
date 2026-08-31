@@ -3,8 +3,24 @@
 const assert = require("node:assert/strict");
 const { readFileSync } = require("node:fs");
 const { join } = require("node:path");
-const fixture = require("./test-multicatalog-fixture.json");
 const app = require("../app.js");
+const publicFixture = require("./test-multicatalog-fixture.json");
+
+const runtimeSchemaVersion = Number(readFileSync(join(__dirname, "..", "app.js"), "utf8")
+  .match(/metadata\.schemaVersion === ([0-9]+)/u)?.[1]);
+const fixture = structuredClone(publicFixture);
+fixture.metadata.schemaVersion = runtimeSchemaVersion;
+fixture.metadata.factualFields = [...publicFixture.metadata.factualFields];
+fixture.metadata.catalogs = fixture.metadata.catalogs.filter(({ id }) =>
+  !["hodge-smith-1939", "victoria-land-1982"].includes(id));
+fixture.records = fixture.records.filter(({ catalogId }) =>
+  !["hodge-smith-1939", "victoria-land-1982"].includes(catalogId));
+Object.assign(fixture.metadata, {
+  recordCount: 15,
+  recordsWithDesignation: 7,
+  recordsWithWeight: 12,
+  confidenceCounts: { high: 8, medium: 6, low: 1 },
+});
 
 const SPECIMEN_FIELDS = [
   "id", "catalogId", "designation", "name", "weight", "classification", "locality", "year", "catalogPage", "confidence"
@@ -18,6 +34,14 @@ const CATALOG_NUMBER_FIELDS = [
 const COLLECTION_ENTRY_FIELDS = [
   "id", "catalogId", "entryOrder", "reportedNumber", "catalogPages", "section", "holdings", "name", "classification", "locality",
   "eventDate", "confidence"
+];
+const REGIONAL_CENSUS_FACT_FIELDS = [
+  "id", "catalogId", "entryOrder", "reportedNumber", "section", "name", "classification", "eventDate",
+  "australianMuseumRepresentation", "catalogPages", "confidence",
+];
+const TABLE_A_SPECIMEN_FIELDS = [
+  "id", "catalogId", "entryOrder", "specimenId", "weight", "classification", "olivineFa", "pyroxeneFs",
+  "weathering", "locality", "catalogPage", "confidence",
 ];
 const HOLDING_FIELDS = ["designation", "kind", "description", "count", "weight"];
 const CATALOG_NUMBER_HOLDING_FIELDS = ["description", "provenance", "count", "weights"];
@@ -146,9 +170,9 @@ function threeCatalogManifest() {
   };
 }
 
-test("schema 7 fixture validates with exact model-aware shapes", () => {
+test("runtime fixture projection validates with exact legacy model-aware shapes", () => {
   assert.equal(app.validateCatalog(fixture), fixture);
-  assert.equal(fixture.metadata.schemaVersion, 7);
+  assert.equal(fixture.metadata.schemaVersion, runtimeSchemaVersion);
   assert.deepEqual(fixture.metadata.catalogs.map(({ id, recordModel }) => [id, recordModel]), [
     ["huss-1976", "specimen"],
     ["huss-1986", "specimen"],
@@ -179,6 +203,19 @@ test("schema 7 fixture validates with exact model-aware shapes", () => {
       holding.weights.forEach((weight) => assert.deepEqual(Object.keys(weight), ["grams"]));
     });
   });
+});
+
+test("schema 8 public fixture carries both exact new data models", () => {
+  assert.equal(publicFixture.metadata.schemaVersion, 8);
+  assert.deepEqual(publicFixture.metadata.catalogs.slice(-2).map(({ id, recordModel }) => [id, recordModel]), [
+    ["hodge-smith-1939", "regional-census-fact"],
+    ["victoria-land-1982", "table-a-specimen"],
+  ]);
+  for (const record of publicFixture.records.filter(({ catalogId }) =>
+    ["hodge-smith-1939", "victoria-land-1982"].includes(catalogId))) {
+    const expected = record.catalogId === "hodge-smith-1939" ? REGIONAL_CENSUS_FACT_FIELDS : TABLE_A_SPECIMEN_FIELDS;
+    assert.deepEqual(Object.keys(record).filter((key) => key !== "metbull").sort(), [...expected].sort());
+  }
 });
 
 test("older and legacy metadata are intentionally rejected", () => {
@@ -910,8 +947,8 @@ test("URL filters strictly round-trip lineage state and cache version remains st
   for (const search of ["", "?lineage=0", "?lineage=true", "?lineage=1&lineage=1", "?lineage=1&lineage=0"]) {
     assert.equal(app.parseUrlFilters(search, registry).lineageOnly, false, search);
   }
-  assert.equal(app.CACHE_VERSION, "20260830-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260831-specimen-cards-1");
+  assert.equal(app.CACHE_VERSION, "20260831-2");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260831-schema8-2");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.ASSET_CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.ASSET_CACHE_VERSION}`));
 });
@@ -970,7 +1007,7 @@ test("HTML and runtime contain accessible multi-holding card behavior", () => {
   assert.match(html, /Source catalog name/);
   assert.match(html, /Current Meteoritical Bulletin name/);
   assert.match(html, /An open-source project started by Raymond Borges Hink in July 2026\./);
-  assert.match(html, /Designation \/ catalog number, ascending/);
+  assert.match(html, /Designation \/ source identifier, ascending/);
   assert.match(script, /recordWeight\.remove\(\)/);
   assert.match(script, /function metbullPanelDetails\(record\)/);
   assert.match(script, /canonicalName: record\.metbull\.canonicalName/);

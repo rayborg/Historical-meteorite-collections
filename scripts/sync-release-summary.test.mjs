@@ -109,7 +109,7 @@ test("derives release counts, page spans, MetBull status, and folios from record
   assert.equal(summary.folios.displayCatalogCount, 1);
 });
 
-test("locks the production schema7 release summary", () => {
+test("locks the production schema8 release summary", () => {
   const summary = buildReleaseSummary(productionCatalog, productionFolios);
 
   assert.deepEqual({
@@ -123,14 +123,14 @@ test("locks the production schema7 release summary", () => {
     folioCatalogCount: summary.folios.catalogs.length,
     folioPageCount: summary.folios.pageCount,
   }, {
-    schemaVersion: 7,
-    catalogCount: 35,
-    recordCount: 13819,
-    sourcePageCount: 1321,
-    citedPageCount: 1156,
-    metbull: { reviewed: 10479, resolved: 10238, unresolved: 241 },
-    pending: 3340,
-    folioCatalogCount: 35,
+    schemaVersion: 8,
+    catalogCount: 37,
+    recordCount: 14176,
+    sourcePageCount: 1447,
+    citedPageCount: 1179,
+    metbull: { reviewed: 10537, resolved: 10296, unresolved: 241 },
+    pending: 3639,
+    folioCatalogCount: 37,
     folioPageCount: 49,
   });
   assert.deepEqual(

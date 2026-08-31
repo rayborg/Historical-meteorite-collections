@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "schemaVersion": 7,
+    "schemaVersion": 8,
     "scope": "facts-only",
     "factualFields": [
       "id",
@@ -12,6 +12,10 @@
       "catalogNumber",
       "entryOrder",
       "reportedNumber",
+      "specimenId",
+      "australianMuseumRepresentation.status",
+      "australianMuseumRepresentation.representedOccurrences",
+      "australianMuseumRepresentation.notRepresentedOccurrences",
       "holdings[].designation",
       "holdings[].kind",
       "holdings[].description",
@@ -31,6 +35,12 @@
       "year",
       "dateOfDiscovery",
       "eventDate",
+      "olivineFa",
+      "pyroxeneFs",
+      "weathering",
+      "locality.code",
+      "locality.name",
+      "locality.coordinate",
       "catalogPage",
       "catalogPages[]",
       "section",
@@ -116,12 +126,42 @@
         "confidenceCounts": { "high": 1, "medium": 2, "low": 0 },
         "folioDisplayPolicy": "blocked",
         "rightsStatus": "undetermined"
+      },
+      {
+        "id": "hodge-smith-1939",
+        "recordModel": "regional-census-fact",
+        "label": "Australian Meteorites (1939)",
+        "compiler": "T. Hodge-Smith",
+        "year": 1939,
+        "sourcePages": [9],
+        "sourcePageCount": 1,
+        "recordCount": 1,
+        "recordsWithDesignation": 0,
+        "recordsWithWeight": 0,
+        "confidenceCounts": { "high": 1, "medium": 0, "low": 0 },
+        "folioDisplayPolicy": "blocked",
+        "rightsStatus": "undetermined"
+      },
+      {
+        "id": "victoria-land-1982",
+        "recordModel": "table-a-specimen",
+        "label": "Catalog of Meteorites from Victoria Land (1982)",
+        "compiler": "Ursula B. Marvin; Brian Mason",
+        "year": 1982,
+        "sourcePages": [89],
+        "sourcePageCount": 1,
+        "recordCount": 1,
+        "recordsWithDesignation": 1,
+        "recordsWithWeight": 1,
+        "confidenceCounts": { "high": 1, "medium": 0, "low": 0 },
+        "folioDisplayPolicy": "blocked",
+        "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 15,
-    "recordsWithDesignation": 7,
-    "recordsWithWeight": 12,
-    "confidenceCounts": { "high": 8, "medium": 6, "low": 1 }
+    "recordCount": 17,
+    "recordsWithDesignation": 8,
+    "recordsWithWeight": 13,
+    "confidenceCounts": { "high": 10, "medium": 6, "low": 1 }
   },
   "records": [
     {
@@ -366,6 +406,30 @@
       "confidence": "medium"
     },
     {
+      "id": "hodge-census-1",
+      "catalogId": "hodge-smith-1939",
+      "entryOrder": 1,
+      "reportedNumber": "1",
+      "section": "Numbered Australian falls",
+      "name": "Accalana",
+      "classification": "Aerolite",
+      "eventDate": "Found 1917.",
+      "australianMuseumRepresentation": {
+        "status": "not-represented",
+        "representedOccurrences": 0,
+        "notRepresentedOccurrences": 1
+      },
+      "catalogPages": [9],
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Accalana",
+        "meteoriteCode": "10",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10",
+        "alternateNameNote": null
+      }
+    },
+    {
       "id": "museum-entry-duplicate-a",
       "catalogId": "museum-1914",
       "entryOrder": 1,
@@ -427,6 +491,24 @@
       "locality": null,
       "eventDate": "Found during reorganization",
       "confidence": "medium"
+    },
+    {
+      "id": "victoria-table-a-1",
+      "catalogId": "victoria-land-1982",
+      "entryOrder": 1,
+      "specimenId": "ALHA76001",
+      "weight": { "grams": 20151 },
+      "classification": "L6",
+      "olivineFa": "25",
+      "pyroxeneFs": "21",
+      "weathering": "A",
+      "locality": {
+        "code": "ALH",
+        "name": "Allan Hills",
+        "coordinate": "76°45'S, 159°40'E"
+      },
+      "catalogPage": 89,
+      "confidence": "high"
     }
   ]
 }

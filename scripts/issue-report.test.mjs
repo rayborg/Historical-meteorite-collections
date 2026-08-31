@@ -33,9 +33,9 @@ test("footer button remains visible in the viewport and opens an accessible dial
   assert.match(styles, /body:has\(dialog\[open\]\) > footer \.issue-report-action \{ visibility: hidden; \}/);
   assert.match(styles, /@media \(max-width: 700px\)[\s\S]*body > footer \.issue-report-action \{[^}]*width: min\(9\.75rem, calc\(100vw - 1\.3rem\)\);/);
   assert.match(styles, /@media \(max-width: 700px\)[\s\S]*body > footer \.issue-report-button \{[^}]*width: 100%;[^}]*font-size: \.72rem;/);
-  assert.match(html, /styles\.css\?v=20260831-specimen-cards-1/);
-  assert.match(html, /app\.js\?v=20260831-specimen-cards-1/);
-  assert.equal(app.ASSET_CACHE_VERSION, "20260831-specimen-cards-1");
+  assert.match(html, /styles\.css\?v=20260831-schema8-2/);
+  assert.match(html, /app\.js\?v=20260831-schema8-2/);
+  assert.equal(app.ASSET_CACHE_VERSION, "20260831-schema8-2");
 });
 
 test("anti-spam gate accepts only a correct, human-paced, empty-honeypot submission", () => {

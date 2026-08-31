@@ -76,10 +76,10 @@ test("main template presents relationship-specific compact lineage copy", async 
   assert.match(source, /Possible match · Reported mass:/);
   assert.doesNotMatch(source, /\.innerHTML\b/);
   assert.match(css, /\.earlier-records \{/);
-  assert.equal(app.CACHE_VERSION, "20260830-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260831-specimen-cards-1");
-  assert.match(html, /styles\.css\?v=20260831-specimen-cards-1/);
-  assert.match(html, /app\.js\?v=20260831-specimen-cards-1/);
+  assert.equal(app.CACHE_VERSION, "20260831-2");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260831-schema8-2");
+  assert.match(html, /styles\.css\?v=20260831-schema8-2/);
+  assert.match(html, /app\.js\?v=20260831-schema8-2/);
   for (const file of ["possible-specimen-lineages.html", "possible-specimen-lineages.css", "possible-specimen-lineages.js"]) {
     await assert.rejects(access(path.join(projectRoot, file)));
   }
@@ -130,14 +130,14 @@ test("real catalog Allende search retains reviewed names and synonyms without Al
 
 test("real release locks all catalogs and chronological dropdown entries", () => {
   const entries = app.catalogSelectorEntries(registry);
-  assert.equal(entries.length, 35);
+  assert.equal(entries.length, 37);
   assert.deepEqual(entries.map(([id]) => id), [
     "lucas-1813", "chladni-1819", "chladni-1825", "haidinger-1859", "buchner-1863",
     "nordenskiold-1870", "ward-1881", "ball-1882", "usnm-1886", "hovey-1896", "washington-1897",
     "tassin-1902", "hogbom-1902", "farrington-1903", "ward-1904", "schreiter-1912", "foote-1912",
     "anderson-1913", "hamburg-1913", "farrington-1916", "merrill-1916", "kantor-1920", "prior-1923", "madrid-1923", "palache-1926",
-    "nininger-1933", "reeds-1937", "astapovich-1938", "barnes-1940", "nininger-1950", "mason-1964",
-    "huss-1976", "huss-1986", "kanagawa-1996", "asu-2024-09",
+    "nininger-1933", "reeds-1937", "astapovich-1938", "hodge-smith-1939", "barnes-1940", "nininger-1950", "mason-1964",
+    "huss-1976", "victoria-land-1982", "huss-1986", "kanagawa-1996", "asu-2024-09",
   ]);
   assert.equal(app.catalogDropdownLabel(registry["anderson-1913"], "anderson-1913"), "Anderson (1913)");
   assert.equal(app.catalogDropdownLabel(registry["kantor-1920"], "kantor-1920"), "Kantor (1920)");

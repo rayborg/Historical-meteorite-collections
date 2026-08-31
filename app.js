@@ -1,7 +1,7 @@
 "use strict";
 
-const CACHE_VERSION = "20260830-1";
-const ASSET_CACHE_VERSION = "20260831-specimen-cards-1";
+const CACHE_VERSION = "20260831-2";
+const ASSET_CACHE_VERSION = "20260831-schema8-2";
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "name-asc";
 const ISSUE_FORM_URL = "https://github.com/rayborg/Historical-meteorite-collections/issues/new?template=data-error.yml";
@@ -64,6 +64,33 @@ const COLLECTION_ENTRY_RECORD_FIELDS = new Set([
   "eventDate",
   "confidence"
 ]);
+const REGIONAL_CENSUS_FACT_RECORD_FIELDS = new Set([
+  "id",
+  "catalogId",
+  "entryOrder",
+  "reportedNumber",
+  "section",
+  "name",
+  "classification",
+  "eventDate",
+  "australianMuseumRepresentation",
+  "catalogPages",
+  "confidence"
+]);
+const TABLE_A_SPECIMEN_RECORD_FIELDS = new Set([
+  "id",
+  "catalogId",
+  "entryOrder",
+  "specimenId",
+  "weight",
+  "classification",
+  "olivineFa",
+  "pyroxeneFs",
+  "weathering",
+  "locality",
+  "catalogPage",
+  "confidence"
+]);
 const HAMBURG_COLLECTION_ENTRY_RECORD_FIELDS = new Set([
   ...COLLECTION_ENTRY_RECORD_FIELDS,
   "reportedTotalWeight",
@@ -80,8 +107,9 @@ const HAMBURG_HOLDING_FIELDS = new Set([
 const HOLDING_KINDS = new Set(["specimen", "cast", "aggregate"]);
 const HAMBURG_WEIGHT_KINDS = new Set(["individual-holding", "aggregate-holding", "associated-material"]);
 const HAMBURG_PUBLICATION_STATES = new Set(["base-register", "supplement"]);
-const RECORD_MODEL_ORDER = ["catalog-item", "specimen", "catalog-number", "collection-entry"];
-const RECORD_MODELS = new Set(RECORD_MODEL_ORDER);
+const RECORD_MODELS = new Set([
+  "catalog-item", "specimen", "catalog-number", "collection-entry", "regional-census-fact", "table-a-specimen"
+]);
 const FACTUAL_FIELDS = [
   "id",
   "catalogId",
@@ -92,6 +120,10 @@ const FACTUAL_FIELDS = [
   "catalogNumber",
   "entryOrder",
   "reportedNumber",
+  "specimenId",
+  "australianMuseumRepresentation.status",
+  "australianMuseumRepresentation.representedOccurrences",
+  "australianMuseumRepresentation.notRepresentedOccurrences",
   "holdings[].designation",
   "holdings[].kind",
   "holdings[].description",
@@ -111,6 +143,12 @@ const FACTUAL_FIELDS = [
   "year",
   "dateOfDiscovery",
   "eventDate",
+  "olivineFa",
+  "pyroxeneFs",
+  "weathering",
+  "locality.code",
+  "locality.name",
+  "locality.coordinate",
   "catalogPage",
   "catalogPages[]",
   "section",
@@ -163,7 +201,7 @@ const SPECIMEN_CARD_CLAUSE_CARD_FIELDS = new Set(["holdingPath", "clause", "mass
 const SPECIMEN_CARD_COMPONENT_FIELDS = new Set(["holdingPath", "componentPath", "massPath"]);
 const SPECIMEN_CARD_CLAUSE_FIELDS = new Set(["textPath", "start", "end"]);
 const SHA256_HEX = /^[0-9a-f]{64}$/u;
-const SPECIMEN_CARD_SOURCE_CATALOG_SHA256 = "91694659e5f7210db10ffc42873c54d5d38d3e5a485d51c38072746faa7f41e0";
+const SPECIMEN_CARD_SOURCE_CATALOG_SHA256 = "46d8ea050f428cfd4ab633c7e29da1493aaef413cd6da0dc1054ec6275823584";
 const SPECIMEN_CARD_PROJECTION_SET_SHA256 = "45490022fc876f4df62c07110b3fa40a04c0a1edc6aec26797d616f7c159c263";
 const LINEAGE_ROOT_FIELDS = new Set(["metadata", "relationships"]);
 const LINEAGE_METADATA_FIELDS = new Set(["schemaVersion", "scope", "source", "collectionSeries", "methodology", "counts"]);
@@ -438,6 +476,7 @@ function matchesSearch(record, rawQuery) {
 
   const numericQuery = String(rawQuery || "").trim();
   if (/^\d+$/.test(numericQuery)) {
+    if (record.recordModel === "table-a-specimen" && String(record.weight?.grams) === numericQuery) return true;
     if (record.catalogNumber !== undefined && searchable(record.catalogNumber).split(/\s+/).includes(numericQuery)) return true;
     if (record.reportedNumber !== undefined && searchable(record.reportedNumber).split(/\s+/).includes(numericQuery)) return true;
     const yearTokens = searchable([record.year, record.dateOfDiscovery, record.eventDate].filter(Boolean).join(" ")).split(/\s+/).filter(Boolean);
@@ -528,6 +567,7 @@ function matchesSearch(record, rawQuery) {
 }
 
 function recordDesignations(record) {
+  if (record?.specimenId !== undefined) return record.specimenId ? [record.specimenId] : [];
   if (record?.catalogNumber !== undefined || record?.entryOrder !== undefined) return [];
   if (Array.isArray(record?.holdings)) {
     return record.holdings.map((holding) => holding.designation).filter(Boolean);
@@ -695,6 +735,23 @@ function hasValidHamburgAmendments(record) {
   return targetComponent?.kind === "individual-holding" && targetComponent.grams === amendment.targetWeight.grams;
 }
 
+function hasValidAustralianMuseumRepresentation(value) {
+  if (!hasExactFields(value, new Set(["status", "representedOccurrences", "notRepresentedOccurrences"]))) return false;
+  const represented = value.representedOccurrences;
+  const notRepresented = value.notRepresentedOccurrences;
+  if (!Number.isInteger(represented) || represented < 0 || !Number.isInteger(notRepresented) || notRepresented < 0 ||
+      represented + notRepresented === 0) return false;
+  const expectedStatus = represented === 0 ? "not-represented" : notRepresented === 0 ? "represented" : "mixed";
+  return value.status === expectedStatus;
+}
+
+function hasValidTableALocality(value) {
+  return hasExactFields(value, new Set(["code", "name", "coordinate"])) &&
+    typeof value.code === "string" && /^[A-Z]{3}$/u.test(value.code) &&
+    isLeakageSafeText(value.name) && value.name !== "" &&
+    (value.coordinate === null || (value.coordinate !== "" && isLeakageSafeText(value.coordinate)));
+}
+
 function recordFields(record, baseFields) {
   const fields = new Set(baseFields);
   if (Object.hasOwn(record, "metbull")) fields.add("metbull");
@@ -758,10 +815,17 @@ function compareCanonicalNullableNumber(left, right) {
   return left - right;
 }
 
+function canonicalModelSortOrder(recordModel) {
+  if (recordModel === "catalog-item") return 0;
+  if (recordModel === "specimen") return 1;
+  if (recordModel === "catalog-number") return 2;
+  return 3;
+}
+
 function compareCanonicalRecords(left, right, registry) {
   const leftModel = registry[left.catalogId].recordModel;
   const rightModel = registry[right.catalogId].recordModel;
-  const modelOrder = RECORD_MODEL_ORDER.indexOf(leftModel) - RECORD_MODEL_ORDER.indexOf(rightModel);
+  const modelOrder = canonicalModelSortOrder(leftModel) - canonicalModelSortOrder(rightModel);
   if (modelOrder) return modelOrder;
   if (leftModel === "catalog-item") {
     return left.catalogItem - right.catalogItem ||
@@ -772,7 +836,7 @@ function compareCanonicalRecords(left, right, registry) {
       compareCanonicalText(left.catalogNumber, right.catalogNumber) ||
       compareCanonicalText(left.name, right.name) || compareCanonicalText(left.id, right.id);
   }
-  if (leftModel === "collection-entry") {
+  if (["collection-entry", "regional-census-fact", "table-a-specimen"].includes(leftModel)) {
     return compareCanonicalText(left.catalogId, right.catalogId) ||
       left.entryOrder - right.entryOrder || compareCanonicalText(left.id, right.id);
   }
@@ -953,7 +1017,7 @@ function createCatalogRegistry(descriptors) {
 function normalizeCatalogRegistry(metadata) {
   requireSchema(isPlainObject(metadata) && isLeakageSafeTree(metadata));
   requireSchema(hasExactFields(metadata, CANONICAL_METADATA_FIELDS));
-  requireSchema(metadata.schemaVersion === 7 && metadata.scope === "facts-only" && hasFactualFields(metadata.factualFields));
+  requireSchema(metadata.schemaVersion === 8 && metadata.scope === "facts-only" && hasFactualFields(metadata.factualFields));
   requireSchema(Array.isArray(metadata.catalogs) && metadata.catalogs.length > 0 && hasValidSummary(metadata));
   metadata.catalogs.forEach(validateCanonicalDescriptor);
   requireSchema(new Set(metadata.catalogs.map((descriptor) => descriptor.id)).size === metadata.catalogs.length);
@@ -998,13 +1062,23 @@ function validateCatalog(catalog) {
         ? hasExactFields(record, recordFields(record, CATALOG_ITEM_RECORD_FIELDS))
         : recordModel === "catalog-number"
           ? hasExactFields(record, recordFields(record, CATALOG_NUMBER_RECORD_FIELDS))
-          : hasExactFields(record, recordFields(record, record.catalogId === "hamburg-1913"
-            ? HAMBURG_COLLECTION_ENTRY_RECORD_FIELDS : COLLECTION_ENTRY_RECORD_FIELDS)));
-    const dateField = recordModel === "catalog-number" ? "dateOfDiscovery" :
-      recordModel === "collection-entry" ? "eventDate" : "year";
-    ["name", "classification", "locality", dateField].forEach((field) =>
-      requireSchema(record[field] === null || (record[field] !== "" && isLeakageSafeText(record[field])))
-    );
+          : recordModel === "regional-census-fact"
+            ? hasExactFields(record, recordFields(record, REGIONAL_CENSUS_FACT_RECORD_FIELDS))
+            : recordModel === "table-a-specimen"
+              ? hasExactFields(record, recordFields(record, TABLE_A_SPECIMEN_RECORD_FIELDS)) &&
+                hasExactFields(record.weight, new Set(["grams"]))
+              : hasExactFields(record, recordFields(record, record.catalogId === "hamburg-1913"
+                ? HAMBURG_COLLECTION_ENTRY_RECORD_FIELDS : COLLECTION_ENTRY_RECORD_FIELDS)));
+    if (recordModel !== "table-a-specimen") {
+      const dateField = recordModel === "catalog-number" ? "dateOfDiscovery" :
+        ["collection-entry", "regional-census-fact"].includes(recordModel) ? "eventDate" : "year";
+      ["name", "classification", dateField].forEach((field) =>
+        requireSchema(record[field] === null || (record[field] !== "" && isLeakageSafeText(record[field])))
+      );
+      if (recordModel !== "regional-census-fact") {
+        requireSchema(record.locality === null || (record.locality !== "" && isLeakageSafeText(record.locality)));
+      }
+    }
     if (Object.hasOwn(record, "metbull")) requireSchema(hasValidMetbull(record.metbull, record.name));
     if (recordModel === "specimen") {
       requireSchema(record.designation === null || (record.designation !== "" && isLeakageSafeText(record.designation)));
@@ -1036,6 +1110,33 @@ function validateCatalog(catalog) {
           requireSchema(holding.description !== null && (holding.count !== null || holding.weight.grams !== null));
         }
       });
+    } else if (recordModel === "regional-census-fact") {
+      requireSchema(Number.isInteger(record.entryOrder) && record.entryOrder > 0);
+      const entryOrders = collectionEntryOrders[record.catalogId] || new Set();
+      requireSchema(!entryOrders.has(record.entryOrder));
+      entryOrders.add(record.entryOrder);
+      collectionEntryOrders[record.catalogId] = entryOrders;
+      requireSchema(record.reportedNumber === null || (record.reportedNumber !== "" && isLeakageSafeText(record.reportedNumber)));
+      requireSchema(record.section !== "" && isLeakageSafeText(record.section));
+      requireSchema(record.name !== "" && isLeakageSafeText(record.name));
+      requireSchema(hasValidAustralianMuseumRepresentation(record.australianMuseumRepresentation));
+    } else if (recordModel === "table-a-specimen") {
+      requireSchema(Number.isInteger(record.entryOrder) && record.entryOrder > 0);
+      const entryOrders = collectionEntryOrders[record.catalogId] || new Set();
+      requireSchema(!entryOrders.has(record.entryOrder));
+      entryOrders.add(record.entryOrder);
+      collectionEntryOrders[record.catalogId] = entryOrders;
+      const specimenIds = catalogNumbers[record.catalogId] || new Set();
+      requireSchema(typeof record.specimenId === "string" && /^[A-Z]{3,4}[0-9]{5}$/u.test(record.specimenId) &&
+        !specimenIds.has(record.specimenId));
+      specimenIds.add(record.specimenId);
+      catalogNumbers[record.catalogId] = specimenIds;
+      requireSchema(Number.isFinite(record.weight.grams) && record.weight.grams > 0);
+      requireSchema(record.classification !== "" && isLeakageSafeText(record.classification));
+      ["olivineFa", "pyroxeneFs", "weathering"].forEach((field) => requireSchema(
+        record[field] === null || (record[field] !== "" && isLeakageSafeText(record[field]))
+      ));
+      requireSchema(hasValidTableALocality(record.locality));
     } else {
       if (recordModel === "catalog-number") {
         requireSchema(record.catalogNumber !== "" && isLeakageSafeText(record.catalogNumber));
@@ -1079,7 +1180,7 @@ function validateCatalog(catalog) {
         requireSchema(hasValidHamburgAmendments(record));
       }
     }
-    if (recordModel === "catalog-number" || recordModel === "collection-entry") {
+    if (["catalog-number", "collection-entry", "regional-census-fact"].includes(recordModel)) {
       requireSchema(Array.isArray(record.catalogPages) && record.catalogPages.length > 0 && record.catalogPages.every((page, pageIndex) =>
         Number.isInteger(page) && page > 0 && registry[record.catalogId].sourcePages.includes(page) &&
         (pageIndex === 0 || page > record.catalogPages[pageIndex - 1])
@@ -1172,6 +1273,7 @@ function resolveLineageObservation(record, designationPath, massPath) {
       count: holding.count
     } : null;
   }
+  if (record.recordModel !== "catalog-number" && record.recordModel !== "collection-entry") return null;
   const match = massPath.match(/^holdings\[([0-9]+)\]\.weights\[([0-9]+)\]\.grams$/u);
   const holding = match ? record.holdings[Number(match[1])] : null;
   const weight = holding && match ? holding.weights[Number(match[2])] : null;
@@ -1457,7 +1559,7 @@ function lineageMassEndpoints(sourceRecords) {
       add(record, record.weight.grams, "weight.grams");
     } else if (record.recordModel === "catalog-item") {
       record.holdings.forEach((holding, index) => add(record, holding.weight.grams, `holdings[${index}].weight.grams`));
-    } else {
+    } else if (record.recordModel === "catalog-number" || record.recordModel === "collection-entry") {
       record.holdings.forEach((holding, holdingIndex) => holding.weights.forEach((weight, weightIndex) => {
         if (weight.kind && weight.kind !== "individual-holding") return;
         add(record, weight.grams, `holdings[${holdingIndex}].weights[${weightIndex}].grams`);
@@ -1504,7 +1606,7 @@ function lineageMassObservationCount(sourceRecords) {
     if (!record.metbull || typeof record.metbull !== "object") return;
     if (record.recordModel === "specimen") count += Number.isFinite(record.weight.grams) ? 1 : 0;
     else if (record.recordModel === "catalog-item") count += record.holdings.filter((holding) => Number.isFinite(holding.weight.grams)).length;
-    else count += record.holdings.reduce((sum, holding) => sum + holding.weights.filter((weight) =>
+    else if (record.recordModel === "catalog-number" || record.recordModel === "collection-entry") count += record.holdings.reduce((sum, holding) => sum + holding.weights.filter((weight) =>
       Number.isFinite(weight.grams) && (!weight.kind || weight.kind === "individual-holding")).length, 0);
   });
   return count;
@@ -1537,7 +1639,7 @@ function validateLineageCandidates(lineageData, sourceRecords, registry) {
   const inventorySummary = expectedSameInventoryRelationships(sourceRecords);
   const expectedPossible = expectedPossibleRelationships(sourceRecords);
   const inventoryObservationCount = lineageInventoryEndpoints(sourceRecords).length;
-  requireLineage(metadata.source.catalogSchemaVersion === 7 && metadata.source.recordCount === sourceRecords.length &&
+  requireLineage(metadata.source.catalogSchemaVersion === 8 && metadata.source.recordCount === sourceRecords.length &&
     metadata.source.catalogCount === Object.keys(registry).length && metadata.source.flattenedMassObservationCount === lineageMassObservationCount(sourceRecords) &&
     metadata.source.inventoryObservationCount === inventoryObservationCount);
   const relationshipIds = new Set();
@@ -1846,9 +1948,8 @@ function validateSpecimenCardManifest(manifest, sourceRecords, options = {}) {
   if (!hasExactFields(manifest, SPECIMEN_CARD_ROOT_FIELDS) || !Array.isArray(manifest.projections) ||
       !hasExactFields(manifest.metadata, SPECIMEN_CARD_METADATA_FIELDS) || !Array.isArray(sourceRecords)) return false;
   const metadata = manifest.metadata;
-  const catalogSchemaVersion = options.catalogSchemaVersion ?? 7;
   if (metadata.schemaVersion !== 3 || metadata.scope !== "reviewed-atomic-specimen-card-display-projections" ||
-      metadata.catalogSchemaVersion !== catalogSchemaVersion || metadata.sourceRecordCount !== sourceRecords.length ||
+      metadata.catalogSchemaVersion !== 8 || metadata.sourceRecordCount !== sourceRecords.length ||
       !SHA256_HEX.test(metadata.sourceCatalogSha256) || !Number.isInteger(metadata.projectionCount) ||
       metadata.projectionCount !== manifest.projections.length || !Number.isInteger(metadata.atomicCardCount) ||
       metadata.atomicCardCount < 0 || !Number.isInteger(metadata.sourceContextCardCount) ||
@@ -2196,7 +2297,7 @@ function prepareRecord(source, index, registry = catalogRegistry) {
     catalogId: cleanText(source.catalogId),
     name: cleanText(source.name),
     classification: cleanText(source.classification),
-    locality: cleanText(source.locality),
+    locality: recordModel === "table-a-specimen" ? null : cleanText(source.locality),
     confidence: normalizeConfidence(source.confidence),
     recordModel,
     catalogLabel: catalogLabel(registry[cleanText(source.catalogId)], cleanText(source.catalogId)),
@@ -2248,6 +2349,30 @@ function prepareRecord(source, index, registry = catalogRegistry) {
         }));
       }
     }
+  } else if (recordModel === "regional-census-fact") {
+    record.entryOrder = Number(source.entryOrder);
+    record.reportedNumber = cleanText(source.reportedNumber);
+    record.section = cleanText(source.section);
+    record.eventDate = cleanText(source.eventDate);
+    record.catalogPages = source.catalogPages.map(Number);
+    record.australianMuseumRepresentation = {
+      status: source.australianMuseumRepresentation.status,
+      representedOccurrences: source.australianMuseumRepresentation.representedOccurrences,
+      notRepresentedOccurrences: source.australianMuseumRepresentation.notRepresentedOccurrences
+    };
+  } else if (recordModel === "table-a-specimen") {
+    record.entryOrder = Number(source.entryOrder);
+    record.specimenId = cleanText(source.specimenId);
+    record.weight = { grams: Number(source.weight.grams) };
+    record.olivineFa = cleanText(source.olivineFa);
+    record.pyroxeneFs = cleanText(source.pyroxeneFs);
+    record.weathering = cleanText(source.weathering);
+    record.locality = {
+      code: cleanText(source.locality.code),
+      name: cleanText(source.locality.name),
+      coordinate: cleanText(source.locality.coordinate)
+    };
+    record.catalogPage = Number(source.catalogPage);
   } else {
     record.year = cleanText(source.year);
     record.catalogPage = source.catalogPage === null || source.catalogPage === "" ? null : Number(source.catalogPage);
@@ -2268,6 +2393,8 @@ function prepareRecord(source, index, registry = catalogRegistry) {
     record.catalogNumber === undefined ? null : `catalog no ${record.catalogNumber}`,
     record.entryOrder === undefined ? null : `collection entry ${record.entryOrder}`,
     record.reportedNumber === undefined ? null : `reported no ${record.reportedNumber}`,
+    record.specimenId === undefined ? null : `specimen id ${record.specimenId}`,
+    record.recordModel === "table-a-specimen" ? `reported mass ${record.weight.grams} grams` : null,
     ...recordDesignations(record),
     ...(record.holdings || []).flatMap((holding) => [
       holding.description,
@@ -2281,11 +2408,20 @@ function prepareRecord(source, index, registry = catalogRegistry) {
     record.metbull?.canonicalName,
     record.metbull?.alternateNameNote,
     record.classification,
-    record.locality,
+    typeof record.locality === "string" ? record.locality : null,
+    record.locality?.code,
+    record.locality?.name,
+    record.locality?.coordinate,
     record.year,
     record.dateOfDiscovery,
     record.eventDate,
     record.section,
+    record.olivineFa === undefined ? null : `olivine fa ${record.olivineFa}`,
+    record.pyroxeneFs === undefined ? null : `pyroxene fs ${record.pyroxeneFs}`,
+    record.weathering === undefined ? null : `weathering ${record.weathering}`,
+    ...(record.australianMuseumRepresentation ? regionalCensusFacts(record).flatMap(({ label, value }) => [label, value]) : []),
+    record.recordModel === "regional-census-fact" ? "regional census catalog observation" : null,
+    record.recordModel === "table-a-specimen" ? "table a individual specimen" : null,
     record.publicationState,
     ...(record.amendments || []).flatMap((amendment) => [
       amendment.kind, amendment.effectiveDate, amendment.targetHolding, amendment.resultingState
@@ -2451,6 +2587,8 @@ function recordCatalogPages(record) {
 function designationSortValue(record) {
   if (record.recordModel === "catalog-item" || Number.isInteger(record.catalogItem)) return record.catalogItem;
   if (record.recordModel === "catalog-number" || record.catalogNumber !== undefined) return record.catalogNumber;
+  if (record.recordModel === "table-a-specimen" || record.specimenId !== undefined) return record.specimenId;
+  if (record.recordModel === "regional-census-fact") return record.reportedNumber || record.entryOrder;
   if (record.recordModel === "collection-entry" || record.entryOrder !== undefined) return record.reportedNumber || record.entryOrder;
   return record.designation;
 }
@@ -2610,6 +2748,48 @@ function metbullPanelDetails(record) {
   };
 }
 
+function australianMuseumRepresentationLabel(status) {
+  return {
+    represented: "Represented in the Australian Museum",
+    "not-represented": "Not represented in the Australian Museum",
+    mixed: "Mixed representation in the Australian Museum"
+  }[status] || null;
+}
+
+function regionalCensusFacts(record) {
+  const representation = record?.australianMuseumRepresentation;
+  if (!representation) return [];
+  return [
+    { label: "Australian Museum representation", value: australianMuseumRepresentationLabel(representation.status) },
+    { label: "Represented occurrences", value: integerFormat.format(representation.representedOccurrences) },
+    { label: "Not represented occurrences", value: integerFormat.format(representation.notRepresentedOccurrences) }
+  ];
+}
+
+function tableASpecimenFacts(record) {
+  if (record?.recordModel !== "table-a-specimen") return [];
+  return [
+    { label: "Locality code", value: record.locality.code },
+    { label: "Coordinate", value: record.locality.coordinate },
+    { label: "Olivine Fa", value: record.olivineFa },
+    { label: "Pyroxene Fs", value: record.pyroxeneFs },
+    { label: "Weathering", value: record.weathering },
+    { label: "Source section", value: "Table A" }
+  ];
+}
+
+function appendMetaRow(card, label, value, className = "") {
+  const row = document.createElement("div");
+  if (className) row.className = className;
+  const term = document.createElement("dt");
+  const description = document.createElement("dd");
+  term.textContent = label;
+  description.textContent = value ? displayText(value) : "Not recorded";
+  if (!value) row.classList.add("unknown");
+  row.append(term, description);
+  card.querySelector(".record-meta").append(row);
+}
+
 function createRecordCard(recordOrDescriptor) {
   const descriptor = recordOrDescriptor?.parentRecord ? recordOrDescriptor : parentSpecimenCardDescriptor(recordOrDescriptor);
   const record = descriptor.parentRecord;
@@ -2617,8 +2797,12 @@ function createRecordCard(recordOrDescriptor) {
   const catalogItem = record.recordModel === "catalog-item";
   const catalogNumber = record.recordModel === "catalog-number";
   const collectionEntry = record.recordModel === "collection-entry";
+  const regionalCensus = record.recordModel === "regional-census-fact";
+  const tableASpecimen = record.recordModel === "table-a-specimen";
   card.classList.toggle("projected-specimen-card", descriptor.kind === "atomic");
-  card.classList.toggle("catalog-item-card", catalogItem || catalogNumber || collectionEntry);
+  card.classList.toggle("catalog-item-card", catalogItem || catalogNumber || collectionEntry || regionalCensus);
+  card.classList.toggle("regional-census-card", regionalCensus);
+  card.classList.toggle("table-a-specimen-card", tableASpecimen);
   card.querySelector(".designation").textContent = descriptor.projected
     ? lineageRecordLabel(record)
     : catalogItem
@@ -2627,7 +2811,19 @@ function createRecordCard(recordOrDescriptor) {
         ? `Catalog no. ${record.catalogNumber}`
         : collectionEntry
           ? record.reportedNumber ? `Reported no. ${record.reportedNumber}` : `Collection entry ${record.entryOrder}`
-          : record.designation || "No printed designation";
+          : regionalCensus
+            ? record.reportedNumber ? `Source number ${record.reportedNumber}` : `Regional census entry ${record.entryOrder}`
+            : tableASpecimen ? `Table A entry ${record.entryOrder}` : record.designation || "No printed designation";
+  const modelLabel = card.querySelector(".record-model-label");
+  if (regionalCensus) {
+    modelLabel.textContent = "Regional census/catalog observation, not a specimen or holding";
+    modelLabel.hidden = false;
+  } else if (tableASpecimen) {
+    modelLabel.textContent = "Individual specimen listed in Table A";
+    modelLabel.hidden = false;
+  } else {
+    modelLabel.remove();
+  }
   const specimenPosition = card.querySelector(".specimen-position");
   const specimenPositionLabel = specimenCardPositionLabel(descriptor);
   if (specimenPositionLabel) {
@@ -2636,9 +2832,13 @@ function createRecordCard(recordOrDescriptor) {
   } else {
     specimenPosition.remove();
   }
-  card.querySelector(".record-name").textContent = record.name ? displayText(record.name) : "Name not recorded";
+  const sourceNameLabel = card.querySelector(".source-name-label");
+  if (regionalCensus) sourceNameLabel.textContent = "Recorded regional name";
+  if (tableASpecimen) sourceNameLabel.textContent = "Exact specimen ID";
+  card.querySelector(".record-name").textContent = tableASpecimen
+    ? record.specimenId : record.name ? displayText(record.name) : "Name not recorded";
   const metbull = card.querySelector(".metbull-name");
-  const metbullDetails = metbullPanelDetails(record);
+  const metbullDetails = tableASpecimen ? null : metbullPanelDetails(record);
   if (metbullDetails) {
     metbull.querySelector("span").textContent = metbullDetails.label;
     const link = metbull.querySelector("a");
@@ -2656,9 +2856,9 @@ function createRecordCard(recordOrDescriptor) {
     metbull.remove();
   }
   const recordWeight = card.querySelector(".record-weight");
-  if (catalogItem || catalogNumber || collectionEntry) {
+  if (catalogItem || catalogNumber || collectionEntry || regionalCensus) {
     recordWeight.remove();
-    const holdings = specimenCardDescriptorHoldings(descriptor);
+    const holdings = regionalCensus ? [] : specimenCardDescriptorHoldings(descriptor);
     if (holdings.length && descriptor.projected) renderProjectedSpecimenCardContent(card, holdings);
     else if (holdings.length) renderHoldings(card, holdings, record.recordModel, "Holdings");
     else card.querySelector(".record-holdings").remove();
@@ -2668,13 +2868,20 @@ function createRecordCard(recordOrDescriptor) {
       : formatMass(record.weight.grams);
     card.querySelector(".record-holdings").remove();
   }
-  renderEarlierRecords(card, lineageEntriesForSpecimenCard(descriptor, earlierRecordsByLaterId.get(record.id) || []));
+  if (regionalCensus || tableASpecimen) {
+    card.querySelector(".lineage-row").remove();
+    card.querySelector(".earlier-records").remove();
+  } else {
+    renderEarlierRecords(card, lineageEntriesForSpecimenCard(descriptor, earlierRecordsByLaterId.get(record.id) || []));
+  }
   setMetaRow(card, ".classification-row", record.classification);
-  setMetaRow(card, ".locality-row", record.locality);
+  if (regionalCensus) card.querySelector(".locality-row").remove();
+  else setMetaRow(card, ".locality-row", tableASpecimen ? record.locality.name : record.locality);
   const dateRow = card.querySelector(".year-row");
   if (catalogNumber) dateRow.querySelector("dt").textContent = "Date of discovery";
-  if (collectionEntry) dateRow.querySelector("dt").textContent = "Event date";
-  setMetaRow(card, ".year-row", catalogNumber ? record.dateOfDiscovery : collectionEntry ? record.eventDate : record.year);
+  if (collectionEntry || regionalCensus) dateRow.querySelector("dt").textContent = "Event date";
+  if (tableASpecimen) dateRow.remove();
+  else setMetaRow(card, ".year-row", catalogNumber ? record.dateOfDiscovery : collectionEntry || regionalCensus ? record.eventDate : record.year);
   if (collectionEntry) {
     const sectionRow = document.createElement("div");
     sectionRow.className = "section-row";
@@ -2698,10 +2905,19 @@ function createRecordCard(recordOrDescriptor) {
       });
     }
   }
+  if (regionalCensus) {
+    appendMetaRow(card, "Source section", record.section, "regional-fact-row");
+    regionalCensusFacts(record).forEach(({ label, value }) => appendMetaRow(card, label, value, "regional-fact-row"));
+  }
+  if (tableASpecimen) {
+    card.querySelector(".locality-row dt").textContent = "Locality name";
+    tableASpecimenFacts(record).forEach(({ label, value }) => appendMetaRow(card, label, value, "table-a-fact-row"));
+  }
   const sourceLabel = record.catalogLabel || catalogLabel(catalogRegistry[record.catalogId], record.catalogId);
   const citedPages = recordCatalogPages(record);
+  const sourceSection = tableASpecimen ? " · Table A" : regionalCensus ? ` · ${record.section}` : "";
   card.querySelector(".catalog-reference").textContent = citedPages.length
-    ? `Source: ${sourceLabel} · ${citedPages.length === 1 ? "p." : "pp."} ${citedPages.join(", ")}`
+    ? `Source: ${sourceLabel}${sourceSection} · ${citedPages.length === 1 ? "p." : "pp."} ${citedPages.join(", ")}`
     : `Source: ${sourceLabel} · page not recorded`;
   const confidence = card.querySelector(".confidence");
   if (record.confidence === "high") {
@@ -3252,6 +3468,7 @@ if (typeof module !== "undefined" && module.exports) {
     parseUrlFilters,
     parseSearchQuery,
     prepareRecord,
+    regionalCensusFacts,
     recordDesignations,
     recordCatalogPages,
     recordMasses,
@@ -3270,6 +3487,7 @@ if (typeof module !== "undefined" && module.exports) {
     specimenCardPositionLabel,
     specimenCardContextEntries,
     specimenCardSourceMasses,
+    tableASpecimenFacts,
     weightSortValue,
     validateCatalog,
     validateFolioManifest,

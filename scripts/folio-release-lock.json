@@ -112,6 +112,13 @@
       "basisUrl": null,
       "pageIds": []
     },
+    "hodge-smith-1939": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "basis": null,
+      "basisUrl": null,
+      "pageIds": []
+    },
     "hogbom-1902": {
       "displayPolicy": "blocked",
       "rightsStatus": "undetermined",
@@ -273,6 +280,13 @@
       "pageIds": []
     },
     "usnm-1886": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "basis": null,
+      "basisUrl": null,
+      "pageIds": []
+    },
+    "victoria-land-1982": {
       "displayPolicy": "blocked",
       "rightsStatus": "undetermined",
       "basis": null,

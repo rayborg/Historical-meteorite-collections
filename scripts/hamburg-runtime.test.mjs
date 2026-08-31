@@ -44,7 +44,7 @@ test("long Hamburg fact labels stack above values instead of sharing narrow colu
   assert.match(styles, /\.record-meta \.hamburg-fact-row dt \{[^}]*overflow-wrap: anywhere;/u);
 });
 
-test("schema7 runtime validates and preserves Hamburg additive facts", () => {
+test("schema8 runtime validates and preserves Hamburg additive facts", () => {
   assert.equal(app.validateCatalog(catalog), catalog);
   assert.equal(hamburg.length, 147);
 
@@ -101,7 +101,7 @@ test("Hamburg search, filter masses, supplement, and amendment facts remain dist
 
 test("Hamburg projection runtime emits all 218 components across 142 parents and keeps five observations unprojected", () => {
   const projectionIndex = app.deriveSpecimenCardProjectionIndex(projections, records, {
-    catalogSchemaVersion: 7,
+    catalogSchemaVersion: 8,
     sourceCatalogSha256: projections.metadata.sourceCatalogSha256,
   });
   const hamburgIds = new Set(hamburg.map(({ id }) => id));

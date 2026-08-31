@@ -1,14 +1,14 @@
 # Historical Meteorite Collection
 
 <!-- release-summary:readme-overview:start -->
-This repository is a dependency-free, facts-only index of 13,819 source observations from 35 historical meteorite catalogs. The coordinated catalog uses public metadata schema 7 and supports 4 source-specific record models: `catalog-item`, `catalog-number`, `collection-entry`, `specimen`.
+This repository is a dependency-free, facts-only index of 14,176 source observations from 37 historical meteorite catalogs. The coordinated catalog uses public metadata schema 8 and supports 6 source-specific record models: `catalog-item`, `catalog-number`, `collection-entry`, `regional-census-fact`, `specimen`, `table-a-specimen`.
 <!-- release-summary:readme-overview:end -->
 
 The repository also publishes [`data/specimen-lineages.json`](./data/specimen-lineages.json), a deterministic index that distinguishes same collection inventory IDs across consecutive editions from possible matches across separate collection sources. Same-inventory continuity is series-scoped and does not infer custody or ownership. Cross-source candidates retain public review decisions from [`data/specimen-lineage-reviews.json`](./data/specimen-lineage-reviews.json) and do not assert physical identity, custody, or ownership transfer. The separate [`data/specimen-card-projections.json`](./data/specimen-card-projections.json) manifest identifies reviewed source holdings that may be displayed as individual specimen cards without splitting or replacing their parent observations.
 
 A searchable transcription of the 1976 Huss Meteorite Collection catalog, compiled and published by Glenn Huss.
 
-The other configured sources identify their compilers without inferring a publisher: Jean Andre Henri Lucas for 1813; E. F. F. Chladni, with a Vienna appendix by Karl von Schreibers, for 1819; E. F. F. Chladni for 1825; Wilhelm Haidinger for 1859; Otto Buchner for 1863; A. E. Nordenskiöld for 1870; Henry A. Ward for 1881; Valentine Ball for 1882; F. W. Clarke for 1886; Edmund Otis Hovey for 1896; Henry S. Washington for 1897; Wirt Tassin for 1902; A. G. Högbom for 1902; Oliver Cummings Farrington for 1903; Henry A. Ward for 1904; R. Schreiter for 1912; Warren M. Foote for 1912; C. Anderson and E. Horn for their respective 1913 catalogs; Oliver Cummings Farrington for 1916; George P. Merrill for 1916; M. Kantor for 1920; G. T. Prior for 1923; Lucas Fernández Navarro for the Madrid catalog of 1923; Charles Palache for 1926; H. H. Nininger for 1933; Chester A. Reeds for 1937; I. S. Astapowitsch for 1938; Virgil E. Barnes for 1940; H. H. Nininger and Addie D. Nininger for 1950; Brian Mason for 1964; Glenn I. Huss for 1986; the Kanagawa Prefectural Museum of Natural History for 1996; and the Buseck Center for Meteorite Studies, Arizona State University, for the September 2024 ASU dataset.
+The other configured sources identify their compilers without inferring a publisher: Jean Andre Henri Lucas for 1813; E. F. F. Chladni, with a Vienna appendix by Karl von Schreibers, for 1819; E. F. F. Chladni for 1825; Wilhelm Haidinger for 1859; Otto Buchner for 1863; A. E. Nordenskiöld for 1870; Henry A. Ward for 1881; Valentine Ball for 1882; F. W. Clarke for 1886; Edmund Otis Hovey for 1896; Henry S. Washington for 1897; Wirt Tassin for 1902; A. G. Högbom for 1902; Oliver Cummings Farrington for 1903; Henry A. Ward for 1904; R. Schreiter for 1912; Warren M. Foote for 1912; C. Anderson and E. Horn for their respective 1913 catalogs; Oliver Cummings Farrington for 1916; George P. Merrill for 1916; M. Kantor for 1920; G. T. Prior for 1923; Lucas Fernández Navarro for the Madrid catalog of 1923; Charles Palache for 1926; H. H. Nininger for 1933; Chester A. Reeds for 1937; I. S. Astapowitsch for 1938; T. Hodge-Smith for 1939; Virgil E. Barnes for 1940; H. H. Nininger and Addie D. Nininger for 1950; Brian Mason for 1964; Ursula B. Marvin and Brian Mason for 1982; Glenn I. Huss for 1986; the Kanagawa Prefectural Museum of Natural History for 1996; and the Buseck Center for Meteorite Studies, Arizona State University, for the September 2024 ASU dataset.
 
 This public facts-only release was generated from the accepted canonical source integrations and retains their reviewed identity and source-name decisions.
 
@@ -36,7 +36,7 @@ node scripts/test-multicatalog.cjs
 node --test scripts/*.test.mjs
 ```
 
-The validator checks both synthetic rejection fixtures and the real catalog, manifest, and folio files. The runtime harness contains 117 tests.
+The validator checks both synthetic rejection fixtures and the real catalog, manifest, and folio files. The standalone runtime harness contains 118 tests.
 
 After changing either public data file, run `node scripts/sync-release-summary.mjs --write`; use `--json` to inspect the derived release summary without changing documentation.
 
@@ -52,7 +52,7 @@ All runtime URLs are relative, so the site works at a GitHub Pages project subpa
 
 ## Public Data Scope
 
-The browser loads factual records only from `./data/catalog.json`. The schema-7 root contract is `{ metadata, records }`. Every descriptor declares one of the four record models below.
+The browser loads factual records only from `./data/catalog.json`. The schema-8 root contract is `{ metadata, records }`. Every descriptor declares one of the six record models below.
 
 A `specimen` record contains exactly:
 
@@ -88,7 +88,26 @@ holdings, name, classification, locality, eventDate, confidence
 
 Its holdings contain `description`, `provenance`, `count`, and `weights`; every numeric weight contains `grams`. The weights array may be empty when a historical or ambiguous mass has no supported numeric conversion; independently structured factual description prose may still retain the source-reported mass statement. `entryOrder` preserves source order. `reportedNumber` may be null or repeated because the source may omit, restart, or duplicate printed numbering.
 
-Schema 7 also permits reviewed collection-entry weight semantics used by Hamburg: a weight may add `kind`; a holding may add `reportedTotalWeight` and `representations`; and a record may add `reportedTotalWeight`, `publicationState`, and `amendments`. These fields preserve whether a figure is an individual or aggregate holding, distinguish the printed base register from a supplement, and record a source-reported amendment without replacing the base observation.
+Schema 8 also permits reviewed collection-entry weight semantics used by Hamburg: a weight may add `kind`; a holding may add `reportedTotalWeight` and `representations`; and a record may add `reportedTotalWeight`, `publicationState`, and `amendments`. These fields preserve whether a figure is an individual or aggregate holding, distinguish the printed base register from a supplement, and record a source-reported amendment without replacing the base observation.
+
+A `regional-census-fact` record contains exactly:
+
+```text
+id, catalogId, entryOrder, reportedNumber, section, name, classification,
+eventDate, australianMuseumRepresentation, catalogPages, confidence
+```
+
+Hodge-Smith's 84 records are regional census/catalog observations, not specimen cards, holdings, custody records, or claims about physical objects. `australianMuseumRepresentation` contains only the controlled `status` values `represented`, `not-represented`, or `mixed` and the source occurrence counts `representedOccurrences` and `notRepresentedOccurrences`. These records have no mass or holdings. The interface shows the source number and section, classification and event date, representation status and counts, differing reviewed current name where present, and catalog-page citation.
+
+A `table-a-specimen` record contains exactly:
+
+```text
+id, catalogId, entryOrder, specimenId, weight: { grams }, classification,
+olivineFa, pyroxeneFs, weathering, locality: { code, name, coordinate },
+catalogPage, confidence
+```
+
+The 273 Victoria Land Table A records are source-identified individual specimens. The interface shows the exact specimen ID, one reported mass, classification, locality name/code/coordinate, olivine Fa, pyroxene Fs, weathering, Table A, and the cited page. These records carry no source-name or MetBull mapping and make no current-name, lineage, custody, or ownership claim.
 
 The current catalog contains:
 
@@ -108,6 +127,7 @@ The current catalog contains:
 | `foote-1912` | `collection-entry` | 205 | 35 | 25 |
 | `haidinger-1859` | `collection-entry` | 137 | 6 | 5 |
 | `hamburg-1913` | `collection-entry` | 147 | 27 | 11 |
+| `hodge-smith-1939` | `regional-census-fact` | 84 | 25 | 19 |
 | `hogbom-1902` | `collection-entry` | 86 | 3 | 2 |
 | `hovey-1896` | `catalog-number` | 25 | 7 | 7 |
 | `huss-1976` | `specimen` | 1,078 | 46 | 46 |
@@ -127,10 +147,11 @@ The current catalog contains:
 | `schreiter-1912` | `collection-entry` | 162 | 18 | 8 |
 | `tassin-1902` | `collection-entry` | 340 | 26 | 24 |
 | `usnm-1886` | `collection-entry` | 349 | 11 | 11 |
+| `victoria-land-1982` | `table-a-specimen` | 273 | 101 | 4 |
 | `ward-1881` | `collection-entry` | 3 | 1 | 1 |
 | `ward-1904` | `collection-entry` | 697 | 74 | 74 |
 | `washington-1897` | `collection-entry` | 201 | 4 | 4 |
-| **Total** |  | **13,819** | **1,321** | **1,156** |
+| **Total** |  | **14,176** | **1,447** | **1,179** |
 <!-- release-summary:readme-catalog-table:end -->
 
 Metadata source-page coverage is not a claim that every covered page contains a record. Some covered pages are introductory or narrative-only.
@@ -155,17 +176,17 @@ Chladni 1825 pages 200-207 are introductory folios. Haidinger 1859 page 21 intro
 
 Nininger 1933 covers printed pages 1-20, and the reviewed Nininger 1950 collection-catalog range covers printed pages 26-104 through its terminal entry. These ranges summarize current metadata and citations without merging source observations.
 
-Records are source observations, not canonical meteorites or physical specimens. Equal names, designations, masses, or page numbers do not merge observations across catalogs. Statistics count each parent record once and sum every reported numeric mass once without multiplying by holding count.
+Records are source observations, not canonical meteorites. A `table-a-specimen` observation explicitly describes one source-identified individual specimen; a `regional-census-fact` explicitly does not. Equal names, designations, masses, or page numbers do not merge observations across catalogs. Statistics count each parent record once, count every Victoria Land mass once, include no Hodge-Smith mass, and never multiply a reported mass by holding count.
 
 ### Reviewed Specimen Cards
 
-`specimen-card-projections.json` is a schema-3 display-only positive allowlist. Every card references an immutable parent observation and exact public holding, then uses exactly one evidence variant: a reviewed UTF-16 clause span in an already-public description or designation, or an exact typed Hamburg `componentPath`. It does not create observation or canonical-specimen IDs or copy source prose into the manifest. Every projected individual component renders as its own adjacent card in source order. Weighted cards show only `Specimen weight` and the formatted value; massless prose-supported cards may show `Specimen details` and their exact reviewed clause. Grouped Holdings blocks, aggregate components, associated material, representations, counts, ranges, totals, and otherwise unprojected material remain parent-record audit context and are not emitted on projected specimen cards.
+`specimen-card-projections.json` is a schema-3 display-only positive allowlist whose metadata binds the schema-8 catalog, its 14,176 records, and its exact source hash. Every card references an immutable parent observation and exact public holding, then uses exactly one evidence variant: a reviewed UTF-16 clause span in an already-public description or designation, or an exact typed Hamburg `componentPath`. It does not create observation or canonical-specimen IDs or copy source prose into the manifest. Every projected individual component renders as its own adjacent card in source order. Weighted cards show only `Specimen weight` and the formatted value; massless prose-supported cards may show `Specimen details` and their exact reviewed clause. Grouped Holdings blocks, aggregate components, associated material, representations, counts, ranges, totals, and otherwise unprojected material remain parent-record audit context and are not emitted on projected specimen cards.
 
-The manifest currently covers 1,955 parent observations and 6,675 atomic specimen cards, including 134 source-supported specimens without normalized masses, plus 1,657 source-context audit partitions that are not rendered as specimens. Hamburg contributes 218 component cards across 142 projected parents, including 36 multi-card parents; its 5 context-only observations remain catalog observations, and all 142 projected parents retain non-displayed context partitions. The 4 aggregate components, 5 associated-material components, and 26 thin-section representations are excluded from specimen cards. Madrid contributes 23 projected multi-holding parents and 54 atomic specimen cards; its 5 context partitions and 17 grouped holdings are not displayed as individual specimens. Reeds 1937 entry 366 renders ten ordered specimen cards. Prior 1923 entry 630 renders seventeen cards for direct accession-bearing specimen clauses, including five uncertain-size clauses without normalized grams; its preamble, ranges, grouped counts, aggregate totals, and unmatched normalized values remain audit context rather than specimen cards. Search results continue to count distinct parent observations, homepage statistics remain based on all 13,819 parent observations across 35 catalogs, citations remain parent-scoped, lineage is routed only by an exact mass path, parent reported totals are not repeated, and the Hamburg amendment appears only on its exact target component card.
+The manifest currently covers 1,955 parent observations and 6,675 atomic specimen cards, including 134 source-supported specimens without normalized masses, plus 1,657 source-context audit partitions that are not rendered as specimens. Hamburg contributes 218 component cards across 142 projected parents, including 36 multi-card parents; its 5 context-only observations remain catalog observations, and all 142 projected parents retain non-displayed context partitions. The 4 aggregate components, 5 associated-material components, and 26 thin-section representations are excluded from specimen cards. Madrid contributes 23 projected multi-holding parents and 54 atomic specimen cards; its 5 context partitions and 17 grouped holdings are not displayed as individual specimens. Reeds 1937 entry 366 renders ten ordered specimen cards. Prior 1923 entry 630 renders seventeen cards for direct accession-bearing specimen clauses, including five uncertain-size clauses without normalized grams; its preamble, ranges, grouped counts, aggregate totals, and unmatched normalized values remain audit context rather than specimen cards. The unchanged allowlist remains atomic-only and does not project either schema-8 model. Search results continue to count distinct parent observations, homepage statistics are based on all 14,176 parent observations across 37 catalogs, citations remain parent-scoped, lineage is routed only by an exact mass path, parent reported totals are not repeated, and the Hamburg amendment appears only on its exact target component card.
 
 ### Reviewed MetBull Harmonization
 
-Any of the four record models may additionally carry one optional `metbull` object:
+Records with a reviewed source-name identity may additionally carry one optional `metbull` object:
 
 ```text
 matchType, canonicalName, meteoriteCode, metbullUrl, alternateNameNote
@@ -176,10 +197,10 @@ matchType, canonicalName, meteoriteCode, metbullUrl, alternateNameNote
 The historical `name`, designation/catalog identifier fields, printed private weight strings, and numeric source weights are never replaced by this object. Resolved reviews show a linked **Current Meteoritical Bulletin name** only when it differs substantively from the displayed source name; comparison uses Unicode NFC, collapsed whitespace, and locale-aware lowercase solely to suppress redundant panels. Unresolved reviews continue to show a non-linked review status. No client, build, or export path fuzzy-matches names or infers identity.
 
 <!-- release-summary:readme-metbull:start -->
-The current release includes reviewed MetBull harmonization for 10,479 of 13,819 records: 10,238 have a resolved current identity and 241 remain explicitly unresolved. 13 records currently have a null `name` value.
+The current release includes reviewed MetBull harmonization for 10,537 of 14,176 records: 10,296 have a resolved current identity and 241 remain explicitly unresolved. 13 records currently have a null `name` value.
 <!-- release-summary:readme-metbull:end -->
 
-The remaining 3,340 records are pending observations without reviewed MetBull mappings.
+The remaining 3,639 records are pending observations without reviewed MetBull mappings. Victoria Land's 273 Table A specimens intentionally have no MetBull mapping or current-name panel.
 
 Validated continuation evidence recovers formerly blank source names where supported; it does not infer modern identity.
 
@@ -225,6 +246,7 @@ Any missing, blocked, incomplete, contradictory, malformed, or unsafe value deni
 | `foote-1912` | blocked | undetermined | 0 |
 | `haidinger-1859` | display | public-domain | 6 |
 | `hamburg-1913` | blocked | undetermined | 0 |
+| `hodge-smith-1939` | blocked | undetermined | 0 |
 | `hogbom-1902` | blocked | undetermined | 0 |
 | `hovey-1896` | display | public-domain | 7 |
 | `huss-1976` | blocked | undetermined | 0 |
@@ -244,6 +266,7 @@ Any missing, blocked, incomplete, contradictory, malformed, or unsafe value deni
 | `schreiter-1912` | blocked | undetermined | 0 |
 | `tassin-1902` | blocked | undetermined | 0 |
 | `usnm-1886` | blocked | undetermined | 0 |
+| `victoria-land-1982` | blocked | undetermined | 0 |
 | `ward-1881` | blocked | undetermined | 0 |
 | `ward-1904` | blocked | undetermined | 0 |
 | `washington-1897` | blocked | undetermined | 0 |
@@ -261,6 +284,8 @@ Foote 1912, Ward 1904, and Farrington 1916 are likewise facts-only releases. The
 Anderson 1913, Kantor 1920, and Astapovich 1938 are also facts-only releases. Their source images, OCR, source filenames, private notes, paths, folios, and media remain excluded; all three are blocked with undetermined rights and publish no media URLs.
 
 Hamburg 1913 is also facts-only. Its source scans, OCR, transcription files, private notes and evidence, filenames, paths, folios, and media remain excluded. It is blocked with undetermined rights, has no public folio pages or assets, and publishes only the structured facts and citations described above.
+
+Hodge-Smith 1939 and Victoria Land 1982 are facts-only and blocked/undetermined with no public folios or media. Their source scans or PDFs, OCR/transcriptions, filenames, notes, private review material, paths, derivatives, and working files remain excluded. The public payload contains only the structured regional census facts and Table A specimen facts described above.
 
 <!-- release-summary:readme-public-folios:start -->
 Reviewed folio `pageId` values are intentionally public in `folios.json`, and the public repository contains only the 49 selected, manifest-verified folio derivatives under `assets/folios/`.

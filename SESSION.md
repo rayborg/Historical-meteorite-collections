@@ -9,7 +9,7 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 ## Current State
 
 <!-- release-summary:session-current-state:start -->
-- Schema 7 contains 13,819 facts-only records across 35 catalogs.
+- Schema 8 contains 14,176 facts-only records across 37 catalogs.
 
 | `catalogId` | Record model | Records | Metadata source pages | Pages cited by records |
 | --- | --- | ---: | ---: | ---: |
@@ -26,6 +26,7 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 | `foote-1912` | `collection-entry` | 205 | 35 | 25 |
 | `haidinger-1859` | `collection-entry` | 137 | 6 | 5 |
 | `hamburg-1913` | `collection-entry` | 147 | 27 | 11 |
+| `hodge-smith-1939` | `regional-census-fact` | 84 | 25 | 19 |
 | `hogbom-1902` | `collection-entry` | 86 | 3 | 2 |
 | `hovey-1896` | `catalog-number` | 25 | 7 | 7 |
 | `huss-1976` | `specimen` | 1,078 | 46 | 46 |
@@ -45,20 +46,23 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 | `schreiter-1912` | `collection-entry` | 162 | 18 | 8 |
 | `tassin-1902` | `collection-entry` | 340 | 26 | 24 |
 | `usnm-1886` | `collection-entry` | 349 | 11 | 11 |
+| `victoria-land-1982` | `table-a-specimen` | 273 | 101 | 4 |
 | `ward-1881` | `collection-entry` | 3 | 1 | 1 |
 | `ward-1904` | `collection-entry` | 697 | 74 | 74 |
 | `washington-1897` | `collection-entry` | 201 | 4 | 4 |
-| **Total** |  | **13,819** | **1,321** | **1,156** |
+| **Total** |  | **14,176** | **1,447** | **1,179** |
 
-- Metadata covers 1,321 catalog-scoped source pages; records cite 1,156 of them.
+- Metadata covers 1,447 catalog-scoped source pages; records cite 1,179 of them.
 - Nininger coverage is derived without page-boundary assumptions: `nininger-1933` has 171 records; its metadata source pages span 1-20, and its record citations span 1-11. `nininger-1950` has 1,678 records; its metadata source pages span 26-104, and its record citations span 26-104.
 - Public folios use schema 2 and expose 49 display pages across 5 catalogs: `chladni-1819` (12 pages, `public-domain`); `haidinger-1859` (6 pages, `public-domain`); `hovey-1896` (7 pages, `public-domain`); `lucas-1813` (3 pages, `public-domain`); `nininger-1933` (21 pages, `no-copyright-us`).
-- Blocked folio catalogs are: `anderson-1913` (0 pages, `undetermined`); `astapovich-1938` (0 pages, `undetermined`); `asu-2024-09` (0 pages, `undetermined`); `ball-1882` (0 pages, `undetermined`); `barnes-1940` (0 pages, `undetermined`); `buchner-1863` (0 pages, `undetermined`); `chladni-1825` (0 pages, `undetermined`); `farrington-1903` (0 pages, `undetermined`); `farrington-1916` (0 pages, `undetermined`); `foote-1912` (0 pages, `undetermined`); `hamburg-1913` (0 pages, `undetermined`); `hogbom-1902` (0 pages, `undetermined`); `huss-1976` (0 pages, `undetermined`); `huss-1986` (0 pages, `undetermined`); `kanagawa-1996` (0 pages, `undetermined`); `kantor-1920` (0 pages, `undetermined`); `madrid-1923` (0 pages, `undetermined`); `mason-1964` (0 pages, `undetermined`); `merrill-1916` (0 pages, `undetermined`); `nininger-1950` (0 pages, `undetermined`); `nordenskiold-1870` (0 pages, `undetermined`); `palache-1926` (0 pages, `undetermined`); `prior-1923` (0 pages, `undetermined`); `reeds-1937` (0 pages, `undetermined`); `schreiter-1912` (0 pages, `undetermined`); `tassin-1902` (0 pages, `undetermined`); `usnm-1886` (0 pages, `undetermined`); `ward-1881` (0 pages, `undetermined`); `ward-1904` (0 pages, `undetermined`); `washington-1897` (0 pages, `undetermined`).
-- Reviewed MetBull harmonization covers 10,479 of 13,819 records: 10,238 resolved and 241 explicitly unresolved.
+- Blocked folio catalogs are: `anderson-1913` (0 pages, `undetermined`); `astapovich-1938` (0 pages, `undetermined`); `asu-2024-09` (0 pages, `undetermined`); `ball-1882` (0 pages, `undetermined`); `barnes-1940` (0 pages, `undetermined`); `buchner-1863` (0 pages, `undetermined`); `chladni-1825` (0 pages, `undetermined`); `farrington-1903` (0 pages, `undetermined`); `farrington-1916` (0 pages, `undetermined`); `foote-1912` (0 pages, `undetermined`); `hamburg-1913` (0 pages, `undetermined`); `hodge-smith-1939` (0 pages, `undetermined`); `hogbom-1902` (0 pages, `undetermined`); `huss-1976` (0 pages, `undetermined`); `huss-1986` (0 pages, `undetermined`); `kanagawa-1996` (0 pages, `undetermined`); `kantor-1920` (0 pages, `undetermined`); `madrid-1923` (0 pages, `undetermined`); `mason-1964` (0 pages, `undetermined`); `merrill-1916` (0 pages, `undetermined`); `nininger-1950` (0 pages, `undetermined`); `nordenskiold-1870` (0 pages, `undetermined`); `palache-1926` (0 pages, `undetermined`); `prior-1923` (0 pages, `undetermined`); `reeds-1937` (0 pages, `undetermined`); `schreiter-1912` (0 pages, `undetermined`); `tassin-1902` (0 pages, `undetermined`); `usnm-1886` (0 pages, `undetermined`); `victoria-land-1982` (0 pages, `undetermined`); `ward-1881` (0 pages, `undetermined`); `ward-1904` (0 pages, `undetermined`); `washington-1897` (0 pages, `undetermined`).
+- Reviewed MetBull harmonization covers 10,537 of 14,176 records: 10,296 resolved and 241 explicitly unresolved.
 - Records currently having a null `name` value: 13.
 <!-- release-summary:session-current-state:end -->
 
-- The remaining 3,340 records are pending observations without reviewed MetBull mappings.
+- The remaining 3,639 records are pending observations without reviewed MetBull mappings.
+- Hodge-Smith 1939 contributes 84 `regional-census-fact` observations: 77 numbered Australian falls and 7 additional falls, with 58 resolved reviews and 26 pending records. They expose controlled Australian Museum representation status and occurrence counts but no specimen, holding, mass, custody, or ownership claim.
+- Victoria Land 1982 contributes 273 individual `table-a-specimen` observations from Table A on cited pages 89-92. Exact specimen IDs, one mass per specimen, classifications, localities, mineral chemistry, weathering, and citations are public; MetBull/current-name and lineage claims are absent. The masses total 969,562.2 g and are counted once each.
 - Chladni 1825 pages 200-207 are introductory folios.
 - Tassin 1902 metadata includes plate page 671 and introductory page 673; its 340 entries cite pages 675-698.
 - Schreiter 1912 metadata spans pages 58-75; its 162 entries cite pages 66-73.
@@ -82,6 +86,8 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 
 ## Latest Completed Catalogs
 
+- `hodge-smith-1939` integrates T. Hodge-Smith, *Australian Meteorites* (1939), with 84 regional census/catalog observations that are explicitly not specimen cards or holdings.
+- `victoria-land-1982` integrates Ursula B. Marvin and Brian Mason, *Catalog of Meteorites from Victoria Land, Antarctica, 1978-1980* (1982), with 273 individual Table A specimens.
 - `hamburg-1913` integrates E. Horn, *Die Meteoritensammlung des Mineralogisch-Geologischen Instituts zu Hamburg* (1913), with 147 fully reviewed `collection-entry` observations: 98 resolved and 49 unresolved.
 - `madrid-1923` integrates Lucas Fernández Navarro, *Los Meteoritos del Museo de Madrid* (1923), with 130 fully reviewed facts-only `collection-entry` observations, 168 holdings, 84 resolved MetBull mappings, and 46 unresolved reviews.
 - `anderson-1913` integrates C. Anderson, *A Catalogue and Bibliography of Australian Meteorites, with Census and Taxonomy* (1913), with 57 fully reviewed facts-only `collection-entry` observations: 52 resolved and 5 unresolved.
@@ -106,8 +112,8 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 
 ## Active Work State
 
-- The accepted canonical integrations are the source for the current 35-catalog, 13,819-record facts-only public candidate, which retains 49 reviewed public folios.
-- Every reviewed record card now exposes its MetBull review: resolved canonical names are linked even when equal to source names, and unresolved reviews are explicitly shown without a link. The homepage links to the dedicated 35-card catalog directory and separately to the bibliography master list.
+- The accepted canonical integrations are the source for the current 37-catalog, 14,176-record schema-8 facts-only public candidate, which retains 49 reviewed public folios.
+- Reviewed cards suppress equal source/current names and expose differing reviewed names or unresolved review status. Victoria Land cards intentionally expose no current-name or lineage claim. The homepage links to the dedicated 37-card catalog directory and separately to the bibliography master list.
 - No release-blocking validation issue remains. Any future public change must still be produced from the private canonical data and pass deterministic byte comparison and the facts-only privacy checks.
 
 ## Preservation And Data Rules
@@ -155,11 +161,11 @@ Distinct specimens with the same meteorite name and similar mass must not be col
 
 ## Immediate Next Steps
 
-1. Preserve the current 35-catalog facts-only public release candidate. Commit or push only when explicitly requested.
+1. Preserve the current 37-catalog facts-only public release candidate. Commit or push only when explicitly requested.
 2. Keep all currently blocked catalogs, including Madrid 1923, Anderson 1913, Kantor 1920, Astapovich 1938, Foote 1912, Ward 1904, and Farrington 1916, blocked unless separate catalog-specific rights reviews explicitly authorize exact ordered page sets; source age or online availability alone is insufficient.
-3. Select the next processable bibliography control only after preserving and validating the current 35-catalog release candidate.
+3. Select the next processable bibliography control only after preserving and validating the current 37-catalog release candidate.
 4. Resolve the missing scan for `SP1949-0039` (currently MCB-107) and correct the source evidence for MCB-4 and MCB-5 when primary evidence is available.
-5. Keep schema 7 validation, deterministic private/public equality, release summaries, lineage checks, folio hashes, Node tests, runtime checks, and the facts-only privacy boundary green for every future release.
+5. Keep schema 8 validation, deterministic private/public equality, release summaries, lineage checks, folio hashes, Node tests, runtime checks, and the facts-only privacy boundary green for every future release.
 
 ## Maintenance Rule
 

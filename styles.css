@@ -298,6 +298,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible
 .record-heading { min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .8rem; padding-bottom: .85rem; border-bottom: 3px double var(--rule); }
 .record-heading > div { min-width: 0; }
 .designation { margin: 0 0 .15rem; color: var(--oxblood); font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.record-model-label { width: fit-content; max-width: 100%; margin: .4rem 0 .2rem; padding: .22rem .42rem; color: var(--paper-light); background: var(--oxblood-dark); font-size: .6rem; font-weight: 700; letter-spacing: .07em; line-height: 1.35; text-transform: uppercase; overflow-wrap: anywhere; }
 .specimen-position { width: fit-content; margin: .4rem 0 .15rem; padding: .16rem .38rem; color: var(--paper-light); background: var(--oxblood-dark); font-size: .61rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
 .source-name-label { margin: .55rem 0 .08rem; color: var(--ink-soft); font-size: .56rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
 .record-name { margin: 0; font-size: clamp(1.2rem, 1.8vw, 1.55rem); font-weight: 400; line-height: 1.08; word-break: keep-all; overflow-wrap: normal; hyphens: none; }
@@ -315,6 +316,12 @@ button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible
 .record-meta .unknown dd { color: var(--ink-soft); font-style: italic; }
 .record-meta .hamburg-fact-row { grid-template-columns: minmax(0, 1fr); gap: .08rem; padding-block: .35rem; }
 .record-meta .hamburg-fact-row dt { min-width: 0; line-height: 1.25; overflow-wrap: anywhere; }
+.record-meta .regional-fact-row,
+.record-meta .table-a-fact-row { grid-template-columns: minmax(0, 1fr); gap: .08rem; padding-block: .35rem; }
+.record-meta .regional-fact-row dt,
+.record-meta .table-a-fact-row dt { min-width: 0; line-height: 1.25; overflow-wrap: anywhere; }
+.regional-census-card { border-left: 4px solid var(--brass); }
+.table-a-specimen-card { border-top: 3px solid var(--oxblood-dark); }
 .record-holdings { margin: .1rem 0 .8rem; }
 .record-holdings h4 {
   margin: 0 0 .35rem;

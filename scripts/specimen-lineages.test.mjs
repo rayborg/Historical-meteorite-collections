@@ -70,9 +70,9 @@ test("publishes locked source and relationship counts", () => {
   assert.equal(flattenMassObservations(catalog).length, 14092);
   assert.equal(flattenInventoryObservations(catalog).length, 3627);
   assert.deepEqual(published.metadata.source, {
-    catalogSchemaVersion: 7,
-    recordCount: 13819,
-    catalogCount: 35,
+    catalogSchemaVersion: 8,
+    recordCount: 14176,
+    catalogCount: 37,
     flattenedMassObservationCount: 14092,
     inventoryObservationCount: 3627,
   });
@@ -104,7 +104,36 @@ test("publishes locked source and relationship counts", () => {
     "5f408f7598bc13393407dc150708531bdba937694b2edadbebbed72f26090e33",
   );
   assert.equal(createHash("sha256").update(publishedText).digest("hex"),
-    "c838238b8fa15312b790f01a7f1d8001a2ebb056fc3281885e90f4ad6607437e");
+    "45cf8f37dc8d28f1094bc7b15ce4ac74b55ca92e4213d126331660b959d15cd1");
+  assert.equal(createHash("sha256").update(JSON.stringify(published.relationships)).digest("hex"),
+    "50143b2be98d9b5bbd00ee678fb98dedfcf15998f5fb5da82f695df2a7592cbe");
+});
+
+test("Hodge-Smith census facts and unmapped Victoria specimens add no physical-lineage assertion", () => {
+  const hodge = catalog.records.filter(({ catalogId }) => catalogId === "hodge-smith-1939");
+  const victoria = catalog.records.filter(({ catalogId }) => catalogId === "victoria-land-1982");
+  assert.equal(hodge.length, 84);
+  assert.equal(hodge.filter((record) => Object.hasOwn(record, "metbull")).length, 58);
+  assert.equal(victoria.length, 273);
+  assert.equal(victoria.filter((record) => Object.hasOwn(record, "metbull")).length, 0);
+  assert.equal(victoria.reduce((sum, record) => sum + record.weight.grams, 0), 969562.2);
+  assert.equal(createHash("sha256").update(JSON.stringify(hodge)).digest("hex"),
+    "7ca605ed679a55b21cae9574f9f33665a3d4665db7a40eceb2017e57781980b5");
+  assert.equal(createHash("sha256").update(JSON.stringify(victoria)).digest("hex"),
+    "b81e441cb9a672f487ff4c9fe0b8315d1c932dced461e23bf3b9f41d5f2e5595");
+  for (const catalogId of ["hodge-smith-1939", "victoria-land-1982"]) {
+    assert.deepEqual(folios.catalogs[catalogId], {
+      displayPolicy: "blocked", rightsStatus: "undetermined", pages: [],
+    });
+    assert.deepEqual(folioReleaseLock.catalogs[catalogId], {
+      displayPolicy: "blocked", rightsStatus: "undetermined", basis: null, basisUrl: null, pageIds: [],
+    });
+    assert(!folioReleaseLock.assets.some(({ path }) => path.includes(catalogId)));
+    const relationships = published.relationships.filter(({ observations }) =>
+      observations.some((observation) => observation.catalogId === catalogId));
+    assert(relationships.every(({ relationship, status }) => relationship === "possible-match" && status === "possible"));
+    assert(!relationships.some(({ relationship }) => relationship === "same-inventory"));
+  }
 });
 
 test("ASU September 2024 retains source facts while reviewed mappings enable lineage candidates", () => {
@@ -166,8 +195,8 @@ test("Palache publishes only locked facts and blocked folios", () => {
     "id", "locality", "name", "reportedNumber", "section",
   ].sort();
 
-  assert.equal(catalog.metadata.catalogs.length, 35);
-  assert.equal(catalog.records.length, 13819);
+  assert.equal(catalog.metadata.catalogs.length, 37);
+  assert.equal(catalog.records.length, 14176);
   assert.deepEqual(descriptor.sourcePages, [151, 152, 153, 154, 155, 156, 157, 158, 159]);
   assert.equal(descriptor.sourcePageCount, 9);
   assert.equal(descriptor.recordCount, 361);
@@ -200,10 +229,10 @@ test("Palache publishes only locked facts and blocked folios", () => {
   }
 
   const allReviewed = catalog.records.filter((record) => Object.hasOwn(record, "metbull"));
-  assert.equal(allReviewed.length, 10479);
+  assert.equal(allReviewed.length, 10537);
   assert.equal(allReviewed.filter(({ metbull }) => metbull.matchType === "unresolved").length, 241);
-  assert.equal(allReviewed.filter(({ metbull }) => metbull.matchType !== "unresolved").length, 10238);
-  assert.equal(catalog.records.length - allReviewed.length, 3340);
+  assert.equal(allReviewed.filter(({ metbull }) => metbull.matchType !== "unresolved").length, 10296);
+  assert.equal(catalog.records.length - allReviewed.length, 3639);
 });
 
 test("Madrid publishes the accepted facts, blocked folios, atomic holdings, and only new unreviewed candidates", () => {
@@ -410,7 +439,7 @@ test("Kanagawa publishes only the approved controlled facts with no glass mappin
   assert(!published.metadata.collectionSeries.some(({ catalogIds }) => catalogIds.includes("kanagawa-1996")));
   assert(!published.relationships.some(({ observations }) =>
     observations.some(({ catalogId }) => catalogId === "kanagawa-1996")));
-  assert.equal(catalog.records.filter(({ catalogId }) => catalogId !== "kanagawa-1996").length, 13587);
+  assert.equal(catalog.records.filter(({ catalogId }) => catalogId !== "kanagawa-1996").length, 13944);
 });
 
 test("Merrill, Prior, and Reeds publish locked facts with blocked folios and derived lineages", () => {
@@ -780,7 +809,9 @@ test("Anderson, Astapovich, and Kantor publish complete reviewed mappings withou
     },
   };
   const newCatalogIds = new Set(Object.keys(expected));
-  const preservationExcludedCatalogIds = new Set([...newCatalogIds, "madrid-1923", "hamburg-1913"]);
+  const preservationExcludedCatalogIds = new Set([
+    ...newCatalogIds, "madrid-1923", "hamburg-1913", "hodge-smith-1939", "victoria-land-1982",
+  ]);
 
   for (const [catalogId, counts] of Object.entries(expected)) {
     const descriptor = catalog.metadata.catalogs.find(({ id }) => id === catalogId);

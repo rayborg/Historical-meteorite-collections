@@ -33,6 +33,14 @@ const COLLECTION_ENTRY_KEYS = [
   "id", "catalogId", "entryOrder", "reportedNumber", "catalogPages", "section", "holdings", "name", "classification", "locality",
   "eventDate", "confidence",
 ];
+const REGIONAL_CENSUS_FACT_KEYS = [
+  "id", "catalogId", "entryOrder", "reportedNumber", "section", "name", "classification", "eventDate",
+  "australianMuseumRepresentation", "catalogPages", "confidence",
+];
+const TABLE_A_SPECIMEN_KEYS = [
+  "id", "catalogId", "entryOrder", "specimenId", "weight", "classification", "olivineFa", "pyroxeneFs",
+  "weathering", "locality", "catalogPage", "confidence",
+];
 const HAMBURG_COLLECTION_ENTRY_KEYS = [
   ...COLLECTION_ENTRY_KEYS, "reportedTotalWeight", "publicationState", "amendments",
 ];
@@ -44,7 +52,9 @@ const HAMBURG_HOLDING_KEYS = [
   "description", "provenance", "count", "weights", "reportedTotalWeight", "representations",
 ];
 const HOLDING_KINDS = ["specimen", "cast", "aggregate"];
-const RECORD_MODELS = ["catalog-item", "specimen", "catalog-number", "collection-entry"];
+const RECORD_MODELS = [
+  "catalog-item", "specimen", "catalog-number", "collection-entry", "regional-census-fact", "table-a-specimen",
+];
 const FACTUAL_FIELDS = [
   "id",
   "catalogId",
@@ -55,6 +65,10 @@ const FACTUAL_FIELDS = [
   "catalogNumber",
   "entryOrder",
   "reportedNumber",
+  "specimenId",
+  "australianMuseumRepresentation.status",
+  "australianMuseumRepresentation.representedOccurrences",
+  "australianMuseumRepresentation.notRepresentedOccurrences",
   "holdings[].designation",
   "holdings[].kind",
   "holdings[].description",
@@ -74,6 +88,12 @@ const FACTUAL_FIELDS = [
   "year",
   "dateOfDiscovery",
   "eventDate",
+  "olivineFa",
+  "pyroxeneFs",
+  "weathering",
+  "locality.code",
+  "locality.name",
+  "locality.coordinate",
   "catalogPage",
   "catalogPages[]",
   "section",
@@ -256,12 +276,12 @@ function assertCountSummary(value, path) {
 
 function validateMetadata(metadata, path) {
   assertExactKeys(metadata, METADATA_KEYS, path);
-  assert(metadata.schemaVersion === 7, `${path}.schemaVersion must be 7`);
+  assert(metadata.schemaVersion === 8, `${path}.schemaVersion must be 8`);
   assert(metadata.scope === "facts-only", `${path}.scope must be facts-only`);
   assert(
     Array.isArray(metadata.factualFields) && metadata.factualFields.length === FACTUAL_FIELDS.length &&
       metadata.factualFields.every((field, index) => field === FACTUAL_FIELDS[index]),
-    `${path}.factualFields does not match the schema 7 public record models`,
+    `${path}.factualFields does not match the schema 8 public record models`,
   );
   assertCountSummary(metadata, path);
   assert(Array.isArray(metadata.catalogs) && metadata.catalogs.length > 0, `${path}.catalogs must be a nonempty array`);
@@ -311,12 +331,16 @@ function validateMetadata(metadata, path) {
 
 function recordDesignations(record, recordModel) {
   if (recordModel === "specimen") return record.designation === null ? [] : [record.designation];
-  if (recordModel === "catalog-number" || recordModel === "collection-entry") return [];
+  if (recordModel === "table-a-specimen") return [record.specimenId];
+  if (["catalog-number", "collection-entry", "regional-census-fact"].includes(recordModel)) return [];
   return record.holdings.map((holding) => holding.designation).filter((value) => value !== null);
 }
 
 function recordMasses(record, recordModel) {
-  if (recordModel === "specimen") return record.weight.grams === null ? [] : [record.weight.grams];
+  if (recordModel === "specimen" || recordModel === "table-a-specimen") {
+    return record.weight.grams === null ? [] : [record.weight.grams];
+  }
+  if (recordModel === "regional-census-fact") return [];
   if (recordModel === "catalog-number" || recordModel === "collection-entry") {
     return record.holdings.flatMap((holding) => holding.weights.map(({ grams }) => grams));
   }
@@ -365,7 +389,7 @@ function compareNullableNumber(left, right) {
 function compareRecords(left, right, metadataByCatalog) {
   const leftModel = metadataByCatalog.get(left.catalogId).descriptor.recordModel;
   const rightModel = metadataByCatalog.get(right.catalogId).descriptor.recordModel;
-  const modelOrder = RECORD_MODELS.indexOf(leftModel) - RECORD_MODELS.indexOf(rightModel);
+  const modelOrder = modelSortOrder(leftModel) - modelSortOrder(rightModel);
   if (modelOrder) return modelOrder;
   if (leftModel === "catalog-item") {
     return left.catalogItem - right.catalogItem || compareText(left.name, right.name) || compareText(left.id, right.id);
@@ -374,7 +398,7 @@ function compareRecords(left, right, metadataByCatalog) {
     return left.catalogPages[0] - right.catalogPages[0] || compareText(left.catalogNumber, right.catalogNumber) ||
       compareText(left.name, right.name) || compareText(left.id, right.id);
   }
-  if (leftModel === "collection-entry") {
+  if (["collection-entry", "regional-census-fact", "table-a-specimen"].includes(leftModel)) {
     return compareText(left.catalogId, right.catalogId) || left.entryOrder - right.entryOrder || compareText(left.id, right.id);
   }
   const identityOrder = compareDesignation(left.designation, right.designation);
@@ -383,6 +407,34 @@ function compareRecords(left, right, metadataByCatalog) {
   return identityOrder || compareText(left.name, right.name) ||
     compareNullableNumber(leftMasses.length ? Math.min(...leftMasses) : null, rightMasses.length ? Math.min(...rightMasses) : null) ||
     compareText(left.id, right.id);
+}
+
+function modelSortOrder(recordModel) {
+  if (recordModel === "catalog-item") return 0;
+  if (recordModel === "specimen") return 1;
+  if (recordModel === "catalog-number") return 2;
+  return 3;
+}
+
+function validateAustralianMuseumRepresentation(value, path) {
+  assertExactKeys(value, ["status", "representedOccurrences", "notRepresentedOccurrences"], path);
+  assert(["represented", "not-represented", "mixed"].includes(value.status), `${path}.status is invalid`);
+  for (const field of ["representedOccurrences", "notRepresentedOccurrences"]) {
+    assert(Number.isInteger(value[field]) && value[field] >= 0, `${path}.${field} must be a nonnegative integer`);
+  }
+  assert(value.representedOccurrences + value.notRepresentedOccurrences > 0,
+    `${path} must report at least one occurrence`);
+  assert(value.status === (value.representedOccurrences === 0
+    ? "not-represented"
+    : value.notRepresentedOccurrences === 0 ? "represented" : "mixed"),
+  `${path}.status does not match its occurrence counts`);
+}
+
+function validateTableALocality(value, path) {
+  assertExactKeys(value, ["code", "name", "coordinate"], path);
+  assert(typeof value.code === "string" && /^[A-Z]{3}$/u.test(value.code), `${path}.code must be a three-letter code`);
+  assertString(value.name, `${path}.name`);
+  assertString(value.coordinate, `${path}.coordinate`, true);
 }
 
 function validateHolding(holding, path) {
@@ -468,6 +520,7 @@ function validatePublicCatalog(data, folios, path = "catalog") {
   const catalogItemNumbers = new Map();
   const previousCatalogItems = new Map();
   const catalogNumbers = new Map();
+  const specimenIds = new Map();
   const collectionEntryOrders = new Map();
   const previousCollectionEntries = new Map();
   const representedCatalogs = new Set();
@@ -490,16 +543,23 @@ function validatePublicCatalog(data, folios, path = "catalog") {
       : recordModel === "catalog-item"
         ? CATALOG_ITEM_KEYS
         : recordModel === "catalog-number" ? CATALOG_NUMBER_KEYS
-          : record.catalogId === "hamburg-1913" ? HAMBURG_COLLECTION_ENTRY_KEYS : COLLECTION_ENTRY_KEYS)];
+          : recordModel === "regional-census-fact" ? REGIONAL_CENSUS_FACT_KEYS
+            : recordModel === "table-a-specimen" ? TABLE_A_SPECIMEN_KEYS
+              : record.catalogId === "hamburg-1913" ? HAMBURG_COLLECTION_ENTRY_KEYS : COLLECTION_ENTRY_KEYS)];
     if (Object.hasOwn(record, "metbull")) expectedRecordKeys.push("metbull");
     assertExactKeys(record, expectedRecordKeys, recordPath);
     assertString(record.id, `${recordPath}.id`);
     assert(!ids.has(record.id), `${recordPath}.id is duplicated: ${record.id}`);
     ids.add(record.id);
     representedCatalogs.add(record.catalogId);
-    const dateField = recordModel === "catalog-number" ? "dateOfDiscovery" : recordModel === "collection-entry" ? "eventDate" : "year";
-    for (const field of ["name", "classification", "locality", dateField]) {
-      assertString(record[field], `${recordPath}.${field}`, true);
+    if (recordModel !== "table-a-specimen") {
+      const dateField = recordModel === "catalog-number" ? "dateOfDiscovery" :
+        ["collection-entry", "regional-census-fact"].includes(recordModel) ? "eventDate" : "year";
+      for (const field of ["name", "classification", "locality", dateField]) {
+        if (field !== "locality" || recordModel !== "regional-census-fact") {
+          assertString(record[field], `${recordPath}.${field}`, true);
+        }
+      }
     }
     if (Object.hasOwn(record, "metbull")) validateMetbull(record.metbull, record.name, `${recordPath}.metbull`);
     if (recordModel === "specimen") {
@@ -534,6 +594,41 @@ function validatePublicCatalog(data, folios, path = "catalog") {
       assert(Array.isArray(record.holdings) && record.holdings.length > 0, `${recordPath}.holdings must be nonempty`);
       record.holdings.forEach((holding, holdingIndex) =>
         validateCatalogNumberHolding(holding, `${recordPath}.holdings[${holdingIndex}]`));
+    } else if (recordModel === "regional-census-fact") {
+      assert(Number.isInteger(record.entryOrder) && record.entryOrder > 0,
+        `${recordPath}.entryOrder must be a positive integer`);
+      const entryOrders = collectionEntryOrders.get(record.catalogId) ?? new Set();
+      assert(!entryOrders.has(record.entryOrder), `${recordPath}.entryOrder is duplicated within ${record.catalogId}`);
+      entryOrders.add(record.entryOrder);
+      collectionEntryOrders.set(record.catalogId, entryOrders);
+      assertString(record.reportedNumber, `${recordPath}.reportedNumber`, true);
+      assertString(record.section, `${recordPath}.section`);
+      assertString(record.name, `${recordPath}.name`);
+      assertString(record.classification, `${recordPath}.classification`, true);
+      assertString(record.eventDate, `${recordPath}.eventDate`, true);
+      validateAustralianMuseumRepresentation(record.australianMuseumRepresentation,
+        `${recordPath}.australianMuseumRepresentation`);
+    } else if (recordModel === "table-a-specimen") {
+      assert(Number.isInteger(record.entryOrder) && record.entryOrder > 0,
+        `${recordPath}.entryOrder must be a positive integer`);
+      const entryOrders = collectionEntryOrders.get(record.catalogId) ?? new Set();
+      assert(!entryOrders.has(record.entryOrder), `${recordPath}.entryOrder is duplicated within ${record.catalogId}`);
+      entryOrders.add(record.entryOrder);
+      collectionEntryOrders.set(record.catalogId, entryOrders);
+      assert(typeof record.specimenId === "string" && /^[A-Z]{3,4}[0-9]{5}$/u.test(record.specimenId),
+        `${recordPath}.specimenId must be a canonical Victoria Land specimen identifier`);
+      const identifiers = specimenIds.get(record.catalogId) ?? new Set();
+      assert(!identifiers.has(record.specimenId), `${recordPath}.specimenId is duplicated within ${record.catalogId}`);
+      identifiers.add(record.specimenId);
+      specimenIds.set(record.catalogId, identifiers);
+      assertExactKeys(record.weight, ["grams"], `${recordPath}.weight`);
+      assert(Number.isFinite(record.weight.grams) && record.weight.grams > 0,
+        `${recordPath}.weight.grams must be a finite positive number`);
+      assertString(record.classification, `${recordPath}.classification`);
+      for (const field of ["olivineFa", "pyroxeneFs", "weathering"]) {
+        assertString(record[field], `${recordPath}.${field}`, true);
+      }
+      validateTableALocality(record.locality, `${recordPath}.locality`);
     } else {
       assert(Number.isInteger(record.entryOrder) && record.entryOrder > 0,
         `${recordPath}.entryOrder must be a positive integer`);
@@ -582,7 +677,7 @@ function validatePublicCatalog(data, folios, path = "catalog") {
         }
       }
     }
-    if (recordModel === "catalog-number" || recordModel === "collection-entry") {
+    if (["catalog-number", "collection-entry", "regional-census-fact"].includes(recordModel)) {
       assert(Array.isArray(record.catalogPages) && record.catalogPages.length > 0,
         `${recordPath}.catalogPages must be a nonempty ordered unique array`);
       record.catalogPages.forEach((page, pageIndex) => {
@@ -893,7 +988,7 @@ function multiCatalogFixture() {
   return {
     data: {
       metadata: {
-        schemaVersion: 7,
+        schemaVersion: 8,
         scope: "facts-only",
         factualFields: [...FACTUAL_FIELDS],
         catalogs: [
@@ -1208,7 +1303,9 @@ function runSyntheticCatalogTests(modelFixture) {
     secondIndependent,
     ...independentNumbering.records.filter(({ catalogId }) => catalogId === "huss-1976"),
     ...independentNumbering.records.filter(({ catalogId }) => catalogId === "hovey-1896"),
+    ...independentNumbering.records.filter(({ catalogId }) => catalogId === "hodge-smith-1939"),
     ...independentNumbering.records.filter(({ catalogId }) => catalogId === "museum-1914"),
+    ...independentNumbering.records.filter(({ catalogId }) => catalogId === "victoria-land-1982"),
   ];
   validatePublicCatalog(independentNumbering, modelFolios,
     "synthetic independent numbering and catalog-item ID tie breaker");
@@ -1350,6 +1447,21 @@ function runSyntheticCatalogTests(modelFixture) {
     records.find(({ id }) => id === "nininger-item-3").catalogItem = 50;
   });
   assertModelRejection("model-aware order violation", ({ records }) => { [records[0], records[1]] = [records[1], records[0]]; });
+  assertModelRejection("regional census fact with specimen holdings", ({ records }) => {
+    records.find(({ catalogId }) => catalogId === "hodge-smith-1939").holdings = [];
+  });
+  assertModelRejection("regional representation status/count mismatch", ({ records }) => {
+    records.find(({ catalogId }) => catalogId === "hodge-smith-1939").australianMuseumRepresentation.status = "represented";
+  });
+  assertModelRejection("Victoria specimen identifier outside Table A grammar", ({ records }) => {
+    records.find(({ catalogId }) => catalogId === "victoria-land-1982").specimenId = "ALH-76001";
+  });
+  assertModelRejection("Victoria locality with an extra field", ({ records }) => {
+    records.find(({ catalogId }) => catalogId === "victoria-land-1982").locality.latitude = -76.75;
+  });
+  assertModelRejection("Victoria nonpositive mass", ({ records }) => {
+    records.find(({ catalogId }) => catalogId === "victoria-land-1982").weight.grams = 0;
+  });
 
   const assertCatalogNumberRejection = (description, mutate) => {
     const candidate = clone(modelFixture);
@@ -1364,7 +1476,7 @@ function runSyntheticCatalogTests(modelFixture) {
     catalogNumberRejectionCount += 1;
   };
   const hoveyRecord = (records, id = "hovey-catalog-z9") => records.find((record) => record.id === id);
-  assertCatalogNumberRejection("older metadata under schema 7", ({ metadata }) => { metadata.schemaVersion = 6; });
+  assertCatalogNumberRejection("older metadata under schema 8", ({ metadata }) => { metadata.schemaVersion = 7; });
   assertCatalogNumberRejection("empty catalog number", ({ records }) => { hoveyRecord(records).catalogNumber = ""; });
   assertCatalogNumberRejection("nonnull non-string catalog number", ({ records }) => { hoveyRecord(records).catalogNumber = 9; });
   assertCatalogNumberRejection("duplicate catalog number within one catalog", ({ records }) => {
@@ -1806,7 +1918,7 @@ console.log(
   `${catalogFixtureStats.holdingPrivacyAllowCount} holding-privacy boundary allow, ` +
   `${catalogFixtureStats.modelRejectionCount} model/holding rejections, ` +
   `${catalogFixtureStats.catalogNumberRejectionCount} catalog-number rejections, ` +
-  `${catalogFixtureStats.collectionEntryRejectionCount} collection-entry/schema-7 rejections, ` +
+  `${catalogFixtureStats.collectionEntryRejectionCount} collection-entry/schema-8 rejections, ` +
   `${metbullFixtureStats.allowCount} MetBull allows, ${metbullFixtureStats.rejectionCount} MetBull rejections, ` +
   `${folioFixtureStats.allowCount} folio allows, ${folioFixtureStats.rejectionCount} folio rejections, ` +
   `${folioFileFixtureStats.allowCount} folio-file allows, ${folioFileFixtureStats.rejectionCount} folio-file rejections passed.`,
@@ -1825,7 +1937,7 @@ if (!SYNTHETIC_ONLY) {
   );
   console.log(
     `Validated data/catalog.json and data/folios.json: ${deployedStats.recordCount} records across ` +
-    `${deployedStats.catalogCount} schema 7 facts-only catalogs, ${totalPageCount} metadata source pages, ` +
+      `${deployedStats.catalogCount} schema 8 facts-only catalogs, ${totalPageCount} metadata source pages, ` +
     `${deployedStats.folioStats.pageEntryCount} displayable folio pages with locked SHA-256 assets.`,
   );
   for (const [catalogId, { descriptor }] of deployedStats.metadataByCatalog) {

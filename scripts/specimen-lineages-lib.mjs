@@ -115,7 +115,8 @@ function normalizeCollisionName(value) {
 function sourceRecordLabel(record, model) {
   if (model === "catalog-item") return `Catalog item ${record.catalogItem}`;
   if (model === "catalog-number") return `Catalog no. ${record.catalogNumber}`;
-  if (model === "collection-entry") return `Collection entry ${record.entryOrder}`;
+  if (model === "collection-entry" || model === "regional-census-fact") return `Collection entry ${record.entryOrder}`;
+  if (model === "table-a-specimen") return record.specimenId;
   return record.designation ?? record.name;
 }
 
@@ -172,7 +173,7 @@ function makeObservation(record, descriptor, { designation, designationPath, mas
 }
 
 function catalogDescriptors(catalog) {
-  assert(catalog?.metadata?.schemaVersion === 7, "catalog metadata schemaVersion must be 7");
+  assert(catalog?.metadata?.schemaVersion === 8, "catalog metadata schemaVersion must be 8");
   assert(Array.isArray(catalog.metadata.catalogs), "catalog metadata catalogs must be an array");
   assert(Array.isArray(catalog.records), "catalog records must be an array");
   const descriptors = new Map(catalog.metadata.catalogs.map((descriptor) => [descriptor.id, descriptor]));
@@ -190,8 +191,14 @@ export function flattenMassObservations(catalog) {
     const descriptor = descriptors.get(record.catalogId);
     assert(descriptor, `record ${record.id} refers to unknown catalog ${record.catalogId}`);
     if (!record.metbull || typeof record.metbull !== "object") continue;
+    if (descriptor.recordModel === "regional-census-fact") {
+      // Regional representation facts do not identify physical specimens or report specimen masses.
+      continue;
+    }
     if (descriptor.recordModel === "specimen") {
       add(record, descriptor, { designation: record.designation ?? null, designationPath: record.designation === null ? null : "designation", massGrams: record.weight?.grams, massPath: "weight.grams" });
+    } else if (descriptor.recordModel === "table-a-specimen") {
+      add(record, descriptor, { designation: record.specimenId, designationPath: "specimenId", massGrams: record.weight?.grams, massPath: "weight.grams" });
     } else if (descriptor.recordModel === "catalog-item") {
       record.holdings.forEach((holding, index) => add(record, descriptor, {
         designation: holding.designation,
@@ -675,8 +682,8 @@ export function validateLineageShape(document) {
       assert(observation.id.startsWith(observationPrefix) && UUID_V5_PATTERN.test(observation.id.slice(observationPrefix.length)), `${observationPath}.id is invalid`);
       assert(/^[A-Za-z0-9][A-Za-z0-9._-]*$/u.test(observation.recordId), `${observationPath}.recordId is invalid`);
       assert(typeof observation.catalogId === "string" && Number.isInteger(observation.catalogYear), `${observationPath} catalog descriptor is invalid`);
-      assertEnum(observation.recordModel, ["specimen", "catalog-item", "catalog-number", "collection-entry"], `${observationPath}.recordModel`);
-      assert(observation.designationPath === null || /^(?:designation|holdings\[[0-9]+\]\.designation)$/u.test(observation.designationPath), `${observationPath}.designationPath is invalid`);
+      assertEnum(observation.recordModel, ["specimen", "catalog-item", "catalog-number", "collection-entry", "table-a-specimen"], `${observationPath}.recordModel`);
+      assert(observation.designationPath === null || /^(?:designation|specimenId|holdings\[[0-9]+\]\.designation)$/u.test(observation.designationPath), `${observationPath}.designationPath is invalid`);
       assert(typeof observation.massPath === "string" && /^(?:weight\.grams|holdings\[[0-9]+\]\.(?:weight\.grams|weights\[[0-9]+\]\.grams))$/u.test(observation.massPath), `${observationPath}.massPath is invalid`);
       for (const key of ["sourceName", "canonicalName", "meteoriteCode", "designation", "kind"]) assert(observation[key] === null || typeof observation[key] === "string", `${observationPath}.${key} is invalid`);
       assertFiniteNonnegative(observation.massGrams, `${observationPath}.massGrams`, sameInventory);
