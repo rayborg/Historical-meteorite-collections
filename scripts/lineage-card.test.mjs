@@ -77,9 +77,9 @@ test("main template presents relationship-specific compact lineage copy", async 
   assert.doesNotMatch(source, /\.innerHTML\b/);
   assert.match(css, /\.earlier-records \{/);
   assert.equal(app.CACHE_VERSION, "20260830-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260831-fact-layout-1");
-  assert.match(html, /styles\.css\?v=20260831-fact-layout-1/);
-  assert.match(html, /app\.js\?v=20260831-fact-layout-1/);
+  assert.equal(app.ASSET_CACHE_VERSION, "20260831-specimen-cards-1");
+  assert.match(html, /styles\.css\?v=20260831-specimen-cards-1/);
+  assert.match(html, /app\.js\?v=20260831-specimen-cards-1/);
   for (const file of ["possible-specimen-lineages.html", "possible-specimen-lineages.css", "possible-specimen-lineages.js"]) {
     await assert.rejects(access(path.join(projectRoot, file)));
   }

@@ -6,10 +6,11 @@ const LOCKS = Object.freeze({
   catalogSchemaVersion: 7,
   sourceRecordCount: 13819,
   sourceCatalogSha256: "91694659e5f7210db10ffc42873c54d5d38d3e5a485d51c38072746faa7f41e0",
-  projectionCount: 1917,
-  atomicCardCount: 6561,
-  sourceContextCardCount: 1619,
-  projectionSetSha256: "5a0f8a6c1ae135f24be54186f9b474e84ec67c248a5621fe098ad598e3f8cb85",
+  projectionCount: 1955,
+  atomicCardCount: 6675,
+  sourceContextCardCount: 1657,
+  projectionSetSha256: "45490022fc876f4df62c07110b3fa40a04c0a1edc6aec26797d616f7c159c263",
+  nonHamburgProjectionSetSha256: "3edca8ec748beb5b9d2cb74871ad5c56082a5beced28e75c006a85f745999fa3",
 });
 export const REVIEWED_AUDIT_COVERAGE = Object.freeze({
   candidateCount: 1038,
@@ -41,11 +42,16 @@ export const HAMBURG_AUDIT_COVERAGE = Object.freeze({
   parentObservationCount: 147,
   holdingCount: 151,
   componentWeightCount: 227,
-  projectedParentCount: 104,
-  atomicCardCount: 104,
-  groupedSourceContextCount: 43,
+  individualHoldingComponentCount: 218,
+  aggregateHoldingComponentCount: 4,
+  associatedMaterialComponentCount: 5,
+  projectedParentCount: 142,
+  contextOnlyObservationCount: 5,
+  atomicCardCount: 218,
+  multiCardParentCount: 36,
+  sourceContextCardCount: 142,
   thinSectionCount: 26,
-  projectionSetSha256: "bb773cc5bda10ffb38bd1550601fb294ddd9ca496f34ffe81ac9eb7d1024560c",
+  projectionSetSha256: "ea3d7d24a95122849f8fdd922dc9318cadd73362926084701d670950eee576b1",
 });
 const PRIOR_630_ID = "obs-344d0b6d-920e-403f-8fd5-c113fc05291d";
 const PRIOR_630_CARDS_SHA256 = "839f6cb10b69c5fff3418ed5d0b17143442b18384b3084a5479435ba3077f9c7";
@@ -56,12 +62,14 @@ const METADATA_KEYS = [
   "projectionCount", "atomicCardCount", "sourceContextCardCount",
 ];
 const PROJECTION_KEYS = ["parentRecordId", "cards"];
-const CARD_KEYS = ["holdingPath", "clause", "massPath"];
+const CLAUSE_CARD_KEYS = ["holdingPath", "clause", "massPath"];
+const COMPONENT_CARD_KEYS = ["holdingPath", "componentPath", "massPath"];
 const CLAUSE_KEYS = ["textPath", "start", "end"];
 const HOLDING_PATH = /^holdings\[(0|[1-9][0-9]*)\]$/u;
 const TEXT_PATH = /^holdings\[(0|[1-9][0-9]*)\]\.(description|designation)$/u;
 const ARRAY_MASS_PATH = /^holdings\[(0|[1-9][0-9]*)\]\.weights\[(0|[1-9][0-9]*)\]\.grams$/u;
 const SCALAR_MASS_PATH = /^holdings\[(0|[1-9][0-9]*)\]\.weight\.grams$/u;
+const COMPONENT_PATH = /^holdings\[(0|[1-9][0-9]*)\]\.weights\[(0|[1-9][0-9]*)\]$/u;
 const RECORD_ID = /^obs-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/u;
 const MEANINGFUL_TEXT = /[\p{L}\p{N}]/u;
 
@@ -96,6 +104,11 @@ function compareCards(left, right) {
   const leftHolding = Number(left.holdingPath.match(HOLDING_PATH)[1]);
   const rightHolding = Number(right.holdingPath.match(HOLDING_PATH)[1]);
   if (leftHolding !== rightHolding) return leftHolding - rightHolding;
+  if (left.componentPath || right.componentPath) {
+    if (!left.componentPath) return -1;
+    if (!right.componentPath) return 1;
+    return Number(left.componentPath.match(COMPONENT_PATH)[2]) - Number(right.componentPath.match(COMPONENT_PATH)[2]);
+  }
   if (left.clause.textPath !== right.clause.textPath) return left.clause.textPath < right.clause.textPath ? -1 : 1;
   if (left.clause.start !== right.clause.start) return left.clause.start - right.clause.start;
   if (left.clause.end !== right.clause.end) return left.clause.end - right.clause.end;
@@ -118,6 +131,7 @@ export function deriveSourceContext(projection, record, recordModel) {
   const spansByTextPath = new Map();
   if (Object.hasOwn(record, "publicationState") || (record.amendments?.length ?? 0) > 0) return true;
   for (const card of projection.cards) {
+    if (!card.clause) continue;
     const spans = spansByTextPath.get(card.clause.textPath) || [];
     spans.push([card.clause.start, card.clause.end]);
     spansByTextPath.set(card.clause.textPath, spans);
@@ -145,8 +159,11 @@ export function deriveSourceContext(projection, record, recordModel) {
 }
 
 function parseCard(card, record, recordModel, location) {
-  assertExactKeys(card, CARD_KEYS, location);
-  assertExactKeys(card.clause, CLAUSE_KEYS, `${location}.clause`);
+  const hasClause = card !== null && typeof card === "object" && Object.hasOwn(card, "clause");
+  const hasComponent = card !== null && typeof card === "object" && Object.hasOwn(card, "componentPath");
+  if (hasClause === hasComponent) fail(`${location} must have exactly one clause or componentPath evidence variant`);
+  assertExactKeys(card, hasClause ? CLAUSE_CARD_KEYS : COMPONENT_CARD_KEYS, location);
+  if (hasClause) assertExactKeys(card.clause, CLAUSE_KEYS, `${location}.clause`);
   if (typeof card.holdingPath !== "string") fail(`${location}.holdingPath must be a string`);
   const holdingMatch = card.holdingPath.match(HOLDING_PATH);
   if (!holdingMatch) fail(`${location}.holdingPath is malformed`);
@@ -155,19 +172,34 @@ function parseCard(card, record, recordModel, location) {
   if (!holding) fail(`${location}.holdingPath is dangling`);
   if (recordModel === "catalog-item" && holding.kind !== "specimen") fail(`${location} resolves to a non-specimen catalog item`);
 
-  const textMatch = typeof card.clause.textPath === "string" ? card.clause.textPath.match(TEXT_PATH) : null;
-  if (!textMatch) fail(`${location}.clause.textPath is malformed or unsupported`);
-  if (Number(textMatch[1]) !== holdingIndex) fail(`${location}.clause.textPath refers to a different holding`);
-  const text = resolvePath(record, card.clause.textPath);
-  if (typeof text !== "string") fail(`${location}.clause.textPath does not resolve to text`);
-  const { start, end } = card.clause;
-  if (!Number.isInteger(start) || !Number.isInteger(end) || start < 0 || end <= start || end > text.length) {
-    fail(`${location}.clause must be a nonempty UTF-16 half-open range within its source text`);
+  let text = null;
+  if (hasClause) {
+    if (record.catalogId === "hamburg-1913") fail(`${location} Hamburg cards must use componentPath evidence`);
+    const textMatch = typeof card.clause.textPath === "string" ? card.clause.textPath.match(TEXT_PATH) : null;
+    if (!textMatch) fail(`${location}.clause.textPath is malformed or unsupported`);
+    if (Number(textMatch[1]) !== holdingIndex) fail(`${location}.clause.textPath refers to a different holding`);
+    text = resolvePath(record, card.clause.textPath);
+    if (typeof text !== "string") fail(`${location}.clause.textPath does not resolve to text`);
+    const { start, end } = card.clause;
+    if (!Number.isInteger(start) || !Number.isInteger(end) || start < 0 || end <= start || end > text.length) {
+      fail(`${location}.clause must be a nonempty UTF-16 half-open range within its source text`);
+    }
+    if (splitsSurrogatePair(text, start) || splitsSurrogatePair(text, end)) fail(`${location}.clause splits a UTF-16 surrogate pair`);
+    if (!MEANINGFUL_TEXT.test(text.slice(start, end))) fail(`${location}.clause has no alphanumeric source content`);
+  } else {
+    if (record.catalogId !== "hamburg-1913") fail(`${location}.componentPath evidence is restricted to Hamburg cards`);
+    const componentMatch = typeof card.componentPath === "string" ? card.componentPath.match(COMPONENT_PATH) : null;
+    if (!componentMatch) fail(`${location}.componentPath is malformed or unsupported`);
+    if (Number(componentMatch[1]) !== holdingIndex) fail(`${location}.componentPath refers to a different holding`);
+    const component = resolvePath(record, card.componentPath);
+    if (!component || component.kind !== "individual-holding") fail(`${location}.componentPath does not resolve to an individual-holding component`);
+    if (card.massPath !== `${card.componentPath}.grams`) fail(`${location}.massPath must bind the exact componentPath grams field`);
   }
-  if (splitsSurrogatePair(text, start) || splitsSurrogatePair(text, end)) fail(`${location}.clause splits a UTF-16 surrogate pair`);
-  if (!MEANINGFUL_TEXT.test(text.slice(start, end))) fail(`${location}.clause has no alphanumeric source content`);
 
-  if (card.massPath === null) return { holdingIndex, text, mass: null };
+  if (card.massPath === null) {
+    if (hasComponent) fail(`${location}.massPath must be non-null for componentPath evidence`);
+    return { holdingIndex, text, mass: null };
+  }
   if (typeof card.massPath !== "string") fail(`${location}.massPath must be a string or null`);
   const massMatch = card.massPath.match(recordModel === "catalog-item" ? SCALAR_MASS_PATH : ARRAY_MASS_PATH);
   if (!massMatch) fail(`${location}.massPath is unsupported for ${recordModel}`);
@@ -189,7 +221,7 @@ export function validateSpecimenCardProjections(document, catalog, catalogText) 
   assertExactKeys(document, ROOT_KEYS, "root");
   assertExactKeys(document.metadata, METADATA_KEYS, "metadata");
   const expectedMetadata = {
-    schemaVersion: 2,
+    schemaVersion: 3,
     scope: "reviewed-atomic-specimen-card-display-projections",
     catalogSchemaVersion: LOCKS.catalogSchemaVersion,
     sourceRecordCount: LOCKS.sourceRecordCount,
@@ -230,16 +262,22 @@ export function validateSpecimenCardProjections(document, catalog, catalogText) 
     if (!new Set(["catalog-item", "catalog-number", "collection-entry"]).has(recordModel)) fail(`${location} has unsupported record model ${recordModel}`);
 
     const seenMassPaths = new Set();
+    const seenComponentPaths = new Set();
     const priorSpansByTextPath = new Map();
     let previousCard = null;
     for (const [cardIndex, card] of projection.cards.entries()) {
       const cardLocation = `${location}.cards[${cardIndex}]`;
       parseCard(card, source.record, recordModel, cardLocation);
-      if (previousCard && compareCards(previousCard, card) >= 0) fail(`${location}.cards are not in canonical holding and span order`);
+      if (previousCard && compareCards(previousCard, card) >= 0) fail(`${location}.cards are not in canonical holding and evidence source order`);
       previousCard = card;
-      const priorEnd = priorSpansByTextPath.get(card.clause.textPath);
-      if (priorEnd !== undefined && card.clause.start < priorEnd) fail(`${cardLocation}.clause overlaps another card clause`);
-      priorSpansByTextPath.set(card.clause.textPath, card.clause.end);
+      if (card.clause) {
+        const priorEnd = priorSpansByTextPath.get(card.clause.textPath);
+        if (priorEnd !== undefined && card.clause.start < priorEnd) fail(`${cardLocation}.clause overlaps another card clause`);
+        priorSpansByTextPath.set(card.clause.textPath, card.clause.end);
+      } else {
+        if (seenComponentPaths.has(card.componentPath)) fail(`${cardLocation}.componentPath is duplicated`);
+        seenComponentPaths.add(card.componentPath);
+      }
       if (card.massPath === null) {
         masslessCardCount++;
       } else {
@@ -334,49 +372,76 @@ export function validateSpecimenCardProjections(document, catalog, catalogText) 
   const hamburgProjectionById = new Map(hamburgProjections.map((projection) => [projection.parentRecordId, projection]));
   let hamburgHoldingCount = 0;
   let hamburgComponentWeightCount = 0;
+  let hamburgIndividualHoldingComponentCount = 0;
+  let hamburgAggregateHoldingComponentCount = 0;
+  let hamburgAssociatedMaterialComponentCount = 0;
   let hamburgAtomicCardCount = 0;
-  let hamburgGroupedSourceContextCount = 0;
+  let hamburgContextOnlyObservationCount = 0;
+  let hamburgMultiCardParentCount = 0;
+  let hamburgSourceContextCardCount = 0;
   let hamburgThinSectionCount = 0;
   for (const record of hamburgRecords) {
     hamburgHoldingCount += record.holdings.length;
     hamburgComponentWeightCount += record.holdings.reduce((count, holding) => count + holding.weights.length, 0);
     hamburgThinSectionCount += record.holdings.flatMap(({ representations }) => representations)
       .reduce((count, representation) => count + representation.count, 0);
-    const atomic = record.holdings.length === 1 && record.holdings[0].count === 1 &&
-      record.holdings[0].weights.length === 1 && record.holdings[0].weights[0].kind === "individual-holding" &&
-      record.amendments.length === 0;
     const projection = hamburgProjectionById.get(record.id);
-    if (!atomic) {
-      hamburgGroupedSourceContextCount++;
-      if (projection) fail(`Hamburg grouped/context parent ${record.id} must not have an atomic projection`);
+    const expectedCards = [];
+    for (const [holdingIndex, holding] of record.holdings.entries()) {
+      for (const [componentIndex, component] of holding.weights.entries()) {
+        if (component.kind === "individual-holding") {
+          hamburgIndividualHoldingComponentCount++;
+          expectedCards.push({
+            holdingPath: `holdings[${holdingIndex}]`,
+            componentPath: `holdings[${holdingIndex}].weights[${componentIndex}]`,
+            massPath: `holdings[${holdingIndex}].weights[${componentIndex}].grams`,
+          });
+        } else if (component.kind === "aggregate-holding") {
+          hamburgAggregateHoldingComponentCount++;
+        } else if (component.kind === "associated-material") {
+          hamburgAssociatedMaterialComponentCount++;
+        } else {
+          fail(`Hamburg component ${record.id}:${holdingIndex}:${componentIndex} has an unsupported kind`);
+        }
+      }
+    }
+    if (expectedCards.length === 0) {
+      hamburgContextOnlyObservationCount++;
+      if (projection) fail(`Hamburg context-only parent ${record.id} must not have an atomic projection`);
       continue;
     }
-    if (!projection) fail(`Hamburg audited atomic parent ${record.id} is missing its projection`);
-    const expectedCard = {
-      holdingPath: "holdings[0]",
-      clause: { textPath: "holdings[0].description", start: 0, end: record.holdings[0].description.length },
-      massPath: "holdings[0].weights[0].grams",
-    };
-    if (JSON.stringify(projection.cards) !== JSON.stringify([expectedCard])) {
-      fail(`Hamburg atomic path differs from the reviewed source holding for ${record.id}`);
+    if (!projection) fail(`Hamburg audited component parent ${record.id} is missing its projection`);
+    if (JSON.stringify(projection.cards) !== JSON.stringify(expectedCards)) {
+      fail(`Hamburg atomic component paths differ from the reviewed public holdings for ${record.id}`);
     }
     if (!deriveSourceContext(projection, record, "collection-entry")) {
-      fail(`Hamburg atomic parent ${record.id} must retain its source context`);
+      fail(`Hamburg component parent ${record.id} must retain its source context`);
     }
-    hamburgAtomicCardCount++;
+    hamburgAtomicCardCount += expectedCards.length;
+    hamburgMultiCardParentCount += Number(expectedCards.length > 1);
+    hamburgSourceContextCardCount++;
   }
   const hamburgActual = {
     parentObservationCount: hamburgRecords.length,
     holdingCount: hamburgHoldingCount,
     componentWeightCount: hamburgComponentWeightCount,
+    individualHoldingComponentCount: hamburgIndividualHoldingComponentCount,
+    aggregateHoldingComponentCount: hamburgAggregateHoldingComponentCount,
+    associatedMaterialComponentCount: hamburgAssociatedMaterialComponentCount,
     projectedParentCount: hamburgProjections.length,
+    contextOnlyObservationCount: hamburgContextOnlyObservationCount,
     atomicCardCount: hamburgAtomicCardCount,
-    groupedSourceContextCount: hamburgGroupedSourceContextCount,
+    multiCardParentCount: hamburgMultiCardParentCount,
+    sourceContextCardCount: hamburgSourceContextCardCount,
     thinSectionCount: hamburgThinSectionCount,
     projectionSetSha256: sha256(JSON.stringify(hamburgProjections)),
   };
   for (const [key, expected] of Object.entries(HAMBURG_AUDIT_COVERAGE)) {
     if (hamburgActual[key] !== expected) fail(`Hamburg ${key} differs from the reviewed audit lock`);
+  }
+  const nonHamburgProjections = document.projections.filter(({ parentRecordId }) => !hamburgIds.has(parentRecordId));
+  if (sha256(JSON.stringify(nonHamburgProjections)) !== LOCKS.nonHamburgProjectionSetSha256) {
+    fail("non-Hamburg projection set differs from the schema-2 production lock");
   }
   if (sha256(JSON.stringify(document.projections)) !== LOCKS.projectionSetSha256) fail("projection set differs from the reviewed production lock");
 

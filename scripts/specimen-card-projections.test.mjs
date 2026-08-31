@@ -45,28 +45,35 @@ function cardTuple(card) {
 
 test("production manifest is deterministic and validates against the locked catalog", () => {
   assert.deepEqual(validateSpecimenCardProjections(published, catalog, catalogText), {
-    projectionCount: 1917,
-    atomicCardCount: 6561,
-    massBoundCardCount: 6427,
+    projectionCount: 1955,
+    atomicCardCount: 6675,
+    massBoundCardCount: 6541,
     masslessCardCount: 134,
-    sourceContextCardCount: 1619,
+    sourceContextCardCount: 1657,
   });
   assert.equal(serializeSpecimenCardProjections(published), projectionText);
   assert.equal(createHash("sha256").update(catalogText).digest("hex"), published.metadata.sourceCatalogSha256);
-  assert.equal(createHash("sha256").update(JSON.stringify(published.projections)).digest("hex"), "5a0f8a6c1ae135f24be54186f9b474e84ec67c248a5621fe098ad598e3f8cb85");
-  assert.equal(createHash("sha256").update(projectionText).digest("hex"), "e3dc109dfdea2305951caaf7d793290203ee40cb900ded4d3783f6c2306e0adb");
+  assert.equal(createHash("sha256").update(JSON.stringify(published.projections)).digest("hex"), "45490022fc876f4df62c07110b3fa40a04c0a1edc6aec26797d616f7c159c263");
+  assert.equal(createHash("sha256").update(JSON.stringify(published.projections.filter(({ parentRecordId }) => !hamburgIds.has(parentRecordId)))).digest("hex"), "3edca8ec748beb5b9d2cb74871ad5c56082a5beced28e75c006a85f745999fa3");
+  assert.equal(createHash("sha256").update(projectionText).digest("hex"), "7b51a9fcd0395d84b277cd2d183afbc32edb5b2e2c68e5fabca7aaabea80d339");
 });
 
-test("schema is a closed schema-2 count-locked atomic projection contract", () => {
+test("schema is a closed schema-3 count-locked atomic projection contract", () => {
   assert.equal(schema.$schema, "https://json-schema.org/draft/2020-12/schema");
-  assert.equal(schema.$id, "urn:hmc:schema:specimen-card-projections:2");
+  assert.equal(schema.$id, "urn:hmc:schema:specimen-card-projections:3");
   assert.deepEqual(schema.required, ["metadata", "projections"]);
-  assert.equal(schema.properties.projections.minItems, 1917);
-  assert.equal(schema.properties.projections.maxItems, 1917);
-  assert.equal(schema.$defs.metadata.properties.atomicCardCount.const, 6561);
-  assert.equal(schema.$defs.metadata.properties.sourceContextCardCount.const, 1619);
+  assert.equal(schema.properties.projections.minItems, 1955);
+  assert.equal(schema.properties.projections.maxItems, 1955);
+  assert.equal(schema.$defs.metadata.properties.atomicCardCount.const, 6675);
+  assert.equal(schema.$defs.metadata.properties.sourceContextCardCount.const, 1657);
   assert.deepEqual(schema.$defs.projection.required, ["parentRecordId", "cards"]);
-  assert.deepEqual(schema.$defs.card.required, ["holdingPath", "clause", "massPath"]);
+  assert.deepEqual(schema.$defs.card.oneOf, [
+    { $ref: "#/$defs/clauseCard" },
+    { $ref: "#/$defs/componentCard" },
+  ]);
+  assert.deepEqual(schema.$defs.clauseCard.required, ["holdingPath", "clause", "massPath"]);
+  assert.deepEqual(schema.$defs.componentCard.required, ["holdingPath", "componentPath", "massPath"]);
+  assert.deepEqual(schema.$defs.componentCard.properties.massPath, { $ref: "#/$defs/componentMassPath" });
   assert.deepEqual(schema.$defs.clause.required, ["textPath", "start", "end"]);
   const visit = (value) => {
     if (Array.isArray(value)) return value.forEach(visit);
@@ -128,26 +135,42 @@ test("Madrid projects exactly 23 multi-holding parents into 54 atomic specimen c
   }
 });
 
-test("Hamburg projects only 104 audited individual holdings and retains all source context", () => {
+test("Hamburg projects all 218 typed individual components and retains all source context", () => {
   assert.deepEqual(HAMBURG_AUDIT_COVERAGE, {
     parentObservationCount: 147,
     holdingCount: 151,
     componentWeightCount: 227,
-    projectedParentCount: 104,
-    atomicCardCount: 104,
-    groupedSourceContextCount: 43,
+    individualHoldingComponentCount: 218,
+    aggregateHoldingComponentCount: 4,
+    associatedMaterialComponentCount: 5,
+    projectedParentCount: 142,
+    contextOnlyObservationCount: 5,
+    atomicCardCount: 218,
+    multiCardParentCount: 36,
+    sourceContextCardCount: 142,
     thinSectionCount: 26,
-    projectionSetSha256: "bb773cc5bda10ffb38bd1550601fb294ddd9ca496f34ffe81ac9eb7d1024560c",
+    projectionSetSha256: "ea3d7d24a95122849f8fdd922dc9318cadd73362926084701d670950eee576b1",
   });
   const projections = published.projections.filter(({ parentRecordId }) => hamburgIds.has(parentRecordId));
-  assert.equal(projections.length, 104);
-  assert(projections.every(({ cards }) => cards.length === 1));
+  assert.equal(projections.length, 142);
+  assert.equal(projections.reduce((count, { cards }) => count + cards.length, 0), 218);
+  assert.equal(projections.filter(({ cards }) => cards.length > 1).length, 36);
   assert(projections.every((projection) =>
     deriveSourceContext(projection, recordById.get(projection.parentRecordId), "collection-entry")));
+  assert(projections.every((projection) => projection.cards.every((card) =>
+    resolve(recordById.get(projection.parentRecordId), card.componentPath).kind === "individual-holding")));
+  assert.deepEqual(projections.find(({ parentRecordId }) => recordById.get(parentRecordId).entryOrder === 1).cards.map(({ massPath }) => massPath), [
+    "holdings[0].weights[0].grams", "holdings[0].weights[1].grams", "holdings[0].weights[2].grams",
+  ]);
+  assert.deepEqual(projections.find(({ parentRecordId }) => recordById.get(parentRecordId).entryOrder === 105).cards.map(({ massPath }) => massPath), [
+    ...Array.from({ length: 3 }, (_, index) => `holdings[0].weights[${index}].grams`),
+    ...Array.from({ length: 11 }, (_, index) => `holdings[1].weights[${index}].grams`),
+    "holdings[2].weights[0].grams",
+  ]);
   assert(!projections.some(({ parentRecordId }) => recordById.get(parentRecordId).entryOrder === 147));
 });
 
-test("every clause and optional mass resolves exactly in canonical UTF-16 order", () => {
+test("every evidence variant and optional mass resolves exactly in canonical source order", () => {
   const sourceOrder = new Map(catalog.records.map(({ id }, index) => [id, index]));
   let priorOrder = -1;
   let cardCount = 0;
@@ -159,31 +182,43 @@ test("every clause and optional mass resolves exactly in canonical UTF-16 order"
     priorOrder = sourceOrder.get(record.id);
     const references = new Set();
     const spansByPath = new Map();
-    let previous = [-1, "", -1, -1];
+    let previous = [-1, -1, "", -1, -1];
     for (const card of projection.cards) {
       const holdingIndex = Number(card.holdingPath.match(/[0-9]+/u)[0]);
-      const textIndex = Number(card.clause.textPath.match(/[0-9]+/u)[0]);
-      assert.equal(holdingIndex, textIndex);
-      const text = resolve(record, card.clause.textPath);
-      assert.equal(typeof text, "string");
-      assert(card.clause.start >= 0 && card.clause.start < card.clause.end && card.clause.end <= text.length);
-      assert.match(text.slice(card.clause.start, card.clause.end), /[\p{L}\p{N}]/u);
-      for (const boundary of [card.clause.start, card.clause.end]) {
-        if (boundary > 0 && boundary < text.length) {
-          assert(!(text.charCodeAt(boundary - 1) >= 0xd800 && text.charCodeAt(boundary - 1) <= 0xdbff &&
-            text.charCodeAt(boundary) >= 0xdc00 && text.charCodeAt(boundary) <= 0xdfff));
+      let order;
+      if (card.clause) {
+        assert.equal(Object.hasOwn(card, "componentPath"), false);
+        const textIndex = Number(card.clause.textPath.match(/[0-9]+/u)[0]);
+        assert.equal(holdingIndex, textIndex);
+        const text = resolve(record, card.clause.textPath);
+        assert.equal(typeof text, "string");
+        assert(card.clause.start >= 0 && card.clause.start < card.clause.end && card.clause.end <= text.length);
+        assert.match(text.slice(card.clause.start, card.clause.end), /[\p{L}\p{N}]/u);
+        for (const boundary of [card.clause.start, card.clause.end]) {
+          if (boundary > 0 && boundary < text.length) {
+            assert(!(text.charCodeAt(boundary - 1) >= 0xd800 && text.charCodeAt(boundary - 1) <= 0xdbff &&
+              text.charCodeAt(boundary) >= 0xdc00 && text.charCodeAt(boundary) <= 0xdfff));
+          }
         }
+        order = [holdingIndex, -1, card.clause.textPath, card.clause.start, card.clause.end];
+        const spans = spansByPath.get(card.clause.textPath) || [];
+        assert(spans.every(([start, end]) => card.clause.end <= start || card.clause.start >= end));
+        spans.push([card.clause.start, card.clause.end]);
+        spansByPath.set(card.clause.textPath, spans);
+      } else {
+        assert.equal(Object.hasOwn(card, "clause"), false);
+        const componentMatch = card.componentPath.match(/^holdings\[([0-9]+)\]\.weights\[([0-9]+)\]$/u);
+        assert(componentMatch);
+        assert.equal(Number(componentMatch[1]), holdingIndex);
+        assert.equal(resolve(record, card.componentPath).kind, "individual-holding");
+        assert.equal(card.massPath, `${card.componentPath}.grams`);
+        order = [holdingIndex, Number(componentMatch[2]), "", -1, -1];
       }
-      const order = [holdingIndex, card.clause.textPath, card.clause.start, card.clause.end];
-      assert(order[0] > previous[0] ||
-        (order[0] === previous[0] && (order[1] > previous[1] ||
-          (order[1] === previous[1] && (order[2] > previous[2] ||
-            (order[2] === previous[2] && order[3] > previous[3]))))));
+      assert(order[0] > previous[0] || (order[0] === previous[0] &&
+        (order[1] > previous[1] || (order[1] === previous[1] &&
+          (order[2] > previous[2] || (order[2] === previous[2] &&
+            (order[3] > previous[3] || (order[3] === previous[3] && order[4] > previous[4]))))))));
       previous = order;
-      const spans = spansByPath.get(card.clause.textPath) || [];
-      assert(spans.every(([start, end]) => card.clause.end <= start || card.clause.start >= end));
-      spans.push([card.clause.start, card.clause.end]);
-      spansByPath.set(card.clause.textPath, spans);
       if (card.massPath !== null) {
         assert(Number.isFinite(resolve(record, card.massPath)) && resolve(record, card.massPath) > 0);
         assert.equal(Number(card.massPath.match(/[0-9]+/u)[0]), holdingIndex);
@@ -196,8 +231,8 @@ test("every clause and optional mass resolves exactly in canonical UTF-16 order"
     contextCount += Number(hasContext);
     assert(projection.cards.length + Number(hasContext) >= 2);
   }
-  assert.equal(cardCount, 6561);
-  assert.equal(contextCount, 1619);
+  assert.equal(cardCount, 6675);
+  assert.equal(contextCount, 1657);
 });
 
 test("Prior 630 has exact 17 reviewed clauses plus context; Reeds 366 has ten full holdings and no context", () => {
@@ -228,7 +263,7 @@ test("manifest exposes only identifiers, paths, and numeric boundaries without c
   const allowedKeys = new Set([
     "metadata", "projections", "schemaVersion", "scope", "catalogSchemaVersion", "sourceRecordCount",
     "sourceCatalogSha256", "projectionCount", "atomicCardCount", "sourceContextCardCount", "parentRecordId",
-    "cards", "holdingPath", "clause", "textPath", "start", "end", "massPath",
+    "cards", "holdingPath", "clause", "componentPath", "textPath", "start", "end", "massPath",
   ]);
   const visit = (value) => {
     if (Array.isArray(value)) return value.forEach(visit);
@@ -296,6 +331,63 @@ test("rejects invalid, duplicate, mismatched, and non-specimen mass bindings", (
   }, /non-specimen/iu);
 });
 
+test("rejects every malformed Hamburg component evidence mutation", () => {
+  const byEntryOrder = (value, entryOrder) => value.projections.find(({ parentRecordId }) =>
+    recordById.get(parentRecordId)?.catalogId === "hamburg-1913" && recordById.get(parentRecordId).entryOrder === entryOrder);
+  mutate("malformed component path", (value) => {
+    byEntryOrder(value, 1).cards[0].componentPath = "/holdings/0/weights/0";
+  }, /componentPath.*malformed/iu);
+  mutate("dangling component path", (value) => {
+    const card = byEntryOrder(value, 1).cards[0];
+    card.componentPath = "holdings[0].weights[999]";
+    card.massPath = `${card.componentPath}.grams`;
+  }, /individual-holding/iu);
+  mutate("component path uses a different holding", (value) => {
+    const card = byEntryOrder(value, 105).cards[0];
+    card.componentPath = "holdings[1].weights[0]";
+    card.massPath = `${card.componentPath}.grams`;
+  }, /different holding/iu);
+  mutate("aggregate component projected", (value) => {
+    const card = byEntryOrder(value, 37).cards[2];
+    card.componentPath = "holdings[0].weights[3]";
+    card.massPath = `${card.componentPath}.grams`;
+  }, /individual-holding/iu);
+  mutate("component mass does not match component path", (value) => {
+    byEntryOrder(value, 1).cards[0].massPath = "holdings[0].weights[1].grams";
+  }, /exact componentPath/iu);
+  mutate("component mass is null", (value) => {
+    byEntryOrder(value, 1).cards[0].massPath = null;
+  }, /exact componentPath|non-null/iu);
+  mutate("component cards reordered", (value) => {
+    byEntryOrder(value, 1).cards.reverse();
+  }, /source order/iu);
+  mutate("component card duplicated", (value) => {
+    const cards = byEntryOrder(value, 1).cards;
+    cards[1] = structuredClone(cards[0]);
+  }, /duplicated|source order/iu);
+  mutate("both evidence variants present", (value) => {
+    byEntryOrder(value, 1).cards[0].clause = { textPath: "holdings[0].description", start: 0, end: 15 };
+  }, /exactly one/iu);
+  mutate("no evidence variant present", (value) => {
+    delete byEntryOrder(value, 1).cards[0].componentPath;
+  }, /exactly one/iu);
+  mutate("generic clause substituted for Hamburg component evidence", (value) => {
+    byEntryOrder(value, 1).cards[0] = {
+      holdingPath: "holdings[0]",
+      clause: { textPath: "holdings[0].description", start: 0, end: 15 },
+      massPath: "holdings[0].weights[0].grams",
+    };
+  }, /Hamburg cards must use componentPath/iu);
+  mutate("component evidence used outside Hamburg", (value) => {
+    const reeds = value.projections.find(({ parentRecordId }) => parentRecordId === REEDS_366_ID);
+    reeds.cards[0] = {
+      holdingPath: "holdings[0]",
+      componentPath: "holdings[0].weights[0]",
+      massPath: "holdings[0].weights[0].grams",
+    };
+  }, /restricted to Hamburg/iu);
+});
+
 test("rejects Prior, Reeds, context-count, card-count, and reviewed-set drift", () => {
   mutate("Prior massless clause removed", (value) => {
     value.projections.find(({ parentRecordId }) => parentRecordId === PRIOR_630_ID).cards.splice(6, 1);
@@ -318,7 +410,7 @@ test("rejects Prior, Reeds, context-count, card-count, and reviewed-set drift", 
       ![PRIOR_630_ID, REEDS_366_ID].includes(candidate.parentRecordId) &&
       deriveSourceContext(candidate, recordById.get(candidate.parentRecordId), modelByCatalog.get(recordById.get(candidate.parentRecordId).catalogId)));
     projection.cards[0].clause.end--;
-  }, /reviewed production lock/iu);
+  }, /reviewed production lock|schema-2 production lock/iu);
   mutate("Madrid grouped holding projected atomically", (value) => {
     const madrid = value.projections.find(({ parentRecordId }) => parentRecordId === "obs-ffa86dbe-b5f3-413b-913c-deb60966c05d");
     madrid.cards[1].holdingPath = "holdings[2]";

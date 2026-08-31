@@ -5,11 +5,13 @@ import test from "node:test";
 
 const require = createRequire(import.meta.url);
 const app = require("../app.js");
-const [catalog, projections, folios, styles] = await Promise.all([
+const [catalog, projections, folios, styles, html, source] = await Promise.all([
   readFile(new URL("../data/catalog.json", import.meta.url), "utf8").then(JSON.parse),
   readFile(new URL("../data/specimen-card-projections.json", import.meta.url), "utf8").then(JSON.parse),
   readFile(new URL("../data/folios.json", import.meta.url), "utf8").then(JSON.parse),
   readFile(new URL("../styles.css", import.meta.url), "utf8"),
+  readFile(new URL("../index.html", import.meta.url), "utf8"),
+  readFile(new URL("../app.js", import.meta.url), "utf8"),
 ]);
 const registry = app.normalizeCatalogRegistry(catalog.metadata);
 const records = catalog.records.map((record, index) => app.prepareRecord(record, index, registry));
@@ -28,8 +30,13 @@ const amendmentTargetMutations = [
   ["changed amendment target mass", (record) => { record.amendments[0].targetWeight.grams = 14150; }],
 ];
 
-test("projected component labels wrap onto their own row at every viewport", () => {
-  assert.match(styles, /\.holdings-list \.projected-content-clause \{[^}]*flex-wrap: wrap;/u);
+test("projected specimen weight and detail layouts remain clean at desktop and narrow widths", () => {
+  assert.match(styles, /\.holdings-list \.projected-content-weight,[\s\S]*padding-block: \.45rem;/u);
+  assert.match(styles, /\.holdings-list \.specimen-weight \{[^}]*font-variant-numeric: tabular-nums;/u);
+  assert.match(styles, /\.holdings-list \.specimen-details \{[^}]*white-space: pre-wrap;/u);
+  assert.match(styles, /@media \(max-width: 700px\) \{[\s\S]*\.catalog-grid \{ grid-template-columns: 1fr; \}/u);
+  assert.match(styles, /@media \(max-width: 420px\) \{[\s\S]*\.record-heading \{ grid-template-columns: minmax\(0, 1fr\); \}/u);
+  assert.match(html, /<section class="record-holdings" aria-label="Holdings" hidden>/u);
 });
 
 test("long Hamburg fact labels stack above values instead of sharing narrow columns", () => {
@@ -92,43 +99,84 @@ test("Hamburg search, filter masses, supplement, and amendment facts remain dist
   }).length, 0);
 });
 
-test("Hamburg projection runtime accepts exact atomics and rejects grouped context as atomic", () => {
+test("Hamburg projection runtime emits all 218 components across 142 parents and keeps five observations unprojected", () => {
   const projectionIndex = app.deriveSpecimenCardProjectionIndex(projections, records, {
     catalogSchemaVersion: 7,
     sourceCatalogSha256: projections.metadata.sourceCatalogSha256,
   });
   const hamburgIds = new Set(hamburg.map(({ id }) => id));
-  assert.equal([...projectionIndex.keys()].filter((id) => hamburgIds.has(id)).length, 104);
-  for (const name of ["Stannern", "Holbrook", "Bethanien"]) assert.equal(projectionIndex.has(byName(name).id), false);
+  const hamburgProjectionCount = [...projectionIndex.keys()].filter((id) => hamburgIds.has(id)).length;
+  const descriptors = app.expandSpecimenCardDescriptors(hamburg, projectionIndex);
+  const projected = descriptors.filter(({ projected }) => projected);
+  const contextOnly = descriptors.filter(({ projected }) => !projected);
+  assert.equal(hamburgProjectionCount, 142);
+  assert.equal(projected.length, 218);
+  assert.equal(contextOnly.length, 5);
+  assert(contextOnly.every(({ kind }) => kind === "parent"));
+  assert.equal(hamburg.filter(({ id }) => projectionIndex.get(id)?.cards.length > 1).length, 36);
+  assert(projected.every(({ componentPath, clause, clauseText }) => componentPath && clause === null && clauseText === null));
+  assert(projected.every((descriptor) => app.specimenCardDescriptorHoldings(descriptor)[0].type === "weight"));
 
-  const atomic = hamburg.find(({ id }) => projectionIndex.has(id));
-  const [descriptor] = app.expandSpecimenCardDescriptors([atomic], projectionIndex);
-  assert.equal(descriptor.kind, "atomic");
-  assert.equal(descriptor.massPath, "holdings[0].weights[0].grams");
-  assert.deepEqual(app.specimenCardDescriptorMasses(descriptor), [atomic.holdings[0].weights[0].grams]);
+  const stannernCards = app.expandSpecimenCardDescriptors([byName("Stannern")], projectionIndex);
+  const bethanienCards = app.expandSpecimenCardDescriptors([byName("Bethanien")], projectionIndex);
+  assert.equal(stannernCards.length, 3);
+  assert.deepEqual(stannernCards.map(app.specimenCardDescriptorMasses), [[231], [23.6], [4.4]]);
+  assert.equal(bethanienCards.length, 15);
+  assert.deepEqual(bethanienCards.map(({ componentPath }) => componentPath), [
+    ...Array.from({ length: 3 }, (_, index) => `holdings[0].weights[${index}]`),
+    ...Array.from({ length: 11 }, (_, index) => `holdings[1].weights[${index}]`),
+    "holdings[2].weights[0]",
+  ]);
 
-  const grouped = byName("Stannern");
-  const fake = {
-    metadata: {
-      schemaVersion: 2,
-      scope: "reviewed-atomic-specimen-card-display-projections",
-      catalogSchemaVersion: 7,
-      sourceRecordCount: 1,
-      sourceCatalogSha256: "0".repeat(64),
-      projectionCount: 1,
-      atomicCardCount: 1,
-      sourceContextCardCount: 1,
+  const excludedKinds = hamburg.flatMap(({ holdings }) => holdings.flatMap(({ weights }) => weights))
+    .filter(({ kind }) => kind !== "individual-holding");
+  assert.equal(excludedKinds.filter(({ kind }) => kind === "aggregate-holding").length, 4);
+  assert.equal(excludedKinds.filter(({ kind }) => kind === "associated-material").length, 5);
+  assert.equal(hamburg.flatMap(({ holdings }) => holdings.flatMap(({ representations }) => representations))
+    .reduce((sum, { count }) => sum + count, 0), 26);
+  assert(projected.every((descriptor) => app.resolveSpecimenCardComponent(descriptor.parentRecord, descriptor)?.component.kind === "individual-holding"));
+});
+
+test("weighted cards expose only specimen weight and route the Bethanien amendment to its exact component", () => {
+  const projectionIndex = app.deriveSpecimenCardProjectionIndex(projections, records, {
+    sourceCatalogSha256: projections.metadata.sourceCatalogSha256,
+  });
+  const stannernCards = app.expandSpecimenCardDescriptors([byName("Stannern")], projectionIndex);
+  const bethanienCards = app.expandSpecimenCardDescriptors([byName("Bethanien")], projectionIndex);
+  assert(stannernCards.every((descriptor) => app.specimenCardHamburgFacts(descriptor).map(({ label }) => label).join() === "Publication"));
+  assert.deepEqual(bethanienCards.map((descriptor) => app.specimenCardHamburgFacts(descriptor).map(({ label }) => label)),
+    bethanienCards.map(({ componentPath }) => componentPath === "holdings[1].weights[4]"
+      ? ["Publication", "Amendment (base observation retained)"] : ["Publication"]));
+  assert.doesNotMatch(source, /"Specimen clause"|`Component:|"Meteorite holding"|"Meteorite group"/u);
+  assert.match(source, /weighted \? "Specimen weight" : "Specimen details"/u);
+  assert.match(source, /hamburgAmendmentComponentPath\(record, amendment\) === descriptor\.componentPath/u);
+});
+
+test("schema-3 runtime rejects malformed or widened Hamburg component evidence", () => {
+  const validOptions = { sourceCatalogSha256: projections.metadata.sourceCatalogSha256 };
+  const byEntryOrder = (document, entryOrder) => document.projections.find(({ parentRecordId }) =>
+    hamburg.find(({ id }) => id === parentRecordId)?.entryOrder === entryOrder);
+  for (const mutate of [
+    (value) => { value.metadata.schemaVersion = 2; },
+    (value) => { byEntryOrder(value, 1).cards[0].privateLabel = "forged"; },
+    (value) => { byEntryOrder(value, 1).cards[0].clause = { textPath: "holdings[0].description", start: 0, end: 15 }; },
+    (value) => { byEntryOrder(value, 1).cards[0].componentPath = "holdings[0].weights[99]"; },
+    (value) => { byEntryOrder(value, 1).cards[0].massPath = "holdings[0].weights[1].grams"; },
+    (value) => { byEntryOrder(value, 1).cards.reverse(); },
+    (value) => {
+      const record = hamburg.find(({ holdings }) => holdings.some(({ weights }) => weights.some(({ kind }) => kind === "aggregate-holding")));
+      const holdingIndex = record.holdings.findIndex(({ weights }) => weights.some(({ kind }) => kind === "aggregate-holding"));
+      const weightIndex = record.holdings[holdingIndex].weights.findIndex(({ kind }) => kind === "aggregate-holding");
+      const card = value.projections.find(({ parentRecordId }) => parentRecordId === record.id).cards[0];
+      card.holdingPath = `holdings[${holdingIndex}]`;
+      card.componentPath = `holdings[${holdingIndex}].weights[${weightIndex}]`;
+      card.massPath = `${card.componentPath}.grams`;
     },
-    projections: [{
-      parentRecordId: grouped.id,
-      cards: [{
-        holdingPath: "holdings[0]",
-        clause: { textPath: "holdings[0].description", start: 0, end: grouped.holdings[0].description.length },
-        massPath: "holdings[0].weights[0].grams",
-      }],
-    }],
-  };
-  assert.equal(app.validateSpecimenCardManifest(fake, [grouped]), false);
+  ]) {
+    const changed = structuredClone(projections);
+    mutate(changed);
+    assert.equal(app.validateSpecimenCardManifest(changed, records, validOptions), false);
+  }
 });
 
 test("Hamburg schema additions fail closed without widening old models", () => {

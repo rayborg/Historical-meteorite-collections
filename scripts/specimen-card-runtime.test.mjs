@@ -65,7 +65,7 @@ function fullCard(record, holdingIndex, massPath = `holdings[${holdingIndex}].we
 function syntheticManifest(sourceRecords, projections) {
   return {
     metadata: {
-      schemaVersion: 2,
+      schemaVersion: 3,
       scope: "reviewed-atomic-specimen-card-display-projections",
       catalogSchemaVersion: 7,
       sourceRecordCount: sourceRecords.length,
@@ -81,14 +81,14 @@ function syntheticManifest(sourceRecords, projections) {
   };
 }
 
-test("schema-2 contract is closed and has no schema-1 fallback", () => {
+test("schema-3 contract is closed and has no schema-2 fallback", () => {
   const parent = weightedRecord("schema-parent", 2);
   const projection = { parentRecordId: parent.id, cards: [fullCard(parent, 0), fullCard(parent, 1)] };
   const document = syntheticManifest([parent], [projection]);
   assert.equal(app.validateSpecimenCardManifest(document, [parent]), true);
 
   for (const mutate of [
-    (value) => { value.metadata.schemaVersion = 1; },
+    (value) => { value.metadata.schemaVersion = 2; },
     (value) => { value.metadata.scope = "reviewed-specimen-card-display-projections"; },
     (value) => { value.metadata.atomicCardCount += 1; },
     (value) => { value.metadata.sourceContextCardCount += 1; },
@@ -165,6 +165,10 @@ test("Prior entry 630 renders only seventeen exact atomic clauses", () => {
   assert(descriptors.slice(0, 17).every((descriptor) => app.specimenCardPositionLabel(descriptor) === null));
   assert.deepEqual(descriptors.slice(0, 17).map(app.specimenCardDescriptorMasses),
     [[9095], [3545], [845], [793], [538], [425], [], [], [158], [145], [], [1111], [108], [], [821], [76], []]);
+  assert.deepEqual(descriptors.slice(0, 17).map(app.specimenCardDescriptorHoldings), projection.cards.map(({ clause, massPath }, index) =>
+    massPath === null
+      ? [{ type: "detail", text: prior.holdings[0].description.slice(clause.start, clause.end) }]
+      : [{ type: "weight", grams: app.specimenCardDescriptorMasses(descriptors[index])[0] }]));
 
   const contextEntries = app.specimenCardContextEntries(prior, projection);
   assert.deepEqual(contextEntries.filter(({ type }) => type === "segment").map(({ text }) => text), [
@@ -249,6 +253,10 @@ test("massless atomic cards remain visible without a range and are excluded by a
   const ranged = app.filterSpecimenCardDescriptors(descriptors, { min: 0, max: 10, lineageOnly: false });
   assert.equal(noRange.filter(({ kind }) => kind === "atomic").length, 2);
   assert.deepEqual(ranged.filter(({ kind }) => kind === "atomic").map(({ massPath }) => massPath), ["holdings[0].weights[0].grams"]);
+  assert.deepEqual(descriptors.map(app.specimenCardDescriptorHoldings), [
+    [{ type: "detail", text: "Massless." }],
+    [{ type: "weight", grams: 1 }],
+  ]);
 });
 
 test("lineage routes only to emitted atomic cards", () => {
@@ -316,24 +324,31 @@ test("digest lock loads the exact set and fails closed to parent cards on mismat
   altered.projections[0].cards[0].clause.end -= 1;
   assert.equal((await app.loadSpecimenCardProjectionIndex(records, async () => projectionResponse(altered), options)).size, 0);
   assert.equal(app.SPECIMEN_CARD_SOURCE_CATALOG_SHA256, "91694659e5f7210db10ffc42873c54d5d38d3e5a485d51c38072746faa7f41e0");
-  assert.equal(app.SPECIMEN_CARD_PROJECTION_SET_SHA256, "5a0f8a6c1ae135f24be54186f9b474e84ec67c248a5621fe098ad598e3f8cb85");
+  assert.equal(app.SPECIMEN_CARD_PROJECTION_SET_SHA256, "45490022fc876f4df62c07110b3fa40a04c0a1edc6aec26797d616f7c159c263");
 });
 
 test("rendering is text-only, omits context cards, and synchronizes cache keys", () => {
   assert.doesNotMatch(source, /\.innerHTML\b/u);
   assert.doesNotMatch(source, /Source context, not an individual specimen/u);
   assert.doesNotMatch(source, /source-context-card/u);
+  assert.doesNotMatch(source, /"Specimen clause"|`Component:/u);
+  assert.match(source, /weighted \? "Specimen weight" : "Specimen details"/u);
   assert.match(source, /with this reported mass/u);
   assert.match(html, /<p class="specimen-position" hidden><\/p>/u);
-  assert.match(html, /styles\.css\?v=20260831-fact-layout-1/u);
-  assert.match(html, /app\.js\?v=20260831-fact-layout-1/u);
-  assert.equal(app.ASSET_CACHE_VERSION, "20260831-fact-layout-1");
+  assert.match(html, /styles\.css\?v=20260831-specimen-cards-1/u);
+  assert.match(html, /app\.js\?v=20260831-specimen-cards-1/u);
+  assert.equal(app.ASSET_CACHE_VERSION, "20260831-specimen-cards-1");
 });
 
-test("production projection fixture validates when the schema-2 data dependency is present", {
-  skip: manifest.metadata.schemaVersion !== 2 ? "schema-2 projection data has not landed in this worktree" : false,
+test("production projection fixture validates when the schema-3 data dependency is present", {
+  skip: manifest.metadata.schemaVersion !== 3 ? "schema-3 projection data has not landed in this worktree" : false,
 }, () => {
   assert.equal(sourceCatalogSha256, manifest.metadata.sourceCatalogSha256);
+  assert.deepEqual([
+    manifest.metadata.projectionCount,
+    manifest.metadata.atomicCardCount,
+    manifest.metadata.sourceContextCardCount,
+  ], [1955, 6675, 1657]);
   assert.equal(app.validateSpecimenCardManifest(manifest, records, { sourceCatalogSha256 }), true);
   const index = app.deriveSpecimenCardProjectionIndex(manifest, records, { sourceCatalogSha256 });
   assert.equal(index.size, manifest.metadata.projectionCount);

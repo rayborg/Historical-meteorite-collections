@@ -1,7 +1,7 @@
 "use strict";
 
 const CACHE_VERSION = "20260830-1";
-const ASSET_CACHE_VERSION = "20260831-fact-layout-1";
+const ASSET_CACHE_VERSION = "20260831-specimen-cards-1";
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "name-asc";
 const ISSUE_FORM_URL = "https://github.com/rayborg/Historical-meteorite-collections/issues/new?template=data-error.yml";
@@ -159,11 +159,12 @@ const SPECIMEN_CARD_METADATA_FIELDS = new Set([
   "schemaVersion", "scope", "catalogSchemaVersion", "sourceRecordCount", "sourceCatalogSha256", "projectionCount", "atomicCardCount", "sourceContextCardCount"
 ]);
 const SPECIMEN_CARD_PROJECTION_FIELDS = new Set(["parentRecordId", "cards"]);
-const SPECIMEN_CARD_FIELDS = new Set(["holdingPath", "clause", "massPath"]);
+const SPECIMEN_CARD_CLAUSE_CARD_FIELDS = new Set(["holdingPath", "clause", "massPath"]);
+const SPECIMEN_CARD_COMPONENT_FIELDS = new Set(["holdingPath", "componentPath", "massPath"]);
 const SPECIMEN_CARD_CLAUSE_FIELDS = new Set(["textPath", "start", "end"]);
 const SHA256_HEX = /^[0-9a-f]{64}$/u;
 const SPECIMEN_CARD_SOURCE_CATALOG_SHA256 = "91694659e5f7210db10ffc42873c54d5d38d3e5a485d51c38072746faa7f41e0";
-const SPECIMEN_CARD_PROJECTION_SET_SHA256 = "5a0f8a6c1ae135f24be54186f9b474e84ec67c248a5621fe098ad598e3f8cb85";
+const SPECIMEN_CARD_PROJECTION_SET_SHA256 = "45490022fc876f4df62c07110b3fa40a04c0a1edc6aec26797d616f7c159c263";
 const LINEAGE_ROOT_FIELDS = new Set(["metadata", "relationships"]);
 const LINEAGE_METADATA_FIELDS = new Set(["schemaVersion", "scope", "source", "collectionSeries", "methodology", "counts"]);
 const LINEAGE_SOURCE_FIELDS = new Set(["catalogSchemaVersion", "recordCount", "catalogCount", "flattenedMassObservationCount", "inventoryObservationCount"]);
@@ -1779,12 +1780,6 @@ function resolveSpecimenCardSelection(record, holdingPath, massPath) {
   return Number.isFinite(grams) ? { holding, holdingIndex, weightIndex, grams, kind: weight.kind || null } : null;
 }
 
-function isHamburgAtomicRecord(record) {
-  const holding = record?.holdings?.[0];
-  return record?.catalogId === "hamburg-1913" && record.holdings.length === 1 && holding.count === 1 &&
-    holding.weights.length === 1 && holding.weights[0].kind === "individual-holding" && record.amendments.length === 0;
-}
-
 function specimenCardHolding(record, holdingPath) {
   if (!Array.isArray(record?.holdings) || typeof holdingPath !== "string") return null;
   const match = holdingPath.match(/^holdings\[([0-9]+)\]$/u);
@@ -1817,10 +1812,31 @@ function resolveSpecimenCardClause(record, card) {
   return /[\p{L}\p{N}]/u.test(text) ? { ...resolved, sourceText, text } : null;
 }
 
+function resolveSpecimenCardComponent(record, card) {
+  const resolved = specimenCardHolding(record, card?.holdingPath);
+  const componentMatch = typeof card?.componentPath === "string"
+    ? card.componentPath.match(/^holdings\[([0-9]+)\]\.weights\[([0-9]+)\]$/u)
+    : null;
+  if (record?.catalogId !== "hamburg-1913" || !resolved || !componentMatch ||
+      Number(componentMatch[1]) !== resolved.holdingIndex || card.massPath !== `${card.componentPath}.grams`) return null;
+  const weightIndex = Number(componentMatch[2]);
+  const component = resolved.holding.weights?.[weightIndex];
+  return component?.kind === "individual-holding" && Number.isFinite(component.grams) && component.grams > 0
+    ? { ...resolved, component, weightIndex, grams: component.grams }
+    : null;
+}
+
 function compareSpecimenCards(left, right) {
   const leftHolding = Number(left.holdingPath.match(/^holdings\[([0-9]+)\]$/u)[1]);
   const rightHolding = Number(right.holdingPath.match(/^holdings\[([0-9]+)\]$/u)[1]);
   if (leftHolding !== rightHolding) return leftHolding - rightHolding;
+  if (left.componentPath || right.componentPath) {
+    if (!left.componentPath) return -1;
+    if (!right.componentPath) return 1;
+    const leftComponent = Number(left.componentPath.match(/^holdings\[[0-9]+\]\.weights\[([0-9]+)\]$/u)[1]);
+    const rightComponent = Number(right.componentPath.match(/^holdings\[[0-9]+\]\.weights\[([0-9]+)\]$/u)[1]);
+    return leftComponent - rightComponent;
+  }
   if (left.clause.textPath !== right.clause.textPath) return left.clause.textPath < right.clause.textPath ? -1 : 1;
   return left.clause.start - right.clause.start || left.clause.end - right.clause.end ||
     String(left.massPath || "").localeCompare(String(right.massPath || ""));
@@ -1831,7 +1847,7 @@ function validateSpecimenCardManifest(manifest, sourceRecords, options = {}) {
       !hasExactFields(manifest.metadata, SPECIMEN_CARD_METADATA_FIELDS) || !Array.isArray(sourceRecords)) return false;
   const metadata = manifest.metadata;
   const catalogSchemaVersion = options.catalogSchemaVersion ?? 7;
-  if (metadata.schemaVersion !== 2 || metadata.scope !== "reviewed-atomic-specimen-card-display-projections" ||
+  if (metadata.schemaVersion !== 3 || metadata.scope !== "reviewed-atomic-specimen-card-display-projections" ||
       metadata.catalogSchemaVersion !== catalogSchemaVersion || metadata.sourceRecordCount !== sourceRecords.length ||
       !SHA256_HEX.test(metadata.sourceCatalogSha256) || !Number.isInteger(metadata.projectionCount) ||
       metadata.projectionCount !== manifest.projections.length || !Number.isInteger(metadata.atomicCardCount) ||
@@ -1854,28 +1870,31 @@ function validateSpecimenCardManifest(manifest, sourceRecords, options = {}) {
     previousParentIndex = source.index;
     parentIds.add(projection.parentRecordId);
     const selectedMassPaths = new Set();
+    const selectedComponentPaths = new Set();
     let previousCard = null;
     const previousEndsByTextPath = new Map();
     for (const card of projection.cards) {
-      if (!hasExactFields(card, SPECIMEN_CARD_FIELDS) || (card.massPath !== null && selectedMassPaths.has(card.massPath))) return false;
-      const clause = resolveSpecimenCardClause(source.record, card);
-      if (!clause) return false;
-      if (source.record.recordModel === "catalog-item" && clause.holding.kind !== "specimen") return false;
-      const selection = card.massPath === null ? null : resolveSpecimenCardSelection(source.record, card.holdingPath, card.massPath);
-      if (card.massPath !== null && (!selection || selection.grams <= 0)) return false;
+      const hasClause = isPlainObject(card) && Object.hasOwn(card, "clause");
+      const hasComponent = isPlainObject(card) && Object.hasOwn(card, "componentPath");
+      if (hasClause === hasComponent || !hasExactFields(card,
+        hasClause ? SPECIMEN_CARD_CLAUSE_CARD_FIELDS : SPECIMEN_CARD_COMPONENT_FIELDS) ||
+        (card.massPath !== null && selectedMassPaths.has(card.massPath))) return false;
+      if (hasClause) {
+        const clause = resolveSpecimenCardClause(source.record, card);
+        if (!clause || source.record.catalogId === "hamburg-1913" ||
+            (source.record.recordModel === "catalog-item" && clause.holding.kind !== "specimen")) return false;
+        const selection = card.massPath === null ? null : resolveSpecimenCardSelection(source.record, card.holdingPath, card.massPath);
+        if (card.massPath !== null && (!selection || selection.grams <= 0)) return false;
+        const previousEnd = previousEndsByTextPath.get(card.clause.textPath);
+        if (previousEnd !== undefined && card.clause.start < previousEnd) return false;
+        previousEndsByTextPath.set(card.clause.textPath, card.clause.end);
+      } else {
+        if (selectedComponentPaths.has(card.componentPath) || !resolveSpecimenCardComponent(source.record, card)) return false;
+        selectedComponentPaths.add(card.componentPath);
+      }
       if (previousCard && compareSpecimenCards(previousCard, card) >= 0) return false;
-      const previousEnd = previousEndsByTextPath.get(card.clause.textPath);
-      if (previousEnd !== undefined && card.clause.start < previousEnd) return false;
-      previousEndsByTextPath.set(card.clause.textPath, card.clause.end);
       previousCard = card;
       if (card.massPath !== null) selectedMassPaths.add(card.massPath);
-    }
-    if (source.record.catalogId === "hamburg-1913") {
-      const holding = source.record.holdings[0];
-      const card = projection.cards[0];
-      if (!isHamburgAtomicRecord(source.record) || projection.cards.length !== 1 || card.holdingPath !== "holdings[0]" ||
-          card.clause.textPath !== "holdings[0].description" || card.clause.start !== 0 ||
-          card.clause.end !== holding.description.length || card.massPath !== "holdings[0].weights[0].grams") return false;
     }
     const hasSourceContext = specimenCardContextEntries(source.record, projection).length > 0;
     if (projection.cards.length + Number(hasSourceContext) < 2) return false;
@@ -1916,7 +1935,9 @@ function parentSpecimenCardDescriptor(parentRecord) {
     parentRecord,
     kind: "parent",
     holdingPath: null,
+    componentPath: null,
     massPath: null,
+    clause: null,
     clauseText: null,
     sourcePosition: 0,
     projected: false,
@@ -1933,6 +1954,7 @@ function meaningfulContextSegment(text) {
 function specimenCardContextEntries(record, projection) {
   const spansByTextPath = new Map();
   projection.cards.forEach((card) => {
+    if (!card.clause) return;
     const spans = spansByTextPath.get(card.clause.textPath) || [];
     spans.push([card.clause.start, card.clause.end]);
     spansByTextPath.set(card.clause.textPath, spans);
@@ -1994,9 +2016,10 @@ function expandSpecimenCardDescriptors(sourceRecords, projectionIndex = new Map(
       parentRecord,
       kind: "atomic",
       holdingPath: card.holdingPath,
+      componentPath: card.componentPath || null,
       massPath: card.massPath,
-      clause: card.clause,
-      clauseText: resolveSpecimenCardClause(parentRecord, card).text,
+      clause: card.clause || null,
+      clauseText: card.clause ? resolveSpecimenCardClause(parentRecord, card).text : null,
       sourcePosition,
       projected: true,
       specimenCount: projection.cards.length,
@@ -2062,15 +2085,13 @@ function paginateSpecimenCardDescriptors(descriptors, limit = PAGE_SIZE) {
 }
 
 function specimenCardDescriptorHoldings(descriptor) {
-  const record = descriptor.parentRecord;
-  if (!descriptor.projected) return record.holdings;
-  if (descriptor.kind === "atomic") return [{
-    type: "clause",
-    holdingPath: descriptor.holdingPath,
-    text: descriptor.clauseText,
-    grams: specimenCardDescriptorMasses(descriptor)[0] ?? null,
-    componentKind: resolveSpecimenCardSelection(record, descriptor.holdingPath, descriptor.massPath)?.kind || null
-  }];
+  if (!descriptor.projected) return descriptor.parentRecord.holdings;
+  if (descriptor.kind === "atomic") {
+    const [grams] = specimenCardDescriptorMasses(descriptor);
+    return Number.isFinite(grams)
+      ? [{ type: "weight", grams }]
+      : [{ type: "detail", text: descriptor.clauseText }];
+  }
   return [];
 }
 
@@ -2638,7 +2659,7 @@ function createRecordCard(recordOrDescriptor) {
   if (catalogItem || catalogNumber || collectionEntry) {
     recordWeight.remove();
     const holdings = specimenCardDescriptorHoldings(descriptor);
-    if (holdings.length && descriptor.projected) renderProjectedSpecimenCardContent(card, holdings, descriptor.kind);
+    if (holdings.length && descriptor.projected) renderProjectedSpecimenCardContent(card, holdings);
     else if (holdings.length) renderHoldings(card, holdings, record.recordModel, "Holdings");
     else card.querySelector(".record-holdings").remove();
   } else {
@@ -2665,7 +2686,7 @@ function createRecordCard(recordOrDescriptor) {
     sectionRow.append(term, description);
     card.querySelector(".record-meta").append(sectionRow);
     if (record.catalogId === "hamburg-1913") {
-      hamburgRecordFacts(record).forEach(({ label, value }) => {
+      specimenCardHamburgFacts(descriptor).forEach(({ label, value }) => {
         const row = document.createElement("div");
         row.className = "hamburg-fact-row";
         const factTerm = document.createElement("dt");
@@ -2791,6 +2812,29 @@ function hamburgRecordFacts(record) {
   return facts;
 }
 
+function hamburgAmendmentComponentPath(record, amendment) {
+  const weightIndex = amendment.targetComponentOrder - 1;
+  const candidates = record.holdings.flatMap((holding, holdingIndex) => {
+    const component = holding.weights?.[weightIndex];
+    return component?.kind === "individual-holding" && component.grams === amendment.targetWeight.grams
+      ? [`holdings[${holdingIndex}].weights[${weightIndex}]`]
+      : [];
+  });
+  return candidates.length === 1 ? candidates[0] : null;
+}
+
+function specimenCardHamburgFacts(descriptor) {
+  const record = descriptor.parentRecord;
+  if (record?.catalogId !== "hamburg-1913") return [];
+  if (!descriptor.projected) return hamburgRecordFacts(record);
+  return hamburgRecordFacts(record).filter(({ label }, index) => {
+    if (index === 0) return true;
+    if (!label.startsWith("Amendment")) return false;
+    return record.amendments.some((amendment) =>
+      hamburgAmendmentComponentPath(record, amendment) === descriptor.componentPath);
+  });
+}
+
 function renderHoldings(card, holdings, recordModel = "catalog-item", headingText = "Holdings") {
   const section = card.querySelector(".record-holdings");
   section.querySelector("h4").textContent = headingText;
@@ -2822,42 +2866,20 @@ function renderHoldings(card, holdings, recordModel = "catalog-item", headingTex
   section.hidden = false;
 }
 
-function renderProjectedSpecimenCardContent(card, entries, kind) {
+function renderProjectedSpecimenCardContent(card, entries) {
   const section = card.querySelector(".record-holdings");
-  section.querySelector("h4").textContent = kind === "atomic" ? "Specimen clause" : "Source context";
+  const weighted = entries.every(({ type }) => type === "weight");
+  const heading = weighted ? "Specimen weight" : "Specimen details";
+  section.setAttribute("aria-label", heading);
+  section.querySelector("h4").textContent = heading;
   const list = section.querySelector(".holdings-list");
   entries.forEach((entry) => {
     const item = document.createElement("li");
     item.className = `projected-content-${entry.type}`;
-    if (entry.type === "clause" || entry.type === "segment") {
-      const text = document.createElement("p");
-      text.className = entry.type === "clause" ? "specimen-clause" : "source-context-segment";
-      text.textContent = entry.text;
-      item.append(text);
-      if (entry.type === "clause" && Number.isFinite(entry.grams)) {
-        const mass = document.createElement("span");
-        mass.className = "holding-mass";
-        mass.textContent = formatMass(entry.grams);
-        item.append(mass);
-      }
-      if (entry.type === "clause" && entry.componentKind) {
-        const componentKind = document.createElement("p");
-        componentKind.className = "component-kind";
-        componentKind.textContent = `Component: ${hamburgWeightKindLabel(entry.componentKind)}`;
-        item.append(componentKind);
-      }
-    } else {
-      const heading = document.createElement("div");
-      const label = document.createElement("strong");
-      const value = document.createElement(entry.type === "mass" ? "span" : "p");
-      label.textContent = entry.type === "mass"
-        ? entry.kind ? hamburgWeightKindLabel(entry.kind) : "Reported mass"
-        : entry.label;
-      value.textContent = entry.type === "mass" ? formatMass(entry.grams) : entry.text;
-      if (entry.type === "mass") value.className = "holding-mass";
-      heading.append(label, value);
-      item.append(heading);
-    }
+    const value = document.createElement("p");
+    value.className = entry.type === "weight" ? "specimen-weight" : "specimen-details";
+    value.textContent = entry.type === "weight" ? formatMass(entry.grams) : entry.text;
+    item.append(value);
     list.append(item);
   });
   section.hidden = false;
@@ -3207,6 +3229,7 @@ if (typeof module !== "undefined" && module.exports) {
     genericDesignation,
     hamburgHoldingDetails,
     hamburgRecordFacts,
+    specimenCardHamburgFacts,
     holdingDetails,
     hasMatchingFolioPolicy,
     isDesignationQuery,
@@ -3235,6 +3258,7 @@ if (typeof module !== "undefined" && module.exports) {
     recordSchemaMasses,
     resolveSpecimenCardSelection,
     resolveSpecimenCardClause,
+    resolveSpecimenCardComponent,
     searchable,
     secureRandomInteger,
     sha256Text,
