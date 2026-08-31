@@ -150,15 +150,15 @@ test("runtime rejects atomic cards for non-specimen catalog-item holdings", () =
   assert.equal(app.validateSpecimenCardManifest(syntheticManifest([parent], [projection]), [parent]), false);
 });
 
-test("Prior entry 630 derives seventeen exact atomic clauses and one ordered context card", () => {
+test("Prior entry 630 renders only seventeen exact atomic clauses", () => {
   const prior = records.find((record) => record.catalogId === "prior-1923" && record.entryOrder === 630);
   const projection = manifest.projections.find(({ parentRecordId }) => parentRecordId === prior.id);
   const document = syntheticManifest([prior], [projection]);
   assert.equal(app.validateSpecimenCardManifest(document, [prior]), true);
   const descriptors = app.expandSpecimenCardDescriptors([prior], app.deriveSpecimenCardProjectionIndex(document, [prior]));
-  assert.equal(descriptors.length, 18);
+  assert.equal(descriptors.length, 17);
   assert.equal(descriptors.filter(({ kind }) => kind === "atomic").length, 17);
-  assert.equal(descriptors.filter(({ kind }) => kind === "context").length, 1);
+  assert.equal(descriptors.filter(({ kind }) => kind === "context").length, 0);
   assert.deepEqual(descriptors.slice(0, 17).map(({ clauseText }) => clauseText), projection.cards.map(({ clause }) =>
     prior.holdings[0].description.slice(clause.start, clause.end)));
   assert.equal(descriptors.slice(0, 17).filter(({ massPath }) => massPath === null).length, 5);
@@ -166,18 +166,18 @@ test("Prior entry 630 derives seventeen exact atomic clauses and one ordered con
   assert.deepEqual(descriptors.slice(0, 17).map(app.specimenCardDescriptorMasses),
     [[9095], [3545], [845], [793], [538], [425], [], [], [158], [145], [], [1111], [108], [], [821], [76], []]);
 
-  const context = descriptors[17];
-  assert.deepEqual(context.contextEntries.filter(({ type }) => type === "segment").map(({ text }) => text), [
+  const contextEntries = app.specimenCardContextEntries(prior, projection);
+  assert.deepEqual(contextEntries.filter(({ type }) => type === "segment").map(({ text }) => text), [
     prior.holdings[0].description.slice(0, 77),
     prior.holdings[0].description.slice(536, 743),
   ]);
-  assert.deepEqual(app.specimenCardDescriptorMasses(context), [64, 999, 50, 243]);
+  assert.deepEqual(contextEntries.filter(({ type }) => type === "mass").map(({ grams }) => grams), [64, 999, 50, 243]);
 
   const lineageIndex = app.deriveEarlierRecordIndex(lineageData, records, registry);
   const entries = lineageIndex.get(prior.id);
   assert.equal(entries.length, 2);
   assert.deepEqual(descriptors.map((descriptor) => app.lineageEntriesForSpecimenCard(descriptor, entries).length),
-    [0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    [0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0]);
 });
 
 test("position labels appear only for duplicate normalized masses within one parent", () => {
@@ -206,7 +206,7 @@ test("Reeds entry 366 derives ten full-description cards with exact masses and n
     [28.9, 310.1, 142, 30, 9.6, 124.5, 2.3, 128.5, 658.7, 51.2]);
 });
 
-test("context partition keeps complement segments separate and includes only unmatched holdings and masses", () => {
+test("context partition remains auditable but is not emitted as a specimen card", () => {
   const parent = weightedRecord("context-parent", 2);
   parent.holdings[0].description = "Preamble. Clause one. Middle. Clause two. Tail.";
   parent.holdings[0].weights.push({ grams: 99 });
@@ -223,13 +223,14 @@ test("context partition keeps complement segments separate and includes only unm
   };
   const document = syntheticManifest([parent], [projection]);
   const descriptors = app.expandSpecimenCardDescriptors([parent], app.deriveSpecimenCardProjectionIndex(document, [parent]));
-  const context = descriptors.at(-1);
-  assert.equal(context.kind, "context");
-  assert.deepEqual(context.contextEntries.filter(({ type }) => type === "segment").map(({ text }) => text),
+  assert.equal(descriptors.length, 2);
+  assert(descriptors.every(({ kind }) => kind === "atomic"));
+  const contextEntries = app.specimenCardContextEntries(parent, projection);
+  assert.deepEqual(contextEntries.filter(({ type }) => type === "segment").map(({ text }) => text),
     ["Preamble. ", " Middle. ", " Tail.", "Holding 2", "Separate source fact"]);
-  assert.deepEqual(context.contextEntries.filter(({ type }) => type === "fact").map(({ label, text }) => [label, text]),
+  assert.deepEqual(contextEntries.filter(({ type }) => type === "fact").map(({ label, text }) => [label, text]),
     [["Reported count", "2"]]);
-  assert.deepEqual(context.contextEntries.filter(({ type }) => type === "mass").map(({ grams }) => grams), [99, 2]);
+  assert.deepEqual(contextEntries.filter(({ type }) => type === "mass").map(({ grams }) => grams), [99, 2]);
 });
 
 test("massless atomic cards remain visible without a range and are excluded by any range", () => {
@@ -250,7 +251,7 @@ test("massless atomic cards remain visible without a range and are excluded by a
   assert.deepEqual(ranged.filter(({ kind }) => kind === "atomic").map(({ massPath }) => massPath), ["holdings[0].weights[0].grams"]);
 });
 
-test("lineage routes by exact non-null mass path and context receives unmatched paths only", () => {
+test("lineage routes only to emitted atomic cards", () => {
   const parent = weightedRecord("lineage-parent", 1);
   parent.holdings[0].description = "First. Second.";
   parent.holdings[0].weights = [{ grams: 50 }, { grams: 50 }, { grams: 75 }];
@@ -270,7 +271,6 @@ test("lineage routes by exact non-null mass path and context receives unmatched 
   ];
   assert.deepEqual(app.lineageEntriesForSpecimenCard(descriptors[0], entries).map(({ relationshipId }) => relationshipId), ["selected"]);
   assert.deepEqual(app.lineageEntriesForSpecimenCard(descriptors[1], entries), []);
-  assert.deepEqual(app.lineageEntriesForSpecimenCard(descriptors[2], entries).map(({ relationshipId }) => relationshipId), ["equal-unmatched", "remaining"]);
 });
 
 test("search, statistics, result observations, and citations remain parent-based", () => {
@@ -319,14 +319,15 @@ test("digest lock loads the exact set and fails closed to parent cards on mismat
   assert.equal(app.SPECIMEN_CARD_PROJECTION_SET_SHA256, "5a0f8a6c1ae135f24be54186f9b474e84ec67c248a5621fe098ad598e3f8cb85");
 });
 
-test("rendering is text-only, labels only context and duplicate-mass cards, and cache keys are synchronized", () => {
+test("rendering is text-only, omits context cards, and synchronizes cache keys", () => {
   assert.doesNotMatch(source, /\.innerHTML\b/u);
-  assert.match(source, /Source context, not an individual specimen/u);
+  assert.doesNotMatch(source, /Source context, not an individual specimen/u);
+  assert.doesNotMatch(source, /source-context-card/u);
   assert.match(source, /with this reported mass/u);
   assert.match(html, /<p class="specimen-position" hidden><\/p>/u);
-  assert.match(html, /styles\.css\?v=20260831-specimen-layout-1/u);
-  assert.match(html, /app\.js\?v=20260831-specimen-layout-1/u);
-  assert.equal(app.ASSET_CACHE_VERSION, "20260831-specimen-layout-1");
+  assert.match(html, /styles\.css\?v=20260831-atomic-only-1/u);
+  assert.match(html, /app\.js\?v=20260831-atomic-only-1/u);
+  assert.equal(app.ASSET_CACHE_VERSION, "20260831-atomic-only-1");
 });
 
 test("production projection fixture validates when the schema-2 data dependency is present", {
@@ -339,7 +340,7 @@ test("production projection fixture validates when the schema-2 data dependency 
   const projectedRecords = records.filter(({ id }) => index.has(id));
   const descriptors = app.expandSpecimenCardDescriptors(projectedRecords, index);
   assert.equal(descriptors.filter(({ kind }) => kind === "atomic").length, manifest.metadata.atomicCardCount);
-  assert.equal(descriptors.filter(({ kind }) => kind === "context").length, manifest.metadata.sourceContextCardCount);
+  assert.equal(descriptors.filter(({ kind }) => kind === "context").length, 0);
 });
 
 test("Madrid runtime keeps parent statistics while loading reviewed atomic cards and eligible earlier lineages", async () => {
@@ -363,7 +364,7 @@ test("Madrid runtime keeps parent statistics while loading reviewed atomic cards
   assert.equal(app.calculateStatistics(records).catalogs, 35);
   assert.equal(madridRecords.filter(({ id }) => projectionIndex.has(id)).length, 23);
   assert.equal(madridDescriptors.filter(({ kind }) => kind === "atomic").length, 54);
-  assert.equal(madridDescriptors.filter(({ kind }) => kind === "context").length, 5);
+  assert.equal(madridDescriptors.filter(({ kind }) => kind === "context").length, 0);
   assert.equal(madridRelationships.length, 3);
   assert(madridRelationships.every(({ relationship, review }) =>
     relationship === "possible-match" && review.status === "unreviewed"));

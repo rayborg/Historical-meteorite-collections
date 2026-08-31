@@ -1,7 +1,7 @@
 "use strict";
 
 const CACHE_VERSION = "20260830-1";
-const ASSET_CACHE_VERSION = "20260831-specimen-layout-1";
+const ASSET_CACHE_VERSION = "20260831-atomic-only-1";
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "name-asc";
 const ISSUE_FORM_URL = "https://github.com/rayborg/Historical-meteorite-collections/issues/new?template=data-error.yml";
@@ -2020,27 +2020,11 @@ function expandSpecimenCardDescriptors(sourceRecords, projectionIndex = new Map(
         descriptor.duplicateMassCount = matchingCards.length;
       });
     });
-    const contextEntries = specimenCardContextEntries(parentRecord, projection);
-    if (contextEntries.length) cards.push({
-      parentRecord,
-      kind: "context",
-      holdingPath: null,
-      massPath: null,
-      clauseText: null,
-      sourcePosition: projection.cards.length,
-      projected: true,
-      specimenCount: projection.cards.length,
-      projectedMassPaths,
-      contextEntries,
-      duplicateMassPosition: null,
-      duplicateMassCount: 1
-    });
     return cards;
   });
 }
 
 function specimenCardPositionLabel(descriptor) {
-  if (descriptor?.kind === "context") return "Source context, not an individual specimen";
   if (descriptor?.kind !== "atomic" || descriptor.duplicateMassCount < 2 || descriptor.duplicateMassPosition === null) return null;
   return `Specimen ${descriptor.duplicateMassPosition} of ${descriptor.duplicateMassCount} with this reported mass`;
 }
@@ -2052,18 +2036,12 @@ function specimenCardDescriptorMasses(descriptor) {
     const selection = resolveSpecimenCardSelection(descriptor.parentRecord, descriptor.holdingPath, descriptor.massPath);
     return selection ? [selection.grams] : [];
   }
-  if (descriptor.kind === "context") return descriptor.contextEntries
-    .filter(({ type, kind }) => type === "mass" && kind !== "associated-material").map(({ grams }) => grams);
   return recordMasses(descriptor.parentRecord);
 }
 
 function lineageEntriesForSpecimenCard(descriptor, entries) {
   if (!descriptor?.projected) return entries;
   if (descriptor.kind === "atomic") return descriptor.massPath === null ? [] : entries.filter((entry) => entry.massPath === descriptor.massPath);
-  if (descriptor.kind === "context") {
-    const contextMassPaths = new Set(descriptor.contextEntries.filter(({ type }) => type === "mass").map(({ massPath }) => massPath));
-    return entries.filter((entry) => contextMassPaths.has(entry.massPath));
-  }
   return [];
 }
 
@@ -2093,7 +2071,7 @@ function specimenCardDescriptorHoldings(descriptor) {
     grams: specimenCardDescriptorMasses(descriptor)[0] ?? null,
     componentKind: resolveSpecimenCardSelection(record, descriptor.holdingPath, descriptor.massPath)?.kind || null
   }];
-  return descriptor.kind === "context" ? descriptor.contextEntries : [];
+  return [];
 }
 
 function isSafeFolioPath(value, catalogId, pageId) {
@@ -2619,7 +2597,6 @@ function createRecordCard(recordOrDescriptor) {
   const catalogNumber = record.recordModel === "catalog-number";
   const collectionEntry = record.recordModel === "collection-entry";
   card.classList.toggle("projected-specimen-card", descriptor.kind === "atomic");
-  card.classList.toggle("source-context-card", descriptor.kind === "context");
   card.classList.toggle("catalog-item-card", catalogItem || catalogNumber || collectionEntry);
   card.querySelector(".designation").textContent = descriptor.projected
     ? lineageRecordLabel(record)

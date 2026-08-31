@@ -399,5 +399,5 @@ if (isMain) {
   const document = JSON.parse(projectionText);
   const result = validateSpecimenCardProjections(document, JSON.parse(sourceCatalogText), sourceCatalogText);
   if (projectionText !== serializeSpecimenCardProjections(document)) fail("projection JSON is not deterministically serialized");
-  console.log(`validated ${result.projectionCount} atomic specimen-card projections (${result.atomicCardCount} atomic cards, ${result.sourceContextCardCount} source-context cards)`);
+  console.log(`validated ${result.projectionCount} atomic specimen-card projections (${result.atomicCardCount} atomic cards, ${result.sourceContextCardCount} non-displayed context audit partitions)`);
 }
