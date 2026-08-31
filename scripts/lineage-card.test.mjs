@@ -77,10 +77,10 @@ test("main template presents lineage through the harmonized specimen contract", 
   });
   assert.doesNotMatch(source, /\.innerHTML\b/);
   assert.doesNotMatch(css, /\.earlier-records \{/);
-  assert.equal(app.CACHE_VERSION, "20260831-harmonized-cards-2");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260831-harmonized-cards-2");
-  assert.match(html, /styles\.css\?v=20260831-harmonized-cards-2/);
-  assert.match(html, /app\.js\?v=20260831-harmonized-cards-2/);
+  assert.equal(app.CACHE_VERSION, "20260831-harmonized-cards-3");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260831-harmonized-cards-3");
+  assert.match(html, /styles\.css\?v=20260831-harmonized-cards-3/);
+  assert.match(html, /app\.js\?v=20260831-harmonized-cards-3/);
   for (const file of ["possible-specimen-lineages.html", "possible-specimen-lineages.css", "possible-specimen-lineages.js"]) {
     await assert.rejects(access(path.join(projectRoot, file)));
   }

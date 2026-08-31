@@ -187,10 +187,10 @@ test("schema 8 card semantics, cache keys, responsive layout, and privacy bounda
   assert.equal(victoriaDto.facts.some(({ label }) => label === "Coordinate"), false);
   assert.match(styles, /@media \(max-width: 700px\)[\s\S]*\.catalog-grid \{ grid-template-columns: 1fr; \}/u);
   assert.match(styles, /@media \(max-width: 320px\)[\s\S]*\.record-meta div \{ grid-template-columns: minmax\(0, 1fr\);/u);
-  assert.equal(app.CACHE_VERSION, "20260831-harmonized-cards-2");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260831-harmonized-cards-2");
-  assert.match(html, /styles\.css\?v=20260831-harmonized-cards-2/u);
-  assert.match(html, /app\.js\?v=20260831-harmonized-cards-2/u);
+  assert.equal(app.CACHE_VERSION, "20260831-harmonized-cards-3");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260831-harmonized-cards-3");
+  assert.match(html, /styles\.css\?v=20260831-harmonized-cards-3/u);
+  assert.match(html, /app\.js\?v=20260831-harmonized-cards-3/u);
   const newSourceRecords = catalog.records.filter(({ catalogId }) => ["hodge-smith-1939", "victoria-land-1982"].includes(catalogId));
   assert.doesNotMatch(JSON.stringify(newSourceRecords), /(?:raw[ _-]*ocr|\/private\/|\/Users\/|source[ _-]*image|scan[ _-]*(?:file|path)|research[ _-]*notes?)/iu);
 });

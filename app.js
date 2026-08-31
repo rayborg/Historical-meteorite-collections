@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260831-harmonized-cards-2";
+const CACHE_VERSION = "20260831-harmonized-cards-3";
 const ASSET_CACHE_VERSION = CACHE_VERSION;
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "name-asc";
@@ -2816,8 +2816,10 @@ function classifyHarmonizedCard(recordOrDescriptor) {
   return record.recordModel === "regional-census-fact" ? HARMONIZED_CARD_KINDS.regional : null;
 }
 
-function harmonizedCardIdentifier(record, kind) {
-  if (kind === HARMONIZED_CARD_KINDS.atomic) return lineageRecordLabel(record);
+function harmonizedCardIdentifier(record, kind, descriptor = null) {
+  if (kind === HARMONIZED_CARD_KINDS.atomic) {
+    return specimenCardHolding(record, descriptor?.holdingPath)?.holding?.designation || "Unknown";
+  }
   if (record.recordModel === "catalog-item") return `Catalog item ${record.catalogItem}`;
   if (record.recordModel === "catalog-number") return `Catalog no. ${record.catalogNumber}`;
   if (record.recordModel === "collection-entry") {
@@ -2826,8 +2828,8 @@ function harmonizedCardIdentifier(record, kind) {
   if (record.recordModel === "regional-census-fact") {
     return record.reportedNumber ? `Source number ${record.reportedNumber}` : `Regional census entry ${record.entryOrder}`;
   }
-  if (record.recordModel === "table-a-specimen") return `Table A entry ${record.entryOrder}`;
-  return record.designation || "No printed designation";
+  if (record.recordModel === "table-a-specimen") return record.specimenId || "Unknown";
+  return record.designation || "Unknown";
 }
 
 function harmonizedCardEvent(record) {
@@ -2854,14 +2856,25 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
   if (!kind) throw new Error("The record cannot be presented as a public card.");
 
   const specimen = kind === HARMONIZED_CARD_KINDS.specimen || kind === HARMONIZED_CARD_KINDS.atomic;
-  const sourceName = record.recordModel === "table-a-specimen" ? record.specimenId : record.name;
+  const sourceName = record.name;
   const canonicalName = record.metbull?.canonicalName &&
     !namesAreDisplayEquivalent(sourceName, record.metbull.canonicalName)
     ? record.metbull.canonicalName
     : null;
   const facts = [];
-  if (canonicalName) facts.push({ label: "Current Meteoritical Bulletin name", value: canonicalName });
-  facts.push({ label: "Class", value: record.classification || "Not recorded" });
+  if (specimen) {
+    facts.push({
+      label: "Current Meteoritical Bulletin name",
+      value: record.metbull?.canonicalName
+        ? namesAreDisplayEquivalent(sourceName, record.metbull.canonicalName)
+          ? "Same as source catalog name"
+          : record.metbull.canonicalName
+        : "Unknown"
+    });
+  } else if (canonicalName) {
+    facts.push({ label: "Current Meteoritical Bulletin name", value: canonicalName });
+  }
+  facts.push({ label: "Class", value: record.classification || "Unknown" });
   if (specimen) {
     facts.push({
       label: "Specimen form",
@@ -2872,9 +2885,10 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
   }
   facts.push({
     label: "Source locality",
-    value: (record.recordModel === "table-a-specimen" ? record.locality?.name : record.locality) || "Not recorded"
+    value: (record.recordModel === "table-a-specimen" ? record.locality?.name : record.locality) || "Unknown"
   });
-  facts.push({ label: "Event", value: harmonizedCardEvent(record) || "Not recorded" });
+  if (specimen) facts.push({ label: "Individual find location", value: "Unknown" });
+  facts.push({ label: "Event", value: harmonizedCardEvent(record) || "Unknown" });
 
   if (specimen) {
     const sourceLineage = Array.isArray(options.lineageEntries) ? options.lineageEntries : [];
@@ -2888,16 +2902,16 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
       : record.weight?.grams;
     facts.push({
       label: "Lineage",
-      value: lineageEntries.length ? formatLineageSummary(lineageEntries.length) : "Not recorded"
+      value: lineageEntries.length ? formatLineageSummary(lineageEntries.length) : "Unknown"
     });
-    facts.push({ label: "Specimen weight", value: formatMass(grams) });
+    facts.push({ label: "Specimen weight", value: Number.isFinite(grams) ? formatMass(grams) : "Unknown" });
   }
 
   return {
     kind,
-    identifier: harmonizedCardIdentifier(record, kind),
+    identifier: harmonizedCardIdentifier(record, kind, descriptor),
     semanticLabel: HARMONIZED_SEMANTIC_LABELS[kind],
-    sourceName: sourceName || "Not recorded",
+    sourceName: sourceName || "Unknown",
     facts,
     sourceCitation: harmonizedSourceCitation(record),
     sourceLabel: record.catalogLabel || record.catalogId,
@@ -2912,7 +2926,7 @@ function appendMetaRow(meta, label, value) {
   const description = document.createElement("dd");
   term.textContent = label;
   description.textContent = displayText(value);
-  if (value === "Not recorded") row.classList.add("unknown");
+  if (value === "Unknown") row.classList.add("unknown");
   row.append(term, description);
   meta.append(row);
 }
@@ -3504,6 +3518,7 @@ if (typeof module !== "undefined" && module.exports) {
     paginateSpecimenCardDescriptors,
     specimenCardDescriptorHoldings,
     specimenCardDescriptorMasses,
+    specimenCardHolding,
     specimenCardPositionLabel,
     specimenCardContextEntries,
     specimenCardSourceMasses,

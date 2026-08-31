@@ -28,7 +28,10 @@ const lineageIndex = app.deriveEarlierRecordIndex(lineages, records, registry);
 const DTO_KEYS = [
   "kind", "identifier", "semanticLabel", "sourceName", "facts", "sourceCitation", "sourceLabel", "catalogId", "catalogPages"
 ];
-const STANDARD_SPECIMEN_LABELS = ["Class", "Specimen form", "Source locality", "Event", "Lineage", "Specimen weight"];
+const STANDARD_SPECIMEN_LABELS = [
+  "Current Meteoritical Bulletin name", "Class", "Specimen form", "Source locality",
+  "Individual find location", "Event", "Lineage", "Specimen weight"
+];
 const STANDARD_OBSERVATION_LABELS = ["Class", "Source locality", "Event"];
 const SEMANTIC_LABELS = {
   "direct-specimen": "Specimen.",
@@ -54,9 +57,7 @@ function fact(dto, label) {
 function expectedIdentifier(descriptor, kind) {
   const record = descriptor.parentRecord;
   if (kind === "projected-atomic-specimen") {
-    if (record.recordModel === "catalog-item") return `Catalog item ${record.catalogItem}`;
-    if (record.recordModel === "catalog-number") return `Catalog no. ${record.catalogNumber}`;
-    return `Collection entry ${record.entryOrder}`;
+    return app.specimenCardHolding(record, descriptor.holdingPath)?.holding?.designation || "Unknown";
   }
   if (record.recordModel === "catalog-item") return `Catalog item ${record.catalogItem}`;
   if (record.recordModel === "catalog-number") return `Catalog no. ${record.catalogNumber}`;
@@ -66,8 +67,8 @@ function expectedIdentifier(descriptor, kind) {
   if (record.recordModel === "regional-census-fact") {
     return record.reportedNumber ? `Source number ${record.reportedNumber}` : `Regional census entry ${record.entryOrder}`;
   }
-  if (record.recordModel === "table-a-specimen") return `Table A entry ${record.entryOrder}`;
-  return record.designation || "No printed designation";
+  if (record.recordModel === "table-a-specimen") return record.specimenId || "Unknown";
+  return record.designation || "Unknown";
 }
 
 function expectedEvent(record) {
@@ -106,36 +107,43 @@ test("every production card uses the approved fact order, values, missing behavi
     const record = descriptor.parentRecord;
     const dto = present(descriptor);
     const specimen = ["direct-specimen", "projected-atomic-specimen"].includes(dto.kind);
-    const currentName = record.metbull?.canonicalName &&
-      !app.namesAreDisplayEquivalent(record.recordModel === "table-a-specimen" ? record.specimenId : record.name, record.metbull.canonicalName)
+    const currentName = record.metbull?.canonicalName && !app.namesAreDisplayEquivalent(record.name, record.metbull.canonicalName)
       ? record.metbull.canonicalName : null;
-    const expectedLabels = [
-      ...(currentName ? ["Current Meteoritical Bulletin name"] : []),
-      ...(specimen ? STANDARD_SPECIMEN_LABELS : STANDARD_OBSERVATION_LABELS),
-    ];
+    const expectedLabels = specimen
+      ? STANDARD_SPECIMEN_LABELS
+      : [...(currentName ? ["Current Meteoritical Bulletin name"] : []), ...STANDARD_OBSERVATION_LABELS];
     assert.deepEqual(dto.facts.map(({ label }) => label), expectedLabels, record.id);
-    assert.equal(dto.sourceName, (record.recordModel === "table-a-specimen" ? record.specimenId : record.name) || "Not recorded", record.id);
-    assert.equal(fact(dto, "Current Meteoritical Bulletin name"), currentName || undefined, record.id);
-    assert.equal(fact(dto, "Class"), record.classification || "Not recorded", record.id);
+    assert.equal(dto.sourceName, record.name || "Unknown", record.id);
+    assert.equal(fact(dto, "Current Meteoritical Bulletin name"), specimen
+      ? record.metbull?.canonicalName
+        ? app.namesAreDisplayEquivalent(record.name, record.metbull.canonicalName)
+          ? "Same as source catalog name" : record.metbull.canonicalName
+        : "Unknown"
+      : currentName || undefined, record.id);
+    assert.equal(fact(dto, "Class"), record.classification || "Unknown", record.id);
     assert.equal(fact(dto, "Source locality"),
-      (record.recordModel === "table-a-specimen" ? record.locality?.name : record.locality) || "Not recorded", record.id);
-    assert.equal(fact(dto, "Event"), expectedEvent(record) || "Not recorded", record.id);
+      (record.recordModel === "table-a-specimen" ? record.locality?.name : record.locality) || "Unknown", record.id);
+    assert.equal(fact(dto, "Event"), expectedEvent(record) || "Unknown", record.id);
     if (specimen) {
       assert.equal(fact(dto, "Specimen form"),
         dto.kind === "projected-atomic-specimen" || record.recordModel === "table-a-specimen" ? "Individual specimen" : "Specimen",
         record.id);
+      assert.equal(fact(dto, "Individual find location"), "Unknown", record.id);
       for (const { label, value } of dto.facts) {
-        if (value === "Not recorded") missing[label] = (missing[label] || 0) + 1;
+        if (value === "Unknown") missing[label] = (missing[label] || 0) + 1;
       }
-      if (dto.sourceName === "Not recorded") missing.sourceName = (missing.sourceName || 0) + 1;
+      if (dto.sourceName === "Unknown") missing.sourceName = (missing.sourceName || 0) + 1;
     }
   }
   assert.deepEqual(missing, {
+    "Current Meteoritical Bulletin name": 2420,
+    "Individual find location": 12417,
     Lineage: 11821,
     Event: 2796,
-    Class: 235,
+    Class: 236,
     "Source locality": 255,
     "Specimen weight": 290,
+    sourceName: 273,
   });
 });
 
@@ -151,8 +159,8 @@ test("specimen mass and lineage facts resolve exactly from source and projection
     const grams = dto.kind === "projected-atomic-specimen"
       ? descriptor.massPath === null ? null : app.resolveSpecimenCardSelection(record, descriptor.holdingPath, descriptor.massPath)?.grams
       : record.weight?.grams;
-    assert.equal(fact(dto, "Specimen weight"), app.formatMass(grams), record.id);
-    assert.equal(fact(dto, "Lineage"), expectedEntries.length ? app.formatLineageSummary(expectedEntries.length) : "Not recorded", record.id);
+    assert.equal(fact(dto, "Lineage"), expectedEntries.length ? app.formatLineageSummary(expectedEntries.length) : "Unknown", record.id);
+    assert.equal(fact(dto, "Specimen weight"), Number.isFinite(grams) ? app.formatMass(grams) : "Unknown", record.id);
   }
 });
 
@@ -201,7 +209,8 @@ test("locality, coordinates, MetBull data, and prose cannot create an individual
 
   for (const descriptor of descriptors) {
     const dto = present(descriptor);
-    assert.equal(dto.facts.some(({ label }) => /individual.*(?:find|location)|find.*location/iu.test(label)), false, descriptor.parentRecord.id);
+    const specimen = ["direct-specimen", "projected-atomic-specimen"].includes(dto.kind);
+    assert.equal(fact(dto, "Individual find location"), specimen ? "Unknown" : undefined, descriptor.parentRecord.id);
   }
 });
 
@@ -255,13 +264,13 @@ test("accessible shell, responsive breakpoints, approved cache, and immutable da
   assert.match(styles, /@media \(max-width: 700px\)[\s\S]*\.catalog-grid \{ grid-template-columns: 1fr; \}/u);
   assert.match(styles, /@media \(max-width: 420px\)[\s\S]*\.record-card \{ padding-inline: 1rem; \}/u);
   assert.match(styles, /@media \(max-width: 320px\)[\s\S]*\.record-meta div \{ grid-template-columns: minmax\(0, 1fr\);/u);
-  assert.equal(app.CACHE_VERSION, "20260831-harmonized-cards-2");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260831-harmonized-cards-2");
+  assert.equal(app.CACHE_VERSION, "20260831-harmonized-cards-3");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260831-harmonized-cards-3");
   for (const document of [html, catalogsHtml]) {
-    assert.match(document, /styles\.css\?v=20260831-harmonized-cards-2/u);
-    assert.match(document, /app\.js\?v=20260831-harmonized-cards-2/u);
+    assert.match(document, /styles\.css\?v=20260831-harmonized-cards-3/u);
+    assert.match(document, /app\.js\?v=20260831-harmonized-cards-3/u);
   }
-  assert.match(catalogsHtml, /catalogs\.js\?v=20260831-harmonized-cards-2/u);
+  assert.match(catalogsHtml, /catalogs\.js\?v=20260831-harmonized-cards-3/u);
   assert.deepEqual({
     catalog: sha256(catalogText),
     projections: sha256(projectionText),

@@ -947,8 +947,8 @@ test("URL filters strictly round-trip lineage state and cache version remains st
   for (const search of ["", "?lineage=0", "?lineage=true", "?lineage=1&lineage=1", "?lineage=1&lineage=0"]) {
     assert.equal(app.parseUrlFilters(search, registry).lineageOnly, false, search);
   }
-  assert.equal(app.CACHE_VERSION, "20260831-harmonized-cards-2");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260831-harmonized-cards-2");
+  assert.equal(app.CACHE_VERSION, "20260831-harmonized-cards-3");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260831-harmonized-cards-3");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.ASSET_CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.ASSET_CACHE_VERSION}`));
 });
@@ -1012,8 +1012,10 @@ test("HTML and runtime expose the accessible harmonized card contract", () => {
   const dto = app.presentHarmonizedCard(record);
   assert.equal(dto.kind, "direct-specimen");
   assert.deepEqual(dto.facts.map(({ label }) => label), [
-    "Class", "Specimen form", "Source locality", "Event", "Lineage", "Specimen weight"
+    "Current Meteoritical Bulletin name", "Class", "Specimen form", "Source locality",
+    "Individual find location", "Event", "Lineage", "Specimen weight"
   ]);
+  assert.equal(dto.facts.find(({ label }) => label === "Individual find location").value, "Unknown");
   assert.match(script, /dto\.facts\.forEach\(\(\{ label, value \}\) => appendMetaRow\(meta, label, value\)\)/);
 });
 
