@@ -5,10 +5,11 @@ import test from "node:test";
 
 const require = createRequire(import.meta.url);
 const app = require("../app.js");
-const [catalog, projections, folios] = await Promise.all([
+const [catalog, projections, folios, styles] = await Promise.all([
   readFile(new URL("../data/catalog.json", import.meta.url), "utf8").then(JSON.parse),
   readFile(new URL("../data/specimen-card-projections.json", import.meta.url), "utf8").then(JSON.parse),
   readFile(new URL("../data/folios.json", import.meta.url), "utf8").then(JSON.parse),
+  readFile(new URL("../styles.css", import.meta.url), "utf8"),
 ]);
 const registry = app.normalizeCatalogRegistry(catalog.metadata);
 const records = catalog.records.map((record, index) => app.prepareRecord(record, index, registry));
@@ -26,6 +27,10 @@ const amendmentTargetMutations = [
   ["changed target component order", (record) => { record.amendments[0].targetComponentOrder = 6; }],
   ["changed amendment target mass", (record) => { record.amendments[0].targetWeight.grams = 14150; }],
 ];
+
+test("projected component labels wrap onto their own row at every viewport", () => {
+  assert.match(styles, /\.holdings-list \.projected-content-clause \{[^}]*flex-wrap: wrap;/u);
+});
 
 test("schema7 runtime validates and preserves Hamburg additive facts", () => {
   assert.equal(app.validateCatalog(catalog), catalog);

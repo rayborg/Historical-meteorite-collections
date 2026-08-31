@@ -911,7 +911,7 @@ test("URL filters strictly round-trip lineage state and cache version remains st
     assert.equal(app.parseUrlFilters(search, registry).lineageOnly, false, search);
   }
   assert.equal(app.CACHE_VERSION, "20260830-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260830-schema7-hamburg-2");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260831-specimen-layout-1");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.ASSET_CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.ASSET_CACHE_VERSION}`));
 });
