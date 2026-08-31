@@ -59,27 +59,28 @@ const forgedFactMutations = [
   (data) => { sameInventory(data).collectionSeries.inventoryId = "forged"; },
 ];
 
-test("main template presents relationship-specific compact lineage copy", async () => {
+test("main template presents lineage through the harmonized specimen contract", async () => {
   const [html, css, source] = await Promise.all([
     readFile(path.join(projectRoot, "index.html"), "utf8"),
     readFile(path.join(projectRoot, "styles.css"), "utf8"),
     readFile(path.join(projectRoot, "app.js"), "utf8"),
   ]);
   assert.doesNotMatch(html, /possible-specimen-lineages\.html/);
-  assert.match(html, /<div class="lineage-row"><dt>Lineage<\/dt><dd><\/dd><\/div>/);
-  assert.match(html, /<section class="earlier-records" hidden>/);
-  assert.match(html, /Same-inventory links identify collection inventory continuity\./);
-  assert.match(html, /Possible matches do not prove physical identity\./);
-  assert.match(html, /Neither establishes custody or ownership\./);
-  assert.match(source, /Earlier specimen-lineage records/);
-  assert.match(source, /Same collection inventory ID:/);
-  assert.match(source, /Possible match · Reported mass:/);
+  assert.match(html, /<p class="record-semantic-label"><\/p>/);
+  assert.match(html, /<dl class="record-meta" aria-label="Catalog record details"><\/dl>/);
+  assert.doesNotMatch(html, /lineage-row|earlier-records/);
+  const index = app.deriveEarlierRecordIndex(lineageData, records, registry);
+  const record = records.find(({ catalogId, designation }) => catalogId === "huss-1986" && designation === "(2)H160.1");
+  const dto = app.presentHarmonizedCard(record, { lineageEntries: index.get(record.id) });
+  assert.deepEqual(dto.facts.find(({ label }) => label === "Lineage"), {
+    label: "Lineage", value: "1 earlier lineage record"
+  });
   assert.doesNotMatch(source, /\.innerHTML\b/);
-  assert.match(css, /\.earlier-records \{/);
-  assert.equal(app.CACHE_VERSION, "20260831-2");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260831-schema8-2");
-  assert.match(html, /styles\.css\?v=20260831-schema8-2/);
-  assert.match(html, /app\.js\?v=20260831-schema8-2/);
+  assert.doesNotMatch(css, /\.earlier-records \{/);
+  assert.equal(app.CACHE_VERSION, "20260831-harmonized-cards-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260831-harmonized-cards-1");
+  assert.match(html, /styles\.css\?v=20260831-harmonized-cards-1/);
+  assert.match(html, /app\.js\?v=20260831-harmonized-cards-1/);
   for (const file of ["possible-specimen-lineages.html", "possible-specimen-lineages.css", "possible-specimen-lineages.js"]) {
     await assert.rejects(access(path.join(projectRoot, file)));
   }

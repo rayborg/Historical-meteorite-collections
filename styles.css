@@ -264,7 +264,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible
 .select-wrap::after { content: "⌄"; position: absolute; right: .8rem; color: var(--oxblood); pointer-events: none; }
 .select-wrap select { padding-right: 2.2rem; appearance: none; }
 .weight-range { min-width: 0; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1.2rem 1fr; gap: .5rem; align-items: end; border: 0; }
-.weight-range legend { width: 100%; padding: 0; }
+.weight-range legend { max-width: 100%; padding: 0; overflow-wrap: anywhere; }
 .number-wrap input { -moz-appearance: textfield; }
 .number-wrap input::-webkit-inner-spin-button { appearance: none; }
 .number-wrap b { padding-right: .8rem; color: var(--ink-soft); font-size: .75rem; font-weight: 400; }
@@ -295,67 +295,23 @@ button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible
 }
 .record-card::before { content: ""; position: absolute; inset: 4px; pointer-events: none; border: 1px solid rgba(126, 103, 66, .18); }
 .record-card:nth-child(6n + 2), .record-card:nth-child(6n + 5) { background: rgba(240, 229, 204, .82); }
-.record-heading { min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .8rem; padding-bottom: .85rem; border-bottom: 3px double var(--rule); }
+.record-heading { min-width: 0; padding-bottom: .85rem; border-bottom: 3px double var(--rule); }
 .record-heading > div { min-width: 0; }
-.designation { margin: 0 0 .15rem; color: var(--oxblood); font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
-.record-model-label { width: fit-content; max-width: 100%; margin: .4rem 0 .2rem; padding: .22rem .42rem; color: var(--paper-light); background: var(--oxblood-dark); font-size: .6rem; font-weight: 700; letter-spacing: .07em; line-height: 1.35; text-transform: uppercase; overflow-wrap: anywhere; }
-.specimen-position { width: fit-content; margin: .4rem 0 .15rem; padding: .16rem .38rem; color: var(--paper-light); background: var(--oxblood-dark); font-size: .61rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
+.designation { margin: 0 0 .15rem; color: var(--oxblood); font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; overflow-wrap: anywhere; }
+.record-semantic-label { width: fit-content; max-width: 100%; margin: .4rem 0 .2rem; padding: .22rem .42rem; color: var(--paper-light); background: var(--oxblood-dark); font-size: .6rem; font-weight: 700; letter-spacing: .07em; line-height: 1.35; text-transform: uppercase; overflow-wrap: anywhere; }
+.record-semantic-label:empty { display: none; }
 .source-name-label { margin: .55rem 0 .08rem; color: var(--ink-soft); font-size: .56rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
-.record-name { margin: 0; font-size: clamp(1.2rem, 1.8vw, 1.55rem); font-weight: 400; line-height: 1.08; word-break: keep-all; overflow-wrap: normal; hyphens: none; }
-.metbull-name { margin-top: .7rem; padding: .55rem .65rem; background: rgba(154, 119, 55, .09); border-left: 2px solid var(--brass); }
-.metbull-name span { display: block; color: var(--ink-soft); font-size: .56rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
-.metbull-name a { color: var(--oxblood-dark); font-size: .9rem; font-weight: 700; }
-.metbull-name p { margin: .15rem 0 0; color: var(--ink-soft); font-size: .72rem; font-style: italic; line-height: 1.35; }
-.record-weight { min-width: 4.5rem; margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
-.record-weight strong { display: block; color: var(--oxblood-dark); font-size: 1.05rem; font-weight: 400; line-height: 1.15; white-space: nowrap; }
-.record-weight span { color: var(--ink-soft); font-size: .56rem; letter-spacing: .07em; text-transform: uppercase; white-space: nowrap; }
+.record-name { margin: 0; font-size: clamp(1.2rem, 1.8vw, 1.55rem); font-weight: 400; line-height: 1.08; overflow-wrap: anywhere; }
 .record-meta { margin: .8rem 0 .7rem; }
 .record-meta div { min-width: 0; display: grid; grid-template-columns: 5.25rem minmax(0, 1fr); gap: .5rem; padding: .25rem 0; border-bottom: 1px dotted rgba(64, 48, 31, .25); }
-.record-meta dt { color: var(--ink-soft); font-size: .6rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.record-meta dt { min-width: 0; color: var(--ink-soft); font-size: .6rem; font-weight: 700; letter-spacing: .08em; line-height: 1.35; text-transform: uppercase; overflow-wrap: anywhere; }
 .record-meta dd { min-width: 0; margin: 0; font-size: .8rem; line-height: 1.35; word-break: normal; overflow-wrap: anywhere; hyphens: none; }
 .record-meta .unknown dd { color: var(--ink-soft); font-style: italic; }
-.record-meta .hamburg-fact-row { grid-template-columns: minmax(0, 1fr); gap: .08rem; padding-block: .35rem; }
-.record-meta .hamburg-fact-row dt { min-width: 0; line-height: 1.25; overflow-wrap: anywhere; }
-.record-meta .regional-fact-row,
-.record-meta .table-a-fact-row { grid-template-columns: minmax(0, 1fr); gap: .08rem; padding-block: .35rem; }
-.record-meta .regional-fact-row dt,
-.record-meta .table-a-fact-row dt { min-width: 0; line-height: 1.25; overflow-wrap: anywhere; }
-.regional-census-card { border-left: 4px solid var(--brass); }
-.table-a-specimen-card { border-top: 3px solid var(--oxblood-dark); }
-.record-holdings { margin: .1rem 0 .8rem; }
-.record-holdings h4 {
-  margin: 0 0 .35rem;
-  color: var(--ink-soft);
-  font-size: .62rem;
-  letter-spacing: .11em;
-  text-transform: uppercase;
-}
-.holdings-list { margin: 0; padding: 0; list-style: none; border-top: 1px dotted rgba(64, 48, 31, .28); }
-.holdings-list li { padding: .55rem 0; border-bottom: 1px dotted rgba(64, 48, 31, .28); }
-.holdings-list li > div { min-width: 0; display: flex; justify-content: space-between; align-items: baseline; gap: .75rem; }
-.holdings-list strong { min-width: 0; color: var(--oxblood-dark); font-size: .82rem; font-weight: 700; overflow-wrap: anywhere; }
-.holding-mass { flex: 0 0 auto; font-size: .8rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
-.holdings-list p { min-width: 0; margin: .15rem 0 0; color: var(--ink-soft); font-size: .74rem; line-height: 1.35; overflow-wrap: anywhere; }
-.holdings-list .projected-content-weight,
-.holdings-list .projected-content-detail { padding-block: .45rem; }
-.holdings-list .specimen-weight { margin: 0; color: var(--oxblood-dark); font-size: 1rem; font-variant-numeric: tabular-nums; }
-.holdings-list .specimen-details { margin: 0; color: var(--ink); font-size: .82rem; white-space: pre-wrap; }
-.holdings-list .projected-content-fact p { margin: 0; color: var(--ink); }
-.earlier-records { position: relative; z-index: 1; margin: .15rem 0 .8rem; padding: .7rem .75rem; background: rgba(154, 119, 55, .08); border-left: 2px solid var(--brass); }
-.earlier-records-title { margin: 0 0 .35rem; color: var(--oxblood-dark); font-size: .68rem; letter-spacing: .07em; line-height: 1.3; text-transform: uppercase; }
-.earlier-records-list { margin: 0; padding: 0; list-style: none; }
-.earlier-records-list li { min-width: 0; padding: .45rem 0; border-top: 1px dotted rgba(64, 48, 31, .28); }
-.earlier-record-link { color: var(--oxblood-dark); font-size: .76rem; font-weight: 700; line-height: 1.3; overflow-wrap: anywhere; }
-.earlier-records-list p { margin: .12rem 0 0; color: var(--ink-soft); font-size: .7rem; line-height: 1.35; overflow-wrap: anywhere; }
-.earlier-records-list .earlier-record-facts { color: var(--ink); font-variant-numeric: tabular-nums; }
-.earlier-records-caveat { margin: .35rem 0 0; padding-top: .4rem; color: var(--ink-soft); font-size: .65rem; font-style: italic; line-height: 1.35; border-top: 1px solid rgba(64, 48, 31, .2); }
-.catalog-item-card .record-heading { grid-template-columns: minmax(0, 1fr); }
+.record-meta a { color: var(--oxblood-dark); font-weight: 700; overflow-wrap: anywhere; }
+.record-meta .current-name-row dd { padding: .35rem .45rem; background: rgba(154, 119, 55, .09); border-left: 2px solid var(--brass); }
 .record-footer { position: relative; z-index: 1; margin-top: auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: .35rem .8rem; padding: .7rem 0 0; color: var(--ink-soft); background: transparent; border: 0; }
-.record-footer p { margin: 0; font-size: .61rem; letter-spacing: .06em; text-transform: uppercase; }
-.catalog-reference { color: var(--oxblood-dark); }
-.confidence i { display: inline-block; width: .4rem; height: .4rem; margin-right: .35rem; border-radius: 50%; background: #65734e; }
-.confidence.medium i { background: var(--brass); }
-.confidence.low i { background: var(--oxblood); }
+.record-footer p { min-width: 0; margin: 0; font-size: .61rem; letter-spacing: .06em; text-transform: uppercase; overflow-wrap: anywhere; }
+.record-source { color: var(--oxblood-dark); }
 .folio-button {
   flex: 1 0 100%;
   justify-self: start;
@@ -478,10 +434,12 @@ dialog::backdrop { background: rgba(24, 19, 14, .84); backdrop-filter: blur(2px)
   .weight-range { grid-template-columns: 1fr; }
   .range-rule { display: none; }
   .record-card { padding-inline: 1rem; }
-  .record-heading { grid-template-columns: minmax(0, 1fr); }
-  .record-weight { text-align: left; }
   .record-meta div { grid-template-columns: 4.7rem minmax(0, 1fr); }
-  .holdings-list li > div { align-items: flex-start; }
+}
+
+@media (max-width: 320px) {
+  .record-card { padding-inline: .8rem; }
+  .record-meta div { grid-template-columns: minmax(0, 1fr); gap: .08rem; padding-block: .35rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -175,19 +175,18 @@ test("lineage and projection enhancements remain unchanged and exclude schema 8 
 });
 
 test("schema 8 card semantics, cache keys, responsive layout, and privacy boundary are explicit", () => {
-  assert.match(html, /<p class="record-model-label" hidden><\/p>/u);
-  assert.match(source, /Regional census\/catalog observation, not a specimen or holding/u);
-  assert.match(source, /Individual specimen listed in Table A/u);
-  assert.match(source, /tableASpecimen \? null : metbullPanelDetails\(record\)/u);
-  assert.match(source, /if \(regionalCensus \|\| tableASpecimen\) \{\s*card\.querySelector\("\.lineage-row"\)\.remove\(\)/u);
-  assert.match(source, /const sourceSection = tableASpecimen \? " · Table A"/u);
-  assert.match(styles, /\.record-meta \.regional-fact-row,[\s\S]*grid-template-columns: minmax\(0, 1fr\)/u);
+  assert.match(html, /<p class="record-semantic-label"><\/p>/u);
+  const hodgeDto = app.presentHarmonizedCard(hodge[0]);
+  const victoriaDto = app.presentHarmonizedCard(victoria[0]);
+  assert.equal(hodgeDto.semanticLabel, "Regional census/catalog observation, not a specimen or holding.");
+  assert.equal(victoriaDto.facts.find(({ label }) => label === "Specimen form").value, "Individual specimen");
+  assert.equal(victoriaDto.facts.some(({ label }) => label === "Coordinate"), false);
   assert.match(styles, /@media \(max-width: 700px\)[\s\S]*\.catalog-grid \{ grid-template-columns: 1fr; \}/u);
-  assert.match(styles, /@media \(max-width: 420px\)[\s\S]*\.record-heading \{ grid-template-columns: minmax\(0, 1fr\); \}/u);
-  assert.equal(app.CACHE_VERSION, "20260831-2");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260831-schema8-2");
-  assert.match(html, /styles\.css\?v=20260831-schema8-2/u);
-  assert.match(html, /app\.js\?v=20260831-schema8-2/u);
+  assert.match(styles, /@media \(max-width: 320px\)[\s\S]*\.record-meta div \{ grid-template-columns: minmax\(0, 1fr\);/u);
+  assert.equal(app.CACHE_VERSION, "20260831-harmonized-cards-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260831-harmonized-cards-1");
+  assert.match(html, /styles\.css\?v=20260831-harmonized-cards-1/u);
+  assert.match(html, /app\.js\?v=20260831-harmonized-cards-1/u);
   const newSourceRecords = catalog.records.filter(({ catalogId }) => ["hodge-smith-1939", "victoria-land-1982"].includes(catalogId));
   assert.doesNotMatch(JSON.stringify(newSourceRecords), /(?:raw[ _-]*ocr|\/private\/|\/Users\/|source[ _-]*image|scan[ _-]*(?:file|path)|research[ _-]*notes?)/iu);
 });

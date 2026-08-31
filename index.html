@@ -8,8 +8,8 @@
   <meta name="theme-color" content="#2d241b">
   <title>The Meteorite Cabinet | Historical Collection Index</title>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=20260831-schema8-2">
-  <script src="./app.js?v=20260831-schema8-2" defer></script>
+  <link rel="stylesheet" href="./styles.css?v=20260831-harmonized-cards-1">
+  <script src="./app.js?v=20260831-harmonized-cards-1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#catalog">Skip to catalog</a>
@@ -150,36 +150,14 @@
       <header class="record-heading">
         <div>
           <p class="designation"></p>
-          <p class="record-model-label" hidden></p>
-          <p class="specimen-position" hidden></p>
+          <p class="record-semantic-label"></p>
           <p class="source-name-label">Source catalog name</p>
           <h3 class="record-name"></h3>
-          <div class="metbull-name" hidden>
-            <span>Current Meteoritical Bulletin name</span>
-            <a rel="external"></a>
-            <p></p>
-          </div>
         </div>
-        <p class="record-weight"><strong></strong><span>reported mass</span></p>
       </header>
-      <dl class="record-meta">
-        <div class="classification-row"><dt>Class</dt><dd></dd></div>
-        <div class="locality-row"><dt>Locality</dt><dd></dd></div>
-        <div class="year-row"><dt>Year</dt><dd></dd></div>
-        <div class="lineage-row"><dt>Lineage</dt><dd></dd></div>
-      </dl>
-      <section class="record-holdings" aria-label="Holdings" hidden>
-        <h4>Holdings</h4>
-        <ol class="holdings-list" role="list"></ol>
-      </section>
-      <section class="earlier-records" hidden>
-        <h4 class="earlier-records-title"></h4>
-        <ol class="earlier-records-list" role="list"></ol>
-        <p class="earlier-records-caveat">Same-inventory links identify collection inventory continuity. Possible matches do not prove physical identity. Neither establishes custody or ownership.</p>
-      </section>
+      <dl class="record-meta" aria-label="Catalog record details"></dl>
       <footer class="record-footer">
-        <p class="catalog-reference"></p>
-        <p class="confidence"><i aria-hidden="true"></i><span></span></p>
+        <p class="record-source"></p>
       </footer>
     </article>
   </template>

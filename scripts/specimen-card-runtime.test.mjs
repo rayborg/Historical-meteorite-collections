@@ -289,9 +289,9 @@ test("search, statistics, result observations, and citations remain parent-based
   const descriptors = app.expandSpecimenCardDescriptors([parent], app.deriveSpecimenCardProjectionIndex(document, [parent]));
   assert.equal(descriptors.length, 2);
   assert.deepEqual(app.calculateStatistics([parent]), app.calculateStatistics(descriptors.map(({ parentRecord }) => parentRecord).slice(0, 1)));
+  assert.equal(app.presentHarmonizedCard(descriptors[0]).sourceCitation, "synthetic-1937 · p. 1");
   assert.match(source, /const parentMatches = filterRecords\(records,/u);
   assert.match(source, /new Set\(displayCards\.map\(\(\{ parentRecord \}\) => parentRecord\.id\)\)/u);
-  assert.match(source, /const citedPages = recordCatalogPages\(record\);/u);
 });
 
 test("1,360 atomic descriptors paginate before DOM card creation", () => {
@@ -333,12 +333,13 @@ test("rendering is text-only, omits context cards, and synchronizes cache keys",
   assert.doesNotMatch(source, /Source context, not an individual specimen/u);
   assert.doesNotMatch(source, /source-context-card/u);
   assert.doesNotMatch(source, /"Specimen clause"|`Component:/u);
-  assert.match(source, /weighted \? "Specimen weight" : "Specimen details"/u);
-  assert.match(source, /with this reported mass/u);
-  assert.match(html, /<p class="specimen-position" hidden><\/p>/u);
-  assert.match(html, /styles\.css\?v=20260831-schema8-2/u);
-  assert.match(html, /app\.js\?v=20260831-schema8-2/u);
-  assert.equal(app.ASSET_CACHE_VERSION, "20260831-schema8-2");
+  assert.match(source, /function presentHarmonizedCard\(recordOrDescriptor, options = \{\}\)/u);
+  assert.match(html, /<p class="record-semantic-label"><\/p>/u);
+  assert.match(html, /<dl class="record-meta" aria-label="Catalog record details"><\/dl>/u);
+  assert.doesNotMatch(html, /specimen-position|record-holdings|earlier-records/u);
+  assert.match(html, /styles\.css\?v=20260831-harmonized-cards-1/u);
+  assert.match(html, /app\.js\?v=20260831-harmonized-cards-1/u);
+  assert.equal(app.ASSET_CACHE_VERSION, "20260831-harmonized-cards-1");
 });
 
 test("production projection fixture validates when the schema-3 data dependency is present", {

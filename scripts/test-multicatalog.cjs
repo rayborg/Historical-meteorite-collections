@@ -947,8 +947,8 @@ test("URL filters strictly round-trip lineage state and cache version remains st
   for (const search of ["", "?lineage=0", "?lineage=true", "?lineage=1&lineage=1", "?lineage=1&lineage=0"]) {
     assert.equal(app.parseUrlFilters(search, registry).lineageOnly, false, search);
   }
-  assert.equal(app.CACHE_VERSION, "20260831-2");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260831-schema8-2");
+  assert.equal(app.CACHE_VERSION, "20260831-harmonized-cards-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260831-harmonized-cards-1");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.ASSET_CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.ASSET_CACHE_VERSION}`));
 });
@@ -998,32 +998,23 @@ test("folio policy validation still fails closed", () => {
   assert.equal(app.validateFolioManifest(unsafe, registry), false);
 });
 
-test("HTML and runtime contain accessible multi-holding card behavior", () => {
+test("HTML and runtime expose the accessible harmonized card contract", () => {
   const root = join(__dirname, "..");
   const html = readFileSync(join(root, "index.html"), "utf8");
   const script = readFileSync(join(root, "app.js"), "utf8");
-  assert.match(html, /<section class="record-holdings" aria-label="Holdings" hidden>/);
-  assert.match(html, /<ol class="holdings-list" role="list"><\/ol>/);
+  assert.match(html, /<p class="record-semantic-label"><\/p>/);
+  assert.match(html, /<dl class="record-meta" aria-label="Catalog record details"><\/dl>/);
   assert.match(html, /Source catalog name/);
-  assert.match(html, /Current Meteoritical Bulletin name/);
   assert.match(html, /An open-source project started by Raymond Borges Hink in July 2026\./);
   assert.match(html, /Designation \/ source identifier, ascending/);
-  assert.match(script, /recordWeight\.remove\(\)/);
-  assert.match(script, /function metbullPanelDetails\(record\)/);
-  assert.match(script, /canonicalName: record\.metbull\.canonicalName/);
-  assert.match(script, /Meteoritical Bulletin review/);
-  assert.match(script, /link\.href = metbullDetails\.url/);
-  assert.match(script, /`Catalog item \$\{record\.catalogItem\}`/);
-  assert.match(script, /`Catalog no\. \$\{record\.catalogNumber\}`/);
-  assert.match(script, /`Reported no\. \$\{record\.reportedNumber\}`/);
-  assert.match(script, /`Collection entry \$\{record\.entryOrder\}`/);
-  assert.match(script, /dateRow\.querySelector\("dt"\)\.textContent = "Event date"/);
-  assert.match(script, /term\.textContent = "Section"/);
-  assert.match(script, /recordModel === "catalog-number" \|\| recordModel === "collection-entry"/);
-  assert.match(script, /Reported count:/);
-  assert.match(script, /citedPages\.join\(", "\)/);
-  assert.match(script, /holdings\.forEach\(\(holding\) =>/);
-  assert.match(script, /"Unnumbered"/);
+  assert.doesNotMatch(html, /record-holdings|metbull-name|lineage-row|earlier-records/);
+  const record = preparedRecords().find(({ id }) => id === "huss-h27-3");
+  const dto = app.presentHarmonizedCard(record);
+  assert.equal(dto.kind, "direct-specimen");
+  assert.deepEqual(dto.facts.map(({ label }) => label), [
+    "Class", "Specimen form", "Source locality", "Event", "Lineage", "Specimen weight"
+  ]);
+  assert.match(script, /dto\.facts\.forEach\(\(\{ label, value \}\) => appendMetaRow\(meta, label, value\)\)/);
 });
 
 test("default cross-catalog order is alphabetical by source name", () => {

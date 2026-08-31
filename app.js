@@ -1,7 +1,7 @@
 "use strict";
 
-const CACHE_VERSION = "20260831-2";
-const ASSET_CACHE_VERSION = "20260831-schema8-2";
+const CACHE_VERSION = "20260831-harmonized-cards-1";
+const ASSET_CACHE_VERSION = CACHE_VERSION;
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "name-asc";
 const ISSUE_FORM_URL = "https://github.com/rayborg/Historical-meteorite-collections/issues/new?template=data-error.yml";
@@ -2778,162 +2778,184 @@ function tableASpecimenFacts(record) {
   ];
 }
 
-function appendMetaRow(card, label, value, className = "") {
+const HARMONIZED_CARD_KINDS = Object.freeze({
+  specimen: "direct-specimen",
+  atomic: "projected-atomic-specimen",
+  collection: "collection-observation",
+  regional: "regional-observation"
+});
+
+const HARMONIZED_SEMANTIC_LABELS = Object.freeze({
+  [HARMONIZED_CARD_KINDS.specimen]: "Specimen.",
+  [HARMONIZED_CARD_KINDS.atomic]: "Individual specimen.",
+  [HARMONIZED_CARD_KINDS.collection]: "Collection catalog observation; not asserted here as one individual specimen.",
+  [HARMONIZED_CARD_KINDS.regional]: "Regional census/catalog observation, not a specimen or holding."
+});
+
+function classifyHarmonizedCard(recordOrDescriptor) {
+  const descriptor = recordOrDescriptor?.parentRecord ? recordOrDescriptor : null;
+  const record = descriptor?.parentRecord || recordOrDescriptor;
+  if (!isPlainObject(record)) return null;
+  if (descriptor) {
+    if (descriptor.kind === "atomic" && descriptor.projected === true &&
+        ["catalog-item", "catalog-number", "collection-entry"].includes(record.recordModel) &&
+        typeof descriptor.holdingPath === "string" &&
+        (descriptor.massPath === null || resolveSpecimenCardSelection(
+          record, descriptor.holdingPath, descriptor.massPath
+        ))) {
+      return HARMONIZED_CARD_KINDS.atomic;
+    }
+    if (descriptor.kind !== "parent" || descriptor.projected !== false) return null;
+  }
+  if (record.recordModel === "specimen" || record.recordModel === "table-a-specimen") {
+    return HARMONIZED_CARD_KINDS.specimen;
+  }
+  if (["catalog-item", "catalog-number", "collection-entry"].includes(record.recordModel)) {
+    return HARMONIZED_CARD_KINDS.collection;
+  }
+  return record.recordModel === "regional-census-fact" ? HARMONIZED_CARD_KINDS.regional : null;
+}
+
+function harmonizedCardIdentifier(record, kind) {
+  if (kind === HARMONIZED_CARD_KINDS.atomic) return lineageRecordLabel(record);
+  if (record.recordModel === "catalog-item") return `Catalog item ${record.catalogItem}`;
+  if (record.recordModel === "catalog-number") return `Catalog no. ${record.catalogNumber}`;
+  if (record.recordModel === "collection-entry") {
+    return record.reportedNumber ? `Reported no. ${record.reportedNumber}` : `Collection entry ${record.entryOrder}`;
+  }
+  if (record.recordModel === "regional-census-fact") {
+    return record.reportedNumber ? `Source number ${record.reportedNumber}` : `Regional census entry ${record.entryOrder}`;
+  }
+  if (record.recordModel === "table-a-specimen") return `Table A entry ${record.entryOrder}`;
+  return record.designation || "No printed designation";
+}
+
+function harmonizedCardEvent(record) {
+  if (record.recordModel === "catalog-number") return record.dateOfDiscovery;
+  if (record.recordModel === "collection-entry" || record.recordModel === "regional-census-fact") return record.eventDate;
+  if (record.recordModel === "specimen" || record.recordModel === "catalog-item") return record.year;
+  return null;
+}
+
+function harmonizedSourceCitation(record) {
+  const sourceLabel = record.catalogLabel || record.catalogId;
+  const pages = recordCatalogPages(record);
+  return pages.length
+    ? `${sourceLabel} \u00b7 ${pages.length === 1 ? "p." : "pp."} ${pages.join(", ")}`
+    : `${sourceLabel} \u00b7 page not recorded`;
+}
+
+function presentHarmonizedCard(recordOrDescriptor, options = {}) {
+  const descriptor = recordOrDescriptor?.parentRecord
+    ? recordOrDescriptor
+    : parentSpecimenCardDescriptor(recordOrDescriptor);
+  const record = descriptor.parentRecord;
+  const kind = classifyHarmonizedCard(descriptor);
+  if (!kind) throw new Error("The record cannot be presented as a public card.");
+
+  const specimen = kind === HARMONIZED_CARD_KINDS.specimen || kind === HARMONIZED_CARD_KINDS.atomic;
+  const sourceName = record.recordModel === "table-a-specimen" ? record.specimenId : record.name;
+  const canonicalName = record.metbull?.canonicalName &&
+    !namesAreDisplayEquivalent(sourceName, record.metbull.canonicalName)
+    ? record.metbull.canonicalName
+    : null;
+  const facts = [];
+  if (canonicalName) facts.push({ label: "Current Meteoritical Bulletin name", value: canonicalName });
+  facts.push({ label: "Class", value: record.classification || "Not recorded" });
+  if (specimen) {
+    facts.push({
+      label: "Specimen form",
+      value: kind === HARMONIZED_CARD_KINDS.atomic || record.recordModel === "table-a-specimen"
+        ? "Individual specimen"
+        : "Specimen"
+    });
+  }
+  facts.push({
+    label: "Source locality",
+    value: (record.recordModel === "table-a-specimen" ? record.locality?.name : record.locality) || "Not recorded"
+  });
+  facts.push({ label: "Event", value: harmonizedCardEvent(record) || "Not recorded" });
+
+  if (specimen) {
+    const sourceLineage = Array.isArray(options.lineageEntries) ? options.lineageEntries : [];
+    const lineageEntries = kind === HARMONIZED_CARD_KINDS.atomic
+      ? descriptor.massPath === null ? [] : sourceLineage.filter((entry) => entry.massPath === descriptor.massPath)
+      : sourceLineage;
+    const grams = kind === HARMONIZED_CARD_KINDS.atomic
+      ? descriptor.massPath === null ? null : resolveSpecimenCardSelection(
+        record, descriptor.holdingPath, descriptor.massPath
+      )?.grams
+      : record.weight?.grams;
+    facts.push({
+      label: "Lineage",
+      value: lineageEntries.length ? formatLineageSummary(lineageEntries.length) : "Not recorded"
+    });
+    facts.push({ label: "Specimen weight", value: formatMass(grams) });
+  }
+
+  if (kind === HARMONIZED_CARD_KINDS.regional) {
+    regionalCensusFacts(record).forEach(({ label, value }) => {
+      if (value !== null && value !== undefined) facts.push({ label, value });
+    });
+  }
+
+  return {
+    kind,
+    identifier: harmonizedCardIdentifier(record, kind),
+    semanticLabel: HARMONIZED_SEMANTIC_LABELS[kind],
+    sourceName: sourceName || "Not recorded",
+    facts,
+    sourceCitation: harmonizedSourceCitation(record),
+    sourceLabel: record.catalogLabel || record.catalogId,
+    catalogId: record.catalogId,
+    catalogPages: recordCatalogPages(record)
+  };
+}
+
+function appendMetaRow(meta, label, value) {
   const row = document.createElement("div");
-  if (className) row.className = className;
   const term = document.createElement("dt");
   const description = document.createElement("dd");
   term.textContent = label;
-  description.textContent = value ? displayText(value) : "Not recorded";
-  if (!value) row.classList.add("unknown");
+  description.textContent = displayText(value);
+  if (value === "Not recorded") row.classList.add("unknown");
   row.append(term, description);
-  card.querySelector(".record-meta").append(row);
+  meta.append(row);
 }
 
 function createRecordCard(recordOrDescriptor) {
   const descriptor = recordOrDescriptor?.parentRecord ? recordOrDescriptor : parentSpecimenCardDescriptor(recordOrDescriptor);
   const record = descriptor.parentRecord;
+  const dto = presentHarmonizedCard(descriptor, {
+    lineageEntries: earlierRecordsByLaterId.get(record.id) || []
+  });
   const card = elements.template.content.firstElementChild.cloneNode(true);
-  const catalogItem = record.recordModel === "catalog-item";
-  const catalogNumber = record.recordModel === "catalog-number";
-  const collectionEntry = record.recordModel === "collection-entry";
-  const regionalCensus = record.recordModel === "regional-census-fact";
-  const tableASpecimen = record.recordModel === "table-a-specimen";
-  card.classList.toggle("projected-specimen-card", descriptor.kind === "atomic");
-  card.classList.toggle("catalog-item-card", catalogItem || catalogNumber || collectionEntry || regionalCensus);
-  card.classList.toggle("regional-census-card", regionalCensus);
-  card.classList.toggle("table-a-specimen-card", tableASpecimen);
-  card.querySelector(".designation").textContent = descriptor.projected
-    ? lineageRecordLabel(record)
-    : catalogItem
-      ? `Catalog item ${record.catalogItem}`
-      : catalogNumber
-        ? `Catalog no. ${record.catalogNumber}`
-        : collectionEntry
-          ? record.reportedNumber ? `Reported no. ${record.reportedNumber}` : `Collection entry ${record.entryOrder}`
-          : regionalCensus
-            ? record.reportedNumber ? `Source number ${record.reportedNumber}` : `Regional census entry ${record.entryOrder}`
-            : tableASpecimen ? `Table A entry ${record.entryOrder}` : record.designation || "No printed designation";
-  const modelLabel = card.querySelector(".record-model-label");
-  if (regionalCensus) {
-    modelLabel.textContent = "Regional census/catalog observation, not a specimen or holding";
-    modelLabel.hidden = false;
-  } else if (tableASpecimen) {
-    modelLabel.textContent = "Individual specimen listed in Table A";
-    modelLabel.hidden = false;
-  } else {
-    modelLabel.remove();
-  }
-  const specimenPosition = card.querySelector(".specimen-position");
-  const specimenPositionLabel = specimenCardPositionLabel(descriptor);
-  if (specimenPositionLabel) {
-    specimenPosition.textContent = specimenPositionLabel;
-    specimenPosition.hidden = false;
-  } else {
-    specimenPosition.remove();
-  }
-  const sourceNameLabel = card.querySelector(".source-name-label");
-  if (regionalCensus) sourceNameLabel.textContent = "Recorded regional name";
-  if (tableASpecimen) sourceNameLabel.textContent = "Exact specimen ID";
-  card.querySelector(".record-name").textContent = tableASpecimen
-    ? record.specimenId : record.name ? displayText(record.name) : "Name not recorded";
-  const metbull = card.querySelector(".metbull-name");
-  const metbullDetails = tableASpecimen ? null : metbullPanelDetails(record);
-  if (metbullDetails) {
-    metbull.querySelector("span").textContent = metbullDetails.label;
-    const link = metbull.querySelector("a");
-    if (metbullDetails.canonicalName) {
-      link.textContent = displayText(metbullDetails.canonicalName);
-      link.href = metbullDetails.url;
-    } else {
-      link.remove();
-    }
-    const note = metbull.querySelector("p");
-    if (metbullDetails.note) note.textContent = displayText(metbullDetails.note);
-    else note.remove();
-    metbull.hidden = false;
-  } else {
-    metbull.remove();
-  }
-  const recordWeight = card.querySelector(".record-weight");
-  if (catalogItem || catalogNumber || collectionEntry || regionalCensus) {
-    recordWeight.remove();
-    const holdings = regionalCensus ? [] : specimenCardDescriptorHoldings(descriptor);
-    if (holdings.length && descriptor.projected) renderProjectedSpecimenCardContent(card, holdings);
-    else if (holdings.length) renderHoldings(card, holdings, record.recordModel, "Holdings");
-    else card.querySelector(".record-holdings").remove();
-  } else {
-    recordWeight.querySelector("strong").textContent = record.weight.grams === null
-      ? "Not recorded"
-      : formatMass(record.weight.grams);
-    card.querySelector(".record-holdings").remove();
-  }
-  if (regionalCensus || tableASpecimen) {
-    card.querySelector(".lineage-row").remove();
-    card.querySelector(".earlier-records").remove();
-  } else {
-    renderEarlierRecords(card, lineageEntriesForSpecimenCard(descriptor, earlierRecordsByLaterId.get(record.id) || []));
-  }
-  setMetaRow(card, ".classification-row", record.classification);
-  if (regionalCensus) card.querySelector(".locality-row").remove();
-  else setMetaRow(card, ".locality-row", tableASpecimen ? record.locality.name : record.locality);
-  const dateRow = card.querySelector(".year-row");
-  if (catalogNumber) dateRow.querySelector("dt").textContent = "Date of discovery";
-  if (collectionEntry || regionalCensus) dateRow.querySelector("dt").textContent = "Event date";
-  if (tableASpecimen) dateRow.remove();
-  else setMetaRow(card, ".year-row", catalogNumber ? record.dateOfDiscovery : collectionEntry || regionalCensus ? record.eventDate : record.year);
-  if (collectionEntry) {
-    const sectionRow = document.createElement("div");
-    sectionRow.className = "section-row";
-    const term = document.createElement("dt");
-    const description = document.createElement("dd");
-    term.textContent = "Section";
-    description.textContent = record.section ? displayText(record.section) : "Not recorded";
-    if (!record.section) sectionRow.classList.add("unknown");
-    sectionRow.append(term, description);
-    card.querySelector(".record-meta").append(sectionRow);
-    if (record.catalogId === "hamburg-1913") {
-      specimenCardHamburgFacts(descriptor).forEach(({ label, value }) => {
-        const row = document.createElement("div");
-        row.className = "hamburg-fact-row";
-        const factTerm = document.createElement("dt");
-        const factDescription = document.createElement("dd");
-        factTerm.textContent = label;
-        factDescription.textContent = value;
-        row.append(factTerm, factDescription);
-        card.querySelector(".record-meta").append(row);
-      });
-    }
-  }
-  if (regionalCensus) {
-    appendMetaRow(card, "Source section", record.section, "regional-fact-row");
-    regionalCensusFacts(record).forEach(({ label, value }) => appendMetaRow(card, label, value, "regional-fact-row"));
-  }
-  if (tableASpecimen) {
-    card.querySelector(".locality-row dt").textContent = "Locality name";
-    tableASpecimenFacts(record).forEach(({ label, value }) => appendMetaRow(card, label, value, "table-a-fact-row"));
-  }
-  const sourceLabel = record.catalogLabel || catalogLabel(catalogRegistry[record.catalogId], record.catalogId);
-  const citedPages = recordCatalogPages(record);
-  const sourceSection = tableASpecimen ? " · Table A" : regionalCensus ? ` · ${record.section}` : "";
-  card.querySelector(".catalog-reference").textContent = citedPages.length
-    ? `Source: ${sourceLabel}${sourceSection} · ${citedPages.length === 1 ? "p." : "pp."} ${citedPages.join(", ")}`
-    : `Source: ${sourceLabel} · page not recorded`;
-  const confidence = card.querySelector(".confidence");
-  if (record.confidence === "high") {
-    confidence.remove();
-  } else {
-    confidence.classList.add(record.confidence);
-    confidence.querySelector("span").textContent = `${capitalize(record.confidence)} transcription confidence`;
-  }
-  citedPages.forEach((catalogPage) => {
+  card.dataset.cardKind = dto.kind;
+  card.classList.toggle("specimen-card", dto.kind === HARMONIZED_CARD_KINDS.specimen || dto.kind === HARMONIZED_CARD_KINDS.atomic);
+  card.classList.toggle("observation-card", dto.kind === HARMONIZED_CARD_KINDS.collection || dto.kind === HARMONIZED_CARD_KINDS.regional);
+  card.querySelector(".designation").textContent = displayText(dto.identifier);
+  const semanticLabel = card.querySelector(".record-semantic-label, .record-model-label");
+  semanticLabel.textContent = dto.semanticLabel;
+  semanticLabel.hidden = false;
+  card.querySelector(".source-name-label").textContent = "Source catalog meteorite name";
+  card.querySelector(".record-name").textContent = displayText(dto.sourceName);
+  const meta = card.querySelector(".record-meta");
+  meta.replaceChildren();
+  dto.facts.forEach(({ label, value }) => appendMetaRow(meta, label, value));
+
+  [".metbull-name", ".specimen-position", ".record-weight", ".record-holdings", ".earlier-records"]
+    .forEach((selector) => card.querySelector(selector)?.remove());
+  card.querySelector(".confidence")?.remove();
+  const source = card.querySelector(".record-source, .catalog-reference");
+  source.textContent = `Source citation: ${displayText(dto.sourceCitation)}`;
+  dto.catalogPages.forEach((catalogPage) => {
     const folio = getAuthorizedFolio(folioManifest, record.catalogId, catalogPage, catalogRegistry);
     if (!folio) return;
     const button = document.createElement("button");
     button.className = "folio-button";
     button.type = "button";
-    button.textContent = citedPages.length === 1 ? "View folio" : `View folio ${catalogPage}`;
-    button.setAttribute("aria-label", `View catalog folio for ${sourceLabel}, page ${catalogPage}`);
+    button.textContent = dto.catalogPages.length === 1 ? "View folio" : `View folio ${catalogPage}`;
+    button.setAttribute("aria-label", `View catalog folio for ${dto.sourceLabel}, page ${catalogPage}`);
     button.addEventListener("click", () => openFolioDialog(record.catalogId, folio.pageId, button));
     card.querySelector(".record-footer").append(button);
   });
@@ -3394,10 +3416,12 @@ if (elements) {
 const publicRuntime = {
   catalogLabel,
   catalogSummaryEntries,
+  classifyHarmonizedCard,
   createIssueReportChallenge,
   evaluateIssueReportGate,
   getAuthorizedFolioPages,
   normalizeCatalogRegistry,
+  presentHarmonizedCard,
   validateSpecimenCardManifest,
   validateCatalog,
   validateFolioManifest
@@ -3427,6 +3451,7 @@ if (typeof module !== "undefined" && module.exports) {
     catalogSelectorEntries,
     catalogSummaryEntries,
     catalogNumberHoldingDetails,
+    classifyHarmonizedCard,
     compareRecords,
     containsUnsafePath,
     designationComponents,
@@ -3468,6 +3493,7 @@ if (typeof module !== "undefined" && module.exports) {
     parseUrlFilters,
     parseSearchQuery,
     prepareRecord,
+    presentHarmonizedCard,
     regionalCensusFacts,
     recordDesignations,
     recordCatalogPages,

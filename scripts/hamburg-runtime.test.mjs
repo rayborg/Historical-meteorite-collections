@@ -30,18 +30,18 @@ const amendmentTargetMutations = [
   ["changed amendment target mass", (record) => { record.amendments[0].targetWeight.grams = 14150; }],
 ];
 
-test("projected specimen weight and detail layouts remain clean at desktop and narrow widths", () => {
-  assert.match(styles, /\.holdings-list \.projected-content-weight,[\s\S]*padding-block: \.45rem;/u);
-  assert.match(styles, /\.holdings-list \.specimen-weight \{[^}]*font-variant-numeric: tabular-nums;/u);
-  assert.match(styles, /\.holdings-list \.specimen-details \{[^}]*white-space: pre-wrap;/u);
+test("harmonized cards remain clean at desktop and narrow widths", () => {
+  assert.match(html, /<p class="record-semantic-label"><\/p>/u);
+  assert.match(html, /<dl class="record-meta" aria-label="Catalog record details"><\/dl>/u);
+  assert.doesNotMatch(html, /record-holdings|holdings-list/u);
+  assert.match(styles, /\.record-meta div \{[^}]*grid-template-columns: 5\.25rem minmax\(0, 1fr\);/u);
   assert.match(styles, /@media \(max-width: 700px\) \{[\s\S]*\.catalog-grid \{ grid-template-columns: 1fr; \}/u);
-  assert.match(styles, /@media \(max-width: 420px\) \{[\s\S]*\.record-heading \{ grid-template-columns: minmax\(0, 1fr\); \}/u);
-  assert.match(html, /<section class="record-holdings" aria-label="Holdings" hidden>/u);
+  assert.match(styles, /@media \(max-width: 320px\) \{[\s\S]*\.record-meta div \{ grid-template-columns: minmax\(0, 1fr\);/u);
 });
 
-test("long Hamburg fact labels stack above values instead of sharing narrow columns", () => {
-  assert.match(styles, /\.record-meta \.hamburg-fact-row \{[^}]*grid-template-columns: minmax\(0, 1fr\);/u);
-  assert.match(styles, /\.record-meta \.hamburg-fact-row dt \{[^}]*overflow-wrap: anywhere;/u);
+test("long harmonized fact labels wrap and stack at the narrowest breakpoint", () => {
+  assert.match(styles, /\.record-meta dt \{[^}]*overflow-wrap: anywhere;/u);
+  assert.match(styles, /@media \(max-width: 320px\) \{[\s\S]*gap: \.08rem;/u);
 });
 
 test("schema8 runtime validates and preserves Hamburg additive facts", () => {
