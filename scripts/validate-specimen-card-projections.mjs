@@ -3,14 +3,18 @@ import { readFile } from "node:fs/promises";
 import { pathToFileURL } from "node:url";
 
 const LOCKS = Object.freeze({
-  catalogSchemaVersion: 8,
+  catalogSchemaVersion: 9,
   sourceRecordCount: 14176,
-  sourceCatalogSha256: "46d8ea050f428cfd4ab633c7e29da1493aaef413cd6da0dc1054ec6275823584",
+  sourceCatalogSha256: "f5435256d1ff5c9500217112c8beeb7141e278487b3a1e98b5bb86e162739c0e",
   projectionCount: 1955,
   atomicCardCount: 6675,
+  baselineMassBoundCardCount: 6541,
+  massBoundCardCount: 6656,
+  masslessCardCount: 19,
+  repeatedMassCardCount: 2,
   sourceContextCardCount: 1657,
-  projectionSetSha256: "45490022fc876f4df62c07110b3fa40a04c0a1edc6aec26797d616f7c159c263",
-  nonHamburgProjectionSetSha256: "3edca8ec748beb5b9d2cb74871ad5c56082a5beced28e75c006a85f745999fa3",
+  projectionSetSha256: "54eabe28b7cc7b885f3e980d7e5962f01eb04aed39cedb30bc9f6d334ea3dede",
+  nonHamburgProjectionSetSha256: "f34519b982f5e966aeeb09f13f076dfba26cca05773cc3e345d694743bafdd3b",
 });
 export const REVIEWED_AUDIT_COVERAGE = Object.freeze({
   candidateCount: 1038,
@@ -18,8 +22,8 @@ export const REVIEWED_AUDIT_COVERAGE = Object.freeze({
   projectedParentCount: 370,
   contextOnlyExcludedParentCount: 668,
   atomicCardCount: 1056,
-  massBoundCardCount: 922,
-  masslessCardCount: 134,
+  massBoundCardCount: 1037,
+  masslessCardCount: 19,
   sourceContextCardCount: 370,
   boundaries: Object.freeze([
     Object.freeze({ name: "prior", candidates: 226, projected: 223, excluded: 3, cards: 665, candidateSetSha256: "2b2bf8a08e85f756b61180385b8de61632dc4becc23b63160546ebe0785f7f78" }),
@@ -54,8 +58,9 @@ export const HAMBURG_AUDIT_COVERAGE = Object.freeze({
   projectionSetSha256: "ea3d7d24a95122849f8fdd922dc9318cadd73362926084701d670950eee576b1",
 });
 const PRIOR_630_ID = "obs-344d0b6d-920e-403f-8fd5-c113fc05291d";
-const PRIOR_630_CARDS_SHA256 = "839f6cb10b69c5fff3418ed5d0b17143442b18384b3084a5479435ba3077f9c7";
+const PRIOR_630_CARDS_SHA256 = "3b2915e4519932be2dae7acd9946e950038c938ac8425cd78fd7a7b303fa4b35";
 const REEDS_366_ID = "obs-b02789ea-869e-447a-97cc-28c2c6900e88";
+const KULESCHOWKA_ID = "obs-4611763e-40ee-4872-920e-968183aa348b";
 const ROOT_KEYS = ["metadata", "projections"];
 const METADATA_KEYS = [
   "schemaVersion", "scope", "catalogSchemaVersion", "sourceRecordCount", "sourceCatalogSha256",
@@ -63,13 +68,16 @@ const METADATA_KEYS = [
 ];
 const PROJECTION_KEYS = ["parentRecordId", "cards"];
 const CLAUSE_CARD_KEYS = ["holdingPath", "clause", "massPath"];
+const REPEATED_CLAUSE_CARD_KEYS = ["holdingPath", "clause", "massPath", "repeatedMass"];
 const COMPONENT_CARD_KEYS = ["holdingPath", "componentPath", "massPath"];
 const CLAUSE_KEYS = ["textPath", "start", "end"];
+const REPEATED_MASS_KEYS = ["valuePath", "countPath", "totalPath", "occurrence", "occurrenceCount"];
 const HOLDING_PATH = /^holdings\[(0|[1-9][0-9]*)\]$/u;
 const TEXT_PATH = /^holdings\[(0|[1-9][0-9]*)\]\.(description|designation)$/u;
 const ARRAY_MASS_PATH = /^holdings\[(0|[1-9][0-9]*)\]\.weights\[(0|[1-9][0-9]*)\]\.grams$/u;
 const SCALAR_MASS_PATH = /^holdings\[(0|[1-9][0-9]*)\]\.weight\.grams$/u;
 const COMPONENT_PATH = /^holdings\[(0|[1-9][0-9]*)\]\.weights\[(0|[1-9][0-9]*)\]$/u;
+const COUNT_PATH = /^holdings\[(0|[1-9][0-9]*)\]\.count$/u;
 const RECORD_ID = /^obs-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/u;
 const MEANINGFUL_TEXT = /[\p{L}\p{N}]/u;
 
@@ -162,7 +170,10 @@ function parseCard(card, record, recordModel, location) {
   const hasClause = card !== null && typeof card === "object" && Object.hasOwn(card, "clause");
   const hasComponent = card !== null && typeof card === "object" && Object.hasOwn(card, "componentPath");
   if (hasClause === hasComponent) fail(`${location} must have exactly one clause or componentPath evidence variant`);
-  assertExactKeys(card, hasClause ? CLAUSE_CARD_KEYS : COMPONENT_CARD_KEYS, location);
+  const hasRepeatedMass = hasClause && Object.hasOwn(card, "repeatedMass");
+  assertExactKeys(card, hasClause
+    ? hasRepeatedMass ? REPEATED_CLAUSE_CARD_KEYS : CLAUSE_CARD_KEYS
+    : COMPONENT_CARD_KEYS, location);
   if (hasClause) assertExactKeys(card.clause, CLAUSE_KEYS, `${location}.clause`);
   if (typeof card.holdingPath !== "string") fail(`${location}.holdingPath must be a string`);
   const holdingMatch = card.holdingPath.match(HOLDING_PATH);
@@ -198,8 +209,30 @@ function parseCard(card, record, recordModel, location) {
 
   if (card.massPath === null) {
     if (hasComponent) fail(`${location}.massPath must be non-null for componentPath evidence`);
-    return { holdingIndex, text, mass: null };
+    if (hasRepeatedMass) {
+      const repeated = card.repeatedMass;
+      assertExactKeys(repeated, REPEATED_MASS_KEYS, `${location}.repeatedMass`);
+      const valueMatch = typeof repeated.valuePath === "string" ? repeated.valuePath.match(ARRAY_MASS_PATH) : null;
+      const countMatch = typeof repeated.countPath === "string" ? repeated.countPath.match(COUNT_PATH) : null;
+      const totalMatch = typeof repeated.totalPath === "string" ? repeated.totalPath.match(ARRAY_MASS_PATH) : null;
+      if (!valueMatch || !countMatch || !totalMatch) fail(`${location}.repeatedMass paths are malformed`);
+      if ([valueMatch[1], countMatch[1], totalMatch[1]].some((index) => Number(index) !== holdingIndex)) {
+        fail(`${location}.repeatedMass paths refer to a different holding`);
+      }
+      const value = resolvePath(record, repeated.valuePath);
+      const count = resolvePath(record, repeated.countPath);
+      const total = resolvePath(record, repeated.totalPath);
+      if (value !== 2.7 || count !== 2 || total !== 5.4 || value * count !== total) {
+        fail(`${location}.repeatedMass must resolve to the accepted count 2, value 2.7, and total 5.4`);
+      }
+      if (!Number.isInteger(repeated.occurrence) || !Number.isInteger(repeated.occurrenceCount) ||
+          repeated.occurrenceCount !== count || repeated.occurrence < 1 || repeated.occurrence > repeated.occurrenceCount) {
+        fail(`${location}.repeatedMass occurrence is invalid`);
+      }
+    }
+    return { holdingIndex, text, mass: null, repeatedMass: hasRepeatedMass };
   }
+  if (hasRepeatedMass) fail(`${location}.repeatedMass cannot also be a lineage massPath endpoint`);
   if (typeof card.massPath !== "string") fail(`${location}.massPath must be a string or null`);
   const massMatch = card.massPath.match(recordModel === "catalog-item" ? SCALAR_MASS_PATH : ARRAY_MASS_PATH);
   if (!massMatch) fail(`${location}.massPath is unsupported for ${recordModel}`);
@@ -221,7 +254,7 @@ export function validateSpecimenCardProjections(document, catalog, catalogText) 
   assertExactKeys(document, ROOT_KEYS, "root");
   assertExactKeys(document.metadata, METADATA_KEYS, "metadata");
   const expectedMetadata = {
-    schemaVersion: 3,
+    schemaVersion: 4,
     scope: "reviewed-atomic-specimen-card-display-projections",
     catalogSchemaVersion: LOCKS.catalogSchemaVersion,
     sourceRecordCount: LOCKS.sourceRecordCount,
@@ -246,6 +279,7 @@ export function validateSpecimenCardProjections(document, catalog, catalogText) 
   let massBoundCardCount = 0;
   let masslessCardCount = 0;
   let sourceContextCardCount = 0;
+  const repeatedMassCards = [];
 
   for (const [projectionIndex, projection] of document.projections.entries()) {
     const location = `projections[${projectionIndex}]`;
@@ -268,6 +302,7 @@ export function validateSpecimenCardProjections(document, catalog, catalogText) 
     for (const [cardIndex, card] of projection.cards.entries()) {
       const cardLocation = `${location}.cards[${cardIndex}]`;
       parseCard(card, source.record, recordModel, cardLocation);
+      if (card.repeatedMass) repeatedMassCards.push({ parentRecordId: projection.parentRecordId, cardIndex, card });
       if (previousCard && compareCards(previousCard, card) >= 0) fail(`${location}.cards are not in canonical holding and evidence source order`);
       previousCard = card;
       if (card.clause) {
@@ -293,11 +328,43 @@ export function validateSpecimenCardProjections(document, catalog, catalogText) 
   }
 
   if (atomicCardCount !== LOCKS.atomicCardCount) fail("atomic card count differs from metadata");
+  if (massBoundCardCount !== LOCKS.massBoundCardCount || masslessCardCount !== LOCKS.masslessCardCount ||
+      massBoundCardCount - LOCKS.baselineMassBoundCardCount !== 115) {
+    fail("ordinary mass assignment counts differ from the accepted 115-card lock");
+  }
   if (sourceContextCardCount !== LOCKS.sourceContextCardCount) fail("derived source context count differs from metadata");
+  const kuleschowka = document.projections.find(({ parentRecordId }) => parentRecordId === KULESCHOWKA_ID);
+  if (!kuleschowka || repeatedMassCards.length !== LOCKS.repeatedMassCardCount ||
+      repeatedMassCards.some(({ parentRecordId }) => parentRecordId !== KULESCHOWKA_ID) ||
+      JSON.stringify(repeatedMassCards.map(({ cardIndex, card: { massPath, repeatedMass } }) => ({ cardIndex, massPath, repeatedMass }))) !== JSON.stringify([
+        {
+          cardIndex: 1,
+          massPath: null,
+          repeatedMass: {
+            valuePath: "holdings[1].weights[1].grams",
+            countPath: "holdings[1].count",
+            totalPath: "holdings[1].weights[0].grams",
+            occurrence: 1,
+            occurrenceCount: 2,
+          },
+        },
+        {
+          cardIndex: 2,
+          massPath: null,
+          repeatedMass: {
+            valuePath: "holdings[1].weights[1].grams",
+            countPath: "holdings[1].count",
+            totalPath: "holdings[1].weights[0].grams",
+            occurrence: 2,
+            occurrenceCount: 2,
+          },
+        },
+      ])) {
+    fail("Kuleschowka must have exactly two ordered repeated per-item displays and no lineage endpoints");
+  }
   const prior = document.projections.find(({ parentRecordId }) => parentRecordId === PRIOR_630_ID);
   const priorSource = records.get(PRIOR_630_ID);
-  if (!prior || prior.cards.length !== 17 || prior.cards.filter(({ massPath }) => massPath !== null).length !== 12 ||
-      prior.cards.filter(({ massPath }) => massPath === null).length !== 5 ||
+  if (!prior || prior.cards.length !== 17 || prior.cards.some(({ massPath }) => massPath === null) ||
       !deriveSourceContext(prior, priorSource.record, catalogModels.get(priorSource.record.catalogId)) ||
       sha256(JSON.stringify(prior.cards)) !== PRIOR_630_CARDS_SHA256) {
     fail("Prior entry 630 exact 17-card plus context lock is missing or malformed");
@@ -450,6 +517,7 @@ export function validateSpecimenCardProjections(document, catalog, catalogText) 
     atomicCardCount,
     massBoundCardCount,
     masslessCardCount,
+    repeatedMassCardCount: repeatedMassCards.length,
     sourceContextCardCount,
   };
 }

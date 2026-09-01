@@ -85,6 +85,7 @@ const FACTUAL_FIELDS = [
   "amendments[]",
   "classification",
   "locality",
+  "individualFindLocation",
   "year",
   "dateOfDiscovery",
   "eventDate",
@@ -276,12 +277,12 @@ function assertCountSummary(value, path) {
 
 function validateMetadata(metadata, path) {
   assertExactKeys(metadata, METADATA_KEYS, path);
-  assert(metadata.schemaVersion === 8, `${path}.schemaVersion must be 8`);
+  assert(metadata.schemaVersion === 9, `${path}.schemaVersion must be 9`);
   assert(metadata.scope === "facts-only", `${path}.scope must be facts-only`);
   assert(
     Array.isArray(metadata.factualFields) && metadata.factualFields.length === FACTUAL_FIELDS.length &&
       metadata.factualFields.every((field, index) => field === FACTUAL_FIELDS[index]),
-    `${path}.factualFields does not match the schema 8 public record models`,
+    `${path}.factualFields does not match the schema 9 public record models`,
   );
   assertCountSummary(metadata, path);
   assert(Array.isArray(metadata.catalogs) && metadata.catalogs.length > 0, `${path}.catalogs must be a nonempty array`);
@@ -524,6 +525,7 @@ function validatePublicCatalog(data, folios, path = "catalog") {
   const collectionEntryOrders = new Map();
   const previousCollectionEntries = new Map();
   const representedCatalogs = new Set();
+  let individualFindLocationCount = 0;
   const statsByCatalog = new Map([...metadataByCatalog].map(([catalogId]) => [catalogId, {
     recordCount: 0,
     recordsWithDesignation: 0,
@@ -546,6 +548,9 @@ function validatePublicCatalog(data, folios, path = "catalog") {
           : recordModel === "regional-census-fact" ? REGIONAL_CENSUS_FACT_KEYS
             : recordModel === "table-a-specimen" ? TABLE_A_SPECIMEN_KEYS
               : record.catalogId === "hamburg-1913" ? HAMBURG_COLLECTION_ENTRY_KEYS : COLLECTION_ENTRY_KEYS)];
+    if (recordModel === "specimen" && Object.hasOwn(record, "individualFindLocation")) {
+      expectedRecordKeys.splice(expectedRecordKeys.indexOf("year"), 0, "individualFindLocation");
+    }
     if (Object.hasOwn(record, "metbull")) expectedRecordKeys.push("metbull");
     assertExactKeys(record, expectedRecordKeys, recordPath);
     assertString(record.id, `${recordPath}.id`);
@@ -570,6 +575,12 @@ function validatePublicCatalog(data, folios, path = "catalog") {
       assert(record.designation !== null || record.name !== null || record.weight.grams !== null ||
         record.classification !== null || record.locality !== null || record.year !== null,
       `${recordPath} must contain a substantive public fact`);
+      if (Object.hasOwn(record, "individualFindLocation")) {
+        assertString(record.individualFindLocation, `${recordPath}.individualFindLocation`);
+        assert(record.individualFindLocation.length <= 200,
+          `${recordPath}.individualFindLocation must be at most 200 characters`);
+        individualFindLocationCount += 1;
+      }
     } else if (recordModel === "catalog-item") {
       assert(Number.isInteger(record.catalogItem) && record.catalogItem > 0,
         `${recordPath}.catalogItem must be a positive integer`);
@@ -704,6 +715,10 @@ function validatePublicCatalog(data, folios, path = "catalog") {
   assertExactSet(representedCatalogs, metadataByCatalog.keys(), `${path} record catalog IDs`);
   assertExactSet(Object.keys(folios.catalogs), metadataByCatalog.keys(), `${path} folio catalog IDs`);
   assert(data.metadata.recordCount === data.records.length, `${path}.metadata.recordCount does not match records`);
+  if (data.records.length === 14176 && metadataByCatalog.size === 37) {
+    assert(individualFindLocationCount === 111,
+      `${path} must contain exactly 111 specimen individualFindLocation values`);
+  }
   for (const [catalogId, { descriptor, path: descriptorPath, sourcePages }] of metadataByCatalog) {
     const stats = statsByCatalog.get(catalogId);
     for (const field of ["recordCount", "recordsWithDesignation", "recordsWithWeight"]) {
@@ -721,7 +736,14 @@ function validatePublicCatalog(data, folios, path = "catalog") {
         `folios.catalogs.${catalogId}.pages[${pageIndex}].catalogPage is outside sourcePages`);
     });
   }
-  return { catalogCount: metadataByCatalog.size, recordCount: data.records.length, statsByCatalog, metadataByCatalog, folioStats };
+  return {
+    catalogCount: metadataByCatalog.size,
+    recordCount: data.records.length,
+    individualFindLocationCount,
+    statsByCatalog,
+    metadataByCatalog,
+    folioStats,
+  };
 }
 
 function assertPageId(value, path) {
@@ -988,7 +1010,7 @@ function multiCatalogFixture() {
   return {
     data: {
       metadata: {
-        schemaVersion: 8,
+        schemaVersion: 9,
         scope: "facts-only",
         factualFields: [...FACTUAL_FIELDS],
         catalogs: [
@@ -1476,7 +1498,7 @@ function runSyntheticCatalogTests(modelFixture) {
     catalogNumberRejectionCount += 1;
   };
   const hoveyRecord = (records, id = "hovey-catalog-z9") => records.find((record) => record.id === id);
-  assertCatalogNumberRejection("older metadata under schema 8", ({ metadata }) => { metadata.schemaVersion = 7; });
+  assertCatalogNumberRejection("older metadata under schema 9", ({ metadata }) => { metadata.schemaVersion = 8; });
   assertCatalogNumberRejection("empty catalog number", ({ records }) => { hoveyRecord(records).catalogNumber = ""; });
   assertCatalogNumberRejection("nonnull non-string catalog number", ({ records }) => { hoveyRecord(records).catalogNumber = 9; });
   assertCatalogNumberRejection("duplicate catalog number within one catalog", ({ records }) => {
@@ -1918,7 +1940,7 @@ console.log(
   `${catalogFixtureStats.holdingPrivacyAllowCount} holding-privacy boundary allow, ` +
   `${catalogFixtureStats.modelRejectionCount} model/holding rejections, ` +
   `${catalogFixtureStats.catalogNumberRejectionCount} catalog-number rejections, ` +
-  `${catalogFixtureStats.collectionEntryRejectionCount} collection-entry/schema-8 rejections, ` +
+  `${catalogFixtureStats.collectionEntryRejectionCount} collection-entry/schema-9 rejections, ` +
   `${metbullFixtureStats.allowCount} MetBull allows, ${metbullFixtureStats.rejectionCount} MetBull rejections, ` +
   `${folioFixtureStats.allowCount} folio allows, ${folioFixtureStats.rejectionCount} folio rejections, ` +
   `${folioFileFixtureStats.allowCount} folio-file allows, ${folioFileFixtureStats.rejectionCount} folio-file rejections passed.`,
@@ -1929,6 +1951,28 @@ if (!SYNTHETIC_ONLY) {
     [CATALOG_URL, FOLIOS_URL, RELEASE_LOCK_URL].map(async (url) => JSON.parse(await readFile(url, "utf8"))),
   );
   const deployedStats = validatePublicCatalog(data, folios, "root");
+  const assertDeployedRejection = (label, mutate) => {
+    const changed = clone(data);
+    mutate(changed);
+    let rejected = false;
+    try {
+      validatePublicCatalog(changed, folios, `mutated ${label}`);
+    } catch {
+      rejected = true;
+    }
+    assert(rejected, `deployed catalog mutation must reject ${label}`);
+  };
+  const locationRecord = data.records.find((record) => Object.hasOwn(record, "individualFindLocation"));
+  assertDeployedRejection("schema-8 downgrade", ({ metadata }) => { metadata.schemaVersion = 8; });
+  assertDeployedRejection("missing one of 111 individual find locations", ({ records }) => {
+    delete records.find(({ id }) => id === locationRecord.id).individualFindLocation;
+  });
+  assertDeployedRejection("empty individual find location", ({ records }) => {
+    records.find(({ id }) => id === locationRecord.id).individualFindLocation = "";
+  });
+  assertDeployedRejection("individual find location on a non-specimen model", ({ records }) => {
+    records.find(({ catalogId }) => catalogId === "farrington-1916").individualFindLocation = "Shelf 1";
+  });
   const expectedHashes = validateFolioReleaseLock(folios, releaseLock, "root folio release lock");
   await validateFolioFiles(folios, "root folio files", REPO_ROOT, expectedHashes);
   const totalPageCount = [...deployedStats.metadataByCatalog.values()].reduce(
@@ -1937,7 +1981,8 @@ if (!SYNTHETIC_ONLY) {
   );
   console.log(
     `Validated data/catalog.json and data/folios.json: ${deployedStats.recordCount} records across ` +
-      `${deployedStats.catalogCount} schema 8 facts-only catalogs, ${totalPageCount} metadata source pages, ` +
+      `${deployedStats.catalogCount} schema 9 facts-only catalogs, ${deployedStats.individualFindLocationCount} individual find locations, ` +
+      `${totalPageCount} metadata source pages, ` +
     `${deployedStats.folioStats.pageEntryCount} displayable folio pages with locked SHA-256 assets.`,
   );
   for (const [catalogId, { descriptor }] of deployedStats.metadataByCatalog) {

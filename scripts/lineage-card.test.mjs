@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { access, readFile } from "node:fs/promises";
 import { createRequire } from "node:module";
 import path from "node:path";
@@ -8,10 +9,11 @@ import { fileURLToPath } from "node:url";
 const require = createRequire(import.meta.url);
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const app = require(path.join(projectRoot, "app.js"));
-const [lineageData, catalog] = await Promise.all([
-  readFile(path.join(projectRoot, "data", "specimen-lineages.json"), "utf8").then(JSON.parse),
+const [lineageText, catalog] = await Promise.all([
+  readFile(path.join(projectRoot, "data", "specimen-lineages.json"), "utf8"),
   readFile(path.join(projectRoot, "data", "catalog.json"), "utf8").then(JSON.parse),
 ]);
+const lineageData = JSON.parse(lineageText);
 const registry = app.normalizeCatalogRegistry(catalog.metadata);
 const records = catalog.records.map((record, index) => app.prepareRecord(record, index, registry));
 
@@ -77,10 +79,10 @@ test("main template presents lineage through the harmonized specimen contract", 
   });
   assert.doesNotMatch(source, /\.innerHTML\b/);
   assert.doesNotMatch(css, /\.earlier-records \{/);
-  assert.equal(app.CACHE_VERSION, "20260831-harmonized-cards-3");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260831-harmonized-cards-3");
-  assert.match(html, /styles\.css\?v=20260831-harmonized-cards-3/);
-  assert.match(html, /app\.js\?v=20260831-harmonized-cards-3/);
+  assert.equal(app.CACHE_VERSION, "20260831-unknown-audit-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260831-unknown-audit-1");
+  assert.match(html, /styles\.css\?v=20260831-unknown-audit-1/);
+  assert.match(html, /app\.js\?v=20260831-unknown-audit-1/);
   for (const file of ["possible-specimen-lineages.html", "possible-specimen-lineages.css", "possible-specimen-lineages.js"]) {
     await assert.rejects(access(path.join(projectRoot, file)));
   }
@@ -260,7 +262,7 @@ test("review outcomes apply only to possible matches and not-supported entries a
 
   const notSupported = clone(retained);
   possible(notSupported).review.outcome = "not-supported";
-  assert.equal(entryCount(app.deriveEarlierRecordIndex(notSupported, records, registry)), 1487);
+  assert.equal(entryCount(app.deriveEarlierRecordIndex(notSupported, records, registry)), 1535);
 
   const confirmed = clone(retained);
   possible(confirmed).review.outcome = "confirmed";
@@ -271,14 +273,14 @@ test("real data maps only later records without mutation and matches the locked 
   const before = JSON.stringify(lineageData);
   const index = app.deriveEarlierRecordIndex(lineageData, records, registry);
   assert.equal(JSON.stringify(lineageData), before);
-  assert.equal(index.size, 948);
-  assert.equal(entryCount(index), 1488);
+  assert.equal(index.size, 973);
+  assert.equal(entryCount(index), 1536);
   assert.equal(Math.max(...[...index.values()].map((entries) => entries.length)), 98);
   const distribution = [...index.values()].reduce((counts, entries) => {
     counts[entries.length] = (counts[entries.length] || 0) + 1;
     return counts;
   }, {});
-  assert.deepEqual(distribution, { 1: 771, 2: 131, 3: 17, 4: 9, 5: 4, 6: 4, 7: 1, 8: 2, 9: 2, 10: 1, 15: 1, 18: 1, 25: 1, 36: 1, 81: 1, 98: 1 });
+  assert.deepEqual(distribution, { 1: 787, 2: 138, 3: 17, 4: 10, 5: 4, 6: 4, 7: 1, 8: 2, 9: 2, 11: 1, 13: 1, 15: 1, 18: 1, 25: 1, 36: 1, 81: 1, 98: 1 });
   assert.ok(records.some((record) => !index.has(record.id)));
 });
 
@@ -316,7 +318,7 @@ test("Sandia receives 108b continuity while Rosebud receives none", () => {
   assert.equal(index.has(rosebud.id), false);
 });
 
-test("all 1488 earlier links resolve to exact public source records", () => {
+test("all 1536 earlier links resolve to exact public source records", () => {
   const index = app.deriveEarlierRecordIndex(lineageData, records, registry);
   for (const entries of index.values()) {
     for (const entry of entries) {
@@ -329,10 +331,10 @@ test("all 1488 earlier links resolve to exact public source records", () => {
       assert.deepEqual(destinationIds, [entry.recordId], `${entry.catalogSearchUrl} did not resolve exactly to ${entry.recordId}`);
     }
   }
-  assert.equal(entryCount(index), 1488);
+  assert.equal(entryCount(index), 1536);
 });
 
-test("all 2978 published observation links resolve to exact public source records", () => {
+test("all 3076 published observation links resolve to exact public source records", () => {
   let count = 0;
   for (const relationship of lineageData.relationships) {
     for (const observation of relationship.observations) {
@@ -347,7 +349,7 @@ test("all 2978 published observation links resolve to exact public source record
       assert.deepEqual(destinationIds, [observation.recordId], `${observation.catalogSearchUrl} did not resolve exactly`);
     }
   }
-  assert.equal(count, 2978);
+  assert.equal(count, 3076);
 });
 
 test("optional fetch failures and malformed payloads return an empty enhancement", async () => {
@@ -355,12 +357,23 @@ test("optional fetch failures and malformed payloads return an empty enhancement
   assert.equal(failed.size, 0);
   const missing = await app.loadEarlierRecordIndex(records, registry, async () => ({ ok: false }));
   assert.equal(missing.size, 0);
-  const malformed = await app.loadEarlierRecordIndex(records, registry, async () => ({ ok: true, json: async () => ({ metadata: {}, relationships: [] }) }));
+  const sha256 = async (value) => createHash("sha256").update(value).digest("hex");
+  const malformed = await app.loadEarlierRecordIndex(records, registry, async () => ({
+    ok: true, text: async () => JSON.stringify({ metadata: {}, relationships: [] }),
+  }), { sha256 });
   assert.equal(malformed.size, 0);
+  const loaded = await app.loadEarlierRecordIndex(records, registry, async () => ({
+    ok: true, text: async () => lineageText,
+  }), { sha256 });
+  assert.equal(entryCount(loaded), 1536);
+  assert.equal(app.SPECIMEN_LINEAGE_DATA_SHA256,
+    "bf73d5fe32aa88b123a110db3108c45cd2053c2f32ac5463fa52035b859291b7");
   for (const mutate of forgedFactMutations) {
     const forged = clone(lineageData);
     mutate(forged);
-    const rejected = await app.loadEarlierRecordIndex(records, registry, async () => ({ ok: true, json: async () => forged }));
+    const rejected = await app.loadEarlierRecordIndex(records, registry, async () => ({
+      ok: true, text: async () => JSON.stringify(forged),
+    }), { sha256 });
     assert.equal(rejected.size, 0);
   }
 });

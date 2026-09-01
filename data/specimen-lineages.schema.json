@@ -27,7 +27,7 @@
           "additionalProperties": false,
           "required": ["catalogSchemaVersion", "recordCount", "catalogCount", "flattenedMassObservationCount", "inventoryObservationCount"],
           "properties": {
-            "catalogSchemaVersion": { "const": 8 },
+            "catalogSchemaVersion": { "const": 9 },
             "recordCount": { "type": "integer", "minimum": 0 },
             "catalogCount": { "type": "integer", "minimum": 0 },
             "flattenedMassObservationCount": { "type": "integer", "minimum": 0 },

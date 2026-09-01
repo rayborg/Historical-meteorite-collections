@@ -17,10 +17,12 @@ const published = JSON.parse(projectionText);
 const catalogText = await readFile(new URL("../data/catalog.json", import.meta.url), "utf8");
 const catalog = JSON.parse(catalogText);
 const schema = JSON.parse(await readFile(new URL("../data/specimen-card-projections.schema.json", import.meta.url), "utf8"));
+const lineages = JSON.parse(await readFile(new URL("../data/specimen-lineages.json", import.meta.url), "utf8"));
 const recordById = new Map(catalog.records.map((record) => [record.id, record]));
 const modelByCatalog = new Map(catalog.metadata.catalogs.map(({ id, recordModel }) => [id, recordModel]));
 const PRIOR_630_ID = "obs-344d0b6d-920e-403f-8fd5-c113fc05291d";
 const REEDS_366_ID = "obs-b02789ea-869e-447a-97cc-28c2c6900e88";
+const KULESCHOWKA_ID = "obs-4611763e-40ee-4872-920e-968183aa348b";
 const madridIds = new Set(catalog.records.filter(({ catalogId }) => catalogId === "madrid-1923").map(({ id }) => id));
 const hamburgIds = new Set(catalog.records.filter(({ catalogId }) => catalogId === "hamburg-1913").map(({ id }) => id));
 
@@ -47,37 +49,42 @@ test("production manifest is deterministic and validates against the locked cata
   assert.deepEqual(validateSpecimenCardProjections(published, catalog, catalogText), {
     projectionCount: 1955,
     atomicCardCount: 6675,
-    massBoundCardCount: 6541,
-    masslessCardCount: 134,
+    massBoundCardCount: 6656,
+    masslessCardCount: 19,
+    repeatedMassCardCount: 2,
     sourceContextCardCount: 1657,
   });
   assert.equal(serializeSpecimenCardProjections(published), projectionText);
   assert.equal(createHash("sha256").update(catalogText).digest("hex"), published.metadata.sourceCatalogSha256);
-  assert.equal(createHash("sha256").update(JSON.stringify(published.projections)).digest("hex"), "45490022fc876f4df62c07110b3fa40a04c0a1edc6aec26797d616f7c159c263");
-  assert.equal(createHash("sha256").update(JSON.stringify(published.projections.filter(({ parentRecordId }) => !hamburgIds.has(parentRecordId)))).digest("hex"), "3edca8ec748beb5b9d2cb74871ad5c56082a5beced28e75c006a85f745999fa3");
-  assert.equal(createHash("sha256").update(projectionText).digest("hex"), "dae6d445f610b2a51d07c68ba54dfa42ce69db97f35740293996c5e75b6e4afe");
+  assert.equal(createHash("sha256").update(JSON.stringify(published.projections)).digest("hex"), "54eabe28b7cc7b885f3e980d7e5962f01eb04aed39cedb30bc9f6d334ea3dede");
+  assert.equal(createHash("sha256").update(JSON.stringify(published.projections.filter(({ parentRecordId }) => !hamburgIds.has(parentRecordId)))).digest("hex"), "f34519b982f5e966aeeb09f13f076dfba26cca05773cc3e345d694743bafdd3b");
+  assert.equal(createHash("sha256").update(projectionText).digest("hex"), "5df8dd03261f1ba47c374401fa5a1df1828860a7802adb680e56c7bcf1ce4d1e");
 });
 
-test("schema is a closed schema-3 count-locked atomic projection contract", () => {
+test("schema is a closed schema-4 count-locked atomic projection contract", () => {
   assert.equal(schema.$schema, "https://json-schema.org/draft/2020-12/schema");
-  assert.equal(schema.$id, "urn:hmc:schema:specimen-card-projections:3");
+  assert.equal(schema.$id, "urn:hmc:schema:specimen-card-projections:4");
   assert.deepEqual(schema.required, ["metadata", "projections"]);
   assert.equal(schema.properties.projections.minItems, 1955);
   assert.equal(schema.properties.projections.maxItems, 1955);
   assert.equal(schema.$defs.metadata.properties.atomicCardCount.const, 6675);
   assert.equal(schema.$defs.metadata.properties.sourceContextCardCount.const, 1657);
-  assert.equal(schema.$defs.metadata.properties.catalogSchemaVersion.const, 8);
+  assert.equal(schema.$defs.metadata.properties.catalogSchemaVersion.const, 9);
   assert.equal(schema.$defs.metadata.properties.sourceRecordCount.const, 14176);
   assert.equal(schema.$defs.metadata.properties.sourceCatalogSha256.const,
-    "46d8ea050f428cfd4ab633c7e29da1493aaef413cd6da0dc1054ec6275823584");
+    "f5435256d1ff5c9500217112c8beeb7141e278487b3a1e98b5bb86e162739c0e");
   assert.deepEqual(schema.$defs.projection.required, ["parentRecordId", "cards"]);
   assert.deepEqual(schema.$defs.card.oneOf, [
     { $ref: "#/$defs/clauseCard" },
+    { $ref: "#/$defs/repeatedClauseCard" },
     { $ref: "#/$defs/componentCard" },
   ]);
   assert.deepEqual(schema.$defs.clauseCard.required, ["holdingPath", "clause", "massPath"]);
   assert.deepEqual(schema.$defs.componentCard.required, ["holdingPath", "componentPath", "massPath"]);
   assert.deepEqual(schema.$defs.componentCard.properties.massPath, { $ref: "#/$defs/componentMassPath" });
+  assert.deepEqual(schema.$defs.repeatedClauseCard.required, ["holdingPath", "clause", "massPath", "repeatedMass"]);
+  assert.deepEqual(schema.$defs.repeatedMass.required,
+    ["valuePath", "countPath", "totalPath", "occurrence", "occurrenceCount"]);
   assert.deepEqual(schema.$defs.clause.required, ["textPath", "start", "end"]);
   const visit = (value) => {
     if (Array.isArray(value)) return value.forEach(visit);
@@ -88,12 +95,15 @@ test("schema is a closed schema-3 count-locked atomic projection contract", () =
   visit(schema);
 });
 
-test("schema-8 source additions create no synthetic specimen-card projections", () => {
+test("schema-9 source additions create no synthetic projections and expose exactly 111 specimen locations", () => {
   const newRecordIds = new Set(catalog.records.filter(({ catalogId }) =>
     ["hodge-smith-1939", "victoria-land-1982"].includes(catalogId)).map(({ id }) => id));
   assert.equal(newRecordIds.size, 357);
   assert(!published.projections.some(({ parentRecordId }) => newRecordIds.has(parentRecordId)));
-  assert.equal(published.metadata.catalogSchemaVersion, 8);
+  const locations = catalog.records.filter((record) => Object.hasOwn(record, "individualFindLocation"));
+  assert.equal(locations.length, 111);
+  assert(locations.every((record) => modelByCatalog.get(record.catalogId) === "specimen"));
+  assert.equal(published.metadata.catalogSchemaVersion, 9);
   assert.equal(published.metadata.sourceRecordCount, 14176);
 });
 
@@ -104,8 +114,8 @@ test("embedded audit boundaries reconcile all four reviewed candidate sets", () 
     projectedParentCount: 370,
     contextOnlyExcludedParentCount: 668,
     atomicCardCount: 1056,
-    massBoundCardCount: 922,
-    masslessCardCount: 134,
+    massBoundCardCount: 1037,
+    masslessCardCount: 19,
     sourceContextCardCount: 370,
     boundaries: [
       { name: "prior", candidates: 226, projected: 223, excluded: 3, cards: 665, candidateSetSha256: "2b2bf8a08e85f756b61180385b8de61632dc4becc23b63160546ebe0785f7f78" },
@@ -252,8 +262,8 @@ test("Prior 630 has exact 17 reviewed clauses plus context; Reeds 366 has ten fu
   const prior = published.projections.find(({ parentRecordId }) => parentRecordId === PRIOR_630_ID);
   assert.deepEqual(prior.cards.map(cardTuple), [
     [77, 123, 0], [126, 163, 1], [165, 201, 2], [203, 239, 3], [241, 259, 4], [261, 279, 5],
-    [281, 300, null], [303, 336, null], [338, 356, 6], [358, 376, 7], [378, 415, null], [417, 436, 8],
-    [438, 456, 9], [458, 477, null], [479, 497, 10], [499, 516, 11], [518, 536, null],
+    [281, 300, 6], [303, 336, 7], [338, 356, 8], [358, 376, 9], [378, 415, 10], [417, 436, 11],
+    [438, 456, 12], [458, 477, 13], [479, 497, 14], [499, 516, 15], [518, 536, 16],
   ]);
   assert(deriveSourceContext(prior, recordById.get(PRIOR_630_ID), "collection-entry"));
   const priorText = recordById.get(PRIOR_630_ID).holdings[0].description;
@@ -277,6 +287,7 @@ test("manifest exposes only identifiers, paths, and numeric boundaries without c
     "metadata", "projections", "schemaVersion", "scope", "catalogSchemaVersion", "sourceRecordCount",
     "sourceCatalogSha256", "projectionCount", "atomicCardCount", "sourceContextCardCount", "parentRecordId",
     "cards", "holdingPath", "clause", "componentPath", "textPath", "start", "end", "massPath",
+    "repeatedMass", "valuePath", "countPath", "totalPath", "occurrence", "occurrenceCount",
   ]);
   const visit = (value) => {
     if (Array.isArray(value)) return value.forEach(visit);
@@ -294,7 +305,7 @@ test("rejects wrong metadata, extra fields, free text, and altered source bytes"
   for (const key of ["schemaVersion", "scope", "catalogSchemaVersion", "sourceRecordCount", "sourceCatalogSha256", "projectionCount", "atomicCardCount", "sourceContextCardCount"]) {
     mutate(`wrong ${key}`, (value) => { value.metadata[key] = key === "scope" ? "other" : 0; });
   }
-  mutate("schema-7 compatibility metadata", (value) => { value.metadata.catalogSchemaVersion = 7; });
+  mutate("schema-8 compatibility metadata", (value) => { value.metadata.catalogSchemaVersion = 8; });
   mutate("extra root key", (value) => { value.description = "private prose"; }, /exactly keys/iu);
   mutate("extra metadata key", (value) => { value.metadata.sourcePath = "/private/catalog.json"; }, /exactly keys/iu);
   mutate("extra projection key", (value) => { value.projections[0].retainParentContext = true; }, /exactly keys/iu);
@@ -343,6 +354,62 @@ test("rejects invalid, duplicate, mismatched, and non-specimen mass bindings", (
       massPath: "holdings[2].weight.grams",
     };
   }, /non-specimen/iu);
+});
+
+test("Kuleschowka has exactly two ordered repeated displays and cannot become a lineage endpoint", () => {
+  const projection = published.projections.find(({ parentRecordId }) => parentRecordId === KULESCHOWKA_ID);
+  assert.deepEqual(projection.cards.slice(1).map(({ massPath, repeatedMass }) => ({ massPath, repeatedMass })), [
+    {
+      massPath: null,
+      repeatedMass: {
+        valuePath: "holdings[1].weights[1].grams",
+        countPath: "holdings[1].count",
+        totalPath: "holdings[1].weights[0].grams",
+        occurrence: 1,
+        occurrenceCount: 2,
+      },
+    },
+    {
+      massPath: null,
+      repeatedMass: {
+        valuePath: "holdings[1].weights[1].grams",
+        countPath: "holdings[1].count",
+        totalPath: "holdings[1].weights[0].grams",
+        occurrence: 2,
+        occurrenceCount: 2,
+      },
+    },
+  ]);
+  assert(!lineages.relationships.some(({ observations }) =>
+    observations.some(({ recordId }) => recordId === KULESCHOWKA_ID)));
+
+  const repeated = (value, index = 1) => value.projections
+    .find(({ parentRecordId }) => parentRecordId === KULESCHOWKA_ID).cards[index];
+  mutate("dangling repeated value path", (value) => {
+    repeated(value).repeatedMass.valuePath = "holdings[1].weights[999].grams";
+  }, /accepted count|repeatedMass/iu);
+  mutate("mismatched repeated count path", (value) => {
+    repeated(value).repeatedMass.countPath = "holdings[0].count";
+  }, /different holding|Kuleschowka/iu);
+  mutate("wrong repeated total path", (value) => {
+    repeated(value).repeatedMass.totalPath = "holdings[1].weights[1].grams";
+  }, /accepted count|Kuleschowka/iu);
+  mutate("duplicate repeated occurrence", (value) => {
+    repeated(value, 2).repeatedMass.occurrence = 1;
+  }, /Kuleschowka/iu);
+  mutate("repeated display promoted to lineage endpoint", (value) => {
+    repeated(value).massPath = repeated(value).repeatedMass.valuePath;
+  }, /cannot also be a lineage|exactly keys/iu);
+
+  for (const [label, change, pattern] of [
+    ["count", (record) => { record.holdings[1].count = 3; }, /accepted count|occurrence/iu],
+    ["value", (record) => { record.holdings[1].weights[1].grams = 2.6; }, /accepted count/iu],
+    ["total", (record) => { record.holdings[1].weights[0].grams = 5.5; }, /accepted count/iu],
+  ]) {
+    const changedCatalog = structuredClone(catalog);
+    change(changedCatalog.records.find(({ id }) => id === KULESCHOWKA_ID));
+    assert.throws(() => validateSpecimenCardProjections(published, changedCatalog, catalogText), pattern, label);
+  }
 });
 
 test("rejects every malformed Hamburg component evidence mutation", () => {
@@ -409,7 +476,7 @@ test("rejects Prior, Reeds, context-count, card-count, and reviewed-set drift", 
   }, /Prior entry 630|production lock|atomic card count/iu);
   mutate("Prior group endpoint selected", (value) => {
     const prior = value.projections.find(({ parentRecordId }) => parentRecordId === PRIOR_630_ID);
-    prior.cards[16].massPath = "holdings[0].weights[12].grams";
+    prior.cards[16].massPath = "holdings[0].weights[17].grams";
   }, /Prior entry 630/iu);
   mutate("Reeds span shortened", (value) => {
     value.projections.find(({ parentRecordId }) => parentRecordId === REEDS_366_ID).cards[0].clause.end--;

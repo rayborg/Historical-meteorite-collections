@@ -4,6 +4,7 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 const catalogText = await readFile(new URL("../data/catalog.json", import.meta.url), "utf8");
+const foliosText = await readFile(new URL("../data/folios.json", import.meta.url), "utf8");
 const catalog = JSON.parse(catalogText);
 const fixture = JSON.parse(await readFile(new URL("./source-name-corrections.fixture.json", import.meta.url), "utf8"));
 
@@ -16,7 +17,10 @@ function jsonSha256(value) {
 }
 
 test("locks the accepted 86-record source-name correction projection without non-name drift", () => {
-  assert.equal(fixture.schemaVersion, 1);
+  assert.equal(fixture.schemaVersion, 2);
+  assert.equal(fixture.sourceExportCatalogSha256,
+    "f5435256d1ff5c9500217112c8beeb7141e278487b3a1e98b5bb86e162739c0e");
+  assert.equal(sha256(foliosText), fixture.foliosSha256);
   assert.equal(sha256(catalogText), fixture.catalogSha256);
   assert.equal(catalog.metadata.catalogs.length, 37);
   assert.equal(catalog.records.length, 14176);

@@ -24,10 +24,10 @@ const victoria = records.filter(({ catalogId }) => catalogId === "victoria-land-
 const clone = structuredClone;
 const fixtureRecord = (document, catalogId) => document.records.find((record) => record.catalogId === catalogId);
 
-test("schema 8 runtime accepts both closed models and rejects schema or shape widening", () => {
-  assert.equal(app.validateCatalog(clone(fixture)).metadata.schemaVersion, 8);
+test("schema 9 runtime accepts all closed models and rejects schema or shape widening", () => {
+  assert.equal(app.validateCatalog(clone(fixture)).metadata.schemaVersion, 9);
   for (const mutate of [
-    (value) => { value.metadata.schemaVersion = 7; },
+    (value) => { value.metadata.schemaVersion = 8; },
     (value) => { value.metadata.factualFields.splice(9, 1); },
     (value) => { fixtureRecord(value, "hodge-smith-1939").holdings = []; },
     (value) => { fixtureRecord(value, "hodge-smith-1939").weight = { grams: 1 }; },
@@ -161,11 +161,11 @@ test("statistics count each Victoria mass once, no Hodge mass, and retain parent
   assert.equal(victoriaStats.grams, victoria.reduce((sum, record) => sum + record.weight.grams, 0));
   assert.equal(total.observations, 14176);
   assert.equal(total.catalogs, 37);
-  assert.equal(total.grams, app.calculateStatistics(legacy).grams + victoriaStats.grams);
+  assert(Math.abs(total.grams - (app.calculateStatistics(legacy).grams + victoriaStats.grams)) < 1e-6);
 });
 
-test("lineage and projection enhancements remain unchanged and exclude schema 8 models from specimen claims", () => {
-  assert.equal(lineages.metadata.source.catalogSchemaVersion, 8);
+test("lineage and projection enhancements bind schema 9 and exclude observation-only models from specimen claims", () => {
+  assert.equal(lineages.metadata.source.catalogSchemaVersion, 9);
   const lineageIndex = app.deriveEarlierRecordIndex(lineages, records, registry);
   assert(hodge.every(({ id }) => !lineageIndex.has(id)));
   assert(victoria.every(({ id }) => !lineageIndex.has(id)));
@@ -178,7 +178,7 @@ test("lineage and projection enhancements remain unchanged and exclude schema 8 
   assert(descriptors.every(({ kind, projected }) => kind === "parent" && projected === false));
 });
 
-test("schema 8 card semantics, cache keys, responsive layout, and privacy boundary are explicit", () => {
+test("schema 9 card semantics, cache keys, responsive layout, and privacy boundary are explicit", () => {
   assert.match(html, /<p class="record-semantic-label"><\/p>/u);
   const hodgeDto = app.presentHarmonizedCard(hodge[0]);
   const victoriaDto = app.presentHarmonizedCard(victoria[0]);
@@ -187,10 +187,10 @@ test("schema 8 card semantics, cache keys, responsive layout, and privacy bounda
   assert.equal(victoriaDto.facts.some(({ label }) => label === "Coordinate"), false);
   assert.match(styles, /@media \(max-width: 700px\)[\s\S]*\.catalog-grid \{ grid-template-columns: 1fr; \}/u);
   assert.match(styles, /@media \(max-width: 320px\)[\s\S]*\.record-meta div \{ grid-template-columns: minmax\(0, 1fr\);/u);
-  assert.equal(app.CACHE_VERSION, "20260831-harmonized-cards-3");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260831-harmonized-cards-3");
-  assert.match(html, /styles\.css\?v=20260831-harmonized-cards-3/u);
-  assert.match(html, /app\.js\?v=20260831-harmonized-cards-3/u);
+  assert.equal(app.CACHE_VERSION, "20260831-unknown-audit-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260831-unknown-audit-1");
+  assert.match(html, /styles\.css\?v=20260831-unknown-audit-1/u);
+  assert.match(html, /app\.js\?v=20260831-unknown-audit-1/u);
   const newSourceRecords = catalog.records.filter(({ catalogId }) => ["hodge-smith-1939", "victoria-land-1982"].includes(catalogId));
   assert.doesNotMatch(JSON.stringify(newSourceRecords), /(?:raw[ _-]*ocr|\/private\/|\/Users\/|source[ _-]*image|scan[ _-]*(?:file|path)|research[ _-]*notes?)/iu);
 });

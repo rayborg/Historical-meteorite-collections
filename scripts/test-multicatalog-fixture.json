@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "schemaVersion": 8,
+    "schemaVersion": 9,
     "scope": "facts-only",
     "factualFields": [
       "id",
@@ -32,6 +32,7 @@
       "amendments[]",
       "classification",
       "locality",
+      "individualFindLocation",
       "year",
       "dateOfDiscovery",
       "eventDate",
@@ -351,6 +352,7 @@
       "weight": { "grams": 10 },
       "classification": "H5",
       "locality": "Michigan",
+      "individualFindLocation": "32-19-13",
       "year": "1899",
       "catalogPage": 27,
       "confidence": "high"

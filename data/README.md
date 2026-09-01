@@ -1,7 +1,7 @@
 # Public Catalog Data
 
 <!-- release-summary:data-overview:start -->
-`catalog.json` is a schema-8 facts-only dataset containing 14,176 source observations from 37 historical meteorite catalogs. `folios.json` is a separate schema-2, deny-by-default display manifest with 49 reviewed page entries.
+`catalog.json` is a schema-9 facts-only dataset containing 14,176 source observations from 37 historical meteorite catalogs. `folios.json` is a separate schema-2, deny-by-default display manifest with 49 reviewed page entries.
 <!-- release-summary:data-overview:end -->
 
 A searchable transcription of the 1976 Huss Meteorite Collection catalog, compiled and published by Glenn Huss.
@@ -77,7 +77,7 @@ Chladni 1825 pages 200-207 are introductory folios. `haidinger-1859` page 21 int
 
 ## Catalog Contract
 
-The root contains exactly `metadata` and `records`. `metadata.schemaVersion` is 8 and each catalog descriptor declares one of six `recordModel` values.
+The root contains exactly `metadata` and `records`. `metadata.schemaVersion` is 9 and each catalog descriptor declares one of six `recordModel` values.
 
 ### Specimen
 
@@ -85,8 +85,10 @@ Used by ASU September 2024, both Huss catalogs, and Nininger 1950:
 
 ```text
 id, catalogId, designation, name, weight: { grams }, classification,
-locality, year, catalogPage, confidence
+locality, [individualFindLocation], year, catalogPage, confidence
 ```
+
+`individualFindLocation` is optional, nonempty when present, and restricted to `specimen` records. The release contains exactly 111 such source values.
 
 ### Catalog Item
 
@@ -121,7 +123,7 @@ holdings, name, classification, locality, eventDate, confidence
 
 Each holding has `description`, `provenance`, `count`, and `weights`; every numeric weight contains `grams`. The array may be empty when a historical or ambiguous mass has no supported numeric conversion; independently structured factual description prose may still retain the source-reported mass statement. `entryOrder` preserves source order. `reportedNumber` is nullable opaque text and need not be unique.
 
-Schema 8 permits Hamburg's reviewed additive weight semantics: weights may include `kind`; holdings may include `reportedTotalWeight` and `representations`; and records may include `reportedTotalWeight`, `publicationState`, and `amendments`. They distinguish individual from aggregate weights, base-register observations from supplements, and source-reported amendments from the unchanged base observation.
+Schema 9 permits Hamburg's reviewed additive weight semantics: weights may include `kind`; holdings may include `reportedTotalWeight` and `representations`; and records may include `reportedTotalWeight`, `publicationState`, and `amendments`. They distinguish individual from aggregate weights, base-register observations from supplements, and source-reported amendments from the unchanged base observation.
 
 ### Regional Census Fact
 
@@ -150,7 +152,7 @@ Strings are NFC-normalized and whitespace-collapsed. Numeric grams are finite an
 
 Every model permits an optional reviewed `metbull` object with exactly `matchType`, `canonicalName`, `meteoriteCode`, `metbullUrl`, and `alternateNameNote`. Resolved mappings require a canonical name, positive decimal code string, and exact `https://www.lpi.usra.edu/meteor/metbull.cfm?code=<code>` URL. Unresolved mappings cannot claim any canonical identity. This additive layer does not alter source names, catalog identifiers, holdings, or weights and is never populated by fuzzy matching. Every specimen card includes the current-name field: the reviewed canonical name when different, `Same as source catalog name` when display-equivalent, or `Unknown` without a reviewed canonical identity. The dedicated catalog directory renders all descriptor cards separately from the homepage search and bibliography master list.
 
-The current release contains 10,537 reviewed mappings: 10,296 resolved and 241 unresolved. The remaining 3,639 records are pending observations without reviewed mappings. Victoria Land's Table A specimens intentionally have no mapping.
+The current release contains 10,609 reviewed mappings: 10,368 resolved and 241 unresolved. The remaining 3,567 records are pending observations without reviewed mappings. Victoria Land's Table A specimens intentionally have no mapping.
 
 Validated continuation evidence recovers formerly blank source names only where supported. Reviewed historical entries that genuinely print no separate proper source name retain null names and unresolved reviews without an inferred modern identity.
 
@@ -186,6 +188,7 @@ publicationState
 amendments[]
 classification
 locality
+individualFindLocation
 year
 dateOfDiscovery
 eventDate
@@ -214,7 +217,7 @@ Anderson 1913, Kantor 1920, and Astapovich 1938 source images, OCR, source filen
 
 Hamburg 1913 source scans, OCR, transcription files, private notes and evidence, filenames, paths, folios, and media are excluded. It publishes only independently structured facts and public citations, remains blocked/undetermined, and has zero public folios or assets.
 
-Hodge-Smith 1939 and Victoria Land 1982 are also facts-only, blocked/undetermined releases with no public folios or media. Their source scans or PDFs, OCR/transcriptions, source filenames, private review material, notes, paths, derivatives, and working files remain excluded. Only the schema-8 structured regional facts and Table A specimen facts described above are public.
+Hodge-Smith 1939 and Victoria Land 1982 are also facts-only, blocked/undetermined releases with no public folios or media. Their source scans or PDFs, OCR/transcriptions, source filenames, private review material, notes, paths, derivatives, and working files remain excluded. Only the schema-9 structured regional facts and Table A specimen facts described above are public.
 
 ## Harmonized Card Projection
 
@@ -222,13 +225,13 @@ The runtime derives 18,896 closed display DTOs without changing `catalog.json`, 
 
 Every specimen uses this exact fact order: current Meteoritical Bulletin name, class, specimen form, source locality, individual find location, event, lineage, and specimen weight. Missing values use `Unknown`. Collection and regional observations omit specimen-only fields. Catalog-specific holdings, provenance, coordinates, mineral chemistry, sections, totals, amendments, representation facts, occurrence counts, and source prose are not copied into standard card fields, but remain in the validated public record and searchable index.
 
-`Specimen form` is determined only by the reviewed presenter kind. `Source locality` is a source-scoped catalog fact, not an individual find-location field. Coordinates, general locality text, MetBull mappings, and descriptive prose cannot populate an individual find location or change specimen form. No current record has a typed individual location, so every specimen's individual find-location value is `Unknown`.
+`Specimen form` is determined only by the reviewed presenter kind. `Source locality` is a source-scoped catalog fact, not an individual find-location field. Coordinates, general locality text, MetBull mappings, and descriptive prose cannot populate an individual find location or change specimen form. The 111 typed specimen values display exactly; the other 12,306 specimen cards use `Unknown`.
 
 ## Specimen Card Projections
 
-`specimen-card-projections.json` is a schema-3, display-only positive allowlist with `catalogSchemaVersion: 8`, source count 14,176, and the exact schema-8 catalog hash. Each card references an immutable parent observation and an exact public `holdingPath`, then uses exactly one source-bound evidence variant: an existing reviewed UTF-16 `clause` span in that holding's public description or designation, or a typed Hamburg `componentPath` to a public weighted component. Clause cards retain their nullable `massPath`; component cards require the exact non-null component grams path. The manifest never creates a new observation ID, changes `catalog.json`, or copies source prose. It contains 1,955 reviewed parent projections, 6,675 atomic specimen cards, and 1,657 derived source-context audit partitions; 134 clause cards preserve source-supported uncertain-size clauses without claiming normalized grams. Hamburg contributes 218 component cards across 142 parents, including 36 multi-card parents, while 5 context-only observations remain unprojected parent catalog observations; all 142 projected parents retain non-displayed context partitions. Context partitions are audit-only and are not emitted as specimen cards.
+`specimen-card-projections.json` is a schema-4, display-only positive allowlist with `catalogSchemaVersion: 9`, source count 14,176, and the exact schema-9 catalog hash. Each card references an immutable parent observation and an exact public `holdingPath`, then uses a source-bound reviewed UTF-16 `clause` span or a typed Hamburg `componentPath`. Clause cards retain nullable `massPath`; component cards require the exact component grams path. A repeated clause card additionally carries exactly `repeatedMass: { valuePath, countPath, totalPath, occurrence, occurrenceCount }` with `massPath: null`. The runtime requires all paths to resolve within one holding, count to equal occurrence count, total to equal the per-item value times count within numeric tolerance, and the occurrences to be exactly `1..N`. The manifest never creates a new observation ID, changes `catalog.json`, or copies source prose. It contains 1,955 reviewed parent projections, 6,675 atomic specimen cards, and 1,657 derived source-context audit partitions. Of those cards, 6,656 have ordinary mass paths, 2 Kuleschowka cards display the accepted 2.7 g per-item mass through repeated occurrences, and 17 remain without a normalized display mass. Hamburg contributes 218 component cards across 142 parents, including 36 multi-card parents, while 5 context-only observations remain unprojected parent catalog observations; all 142 projected parents retain non-displayed context partitions. Context partitions are audit-only and are not emitted as specimen cards.
 
-Projection order follows canonical parent, holding, and evidence source order. Exact non-null mass paths also scope displayed lineage. Hamburg component cards resolve only to `individual-holding` weights; its 4 aggregate components, 5 associated-material components, grouped counts, reported totals, and 26 thin-section representations remain context only. The amendment is not a specimen or mass and is displayed only on its exact target component card. Other ranges, totals, grouped counts, casts, aggregates, and unsupported material likewise remain parent-record audit context and are not emitted as specimen cards. Madrid's 23 multi-holding parents produce 54 atomic cards; its 5 context partitions and grouped holdings remain non-displayed audit context. Reeds 1937 entry 366 is locked to ten ordered atomic cards. Prior 1923 entry 630 is locked to seventeen direct specimen clauses: twelve clauses bind normalized masses, five preserve uncertain source-reported sizes without normalized grams, and the four normalized range endpoints and totals remain non-displayed context. The schema-3 allowlist remains atomic-only and contains no Hodge-Smith or Victoria Land projection. Parent observation counts, statistics, citations, folio authorization, and lineage relationships retain their established semantics.
+Projection order follows canonical parent, holding, and evidence source order. Exact non-null mass paths also scope displayed lineage. Repeated masses contribute to card weight and filtering but never to lineage routing. Hamburg component cards resolve only to `individual-holding` weights; its 4 aggregate components, 5 associated-material components, grouped counts, reported totals, and 26 thin-section representations remain context only. The amendment is not a specimen or mass and is displayed only on its exact target component card. Other ranges, totals, grouped counts, casts, aggregates, and unsupported material likewise remain parent-record audit context and are not emitted as specimen cards. Madrid's 23 multi-holding parents produce 54 atomic cards; its 5 context partitions and grouped holdings remain non-displayed audit context. Reeds 1937 entry 366 is locked to ten ordered atomic cards. Prior 1923 entry 630 is locked to seventeen mass-bound direct specimen clauses; four normalized range endpoints and totals remain non-displayed context. The schema-4 allowlist remains atomic-only and contains no Hodge-Smith or Victoria Land projection. Parent observation counts, statistics, citations, folio authorization, and lineage relationships retain their established semantics.
 
 ## Specimen Lineages
 
@@ -244,7 +247,7 @@ Across different collection namespaces, `possible-match` retains the reviewed id
 
 The generator flattens every numeric mass without multiplying by holding count. Scalar specimen masses use `weight.grams`; catalog-item masses use `holdings[i].weight.grams`; catalog-number and collection-entry masses use `holdings[i].weights[j].grams`. Inventory observations additionally retain the exact `designationPath`, including observations whose source mass is null. Every generated observation and runtime card link uses the project-relative `record id <recordId>` query, so duplicate source labels or designations still resolve to exactly one public record.
 
-The current public input produces 14,092 flattened mass observations and 3,627 inventory observations. It publishes 1,489 relationships: 195 same-inventory relationships and 1,294 possible cross-source matches. The same-inventory total comprises 2 Huss and 193 Nininger relationships; one duplicated key is identity-resolved and none are omitted as ambiguous. The possible matches include 1,071 exact-mass and 223 near-mass candidates: 1,290 remain unreviewed, while Hamburg adds four reviewed candidates retained as possible. These reviewed candidates remain non-identity, non-custody, and non-ownership claims. Madrid adds exactly three unreviewed possible matches, one each with Nininger 1950, Prior 1923, and Reeds 1937, and no same-inventory claim. Foote participates in 16 candidates, 15 exact-mass and 1 near-mass.
+The current public input produces 14,367 flattened mass observations and 3,627 inventory observations. It publishes 1,538 relationships: 195 same-inventory relationships and 1,343 possible cross-source matches. The same-inventory total comprises 2 Huss and 193 Nininger relationships; one duplicated key is identity-resolved and none are omitted as ambiguous. The possible matches include 1,115 exact-mass and 228 near-mass candidates: 1,339 remain unreviewed, while Hamburg adds four reviewed candidates retained as possible. These reviewed candidates remain non-identity, non-custody, and non-ownership claims. Madrid adds exactly four unreviewed possible matches, two with Prior 1923 and one each with Nininger 1950 and Reeds 1937, and no same-inventory claim. Kuleschowka's repeated display cards are not lineage endpoints.
 
 Relationship and observation IDs are UUIDv5 values under the fixed namespace `65b19e0b-1f86-5ca5-a65b-81c38ec53040`. They use only public record IDs, exact designation or mass paths, series IDs, and normalized inventory IDs as applicable, not names, masses, evidence, review state, score, or output order. The browser validator independently reconstructs the complete inventory and possible-match endpoint sets and rederives every relationship and observation UUID before displaying this optional enhancement. Regenerate with `node scripts/build-specimen-lineages.mjs`; use `--check` to detect byte drift. Validate independently with `node scripts/validate-specimen-lineages.mjs`.
 

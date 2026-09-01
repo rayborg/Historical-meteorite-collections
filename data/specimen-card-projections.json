@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "schemaVersion": 3,
+    "schemaVersion": 4,
     "scope": "reviewed-atomic-specimen-card-display-projections",
-    "catalogSchemaVersion": 8,
+    "catalogSchemaVersion": 9,
     "sourceRecordCount": 14176,
-    "sourceCatalogSha256": "46d8ea050f428cfd4ab633c7e29da1493aaef413cd6da0dc1054ec6275823584",
+    "sourceCatalogSha256": "f5435256d1ff5c9500217112c8beeb7141e278487b3a1e98b5bb86e162739c0e",
     "projectionCount": 1955,
     "atomicCardCount": 6675,
     "sourceContextCardCount": 1657
@@ -21330,7 +21330,7 @@
             "start": 11,
             "end": 36
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[0].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -21339,7 +21339,7 @@
             "start": 38,
             "end": 92
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[1].grams"
         }
       ]
     },
@@ -21381,7 +21381,7 @@
             "start": 10,
             "end": 55
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[0].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -21390,7 +21390,7 @@
             "start": 57,
             "end": 99
           },
-          "massPath": "holdings[0].weights[1].grams"
+          "massPath": "holdings[0].weights[2].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -21399,7 +21399,7 @@
             "start": 105,
             "end": 152
           },
-          "massPath": "holdings[0].weights[2].grams"
+          "massPath": "holdings[0].weights[3].grams"
         }
       ]
     },
@@ -21607,7 +21607,7 @@
             "start": 22,
             "end": 38
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[0].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -21616,7 +21616,7 @@
             "start": 43,
             "end": 61
           },
-          "massPath": "holdings[0].weights[1].grams"
+          "massPath": "holdings[0].weights[2].grams"
         }
       ]
     },
@@ -21990,7 +21990,7 @@
             "start": 88,
             "end": 140
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[1].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -21999,7 +21999,7 @@
             "start": 146,
             "end": 179
           },
-          "massPath": "holdings[0].weights[1].grams"
+          "massPath": "holdings[0].weights[2].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -22008,7 +22008,7 @@
             "start": 287,
             "end": 328
           },
-          "massPath": "holdings[0].weights[2].grams"
+          "massPath": "holdings[0].weights[3].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -22017,7 +22017,7 @@
             "start": 338,
             "end": 379
           },
-          "massPath": "holdings[0].weights[3].grams"
+          "massPath": "holdings[0].weights[4].grams"
         }
       ]
     },
@@ -22487,7 +22487,7 @@
             "start": 38,
             "end": 105
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[0].grams"
         }
       ]
     },
@@ -22861,7 +22861,7 @@
             "start": 95,
             "end": 113
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[1].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -22870,7 +22870,7 @@
             "start": 115,
             "end": 132
           },
-          "massPath": "holdings[0].weights[1].grams"
+          "massPath": "holdings[0].weights[2].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -22879,7 +22879,7 @@
             "start": 135,
             "end": 151
           },
-          "massPath": "holdings[0].weights[2].grams"
+          "massPath": "holdings[0].weights[3].grams"
         }
       ]
     },
@@ -23030,7 +23030,7 @@
             "start": 131,
             "end": 146
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[3].grams"
         }
       ]
     },
@@ -23062,7 +23062,7 @@
             "start": 119,
             "end": 138
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[2].grams"
         }
       ]
     },
@@ -23177,7 +23177,7 @@
             "start": 128,
             "end": 174
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[1].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -23186,7 +23186,7 @@
             "start": 176,
             "end": 196
           },
-          "massPath": "holdings[0].weights[1].grams"
+          "massPath": "holdings[0].weights[2].grams"
         }
       ]
     },
@@ -23250,7 +23250,7 @@
             "start": 118,
             "end": 139
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[2].grams"
         }
       ]
     },
@@ -23309,7 +23309,7 @@
             "start": 298,
             "end": 329
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[5].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -23318,7 +23318,7 @@
             "start": 331,
             "end": 361
           },
-          "massPath": "holdings[0].weights[5].grams"
+          "massPath": "holdings[0].weights[6].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -23327,7 +23327,7 @@
             "start": 363,
             "end": 396
           },
-          "massPath": "holdings[0].weights[6].grams"
+          "massPath": "holdings[0].weights[7].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -23336,7 +23336,7 @@
             "start": 398,
             "end": 464
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[8].grams"
         }
       ]
     },
@@ -23423,7 +23423,7 @@
             "start": 156,
             "end": 175
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[3].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -23432,7 +23432,7 @@
             "start": 177,
             "end": 195
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[4].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -23441,7 +23441,7 @@
             "start": 197,
             "end": 214
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[5].grams"
         }
       ]
     },
@@ -23492,7 +23492,7 @@
             "start": 77,
             "end": 114
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[0].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -23501,7 +23501,7 @@
             "start": 116,
             "end": 134
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[1].grams"
         }
       ]
     },
@@ -23840,7 +23840,7 @@
             "start": 115,
             "end": 133
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[2].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -23849,7 +23849,7 @@
             "start": 135,
             "end": 152
           },
-          "massPath": "holdings[0].weights[2].grams"
+          "massPath": "holdings[0].weights[3].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -23858,7 +23858,7 @@
             "start": 154,
             "end": 169
           },
-          "massPath": "holdings[0].weights[3].grams"
+          "massPath": "holdings[0].weights[4].grams"
         }
       ]
     },
@@ -23927,7 +23927,7 @@
             "start": 96,
             "end": 115
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[1].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -23936,7 +23936,7 @@
             "start": 117,
             "end": 135
           },
-          "massPath": "holdings[0].weights[1].grams"
+          "massPath": "holdings[0].weights[2].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -23945,7 +23945,7 @@
             "start": 137,
             "end": 154
           },
-          "massPath": "holdings[0].weights[2].grams"
+          "massPath": "holdings[0].weights[3].grams"
         }
       ]
     },
@@ -23977,7 +23977,7 @@
             "start": 135,
             "end": 153
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[2].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -23986,7 +23986,7 @@
             "start": 155,
             "end": 171
           },
-          "massPath": "holdings[0].weights[2].grams"
+          "massPath": "holdings[0].weights[3].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -23995,7 +23995,7 @@
             "start": 194,
             "end": 213
           },
-          "massPath": "holdings[0].weights[3].grams"
+          "massPath": "holdings[0].weights[4].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -24004,7 +24004,7 @@
             "start": 215,
             "end": 233
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[5].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -24013,7 +24013,7 @@
             "start": 236,
             "end": 252
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[6].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -24022,7 +24022,7 @@
             "start": 269,
             "end": 286
           },
-          "massPath": "holdings[0].weights[4].grams"
+          "massPath": "holdings[0].weights[7].grams"
         }
       ]
     },
@@ -24286,7 +24286,7 @@
             "start": 144,
             "end": 161
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[2].grams"
         }
       ]
     },
@@ -24387,7 +24387,7 @@
             "start": 93,
             "end": 139
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[0].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -24396,7 +24396,7 @@
             "start": 145,
             "end": 164
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[1].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -24405,7 +24405,7 @@
             "start": 213,
             "end": 230
           },
-          "massPath": "holdings[0].weights[3].grams"
+          "massPath": "holdings[0].weights[4].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -24414,7 +24414,7 @@
             "start": 256,
             "end": 274
           },
-          "massPath": "holdings[0].weights[4].grams"
+          "massPath": "holdings[0].weights[5].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -24423,7 +24423,7 @@
             "start": 276,
             "end": 293
           },
-          "massPath": "holdings[0].weights[5].grams"
+          "massPath": "holdings[0].weights[6].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -24432,7 +24432,7 @@
             "start": 295,
             "end": 313
           },
-          "massPath": "holdings[0].weights[6].grams"
+          "massPath": "holdings[0].weights[7].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -24441,7 +24441,7 @@
             "start": 316,
             "end": 333
           },
-          "massPath": "holdings[0].weights[7].grams"
+          "massPath": "holdings[0].weights[8].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -24450,7 +24450,7 @@
             "start": 336,
             "end": 353
           },
-          "massPath": "holdings[0].weights[8].grams"
+          "massPath": "holdings[0].weights[9].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -24459,7 +24459,7 @@
             "start": 356,
             "end": 373
           },
-          "massPath": "holdings[0].weights[9].grams"
+          "massPath": "holdings[0].weights[10].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -24468,7 +24468,7 @@
             "start": 375,
             "end": 392
           },
-          "massPath": "holdings[0].weights[10].grams"
+          "massPath": "holdings[0].weights[11].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -24477,7 +24477,7 @@
             "start": 394,
             "end": 412
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[12].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -24486,7 +24486,7 @@
             "start": 432,
             "end": 462
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[13].grams"
         }
       ]
     },
@@ -24730,7 +24730,7 @@
             "start": 77,
             "end": 96
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[0].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -24739,7 +24739,7 @@
             "start": 98,
             "end": 115
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[1].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -24748,7 +24748,7 @@
             "start": 117,
             "end": 139
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[2].grams"
         }
       ]
     },
@@ -24808,7 +24808,7 @@
             "start": 243,
             "end": 261
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[4].grams"
         }
       ]
     },
@@ -24914,7 +24914,7 @@
             "start": 97,
             "end": 116
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[1].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -24923,7 +24923,7 @@
             "start": 118,
             "end": 144
           },
-          "massPath": "holdings[0].weights[1].grams"
+          "massPath": "holdings[0].weights[2].grams"
         }
       ]
     },
@@ -24964,7 +24964,7 @@
             "start": 140,
             "end": 158
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[3].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -24973,7 +24973,7 @@
             "start": 160,
             "end": 175
           },
-          "massPath": "holdings[0].weights[3].grams"
+          "massPath": "holdings[0].weights[4].grams"
         }
       ]
     },
@@ -25005,7 +25005,7 @@
             "start": 135,
             "end": 153
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[2].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -25014,7 +25014,7 @@
             "start": 156,
             "end": 174
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[3].grams"
         }
       ]
     },
@@ -25078,7 +25078,7 @@
             "start": 119,
             "end": 126
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[2].grams"
         }
       ]
     },
@@ -25110,7 +25110,7 @@
             "start": 151,
             "end": 185
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[2].grams"
         }
       ]
     },
@@ -25165,7 +25165,7 @@
             "start": 116,
             "end": 131
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[2].grams"
         }
       ]
     },
@@ -25197,7 +25197,7 @@
             "start": 132,
             "end": 169
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[2].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -25206,7 +25206,7 @@
             "start": 171,
             "end": 188
           },
-          "massPath": "holdings[0].weights[2].grams"
+          "massPath": "holdings[0].weights[3].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -25215,7 +25215,7 @@
             "start": 229,
             "end": 261
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[5].grams"
         }
       ]
     },
@@ -25252,7 +25252,7 @@
             "start": 77,
             "end": 97
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[0].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -25261,7 +25261,7 @@
             "start": 100,
             "end": 117
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[1].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -25270,7 +25270,7 @@
             "start": 120,
             "end": 138
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[2].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -25279,7 +25279,7 @@
             "start": 140,
             "end": 159
           },
-          "massPath": "holdings[0].weights[1].grams"
+          "massPath": "holdings[0].weights[3].grams"
         }
       ]
     },
@@ -25338,7 +25338,7 @@
             "start": 298,
             "end": 317
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[5].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -25347,7 +25347,7 @@
             "start": 319,
             "end": 338
           },
-          "massPath": "holdings[0].weights[5].grams"
+          "massPath": "holdings[0].weights[6].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -25356,7 +25356,7 @@
             "start": 340,
             "end": 359
           },
-          "massPath": "holdings[0].weights[6].grams"
+          "massPath": "holdings[0].weights[7].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -25365,7 +25365,7 @@
             "start": 364,
             "end": 381
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[8].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -25374,7 +25374,7 @@
             "start": 383,
             "end": 402
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[9].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -25383,7 +25383,7 @@
             "start": 405,
             "end": 424
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[10].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -25392,7 +25392,7 @@
             "start": 425,
             "end": 447
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[11].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -25401,7 +25401,7 @@
             "start": 457,
             "end": 465
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[12].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -25410,7 +25410,7 @@
             "start": 466,
             "end": 482
           },
-          "massPath": "holdings[0].weights[7].grams"
+          "massPath": "holdings[0].weights[13].grams"
         }
       ]
     },
@@ -25589,7 +25589,7 @@
             "start": 115,
             "end": 137
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[1].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -25598,7 +25598,7 @@
             "start": 139,
             "end": 159
           },
-          "massPath": "holdings[0].weights[2].grams"
+          "massPath": "holdings[0].weights[3].grams"
         }
       ]
     },
@@ -25717,7 +25717,7 @@
             "start": 116,
             "end": 134
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[2].grams"
         }
       ]
     },
@@ -25767,7 +25767,7 @@
             "start": 186,
             "end": 205
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[4].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -25776,7 +25776,7 @@
             "start": 207,
             "end": 225
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[5].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -25785,7 +25785,7 @@
             "start": 227,
             "end": 245
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[6].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -25794,7 +25794,7 @@
             "start": 247,
             "end": 258
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[7].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -25803,7 +25803,7 @@
             "start": 259,
             "end": 276
           },
-          "massPath": "holdings[0].weights[4].grams"
+          "massPath": "holdings[0].weights[8].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -25812,7 +25812,7 @@
             "start": 285,
             "end": 293
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[9].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -25821,7 +25821,7 @@
             "start": 294,
             "end": 321
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[10].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -25830,7 +25830,7 @@
             "start": 323,
             "end": 348
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[11].grams"
         }
       ]
     },
@@ -25885,7 +25885,7 @@
             "start": 120,
             "end": 142
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[2].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -25894,7 +25894,7 @@
             "start": 144,
             "end": 161
           },
-          "massPath": "holdings[0].weights[2].grams"
+          "massPath": "holdings[0].weights[3].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -25903,7 +25903,7 @@
             "start": 163,
             "end": 183
           },
-          "massPath": "holdings[0].weights[3].grams"
+          "massPath": "holdings[0].weights[4].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -25912,7 +25912,7 @@
             "start": 185,
             "end": 203
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[5].grams"
         }
       ]
     },
@@ -25935,7 +25935,7 @@
             "start": 95,
             "end": 115
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[1].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -25944,7 +25944,7 @@
             "start": 117,
             "end": 134
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[2].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -25953,7 +25953,7 @@
             "start": 136,
             "end": 153
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[4].grams"
         }
       ]
     },
@@ -26008,7 +26008,7 @@
             "start": 218,
             "end": 248
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[2].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -26017,7 +26017,7 @@
             "start": 250,
             "end": 283
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[3].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -26026,7 +26026,7 @@
             "start": 285,
             "end": 313
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[4].grams"
         }
       ]
     },
@@ -26117,7 +26117,7 @@
             "start": 316,
             "end": 352
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[8].grams"
         }
       ]
     },
@@ -26236,7 +26236,7 @@
             "start": 76,
             "end": 105
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[0].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -26245,7 +26245,7 @@
             "start": 107,
             "end": 133
           },
-          "massPath": "holdings[0].weights[1].grams"
+          "massPath": "holdings[0].weights[2].grams"
         }
       ]
     },
@@ -26300,7 +26300,7 @@
             "start": 96,
             "end": 113
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[1].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -26309,7 +26309,7 @@
             "start": 115,
             "end": 133
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[2].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -26318,7 +26318,7 @@
             "start": 135,
             "end": 154
           },
-          "massPath": "holdings[0].weights[1].grams"
+          "massPath": "holdings[0].weights[3].grams"
         }
       ]
     },
@@ -26350,7 +26350,7 @@
             "start": 117,
             "end": 134
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[2].grams"
         }
       ]
     },
@@ -26460,7 +26460,7 @@
             "start": 95,
             "end": 113
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[1].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -26469,7 +26469,7 @@
             "start": 115,
             "end": 130
           },
-          "massPath": "holdings[0].weights[1].grams"
+          "massPath": "holdings[0].weights[2].grams"
         }
       ]
     },
@@ -26621,7 +26621,7 @@
             "start": 123,
             "end": 158
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[1].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -26630,7 +26630,7 @@
             "start": 161,
             "end": 178
           },
-          "massPath": "holdings[0].weights[1].grams"
+          "massPath": "holdings[0].weights[2].grams"
         }
       ]
     },
@@ -26694,7 +26694,7 @@
             "start": 115,
             "end": 130
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[2].grams"
         }
       ]
     },
@@ -26790,7 +26790,7 @@
             "start": 287,
             "end": 317
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[4].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -26799,7 +26799,7 @@
             "start": 319,
             "end": 371
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[5].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -26808,7 +26808,7 @@
             "start": 373,
             "end": 411
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[6].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -26817,7 +26817,7 @@
             "start": 413,
             "end": 444
           },
-          "massPath": "holdings[0].weights[4].grams"
+          "massPath": "holdings[0].weights[7].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -26826,7 +26826,7 @@
             "start": 446,
             "end": 480
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[8].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -26835,7 +26835,7 @@
             "start": 482,
             "end": 528
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[9].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -26844,7 +26844,7 @@
             "start": 530,
             "end": 558
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[10].grams"
         }
       ]
     },
@@ -26890,7 +26890,7 @@
             "start": 96,
             "end": 114
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[1].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -26899,7 +26899,7 @@
             "start": 116,
             "end": 134
           },
-          "massPath": "holdings[0].weights[1].grams"
+          "massPath": "holdings[0].weights[2].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -26908,7 +26908,7 @@
             "start": 136,
             "end": 156
           },
-          "massPath": "holdings[0].weights[2].grams"
+          "massPath": "holdings[0].weights[3].grams"
         }
       ]
     },
@@ -27028,7 +27028,7 @@
             "start": 76,
             "end": 98
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[0].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -27037,7 +27037,7 @@
             "start": 160,
             "end": 180
           },
-          "massPath": "holdings[0].weights[1].grams"
+          "massPath": "holdings[0].weights[2].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -27046,7 +27046,7 @@
             "start": 182,
             "end": 202
           },
-          "massPath": "holdings[0].weights[2].grams"
+          "massPath": "holdings[0].weights[3].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -27055,7 +27055,7 @@
             "start": 204,
             "end": 224
           },
-          "massPath": "holdings[0].weights[3].grams"
+          "massPath": "holdings[0].weights[4].grams"
         }
       ]
     },
@@ -27175,7 +27175,7 @@
             "start": 126,
             "end": 170
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[1].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -27184,7 +27184,7 @@
             "start": 172,
             "end": 228
           },
-          "massPath": "holdings[0].weights[1].grams"
+          "massPath": "holdings[0].weights[2].grams"
         }
       ]
     },
@@ -27225,7 +27225,7 @@
             "start": 139,
             "end": 158
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[3].grams"
         }
       ]
     },
@@ -27546,7 +27546,7 @@
             "start": 223,
             "end": 240
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[4].grams"
         }
       ]
     },
@@ -27679,7 +27679,7 @@
             "start": 116,
             "end": 136
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[1].grams"
         }
       ]
     },
@@ -27816,7 +27816,7 @@
             "start": 281,
             "end": 300
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[6].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -27825,7 +27825,7 @@
             "start": 303,
             "end": 336
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[7].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -27834,7 +27834,7 @@
             "start": 338,
             "end": 356
           },
-          "massPath": "holdings[0].weights[6].grams"
+          "massPath": "holdings[0].weights[8].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -27843,7 +27843,7 @@
             "start": 358,
             "end": 376
           },
-          "massPath": "holdings[0].weights[7].grams"
+          "massPath": "holdings[0].weights[9].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -27852,7 +27852,7 @@
             "start": 378,
             "end": 415
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[10].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -27861,7 +27861,7 @@
             "start": 417,
             "end": 436
           },
-          "massPath": "holdings[0].weights[8].grams"
+          "massPath": "holdings[0].weights[11].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -27870,7 +27870,7 @@
             "start": 438,
             "end": 456
           },
-          "massPath": "holdings[0].weights[9].grams"
+          "massPath": "holdings[0].weights[12].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -27879,7 +27879,7 @@
             "start": 458,
             "end": 477
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[13].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -27888,7 +27888,7 @@
             "start": 479,
             "end": 497
           },
-          "massPath": "holdings[0].weights[10].grams"
+          "massPath": "holdings[0].weights[14].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -27897,7 +27897,7 @@
             "start": 499,
             "end": 516
           },
-          "massPath": "holdings[0].weights[11].grams"
+          "massPath": "holdings[0].weights[15].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -27906,7 +27906,7 @@
             "start": 518,
             "end": 536
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[16].grams"
         }
       ]
     },
@@ -27961,7 +27961,7 @@
             "start": 118,
             "end": 133
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[2].grams"
         }
       ]
     },
@@ -27993,7 +27993,7 @@
             "start": 147,
             "end": 170
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[2].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -28002,7 +28002,7 @@
             "start": 172,
             "end": 193
           },
-          "massPath": "holdings[0].weights[3].grams"
+          "massPath": "holdings[0].weights[4].grams"
         }
       ]
     },
@@ -28034,7 +28034,7 @@
             "start": 114,
             "end": 131
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[2].grams"
         }
       ]
     },
@@ -28227,7 +28227,7 @@
             "start": 116,
             "end": 134
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[2].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -28236,7 +28236,7 @@
             "start": 137,
             "end": 154
           },
-          "massPath": "holdings[0].weights[2].grams"
+          "massPath": "holdings[0].weights[3].grams"
         }
       ]
     },
@@ -28314,7 +28314,7 @@
             "start": 119,
             "end": 137
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[2].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -28323,7 +28323,7 @@
             "start": 139,
             "end": 156
           },
-          "massPath": "holdings[0].weights[2].grams"
+          "massPath": "holdings[0].weights[3].grams"
         }
       ]
     },
@@ -28355,7 +28355,7 @@
             "start": 119,
             "end": 137
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[2].grams"
         }
       ]
     },
@@ -28562,7 +28562,7 @@
             "start": 134,
             "end": 164
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[2].grams"
         }
       ]
     },
@@ -28599,7 +28599,7 @@
             "start": 76,
             "end": 113
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[0].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -28608,7 +28608,7 @@
             "start": 115,
             "end": 133
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[1].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -28617,7 +28617,7 @@
             "start": 135,
             "end": 153
           },
-          "massPath": "holdings[0].weights[1].grams"
+          "massPath": "holdings[0].weights[2].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -28626,7 +28626,7 @@
             "start": 188,
             "end": 226
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[3].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -28635,7 +28635,7 @@
             "start": 228,
             "end": 286
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[4].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -28644,7 +28644,7 @@
             "start": 288,
             "end": 306
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[6].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -28653,7 +28653,7 @@
             "start": 308,
             "end": 322
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[8].grams"
         }
       ]
     },
@@ -28708,7 +28708,7 @@
             "start": 185,
             "end": 215
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[3].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -28717,7 +28717,7 @@
             "start": 217,
             "end": 246
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[4].grams"
         }
       ]
     },
@@ -28740,7 +28740,7 @@
             "start": 146,
             "end": 188
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[1].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -28749,7 +28749,7 @@
             "start": 230,
             "end": 266
           },
-          "massPath": "holdings[0].weights[2].grams"
+          "massPath": "holdings[0].weights[3].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -28758,7 +28758,7 @@
             "start": 268,
             "end": 312
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[4].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -28767,7 +28767,7 @@
             "start": 318,
             "end": 357
           },
-          "massPath": "holdings[0].weights[3].grams"
+          "massPath": "holdings[0].weights[5].grams"
         }
       ]
     },
@@ -28808,7 +28808,7 @@
             "start": 139,
             "end": 156
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[3].grams"
         }
       ]
     },
@@ -28868,7 +28868,7 @@
             "start": 76,
             "end": 94
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[0].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -28877,7 +28877,7 @@
             "start": 125,
             "end": 143
           },
-          "massPath": "holdings[0].weights[1].grams"
+          "massPath": "holdings[0].weights[2].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -28886,7 +28886,7 @@
             "start": 145,
             "end": 161
           },
-          "massPath": "holdings[0].weights[2].grams"
+          "massPath": "holdings[0].weights[3].grams"
         }
       ]
     },
@@ -28950,7 +28950,7 @@
             "start": 140,
             "end": 160
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[2].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -28959,7 +28959,7 @@
             "start": 162,
             "end": 170
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[3].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -28968,7 +28968,7 @@
             "start": 170,
             "end": 190
           },
-          "massPath": "holdings[0].weights[2].grams"
+          "massPath": "holdings[0].weights[4].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -28977,7 +28977,7 @@
             "start": 191,
             "end": 199
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[5].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -28986,7 +28986,7 @@
             "start": 200,
             "end": 219
           },
-          "massPath": "holdings[0].weights[3].grams"
+          "massPath": "holdings[0].weights[6].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -28995,7 +28995,7 @@
             "start": 245,
             "end": 264
           },
-          "massPath": "holdings[0].weights[6].grams"
+          "massPath": "holdings[0].weights[9].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -29004,7 +29004,7 @@
             "start": 266,
             "end": 284
           },
-          "massPath": "holdings[0].weights[7].grams"
+          "massPath": "holdings[0].weights[10].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -29013,7 +29013,7 @@
             "start": 316,
             "end": 334
           },
-          "massPath": "holdings[0].weights[9].grams"
+          "massPath": "holdings[0].weights[12].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -29022,7 +29022,7 @@
             "start": 336,
             "end": 355
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[13].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -29031,7 +29031,7 @@
             "start": 357,
             "end": 374
           },
-          "massPath": "holdings[0].weights[10].grams"
+          "massPath": "holdings[0].weights[14].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -29040,7 +29040,7 @@
             "start": 376,
             "end": 416
           },
-          "massPath": "holdings[0].weights[11].grams"
+          "massPath": "holdings[0].weights[15].grams"
         }
       ]
     },
@@ -29191,7 +29191,7 @@
             "start": 114,
             "end": 132
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[2].grams"
         }
       ]
     },
@@ -29310,7 +29310,7 @@
             "start": 206,
             "end": 225
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[5].grams"
         }
       ]
     },
@@ -29493,7 +29493,7 @@
             "start": 159,
             "end": 176
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[4].grams"
         }
       ]
     },
@@ -29576,7 +29576,7 @@
             "start": 279,
             "end": 312
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[3].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -29585,7 +29585,7 @@
             "start": 314,
             "end": 331
           },
-          "massPath": "holdings[0].weights[3].grams"
+          "massPath": "holdings[0].weights[4].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -29594,7 +29594,7 @@
             "start": 361,
             "end": 402
           },
-          "massPath": "holdings[0].weights[4].grams"
+          "massPath": "holdings[0].weights[5].grams"
         }
       ]
     },
@@ -29617,7 +29617,7 @@
             "start": 125,
             "end": 140
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[2].grams"
         }
       ]
     },
@@ -29736,7 +29736,7 @@
             "start": 145,
             "end": 182
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[2].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -29745,7 +29745,7 @@
             "start": 185,
             "end": 221
           },
-          "massPath": "holdings[0].weights[2].grams"
+          "massPath": "holdings[0].weights[3].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -29754,7 +29754,7 @@
             "start": 223,
             "end": 261
           },
-          "massPath": "holdings[0].weights[3].grams"
+          "massPath": "holdings[0].weights[4].grams"
         }
       ]
     },
@@ -59000,7 +59000,14 @@
             "start": 58,
             "end": 72
           },
-          "massPath": null
+          "massPath": null,
+          "repeatedMass": {
+            "valuePath": "holdings[1].weights[1].grams",
+            "countPath": "holdings[1].count",
+            "totalPath": "holdings[1].weights[0].grams",
+            "occurrence": 1,
+            "occurrenceCount": 2
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -59009,7 +59016,14 @@
             "start": 74,
             "end": 94
           },
-          "massPath": null
+          "massPath": null,
+          "repeatedMass": {
+            "valuePath": "holdings[1].weights[1].grams",
+            "countPath": "holdings[1].count",
+            "totalPath": "holdings[1].weights[0].grams",
+            "occurrence": 2,
+            "occurrenceCount": 2
+          }
         }
       ]
     },

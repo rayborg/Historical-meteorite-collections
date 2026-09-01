@@ -188,7 +188,7 @@ test("runtime fixture projection validates with exact legacy model-aware shapes"
     assert.deepEqual(
       Object.keys(record).sort(),
       [...(descriptor.recordModel === "specimen"
-        ? SPECIMEN_FIELDS
+        ? [...SPECIMEN_FIELDS, ...(Object.hasOwn(record, "individualFindLocation") ? ["individualFindLocation"] : [])]
         : descriptor.recordModel === "catalog-item"
           ? CATALOG_ITEM_FIELDS
           : descriptor.recordModel === "catalog-number" ? CATALOG_NUMBER_FIELDS : COLLECTION_ENTRY_FIELDS)].sort()
@@ -205,8 +205,8 @@ test("runtime fixture projection validates with exact legacy model-aware shapes"
   });
 });
 
-test("schema 8 public fixture carries both exact new data models", () => {
-  assert.equal(publicFixture.metadata.schemaVersion, 8);
+test("schema 9 public fixture carries both exact newer data models", () => {
+  assert.equal(publicFixture.metadata.schemaVersion, 9);
   assert.deepEqual(publicFixture.metadata.catalogs.slice(-2).map(({ id, recordModel }) => [id, recordModel]), [
     ["hodge-smith-1939", "regional-census-fact"],
     ["victoria-land-1982", "table-a-specimen"],
@@ -216,6 +216,22 @@ test("schema 8 public fixture carries both exact new data models", () => {
     const expected = record.catalogId === "hodge-smith-1939" ? REGIONAL_CENSUS_FACT_FIELDS : TABLE_A_SPECIMEN_FIELDS;
     assert.deepEqual(Object.keys(record).filter((key) => key !== "metbull").sort(), [...expected].sort());
   }
+});
+
+test("schema 9 permits individualFindLocation only as an optional specimen fact", () => {
+  const located = clone(fixture);
+  const specimen = located.records.find(({ id }) => id === "huss-h27-3");
+  assert.equal(specimen.individualFindLocation, "32-19-13");
+  assert.equal(app.validateCatalog(located), located);
+  assert.equal(app.prepareRecord(specimen, 0, app.normalizeCatalogRegistry(located.metadata)).individualFindLocation, "32-19-13");
+
+  delete specimen.individualFindLocation;
+  assert.equal(app.validateCatalog(located), located);
+  specimen.individualFindLocation = "";
+  assert.throws(() => app.validateCatalog(located), /facts-only schema/u);
+  delete specimen.individualFindLocation;
+  located.records.find(({ catalogId }) => catalogId === "museum-1914").individualFindLocation = "Shelf 1";
+  assert.throws(() => app.validateCatalog(located), /facts-only schema/u);
 });
 
 test("older and legacy metadata are intentionally rejected", () => {
@@ -947,8 +963,8 @@ test("URL filters strictly round-trip lineage state and cache version remains st
   for (const search of ["", "?lineage=0", "?lineage=true", "?lineage=1&lineage=1", "?lineage=1&lineage=0"]) {
     assert.equal(app.parseUrlFilters(search, registry).lineageOnly, false, search);
   }
-  assert.equal(app.CACHE_VERSION, "20260831-harmonized-cards-3");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260831-harmonized-cards-3");
+  assert.equal(app.CACHE_VERSION, "20260831-unknown-audit-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260831-unknown-audit-1");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.ASSET_CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.ASSET_CACHE_VERSION}`));
 });
@@ -1015,7 +1031,7 @@ test("HTML and runtime expose the accessible harmonized card contract", () => {
     "Current Meteoritical Bulletin name", "Class", "Specimen form", "Source locality",
     "Individual find location", "Event", "Lineage", "Specimen weight"
   ]);
-  assert.equal(dto.facts.find(({ label }) => label === "Individual find location").value, "Unknown");
+  assert.equal(dto.facts.find(({ label }) => label === "Individual find location").value, "32-19-13");
   assert.match(script, /dto\.facts\.forEach\(\(\{ label, value \}\) => appendMetaRow\(meta, label, value\)\)/);
 });
 

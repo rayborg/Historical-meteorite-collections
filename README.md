@@ -1,7 +1,7 @@
 # Historical Meteorite Collection
 
 <!-- release-summary:readme-overview:start -->
-This repository is a dependency-free, facts-only index of 14,176 source observations from 37 historical meteorite catalogs. The coordinated catalog uses public metadata schema 8 and supports 6 source-specific record models: `catalog-item`, `catalog-number`, `collection-entry`, `regional-census-fact`, `specimen`, `table-a-specimen`.
+This repository is a dependency-free, facts-only index of 14,176 source observations from 37 historical meteorite catalogs. The coordinated catalog uses public metadata schema 9 and supports 6 source-specific record models: `catalog-item`, `catalog-number`, `collection-entry`, `regional-census-fact`, `specimen`, `table-a-specimen`.
 <!-- release-summary:readme-overview:end -->
 
 The repository also publishes [`data/specimen-lineages.json`](./data/specimen-lineages.json), a deterministic index that distinguishes same collection inventory IDs across consecutive editions from possible matches across separate collection sources. Same-inventory continuity is series-scoped and does not infer custody or ownership. Cross-source candidates retain public review decisions from [`data/specimen-lineage-reviews.json`](./data/specimen-lineage-reviews.json) and do not assert physical identity, custody, or ownership transfer. The separate [`data/specimen-card-projections.json`](./data/specimen-card-projections.json) manifest identifies reviewed source holdings that may be displayed as individual specimen cards without splitting or replacing their parent observations.
@@ -36,7 +36,7 @@ node scripts/test-multicatalog.cjs
 node --test scripts/*.test.mjs
 ```
 
-The validator checks both synthetic rejection fixtures and the real catalog, manifest, and folio files. The standalone runtime harness contains 118 tests.
+The validator checks both synthetic rejection fixtures and the real catalog, manifest, and folio files. The standalone runtime harness contains 119 tests.
 
 After changing either public data file, run `node scripts/sync-release-summary.mjs --write`; use `--json` to inspect the derived release summary without changing documentation.
 
@@ -52,14 +52,16 @@ All runtime URLs are relative, so the site works at a GitHub Pages project subpa
 
 ## Public Data Scope
 
-The browser loads factual records only from `./data/catalog.json`. The schema-8 root contract is `{ metadata, records }`. Every descriptor declares one of the six record models below.
+The browser loads factual records only from `./data/catalog.json`. The schema-9 root contract is `{ metadata, records }`. Every descriptor declares one of the six record models below.
 
 A `specimen` record contains exactly:
 
 ```text
 id, catalogId, designation, name, weight: { grams }, classification,
-locality, year, catalogPage, confidence
+locality, [individualFindLocation], year, catalogPage, confidence
 ```
+
+`individualFindLocation` is optional and is permitted only on `specimen` records. Its 111 current values are source facts tied to individual specimens; locality, coordinates, names, and prose cannot substitute for it.
 
 A `catalog-item` record contains exactly:
 
@@ -88,7 +90,7 @@ holdings, name, classification, locality, eventDate, confidence
 
 Its holdings contain `description`, `provenance`, `count`, and `weights`; every numeric weight contains `grams`. The weights array may be empty when a historical or ambiguous mass has no supported numeric conversion; independently structured factual description prose may still retain the source-reported mass statement. `entryOrder` preserves source order. `reportedNumber` may be null or repeated because the source may omit, restart, or duplicate printed numbering.
 
-Schema 8 also permits reviewed collection-entry weight semantics used by Hamburg: a weight may add `kind`; a holding may add `reportedTotalWeight` and `representations`; and a record may add `reportedTotalWeight`, `publicationState`, and `amendments`. These fields preserve whether a figure is an individual or aggregate holding, distinguish the printed base register from a supplement, and record a source-reported amendment without replacing the base observation.
+Schema 9 also permits reviewed collection-entry weight semantics used by Hamburg: a weight may add `kind`; a holding may add `reportedTotalWeight` and `representations`; and a record may add `reportedTotalWeight`, `publicationState`, and `amendments`. These fields preserve whether a figure is an individual or aggregate holding, distinguish the printed base register from a supplement, and record a source-reported amendment without replacing the base observation.
 
 A `regional-census-fact` record contains exactly:
 
@@ -184,13 +186,13 @@ The public presenter derives 18,896 display cards from the unchanged 14,176 pare
 
 Every specimen card uses one closed standard vocabulary. After the specimen identifier, semantic type, and source catalog meteorite name, every specimen displays these fact rows in order: **Current Meteoritical Bulletin name**, **Class**, **Specimen form**, **Source locality**, **Individual find location**, **Event**, **Lineage**, and **Specimen weight**. Unavailable values read **Unknown**. A resolved display-equivalent current name reads **Same as source catalog name** rather than repeating it. No catalog-specific holdings, provenance, coordinate, mineral-chemistry, amendment, total, representation, occurrence-count, or section labels are inserted into cards. Those public source facts remain searchable.
 
-`direct-specimen` and `projected-atomic-specimen` cards are specimen presentations. `collection-observation` and `regional-observation` cards are explicitly observations and omit specimen-only fields. **Specimen form** is controlled only by reviewed card kind; it is not inferred from locality, coordinates, names, MetBull data, or descriptive prose. **Source locality** preserves the catalog's locality scope and is not an individual find-location field. Because no current record has a typed location tied to one individual specimen, every specimen currently displays **Individual find location: Unknown**.
+`direct-specimen` and `projected-atomic-specimen` cards are specimen presentations. `collection-observation` and `regional-observation` cards are explicitly observations and omit specimen-only fields. **Specimen form** is controlled only by reviewed card kind; it is not inferred from locality, coordinates, names, MetBull data, or descriptive prose. **Source locality** preserves the catalog's locality scope and is not an individual find-location field. The 111 typed specimen locations display exactly; the other 12,306 specimen cards display **Individual find location: Unknown**.
 
 ### Reviewed Specimen Cards
 
-`specimen-card-projections.json` is a schema-3 display-only positive allowlist whose metadata binds the schema-8 catalog, its 14,176 records, and its exact source hash. Every card references an immutable parent observation and exact public holding, then uses exactly one evidence variant: a reviewed UTF-16 clause span in an already-public description or designation, or an exact typed Hamburg `componentPath`. It does not create observation or canonical-specimen IDs or copy source prose into the manifest. Every projected individual component produces its own adjacent harmonized specimen card in source order. Exact projection evidence selects the specimen and optional normalized mass, but source prose is not promoted into a new standard field. Grouped holdings, aggregate components, associated material, representations, counts, ranges, totals, and otherwise unprojected material remain parent-record audit context and are not emitted as specimen cards.
+`specimen-card-projections.json` is a schema-4 display-only positive allowlist whose metadata binds the schema-9 catalog, its 14,176 records, and its exact source hash. Every card references an immutable parent observation and exact public holding, then uses one evidence variant: a reviewed UTF-16 clause span in an already-public description or designation, or an exact typed Hamburg `componentPath`. Schema 4 also permits a closed `repeatedMass` object on a clause card with `massPath: null`; it binds one per-item value, count, aggregate total, occurrence, and occurrence count in the same holding. It does not create observation or canonical-specimen IDs or copy source prose into the manifest. Every projected individual component produces its own adjacent harmonized specimen card in source order. Exact projection evidence selects the specimen and optional normalized mass, but source prose is not promoted into a new standard field. Grouped holdings, aggregate components, associated material, representations, counts, ranges, totals, and otherwise unprojected material remain parent-record audit context and are not emitted as specimen cards.
 
-The manifest currently covers 1,955 parent observations and 6,675 atomic specimen cards, including 134 source-supported specimens without normalized masses, plus 1,657 source-context audit partitions that are not rendered as specimens. Hamburg contributes 218 component cards across 142 projected parents, including 36 multi-card parents; its 5 context-only observations remain catalog observations, and all 142 projected parents retain non-displayed context partitions. The 4 aggregate components, 5 associated-material components, and 26 thin-section representations are excluded from specimen cards. Madrid contributes 23 projected multi-holding parents and 54 atomic specimen cards; its 5 context partitions and 17 grouped holdings are not displayed as individual specimens. Reeds 1937 entry 366 produces ten ordered specimen cards. Prior 1923 entry 630 produces seventeen cards for direct accession-bearing specimen clauses, including five uncertain-size clauses without normalized grams; its preamble, ranges, grouped counts, aggregate totals, and unmatched normalized values remain audit context rather than specimen cards. The unchanged allowlist remains atomic-only and does not project either schema-8 model. Search results continue to count distinct parent observations, homepage statistics are based on all 14,176 parent observations across 37 catalogs, citations remain parent-scoped, and lineage is routed only by an exact mass path. Parent totals and the Hamburg amendment remain searchable source context and are not separate harmonized card fields.
+The manifest currently covers 1,955 parent observations and 6,675 atomic specimen cards: 6,656 ordinary cards bind an exact `massPath`, 2 Kuleschowka cards bind the same 2.7 g per-item value through distinct `repeatedMass` occurrences, and 17 cards remain without a normalized display mass. It also retains 1,657 source-context audit partitions that are not rendered as specimens. Hamburg contributes 218 component cards across 142 projected parents, including 36 multi-card parents; its 5 context-only observations remain catalog observations, and all 142 projected parents retain non-displayed context partitions. The 4 aggregate components, 5 associated-material components, and 26 thin-section representations are excluded from specimen cards. Madrid contributes 23 projected multi-holding parents and 54 atomic specimen cards; its 5 context partitions and 17 grouped holdings are not displayed as individual specimens. Reeds 1937 entry 366 produces ten ordered specimen cards. Prior 1923 entry 630 produces seventeen mass-bound cards for direct accession-bearing specimen clauses; its preamble, ranges, grouped counts, aggregate totals, and unmatched normalized values remain audit context rather than specimen cards. The allowlist remains atomic-only and does not project Hodge-Smith or Victoria Land records. Search results continue to count distinct parent observations, homepage statistics are based on all 14,176 parent observations across 37 catalogs, and citations remain parent-scoped. Lineage is routed only by an exact non-null `massPath`; Kuleschowka's repeated cards keep `massPath: null` and **Lineage: Unknown**. Parent totals and the Hamburg amendment remain searchable source context and are not separate harmonized card fields.
 
 ### Reviewed MetBull Harmonization
 
@@ -205,10 +207,10 @@ matchType, canonicalName, meteoriteCode, metbullUrl, alternateNameNote
 The historical `name`, designation/catalog identifier fields, printed private weight strings, and numeric source weights are never replaced by this object. Every specimen displays a **Current Meteoritical Bulletin name** row: a substantively different resolved name, **Same as source catalog name** for a display-equivalent resolved name, or **Unknown** when no canonical identity is reviewed. Comparison uses Unicode NFC, collapsed whitespace, and locale-aware lowercase. No client, build, or export path fuzzy-matches names or infers identity.
 
 <!-- release-summary:readme-metbull:start -->
-The current release includes reviewed MetBull harmonization for 10,537 of 14,176 records: 10,296 have a resolved current identity and 241 remain explicitly unresolved. 13 records currently have a null `name` value.
+The current release includes reviewed MetBull harmonization for 10,609 of 14,176 records: 10,368 have a resolved current identity and 241 remain explicitly unresolved. 13 records currently have a null `name` value.
 <!-- release-summary:readme-metbull:end -->
 
-The remaining 3,639 records are pending observations without reviewed MetBull mappings. Victoria Land's 273 Table A specimens intentionally have no MetBull mapping or current-name panel.
+The remaining 3,567 records are pending observations without reviewed MetBull mappings. Victoria Land's 273 Table A specimens intentionally have no MetBull mapping or current-name panel.
 
 Validated continuation evidence recovers formerly blank source names where supported; it does not infer modern identity.
 

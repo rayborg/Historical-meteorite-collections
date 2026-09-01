@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260831-harmonized-cards-3";
+const CACHE_VERSION = "20260831-unknown-audit-1";
 const ASSET_CACHE_VERSION = CACHE_VERSION;
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "name-asc";
@@ -140,6 +140,7 @@ const FACTUAL_FIELDS = [
   "amendments[]",
   "classification",
   "locality",
+  "individualFindLocation",
   "year",
   "dateOfDiscovery",
   "eventDate",
@@ -198,11 +199,15 @@ const SPECIMEN_CARD_METADATA_FIELDS = new Set([
 ]);
 const SPECIMEN_CARD_PROJECTION_FIELDS = new Set(["parentRecordId", "cards"]);
 const SPECIMEN_CARD_CLAUSE_CARD_FIELDS = new Set(["holdingPath", "clause", "massPath"]);
+const SPECIMEN_CARD_REPEATED_CLAUSE_CARD_FIELDS = new Set(["holdingPath", "clause", "massPath", "repeatedMass"]);
 const SPECIMEN_CARD_COMPONENT_FIELDS = new Set(["holdingPath", "componentPath", "massPath"]);
 const SPECIMEN_CARD_CLAUSE_FIELDS = new Set(["textPath", "start", "end"]);
+const SPECIMEN_CARD_REPEATED_MASS_FIELDS = new Set(["valuePath", "countPath", "totalPath", "occurrence", "occurrenceCount"]);
 const SHA256_HEX = /^[0-9a-f]{64}$/u;
-const SPECIMEN_CARD_SOURCE_CATALOG_SHA256 = "46d8ea050f428cfd4ab633c7e29da1493aaef413cd6da0dc1054ec6275823584";
-const SPECIMEN_CARD_PROJECTION_SET_SHA256 = "45490022fc876f4df62c07110b3fa40a04c0a1edc6aec26797d616f7c159c263";
+const SPECIMEN_CARD_SOURCE_CATALOG_SHA256 = "f5435256d1ff5c9500217112c8beeb7141e278487b3a1e98b5bb86e162739c0e";
+const SPECIMEN_CARD_PROJECTION_DATA_SHA256 = "5df8dd03261f1ba47c374401fa5a1df1828860a7802adb680e56c7bcf1ce4d1e";
+const SPECIMEN_CARD_PROJECTION_SET_SHA256 = "54eabe28b7cc7b885f3e980d7e5962f01eb04aed39cedb30bc9f6d334ea3dede";
+const SPECIMEN_LINEAGE_DATA_SHA256 = "bf73d5fe32aa88b123a110db3108c45cd2053c2f32ac5463fa52035b859291b7";
 const LINEAGE_ROOT_FIELDS = new Set(["metadata", "relationships"]);
 const LINEAGE_METADATA_FIELDS = new Set(["schemaVersion", "scope", "source", "collectionSeries", "methodology", "counts"]);
 const LINEAGE_SOURCE_FIELDS = new Set(["catalogSchemaVersion", "recordCount", "catalogCount", "flattenedMassObservationCount", "inventoryObservationCount"]);
@@ -752,8 +757,9 @@ function hasValidTableALocality(value) {
     (value.coordinate === null || (value.coordinate !== "" && isLeakageSafeText(value.coordinate)));
 }
 
-function recordFields(record, baseFields) {
+function recordFields(record, baseFields, allowIndividualFindLocation = false) {
   const fields = new Set(baseFields);
+  if (allowIndividualFindLocation && Object.hasOwn(record, "individualFindLocation")) fields.add("individualFindLocation");
   if (Object.hasOwn(record, "metbull")) fields.add("metbull");
   return fields;
 }
@@ -1017,7 +1023,7 @@ function createCatalogRegistry(descriptors) {
 function normalizeCatalogRegistry(metadata) {
   requireSchema(isPlainObject(metadata) && isLeakageSafeTree(metadata));
   requireSchema(hasExactFields(metadata, CANONICAL_METADATA_FIELDS));
-  requireSchema(metadata.schemaVersion === 8 && metadata.scope === "facts-only" && hasFactualFields(metadata.factualFields));
+  requireSchema(metadata.schemaVersion === 9 && metadata.scope === "facts-only" && hasFactualFields(metadata.factualFields));
   requireSchema(Array.isArray(metadata.catalogs) && metadata.catalogs.length > 0 && hasValidSummary(metadata));
   metadata.catalogs.forEach(validateCanonicalDescriptor);
   requireSchema(new Set(metadata.catalogs.map((descriptor) => descriptor.id)).size === metadata.catalogs.length);
@@ -1057,7 +1063,7 @@ function validateCatalog(catalog) {
     requireSchema(hasValidCatalogId(record.catalogId) && Object.hasOwn(registry, record.catalogId));
     const recordModel = registry[record.catalogId].recordModel;
     requireSchema(recordModel === "specimen"
-      ? hasExactFields(record, recordFields(record, SPECIMEN_RECORD_FIELDS)) && hasExactFields(record.weight, new Set(["grams"]))
+      ? hasExactFields(record, recordFields(record, SPECIMEN_RECORD_FIELDS, true)) && hasExactFields(record.weight, new Set(["grams"]))
       : recordModel === "catalog-item"
         ? hasExactFields(record, recordFields(record, CATALOG_ITEM_RECORD_FIELDS))
         : recordModel === "catalog-number"
@@ -1083,6 +1089,10 @@ function validateCatalog(catalog) {
     if (recordModel === "specimen") {
       requireSchema(record.designation === null || (record.designation !== "" && isLeakageSafeText(record.designation)));
       requireSchema(record.weight.grams === null || (Number.isFinite(record.weight.grams) && record.weight.grams >= 0));
+      if (Object.hasOwn(record, "individualFindLocation")) {
+        requireSchema(record.individualFindLocation !== "" && record.individualFindLocation.length <= 200 &&
+          isLeakageSafeText(record.individualFindLocation));
+      }
       requireSchema(record.designation !== null || record.name !== null || record.weight.grams !== null ||
         record.classification !== null || record.locality !== null || record.year !== null);
     } else if (recordModel === "catalog-item") {
@@ -1639,7 +1649,7 @@ function validateLineageCandidates(lineageData, sourceRecords, registry) {
   const inventorySummary = expectedSameInventoryRelationships(sourceRecords);
   const expectedPossible = expectedPossibleRelationships(sourceRecords);
   const inventoryObservationCount = lineageInventoryEndpoints(sourceRecords).length;
-  requireLineage(metadata.source.catalogSchemaVersion === 8 && metadata.source.recordCount === sourceRecords.length &&
+  requireLineage(metadata.source.catalogSchemaVersion === 9 && metadata.source.recordCount === sourceRecords.length &&
     metadata.source.catalogCount === Object.keys(registry).length && metadata.source.flattenedMassObservationCount === lineageMassObservationCount(sourceRecords) &&
     metadata.source.inventoryObservationCount === inventoryObservationCount);
   const relationshipIds = new Set();
@@ -1831,11 +1841,14 @@ function deriveEarlierRecordIndex(lineageData, sourceRecords, registry) {
   return index;
 }
 
-async function loadEarlierRecordIndex(sourceRecords = records, registry = catalogRegistry, fetcher = fetch) {
+async function loadEarlierRecordIndex(sourceRecords = records, registry = catalogRegistry, fetcher = fetch, options = {}) {
   try {
     const response = await fetcher("./data/specimen-lineages.json", { cache: "no-cache" });
     if (!response.ok) return new Map();
-    return deriveEarlierRecordIndex(await response.json(), sourceRecords, registry);
+    const text = await response.text();
+    const digest = await (options.sha256 || sha256Text)(text);
+    if (digest !== SPECIMEN_LINEAGE_DATA_SHA256) return new Map();
+    return deriveEarlierRecordIndex(JSON.parse(text), sourceRecords, registry);
   } catch {
     return new Map();
   }
@@ -1880,6 +1893,31 @@ function resolveSpecimenCardSelection(record, holdingPath, massPath) {
   const grams = weight?.grams;
   if (record.catalogId === "hamburg-1913" && weight?.kind !== "individual-holding") return null;
   return Number.isFinite(grams) ? { holding, holdingIndex, weightIndex, grams, kind: weight.kind || null } : null;
+}
+
+function resolveSpecimenCardRepeatedMass(record, holdingPath, repeatedMass) {
+  if (!hasExactFields(repeatedMass, SPECIMEN_CARD_REPEATED_MASS_FIELDS)) return null;
+  const holdingMatch = typeof holdingPath === "string" ? holdingPath.match(/^holdings\[([0-9]+)\]$/u) : null;
+  const valueMatch = typeof repeatedMass.valuePath === "string"
+    ? repeatedMass.valuePath.match(/^holdings\[([0-9]+)\]\.weights\[([0-9]+)\]\.grams$/u) : null;
+  const countMatch = typeof repeatedMass.countPath === "string"
+    ? repeatedMass.countPath.match(/^holdings\[([0-9]+)\]\.count$/u) : null;
+  const totalMatch = typeof repeatedMass.totalPath === "string"
+    ? repeatedMass.totalPath.match(/^holdings\[([0-9]+)\]\.weights\[([0-9]+)\]\.grams$/u) : null;
+  if (!holdingMatch || !valueMatch || !countMatch || !totalMatch ||
+      [valueMatch[1], countMatch[1], totalMatch[1]].some((index) => index !== holdingMatch[1])) return null;
+  const holdingIndex = Number(holdingMatch[1]);
+  const holding = record?.holdings?.[holdingIndex];
+  const grams = holding?.weights?.[Number(valueMatch[2])]?.grams;
+  const totalGrams = holding?.weights?.[Number(totalMatch[2])]?.grams;
+  const count = holding?.count;
+  const expectedTotal = grams * count;
+  const tolerance = Math.max(1, Math.abs(totalGrams), Math.abs(expectedTotal)) * 1e-12;
+  if (!Number.isFinite(grams) || grams <= 0 || !Number.isFinite(totalGrams) || totalGrams <= 0 ||
+      !Number.isInteger(count) || count < 2 || repeatedMass.occurrenceCount !== count ||
+      !Number.isInteger(repeatedMass.occurrence) || repeatedMass.occurrence < 1 || repeatedMass.occurrence > count ||
+      Math.abs(totalGrams - expectedTotal) > tolerance) return null;
+  return { holding, holdingIndex, grams, totalGrams, count, occurrence: repeatedMass.occurrence };
 }
 
 function specimenCardHolding(record, holdingPath) {
@@ -1948,8 +1986,8 @@ function validateSpecimenCardManifest(manifest, sourceRecords, options = {}) {
   if (!hasExactFields(manifest, SPECIMEN_CARD_ROOT_FIELDS) || !Array.isArray(manifest.projections) ||
       !hasExactFields(manifest.metadata, SPECIMEN_CARD_METADATA_FIELDS) || !Array.isArray(sourceRecords)) return false;
   const metadata = manifest.metadata;
-  if (metadata.schemaVersion !== 3 || metadata.scope !== "reviewed-atomic-specimen-card-display-projections" ||
-      metadata.catalogSchemaVersion !== 8 || metadata.sourceRecordCount !== sourceRecords.length ||
+  if (metadata.schemaVersion !== 4 || metadata.scope !== "reviewed-atomic-specimen-card-display-projections" ||
+      metadata.catalogSchemaVersion !== 9 || metadata.sourceRecordCount !== sourceRecords.length ||
       !SHA256_HEX.test(metadata.sourceCatalogSha256) || !Number.isInteger(metadata.projectionCount) ||
       metadata.projectionCount !== manifest.projections.length || !Number.isInteger(metadata.atomicCardCount) ||
       metadata.atomicCardCount < 0 || !Number.isInteger(metadata.sourceContextCardCount) ||
@@ -1972,13 +2010,17 @@ function validateSpecimenCardManifest(manifest, sourceRecords, options = {}) {
     parentIds.add(projection.parentRecordId);
     const selectedMassPaths = new Set();
     const selectedComponentPaths = new Set();
+    const repeatedMassGroups = new Map();
     let previousCard = null;
     const previousEndsByTextPath = new Map();
     for (const card of projection.cards) {
       const hasClause = isPlainObject(card) && Object.hasOwn(card, "clause");
       const hasComponent = isPlainObject(card) && Object.hasOwn(card, "componentPath");
+      const hasRepeatedMass = hasClause && Object.hasOwn(card, "repeatedMass");
       if (hasClause === hasComponent || !hasExactFields(card,
-        hasClause ? SPECIMEN_CARD_CLAUSE_CARD_FIELDS : SPECIMEN_CARD_COMPONENT_FIELDS) ||
+        hasClause
+          ? hasRepeatedMass ? SPECIMEN_CARD_REPEATED_CLAUSE_CARD_FIELDS : SPECIMEN_CARD_CLAUSE_CARD_FIELDS
+          : SPECIMEN_CARD_COMPONENT_FIELDS) ||
         (card.massPath !== null && selectedMassPaths.has(card.massPath))) return false;
       if (hasClause) {
         const clause = resolveSpecimenCardClause(source.record, card);
@@ -1986,6 +2028,17 @@ function validateSpecimenCardManifest(manifest, sourceRecords, options = {}) {
             (source.record.recordModel === "catalog-item" && clause.holding.kind !== "specimen")) return false;
         const selection = card.massPath === null ? null : resolveSpecimenCardSelection(source.record, card.holdingPath, card.massPath);
         if (card.massPath !== null && (!selection || selection.grams <= 0)) return false;
+        if (hasRepeatedMass) {
+          const repeated = card.massPath === null
+            ? resolveSpecimenCardRepeatedMass(source.record, card.holdingPath, card.repeatedMass) : null;
+          if (!repeated) return false;
+          const groupKey = [card.holdingPath, card.repeatedMass.valuePath, card.repeatedMass.countPath,
+            card.repeatedMass.totalPath, card.repeatedMass.occurrenceCount].join("\u0000");
+          const occurrences = repeatedMassGroups.get(groupKey) || new Set();
+          if (occurrences.has(repeated.occurrence)) return false;
+          occurrences.add(repeated.occurrence);
+          repeatedMassGroups.set(groupKey, occurrences);
+        }
         const previousEnd = previousEndsByTextPath.get(card.clause.textPath);
         if (previousEnd !== undefined && card.clause.start < previousEnd) return false;
         previousEndsByTextPath.set(card.clause.textPath, card.clause.end);
@@ -1996,6 +2049,11 @@ function validateSpecimenCardManifest(manifest, sourceRecords, options = {}) {
       if (previousCard && compareSpecimenCards(previousCard, card) >= 0) return false;
       previousCard = card;
       if (card.massPath !== null) selectedMassPaths.add(card.massPath);
+    }
+    for (const [groupKey, occurrences] of repeatedMassGroups) {
+      const occurrenceCount = Number(groupKey.slice(groupKey.lastIndexOf("\u0000") + 1));
+      if (occurrences.size !== occurrenceCount ||
+          !Array.from({ length: occurrenceCount }, (_, index) => index + 1).every((value) => occurrences.has(value))) return false;
     }
     const hasSourceContext = specimenCardContextEntries(source.record, projection).length > 0;
     if (projection.cards.length + Number(hasSourceContext) < 2) return false;
@@ -2015,9 +2073,12 @@ async function loadSpecimenCardProjectionIndex(sourceRecords = records, fetcher 
     if (options.sourceCatalogSha256 !== SPECIMEN_CARD_SOURCE_CATALOG_SHA256) return new Map();
     const response = await fetcher("./data/specimen-card-projections.json", { cache: "no-cache" });
     if (!response.ok) return new Map();
-    const manifest = JSON.parse(await response.text());
+    const text = await response.text();
+    const hash = options.sha256 || sha256Text;
+    if (await hash(text) !== SPECIMEN_CARD_PROJECTION_DATA_SHA256) return new Map();
+    const manifest = JSON.parse(text);
     if (manifest?.metadata?.sourceCatalogSha256 !== SPECIMEN_CARD_SOURCE_CATALOG_SHA256) return new Map();
-    const projectionSetSha256 = await (options.sha256 || sha256Text)(JSON.stringify(manifest.projections));
+    const projectionSetSha256 = await hash(JSON.stringify(manifest.projections));
     if (projectionSetSha256 !== SPECIMEN_CARD_PROJECTION_SET_SHA256) return new Map();
     return deriveSpecimenCardProjectionIndex(manifest, sourceRecords, options);
   } catch {
@@ -2038,6 +2099,7 @@ function parentSpecimenCardDescriptor(parentRecord) {
     holdingPath: null,
     componentPath: null,
     massPath: null,
+    repeatedMass: null,
     clause: null,
     clauseText: null,
     sourcePosition: 0,
@@ -2119,6 +2181,7 @@ function expandSpecimenCardDescriptors(sourceRecords, projectionIndex = new Map(
       holdingPath: card.holdingPath,
       componentPath: card.componentPath || null,
       massPath: card.massPath,
+      repeatedMass: card.repeatedMass || null,
       clause: card.clause || null,
       clauseText: card.clause ? resolveSpecimenCardClause(parentRecord, card).text : null,
       sourcePosition,
@@ -2156,6 +2219,12 @@ function specimenCardPositionLabel(descriptor) {
 function specimenCardDescriptorMasses(descriptor) {
   if (!descriptor?.parentRecord) return [];
   if (descriptor.kind === "atomic") {
+    if (descriptor.repeatedMass) {
+      const repeated = resolveSpecimenCardRepeatedMass(
+        descriptor.parentRecord, descriptor.holdingPath, descriptor.repeatedMass
+      );
+      return repeated ? [repeated.grams] : [];
+    }
     if (descriptor.massPath === null) return [];
     const selection = resolveSpecimenCardSelection(descriptor.parentRecord, descriptor.holdingPath, descriptor.massPath);
     return selection ? [selection.grams] : [];
@@ -2378,6 +2447,9 @@ function prepareRecord(source, index, registry = catalogRegistry) {
     record.catalogPage = source.catalogPage === null || source.catalogPage === "" ? null : Number(source.catalogPage);
     record.designation = cleanText(source.designation);
     record.weight = { grams: source.weight.grams === null ? null : Number(source.weight.grams) };
+    if (Object.hasOwn(source, "individualFindLocation")) {
+      record.individualFindLocation = cleanText(source.individualFindLocation);
+    }
   }
   if (source.metbull) {
     record.metbull = {
@@ -2409,6 +2481,7 @@ function prepareRecord(source, index, registry = catalogRegistry) {
     record.metbull?.alternateNameNote,
     record.classification,
     typeof record.locality === "string" ? record.locality : null,
+    record.individualFindLocation,
     record.locality?.code,
     record.locality?.name,
     record.locality?.coordinate,
@@ -2800,9 +2873,13 @@ function classifyHarmonizedCard(recordOrDescriptor) {
     if (descriptor.kind === "atomic" && descriptor.projected === true &&
         ["catalog-item", "catalog-number", "collection-entry"].includes(record.recordModel) &&
         typeof descriptor.holdingPath === "string" &&
-        (descriptor.massPath === null || resolveSpecimenCardSelection(
-          record, descriptor.holdingPath, descriptor.massPath
-        ))) {
+        (descriptor.repeatedMass
+          ? descriptor.massPath === null && resolveSpecimenCardRepeatedMass(
+            record, descriptor.holdingPath, descriptor.repeatedMass
+          )
+          : descriptor.massPath === null || resolveSpecimenCardSelection(
+            record, descriptor.holdingPath, descriptor.massPath
+          ))) {
       return HARMONIZED_CARD_KINDS.atomic;
     }
     if (descriptor.kind !== "parent" || descriptor.projected !== false) return null;
@@ -2887,7 +2964,7 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
     label: "Source locality",
     value: (record.recordModel === "table-a-specimen" ? record.locality?.name : record.locality) || "Unknown"
   });
-  if (specimen) facts.push({ label: "Individual find location", value: "Unknown" });
+  if (specimen) facts.push({ label: "Individual find location", value: record.individualFindLocation || "Unknown" });
   facts.push({ label: "Event", value: harmonizedCardEvent(record) || "Unknown" });
 
   if (specimen) {
@@ -2896,9 +2973,11 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
       ? descriptor.massPath === null ? [] : sourceLineage.filter((entry) => entry.massPath === descriptor.massPath)
       : sourceLineage;
     const grams = kind === HARMONIZED_CARD_KINDS.atomic
-      ? descriptor.massPath === null ? null : resolveSpecimenCardSelection(
-        record, descriptor.holdingPath, descriptor.massPath
-      )?.grams
+      ? descriptor.repeatedMass
+        ? resolveSpecimenCardRepeatedMass(record, descriptor.holdingPath, descriptor.repeatedMass)?.grams
+        : descriptor.massPath === null ? null : resolveSpecimenCardSelection(
+          record, descriptor.holdingPath, descriptor.massPath
+        )?.grams
       : record.weight?.grams;
     facts.push({
       label: "Lineage",
@@ -3444,8 +3523,10 @@ if (typeof module !== "undefined" && module.exports) {
     DEFAULT_SORT,
     ISSUE_FORM_URL,
     ISSUE_REPORT_MINIMUM_ELAPSED_MS,
+    SPECIMEN_CARD_PROJECTION_DATA_SHA256,
     SPECIMEN_CARD_PROJECTION_SET_SHA256,
     SPECIMEN_CARD_SOURCE_CATALOG_SHA256,
+    SPECIMEN_LINEAGE_DATA_SHA256,
     FACTUAL_FORMULA_INVALID_SUFFIXES,
     FACTUAL_FORMULA_TOKENS,
     FACTUAL_FORMULA_UNSAFE_PREFIXES,
@@ -3508,6 +3589,7 @@ if (typeof module !== "undefined" && module.exports) {
     recordMasses,
     recordSchemaMasses,
     resolveSpecimenCardSelection,
+    resolveSpecimenCardRepeatedMass,
     resolveSpecimenCardClause,
     resolveSpecimenCardComponent,
     searchable,

@@ -44,7 +44,7 @@ test("long harmonized fact labels wrap and stack at the narrowest breakpoint", (
   assert.match(styles, /@media \(max-width: 320px\) \{[\s\S]*gap: \.08rem;/u);
 });
 
-test("schema8 runtime validates and preserves Hamburg additive facts", () => {
+test("schema9 runtime validates and preserves Hamburg additive facts", () => {
   assert.equal(app.validateCatalog(catalog), catalog);
   assert.equal(hamburg.length, 147);
 
@@ -101,7 +101,7 @@ test("Hamburg search, filter masses, supplement, and amendment facts remain dist
 
 test("Hamburg projection runtime emits all 218 components across 142 parents and keeps five observations unprojected", () => {
   const projectionIndex = app.deriveSpecimenCardProjectionIndex(projections, records, {
-    catalogSchemaVersion: 8,
+    catalogSchemaVersion: 9,
     sourceCatalogSha256: projections.metadata.sourceCatalogSha256,
   });
   const hamburgIds = new Set(hamburg.map(({ id }) => id));
@@ -152,12 +152,12 @@ test("weighted cards expose only specimen weight and route the Bethanien amendme
   assert.match(source, /hamburgAmendmentComponentPath\(record, amendment\) === descriptor\.componentPath/u);
 });
 
-test("schema-3 runtime rejects malformed or widened Hamburg component evidence", () => {
+test("schema-4 runtime rejects malformed or widened Hamburg component evidence", () => {
   const validOptions = { sourceCatalogSha256: projections.metadata.sourceCatalogSha256 };
   const byEntryOrder = (document, entryOrder) => document.projections.find(({ parentRecordId }) =>
     hamburg.find(({ id }) => id === parentRecordId)?.entryOrder === entryOrder);
   for (const mutate of [
-    (value) => { value.metadata.schemaVersion = 2; },
+    (value) => { value.metadata.schemaVersion = 3; },
     (value) => { byEntryOrder(value, 1).cards[0].privateLabel = "forged"; },
     (value) => { byEntryOrder(value, 1).cards[0].clause = { textPath: "holdings[0].description", start: 0, end: 15 }; },
     (value) => { byEntryOrder(value, 1).cards[0].componentPath = "holdings[0].weights[99]"; },

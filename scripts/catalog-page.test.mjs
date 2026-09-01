@@ -80,9 +80,9 @@ test("production cards suppress equal canonical names, including Aba Panu, while
 
   assert.deepEqual(
     { reviewed: reviewed.length, resolved: resolved.length, unresolved: unresolved.length, pending: catalog.records.length - reviewed.length },
-    { reviewed: 10537, resolved: 10296, unresolved: 241, pending: 3639 }
+    { reviewed: 10609, resolved: 10368, unresolved: 241, pending: 3567 }
   );
-  assert.deepEqual({ equivalent: equivalent.length, substantive: resolved.length - equivalent.length }, { equivalent: 9180, substantive: 1116 });
+  assert.deepEqual({ equivalent: equivalent.length, substantive: resolved.length - equivalent.length }, { equivalent: 9189, substantive: 1179 });
   const abaPanu = catalog.records.find(({ id }) => id === "obs-bc3edcf5-25d8-4921-8ace-ceedd6882e3b");
   assert.equal(abaPanu.name, "Aba Panu");
   assert.equal(abaPanu.metbull.canonicalName, "Aba Panu");
@@ -198,9 +198,9 @@ test("homepage and catalog page markup keep navigation and UI states accessible"
   assert.match(html, /id="catalog-directory-list" aria-busy="true"/);
   assert.match(html, /id="catalog-directory-error"[^>]*role="alert"[^>]*hidden/);
   assert.match(html, /<noscript><p class="empty-state">/);
-  assert.match(html, /catalogs\.js\?v=20260831-harmonized-cards-3/);
-  assert.match(html, /app\.js\?v=20260831-harmonized-cards-3/);
-  assert.match(html, /styles\.css\?v=20260831-harmonized-cards-3/);
+  assert.match(html, /catalogs\.js\?v=20260831-unknown-audit-1/);
+  assert.match(html, /app\.js\?v=20260831-unknown-audit-1/);
+  assert.match(html, /styles\.css\?v=20260831-unknown-audit-1/);
   assert.doesNotMatch(source, /\.innerHTML\b/);
   assert.match(source, /\.textContent = summary\.label/);
   assert.doesNotMatch(source, /error\.message/);

@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "schemaVersion": 8,
+    "schemaVersion": 9,
     "scope": "facts-only",
     "factualFields": [
       "id",
@@ -32,6 +32,7 @@
       "amendments[]",
       "classification",
       "locality",
+      "individualFindLocation",
       "year",
       "dateOfDiscovery",
       "eventDate",
@@ -9583,7 +9584,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Xiquipilco, Mexico State, Mexico",
-      "year": null,
+      "year": "before 1776",
       "catalogPage": 21,
       "confidence": "high",
       "metbull": {
@@ -9604,7 +9605,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Xiquipilco, Mexico State, Mexico",
-      "year": null,
+      "year": "before 1776",
       "catalogPage": 21,
       "confidence": "high",
       "metbull": {
@@ -9625,7 +9626,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Xiquipilco, Mexico State, Mexico",
-      "year": null,
+      "year": "before 1776",
       "catalogPage": 21,
       "confidence": "high",
       "metbull": {
@@ -9646,7 +9647,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Xiquipilco, Mexico State, Mexico",
-      "year": null,
+      "year": "before 1776",
       "catalogPage": 21,
       "confidence": "high",
       "metbull": {
@@ -9667,7 +9668,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Xiquipilco, Mexico State, Mexico",
-      "year": null,
+      "year": "before 1776",
       "catalogPage": 21,
       "confidence": "high",
       "metbull": {
@@ -9688,7 +9689,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Xiquipilco, Mexico State, Mexico",
-      "year": null,
+      "year": "before 1776",
       "catalogPage": 21,
       "confidence": "high",
       "metbull": {
@@ -9709,7 +9710,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Xiquipilco, Mexico State, Mexico",
-      "year": null,
+      "year": "before 1776",
       "catalogPage": 21,
       "confidence": "high",
       "metbull": {
@@ -9730,7 +9731,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Xiquipilco, Mexico State, Mexico",
-      "year": null,
+      "year": "before 1776",
       "catalogPage": 21,
       "confidence": "high",
       "metbull": {
@@ -9751,7 +9752,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Xiquipilco, Mexico State, Mexico",
-      "year": null,
+      "year": "before 1776",
       "catalogPage": 21,
       "confidence": "high",
       "metbull": {
@@ -9772,7 +9773,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Xiquipilco, Mexico State, Mexico",
-      "year": null,
+      "year": "before 1776",
       "catalogPage": 21,
       "confidence": "high",
       "metbull": {
@@ -9793,7 +9794,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Xiquipilco, Mexico State, Mexico",
-      "year": null,
+      "year": "before 1776",
       "catalogPage": 21,
       "confidence": "high",
       "metbull": {
@@ -9814,7 +9815,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Xiquipilco, Mexico State, Mexico",
-      "year": null,
+      "year": "before 1776",
       "catalogPage": 21,
       "confidence": "high",
       "metbull": {
@@ -9835,7 +9836,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Xiquipilco, Mexico State, Mexico",
-      "year": null,
+      "year": "before 1776",
       "catalogPage": 21,
       "confidence": "high",
       "metbull": {
@@ -9856,7 +9857,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Xiquipilco, Mexico State, Mexico",
-      "year": null,
+      "year": "before 1776",
       "catalogPage": 21,
       "confidence": "high",
       "metbull": {
@@ -9877,7 +9878,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Xiquipilco, Mexico State, Mexico",
-      "year": null,
+      "year": "before 1776",
       "catalogPage": 21,
       "confidence": "high",
       "metbull": {
@@ -9898,7 +9899,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Xiquipilco, Mexico State, Mexico",
-      "year": null,
+      "year": "before 1776",
       "catalogPage": 21,
       "confidence": "high",
       "metbull": {
@@ -9919,7 +9920,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Xiquipilco, Mexico State, Mexico",
-      "year": null,
+      "year": "before 1776",
       "catalogPage": 21,
       "confidence": "high",
       "metbull": {
@@ -9940,7 +9941,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Xiquipilco, Mexico State, Mexico",
-      "year": null,
+      "year": "before 1776",
       "catalogPage": 21,
       "confidence": "high",
       "metbull": {
@@ -9961,7 +9962,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Xiquipilco, Mexico State, Mexico",
-      "year": null,
+      "year": "before 1776",
       "catalogPage": 21,
       "confidence": "high",
       "metbull": {
@@ -9982,7 +9983,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Xiquipilco, Mexico State, Mexico",
-      "year": null,
+      "year": "before 1776",
       "catalogPage": 21,
       "confidence": "high",
       "metbull": {
@@ -10045,6 +10046,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "S.E. rim",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10066,6 +10068,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "S.E. rim",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10087,6 +10090,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "S.E. rim",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10108,6 +10112,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "S.E. rim",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10129,6 +10134,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "S.E. rim",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10150,6 +10156,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "S.E. rim",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10171,6 +10178,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "S.E. rim",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10192,6 +10200,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "S.E. rim",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10213,6 +10222,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "S.E. rim",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10234,6 +10244,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "S.E. rim",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10255,6 +10266,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "S.E. rim",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10276,6 +10288,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "S.E. rim",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10297,6 +10310,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "22-19-12½",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10318,6 +10332,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "22-19-12½",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10339,6 +10354,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "22-19-12½",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10360,6 +10376,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "22-19-12½",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10381,6 +10398,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "36-19-12",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10402,6 +10420,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "36-19-12",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10423,6 +10442,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "36-19-12",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10444,6 +10464,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "32-19-13",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10465,6 +10486,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "32-19-13",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10486,6 +10508,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "32-19-13",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10507,6 +10530,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "N.E. rim",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10528,6 +10552,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "N.E. rim",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10549,6 +10574,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "16-19-13",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10570,6 +10596,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "24-19-12½",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10591,6 +10618,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "6-18-13",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10612,6 +10640,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "16-19-13",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10633,6 +10662,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "16-19-13",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10654,6 +10684,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "34-19-12½",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10675,6 +10706,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "34-19-12½",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10696,6 +10728,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "34-19-12½",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10717,6 +10750,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "34-19-12½",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10738,6 +10772,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "14-19-12½",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10759,6 +10794,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "14-19-12½",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10780,6 +10816,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "14-19-12½",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10801,6 +10838,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "14-19-12½",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10822,6 +10860,7 @@
       },
       "classification": "Iron. Coarse octahedrite (IA)",
       "locality": "Coconino Co., Arizona",
+      "individualFindLocation": "28-18-13",
       "year": "1891",
       "catalogPage": 5,
       "confidence": "high",
@@ -10843,6 +10882,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -10864,6 +10904,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -10885,6 +10926,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -10906,6 +10948,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -10927,6 +10970,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -10948,6 +10992,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -10969,6 +11014,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -10990,6 +11036,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11011,6 +11058,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11032,6 +11080,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11053,6 +11102,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11074,6 +11124,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11095,6 +11146,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11116,6 +11168,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11137,6 +11190,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11158,6 +11212,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11179,6 +11234,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11200,6 +11256,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11221,6 +11278,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11242,6 +11300,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11263,6 +11322,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11284,6 +11344,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11305,6 +11366,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11326,6 +11388,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11347,6 +11410,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11368,6 +11432,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11389,6 +11454,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11410,6 +11476,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11431,6 +11498,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11452,6 +11520,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11473,6 +11542,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11494,6 +11564,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11515,6 +11586,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11536,6 +11608,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11557,6 +11630,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11578,6 +11652,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11599,6 +11674,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11620,6 +11696,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11641,6 +11718,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11662,6 +11740,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11683,6 +11762,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11704,6 +11784,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11725,6 +11806,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11746,6 +11828,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11767,6 +11850,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11788,6 +11872,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11809,6 +11894,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "28-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11830,6 +11916,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "34-19-12½",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11851,6 +11938,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "34-19-12½",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11872,6 +11960,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "34-19-12½",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -11893,6 +11982,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "34-19-12½",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -12313,6 +12403,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "20-19-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -12334,6 +12425,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "20-19-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -12355,6 +12447,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "6-18-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -12376,6 +12469,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "16-19-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -12397,6 +12491,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "32-19-13",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -12418,6 +12513,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "14-19-12½",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -12439,6 +12535,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "N.E. rim",
       "year": null,
       "catalogPage": 6,
       "confidence": "high",
@@ -12460,6 +12557,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "N.E. rim",
       "year": null,
       "catalogPage": 7,
       "confidence": "high",
@@ -12481,6 +12579,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "N.E. rim",
       "year": null,
       "catalogPage": 7,
       "confidence": "high",
@@ -12502,6 +12601,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "N.E. rim",
       "year": null,
       "catalogPage": 7,
       "confidence": "high",
@@ -12523,6 +12623,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "N.E. rim",
       "year": null,
       "catalogPage": 7,
       "confidence": "high",
@@ -12544,6 +12645,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "N.E. rim",
       "year": null,
       "catalogPage": 7,
       "confidence": "high",
@@ -12565,6 +12667,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "N.E. rim",
       "year": null,
       "catalogPage": 7,
       "confidence": "high",
@@ -12586,6 +12689,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "N.E. rim",
       "year": null,
       "catalogPage": 7,
       "confidence": "high",
@@ -12607,6 +12711,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "N.E. rim",
       "year": null,
       "catalogPage": 7,
       "confidence": "high",
@@ -12628,6 +12733,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "N.E. rim",
       "year": null,
       "catalogPage": 7,
       "confidence": "high",
@@ -12649,6 +12755,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "N.E. rim",
       "year": null,
       "catalogPage": 7,
       "confidence": "high",
@@ -12943,6 +13050,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "N.E. rim",
       "year": null,
       "catalogPage": 7,
       "confidence": "high",
@@ -12964,6 +13072,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "N.E. rim",
       "year": null,
       "catalogPage": 7,
       "confidence": "high",
@@ -12985,6 +13094,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "S.E. rim",
       "year": null,
       "catalogPage": 7,
       "confidence": "high",
@@ -16954,6 +17064,7 @@
       },
       "classification": null,
       "locality": null,
+      "individualFindLocation": "west of crater",
       "year": null,
       "catalogPage": 11,
       "confidence": "high",
@@ -18487,7 +18598,7 @@
       },
       "classification": "Iron. Anomalous (IVA)",
       "locality": "Runnels Co., Texas",
-      "year": null,
+      "year": "found (unreported)",
       "catalogPage": 13,
       "confidence": "high",
       "metbull": {
@@ -19831,7 +19942,7 @@
       },
       "classification": "Stone. Olivine-hypersthene chondrite (L6)",
       "locality": "Rub'al Khali, Saudi Arabia",
-      "year": null,
+      "year": "1950",
       "catalogPage": 22,
       "confidence": "high",
       "metbull": {
@@ -55295,7 +55406,14 @@
       "locality": "Arizona, USA",
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The official MetBull checker lists Canyon Diablo (1936) as a synonym of Canyon Diablo; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-25948071-c80a-4215-a1ad-95157fa18298",
@@ -59780,7 +59898,7 @@
       },
       "classification": "Pallasite",
       "locality": "Sumner County, Kansas; 37° 16′ N., 97° 46′ W.",
-      "year": null,
+      "year": "Found many years ago, recently identified",
       "catalogPage": 29,
       "confidence": "high",
       "metbull": {
@@ -64794,7 +64912,14 @@
       "locality": "Arizona, USA",
       "year": null,
       "catalogPage": 7,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The official MetBull checker lists Canyon Diablo (1949) as a synonym of Canyon Diablo; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-099b136b-7e9f-4f5a-aa3d-e494b9402677",
@@ -86151,7 +86276,14 @@
       "locality": "Texas, USA",
       "year": null,
       "catalogPage": 46,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Comanche Creek Reservoir",
+        "meteoriteCode": "23693",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23693",
+        "alternateNameNote": "The official MetBull checker lists Squaw Creek as a synonym of Comanche Creek Reservoir; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-114d412d-67e9-429c-891b-9aaba8e1b111",
@@ -100492,7 +100624,7 @@
       },
       "classification": "Iron. Medium octahedrite",
       "locality": "Mexico D.F., Mexico",
-      "year": null,
+      "year": "before 1776",
       "catalogPage": 47,
       "confidence": "high",
       "metbull": {
@@ -100513,7 +100645,7 @@
       },
       "classification": "Iron. Medium octahedrite",
       "locality": "Mexico D.F., Mexico",
-      "year": null,
+      "year": "before 1776",
       "catalogPage": 47,
       "confidence": "high",
       "metbull": {
@@ -100534,7 +100666,7 @@
       },
       "classification": "Iron. Medium octahedrite",
       "locality": "Mexico D.F., Mexico",
-      "year": null,
+      "year": "before 1776",
       "catalogPage": 47,
       "confidence": "high",
       "metbull": {
@@ -100555,7 +100687,7 @@
       },
       "classification": "Iron. Medium octahedrite",
       "locality": "Mexico D.F., Mexico",
-      "year": null,
+      "year": "before 1776",
       "catalogPage": 47,
       "confidence": "high",
       "metbull": {
@@ -100576,7 +100708,7 @@
       },
       "classification": "Iron. Medium octahedrite",
       "locality": "Mexico D.F., Mexico",
-      "year": null,
+      "year": "before 1776",
       "catalogPage": 47,
       "confidence": "high",
       "metbull": {
@@ -100597,7 +100729,7 @@
       },
       "classification": "Iron. Medium octahedrite",
       "locality": "Mexico D.F., Mexico",
-      "year": null,
+      "year": "before 1776",
       "catalogPage": 47,
       "confidence": "high",
       "metbull": {
@@ -100618,7 +100750,7 @@
       },
       "classification": "Iron. Medium octahedrite",
       "locality": "Mexico D.F., Mexico",
-      "year": null,
+      "year": "before 1776",
       "catalogPage": 47,
       "confidence": "high",
       "metbull": {
@@ -100639,7 +100771,7 @@
       },
       "classification": "Iron. Medium octahedrite",
       "locality": "Mexico D.F., Mexico",
-      "year": null,
+      "year": "before 1776",
       "catalogPage": 47,
       "confidence": "high",
       "metbull": {
@@ -100660,7 +100792,7 @@
       },
       "classification": "Iron. Medium octahedrite",
       "locality": "Mexico D.F., Mexico",
-      "year": null,
+      "year": "before 1776",
       "catalogPage": 47,
       "confidence": "high",
       "metbull": {
@@ -100681,7 +100813,7 @@
       },
       "classification": "Iron. Medium octahedrite",
       "locality": "Mexico D.F., Mexico",
-      "year": null,
+      "year": "before 1776",
       "catalogPage": 47,
       "confidence": "high",
       "metbull": {
@@ -100702,7 +100834,7 @@
       },
       "classification": "Iron. Medium octahedrite",
       "locality": "Mexico D.F., Mexico",
-      "year": null,
+      "year": "before 1776",
       "catalogPage": 47,
       "confidence": "high",
       "metbull": {
@@ -115255,7 +115387,7 @@
       },
       "classification": "Stone. Chondrite",
       "locality": "Santa Catharina, Brazil",
-      "year": null,
+      "year": "before 1928",
       "catalogPage": 31,
       "confidence": "high",
       "metbull": {
@@ -116179,7 +116311,7 @@
       },
       "classification": "Stony-iron. Mesosiderite",
       "locality": "Coconino Co., Arizona",
-      "year": null,
+      "year": "prehistoric",
       "catalogPage": 47,
       "confidence": "high",
       "metbull": {
@@ -116200,7 +116332,7 @@
       },
       "classification": "Stony-iron. Mesosiderite",
       "locality": "Coconino Co., Arizona",
-      "year": null,
+      "year": "prehistoric",
       "catalogPage": 47,
       "confidence": "high",
       "metbull": {
@@ -117628,7 +117760,7 @@
       },
       "classification": "Stone. Olivine-hypersthene chondrite",
       "locality": "Kingman Co., Kansas",
-      "year": null,
+      "year": "before 1939",
       "catalogPage": 33,
       "confidence": "high",
       "metbull": {
@@ -117880,7 +118012,7 @@
       },
       "classification": "Iron; nickel-rich ataxite",
       "locality": "Pima Co., Arizona",
-      "year": null,
+      "year": "before 1850",
       "catalogPage": 43,
       "confidence": "high",
       "metbull": {
@@ -122689,6 +122821,7 @@
       },
       "classification": "Oxidized iron shale",
       "locality": "Western Australia, Australia; 27° 43' S., 117° 15' E.",
+      "individualFindLocation": "inside crater rim",
       "year": null,
       "catalogPage": 11,
       "confidence": "high",
@@ -186795,7 +186928,14 @@
       "classification": "Iron. Coarse octahedrite, Og.",
       "locality": "Coconino Co., Arizona",
       "eventDate": "Found 1891.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The official MetBull checker lists Cañon Diablo as a synonym of Canyon Diablo; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-27a2c8b5-8725-4751-92cd-5dc974924ed0",
@@ -191716,7 +191856,14 @@
       "classification": "Stone. Carbonaceous chondrite, K.",
       "locality": "Entre Rios, Argentina, South America",
       "eventDate": "Fell 1879, July 1, Evening.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Nogoya",
+        "meteoriteCode": "16989",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16989",
+        "alternateNameNote": "The official MetBull checker lists Nagaya as a synonym of Nogoya; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-25e2d3b4-58eb-4670-bfd8-72a0c7f727f8",
@@ -196325,7 +196472,14 @@
       "classification": "Stone. Spherical chondrite.",
       "locality": "(Clarac), Haute Garonne, France",
       "eventDate": "Fell 1858 Dec. 9",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Ausson",
+        "meteoriteCode": "4903",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4903",
+        "alternateNameNote": "The official MetBull checker lists Aussun as a synonym of Ausson; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-2171243d-1d83-4cb3-ac08-5717306f3d04",
@@ -197997,7 +198151,14 @@
       "classification": "Stone. Spherical chondrite.",
       "locality": "Finland",
       "eventDate": "Fell 1899 Mar. 12",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bjurböle",
+        "meteoriteCode": "5064",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5064",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-2c487ac0-e1f3-4096-9574-0a1c2bd744ad",
@@ -198580,7 +198741,14 @@
       "classification": "Stone. Brecciated spherical chondrite.",
       "locality": "(Gnarrenburg), Hannover, Germany",
       "eventDate": "Fell 1855 May 13",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bremervörde",
+        "meteoriteCode": "5135",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5135",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-74c02b3b-aff4-4f7f-bec6-50f78ae86ff2",
@@ -199146,7 +199314,14 @@
       "classification": "Stone. White chondrite.",
       "locality": "Murcia, Spain",
       "eventDate": "Fell 1870 Aug. 18",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Cabezo de Mayo",
+        "meteoriteCode": "5185",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5185",
+        "alternateNameNote": "The official MetBull checker lists Cabezzo de Mayo as a synonym of Cabezo de Mayo; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-b6d8d61b-94fe-4dd2-a39a-cee3bc19b162",
@@ -202904,7 +203079,14 @@
       "classification": "Stone. Veined white chondrite.",
       "locality": "Bombay, India",
       "eventDate": "Fell 1877 Nov. 27",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Bhagur",
+        "meteoriteCode": "5037",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5037",
+        "alternateNameNote": "The official MetBull checker lists Dhulia as a synonym of Bhagur; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-c78833bc-33ac-4b57-9f9b-742bb64608e7",
@@ -204566,7 +204748,14 @@
       "classification": "Stone. Veined gray chondrite.",
       "locality": "(Monroe), Cabarrus Co., North Carolina",
       "eventDate": "Fell 1849 Mar. 31",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Monroe",
+        "meteoriteCode": "16720",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16720",
+        "alternateNameNote": "The official MetBull checker lists Flows as a synonym of Monroe; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-785c948b-9eb2-41c6-9fed-536775aa0e44",
@@ -205806,7 +205995,14 @@
       "classification": "Stone. Crystalline chondrite.",
       "locality": "Badajoz, Spain",
       "eventDate": "Fell 1892 July 20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Guareña",
+        "meteoriteCode": "11439",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11439",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-ece52581-1a79-45f8-a1d4-f4b60bd53369",
@@ -206827,7 +207023,14 @@
       "classification": "Stone. Veined howarditic chondrite.",
       "locality": "Lalitpur, India",
       "eventDate": "Fell 1887",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Lalitpur",
+        "meteoriteCode": "12451",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12451",
+        "alternateNameNote": "The official MetBull checker lists Iharaota as a synonym of Lalitpur; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-958b00f1-c032-4f2b-827e-4e582cba0c7a",
@@ -209862,7 +210065,14 @@
       "classification": "Iron. Ataxite.",
       "locality": "Monroe Co., Alabama",
       "eventDate": "Found 1834",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Lime Creek",
+        "meteoriteCode": "14651",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=14651",
+        "alternateNameNote": "The official MetBull checker lists Limestone Creek as a synonym of Lime Creek; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-2a94c21a-ad81-4e34-af71-8c3b92a26e5b",
@@ -210770,7 +210980,14 @@
       "classification": "Stone. Veined intermediate chondrite.",
       "locality": "Rio Grande do Norte, Brazil",
       "eventDate": "Fell 1836 Nov. 11",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Macau",
+        "meteoriteCode": "15370",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15370",
+        "alternateNameNote": "The official MetBull checker lists Macao as a synonym of Macau; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-37f589db-ca6a-4c06-97c9-85f0a29a429c",
@@ -212890,7 +213107,14 @@
       "classification": "Stone. Crystalline chondrite.",
       "locality": "Bhurtpore, India",
       "eventDate": "Fell 1868 Dec. 22",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Moti-ka-nagla",
+        "meteoriteCode": "16759",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16759",
+        "alternateNameNote": "The official MetBull checker lists Motecka-Nugla as a synonym of Moti-ka-nagla; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-6f32f4c4-5983-4340-8625-449d2638ba08",
@@ -214457,7 +214681,14 @@
       "classification": "Stone. Ureilite.",
       "locality": "Kazan, Russia",
       "eventDate": "Fell 1886 Sept. 22",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Novo-Urei",
+        "meteoriteCode": "17933",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17933",
+        "alternateNameNote": "The official MetBull checker lists Nowo-Urei as a synonym of Novo-Urei; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-7908bb95-5d11-4c63-ae93-3e9162d3da7a",
@@ -216754,7 +216985,14 @@
       "classification": "Iron. Ataxite.",
       "locality": "Boyaca, U. S. of Colombia",
       "eventDate": "Found 1810",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Santa Rosa",
+        "meteoriteCode": "23167",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23167",
+        "alternateNameNote": "The official MetBull checker lists Rasgata as a synonym of Santa Rosa; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-8c8463e8-327e-43bc-ae0e-f14fc5649e76",
@@ -218329,7 +218567,14 @@
       "classification": "Stone. Veined white chondrite.",
       "locality": "Swabia, Bavaria",
       "eventDate": "Fell 1846 Dec. 25",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Schönenberg",
+        "meteoriteCode": "23460",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23460",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-9fee3285-ede4-4ab6-beea-2ae3fd840eb0",
@@ -218761,7 +219006,14 @@
       "classification": "Stone. Veined white chondrite.",
       "locality": "Algiers, Africa",
       "eventDate": "Fell 1865 Aug. 25",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Aumale",
+        "meteoriteCode": "4899",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4899",
+        "alternateNameNote": "The official MetBull checker lists Senhadja as a synonym of Aumale; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-42ae9a2e-7c0c-4ae7-a2b4-5fc1fbcbf146",
@@ -220307,7 +220559,14 @@
       "classification": "Iron. Medium octahedrite.",
       "locality": "Jeniseisk, Russia",
       "eventDate": "Found 1891",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toubil River",
+        "meteoriteCode": "24034",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24034",
+        "alternateNameNote": "The official MetBull checker lists Tajgha as a synonym of Toubil River; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-9e6fca67-bddd-4954-a7f1-a9ad855e2ede",
@@ -221907,7 +222166,14 @@
       "classification": "Stone. Veined gray chondrite.",
       "locality": "Punjaub, India",
       "eventDate": "Fell 1822",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Umbala",
+        "meteoriteCode": "24112",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24112",
+        "alternateNameNote": "The official MetBull checker lists Umballa as a synonym of Umbala; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-a17fbab4-b20d-427f-96ab-964219725007",
@@ -222353,7 +222619,14 @@
       "classification": "Stone. Veined intermediate chondrite.",
       "locality": "Vienne, France",
       "eventDate": "Fell 1831 May 13",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Vouillé",
+        "meteoriteCode": "24191",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24191",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-4e25cfd1-0439-4c42-9cc2-7dfc5b4448ab",
@@ -222923,7 +223196,14 @@
       "classification": "Iron. Medium octahedrite.",
       "locality": "Clackamas Co., Oregon",
       "eventDate": "Found 1902",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Willamette",
+        "meteoriteCode": "24269",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24269",
+        "alternateNameNote": "The official MetBull checker lists Williamette as a synonym of Willamette; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-37b8dbfc-d2df-4d4d-ada4-22cb524bcf57",
@@ -231634,7 +231914,14 @@
       "classification": "Coarse Octahedrite, Og",
       "locality": "Coconino Co., Arizona.",
       "eventDate": "Found 1891",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The official MetBull checker lists Cañon Diablo as a synonym of Canyon Diablo; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-a0fc6a13-0918-47c7-8fac-57cbf1e0b730",
@@ -263449,6 +263736,9 @@
           "count": 1,
           "weights": [
             {
+              "grams": 277
+            },
+            {
               "grams": 2340
             },
             {
@@ -263851,6 +264141,9 @@
           "count": 1,
           "weights": [
             {
+              "grams": 66
+            },
+            {
               "grams": 0
             },
             {
@@ -263924,7 +264217,14 @@
       "classification": "Stone, A",
       "locality": "EGYPT",
       "eventDate": "Fell June 28, 1911.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Nakhla",
+        "meteoriteCode": "16898",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16898",
+        "alternateNameNote": "The official MetBull checker lists EL NAKHLA EL BAHARIA as a synonym of Nakhla; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-6ec4ac59-23e2-4a16-90bc-fb47a7226dec",
@@ -264848,7 +265148,7 @@
       "name": "HESSLE",
       "classification": "Stone, Cc",
       "locality": "NEAR UPSALA, SWEDEN",
-      "eventDate": null,
+      "eventDate": "Fell January 1, 1869",
       "confidence": "high"
     },
     {
@@ -265531,6 +265831,9 @@
           "provenance": null,
           "count": 2,
           "weights": [
+            {
+              "grams": 767
+            },
             {
               "grams": 7
             },
@@ -269430,6 +269733,9 @@
               "grams": 124.7
             },
             {
+              "grams": 38
+            },
+            {
               "grams": 31
             },
             {
@@ -272055,7 +272361,14 @@
       "classification": "Iron, Om",
       "locality": "RED RIVER, TEXAS",
       "eventDate": "Known in 1808.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Red River",
+        "meteoriteCode": "22548",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22548",
+        "alternateNameNote": "The official MetBull checker lists CROSS TIMBERS as a synonym of Red River; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-1c32601f-3391-4fe9-99c0-e96aa2578187",
@@ -276215,6 +276528,9 @@
           "provenance": null,
           "count": 1,
           "weights": [
+            {
+              "grams": 17800
+            },
             {
               "grams": 85
             },
@@ -294830,6 +295146,9 @@
               "grams": 70
             },
             {
+              "grams": 28
+            },
+            {
               "grams": 13
             },
             {
@@ -295159,7 +295478,14 @@
       "classification": "Stone. Spherical chondrite.",
       "locality": "Haute Garonne, France",
       "eventDate": "Fell 1858, Dec. 9, 7.30 a.m. ^",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Ausson",
+        "meteoriteCode": "4903",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4903",
+        "alternateNameNote": "The official MetBull checker lists Aussun as a synonym of Ausson; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-492ad3e5-ec8a-4f55-80ee-cadff142a833",
@@ -295287,6 +295613,9 @@
             },
             {
               "grams": 2
+            },
+            {
+              "grams": 1.5
             }
           ]
         }
@@ -295324,6 +295653,9 @@
             },
             {
               "grams": 470
+            },
+            {
+              "grams": 61.5
             }
           ]
         }
@@ -295696,6 +296028,9 @@
               "grams": 2678
             },
             {
+              "grams": 46.5
+            },
+            {
               "grams": 45
             }
           ]
@@ -295938,6 +296273,9 @@
             },
             {
               "grams": 899
+            },
+            {
+              "grams": 520.5
             }
           ]
         }
@@ -296074,10 +296412,16 @@
               "grams": 1206
             },
             {
+              "grams": 388
+            },
+            {
               "grams": 123
             },
             {
               "grams": 9
+            },
+            {
+              "grams": 2
             }
           ]
         }
@@ -296594,6 +296938,15 @@
             },
             {
               "grams": 23
+            },
+            {
+              "grams": 15.5
+            },
+            {
+              "grams": 13.5
+            },
+            {
+              "grams": 2.5
             }
           ]
         }
@@ -296848,6 +297201,9 @@
           "provenance": null,
           "count": null,
           "weights": [
+            {
+              "grams": 12401
+            },
             {
               "grams": 132
             },
@@ -297918,7 +298274,14 @@
       "classification": "Iron. Coarse octahedrite.",
       "locality": "Coconino County, Arizona, U.S.A",
       "eventDate": "Found 1891",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Canyon Diablo",
+        "meteoriteCode": "5257",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5257",
+        "alternateNameNote": "The official MetBull checker lists Cañon Diablo as a synonym of Canyon Diablo; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-4af8e217-2a01-470f-b209-c34abe5909d2",
@@ -298062,6 +298425,9 @@
             },
             {
               "grams": 18
+            },
+            {
+              "grams": 16.5
             },
             {
               "grams": 41
@@ -298805,6 +299171,9 @@
               "grams": 582
             },
             {
+              "grams": 531.5
+            },
+            {
               "grams": 239
             },
             {
@@ -298916,10 +299285,19 @@
               "grams": 37
             },
             {
+              "grams": 36.5
+            },
+            {
               "grams": 3
             },
             {
               "grams": 1163
+            },
+            {
+              "grams": 85.5
+            },
+            {
+              "grams": 1.5
             },
             {
               "grams": 20
@@ -299842,6 +300220,9 @@
             },
             {
               "grams": 121
+            },
+            {
+              "grams": 2.5
             }
           ]
         }
@@ -300124,6 +300505,9 @@
           "count": null,
           "weights": [
             {
+              "grams": 3500000
+            },
+            {
               "grams": 3190
             },
             {
@@ -300155,6 +300539,12 @@
             },
             {
               "grams": 13
+            },
+            {
+              "grams": 12.5
+            },
+            {
+              "grams": 73.5
             }
           ]
         }
@@ -301477,7 +301867,13 @@
           "count": null,
           "weights": [
             {
+              "grams": 57.5
+            },
+            {
               "grams": 37
+            },
+            {
+              "grams": 16.5
             },
             {
               "grams": 5
@@ -301932,6 +302328,9 @@
             },
             {
               "grams": 187
+            },
+            {
+              "grams": 21.5
             },
             {
               "grams": 3
@@ -302536,6 +302935,9 @@
               "grams": 798
             },
             {
+              "grams": 488.5
+            },
+            {
               "grams": 136
             }
           ]
@@ -302777,6 +303179,9 @@
               "grams": 731
             },
             {
+              "grams": 41.5
+            },
+            {
               "grams": 1
             }
           ]
@@ -302845,6 +303250,12 @@
             },
             {
               "grams": 1000
+            },
+            {
+              "grams": 61.5
+            },
+            {
+              "grams": 56.5
             }
           ]
         }
@@ -303165,6 +303576,9 @@
             },
             {
               "grams": 54
+            },
+            {
+              "grams": 8.5
             }
           ]
         }
@@ -303319,6 +303733,9 @@
             },
             {
               "grams": 2
+            },
+            {
+              "grams": 1.5
             }
           ]
         }
@@ -303734,6 +304151,9 @@
             },
             {
               "grams": 9
+            },
+            {
+              "grams": 0.5
             }
           ]
         }
@@ -303807,10 +304227,16 @@
               "grams": 331
             },
             {
+              "grams": 144.5
+            },
+            {
               "grams": 47
             },
             {
               "grams": 16
+            },
+            {
+              "grams": 1.25
             },
             {
               "grams": 1
@@ -304072,7 +304498,13 @@
           "count": null,
           "weights": [
             {
+              "grams": 42.5
+            },
+            {
               "grams": 24
+            },
+            {
+              "grams": 14.5
             },
             {
               "grams": 5
@@ -304425,10 +304857,28 @@
               "grams": 254
             },
             {
+              "grams": 201.5
+            },
+            {
               "grams": 1761
             },
             {
               "grams": 1601
+            },
+            {
+              "grams": 129.5
+            },
+            {
+              "grams": 37.5
+            },
+            {
+              "grams": 5.5
+            },
+            {
+              "grams": 111
+            },
+            {
+              "grams": 1
             },
             {
               "grams": 1
@@ -305712,6 +306162,9 @@
               "grams": 405
             },
             {
+              "grams": 38.6
+            },
+            {
               "grams": 6
             },
             {
@@ -305928,7 +306381,14 @@
       "classification": "Stone. Veined crystalline bronzite-chondrite.",
       "locality": "Morbihan, France",
       "eventDate": "Fell 1869, May 22, 10 p.m",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Kernouve",
+        "meteoriteCode": "12284",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12284",
+        "alternateNameNote": "The official MetBull checker lists Kernouvé as a synonym of Kernouve; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-77d4d767-ecba-45da-92bd-47323ee134e3",
@@ -306232,6 +306692,9 @@
             },
             {
               "grams": 9
+            },
+            {
+              "grams": 2.5
             }
           ]
         }
@@ -306396,7 +306859,28 @@
               "grams": 230
             },
             {
+              "grams": 227.5
+            },
+            {
+              "grams": 80.5
+            },
+            {
+              "grams": 38.5
+            },
+            {
               "grams": 17
+            },
+            {
+              "grams": 17
+            },
+            {
+              "grams": 2.5
+            },
+            {
+              "grams": 16
+            },
+            {
+              "grams": 11
             },
             {
               "grams": 21
@@ -306675,10 +307159,16 @@
               "grams": 259
             },
             {
+              "grams": 241.5
+            },
+            {
               "grams": 31
             },
             {
               "grams": 16
+            },
+            {
+              "grams": 0.5
             }
           ]
         }
@@ -306715,7 +307205,16 @@
               "grams": 32
             },
             {
+              "grams": 9.5
+            },
+            {
               "grams": 9
+            },
+            {
+              "grams": 9
+            },
+            {
+              "grams": 7.5
             }
           ]
         }
@@ -306848,6 +307347,15 @@
             },
             {
               "grams": 2430
+            },
+            {
+              "grams": 81
+            },
+            {
+              "grams": 34.5
+            },
+            {
+              "grams": 5.75
             }
           ]
         }
@@ -307064,6 +307572,9 @@
             },
             {
               "grams": 140
+            },
+            {
+              "grams": 17.5
             }
           ]
         }
@@ -307756,6 +308267,9 @@
           "count": null,
           "weights": [
             {
+              "grams": 201.5
+            },
+            {
               "grams": 1
             },
             {
@@ -307986,6 +308500,12 @@
               "grams": 147
             },
             {
+              "grams": 11.5
+            },
+            {
+              "grams": 10.5
+            },
+            {
               "grams": 3
             }
           ]
@@ -308058,6 +308578,9 @@
             },
             {
               "grams": 53
+            },
+            {
+              "grams": 5.5
             }
           ]
         }
@@ -308698,6 +309221,9 @@
           "weights": [
             {
               "grams": 18
+            },
+            {
+              "grams": 14.5
             },
             {
               "grams": 1
@@ -309461,6 +309987,9 @@
               "grams": 668
             },
             {
+              "grams": 65.75
+            },
+            {
               "grams": 33
             }
           ]
@@ -309600,6 +310129,9 @@
             },
             {
               "grams": 22
+            },
+            {
+              "grams": 0.5
             }
           ]
         }
@@ -309837,7 +310369,25 @@
               "grams": 276
             },
             {
+              "grams": 132.5
+            },
+            {
+              "grams": 81.5
+            },
+            {
+              "grams": 27.5
+            },
+            {
               "grams": 25
+            },
+            {
+              "grams": 20.5
+            },
+            {
+              "grams": 17.5
+            },
+            {
+              "grams": 5.5
             }
           ]
         }
@@ -310213,6 +310763,9 @@
           "weights": [
             {
               "grams": 174
+            },
+            {
+              "grams": 49.5
             },
             {
               "grams": 191
@@ -311174,6 +311727,9 @@
           "count": null,
           "weights": [
             {
+              "grams": 725
+            },
+            {
               "grams": 255
             },
             {
@@ -311559,6 +312115,9 @@
               "grams": 2005
             },
             {
+              "grams": 433.5
+            },
+            {
               "grams": 193
             }
           ]
@@ -311593,6 +312152,9 @@
             },
             {
               "grams": 321
+            },
+            {
+              "grams": 31.7
             },
             {
               "grams": 7
@@ -312747,6 +313309,9 @@
             },
             {
               "grams": 25
+            },
+            {
+              "grams": 4.5
             }
           ]
         }
@@ -312990,7 +313555,7 @@
         }
       ],
       "name": "Parnallee",
-      "classification": null,
+      "classification": "Stone. Veined grey hypersthene-chondrite.",
       "locality": "Madura district, Madras, India",
       "eventDate": "Fell 1857, Feb. 28, noon",
       "confidence": "high",
@@ -313264,6 +313829,9 @@
           "weights": [
             {
               "grams": 15
+            },
+            {
+              "grams": 0.2
             },
             {
               "grams": 2
@@ -314166,10 +314734,19 @@
               "grams": 425
             },
             {
+              "grams": 280.5
+            },
+            {
+              "grams": 256
+            },
+            {
               "grams": 158
             },
             {
               "grams": 145
+            },
+            {
+              "grams": 139.5
             },
             {
               "grams": 1111
@@ -314178,10 +314755,16 @@
               "grams": 108
             },
             {
+              "grams": 102.5
+            },
+            {
               "grams": 821
             },
             {
               "grams": 76
+            },
+            {
+              "grams": 74.5
             },
             {
               "grams": 64
@@ -314613,6 +315196,9 @@
             },
             {
               "grams": 83
+            },
+            {
+              "grams": 0.5
             }
           ]
         }
@@ -314778,6 +315364,9 @@
               "grams": 413
             },
             {
+              "grams": 372.2
+            },
+            {
               "grams": 2
             },
             {
@@ -314820,6 +315409,9 @@
             },
             {
               "grams": 70
+            },
+            {
+              "grams": 5.5
             }
           ]
         }
@@ -315425,7 +316017,14 @@
       "classification": "Stone. Spherical chondrite.",
       "locality": "Vitre, Ille-et-Vilaine, France",
       "eventDate": "Fell 1890, July 4, 3.30 p.m",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "St. Germain-du-Pinel",
+        "meteoriteCode": "23087",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23087",
+        "alternateNameNote": "The official MetBull checker lists St. Germain-en-Puel as a synonym of St. Germain-du-Pinel; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-6fb6de52-2bda-4daf-b4a4-d92b87ef70c0",
@@ -315949,6 +316548,9 @@
               "grams": 76
             },
             {
+              "grams": 28.5
+            },
+            {
               "grams": 24
             }
           ]
@@ -316363,6 +316965,9 @@
               "grams": 1658
             },
             {
+              "grams": 70.5
+            },
+            {
               "grams": 34
             }
           ]
@@ -316401,6 +317006,9 @@
             },
             {
               "grams": 539
+            },
+            {
+              "grams": 27.5
             }
           ]
         }
@@ -317572,6 +318180,9 @@
             },
             {
               "grams": 32
+            },
+            {
+              "grams": 4.5
             }
           ]
         }
@@ -317771,16 +318382,31 @@
           "count": null,
           "weights": [
             {
+              "grams": 673.5
+            },
+            {
               "grams": 250
             },
             {
               "grams": 237
             },
             {
+              "grams": 192.5
+            },
+            {
               "grams": 128
             },
             {
+              "grams": 128
+            },
+            {
+              "grams": 15
+            },
+            {
               "grams": 5
+            },
+            {
+              "grams": 13.5
             }
           ]
         }
@@ -317882,6 +318508,12 @@
             },
             {
               "grams": 694
+            },
+            {
+              "grams": 130.5
+            },
+            {
+              "grams": 1.7
             },
             {
               "grams": 7
@@ -317986,10 +318618,16 @@
               "grams": 3595
             },
             {
+              "grams": 445.5
+            },
+            {
               "grams": 10
             },
             {
               "grams": 145
+            },
+            {
+              "grams": 69.5
             },
             {
               "grams": 3
@@ -318098,6 +318736,9 @@
             },
             {
               "grams": 7
+            },
+            {
+              "grams": 4.5
             }
           ]
         }
@@ -318680,6 +319321,9 @@
           "count": null,
           "weights": [
             {
+              "grams": 94.5
+            },
+            {
               "grams": 54
             },
             {
@@ -318820,7 +319464,16 @@
               "grams": 26100
             },
             {
+              "grams": 1582
+            },
+            {
               "grams": 9100
+            },
+            {
+              "grams": 9100
+            },
+            {
+              "grams": 4550
             },
             {
               "grams": 1236
@@ -318842,6 +319495,9 @@
             },
             {
               "grams": 440
+            },
+            {
+              "grams": 125.5
             },
             {
               "grams": 18
@@ -319289,6 +319945,9 @@
             },
             {
               "grams": 55
+            },
+            {
+              "grams": 9.5
             }
           ]
         }
@@ -319790,6 +320449,9 @@
             },
             {
               "grams": 551
+            },
+            {
+              "grams": 493.5
             },
             {
               "grams": 965
@@ -320622,6 +321284,9 @@
             },
             {
               "grams": 22
+            },
+            {
+              "grams": 4.5
             }
           ]
         }
@@ -321141,6 +321806,9 @@
               "grams": 2700
             },
             {
+              "grams": 630
+            },
+            {
               "grams": 73
             },
             {
@@ -321182,6 +321850,9 @@
             },
             {
               "grams": 8
+            },
+            {
+              "grams": 0.75
             }
           ]
         }
@@ -321389,6 +322060,9 @@
             },
             {
               "grams": 3
+            },
+            {
+              "grams": 483.5
             },
             {
               "grams": 412
@@ -324395,7 +325069,14 @@
       "classification": "Siderite: Medium octahedrite, Om.",
       "locality": "Sierra de las Adargas, Chihuahua, Mexico Known for centuries",
       "eventDate": null,
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Chupaderos",
+        "meteoriteCode": "5363",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5363",
+        "alternateNameNote": "The official MetBull checker lists Adargas as a synonym of Chupaderos; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-df02f1bb-af52-4803-afa6-90960293e042",
@@ -325672,7 +326353,14 @@
       "classification": "Aerolite: Spherical chondrite, Cc.",
       "locality": "Haute Garonne, France",
       "eventDate": "Fell: 1858, December 9, 7:30 A.M.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Ausson",
+        "meteoriteCode": "4903",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4903",
+        "alternateNameNote": "The official MetBull checker lists Aussun as a synonym of Ausson; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-9fd63ab9-0fd9-45e6-891f-43dd94ad64b6",
@@ -326354,7 +327042,14 @@
       "classification": "Siderite: Coarse octahedrite, Og.",
       "locality": "Bahia, Brazil, S. A.",
       "eventDate": "Found: 1784",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Bendegó",
+        "meteoriteCode": "5015",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5015",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-ce598528-3f52-4e85-a735-5a91e62844e6",
@@ -326517,7 +327212,7 @@
       "name": "Bethany",
       "classification": "Siderite: Finest octahedrite, Off.",
       "locality": "Great Namaqualand, South Africa Known before 1836",
-      "eventDate": null,
+      "eventDate": "Known before 1836",
       "confidence": "high"
     },
     {
@@ -326821,7 +327516,7 @@
       "name": "Bitburg",
       "classification": "Siderolite: Pallasite, Pa.",
       "locality": "Trier, Rhenish Prussia, Germany Known before 1805",
-      "eventDate": null,
+      "eventDate": "Known before 1805",
       "confidence": "high",
       "metbull": {
         "matchType": "exact",
@@ -353684,7 +354379,14 @@
       "classification": "Aerolite: Carbonaceous spherical chondrite, Kc.",
       "locality": "Shusha, Elisavetpol, Azerbaijan, U. S. S. R.",
       "eventDate": "Fell: 1891, April 7, 8:10 P.M.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Indarch",
+        "meteoriteCode": "12027",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12027",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-9ca34950-6b54-4314-b360-1cf73feaf522",
@@ -355196,7 +355898,14 @@
       "classification": "Aerolite: White chondrite, Cw.",
       "locality": "Indre, France",
       "eventDate": "Fell: 1879, January 31, noon",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "La Bécasse",
+        "meteoriteCode": "12392",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12392",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-6213111b-a01d-4839-8735-c7747d24e480",
@@ -355522,7 +356231,14 @@
       "classification": "Aerolite: Veined intermediate chondrite, Cia.",
       "locality": "Bouches-du-Rhone, France",
       "eventDate": "Fell: 1897, June 20, 8:30 P.M.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Lancon",
+        "meteoriteCode": "12456",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12456",
+        "alternateNameNote": "The official MetBull checker lists Lançon as a synonym of Lancon; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-8382a89f-40ce-4ccd-b67e-32466fc38e95",
@@ -365242,7 +365958,7 @@
       "name": "Signal Mountain",
       "classification": "Siderite: Medium octahedrite, Om.",
       "locality": "Lower California, Mexico Found several years before 1919",
-      "eventDate": null,
+      "eventDate": "Found several years before 1919",
       "confidence": "high",
       "metbull": {
         "matchType": "exact",
@@ -365477,7 +366193,14 @@
       "classification": "Siderite: Fine octahedrite, Of.",
       "locality": "Rockingham County, North Carolina, U. S. A.",
       "eventDate": "Found: About 1863",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "exact",
+        "canonicalName": "Smith's Mountain",
+        "meteoriteCode": "23652",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23652",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "obs-b1a68867-a243-4f38-b62e-22259e8d3c99",
@@ -375915,7 +376638,14 @@
       "classification": "Iron.",
       "locality": "Cape Colony, South Africa",
       "eventDate": "Found 1793.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Cape of Good Hope",
+        "meteoriteCode": "5261",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5261",
+        "alternateNameNote": "The official MetBull checker lists Cape iron as a synonym of Cape of Good Hope; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-4bf554ef-ed5b-4d7f-a75d-a5c609888526",
@@ -376983,7 +377713,14 @@
       "classification": "Iron.",
       "locality": "Red River, Texas",
       "eventDate": "Known 1808.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Red River",
+        "meteoriteCode": "22548",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22548",
+        "alternateNameNote": "The official MetBull checker lists Cross Timbers as a synonym of Red River; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-23df9881-d2f6-4a8b-84eb-9b6b211ebf0c",
@@ -377846,7 +378583,14 @@
       "classification": "Stone.",
       "locality": "Texas",
       "eventDate": "Found 1878.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Bluff (a)",
+        "meteoriteCode": "5087",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5087",
+        "alternateNameNote": "The official MetBull checker lists Fayette County as a synonym of Bluff (a); the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-0cdbdee9-8962-4738-9865-bcb5d38ce7fa",
@@ -378173,7 +378917,14 @@
       "classification": "Stone.",
       "locality": "Jalisco, Mexico",
       "eventDate": "Fell August or September 17, 1879.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Tomatlan",
+        "meteoriteCode": "24020",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24020",
+        "alternateNameNote": "The official MetBull checker lists Gargantillo as a synonym of Tomatlan; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-ec546be2-6041-4cd5-819e-161480e5c02c",
@@ -378521,7 +379272,14 @@
       "classification": "Stone.",
       "locality": "Linn County, Iowa",
       "eventDate": "Fell February 25, 1847, 2.45 p. m.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Marion (Iowa)",
+        "meteoriteCode": "15424",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15424",
+        "alternateNameNote": "The official MetBull checker lists Hartford as a synonym of Marion (Iowa); the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-7713f7f6-1cad-45d4-9564-ddb8bc4577dd",
@@ -379094,7 +379852,14 @@
       "classification": "Iron.",
       "locality": "Madison County, North Carolina",
       "eventDate": "Found 1854.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Duel Hill (1854)",
+        "meteoriteCode": "7738",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=7738",
+        "alternateNameNote": "The official MetBull checker lists Jewell Hill as a synonym of Duel Hill (1854); the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-b041e335-e35e-4b17-9226-37a67834f65f",
@@ -382820,7 +383585,14 @@
       "classification": "Iron.",
       "locality": "Tocavita, United States of Colombia",
       "eventDate": "Found 1810.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Santa Rosa",
+        "meteoriteCode": "23167",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23167",
+        "alternateNameNote": "The official MetBull checker lists Rasgata as a synonym of Santa Rosa; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-5c1e4774-0d9d-491d-b303-4146578ee62c",
@@ -383171,7 +383943,14 @@
       "classification": "Stone.",
       "locality": "near Troyes, Aube, France",
       "eventDate": "Fell May 30, 1866.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "St. Mesmin",
+        "meteoriteCode": "23092",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23092",
+        "alternateNameNote": "The official MetBull checker lists Saint-Mesmin as a synonym of St. Mesmin; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-179f5f40-d25f-443c-afd8-12146136be0d",
@@ -384685,7 +385464,14 @@
       "classification": "Stone.",
       "locality": "Juchnow, Smolensk, Russia",
       "eventDate": "Fell March 25, 1807.",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Timochin",
+        "meteoriteCode": "24004",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24004",
+        "alternateNameNote": "The official MetBull checker lists Timoschin as a synonym of Timochin; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-03cd5259-a301-4709-8659-6a33831c5f0c",
@@ -386652,7 +387438,14 @@
       "classification": "Meteoric iron",
       "locality": "Kent County, Mich., near Grand Rapids",
       "eventDate": "Found about May 15, 1883",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Grand Rapids",
+        "meteoriteCode": "10955",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=10955",
+        "alternateNameNote": "The official MetBull checker lists Walker Township as a synonym of Grand Rapids; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-30656cf6-0246-4d78-b88d-503498c27543",
@@ -388144,7 +388937,14 @@
       "classification": "Meteoric stone",
       "locality": "Iowa County, Iowa",
       "eventDate": "Fell February 12, 1875",
-      "confidence": "high"
+      "confidence": "high",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Homestead",
+        "meteoriteCode": "11901",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=11901",
+        "alternateNameNote": "The official MetBull checker lists Iowa County as a synonym of Homestead; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-3b329859-408d-4d0c-aa9e-8509679815bf",
@@ -403331,7 +404131,14 @@
       "classification": "Granular Hexahedrite Ha",
       "locality": "Bingara (29° 55' S, 151° 35' E), New South Wales, Australia.",
       "eventDate": "1880",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Bingera",
+        "meteoriteCode": "5050",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5050",
+        "alternateNameNote": "The official MetBull checker lists BINGARA as a synonym of Bingera; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-226fdf1c-b0b4-4957-b52a-14151c667029",
@@ -404216,7 +405023,7 @@
         }
       ],
       "name": "CHICHIMEGUILAS",
-      "classification": null,
+      "classification": "Siderite",
       "locality": "Hacienda of Chichimeguilas, State of Zacatecas, Mexico.",
       "eventDate": "1901",
       "confidence": "medium"
@@ -404256,7 +405063,14 @@
       "classification": "Octahedrite O",
       "locality": "Chilcoot Inlet (59° 0' N, 135° 15' W). Portage Bay, Southern Alaska.",
       "eventDate": "1881",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Chilkoot",
+        "meteoriteCode": "5351",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5351",
+        "alternateNameNote": "The official MetBull checker lists CHILCAT as a synonym of Chilkoot; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-c7bfa8e8-3993-48ae-bec4-598cc4097911",
@@ -406745,7 +407559,14 @@
       "classification": "Ataxite. Babb's Mill Group Db",
       "locality": "Linnville Mountain (35° 40' N, 81° 35' W), Claiborne, Burke County, North Carolina, U. S. A.",
       "eventDate": "1882",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Linville",
+        "meteoriteCode": "14656",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=14656",
+        "alternateNameNote": "The official MetBull checker lists LINNVILLE as a synonym of Linville; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-6945a20c-7769-44b1-abd4-ed9fe88720a5",
@@ -408538,7 +409359,14 @@
       "classification": "Ataxite. Siratik Group Ds",
       "locality": "Rasgata (5° 0' N, 74° 1' W), Province of Boyaca, Colombia, South America.",
       "eventDate": "1810",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Santa Rosa",
+        "meteoriteCode": "23167",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=23167",
+        "alternateNameNote": "The official MetBull checker lists RASGATA as a synonym of Santa Rosa; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-9349a2a7-2e24-414d-9ce7-fa74b49cc27f",
@@ -409870,7 +410698,14 @@
       "classification": "Medium Octahedrite Om",
       "locality": "Tajgha (56° 48' N, 94° 0' E), near Krasnojarsk, Government of Jeniseisk, Siberia.",
       "eventDate": "1891",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Toubil River",
+        "meteoriteCode": "24034",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24034",
+        "alternateNameNote": "The official MetBull checker lists TAJGHA as a synonym of Toubil River; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-55fb757d-0531-46dd-95c7-8bb70c4c96a6",
@@ -411831,7 +412666,14 @@
       "classification": "Pallasite. Krasnojarsk Group Pk",
       "locality": "Medwedewa (Krasnojarsk), (51° 25' N, 92° 0' E), Government of Jeniseisk, Central Siberia.",
       "eventDate": "1749",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Krasnojarsk",
+        "meteoriteCode": "12356",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12356",
+        "alternateNameNote": "The official MetBull checker lists MEDWEDEWA as a synonym of Krasnojarsk; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-56f8fea1-f401-4c3c-9c87-1081d5c9438b",
@@ -414088,7 +414930,14 @@
       "classification": "White Chondrite Cw",
       "locality": "Cabezzo de Mayo (37° 59' N, 1° 10' W), Province of Murcia, Spain.",
       "eventDate": "1870, Aug. 18",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Cabezo de Mayo",
+        "meteoriteCode": "5185",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5185",
+        "alternateNameNote": "The official MetBull checker lists CABEZZO DE MAYO as a synonym of Cabezo de Mayo; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-c9136b01-710e-4af4-91b2-113abdbc7c5e",
@@ -415013,7 +415862,14 @@
       "classification": "White Chondrite, veined Cwa",
       "locality": "Dhulia (20° 54' N, 75° 10' E), near Bhagur, Bombay Presidency, India.",
       "eventDate": "1877, Nov. 27",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Bhagur",
+        "meteoriteCode": "5037",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=5037",
+        "alternateNameNote": "The official MetBull checker lists DHULIA as a synonym of Bhagur; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-549720a6-e9e3-43f1-8e6d-b5ec22d3746b",
@@ -415343,7 +416199,7 @@
         }
       ],
       "name": "ELI ELWAH",
-      "classification": null,
+      "classification": "Aerolite",
       "locality": "Eli Elwah Station (34° 18' S, 144° 0' E), 15 miles west of Hay, New South Wales, Australia.",
       "eventDate": "1889",
       "confidence": "medium"
@@ -416406,7 +417262,7 @@
         }
       ],
       "name": "HENDERSONVILLE",
-      "classification": null,
+      "classification": "Aerolite",
       "locality": "Hendersonville (35° 19' N, 82° 28' W), Henderson County, North Carolina, U. S. A.",
       "eventDate": "1901",
       "confidence": "medium"
@@ -416742,7 +417598,14 @@
       "classification": "Howarditic Chondrite, veined Choa",
       "locality": "Iharaota (24° 39' N, 78° 22' E), District of Lalitpur, Northwestern Provinces, India.",
       "eventDate": "1887, April 17",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Lalitpur",
+        "meteoriteCode": "12451",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12451",
+        "alternateNameNote": "The official MetBull checker lists IHARAOTA as a synonym of Lalitpur; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-400d5679-39cd-40b8-ac84-fb397e9d8ea8",
@@ -417960,7 +418823,7 @@
         }
       ],
       "name": "LENORKA",
-      "classification": null,
+      "classification": "Aerolite",
       "locality": "Lenorka, Government of Poltava, Russia.",
       "eventDate": "1902",
       "confidence": "medium"
@@ -418555,7 +419418,14 @@
       "classification": "Intermediate Chondrite, veined Cia",
       "locality": "Macao (5° 10' S, 36° 40' W), mouth of Rio Assu, Province of Rio Grande do Norte, Brazil.",
       "eventDate": "1836, Nov. 11",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Macau",
+        "meteoriteCode": "15370",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15370",
+        "alternateNameNote": "The official MetBull checker lists MACAO as a synonym of Macau; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-95cda4bd-535b-44a3-ae47-e5cd92012837",
@@ -418666,7 +419536,14 @@
       "classification": "Intermediate Chondrite, veined Cia",
       "locality": "Maêmê Hislugari (about 31° 45' N, 130° 36' E) Province of Satsuma, Japan.",
       "eventDate": "1886, Nov. 10",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Kyushu",
+        "meteoriteCode": "12390",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12390",
+        "alternateNameNote": "The official MetBull checker lists MAEME as a synonym of Kyushu; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-afd84854-e8cc-4dbd-aae2-c9ab3037f94c",
@@ -418740,7 +419617,14 @@
       "classification": "Gray Chondrite brecciated Cgb",
       "locality": "Makariwa (46° 20' S, 168° 25' E), near Invercargill, New Zealand.",
       "eventDate": "1879",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Makarewa",
+        "meteoriteCode": "15392",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15392",
+        "alternateNameNote": "The official MetBull checker lists MAKARIWA as a synonym of Makarewa; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-5b687267-3308-41a9-9406-b72ba4990481",
@@ -418814,7 +419698,14 @@
       "classification": "Chladnite Chl",
       "locality": "Manegaum (17° 59' N, 75° 37' E), District of Kandeish, India.",
       "eventDate": "1843, June 29",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Manegaon",
+        "meteoriteCode": "15403",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=15403",
+        "alternateNameNote": "The official MetBull checker lists MANEGAUM as a synonym of Manegaon; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-30ef673f-1844-47ea-9506-f6a1c7fb6eb6",
@@ -419332,7 +420223,14 @@
       "classification": "White Chondrite, veined Cwa",
       "locality": "Province of Minas Geraes, Brazil.",
       "eventDate": "1888",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Minas Gerais",
+        "meteoriteCode": "16693",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16693",
+        "alternateNameNote": "The official MetBull checker lists MINAS GERAES as a synonym of Minas Gerais; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-c213cf17-79f4-48e0-88aa-aaeed4854ecc",
@@ -419591,7 +420489,14 @@
       "classification": "White Chondrite Cw",
       "locality": "Mooradabad (28° 36' N, 78° 45' E), Northwestern Provinces, India.",
       "eventDate": "1808",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Moradabad",
+        "meteoriteCode": "16740",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16740",
+        "alternateNameNote": "The official MetBull checker lists MOORADABAD as a synonym of Moradabad; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-22ae8d92-8513-41db-bfea-419bf5d529be",
@@ -419739,7 +420644,14 @@
       "classification": "Crystalline Chondrite Ck",
       "locality": "Biana District (27° 15' N, 77° 32' E), State of Bhurtpore, Rajputana States, India.",
       "eventDate": "1868, Dec. 22",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Moti-ka-nagla",
+        "meteoriteCode": "16759",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16759",
+        "alternateNameNote": "The official MetBull checker lists MOTEEKA-NUGLA as a synonym of Moti-ka-nagla; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-107d9ab3-c0b0-400b-8348-9b4b7fbb64bf",
@@ -419813,7 +420725,14 @@
       "classification": "White Chondrite, veined Cwa",
       "locality": "Zomba (15° 6' S, 35° 26' E), Nyassa Land, British Central Africa.",
       "eventDate": "1899, Jan. 25",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Zomba",
+        "meteoriteCode": "30412",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=30412",
+        "alternateNameNote": "The official MetBull checker lists MOUNT ZOMBA as a synonym of Zomba; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-3e65fad1-c1cb-47aa-a557-0da9df3d88cc",
@@ -419921,10 +420840,17 @@
         }
       ],
       "name": "NAGERIA",
-      "classification": null,
+      "classification": "Aerolite",
       "locality": "Nageria (27° 8' N, 78° 5' E), District of Agra, Northwestern Provinces, India.",
       "eventDate": "1875, April 24",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Nagaria",
+        "meteoriteCode": "16892",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=16892",
+        "alternateNameNote": "The official MetBull checker lists NAGERIA as a synonym of Nagaria; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-8d176228-ea56-425e-9912-b0c8d93dce00",
@@ -420331,7 +421257,14 @@
       "classification": "Ureilite U",
       "locality": "Nowo-Urei (54° 32' N, 43° 41' E) and vicinity, Government of Penza, Province of Kazan, Russia.",
       "eventDate": "1886, Sept. 22",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Novo-Urei",
+        "meteoriteCode": "17933",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=17933",
+        "alternateNameNote": "The official MetBull checker lists NOWO-UREI as a synonym of Novo-Urei; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-3886504e-52ef-45c7-9202-4f753f2533bf",
@@ -420735,7 +421668,7 @@
         }
       ],
       "name": "OSHIMA",
-      "classification": null,
+      "classification": "Aerolite",
       "locality": "Oshima Mura (about 31° 3' N, 130° 0' E), Ysa Gori, Province of Satsuma, West Coast of Japan.",
       "eventDate": "1886, Oct. 26",
       "confidence": "medium"
@@ -421515,7 +422448,14 @@
       "classification": "Intermediate Chondrite Ci",
       "locality": "Rakowka (about 54° 10' N, 37° 41' E), Government of Tula, Russia.",
       "eventDate": "1878, Nov. 20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Rakovka",
+        "meteoriteCode": "22376",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=22376",
+        "alternateNameNote": "The official MetBull checker lists RAKOWKA as a synonym of Rakovka; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-fcf4b353-a612-436f-8220-35f97fd6ccd2",
@@ -422329,7 +423269,14 @@
       "classification": "White Chondrite Cwa",
       "locality": "Senhadja (36° 15' N, 3° 42' E), near Aumale, Brook of Oued Soufflat, Province of Alger, Algeria, North Africa.",
       "eventDate": "1865, Aug. 25",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Aumale",
+        "meteoriteCode": "4899",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=4899",
+        "alternateNameNote": "The official MetBull checker lists SENHADJA as a synonym of Aumale; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-08124b0b-251a-4076-bf0f-90a6cf4d8d2f",
@@ -422844,7 +423791,7 @@
         }
       ],
       "name": "SONE MURA",
-      "classification": null,
+      "classification": "Aerolite",
       "locality": "Sone Mura (about 35° 10' N, 135° 20' E), Province of Tamba, Japan.",
       "eventDate": null,
       "confidence": "medium"
@@ -423140,7 +424087,7 @@
         }
       ],
       "name": "TALTAL",
-      "classification": null,
+      "classification": "Aerolite",
       "locality": "East of Taltal (25° 27' S, 70° 36' W), in Desert of Atacama, Chili.",
       "eventDate": "1875",
       "confidence": "medium"
@@ -423661,7 +424608,14 @@
       "classification": "Gray Chondrite, veined Cga",
       "locality": "Forty miles west (30° 22' N, 76° 19' E) of Umballa, Punjaub States, India.",
       "eventDate": "1822",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Umbala",
+        "meteoriteCode": "24112",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24112",
+        "alternateNameNote": "The official MetBull checker lists UMBALLA as a synonym of Umbala; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-673e7060-26cc-40cb-86f9-4f04199694bb",
@@ -423994,7 +424948,14 @@
       "classification": "Spherulitic Chondrite, veined Cca",
       "locality": "Werchne Tschirskaja (48° 25' N, 43° 10' E), Province of the Don Cossacks, South Russia.",
       "eventDate": "1843, Nov. 12",
-      "confidence": "medium"
+      "confidence": "medium",
+      "metbull": {
+        "matchType": "historical-alias",
+        "canonicalName": "Verkhne Tschirskaia",
+        "meteoriteCode": "24165",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=24165",
+        "alternateNameNote": "The official MetBull checker lists WERCHNE TSCHIRSKAJA as a synonym of Verkhne Tschirskaia; the re-fetched Official detail is compatible with the source context."
+      }
     },
     {
       "id": "obs-4fbb05a4-3791-459b-b773-5517a464e4d7",
@@ -424250,7 +425211,7 @@
         }
       ],
       "name": "YONATSU",
-      "classification": null,
+      "classification": "Aerolite",
       "locality": "Yonatsu Mura (about 37° 15' N, 139° 10' E), District of Kambara, Province of Echigo, North Japan.",
       "eventDate": "1836, June 12",
       "confidence": "medium"
