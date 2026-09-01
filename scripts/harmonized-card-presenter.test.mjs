@@ -264,7 +264,8 @@ test("representative corrected and unresolved specimen cards preserve the comple
   assert.equal(fact(present(corrected), "Current Meteoritical Bulletin name"), corrected.parentRecord.metbull.canonicalName);
   assert.equal(fact(present(unresolved), "Current Meteoritical Bulletin name"), "Unknown");
   assert.match(styles, /overflow-wrap: anywhere;/u);
-  assert.match(styles, /@media \(max-width: 320px\)[\s\S]*grid-template-columns: minmax\(0, 1fr\);/u);
+  assert.match(styles, /\.record-meta div \{[^}]*grid-template-columns: minmax\(0, 1fr\);/u);
+  assert.match(styles, /\.record-meta dt \{[^}]*word-break: normal;[^}]*overflow-wrap: normal;/u);
 });
 
 test("catalog-specific source facts stay out of cards while representative hidden facts remain searchable", () => {
@@ -316,14 +317,14 @@ test("accessible shell, responsive breakpoints, approved cache, and immutable da
   assert.match(styles, /@media \(max-width: 1200px\)[\s\S]*\.catalog-grid \{ grid-template-columns: repeat\(2, minmax\(0, 1fr\)\); \}/u);
   assert.match(styles, /@media \(max-width: 700px\)[\s\S]*\.catalog-grid \{ grid-template-columns: 1fr; \}/u);
   assert.match(styles, /@media \(max-width: 420px\)[\s\S]*\.record-card \{ padding-inline: 1rem; \}/u);
-  assert.match(styles, /@media \(max-width: 320px\)[\s\S]*\.record-meta div \{ grid-template-columns: minmax\(0, 1fr\);/u);
-  assert.equal(app.CACHE_VERSION, "20260831-unknown-audit-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260831-unknown-audit-1");
+  assert.doesNotMatch(styles, /\.record-meta dt \{[^}]*overflow-wrap: anywhere;/u);
+  assert.equal(app.CACHE_VERSION, "20260901-card-labels-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260901-card-labels-1");
   for (const document of [html, catalogsHtml]) {
-    assert.match(document, /styles\.css\?v=20260831-unknown-audit-1/u);
-    assert.match(document, /app\.js\?v=20260831-unknown-audit-1/u);
+    assert.match(document, /styles\.css\?v=20260901-card-labels-1/u);
+    assert.match(document, /app\.js\?v=20260901-card-labels-1/u);
   }
-  assert.match(catalogsHtml, /catalogs\.js\?v=20260831-unknown-audit-1/u);
+  assert.match(catalogsHtml, /catalogs\.js\?v=20260901-card-labels-1/u);
   assert.deepEqual({
     catalog: sha256(catalogText),
     projections: sha256(projectionText),

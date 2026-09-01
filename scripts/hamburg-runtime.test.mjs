@@ -34,14 +34,14 @@ test("harmonized cards remain clean at desktop and narrow widths", () => {
   assert.match(html, /<p class="record-semantic-label"><\/p>/u);
   assert.match(html, /<dl class="record-meta" aria-label="Catalog record details"><\/dl>/u);
   assert.doesNotMatch(html, /record-holdings|holdings-list/u);
-  assert.match(styles, /\.record-meta div \{[^}]*grid-template-columns: 5\.25rem minmax\(0, 1fr\);/u);
+  assert.match(styles, /\.record-meta div \{[^}]*grid-template-columns: minmax\(0, 1fr\);/u);
   assert.match(styles, /@media \(max-width: 700px\) \{[\s\S]*\.catalog-grid \{ grid-template-columns: 1fr; \}/u);
-  assert.match(styles, /@media \(max-width: 320px\) \{[\s\S]*\.record-meta div \{ grid-template-columns: minmax\(0, 1fr\);/u);
+  assert.match(styles, /\.record-meta dt \{[^}]*word-break: normal;[^}]*overflow-wrap: normal;/u);
 });
 
-test("long harmonized fact labels wrap and stack at the narrowest breakpoint", () => {
-  assert.match(styles, /\.record-meta dt \{[^}]*overflow-wrap: anywhere;/u);
-  assert.match(styles, /@media \(max-width: 320px\) \{[\s\S]*gap: \.08rem;/u);
+test("long harmonized fact labels keep whole words and stack at every width", () => {
+  assert.doesNotMatch(styles, /\.record-meta dt \{[^}]*overflow-wrap: anywhere;/u);
+  assert.match(styles, /\.record-meta div \{[^}]*gap: \.08rem;/u);
 });
 
 test("schema9 runtime validates and preserves Hamburg additive facts", () => {

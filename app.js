@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260831-unknown-audit-1";
+const CACHE_VERSION = "20260901-card-labels-1";
 const ASSET_CACHE_VERSION = CACHE_VERSION;
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "name-asc";
