@@ -8,8 +8,8 @@
   <meta name="theme-color" content="#2d241b">
   <title>The Meteorite Cabinet | Historical Collection Index</title>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=20260901-card-labels-1">
-  <script src="./app.js?v=20260901-card-labels-1" defer></script>
+  <link rel="stylesheet" href="./styles.css?v=20260901-weight-toggle-1">
+  <script src="./app.js?v=20260901-weight-toggle-1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#catalog">Skip to catalog</a>
@@ -99,10 +99,16 @@
           </span>
         </label>
 
-        <label class="lineage-field">
-          <input id="lineage-only" name="lineage" type="checkbox" value="1">
-          <span>Known or suspected lineage only</span>
-        </label>
+        <div class="filter-toggles">
+          <label class="filter-toggle lineage-field">
+            <input id="lineage-only" name="lineage" type="checkbox" value="1">
+            <span>Known or suspected lineage only</span>
+          </label>
+          <label class="filter-toggle unknown-weight-field">
+            <input id="include-unknown-weight" name="include-unknown-weight" type="checkbox" checked>
+            <span>Include specimens without weight</span>
+          </label>
+        </div>
       </form>
     </section>
 

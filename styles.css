@@ -269,8 +269,9 @@ button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible
 .number-wrap input::-webkit-inner-spin-button { appearance: none; }
 .number-wrap b { padding-right: .8rem; color: var(--ink-soft); font-size: .75rem; font-weight: 400; }
 .range-rule { height: 1px; margin-bottom: 1.6rem; background: var(--rule); }
-.filters > .lineage-field { grid-column: 1 / -1; width: fit-content; display: flex; align-items: center; gap: .55rem; margin-top: -.35rem; padding: .25rem 0; color: var(--ink-soft); font-size: .78rem; font-weight: 700; cursor: pointer; }
-.lineage-field input { width: 1.1rem; height: 1.1rem; margin: 0; accent-color: var(--oxblood); }
+.filters > .filter-toggles { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: .45rem 1.5rem; margin-top: -.35rem; }
+.filter-toggle { width: fit-content; display: flex; align-items: center; gap: .55rem; padding: .25rem 0; color: var(--ink-soft); font-size: .78rem; font-weight: 700; cursor: pointer; }
+.filter-toggle input { flex: 0 0 auto; width: 1.1rem; height: 1.1rem; margin: 0; accent-color: var(--oxblood); }
 
 .results-section { padding: 3rem 0 6rem; }
 .results-bar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 1rem; margin-bottom: 1.3rem; }

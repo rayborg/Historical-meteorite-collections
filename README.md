@@ -186,6 +186,8 @@ The public presenter derives 18,896 display cards from the unchanged 14,176 pare
 
 Every specimen card uses one closed standard vocabulary. After the specimen identifier, semantic type, and source catalog meteorite name, every specimen displays these fact rows in order: **Current Meteoritical Bulletin name**, **Class**, **Specimen form**, **Source locality**, **Individual find location**, **Event**, **Lineage**, and **Specimen weight**. Unavailable values read **Unknown**. A resolved display-equivalent current name reads **Same as source catalog name** rather than repeating it. No catalog-specific holdings, provenance, coordinate, mineral-chemistry, amendment, total, representation, occurrence-count, or section labels are inserted into cards. Those public source facts remain searchable.
 
+The checked-by-default **Include specimens without weight** filter preserves the complete register. Clearing it removes only the 173 direct or projected specimen cards without an exact display mass; collection and regional observations remain listed.
+
 `direct-specimen` and `projected-atomic-specimen` cards are specimen presentations. `collection-observation` and `regional-observation` cards are explicitly observations and omit specimen-only fields. **Specimen form** is controlled only by reviewed card kind; it is not inferred from locality, coordinates, names, MetBull data, or descriptive prose. **Source locality** preserves the catalog's locality scope and is not an individual find-location field. The 111 typed specimen locations display exactly; the other 12,306 specimen cards display **Individual find location: Unknown**.
 
 ### Reviewed Specimen Cards

@@ -79,10 +79,10 @@ test("main template presents lineage through the harmonized specimen contract", 
   });
   assert.doesNotMatch(source, /\.innerHTML\b/);
   assert.doesNotMatch(css, /\.earlier-records \{/);
-  assert.equal(app.CACHE_VERSION, "20260901-card-labels-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260901-card-labels-1");
-  assert.match(html, /styles\.css\?v=20260901-card-labels-1/);
-  assert.match(html, /app\.js\?v=20260901-card-labels-1/);
+  assert.equal(app.CACHE_VERSION, "20260901-weight-toggle-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260901-weight-toggle-1");
+  assert.match(html, /styles\.css\?v=20260901-weight-toggle-1/);
+  assert.match(html, /app\.js\?v=20260901-weight-toggle-1/);
   for (const file of ["possible-specimen-lineages.html", "possible-specimen-lineages.css", "possible-specimen-lineages.js"]) {
     await assert.rejects(access(path.join(projectRoot, file)));
   }
@@ -93,10 +93,11 @@ test("lineage filter markup and asynchronous settlement remain fail-closed", asy
     readFile(path.join(projectRoot, "index.html"), "utf8"),
     readFile(path.join(projectRoot, "app.js"), "utf8"),
   ]);
-  assert.match(html, /<label class="lineage-field">\s*<input id="lineage-only" name="lineage" type="checkbox" value="1">\s*<span>Known or suspected lineage only<\/span>\s*<\/label>/);
+  assert.match(html, /<label class="filter-toggle lineage-field">\s*<input id="lineage-only" name="lineage" type="checkbox" value="1">\s*<span>Known or suspected lineage only<\/span>\s*<\/label>/);
+  assert.match(html, /<input id="include-unknown-weight" name="include-unknown-weight" type="checkbox" checked>/);
   assert.match(source, /filterRecords\(records, currentFilters\(\), earlierRecordsByLaterId\)/);
   assert.match(source, /if \(index\.size \|\| elements\.lineageOnly\.checked\) render\(\);/);
-  assert.match(source, /filters\.lineageOnly \|\| filters\.sort !== DEFAULT_SORT/);
+  assert.match(source, /filters\.lineageOnly \|\| filters\.includeUnknownWeight === false \|\| filters\.sort !== DEFAULT_SORT/);
   assert.match(source, /function clearFilters\(\) \{\s*elements\.form\.reset\(\);/);
   assert.doesNotMatch(source, /\.innerHTML\b/);
 });

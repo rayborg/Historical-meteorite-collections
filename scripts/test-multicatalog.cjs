@@ -77,7 +77,10 @@ function recordById(catalog, recordId) {
 }
 
 function filters(overrides = {}) {
-  return { query: "", catalog: null, min: null, max: null, lineageOnly: false, sort: "designation-asc", ...overrides };
+  return {
+    query: "", catalog: null, min: null, max: null,
+    lineageOnly: false, includeUnknownWeight: true, sort: "designation-asc", ...overrides
+  };
 }
 
 function specimenSource({
@@ -952,19 +955,23 @@ test("catalog dropdown labels are concise and leave summary titles unchanged", (
   assert.equal(app.catalogDropdownLabel({ label: "Future catalog" }), "Future catalog");
 });
 
-test("URL filters strictly round-trip lineage state and cache version remains stable", () => {
+test("URL filters strictly round-trip lineage and unknown-weight state", () => {
   const registry = app.normalizeCatalogRegistry(fixture.metadata);
   const html = readFileSync(join(__dirname, "..", "index.html"), "utf8");
-  const parsed = app.parseUrlFilters("?q=catalog+item+2&catalog=nininger-1933&min=3&max=12&lineage=1&sort=weight-desc", registry);
+  const parsed = app.parseUrlFilters("?q=catalog+item+2&catalog=nininger-1933&min=3&max=12&lineage=1&weighted=1&sort=weight-desc", registry);
   assert.deepEqual(parsed, {
-    query: "catalog item 2", catalog: "nininger-1933", min: "3", max: "12", lineageOnly: true, sort: "weight-desc"
+    query: "catalog item 2", catalog: "nininger-1933", min: "3", max: "12",
+    lineageOnly: true, includeUnknownWeight: false, sort: "weight-desc"
   });
-  assert.equal(app.serializeUrlFilters(parsed).toString(), "q=catalog+item+2&catalog=nininger-1933&min=3&max=12&lineage=1&sort=weight-desc");
+  assert.equal(app.serializeUrlFilters(parsed).toString(), "q=catalog+item+2&catalog=nininger-1933&min=3&max=12&lineage=1&weighted=1&sort=weight-desc");
   for (const search of ["", "?lineage=0", "?lineage=true", "?lineage=1&lineage=1", "?lineage=1&lineage=0"]) {
     assert.equal(app.parseUrlFilters(search, registry).lineageOnly, false, search);
   }
-  assert.equal(app.CACHE_VERSION, "20260901-card-labels-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260901-card-labels-1");
+  for (const search of ["", "?weighted=0", "?weighted=true", "?weighted=1&weighted=1", "?weighted=1&weighted=0"]) {
+    assert.equal(app.parseUrlFilters(search, registry).includeUnknownWeight, true, search);
+  }
+  assert.equal(app.CACHE_VERSION, "20260901-weight-toggle-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260901-weight-toggle-1");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.ASSET_CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.ASSET_CACHE_VERSION}`));
 });
@@ -1322,14 +1329,14 @@ test("an empty catalog filter retains matching records from every catalog", () =
 test("URL filters discard unknown catalogs and malformed values", () => {
   const registry = app.normalizeCatalogRegistry(fixture.metadata);
   assert.deepEqual(app.parseUrlFilters("?catalog=missing&min=-1&max=NaN&sort=unknown", registry),
-    { query: "", catalog: "", min: "", max: "", lineageOnly: false, sort: app.DEFAULT_SORT });
+    { query: "", catalog: "", min: "", max: "", lineageOnly: false, includeUnknownWeight: true, sort: app.DEFAULT_SORT });
   assert.equal(app.serializeUrlFilters({ query: "", catalog: "", min: "-1", max: "Infinity", sort: "unknown" }).toString(), "");
 });
 
 test("URL filters discard crossed minimum and maximum ranges", () => {
   const registry = app.normalizeCatalogRegistry(fixture.metadata);
   assert.deepEqual(app.parseUrlFilters("?q=H27&catalog=huss-1976&min=50&max=10&sort=name-asc", registry),
-    { query: "H27", catalog: "huss-1976", min: "", max: "", lineageOnly: false, sort: "name-asc" });
+    { query: "H27", catalog: "huss-1976", min: "", max: "", lineageOnly: false, includeUnknownWeight: true, sort: "name-asc" });
   assert.equal(app.serializeUrlFilters({
     query: "H27", catalog: "huss-1976", min: "50", max: "10", sort: "name-asc"
   }).toString(), "q=H27&catalog=huss-1976");

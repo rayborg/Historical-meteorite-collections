@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260901-card-labels-1";
+const CACHE_VERSION = "20260901-weight-toggle-1";
 const ASSET_CACHE_VERSION = CACHE_VERSION;
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "name-asc";
@@ -333,6 +333,7 @@ const elements = typeof document === "undefined" || !document.querySelector("#fi
   min: document.querySelector("#min-weight"),
   max: document.querySelector("#max-weight"),
   lineageOnly: document.querySelector("#lineage-only"),
+  includeUnknownWeight: document.querySelector("#include-unknown-weight"),
   sort: document.querySelector("#sort"),
   results: document.querySelector("#results"),
   count: document.querySelector("#result-count"),
@@ -2241,12 +2242,16 @@ function lineageEntriesForSpecimenCard(descriptor, entries) {
 function filterSpecimenCardDescriptors(descriptors, filters, lineageIndex = new Map()) {
   return descriptors.filter((descriptor) => {
     const masses = specimenCardDescriptorMasses(descriptor);
+    const specimen = [HARMONIZED_CARD_KINDS.specimen, HARMONIZED_CARD_KINDS.atomic].includes(
+      classifyHarmonizedCard(descriptor)
+    );
+    const unknownWeightMatches = filters.includeUnknownWeight !== false || !specimen || masses.length > 0;
     const weightMatches = (filters.min === null && filters.max === null) || masses.some((grams) =>
       (filters.min === null || grams >= filters.min) && (filters.max === null || grams <= filters.max));
     const lineageMatches = filters.lineageOnly !== true || lineageEntriesForSpecimenCard(
       descriptor, lineageIndex.get(descriptor.parentRecord.id) || []
     ).length > 0;
-    return weightMatches && lineageMatches;
+    return unknownWeightMatches && weightMatches && lineageMatches;
   });
 }
 
@@ -2714,6 +2719,7 @@ function currentFilters() {
     min: Number.isFinite(min) ? min : null,
     max: Number.isFinite(max) ? max : null,
     lineageOnly: elements.lineageOnly.checked,
+    includeUnknownWeight: elements.includeUnknownWeight.checked,
     sort: VALID_SORTS.has(elements.sort.value) ? elements.sort.value : DEFAULT_SORT
   };
 }
@@ -3322,7 +3328,7 @@ function moveFolio(direction) {
 
 function hasActiveFilters() {
   const filters = currentFilters();
-  return Boolean(filters.query || filters.catalog || filters.min !== null || filters.max !== null || filters.lineageOnly || filters.sort !== DEFAULT_SORT);
+  return Boolean(filters.query || filters.catalog || filters.min !== null || filters.max !== null || filters.lineageOnly || filters.includeUnknownWeight === false || filters.sort !== DEFAULT_SORT);
 }
 
 function clearFilters() {
@@ -3367,6 +3373,7 @@ function serializeUrlFilters(filters) {
   if (min !== "") params.set("min", String(min));
   if (max !== "") params.set("max", String(max));
   if (filters.lineageOnly === true) params.set("lineage", "1");
+  if (filters.includeUnknownWeight === false) params.set("weighted", "1");
   if (VALID_SORTS.has(filters.sort) && filters.sort !== DEFAULT_SORT) params.set("sort", filters.sort);
   return params;
 }
@@ -3375,6 +3382,7 @@ function parseUrlFilters(search, registry = {}) {
   const params = new URLSearchParams(search);
   const catalog = params.get("catalog") || "";
   const lineage = params.getAll("lineage");
+  const weighted = params.getAll("weighted");
   const { min, max } = normalizeWeightRange(params.get("min"), params.get("max"));
   const sort = params.get("sort") || DEFAULT_SORT;
   return {
@@ -3383,6 +3391,7 @@ function parseUrlFilters(search, registry = {}) {
     min,
     max,
     lineageOnly: lineage.length === 1 && lineage[0] === "1",
+    includeUnknownWeight: !(weighted.length === 1 && weighted[0] === "1"),
     sort: VALID_SORTS.has(sort) ? sort : DEFAULT_SORT
   };
 }
@@ -3394,6 +3403,7 @@ function applyUrlState() {
   elements.min.value = filters.min;
   elements.max.value = filters.max;
   elements.lineageOnly.checked = filters.lineageOnly;
+  elements.includeUnknownWeight.checked = filters.includeUnknownWeight;
   elements.sort.value = filters.sort;
 }
 
@@ -3443,6 +3453,12 @@ if (elements) {
   elements.min.addEventListener("input", scheduleRender);
   elements.max.addEventListener("input", scheduleRender);
   elements.lineageOnly.addEventListener("change", () => {
+    if (validateWeights()) {
+      visibleLimit = PAGE_SIZE;
+      render();
+    }
+  });
+  elements.includeUnknownWeight.addEventListener("change", () => {
     if (validateWeights()) {
       visibleLimit = PAGE_SIZE;
       render();

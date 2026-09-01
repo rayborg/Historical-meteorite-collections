@@ -296,7 +296,10 @@ test("catalog-specific source facts stay out of cards while representative hidde
 });
 
 test("projection changes display-card multiplicity without changing parent result counts", () => {
-  const filters = { query: "", catalog: null, min: null, max: null, lineageOnly: false, sort: app.DEFAULT_SORT };
+  const filters = {
+    query: "", catalog: null, min: null, max: null,
+    lineageOnly: false, includeUnknownWeight: true, sort: app.DEFAULT_SORT
+  };
   assert.equal(app.filterRecords(records, filters, lineageIndex).length, 14176);
   assert.equal(new Set(descriptors.map(({ parentRecord }) => parentRecord.id)).size, 14176);
   for (const descriptor of catalog.metadata.catalogs) {
@@ -307,24 +310,58 @@ test("projection changes display-card multiplicity without changing parent resul
   }
 });
 
+test("unknown-weight toggle excludes only the 173 weightless specimen cards", () => {
+  const inclusive = app.filterSpecimenCardDescriptors(descriptors, {
+    min: null, max: null, lineageOnly: false, includeUnknownWeight: true
+  }, lineageIndex);
+  const weightedOnly = app.filterSpecimenCardDescriptors(descriptors, {
+    min: null, max: null, lineageOnly: false, includeUnknownWeight: false
+  }, lineageIndex);
+  assert.equal(inclusive.length, 18896);
+  assert.equal(weightedOnly.length, 18723);
+  assert.equal(inclusive.length - weightedOnly.length, 173);
+  assert(weightedOnly.every((descriptor) => {
+    const kind = app.classifyHarmonizedCard(descriptor);
+    return !["direct-specimen", "projected-atomic-specimen"].includes(kind) ||
+      app.specimenCardDescriptorMasses(descriptor).length > 0;
+  }));
+  assert.equal(weightedOnly.filter((descriptor) =>
+    ["collection-observation", "regional-observation"].includes(app.classifyHarmonizedCard(descriptor))).length, 6479);
+
+  const byParent = Map.groupBy(descriptors, ({ parentRecord }) => parentRecord.id);
+  const mixed = [...byParent.values()].find((cards) => {
+    const masses = cards.map((descriptor) => app.specimenCardDescriptorMasses(descriptor).length > 0);
+    return masses.includes(true) && masses.includes(false);
+  });
+  assert(mixed);
+  const mixedFiltered = app.filterSpecimenCardDescriptors(mixed, {
+    min: null, max: null, lineageOnly: false, includeUnknownWeight: false
+  });
+  assert(mixedFiltered.length > 0 && mixedFiltered.length < mixed.length);
+  assert(mixedFiltered.every((descriptor) => app.specimenCardDescriptorMasses(descriptor).length > 0));
+});
+
 test("accessible shell, responsive breakpoints, approved cache, and immutable data hashes are locked", () => {
   assert.match(html, /<div id="results" class="catalog-grid" aria-busy="true"><\/div>/u);
   assert.match(html, /id="status" class="status" role="status" aria-live="polite"/u);
   assert.match(html, /<article class="record-card">[\s\S]*<p class="record-semantic-label"><\/p>[\s\S]*<h3 class="record-name"><\/h3>/u);
   assert.match(html, /<dl class="record-meta" aria-label="Catalog record details"><\/dl>/u);
   assert.match(html, /<p class="record-source"><\/p>/u);
+  assert.match(html, /<input id="include-unknown-weight" name="include-unknown-weight" type="checkbox" checked>/u);
+  assert.match(html, /<span>Include specimens without weight<\/span>/u);
+  assert.match(styles, /\.filters > \.filter-toggles \{[^}]*display: flex;[^}]*flex-wrap: wrap;/u);
   assert.match(styles, /\.catalog-grid \{[^}]*grid-template-columns: repeat\(3, minmax\(0, 1fr\)\);/u);
   assert.match(styles, /@media \(max-width: 1200px\)[\s\S]*\.catalog-grid \{ grid-template-columns: repeat\(2, minmax\(0, 1fr\)\); \}/u);
   assert.match(styles, /@media \(max-width: 700px\)[\s\S]*\.catalog-grid \{ grid-template-columns: 1fr; \}/u);
   assert.match(styles, /@media \(max-width: 420px\)[\s\S]*\.record-card \{ padding-inline: 1rem; \}/u);
   assert.doesNotMatch(styles, /\.record-meta dt \{[^}]*overflow-wrap: anywhere;/u);
-  assert.equal(app.CACHE_VERSION, "20260901-card-labels-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260901-card-labels-1");
+  assert.equal(app.CACHE_VERSION, "20260901-weight-toggle-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260901-weight-toggle-1");
   for (const document of [html, catalogsHtml]) {
-    assert.match(document, /styles\.css\?v=20260901-card-labels-1/u);
-    assert.match(document, /app\.js\?v=20260901-card-labels-1/u);
+    assert.match(document, /styles\.css\?v=20260901-weight-toggle-1/u);
+    assert.match(document, /app\.js\?v=20260901-weight-toggle-1/u);
   }
-  assert.match(catalogsHtml, /catalogs\.js\?v=20260901-card-labels-1/u);
+  assert.match(catalogsHtml, /catalogs\.js\?v=20260901-weight-toggle-1/u);
   assert.deepEqual({
     catalog: sha256(catalogText),
     projections: sha256(projectionText),
