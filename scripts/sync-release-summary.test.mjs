@@ -16,9 +16,10 @@ import {
   syncDocuments,
 } from "./sync-release-summary.mjs";
 
-const [productionCatalog, productionFolios] = await Promise.all([
+const [productionCatalog, productionFolios, productionProjections] = await Promise.all([
   readFile(new URL("../data/catalog.json", import.meta.url), "utf8").then(JSON.parse),
   readFile(new URL("../data/folios.json", import.meta.url), "utf8").then(JSON.parse),
+  readFile(new URL("../data/specimen-card-projections.json", import.meta.url), "utf8").then(JSON.parse),
 ]);
 
 function fixture() {
@@ -109,8 +110,8 @@ test("derives release counts, page spans, MetBull status, and folios from record
   assert.equal(summary.folios.displayCatalogCount, 1);
 });
 
-test("locks the production schema9 release summary", () => {
-  const summary = buildReleaseSummary(productionCatalog, productionFolios);
+test("locks the production schema10 release summary and display projection totals", () => {
+  const summary = buildReleaseSummary(productionCatalog, productionFolios, productionProjections);
 
   assert.deepEqual({
     schemaVersion: summary.schemaVersion,
@@ -119,18 +120,28 @@ test("locks the production schema9 release summary", () => {
     sourcePageCount: summary.sourcePageCount,
     citedPageCount: summary.citedPageCount,
     metbull: summary.metbull,
+    display: summary.display,
     pending: summary.recordCount - summary.metbull.reviewed,
     folioCatalogCount: summary.folios.catalogs.length,
     folioPageCount: summary.folios.pageCount,
   }, {
-    schemaVersion: 9,
-    catalogCount: 37,
-    recordCount: 14176,
-    sourcePageCount: 1447,
-    citedPageCount: 1179,
-    metbull: { reviewed: 10609, resolved: 10368, unresolved: 241 },
-    pending: 3567,
-    folioCatalogCount: 37,
+    schemaVersion: 10,
+    catalogCount: 40,
+    recordCount: 14477,
+    sourcePageCount: 1550,
+    citedPageCount: 1282,
+    metbull: { reviewed: 10904, resolved: 10600, unresolved: 304 },
+    display: {
+      projectionCount: 2224,
+      atomicCardCount: 7224,
+      sourceContextCount: 1694,
+      descriptorCount: 19477,
+      specimenCount: 12966,
+      observationCount: 6511,
+      weightedOnlyExcludedSpecimenCount: 173,
+    },
+    pending: 3573,
+    folioCatalogCount: 40,
     folioPageCount: 49,
   });
   assert.deepEqual(

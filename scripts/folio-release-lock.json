@@ -36,6 +36,13 @@
       "basisUrl": null,
       "pageIds": []
     },
+    "brown-1916": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "basis": null,
+      "basisUrl": null,
+      "pageIds": []
+    },
     "buchner-1863": {
       "displayPolicy": "blocked",
       "rightsStatus": "undetermined",
@@ -78,6 +85,13 @@
       "pageIds": []
     },
     "farrington-1916": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "basis": null,
+      "basisUrl": null,
+      "pageIds": []
+    },
+    "foote-1909": {
       "displayPolicy": "blocked",
       "rightsStatus": "undetermined",
       "basis": null,
@@ -195,6 +209,13 @@
       "pageIds": []
     },
     "merrill-1916": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "basis": null,
+      "basisUrl": null,
+      "pageIds": []
+    },
+    "minnesota-1892": {
       "displayPolicy": "blocked",
       "rightsStatus": "undetermined",
       "basis": null,

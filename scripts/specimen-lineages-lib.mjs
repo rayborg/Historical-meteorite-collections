@@ -27,6 +27,7 @@ export const EVIDENCE_STRENGTH_ORDER = [
   "limited-matching-evidence",
 ];
 export const EMPTY_REVIEW_SOURCE = Object.freeze({ schemaVersion: 1, reviews: Object.freeze([]) });
+const REVIEW_GATED_CATALOGS = new Set(["brown-1916", "minnesota-1892"]);
 
 const ROOT_KEYS = ["metadata", "relationships"];
 const METADATA_KEYS = ["schemaVersion", "scope", "source", "collectionSeries", "methodology", "counts"];
@@ -173,7 +174,7 @@ function makeObservation(record, descriptor, { designation, designationPath, mas
 }
 
 function catalogDescriptors(catalog) {
-  assert(catalog?.metadata?.schemaVersion === 9, "catalog metadata schemaVersion must be 9");
+  assert(catalog?.metadata?.schemaVersion === 10, "catalog metadata schemaVersion must be 10");
   assert(Array.isArray(catalog.metadata.catalogs), "catalog metadata catalogs must be an array");
   assert(Array.isArray(catalog.records), "catalog records must be an array");
   const descriptors = new Map(catalog.metadata.catalogs.map((descriptor) => [descriptor.id, descriptor]));
@@ -210,6 +211,7 @@ export function flattenMassObservations(catalog) {
       }));
     } else if (descriptor.recordModel === "catalog-number" || descriptor.recordModel === "collection-entry") {
       record.holdings.forEach((holding, holdingIndex) => holding.weights.forEach((weight, weightIndex) => {
+        if (REVIEW_GATED_CATALOGS.has(record.catalogId) && !holding.description.startsWith("Specimen:")) return;
         if (weight.kind !== undefined && weight.kind !== "individual-holding") return;
         add(record, descriptor, {
           designation: null,
@@ -508,8 +510,12 @@ export function buildSpecimenLineages(catalog, reviewSource = EMPTY_REVIEW_SOURC
       }
     }
   }
+  const reviewedCandidateIds = new Set(reviewSource.reviews.map(({ candidateId }) => candidateId));
+  const acceptedPossibleRelationships = possibleRelationships.filter((relationship) =>
+    !relationship.observations.some(({ catalogId }) => REVIEW_GATED_CATALOGS.has(catalogId)) ||
+    reviewedCandidateIds.has(relationship.id));
   const inventoryResult = buildSameInventoryRelationships(inventoryObservations, collectionSeries);
-  const relationships = [...possibleRelationships, ...inventoryResult.relationships].sort((a, b) => compareText(a.id, b.id));
+  const relationships = [...acceptedPossibleRelationships, ...inventoryResult.relationships].sort((a, b) => compareText(a.id, b.id));
   assert(new Set(relationships.map(({ id }) => id)).size === relationships.length, "generated relationship IDs must be unique");
   applyReviewSource(relationships, reviewSource);
   const possible = relationships.filter(({ relationship }) => relationship === "possible-match");

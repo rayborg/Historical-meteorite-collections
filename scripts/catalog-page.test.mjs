@@ -21,7 +21,7 @@ function clone(value) {
 function fetchFixture(catalogPayload = catalog, folioPayload = folios) {
   return async (url) => ({
     ok: true,
-    json: async () => url.endsWith("catalog.json") ? catalogPayload : folioPayload
+    json: async () => url.includes("catalog.json") ? catalogPayload : folioPayload
   });
 }
 
@@ -80,9 +80,9 @@ test("production cards suppress equal canonical names, including Aba Panu, while
 
   assert.deepEqual(
     { reviewed: reviewed.length, resolved: resolved.length, unresolved: unresolved.length, pending: catalog.records.length - reviewed.length },
-    { reviewed: 10609, resolved: 10368, unresolved: 241, pending: 3567 }
+    { reviewed: 10904, resolved: 10600, unresolved: 304, pending: 3573 }
   );
-  assert.deepEqual({ equivalent: equivalent.length, substantive: resolved.length - equivalent.length }, { equivalent: 9189, substantive: 1179 });
+  assert.deepEqual({ equivalent: equivalent.length, substantive: resolved.length - equivalent.length }, { equivalent: 9338, substantive: 1262 });
   const abaPanu = catalog.records.find(({ id }) => id === "obs-bc3edcf5-25d8-4921-8ace-ceedd6882e3b");
   assert.equal(abaPanu.name, "Aba Panu");
   assert.equal(abaPanu.metbull.canonicalName, "Aba Panu");
@@ -115,13 +115,13 @@ test("production cards suppress equal canonical names, including Aba Panu, while
 test("production catalog directory preserves all canonical cards and authorized actions", async () => {
   const directory = await catalogPage.loadCatalogDirectoryData(fetchFixture());
   const expected = app.catalogSummaryEntries(app.normalizeCatalogRegistry(catalog.metadata));
-  assert.equal(directory.entries.length, 37);
+  assert.equal(directory.entries.length, 40);
   assert.deepEqual(directory.entries.map(({ folios: _pages, ...summary }) => summary), expected);
   assert.deepEqual(directory.entries.map(({ id }) => id), [
     "lucas-1813", "chladni-1819", "chladni-1825", "haidinger-1859", "buchner-1863",
-    "nordenskiold-1870", "ward-1881", "ball-1882", "usnm-1886", "hovey-1896", "washington-1897",
-    "tassin-1902", "hogbom-1902", "farrington-1903", "ward-1904", "schreiter-1912", "foote-1912",
-    "anderson-1913", "hamburg-1913", "farrington-1916", "merrill-1916", "kantor-1920", "prior-1923", "madrid-1923", "palache-1926",
+    "nordenskiold-1870", "ward-1881", "ball-1882", "usnm-1886", "minnesota-1892", "hovey-1896", "washington-1897",
+    "tassin-1902", "hogbom-1902", "farrington-1903", "ward-1904", "foote-1909", "schreiter-1912", "foote-1912",
+    "anderson-1913", "hamburg-1913", "brown-1916", "farrington-1916", "merrill-1916", "kantor-1920", "prior-1923", "madrid-1923", "palache-1926",
     "nininger-1933", "reeds-1937", "astapovich-1938", "hodge-smith-1939", "barnes-1940", "nininger-1950", "mason-1964",
     "huss-1976", "victoria-land-1982", "huss-1986", "kanagawa-1996", "asu-2024-09"
   ]);
@@ -198,9 +198,9 @@ test("homepage and catalog page markup keep navigation and UI states accessible"
   assert.match(html, /id="catalog-directory-list" aria-busy="true"/);
   assert.match(html, /id="catalog-directory-error"[^>]*role="alert"[^>]*hidden/);
   assert.match(html, /<noscript><p class="empty-state">/);
-  assert.match(html, /catalogs\.js\?v=20260901-weight-toggle-1/);
-  assert.match(html, /app\.js\?v=20260901-weight-toggle-1/);
-  assert.match(html, /styles\.css\?v=20260901-weight-toggle-1/);
+  assert.match(html, /catalogs\.js\?v=20260902-backlog39-wave1-1/);
+  assert.match(html, /app\.js\?v=20260902-backlog39-wave1-1/);
+  assert.match(html, /styles\.css\?v=20260902-backlog39-wave1-1/);
   assert.doesNotMatch(source, /\.innerHTML\b/);
   assert.match(source, /\.textContent = summary\.label/);
   assert.doesNotMatch(source, /error\.message/);

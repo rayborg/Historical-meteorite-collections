@@ -69,7 +69,7 @@ function syntheticManifest(sourceRecords, projections) {
     metadata: {
       schemaVersion: 4,
       scope: "reviewed-atomic-specimen-card-display-projections",
-      catalogSchemaVersion: 9,
+      catalogSchemaVersion: 10,
       sourceRecordCount: sourceRecords.length,
       sourceCatalogSha256: "0".repeat(64),
       projectionCount: projections.length,
@@ -377,9 +377,9 @@ test("digest lock loads the exact set and fails closed to parent cards on mismat
   const altered = structuredClone(manifest);
   altered.projections[0].cards[0].clause.end -= 1;
   assert.equal((await app.loadSpecimenCardProjectionIndex(records, async () => projectionResponse(altered), options)).size, 0);
-  assert.equal(app.SPECIMEN_CARD_SOURCE_CATALOG_SHA256, "f5435256d1ff5c9500217112c8beeb7141e278487b3a1e98b5bb86e162739c0e");
-  assert.equal(app.SPECIMEN_CARD_PROJECTION_DATA_SHA256, "5df8dd03261f1ba47c374401fa5a1df1828860a7802adb680e56c7bcf1ce4d1e");
-  assert.equal(app.SPECIMEN_CARD_PROJECTION_SET_SHA256, "54eabe28b7cc7b885f3e980d7e5962f01eb04aed39cedb30bc9f6d334ea3dede");
+  assert.equal(app.SPECIMEN_CARD_SOURCE_CATALOG_SHA256, "9a921861c782abe1218e2d3b33bc2fc0b229908ce0a3c08e93bdc2596b91c536");
+  assert.equal(app.SPECIMEN_CARD_PROJECTION_DATA_SHA256, "c8d705ac6b41ec9cbd16d67229efb454b9610e374e37c8b6f7b5eadd62109986");
+  assert.equal(app.SPECIMEN_CARD_PROJECTION_SET_SHA256, "8e7c185771d0a4bb135b0966416cc93dedfb0d8d09ede6f1c5c3a8dd0bba41cf");
 });
 
 test("rendering is text-only, omits context cards, and synchronizes cache keys", () => {
@@ -391,18 +391,18 @@ test("rendering is text-only, omits context cards, and synchronizes cache keys",
   assert.match(html, /<p class="record-semantic-label"><\/p>/u);
   assert.match(html, /<dl class="record-meta" aria-label="Catalog record details"><\/dl>/u);
   assert.doesNotMatch(html, /specimen-position|record-holdings|earlier-records/u);
-  assert.match(html, /styles\.css\?v=20260901-weight-toggle-1/u);
-  assert.match(html, /app\.js\?v=20260901-weight-toggle-1/u);
-  assert.equal(app.ASSET_CACHE_VERSION, "20260901-weight-toggle-1");
+  assert.match(html, /styles\.css\?v=20260902-backlog39-wave1-1/u);
+  assert.match(html, /app\.js\?v=20260902-backlog39-wave1-1/u);
+  assert.equal(app.ASSET_CACHE_VERSION, "20260902-backlog39-wave1-1");
 });
 
-test("production schema-4 projection fixture validates against schema 9", () => {
+test("production schema-4 projection fixture validates against schema 10", () => {
   assert.equal(sourceCatalogSha256, manifest.metadata.sourceCatalogSha256);
   assert.deepEqual([
     manifest.metadata.projectionCount,
     manifest.metadata.atomicCardCount,
     manifest.metadata.sourceContextCardCount,
-  ], [1955, 6675, 1657]);
+  ], [2224, 7224, 1694]);
   assert.equal(app.validateSpecimenCardManifest(manifest, records, { sourceCatalogSha256 }), true);
   const index = app.deriveSpecimenCardProjectionIndex(manifest, records, { sourceCatalogSha256 });
   assert.equal(index.size, manifest.metadata.projectionCount);
@@ -410,9 +410,9 @@ test("production schema-4 projection fixture validates against schema 9", () => 
   const descriptors = app.expandSpecimenCardDescriptors(projectedRecords, index);
   assert.equal(descriptors.filter(({ kind }) => kind === "atomic").length, manifest.metadata.atomicCardCount);
   assert.equal(descriptors.filter(({ kind }) => kind === "context").length, 0);
-  assert.equal(descriptors.filter(({ massPath }) => massPath !== null).length, 6656);
+  assert.equal(descriptors.filter(({ massPath }) => massPath !== null).length, 7194);
   assert.equal(descriptors.filter(({ repeatedMass }) => repeatedMass !== null).length, 2);
-  assert.equal(descriptors.filter(({ massPath, repeatedMass }) => massPath === null && repeatedMass === null).length, 17);
+  assert.equal(descriptors.filter(({ massPath, repeatedMass }) => massPath === null && repeatedMass === null).length, 28);
   assert(descriptors.filter(({ massPath }) => massPath !== null).every((descriptor) => {
     const [grams] = app.specimenCardDescriptorMasses(descriptor);
     return grams === app.resolveSpecimenCardSelection(
@@ -438,8 +438,8 @@ test("Madrid runtime keeps parent statistics while loading reviewed atomic cards
   const loadedRelationshipIds = new Set([...lineageIndex.values()].flatMap((entries) =>
     entries.map(({ relationshipId }) => relationshipId)));
 
-  assert.equal(app.calculateStatistics(records).observations, 14176);
-  assert.equal(app.calculateStatistics(records).catalogs, 37);
+  assert.equal(app.calculateStatistics(records).observations, 14477);
+  assert.equal(app.calculateStatistics(records).catalogs, 40);
   assert.equal(madridRecords.filter(({ id }) => projectionIndex.has(id)).length, 23);
   assert.equal(madridDescriptors.filter(({ kind }) => kind === "atomic").length, 54);
   assert.equal(madridDescriptors.filter(({ kind }) => kind === "context").length, 0);

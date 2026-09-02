@@ -6,15 +6,14 @@ const { join } = require("node:path");
 const app = require("../app.js");
 const publicFixture = require("./test-multicatalog-fixture.json");
 
-const runtimeSchemaVersion = Number(readFileSync(join(__dirname, "..", "app.js"), "utf8")
-  .match(/metadata\.schemaVersion === ([0-9]+)/u)?.[1]);
+const runtimeSchemaVersion = app.CATALOG_SCHEMA_VERSION;
 const fixture = structuredClone(publicFixture);
 fixture.metadata.schemaVersion = runtimeSchemaVersion;
 fixture.metadata.factualFields = [...publicFixture.metadata.factualFields];
 fixture.metadata.catalogs = fixture.metadata.catalogs.filter(({ id }) =>
-  !["hodge-smith-1939", "victoria-land-1982"].includes(id));
+  !["hodge-smith-1939", "victoria-land-1982", "dealer-1909"].includes(id));
 fixture.records = fixture.records.filter(({ catalogId }) =>
-  !["hodge-smith-1939", "victoria-land-1982"].includes(catalogId));
+  !["hodge-smith-1939", "victoria-land-1982", "dealer-1909"].includes(catalogId));
 Object.assign(fixture.metadata, {
   recordCount: 15,
   recordsWithDesignation: 7,
@@ -42,6 +41,9 @@ const REGIONAL_CENSUS_FACT_FIELDS = [
 const TABLE_A_SPECIMEN_FIELDS = [
   "id", "catalogId", "entryOrder", "specimenId", "weight", "classification", "olivineFa", "pyroxeneFs",
   "weathering", "locality", "catalogPage", "confidence",
+];
+const DEALER_OFFER_FACT_FIELDS = [
+  "id", "catalogId", "typeNumber", "name", "description", "catalogPage", "confidence",
 ];
 const HOLDING_FIELDS = ["designation", "kind", "description", "count", "weight"];
 const CATALOG_NUMBER_HOLDING_FIELDS = ["description", "provenance", "count", "weights"];
@@ -208,20 +210,24 @@ test("runtime fixture projection validates with exact legacy model-aware shapes"
   });
 });
 
-test("schema 9 public fixture carries both exact newer data models", () => {
-  assert.equal(publicFixture.metadata.schemaVersion, 9);
-  assert.deepEqual(publicFixture.metadata.catalogs.slice(-2).map(({ id, recordModel }) => [id, recordModel]), [
+test("schema 10 public fixture carries all three exact newer data models", () => {
+  assert.equal(publicFixture.metadata.schemaVersion, 10);
+  assert.deepEqual(publicFixture.metadata.catalogs.slice(-3).map(({ id, recordModel }) => [id, recordModel]), [
     ["hodge-smith-1939", "regional-census-fact"],
     ["victoria-land-1982", "table-a-specimen"],
+    ["dealer-1909", "dealer-offer-fact"],
   ]);
   for (const record of publicFixture.records.filter(({ catalogId }) =>
-    ["hodge-smith-1939", "victoria-land-1982"].includes(catalogId))) {
-    const expected = record.catalogId === "hodge-smith-1939" ? REGIONAL_CENSUS_FACT_FIELDS : TABLE_A_SPECIMEN_FIELDS;
+    ["hodge-smith-1939", "victoria-land-1982", "dealer-1909"].includes(catalogId))) {
+    const expected = record.catalogId === "hodge-smith-1939" ? REGIONAL_CENSUS_FACT_FIELDS :
+      record.catalogId === "victoria-land-1982" ? TABLE_A_SPECIMEN_FIELDS : DEALER_OFFER_FACT_FIELDS;
     assert.deepEqual(Object.keys(record).filter((key) => key !== "metbull").sort(), [...expected].sort());
   }
+  assert.deepEqual(publicFixture.records.filter(({ catalogId }) => catalogId === "dealer-1909")
+    .map(({ typeNumber }) => typeNumber), [95, 96]);
 });
 
-test("schema 9 permits individualFindLocation only as an optional specimen fact", () => {
+test("schema 10 permits individualFindLocation only as an optional specimen fact", () => {
   const located = clone(fixture);
   const specimen = located.records.find(({ id }) => id === "huss-h27-3");
   assert.equal(specimen.individualFindLocation, "32-19-13");
@@ -458,7 +464,7 @@ test("runtime rejects rooted, relative, UNC, and formula-continuation path probe
   }
 });
 
-test("runtime and build-time path logic share a locked factual formula allowlist", () => {
+test("runtime and standalone build-time path logic retain locked factual formula guards", () => {
   assert.deepEqual(app.FACTUAL_FORMULA_TOKENS, [
     "/Tii-vJatllO", "/-I", "/Nickel iron", "/?e/ermces", "(.\\l2O3)", "\\ 1.753",
     "D?i\\\\hvQQ", "\\i.", "\\N.", "\\N\\\\\\\\^m", "\\\\.", "\\iin.",
@@ -466,8 +472,9 @@ test("runtime and build-time path logic share a locked factual formula allowlist
   assert.deepEqual(app.FACTUAL_FORMULA_UNSAFE_PREFIXES, ["C:", "file:", "https:", "ftp:", "scheme:"]);
   const root = join(__dirname, "..");
   const validator = readFileSync(join(root, "scripts", "validate-public-catalog.mjs"), "utf8");
-  assert.match(validator, /FACTUAL_FORMULA_TOKENS,[\s\S]*containsUnsafePath,[\s\S]*require\("\.\.\/app\.js"\)/u);
-  assert.doesNotMatch(validator, /const (?:FACTUAL_FORMULA_TOKENS|PATH_LIKE_STRING|STRICT_PATH_LIKE_STRING)/u);
+  assert.match(validator, /const FACTUAL_FORMULA_TOKENS = Object\.freeze\(\[/u);
+  assert.match(validator, /function containsUnsafePath\(value\)/u);
+  assert.doesNotMatch(validator, /require\("\.\.\/app\.js"\)/u);
 });
 
 test("every factual formula token rejects every generated path continuation", () => {
@@ -970,8 +977,8 @@ test("URL filters strictly round-trip lineage and unknown-weight state", () => {
   for (const search of ["", "?weighted=0", "?weighted=true", "?weighted=1&weighted=1", "?weighted=1&weighted=0"]) {
     assert.equal(app.parseUrlFilters(search, registry).includeUnknownWeight, true, search);
   }
-  assert.equal(app.CACHE_VERSION, "20260901-weight-toggle-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260901-weight-toggle-1");
+  assert.equal(app.CACHE_VERSION, "20260902-backlog39-wave1-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260902-backlog39-wave1-1");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.ASSET_CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.ASSET_CACHE_VERSION}`));
 });
@@ -1027,6 +1034,7 @@ test("HTML and runtime expose the accessible harmonized card contract", () => {
   const script = readFileSync(join(root, "app.js"), "utf8");
   assert.match(html, /<p class="record-semantic-label"><\/p>/);
   assert.match(html, /<dl class="record-meta" aria-label="Catalog record details"><\/dl>/);
+  assert.match(html, /<section class="record-description" aria-label="Description" hidden>/);
   assert.match(html, /Source catalog name/);
   assert.match(html, /An open-source project started by Raymond Borges Hink in July 2026\./);
   assert.match(html, /Designation \/ source identifier, ascending/);

@@ -24,10 +24,10 @@ const victoria = records.filter(({ catalogId }) => catalogId === "victoria-land-
 const clone = structuredClone;
 const fixtureRecord = (document, catalogId) => document.records.find((record) => record.catalogId === catalogId);
 
-test("schema 9 runtime accepts all closed models and rejects schema or shape widening", () => {
-  assert.equal(app.validateCatalog(clone(fixture)).metadata.schemaVersion, 9);
+test("schema 10 runtime accepts all closed models and rejects schema or shape widening", () => {
+  assert.equal(app.validateCatalog(clone(fixture)).metadata.schemaVersion, 10);
   for (const mutate of [
-    (value) => { value.metadata.schemaVersion = 8; },
+    (value) => { value.metadata.schemaVersion = 9; },
     (value) => { value.metadata.factualFields.splice(9, 1); },
     (value) => { fixtureRecord(value, "hodge-smith-1939").holdings = []; },
     (value) => { fixtureRecord(value, "hodge-smith-1939").weight = { grams: 1 }; },
@@ -159,26 +159,26 @@ test("statistics count each Victoria mass once, no Hodge mass, and retain parent
   assert.deepEqual({ observations: hodgeStats.observations, grams: hodgeStats.grams }, { observations: 84, grams: 0 });
   assert.equal(victoriaStats.observations, 273);
   assert.equal(victoriaStats.grams, victoria.reduce((sum, record) => sum + record.weight.grams, 0));
-  assert.equal(total.observations, 14176);
-  assert.equal(total.catalogs, 37);
+  assert.equal(total.observations, 14477);
+  assert.equal(total.catalogs, 40);
   assert(Math.abs(total.grams - (app.calculateStatistics(legacy).grams + victoriaStats.grams)) < 1e-6);
 });
 
-test("lineage and projection enhancements bind schema 9 and exclude observation-only models from specimen claims", () => {
-  assert.equal(lineages.metadata.source.catalogSchemaVersion, 9);
+test("lineage and projection enhancements bind schema 10 and exclude observation-only models from specimen claims", () => {
+  assert.equal(lineages.metadata.source.catalogSchemaVersion, 10);
   const lineageIndex = app.deriveEarlierRecordIndex(lineages, records, registry);
   assert(hodge.every(({ id }) => !lineageIndex.has(id)));
   assert(victoria.every(({ id }) => !lineageIndex.has(id)));
   const sourceCatalogSha256 = createHash("sha256").update(catalogText).digest("hex");
   assert.equal(sourceCatalogSha256, projections.metadata.sourceCatalogSha256);
   const projectionIndex = app.deriveSpecimenCardProjectionIndex(projections, records, { sourceCatalogSha256 });
-  assert.equal(projectionIndex.size, 1955);
+  assert.equal(projectionIndex.size, 2224);
   const descriptors = app.expandSpecimenCardDescriptors([...hodge, ...victoria], projectionIndex);
   assert.equal(descriptors.length, 357);
   assert(descriptors.every(({ kind, projected }) => kind === "parent" && projected === false));
 });
 
-test("schema 9 card semantics, cache keys, responsive layout, and privacy boundary are explicit", () => {
+test("schema 10 card semantics, cache keys, responsive layout, and privacy boundary are explicit", () => {
   assert.match(html, /<p class="record-semantic-label"><\/p>/u);
   const hodgeDto = app.presentHarmonizedCard(hodge[0]);
   const victoriaDto = app.presentHarmonizedCard(victoria[0]);
@@ -188,10 +188,10 @@ test("schema 9 card semantics, cache keys, responsive layout, and privacy bounda
   assert.match(styles, /@media \(max-width: 700px\)[\s\S]*\.catalog-grid \{ grid-template-columns: 1fr; \}/u);
   assert.match(styles, /\.record-meta div \{[^}]*grid-template-columns: minmax\(0, 1fr\);/u);
   assert.match(styles, /\.record-meta dt \{[^}]*overflow-wrap: normal;/u);
-  assert.equal(app.CACHE_VERSION, "20260901-weight-toggle-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260901-weight-toggle-1");
-  assert.match(html, /styles\.css\?v=20260901-weight-toggle-1/u);
-  assert.match(html, /app\.js\?v=20260901-weight-toggle-1/u);
+  assert.equal(app.CACHE_VERSION, "20260902-backlog39-wave1-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260902-backlog39-wave1-1");
+  assert.match(html, /styles\.css\?v=20260902-backlog39-wave1-1/u);
+  assert.match(html, /app\.js\?v=20260902-backlog39-wave1-1/u);
   const newSourceRecords = catalog.records.filter(({ catalogId }) => ["hodge-smith-1939", "victoria-land-1982"].includes(catalogId));
   assert.doesNotMatch(JSON.stringify(newSourceRecords), /(?:raw[ _-]*ocr|\/private\/|\/Users\/|source[ _-]*image|scan[ _-]*(?:file|path)|research[ _-]*notes?)/iu);
 });

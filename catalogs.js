@@ -13,8 +13,8 @@ async function fetchCatalogDirectoryJson(url, fetcher) {
 async function loadCatalogDirectoryData(fetcher = fetch, runtime = catalogDirectoryRuntime) {
   if (!runtime) throw new Error("The public catalog runtime is unavailable.");
   const [catalog, folios] = await Promise.all([
-    fetchCatalogDirectoryJson("./data/catalog.json", fetcher),
-    fetchCatalogDirectoryJson("./data/folios.json", fetcher)
+    fetchCatalogDirectoryJson(`./data/catalog.json?v=${runtime.CACHE_VERSION}`, fetcher),
+    fetchCatalogDirectoryJson(`./data/folios.json?v=${runtime.CACHE_VERSION}`, fetcher)
   ]);
   const validatedCatalog = runtime.validateCatalog(catalog);
   const registry = runtime.normalizeCatalogRegistry(validatedCatalog.metadata);

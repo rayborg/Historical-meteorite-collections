@@ -3,10 +3,10 @@
     "schemaVersion": 2,
     "scope": "series-inventory-and-cross-source-candidates",
     "source": {
-      "catalogSchemaVersion": 9,
-      "recordCount": 14176,
-      "catalogCount": 37,
-      "flattenedMassObservationCount": 14367,
+      "catalogSchemaVersion": 10,
+      "recordCount": 14477,
+      "catalogCount": 40,
+      "flattenedMassObservationCount": 14905,
       "inventoryObservationCount": 3627
     },
     "collectionSeries": [
@@ -54,23 +54,23 @@
       ]
     },
     "counts": {
-      "relationshipCount": 1538,
+      "relationshipCount": 1560,
       "sameInventoryRelationshipCount": 195,
-      "possibleMatchRelationshipCount": 1343,
+      "possibleMatchRelationshipCount": 1365,
       "unreviewedPossibleMatchCount": 1339,
-      "exactMassPossibleMatchCount": 1115,
+      "exactMassPossibleMatchCount": 1137,
       "nearMassPossibleMatchCount": 228,
-      "metbullIdentityPossibleMatchCount": 1343,
+      "metbullIdentityPossibleMatchCount": 1365,
       "normalizedNameIdentityPossibleMatchCount": 0,
       "sameDesignationPossibleMatchCount": 0,
       "designationFamilyPossibleMatchCount": 0,
-      "aggregateOrMultiplePossibleMatchCount": 44,
+      "aggregateOrMultiplePossibleMatchCount": 45,
       "castPossibleMatchCount": 0,
       "identityResolvedInventoryCollisionCount": 1,
       "omittedAmbiguousInventoryKeyCount": 0,
       "possibleMatchEvidenceStrength": {
         "multiple-matching-facts": 0,
-        "two-matching-facts": 1115,
+        "two-matching-facts": 1137,
         "limited-matching-evidence": 228
       },
       "catalogPairs": [
@@ -160,6 +160,26 @@
           "possibleMatchCount": 1
         },
         {
+          "catalogPair": "brown-1916|farrington-1916",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 3
+        },
+        {
+          "catalogPair": "brown-1916|hamburg-1913",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 1
+        },
+        {
+          "catalogPair": "brown-1916|prior-1923",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 2
+        },
+        {
+          "catalogPair": "brown-1916|tassin-1902",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 1
+        },
+        {
           "catalogPair": "farrington-1903|farrington-1916",
           "sameInventoryCount": 0,
           "possibleMatchCount": 149
@@ -178,6 +198,11 @@
           "catalogPair": "farrington-1903|mason-1964",
           "sameInventoryCount": 0,
           "possibleMatchCount": 2
+        },
+        {
+          "catalogPair": "farrington-1903|minnesota-1892",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 1
         },
         {
           "catalogPair": "farrington-1903|nininger-1933",
@@ -295,6 +320,11 @@
           "possibleMatchCount": 1
         },
         {
+          "catalogPair": "foote-1912|minnesota-1892",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 1
+        },
+        {
           "catalogPair": "foote-1912|nininger-1950",
           "sameInventoryCount": 0,
           "possibleMatchCount": 1
@@ -385,6 +415,11 @@
           "possibleMatchCount": 1
         },
         {
+          "catalogPair": "huss-1976|minnesota-1892",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 9
+        },
+        {
           "catalogPair": "huss-1976|nininger-1933",
           "sameInventoryCount": 0,
           "possibleMatchCount": 1
@@ -473,6 +508,21 @@
           "catalogPair": "merrill-1916|tassin-1902",
           "sameInventoryCount": 0,
           "possibleMatchCount": 2
+        },
+        {
+          "catalogPair": "minnesota-1892|nininger-1950",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 1
+        },
+        {
+          "catalogPair": "minnesota-1892|reeds-1937",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 2
+        },
+        {
+          "catalogPair": "minnesota-1892|usnm-1886",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 1
         },
         {
           "catalogPair": "nininger-1933|nininger-1950",
@@ -578,6 +628,82 @@
     }
   },
   "relationships": [
+    {
+      "id": "possible-lineage-015140ad-87ce-5595-a68e-afb9f85836b2",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Forest City",
+      "catalogPair": "huss-1976|minnesota-1892",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "10119",
+        "canonicalName": "Forest City"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-09-01",
+        "publicNote": "Forest City: reviewed atomic endpoints share MetBull code 10119 and exact reported mass. Equal-mass alternatives are retained separately and not collapsed. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-2311f407-558c-5b71-a10d-08e494159950",
+          "recordId": "obs-0424dbfb-a58c-420a-b9ca-fdda14e9640b",
+          "catalogId": "minnesota-1892",
+          "catalogLabel": "Catalogue of the Meteorites in the University Collection, with References to Literature Describing Them (1892)",
+          "catalogYear": 1892,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[54].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 54",
+          "sourceName": "Winnebago County, Iowa",
+          "canonicalName": "Forest City",
+          "meteoriteCode": "10119",
+          "designation": null,
+          "massGrams": 2.2,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=minnesota-1892&q=record%20id%20obs-0424dbfb-a58c-420a-b9ca-fdda14e9640b#catalog"
+        },
+        {
+          "id": "mass-observation-2b14231b-534a-5954-a47a-4320da0f199c",
+          "recordId": "h283-47-a3d0028be637",
+          "catalogId": "huss-1976",
+          "catalogLabel": "Huss Meteorite Collection catalog (1976)",
+          "catalogYear": 1976,
+          "recordModel": "specimen",
+          "designationPath": "designation",
+          "massPath": "weight.grams",
+          "sourceRecordLabel": "H283.47",
+          "sourceName": "Forest City",
+          "canonicalName": "Forest City",
+          "meteoriteCode": "10119",
+          "designation": "H283.47",
+          "massGrams": 2.2,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=huss-1976&q=record%20id%20h283-47-a3d0028be637#catalog"
+        }
+      ]
+    },
     {
       "id": "possible-lineage-01522a9a-9431-5a81-86cb-f5c81c1cb47d",
       "relationship": "possible-match",
@@ -13313,6 +13439,82 @@
       ]
     },
     {
+      "id": "possible-lineage-20ef2648-5722-529f-8b8f-21c07bd64607",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Forest City",
+      "catalogPair": "minnesota-1892|nininger-1950",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "10119",
+        "canonicalName": "Forest City"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-09-01",
+        "publicNote": "Forest City: reviewed atomic endpoints share MetBull code 10119 and exact reported mass. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-2c4e0a90-4b2f-5169-b9c7-c9e633aa2899",
+          "recordId": "obs-0424dbfb-a58c-420a-b9ca-fdda14e9640b",
+          "catalogId": "minnesota-1892",
+          "catalogLabel": "Catalogue of the Meteorites in the University Collection, with References to Literature Describing Them (1892)",
+          "catalogYear": 1892,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[35].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 54",
+          "sourceName": "Winnebago County, Iowa",
+          "canonicalName": "Forest City",
+          "meteoriteCode": "10119",
+          "designation": null,
+          "massGrams": 6,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=minnesota-1892&q=record%20id%20obs-0424dbfb-a58c-420a-b9ca-fdda14e9640b#catalog"
+        },
+        {
+          "id": "mass-observation-5a6ade9b-be0a-58f5-972e-064c980d49c9",
+          "recordId": "obs-8888d6c4-545a-410b-885b-86a85eafb6b7",
+          "catalogId": "nininger-1950",
+          "catalogLabel": "The Nininger Collection of Meteorites (1950)",
+          "catalogYear": 1950,
+          "recordModel": "specimen",
+          "designationPath": "designation",
+          "massPath": "weight.grams",
+          "sourceRecordLabel": "49r",
+          "sourceName": "Forest City",
+          "canonicalName": "Forest City",
+          "meteoriteCode": "10119",
+          "designation": "49r",
+          "massGrams": 6,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=nininger-1950&q=record%20id%20obs-8888d6c4-545a-410b-885b-86a85eafb6b7#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-20f34934-580b-5c9d-af87-c1e2aa7a6c68",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -16512,6 +16714,82 @@
       ]
     },
     {
+      "id": "possible-lineage-27533024-d8f9-5335-a0b8-e538b1d5726f",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "L'Aigle",
+      "catalogPair": "brown-1916|tassin-1902",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "12434",
+        "canonicalName": "L'Aigle"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-09-01",
+        "publicNote": "L'Aigle: reviewed atomic endpoints share MetBull code 12434 and exact reported mass. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-32b87ec5-c86c-5656-aea3-564e7ec0043c",
+          "recordId": "obs-3b144d77-8dfe-40e8-97d5-fc6f04ceced7",
+          "catalogId": "brown-1916",
+          "catalogLabel": "Catalogue of Meteorites, with Special Reference to Those Represented in the Collection of the Geological Survey of India (1916)",
+          "catalogYear": 1916,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 195",
+          "sourceName": "L'AIGLE",
+          "canonicalName": "L'Aigle",
+          "meteoriteCode": "12434",
+          "designation": null,
+          "massGrams": 56,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=brown-1916&q=record%20id%20obs-3b144d77-8dfe-40e8-97d5-fc6f04ceced7#catalog"
+        },
+        {
+          "id": "mass-observation-ee1db5c7-4122-5033-b8eb-2d23204effb1",
+          "recordId": "obs-eab6733e-e7fc-4178-b087-a380474b51c7",
+          "catalogId": "tassin-1902",
+          "catalogLabel": "Descriptive Catalogue of the Meteorite Collection in the United States National Museum to January 1, 1902 (1902)",
+          "catalogYear": 1902,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 166",
+          "sourceName": "L'Aigle",
+          "canonicalName": "L'Aigle",
+          "meteoriteCode": "12434",
+          "designation": null,
+          "massGrams": 56,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=tassin-1902&q=record%20id%20obs-eab6733e-e7fc-4178-b087-a380474b51c7#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-278672c7-497a-57ae-b779-698db2f68d82",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -17120,6 +17398,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=reeds-1937&q=record%20id%20obs-61c18f2a-8696-4b1e-8833-18789147c992#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-28cad19f-e42d-5837-9ca0-43346b04f9fb",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Soko-Banja",
+      "catalogPair": "minnesota-1892|usnm-1886",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "23661",
+        "canonicalName": "Soko-Banja"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-09-01",
+        "publicNote": "Soko-Banja: reviewed atomic endpoints share MetBull code 23661 and exact reported mass. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-8a382aaa-ab4a-5eff-9f07-22fbf2a22655",
+          "recordId": "obs-5bf7ba2c-4926-47ba-99d3-be192e364a1c",
+          "catalogId": "minnesota-1892",
+          "catalogLabel": "Catalogue of the Meteorites in the University Collection, with References to Literature Describing Them (1892)",
+          "catalogYear": 1892,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 47",
+          "sourceName": "Sarbanovac, Soko-Banjia Alexinatz, Servia",
+          "canonicalName": "Soko-Banja",
+          "meteoriteCode": "23661",
+          "designation": null,
+          "massGrams": 1.75,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=minnesota-1892&q=record%20id%20obs-5bf7ba2c-4926-47ba-99d3-be192e364a1c#catalog"
+        },
+        {
+          "id": "mass-observation-a470e45d-5c14-5c31-8b6e-53bbc910056c",
+          "recordId": "obs-5d613e2e-6665-41f6-815b-efb10463e986",
+          "catalogId": "usnm-1886",
+          "catalogLabel": "The Meteorite Collection in the U. S. National Museum; a Catalogue of Meteorites Represented November 1, 1886 (1886)",
+          "catalogYear": 1886,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 90",
+          "sourceName": "Soko-Banja",
+          "canonicalName": "Soko-Banja",
+          "meteoriteCode": "23661",
+          "designation": null,
+          "massGrams": 1.75,
+          "kind": null,
+          "count": 1,
+          "catalogSearchUrl": "./index.html?catalog=usnm-1886&q=record%20id%20obs-5d613e2e-6665-41f6-815b-efb10463e986#catalog"
         }
       ]
     },
@@ -18034,6 +18388,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=nininger-1950&q=record%20id%20obs-52229d90-b894-4ab8-a79e-6070c92fc76c#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-2ae3f247-8b02-5082-8fe8-725c409d0380",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Forest City",
+      "catalogPair": "huss-1976|minnesota-1892",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "10119",
+        "canonicalName": "Forest City"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-09-01",
+        "publicNote": "Forest City: reviewed atomic endpoints share MetBull code 10119 and exact reported mass. Equal-mass alternatives are retained separately and not collapsed. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-fd065a79-c984-5b37-89b6-62c1eb46b7af",
+          "recordId": "h283-41-a190ca98d970",
+          "catalogId": "huss-1976",
+          "catalogLabel": "Huss Meteorite Collection catalog (1976)",
+          "catalogYear": 1976,
+          "recordModel": "specimen",
+          "designationPath": "designation",
+          "massPath": "weight.grams",
+          "sourceRecordLabel": "H283.41",
+          "sourceName": "Forest City",
+          "canonicalName": "Forest City",
+          "meteoriteCode": "10119",
+          "designation": "H283.41",
+          "massGrams": 2.2,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=huss-1976&q=record%20id%20h283-41-a190ca98d970#catalog"
+        },
+        {
+          "id": "mass-observation-ff34fafa-eee8-5bb9-8474-8848da2bdfcf",
+          "recordId": "obs-0424dbfb-a58c-420a-b9ca-fdda14e9640b",
+          "catalogId": "minnesota-1892",
+          "catalogLabel": "Catalogue of the Meteorites in the University Collection, with References to Literature Describing Them (1892)",
+          "catalogYear": 1892,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[54].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 54",
+          "sourceName": "Winnebago County, Iowa",
+          "canonicalName": "Forest City",
+          "meteoriteCode": "10119",
+          "designation": null,
+          "massGrams": 2.2,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=minnesota-1892&q=record%20id%20obs-0424dbfb-a58c-420a-b9ca-fdda14e9640b#catalog"
         }
       ]
     },
@@ -30764,6 +31194,82 @@
       ]
     },
     {
+      "id": "possible-lineage-4f695b8c-0b48-56f6-85cc-a171d3bda5ed",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Forest City",
+      "catalogPair": "minnesota-1892|reeds-1937",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "10119",
+        "canonicalName": "Forest City"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-09-01",
+        "publicNote": "Forest City: reviewed atomic endpoints share MetBull code 10119 and exact reported mass. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-23b61422-b866-5be5-92ac-3f3aa8838717",
+          "recordId": "obs-07ca2b25-b3bc-4f05-8b0b-315811379480",
+          "catalogId": "reeds-1937",
+          "catalogLabel": "Catalogue of the Meteorites in the American Museum of Natural History as of October 1, 1935 (1937)",
+          "catalogYear": 1937,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[40].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 166",
+          "sourceName": "Forest City",
+          "canonicalName": "Forest City",
+          "meteoriteCode": "10119",
+          "designation": null,
+          "massGrams": 6.4,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=reeds-1937&q=record%20id%20obs-07ca2b25-b3bc-4f05-8b0b-315811379480#catalog"
+        },
+        {
+          "id": "mass-observation-976d12d2-b7da-5bf1-92fa-d2b45858454c",
+          "recordId": "obs-0424dbfb-a58c-420a-b9ca-fdda14e9640b",
+          "catalogId": "minnesota-1892",
+          "catalogLabel": "Catalogue of the Meteorites in the University Collection, with References to Literature Describing Them (1892)",
+          "catalogYear": 1892,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[34].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 54",
+          "sourceName": "Winnebago County, Iowa",
+          "canonicalName": "Forest City",
+          "meteoriteCode": "10119",
+          "designation": null,
+          "massGrams": 6.4,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=minnesota-1892&q=record%20id%20obs-0424dbfb-a58c-420a-b9ca-fdda14e9640b#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-4f6c2043-854d-576a-8757-1c40e19d2dd0",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -38390,6 +38896,82 @@
       ]
     },
     {
+      "id": "possible-lineage-61d9e034-e89e-5dcb-bc0e-4de6035654bb",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Forest City",
+      "catalogPair": "huss-1976|minnesota-1892",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "10119",
+        "canonicalName": "Forest City"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-09-01",
+        "publicNote": "Forest City: reviewed atomic endpoints share MetBull code 10119 and exact reported mass. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-25d6f85d-bff1-5cbe-969c-92548151620f",
+          "recordId": "obs-0424dbfb-a58c-420a-b9ca-fdda14e9640b",
+          "catalogId": "minnesota-1892",
+          "catalogLabel": "Catalogue of the Meteorites in the University Collection, with References to Literature Describing Them (1892)",
+          "catalogYear": 1892,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[58].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 54",
+          "sourceName": "Winnebago County, Iowa",
+          "canonicalName": "Forest City",
+          "meteoriteCode": "10119",
+          "designation": null,
+          "massGrams": 2,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=minnesota-1892&q=record%20id%20obs-0424dbfb-a58c-420a-b9ca-fdda14e9640b#catalog"
+        },
+        {
+          "id": "mass-observation-8564a16d-d950-5835-8dc9-fd70e582ca8b",
+          "recordId": "h283-43-67aefd52356d",
+          "catalogId": "huss-1976",
+          "catalogLabel": "Huss Meteorite Collection catalog (1976)",
+          "catalogYear": 1976,
+          "recordModel": "specimen",
+          "designationPath": "designation",
+          "massPath": "weight.grams",
+          "sourceRecordLabel": "H283.43",
+          "sourceName": "Forest City",
+          "canonicalName": "Forest City",
+          "meteoriteCode": "10119",
+          "designation": "H283.43",
+          "massGrams": 2,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=huss-1976&q=record%20id%20h283-43-67aefd52356d#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-620ba567-19c0-5c71-8c35-e4fd3703c31e",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -40063,6 +40645,82 @@
           "kind": null,
           "count": 1,
           "catalogSearchUrl": "./index.html?catalog=usnm-1886&q=record%20id%20obs-6711f83c-a64d-4559-a687-9636936394d3#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-6569e465-c2c3-5ce2-b46f-fe8cc177d4c0",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Forest City",
+      "catalogPair": "minnesota-1892|reeds-1937",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "10119",
+        "canonicalName": "Forest City"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-09-01",
+        "publicNote": "Forest City: reviewed atomic endpoints share MetBull code 10119 and exact reported mass. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-a5f18c88-561c-51fa-b3af-f2f9df3a0dd3",
+          "recordId": "obs-07ca2b25-b3bc-4f05-8b0b-315811379480",
+          "catalogId": "reeds-1937",
+          "catalogLabel": "Catalogue of the Meteorites in the American Museum of Natural History as of October 1, 1935 (1937)",
+          "catalogYear": 1937,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[38].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 166",
+          "sourceName": "Forest City",
+          "canonicalName": "Forest City",
+          "meteoriteCode": "10119",
+          "designation": null,
+          "massGrams": 10.5,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=reeds-1937&q=record%20id%20obs-07ca2b25-b3bc-4f05-8b0b-315811379480#catalog"
+        },
+        {
+          "id": "mass-observation-b0ad8cd0-bfa6-5ca1-ba41-75bc5683d29f",
+          "recordId": "obs-0424dbfb-a58c-420a-b9ca-fdda14e9640b",
+          "catalogId": "minnesota-1892",
+          "catalogLabel": "Catalogue of the Meteorites in the University Collection, with References to Literature Describing Them (1892)",
+          "catalogYear": 1892,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[23].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 54",
+          "sourceName": "Winnebago County, Iowa",
+          "canonicalName": "Forest City",
+          "meteoriteCode": "10119",
+          "designation": null,
+          "massGrams": 10.5,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=minnesota-1892&q=record%20id%20obs-0424dbfb-a58c-420a-b9ca-fdda14e9640b#catalog"
         }
       ]
     },
@@ -61330,6 +61988,82 @@
       ]
     },
     {
+      "id": "possible-lineage-97817b5e-85ff-5191-8f4c-767236146f4d",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Buschhof",
+      "catalogPair": "brown-1916|farrington-1916",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "5178",
+        "canonicalName": "Buschhof"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-09-01",
+        "publicNote": "Buschhof: reviewed atomic endpoints share MetBull code 5178 and exact reported mass. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-74423add-d770-56bd-a217-5b148f569767",
+          "recordId": "obs-b56b466b-4545-4ea9-bae7-7219e46d7218",
+          "catalogId": "brown-1916",
+          "catalogLabel": "Catalogue of Meteorites, with Special Reference to Those Represented in the Collection of the Geological Survey of India (1916)",
+          "catalogYear": 1916,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 55",
+          "sourceName": "BUSCHHOF",
+          "canonicalName": "Buschhof",
+          "meteoriteCode": "5178",
+          "designation": null,
+          "massGrams": 16,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=brown-1916&q=record%20id%20obs-b56b466b-4545-4ea9-bae7-7219e46d7218#catalog"
+        },
+        {
+          "id": "mass-observation-87ac0568-4500-5430-a1e5-323dd7629fb4",
+          "recordId": "obs-c1f78fca-ce39-4eed-b33d-f65419a006d3",
+          "catalogId": "farrington-1916",
+          "catalogLabel": "Catalogue of the Collection of Meteorites (1916)",
+          "catalogYear": 1916,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 91",
+          "sourceName": "Buschhof",
+          "canonicalName": "Buschhof",
+          "meteoriteCode": "5178",
+          "designation": null,
+          "massGrams": 16,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=farrington-1916&q=record%20id%20obs-c1f78fca-ce39-4eed-b33d-f65419a006d3#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-97cac085-866d-5416-a693-969eb7b0e4c7",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -62696,6 +63430,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=farrington-1903&q=record%20id%20obs-1bcd99b8-35ee-4962-a44a-45598e2b94b1#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-9be1fe18-4367-5d2c-ab06-bd76f8193430",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Braunau",
+      "catalogPair": "brown-1916|farrington-1916",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "5133",
+        "canonicalName": "Braunau"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-09-01",
+        "publicNote": "Braunau: reviewed atomic endpoints share MetBull code 5133 and exact reported mass. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-3b9360b4-f996-5cfb-8d8d-e3a11ea6ce24",
+          "recordId": "obs-593f8a94-c593-4c01-9143-47b198f5240c",
+          "catalogId": "brown-1916",
+          "catalogLabel": "Catalogue of Meteorites, with Special Reference to Those Represented in the Collection of the Geological Survey of India (1916)",
+          "catalogYear": 1916,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 50",
+          "sourceName": "BRAUNAU (HAUPTMANNSDORF)",
+          "canonicalName": "Braunau",
+          "meteoriteCode": "5133",
+          "designation": null,
+          "massGrams": 47,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=brown-1916&q=record%20id%20obs-593f8a94-c593-4c01-9143-47b198f5240c#catalog"
+        },
+        {
+          "id": "mass-observation-e63fd87e-3d99-5f55-8b7e-b4d0ec99e643",
+          "recordId": "obs-b477e282-4fcb-43a1-832c-053a51bded9f",
+          "catalogId": "farrington-1916",
+          "catalogLabel": "Catalogue of the Collection of Meteorites (1916)",
+          "catalogYear": 1916,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[3].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 86",
+          "sourceName": "Braunau",
+          "canonicalName": "Braunau",
+          "meteoriteCode": "5133",
+          "designation": null,
+          "massGrams": 47,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=farrington-1916&q=record%20id%20obs-b477e282-4fcb-43a1-832c-053a51bded9f#catalog"
         }
       ]
     },
@@ -69565,6 +70375,82 @@
       ]
     },
     {
+      "id": "possible-lineage-ae993216-9d2d-5794-80a3-b164e7759cd9",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Coahuila",
+      "catalogPair": "brown-1916|prior-1923",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "5387",
+        "canonicalName": "Coahuila"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-09-01",
+        "publicNote": "Coahuila: reviewed atomic endpoints share MetBull code 5387 and exact reported mass. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-ddd9acf7-4800-5a1b-a029-ccfd04f94872",
+          "recordId": "obs-1cc2ab51-2118-44a4-952a-75973a07626d",
+          "catalogId": "prior-1923",
+          "catalogLabel": "Catalogue of Meteorites: global survey with British Museum representation status (1923)",
+          "catalogYear": 1923,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[9].grams",
+          "sourceRecordLabel": "Collection entry 179",
+          "sourceName": "Coahuila",
+          "canonicalName": "Coahuila",
+          "meteoriteCode": "5387",
+          "designation": null,
+          "massGrams": 6,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=prior-1923&q=record%20id%20obs-1cc2ab51-2118-44a4-952a-75973a07626d#catalog"
+        },
+        {
+          "id": "mass-observation-f403f835-4a91-57d4-807a-b718640e3d96",
+          "recordId": "obs-4fb6d274-695c-4cca-bdab-38755d845b14",
+          "catalogId": "brown-1916",
+          "catalogLabel": "Catalogue of Meteorites, with Special Reference to Those Represented in the Collection of the Geological Survey of India (1916)",
+          "catalogYear": 1916,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[3].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 81",
+          "sourceName": "COAHUILA",
+          "canonicalName": "Coahuila",
+          "meteoriteCode": "5387",
+          "designation": null,
+          "massGrams": 6,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=brown-1916&q=record%20id%20obs-4fb6d274-695c-4cca-bdab-38755d845b14#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-af0a5fae-6f9f-57e0-9871-2375c28e880a",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -70018,6 +70904,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=barnes-1940&q=record%20id%20obs-62f6b701-7511-4bb5-a5e4-642d97c8409c#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-affd5c82-515b-5cdd-83c8-6f908c4f37d5",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Warrenton",
+      "catalogPair": "foote-1912|minnesota-1892",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "24215",
+        "canonicalName": "Warrenton"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-09-01",
+        "publicNote": "Warrenton: reviewed atomic endpoints share MetBull code 24215 and exact reported mass. Equal-mass alternatives are retained separately and not collapsed. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-b8baf750-554b-5110-a3b3-cc06ad53e20a",
+          "recordId": "obs-4c7dc42d-2144-4f8d-a10a-ed876945b103",
+          "catalogId": "foote-1912",
+          "catalogLabel": "The Foote Collection of Meteorites (1912)",
+          "catalogYear": 1912,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 78",
+          "sourceName": "Warrenton",
+          "canonicalName": "Warrenton",
+          "meteoriteCode": "24215",
+          "designation": null,
+          "massGrams": 5,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=foote-1912&q=record%20id%20obs-4c7dc42d-2144-4f8d-a10a-ed876945b103#catalog"
+        },
+        {
+          "id": "mass-observation-bc54faa3-8726-53d5-b737-11b428ff282f",
+          "recordId": "obs-00d4e0de-a2dc-47fc-8f4d-22b0ab2f2f09",
+          "catalogId": "minnesota-1892",
+          "catalogLabel": "Catalogue of the Meteorites in the University Collection, with References to Literature Describing Them (1892)",
+          "catalogYear": 1892,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 45",
+          "sourceName": "Warrenton, Warren County, Missouri",
+          "canonicalName": "Warrenton",
+          "meteoriteCode": "24215",
+          "designation": null,
+          "massGrams": 5,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=minnesota-1892&q=record%20id%20obs-00d4e0de-a2dc-47fc-8f4d-22b0ab2f2f09#catalog"
         }
       ]
     },
@@ -70628,6 +71590,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=mason-1964&q=record%20id%20obs-73e851fd-7866-4f76-a453-984d03fe8b2d#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-b1f5088c-e065-5c51-b5dc-1c00a4c0904f",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Forest City",
+      "catalogPair": "huss-1976|minnesota-1892",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "10119",
+        "canonicalName": "Forest City"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-09-01",
+        "publicNote": "Forest City: reviewed atomic endpoints share MetBull code 10119 and exact reported mass. Equal-mass alternatives are retained separately and not collapsed. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-6fdc885e-1470-5650-ba9d-81822f68e7f5",
+          "recordId": "h283-44-8cde83dbcd71",
+          "catalogId": "huss-1976",
+          "catalogLabel": "Huss Meteorite Collection catalog (1976)",
+          "catalogYear": 1976,
+          "recordModel": "specimen",
+          "designationPath": "designation",
+          "massPath": "weight.grams",
+          "sourceRecordLabel": "H283.44",
+          "sourceName": "Forest City",
+          "canonicalName": "Forest City",
+          "meteoriteCode": "10119",
+          "designation": "H283.44",
+          "massGrams": 2.7,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=huss-1976&q=record%20id%20h283-44-8cde83dbcd71#catalog"
+        },
+        {
+          "id": "mass-observation-75ebd216-8092-5e2d-ad05-aa515d48683a",
+          "recordId": "obs-0424dbfb-a58c-420a-b9ca-fdda14e9640b",
+          "catalogId": "minnesota-1892",
+          "catalogLabel": "Catalogue of the Meteorites in the University Collection, with References to Literature Describing Them (1892)",
+          "catalogYear": 1892,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[51].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 54",
+          "sourceName": "Winnebago County, Iowa",
+          "canonicalName": "Forest City",
+          "meteoriteCode": "10119",
+          "designation": null,
+          "massGrams": 2.7,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=minnesota-1892&q=record%20id%20obs-0424dbfb-a58c-420a-b9ca-fdda14e9640b#catalog"
         }
       ]
     },
@@ -73833,6 +74871,82 @@
       ]
     },
     {
+      "id": "possible-lineage-b890eaa7-df2f-599c-b16a-2fab57708500",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Forest City",
+      "catalogPair": "huss-1976|minnesota-1892",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "10119",
+        "canonicalName": "Forest City"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-09-01",
+        "publicNote": "Forest City: reviewed atomic endpoints share MetBull code 10119 and exact reported mass. Equal-mass alternatives are retained separately and not collapsed. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-0fac1c4c-99eb-5f72-ae08-b96eb059dd0e",
+          "recordId": "obs-0424dbfb-a58c-420a-b9ca-fdda14e9640b",
+          "catalogId": "minnesota-1892",
+          "catalogLabel": "Catalogue of the Meteorites in the University Collection, with References to Literature Describing Them (1892)",
+          "catalogYear": 1892,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[55].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 54",
+          "sourceName": "Winnebago County, Iowa",
+          "canonicalName": "Forest City",
+          "meteoriteCode": "10119",
+          "designation": null,
+          "massGrams": 2.2,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=minnesota-1892&q=record%20id%20obs-0424dbfb-a58c-420a-b9ca-fdda14e9640b#catalog"
+        },
+        {
+          "id": "mass-observation-e39d0fa9-f9de-53e6-bdd0-a0c50cbcd06b",
+          "recordId": "h283-41-a190ca98d970",
+          "catalogId": "huss-1976",
+          "catalogLabel": "Huss Meteorite Collection catalog (1976)",
+          "catalogYear": 1976,
+          "recordModel": "specimen",
+          "designationPath": "designation",
+          "massPath": "weight.grams",
+          "sourceRecordLabel": "H283.41",
+          "sourceName": "Forest City",
+          "canonicalName": "Forest City",
+          "meteoriteCode": "10119",
+          "designation": "H283.41",
+          "massGrams": 2.2,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=huss-1976&q=record%20id%20h283-41-a190ca98d970#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-b8910d39-0e5f-580a-b784-aebf01de9bde",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -74058,6 +75172,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=tassin-1902&q=record%20id%20obs-a660575c-756e-4b64-84e0-ed23a5b5dea1#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-b8cdd278-99aa-5729-9fca-d1b451bdfa30",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Forest City",
+      "catalogPair": "huss-1976|minnesota-1892",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "10119",
+        "canonicalName": "Forest City"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-09-01",
+        "publicNote": "Forest City: reviewed atomic endpoints share MetBull code 10119 and exact reported mass. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-91477a0c-fba2-5715-a33c-da849883dd92",
+          "recordId": "h283-28-ea3faac964c8",
+          "catalogId": "huss-1976",
+          "catalogLabel": "Huss Meteorite Collection catalog (1976)",
+          "catalogYear": 1976,
+          "recordModel": "specimen",
+          "designationPath": "designation",
+          "massPath": "weight.grams",
+          "sourceRecordLabel": "H283.28",
+          "sourceName": "Forest City",
+          "canonicalName": "Forest City",
+          "meteoriteCode": "10119",
+          "designation": "H283.28",
+          "massGrams": 3.4,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=huss-1976&q=record%20id%20h283-28-ea3faac964c8#catalog"
+        },
+        {
+          "id": "mass-observation-d8d0be80-9c3e-5321-91f9-4d5e6efa9638",
+          "recordId": "obs-0424dbfb-a58c-420a-b9ca-fdda14e9640b",
+          "catalogId": "minnesota-1892",
+          "catalogLabel": "Catalogue of the Meteorites in the University Collection, with References to Literature Describing Them (1892)",
+          "catalogYear": 1892,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[47].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 54",
+          "sourceName": "Winnebago County, Iowa",
+          "canonicalName": "Forest City",
+          "meteoriteCode": "10119",
+          "designation": null,
+          "massGrams": 3.4,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=minnesota-1892&q=record%20id%20obs-0424dbfb-a58c-420a-b9ca-fdda14e9640b#catalog"
         }
       ]
     },
@@ -82981,6 +84171,82 @@
       ]
     },
     {
+      "id": "possible-lineage-ce67e96f-8984-58ea-893f-489130ab6994",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Forest City",
+      "catalogPair": "huss-1976|minnesota-1892",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "10119",
+        "canonicalName": "Forest City"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-09-01",
+        "publicNote": "Forest City: reviewed atomic endpoints share MetBull code 10119 and exact reported mass. Equal-mass alternatives are retained separately and not collapsed. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-c2cbe08e-906e-52c6-a4e5-d635364ede54",
+          "recordId": "obs-0424dbfb-a58c-420a-b9ca-fdda14e9640b",
+          "catalogId": "minnesota-1892",
+          "catalogLabel": "Catalogue of the Meteorites in the University Collection, with References to Literature Describing Them (1892)",
+          "catalogYear": 1892,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[55].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 54",
+          "sourceName": "Winnebago County, Iowa",
+          "canonicalName": "Forest City",
+          "meteoriteCode": "10119",
+          "designation": null,
+          "massGrams": 2.2,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=minnesota-1892&q=record%20id%20obs-0424dbfb-a58c-420a-b9ca-fdda14e9640b#catalog"
+        },
+        {
+          "id": "mass-observation-c6e83c23-c4d6-55cd-9ed0-d2702f143ebd",
+          "recordId": "h283-47-a3d0028be637",
+          "catalogId": "huss-1976",
+          "catalogLabel": "Huss Meteorite Collection catalog (1976)",
+          "catalogYear": 1976,
+          "recordModel": "specimen",
+          "designationPath": "designation",
+          "massPath": "weight.grams",
+          "sourceRecordLabel": "H283.47",
+          "sourceName": "Forest City",
+          "canonicalName": "Forest City",
+          "meteoriteCode": "10119",
+          "designation": "H283.47",
+          "massGrams": 2.2,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=huss-1976&q=record%20id%20h283-47-a3d0028be637#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-ce7f9412-ed57-533d-bb32-8053050bcc7c",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -86944,6 +88210,83 @@
       ]
     },
     {
+      "id": "possible-lineage-d894b254-a96b-563e-8f37-f363cf31b835",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Juvinas",
+      "catalogPair": "brown-1916|hamburg-1913",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "12214",
+        "canonicalName": "Juvinas"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing",
+          "aggregate-or-multiple"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-09-01",
+        "publicNote": "Juvinas: reviewed atomic endpoints share MetBull code 12214 and exact reported mass. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-ab297e34-c1e4-56c4-b271-3ee0388c7bbf",
+          "recordId": "obs-8867c82b-369d-41bc-8026-0ff8359c9aab",
+          "catalogId": "hamburg-1913",
+          "catalogLabel": "Die Meteoritensammlung des Mineralogisch-Geologischen Instituts zu Hamburg (1913)",
+          "catalogYear": 1913,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[1].grams",
+          "sourceRecordLabel": "Collection entry 2",
+          "sourceName": "Juvinas",
+          "canonicalName": "Juvinas",
+          "meteoriteCode": "12214",
+          "designation": null,
+          "massGrams": 7,
+          "kind": null,
+          "count": 2,
+          "catalogSearchUrl": "./index.html?catalog=hamburg-1913&q=record%20id%20obs-8867c82b-369d-41bc-8026-0ff8359c9aab#catalog"
+        },
+        {
+          "id": "mass-observation-e6b501de-c63c-526e-ade7-eb4eab27f727",
+          "recordId": "obs-ff93af25-3a3c-46b0-b5a9-3992df94d7b1",
+          "catalogId": "brown-1916",
+          "catalogLabel": "Catalogue of Meteorites, with Special Reference to Those Represented in the Collection of the Geological Survey of India (1916)",
+          "catalogYear": 1916,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 166",
+          "sourceName": "JUVINAS",
+          "canonicalName": "Juvinas",
+          "meteoriteCode": "12214",
+          "designation": null,
+          "massGrams": 7,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=brown-1916&q=record%20id%20obs-ff93af25-3a3c-46b0-b5a9-3992df94d7b1#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-d8c4ef06-4866-5d37-b95f-5ac04a262889",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -89377,6 +90720,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=huss-1986&q=record%20id%20obs-ee3a3149-90a5-432c-b5bb-9f916b2cbf8a#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-df7aa936-8c6d-5ec0-a1ac-4a18ca2e6856",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Guilford County",
+      "catalogPair": "brown-1916|prior-1923",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "11444",
+        "canonicalName": "Guilford County"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-09-01",
+        "publicNote": "Guilford County: reviewed atomic endpoints share MetBull code 11444 and exact reported mass. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-4d8de5f8-7004-5ff7-bda0-b28bdd6a98ba",
+          "recordId": "obs-ced30989-075f-4dfe-8177-00561528f400",
+          "catalogId": "prior-1923",
+          "catalogLabel": "Catalogue of Meteorites: global survey with British Museum representation status (1923)",
+          "catalogYear": 1923,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[2].grams",
+          "sourceRecordLabel": "Collection entry 298",
+          "sourceName": "Guilford County",
+          "canonicalName": "Guilford County",
+          "meteoriteCode": "11444",
+          "designation": null,
+          "massGrams": 1.5,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=prior-1923&q=record%20id%20obs-ced30989-075f-4dfe-8177-00561528f400#catalog"
+        },
+        {
+          "id": "mass-observation-d42651d2-df9a-5397-b74b-41649f6e072f",
+          "recordId": "obs-d115e433-aaec-48c3-9129-c2c87d265490",
+          "catalogId": "brown-1916",
+          "catalogLabel": "Catalogue of Meteorites, with Special Reference to Those Represented in the Collection of the Geological Survey of India (1916)",
+          "catalogYear": 1916,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 143",
+          "sourceName": "GUILFORD COUNTY",
+          "canonicalName": "Guilford County",
+          "meteoriteCode": "11444",
+          "designation": null,
+          "massGrams": 1.5,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=brown-1916&q=record%20id%20obs-d115e433-aaec-48c3-9129-c2c87d265490#catalog"
         }
       ]
     },
@@ -93038,6 +94457,82 @@
       ]
     },
     {
+      "id": "possible-lineage-e8169766-7ea4-5ca2-871b-da0a1e4c4cd9",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Warrenton",
+      "catalogPair": "farrington-1903|minnesota-1892",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "24215",
+        "canonicalName": "Warrenton"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-09-01",
+        "publicNote": "Warrenton: reviewed atomic endpoints share MetBull code 24215 and exact reported mass. Equal-mass alternatives are retained separately and not collapsed. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-0ccccc74-d931-525d-8d8a-b2899f2988df",
+          "recordId": "obs-00d4e0de-a2dc-47fc-8f4d-22b0ab2f2f09",
+          "catalogId": "minnesota-1892",
+          "catalogLabel": "Catalogue of the Meteorites in the University Collection, with References to Literature Describing Them (1892)",
+          "catalogYear": 1892,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 45",
+          "sourceName": "Warrenton, Warren County, Missouri",
+          "canonicalName": "Warrenton",
+          "meteoriteCode": "24215",
+          "designation": null,
+          "massGrams": 5,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=minnesota-1892&q=record%20id%20obs-00d4e0de-a2dc-47fc-8f4d-22b0ab2f2f09#catalog"
+        },
+        {
+          "id": "mass-observation-baff856a-dca7-5a09-a19e-33df93106ccd",
+          "recordId": "obs-61871a04-3a6d-44a8-896f-a182fe0ac4b9",
+          "catalogId": "farrington-1903",
+          "catalogLabel": "Catalogue of the Meteorite Collection of the Field Columbian Museum, May 1, 1903 (1903)",
+          "catalogYear": 1903,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 242",
+          "sourceName": "Warrenton",
+          "canonicalName": "Warrenton",
+          "meteoriteCode": "24215",
+          "designation": null,
+          "massGrams": 5,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=farrington-1903&q=record%20id%20obs-61871a04-3a6d-44a8-896f-a182fe0ac4b9#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-e85dcf9c-0be0-5d47-99ff-29b650969b80",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -94637,6 +96132,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-5a3440ef-7bb2-4bf2-b779-cabef86c4c51#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-eb0022b1-5b35-5d6a-9b6d-cfabb5ef29a0",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Forest City",
+      "catalogPair": "huss-1976|minnesota-1892",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "10119",
+        "canonicalName": "Forest City"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-09-01",
+        "publicNote": "Forest City: reviewed atomic endpoints share MetBull code 10119 and exact reported mass. Equal-mass alternatives are retained separately and not collapsed. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-23104f98-7ec2-5299-b07a-fbb9c96b36cd",
+          "recordId": "obs-0424dbfb-a58c-420a-b9ca-fdda14e9640b",
+          "catalogId": "minnesota-1892",
+          "catalogLabel": "Catalogue of the Meteorites in the University Collection, with References to Literature Describing Them (1892)",
+          "catalogYear": 1892,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[52].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 54",
+          "sourceName": "Winnebago County, Iowa",
+          "canonicalName": "Forest City",
+          "meteoriteCode": "10119",
+          "designation": null,
+          "massGrams": 2.7,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=minnesota-1892&q=record%20id%20obs-0424dbfb-a58c-420a-b9ca-fdda14e9640b#catalog"
+        },
+        {
+          "id": "mass-observation-e5ff33a9-0f1e-5d8d-b58c-58c888644566",
+          "recordId": "h283-44-8cde83dbcd71",
+          "catalogId": "huss-1976",
+          "catalogLabel": "Huss Meteorite Collection catalog (1976)",
+          "catalogYear": 1976,
+          "recordModel": "specimen",
+          "designationPath": "designation",
+          "massPath": "weight.grams",
+          "sourceRecordLabel": "H283.44",
+          "sourceName": "Forest City",
+          "canonicalName": "Forest City",
+          "meteoriteCode": "10119",
+          "designation": "H283.44",
+          "massGrams": 2.7,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=huss-1976&q=record%20id%20h283-44-8cde83dbcd71#catalog"
         }
       ]
     },
@@ -100285,6 +101856,82 @@
       ]
     },
     {
+      "id": "possible-lineage-f994b310-4343-5ad4-9ed1-a97d79b61eec",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Forest City",
+      "catalogPair": "huss-1976|minnesota-1892",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "10119",
+        "canonicalName": "Forest City"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-09-01",
+        "publicNote": "Forest City: reviewed atomic endpoints share MetBull code 10119 and exact reported mass. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-0679f220-4aff-55e9-a2da-42ecb77f9951",
+          "recordId": "obs-0424dbfb-a58c-420a-b9ca-fdda14e9640b",
+          "catalogId": "minnesota-1892",
+          "catalogLabel": "Catalogue of the Meteorites in the University Collection, with References to Literature Describing Them (1892)",
+          "catalogYear": 1892,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[46].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 54",
+          "sourceName": "Winnebago County, Iowa",
+          "canonicalName": "Forest City",
+          "meteoriteCode": "10119",
+          "designation": null,
+          "massGrams": 3.6,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=minnesota-1892&q=record%20id%20obs-0424dbfb-a58c-420a-b9ca-fdda14e9640b#catalog"
+        },
+        {
+          "id": "mass-observation-8cc0b79b-dc98-53b7-bc0e-16b3b4fe95e9",
+          "recordId": "h283-38-57ee704d6474",
+          "catalogId": "huss-1976",
+          "catalogLabel": "Huss Meteorite Collection catalog (1976)",
+          "catalogYear": 1976,
+          "recordModel": "specimen",
+          "designationPath": "designation",
+          "massPath": "weight.grams",
+          "sourceRecordLabel": "H283.38",
+          "sourceName": "Forest City",
+          "canonicalName": "Forest City",
+          "meteoriteCode": "10119",
+          "designation": "H283.38",
+          "massGrams": 3.6,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=huss-1976&q=record%20id%20h283-38-57ee704d6474#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-f9cc4c30-f5e4-5172-a793-a195b3d0bfec",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -102188,6 +103835,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=usnm-1886&q=record%20id%20obs-ce5b7993-0510-481f-a1bc-ace2af38f445#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-fe3fdb26-c81e-501c-829b-c0995ef4081a",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Milena",
+      "catalogPair": "brown-1916|farrington-1916",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "16640",
+        "canonicalName": "Milena"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-09-01",
+        "publicNote": "Milena: reviewed atomic endpoints share MetBull code 16640 and exact reported mass. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-7b29565d-cc0a-590b-827d-57cfba2f8acc",
+          "recordId": "obs-5ac63b5d-ac9c-4c6a-97a2-39e616e76474",
+          "catalogId": "farrington-1916",
+          "catalogLabel": "Catalogue of the Collection of Meteorites (1916)",
+          "catalogYear": 1916,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 382",
+          "sourceName": "Milena",
+          "canonicalName": "Milena",
+          "meteoriteCode": "16640",
+          "designation": null,
+          "massGrams": 10,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=farrington-1916&q=record%20id%20obs-5ac63b5d-ac9c-4c6a-97a2-39e616e76474#catalog"
+        },
+        {
+          "id": "mass-observation-db8eb156-6053-5df2-bf80-3077706446a4",
+          "recordId": "obs-c7d0dcc4-69db-43a4-8348-89be21e05f9a",
+          "catalogId": "brown-1916",
+          "catalogLabel": "Catalogue of Meteorites, with Special Reference to Those Represented in the Collection of the Geological Survey of India (1916)",
+          "catalogYear": 1916,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 235",
+          "sourceName": "MILENA",
+          "canonicalName": "Milena",
+          "meteoriteCode": "16640",
+          "designation": null,
+          "massGrams": 10,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=brown-1916&q=record%20id%20obs-c7d0dcc4-69db-43a4-8348-89be21e05f9a#catalog"
         }
       ]
     },

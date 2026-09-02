@@ -44,7 +44,7 @@ test("long harmonized fact labels keep whole words and stack at every width", ()
   assert.match(styles, /\.record-meta div \{[^}]*gap: \.08rem;/u);
 });
 
-test("schema9 runtime validates and preserves Hamburg additive facts", () => {
+test("schema10 runtime validates and preserves Hamburg additive facts", () => {
   assert.equal(app.validateCatalog(catalog), catalog);
   assert.equal(hamburg.length, 147);
 

@@ -2,17 +2,62 @@ import { createHash } from "node:crypto";
 import { lstat, mkdtemp, mkdir, readFile, readdir, rm, symlink, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, join, relative, sep } from "node:path";
-import { createRequire } from "node:module";
 import { fileURLToPath } from "node:url";
 
-const require = createRequire(import.meta.url);
-const {
-  FACTUAL_FORMULA_INVALID_SUFFIXES,
-  FACTUAL_FORMULA_TOKENS,
-  FACTUAL_FORMULA_UNSAFE_PREFIXES,
-  FACTUAL_FORMULA_VALID_SUFFIXES,
-  containsUnsafePath,
-} = require("../app.js");
+const FACTUAL_FORMULA_TOKENS = Object.freeze([
+  "/Tii-vJatllO", "/-I", "/Nickel iron", "/?e/ermces", "(.\\l2O3)", "\\ 1.753",
+  "D?i\\\\hvQQ", "\\i.", "\\N.", "\\N\\\\\\\\^m", "\\\\.", "\\iin.",
+]);
+const FACTUAL_FORMULA_UNSAFE_PREFIXES = Object.freeze(["C:", "file:", "https:", "ftp:", "scheme:"]);
+const FACTUAL_FORMULA_VALID_SUFFIXES = Object.freeze(["", " factual", ",", ";", ".", "!", "?", "—", ".—", ", factual"]);
+const FACTUAL_FORMULA_INVALID_SUFFIXES = Object.freeze([
+  "/private", "\\private", ".private", ",/private", ",\\private", ";/private", ";\\private",
+  "./private", ".\\private", " /private", " \\private", ",.private",
+]);
+const PATH_TOKEN_LEADING_CHAR = /[A-Za-z0-9._~\\/-]/u;
+const TERMINAL_PUNCTUATION = /\p{P}/u;
+const STRICT_PATH_LIKE_STRING =
+  /[A-Za-z][A-Za-z\d+.-]*:\/\/|(?:^|[^A-Za-z0-9._~-])(?:(?:[\\/]{2}(?=\S)|[\\/](?![\\/])(?=\S))|\.{1,2}[\\/](?=\S)|~[\\/]|[A-Za-z]:[\\/]|(?:assets?|files?|folios?|images?|scans?|source[\s_-]*images?)[\\/])/iu;
+
+function hasFormulaLeadingBoundary(value, index) {
+  return index === 0 || (value[index - 1] !== ":" && !PATH_TOKEN_LEADING_CHAR.test(value[index - 1]));
+}
+
+function hasFormulaTrailingBoundary(value, index) {
+  if (index === value.length || /\s/u.test(value[index])) return true;
+  if (!TERMINAL_PUNCTUATION.test(value[index])) return false;
+  let cursor = index;
+  while (cursor < value.length && TERMINAL_PUNCTUATION.test(value[cursor])) {
+    if (value[cursor] === "/" || value[cursor] === "\\") return false;
+    cursor += 1;
+  }
+  return cursor === value.length || /\s/u.test(value[cursor]);
+}
+
+function containsUnsafePath(value) {
+  const intervals = [];
+  for (const token of FACTUAL_FORMULA_TOKENS) {
+    let index = -1;
+    while ((index = value.indexOf(token, index + 1)) !== -1) {
+      if (!hasFormulaLeadingBoundary(value, index)) {
+        if (value[index - 1] === ":") return true;
+        continue;
+      }
+      const end = index + token.length;
+      if (!hasFormulaTrailingBoundary(value, end)) return true;
+      intervals.push([index, end]);
+    }
+  }
+  intervals.sort(([left], [right]) => left - right);
+  let cursor = 0;
+  let masked = "";
+  for (const [start, end] of intervals) {
+    if (start < cursor) continue;
+    masked += value.slice(cursor, start) + " ".repeat(end - start);
+    cursor = end;
+  }
+  return STRICT_PATH_LIKE_STRING.test(masked + value.slice(cursor));
+}
 
 const CATALOG_URL = new URL("../data/catalog.json", import.meta.url);
 const FOLIOS_URL = new URL("../data/folios.json", import.meta.url);
@@ -41,11 +86,17 @@ const TABLE_A_SPECIMEN_KEYS = [
   "id", "catalogId", "entryOrder", "specimenId", "weight", "classification", "olivineFa", "pyroxeneFs",
   "weathering", "locality", "catalogPage", "confidence",
 ];
+const DEALER_OFFER_FACT_KEYS = [
+  "id", "catalogId", "typeNumber", "name", "description", "catalogPage", "confidence",
+];
 const HAMBURG_COLLECTION_ENTRY_KEYS = [
   ...COLLECTION_ENTRY_KEYS, "reportedTotalWeight", "publicationState", "amendments",
 ];
 const METBULL_KEYS = ["matchType", "canonicalName", "meteoriteCode", "metbullUrl", "alternateNameNote"];
-const METBULL_MATCH_TYPES = ["exact", "case-normalized-exact", "historical-alias", "corrected-spelling", "translated-or-older-name", "unresolved"];
+const METBULL_MATCH_TYPES = [
+  "exact", "case-normalized-exact", "source-heading-exact", "historical-alias", "corrected-spelling",
+  "translated-or-older-name", "unresolved",
+];
 const HOLDING_KEYS = ["designation", "kind", "description", "count", "weight"];
 const CATALOG_NUMBER_HOLDING_KEYS = ["description", "provenance", "count", "weights"];
 const HAMBURG_HOLDING_KEYS = [
@@ -54,6 +105,7 @@ const HAMBURG_HOLDING_KEYS = [
 const HOLDING_KINDS = ["specimen", "cast", "aggregate"];
 const RECORD_MODELS = [
   "catalog-item", "specimen", "catalog-number", "collection-entry", "regional-census-fact", "table-a-specimen",
+  "dealer-offer-fact",
 ];
 const FACTUAL_FIELDS = [
   "id",
@@ -66,6 +118,8 @@ const FACTUAL_FIELDS = [
   "entryOrder",
   "reportedNumber",
   "specimenId",
+  "typeNumber",
+  "description",
   "australianMuseumRepresentation.status",
   "australianMuseumRepresentation.representedOccurrences",
   "australianMuseumRepresentation.notRepresentedOccurrences",
@@ -277,12 +331,12 @@ function assertCountSummary(value, path) {
 
 function validateMetadata(metadata, path) {
   assertExactKeys(metadata, METADATA_KEYS, path);
-  assert(metadata.schemaVersion === 9, `${path}.schemaVersion must be 9`);
+  assert(metadata.schemaVersion === 10, `${path}.schemaVersion must be 10`);
   assert(metadata.scope === "facts-only", `${path}.scope must be facts-only`);
   assert(
     Array.isArray(metadata.factualFields) && metadata.factualFields.length === FACTUAL_FIELDS.length &&
       metadata.factualFields.every((field, index) => field === FACTUAL_FIELDS[index]),
-    `${path}.factualFields does not match the schema 9 public record models`,
+    `${path}.factualFields does not match the schema 10 public record models`,
   );
   assertCountSummary(metadata, path);
   assert(Array.isArray(metadata.catalogs) && metadata.catalogs.length > 0, `${path}.catalogs must be a nonempty array`);
@@ -333,7 +387,7 @@ function validateMetadata(metadata, path) {
 function recordDesignations(record, recordModel) {
   if (recordModel === "specimen") return record.designation === null ? [] : [record.designation];
   if (recordModel === "table-a-specimen") return [record.specimenId];
-  if (["catalog-number", "collection-entry", "regional-census-fact"].includes(recordModel)) return [];
+  if (["catalog-number", "collection-entry", "regional-census-fact", "dealer-offer-fact"].includes(recordModel)) return [];
   return record.holdings.map((holding) => holding.designation).filter((value) => value !== null);
 }
 
@@ -341,7 +395,7 @@ function recordMasses(record, recordModel) {
   if (recordModel === "specimen" || recordModel === "table-a-specimen") {
     return record.weight.grams === null ? [] : [record.weight.grams];
   }
-  if (recordModel === "regional-census-fact") return [];
+  if (["regional-census-fact", "dealer-offer-fact"].includes(recordModel)) return [];
   if (recordModel === "catalog-number" || recordModel === "collection-entry") {
     return record.holdings.flatMap((holding) => holding.weights.map(({ grams }) => grams));
   }
@@ -402,6 +456,9 @@ function compareRecords(left, right, metadataByCatalog) {
   if (["collection-entry", "regional-census-fact", "table-a-specimen"].includes(leftModel)) {
     return compareText(left.catalogId, right.catalogId) || left.entryOrder - right.entryOrder || compareText(left.id, right.id);
   }
+  if (leftModel === "dealer-offer-fact") {
+    return compareText(left.catalogId, right.catalogId) || left.typeNumber - right.typeNumber || compareText(left.id, right.id);
+  }
   const identityOrder = compareDesignation(left.designation, right.designation);
   const leftMasses = recordMasses(left, leftModel);
   const rightMasses = recordMasses(right, rightModel);
@@ -414,6 +471,7 @@ function modelSortOrder(recordModel) {
   if (recordModel === "catalog-item") return 0;
   if (recordModel === "specimen") return 1;
   if (recordModel === "catalog-number") return 2;
+  if (recordModel === "dealer-offer-fact") return 4;
   return 3;
 }
 
@@ -521,6 +579,7 @@ function validatePublicCatalog(data, folios, path = "catalog") {
   const catalogItemNumbers = new Map();
   const previousCatalogItems = new Map();
   const catalogNumbers = new Map();
+  const dealerTypeNumbers = new Map();
   const specimenIds = new Map();
   const collectionEntryOrders = new Map();
   const previousCollectionEntries = new Map();
@@ -547,6 +606,7 @@ function validatePublicCatalog(data, folios, path = "catalog") {
         : recordModel === "catalog-number" ? CATALOG_NUMBER_KEYS
           : recordModel === "regional-census-fact" ? REGIONAL_CENSUS_FACT_KEYS
             : recordModel === "table-a-specimen" ? TABLE_A_SPECIMEN_KEYS
+              : recordModel === "dealer-offer-fact" ? DEALER_OFFER_FACT_KEYS
               : record.catalogId === "hamburg-1913" ? HAMBURG_COLLECTION_ENTRY_KEYS : COLLECTION_ENTRY_KEYS)];
     if (recordModel === "specimen" && Object.hasOwn(record, "individualFindLocation")) {
       expectedRecordKeys.splice(expectedRecordKeys.indexOf("year"), 0, "individualFindLocation");
@@ -557,7 +617,7 @@ function validatePublicCatalog(data, folios, path = "catalog") {
     assert(!ids.has(record.id), `${recordPath}.id is duplicated: ${record.id}`);
     ids.add(record.id);
     representedCatalogs.add(record.catalogId);
-    if (recordModel !== "table-a-specimen") {
+    if (!["table-a-specimen", "dealer-offer-fact"].includes(recordModel)) {
       const dateField = recordModel === "catalog-number" ? "dateOfDiscovery" :
         ["collection-entry", "regional-census-fact"].includes(recordModel) ? "eventDate" : "year";
       for (const field of ["name", "classification", "locality", dateField]) {
@@ -640,6 +700,18 @@ function validatePublicCatalog(data, folios, path = "catalog") {
         assertString(record[field], `${recordPath}.${field}`, true);
       }
       validateTableALocality(record.locality, `${recordPath}.locality`);
+    } else if (recordModel === "dealer-offer-fact") {
+      assert(Number.isInteger(record.typeNumber) && record.typeNumber > 0,
+        `${recordPath}.typeNumber must be a positive integer`);
+      const typeNumbers = dealerTypeNumbers.get(record.catalogId) ?? [];
+      assert(!typeNumbers.includes(record.typeNumber),
+        `${recordPath}.typeNumber is duplicated within ${record.catalogId}: ${record.typeNumber}`);
+      assert(typeNumbers.length === 0 || record.typeNumber > typeNumbers.at(-1),
+        `${recordPath}.typeNumber must increase within ${record.catalogId}`);
+      typeNumbers.push(record.typeNumber);
+      dealerTypeNumbers.set(record.catalogId, typeNumbers);
+      assertString(record.name, `${recordPath}.name`);
+      assertString(record.description, `${recordPath}.description`);
     } else {
       assert(Number.isInteger(record.entryOrder) && record.entryOrder > 0,
         `${recordPath}.entryOrder must be a positive integer`);
@@ -715,7 +787,7 @@ function validatePublicCatalog(data, folios, path = "catalog") {
   assertExactSet(representedCatalogs, metadataByCatalog.keys(), `${path} record catalog IDs`);
   assertExactSet(Object.keys(folios.catalogs), metadataByCatalog.keys(), `${path} folio catalog IDs`);
   assert(data.metadata.recordCount === data.records.length, `${path}.metadata.recordCount does not match records`);
-  if (data.records.length === 14176 && metadataByCatalog.size === 37) {
+  if (data.records.length === 14477 && metadataByCatalog.size === 40) {
     assert(individualFindLocationCount === 111,
       `${path} must contain exactly 111 specimen individualFindLocation values`);
   }
@@ -1010,7 +1082,7 @@ function multiCatalogFixture() {
   return {
     data: {
       metadata: {
-        schemaVersion: 9,
+        schemaVersion: 10,
         scope: "facts-only",
         factualFields: [...FACTUAL_FIELDS],
         catalogs: [
@@ -1328,6 +1400,7 @@ function runSyntheticCatalogTests(modelFixture) {
     ...independentNumbering.records.filter(({ catalogId }) => catalogId === "hodge-smith-1939"),
     ...independentNumbering.records.filter(({ catalogId }) => catalogId === "museum-1914"),
     ...independentNumbering.records.filter(({ catalogId }) => catalogId === "victoria-land-1982"),
+    ...independentNumbering.records.filter(({ catalogId }) => catalogId === "dealer-1909"),
   ];
   validatePublicCatalog(independentNumbering, modelFolios,
     "synthetic independent numbering and catalog-item ID tie breaker");
@@ -1484,6 +1557,18 @@ function runSyntheticCatalogTests(modelFixture) {
   assertModelRejection("Victoria nonpositive mass", ({ records }) => {
     records.find(({ catalogId }) => catalogId === "victoria-land-1982").weight.grams = 0;
   });
+  assertModelRejection("dealer offer missing exact description field", ({ records }) => {
+    delete records.find(({ id }) => id === "dealer-type-95").description;
+  });
+  assertModelRejection("dealer offer with specimen classification field", ({ records }) => {
+    records.find(({ id }) => id === "dealer-type-95").classification = "Iron";
+  });
+  assertModelRejection("dealer offer nonpositive type number", ({ records }) => {
+    records.find(({ id }) => id === "dealer-type-95").typeNumber = 0;
+  });
+  assertModelRejection("dealer offer type order drift", ({ records }) => {
+    records.find(({ id }) => id === "dealer-type-96").typeNumber = 94;
+  });
 
   const assertCatalogNumberRejection = (description, mutate) => {
     const candidate = clone(modelFixture);
@@ -1498,7 +1583,7 @@ function runSyntheticCatalogTests(modelFixture) {
     catalogNumberRejectionCount += 1;
   };
   const hoveyRecord = (records, id = "hovey-catalog-z9") => records.find((record) => record.id === id);
-  assertCatalogNumberRejection("older metadata under schema 9", ({ metadata }) => { metadata.schemaVersion = 8; });
+  assertCatalogNumberRejection("older metadata under schema 10", ({ metadata }) => { metadata.schemaVersion = 9; });
   assertCatalogNumberRejection("empty catalog number", ({ records }) => { hoveyRecord(records).catalogNumber = ""; });
   assertCatalogNumberRejection("nonnull non-string catalog number", ({ records }) => { hoveyRecord(records).catalogNumber = 9; });
   assertCatalogNumberRejection("duplicate catalog number within one catalog", ({ records }) => {
@@ -1940,7 +2025,7 @@ console.log(
   `${catalogFixtureStats.holdingPrivacyAllowCount} holding-privacy boundary allow, ` +
   `${catalogFixtureStats.modelRejectionCount} model/holding rejections, ` +
   `${catalogFixtureStats.catalogNumberRejectionCount} catalog-number rejections, ` +
-  `${catalogFixtureStats.collectionEntryRejectionCount} collection-entry/schema-9 rejections, ` +
+  `${catalogFixtureStats.collectionEntryRejectionCount} collection-entry/schema-10 rejections, ` +
   `${metbullFixtureStats.allowCount} MetBull allows, ${metbullFixtureStats.rejectionCount} MetBull rejections, ` +
   `${folioFixtureStats.allowCount} folio allows, ${folioFixtureStats.rejectionCount} folio rejections, ` +
   `${folioFileFixtureStats.allowCount} folio-file allows, ${folioFileFixtureStats.rejectionCount} folio-file rejections passed.`,
@@ -1963,7 +2048,7 @@ if (!SYNTHETIC_ONLY) {
     assert(rejected, `deployed catalog mutation must reject ${label}`);
   };
   const locationRecord = data.records.find((record) => Object.hasOwn(record, "individualFindLocation"));
-  assertDeployedRejection("schema-8 downgrade", ({ metadata }) => { metadata.schemaVersion = 8; });
+  assertDeployedRejection("schema-9 downgrade", ({ metadata }) => { metadata.schemaVersion = 9; });
   assertDeployedRejection("missing one of 111 individual find locations", ({ records }) => {
     delete records.find(({ id }) => id === locationRecord.id).individualFindLocation;
   });
@@ -1981,7 +2066,7 @@ if (!SYNTHETIC_ONLY) {
   );
   console.log(
     `Validated data/catalog.json and data/folios.json: ${deployedStats.recordCount} records across ` +
-      `${deployedStats.catalogCount} schema 9 facts-only catalogs, ${deployedStats.individualFindLocationCount} individual find locations, ` +
+      `${deployedStats.catalogCount} schema 10 facts-only catalogs, ${deployedStats.individualFindLocationCount} individual find locations, ` +
       `${totalPageCount} metadata source pages, ` +
     `${deployedStats.folioStats.pageEntryCount} displayable folio pages with locked SHA-256 assets.`,
   );

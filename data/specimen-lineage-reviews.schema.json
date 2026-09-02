@@ -9,6 +9,8 @@
     "schemaVersion": { "const": 1 },
     "reviews": {
       "type": "array",
+      "minItems": 26,
+      "maxItems": 26,
       "uniqueItems": true,
       "items": { "$ref": "#/$defs/review" }
     }

@@ -1,7 +1,39 @@
 "use strict";
 
-const CACHE_VERSION = "20260901-weight-toggle-1";
+const CACHE_VERSION = "20260902-backlog39-wave1-1";
 const ASSET_CACHE_VERSION = CACHE_VERSION;
+const CATALOG_SCHEMA_VERSION = 10;
+const CATALOG_RECORD_COUNT = 14477;
+const DISPLAY_DESCRIPTOR_COUNT = 19477;
+const SPECIMEN_DESCRIPTOR_COUNT = 12966;
+const OBSERVATION_DESCRIPTOR_COUNT = 6511;
+const WEIGHTED_DESCRIPTOR_COUNT = 19304;
+const UNKNOWN_WEIGHT_EXCLUSION_COUNT = 173;
+const WAVE1_PROJECTED_CATALOGS = new Set(["brown-1916", "minnesota-1892"]);
+const WAVE1_LINEAGE_RELATIONSHIP_IDS = new Set([
+  "possible-lineage-015140ad-87ce-5595-a68e-afb9f85836b2",
+  "possible-lineage-20ef2648-5722-529f-8b8f-21c07bd64607",
+  "possible-lineage-27533024-d8f9-5335-a0b8-e538b1d5726f",
+  "possible-lineage-28cad19f-e42d-5837-9ca0-43346b04f9fb",
+  "possible-lineage-2ae3f247-8b02-5082-8fe8-725c409d0380",
+  "possible-lineage-4f695b8c-0b48-56f6-85cc-a171d3bda5ed",
+  "possible-lineage-61d9e034-e89e-5dcb-bc0e-4de6035654bb",
+  "possible-lineage-6569e465-c2c3-5ce2-b46f-fe8cc177d4c0",
+  "possible-lineage-97817b5e-85ff-5191-8f4c-767236146f4d",
+  "possible-lineage-9be1fe18-4367-5d2c-ab06-bd76f8193430",
+  "possible-lineage-ae993216-9d2d-5794-80a3-b164e7759cd9",
+  "possible-lineage-affd5c82-515b-5cdd-83c8-6f908c4f37d5",
+  "possible-lineage-b1f5088c-e065-5c51-b5dc-1c00a4c0904f",
+  "possible-lineage-b890eaa7-df2f-599c-b16a-2fab57708500",
+  "possible-lineage-b8cdd278-99aa-5729-9fca-d1b451bdfa30",
+  "possible-lineage-ce67e96f-8984-58ea-893f-489130ab6994",
+  "possible-lineage-d894b254-a96b-563e-8f37-f363cf31b835",
+  "possible-lineage-df7aa936-8c6d-5ec0-a1ac-4a18ca2e6856",
+  "possible-lineage-e8169766-7ea4-5ca2-871b-da0a1e4c4cd9",
+  "possible-lineage-eb0022b1-5b35-5d6a-9b6d-cfabb5ef29a0",
+  "possible-lineage-f994b310-4343-5ad4-9ed1-a97d79b61eec",
+  "possible-lineage-fe3fdb26-c81e-501c-829b-c0995ef4081a"
+]);
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "name-asc";
 const ISSUE_FORM_URL = "https://github.com/rayborg/Historical-meteorite-collections/issues/new?template=data-error.yml";
@@ -91,6 +123,15 @@ const TABLE_A_SPECIMEN_RECORD_FIELDS = new Set([
   "catalogPage",
   "confidence"
 ]);
+const DEALER_OFFER_FACT_RECORD_FIELDS = new Set([
+  "id",
+  "catalogId",
+  "typeNumber",
+  "name",
+  "description",
+  "catalogPage",
+  "confidence"
+]);
 const HAMBURG_COLLECTION_ENTRY_RECORD_FIELDS = new Set([
   ...COLLECTION_ENTRY_RECORD_FIELDS,
   "reportedTotalWeight",
@@ -98,7 +139,7 @@ const HAMBURG_COLLECTION_ENTRY_RECORD_FIELDS = new Set([
   "amendments"
 ]);
 const METBULL_FIELDS = new Set(["matchType", "canonicalName", "meteoriteCode", "metbullUrl", "alternateNameNote"]);
-const METBULL_MATCH_TYPES = new Set(["exact", "case-normalized-exact", "historical-alias", "corrected-spelling", "translated-or-older-name", "unresolved"]);
+const METBULL_MATCH_TYPES = new Set(["exact", "case-normalized-exact", "source-heading-exact", "historical-alias", "corrected-spelling", "translated-or-older-name", "unresolved"]);
 const HOLDING_FIELDS = new Set(["designation", "kind", "description", "count", "weight"]);
 const CATALOG_NUMBER_HOLDING_FIELDS = new Set(["description", "provenance", "count", "weights"]);
 const HAMBURG_HOLDING_FIELDS = new Set([
@@ -108,7 +149,7 @@ const HOLDING_KINDS = new Set(["specimen", "cast", "aggregate"]);
 const HAMBURG_WEIGHT_KINDS = new Set(["individual-holding", "aggregate-holding", "associated-material"]);
 const HAMBURG_PUBLICATION_STATES = new Set(["base-register", "supplement"]);
 const RECORD_MODELS = new Set([
-  "catalog-item", "specimen", "catalog-number", "collection-entry", "regional-census-fact", "table-a-specimen"
+  "catalog-item", "specimen", "catalog-number", "collection-entry", "regional-census-fact", "table-a-specimen", "dealer-offer-fact"
 ]);
 const FACTUAL_FIELDS = [
   "id",
@@ -121,6 +162,8 @@ const FACTUAL_FIELDS = [
   "entryOrder",
   "reportedNumber",
   "specimenId",
+  "typeNumber",
+  "description",
   "australianMuseumRepresentation.status",
   "australianMuseumRepresentation.representedOccurrences",
   "australianMuseumRepresentation.notRepresentedOccurrences",
@@ -204,10 +247,10 @@ const SPECIMEN_CARD_COMPONENT_FIELDS = new Set(["holdingPath", "componentPath", 
 const SPECIMEN_CARD_CLAUSE_FIELDS = new Set(["textPath", "start", "end"]);
 const SPECIMEN_CARD_REPEATED_MASS_FIELDS = new Set(["valuePath", "countPath", "totalPath", "occurrence", "occurrenceCount"]);
 const SHA256_HEX = /^[0-9a-f]{64}$/u;
-const SPECIMEN_CARD_SOURCE_CATALOG_SHA256 = "f5435256d1ff5c9500217112c8beeb7141e278487b3a1e98b5bb86e162739c0e";
-const SPECIMEN_CARD_PROJECTION_DATA_SHA256 = "5df8dd03261f1ba47c374401fa5a1df1828860a7802adb680e56c7bcf1ce4d1e";
-const SPECIMEN_CARD_PROJECTION_SET_SHA256 = "54eabe28b7cc7b885f3e980d7e5962f01eb04aed39cedb30bc9f6d334ea3dede";
-const SPECIMEN_LINEAGE_DATA_SHA256 = "bf73d5fe32aa88b123a110db3108c45cd2053c2f32ac5463fa52035b859291b7";
+const SPECIMEN_CARD_SOURCE_CATALOG_SHA256 = "9a921861c782abe1218e2d3b33bc2fc0b229908ce0a3c08e93bdc2596b91c536";
+const SPECIMEN_CARD_PROJECTION_DATA_SHA256 = "c8d705ac6b41ec9cbd16d67229efb454b9610e374e37c8b6f7b5eadd62109986";
+const SPECIMEN_CARD_PROJECTION_SET_SHA256 = "8e7c185771d0a4bb135b0966416cc93dedfb0d8d09ede6f1c5c3a8dd0bba41cf";
+const SPECIMEN_LINEAGE_DATA_SHA256 = "4c1bc76827dcbf9673d6c78d65ee00a768dec8dde0fd2cb10b628c6fc9636233";
 const LINEAGE_ROOT_FIELDS = new Set(["metadata", "relationships"]);
 const LINEAGE_METADATA_FIELDS = new Set(["schemaVersion", "scope", "source", "collectionSeries", "methodology", "counts"]);
 const LINEAGE_SOURCE_FIELDS = new Set(["catalogSchemaVersion", "recordCount", "catalogCount", "flattenedMassObservationCount", "inventoryObservationCount"]);
@@ -468,6 +511,8 @@ function matchesSearch(record, rawQuery) {
   if (catalogItemQuery) return record.catalogItem === Number(catalogItemQuery[1]);
   const collectionEntryQuery = query.match(/^collection entry (\d+)$/);
   if (collectionEntryQuery) return record.entryOrder === Number(collectionEntryQuery[1]);
+  const typeNumberQuery = query.match(/^type number (\d+)$/);
+  if (typeNumberQuery) return record.typeNumber === Number(typeNumberQuery[1]);
   const holdingCodeQuery = numericLeadingHoldingCode(rawQuery);
   if (holdingCodeQuery) {
     return numericLeadingHoldingCode(record.designation) === holdingCodeQuery ||
@@ -492,6 +537,7 @@ function matchesSearch(record, rawQuery) {
       holding.provenance
     ]).filter(Boolean).join(" ")).split(/\s+/).filter(Boolean));
     return String(record.catalogItem || "") === numericQuery || String(record.entryOrder || "") === numericQuery ||
+      String(record.typeNumber || "") === numericQuery ||
       recordDesignations(record).some((designation) => String(designation).trim() === numericQuery) ||
       yearTokens.includes(numericQuery) || holdingTokens.has(numericQuery);
   }
@@ -826,6 +872,7 @@ function canonicalModelSortOrder(recordModel) {
   if (recordModel === "catalog-item") return 0;
   if (recordModel === "specimen") return 1;
   if (recordModel === "catalog-number") return 2;
+  if (recordModel === "dealer-offer-fact") return 4;
   return 3;
 }
 
@@ -846,6 +893,10 @@ function compareCanonicalRecords(left, right, registry) {
   if (["collection-entry", "regional-census-fact", "table-a-specimen"].includes(leftModel)) {
     return compareCanonicalText(left.catalogId, right.catalogId) ||
       left.entryOrder - right.entryOrder || compareCanonicalText(left.id, right.id);
+  }
+  if (leftModel === "dealer-offer-fact") {
+    return compareCanonicalText(left.catalogId, right.catalogId) ||
+      left.typeNumber - right.typeNumber || compareCanonicalText(left.id, right.id);
   }
   const identityOrder = compareCanonicalDesignation(left.designation, right.designation);
   const leftMasses = recordMasses(left);
@@ -1024,7 +1075,7 @@ function createCatalogRegistry(descriptors) {
 function normalizeCatalogRegistry(metadata) {
   requireSchema(isPlainObject(metadata) && isLeakageSafeTree(metadata));
   requireSchema(hasExactFields(metadata, CANONICAL_METADATA_FIELDS));
-  requireSchema(metadata.schemaVersion === 9 && metadata.scope === "facts-only" && hasFactualFields(metadata.factualFields));
+  requireSchema(metadata.schemaVersion === CATALOG_SCHEMA_VERSION && metadata.scope === "facts-only" && hasFactualFields(metadata.factualFields));
   requireSchema(Array.isArray(metadata.catalogs) && metadata.catalogs.length > 0 && hasValidSummary(metadata));
   metadata.catalogs.forEach(validateCanonicalDescriptor);
   requireSchema(new Set(metadata.catalogs.map((descriptor) => descriptor.id)).size === metadata.catalogs.length);
@@ -1054,6 +1105,7 @@ function validateCatalog(catalog) {
   const catalogItemNumbers = {};
   const previousCatalogItems = {};
   const catalogNumbers = {};
+  const dealerTypeNumbers = {};
   const collectionEntryOrders = {};
   const previousCollectionEntries = {};
   const statistics = Object.fromEntries(Object.keys(registry).map((catalogId) => [catalogId, emptyCatalogStatistics()]));
@@ -1074,9 +1126,11 @@ function validateCatalog(catalog) {
             : recordModel === "table-a-specimen"
               ? hasExactFields(record, recordFields(record, TABLE_A_SPECIMEN_RECORD_FIELDS)) &&
                 hasExactFields(record.weight, new Set(["grams"]))
-              : hasExactFields(record, recordFields(record, record.catalogId === "hamburg-1913"
-                ? HAMBURG_COLLECTION_ENTRY_RECORD_FIELDS : COLLECTION_ENTRY_RECORD_FIELDS)));
-    if (recordModel !== "table-a-specimen") {
+              : recordModel === "dealer-offer-fact"
+                ? hasExactFields(record, DEALER_OFFER_FACT_RECORD_FIELDS)
+                : hasExactFields(record, recordFields(record, record.catalogId === "hamburg-1913"
+                  ? HAMBURG_COLLECTION_ENTRY_RECORD_FIELDS : COLLECTION_ENTRY_RECORD_FIELDS)));
+    if (!["table-a-specimen", "dealer-offer-fact"].includes(recordModel)) {
       const dateField = recordModel === "catalog-number" ? "dateOfDiscovery" :
         ["collection-entry", "regional-census-fact"].includes(recordModel) ? "eventDate" : "year";
       ["name", "classification", dateField].forEach((field) =>
@@ -1121,6 +1175,15 @@ function validateCatalog(catalog) {
           requireSchema(holding.description !== null && (holding.count !== null || holding.weight.grams !== null));
         }
       });
+    } else if (recordModel === "dealer-offer-fact") {
+      requireSchema(Number.isInteger(record.typeNumber) && record.typeNumber > 0);
+      const typeNumbers = dealerTypeNumbers[record.catalogId] || [];
+      requireSchema(!typeNumbers.includes(record.typeNumber) &&
+        (!typeNumbers.length || record.typeNumber > typeNumbers[typeNumbers.length - 1]));
+      typeNumbers.push(record.typeNumber);
+      dealerTypeNumbers[record.catalogId] = typeNumbers;
+      requireSchema(record.name !== "" && isLeakageSafeText(record.name));
+      requireSchema(record.description !== "" && isLeakageSafeText(record.description));
     } else if (recordModel === "regional-census-fact") {
       requireSchema(Number.isInteger(record.entryOrder) && record.entryOrder > 0);
       const entryOrders = collectionEntryOrders[record.catalogId] || new Set();
@@ -1572,6 +1635,7 @@ function lineageMassEndpoints(sourceRecords) {
       record.holdings.forEach((holding, index) => add(record, holding.weight.grams, `holdings[${index}].weight.grams`));
     } else if (record.recordModel === "catalog-number" || record.recordModel === "collection-entry") {
       record.holdings.forEach((holding, holdingIndex) => holding.weights.forEach((weight, weightIndex) => {
+        if (WAVE1_PROJECTED_CATALOGS.has(record.catalogId) && !holding.description.startsWith("Specimen:")) return;
         if (weight.kind && weight.kind !== "individual-holding") return;
         add(record, weight.grams, `holdings[${holdingIndex}].weights[${weightIndex}].grams`);
       }));
@@ -1617,8 +1681,9 @@ function lineageMassObservationCount(sourceRecords) {
     if (!record.metbull || typeof record.metbull !== "object") return;
     if (record.recordModel === "specimen") count += Number.isFinite(record.weight.grams) ? 1 : 0;
     else if (record.recordModel === "catalog-item") count += record.holdings.filter((holding) => Number.isFinite(holding.weight.grams)).length;
-    else if (record.recordModel === "catalog-number" || record.recordModel === "collection-entry") count += record.holdings.reduce((sum, holding) => sum + holding.weights.filter((weight) =>
-      Number.isFinite(weight.grams) && (!weight.kind || weight.kind === "individual-holding")).length, 0);
+    else if (record.recordModel === "catalog-number" || record.recordModel === "collection-entry") count += record.holdings.reduce((sum, holding) =>
+      WAVE1_PROJECTED_CATALOGS.has(record.catalogId) && !holding.description.startsWith("Specimen:") ? sum : sum + holding.weights.filter((weight) =>
+        Number.isFinite(weight.grams) && (!weight.kind || weight.kind === "individual-holding")).length, 0);
   });
   return count;
 }
@@ -1648,9 +1713,12 @@ function validateLineageCandidates(lineageData, sourceRecords, registry) {
   const sourceRecordsById = new Map(sourceRecords.map((record) => [record.id, record]));
   requireLineage(sourceRecordsById.size === sourceRecords.length && isPlainObject(registry) && Object.keys(registry).length > 0);
   const inventorySummary = expectedSameInventoryRelationships(sourceRecords);
-  const expectedPossible = expectedPossibleRelationships(sourceRecords);
+  const expectedPossible = new Map([...expectedPossibleRelationships(sourceRecords)].filter(([, candidate]) =>
+    !candidate.endpoints.some(({ record }) => WAVE1_PROJECTED_CATALOGS.has(record.catalogId)) ||
+    WAVE1_LINEAGE_RELATIONSHIP_IDS.has(candidate.relationshipId)
+  ));
   const inventoryObservationCount = lineageInventoryEndpoints(sourceRecords).length;
-  requireLineage(metadata.source.catalogSchemaVersion === 9 && metadata.source.recordCount === sourceRecords.length &&
+  requireLineage(metadata.source.catalogSchemaVersion === CATALOG_SCHEMA_VERSION && metadata.source.recordCount === sourceRecords.length &&
     metadata.source.catalogCount === Object.keys(registry).length && metadata.source.flattenedMassObservationCount === lineageMassObservationCount(sourceRecords) &&
     metadata.source.inventoryObservationCount === inventoryObservationCount);
   const relationshipIds = new Set();
@@ -1844,7 +1912,7 @@ function deriveEarlierRecordIndex(lineageData, sourceRecords, registry) {
 
 async function loadEarlierRecordIndex(sourceRecords = records, registry = catalogRegistry, fetcher = fetch, options = {}) {
   try {
-    const response = await fetcher("./data/specimen-lineages.json", { cache: "no-cache" });
+    const response = await fetcher(`./data/specimen-lineages.json?v=${CACHE_VERSION}`, { cache: "no-cache" });
     if (!response.ok) return new Map();
     const text = await response.text();
     const digest = await (options.sha256 || sha256Text)(text);
@@ -1988,7 +2056,7 @@ function validateSpecimenCardManifest(manifest, sourceRecords, options = {}) {
       !hasExactFields(manifest.metadata, SPECIMEN_CARD_METADATA_FIELDS) || !Array.isArray(sourceRecords)) return false;
   const metadata = manifest.metadata;
   if (metadata.schemaVersion !== 4 || metadata.scope !== "reviewed-atomic-specimen-card-display-projections" ||
-      metadata.catalogSchemaVersion !== 9 || metadata.sourceRecordCount !== sourceRecords.length ||
+      metadata.catalogSchemaVersion !== CATALOG_SCHEMA_VERSION || metadata.sourceRecordCount !== sourceRecords.length ||
       !SHA256_HEX.test(metadata.sourceCatalogSha256) || !Number.isInteger(metadata.projectionCount) ||
       metadata.projectionCount !== manifest.projections.length || !Number.isInteger(metadata.atomicCardCount) ||
       metadata.atomicCardCount < 0 || !Number.isInteger(metadata.sourceContextCardCount) ||
@@ -2057,7 +2125,8 @@ function validateSpecimenCardManifest(manifest, sourceRecords, options = {}) {
           !Array.from({ length: occurrenceCount }, (_, index) => index + 1).every((value) => occurrences.has(value))) return false;
     }
     const hasSourceContext = specimenCardContextEntries(source.record, projection).length > 0;
-    if (projection.cards.length + Number(hasSourceContext) < 2) return false;
+    if (!WAVE1_PROJECTED_CATALOGS.has(source.record.catalogId) &&
+        projection.cards.length + Number(hasSourceContext) < 2) return false;
     atomicCardCount += projection.cards.length;
     if (hasSourceContext) sourceContextCardCount += 1;
   }
@@ -2072,7 +2141,7 @@ function deriveSpecimenCardProjectionIndex(manifest, sourceRecords, options = {}
 async function loadSpecimenCardProjectionIndex(sourceRecords = records, fetcher = fetch, options = {}) {
   try {
     if (options.sourceCatalogSha256 !== SPECIMEN_CARD_SOURCE_CATALOG_SHA256) return new Map();
-    const response = await fetcher("./data/specimen-card-projections.json", { cache: "no-cache" });
+    const response = await fetcher(`./data/specimen-card-projections.json?v=${CACHE_VERSION}`, { cache: "no-cache" });
     if (!response.ok) return new Map();
     const text = await response.text();
     const hash = options.sha256 || sha256Text;
@@ -2233,6 +2302,11 @@ function specimenCardDescriptorMasses(descriptor) {
   return recordMasses(descriptor.parentRecord);
 }
 
+function specimenCardDescriptorHasKnownWeight(descriptor) {
+  return specimenCardDescriptorMasses(descriptor).length > 0 ||
+    (descriptor?.kind === "atomic" && WAVE1_PROJECTED_CATALOGS.has(descriptor.parentRecord?.catalogId));
+}
+
 function lineageEntriesForSpecimenCard(descriptor, entries) {
   if (!descriptor?.projected) return entries;
   if (descriptor.kind === "atomic") return descriptor.massPath === null ? [] : entries.filter((entry) => entry.massPath === descriptor.massPath);
@@ -2245,7 +2319,7 @@ function filterSpecimenCardDescriptors(descriptors, filters, lineageIndex = new 
     const specimen = [HARMONIZED_CARD_KINDS.specimen, HARMONIZED_CARD_KINDS.atomic].includes(
       classifyHarmonizedCard(descriptor)
     );
-    const unknownWeightMatches = filters.includeUnknownWeight !== false || !specimen || masses.length > 0;
+    const unknownWeightMatches = filters.includeUnknownWeight !== false || !specimen || specimenCardDescriptorHasKnownWeight(descriptor);
     const weightMatches = (filters.min === null && filters.max === null) || masses.some((grams) =>
       (filters.min === null || grams >= filters.min) && (filters.max === null || grams <= filters.max));
     const lineageMatches = filters.lineageOnly !== true || lineageEntriesForSpecimenCard(
@@ -2447,6 +2521,10 @@ function prepareRecord(source, index, registry = catalogRegistry) {
       coordinate: cleanText(source.locality.coordinate)
     };
     record.catalogPage = Number(source.catalogPage);
+  } else if (recordModel === "dealer-offer-fact") {
+    record.typeNumber = Number(source.typeNumber);
+    record.description = cleanText(source.description);
+    record.catalogPage = Number(source.catalogPage);
   } else {
     record.year = cleanText(source.year);
     record.catalogPage = source.catalogPage === null || source.catalogPage === "" ? null : Number(source.catalogPage);
@@ -2471,6 +2549,7 @@ function prepareRecord(source, index, registry = catalogRegistry) {
     record.entryOrder === undefined ? null : `collection entry ${record.entryOrder}`,
     record.reportedNumber === undefined ? null : `reported no ${record.reportedNumber}`,
     record.specimenId === undefined ? null : `specimen id ${record.specimenId}`,
+    record.typeNumber === undefined ? null : `type number ${record.typeNumber}`,
     record.recordModel === "table-a-specimen" ? `reported mass ${record.weight.grams} grams` : null,
     ...recordDesignations(record),
     ...(record.holdings || []).flatMap((holding) => [
@@ -2482,6 +2561,7 @@ function prepareRecord(source, index, registry = catalogRegistry) {
       ...(holding.representations || []).flatMap((representation) => [representation.kind, representation.count])
     ]),
     record.name,
+    record.description,
     record.metbull?.canonicalName,
     record.metbull?.alternateNameNote,
     record.classification,
@@ -2500,6 +2580,7 @@ function prepareRecord(source, index, registry = catalogRegistry) {
     ...(record.australianMuseumRepresentation ? regionalCensusFacts(record).flatMap(({ label, value }) => [label, value]) : []),
     record.recordModel === "regional-census-fact" ? "regional census catalog observation" : null,
     record.recordModel === "table-a-specimen" ? "table a individual specimen" : null,
+    record.recordModel === "dealer-offer-fact" ? "dealer catalog observation not a specimen or holding" : null,
     record.publicationState,
     ...(record.amendments || []).flatMap((amendment) => [
       amendment.kind, amendment.effectiveDate, amendment.targetHolding, amendment.resultingState
@@ -2523,10 +2604,11 @@ async function loadData() {
   specimenCardProjectionsByParentId = new Map();
   setLoadingState();
   try {
-    const response = await fetch("./data/catalog.json", { cache: "no-cache" });
+    const response = await fetch(`./data/catalog.json?v=${CACHE_VERSION}`, { cache: "no-cache" });
     if (!response.ok) throw new Error(`The public catalog request returned status ${response.status}.`);
     const catalogText = await response.text();
     const sourceCatalogSha256 = await sha256Text(catalogText);
+    requireSchema(sourceCatalogSha256 === SPECIMEN_CARD_SOURCE_CATALOG_SHA256);
     const catalog = validateCatalog(JSON.parse(catalogText));
     catalogRegistry = normalizeCatalogRegistry(catalog.metadata);
     if (elements.catalogSummary) renderCatalogSummary(catalogRegistry);
@@ -2562,7 +2644,7 @@ async function loadData() {
 
 async function loadFolioManifest() {
   try {
-    const response = await fetch("./data/folios.json", { cache: "no-cache" });
+    const response = await fetch(`./data/folios.json?v=${CACHE_VERSION}`, { cache: "no-cache" });
     if (!response.ok) return null;
     const manifest = await response.json();
     return validateFolioManifest(manifest, catalogRegistry) ? manifest : null;
@@ -2663,6 +2745,7 @@ function recordCatalogPages(record) {
 }
 
 function designationSortValue(record) {
+  if (record.recordModel === "dealer-offer-fact" || Number.isInteger(record.typeNumber)) return record.typeNumber;
   if (record.recordModel === "catalog-item" || Number.isInteger(record.catalogItem)) return record.catalogItem;
   if (record.recordModel === "catalog-number" || record.catalogNumber !== undefined) return record.catalogNumber;
   if (record.recordModel === "table-a-specimen" || record.specimenId !== undefined) return record.specimenId;
@@ -2861,14 +2944,16 @@ const HARMONIZED_CARD_KINDS = Object.freeze({
   specimen: "direct-specimen",
   atomic: "projected-atomic-specimen",
   collection: "collection-observation",
-  regional: "regional-observation"
+  regional: "regional-observation",
+  dealer: "dealer-observation"
 });
 
 const HARMONIZED_SEMANTIC_LABELS = Object.freeze({
   [HARMONIZED_CARD_KINDS.specimen]: "Specimen.",
   [HARMONIZED_CARD_KINDS.atomic]: "Individual specimen.",
   [HARMONIZED_CARD_KINDS.collection]: "Collection catalog observation; not asserted here as one individual specimen.",
-  [HARMONIZED_CARD_KINDS.regional]: "Regional census/catalog observation, not a specimen or holding."
+  [HARMONIZED_CARD_KINDS.regional]: "Regional census/catalog observation, not a specimen or holding.",
+  [HARMONIZED_CARD_KINDS.dealer]: "Dealer catalog observation, not a specimen or holding"
 });
 
 function classifyHarmonizedCard(recordOrDescriptor) {
@@ -2896,7 +2981,8 @@ function classifyHarmonizedCard(recordOrDescriptor) {
   if (["catalog-item", "catalog-number", "collection-entry"].includes(record.recordModel)) {
     return HARMONIZED_CARD_KINDS.collection;
   }
-  return record.recordModel === "regional-census-fact" ? HARMONIZED_CARD_KINDS.regional : null;
+  if (record.recordModel === "regional-census-fact") return HARMONIZED_CARD_KINDS.regional;
+  return record.recordModel === "dealer-offer-fact" ? HARMONIZED_CARD_KINDS.dealer : null;
 }
 
 function harmonizedCardIdentifier(record, kind, descriptor = null) {
@@ -2912,6 +2998,7 @@ function harmonizedCardIdentifier(record, kind, descriptor = null) {
     return record.reportedNumber ? `Source number ${record.reportedNumber}` : `Regional census entry ${record.entryOrder}`;
   }
   if (record.recordModel === "table-a-specimen") return record.specimenId || "Unknown";
+  if (record.recordModel === "dealer-offer-fact") return `Type number ${record.typeNumber}`;
   return record.designation || "Unknown";
 }
 
@@ -2997,6 +3084,7 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
     identifier: harmonizedCardIdentifier(record, kind, descriptor),
     semanticLabel: HARMONIZED_SEMANTIC_LABELS[kind],
     sourceName: sourceName || "Unknown",
+    description: record.description || null,
     facts,
     sourceCitation: harmonizedSourceCitation(record),
     sourceLabel: record.catalogLabel || record.catalogId,
@@ -3025,13 +3113,21 @@ function createRecordCard(recordOrDescriptor) {
   const card = elements.template.content.firstElementChild.cloneNode(true);
   card.dataset.cardKind = dto.kind;
   card.classList.toggle("specimen-card", dto.kind === HARMONIZED_CARD_KINDS.specimen || dto.kind === HARMONIZED_CARD_KINDS.atomic);
-  card.classList.toggle("observation-card", dto.kind === HARMONIZED_CARD_KINDS.collection || dto.kind === HARMONIZED_CARD_KINDS.regional);
+  card.classList.toggle("observation-card", [HARMONIZED_CARD_KINDS.collection, HARMONIZED_CARD_KINDS.regional, HARMONIZED_CARD_KINDS.dealer].includes(dto.kind));
   card.querySelector(".designation").textContent = displayText(dto.identifier);
   const semanticLabel = card.querySelector(".record-semantic-label, .record-model-label");
   semanticLabel.textContent = dto.semanticLabel;
   semanticLabel.hidden = false;
-  card.querySelector(".source-name-label").textContent = "Source catalog meteorite name";
+  card.querySelector(".source-name-label").textContent = dto.kind === HARMONIZED_CARD_KINDS.dealer
+    ? "Source catalog name" : "Source catalog meteorite name";
   card.querySelector(".record-name").textContent = displayText(dto.sourceName);
+  const description = card.querySelector(".record-description");
+  if (dto.description) {
+    description.querySelector("p").textContent = displayText(dto.description);
+    description.hidden = false;
+  } else {
+    description.remove();
+  }
   const meta = card.querySelector(".record-meta");
   meta.replaceChildren();
   dto.facts.forEach(({ label, value }) => appendMetaRow(meta, label, value));
@@ -3517,6 +3613,7 @@ if (elements) {
 }
 
 const publicRuntime = {
+  CACHE_VERSION,
   catalogLabel,
   catalogSummaryEntries,
   classifyHarmonizedCard,
@@ -3536,13 +3633,23 @@ if (typeof module !== "undefined" && module.exports) {
   module.exports = {
     ASSET_CACHE_VERSION,
     CACHE_VERSION,
+    CATALOG_RECORD_COUNT,
+    CATALOG_SCHEMA_VERSION,
+    CATALOG_SHA256: SPECIMEN_CARD_SOURCE_CATALOG_SHA256,
     DEFAULT_SORT,
+    DISPLAY_DESCRIPTOR_COUNT,
     ISSUE_FORM_URL,
     ISSUE_REPORT_MINIMUM_ELAPSED_MS,
     SPECIMEN_CARD_PROJECTION_DATA_SHA256,
     SPECIMEN_CARD_PROJECTION_SET_SHA256,
     SPECIMEN_CARD_SOURCE_CATALOG_SHA256,
     SPECIMEN_LINEAGE_DATA_SHA256,
+    LINEAGE_SHA256: SPECIMEN_LINEAGE_DATA_SHA256,
+    OBSERVATION_DESCRIPTOR_COUNT,
+    PROJECTION_SHA256: SPECIMEN_CARD_PROJECTION_DATA_SHA256,
+    SPECIMEN_DESCRIPTOR_COUNT,
+    UNKNOWN_WEIGHT_EXCLUSION_COUNT,
+    WEIGHTED_DESCRIPTOR_COUNT,
     FACTUAL_FORMULA_INVALID_SUFFIXES,
     FACTUAL_FORMULA_TOKENS,
     FACTUAL_FORMULA_UNSAFE_PREFIXES,
@@ -3616,6 +3723,7 @@ if (typeof module !== "undefined" && module.exports) {
     paginateSpecimenCardDescriptors,
     specimenCardDescriptorHoldings,
     specimenCardDescriptorMasses,
+    specimenCardDescriptorHasKnownWeight,
     specimenCardHolding,
     specimenCardPositionLabel,
     specimenCardContextEntries,

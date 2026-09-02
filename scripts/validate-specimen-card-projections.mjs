@@ -3,18 +3,42 @@ import { readFile } from "node:fs/promises";
 import { pathToFileURL } from "node:url";
 
 const LOCKS = Object.freeze({
-  catalogSchemaVersion: 9,
-  sourceRecordCount: 14176,
-  sourceCatalogSha256: "f5435256d1ff5c9500217112c8beeb7141e278487b3a1e98b5bb86e162739c0e",
-  projectionCount: 1955,
-  atomicCardCount: 6675,
-  baselineMassBoundCardCount: 6541,
-  massBoundCardCount: 6656,
-  masslessCardCount: 19,
+  catalogSchemaVersion: 10,
+  sourceRecordCount: 14477,
+  sourceCatalogSha256: "9a921861c782abe1218e2d3b33bc2fc0b229908ce0a3c08e93bdc2596b91c536",
+  projectionCount: 2224,
+  atomicCardCount: 7224,
+  legacyMassBoundCardCount: 6656,
+  massBoundCardCount: 7194,
+  masslessCardCount: 30,
   repeatedMassCardCount: 2,
-  sourceContextCardCount: 1657,
-  projectionSetSha256: "54eabe28b7cc7b885f3e980d7e5962f01eb04aed39cedb30bc9f6d334ea3dede",
+  sourceContextCardCount: 1694,
+  baselineProjectionSetSha256: "54eabe28b7cc7b885f3e980d7e5962f01eb04aed39cedb30bc9f6d334ea3dede",
+  projectionSetSha256: "8e7c185771d0a4bb135b0966416cc93dedfb0d8d09ede6f1c5c3a8dd0bba41cf",
   nonHamburgProjectionSetSha256: "f34519b982f5e966aeeb09f13f076dfba26cca05773cc3e345d694743bafdd3b",
+});
+export const BROWN_AUDIT_COVERAGE = Object.freeze({
+  parentObservationCount: 237,
+  holdingCount: 434,
+  projectedParentCount: 217,
+  atomicCardCount: 385,
+  groupContextHoldingCount: 49,
+  sourceContextCardCount: 29,
+  massBoundCardCount: 375,
+  masslessCardCount: 10,
+  projectionSetSha256: "211ad1bb72d943c8971c1290c7896438a9d3c46b97ff018f4f94abea6820f5af",
+});
+export const MINNESOTA_AUDIT_COVERAGE = Object.freeze({
+  parentObservationCount: 58,
+  holdingCount: 184,
+  projectedParentCount: 52,
+  atomicCardCount: 164,
+  groupContextHoldingCount: 17,
+  excludedHoldingCount: 3,
+  sourceContextCardCount: 8,
+  massBoundCardCount: 163,
+  masslessCardCount: 1,
+  projectionSetSha256: "7a0b23f2338e8c20beb57e4021dbece1a686030aa783024e7fc0b842990bd585",
 });
 export const REVIEWED_AUDIT_COVERAGE = Object.freeze({
   candidateCount: 1038,
@@ -324,13 +348,16 @@ export function validateSpecimenCardProjections(document, catalog, catalogText) 
     atomicCardCount += projection.cards.length;
     const hasSourceContext = deriveSourceContext(projection, source.record, recordModel);
     if (hasSourceContext) sourceContextCardCount++;
-    if (projection.cards.length + Number(hasSourceContext) < 2) fail(`${location} would produce fewer than two display units`);
+    if (!["brown-1916", "minnesota-1892"].includes(source.record.catalogId) &&
+        projection.cards.length + Number(hasSourceContext) < 2) {
+      fail(`${location} would produce fewer than two display units`);
+    }
   }
 
   if (atomicCardCount !== LOCKS.atomicCardCount) fail("atomic card count differs from metadata");
   if (massBoundCardCount !== LOCKS.massBoundCardCount || masslessCardCount !== LOCKS.masslessCardCount ||
-      massBoundCardCount - LOCKS.baselineMassBoundCardCount !== 115) {
-    fail("ordinary mass assignment counts differ from the accepted 115-card lock");
+      massBoundCardCount - LOCKS.legacyMassBoundCardCount !== 538) {
+    fail("ordinary mass assignment counts differ from the accepted Wave 1 lock");
   }
   if (sourceContextCardCount !== LOCKS.sourceContextCardCount) fail("derived source context count differs from metadata");
   const kuleschowka = document.projections.find(({ parentRecordId }) => parentRecordId === KULESCHOWKA_ID);
@@ -506,9 +533,80 @@ export function validateSpecimenCardProjections(document, catalog, catalogText) 
   for (const [key, expected] of Object.entries(HAMBURG_AUDIT_COVERAGE)) {
     if (hamburgActual[key] !== expected) fail(`Hamburg ${key} differs from the reviewed audit lock`);
   }
-  const nonHamburgProjections = document.projections.filter(({ parentRecordId }) => !hamburgIds.has(parentRecordId));
+  const reviewedCatalogIds = new Set(["brown-1916", "minnesota-1892"]);
+  const validateReviewedCatalog = (catalogId, lock) => {
+    const sourceRecords = catalog.records.filter((record) => record.catalogId === catalogId);
+    const sourceIds = new Set(sourceRecords.map(({ id }) => id));
+    const projections = document.projections.filter(({ parentRecordId }) => sourceIds.has(parentRecordId));
+    const projectionById = new Map(projections.map((projection) => [projection.parentRecordId, projection]));
+    let holdingCount = 0;
+    let atomicCardCount = 0;
+    let groupContextHoldingCount = 0;
+    let excludedHoldingCount = 0;
+    let sourceContextCardCount = 0;
+    let massBoundCardCount = 0;
+    let masslessCardCount = 0;
+    for (const record of sourceRecords) {
+      holdingCount += record.holdings.length;
+      const expectedCards = [];
+      for (const [holdingIndex, holding] of record.holdings.entries()) {
+        const holdingPath = `holdings[${holdingIndex}]`;
+        if (holding.description.startsWith("Specimen:")) {
+          if (holding.weights.length > 1) fail(`${catalogId} atomic holding ${record.id}:${holdingIndex} has multiple masses`);
+          const massPath = Number.isFinite(holding.weights[0]?.grams) ? `${holdingPath}.weights[0].grams` : null;
+          expectedCards.push({
+            holdingPath,
+            clause: { textPath: `${holdingPath}.description`, start: 0, end: holding.description.length },
+            massPath,
+          });
+          if (massPath === null) masslessCardCount++;
+          else massBoundCardCount++;
+        } else if (holding.description.startsWith("Group context:")) {
+          groupContextHoldingCount++;
+        } else if (catalogId === "minnesota-1892" && holding.description.startsWith("Excluded non-meteorite context:")) {
+          excludedHoldingCount++;
+        } else {
+          fail(`${catalogId} holding ${record.id}:${holdingIndex} is outside the reviewed card vocabulary`);
+        }
+      }
+      const projection = projectionById.get(record.id);
+      if (expectedCards.length === 0) {
+        if (projection) fail(`${catalogId} context-only parent ${record.id} must not be projected`);
+        continue;
+      }
+      if (!projection || JSON.stringify(projection.cards) !== JSON.stringify(expectedCards)) {
+        fail(`${catalogId} atomic cards differ from the reviewed holding descriptions and mass paths for ${record.id}`);
+      }
+      atomicCardCount += projection.cards.length;
+      sourceContextCardCount += Number(deriveSourceContext(projection, record, "collection-entry"));
+    }
+    const actual = {
+      parentObservationCount: sourceRecords.length,
+      holdingCount,
+      projectedParentCount: projections.length,
+      atomicCardCount,
+      groupContextHoldingCount,
+      ...(catalogId === "minnesota-1892" ? { excludedHoldingCount } : {}),
+      sourceContextCardCount,
+      massBoundCardCount,
+      masslessCardCount,
+      projectionSetSha256: sha256(JSON.stringify(projections)),
+    };
+    for (const [key, expected] of Object.entries(lock)) {
+      if (actual[key] !== expected) fail(`${catalogId} ${key} differs from the reviewed audit lock`);
+    }
+  };
+  validateReviewedCatalog("brown-1916", BROWN_AUDIT_COVERAGE);
+  validateReviewedCatalog("minnesota-1892", MINNESOTA_AUDIT_COVERAGE);
+
+  const baselineProjections = document.projections.filter(({ parentRecordId }) =>
+    !reviewedCatalogIds.has(records.get(parentRecordId).record.catalogId));
+  if (sha256(JSON.stringify(baselineProjections)) !== LOCKS.baselineProjectionSetSha256) {
+    fail("current37 projection set differs from the schema-4 baseline lock");
+  }
+  const nonHamburgProjections = baselineProjections.filter(({ parentRecordId }) => !hamburgIds.has(parentRecordId));
   if (sha256(JSON.stringify(nonHamburgProjections)) !== LOCKS.nonHamburgProjectionSetSha256) {
-    fail("non-Hamburg projection set differs from the schema-2 production lock");
+    fail("non-Hamburg projection set differs from the current37 production lock");
   }
   if (sha256(JSON.stringify(document.projections)) !== LOCKS.projectionSetSha256) fail("projection set differs from the reviewed production lock");
 

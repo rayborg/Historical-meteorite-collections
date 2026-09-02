@@ -3,6 +3,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 
 const CATALOG_URL = new URL("../data/catalog.json", import.meta.url);
 const FOLIOS_URL = new URL("../data/folios.json", import.meta.url);
+const PROJECTIONS_URL = new URL("../data/specimen-card-projections.json", import.meta.url);
 const REPO_ROOT_URL = new URL("../", import.meta.url);
 const START_MARKER = (id) => `<!-- release-summary:${id}:start -->`;
 const END_MARKER = (id) => `<!-- release-summary:${id}:end -->`;
@@ -84,7 +85,7 @@ function recordPages(record) {
   return [];
 }
 
-export function buildReleaseSummary(catalog, folios) {
+export function buildReleaseSummary(catalog, folios, projections = null) {
   assert(catalog && typeof catalog === "object", "catalog must be an object");
   assert(catalog.metadata && typeof catalog.metadata === "object", "catalog.metadata must be an object");
   assert(Array.isArray(catalog.metadata.catalogs), "catalog.metadata.catalogs must be an array");
@@ -140,12 +141,34 @@ export function buildReleaseSummary(catalog, folios) {
   const metbullReviewed = catalog.records.filter((record) => record.metbull && typeof record.metbull === "object");
   const metbullUnresolved = metbullReviewed.filter((record) => record.metbull.matchType === "unresolved");
   const recordModels = [...new Set(descriptors.map(({ recordModel }) => recordModel))].sort(compareText);
+  const projectionByParent = new Map((projections?.projections ?? []).map((projection) => [projection.parentRecordId, projection]));
+  const atomicCardCount = [...projectionByParent.values()].reduce((count, projection) => count + projection.cards.length, 0);
+  const nativeSpecimenCount = catalog.records.filter((record) => !projectionByParent.has(record.id) &&
+    ["specimen", "table-a-specimen"].includes(descriptors.find(({ id }) => id === record.catalogId).recordModel)).length;
+  const displayDescriptorCount = catalog.records.length - projectionByParent.size + atomicCardCount;
+  const specimenDescriptorCount = nativeSpecimenCount + atomicCardCount;
+  const nativeUnknownWeightCount = catalog.records.filter((record) => !projectionByParent.has(record.id) &&
+    descriptors.find(({ id }) => id === record.catalogId).recordModel === "specimen" && record.weight?.grams === null).length;
+  const projectionUnknownWeightCount = [...projectionByParent].reduce((count, [recordId, projection]) => {
+    const catalogId = catalog.records.find(({ id }) => id === recordId).catalogId;
+    if (["brown-1916", "minnesota-1892"].includes(catalogId)) return count;
+    return count + projection.cards.filter((card) => card.massPath === null && !card.repeatedMass).length;
+  }, 0);
 
   return {
     schemaVersion: catalog.metadata.schemaVersion,
     recordCount: catalog.records.length,
     catalogCount: catalogs.length,
     recordModels,
+    display: {
+      projectionCount: projectionByParent.size,
+      atomicCardCount,
+      sourceContextCount: projections?.metadata?.sourceContextCardCount ?? 0,
+      descriptorCount: displayDescriptorCount,
+      specimenCount: specimenDescriptorCount,
+      observationCount: displayDescriptorCount - specimenDescriptorCount,
+      weightedOnlyExcludedSpecimenCount: nativeUnknownWeightCount + projectionUnknownWeightCount,
+    },
     sourcePageCount: catalogs.reduce((sum, item) => sum + item.sourcePageCount, 0),
     citedPageCount: catalogs.reduce((sum, item) => sum + item.citedPageCount, 0),
     recordsWithNullName: catalog.records.filter((record) => record.name === null).length,
@@ -166,11 +189,11 @@ export function buildReleaseSummary(catalog, folios) {
 
 export function renderOverview(summary) {
   const models = summary.recordModels.map((model) => `\`${model}\``).join(", ");
-  return `This repository is a dependency-free, facts-only index of ${formatInteger(summary.recordCount)} source observations from ${formatInteger(summary.catalogCount)} historical meteorite catalogs. The coordinated catalog uses public metadata schema ${summary.schemaVersion} and supports ${formatInteger(summary.recordModels.length)} source-specific record models: ${models}.`;
+  return `This repository is a dependency-free, facts-only index of ${formatInteger(summary.recordCount)} source observations from ${formatInteger(summary.catalogCount)} historical meteorite catalogs. The coordinated catalog uses public metadata schema ${summary.schemaVersion} and supports ${formatInteger(summary.recordModels.length)} source-specific record models: ${models}. Reviewed projection metadata expands ${formatInteger(summary.display.projectionCount)} parent observations into ${formatInteger(summary.display.atomicCardCount)} atomic specimen cards, producing ${formatInteger(summary.display.descriptorCount)} searchable display descriptors: ${formatInteger(summary.display.specimenCount)} specimen cards and ${formatInteger(summary.display.observationCount)} observations.`;
 }
 
 function renderDataOverview(summary) {
-  return `\`catalog.json\` is a schema-${summary.schemaVersion} facts-only dataset containing ${formatInteger(summary.recordCount)} source observations from ${formatInteger(summary.catalogCount)} historical meteorite catalogs. \`folios.json\` is a separate schema-${summary.folios.schemaVersion}, deny-by-default display manifest with ${formatInteger(summary.folios.pageCount)} reviewed page entries.`;
+  return `\`catalog.json\` is a schema-${summary.schemaVersion} facts-only dataset containing ${formatInteger(summary.recordCount)} source observations from ${formatInteger(summary.catalogCount)} historical meteorite catalogs. \`specimen-card-projections.json\` replaces ${formatInteger(summary.display.projectionCount)} reviewed parent observations with ${formatInteger(summary.display.atomicCardCount)} atomic specimen cards while retaining context-only records as observations, for ${formatInteger(summary.display.descriptorCount)} display descriptors. \`folios.json\` is a separate schema-${summary.folios.schemaVersion}, deny-by-default display manifest with ${formatInteger(summary.folios.pageCount)} reviewed page entries.`;
 }
 
 export function renderCatalogTable(summary) {
@@ -214,7 +237,7 @@ function renderPublicFolioCount(summary) {
 }
 
 function renderNoticeFacts(summary) {
-  return `The current repository edition distributes ${formatInteger(summary.recordCount)} structured, facts-only source observations from ${formatInteger(summary.catalogCount)} catalogs under metadata schema version ${summary.schemaVersion}. It supports ${formatInteger(summary.recordModels.length)} source-specific record models: ${summary.recordModels.map((model) => `\`${model}\``).join(", ")}. Records are source observations rather than canonical meteorites or inferred physical specimens, and \`catalogId\` identifies each source.`;
+  return `The current repository edition distributes ${formatInteger(summary.recordCount)} structured, facts-only source observations from ${formatInteger(summary.catalogCount)} catalogs under metadata schema version ${summary.schemaVersion}. It supports ${formatInteger(summary.recordModels.length)} source-specific record models: ${summary.recordModels.map((model) => `\`${model}\``).join(", ")}. The reviewed display projection produces ${formatInteger(summary.display.specimenCount)} atomic specimen cards and leaves ${formatInteger(summary.display.observationCount)} non-specimen observations, for ${formatInteger(summary.display.descriptorCount)} descriptors. Records remain source observations rather than canonical meteorites, and \`catalogId\` identifies each source.`;
 }
 
 function renderNoticeCoverage(summary) {
@@ -237,6 +260,7 @@ Catalogs remaining blocked with undetermined rights and no public folio pages ar
 function renderSessionState(summary) {
   return [
     `- Schema ${summary.schemaVersion} contains ${formatInteger(summary.recordCount)} facts-only records across ${formatInteger(summary.catalogCount)} catalogs.`,
+    `- Reviewed display projections replace ${formatInteger(summary.display.projectionCount)} parents with ${formatInteger(summary.display.atomicCardCount)} atomic cards: ${formatInteger(summary.display.descriptorCount)} descriptors comprise ${formatInteger(summary.display.specimenCount)} specimens and ${formatInteger(summary.display.observationCount)} observations; weighted-only display excludes ${formatInteger(summary.display.weightedOnlyExcludedSpecimenCount)} unknown-mass specimens.`,
     "",
     renderCatalogTable(summary),
     "",
@@ -254,7 +278,7 @@ function renderTestNotesFolioLock(summary) {
 }
 
 function renderTestNotesRealRelease(summary) {
-  return `The default \`node scripts/validate-public-catalog.mjs\` command reads and passes the real schema-${summary.schemaVersion} \`data/catalog.json\` and \`data/folios.json\`: ${formatInteger(summary.recordCount)} records across ${formatInteger(summary.catalogCount)} catalogs with ${formatInteger(summary.folios.pageCount)} displayable folio pages.`;
+  return `The default \`node scripts/validate-public-catalog.mjs\` command validates the real schema-${summary.schemaVersion} \`data/catalog.json\` and \`data/folios.json\`: ${formatInteger(summary.recordCount)} records across ${formatInteger(summary.catalogCount)} catalogs with ${formatInteger(summary.folios.pageCount)} displayable folio pages. Runtime projection checks reconcile ${formatInteger(summary.display.descriptorCount)} display descriptors and ${formatInteger(summary.display.weightedOnlyExcludedSpecimenCount)} unknown-mass specimen exclusions.`;
 }
 
 export function replaceGeneratedBlock(source, id, content) {
@@ -355,7 +379,7 @@ export async function syncDocuments(
 
 export async function main(args = process.argv.slice(2)) {
   const mode = parseArgs(args);
-  const summary = buildReleaseSummary(await readJson(CATALOG_URL), await readJson(FOLIOS_URL));
+  const summary = buildReleaseSummary(await readJson(CATALOG_URL), await readJson(FOLIOS_URL), await readJson(PROJECTIONS_URL));
   if (mode === "json") {
     process.stdout.write(`${JSON.stringify(summary, null, 2)}\n`);
     return;

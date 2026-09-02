@@ -2,6 +2,48 @@
   "schemaVersion": 1,
   "reviews": [
     {
+      "candidateId": "possible-lineage-015140ad-87ce-5595-a68e-afb9f85836b2",
+      "outcome": "retain-as-possible",
+      "reviewedOn": "2026-09-01",
+      "publicNote": "Forest City: reviewed atomic endpoints share MetBull code 10119 and exact reported mass. Equal-mass alternatives are retained separately and not collapsed. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+      "citations": []
+    },
+    {
+      "candidateId": "possible-lineage-20ef2648-5722-529f-8b8f-21c07bd64607",
+      "outcome": "retain-as-possible",
+      "reviewedOn": "2026-09-01",
+      "publicNote": "Forest City: reviewed atomic endpoints share MetBull code 10119 and exact reported mass. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+      "citations": []
+    },
+    {
+      "candidateId": "possible-lineage-27533024-d8f9-5335-a0b8-e538b1d5726f",
+      "outcome": "retain-as-possible",
+      "reviewedOn": "2026-09-01",
+      "publicNote": "L'Aigle: reviewed atomic endpoints share MetBull code 12434 and exact reported mass. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+      "citations": []
+    },
+    {
+      "candidateId": "possible-lineage-28cad19f-e42d-5837-9ca0-43346b04f9fb",
+      "outcome": "retain-as-possible",
+      "reviewedOn": "2026-09-01",
+      "publicNote": "Soko-Banja: reviewed atomic endpoints share MetBull code 23661 and exact reported mass. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+      "citations": []
+    },
+    {
+      "candidateId": "possible-lineage-2ae3f247-8b02-5082-8fe8-725c409d0380",
+      "outcome": "retain-as-possible",
+      "reviewedOn": "2026-09-01",
+      "publicNote": "Forest City: reviewed atomic endpoints share MetBull code 10119 and exact reported mass. Equal-mass alternatives are retained separately and not collapsed. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+      "citations": []
+    },
+    {
+      "candidateId": "possible-lineage-4f695b8c-0b48-56f6-85cc-a171d3bda5ed",
+      "outcome": "retain-as-possible",
+      "reviewedOn": "2026-09-01",
+      "publicNote": "Forest City: reviewed atomic endpoints share MetBull code 10119 and exact reported mass. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+      "citations": []
+    },
+    {
       "candidateId": "possible-lineage-608f7f25-dcbd-50b0-a8cd-1f3f6a587c60",
       "outcome": "retain-as-possible",
       "reviewedOn": "2026-08-30",
@@ -16,6 +58,20 @@
           "url": "https://archive.org/details/jahrbuchderhambu305689111912hamb"
         }
       ]
+    },
+    {
+      "candidateId": "possible-lineage-61d9e034-e89e-5dcb-bc0e-4de6035654bb",
+      "outcome": "retain-as-possible",
+      "reviewedOn": "2026-09-01",
+      "publicNote": "Forest City: reviewed atomic endpoints share MetBull code 10119 and exact reported mass. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+      "citations": []
+    },
+    {
+      "candidateId": "possible-lineage-6569e465-c2c3-5ce2-b46f-fe8cc177d4c0",
+      "outcome": "retain-as-possible",
+      "reviewedOn": "2026-09-01",
+      "publicNote": "Forest City: reviewed atomic endpoints share MetBull code 10119 and exact reported mass. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+      "citations": []
     },
     {
       "candidateId": "possible-lineage-823b0536-7cef-5d01-9243-9a5941a0ac1e",
@@ -34,6 +90,20 @@
       ]
     },
     {
+      "candidateId": "possible-lineage-97817b5e-85ff-5191-8f4c-767236146f4d",
+      "outcome": "retain-as-possible",
+      "reviewedOn": "2026-09-01",
+      "publicNote": "Buschhof: reviewed atomic endpoints share MetBull code 5178 and exact reported mass. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+      "citations": []
+    },
+    {
+      "candidateId": "possible-lineage-9be1fe18-4367-5d2c-ab06-bd76f8193430",
+      "outcome": "retain-as-possible",
+      "reviewedOn": "2026-09-01",
+      "publicNote": "Braunau: reviewed atomic endpoints share MetBull code 5133 and exact reported mass. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+      "citations": []
+    },
+    {
       "candidateId": "possible-lineage-a680d0c9-1a24-56a6-ad79-53871ad78f08",
       "outcome": "retain-as-possible",
       "reviewedOn": "2026-08-30",
@@ -50,6 +120,41 @@
       ]
     },
     {
+      "candidateId": "possible-lineage-ae993216-9d2d-5794-80a3-b164e7759cd9",
+      "outcome": "retain-as-possible",
+      "reviewedOn": "2026-09-01",
+      "publicNote": "Coahuila: reviewed atomic endpoints share MetBull code 5387 and exact reported mass. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+      "citations": []
+    },
+    {
+      "candidateId": "possible-lineage-affd5c82-515b-5cdd-83c8-6f908c4f37d5",
+      "outcome": "retain-as-possible",
+      "reviewedOn": "2026-09-01",
+      "publicNote": "Warrenton: reviewed atomic endpoints share MetBull code 24215 and exact reported mass. Equal-mass alternatives are retained separately and not collapsed. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+      "citations": []
+    },
+    {
+      "candidateId": "possible-lineage-b1f5088c-e065-5c51-b5dc-1c00a4c0904f",
+      "outcome": "retain-as-possible",
+      "reviewedOn": "2026-09-01",
+      "publicNote": "Forest City: reviewed atomic endpoints share MetBull code 10119 and exact reported mass. Equal-mass alternatives are retained separately and not collapsed. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+      "citations": []
+    },
+    {
+      "candidateId": "possible-lineage-b890eaa7-df2f-599c-b16a-2fab57708500",
+      "outcome": "retain-as-possible",
+      "reviewedOn": "2026-09-01",
+      "publicNote": "Forest City: reviewed atomic endpoints share MetBull code 10119 and exact reported mass. Equal-mass alternatives are retained separately and not collapsed. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+      "citations": []
+    },
+    {
+      "candidateId": "possible-lineage-b8cdd278-99aa-5729-9fca-d1b451bdfa30",
+      "outcome": "retain-as-possible",
+      "reviewedOn": "2026-09-01",
+      "publicNote": "Forest City: reviewed atomic endpoints share MetBull code 10119 and exact reported mass. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+      "citations": []
+    },
+    {
       "candidateId": "possible-lineage-c1b3af31-9650-5b33-937c-3903cc5d09aa",
       "outcome": "retain-as-possible",
       "reviewedOn": "2026-08-30",
@@ -64,6 +169,55 @@
           "url": "https://archive.org/details/jahrbuchderhambu305689111912hamb"
         }
       ]
+    },
+    {
+      "candidateId": "possible-lineage-ce67e96f-8984-58ea-893f-489130ab6994",
+      "outcome": "retain-as-possible",
+      "reviewedOn": "2026-09-01",
+      "publicNote": "Forest City: reviewed atomic endpoints share MetBull code 10119 and exact reported mass. Equal-mass alternatives are retained separately and not collapsed. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+      "citations": []
+    },
+    {
+      "candidateId": "possible-lineage-d894b254-a96b-563e-8f37-f363cf31b835",
+      "outcome": "retain-as-possible",
+      "reviewedOn": "2026-09-01",
+      "publicNote": "Juvinas: reviewed atomic endpoints share MetBull code 12214 and exact reported mass. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+      "citations": []
+    },
+    {
+      "candidateId": "possible-lineage-df7aa936-8c6d-5ec0-a1ac-4a18ca2e6856",
+      "outcome": "retain-as-possible",
+      "reviewedOn": "2026-09-01",
+      "publicNote": "Guilford County: reviewed atomic endpoints share MetBull code 11444 and exact reported mass. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+      "citations": []
+    },
+    {
+      "candidateId": "possible-lineage-e8169766-7ea4-5ca2-871b-da0a1e4c4cd9",
+      "outcome": "retain-as-possible",
+      "reviewedOn": "2026-09-01",
+      "publicNote": "Warrenton: reviewed atomic endpoints share MetBull code 24215 and exact reported mass. Equal-mass alternatives are retained separately and not collapsed. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+      "citations": []
+    },
+    {
+      "candidateId": "possible-lineage-eb0022b1-5b35-5d6a-9b6d-cfabb5ef29a0",
+      "outcome": "retain-as-possible",
+      "reviewedOn": "2026-09-01",
+      "publicNote": "Forest City: reviewed atomic endpoints share MetBull code 10119 and exact reported mass. Equal-mass alternatives are retained separately and not collapsed. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+      "citations": []
+    },
+    {
+      "candidateId": "possible-lineage-f994b310-4343-5ad4-9ed1-a97d79b61eec",
+      "outcome": "retain-as-possible",
+      "reviewedOn": "2026-09-01",
+      "publicNote": "Forest City: reviewed atomic endpoints share MetBull code 10119 and exact reported mass. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+      "citations": []
+    },
+    {
+      "candidateId": "possible-lineage-fe3fdb26-c81e-501c-829b-c0995ef4081a",
+      "outcome": "retain-as-possible",
+      "reviewedOn": "2026-09-01",
+      "publicNote": "Milena: reviewed atomic endpoints share MetBull code 16640 and exact reported mass. No same-inventory, custody, ownership-transfer, or merge relationship is asserted.",
+      "citations": []
     }
   ]
 }

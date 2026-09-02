@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "schemaVersion": 9,
+    "schemaVersion": 10,
     "scope": "facts-only",
     "factualFields": [
       "id",
@@ -13,6 +13,8 @@
       "entryOrder",
       "reportedNumber",
       "specimenId",
+      "typeNumber",
+      "description",
       "australianMuseumRepresentation.status",
       "australianMuseumRepresentation.representedOccurrences",
       "australianMuseumRepresentation.notRepresentedOccurrences",
@@ -157,12 +159,27 @@
         "confidenceCounts": { "high": 1, "medium": 0, "low": 0 },
         "folioDisplayPolicy": "blocked",
         "rightsStatus": "undetermined"
+      },
+      {
+        "id": "dealer-1909",
+        "recordModel": "dealer-offer-fact",
+        "label": "Mineral dealer catalog (1909)",
+        "compiler": "Example dealer",
+        "year": 1909,
+        "sourcePages": [37],
+        "sourcePageCount": 1,
+        "recordCount": 2,
+        "recordsWithDesignation": 0,
+        "recordsWithWeight": 0,
+        "confidenceCounts": { "high": 2, "medium": 0, "low": 0 },
+        "folioDisplayPolicy": "blocked",
+        "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 17,
+    "recordCount": 19,
     "recordsWithDesignation": 8,
     "recordsWithWeight": 13,
-    "confidenceCounts": { "high": 10, "medium": 6, "low": 1 }
+    "confidenceCounts": { "high": 12, "medium": 6, "low": 1 }
   },
   "records": [
     {
@@ -510,6 +527,24 @@
         "coordinate": "76°45'S, 159°40'E"
       },
       "catalogPage": 89,
+      "confidence": "high"
+    },
+    {
+      "id": "dealer-type-95",
+      "catalogId": "dealer-1909",
+      "typeNumber": 95,
+      "name": "Iron",
+      "description": "Meteoric iron offered as an etched plate.",
+      "catalogPage": 37,
+      "confidence": "high"
+    },
+    {
+      "id": "dealer-type-96",
+      "catalogId": "dealer-1909",
+      "typeNumber": 96,
+      "name": "Stone",
+      "description": "Meteoric stone offered as a polished section.",
+      "catalogPage": 37,
       "confidence": "high"
     }
   ]
