@@ -19,20 +19,38 @@ test("keeps the published bibliography available without linking it from the hom
 
 test("publishes a safe and accessible bibliography table", async () => {
   const bibliography = await readFile(bibliographyPath, "utf8");
+  const rowFor = (controlId) => {
+    const row = bibliography.match(new RegExp(`<tr[^>]*><td data-control="${controlId}"[^\\n]*</tr>`))?.[0];
+    assert.ok(row, `Missing bibliography row ${controlId}`);
+    return row;
+  };
+
+  assert.equal((bibliography.match(/<tr(?: |>)/g) || []).length, 265);
   assert.equal((bibliography.match(/data-control="MCB-\d+"/g) || []).length, 264);
+  assert.equal((bibliography.match(/<li class="project complete/g) || []).length, 40);
+  assert.equal((bibliography.match(/<tr class="worked-row">/g) || []).length, 39);
+  assert.equal((bibliography.match(/class="processing-cell complete"/g) || []).length, 39);
   assert.match(bibliography, /<strong>264<\/strong><span>Total controls<\/span>/);
+  assert.match(bibliography, /<strong>40<\/strong><span>Catalog projects done<\/span>/);
+  assert.match(bibliography, /<strong>39<\/strong><span>Integrated controls<\/span>/);
+  assert.match(bibliography, /<strong>36<\/strong><span>Remaining acquired backlog<\/span>/);
+  assert.match(bibliography, /Acquisition-to-integration backlog: 36 remaining/);
   assert.match(bibliography, /class="table-wrap" role="region" aria-label="Bibliography master list; scroll horizontally to see all columns" tabindex="0"/);
   assert.match(bibliography, /\.table-wrap:focus-visible \{[^}]*outline:/);
-  assert.match(bibliography, /data-control="MCB-80"[^\n]*processing-cell complete[^\n]*Washington 1897/);
-  assert.match(bibliography, /data-control="MCB-86"[^\n]*processing-cell complete[^\n]*Tassin 1902/);
-  assert.match(bibliography, /data-control="MCB-93"[^\n]*processing-cell complete[^\n]*Högbom 1902/);
-  assert.match(bibliography, /data-control="MCB-94"[^\n]*processing-cell complete[^\n]*Farrington 1903/);
-  assert.match(bibliography, /data-control="MCB-117"[^\n]*processing-cell complete[^\n]*Schreiter 1912/);
-  assert.match(bibliography, /data-control="MCB-141"[^\n]*Catalogue of the collection of meteorites in the Mineralogical Museum of Harvard University[^\n]*SP1949-0125[^\n]*processing-cell complete[^\n]*Palache 1926/);
-  assert.match(bibliography, /data-control="MCB-165"[^\n]*Catalogue of Texas meteorites[^\n]*processing-cell complete[^\n]*Barnes 1940/);
-  assert.match(bibliography, /data-control="MCB-175"[^\n]*The Meteorite and Tektite Collection of the American Museum of Natural History[^\n]*processing-cell complete[^\n]*Mason 1964/);
-  assert.match(bibliography, /data-control="MCB-197"[^\n]*1996-01-31[^\n]*Meteorite Catalogue of the Kanagawa Prefectural Museum of Natural History \/ 隕石目録[^\n]*processing-cell complete[^\n]*Kanagawa 1996/);
-  assert.match(bibliography, /data-control="MCB-204"[^\n]*2024-09[^\n]*Arizona State University Meteorite Collection Catalog[^\n]*processing-cell complete[^\n]*ASU September 2024/);
+  for (const controlId of ["MCB-80", "MCB-86", "MCB-93", "MCB-94", "MCB-117", "MCB-141", "MCB-165", "MCB-175", "MCB-197", "MCB-204"]) {
+    assert.match(rowFor(controlId), /processing-cell complete/);
+  }
+  assert.match(rowFor("MCB-141"), /Catalogue of the collection of meteorites in the Mineralogical Museum of Harvard University[^]*SP1949-0125/);
+  assert.match(rowFor("MCB-197"), /1996-01-31[^]*Meteorite Catalogue of the Kanagawa Prefectural Museum of Natural History \/ 隕石目録/);
+  assert.match(rowFor("MCB-204"), /2024-09[^]*Arizona State University Meteorite Collection Catalog/);
+  assert.match(rowFor("MCB-130"), /A descriptive catalogue of the meteorites comprised in the collection of the Geological Survey of India[^]*processing-cell complete[^]*Catalogue of Meteorites, with Special Reference/);
+  assert.match(rowFor("MCB-69"), /Catalogue of the meteorites in the university collection[^]*processing-cell complete[^]*Catalogue of the Meteorites in the University Collection/);
+  assert.match(rowFor("MCB-113"), /Complete Mineral Catalog[^]*processing-cell complete[^]*Complete Mineral Catalog \(1909\)/);
+
+  const morelliRow = rowFor("MCB-203");
+  assert.doesNotMatch(morelliRow, /worked-row|processing-cell complete/);
+  assert.match(morelliRow, /class="processing-cell"><span class="blank">—<\/span>/);
+  assert.match(bibliography, /MCB-203, ACQ-20260723-025[^]*supplemental Tables S1\/S2 have not been acquired/);
   assert.doesNotMatch(bibliography, /Catalogue of Meteorites in the American Museum of Natural History/);
   assert.doesNotMatch(bibliography, /<title>Arizona State University Meteorite Collection Catalog<\/title>/);
 
@@ -41,7 +59,9 @@ test("publishes a safe and accessible bibliography table", async () => {
   assert.ok(sourceLinks.length > 0);
   assert.equal(namedSourceLinks.length, sourceLinks.length);
 
-  for (const privateMarker of ["ML-CONFIRMED-027", "ACQ-20260723-024", "/private/", "/Users/", "source-images/", "localPath", "sha256", "data/ocr/"]) {
+  for (const privateMarker of ["ML-CONFIRMED-027", "/private/", "/Users/", "/Volumes/", "file://", "source-images/", "localPath", "sha256", "data/ocr/", "reviewEvidence", "reviewNotes"]) {
     assert.ok(!bibliography.includes(privateMarker), `Published bibliography contains private marker ${privateMarker}`);
   }
+  assert.doesNotMatch(bibliography, /\b(?:ML|AUDIT|REVIEW)-[A-Z0-9-]+\b/);
+  assert.doesNotMatch(bibliography, /\b(?:price|purchase price|audit details?)\b/i);
 });
