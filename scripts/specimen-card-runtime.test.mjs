@@ -69,7 +69,7 @@ function syntheticManifest(sourceRecords, projections) {
     metadata: {
       schemaVersion: 4,
       scope: "reviewed-atomic-specimen-card-display-projections",
-      catalogSchemaVersion: 10,
+      catalogSchemaVersion: 11,
       sourceRecordCount: sourceRecords.length,
       sourceCatalogSha256: "0".repeat(64),
       projectionCount: projections.length,
@@ -377,8 +377,8 @@ test("digest lock loads the exact set and fails closed to parent cards on mismat
   const altered = structuredClone(manifest);
   altered.projections[0].cards[0].clause.end -= 1;
   assert.equal((await app.loadSpecimenCardProjectionIndex(records, async () => projectionResponse(altered), options)).size, 0);
-  assert.equal(app.SPECIMEN_CARD_SOURCE_CATALOG_SHA256, "9a921861c782abe1218e2d3b33bc2fc0b229908ce0a3c08e93bdc2596b91c536");
-  assert.equal(app.SPECIMEN_CARD_PROJECTION_DATA_SHA256, "c8d705ac6b41ec9cbd16d67229efb454b9610e374e37c8b6f7b5eadd62109986");
+  assert.equal(app.SPECIMEN_CARD_SOURCE_CATALOG_SHA256, "c6ace08a04d70c5a869ed8f6401f3ad505da530b9501d3fd8227740a64257039");
+  assert.equal(app.SPECIMEN_CARD_PROJECTION_DATA_SHA256, "56e5b1626abaff4c53952bb722c5c89f4e28ee446ea1d3888ab48a4edb2d3500");
   assert.equal(app.SPECIMEN_CARD_PROJECTION_SET_SHA256, "8e7c185771d0a4bb135b0966416cc93dedfb0d8d09ede6f1c5c3a8dd0bba41cf");
 });
 
@@ -391,12 +391,12 @@ test("rendering is text-only, omits context cards, and synchronizes cache keys",
   assert.match(html, /<p class="record-semantic-label"><\/p>/u);
   assert.match(html, /<dl class="record-meta" aria-label="Catalog record details"><\/dl>/u);
   assert.doesNotMatch(html, /specimen-position|record-holdings|earlier-records/u);
-  assert.match(html, /styles\.css\?v=20260902-backlog39-wave1-1/u);
-  assert.match(html, /app\.js\?v=20260902-backlog39-wave1-1/u);
-  assert.equal(app.ASSET_CACHE_VERSION, "20260902-backlog39-wave1-1");
+  assert.match(html, /styles\.css\?v=20260904-victoria-public-1/u);
+  assert.match(html, /app\.js\?v=20260904-victoria-public-1/u);
+  assert.equal(app.ASSET_CACHE_VERSION, "20260904-victoria-public-1");
 });
 
-test("production schema-4 projection fixture validates against schema 10", () => {
+test("production schema-4 projection fixture validates against schema 11", () => {
   assert.equal(sourceCatalogSha256, manifest.metadata.sourceCatalogSha256);
   assert.deepEqual([
     manifest.metadata.projectionCount,

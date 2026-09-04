@@ -64,7 +64,7 @@ test("production manifest is deterministic and validates against the locked cata
   const baseline = published.projections.filter(({ parentRecordId }) => !wave1Ids.has(parentRecordId));
   assert.equal(createHash("sha256").update(JSON.stringify(baseline)).digest("hex"), "54eabe28b7cc7b885f3e980d7e5962f01eb04aed39cedb30bc9f6d334ea3dede");
   assert.equal(createHash("sha256").update(JSON.stringify(baseline.filter(({ parentRecordId }) => !hamburgIds.has(parentRecordId)))).digest("hex"), "f34519b982f5e966aeeb09f13f076dfba26cca05773cc3e345d694743bafdd3b");
-  assert.equal(createHash("sha256").update(projectionText).digest("hex"), "c8d705ac6b41ec9cbd16d67229efb454b9610e374e37c8b6f7b5eadd62109986");
+  assert.equal(createHash("sha256").update(projectionText).digest("hex"), "56e5b1626abaff4c53952bb722c5c89f4e28ee446ea1d3888ab48a4edb2d3500");
 });
 
 test("schema is a closed schema-4 count-locked atomic projection contract", () => {
@@ -75,10 +75,10 @@ test("schema is a closed schema-4 count-locked atomic projection contract", () =
   assert.equal(schema.properties.projections.maxItems, 2224);
   assert.equal(schema.$defs.metadata.properties.atomicCardCount.const, 7224);
   assert.equal(schema.$defs.metadata.properties.sourceContextCardCount.const, 1694);
-  assert.equal(schema.$defs.metadata.properties.catalogSchemaVersion.const, 10);
+  assert.equal(schema.$defs.metadata.properties.catalogSchemaVersion.const, 11);
   assert.equal(schema.$defs.metadata.properties.sourceRecordCount.const, 14477);
   assert.equal(schema.$defs.metadata.properties.sourceCatalogSha256.const,
-    "9a921861c782abe1218e2d3b33bc2fc0b229908ce0a3c08e93bdc2596b91c536");
+    "c6ace08a04d70c5a869ed8f6401f3ad505da530b9501d3fd8227740a64257039");
   assert.deepEqual(schema.$defs.projection.required, ["parentRecordId", "cards"]);
   assert.deepEqual(schema.$defs.card.oneOf, [
     { $ref: "#/$defs/clauseCard" },
@@ -101,7 +101,7 @@ test("schema is a closed schema-4 count-locked atomic projection contract", () =
   visit(schema);
 });
 
-test("observation-only sources remain unprojected and schema 10 retains specimen locations", () => {
+test("unprojected sources remain unprojected and schema 11 retains specimen locations", () => {
   const newRecordIds = new Set(catalog.records.filter(({ catalogId }) =>
     ["hodge-smith-1939", "victoria-land-1982"].includes(catalogId)).map(({ id }) => id));
   assert.equal(newRecordIds.size, 357);
@@ -112,7 +112,7 @@ test("observation-only sources remain unprojected and schema 10 retains specimen
   const footeIds = new Set(catalog.records.filter(({ catalogId }) => catalogId === "foote-1909").map(({ id }) => id));
   assert.equal(footeIds.size, 6);
   assert(!published.projections.some(({ parentRecordId }) => footeIds.has(parentRecordId)));
-  assert.equal(published.metadata.catalogSchemaVersion, 10);
+  assert.equal(published.metadata.catalogSchemaVersion, 11);
   assert.equal(published.metadata.sourceRecordCount, 14477);
 });
 

@@ -1,6 +1,12 @@
 import { createHash } from "node:crypto";
 import { isIP } from "node:net";
 
+import {
+  EMPTY_SOURCE_CLAIMS,
+  sourceClaimsContentSha256,
+  validateSourceClaims,
+} from "./source-claims-lib.mjs";
+
 export const UUID_NAMESPACE = "65b19e0b-1f86-5ca5-a65b-81c38ec53040";
 export const COLLECTION_SERIES = Object.freeze([
   Object.freeze({ id: "huss", catalogIds: Object.freeze(["huss-1976", "huss-1986"]) }),
@@ -29,9 +35,12 @@ export const EVIDENCE_STRENGTH_ORDER = [
 export const EMPTY_REVIEW_SOURCE = Object.freeze({ schemaVersion: 1, reviews: Object.freeze([]) });
 const REVIEW_GATED_CATALOGS = new Set(["brown-1916", "minnesota-1892"]);
 
-const ROOT_KEYS = ["metadata", "relationships"];
+const ROOT_KEYS = ["metadata", "sourceAttestedGroups", "relationships"];
 const METADATA_KEYS = ["schemaVersion", "scope", "source", "collectionSeries", "methodology", "counts"];
-const SOURCE_KEYS = ["catalogSchemaVersion", "recordCount", "catalogCount", "flattenedMassObservationCount", "inventoryObservationCount"];
+const SOURCE_KEYS = [
+  "catalogSchemaVersion", "recordCount", "catalogCount", "flattenedMassObservationCount", "inventoryObservationCount",
+  "sourceClaimsSchemaVersion", "sourceClaimsContentSha256",
+];
 const SERIES_KEYS = ["id", "catalogIds"];
 const METHODOLOGY_KEYS = ["inventoryNormalization", "possibleMatchIdentity", "massThresholds", "ambiguityPolicy", "evidenceStrengthOrder", "nonAssertions"];
 const INVENTORY_NORMALIZATION_KEYS = ["unicode", "case", "whitespace", "hussEditionMarker"];
@@ -42,6 +51,7 @@ const COUNT_KEYS = [
   "exactMassPossibleMatchCount", "nearMassPossibleMatchCount", "metbullIdentityPossibleMatchCount", "normalizedNameIdentityPossibleMatchCount",
   "sameDesignationPossibleMatchCount", "designationFamilyPossibleMatchCount", "aggregateOrMultiplePossibleMatchCount", "castPossibleMatchCount",
   "identityResolvedInventoryCollisionCount", "omittedAmbiguousInventoryKeyCount", "possibleMatchEvidenceStrength", "catalogPairs",
+  "sourceAttestedGroupCount", "sourceAttestedMemberOccurrenceCount", "sourceAttestedUniqueMemberCount",
 ];
 const STRENGTH_COUNT_KEYS = EVIDENCE_STRENGTH_ORDER;
 const PAIR_COUNT_KEYS = ["catalogPair", "sameInventoryCount", "possibleMatchCount"];
@@ -174,7 +184,7 @@ function makeObservation(record, descriptor, { designation, designationPath, mas
 }
 
 function catalogDescriptors(catalog) {
-  assert(catalog?.metadata?.schemaVersion === 10, "catalog metadata schemaVersion must be 10");
+  assert(catalog?.metadata?.schemaVersion === 11, "catalog metadata schemaVersion must be 11");
   assert(Array.isArray(catalog.metadata.catalogs), "catalog metadata catalogs must be an array");
   assert(Array.isArray(catalog.records), "catalog records must be an array");
   const descriptors = new Map(catalog.metadata.catalogs.map((descriptor) => [descriptor.id, descriptor]));
@@ -199,6 +209,11 @@ export function flattenMassObservations(catalog) {
     if (descriptor.recordModel === "specimen") {
       add(record, descriptor, { designation: record.designation ?? null, designationPath: record.designation === null ? null : "designation", massGrams: record.weight?.grams, massPath: "weight.grams" });
     } else if (descriptor.recordModel === "table-a-specimen") {
+      if (record.catalogId === "victoria-land-1982") {
+        assert(record.sourceEvidence?.primary === "tableA" && Array.isArray(record.sourceEvidence.conflicts),
+          `${record.id} must contain normalized Victoria source evidence`);
+        if (record.sourceEvidence.conflicts.includes("mass")) continue;
+      }
       add(record, descriptor, { designation: record.specimenId, designationPath: "specimenId", massGrams: record.weight?.grams, massPath: "weight.grams" });
     } else if (descriptor.recordModel === "catalog-item") {
       record.holdings.forEach((holding, index) => add(record, descriptor, {
@@ -488,7 +503,13 @@ function applyReviewSource(relationships, reviewSource) {
   }
 }
 
-export function buildSpecimenLineages(catalog, reviewSource = EMPTY_REVIEW_SOURCE, collectionSeries = COLLECTION_SERIES) {
+export function buildSpecimenLineages(
+  catalog,
+  reviewSource = EMPTY_REVIEW_SOURCE,
+  sourceClaims = EMPTY_SOURCE_CLAIMS,
+  collectionSeries = COLLECTION_SERIES,
+) {
+  if (sourceClaims.claims.length > 0) validateSourceClaims(sourceClaims, catalog);
   const massObservations = flattenMassObservations(catalog);
   const inventoryObservations = flattenInventoryObservations(catalog, collectionSeries);
   const catalogNamespace = new Map(catalog.metadata.catalogs.map(({ id }) => [id, id]));
@@ -521,6 +542,8 @@ export function buildSpecimenLineages(catalog, reviewSource = EMPTY_REVIEW_SOURC
   const possible = relationships.filter(({ relationship }) => relationship === "possible-match");
   const sameInventory = relationships.filter(({ relationship }) => relationship === "same-inventory");
   const strengthCounts = countBy(possible, (relationship) => relationship.evidence.strength);
+  const sourceAttestedGroups = sourceClaims.claims.map((claim) => structuredClone(claim));
+  const sourceAttestedMembers = sourceAttestedGroups.flatMap(({ members }) => members);
   const pairCounts = new Map();
   relationships.forEach((relationship) => {
     const counts = pairCounts.get(relationship.catalogPair) ?? { sameInventoryCount: 0, possibleMatchCount: 0 };
@@ -530,7 +553,7 @@ export function buildSpecimenLineages(catalog, reviewSource = EMPTY_REVIEW_SOURC
   const count = (items, predicate) => items.filter(predicate).length;
   return {
     metadata: {
-      schemaVersion: 2,
+      schemaVersion: 3,
       scope: "series-inventory-and-cross-source-candidates",
       source: {
         catalogSchemaVersion: catalog.metadata.schemaVersion,
@@ -538,6 +561,8 @@ export function buildSpecimenLineages(catalog, reviewSource = EMPTY_REVIEW_SOURC
         catalogCount: catalog.metadata.catalogs.length,
         flattenedMassObservationCount: massObservations.length,
         inventoryObservationCount: inventoryObservations.length,
+        sourceClaimsSchemaVersion: sourceClaims.schemaVersion,
+        sourceClaimsContentSha256: sourceClaimsContentSha256(sourceClaims),
       },
       collectionSeries: collectionSeries.map(({ id, catalogIds }) => ({ id, catalogIds: [...catalogIds] })),
       methodology: {
@@ -568,8 +593,12 @@ export function buildSpecimenLineages(catalog, reviewSource = EMPTY_REVIEW_SOURC
         omittedAmbiguousInventoryKeyCount: inventoryResult.omittedAmbiguousInventoryKeyCount,
         possibleMatchEvidenceStrength: Object.fromEntries(EVIDENCE_STRENGTH_ORDER.map((strength) => [strength, strengthCounts.get(strength) ?? 0])),
         catalogPairs: [...pairCounts].sort(([a], [b]) => compareText(a, b)).map(([catalogPair, counts]) => ({ catalogPair, ...counts })),
+        sourceAttestedGroupCount: sourceAttestedGroups.length,
+        sourceAttestedMemberOccurrenceCount: sourceAttestedMembers.length,
+        sourceAttestedUniqueMemberCount: new Set(sourceAttestedMembers).size,
       },
     },
+    sourceAttestedGroups,
     relationships,
   };
 }
@@ -629,7 +658,7 @@ function validateReview(review, path) {
 export function validateLineageShape(document) {
   assertExactKeys(document, ROOT_KEYS, "root");
   assertExactKeys(document.metadata, METADATA_KEYS, "metadata");
-  assert(document.metadata.schemaVersion === 2, "metadata.schemaVersion must be 2");
+  assert(document.metadata.schemaVersion === 3, "metadata.schemaVersion must be 3");
   assert(document.metadata.scope === "series-inventory-and-cross-source-candidates", "metadata.scope is invalid");
   assertExactKeys(document.metadata.source, SOURCE_KEYS, "metadata.source");
   assert(Array.isArray(document.metadata.collectionSeries), "metadata.collectionSeries must be an array");
@@ -648,6 +677,20 @@ export function validateLineageShape(document) {
   assertExactKeys(document.metadata.counts.possibleMatchEvidenceStrength, STRENGTH_COUNT_KEYS, "metadata.counts.possibleMatchEvidenceStrength");
   assert(Array.isArray(document.metadata.counts.catalogPairs), "metadata.counts.catalogPairs must be an array");
   document.metadata.counts.catalogPairs.forEach((item, index) => assertExactKeys(item, PAIR_COUNT_KEYS, `metadata.counts.catalogPairs[${index}]`));
+  assert(Array.isArray(document.sourceAttestedGroups), "sourceAttestedGroups must be an array");
+  const sourceClaims = { schemaVersion: 1, scope: "source-claims", claims: document.sourceAttestedGroups };
+  const sourceClaimStats = validateSourceClaims(sourceClaims);
+  assert(document.metadata.source.sourceClaimsSchemaVersion === sourceClaims.schemaVersion,
+    "metadata.source.sourceClaimsSchemaVersion differs from sourceAttestedGroups");
+  assert(document.metadata.source.sourceClaimsContentSha256 === sourceClaimsContentSha256(sourceClaims),
+    "metadata.source.sourceClaimsContentSha256 differs from sourceAttestedGroups");
+  assert(document.metadata.counts.sourceAttestedGroupCount === sourceClaimStats.claimCount,
+    "metadata.counts.sourceAttestedGroupCount differs from sourceAttestedGroups");
+  assert(document.metadata.counts.sourceAttestedMemberOccurrenceCount === document.sourceAttestedGroups
+    .reduce((count, group) => count + group.members.length, 0),
+  "metadata.counts.sourceAttestedMemberOccurrenceCount differs from sourceAttestedGroups");
+  assert(document.metadata.counts.sourceAttestedUniqueMemberCount === sourceClaimStats.uniqueMemberCount,
+    "metadata.counts.sourceAttestedUniqueMemberCount differs from sourceAttestedGroups");
   assert(Array.isArray(document.relationships), "relationships must be an array");
   for (const [relationshipIndex, relationship] of document.relationships.entries()) {
     const path = `relationships[${relationshipIndex}]`;
@@ -725,9 +768,15 @@ function firstDifference(actual, expected, path = "root") {
   return path;
 }
 
-export function validateSpecimenLineages(document, catalog, reviewSource = EMPTY_REVIEW_SOURCE) {
+export function validateSpecimenLineages(
+  document,
+  catalog,
+  reviewSource = EMPTY_REVIEW_SOURCE,
+  sourceClaims = EMPTY_SOURCE_CLAIMS,
+) {
   validateLineageShape(document);
-  const expected = buildSpecimenLineages(catalog, reviewSource);
+  validateSourceClaims(sourceClaims, catalog);
+  const expected = buildSpecimenLineages(catalog, reviewSource, sourceClaims);
   const difference = firstDifference(document, expected);
   assert(difference === null, `specimen lineage data differs from public catalog derivation at ${difference}`);
   return {

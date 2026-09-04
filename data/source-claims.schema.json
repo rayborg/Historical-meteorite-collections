@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:hmc:schema:source-claims:1",
+  "title": "Historical Meteorite Collection source-attested claims",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "scope", "claims"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "scope": { "const": "source-claims" },
+    "claims": {
+      "type": "array",
+      "minItems": 21,
+      "maxItems": 21,
+      "items": { "$ref": "#/$defs/claim" }
+    }
+  },
+  "$defs": {
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "catalogId", "sourceSection", "claimType", "classification", "members", "reference", "printedPage"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^victoria-land-1982-table-c-(?:00[1-9]|01[0-9]|02[01])$" },
+        "catalogId": { "const": "victoria-land-1982" },
+        "sourceSection": { "const": "Appendix Table C" },
+        "claimType": { "const": "tentative-n-ary-group" },
+        "classification": { "type": "string", "minLength": 1 },
+        "members": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^(?:ALHA|BTNA|DRPA|EETA|META|MBRA|PGPA|RKPA)[0-9]{5}$"
+          }
+        },
+        "reference": { "type": "string", "minLength": 1 },
+        "printedPage": { "const": 94 }
+      }
+    }
+  }
+}

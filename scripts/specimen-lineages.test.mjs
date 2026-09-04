@@ -22,6 +22,7 @@ const published = JSON.parse(publishedText);
 const schema = JSON.parse(await readFile(new URL("../data/specimen-lineages.schema.json", import.meta.url), "utf8"));
 const reviewSource = JSON.parse(await readFile(new URL("../data/specimen-lineage-reviews.json", import.meta.url), "utf8"));
 const reviewSchema = JSON.parse(await readFile(new URL("../data/specimen-lineage-reviews.schema.json", import.meta.url), "utf8"));
+const sourceClaims = JSON.parse(await readFile(new URL("../data/source-claims.json", import.meta.url), "utf8"));
 const folios = JSON.parse(await readFile(new URL("../data/folios.json", import.meta.url), "utf8"));
 const folioReleaseLock = JSON.parse(await readFile(new URL("./folio-release-lock.json", import.meta.url), "utf8"));
 const WAVE1_CATALOG_IDS = new Set(["brown-1916", "minnesota-1892"]);
@@ -114,15 +115,15 @@ function current37Relationships(document = published) {
 function mutate(label, callback, pattern = /invalid|must|differs|private|unsupported|unsafe/iu) {
   const value = clone(published);
   callback(value);
-  assert.throws(() => validateSpecimenLineages(value, catalog, reviewSource), pattern, label);
+  assert.throws(() => validateSpecimenLineages(value, catalog, reviewSource, sourceClaims), pattern, label);
 }
 
 test("build is deterministic, canonical, and identical to the published file", () => {
-  const first = serializeSpecimenLineages(buildSpecimenLineages(catalog, reviewSource));
-  const second = serializeSpecimenLineages(buildSpecimenLineages(clone(catalog), clone(reviewSource)));
+  const first = serializeSpecimenLineages(buildSpecimenLineages(catalog, reviewSource, sourceClaims));
+  const second = serializeSpecimenLineages(buildSpecimenLineages(clone(catalog), clone(reviewSource), clone(sourceClaims)));
   const reorderedCatalog = clone(catalog);
   reorderedCatalog.records.reverse();
-  const reordered = serializeSpecimenLineages(buildSpecimenLineages(reorderedCatalog, reviewSource));
+  const reordered = serializeSpecimenLineages(buildSpecimenLineages(reorderedCatalog, reviewSource, sourceClaims));
 
   assert.equal(first, second);
   assert.equal(first, reordered);
@@ -140,14 +141,16 @@ test("build is deterministic, canonical, and identical to the published file", (
 });
 
 test("publishes locked source and relationship counts", () => {
-  assert.equal(flattenMassObservations(catalog).length, 14905);
+  assert.equal(flattenMassObservations(catalog).length, 15138);
   assert.equal(flattenInventoryObservations(catalog).length, 3627);
   assert.deepEqual(published.metadata.source, {
-    catalogSchemaVersion: 10,
+    catalogSchemaVersion: 11,
     recordCount: 14477,
     catalogCount: 40,
-    flattenedMassObservationCount: 14905,
+    flattenedMassObservationCount: 15138,
     inventoryObservationCount: 3627,
+    sourceClaimsSchemaVersion: 1,
+    sourceClaimsContentSha256: "141ed60b9560596ac8ab392babfc4af6e1d22921bacbf979d3b975e0fc2f20c2",
   });
   const { catalogPairs, ...counts } = published.metadata.counts;
   assert.deepEqual(counts, {
@@ -170,6 +173,9 @@ test("publishes locked source and relationship counts", () => {
       "two-matching-facts": 1137,
       "limited-matching-evidence": 228,
     },
+    sourceAttestedGroupCount: 21,
+    sourceAttestedMemberOccurrenceCount: 89,
+    sourceAttestedUniqueMemberCount: 87,
   });
   assert.equal(catalogPairs.length, 110);
   assert.equal(
@@ -177,7 +183,7 @@ test("publishes locked source and relationship counts", () => {
     "52c62fb9b1c4078cae0c0ce7af0fb2a079ac545c244b5ad2d12dd0eb7db72b4e",
   );
   assert.equal(createHash("sha256").update(publishedText).digest("hex"),
-    "4c1bc76827dcbf9673d6c78d65ee00a768dec8dde0fd2cb10b628c6fc9636233");
+    "1c25702cfcf519358de85bbc0763d5b4f88e71975b84753c1bbef8273e042e91");
   assert.equal(createHash("sha256").update(JSON.stringify(published.relationships)).digest("hex"),
     "71532f2983624938a4730d0cd4786ca0a5e7d6e02fd1c3256bbecf1bddead3f1");
   const baseline = current37Relationships();
@@ -215,21 +221,21 @@ test("Brown and Minnesota add only the 22 reviewed possible relationships", () =
   missingReview.reviews.splice(missingReview.reviews.findIndex(({ candidateId }) =>
     additions.some(({ id }) => id === candidateId)), 1);
   assert.equal(buildSpecimenLineages(catalog, missingReview).relationships.length, 1559);
-  assert.throws(() => validateSpecimenLineages(published, catalog, missingReview), /differs/iu);
+  assert.throws(() => validateSpecimenLineages(published, catalog, missingReview, sourceClaims), /differs/iu);
 });
 
-test("Hodge-Smith census facts and unmapped Victoria specimens add no physical-lineage assertion", () => {
+test("Hodge-Smith census facts and mapped Victoria specimens add no unsupported pairwise lineage assertion", () => {
   const hodge = catalog.records.filter(({ catalogId }) => catalogId === "hodge-smith-1939");
   const victoria = catalog.records.filter(({ catalogId }) => catalogId === "victoria-land-1982");
   assert.equal(hodge.length, 84);
   assert.equal(hodge.filter((record) => Object.hasOwn(record, "metbull")).length, 58);
   assert.equal(victoria.length, 273);
-  assert.equal(victoria.filter((record) => Object.hasOwn(record, "metbull")).length, 0);
+  assert.equal(victoria.filter((record) => record.metbull?.matchType === "official-abbreviation").length, 273);
   assert.equal(victoria.reduce((sum, record) => sum + record.weight.grams, 0), 969562.2);
   assert.equal(createHash("sha256").update(JSON.stringify(hodge)).digest("hex"),
     "7ca605ed679a55b21cae9574f9f33665a3d4665db7a40eceb2017e57781980b5");
   assert.equal(createHash("sha256").update(JSON.stringify(victoria)).digest("hex"),
-    "b81e441cb9a672f487ff4c9fe0b8315d1c932dced461e23bf3b9f41d5f2e5595");
+    "c427fa0bf07a8ce57c01d4520fc3b2eb2c2aa7483f1d8bf5d7f8bce483f96806");
   for (const catalogId of ["hodge-smith-1939", "victoria-land-1982"]) {
     assert.deepEqual(folios.catalogs[catalogId], {
       displayPolicy: "blocked", rightsStatus: "undetermined", pages: [],
@@ -243,6 +249,33 @@ test("Hodge-Smith census facts and unmapped Victoria specimens add no physical-l
     assert(relationships.every(({ relationship, status }) => relationship === "possible-match" && status === "possible"));
     assert(!relationships.some(({ relationship }) => relationship === "same-inventory"));
   }
+});
+
+test("Victoria admits 233 conflict-free Table A masses and preserves Table C only as n-ary source claims", () => {
+  const massConflicts = new Set(catalog.records.filter(({ catalogId, sourceEvidence }) =>
+    catalogId === "victoria-land-1982" && sourceEvidence.conflicts.includes("mass")).map(({ specimenId }) => specimenId));
+  const observations = flattenMassObservations(catalog).filter(({ public: observation }) =>
+    observation.catalogId === "victoria-land-1982");
+  assert.equal(massConflicts.size, 40);
+  assert.equal(observations.length, 233);
+  assert(observations.every(({ public: observation }) =>
+    !massConflicts.has(observation.designation)));
+  assert(!observations.some(({ public: observation }) => observation.designation === "ALHA76009"));
+  const admitted = clone(catalog);
+  admitted.records.find(({ specimenId }) => specimenId === "ALHA76009").sourceEvidence.conflicts = [];
+  assert.equal(flattenMassObservations(admitted).length, 15139);
+  const excluded = clone(catalog);
+  excluded.records.find(({ catalogId, sourceEvidence }) =>
+    catalogId === "victoria-land-1982" && sourceEvidence.conflicts.length === 0).sourceEvidence.conflicts = ["mass"];
+  assert.equal(flattenMassObservations(excluded).length, 15137);
+  assert.deepEqual(published.sourceAttestedGroups, sourceClaims.claims);
+  assert.equal(createHash("sha256").update(JSON.stringify(published.sourceAttestedGroups)).digest("hex"),
+    "141ed60b9560596ac8ab392babfc4af6e1d22921bacbf979d3b975e0fc2f20c2");
+  assert.equal(published.sourceAttestedGroups.length, 21);
+  assert.equal(new Set(published.sourceAttestedGroups.flatMap(({ members }) => members)).size, 87);
+  assert(published.sourceAttestedGroups.every(({ claimType }) => claimType === "tentative-n-ary-group"));
+  assert(!published.relationships.some(({ observations: endpoints }) =>
+    endpoints.some(({ catalogId }) => catalogId === "victoria-land-1982")));
 });
 
 test("ASU September 2024 retains source facts while reviewed mappings enable lineage candidates", () => {
@@ -338,11 +371,11 @@ test("Palache publishes only locked facts and blocked folios", () => {
   }
 
   const allReviewed = catalog.records.filter((record) => Object.hasOwn(record, "metbull"));
-  assert.equal(allReviewed.length, 10904);
+  assert.equal(allReviewed.length, 11177);
   assert.equal(allReviewed.filter(({ metbull }) => metbull.matchType === "unresolved").length, 304);
-  assert.equal(allReviewed.filter(({ metbull }) => metbull.matchType !== "unresolved").length, 10600);
+  assert.equal(allReviewed.filter(({ metbull }) => metbull.matchType !== "unresolved").length, 10873);
   assert.equal(10368 - 10296, 72);
-  assert.equal(catalog.records.length - allReviewed.length, 3573);
+  assert.equal(catalog.records.length - allReviewed.length, 3300);
 });
 
 test("Madrid publishes the accepted facts, blocked folios, atomic holdings, and only new unreviewed candidates", () => {
@@ -1034,7 +1067,7 @@ test("same-series continuity survives missing mass while possible matches requir
   const relationship = rebuilt.relationships.find((item) => item.relationship === "same-inventory" && item.collectionSeries.inventoryId === "h160.1");
   assert.ok(relationship);
   assert(relationship.observations.some(({ massGrams }) => massGrams === null));
-  assert.equal(rebuilt.metadata.source.flattenedMassObservationCount, 14904);
+  assert.equal(rebuilt.metadata.source.flattenedMassObservationCount, 15137);
 
   for (const possible of possibleRelationships()) {
     const [left, right] = possible.observations;
@@ -1158,8 +1191,8 @@ test("reviews apply only to possible candidates", () => {
 
 test("schemas are closed draft 2020-12 contracts with relationship-specific review rules", () => {
   assert.equal(schema.$schema, "https://json-schema.org/draft/2020-12/schema");
-  assert.equal(schema.$id, "urn:hmc:schema:specimen-lineages:2");
-  assert.equal(schema.$defs.metadata.properties.source.properties.catalogSchemaVersion.const, 10);
+  assert.equal(schema.$id, "urn:hmc:schema:specimen-lineages:3");
+  assert.equal(schema.$defs.metadata.properties.source.properties.catalogSchemaVersion.const, 11);
   assert.equal(reviewSchema.$schema, "https://json-schema.org/draft/2020-12/schema");
   assert.equal(reviewSchema.properties.reviews.minItems, 26);
   assert.equal(reviewSchema.properties.reviews.maxItems, 26);
@@ -1204,6 +1237,9 @@ test("validator rejects relationship, endpoint, evidence, count, and privacy mut
     value.relationships.find(({ relationship }) => relationship === "possible-match").evidence.factCodes.reverse();
   }, /canonically ordered|differs/iu);
   mutate("count", (value) => { value.metadata.counts.relationshipCount += 1; });
+  mutate("source claims digest", (value) => { value.metadata.source.sourceClaimsContentSha256 = "0".repeat(64); });
+  mutate("source-attested group member", (value) => { value.sourceAttestedGroups[0].members[0] = "ALHA99999"; });
+  mutate("source-attested group pairwise conversion", (value) => { value.sourceAttestedGroups[0].claimType = "pair"; }, /n-ary/u);
   mutate("unsafe URL", (value) => { value.relationships[0].observations[0].catalogSearchUrl = "https://evil.example/"; }, /unsafe|differs/iu);
   mutate("private field", (value) => { value.relationships[0].private = true; }, /exactly keys|private/iu);
 });

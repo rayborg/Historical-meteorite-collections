@@ -83,9 +83,13 @@ const REGIONAL_CENSUS_FACT_KEYS = [
   "australianMuseumRepresentation", "catalogPages", "confidence",
 ];
 const TABLE_A_SPECIMEN_KEYS = [
-  "id", "catalogId", "entryOrder", "specimenId", "weight", "classification", "olivineFa", "pyroxeneFs",
-  "weathering", "locality", "catalogPage", "confidence",
+  "id", "catalogId", "entryOrder", "specimenId", "name", "weight", "classification", "olivineFa", "pyroxeneFs",
+  "weathering", "locality", "catalogPage", "sourceEvidence", "confidence",
 ];
+const VICTORIA_SOURCE_EVIDENCE_KEYS = ["primary", "tableA", "tableB", "conflicts"];
+const VICTORIA_TABLE_A_EVIDENCE_KEYS = ["printedPage", "massGrams", "classification", "olivineFa", "pyroxeneFs", "weathering"];
+const VICTORIA_TABLE_B_EVIDENCE_KEYS = ["printedPage", "massGrams", "classification", "classificationContext", "weathering", "fracturing"];
+const VICTORIA_CONFLICT_FIELDS = ["classification", "mass", "weathering"];
 const DEALER_OFFER_FACT_KEYS = [
   "id", "catalogId", "typeNumber", "name", "description", "catalogPage", "confidence",
 ];
@@ -95,7 +99,7 @@ const HAMBURG_COLLECTION_ENTRY_KEYS = [
 const METBULL_KEYS = ["matchType", "canonicalName", "meteoriteCode", "metbullUrl", "alternateNameNote"];
 const METBULL_MATCH_TYPES = [
   "exact", "case-normalized-exact", "source-heading-exact", "historical-alias", "corrected-spelling",
-  "translated-or-older-name", "unresolved",
+  "translated-or-older-name", "official-abbreviation", "unresolved",
 ];
 const HOLDING_KEYS = ["designation", "kind", "description", "count", "weight"];
 const CATALOG_NUMBER_HOLDING_KEYS = ["description", "provenance", "count", "weights"];
@@ -146,9 +150,23 @@ const FACTUAL_FIELDS = [
   "olivineFa",
   "pyroxeneFs",
   "weathering",
+  "sourceEvidence.primary",
+  "sourceEvidence.tableA.printedPage",
+  "sourceEvidence.tableA.massGrams",
+  "sourceEvidence.tableA.classification",
+  "sourceEvidence.tableA.olivineFa",
+  "sourceEvidence.tableA.pyroxeneFs",
+  "sourceEvidence.tableA.weathering",
+  "sourceEvidence.tableB.printedPage",
+  "sourceEvidence.tableB.massGrams",
+  "sourceEvidence.tableB.classification",
+  "sourceEvidence.tableB.classificationContext",
+  "sourceEvidence.tableB.weathering",
+  "sourceEvidence.tableB.fracturing",
+  "sourceEvidence.conflicts[]",
   "locality.code",
   "locality.name",
-  "locality.coordinate",
+  "locality.areaReferenceCoordinate",
   "catalogPage",
   "catalogPages[]",
   "section",
@@ -331,12 +349,12 @@ function assertCountSummary(value, path) {
 
 function validateMetadata(metadata, path) {
   assertExactKeys(metadata, METADATA_KEYS, path);
-  assert(metadata.schemaVersion === 10, `${path}.schemaVersion must be 10`);
+  assert(metadata.schemaVersion === 11, `${path}.schemaVersion must be 11`);
   assert(metadata.scope === "facts-only", `${path}.scope must be facts-only`);
   assert(
     Array.isArray(metadata.factualFields) && metadata.factualFields.length === FACTUAL_FIELDS.length &&
       metadata.factualFields.every((field, index) => field === FACTUAL_FIELDS[index]),
-    `${path}.factualFields does not match the schema 10 public record models`,
+    `${path}.factualFields does not match the schema 11 public record models`,
   );
   assertCountSummary(metadata, path);
   assert(Array.isArray(metadata.catalogs) && metadata.catalogs.length > 0, `${path}.catalogs must be a nonempty array`);
@@ -490,10 +508,71 @@ function validateAustralianMuseumRepresentation(value, path) {
 }
 
 function validateTableALocality(value, path) {
-  assertExactKeys(value, ["code", "name", "coordinate"], path);
+  assertExactKeys(value, ["code", "name", "areaReferenceCoordinate"], path);
   assert(typeof value.code === "string" && /^[A-Z]{3}$/u.test(value.code), `${path}.code must be a three-letter code`);
   assertString(value.name, `${path}.name`);
-  assertString(value.coordinate, `${path}.coordinate`, true);
+  assertString(value.areaReferenceCoordinate, `${path}.areaReferenceCoordinate`, true);
+}
+
+const TABLE_A_TO_B_CLASS = {
+  Au: "Aubrite", C2: "Carbonaceous C2", C3: "Carbonaceous C3", Di: "Diogenite", Eu: "Eucrite",
+  Ho: "Howardite", Iron: "Iron", M: "Mesosiderite", Sh: "Shergottite", Ur: "Ureilite",
+};
+
+function comparableVictoriaTableBClass(value) {
+  if (value === null) return null;
+  if (/Eucrite$/u.test(value)) return "Eucrite";
+  if (/^Iron-Group /u.test(value)) return "Iron";
+  return value;
+}
+
+function expectedVictoriaConflicts(sourceEvidence) {
+  if (sourceEvidence.tableB === null) return [];
+  const conflicts = [];
+  const { tableA, tableB } = sourceEvidence;
+  if (tableA.massGrams !== tableB.massGrams) conflicts.push("mass");
+  if (tableB.weathering !== null && tableA.weathering !== tableB.weathering) conflicts.push("weathering");
+  const tableAClass = TABLE_A_TO_B_CLASS[tableA.classification] ?? tableA.classification;
+  const tableBClass = comparableVictoriaTableBClass(tableB.classification);
+  if (tableB.classificationContext === "Unclassified" || tableAClass !== tableBClass) conflicts.push("classification");
+  return conflicts.sort();
+}
+
+function validateVictoriaSourceEvidence(value, record, path) {
+  assertExactKeys(value, VICTORIA_SOURCE_EVIDENCE_KEYS, path);
+  assert(value.primary === "tableA", `${path}.primary must be tableA`);
+  assertExactKeys(value.tableA, VICTORIA_TABLE_A_EVIDENCE_KEYS, `${path}.tableA`);
+  const { tableA, tableB } = value;
+  assert(Number.isInteger(tableA.printedPage) && tableA.printedPage >= 85 && tableA.printedPage <= 88,
+    `${path}.tableA.printedPage is invalid`);
+  assert(Number.isFinite(tableA.massGrams) && tableA.massGrams >= 0, `${path}.tableA.massGrams is invalid`);
+  assertString(tableA.classification, `${path}.tableA.classification`);
+  for (const field of ["olivineFa", "pyroxeneFs", "weathering"]) {
+    assertString(tableA[field], `${path}.tableA.${field}`, true);
+  }
+  if (tableB !== null) {
+    assertExactKeys(tableB, VICTORIA_TABLE_B_EVIDENCE_KEYS, `${path}.tableB`);
+    assert(Number.isInteger(tableB.printedPage) && tableB.printedPage >= 88 && tableB.printedPage <= 94,
+      `${path}.tableB.printedPage is invalid`);
+    assert(Number.isFinite(tableB.massGrams) && tableB.massGrams >= 0, `${path}.tableB.massGrams is invalid`);
+    for (const field of ["classification", "weathering", "fracturing"]) {
+      assertString(tableB[field], `${path}.tableB.${field}`, true);
+    }
+    assert(tableB.classificationContext === null || tableB.classificationContext === "Unclassified",
+      `${path}.tableB.classificationContext is invalid`);
+    assert((tableB.classification === null) === (tableB.classificationContext === "Unclassified"),
+      `${path}.tableB classification context is inconsistent`);
+  }
+  assert(Array.isArray(value.conflicts) && new Set(value.conflicts).size === value.conflicts.length,
+    `${path}.conflicts must be a unique array`);
+  assert(value.conflicts.every((field) => VICTORIA_CONFLICT_FIELDS.includes(field)),
+    `${path}.conflicts contains an invalid field`);
+  assert(JSON.stringify(value.conflicts) === JSON.stringify(expectedVictoriaConflicts(value)),
+    `${path}.conflicts does not match Table A and Table B evidence`);
+  assert(record.catalogPage === tableA.printedPage && record.weight.grams === tableA.massGrams &&
+    record.classification === tableA.classification && record.olivineFa === tableA.olivineFa &&
+    record.pyroxeneFs === tableA.pyroxeneFs && record.weathering === tableA.weathering,
+  `${path} top-level primary facts must equal tableA`);
 }
 
 function validateHolding(holding, path) {
@@ -626,7 +705,11 @@ function validatePublicCatalog(data, folios, path = "catalog") {
         }
       }
     }
-    if (Object.hasOwn(record, "metbull")) validateMetbull(record.metbull, record.name, `${recordPath}.metbull`);
+    if (Object.hasOwn(record, "metbull")) {
+      validateMetbull(record.metbull, record.name, `${recordPath}.metbull`);
+      assert(recordModel === "table-a-specimen" || record.metbull.matchType !== "official-abbreviation",
+        `${recordPath}.metbull.official-abbreviation is restricted to Table A specimens`);
+    }
     if (recordModel === "specimen") {
       assertString(record.designation, `${recordPath}.designation`, true);
       assertExactKeys(record.weight, ["grams"], `${recordPath}.weight`);
@@ -686,7 +769,7 @@ function validatePublicCatalog(data, folios, path = "catalog") {
       assert(!entryOrders.has(record.entryOrder), `${recordPath}.entryOrder is duplicated within ${record.catalogId}`);
       entryOrders.add(record.entryOrder);
       collectionEntryOrders.set(record.catalogId, entryOrders);
-      assert(typeof record.specimenId === "string" && /^[A-Z]{3,4}[0-9]{5}$/u.test(record.specimenId),
+      assert(typeof record.specimenId === "string" && /^(?:ALHA|BTNA|DRPA|EETA|META|MBRA|PGPA|RKPA)[0-9]{5}$/u.test(record.specimenId),
         `${recordPath}.specimenId must be a canonical Victoria Land specimen identifier`);
       const identifiers = specimenIds.get(record.catalogId) ?? new Set();
       assert(!identifiers.has(record.specimenId), `${recordPath}.specimenId is duplicated within ${record.catalogId}`);
@@ -696,10 +779,14 @@ function validatePublicCatalog(data, folios, path = "catalog") {
       assert(Number.isFinite(record.weight.grams) && record.weight.grams > 0,
         `${recordPath}.weight.grams must be a finite positive number`);
       assertString(record.classification, `${recordPath}.classification`);
+      assert(record.name === record.specimenId, `${recordPath}.name must equal specimenId`);
+      assert(record.metbull?.matchType === "official-abbreviation",
+        `${recordPath}.metbull must be an official-abbreviation mapping`);
       for (const field of ["olivineFa", "pyroxeneFs", "weathering"]) {
         assertString(record[field], `${recordPath}.${field}`, true);
       }
       validateTableALocality(record.locality, `${recordPath}.locality`);
+      validateVictoriaSourceEvidence(record.sourceEvidence, record, `${recordPath}.sourceEvidence`);
     } else if (recordModel === "dealer-offer-fact") {
       assert(Number.isInteger(record.typeNumber) && record.typeNumber > 0,
         `${recordPath}.typeNumber must be a positive integer`);
@@ -790,6 +877,41 @@ function validatePublicCatalog(data, folios, path = "catalog") {
   if (data.records.length === 14477 && metadataByCatalog.size === 40) {
     assert(individualFindLocationCount === 111,
       `${path} must contain exactly 111 specimen individualFindLocation values`);
+    const victoria = data.records.filter(({ catalogId }) => catalogId === "victoria-land-1982");
+    assert(victoria.length === 273, `${path} must contain exactly 273 Victoria Table A specimens`);
+    assert(victoria.every((record) => record.name === record.specimenId &&
+      record.metbull?.matchType === "official-abbreviation"),
+    `${path} Victoria names and official-abbreviation mappings must be complete`);
+    assert(new Set(victoria.map(({ specimenId }) => specimenId)).size === 273 &&
+      new Set(victoria.map(({ metbull }) => metbull.meteoriteCode)).size === 273,
+    `${path} Victoria specimen IDs and MetBull codes must be unique`);
+    assert(victoria.filter(({ locality }) => locality.areaReferenceCoordinate !== null).length === 240,
+      `${path} must contain exactly 240 Victoria area-reference coordinates`);
+    assert(victoria.filter(({ sourceEvidence }) => sourceEvidence.tableB !== null).length === 270 &&
+      victoria.filter(({ sourceEvidence }) => sourceEvidence.tableB !== null && sourceEvidence.tableB.classification !== null).length === 268 &&
+      victoria.filter(({ sourceEvidence }) => sourceEvidence.tableB !== null && sourceEvidence.tableB.weathering !== null).length === 249 &&
+      victoria.filter(({ sourceEvidence }) => sourceEvidence.tableB !== null && sourceEvidence.tableB.fracturing !== null).length === 250,
+    `${path} Victoria Table B evidence coverage changed`);
+    for (const [field, count] of [["mass", 40], ["classification", 2], ["weathering", 8]]) {
+      assert(victoria.filter(({ sourceEvidence }) => sourceEvidence.conflicts.includes(field)).length === count,
+        `${path} Victoria ${field} conflict count changed`);
+    }
+    assert(victoria.filter(({ sourceEvidence }) =>
+      sourceEvidence.tableB?.classificationContext === "Unclassified").length === 2,
+    `${path} Victoria unclassified context count changed`);
+    assert(JSON.stringify([...new Set(victoria.map(({ catalogPage }) => catalogPage))]) === "[85,86,87,88]",
+      `${path} Victoria Table A printed pages changed`);
+    assert(victoria.reduce((sum, { weight }) => sum + weight.grams, 0) === 969562.2,
+      `${path} Victoria primary Table A mass total changed`);
+    const alha76009 = victoria.find(({ specimenId }) => specimenId === "ALHA76009");
+    assert(alha76009?.weight.grams === 407000 && alha76009.catalogPage === 85 &&
+      alha76009.sourceEvidence.primary === "tableA" && alha76009.sourceEvidence.tableB.massGrams === 3950 &&
+      alha76009.sourceEvidence.tableB.printedPage === 91 && alha76009.sourceEvidence.conflicts.includes("mass") &&
+      alha76009.metbull.canonicalName === "Allan Hills A76009" && alha76009.metbull.meteoriteCode === "1316",
+    `${path} ALHA76009 primary public facts changed`);
+    assert(createHash("sha256").update(JSON.stringify(victoria)).digest("hex") ===
+      "c427fa0bf07a8ce57c01d4520fc3b2eb2c2aa7483f1d8bf5d7f8bce483f96806",
+    `${path} Victoria public records differ from the accepted schema 11 package`);
   }
   for (const [catalogId, { descriptor, path: descriptorPath, sourcePages }] of metadataByCatalog) {
     const stats = statsByCatalog.get(catalogId);
@@ -1082,7 +1204,7 @@ function multiCatalogFixture() {
   return {
     data: {
       metadata: {
-        schemaVersion: 10,
+        schemaVersion: 11,
         scope: "facts-only",
         factualFields: [...FACTUAL_FIELDS],
         catalogs: [
@@ -1583,7 +1705,7 @@ function runSyntheticCatalogTests(modelFixture) {
     catalogNumberRejectionCount += 1;
   };
   const hoveyRecord = (records, id = "hovey-catalog-z9") => records.find((record) => record.id === id);
-  assertCatalogNumberRejection("older metadata under schema 10", ({ metadata }) => { metadata.schemaVersion = 9; });
+  assertCatalogNumberRejection("older metadata under schema 11", ({ metadata }) => { metadata.schemaVersion = 10; });
   assertCatalogNumberRejection("empty catalog number", ({ records }) => { hoveyRecord(records).catalogNumber = ""; });
   assertCatalogNumberRejection("nonnull non-string catalog number", ({ records }) => { hoveyRecord(records).catalogNumber = 9; });
   assertCatalogNumberRejection("duplicate catalog number within one catalog", ({ records }) => {
@@ -2025,7 +2147,7 @@ console.log(
   `${catalogFixtureStats.holdingPrivacyAllowCount} holding-privacy boundary allow, ` +
   `${catalogFixtureStats.modelRejectionCount} model/holding rejections, ` +
   `${catalogFixtureStats.catalogNumberRejectionCount} catalog-number rejections, ` +
-  `${catalogFixtureStats.collectionEntryRejectionCount} collection-entry/schema-10 rejections, ` +
+  `${catalogFixtureStats.collectionEntryRejectionCount} collection-entry/schema-11 rejections, ` +
   `${metbullFixtureStats.allowCount} MetBull allows, ${metbullFixtureStats.rejectionCount} MetBull rejections, ` +
   `${folioFixtureStats.allowCount} folio allows, ${folioFixtureStats.rejectionCount} folio rejections, ` +
   `${folioFileFixtureStats.allowCount} folio-file allows, ${folioFileFixtureStats.rejectionCount} folio-file rejections passed.`,
@@ -2048,7 +2170,7 @@ if (!SYNTHETIC_ONLY) {
     assert(rejected, `deployed catalog mutation must reject ${label}`);
   };
   const locationRecord = data.records.find((record) => Object.hasOwn(record, "individualFindLocation"));
-  assertDeployedRejection("schema-9 downgrade", ({ metadata }) => { metadata.schemaVersion = 9; });
+  assertDeployedRejection("schema-10 downgrade", ({ metadata }) => { metadata.schemaVersion = 10; });
   assertDeployedRejection("missing one of 111 individual find locations", ({ records }) => {
     delete records.find(({ id }) => id === locationRecord.id).individualFindLocation;
   });
@@ -2066,7 +2188,7 @@ if (!SYNTHETIC_ONLY) {
   );
   console.log(
     `Validated data/catalog.json and data/folios.json: ${deployedStats.recordCount} records across ` +
-      `${deployedStats.catalogCount} schema 10 facts-only catalogs, ${deployedStats.individualFindLocationCount} individual find locations, ` +
+      `${deployedStats.catalogCount} schema 11 facts-only catalogs, ${deployedStats.individualFindLocationCount} individual find locations, ` +
       `${totalPageCount} metadata source pages, ` +
     `${deployedStats.folioStats.pageEntryCount} displayable folio pages with locked SHA-256 assets.`,
   );

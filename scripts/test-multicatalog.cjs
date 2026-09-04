@@ -39,8 +39,8 @@ const REGIONAL_CENSUS_FACT_FIELDS = [
   "australianMuseumRepresentation", "catalogPages", "confidence",
 ];
 const TABLE_A_SPECIMEN_FIELDS = [
-  "id", "catalogId", "entryOrder", "specimenId", "weight", "classification", "olivineFa", "pyroxeneFs",
-  "weathering", "locality", "catalogPage", "confidence",
+  "id", "catalogId", "entryOrder", "specimenId", "name", "weight", "classification", "olivineFa", "pyroxeneFs",
+  "weathering", "locality", "catalogPage", "sourceEvidence", "confidence",
 ];
 const DEALER_OFFER_FACT_FIELDS = [
   "id", "catalogId", "typeNumber", "name", "description", "catalogPage", "confidence",
@@ -210,8 +210,8 @@ test("runtime fixture projection validates with exact legacy model-aware shapes"
   });
 });
 
-test("schema 10 public fixture carries all three exact newer data models", () => {
-  assert.equal(publicFixture.metadata.schemaVersion, 10);
+test("schema 11 public fixture carries all three exact newer data models", () => {
+  assert.equal(publicFixture.metadata.schemaVersion, 11);
   assert.deepEqual(publicFixture.metadata.catalogs.slice(-3).map(({ id, recordModel }) => [id, recordModel]), [
     ["hodge-smith-1939", "regional-census-fact"],
     ["victoria-land-1982", "table-a-specimen"],
@@ -227,7 +227,7 @@ test("schema 10 public fixture carries all three exact newer data models", () =>
     .map(({ typeNumber }) => typeNumber), [95, 96]);
 });
 
-test("schema 10 permits individualFindLocation only as an optional specimen fact", () => {
+test("schema 11 permits individualFindLocation only as an optional specimen fact", () => {
   const located = clone(fixture);
   const specimen = located.records.find(({ id }) => id === "huss-h27-3");
   assert.equal(specimen.individualFindLocation, "32-19-13");
@@ -977,8 +977,8 @@ test("URL filters strictly round-trip lineage and unknown-weight state", () => {
   for (const search of ["", "?weighted=0", "?weighted=true", "?weighted=1&weighted=1", "?weighted=1&weighted=0"]) {
     assert.equal(app.parseUrlFilters(search, registry).includeUnknownWeight, true, search);
   }
-  assert.equal(app.CACHE_VERSION, "20260902-backlog39-wave1-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260902-backlog39-wave1-1");
+  assert.equal(app.CACHE_VERSION, "20260904-victoria-public-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260904-victoria-public-1");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.ASSET_CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.ASSET_CACHE_VERSION}`));
 });

@@ -1,0 +1,326 @@
+{
+  "schemaVersion": 1,
+  "scope": "source-claims",
+  "claims": [
+    {
+      "id": "victoria-land-1982-table-c-001",
+      "catalogId": "victoria-land-1982",
+      "sourceSection": "Appendix Table C",
+      "claimType": "tentative-n-ary-group",
+      "classification": "Eucrite",
+      "members": [
+        "ALHA76005",
+        "ALHA77302",
+        "ALHA78040",
+        "ALHA78132",
+        "ALHA78158",
+        "ALHA78165",
+        "ALHA79017"
+      ],
+      "reference": "Score et al. (this volume)",
+      "printedPage": 94
+    },
+    {
+      "id": "victoria-land-1982-table-c-002",
+      "catalogId": "victoria-land-1982",
+      "sourceSection": "Appendix Table C",
+      "claimType": "tentative-n-ary-group",
+      "classification": "L3",
+      "members": [
+        "ALHA77015",
+        "ALHA77033",
+        "ALHA77034",
+        "ALHA77036",
+        "ALHA77043",
+        "ALHA77047",
+        "ALHA77049",
+        "ALHA77050",
+        "ALHA77052",
+        "ALHA77140",
+        "ALHA77162",
+        "ALHA77167",
+        "ALHA77170",
+        "ALHA77178",
+        "ALHA77214"
+      ],
+      "reference": "McKinley et al. (1981)",
+      "printedPage": 94
+    },
+    {
+      "id": "victoria-land-1982-table-c-003",
+      "catalogId": "victoria-land-1982",
+      "sourceSection": "Appendix Table C",
+      "claimType": "tentative-n-ary-group",
+      "classification": "L3",
+      "members": [
+        "ALHA77160",
+        "ALHA77164",
+        "ALHA77165",
+        "ALHA77249",
+        "ALHA77260"
+      ],
+      "reference": "Paired with ALHA 77015 group on ev- idence in King et al. (1980:18, 42)",
+      "printedPage": 94
+    },
+    {
+      "id": "victoria-land-1982-table-c-004",
+      "catalogId": "victoria-land-1982",
+      "sourceSection": "Appendix Table C",
+      "claimType": "tentative-n-ary-group",
+      "classification": "L3",
+      "members": [
+        "ALHA77033",
+        "ALHA77214"
+      ],
+      "reference": "Separately paired by King et al. (1980:42)",
+      "printedPage": 94
+    },
+    {
+      "id": "victoria-land-1982-table-c-005",
+      "catalogId": "victoria-land-1982",
+      "sourceSection": "Appendix Table C",
+      "claimType": "tentative-n-ary-group",
+      "classification": "L3",
+      "members": [
+        "ALHA79001",
+        "ALHA79003"
+      ],
+      "reference": "Score et al. (this volume)",
+      "printedPage": 94
+    },
+    {
+      "id": "victoria-land-1982-table-c-006",
+      "catalogId": "victoria-land-1982",
+      "sourceSection": "Appendix Table C",
+      "claimType": "tentative-n-ary-group",
+      "classification": "L4",
+      "members": [
+        "ALHA77215",
+        "ALHA77216",
+        "ALHA77217"
+      ],
+      "reference": "King et al. (1980)",
+      "printedPage": 94
+    },
+    {
+      "id": "victoria-land-1982-table-c-007",
+      "catalogId": "victoria-land-1982",
+      "sourceSection": "Appendix Table C",
+      "claimType": "tentative-n-ary-group",
+      "classification": "L6",
+      "members": [
+        "ALHA77270",
+        "ALHA77277",
+        "ALHA77284"
+      ],
+      "reference": "King et al. (1980)",
+      "printedPage": 94
+    },
+    {
+      "id": "victoria-land-1982-table-c-008",
+      "catalogId": "victoria-land-1982",
+      "sourceSection": "Appendix Table C",
+      "claimType": "tentative-n-ary-group",
+      "classification": "L6",
+      "members": [
+        "ALHA77001",
+        "ALHA77296",
+        "ALHA77297"
+      ],
+      "reference": "Kinget al. (1980)",
+      "printedPage": 94
+    },
+    {
+      "id": "victoria-land-1982-table-c-009",
+      "catalogId": "victoria-land-1982",
+      "sourceSection": "Appendix Table C",
+      "claimType": "tentative-n-ary-group",
+      "classification": "L6",
+      "members": [
+        "ALHA77150",
+        "ALHA77305"
+      ],
+      "reference": "King et al. (1980)",
+      "printedPage": 94
+    },
+    {
+      "id": "victoria-land-1982-table-c-010",
+      "catalogId": "victoria-land-1982",
+      "sourceSection": "Appendix Table C",
+      "claimType": "tentative-n-ary-group",
+      "classification": "L6",
+      "members": [
+        "ALHA77231",
+        "ALHA77272",
+        "ALHA77273",
+        "ALHA77280"
+      ],
+      "reference": "King et al. (1980)",
+      "printedPage": 94
+    },
+    {
+      "id": "victoria-land-1982-table-c-011",
+      "catalogId": "victoria-land-1982",
+      "sourceSection": "Appendix Table C",
+      "claimType": "tentative-n-ary-group",
+      "classification": "L6",
+      "members": [
+        "BTNA78002"
+      ],
+      "reference": "Score et al. (this volume)",
+      "printedPage": 94
+    },
+    {
+      "id": "victoria-land-1982-table-c-012",
+      "catalogId": "victoria-land-1982",
+      "sourceSection": "Appendix Table C",
+      "claimType": "tentative-n-ary-group",
+      "classification": "L6",
+      "members": [
+        "RKPA78001",
+        "RKPA78003",
+        "RKPA79001",
+        "RKPA79002"
+      ],
+      "reference": "Score et al. (this volume)",
+      "printedPage": 94
+    },
+    {
+      "id": "victoria-land-1982-table-c-013",
+      "catalogId": "victoria-land-1982",
+      "sourceSection": "Appendix Table C",
+      "claimType": "tentative-n-ary-group",
+      "classification": "H4",
+      "members": [
+        "ALHA77004",
+        "ALHA77191",
+        "ALHA77192",
+        "ALHA77208",
+        "ALHA77224",
+        "ALHA77233"
+      ],
+      "reference": "King et al. (1980)",
+      "printedPage": 94
+    },
+    {
+      "id": "victoria-land-1982-table-c-014",
+      "catalogId": "victoria-land-1982",
+      "sourceSection": "Appendix Table C",
+      "claimType": "tentative-n-ary-group",
+      "classification": "H5",
+      "members": [
+        "ALHA77014",
+        "ALHA77264"
+      ],
+      "reference": "King et al. (1980)",
+      "printedPage": 94
+    },
+    {
+      "id": "victoria-land-1982-table-c-015",
+      "catalogId": "victoria-land-1982",
+      "sourceSection": "Appendix Table C",
+      "claimType": "tentative-n-ary-group",
+      "classification": "H5",
+      "members": [
+        "ALHA77021",
+        "ALHA77061",
+        "ALHA77062",
+        "ALHA77064",
+        "ALHA77071",
+        "ALHA77086",
+        "ALHA77088",
+        "ALHA77102"
+      ],
+      "reference": "Kinget al. (1980)",
+      "printedPage": 94
+    },
+    {
+      "id": "victoria-land-1982-table-c-016",
+      "catalogId": "victoria-land-1982",
+      "sourceSection": "Appendix Table C",
+      "claimType": "tentative-n-ary-group",
+      "classification": "H5",
+      "members": [
+        "ALHA77118",
+        "ALHA77119",
+        "ALHA77124"
+      ],
+      "reference": "Kinget al. (1980)",
+      "printedPage": 94
+    },
+    {
+      "id": "victoria-land-1982-table-c-017",
+      "catalogId": "victoria-land-1982",
+      "sourceSection": "Appendix Table C",
+      "claimType": "tentative-n-ary-group",
+      "classification": "H5",
+      "members": [
+        "RKPA79004"
+      ],
+      "reference": "Score et al. (this volume)",
+      "printedPage": 94
+    },
+    {
+      "id": "victoria-land-1982-table-c-018",
+      "catalogId": "victoria-land-1982",
+      "sourceSection": "Appendix Table C",
+      "claimType": "tentative-n-ary-group",
+      "classification": "H6",
+      "members": [
+        "ALHA77144",
+        "ALHA77148"
+      ],
+      "reference": "Kinget al. (1980)",
+      "printedPage": 94
+    },
+    {
+      "id": "victoria-land-1982-table-c-019",
+      "catalogId": "victoria-land-1982",
+      "sourceSection": "Appendix Table C",
+      "claimType": "tentative-n-ary-group",
+      "classification": "H6",
+      "members": [
+        "ALHA77271",
+        "ALHA77288"
+      ],
+      "reference": "King et al. (1980)",
+      "printedPage": 94
+    },
+    {
+      "id": "victoria-land-1982-table-c-020",
+      "catalogId": "victoria-land-1982",
+      "sourceSection": "Appendix Table C",
+      "claimType": "tentative-n-ary-group",
+      "classification": "Iron, IA/Og",
+      "members": [
+        "ALHA76002",
+        "ALHA77250",
+        "ALHA77263",
+        "ALHA77289",
+        "ALHA77290"
+      ],
+      "reference": "Clarke (this volume)",
+      "printedPage": 94
+    },
+    {
+      "id": "victoria-land-1982-table-c-021",
+      "catalogId": "victoria-land-1982",
+      "sourceSection": "Appendix Table C",
+      "claimType": "tentative-n-ary-group",
+      "classification": "Iron, IA/Og",
+      "members": [
+        "DRPA78001",
+        "DRPA78002",
+        "DRPA78003",
+        "DRPA78004",
+        "DRPA78005",
+        "DRPA78006",
+        "DRPA78007",
+        "DRPA78008",
+        "DRPA78009"
+      ],
+      "reference": "Clarke (this volume)",
+      "printedPage": 94
+    }
+  ]
+}

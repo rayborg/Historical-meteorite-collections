@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "schemaVersion": 10,
+    "schemaVersion": 11,
     "scope": "facts-only",
     "factualFields": [
       "id",
@@ -41,9 +41,23 @@
       "olivineFa",
       "pyroxeneFs",
       "weathering",
+      "sourceEvidence.primary",
+      "sourceEvidence.tableA.printedPage",
+      "sourceEvidence.tableA.massGrams",
+      "sourceEvidence.tableA.classification",
+      "sourceEvidence.tableA.olivineFa",
+      "sourceEvidence.tableA.pyroxeneFs",
+      "sourceEvidence.tableA.weathering",
+      "sourceEvidence.tableB.printedPage",
+      "sourceEvidence.tableB.massGrams",
+      "sourceEvidence.tableB.classification",
+      "sourceEvidence.tableB.classificationContext",
+      "sourceEvidence.tableB.weathering",
+      "sourceEvidence.tableB.fracturing",
+      "sourceEvidence.conflicts[]",
       "locality.code",
       "locality.name",
-      "locality.coordinate",
+      "locality.areaReferenceCoordinate",
       "catalogPage",
       "catalogPages[]",
       "section",
@@ -151,7 +165,7 @@
         "label": "Catalog of Meteorites from Victoria Land (1982)",
         "compiler": "Ursula B. Marvin; Brian Mason",
         "year": 1982,
-        "sourcePages": [89],
+        "sourcePages": [85],
         "sourcePageCount": 1,
         "recordCount": 1,
         "recordsWithDesignation": 1,
@@ -516,6 +530,7 @@
       "catalogId": "victoria-land-1982",
       "entryOrder": 1,
       "specimenId": "ALHA76001",
+      "name": "ALHA76001",
       "weight": { "grams": 20151 },
       "classification": "L6",
       "olivineFa": "25",
@@ -524,10 +539,37 @@
       "locality": {
         "code": "ALH",
         "name": "Allan Hills",
-        "coordinate": "76°45'S, 159°40'E"
+        "areaReferenceCoordinate": "76°45'S, 159°40'E"
       },
-      "catalogPage": 89,
-      "confidence": "high"
+      "catalogPage": 85,
+      "sourceEvidence": {
+        "primary": "tableA",
+        "tableA": {
+          "printedPage": 85,
+          "massGrams": 20151,
+          "classification": "L6",
+          "olivineFa": "25",
+          "pyroxeneFs": "21",
+          "weathering": "A"
+        },
+        "tableB": {
+          "printedPage": 88,
+          "massGrams": 20151,
+          "classification": "L6",
+          "classificationContext": null,
+          "weathering": "A",
+          "fracturing": "A"
+        },
+        "conflicts": []
+      },
+      "confidence": "high",
+      "metbull": {
+        "matchType": "official-abbreviation",
+        "canonicalName": "Allan Hills A76001",
+        "meteoriteCode": "1308",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=1308",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "dealer-type-95",

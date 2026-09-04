@@ -12,17 +12,17 @@ const waveCatalogIds = new Set(["brown-1916", "minnesota-1892", "foote-1909"]);
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
 const jsonSha256 = (value) => sha256(JSON.stringify(value));
 
-test("installs the exact accepted schema-10 export over the current37 baseline", () => {
-  assert.equal(sha256(catalogText), "9a921861c782abe1218e2d3b33bc2fc0b229908ce0a3c08e93bdc2596b91c536");
+test("installs the exact accepted schema-11 export without changing non-Victoria data", () => {
+  assert.equal(sha256(catalogText), "c6ace08a04d70c5a869ed8f6401f3ad505da530b9501d3fd8227740a64257039");
   assert.equal(sha256(foliosText), "145498213ac8ddd24527b5092bfc4cad8dce1880f8d304d29e2c2c4d44595460");
-  assert.equal(catalog.metadata.schemaVersion, 10);
+  assert.equal(catalog.metadata.schemaVersion, 11);
   assert.equal(catalog.metadata.catalogs.length, 40);
   assert.equal(catalog.records.length, 14477);
-  const baselineRecords = catalog.records.filter(({ catalogId }) => !waveCatalogIds.has(catalogId));
-  const baselineDescriptors = catalog.metadata.catalogs.filter(({ id }) => !waveCatalogIds.has(id));
-  assert.equal(baselineRecords.length, 14176);
-  assert.equal(jsonSha256(baselineRecords), "d7c8a328528c7286415683cb9133c89fb212f5e83b041d6c634d57d852293ccf");
-  assert.equal(jsonSha256(baselineDescriptors), "adef164bb9b2feb5fdfe47153cc8ef5f81e8079ecabbb421cd3cdf5b7587ceb8");
+  const nonVictoriaRecords = catalog.records.filter(({ catalogId }) => catalogId !== "victoria-land-1982");
+  const nonVictoriaDescriptors = catalog.metadata.catalogs.filter(({ id }) => id !== "victoria-land-1982");
+  assert.equal(nonVictoriaRecords.length, 14204);
+  assert.equal(jsonSha256(nonVictoriaRecords), "ffacd94974737ed155b143e5a28718fe4ec22d8bd0a6eafde5d4cdf17018498a");
+  assert.equal(jsonSha256(nonVictoriaDescriptors), "8066f1c06de5c8021ffa24020cfe37c4e9cdc5ce1d357e95c20268c2699a1d6e");
 });
 
 test("publishes exact Brown, Minnesota, and non-specimen Foote facts with blocked folios", () => {

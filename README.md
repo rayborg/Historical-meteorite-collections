@@ -1,7 +1,7 @@
 # Historical Meteorite Collection
 
 <!-- release-summary:readme-overview:start -->
-This repository is a dependency-free, facts-only index of 14,477 source observations from 40 historical meteorite catalogs. The coordinated catalog uses public metadata schema 10 and supports 7 source-specific record models: `catalog-item`, `catalog-number`, `collection-entry`, `dealer-offer-fact`, `regional-census-fact`, `specimen`, `table-a-specimen`. Reviewed projection metadata expands 2,224 parent observations into 7,224 atomic specimen cards, producing 19,477 searchable display descriptors: 12,966 specimen cards and 6,511 observations.
+This repository is a dependency-free, facts-only index of 14,477 source observations from 40 historical meteorite catalogs. The coordinated catalog uses public metadata schema 11 and supports 7 source-specific record models: `catalog-item`, `catalog-number`, `collection-entry`, `dealer-offer-fact`, `regional-census-fact`, `specimen`, `table-a-specimen`. Reviewed projection metadata expands 2,224 parent observations into 7,224 atomic specimen cards, producing 19,477 searchable display descriptors: 12,966 specimen cards and 6,511 observations.
 <!-- release-summary:readme-overview:end -->
 
 The repository also publishes [`data/specimen-lineages.json`](./data/specimen-lineages.json), a deterministic index that distinguishes same collection inventory IDs across consecutive editions from possible matches across separate collection sources. Same-inventory continuity is series-scoped and does not infer custody or ownership. Cross-source candidates retain public review decisions from [`data/specimen-lineage-reviews.json`](./data/specimen-lineage-reviews.json) and do not assert physical identity, custody, or ownership transfer. The separate [`data/specimen-card-projections.json`](./data/specimen-card-projections.json) manifest identifies reviewed source holdings that may be displayed as individual specimen cards without splitting or replacing their parent observations.
@@ -52,7 +52,7 @@ All runtime URLs are relative, so the site works at a GitHub Pages project subpa
 
 ## Public Data Scope
 
-The browser loads factual records from `./data/catalog.json` and reviewed card boundaries from `./data/specimen-card-projections.json`. The schema-10 root contract is `{ metadata, records }`. Every descriptor declares one of the seven record models below.
+The browser loads factual records from `./data/catalog.json` and reviewed card boundaries from `./data/specimen-card-projections.json`. The schema-11 root contract is `{ metadata, records }`. Every descriptor declares one of the seven record models below.
 
 A `specimen` record contains exactly:
 
@@ -90,7 +90,7 @@ holdings, name, classification, locality, eventDate, confidence
 
 Its holdings contain `description`, `provenance`, `count`, and `weights`; every numeric weight contains `grams`. The weights array may be empty when a historical or ambiguous mass has no supported numeric conversion; independently structured factual description prose may still retain the source-reported mass statement. `entryOrder` preserves source order. `reportedNumber` may be null or repeated because the source may omit, restart, or duplicate printed numbering.
 
-Schema 10 also permits reviewed collection-entry weight semantics used by Hamburg: a weight may add `kind`; a holding may add `reportedTotalWeight` and `representations`; and a record may add `reportedTotalWeight`, `publicationState`, and `amendments`. These fields preserve whether a figure is an individual or aggregate holding, distinguish the printed base register from a supplement, and record a source-reported amendment without replacing the base observation.
+Schema 11 also permits reviewed collection-entry weight semantics used by Hamburg: a weight may add `kind`; a holding may add `reportedTotalWeight` and `representations`; and a record may add `reportedTotalWeight`, `publicationState`, and `amendments`. These fields preserve whether a figure is an individual or aggregate holding, distinguish the printed base register from a supplement, and record a source-reported amendment without replacing the base observation.
 
 A `regional-census-fact` record contains exactly:
 
@@ -105,11 +105,12 @@ A `table-a-specimen` record contains exactly:
 
 ```text
 id, catalogId, entryOrder, specimenId, weight: { grams }, classification,
-olivineFa, pyroxeneFs, weathering, locality: { code, name, coordinate },
-catalogPage, confidence
+name, olivineFa, pyroxeneFs, weathering,
+locality: { code, name, areaReferenceCoordinate }, catalogPage,
+sourceEvidence: { primary, tableA, tableB, conflicts }, confidence, metbull
 ```
 
-The 273 Victoria Land Table A records are source-identified individual specimens. Harmonized cards show the exact specimen ID, one reported mass, classification, source locality name, controlled specimen form, and cited page. Locality code and coordinate, olivine Fa, pyroxene Fs, weathering, and Table A remain searchable source facts rather than card fields. These records carry no source-name or MetBull mapping and make no current-name, lineage, custody, or ownership claim.
+The 273 Victoria Land records retain Table A as the exact top-level primary facts and carry accepted `official-abbreviation` mappings. Their closed normalized `sourceEvidence` objects retain 270 Table B cross-views, including classification on 268 records, weathering on 249, fracturing on 250, and two `Unclassified` contexts. Conflict arrays are deterministically derived from the two tables and identify 40 mass, 2 classification, and 8 weathering conflicts. Raw rows, private page IDs, source files, and media remain excluded. The 40 mass-conflict records do not participate in computed lineage candidates; Table C groups remain separate n-ary source claims and are never pairwise-expanded.
 
 A `dealer-offer-fact` contains exactly `id`, `catalogId`, `typeNumber`, `name`, `description`, `catalogPage`, and `confidence`. The six Foote 1909 records are dealer catalog observations, not specimens or holdings, and contain no mass, price, MetBull identity, or lineage assertion.
 
@@ -154,11 +155,11 @@ The current catalog contains:
 | `schreiter-1912` | `collection-entry` | 162 | 18 | 8 |
 | `tassin-1902` | `collection-entry` | 340 | 26 | 24 |
 | `usnm-1886` | `collection-entry` | 349 | 11 | 11 |
-| `victoria-land-1982` | `table-a-specimen` | 273 | 101 | 4 |
+| `victoria-land-1982` | `table-a-specimen` | 273 | 4 | 4 |
 | `ward-1881` | `collection-entry` | 3 | 1 | 1 |
 | `ward-1904` | `collection-entry` | 697 | 74 | 74 |
 | `washington-1897` | `collection-entry` | 201 | 4 | 4 |
-| **Total** |  | **14,477** | **1,550** | **1,282** |
+| **Total** |  | **14,477** | **1,453** | **1,282** |
 <!-- release-summary:readme-catalog-table:end -->
 
 Metadata source-page coverage is not a claim that every covered page contains a record. Some covered pages are introductory or narrative-only.
@@ -197,7 +198,7 @@ The checked-by-default **Include specimens without weight** filter preserves the
 
 ### Reviewed Specimen Cards
 
-`specimen-card-projections.json` is a schema-4 display-only positive allowlist whose metadata binds the schema-10 catalog, its 14,477 records, and its exact source hash. Every card references an immutable parent observation and exact public holding, then uses one evidence variant: a reviewed UTF-16 clause span in an already-public description or designation, or an exact typed Hamburg `componentPath`. Schema 4 also permits a closed `repeatedMass` object on a clause card with `massPath: null`; it binds one per-item value, count, aggregate total, occurrence, and occurrence count in the same holding. It does not create observation or canonical-specimen IDs or copy source prose into the manifest. Grouped holdings, aggregate components, associated material, representations, counts, ranges, totals, dealer offers, and otherwise unprojected material remain observation or audit context and are not promoted into specimen claims.
+`specimen-card-projections.json` is a schema-4 display-only positive allowlist whose metadata binds the schema-11 catalog, its 14,477 records, and its exact source hash. Every card references an immutable parent observation and exact public holding, then uses one evidence variant: a reviewed UTF-16 clause span in an already-public description or designation, or an exact typed Hamburg `componentPath`. Schema 4 also permits a closed `repeatedMass` object on a clause card with `massPath: null`; it binds one per-item value, count, aggregate total, occurrence, and occurrence count in the same holding. It does not create observation or canonical-specimen IDs or copy source prose into the manifest. Grouped holdings, aggregate components, associated material, representations, counts, ranges, totals, dealer offers, and otherwise unprojected material remain observation or audit context and are not promoted into specimen claims.
 
 The manifest covers 2,224 parent observations and 7,224 atomic specimen cards: 7,194 ordinary cards bind an exact `massPath`, 2 Kuleschowka cards bind the same 2.7 g per-item value through distinct `repeatedMass` occurrences, and 28 cards have no normalized display mass. It retains 1,694 source-context audit partitions that are not rendered as specimens. Brown contributes 385 reviewed cards and Minnesota 164; group context and excluded non-meteorite context remain unrendered. Hamburg contributes 218 component cards across 142 parents, Madrid contributes 54 cards across 23 parents, Reeds entry 366 produces ten cards, and Prior entry 630 produces seventeen. The allowlist does not project dealer, regional-census, or Table A observations. Search results and statistics remain based on all 14,477 parents across 40 catalogs. Lineage is routed only by exact non-null `massPath`; the 22 reviewed Brown/Minnesota relationships remain possible matches rather than identity, custody, ownership-transfer, or merge claims.
 
@@ -214,10 +215,10 @@ matchType, canonicalName, meteoriteCode, metbullUrl, alternateNameNote
 The historical `name`, designation/catalog identifier fields, printed private weight strings, and numeric source weights are never replaced by this object. Every specimen displays a **Current Meteoritical Bulletin name** row: a substantively different resolved name, **Same as source catalog name** for a display-equivalent resolved name, or **Unknown** when no canonical identity is reviewed. Comparison uses Unicode NFC, collapsed whitespace, and locale-aware lowercase. No client, build, or export path fuzzy-matches names or infers identity.
 
 <!-- release-summary:readme-metbull:start -->
-The current release includes reviewed MetBull harmonization for 10,904 of 14,477 records: 10,600 have a resolved current identity and 304 remain explicitly unresolved. 13 records currently have a null `name` value.
+The current release includes reviewed MetBull harmonization for 11,177 of 14,477 records: 10,873 have a resolved current identity and 304 remain explicitly unresolved. 13 records currently have a null `name` value.
 <!-- release-summary:readme-metbull:end -->
 
-The remaining 3,573 records are pending observations without reviewed MetBull mappings. Victoria Land's 273 Table A specimens and Foote's six dealer observations intentionally have no MetBull mapping or current-name panel.
+The remaining 3,300 records are pending observations without reviewed MetBull mappings. Victoria Land's 273 Table A specimens have accepted `official-abbreviation` mappings; Foote's six dealer observations intentionally have no MetBull mapping or current-name panel.
 
 Validated continuation evidence recovers formerly blank source names where supported; it does not infer modern identity.
 
@@ -305,7 +306,7 @@ Anderson 1913, Kantor 1920, and Astapovich 1938 are also facts-only releases. Th
 
 Hamburg 1913 is also facts-only. Its source scans, OCR, transcription files, private notes and evidence, filenames, paths, folios, and media remain excluded. It is blocked with undetermined rights, has no public folio pages or assets, and publishes only the structured facts and citations described above.
 
-Hodge-Smith 1939 and Victoria Land 1982 are facts-only and blocked/undetermined with no public folios or media. Their source scans or PDFs, OCR/transcriptions, filenames, notes, private review material, paths, derivatives, and working files remain excluded. The public payload contains only the structured regional census facts and Table A specimen facts described above.
+Hodge-Smith 1939 and Victoria Land 1982 are facts-only and blocked/undetermined with no public folios or media. Their source scans or PDFs, OCR/transcriptions, filenames, notes, private review material, paths, derivatives, and working files remain excluded. The public payload contains only the structured regional census facts, Table A specimen facts, and closed normalized Table A/Table B evidence described above.
 
 <!-- release-summary:readme-public-folios:start -->
 Reviewed folio `pageId` values are intentionally public in `folios.json`, and the public repository contains only the 49 selected, manifest-verified folio derivatives under `assets/folios/`.

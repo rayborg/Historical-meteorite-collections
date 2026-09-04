@@ -1,8 +1,8 @@
 "use strict";
 
-const CACHE_VERSION = "20260902-backlog39-wave1-1";
+const CACHE_VERSION = "20260904-victoria-public-1";
 const ASSET_CACHE_VERSION = CACHE_VERSION;
-const CATALOG_SCHEMA_VERSION = 10;
+const CATALOG_SCHEMA_VERSION = 11;
 const CATALOG_RECORD_COUNT = 14477;
 const DISPLAY_DESCRIPTOR_COUNT = 19477;
 const SPECIMEN_DESCRIPTOR_COUNT = 12966;
@@ -114,6 +114,7 @@ const TABLE_A_SPECIMEN_RECORD_FIELDS = new Set([
   "catalogId",
   "entryOrder",
   "specimenId",
+  "name",
   "weight",
   "classification",
   "olivineFa",
@@ -121,6 +122,7 @@ const TABLE_A_SPECIMEN_RECORD_FIELDS = new Set([
   "weathering",
   "locality",
   "catalogPage",
+  "sourceEvidence",
   "confidence"
 ]);
 const DEALER_OFFER_FACT_RECORD_FIELDS = new Set([
@@ -139,7 +141,7 @@ const HAMBURG_COLLECTION_ENTRY_RECORD_FIELDS = new Set([
   "amendments"
 ]);
 const METBULL_FIELDS = new Set(["matchType", "canonicalName", "meteoriteCode", "metbullUrl", "alternateNameNote"]);
-const METBULL_MATCH_TYPES = new Set(["exact", "case-normalized-exact", "source-heading-exact", "historical-alias", "corrected-spelling", "translated-or-older-name", "unresolved"]);
+const METBULL_MATCH_TYPES = new Set(["exact", "case-normalized-exact", "source-heading-exact", "historical-alias", "corrected-spelling", "translated-or-older-name", "official-abbreviation", "unresolved"]);
 const HOLDING_FIELDS = new Set(["designation", "kind", "description", "count", "weight"]);
 const CATALOG_NUMBER_HOLDING_FIELDS = new Set(["description", "provenance", "count", "weights"]);
 const HAMBURG_HOLDING_FIELDS = new Set([
@@ -190,9 +192,23 @@ const FACTUAL_FIELDS = [
   "olivineFa",
   "pyroxeneFs",
   "weathering",
+  "sourceEvidence.primary",
+  "sourceEvidence.tableA.printedPage",
+  "sourceEvidence.tableA.massGrams",
+  "sourceEvidence.tableA.classification",
+  "sourceEvidence.tableA.olivineFa",
+  "sourceEvidence.tableA.pyroxeneFs",
+  "sourceEvidence.tableA.weathering",
+  "sourceEvidence.tableB.printedPage",
+  "sourceEvidence.tableB.massGrams",
+  "sourceEvidence.tableB.classification",
+  "sourceEvidence.tableB.classificationContext",
+  "sourceEvidence.tableB.weathering",
+  "sourceEvidence.tableB.fracturing",
+  "sourceEvidence.conflicts[]",
   "locality.code",
   "locality.name",
-  "locality.coordinate",
+  "locality.areaReferenceCoordinate",
   "catalogPage",
   "catalogPages[]",
   "section",
@@ -247,13 +263,14 @@ const SPECIMEN_CARD_COMPONENT_FIELDS = new Set(["holdingPath", "componentPath", 
 const SPECIMEN_CARD_CLAUSE_FIELDS = new Set(["textPath", "start", "end"]);
 const SPECIMEN_CARD_REPEATED_MASS_FIELDS = new Set(["valuePath", "countPath", "totalPath", "occurrence", "occurrenceCount"]);
 const SHA256_HEX = /^[0-9a-f]{64}$/u;
-const SPECIMEN_CARD_SOURCE_CATALOG_SHA256 = "9a921861c782abe1218e2d3b33bc2fc0b229908ce0a3c08e93bdc2596b91c536";
-const SPECIMEN_CARD_PROJECTION_DATA_SHA256 = "c8d705ac6b41ec9cbd16d67229efb454b9610e374e37c8b6f7b5eadd62109986";
+const SPECIMEN_CARD_SOURCE_CATALOG_SHA256 = "c6ace08a04d70c5a869ed8f6401f3ad505da530b9501d3fd8227740a64257039";
+const SPECIMEN_CARD_PROJECTION_DATA_SHA256 = "56e5b1626abaff4c53952bb722c5c89f4e28ee446ea1d3888ab48a4edb2d3500";
 const SPECIMEN_CARD_PROJECTION_SET_SHA256 = "8e7c185771d0a4bb135b0966416cc93dedfb0d8d09ede6f1c5c3a8dd0bba41cf";
-const SPECIMEN_LINEAGE_DATA_SHA256 = "4c1bc76827dcbf9673d6c78d65ee00a768dec8dde0fd2cb10b628c6fc9636233";
-const LINEAGE_ROOT_FIELDS = new Set(["metadata", "relationships"]);
+const SPECIMEN_LINEAGE_DATA_SHA256 = "1c25702cfcf519358de85bbc0763d5b4f88e71975b84753c1bbef8273e042e91";
+const SOURCE_CLAIMS_CONTENT_SHA256 = "141ed60b9560596ac8ab392babfc4af6e1d22921bacbf979d3b975e0fc2f20c2";
+const LINEAGE_ROOT_FIELDS = new Set(["metadata", "sourceAttestedGroups", "relationships"]);
 const LINEAGE_METADATA_FIELDS = new Set(["schemaVersion", "scope", "source", "collectionSeries", "methodology", "counts"]);
-const LINEAGE_SOURCE_FIELDS = new Set(["catalogSchemaVersion", "recordCount", "catalogCount", "flattenedMassObservationCount", "inventoryObservationCount"]);
+const LINEAGE_SOURCE_FIELDS = new Set(["catalogSchemaVersion", "recordCount", "catalogCount", "flattenedMassObservationCount", "inventoryObservationCount", "sourceClaimsSchemaVersion", "sourceClaimsContentSha256"]);
 const LINEAGE_SERIES_FIELDS = new Set(["id", "catalogIds"]);
 const LINEAGE_METHODOLOGY_FIELDS = new Set(["inventoryNormalization", "possibleMatchIdentity", "massThresholds", "ambiguityPolicy", "evidenceStrengthOrder", "nonAssertions"]);
 const LINEAGE_INVENTORY_NORMALIZATION_FIELDS = new Set(["unicode", "case", "whitespace", "hussEditionMarker"]);
@@ -263,7 +280,8 @@ const LINEAGE_COUNT_FIELDS = new Set([
   "relationshipCount", "sameInventoryRelationshipCount", "possibleMatchRelationshipCount", "unreviewedPossibleMatchCount",
   "exactMassPossibleMatchCount", "nearMassPossibleMatchCount", "metbullIdentityPossibleMatchCount", "normalizedNameIdentityPossibleMatchCount",
   "sameDesignationPossibleMatchCount", "designationFamilyPossibleMatchCount", "aggregateOrMultiplePossibleMatchCount", "castPossibleMatchCount",
-  "identityResolvedInventoryCollisionCount", "omittedAmbiguousInventoryKeyCount", "possibleMatchEvidenceStrength", "catalogPairs"
+  "identityResolvedInventoryCollisionCount", "omittedAmbiguousInventoryKeyCount", "possibleMatchEvidenceStrength", "catalogPairs",
+  "sourceAttestedGroupCount", "sourceAttestedMemberOccurrenceCount", "sourceAttestedUniqueMemberCount"
 ]);
 const LINEAGE_STRENGTHS = ["multiple-matching-facts", "two-matching-facts", "limited-matching-evidence"];
 const LINEAGE_STRENGTH_FIELDS = new Set(LINEAGE_STRENGTHS);
@@ -277,6 +295,14 @@ const LINEAGE_OBSERVATION_FIELDS = new Set([
   "id", "recordId", "catalogId", "catalogLabel", "catalogYear", "recordModel", "designationPath", "massPath", "sourceRecordLabel",
   "sourceName", "canonicalName", "meteoriteCode", "designation", "massGrams", "kind", "count", "catalogSearchUrl"
 ]);
+const SOURCE_ATTESTED_GROUP_FIELDS = new Set([
+  "id", "catalogId", "sourceSection", "claimType", "classification", "members", "reference", "printedPage"
+]);
+const VICTORIA_SPECIMEN_ID = /^(?:ALHA|BTNA|DRPA|EETA|META|MBRA|PGPA|RKPA)[0-9]{5}$/u;
+const VICTORIA_SOURCE_EVIDENCE_FIELDS = new Set(["primary", "tableA", "tableB", "conflicts"]);
+const VICTORIA_TABLE_A_EVIDENCE_FIELDS = new Set(["printedPage", "massGrams", "classification", "olivineFa", "pyroxeneFs", "weathering"]);
+const VICTORIA_TABLE_B_EVIDENCE_FIELDS = new Set(["printedPage", "massGrams", "classification", "classificationContext", "weathering", "fracturing"]);
+const VICTORIA_CONFLICT_FIELDS = ["classification", "mass", "weathering"];
 const LINEAGE_RELATIONSHIP_ID = /^(?:same-inventory-lineage|possible-lineage)-[0-9a-f]{8}-[0-9a-f]{4}-5[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/u;
 const LINEAGE_OBSERVATION_ID = /^(?:inventory|mass)-observation-[0-9a-f]{8}-[0-9a-f]{4}-5[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/u;
 const LINEAGE_RECORD_ID = /^[A-Za-z0-9][A-Za-z0-9._-]*$/u;
@@ -527,7 +553,12 @@ function matchesSearch(record, rawQuery) {
 
   const numericQuery = String(rawQuery || "").trim();
   if (/^\d+$/.test(numericQuery)) {
-    if (record.recordModel === "table-a-specimen" && String(record.weight?.grams) === numericQuery) return true;
+    if (record.recordModel === "table-a-specimen") {
+      const suffixMatches = /^\d{5}$/u.test(numericQuery) && record.specimenId.endsWith(numericQuery);
+      const massMatches = [record.weight?.grams, record.sourceEvidence?.tableB?.massGrams]
+        .some((grams) => String(grams) === numericQuery);
+      return suffixMatches || massMatches || record.metbull?.meteoriteCode === numericQuery;
+    }
     if (record.catalogNumber !== undefined && searchable(record.catalogNumber).split(/\s+/).includes(numericQuery)) return true;
     if (record.reportedNumber !== undefined && searchable(record.reportedNumber).split(/\s+/).includes(numericQuery)) return true;
     const yearTokens = searchable([record.year, record.dateOfDiscovery, record.eventDate].filter(Boolean).join(" ")).split(/\s+/).filter(Boolean);
@@ -798,10 +829,61 @@ function hasValidAustralianMuseumRepresentation(value) {
 }
 
 function hasValidTableALocality(value) {
-  return hasExactFields(value, new Set(["code", "name", "coordinate"])) &&
+  return hasExactFields(value, new Set(["code", "name", "areaReferenceCoordinate"])) &&
     typeof value.code === "string" && /^[A-Z]{3}$/u.test(value.code) &&
     isLeakageSafeText(value.name) && value.name !== "" &&
-    (value.coordinate === null || (value.coordinate !== "" && isLeakageSafeText(value.coordinate)));
+    (value.areaReferenceCoordinate === null ||
+      (value.areaReferenceCoordinate !== "" && isLeakageSafeText(value.areaReferenceCoordinate)));
+}
+
+const TABLE_A_TO_B_CLASS = Object.freeze({
+  Au: "Aubrite", C2: "Carbonaceous C2", C3: "Carbonaceous C3", Di: "Diogenite", Eu: "Eucrite",
+  Ho: "Howardite", Iron: "Iron", M: "Mesosiderite", Sh: "Shergottite", Ur: "Ureilite"
+});
+
+function comparableVictoriaTableBClass(value) {
+  if (value === null) return null;
+  if (/Eucrite$/u.test(value)) return "Eucrite";
+  if (/^Iron-Group /u.test(value)) return "Iron";
+  return value;
+}
+
+function expectedVictoriaConflicts(sourceEvidence) {
+  if (sourceEvidence.tableB === null) return [];
+  const conflicts = [];
+  const { tableA, tableB } = sourceEvidence;
+  if (tableA.massGrams !== tableB.massGrams) conflicts.push("mass");
+  if (tableB.weathering !== null && tableA.weathering !== tableB.weathering) conflicts.push("weathering");
+  const tableAClass = TABLE_A_TO_B_CLASS[tableA.classification] ?? tableA.classification;
+  const tableBClass = comparableVictoriaTableBClass(tableB.classification);
+  if (tableB.classificationContext === "Unclassified" || tableAClass !== tableBClass) conflicts.push("classification");
+  return conflicts.sort();
+}
+
+function hasValidVictoriaSourceEvidence(value, record) {
+  if (!hasExactFields(value, VICTORIA_SOURCE_EVIDENCE_FIELDS) || value.primary !== "tableA" ||
+      !hasExactFields(value.tableA, VICTORIA_TABLE_A_EVIDENCE_FIELDS)) return false;
+  const { tableA, tableB } = value;
+  if (!Number.isInteger(tableA.printedPage) || tableA.printedPage < 85 || tableA.printedPage > 88 ||
+      !Number.isFinite(tableA.massGrams) || tableA.massGrams < 0 ||
+      !isLeakageSafeText(tableA.classification) || tableA.classification === "") return false;
+  if (![tableA.olivineFa, tableA.pyroxeneFs, tableA.weathering].every((item) =>
+    item === null || (item !== "" && isLeakageSafeText(item)))) return false;
+  if (tableB !== null) {
+    if (!hasExactFields(tableB, VICTORIA_TABLE_B_EVIDENCE_FIELDS) ||
+        !Number.isInteger(tableB.printedPage) || tableB.printedPage < 88 || tableB.printedPage > 94 ||
+        !Number.isFinite(tableB.massGrams) || tableB.massGrams < 0 ||
+        ![tableB.classification, tableB.weathering, tableB.fracturing].every((item) =>
+          item === null || (item !== "" && isLeakageSafeText(item))) ||
+        ![null, "Unclassified"].includes(tableB.classificationContext) ||
+        ((tableB.classification === null) !== (tableB.classificationContext === "Unclassified"))) return false;
+  }
+  if (!Array.isArray(value.conflicts) || new Set(value.conflicts).size !== value.conflicts.length ||
+      !value.conflicts.every((field) => VICTORIA_CONFLICT_FIELDS.includes(field)) ||
+      JSON.stringify(value.conflicts) !== JSON.stringify(expectedVictoriaConflicts(value))) return false;
+  return record.catalogPage === tableA.printedPage && record.weight.grams === tableA.massGrams &&
+    record.classification === tableA.classification && record.olivineFa === tableA.olivineFa &&
+    record.pyroxeneFs === tableA.pyroxeneFs && record.weathering === tableA.weathering;
 }
 
 function recordFields(record, baseFields, allowIndividualFindLocation = false) {
@@ -1140,7 +1222,10 @@ function validateCatalog(catalog) {
         requireSchema(record.locality === null || (record.locality !== "" && isLeakageSafeText(record.locality)));
       }
     }
-    if (Object.hasOwn(record, "metbull")) requireSchema(hasValidMetbull(record.metbull, record.name));
+    if (Object.hasOwn(record, "metbull")) {
+      requireSchema(hasValidMetbull(record.metbull, record.name));
+      requireSchema(recordModel === "table-a-specimen" || record.metbull.matchType !== "official-abbreviation");
+    }
     if (recordModel === "specimen") {
       requireSchema(record.designation === null || (record.designation !== "" && isLeakageSafeText(record.designation)));
       requireSchema(record.weight.grams === null || (Number.isFinite(record.weight.grams) && record.weight.grams >= 0));
@@ -1201,16 +1286,18 @@ function validateCatalog(catalog) {
       entryOrders.add(record.entryOrder);
       collectionEntryOrders[record.catalogId] = entryOrders;
       const specimenIds = catalogNumbers[record.catalogId] || new Set();
-      requireSchema(typeof record.specimenId === "string" && /^[A-Z]{3,4}[0-9]{5}$/u.test(record.specimenId) &&
+      requireSchema(typeof record.specimenId === "string" && VICTORIA_SPECIMEN_ID.test(record.specimenId) &&
         !specimenIds.has(record.specimenId));
       specimenIds.add(record.specimenId);
       catalogNumbers[record.catalogId] = specimenIds;
       requireSchema(Number.isFinite(record.weight.grams) && record.weight.grams > 0);
+      requireSchema(record.name === record.specimenId && record.metbull?.matchType === "official-abbreviation");
       requireSchema(record.classification !== "" && isLeakageSafeText(record.classification));
       ["olivineFa", "pyroxeneFs", "weathering"].forEach((field) => requireSchema(
         record[field] === null || (record[field] !== "" && isLeakageSafeText(record[field]))
       ));
       requireSchema(hasValidTableALocality(record.locality));
+      requireSchema(hasValidVictoriaSourceEvidence(record.sourceEvidence, record));
     } else {
       if (recordModel === "catalog-number") {
         requireSchema(record.catalogNumber !== "" && isLeakageSafeText(record.catalogNumber));
@@ -1323,6 +1410,7 @@ function lineageRecordLabel(record) {
   if (record.recordModel === "catalog-item") return `Catalog item ${record.catalogItem}`;
   if (record.recordModel === "catalog-number") return `Catalog no. ${record.catalogNumber}`;
   if (record.recordModel === "collection-entry") return `Collection entry ${record.entryOrder}`;
+  if (record.recordModel === "table-a-specimen") return record.specimenId;
   return record.designation ?? record.name;
 }
 
@@ -1334,6 +1422,15 @@ function resolveLineageObservation(record, designationPath, massPath) {
       kind: null,
       count: null
     } : null;
+  }
+  if (record.recordModel === "table-a-specimen") {
+    return massPath === "weight.grams" && designationPath === "specimenId" &&
+      !record.sourceEvidence.conflicts.includes("mass") ? {
+        massGrams: record.weight.grams,
+        designation: record.specimenId,
+        kind: null,
+        count: null
+      } : null;
   }
   if (record.recordModel === "catalog-item") {
     const match = massPath.match(/^holdings\[([0-9]+)\]\.weight\.grams$/u);
@@ -1448,6 +1545,69 @@ function lineageUuidV5(name) {
   bytes[8] = (bytes[8] & 0x3f) | 0x80;
   const hex = [...bytes].map((byte) => byte.toString(16).padStart(2, "0")).join("");
   return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
+}
+
+const SHA256_INITIAL = Object.freeze([
+  0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19
+]);
+const SHA256_CONSTANTS = Object.freeze([
+  0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
+  0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,
+  0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
+  0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7, 0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967,
+  0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13, 0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85,
+  0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,
+  0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
+  0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2
+]);
+
+function rotateRight(value, bits) {
+  return (value >>> bits) | (value << (32 - bits));
+}
+
+function sha256TextSync(value) {
+  const input = new TextEncoder().encode(String(value));
+  const paddedLength = Math.ceil((input.length + 9) / 64) * 64;
+  const padded = new Uint8Array(paddedLength);
+  padded.set(input);
+  padded[input.length] = 0x80;
+  const view = new DataView(padded.buffer);
+  const bitLength = input.length * 8;
+  view.setUint32(paddedLength - 8, Math.floor(bitLength / 0x100000000));
+  view.setUint32(paddedLength - 4, bitLength >>> 0);
+  const hash = [...SHA256_INITIAL];
+  const words = new Uint32Array(64);
+  for (let offset = 0; offset < paddedLength; offset += 64) {
+    for (let index = 0; index < 16; index += 1) words[index] = view.getUint32(offset + index * 4);
+    for (let index = 16; index < 64; index += 1) {
+      const left = words[index - 15];
+      const right = words[index - 2];
+      const sigma0 = rotateRight(left, 7) ^ rotateRight(left, 18) ^ (left >>> 3);
+      const sigma1 = rotateRight(right, 17) ^ rotateRight(right, 19) ^ (right >>> 10);
+      words[index] = (words[index - 16] + sigma0 + words[index - 7] + sigma1) >>> 0;
+    }
+    let [a, b, c, d, e, f, g, h] = hash;
+    for (let index = 0; index < 64; index += 1) {
+      const sum1 = rotateRight(e, 6) ^ rotateRight(e, 11) ^ rotateRight(e, 25);
+      const choose = (e & f) ^ (~e & g);
+      const temporary1 = (h + sum1 + choose + SHA256_CONSTANTS[index] + words[index]) >>> 0;
+      const sum0 = rotateRight(a, 2) ^ rotateRight(a, 13) ^ rotateRight(a, 22);
+      const majority = (a & b) ^ (a & c) ^ (b & c);
+      const temporary2 = (sum0 + majority) >>> 0;
+      h = g;
+      g = f;
+      f = e;
+      e = (d + temporary1) >>> 0;
+      d = c;
+      c = b;
+      b = a;
+      a = (temporary1 + temporary2) >>> 0;
+    }
+    [a, b, c, d, e, f, g, h].forEach((word, index) => {
+      hash[index] = (hash[index] + word) >>> 0;
+    });
+  }
+  return hash.map((word) => word.toString(16).padStart(8, "0")).join("");
 }
 
 function expectedLineageIds(type, candidateReference, seriesId = null, inventoryId = null, endpointReferences = []) {
@@ -1631,6 +1791,8 @@ function lineageMassEndpoints(sourceRecords) {
   sourceRecords.forEach((record) => {
     if (record.recordModel === "specimen") {
       add(record, record.weight.grams, "weight.grams");
+    } else if (record.recordModel === "table-a-specimen") {
+      if (!record.sourceEvidence.conflicts.includes("mass")) add(record, record.weight.grams, "weight.grams");
     } else if (record.recordModel === "catalog-item") {
       record.holdings.forEach((holding, index) => add(record, holding.weight.grams, `holdings[${index}].weight.grams`));
     } else if (record.recordModel === "catalog-number" || record.recordModel === "collection-entry") {
@@ -1680,6 +1842,9 @@ function lineageMassObservationCount(sourceRecords) {
   sourceRecords.forEach((record) => {
     if (!record.metbull || typeof record.metbull !== "object") return;
     if (record.recordModel === "specimen") count += Number.isFinite(record.weight.grams) ? 1 : 0;
+    else if (record.recordModel === "table-a-specimen") {
+      count += Number.isFinite(record.weight.grams) && !record.sourceEvidence.conflicts.includes("mass") ? 1 : 0;
+    }
     else if (record.recordModel === "catalog-item") count += record.holdings.filter((holding) => Number.isFinite(holding.weight.grams)).length;
     else if (record.recordModel === "catalog-number" || record.recordModel === "collection-entry") count += record.holdings.reduce((sum, holding) =>
       WAVE1_PROJECTED_CATALOGS.has(record.catalogId) && !holding.description.startsWith("Specimen:") ? sum : sum + holding.weights.filter((weight) =>
@@ -1688,11 +1853,42 @@ function lineageMassObservationCount(sourceRecords) {
   return count;
 }
 
+function validateSourceAttestedGroups(groups, sourceRecords, metadata) {
+  requireLineage(Array.isArray(groups) && groups.length === 21);
+  const victoriaBySpecimenId = new Map(sourceRecords.filter(({ catalogId }) => catalogId === "victoria-land-1982")
+    .map((record) => [record.specimenId, record]));
+  requireLineage(victoriaBySpecimenId.size === 273 && [...victoriaBySpecimenId.values()].every((record) =>
+    record.name === record.specimenId));
+  const uniqueMembers = new Set();
+  let memberOccurrenceCount = 0;
+  groups.forEach((group, index) => {
+    requireLineage(hasExactFields(group, SOURCE_ATTESTED_GROUP_FIELDS));
+    requireLineage(group.id === `victoria-land-1982-table-c-${String(index + 1).padStart(3, "0")}` &&
+      group.catalogId === "victoria-land-1982" && group.sourceSection === "Appendix Table C" &&
+      group.claimType === "tentative-n-ary-group" && group.printedPage === 94 &&
+      isLineageText(group.classification) && isLineageText(group.reference));
+    requireLineage(Array.isArray(group.members) && group.members.length > 0 &&
+      new Set(group.members).size === group.members.length);
+    group.members.forEach((member) => {
+      requireLineage(VICTORIA_SPECIMEN_ID.test(member));
+      uniqueMembers.add(member);
+      memberOccurrenceCount += 1;
+    });
+  });
+  requireLineage(uniqueMembers.size === 87 && memberOccurrenceCount === 89 &&
+    metadata.source.sourceClaimsSchemaVersion === 1 &&
+    metadata.source.sourceClaimsContentSha256 === SOURCE_CLAIMS_CONTENT_SHA256 &&
+    sha256TextSync(JSON.stringify(groups)) === metadata.source.sourceClaimsContentSha256);
+  requireLineage(metadata.counts.sourceAttestedGroupCount === groups.length &&
+    metadata.counts.sourceAttestedMemberOccurrenceCount === memberOccurrenceCount &&
+    metadata.counts.sourceAttestedUniqueMemberCount === uniqueMembers.size);
+}
+
 function validateLineageCandidates(lineageData, sourceRecords, registry) {
   requireLineage(hasExactFields(lineageData, LINEAGE_ROOT_FIELDS) && Array.isArray(lineageData.relationships));
   requireLineage(hasExactFields(lineageData.metadata, LINEAGE_METADATA_FIELDS));
   const metadata = lineageData.metadata;
-  requireLineage(metadata.schemaVersion === 2 && metadata.scope === "series-inventory-and-cross-source-candidates");
+  requireLineage(metadata.schemaVersion === 3 && metadata.scope === "series-inventory-and-cross-source-candidates");
   requireLineage(hasExactFields(metadata.source, LINEAGE_SOURCE_FIELDS) && hasExactFields(metadata.methodology, LINEAGE_METHODOLOGY_FIELDS));
   requireLineage(hasExactFields(metadata.methodology.inventoryNormalization, LINEAGE_INVENTORY_NORMALIZATION_FIELDS));
   requireLineage(hasExactFields(metadata.methodology.possibleMatchIdentity, LINEAGE_POSSIBLE_IDENTITY_FIELDS));
@@ -1712,6 +1908,7 @@ function validateLineageCandidates(lineageData, sourceRecords, registry) {
 
   const sourceRecordsById = new Map(sourceRecords.map((record) => [record.id, record]));
   requireLineage(sourceRecordsById.size === sourceRecords.length && isPlainObject(registry) && Object.keys(registry).length > 0);
+  validateSourceAttestedGroups(lineageData.sourceAttestedGroups, sourceRecords, metadata);
   const inventorySummary = expectedSameInventoryRelationships(sourceRecords);
   const expectedPossible = new Map([...expectedPossibleRelationships(sourceRecords)].filter(([, candidate]) =>
     !candidate.endpoints.some(({ record }) => WAVE1_PROJECTED_CATALOGS.has(record.catalogId)) ||
@@ -1853,7 +2050,10 @@ function validateLineageCandidates(lineageData, sourceRecords, registry) {
   requireLineage(seenPossibleRelationships.size === expectedPossible.size);
 
   const calculated = calculateLineageCounts(lineageData.relationships, inventorySummary);
-  const scalarFields = [...LINEAGE_COUNT_FIELDS].filter((field) => !["possibleMatchEvidenceStrength", "catalogPairs"].includes(field));
+  const scalarFields = [...LINEAGE_COUNT_FIELDS].filter((field) => ![
+    "possibleMatchEvidenceStrength", "catalogPairs", "sourceAttestedGroupCount",
+    "sourceAttestedMemberOccurrenceCount", "sourceAttestedUniqueMemberCount"
+  ].includes(field));
   scalarFields.forEach((field) => requireLineage(Number.isInteger(metadata.counts[field]) && metadata.counts[field] === calculated[field]));
   LINEAGE_STRENGTHS.forEach((strength) => requireLineage(metadata.counts.possibleMatchEvidenceStrength[strength] === calculated.possibleMatchEvidenceStrength[strength]));
   requireLineage(metadata.counts.catalogPairs.length === calculated.catalogPairs.size);
@@ -1876,9 +2076,34 @@ function chronologicalEarlierPair(observations) {
     : null;
 }
 
+function deriveSourceAttestedGroupIndex(groups) {
+  const index = new Map();
+  groups.forEach((group) => {
+    group.members.forEach((member) => {
+      const entries = index.get(member) || [];
+      entries.push({
+        kind: "source-attested-tentative-pairing-group",
+        groupId: group.id,
+        sourceSection: group.sourceSection,
+        classification: group.classification,
+        members: [...group.members],
+        reference: group.reference,
+        printedPage: group.printedPage
+      });
+      index.set(member, entries);
+    });
+  });
+  return index;
+}
+
 function deriveEarlierRecordIndex(lineageData, sourceRecords, registry) {
   validateLineageCandidates(lineageData, sourceRecords, registry);
   const index = new Map();
+  const sourceAttestedGroupsByMember = deriveSourceAttestedGroupIndex(lineageData.sourceAttestedGroups);
+  sourceRecords.filter(({ catalogId }) => catalogId === "victoria-land-1982").forEach((record) => {
+    const entries = sourceAttestedGroupsByMember.get(record.specimenId);
+    if (entries) index.set(record.id, entries);
+  });
   lineageData.relationships.forEach((relationship) => {
     if (relationship.review?.outcome === "not-supported") return;
     const pair = chronologicalEarlierPair(relationship.observations);
@@ -1903,10 +2128,15 @@ function deriveEarlierRecordIndex(lineageData, sourceRecords, registry) {
     entries.push(entry);
     index.set(later.recordId, entries);
   });
-  index.forEach((entries) => entries.sort((left, right) =>
-    left.catalogYear - right.catalogYear || collator.compare(left.catalogLabel, right.catalogLabel) ||
-    collator.compare(left.sourceName || "", right.sourceName || "") || left.relationshipId.localeCompare(right.relationshipId)
-  ));
+  index.forEach((entries) => entries.sort((left, right) => {
+    if (left.kind || right.kind) {
+      if (!left.kind) return -1;
+      if (!right.kind) return 1;
+      return left.groupId.localeCompare(right.groupId);
+    }
+    return left.catalogYear - right.catalogYear || collator.compare(left.catalogLabel, right.catalogLabel) ||
+      collator.compare(left.sourceName || "", right.sourceName || "") || left.relationshipId.localeCompare(right.relationshipId);
+  }));
   return index;
 }
 
@@ -2518,9 +2748,15 @@ function prepareRecord(source, index, registry = catalogRegistry) {
     record.locality = {
       code: cleanText(source.locality.code),
       name: cleanText(source.locality.name),
-      coordinate: cleanText(source.locality.coordinate)
+      areaReferenceCoordinate: cleanText(source.locality.areaReferenceCoordinate)
     };
     record.catalogPage = Number(source.catalogPage);
+    record.sourceEvidence = {
+      primary: source.sourceEvidence.primary,
+      tableA: { ...source.sourceEvidence.tableA },
+      tableB: source.sourceEvidence.tableB === null ? null : { ...source.sourceEvidence.tableB },
+      conflicts: [...source.sourceEvidence.conflicts]
+    };
   } else if (recordModel === "dealer-offer-fact") {
     record.typeNumber = Number(source.typeNumber);
     record.description = cleanText(source.description);
@@ -2563,13 +2799,14 @@ function prepareRecord(source, index, registry = catalogRegistry) {
     record.name,
     record.description,
     record.metbull?.canonicalName,
+    record.metbull?.meteoriteCode,
     record.metbull?.alternateNameNote,
     record.classification,
     typeof record.locality === "string" ? record.locality : null,
     record.individualFindLocation,
     record.locality?.code,
     record.locality?.name,
-    record.locality?.coordinate,
+    record.locality?.areaReferenceCoordinate,
     record.year,
     record.dateOfDiscovery,
     record.eventDate,
@@ -2577,6 +2814,11 @@ function prepareRecord(source, index, registry = catalogRegistry) {
     record.olivineFa === undefined ? null : `olivine fa ${record.olivineFa}`,
     record.pyroxeneFs === undefined ? null : `pyroxene fs ${record.pyroxeneFs}`,
     record.weathering === undefined ? null : `weathering ${record.weathering}`,
+    record.sourceEvidence?.tableB ? `table b reported mass ${record.sourceEvidence.tableB.massGrams} grams` : null,
+    record.sourceEvidence?.tableB?.classification,
+    record.sourceEvidence?.tableB?.classificationContext,
+    record.sourceEvidence?.tableB?.weathering ? `table b weathering ${record.sourceEvidence.tableB.weathering}` : null,
+    record.sourceEvidence?.tableB?.fracturing ? `table b fracturing ${record.sourceEvidence.tableB.fracturing}` : null,
     ...(record.australianMuseumRepresentation ? regionalCensusFacts(record).flatMap(({ label, value }) => [label, value]) : []),
     record.recordModel === "regional-census-fact" ? "regional census catalog observation" : null,
     record.recordModel === "table-a-specimen" ? "table a individual specimen" : null,
@@ -2932,12 +3174,31 @@ function tableASpecimenFacts(record) {
   if (record?.recordModel !== "table-a-specimen") return [];
   return [
     { label: "Locality code", value: record.locality.code },
-    { label: "Coordinate", value: record.locality.coordinate },
+    { label: "Area reference coordinate", value: record.locality.areaReferenceCoordinate },
     { label: "Olivine Fa", value: record.olivineFa },
     { label: "Pyroxene Fs", value: record.pyroxeneFs },
     { label: "Weathering", value: record.weathering },
     { label: "Source section", value: "Table A" }
   ];
+}
+
+function victoriaConflictFacts(record) {
+  if (record?.recordModel !== "table-a-specimen" || !record.sourceEvidence.conflicts.length) return [];
+  const { tableA, tableB, conflicts } = record.sourceEvidence;
+  const labels = {
+    classification: "Class",
+    mass: "Specimen weight",
+    weathering: "Weathering"
+  };
+  const values = {
+    classification: [tableA.classification, tableB.classification ?? tableB.classificationContext],
+    mass: [formatMass(tableA.massGrams), formatMass(tableB.massGrams)],
+    weathering: [tableA.weathering, tableB.weathering]
+  };
+  return conflicts.flatMap((field) => [
+    { label: `${labels[field]}, Table A primary (printed page ${tableA.printedPage})`, value: values[field][0] },
+    { label: `${labels[field]}, Table B reported (printed page ${tableB.printedPage})`, value: values[field][1] }
+  ]);
 }
 
 const HARMONIZED_CARD_KINDS = Object.freeze({
@@ -3011,6 +3272,12 @@ function harmonizedCardEvent(record) {
 
 function harmonizedSourceCitation(record) {
   const sourceLabel = record.catalogLabel || record.catalogId;
+  if (record.recordModel === "table-a-specimen") {
+    const { tableA, tableB } = record.sourceEvidence;
+    return `${sourceLabel} \u00b7 Appendix Table A printed page ${tableA.printedPage}${
+      tableB === null ? "" : ` \u00b7 Table B printed page ${tableB.printedPage}`
+    }`;
+  }
   const pages = recordCatalogPages(record);
   return pages.length
     ? `${sourceLabel} \u00b7 ${pages.length === 1 ? "p." : "pp."} ${pages.join(", ")}`
@@ -3074,9 +3341,10 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
       : record.weight?.grams;
     facts.push({
       label: "Lineage",
-      value: lineageEntries.length ? formatLineageSummary(lineageEntries.length) : "Unknown"
+      value: lineageEntries.length ? formatLineageSummary(lineageEntries) : "Unknown"
     });
     facts.push({ label: "Specimen weight", value: Number.isFinite(grams) ? formatMass(grams) : "Unknown" });
+    facts.push(...victoriaConflictFacts(record));
   }
 
   return {
@@ -3181,9 +3449,17 @@ function renderEarlierRecords(card, entries) {
   section.hidden = false;
 }
 
-function formatLineageSummary(count) {
-  if (!count) return "No lineage known";
-  return `${integerFormat.format(count)} earlier lineage ${count === 1 ? "record" : "records"}`;
+function formatLineageSummary(value) {
+  if (!Array.isArray(value)) {
+    if (!value) return "No lineage known";
+    return `${integerFormat.format(value)} earlier lineage ${value === 1 ? "record" : "records"}`;
+  }
+  const groupCount = value.filter(({ kind }) => kind === "source-attested-tentative-pairing-group").length;
+  const earlierCount = value.length - groupCount;
+  const summaries = [];
+  if (earlierCount) summaries.push(`${integerFormat.format(earlierCount)} earlier lineage ${earlierCount === 1 ? "record" : "records"}`);
+  if (groupCount) summaries.push(`${integerFormat.format(groupCount)} source-attested tentative pairing ${groupCount === 1 ? "group" : "groups"}`);
+  return summaries.join(" \u00b7 ") || "No lineage known";
 }
 
 function holdingDetails(holding) {
@@ -3644,6 +3920,7 @@ if (typeof module !== "undefined" && module.exports) {
     SPECIMEN_CARD_PROJECTION_SET_SHA256,
     SPECIMEN_CARD_SOURCE_CATALOG_SHA256,
     SPECIMEN_LINEAGE_DATA_SHA256,
+    SOURCE_CLAIMS_CONTENT_SHA256,
     LINEAGE_SHA256: SPECIMEN_LINEAGE_DATA_SHA256,
     OBSERVATION_DESCRIPTOR_COUNT,
     PROJECTION_SHA256: SPECIMEN_CARD_PROJECTION_DATA_SHA256,
@@ -3668,6 +3945,7 @@ if (typeof module !== "undefined" && module.exports) {
     containsUnsafePath,
     designationComponents,
     deriveEarlierRecordIndex,
+    deriveSourceAttestedGroupIndex,
     deriveSpecimenCardProjectionIndex,
     expandSpecimenCardDescriptors,
     evaluateIssueReportGate,
@@ -3718,6 +3996,7 @@ if (typeof module !== "undefined" && module.exports) {
     searchable,
     secureRandomInteger,
     sha256Text,
+    sha256TextSync,
     serializeUrlFilters,
     lineageEntriesForSpecimenCard,
     paginateSpecimenCardDescriptors,
@@ -3729,6 +4008,7 @@ if (typeof module !== "undefined" && module.exports) {
     specimenCardContextEntries,
     specimenCardSourceMasses,
     tableASpecimenFacts,
+    victoriaConflictFacts,
     weightSortValue,
     validateCatalog,
     validateFolioManifest,

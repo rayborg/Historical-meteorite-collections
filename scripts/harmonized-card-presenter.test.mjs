@@ -114,7 +114,7 @@ test("every production card uses the approved fact order, values, missing behavi
     const currentName = record.metbull?.canonicalName && !app.namesAreDisplayEquivalent(record.name, record.metbull.canonicalName)
       ? record.metbull.canonicalName : null;
     const expectedLabels = specimen
-      ? STANDARD_SPECIMEN_LABELS
+      ? [...STANDARD_SPECIMEN_LABELS, ...app.victoriaConflictFacts(record).map(({ label }) => label)]
       : [...(currentName ? ["Current Meteoritical Bulletin name"] : []), ...STANDARD_OBSERVATION_LABELS];
     assert.deepEqual(dto.facts.map(({ label }) => label), expectedLabels, record.id);
     assert.equal(dto.sourceName, record.name || "Unknown", record.id);
@@ -142,14 +142,13 @@ test("every production card uses the approved fact order, values, missing behavi
   }
   assert.equal(specimenCount, 12966);
   assert.deepEqual(missing, {
-    "Current Meteoritical Bulletin name": 2375,
+    "Current Meteoritical Bulletin name": 2102,
     "Individual find location": 12855,
-    Lineage: 12323,
+    Lineage: 12246,
     Event: 2739,
     Class: 228,
     "Source locality": 257,
     "Specimen weight": 184,
-    sourceName: 273,
   });
   assert.deepEqual({
     currentNameResolved: specimenCount - missing["Current Meteoritical Bulletin name"],
@@ -159,11 +158,11 @@ test("every production card uses the approved fact order, values, missing behavi
     lineageResolved: specimenCount - missing.Lineage,
     weightResolved: specimenCount - missing["Specimen weight"],
   }, {
-    currentNameResolved: 10591,
+    currentNameResolved: 10864,
     classResolved: 12738,
     eventResolved: 10227,
     locationResolved: 111,
-    lineageResolved: 643,
+    lineageResolved: 720,
     weightResolved: 12782,
   });
 });
@@ -182,7 +181,7 @@ test("specimen mass and lineage facts resolve exactly from source and projection
         ? app.resolveSpecimenCardRepeatedMass(record, descriptor.holdingPath, descriptor.repeatedMass)?.grams
         : descriptor.massPath === null ? null : app.resolveSpecimenCardSelection(record, descriptor.holdingPath, descriptor.massPath)?.grams
       : record.weight?.grams;
-    assert.equal(fact(dto, "Lineage"), expectedEntries.length ? app.formatLineageSummary(expectedEntries.length) : "Unknown", record.id);
+    assert.equal(fact(dto, "Lineage"), expectedEntries.length ? app.formatLineageSummary(expectedEntries) : "Unknown", record.id);
     assert.equal(fact(dto, "Specimen weight"), Number.isFinite(grams) ? app.formatMass(grams) : "Unknown", record.id);
   }
 });
@@ -193,9 +192,12 @@ test("observation cards omit specimen claims and catalog-specific facts", () => 
     const dto = present(descriptor);
     const pages = app.recordCatalogPages(record);
     const sourceLabel = record.catalogLabel || record.catalogId;
-    assert.equal(dto.sourceCitation, pages.length
-      ? `${sourceLabel} \u00b7 ${pages.length === 1 ? "p." : "pp."} ${pages.join(", ")}`
-      : `${sourceLabel} \u00b7 page not recorded`, record.id);
+    assert.equal(dto.sourceCitation, record.recordModel === "table-a-specimen"
+      ? `${sourceLabel} \u00b7 Appendix Table A printed page ${record.sourceEvidence.tableA.printedPage}${record.sourceEvidence.tableB
+        ? ` \u00b7 Table B printed page ${record.sourceEvidence.tableB.printedPage}` : ""}`
+      : pages.length
+        ? `${sourceLabel} \u00b7 ${pages.length === 1 ? "p." : "pp."} ${pages.join(", ")}`
+        : `${sourceLabel} \u00b7 page not recorded`, record.id);
     if (["collection-observation", "regional-observation"].includes(dto.kind)) {
       assert.equal(dto.facts.some(({ label }) => ["Specimen form", "Lineage", "Specimen weight"].includes(label)), false, record.id);
     }
@@ -206,7 +208,7 @@ test("observation cards omit specimen claims and catalog-specific facts", () => 
 test("only typed specimen locations can create an individual find location or specimen form", () => {
   const victoria = structuredClone(descriptors.find(({ parentRecord }) => parentRecord.catalogId === "victoria-land-1982"));
   victoria.parentRecord.locality.name = "General locality only";
-  victoria.parentRecord.locality.coordinate = "INJECTED COORDINATE";
+  victoria.parentRecord.locality.areaReferenceCoordinate = "INJECTED COORDINATE";
   const victoriaDto = app.presentHarmonizedCard(victoria);
   assert.equal(fact(victoriaDto, "Source locality"), "General locality only");
   assert.equal(fact(victoriaDto, "Specimen form"), "Individual specimen");
@@ -276,13 +278,14 @@ test("catalog-specific source facts stay out of cards while representative hidde
     "Current Meteoritical Bulletin name", ...STANDARD_SPECIMEN_LABELS, ...STANDARD_OBSERVATION_LABELS
   ]);
   for (const descriptor of descriptors) {
-    assert(present(descriptor).facts.every(({ label }) => allowed.has(label)), descriptor.parentRecord.id);
+    assert(present(descriptor).facts.every(({ label }) => allowed.has(label) ||
+      /^(?:Class|Specimen weight|Weathering), Table [AB] (?:primary|reported) \(printed page \d+\)$/u.test(label)), descriptor.parentRecord.id);
   }
   assert.doesNotMatch(html, /<dt>|record-holdings|metbull-name|lineage-row|earlier-records/u);
 
   for (const record of records.filter(({ recordModel }) => recordModel === "table-a-specimen")) {
     assert.equal(app.matchesSearch(record, record.locality.code), true, record.id);
-    if (record.locality.coordinate) assert.equal(app.matchesSearch(record, record.locality.coordinate), true, record.id);
+    if (record.locality.areaReferenceCoordinate) assert.equal(app.matchesSearch(record, record.locality.areaReferenceCoordinate), true, record.id);
     if (record.olivineFa) assert.equal(app.matchesSearch(record, `olivine Fa ${record.olivineFa}`), true, record.id);
     if (record.pyroxeneFs) assert.equal(app.matchesSearch(record, `pyroxene Fs ${record.pyroxeneFs}`), true, record.id);
     if (record.weathering) assert.equal(app.matchesSearch(record, `weathering ${record.weathering}`), true, record.id);
@@ -401,22 +404,22 @@ test("accessible shell, responsive breakpoints, approved cache, and immutable da
   assert.match(styles, /@media \(max-width: 700px\)[\s\S]*\.catalog-grid \{ grid-template-columns: 1fr; \}/u);
   assert.match(styles, /@media \(max-width: 420px\)[\s\S]*\.record-card \{ padding-inline: 1rem; \}/u);
   assert.doesNotMatch(styles, /\.record-meta dt \{[^}]*overflow-wrap: anywhere;/u);
-  assert.equal(app.CACHE_VERSION, "20260902-backlog39-wave1-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260902-backlog39-wave1-1");
+  assert.equal(app.CACHE_VERSION, "20260904-victoria-public-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260904-victoria-public-1");
   for (const document of [html, catalogsHtml]) {
-    assert.match(document, /styles\.css\?v=20260902-backlog39-wave1-1/u);
-    assert.match(document, /app\.js\?v=20260902-backlog39-wave1-1/u);
+    assert.match(document, /styles\.css\?v=20260904-victoria-public-1/u);
+    assert.match(document, /app\.js\?v=20260904-victoria-public-1/u);
   }
-  assert.match(catalogsHtml, /catalogs\.js\?v=20260902-backlog39-wave1-1/u);
+  assert.match(catalogsHtml, /catalogs\.js\?v=20260904-victoria-public-1/u);
   assert.deepEqual({
     catalog: sha256(catalogText),
     projections: sha256(projectionText),
     lineages: sha256(lineageText),
     reviews: sha256(reviewText),
   }, {
-    catalog: "9a921861c782abe1218e2d3b33bc2fc0b229908ce0a3c08e93bdc2596b91c536",
-    projections: "c8d705ac6b41ec9cbd16d67229efb454b9610e374e37c8b6f7b5eadd62109986",
-    lineages: "4c1bc76827dcbf9673d6c78d65ee00a768dec8dde0fd2cb10b628c6fc9636233",
+    catalog: "c6ace08a04d70c5a869ed8f6401f3ad505da530b9501d3fd8227740a64257039",
+    projections: "56e5b1626abaff4c53952bb722c5c89f4e28ee446ea1d3888ab48a4edb2d3500",
+    lineages: "1c25702cfcf519358de85bbc0763d5b4f88e71975b84753c1bbef8273e042e91",
     reviews: "6ca87f08ccb4e903ace0331732d982df17425ae672dd09cfb423df731b6ee98e",
   });
 });

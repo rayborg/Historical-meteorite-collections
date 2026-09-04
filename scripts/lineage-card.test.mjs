@@ -79,10 +79,10 @@ test("main template presents lineage through the harmonized specimen contract", 
   });
   assert.doesNotMatch(source, /\.innerHTML\b/);
   assert.doesNotMatch(css, /\.earlier-records \{/);
-  assert.equal(app.CACHE_VERSION, "20260902-backlog39-wave1-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260902-backlog39-wave1-1");
-  assert.match(html, /styles\.css\?v=20260902-backlog39-wave1-1/);
-  assert.match(html, /app\.js\?v=20260902-backlog39-wave1-1/);
+  assert.equal(app.CACHE_VERSION, "20260904-victoria-public-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260904-victoria-public-1");
+  assert.match(html, /styles\.css\?v=20260904-victoria-public-1/);
+  assert.match(html, /app\.js\?v=20260904-victoria-public-1/);
   for (const file of ["possible-specimen-lineages.html", "possible-specimen-lineages.css", "possible-specimen-lineages.js"]) {
     await assert.rejects(access(path.join(projectRoot, file)));
   }
@@ -106,6 +106,8 @@ test("every card receives a concise lineage summary", () => {
   assert.equal(app.formatLineageSummary(0), "No lineage known");
   assert.equal(app.formatLineageSummary(1), "1 earlier lineage record");
   assert.equal(app.formatLineageSummary(98), "98 earlier lineage records");
+  assert.equal(app.formatLineageSummary([{ kind: "source-attested-tentative-pairing-group" }]),
+    "1 source-attested tentative pairing group");
 });
 
 test("real catalog Allende search retains reviewed names and synonyms without Alais infix matches", () => {
@@ -211,6 +213,8 @@ test("strict runtime validation rejects malformed or forged enhancement data", (
     (data) => { data.relationships[0].observations[0].catalogSearchUrl = "https://example.org/"; },
     (data) => { possible(data).status = "confirmed"; },
     (data) => { sameInventory(data).relationship = "possible-match"; },
+    (data) => { data.sourceAttestedGroups[0].members[0] = "ALHA76006"; },
+    (data) => { data.metadata.source.sourceClaimsContentSha256 = "0".repeat(64); },
     ...forgedFactMutations,
   ];
   for (const mutate of mutations) {
@@ -263,7 +267,7 @@ test("review outcomes apply only to possible matches and not-supported entries a
 
   const notSupported = clone(retained);
   notSupported.relationships.find(({ id }) => id === target.id).review.outcome = "not-supported";
-  assert.equal(entryCount(app.deriveEarlierRecordIndex(notSupported, records, registry)), 1554);
+  assert.equal(entryCount(app.deriveEarlierRecordIndex(notSupported, records, registry)), 1633);
 
   const confirmed = clone(retained);
   confirmed.relationships.find(({ id }) => id === target.id).review.outcome = "confirmed";
@@ -274,15 +278,46 @@ test("real data maps only later records without mutation and matches the locked 
   const before = JSON.stringify(lineageData);
   const index = app.deriveEarlierRecordIndex(lineageData, records, registry);
   assert.equal(JSON.stringify(lineageData), before);
-  assert.equal(index.size, 987);
-  assert.equal(entryCount(index), 1555);
+  assert.equal(index.size, 1064);
+  assert.equal(entryCount(index), 1634);
   assert.equal(Math.max(...[...index.values()].map((entries) => entries.length)), 98);
   const distribution = [...index.values()].reduce((counts, entries) => {
     counts[entries.length] = (counts[entries.length] || 0) + 1;
     return counts;
   }, {});
-  assert.deepEqual(distribution, { 1: 796, 2: 143, 3: 17, 4: 10, 5: 4, 6: 4, 7: 1, 8: 2, 9: 2, 11: 1, 13: 1, 15: 1, 18: 1, 25: 1, 36: 1, 81: 1, 98: 1 });
+  assert.deepEqual(distribution, { 1: 871, 2: 145, 3: 17, 4: 10, 5: 4, 6: 4, 7: 1, 8: 2, 9: 2, 11: 1, 13: 1, 15: 1, 18: 1, 25: 1, 36: 1, 81: 1, 98: 1 });
   assert.ok(records.some((record) => !index.has(record.id)));
+});
+
+test("source-attested Table C groups retain exact n-ary membership and feed card lineage without pair expansion", () => {
+  const index = app.deriveEarlierRecordIndex(lineageData, records, registry);
+  const groups = lineageData.sourceAttestedGroups;
+  const members = groups.flatMap(({ members: groupMembers }) => groupMembers);
+  const exactMemberIndex = app.deriveSourceAttestedGroupIndex(groups);
+  const entries = [...index.values()].flat().filter(({ kind }) => kind === "source-attested-tentative-pairing-group");
+  assert.deepEqual({ groups: groups.length, occurrences: members.length, uniqueMembers: new Set(members).size },
+    { groups: 21, occurrences: 89, uniqueMembers: 87 });
+  assert.equal(exactMemberIndex.size, 87);
+  assert.equal([...exactMemberIndex.values()].flat().length, 89);
+  assert.equal(exactMemberIndex.has("ALHA77034"), true);
+  assert.equal(exactMemberIndex.has("BTNA77034"), false);
+  assert.deepEqual({ indexedRecords: new Set(entries.flatMap(({ members: groupMembers }) => groupMembers
+    .filter((member) => records.some(({ specimenId }) => specimenId === member)))).size, indexedEntries: entries.length },
+  { indexedRecords: 77, indexedEntries: 79 });
+  for (const entry of entries) {
+    const source = groups.find(({ id }) => id === entry.groupId);
+    assert.deepEqual(entry.members, source.members);
+    assert.equal(entry.sourceSection, "Appendix Table C");
+    assert.equal(entry.printedPage, 94);
+    assert.equal(Object.hasOwn(entry, "recordId"), false);
+  }
+  const alha76005 = records.find(({ specimenId }) => specimenId === "ALHA76005");
+  assert.equal(app.presentHarmonizedCard(alha76005, { lineageEntries: index.get(alha76005.id) })
+    .facts.find(({ label }) => label === "Lineage").value, "1 source-attested tentative pairing group");
+  const lineageOnly = app.filterRecords(records, {
+    query: "", catalog: "victoria-land-1982", min: null, max: null, lineageOnly: true, sort: app.DEFAULT_SORT
+  }, index);
+  assert.equal(lineageOnly.length, 77);
 });
 
 test("cards distinguish same inventory continuity from possible matching", () => {
@@ -321,8 +356,8 @@ test("Sandia receives 108b continuity while Rosebud receives none", () => {
 
 test("all 1555 earlier links resolve to exact public source records", () => {
   const index = app.deriveEarlierRecordIndex(lineageData, records, registry);
-  for (const entries of index.values()) {
-    for (const entry of entries) {
+  const earlierEntries = [...index.values()].flat().filter(({ kind }) => !kind);
+  for (const entry of earlierEntries) {
       const url = new URL(entry.catalogSearchUrl, "https://example.test/");
       assert.equal(url.pathname, "/index.html");
       assert.equal(url.hash, "#catalog");
@@ -330,9 +365,8 @@ test("all 1555 earlier links resolve to exact public source records", () => {
         record.catalogId === url.searchParams.get("catalog") && app.matchesSearch(record, url.searchParams.get("q"))
       ).map(({ id }) => id);
       assert.deepEqual(destinationIds, [entry.recordId], `${entry.catalogSearchUrl} did not resolve exactly to ${entry.recordId}`);
-    }
   }
-  assert.equal(entryCount(index), 1555);
+  assert.equal(earlierEntries.length, 1555);
 });
 
 test("all 3120 published observation links resolve to exact public source records", () => {
@@ -366,9 +400,9 @@ test("optional fetch failures and malformed payloads return an empty enhancement
   const loaded = await app.loadEarlierRecordIndex(records, registry, async () => ({
     ok: true, text: async () => lineageText,
   }), { sha256 });
-  assert.equal(entryCount(loaded), 1555);
+  assert.equal(entryCount(loaded), 1634);
   assert.equal(app.SPECIMEN_LINEAGE_DATA_SHA256,
-    "4c1bc76827dcbf9673d6c78d65ee00a768dec8dde0fd2cb10b628c6fc9636233");
+    "1c25702cfcf519358de85bbc0763d5b4f88e71975b84753c1bbef8273e042e91");
   for (const mutate of forgedFactMutations) {
     const forged = clone(lineageData);
     mutate(forged);
