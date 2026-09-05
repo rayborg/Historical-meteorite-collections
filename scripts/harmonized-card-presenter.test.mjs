@@ -152,7 +152,7 @@ test("every production card uses the approved fact order, values, missing behavi
   assert.deepEqual(missing, {
     "Current Meteoritical Bulletin name": 2102,
     "Individual find location": 12855,
-    Lineage: 12246,
+    Lineage: 12247,
     Event: 2739,
     Class: 228,
     "Source locality": 257,
@@ -170,7 +170,7 @@ test("every production card uses the approved fact order, values, missing behavi
     classResolved: 12738,
     eventResolved: 10227,
     locationResolved: 111,
-    lineageResolved: 720,
+    lineageResolved: 719,
     weightResolved: 12782,
   });
 });
@@ -412,22 +412,22 @@ test("accessible shell, responsive breakpoints, approved cache, and immutable da
   assert.match(styles, /@media \(max-width: 700px\)[\s\S]*\.catalog-grid \{ grid-template-columns: 1fr; \}/u);
   assert.match(styles, /@media \(max-width: 420px\)[\s\S]*\.record-card \{ padding-inline: 1rem; \}/u);
   assert.doesNotMatch(styles, /\.record-meta dt \{[^}]*overflow-wrap: anywhere;/u);
-  assert.equal(app.CACHE_VERSION, "20260905-hide-specimen-label-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260905-hide-specimen-label-1");
+  assert.equal(app.CACHE_VERSION, "20260905-audited-corrections-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260905-audited-corrections-1");
   for (const document of [html, catalogsHtml]) {
-    assert.match(document, /styles\.css\?v=20260905-hide-specimen-label-1/u);
-    assert.match(document, /app\.js\?v=20260905-hide-specimen-label-1/u);
+    assert.match(document, /styles\.css\?v=20260905-audited-corrections-1/u);
+    assert.match(document, /app\.js\?v=20260905-audited-corrections-1/u);
   }
-  assert.match(catalogsHtml, /catalogs\.js\?v=20260905-hide-specimen-label-1/u);
+  assert.match(catalogsHtml, /catalogs\.js\?v=20260905-audited-corrections-1/u);
   assert.deepEqual({
     catalog: sha256(catalogText),
     projections: sha256(projectionText),
     lineages: sha256(lineageText),
     reviews: sha256(reviewText),
   }, {
-    catalog: "c6ace08a04d70c5a869ed8f6401f3ad505da530b9501d3fd8227740a64257039",
-    projections: "56e5b1626abaff4c53952bb722c5c89f4e28ee446ea1d3888ab48a4edb2d3500",
-    lineages: "1c25702cfcf519358de85bbc0763d5b4f88e71975b84753c1bbef8273e042e91",
+    catalog: "f339b16bf0b799ee0abedb4ce17d41b0f457ab2f7d2afbfda8581523c134d221",
+    projections: "36a4d1ae4849409e5acb5dbdddccb37cc3425bb35f2efc174636627b8019ddf0",
+    lineages: "cd6dfcc00b6c08b0305e3862f5e82ae7b11a6e533127d717ea8dde61ad0993f5",
     reviews: "6ca87f08ccb4e903ace0331732d982df17425ae672dd09cfb423df731b6ee98e",
   });
 });

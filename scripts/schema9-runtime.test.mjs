@@ -127,7 +127,7 @@ test("all Victoria Land Table A specimens preserve exact identifiers and searcha
     assert.deepEqual(app.recordMasses(record), [record.weight.grams], record.id);
     assert.equal(app.matchesSearch(record, record.specimenId), true, record.id);
     assert.equal(app.matchesSearch(record, String(record.weight.grams)), true, record.id);
-    assert.equal(app.matchesSearch(record, record.classification), true, record.id);
+    assert.equal(app.matchesSearch(record, `Class ${record.classification}`), true, record.id);
     assert.equal(app.matchesSearch(record, record.locality.code), true, record.id);
     assert.equal(app.matchesSearch(record, record.locality.name), true, record.id);
     if (record.locality.areaReferenceCoordinate) assert.equal(app.matchesSearch(record, record.locality.areaReferenceCoordinate), true, record.id);
@@ -194,10 +194,10 @@ test("schema 11 card semantics, cache keys, responsive layout, and privacy bound
   assert.match(styles, /@media \(max-width: 700px\)[\s\S]*\.catalog-grid \{ grid-template-columns: 1fr; \}/u);
   assert.match(styles, /\.record-meta div \{[^}]*grid-template-columns: minmax\(0, 1fr\);/u);
   assert.match(styles, /\.record-meta dt \{[^}]*overflow-wrap: normal;/u);
-  assert.equal(app.CACHE_VERSION, "20260905-hide-specimen-label-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260905-hide-specimen-label-1");
-  assert.match(html, /styles\.css\?v=20260905-hide-specimen-label-1/u);
-  assert.match(html, /app\.js\?v=20260905-hide-specimen-label-1/u);
+  assert.equal(app.CACHE_VERSION, "20260905-audited-corrections-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260905-audited-corrections-1");
+  assert.match(html, /styles\.css\?v=20260905-audited-corrections-1/u);
+  assert.match(html, /app\.js\?v=20260905-audited-corrections-1/u);
   const newSourceRecords = catalog.records.filter(({ catalogId }) => ["hodge-smith-1939", "victoria-land-1982"].includes(catalogId));
   assert.doesNotMatch(JSON.stringify(newSourceRecords), /(?:raw[ _-]*ocr|\/private\/|\/Users\/|source[ _-]*image|scan[ _-]*(?:file|path)|research[ _-]*notes?)/iu);
 });

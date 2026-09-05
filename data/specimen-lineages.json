@@ -6,7 +6,7 @@
       "catalogSchemaVersion": 11,
       "recordCount": 14477,
       "catalogCount": 40,
-      "flattenedMassObservationCount": 15138,
+      "flattenedMassObservationCount": 15137,
       "inventoryObservationCount": 3627,
       "sourceClaimsSchemaVersion": 1,
       "sourceClaimsContentSha256": "141ed60b9560596ac8ab392babfc4af6e1d22921bacbf979d3b975e0fc2f20c2"
@@ -56,8 +56,8 @@
       ]
     },
     "counts": {
-      "relationshipCount": 1560,
-      "sameInventoryRelationshipCount": 195,
+      "relationshipCount": 1559,
+      "sameInventoryRelationshipCount": 194,
       "possibleMatchRelationshipCount": 1365,
       "unreviewedPossibleMatchCount": 1339,
       "exactMassPossibleMatchCount": 1137,
@@ -69,7 +69,7 @@
       "aggregateOrMultiplePossibleMatchCount": 45,
       "castPossibleMatchCount": 0,
       "identityResolvedInventoryCollisionCount": 1,
-      "omittedAmbiguousInventoryKeyCount": 0,
+      "omittedAmbiguousInventoryKeyCount": 1,
       "possibleMatchEvidenceStrength": {
         "multiple-matching-facts": 0,
         "two-matching-facts": 1137,
@@ -528,7 +528,7 @@
         },
         {
           "catalogPair": "nininger-1933|nininger-1950",
-          "sameInventoryCount": 193,
+          "sameInventoryCount": 192,
           "possibleMatchCount": 0
         },
         {
@@ -110611,61 +110611,6 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=nininger-1950&q=record%20id%20obs-be1eba30-142a-462a-b958-bead1019babb#catalog"
-        }
-      ]
-    },
-    {
-      "id": "same-inventory-lineage-84a59d06-fb7b-5339-9b9b-a2d05f836248",
-      "relationship": "same-inventory",
-      "basis": "series-scoped-normalized-inventory-id",
-      "status": "established",
-      "displayName": "Carbo",
-      "catalogPair": "nininger-1933|nininger-1950",
-      "collectionSeries": {
-        "id": "nininger",
-        "inventoryId": "139b"
-      },
-      "identity": null,
-      "evidence": null,
-      "review": null,
-      "observations": [
-        {
-          "id": "inventory-observation-9e3d5125-dadd-5acb-9482-c9b8a11e8f7a",
-          "recordId": "obs-e6581d53-a640-4b0e-a988-46fa7b5a9039",
-          "catalogId": "nininger-1950",
-          "catalogLabel": "The Nininger Collection of Meteorites (1950)",
-          "catalogYear": 1950,
-          "recordModel": "specimen",
-          "designationPath": "designation",
-          "massPath": "weight.grams",
-          "sourceRecordLabel": "139b",
-          "sourceName": "St. Genevieve County",
-          "canonicalName": "St. Genevieve County",
-          "meteoriteCode": "23086",
-          "designation": "139b",
-          "massGrams": 58210,
-          "kind": null,
-          "count": null,
-          "catalogSearchUrl": "./index.html?catalog=nininger-1950&q=record%20id%20obs-e6581d53-a640-4b0e-a988-46fa7b5a9039#catalog"
-        },
-        {
-          "id": "inventory-observation-9eb87467-7d50-5563-81ce-e451c4bf7ec9",
-          "recordId": "obs-342224e1-0f1d-4bbf-9955-f7ac43376ea4",
-          "catalogId": "nininger-1933",
-          "catalogLabel": "The Nininger Collection of Meteorites with Descriptions of the Huizopa and Pojoaque Meteorites (1933)",
-          "catalogYear": 1933,
-          "recordModel": "catalog-item",
-          "designationPath": "holdings[1].designation",
-          "massPath": "holdings[1].weight.grams",
-          "sourceRecordLabel": "Catalog item 31",
-          "sourceName": "Carbo",
-          "canonicalName": "Carbo",
-          "meteoriteCode": "5266",
-          "designation": "139b",
-          "massGrams": 380,
-          "kind": "specimen",
-          "count": null,
-          "catalogSearchUrl": "./index.html?catalog=nininger-1933&q=record%20id%20obs-342224e1-0f1d-4bbf-9955-f7ac43376ea4#catalog"
         }
       ]
     },

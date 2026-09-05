@@ -196,7 +196,7 @@ export function flattenMassObservations(catalog) {
   const descriptors = catalogDescriptors(catalog);
   const observations = [];
   const add = (record, descriptor, details) => {
-    if (Number.isFinite(details.massGrams)) observations.push(makeObservation(record, descriptor, details));
+    if (Number.isFinite(details.massGrams) && details.massGrams > 0) observations.push(makeObservation(record, descriptor, details));
   };
   for (const record of catalog.records) {
     const descriptor = descriptors.get(record.catalogId);
@@ -366,6 +366,15 @@ function collisionIdentityConsistent(left, right) {
   if (left.public.meteoriteCode !== null && right.public.meteoriteCode !== null) {
     return left.public.meteoriteCode === right.public.meteoriteCode;
   }
+  if (left.public.meteoriteCode !== null || right.public.meteoriteCode !== null) return true;
+  const leftNames = collisionNames(left);
+  return [...collisionNames(right)].some((name) => leftNames.has(name));
+}
+
+function collisionIdentityEquivalent(left, right) {
+  if (left.public.meteoriteCode !== null && right.public.meteoriteCode !== null) {
+    return left.public.meteoriteCode === right.public.meteoriteCode;
+  }
   const leftNames = collisionNames(left);
   return [...collisionNames(right)].some((name) => leftNames.has(name));
 }
@@ -402,11 +411,12 @@ function buildSameInventoryRelationships(inventoryObservations, collectionSeries
         const laterEndpoints = later.get(inventoryId);
         if (!laterEndpoints) continue;
         let pair;
-        if (earlierEndpoints.length === 1 && laterEndpoints.length === 1) {
+        if (earlierEndpoints.length === 1 && laterEndpoints.length === 1 &&
+            collisionIdentityConsistent(earlierEndpoints[0], laterEndpoints[0])) {
           pair = [earlierEndpoints[0], laterEndpoints[0]];
         } else {
           const consistentPairs = earlierEndpoints.flatMap((left) => laterEndpoints
-            .filter((right) => collisionIdentityConsistent(left, right))
+            .filter((right) => collisionIdentityEquivalent(left, right))
             .map((right) => [left, right]));
           if (consistentPairs.length === 1) {
             pair = consistentPairs[0];

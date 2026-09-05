@@ -103,7 +103,11 @@ test("Table B, official-name, and area-reference facts are searchable without en
     }
     if (!tableB) continue;
     assert.equal(app.matchesSearch(record, String(tableB.massGrams)), true, record.id);
-    for (const value of [tableB.classification, tableB.classificationContext, tableB.weathering, tableB.fracturing]) {
+    if (tableB.classification) {
+      assert.equal(app.matchesSearch(record, `Table B class ${tableB.classification}`), true,
+        `${record.id}: ${tableB.classification}`);
+    }
+    for (const value of [tableB.classificationContext, tableB.weathering, tableB.fracturing]) {
       if (value) assert.equal(app.matchesSearch(record, value), true, `${record.id}: ${value}`);
     }
   }

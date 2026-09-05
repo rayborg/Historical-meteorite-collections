@@ -12,16 +12,20 @@ const waveCatalogIds = new Set(["brown-1916", "minnesota-1892", "foote-1909"]);
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
 const jsonSha256 = (value) => sha256(JSON.stringify(value));
 
-test("installs the exact accepted schema-11 export without changing non-Victoria data", () => {
-  assert.equal(sha256(catalogText), "c6ace08a04d70c5a869ed8f6401f3ad505da530b9501d3fd8227740a64257039");
+test("installs the exact accepted schema-11 export without changing non-correction data", () => {
+  assert.equal(sha256(catalogText), "f339b16bf0b799ee0abedb4ce17d41b0f457ab2f7d2afbfda8581523c134d221");
   assert.equal(sha256(foliosText), "145498213ac8ddd24527b5092bfc4cad8dce1880f8d304d29e2c2c4d44595460");
   assert.equal(catalog.metadata.schemaVersion, 11);
   assert.equal(catalog.metadata.catalogs.length, 40);
   assert.equal(catalog.records.length, 14477);
-  const nonVictoriaRecords = catalog.records.filter(({ catalogId }) => catalogId !== "victoria-land-1982");
+  const correctedRecordIds = new Set([
+    "obs-68c7e39b-9d99-4f9a-a1d2-7b2374d76d47",
+    "obs-38554aa8-007c-447f-9410-91d447f74149",
+  ]);
+  const nonCorrectionRecords = catalog.records.filter(({ id }) => !correctedRecordIds.has(id));
   const nonVictoriaDescriptors = catalog.metadata.catalogs.filter(({ id }) => id !== "victoria-land-1982");
-  assert.equal(nonVictoriaRecords.length, 14204);
-  assert.equal(jsonSha256(nonVictoriaRecords), "ffacd94974737ed155b143e5a28718fe4ec22d8bd0a6eafde5d4cdf17018498a");
+  assert.equal(nonCorrectionRecords.length, 14475);
+  assert.equal(jsonSha256(nonCorrectionRecords), "5892e877d2b41a018bbd1836f3d9369a60e923f0dd31920b6671970aa32686b1");
   assert.equal(jsonSha256(nonVictoriaDescriptors), "8066f1c06de5c8021ffa24020cfe37c4e9cdc5ce1d357e95c20268c2699a1d6e");
 });
 

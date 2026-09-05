@@ -2169,9 +2169,15 @@
           85,
           86,
           87,
-          88
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94
         ],
-        "sourcePageCount": 4,
+        "sourcePageCount": 10,
         "recordCount": 273,
         "recordsWithDesignation": 273,
         "recordsWithWeight": 273,
@@ -274223,9 +274229,6 @@
               "grams": 66
             },
             {
-              "grams": 0
-            },
-            {
               "grams": 753
             },
             {
@@ -372350,7 +372353,7 @@
         }
       ],
       "name": "Mantos Blancos",
-      "classification": "Aerolite: Veined white hypersthene-chondrite, Cwa.",
+      "classification": "Siderite: Fine octahedrite, Of.",
       "locality": "Atacama Desert, Chile, S. A.",
       "eventDate": "Found: 1876",
       "confidence": "high",

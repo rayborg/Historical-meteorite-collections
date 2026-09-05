@@ -4,7 +4,7 @@
     "scope": "reviewed-atomic-specimen-card-display-projections",
     "catalogSchemaVersion": 11,
     "sourceRecordCount": 14477,
-    "sourceCatalogSha256": "c6ace08a04d70c5a869ed8f6401f3ad505da530b9501d3fd8227740a64257039",
+    "sourceCatalogSha256": "f339b16bf0b799ee0abedb4ce17d41b0f457ab2f7d2afbfda8581523c134d221",
     "projectionCount": 2224,
     "atomicCardCount": 7224,
     "sourceContextCardCount": 1694
@@ -25940,7 +25940,7 @@
             "start": 57,
             "end": 99
           },
-          "massPath": "holdings[0].weights[2].grams"
+          "massPath": "holdings[0].weights[1].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -25949,7 +25949,7 @@
             "start": 105,
             "end": 152
           },
-          "massPath": "holdings[0].weights[3].grams"
+          "massPath": "holdings[0].weights[2].grams"
         }
       ]
     },

@@ -5,7 +5,7 @@ import { pathToFileURL } from "node:url";
 const LOCKS = Object.freeze({
   catalogSchemaVersion: 11,
   sourceRecordCount: 14477,
-  sourceCatalogSha256: "c6ace08a04d70c5a869ed8f6401f3ad505da530b9501d3fd8227740a64257039",
+  sourceCatalogSha256: "f339b16bf0b799ee0abedb4ce17d41b0f457ab2f7d2afbfda8581523c134d221",
   projectionCount: 2224,
   atomicCardCount: 7224,
   legacyMassBoundCardCount: 6656,
@@ -13,9 +13,9 @@ const LOCKS = Object.freeze({
   masslessCardCount: 30,
   repeatedMassCardCount: 2,
   sourceContextCardCount: 1694,
-  baselineProjectionSetSha256: "54eabe28b7cc7b885f3e980d7e5962f01eb04aed39cedb30bc9f6d334ea3dede",
-  projectionSetSha256: "8e7c185771d0a4bb135b0966416cc93dedfb0d8d09ede6f1c5c3a8dd0bba41cf",
-  nonHamburgProjectionSetSha256: "f34519b982f5e966aeeb09f13f076dfba26cca05773cc3e345d694743bafdd3b",
+  baselineProjectionSetSha256: "3f887829ffcd2a344e64383bdd748061bc64ed596308d6952f7ebe69ae298ff5",
+  projectionSetSha256: "e4f801ab2d5385576c3302c00c96cc9a06b398a76cfa54ebfe6d3f05ecda720d",
+  nonHamburgProjectionSetSha256: "75f1aa06fe2b2f5e83a464001989a888b11d98c053e49ee4e2dcc8a24c1a6c84",
 });
 export const BROWN_AUDIT_COVERAGE = Object.freeze({
   parentObservationCount: 237,
@@ -51,7 +51,7 @@ export const REVIEWED_AUDIT_COVERAGE = Object.freeze({
   sourceContextCardCount: 370,
   boundaries: Object.freeze([
     Object.freeze({ name: "prior", candidates: 226, projected: 223, excluded: 3, cards: 665, candidateSetSha256: "2b2bf8a08e85f756b61180385b8de61632dc4becc23b63160546ebe0785f7f78" }),
-    Object.freeze({ name: "palache-merrill", candidates: 462, projected: 71, excluded: 391, cards: 126, candidateSetSha256: "db490176b7293d4b4ac2d5f6fe79dc7e156682bce800170f034a6b7225161024" }),
+    Object.freeze({ name: "palache-merrill", candidates: 462, projected: 71, excluded: 391, cards: 126, candidateSetSha256: "5288df7e90d81a2892edb634c0286674f3baf879d56b84a465c87b6b8f974ba2" }),
     Object.freeze({ name: "remaining", candidates: 294, projected: 26, excluded: 268, cards: 55, candidateSetSha256: "ac440ebe856454ec4bfcd8f612ced0b62860f11ee6745e171a058a6286faaad3" }),
     Object.freeze({ name: "multiholding", candidates: 56, projected: 50, excluded: 6, cards: 210, candidateSetSha256: "5591fb03e3b5beb601ba9f5735e760f238b607541edecdad014d402a8ff8f22f" }),
   ]),

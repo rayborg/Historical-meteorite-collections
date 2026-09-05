@@ -14,10 +14,11 @@ const [catalogText, foliosText, sourceClaimsText] = await Promise.all([
 const catalog = JSON.parse(catalogText);
 const folios = JSON.parse(foliosText);
 const victoria = catalog.records.filter(({ catalogId }) => catalogId === "victoria-land-1982");
+const victoriaDescriptor = catalog.metadata.catalogs.find(({ id }) => id === "victoria-land-1982");
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
 
 test("imports all three accepted public package files exactly", () => {
-  assert.equal(sha256(catalogText), "c6ace08a04d70c5a869ed8f6401f3ad505da530b9501d3fd8227740a64257039");
+  assert.equal(sha256(catalogText), "f339b16bf0b799ee0abedb4ce17d41b0f457ab2f7d2afbfda8581523c134d221");
   assert.equal(sha256(foliosText), "145498213ac8ddd24527b5092bfc4cad8dce1880f8d304d29e2c2c4d44595460");
   assert.equal(sha256(sourceClaimsText), "edb201339e9e1068ac45d3333a9224959b4dcdbf8e317afcbb0657c6635b85fb");
   assert.deepEqual({ schema: catalog.metadata.schemaVersion, records: catalog.records.length, catalogs: catalog.metadata.catalogs.length },
@@ -31,6 +32,8 @@ test("publishes exact Victoria Table A names, official abbreviations, coordinate
   assert.equal(new Set(victoria.map(({ specimenId }) => specimenId)).size, 273);
   assert.equal(new Set(victoria.map(({ metbull }) => metbull.meteoriteCode)).size, 273);
   assert.equal(victoria.filter(({ locality }) => locality.areaReferenceCoordinate !== null).length, 240);
+  assert.deepEqual(victoriaDescriptor.sourcePages, [85, 86, 87, 88, 89, 90, 91, 92, 93, 94]);
+  assert.equal(victoriaDescriptor.sourcePageCount, 10);
   assert.deepEqual([...new Set(victoria.map(({ catalogPage }) => catalogPage))], [85, 86, 87, 88]);
   assert.equal(victoria.reduce((sum, { weight }) => sum + weight.grams, 0), 969562.2);
   assert.equal(sha256(JSON.stringify(victoria)), "c427fa0bf07a8ce57c01d4520fc3b2eb2c2aa7483f1d8bf5d7f8bce483f96806");
@@ -131,9 +134,13 @@ test("publishes closed normalized source evidence while excluding all 40 mass co
     !massConflicts.has(observation.designation)));
 });
 
-test("preserves every non-Victoria record and descriptor byte-semantically", () => {
-  assert.equal(sha256(JSON.stringify(catalog.records.filter(({ catalogId }) => catalogId !== "victoria-land-1982"))),
-    "ffacd94974737ed155b143e5a28718fe4ec22d8bd0a6eafde5d4cdf17018498a");
+test("preserves every non-correction record and descriptor byte-semantically", () => {
+  const correctedRecordIds = new Set([
+    "obs-68c7e39b-9d99-4f9a-a1d2-7b2374d76d47",
+    "obs-38554aa8-007c-447f-9410-91d447f74149",
+  ]);
+  assert.equal(sha256(JSON.stringify(catalog.records.filter(({ id }) => !correctedRecordIds.has(id)))),
+    "5892e877d2b41a018bbd1836f3d9369a60e923f0dd31920b6671970aa32686b1");
   assert.equal(sha256(JSON.stringify(catalog.metadata.catalogs.filter(({ id }) => id !== "victoria-land-1982"))),
     "8066f1c06de5c8021ffa24020cfe37c4e9cdc5ce1d357e95c20268c2699a1d6e");
 });

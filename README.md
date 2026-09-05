@@ -36,7 +36,7 @@ node scripts/test-multicatalog.cjs
 node --test scripts/*.test.mjs
 ```
 
-The validator checks both synthetic rejection fixtures and the real catalog, manifest, and folio files. The standalone runtime harness contains 119 tests.
+The validator checks both synthetic rejection fixtures and the real catalog, manifest, and folio files. The standalone runtime harness contains 123 tests, and the complete MJS suite contains 169 tests.
 
 After changing either public data file, run `node scripts/sync-release-summary.mjs --write`; use `--json` to inspect the derived release summary without changing documentation.
 
@@ -110,7 +110,7 @@ locality: { code, name, areaReferenceCoordinate }, catalogPage,
 sourceEvidence: { primary, tableA, tableB, conflicts }, confidence, metbull
 ```
 
-The 273 Victoria Land records retain Table A as the exact top-level primary facts and carry accepted `official-abbreviation` mappings. Their closed normalized `sourceEvidence` objects retain 270 Table B cross-views, including classification on 268 records, weathering on 249, fracturing on 250, and two `Unclassified` contexts. Conflict arrays are deterministically derived from the two tables and identify 40 mass, 2 classification, and 8 weathering conflicts. Raw rows, private page IDs, source files, and media remain excluded. The 40 mass-conflict records do not participate in computed lineage candidates; Table C groups remain separate n-ary source claims and are never pairwise-expanded.
+The 273 Victoria Land records retain Table A as the exact top-level primary facts and carry accepted `official-abbreviation` mappings. The descriptor covers printed pages 85-94: Table A records cite pages 85-88, and every normalized Table A, Table B, and Table C reference is scoped to that ten-page range. Their closed normalized `sourceEvidence` objects retain 270 Table B cross-views, including classification on 268 records, weathering on 249, fracturing on 250, and two `Unclassified` contexts. Conflict arrays are deterministically derived from the two tables and identify 40 mass, 2 classification, and 8 weathering conflicts. Raw rows, private page IDs, source files, and media remain excluded. The 40 mass-conflict records do not participate in computed lineage candidates; Table C groups remain separate n-ary source claims and are never pairwise-expanded.
 
 A `dealer-offer-fact` contains exactly `id`, `catalogId`, `typeNumber`, `name`, `description`, `catalogPage`, and `confidence`. The six Foote 1909 records are dealer catalog observations, not specimens or holdings, and contain no mass, price, MetBull identity, or lineage assertion.
 
@@ -155,11 +155,11 @@ The current catalog contains:
 | `schreiter-1912` | `collection-entry` | 162 | 18 | 8 |
 | `tassin-1902` | `collection-entry` | 340 | 26 | 24 |
 | `usnm-1886` | `collection-entry` | 349 | 11 | 11 |
-| `victoria-land-1982` | `table-a-specimen` | 273 | 4 | 4 |
+| `victoria-land-1982` | `table-a-specimen` | 273 | 10 | 4 |
 | `ward-1881` | `collection-entry` | 3 | 1 | 1 |
 | `ward-1904` | `collection-entry` | 697 | 74 | 74 |
 | `washington-1897` | `collection-entry` | 201 | 4 | 4 |
-| **Total** |  | **14,477** | **1,453** | **1,282** |
+| **Total** |  | **14,477** | **1,459** | **1,282** |
 <!-- release-summary:readme-catalog-table:end -->
 
 Metadata source-page coverage is not a claim that every covered page contains a record. Some covered pages are introductory or narrative-only.
@@ -173,6 +173,8 @@ Anderson 1913 contributes 57 facts-only collection entries citing pages 54-66, a
 Hamburg 1913 contributes 147 fully reviewed facts-only observations from E. Horn's *Die Meteoritensammlung des Mineralogisch-Geologischen Instituts zu Hamburg*: 98 resolved and 49 unresolved. Its 151 holdings describe 227 components, including 26 thin sections. The calculated base-component sum is 748,304.8 g, distinct from the printed 748,304.9 g total. Applying the source-reported August 1913 disposal of one 14,500 g Gibeon component and adding the separately printed Holbrook supplement of 51 stones totaling 490.6 g gives a revised calculated total of 734,295.4 g, distinct from the printed revised total of 734,295.5 g. The base observation remains published rather than being rewritten by the amendment.
 
 Hamburg contributes four reviewed cross-source relationships retained only as possible lineages. They document matching public facts for review and do not establish specimen identity, custody, ownership, or transfer.
+
+The audited correction release removes the unsupported zero from Merrill's El Capitan observation, leaving exact masses 66 g, 753 g, and 4,000 g; corrects Reeds's Mantos Blancos classification to `Siderite: Fine octahedrite, Of.`; and removes the incompatible Nininger `139b` same-inventory relationship. No record or catalog was added or removed.
 
 Madrid 1923 contributes 130 fully reviewed facts-only collection entries citing pages 226-233 within the ten-page metadata range 224-233. Its 168 holdings comprise 151 `Specimen` and 17 `Specimen group` descriptions; all 168 have one normalized mass, totaling 190,083.41 g. This detailed-entry sum is a derived total and remains distinct from the source's separate narrative collection-total claim; neither is used to infer additional holdings. The review resolves 84 records and leaves 46 explicitly unresolved. Madrid remains blocked/undetermined with an empty folio, no public media, and no published private evidence.
 

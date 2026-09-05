@@ -811,6 +811,55 @@ test("search covers catalog items and rendered holding facts", () => {
   assert.deepEqual(ids(records.filter((record) => app.matchesSearch(record, "count 4"))), ["nininger-item-4"]);
 });
 
+test("numeric search unions identifiers, masses, reviewed codes, years, and Victoria suffixes", () => {
+  const registry = app.normalizeCatalogRegistry(publicFixture.metadata);
+  const sourceRecords = publicFixture.records.map((record, index) => app.prepareRecord(record, index, registry));
+  const nininger = sourceRecords.find(({ id }) => id === "nininger-item-2");
+  const hodge = sourceRecords.find(({ id }) => id === "hodge-census-1");
+  const victoria = sourceRecords.find(({ id }) => id === "victoria-table-a-1");
+
+  assert.equal(app.matchesSearch(nininger, "2"), true);
+  assert.equal(app.matchesSearch(nininger, "12"), true);
+  assert.equal(app.matchesSearch(hodge, "10"), true);
+  assert.equal(app.matchesSearch(hodge, "1917"), true);
+  assert.equal(app.matchesSearch(victoria, "76001"), true);
+  assert.equal(app.matchesSearch(victoria, "20151"), true);
+  assert.equal(app.matchesSearch(victoria, "1308"), true);
+  assert.equal(app.matchesSearch(victoria, "7600"), false);
+});
+
+test("search indexes exact gram values and their displayed mass text without changing weight semantics", () => {
+  const record = recordsFor("hovey-1896").find(({ id }) => id === "hovey-catalog-z9");
+  const before = {
+    masses: app.recordMasses(record),
+    schemaMasses: app.recordSchemaMasses(record),
+    ascending: app.weightSortValue(record, false),
+    descending: app.weightSortValue(record, true)
+  };
+
+  for (const grams of app.recordSearchMasses(record)) {
+    assert.equal(app.matchesSearch(record, String(grams)), true, String(grams));
+    assert.equal(app.matchesSearch(record, app.formatMass(grams)), true, app.formatMass(grams));
+  }
+  assert.deepEqual({
+    masses: app.recordMasses(record),
+    schemaMasses: app.recordSchemaMasses(record),
+    ascending: app.weightSortValue(record, false),
+    descending: app.weightSortValue(record, true)
+  }, before);
+});
+
+test("displayed regional identifiers are exact aliases", () => {
+  const registry = app.normalizeCatalogRegistry(publicFixture.metadata);
+  const source = publicFixture.records.find(({ id }) => id === "hodge-census-1");
+  const record = app.prepareRecord(source, 0, registry);
+
+  assert.equal(app.matchesSearch(record, "Source number 1"), true);
+  assert.equal(app.matchesSearch(record, "Source number 01"), false);
+  assert.equal(app.matchesSearch(record, "Regional census entry 1"), true);
+  assert.equal(app.matchesSearch(record, "Regional census entry 10"), false);
+});
+
 test("ordinary text search matches normalized token prefixes instead of token interiors", () => {
   const [allende, alais] = prepareSpecimens([
     specimenSource({
@@ -977,8 +1026,8 @@ test("URL filters strictly round-trip lineage and unknown-weight state", () => {
   for (const search of ["", "?weighted=0", "?weighted=true", "?weighted=1&weighted=1", "?weighted=1&weighted=0"]) {
     assert.equal(app.parseUrlFilters(search, registry).includeUnknownWeight, true, search);
   }
-  assert.equal(app.CACHE_VERSION, "20260905-hide-specimen-label-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260905-hide-specimen-label-1");
+  assert.equal(app.CACHE_VERSION, "20260905-audited-corrections-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260905-audited-corrections-1");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.ASSET_CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.ASSET_CACHE_VERSION}`));
 });
@@ -1306,7 +1355,7 @@ test("non-H designations use normalized factual text search", () => {
   assert.deepEqual(ids(records.filter((record) => app.matchesSearch(record, "m 7"))), ["m7"]);
 });
 
-test("class-like queries match factual text as well as designations", () => {
+test("class-like mixed queries match factual text while pure Huss queries remain designations", () => {
   const records = prepareSpecimens([
     specimenSource({ id: "class-l6", designation: "X1", classification: "Chondrite L6" }),
     specimenSource({ id: "designation-h5", designation: "H5.1", classification: "Iron" }),
@@ -1314,7 +1363,32 @@ test("class-like queries match factual text as well as designations", () => {
   ]);
   assert.equal(app.matchesSearch(records[0], "L6"), true);
   assert.equal(app.matchesSearch(records[1], "H5"), true);
-  assert.equal(app.matchesSearch(records[2], "H5"), true);
+  assert.equal(app.matchesSearch(records[2], "H5"), false);
+  assert.equal(app.matchesSearch(records[2], "Chondrite H5"), true);
+  assert.equal(app.matchesSearch(records[2], "Chond H5"), true);
+  assert.equal(app.matchesSearch(records[2], "hondrite H5"), false);
+});
+
+test("pure Huss queries cannot borrow mass or prose tokens as designation segments", () => {
+  const records = prepareSpecimens([
+    specimenSource({ id: "h27-46", designation: "(2)H27.46", grams: 348.3 }),
+    specimenSource({ id: "h27-49", designation: "(2)H27.49", grams: 46.2 }),
+    specimenSource({ id: "water-prose", designation: "H9.1", classification: "Contains H2O" })
+  ]);
+  const multiple = {
+    designationSegmentsList: [["1"], ["2"]],
+    searchText: "h1 h2 2",
+    proseSearchText: "contains h2o",
+    holdings: []
+  };
+
+  assert.deepEqual(ids(records.filter((record) => app.matchesSearch(record, "(2)H27.46"))), ["h27-46"]);
+  assert.equal(app.matchesSearch(records[2], "H2"), false);
+  assert.equal(app.matchesSearch(records[2], "Contains H2"), false);
+  assert.equal(app.matchesSearch(records[2], "Contains H2O"), true);
+  assert.equal(app.matchesSearch(multiple, "H1 H2"), true);
+  multiple.designationSegmentsList = [["1"]];
+  assert.equal(app.matchesSearch(multiple, "H1 H2"), false);
 });
 
 test("catalog filtering selects one catalog without leaking same-page records", () => {

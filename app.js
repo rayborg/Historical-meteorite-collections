@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260905-hide-specimen-label-1";
+const CACHE_VERSION = "20260905-audited-corrections-1";
 const ASSET_CACHE_VERSION = CACHE_VERSION;
 const CATALOG_SCHEMA_VERSION = 11;
 const CATALOG_RECORD_COUNT = 14477;
@@ -263,10 +263,10 @@ const SPECIMEN_CARD_COMPONENT_FIELDS = new Set(["holdingPath", "componentPath", 
 const SPECIMEN_CARD_CLAUSE_FIELDS = new Set(["textPath", "start", "end"]);
 const SPECIMEN_CARD_REPEATED_MASS_FIELDS = new Set(["valuePath", "countPath", "totalPath", "occurrence", "occurrenceCount"]);
 const SHA256_HEX = /^[0-9a-f]{64}$/u;
-const SPECIMEN_CARD_SOURCE_CATALOG_SHA256 = "c6ace08a04d70c5a869ed8f6401f3ad505da530b9501d3fd8227740a64257039";
-const SPECIMEN_CARD_PROJECTION_DATA_SHA256 = "56e5b1626abaff4c53952bb722c5c89f4e28ee446ea1d3888ab48a4edb2d3500";
-const SPECIMEN_CARD_PROJECTION_SET_SHA256 = "8e7c185771d0a4bb135b0966416cc93dedfb0d8d09ede6f1c5c3a8dd0bba41cf";
-const SPECIMEN_LINEAGE_DATA_SHA256 = "1c25702cfcf519358de85bbc0763d5b4f88e71975b84753c1bbef8273e042e91";
+const SPECIMEN_CARD_SOURCE_CATALOG_SHA256 = "f339b16bf0b799ee0abedb4ce17d41b0f457ab2f7d2afbfda8581523c134d221";
+const SPECIMEN_CARD_PROJECTION_DATA_SHA256 = "36a4d1ae4849409e5acb5dbdddccb37cc3425bb35f2efc174636627b8019ddf0";
+const SPECIMEN_CARD_PROJECTION_SET_SHA256 = "e4f801ab2d5385576c3302c00c96cc9a06b398a76cfa54ebfe6d3f05ecda720d";
+const SPECIMEN_LINEAGE_DATA_SHA256 = "cd6dfcc00b6c08b0305e3862f5e82ae7b11a6e533127d717ea8dde61ad0993f5";
 const SOURCE_CLAIMS_CONTENT_SHA256 = "141ed60b9560596ac8ab392babfc4af6e1d22921bacbf979d3b975e0fc2f20c2";
 const LINEAGE_ROOT_FIELDS = new Set(["metadata", "sourceAttestedGroups", "relationships"]);
 const LINEAGE_METADATA_FIELDS = new Set(["schemaVersion", "scope", "source", "collectionSeries", "methodology", "counts"]);
@@ -537,11 +537,21 @@ function matchesSearch(record, rawQuery) {
   if (catalogItemQuery) return record.catalogItem === Number(catalogItemQuery[1]);
   const collectionEntryQuery = query.match(/^collection entry (\d+)$/);
   if (collectionEntryQuery) return record.entryOrder === Number(collectionEntryQuery[1]);
+  const sourceNumberQuery = query.match(/^source number (.+)$/);
+  if (sourceNumberQuery) {
+    return record.recordModel === "regional-census-fact" &&
+      record.reportedNumber !== undefined && searchable(record.reportedNumber) === sourceNumberQuery[1];
+  }
+  const regionalCensusEntryQuery = query.match(/^regional census entry (\d+)$/);
+  if (regionalCensusEntryQuery) {
+    return record.recordModel === "regional-census-fact" && record.entryOrder === Number(regionalCensusEntryQuery[1]);
+  }
   const typeNumberQuery = query.match(/^type number (\d+)$/);
   if (typeNumberQuery) return record.typeNumber === Number(typeNumberQuery[1]);
   const holdingCodeQuery = numericLeadingHoldingCode(rawQuery);
   if (holdingCodeQuery) {
-    return numericLeadingHoldingCode(record.designation) === holdingCodeQuery ||
+    return recordSearchMasses(record).some((grams) => searchable(formatMass(grams)) === query) ||
+      numericLeadingHoldingCode(record.designation) === holdingCodeQuery ||
       (Array.isArray(record.holdings) && record.holdings.some(
         (holding) => numericLeadingHoldingCode(holding.designation) === holdingCodeQuery
       ));
@@ -553,28 +563,20 @@ function matchesSearch(record, rawQuery) {
 
   const numericQuery = String(rawQuery || "").trim();
   if (/^\d+$/.test(numericQuery)) {
-    if (record.recordModel === "table-a-specimen") {
-      const suffixMatches = /^\d{5}$/u.test(numericQuery) && record.specimenId.endsWith(numericQuery);
-      const massMatches = [record.weight?.grams, record.sourceEvidence?.tableB?.massGrams]
-        .some((grams) => String(grams) === numericQuery);
-      return suffixMatches || massMatches || record.metbull?.meteoriteCode === numericQuery;
-    }
-    if (record.catalogNumber !== undefined && searchable(record.catalogNumber).split(/\s+/).includes(numericQuery)) return true;
-    if (record.reportedNumber !== undefined && searchable(record.reportedNumber).split(/\s+/).includes(numericQuery)) return true;
-    const yearTokens = searchable([record.year, record.dateOfDiscovery, record.eventDate].filter(Boolean).join(" ")).split(/\s+/).filter(Boolean);
-    const holdingTokens = new Set(searchable((record.holdings || []).flatMap((holding) => [
-      holding.designation,
-      holding.description,
-      holding.provenance
-    ]).filter(Boolean).join(" ")).split(/\s+/).filter(Boolean));
-    return String(record.catalogItem || "") === numericQuery || String(record.entryOrder || "") === numericQuery ||
-      String(record.typeNumber || "") === numericQuery ||
-      recordDesignations(record).some((designation) => String(designation).trim() === numericQuery) ||
-      yearTokens.includes(numericQuery) || holdingTokens.has(numericQuery);
+    return (record.numericSearchTokens || numericSearchTokens(record)).has(numericQuery);
   }
 
   const parsedQuery = parseSearchQuery(rawQuery);
   if (parsedQuery.designations.length) {
+    const hasTextTerms = parsedQuery.textTerms.length > 0;
+    const exactTokenSequence = ` ${record.searchText || ""} `.includes(` ${query} `);
+    const proseHaystack = record.proseSearchText || "";
+    const proseTerms = new Set(proseHaystack.split(/\s+/));
+    const proseDesignationMatches = parsedQuery.designations.every(([first, ...remaining]) =>
+      proseTerms.has(`h${first}`) && remaining.every((segment) => proseTerms.has(segment))
+    );
+    if (hasTextTerms && (exactTokenSequence || (proseDesignationMatches &&
+      matchesTokenPrefixes(proseHaystack, parsedQuery.textTerms)))) return true;
     const recordSegments = record.designationSegmentsList || recordDesignations(record)
       .map(designationComponents)
       .filter(Boolean);
@@ -595,14 +597,12 @@ function matchesSearch(record, rawQuery) {
       record.dateOfDiscovery,
       record.eventDate
     ].filter(Boolean).join(" "));
-    if (!designationMatches) {
-      const haystackTerms = new Set(haystack.split(/\s+/));
-      return parsedQuery.designations.length === 1 &&
-        parsedQuery.textTerms.length === 0 &&
-        query.split(/\s+/).every((term) => haystackTerms.has(term));
-    }
+    if (!designationMatches) return false;
     return matchesTokenPrefixes(haystack, parsedQuery.textTerms);
   }
+
+  const exactTokenSequence = ` ${record.searchText || ""} `.includes(` ${query} `);
+  if (exactTokenSequence) return true;
 
   const queryDesignation = genericDesignation(rawQuery);
   if (queryDesignation) {
@@ -860,11 +860,12 @@ function expectedVictoriaConflicts(sourceEvidence) {
   return conflicts.sort();
 }
 
-function hasValidVictoriaSourceEvidence(value, record) {
+function hasValidVictoriaSourceEvidence(value, record, sourcePages) {
   if (!hasExactFields(value, VICTORIA_SOURCE_EVIDENCE_FIELDS) || value.primary !== "tableA" ||
       !hasExactFields(value.tableA, VICTORIA_TABLE_A_EVIDENCE_FIELDS)) return false;
   const { tableA, tableB } = value;
   if (!Number.isInteger(tableA.printedPage) || tableA.printedPage < 85 || tableA.printedPage > 88 ||
+      !sourcePages.includes(tableA.printedPage) ||
       !Number.isFinite(tableA.massGrams) || tableA.massGrams < 0 ||
       !isLeakageSafeText(tableA.classification) || tableA.classification === "") return false;
   if (![tableA.olivineFa, tableA.pyroxeneFs, tableA.weathering].every((item) =>
@@ -872,6 +873,7 @@ function hasValidVictoriaSourceEvidence(value, record) {
   if (tableB !== null) {
     if (!hasExactFields(tableB, VICTORIA_TABLE_B_EVIDENCE_FIELDS) ||
         !Number.isInteger(tableB.printedPage) || tableB.printedPage < 88 || tableB.printedPage > 94 ||
+        !sourcePages.includes(tableB.printedPage) ||
         !Number.isFinite(tableB.massGrams) || tableB.massGrams < 0 ||
         ![tableB.classification, tableB.weathering, tableB.fracturing].every((item) =>
           item === null || (item !== "" && isLeakageSafeText(item))) ||
@@ -1297,7 +1299,7 @@ function validateCatalog(catalog) {
         record[field] === null || (record[field] !== "" && isLeakageSafeText(record[field]))
       ));
       requireSchema(hasValidTableALocality(record.locality));
-      requireSchema(hasValidVictoriaSourceEvidence(record.sourceEvidence, record));
+      requireSchema(hasValidVictoriaSourceEvidence(record.sourceEvidence, record, registry[record.catalogId].sourcePages));
     } else {
       if (recordModel === "catalog-number") {
         requireSchema(record.catalogNumber !== "" && isLeakageSafeText(record.catalogNumber));
@@ -1725,6 +1727,15 @@ function lineageCollisionIdentityConsistent(left, right) {
   const leftCode = left.record.metbull?.meteoriteCode;
   const rightCode = right.record.metbull?.meteoriteCode;
   if (leftCode && rightCode) return leftCode === rightCode;
+  if (leftCode || rightCode) return true;
+  const leftNames = lineageCollisionNames(left);
+  return [...lineageCollisionNames(right)].some((name) => leftNames.has(name));
+}
+
+function lineageCollisionIdentityEquivalent(left, right) {
+  const leftCode = left.record.metbull?.meteoriteCode;
+  const rightCode = right.record.metbull?.meteoriteCode;
+  if (leftCode && rightCode) return leftCode === rightCode;
   const leftNames = lineageCollisionNames(left);
   return [...lineageCollisionNames(right)].some((name) => leftNames.has(name));
 }
@@ -1746,11 +1757,12 @@ function expectedSameInventoryRelationships(sourceRecords) {
         const laterEndpoints = later.get(inventoryId);
         if (!laterEndpoints) return;
         let pair;
-        if (earlierEndpoints.length === 1 && laterEndpoints.length === 1) {
+        if (earlierEndpoints.length === 1 && laterEndpoints.length === 1 &&
+            lineageCollisionIdentityConsistent(earlierEndpoints[0], laterEndpoints[0])) {
           pair = [earlierEndpoints[0], laterEndpoints[0]];
         } else {
           const consistent = earlierEndpoints.flatMap((left) => laterEndpoints
-            .filter((right) => lineageCollisionIdentityConsistent(left, right)).map((right) => [left, right]));
+            .filter((right) => lineageCollisionIdentityEquivalent(left, right)).map((right) => [left, right]));
           if (consistent.length !== 1) {
             omittedAmbiguousInventoryKeyCount += 1;
             return;
@@ -1775,7 +1787,7 @@ function expectedSameInventoryRelationships(sourceRecords) {
 function lineageMassEndpoints(sourceRecords) {
   const endpoints = [];
   const add = (record, massGrams, massPath) => {
-    if (!Number.isFinite(massGrams)) return;
+    if (!Number.isFinite(massGrams) || massGrams <= 0) return;
     const unresolved = record.metbull?.matchType === "unresolved";
     const identityKey = unresolved ? (record.name ? normalizeLineageName(record.name) : null) : record.metbull?.meteoriteCode;
     if (!identityKey) return;
@@ -1841,14 +1853,14 @@ function lineageMassObservationCount(sourceRecords) {
   let count = 0;
   sourceRecords.forEach((record) => {
     if (!record.metbull || typeof record.metbull !== "object") return;
-    if (record.recordModel === "specimen") count += Number.isFinite(record.weight.grams) ? 1 : 0;
+    if (record.recordModel === "specimen") count += Number.isFinite(record.weight.grams) && record.weight.grams > 0 ? 1 : 0;
     else if (record.recordModel === "table-a-specimen") {
-      count += Number.isFinite(record.weight.grams) && !record.sourceEvidence.conflicts.includes("mass") ? 1 : 0;
+      count += Number.isFinite(record.weight.grams) && record.weight.grams > 0 && !record.sourceEvidence.conflicts.includes("mass") ? 1 : 0;
     }
-    else if (record.recordModel === "catalog-item") count += record.holdings.filter((holding) => Number.isFinite(holding.weight.grams)).length;
+    else if (record.recordModel === "catalog-item") count += record.holdings.filter((holding) => Number.isFinite(holding.weight.grams) && holding.weight.grams > 0).length;
     else if (record.recordModel === "catalog-number" || record.recordModel === "collection-entry") count += record.holdings.reduce((sum, holding) =>
       WAVE1_PROJECTED_CATALOGS.has(record.catalogId) && !holding.description.startsWith("Specimen:") ? sum : sum + holding.weights.filter((weight) =>
-        Number.isFinite(weight.grams) && (!weight.kind || weight.kind === "individual-holding")).length, 0);
+        Number.isFinite(weight.grams) && weight.grams > 0 && (!weight.kind || weight.kind === "individual-holding")).length, 0);
   });
   return count;
 }
@@ -2779,6 +2791,21 @@ function prepareRecord(source, index, registry = catalogRegistry) {
       alternateNameNote: cleanText(source.metbull.alternateNameNote)
     };
   }
+  const searchMasses = recordSearchMasses(record);
+  record.numericSearchTokens = numericSearchTokens(record);
+  record.proseSearchText = searchable([
+    ...(record.holdings || []).flatMap((holding) => [holding.description, holding.provenance]),
+    record.description,
+    record.classification,
+    record.classification ? `class ${record.classification}` : null,
+    record.metbull?.alternateNameNote,
+    record.sourceEvidence?.tableB?.classification,
+    record.sourceEvidence?.tableB?.classification ? `table b class ${record.sourceEvidence.tableB.classification}` : null,
+    record.sourceEvidence?.tableB?.classificationContext,
+    record.sourceEvidence?.tableB?.weathering,
+    record.sourceEvidence?.tableB?.fracturing,
+    ...(record.sourceEvidence?.conflicts || [])
+  ].filter(Boolean).join(" "));
   record.searchText = searchable([
     record.catalogItem === undefined ? null : `catalog item ${record.catalogItem}`,
     record.catalogNumber === undefined ? null : `catalog no ${record.catalogNumber}`,
@@ -2787,6 +2814,7 @@ function prepareRecord(source, index, registry = catalogRegistry) {
     record.specimenId === undefined ? null : `specimen id ${record.specimenId}`,
     record.typeNumber === undefined ? null : `type number ${record.typeNumber}`,
     record.recordModel === "table-a-specimen" ? `reported mass ${record.weight.grams} grams` : null,
+    ...searchMasses.flatMap((grams) => [String(grams), formatMass(grams)]),
     ...recordDesignations(record),
     ...(record.holdings || []).flatMap((holding) => [
       holding.description,
@@ -2802,6 +2830,7 @@ function prepareRecord(source, index, registry = catalogRegistry) {
     record.metbull?.meteoriteCode,
     record.metbull?.alternateNameNote,
     record.classification,
+    record.classification ? `class ${record.classification}` : null,
     typeof record.locality === "string" ? record.locality : null,
     record.individualFindLocation,
     record.locality?.code,
@@ -2816,6 +2845,7 @@ function prepareRecord(source, index, registry = catalogRegistry) {
     record.weathering === undefined ? null : `weathering ${record.weathering}`,
     record.sourceEvidence?.tableB ? `table b reported mass ${record.sourceEvidence.tableB.massGrams} grams` : null,
     record.sourceEvidence?.tableB?.classification,
+    record.sourceEvidence?.tableB?.classification ? `table b class ${record.sourceEvidence.tableB.classification}` : null,
     record.sourceEvidence?.tableB?.classificationContext,
     record.sourceEvidence?.tableB?.weathering ? `table b weathering ${record.sourceEvidence.tableB.weathering}` : null,
     record.sourceEvidence?.tableB?.fracturing ? `table b fracturing ${record.sourceEvidence.tableB.fracturing}` : null,
@@ -2979,6 +3009,46 @@ function recordSchemaMasses(record) {
       : [holding.weight?.grams].filter(Number.isFinite));
   }
   return Number.isFinite(record?.weight?.grams) ? [record.weight.grams] : [];
+}
+
+function recordSearchMasses(record) {
+  return [
+    record?.weight?.grams,
+    record?.reportedTotalWeight?.grams,
+    record?.sourceEvidence?.tableB?.massGrams,
+    ...(record?.holdings || []).flatMap((holding) => [
+      holding.weight?.grams,
+      holding.reportedTotalWeight?.grams,
+      ...(holding.weights || []).map((weight) => weight.grams)
+    ]),
+    ...(record?.amendments || []).map((amendment) => amendment.targetWeight?.grams)
+  ].filter(Number.isFinite);
+}
+
+function numericSearchTokens(record) {
+  const tokens = new Set();
+  const add = (value) => {
+    const normalized = String(value ?? "");
+    if (/^\d+$/.test(normalized)) tokens.add(normalized);
+  };
+  const addNumericTokens = (value) => {
+    for (const token of searchable(value).split(/\s+/)) add(token);
+  };
+  for (const designation of recordDesignations(record)) {
+    add(designation);
+    add(searchable(designation).replace(/ /g, ""));
+  }
+  if (record?.recordModel === "table-a-specimen" && record.specimenId) add(record.specimenId.slice(-5));
+  for (const grams of recordSearchMasses(record)) add(grams);
+  add(record?.metbull?.meteoriteCode);
+  addNumericTokens(record?.catalogNumber);
+  addNumericTokens(record?.reportedNumber);
+  for (const value of [record?.catalogItem, record?.entryOrder, record?.typeNumber]) add(value);
+  addNumericTokens([record?.year, record?.dateOfDiscovery, record?.eventDate].filter(Boolean).join(" "));
+  addNumericTokens((record?.holdings || []).flatMap((holding) => [
+    holding.designation, holding.description, holding.provenance
+  ]).filter(Boolean).join(" "));
+  return tokens;
 }
 
 function recordCatalogPages(record) {
@@ -3994,6 +4064,7 @@ if (typeof module !== "undefined" && module.exports) {
     recordCatalogPages,
     recordMasses,
     recordSchemaMasses,
+    recordSearchMasses,
     resolveSpecimenCardSelection,
     resolveSpecimenCardRepeatedMass,
     resolveSpecimenCardClause,

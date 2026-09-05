@@ -128,7 +128,7 @@ test("locks the production schema11 release summary and display projection total
     schemaVersion: 11,
     catalogCount: 40,
     recordCount: 14477,
-    sourcePageCount: 1453,
+    sourcePageCount: 1459,
     citedPageCount: 1282,
     metbull: { reviewed: 11177, resolved: 10873, unresolved: 304 },
     display: {

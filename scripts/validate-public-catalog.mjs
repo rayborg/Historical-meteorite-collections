@@ -538,13 +538,14 @@ function expectedVictoriaConflicts(sourceEvidence) {
   return conflicts.sort();
 }
 
-function validateVictoriaSourceEvidence(value, record, path) {
+function validateVictoriaSourceEvidence(value, record, sourcePages, path) {
   assertExactKeys(value, VICTORIA_SOURCE_EVIDENCE_KEYS, path);
   assert(value.primary === "tableA", `${path}.primary must be tableA`);
   assertExactKeys(value.tableA, VICTORIA_TABLE_A_EVIDENCE_KEYS, `${path}.tableA`);
   const { tableA, tableB } = value;
   assert(Number.isInteger(tableA.printedPage) && tableA.printedPage >= 85 && tableA.printedPage <= 88,
     `${path}.tableA.printedPage is invalid`);
+  assert(sourcePages.has(tableA.printedPage), `${path}.tableA.printedPage is outside descriptor sourcePages`);
   assert(Number.isFinite(tableA.massGrams) && tableA.massGrams >= 0, `${path}.tableA.massGrams is invalid`);
   assertString(tableA.classification, `${path}.tableA.classification`);
   for (const field of ["olivineFa", "pyroxeneFs", "weathering"]) {
@@ -554,6 +555,7 @@ function validateVictoriaSourceEvidence(value, record, path) {
     assertExactKeys(tableB, VICTORIA_TABLE_B_EVIDENCE_KEYS, `${path}.tableB`);
     assert(Number.isInteger(tableB.printedPage) && tableB.printedPage >= 88 && tableB.printedPage <= 94,
       `${path}.tableB.printedPage is invalid`);
+    assert(sourcePages.has(tableB.printedPage), `${path}.tableB.printedPage is outside descriptor sourcePages`);
     assert(Number.isFinite(tableB.massGrams) && tableB.massGrams >= 0, `${path}.tableB.massGrams is invalid`);
     for (const field of ["classification", "weathering", "fracturing"]) {
       assertString(tableB[field], `${path}.tableB.${field}`, true);
@@ -786,7 +788,7 @@ function validatePublicCatalog(data, folios, path = "catalog") {
         assertString(record[field], `${recordPath}.${field}`, true);
       }
       validateTableALocality(record.locality, `${recordPath}.locality`);
-      validateVictoriaSourceEvidence(record.sourceEvidence, record, `${recordPath}.sourceEvidence`);
+      validateVictoriaSourceEvidence(record.sourceEvidence, record, catalog.sourcePages, `${recordPath}.sourceEvidence`);
     } else if (recordModel === "dealer-offer-fact") {
       assert(Number.isInteger(record.typeNumber) && record.typeNumber > 0,
         `${recordPath}.typeNumber must be a positive integer`);
@@ -878,6 +880,10 @@ function validatePublicCatalog(data, folios, path = "catalog") {
     assert(individualFindLocationCount === 111,
       `${path} must contain exactly 111 specimen individualFindLocation values`);
     const victoria = data.records.filter(({ catalogId }) => catalogId === "victoria-land-1982");
+    const victoriaDescriptor = metadataByCatalog.get("victoria-land-1982").descriptor;
+    assert(JSON.stringify(victoriaDescriptor.sourcePages) === "[85,86,87,88,89,90,91,92,93,94]" &&
+      victoriaDescriptor.sourcePageCount === 10,
+    `${path} Victoria descriptor must cover printed pages 85-94`);
     assert(victoria.length === 273, `${path} must contain exactly 273 Victoria Table A specimens`);
     assert(victoria.every((record) => record.name === record.specimenId &&
       record.metbull?.matchType === "official-abbreviation"),
@@ -912,6 +918,12 @@ function validatePublicCatalog(data, folios, path = "catalog") {
     assert(createHash("sha256").update(JSON.stringify(victoria)).digest("hex") ===
       "c427fa0bf07a8ce57c01d4520fc3b2eb2c2aa7483f1d8bf5d7f8bce483f96806",
     `${path} Victoria public records differ from the accepted schema 11 package`);
+    const elCapitan = data.records.find(({ id }) => id === "obs-68c7e39b-9d99-4f9a-a1d2-7b2374d76d47");
+    assert(JSON.stringify(elCapitan?.holdings[0]?.weights) === "[{\"grams\":66},{\"grams\":753},{\"grams\":4000}]",
+      `${path} Merrill El Capitan masses differ from the audited correction`);
+    const mantosBlancos = data.records.find(({ id }) => id === "obs-38554aa8-007c-447f-9410-91d447f74149");
+    assert(mantosBlancos?.classification === "Siderite: Fine octahedrite, Of.",
+      `${path} Reeds Mantos Blancos classification differs from the audited correction`);
   }
   for (const [catalogId, { descriptor, path: descriptorPath, sourcePages }] of metadataByCatalog) {
     const stats = statsByCatalog.get(catalogId);
