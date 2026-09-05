@@ -104,6 +104,14 @@ test("every production display descriptor has the closed harmonized DTO and exac
   assert.equal(descriptors.length, 19477);
 });
 
+test("semantic type labels are hidden for specimens and retained for observations", () => {
+  assert.equal(app.shouldDisplaySemanticLabel("direct-specimen"), false);
+  assert.equal(app.shouldDisplaySemanticLabel("projected-atomic-specimen"), false);
+  assert.equal(app.shouldDisplaySemanticLabel("collection-observation"), true);
+  assert.equal(app.shouldDisplaySemanticLabel("regional-observation"), true);
+  assert.equal(app.shouldDisplaySemanticLabel("dealer-observation"), true);
+});
+
 test("every production card uses the approved fact order, values, missing behavior, and current-name suppression", () => {
   const missing = {};
   let specimenCount = 0;
@@ -404,13 +412,13 @@ test("accessible shell, responsive breakpoints, approved cache, and immutable da
   assert.match(styles, /@media \(max-width: 700px\)[\s\S]*\.catalog-grid \{ grid-template-columns: 1fr; \}/u);
   assert.match(styles, /@media \(max-width: 420px\)[\s\S]*\.record-card \{ padding-inline: 1rem; \}/u);
   assert.doesNotMatch(styles, /\.record-meta dt \{[^}]*overflow-wrap: anywhere;/u);
-  assert.equal(app.CACHE_VERSION, "20260904-victoria-public-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260904-victoria-public-1");
+  assert.equal(app.CACHE_VERSION, "20260905-hide-specimen-label-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260905-hide-specimen-label-1");
   for (const document of [html, catalogsHtml]) {
-    assert.match(document, /styles\.css\?v=20260904-victoria-public-1/u);
-    assert.match(document, /app\.js\?v=20260904-victoria-public-1/u);
+    assert.match(document, /styles\.css\?v=20260905-hide-specimen-label-1/u);
+    assert.match(document, /app\.js\?v=20260905-hide-specimen-label-1/u);
   }
-  assert.match(catalogsHtml, /catalogs\.js\?v=20260904-victoria-public-1/u);
+  assert.match(catalogsHtml, /catalogs\.js\?v=20260905-hide-specimen-label-1/u);
   assert.deepEqual({
     catalog: sha256(catalogText),
     projections: sha256(projectionText),

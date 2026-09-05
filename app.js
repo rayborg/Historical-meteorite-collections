@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260904-victoria-public-1";
+const CACHE_VERSION = "20260905-hide-specimen-label-1";
 const ASSET_CACHE_VERSION = CACHE_VERSION;
 const CATALOG_SCHEMA_VERSION = 11;
 const CATALOG_RECORD_COUNT = 14477;
@@ -3246,6 +3246,10 @@ function classifyHarmonizedCard(recordOrDescriptor) {
   return record.recordModel === "dealer-offer-fact" ? HARMONIZED_CARD_KINDS.dealer : null;
 }
 
+function shouldDisplaySemanticLabel(kind) {
+  return kind !== HARMONIZED_CARD_KINDS.specimen && kind !== HARMONIZED_CARD_KINDS.atomic;
+}
+
 function harmonizedCardIdentifier(record, kind, descriptor = null) {
   if (kind === HARMONIZED_CARD_KINDS.atomic) {
     return specimenCardHolding(record, descriptor?.holdingPath)?.holding?.designation || "Unknown";
@@ -3384,8 +3388,9 @@ function createRecordCard(recordOrDescriptor) {
   card.classList.toggle("observation-card", [HARMONIZED_CARD_KINDS.collection, HARMONIZED_CARD_KINDS.regional, HARMONIZED_CARD_KINDS.dealer].includes(dto.kind));
   card.querySelector(".designation").textContent = displayText(dto.identifier);
   const semanticLabel = card.querySelector(".record-semantic-label, .record-model-label");
-  semanticLabel.textContent = dto.semanticLabel;
-  semanticLabel.hidden = false;
+  const displaySemanticLabel = shouldDisplaySemanticLabel(dto.kind);
+  semanticLabel.textContent = displaySemanticLabel ? dto.semanticLabel : "";
+  semanticLabel.hidden = !displaySemanticLabel;
   card.querySelector(".source-name-label").textContent = dto.kind === HARMONIZED_CARD_KINDS.dealer
     ? "Source catalog name" : "Source catalog meteorite name";
   card.querySelector(".record-name").textContent = displayText(dto.sourceName);
@@ -3995,6 +4000,7 @@ if (typeof module !== "undefined" && module.exports) {
     resolveSpecimenCardComponent,
     searchable,
     secureRandomInteger,
+    shouldDisplaySemanticLabel,
     sha256Text,
     sha256TextSync,
     serializeUrlFilters,

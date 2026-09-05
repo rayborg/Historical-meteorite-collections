@@ -391,9 +391,9 @@ test("rendering is text-only, omits context cards, and synchronizes cache keys",
   assert.match(html, /<p class="record-semantic-label"><\/p>/u);
   assert.match(html, /<dl class="record-meta" aria-label="Catalog record details"><\/dl>/u);
   assert.doesNotMatch(html, /specimen-position|record-holdings|earlier-records/u);
-  assert.match(html, /styles\.css\?v=20260904-victoria-public-1/u);
-  assert.match(html, /app\.js\?v=20260904-victoria-public-1/u);
-  assert.equal(app.ASSET_CACHE_VERSION, "20260904-victoria-public-1");
+  assert.match(html, /styles\.css\?v=20260905-hide-specimen-label-1/u);
+  assert.match(html, /app\.js\?v=20260905-hide-specimen-label-1/u);
+  assert.equal(app.ASSET_CACHE_VERSION, "20260905-hide-specimen-label-1");
 });
 
 test("production schema-4 projection fixture validates against schema 11", () => {

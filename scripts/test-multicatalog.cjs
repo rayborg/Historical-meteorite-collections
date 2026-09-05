@@ -977,8 +977,8 @@ test("URL filters strictly round-trip lineage and unknown-weight state", () => {
   for (const search of ["", "?weighted=0", "?weighted=true", "?weighted=1&weighted=1", "?weighted=1&weighted=0"]) {
     assert.equal(app.parseUrlFilters(search, registry).includeUnknownWeight, true, search);
   }
-  assert.equal(app.CACHE_VERSION, "20260904-victoria-public-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260904-victoria-public-1");
+  assert.equal(app.CACHE_VERSION, "20260905-hide-specimen-label-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260905-hide-specimen-label-1");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.ASSET_CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.ASSET_CACHE_VERSION}`));
 });
