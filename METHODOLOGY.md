@@ -150,6 +150,23 @@ associated components separately. Victoria Land keeps its primary table at the
 top level, preserves normalized secondary-table conflicts, and excludes
 mass-conflict records from computed candidates.
 
+Fletcher's British Museum lists use `collection-representation-fact`. Each
+principal numbered or suffixed row remains one edition-local observation. List
+numbers and pane/case labels are finding context, not inventory; represented
+weights are source context, not atomic holdings or specimen masses. Multiple
+printed values remain ordered text components with no scalar grams value. The
+model therefore has no holdings and is excluded from specimen-card projection,
+mass-range filtering, same-inventory continuity, and lineage generation.
+
+Fletcher corrections begin in the private accepted source-first evidence, not
+in this public repository. A corrected release must re-adjudicate exact source
+evidence, regenerate the canonical catalog and crosswalk, export twice
+byte-identically, and repeat suffix, adjunct-exclusion, pane, multiweight, page,
+privacy, projection, lineage, and folio-denial checks. Public IDs intentionally
+do not reveal private source UUIDs. The unavailable 1886 historical manifest
+and the 1908 TXT/HTML page-binding evidence remain private provenance rather
+than public folios or claims about scan media.
+
 ## 7. Reviewed MetBull Identity
 
 MetBull harmonization is additive. The historical source name and every other

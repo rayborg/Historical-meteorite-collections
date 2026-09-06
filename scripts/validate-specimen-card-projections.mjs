@@ -4,8 +4,8 @@ import { pathToFileURL } from "node:url";
 
 const LOCKS = Object.freeze({
   catalogSchemaVersion: 11,
-  sourceRecordCount: 15753,
-  sourceCatalogSha256: "0fc4c08011747a2a33e3a884f700c6e9a04e8b3b35ed21e5848f41f6f61bd1a6",
+  sourceRecordCount: 18217,
+  sourceCatalogSha256: "139204292af05a7fa0b33bb71e4228faebf750436de41790cfb68c4b63cec7c0",
   projectionCount: 3062,
   atomicCardCount: 8062,
   legacyMassBoundCardCount: 6656,

@@ -377,8 +377,8 @@ test("digest lock loads the exact set and fails closed to parent cards on mismat
   const altered = structuredClone(manifest);
   altered.projections[0].cards[0].clause.end -= 1;
   assert.equal((await app.loadSpecimenCardProjectionIndex(records, async () => projectionResponse(altered), options)).size, 0);
-  assert.equal(app.SPECIMEN_CARD_SOURCE_CATALOG_SHA256, "0fc4c08011747a2a33e3a884f700c6e9a04e8b3b35ed21e5848f41f6f61bd1a6");
-  assert.equal(app.SPECIMEN_CARD_PROJECTION_DATA_SHA256, "84da050bb4e0c4b5e9849cdec65257316ab0a02205f2ae3159de345c40069152");
+  assert.equal(app.SPECIMEN_CARD_SOURCE_CATALOG_SHA256, "139204292af05a7fa0b33bb71e4228faebf750436de41790cfb68c4b63cec7c0");
+  assert.equal(app.SPECIMEN_CARD_PROJECTION_DATA_SHA256, "8ef67a79e5c0911bc71e981ed86bc078951e3aa45b920caaceb89ba847353079");
   assert.equal(app.SPECIMEN_CARD_PROJECTION_SET_SHA256, "7a37c5791373bb1613fc7180931e8dfe155868909785a976273e4b64e307d787");
 });
 
@@ -391,9 +391,9 @@ test("rendering is text-only, omits context cards, and synchronizes cache keys",
   assert.match(html, /<p class="record-semantic-label"><\/p>/u);
   assert.match(html, /<dl class="record-meta" aria-label="Catalog record details"><\/dl>/u);
   assert.doesNotMatch(html, /specimen-position|record-holdings|earlier-records/u);
-  assert.match(html, /styles\.css\?v=20260905-catalog-wave2-1/u);
-  assert.match(html, /app\.js\?v=20260905-catalog-wave2-1/u);
-  assert.equal(app.ASSET_CACHE_VERSION, "20260905-catalog-wave2-1");
+  assert.match(html, /styles\.css\?v=20260906-fletcher-editions-1/u);
+  assert.match(html, /app\.js\?v=20260906-fletcher-editions-1/u);
+  assert.equal(app.ASSET_CACHE_VERSION, "20260906-fletcher-editions-1");
 });
 
 test("production schema-4 projection fixture validates against schema 11", () => {
@@ -438,8 +438,8 @@ test("Madrid runtime keeps parent statistics while loading reviewed atomic cards
   const loadedRelationshipIds = new Set([...lineageIndex.values()].flatMap((entries) =>
     entries.map(({ relationshipId }) => relationshipId)));
 
-  assert.equal(app.calculateStatistics(records).observations, 15753);
-  assert.equal(app.calculateStatistics(records).catalogs, 44);
+  assert.equal(app.calculateStatistics(records).observations, 18217);
+  assert.equal(app.calculateStatistics(records).catalogs, 49);
   assert.equal(madridRecords.filter(({ id }) => projectionIndex.has(id)).length, 23);
   assert.equal(madridDescriptors.filter(({ kind }) => kind === "atomic").length, 54);
   assert.equal(madridDescriptors.filter(({ kind }) => kind === "context").length, 0);

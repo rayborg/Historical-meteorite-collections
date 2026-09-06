@@ -4,8 +4,8 @@
     "scope": "series-inventory-and-cross-source-candidates",
     "source": {
       "catalogSchemaVersion": 11,
-      "recordCount": 15753,
-      "catalogCount": 44,
+      "recordCount": 18217,
+      "catalogCount": 49,
       "flattenedMassObservationCount": 16816,
       "inventoryObservationCount": 3627,
       "sourceClaimsSchemaVersion": 1,

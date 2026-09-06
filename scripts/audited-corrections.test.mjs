@@ -69,12 +69,12 @@ function projectionSemantics() {
 }
 
 test("CF001 installs the exact accepted catalog bytes", () => {
-  assert.equal(sha256(catalogText), "0fc4c08011747a2a33e3a884f700c6e9a04e8b3b35ed21e5848f41f6f61bd1a6");
-  assert.deepEqual([catalog.records.length, catalog.metadata.catalogs.length], [15753, 44]);
+  assert.equal(sha256(catalogText), "139204292af05a7fa0b33bb71e4228faebf750436de41790cfb68c4b63cec7c0");
+  assert.deepEqual([catalog.records.length, catalog.metadata.catalogs.length], [18217, 49]);
 });
 
 test("CF002 installs the exact accepted folio and source-claims bytes", () => {
-  assert.equal(sha256(foliosText), "5e9a7729cff93545aa15c5f758bdef66b0f5da584b9c39349d46961ae7eda29c");
+  assert.equal(sha256(foliosText), "ed23bc9af5bb73eb932fd928f7d46b02379265bbeb43911d44004aa4cddacdd5");
   assert.equal(sha256(sourceClaimsText), "edb201339e9e1068ac45d3333a9224959b4dcdbf8e317afcbb0657c6635b85fb");
   assert.equal(sourceClaims.claims.length, 21);
 });
@@ -130,8 +130,8 @@ test("CF009 projections retain exact counts and source semantics after rebinding
     schemaVersion: 4,
     scope: "reviewed-atomic-specimen-card-display-projections",
     catalogSchemaVersion: 11,
-    sourceRecordCount: 15753,
-    sourceCatalogSha256: "0fc4c08011747a2a33e3a884f700c6e9a04e8b3b35ed21e5848f41f6f61bd1a6",
+    sourceRecordCount: 18217,
+    sourceCatalogSha256: "139204292af05a7fa0b33bb71e4228faebf750436de41790cfb68c4b63cec7c0",
     projectionCount: 3062,
     atomicCardCount: 8062,
     sourceContextCardCount: 2532,
@@ -152,14 +152,15 @@ test("CF010 preserves non-target data, privacy, cache, and label behavior", () =
     "obs-68c7e39b-9d99-4f9a-a1d2-7b2374d76d47",
     "obs-38554aa8-007c-447f-9410-91d447f74149",
   ]);
-  assert.equal(sha256(JSON.stringify(catalog.records.filter(({ id }) => !correctedRecordIds.has(id)))),
+  const fletcherCatalogIds = new Set(["fletcher-1886", "fletcher-1894", "fletcher-1896", "fletcher-1904", "fletcher-1908"]);
+  assert.equal(sha256(JSON.stringify(catalog.records.filter(({ id, catalogId }) => !correctedRecordIds.has(id) && !fletcherCatalogIds.has(catalogId)))),
     "70adb9273cc7b7b8a740bd16a8f8a70440de7a0acc7218c40ffdb96907d1a73b");
-  assert.equal(sha256(JSON.stringify(catalog.metadata.catalogs.filter(({ id }) => id !== "victoria-land-1982"))),
+  assert.equal(sha256(JSON.stringify(catalog.metadata.catalogs.filter(({ id }) => id !== "victoria-land-1982" && !fletcherCatalogIds.has(id)))),
     "62d82f6d4b38643e55f49f78734ab0523aa7a2a52d2116b1a4aae0ee0e86c932");
   assert.doesNotMatch(catalogText + sourceClaimsText + projectionText,
     /(?:\/private\/|\/Users\/|file:\/\/|sourcePath|sourceFile|rawRowText|raw\s+ocr)/iu);
-  assert.equal(app.CACHE_VERSION, "20260905-catalog-wave2-1");
-  for (const html of [indexHtml, catalogsHtml]) assert.match(html, /20260905-catalog-wave2-1/u);
+  assert.equal(app.CACHE_VERSION, "20260906-fletcher-editions-1");
+  for (const html of [indexHtml, catalogsHtml]) assert.match(html, /20260906-fletcher-editions-1/u);
   assert.equal(app.shouldDisplaySemanticLabel("direct-specimen"), false);
   assert.equal(app.shouldDisplaySemanticLabel("projected-atomic-specimen"), false);
   assert.equal(app.shouldDisplaySemanticLabel("collection-observation"), true);

@@ -79,10 +79,10 @@ test("main template presents lineage through the harmonized specimen contract", 
   });
   assert.doesNotMatch(source, /\.innerHTML\b/);
   assert.doesNotMatch(css, /\.earlier-records \{/);
-  assert.equal(app.CACHE_VERSION, "20260905-catalog-wave2-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260905-catalog-wave2-1");
-  assert.match(html, /styles\.css\?v=20260905-catalog-wave2-1/);
-  assert.match(html, /app\.js\?v=20260905-catalog-wave2-1/);
+  assert.equal(app.CACHE_VERSION, "20260906-fletcher-editions-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260906-fletcher-editions-1");
+  assert.match(html, /styles\.css\?v=20260906-fletcher-editions-1/);
+  assert.match(html, /app\.js\?v=20260906-fletcher-editions-1/);
   for (const file of ["possible-specimen-lineages.html", "possible-specimen-lineages.css", "possible-specimen-lineages.js"]) {
     await assert.rejects(access(path.join(projectRoot, file)));
   }
@@ -136,11 +136,11 @@ test("real catalog Allende search retains reviewed names and synonyms without Al
 
 test("real release locks all catalogs and chronological dropdown entries", () => {
   const entries = app.catalogSelectorEntries(registry);
-  assert.equal(entries.length, 44);
+  assert.equal(entries.length, 49);
   assert.deepEqual(entries.map(([id]) => id), [
     "lucas-1813", "chladni-1819", "chladni-1825", "haidinger-1859", "buchner-1863",
-    "nordenskiold-1870", "ward-1881", "ball-1882", "usnm-1886", "minnesota-1892", "greifswald-1895", "hovey-1896", "washington-1897",
-    "greifswald-1901", "tassin-1902", "hogbom-1902", "farrington-1903", "berlin-1903", "ward-1904", "berlin-1904", "foote-1909", "schreiter-1912", "foote-1912",
+    "nordenskiold-1870", "ward-1881", "ball-1882", "fletcher-1886", "usnm-1886", "minnesota-1892", "fletcher-1894", "greifswald-1895", "fletcher-1896", "hovey-1896", "washington-1897",
+    "greifswald-1901", "tassin-1902", "hogbom-1902", "farrington-1903", "berlin-1903", "fletcher-1904", "ward-1904", "berlin-1904", "fletcher-1908", "foote-1909", "schreiter-1912", "foote-1912",
     "anderson-1913", "hamburg-1913", "brown-1916", "farrington-1916", "merrill-1916", "kantor-1920", "prior-1923", "madrid-1923", "palache-1926",
     "nininger-1933", "reeds-1937", "astapovich-1938", "hodge-smith-1939", "barnes-1940", "nininger-1950", "mason-1964",
     "huss-1976", "victoria-land-1982", "huss-1986", "kanagawa-1996", "asu-2024-09",
@@ -153,6 +153,7 @@ test("real release locks all catalogs and chronological dropdown entries", () =>
   assert.equal(app.catalogDropdownLabel(registry["ward-1904"], "ward-1904"), "Ward (1904)");
   assert.equal(app.catalogDropdownLabel(registry["farrington-1916"], "farrington-1916"), "Farrington (1916)");
   assert.equal(app.catalogDropdownLabel(registry["foote-1912"], "foote-1912"), "Foote (1912)");
+  assert.equal(app.catalogDropdownLabel(registry["fletcher-1904"], "fletcher-1904"), "Fletcher (1904)");
   assert.equal(app.catalogDropdownLabel(registry["prior-1923"], "prior-1923"), "Prior (1923)");
   assert.equal(app.catalogDropdownLabel(registry["madrid-1923"], "madrid-1923"), "Madrid (1923)");
   assert.equal(app.catalogDropdownLabel(registry["palache-1926"], "palache-1926"), "Palache (1926)");
@@ -402,7 +403,7 @@ test("optional fetch failures and malformed payloads return an empty enhancement
   }), { sha256 });
   assert.equal(entryCount(loaded), 2501);
   assert.equal(app.SPECIMEN_LINEAGE_DATA_SHA256,
-    "72f7013edad00c286671c96774734f688e70e4d0e742753948380f1351a2ffe6");
+    "8529a4823eba3541c9dd0a0d44e2fb7275c40613b248be2fabfbf955679f1d37");
   for (const mutate of forgedFactMutations) {
     const forged = clone(lineageData);
     mutate(forged);

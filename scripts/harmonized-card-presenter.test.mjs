@@ -33,12 +33,14 @@ const STANDARD_SPECIMEN_LABELS = [
   "Individual find location", "Event", "Lineage", "Specimen weight"
 ];
 const STANDARD_OBSERVATION_LABELS = ["Class", "Source locality", "Event"];
+const FLETCHER_LABELS = ["Section", "Pane or case", "Reference", "Represented weight"];
 const SEMANTIC_LABELS = {
   "direct-specimen": "Specimen.",
   "projected-atomic-specimen": "Individual specimen.",
   "collection-observation": "Collection catalog observation; not asserted here as one individual specimen.",
   "regional-observation": "Regional census/catalog observation, not a specimen or holding.",
   "dealer-observation": "Dealer catalog observation, not a specimen or holding",
+  "collection-representation-observation": "Collection representation observation; not a specimen, holding, or inventory identity.",
 };
 
 function sha256(value) {
@@ -68,6 +70,7 @@ function expectedIdentifier(descriptor, kind) {
   if (record.recordModel === "regional-census-fact") {
     return record.reportedNumber ? `Source number ${record.reportedNumber}` : `Regional census entry ${record.entryOrder}`;
   }
+  if (record.recordModel === "collection-representation-fact") return `List no. ${record.reportedNumber}`;
   if (record.recordModel === "table-a-specimen") return record.specimenId || "Unknown";
   if (record.recordModel === "dealer-offer-fact") return `Type number ${record.typeNumber}`;
   return record.designation || "Unknown";
@@ -75,7 +78,7 @@ function expectedIdentifier(descriptor, kind) {
 
 function expectedEvent(record) {
   if (record.recordModel === "catalog-number") return record.dateOfDiscovery;
-  if (["collection-entry", "regional-census-fact"].includes(record.recordModel)) return record.eventDate;
+  if (["collection-entry", "regional-census-fact", "collection-representation-fact"].includes(record.recordModel)) return record.eventDate;
   if (["specimen", "catalog-item"].includes(record.recordModel)) return record.year;
   return null;
 }
@@ -100,8 +103,9 @@ test("every production display descriptor has the closed harmonized DTO and exac
     "direct-specimen": 5742,
     "regional-observation": 84,
     "dealer-observation": 6,
+    "collection-representation-observation": 2464,
   });
-  assert.equal(descriptors.length, 20753);
+  assert.equal(descriptors.length, 23217);
 });
 
 test("semantic type labels are hidden for specimens and retained for observations", () => {
@@ -110,6 +114,7 @@ test("semantic type labels are hidden for specimens and retained for observation
   assert.equal(app.shouldDisplaySemanticLabel("collection-observation"), true);
   assert.equal(app.shouldDisplaySemanticLabel("regional-observation"), true);
   assert.equal(app.shouldDisplaySemanticLabel("dealer-observation"), true);
+  assert.equal(app.shouldDisplaySemanticLabel("collection-representation-observation"), true);
 });
 
 test("every production card uses the approved fact order, values, missing behavior, and current-name suppression", () => {
@@ -123,7 +128,8 @@ test("every production card uses the approved fact order, values, missing behavi
       ? record.metbull.canonicalName : null;
     const expectedLabels = specimen
       ? [...STANDARD_SPECIMEN_LABELS, ...app.victoriaConflictFacts(record).map(({ label }) => label)]
-      : [...(currentName ? ["Current Meteoritical Bulletin name"] : []), ...STANDARD_OBSERVATION_LABELS];
+      : [...(currentName ? ["Current Meteoritical Bulletin name"] : []), ...STANDARD_OBSERVATION_LABELS,
+        ...(record.recordModel === "collection-representation-fact" ? FLETCHER_LABELS : [])];
     assert.deepEqual(dto.facts.map(({ label }) => label), expectedLabels, record.id);
     assert.equal(dto.sourceName, record.name || "Unknown", record.id);
     assert.equal(fact(dto, "Current Meteoritical Bulletin name"), specimen
@@ -283,7 +289,7 @@ test("representative corrected and unresolved specimen cards preserve the comple
 
 test("catalog-specific source facts stay out of cards while representative hidden facts remain searchable", () => {
   const allowed = new Set([
-    "Current Meteoritical Bulletin name", ...STANDARD_SPECIMEN_LABELS, ...STANDARD_OBSERVATION_LABELS
+    "Current Meteoritical Bulletin name", ...STANDARD_SPECIMEN_LABELS, ...STANDARD_OBSERVATION_LABELS, ...FLETCHER_LABELS
   ]);
   for (const descriptor of descriptors) {
     assert(present(descriptor).facts.every(({ label }) => allowed.has(label) ||
@@ -302,6 +308,12 @@ test("catalog-specific source facts stay out of cards while representative hidde
   for (const record of records.filter(({ recordModel }) => recordModel === "regional-census-fact")) {
     assert.equal(app.matchesSearch(record, record.section), true, record.id);
   }
+  for (const record of records.filter(({ recordModel }) => recordModel === "collection-representation-fact")) {
+    assert.equal(app.matchesSearch(record, record.section), true, record.id);
+    if (record.pane) assert.equal(app.matchesSearch(record, `pane ${record.pane}`), true, record.id);
+    if (record.reference) assert.equal(app.matchesSearch(record, `reference ${record.reference}`), true, record.id);
+    if (record.representedWeight.valueText) assert.equal(app.matchesSearch(record, `represented weight ${record.representedWeight.valueText}`), true, record.id);
+  }
   const hamburg = records.find(({ catalogId, name }) => catalogId === "hamburg-1913" && name === "Stannern");
   assert.equal(app.matchesSearch(hamburg, "reported total"), true);
   assert.equal(app.matchesSearch(hamburg, "Representations: 2 thin sections"), true);
@@ -314,8 +326,8 @@ test("projection changes display-card multiplicity without changing parent resul
     query: "", catalog: null, min: null, max: null,
     lineageOnly: false, includeUnknownWeight: true, sort: app.DEFAULT_SORT
   };
-  assert.equal(app.filterRecords(records, filters, lineageIndex).length, 15753);
-  assert.equal(new Set(descriptors.map(({ parentRecord }) => parentRecord.id)).size, 15753);
+  assert.equal(app.filterRecords(records, filters, lineageIndex).length, 18217);
+  assert.equal(new Set(descriptors.map(({ parentRecord }) => parentRecord.id)).size, 18217);
   for (const descriptor of catalog.metadata.catalogs) {
     const parents = app.filterRecords(records, { ...filters, catalog: descriptor.id }, lineageIndex);
     assert.equal(parents.length, descriptor.recordCount, descriptor.id);
@@ -331,8 +343,8 @@ test("unknown-weight toggle excludes only the 173 weightless specimen cards", ()
   const weightedOnly = app.filterSpecimenCardDescriptors(descriptors, {
     min: null, max: null, lineageOnly: false, includeUnknownWeight: false
   }, lineageIndex);
-  assert.equal(inclusive.length, 20753);
-  assert.equal(weightedOnly.length, 20580);
+  assert.equal(inclusive.length, 23217);
+  assert.equal(weightedOnly.length, 23044);
   assert.equal(inclusive.length - weightedOnly.length, 173);
   assert(weightedOnly.every((descriptor) => {
     const kind = app.classifyHarmonizedCard(descriptor);
@@ -340,7 +352,7 @@ test("unknown-weight toggle excludes only the 173 weightless specimen cards", ()
       app.specimenCardDescriptorHasKnownWeight(descriptor);
   }));
   assert.equal(weightedOnly.filter((descriptor) =>
-    ["collection-observation", "regional-observation", "dealer-observation"].includes(app.classifyHarmonizedCard(descriptor))).length, 6949);
+    ["collection-observation", "regional-observation", "dealer-observation", "collection-representation-observation"].includes(app.classifyHarmonizedCard(descriptor))).length, 9413);
 
   const byParent = Map.groupBy(descriptors, ({ parentRecord }) => parentRecord.id);
   const mixed = [...byParent.values()].find((cards) => {
@@ -412,22 +424,22 @@ test("accessible shell, responsive breakpoints, approved cache, and immutable da
   assert.match(styles, /@media \(max-width: 700px\)[\s\S]*\.catalog-grid \{ grid-template-columns: 1fr; \}/u);
   assert.match(styles, /@media \(max-width: 420px\)[\s\S]*\.record-card \{ padding-inline: 1rem; \}/u);
   assert.doesNotMatch(styles, /\.record-meta dt \{[^}]*overflow-wrap: anywhere;/u);
-  assert.equal(app.CACHE_VERSION, "20260905-catalog-wave2-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260905-catalog-wave2-1");
+  assert.equal(app.CACHE_VERSION, "20260906-fletcher-editions-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260906-fletcher-editions-1");
   for (const document of [html, catalogsHtml]) {
-    assert.match(document, /styles\.css\?v=20260905-catalog-wave2-1/u);
-    assert.match(document, /app\.js\?v=20260905-catalog-wave2-1/u);
+    assert.match(document, /styles\.css\?v=20260906-fletcher-editions-1/u);
+    assert.match(document, /app\.js\?v=20260906-fletcher-editions-1/u);
   }
-  assert.match(catalogsHtml, /catalogs\.js\?v=20260905-catalog-wave2-1/u);
+  assert.match(catalogsHtml, /catalogs\.js\?v=20260906-fletcher-editions-1/u);
   assert.deepEqual({
     catalog: sha256(catalogText),
     projections: sha256(projectionText),
     lineages: sha256(lineageText),
     reviews: sha256(reviewText),
   }, {
-    catalog: "0fc4c08011747a2a33e3a884f700c6e9a04e8b3b35ed21e5848f41f6f61bd1a6",
-    projections: "84da050bb4e0c4b5e9849cdec65257316ab0a02205f2ae3159de345c40069152",
-    lineages: "72f7013edad00c286671c96774734f688e70e4d0e742753948380f1351a2ffe6",
+    catalog: "139204292af05a7fa0b33bb71e4228faebf750436de41790cfb68c4b63cec7c0",
+    projections: "8ef67a79e5c0911bc71e981ed86bc078951e3aa45b920caaceb89ba847353079",
+    lineages: "8529a4823eba3541c9dd0a0d44e2fb7275c40613b248be2fabfbf955679f1d37",
     reviews: "8262150ef01a0996d9f63ab0b3234e3d927d1d49c9200861778d763a2034963f",
   });
 });

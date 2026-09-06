@@ -206,8 +206,8 @@ export function flattenMassObservations(catalog) {
     const descriptor = descriptors.get(record.catalogId);
     assert(descriptor, `record ${record.id} refers to unknown catalog ${record.catalogId}`);
     if (!record.metbull || typeof record.metbull !== "object") continue;
-    if (descriptor.recordModel === "regional-census-fact") {
-      // Regional representation facts do not identify physical specimens or report specimen masses.
+    if (["regional-census-fact", "collection-representation-fact", "dealer-offer-fact"].includes(descriptor.recordModel)) {
+      // Context-only facts do not identify physical specimens or report specimen masses.
       continue;
     }
     if (descriptor.recordModel === "specimen") {

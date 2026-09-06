@@ -26,6 +26,8 @@ function numericQueries() {
       record.description, record.classification, typeof record.locality === "string" ? record.locality : null,
       record.locality?.code, record.locality?.name, record.locality?.areaReferenceCoordinate,
       record.individualFindLocation, record.year, record.dateOfDiscovery, record.eventDate, record.section,
+      record.pane, record.reference, record.representedWeight?.valueText,
+      ...(record.representedWeight?.componentTexts || []),
       record.weight?.grams, record.olivineFa, record.pyroxeneFs, record.weathering,
       record.metbull?.canonicalName, record.metbull?.meteoriteCode, record.metbull?.alternateNameNote,
       record.reportedTotalWeight?.grams, record.publicationState
@@ -83,6 +85,10 @@ function expectedNumericTokens(record) {
   add(record.metbull?.meteoriteCode);
   addTokens(record.catalogNumber);
   addTokens(record.reportedNumber);
+  addTokens(record.pane);
+  addTokens(record.reference);
+  addTokens(record.representedWeight?.valueText);
+  for (const componentText of record.representedWeight?.componentTexts || []) addTokens(componentText);
   for (const value of [record.catalogItem, record.entryOrder, record.typeNumber]) add(value);
   addTokens([record.year, record.dateOfDiscovery, record.eventDate].filter(Boolean).join(" "));
   addTokens((record.holdings || []).flatMap((holding) => [
@@ -150,7 +156,7 @@ test("every resolved MetBull code owner and displayed regional identifier is sea
   const resolved = records.filter(({ metbull }) => metbull && metbull.matchType !== "unresolved");
   const regional = records.filter(({ recordModel }) => recordModel === "regional-census-fact");
   const numbered = regional.filter(({ reportedNumber }) => reportedNumber);
-  assert.equal(resolved.length, 11768);
+  assert.equal(resolved.length, 13400);
   assert.equal(regional.length, 84);
   assert.equal(numbered.length, 77);
   for (const record of resolved) assert.equal(app.matchesSearch(record, record.metbull.meteoriteCode), true, record.id);

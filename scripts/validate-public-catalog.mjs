@@ -93,6 +93,10 @@ const VICTORIA_CONFLICT_FIELDS = ["classification", "mass", "weathering"];
 const DEALER_OFFER_FACT_KEYS = [
   "id", "catalogId", "typeNumber", "name", "description", "catalogPage", "confidence",
 ];
+const COLLECTION_REPRESENTATION_FACT_KEYS = [
+  "id", "catalogId", "entryOrder", "reportedNumber", "pane", "name", "eventDate", "reference",
+  "representedWeight", "section", "catalogPages", "confidence",
+];
 const HAMBURG_COLLECTION_ENTRY_KEYS = [
   ...COLLECTION_ENTRY_KEYS, "reportedTotalWeight", "publicationState", "amendments",
 ];
@@ -109,7 +113,7 @@ const HAMBURG_HOLDING_KEYS = [
 const HOLDING_KINDS = ["specimen", "cast", "aggregate"];
 const RECORD_MODELS = [
   "catalog-item", "specimen", "catalog-number", "collection-entry", "regional-census-fact", "table-a-specimen",
-  "dealer-offer-fact",
+  "dealer-offer-fact", "collection-representation-fact",
 ];
 const FACTUAL_FIELDS = [
   "id",
@@ -121,9 +125,15 @@ const FACTUAL_FIELDS = [
   "catalogNumber",
   "entryOrder",
   "reportedNumber",
+  "pane",
   "specimenId",
   "typeNumber",
   "description",
+  "reference",
+  "representedWeight.valueText",
+  "representedWeight.componentTexts[]",
+  "representedWeight.grams",
+  "representedWeight.semantics",
   "australianMuseumRepresentation.status",
   "australianMuseumRepresentation.representedOccurrences",
   "australianMuseumRepresentation.notRepresentedOccurrences",
@@ -405,7 +415,7 @@ function validateMetadata(metadata, path) {
 function recordDesignations(record, recordModel) {
   if (recordModel === "specimen") return record.designation === null ? [] : [record.designation];
   if (recordModel === "table-a-specimen") return [record.specimenId];
-  if (["catalog-number", "collection-entry", "regional-census-fact", "dealer-offer-fact"].includes(recordModel)) return [];
+  if (["catalog-number", "collection-entry", "regional-census-fact", "dealer-offer-fact", "collection-representation-fact"].includes(recordModel)) return [];
   return record.holdings.map((holding) => holding.designation).filter((value) => value !== null);
 }
 
@@ -414,6 +424,7 @@ function recordMasses(record, recordModel) {
     return record.weight.grams === null ? [] : [record.weight.grams];
   }
   if (["regional-census-fact", "dealer-offer-fact"].includes(recordModel)) return [];
+  if (recordModel === "collection-representation-fact") return record.representedWeight.componentTexts;
   if (recordModel === "catalog-number" || recordModel === "collection-entry") {
     return record.holdings.flatMap((holding) => holding.weights.map(({ grams }) => grams));
   }
@@ -471,7 +482,7 @@ function compareRecords(left, right, metadataByCatalog) {
     return left.catalogPages[0] - right.catalogPages[0] || compareText(left.catalogNumber, right.catalogNumber) ||
       compareText(left.name, right.name) || compareText(left.id, right.id);
   }
-  if (["collection-entry", "regional-census-fact", "table-a-specimen"].includes(leftModel)) {
+  if (["collection-entry", "regional-census-fact", "table-a-specimen", "collection-representation-fact"].includes(leftModel)) {
     return compareText(left.catalogId, right.catalogId) || left.entryOrder - right.entryOrder || compareText(left.id, right.id);
   }
   if (leftModel === "dealer-offer-fact") {
@@ -688,6 +699,7 @@ function validatePublicCatalog(data, folios, path = "catalog") {
           : recordModel === "regional-census-fact" ? REGIONAL_CENSUS_FACT_KEYS
             : recordModel === "table-a-specimen" ? TABLE_A_SPECIMEN_KEYS
               : recordModel === "dealer-offer-fact" ? DEALER_OFFER_FACT_KEYS
+                : recordModel === "collection-representation-fact" ? COLLECTION_REPRESENTATION_FACT_KEYS
               : record.catalogId === "hamburg-1913" ? HAMBURG_COLLECTION_ENTRY_KEYS : COLLECTION_ENTRY_KEYS)];
     if (recordModel === "specimen" && Object.hasOwn(record, "individualFindLocation")) {
       expectedRecordKeys.splice(expectedRecordKeys.indexOf("year"), 0, "individualFindLocation");
@@ -698,7 +710,7 @@ function validatePublicCatalog(data, folios, path = "catalog") {
     assert(!ids.has(record.id), `${recordPath}.id is duplicated: ${record.id}`);
     ids.add(record.id);
     representedCatalogs.add(record.catalogId);
-    if (!["table-a-specimen", "dealer-offer-fact"].includes(recordModel)) {
+    if (!["table-a-specimen", "dealer-offer-fact", "collection-representation-fact"].includes(recordModel)) {
       const dateField = recordModel === "catalog-number" ? "dateOfDiscovery" :
         ["collection-entry", "regional-census-fact"].includes(recordModel) ? "eventDate" : "year";
       for (const field of ["name", "classification", "locality", dateField]) {
@@ -801,6 +813,32 @@ function validatePublicCatalog(data, folios, path = "catalog") {
       dealerTypeNumbers.set(record.catalogId, typeNumbers);
       assertString(record.name, `${recordPath}.name`);
       assertString(record.description, `${recordPath}.description`);
+    } else if (recordModel === "collection-representation-fact") {
+      assert(Number.isInteger(record.entryOrder) && record.entryOrder > 0,
+        `${recordPath}.entryOrder must be a positive integer`);
+      const entryOrders = collectionEntryOrders.get(record.catalogId) ?? new Set();
+      assert(!entryOrders.has(record.entryOrder), `${recordPath}.entryOrder is duplicated within ${record.catalogId}`);
+      const previousEntryOrder = previousCollectionEntries.get(record.catalogId);
+      assert(previousEntryOrder === undefined || record.entryOrder > previousEntryOrder,
+        `${recordPath}.entryOrder must increase within ${record.catalogId}`);
+      entryOrders.add(record.entryOrder);
+      collectionEntryOrders.set(record.catalogId, entryOrders);
+      previousCollectionEntries.set(record.catalogId, record.entryOrder);
+      for (const field of ["reportedNumber", "section"]) assertString(record[field], `${recordPath}.${field}`);
+      for (const field of ["pane", "name", "eventDate", "reference"]) assertString(record[field], `${recordPath}.${field}`, true);
+      assert(record.id === `${record.catalogId}-representation-${String(record.entryOrder).padStart(4, "0")}`,
+        `${recordPath}.id must be the deterministic public representation ID`);
+      assertExactKeys(record.representedWeight, ["valueText", "componentTexts", "grams", "semantics"], `${recordPath}.representedWeight`);
+      assertString(record.representedWeight.valueText, `${recordPath}.representedWeight.valueText`, true);
+      assert(Array.isArray(record.representedWeight.componentTexts), `${recordPath}.representedWeight.componentTexts must be an array`);
+      record.representedWeight.componentTexts.forEach((value, componentIndex) =>
+        assertString(value, `${recordPath}.representedWeight.componentTexts[${componentIndex}]`));
+      assert(record.representedWeight.grams === null || (Number.isFinite(record.representedWeight.grams) && record.representedWeight.grams >= 0),
+        `${recordPath}.representedWeight.grams must be finite and nonnegative or null`);
+      assert(record.representedWeight.componentTexts.length <= 1 || record.representedWeight.grams === null,
+        `${recordPath}.representedWeight must not scalarize multiple source values`);
+      assert(record.representedWeight.semantics === "collection-representation-context",
+        `${recordPath}.representedWeight.semantics is invalid`);
     } else {
       assert(Number.isInteger(record.entryOrder) && record.entryOrder > 0,
         `${recordPath}.entryOrder must be a positive integer`);
@@ -849,7 +887,7 @@ function validatePublicCatalog(data, folios, path = "catalog") {
         }
       }
     }
-    if (["catalog-number", "collection-entry", "regional-census-fact"].includes(recordModel)) {
+    if (["catalog-number", "collection-entry", "regional-census-fact", "collection-representation-fact"].includes(recordModel)) {
       assert(Array.isArray(record.catalogPages) && record.catalogPages.length > 0,
         `${recordPath}.catalogPages must be a nonempty ordered unique array`);
       record.catalogPages.forEach((page, pageIndex) => {
@@ -876,7 +914,7 @@ function validatePublicCatalog(data, folios, path = "catalog") {
   assertExactSet(representedCatalogs, metadataByCatalog.keys(), `${path} record catalog IDs`);
   assertExactSet(Object.keys(folios.catalogs), metadataByCatalog.keys(), `${path} folio catalog IDs`);
   assert(data.metadata.recordCount === data.records.length, `${path}.metadata.recordCount does not match records`);
-  if (data.records.length === 15753 && metadataByCatalog.size === 44) {
+  if (data.records.length === 18217 && metadataByCatalog.size === 49) {
     assert(individualFindLocationCount === 111,
       `${path} must contain exactly 111 specimen individualFindLocation values`);
     const victoria = data.records.filter(({ catalogId }) => catalogId === "victoria-land-1982");
@@ -891,6 +929,59 @@ function validatePublicCatalog(data, folios, path = "catalog") {
     assert(new Set(victoria.map(({ specimenId }) => specimenId)).size === 273 &&
       new Set(victoria.map(({ metbull }) => metbull.meteoriteCode)).size === 273,
     `${path} Victoria specimen IDs and MetBull codes must be unique`);
+    const fletcherLocks = {
+      "fletcher-1886": {
+        count: 375, mappings: 223, pages: [42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67],
+        suffixes: ["97a", "97b", "97c", "100a", "100b", "106a", "106b", "123a", "123b", "123c", "128a", "128b", "131a", "131b", "131c"],
+        multiweights: 8, digest: "24cab31f0322b7b82f265c287442cc7377f411e63137ee18fb7d811a8927811a",
+      },
+      "fletcher-1894": {
+        count: 461, mappings: 297, pages: [54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83],
+        suffixes: ["34a", "34b", "34c", "34d", "34e", "58a", "58b", "113a", "113b", "120a", "120b", "131a", "131b", "154a", "154b", "154c", "164a", "164b", "164c"],
+        multiweights: 10, digest: "4f028927b5766d12923f74c72c80dc8554dc564357d1d4afe35f50403dc88df8",
+      },
+      "fletcher-1896": {
+        count: 481, mappings: 318, pages: [54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84],
+        suffixes: ["126a", "126b", "133a", "133b", "145a", "145b", "169a", "169b", "169c"],
+        multiweights: 9, digest: "e909367d17acd11790f88f7b43d357cc7f06e66ea479abceb223b83737f22eba",
+      },
+      "fletcher-1904": {
+        count: 562, mappings: 387, pages: [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95],
+        suffixes: ["75a", "75b", "151a", "151b", "163a", "163b", "215a", "215b", "215c"],
+        multiweights: 10, digest: "06cb89e3983d82094bad7bd6156f8ec2dad9c7d2ac52eac57fbecffc4e48e41a",
+      },
+      "fletcher-1908": {
+        count: 585, mappings: 407, pages: [66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106],
+        suffixes: ["78a", "78b", "158a", "158b", "170a", "170b", "225a", "225b", "225c"],
+        multiweights: 11, digest: "a070a089ee8e16312343a4967b628725ae678dad34f7695d85c17e9e2b62fc69",
+      },
+    };
+    for (const [catalogId, lock] of Object.entries(fletcherLocks)) {
+      const records = data.records.filter((record) => record.catalogId === catalogId);
+      const descriptor = metadataByCatalog.get(catalogId).descriptor;
+      assert(records.length === lock.count && records.every((record, index) =>
+        record.id === `${catalogId}-representation-${String(index + 1).padStart(4, "0")}` && !Object.hasOwn(record, "holdings")),
+      `${path} ${catalogId} representation scope or public identity changed`);
+      assert(JSON.stringify(descriptor.sourcePages) === JSON.stringify(lock.pages),
+        `${path} ${catalogId} source pages changed`);
+      assert(records.filter(({ metbull }) => metbull).length === lock.mappings,
+        `${path} ${catalogId} reviewed mapping census changed`);
+      assert(JSON.stringify(records.filter(({ reportedNumber }) => /[a-z]$/u.test(reportedNumber)).map(({ reportedNumber }) => reportedNumber)) === JSON.stringify(lock.suffixes),
+        `${path} ${catalogId} suffix rows changed`);
+      assert(records.filter(({ representedWeight }) => representedWeight.componentTexts.length > 1).length === lock.multiweights &&
+        records.filter(({ representedWeight }) => representedWeight.componentTexts.length > 1).every(({ representedWeight }) => representedWeight.grams === null),
+      `${path} ${catalogId} multiple represented weights changed or were scalarized`);
+      assert(records.every((record) => Object.hasOwn(record, "pane") && !Object.hasOwn(record, "inventoryNumber")),
+        `${path} ${catalogId} pane context was promoted to inventory identity`);
+      assert(createHash("sha256").update(JSON.stringify(records)).digest("hex") === lock.digest,
+        `${path} ${catalogId} facts differ from the accepted Fletcher export`);
+      assert(folios.catalogs[catalogId].displayPolicy === "blocked" && folios.catalogs[catalogId].rightsStatus === "undetermined" && folios.catalogs[catalogId].pages.length === 0,
+        `${path} ${catalogId} folio policy must remain blocked and empty`);
+    }
+    const fletcherRecords = data.records.filter(({ catalogId }) => catalogId.startsWith("fletcher-"));
+    assert(fletcherRecords.length === 2464 && fletcherRecords.filter(({ metbull }) => metbull).length === 1632 &&
+      fletcherRecords.filter(({ metbull }) => !metbull).length === 832,
+    `${path} Fletcher observation or mapping census changed`);
     assert(victoria.filter(({ locality }) => locality.areaReferenceCoordinate !== null).length === 240,
       `${path} must contain exactly 240 Victoria area-reference coordinates`);
     assert(victoria.filter(({ sourceEvidence }) => sourceEvidence.tableB !== null).length === 270 &&
@@ -2196,6 +2287,17 @@ if (!SYNTHETIC_ONLY) {
     }
     assert(rejected, `deployed catalog mutation must reject ${label}`);
   };
+  const assertDeployedFolioRejection = (label, mutate) => {
+    const changed = clone(folios);
+    mutate(changed);
+    let rejected = false;
+    try {
+      validatePublicCatalog(data, changed, `mutated ${label}`);
+    } catch {
+      rejected = true;
+    }
+    assert(rejected, `deployed folio mutation must reject ${label}`);
+  };
   const locationRecord = data.records.find((record) => Object.hasOwn(record, "individualFindLocation"));
   assertDeployedRejection("schema-10 downgrade", ({ metadata }) => { metadata.schemaVersion = 10; });
   assertDeployedRejection("missing one of 111 individual find locations", ({ records }) => {
@@ -2206,6 +2308,36 @@ if (!SYNTHETIC_ONLY) {
   });
   assertDeployedRejection("individual find location on a non-specimen model", ({ records }) => {
     records.find(({ catalogId }) => catalogId === "farrington-1916").individualFindLocation = "Shelf 1";
+  });
+  assertDeployedRejection("Fletcher suffix omission", ({ records }) => {
+    records.find(({ catalogId, reportedNumber }) => catalogId === "fletcher-1904" && reportedNumber === "75a").reportedNumber = "75";
+  });
+  assertDeployedRejection("Fletcher adjunct duplicate", ({ records }) => {
+    records.push(clone(records.find(({ catalogId }) => catalogId === "fletcher-1908")));
+  });
+  assertDeployedRejection("Fletcher pane promoted to inventory", ({ records }) => {
+    records.find(({ catalogId }) => catalogId === "fletcher-1904").inventoryNumber = "1a";
+  });
+  assertDeployedRejection("Fletcher false specimen card", ({ records }) => {
+    records.find(({ catalogId }) => catalogId === "fletcher-1904").holdings = [];
+  });
+  assertDeployedRejection("Fletcher false lineage identity", ({ records }) => {
+    records.find(({ catalogId }) => catalogId === "fletcher-1904").sameInventory = true;
+  });
+  assertDeployedRejection("Fletcher scalarized multiweight", ({ records }) => {
+    records.find(({ catalogId, representedWeight }) =>
+      catalogId.startsWith("fletcher-") && representedWeight.componentTexts.length > 1).representedWeight.grams = 1;
+  });
+  assertDeployedRejection("Fletcher missing page proof", ({ records }) => {
+    records.find(({ catalogId }) => catalogId === "fletcher-1904").catalogPages = [];
+  });
+  assertDeployedRejection("Fletcher private source leak", ({ records }) => {
+    records.find(({ catalogId }) => catalogId === "fletcher-1904").reference = "/Users/reviewer/private/source.txt";
+  });
+  assertDeployedFolioRejection("Fletcher enabled folio", ({ catalogs }) => {
+    catalogs["fletcher-1908"] = {
+      displayPolicy: "display", rightsStatus: "public-domain", pages: [],
+    };
   });
   const expectedHashes = validateFolioReleaseLock(folios, releaseLock, "root folio release lock");
   await validateFolioFiles(folios, "root folio files", REPO_ROOT, expectedHashes);

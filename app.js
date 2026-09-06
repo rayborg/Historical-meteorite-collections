@@ -1,13 +1,13 @@
 "use strict";
 
-const CACHE_VERSION = "20260905-catalog-wave2-1";
+const CACHE_VERSION = "20260906-fletcher-editions-1";
 const ASSET_CACHE_VERSION = CACHE_VERSION;
 const CATALOG_SCHEMA_VERSION = 11;
-const CATALOG_RECORD_COUNT = 15753;
-const DISPLAY_DESCRIPTOR_COUNT = 20753;
+const CATALOG_RECORD_COUNT = 18217;
+const DISPLAY_DESCRIPTOR_COUNT = 23217;
 const SPECIMEN_DESCRIPTOR_COUNT = 13804;
-const OBSERVATION_DESCRIPTOR_COUNT = 6949;
-const WEIGHTED_DESCRIPTOR_COUNT = 20580;
+const OBSERVATION_DESCRIPTOR_COUNT = 9413;
+const WEIGHTED_DESCRIPTOR_COUNT = 23044;
 const UNKNOWN_WEIGHT_EXCLUSION_COUNT = 173;
 const WAVE1_PROJECTED_CATALOGS = new Set(["brown-1916", "minnesota-1892"]);
 const REVIEW_GATED_LINEAGE_CATALOGS = new Set(["brown-1916", "minnesota-1892", "greifswald-1895", "greifswald-1901", "berlin-1903", "berlin-1904"]);
@@ -135,6 +135,20 @@ const DEALER_OFFER_FACT_RECORD_FIELDS = new Set([
   "catalogPage",
   "confidence"
 ]);
+const COLLECTION_REPRESENTATION_FACT_RECORD_FIELDS = new Set([
+  "id",
+  "catalogId",
+  "entryOrder",
+  "reportedNumber",
+  "pane",
+  "name",
+  "eventDate",
+  "reference",
+  "representedWeight",
+  "section",
+  "catalogPages",
+  "confidence"
+]);
 const HAMBURG_COLLECTION_ENTRY_RECORD_FIELDS = new Set([
   ...COLLECTION_ENTRY_RECORD_FIELDS,
   "reportedTotalWeight",
@@ -152,7 +166,7 @@ const HOLDING_KINDS = new Set(["specimen", "cast", "aggregate"]);
 const HAMBURG_WEIGHT_KINDS = new Set(["individual-holding", "aggregate-holding", "associated-material"]);
 const HAMBURG_PUBLICATION_STATES = new Set(["base-register", "supplement"]);
 const RECORD_MODELS = new Set([
-  "catalog-item", "specimen", "catalog-number", "collection-entry", "regional-census-fact", "table-a-specimen", "dealer-offer-fact"
+  "catalog-item", "specimen", "catalog-number", "collection-entry", "regional-census-fact", "table-a-specimen", "dealer-offer-fact", "collection-representation-fact"
 ]);
 const FACTUAL_FIELDS = [
   "id",
@@ -164,9 +178,15 @@ const FACTUAL_FIELDS = [
   "catalogNumber",
   "entryOrder",
   "reportedNumber",
+  "pane",
   "specimenId",
   "typeNumber",
   "description",
+  "reference",
+  "representedWeight.valueText",
+  "representedWeight.componentTexts[]",
+  "representedWeight.grams",
+  "representedWeight.semantics",
   "australianMuseumRepresentation.status",
   "australianMuseumRepresentation.representedOccurrences",
   "australianMuseumRepresentation.notRepresentedOccurrences",
@@ -264,10 +284,10 @@ const SPECIMEN_CARD_COMPONENT_FIELDS = new Set(["holdingPath", "componentPath", 
 const SPECIMEN_CARD_CLAUSE_FIELDS = new Set(["textPath", "start", "end"]);
 const SPECIMEN_CARD_REPEATED_MASS_FIELDS = new Set(["valuePath", "countPath", "totalPath", "occurrence", "occurrenceCount"]);
 const SHA256_HEX = /^[0-9a-f]{64}$/u;
-const SPECIMEN_CARD_SOURCE_CATALOG_SHA256 = "0fc4c08011747a2a33e3a884f700c6e9a04e8b3b35ed21e5848f41f6f61bd1a6";
-const SPECIMEN_CARD_PROJECTION_DATA_SHA256 = "84da050bb4e0c4b5e9849cdec65257316ab0a02205f2ae3159de345c40069152";
+const SPECIMEN_CARD_SOURCE_CATALOG_SHA256 = "139204292af05a7fa0b33bb71e4228faebf750436de41790cfb68c4b63cec7c0";
+const SPECIMEN_CARD_PROJECTION_DATA_SHA256 = "8ef67a79e5c0911bc71e981ed86bc078951e3aa45b920caaceb89ba847353079";
 const SPECIMEN_CARD_PROJECTION_SET_SHA256 = "7a37c5791373bb1613fc7180931e8dfe155868909785a976273e4b64e307d787";
-const SPECIMEN_LINEAGE_DATA_SHA256 = "72f7013edad00c286671c96774734f688e70e4d0e742753948380f1351a2ffe6";
+const SPECIMEN_LINEAGE_DATA_SHA256 = "8529a4823eba3541c9dd0a0d44e2fb7275c40613b248be2fabfbf955679f1d37";
 const SOURCE_CLAIMS_CONTENT_SHA256 = "141ed60b9560596ac8ab392babfc4af6e1d22921bacbf979d3b975e0fc2f20c2";
 const LINEAGE_ROOT_FIELDS = new Set(["metadata", "sourceAttestedGroups", "relationships"]);
 const LINEAGE_METADATA_FIELDS = new Set(["schemaVersion", "scope", "source", "collectionSeries", "methodology", "counts"]);
@@ -975,7 +995,7 @@ function compareCanonicalRecords(left, right, registry) {
       compareCanonicalText(left.catalogNumber, right.catalogNumber) ||
       compareCanonicalText(left.name, right.name) || compareCanonicalText(left.id, right.id);
   }
-  if (["collection-entry", "regional-census-fact", "table-a-specimen"].includes(leftModel)) {
+  if (["collection-entry", "regional-census-fact", "table-a-specimen", "collection-representation-fact"].includes(leftModel)) {
     return compareCanonicalText(left.catalogId, right.catalogId) ||
       left.entryOrder - right.entryOrder || compareCanonicalText(left.id, right.id);
   }
@@ -1213,9 +1233,11 @@ function validateCatalog(catalog) {
                 hasExactFields(record.weight, new Set(["grams"]))
               : recordModel === "dealer-offer-fact"
                 ? hasExactFields(record, DEALER_OFFER_FACT_RECORD_FIELDS)
+                : recordModel === "collection-representation-fact"
+                  ? hasExactFields(record, recordFields(record, COLLECTION_REPRESENTATION_FACT_RECORD_FIELDS))
                 : hasExactFields(record, recordFields(record, record.catalogId === "hamburg-1913"
                   ? HAMBURG_COLLECTION_ENTRY_RECORD_FIELDS : COLLECTION_ENTRY_RECORD_FIELDS)));
-    if (!["table-a-specimen", "dealer-offer-fact"].includes(recordModel)) {
+    if (!["table-a-specimen", "dealer-offer-fact", "collection-representation-fact"].includes(recordModel)) {
       const dateField = recordModel === "catalog-number" ? "dateOfDiscovery" :
         ["collection-entry", "regional-census-fact"].includes(recordModel) ? "eventDate" : "year";
       ["name", "classification", dateField].forEach((field) =>
@@ -1282,6 +1304,27 @@ function validateCatalog(catalog) {
       requireSchema(record.section !== "" && isLeakageSafeText(record.section));
       requireSchema(record.name !== "" && isLeakageSafeText(record.name));
       requireSchema(hasValidAustralianMuseumRepresentation(record.australianMuseumRepresentation));
+    } else if (recordModel === "collection-representation-fact") {
+      requireSchema(Number.isInteger(record.entryOrder) && record.entryOrder > 0);
+      const entryOrders = collectionEntryOrders[record.catalogId] || new Set();
+      requireSchema(!entryOrders.has(record.entryOrder) &&
+        (previousCollectionEntries[record.catalogId] === undefined || record.entryOrder > previousCollectionEntries[record.catalogId]));
+      entryOrders.add(record.entryOrder);
+      collectionEntryOrders[record.catalogId] = entryOrders;
+      previousCollectionEntries[record.catalogId] = record.entryOrder;
+      requireSchema(record.reportedNumber !== "" && isLeakageSafeText(record.reportedNumber));
+      requireSchema(record.section !== "" && isLeakageSafeText(record.section));
+      [record.pane, record.name, record.eventDate, record.reference].forEach((value) =>
+        requireSchema(value === null || (value !== "" && isLeakageSafeText(value))));
+      requireSchema(hasExactFields(record.representedWeight, new Set(["valueText", "componentTexts", "grams", "semantics"])));
+      requireSchema(record.representedWeight.valueText === null ||
+        (record.representedWeight.valueText !== "" && isLeakageSafeText(record.representedWeight.valueText)));
+      requireSchema(Array.isArray(record.representedWeight.componentTexts) && record.representedWeight.componentTexts.every((value) =>
+        value !== "" && isLeakageSafeText(value)));
+      requireSchema(record.representedWeight.grams === null ||
+        (Number.isFinite(record.representedWeight.grams) && record.representedWeight.grams >= 0));
+      requireSchema(record.representedWeight.componentTexts.length <= 1 || record.representedWeight.grams === null);
+      requireSchema(record.representedWeight.semantics === "collection-representation-context");
     } else if (recordModel === "table-a-specimen") {
       requireSchema(Number.isInteger(record.entryOrder) && record.entryOrder > 0);
       const entryOrders = collectionEntryOrders[record.catalogId] || new Set();
@@ -1344,7 +1387,7 @@ function validateCatalog(catalog) {
         requireSchema(hasValidHamburgAmendments(record));
       }
     }
-    if (["catalog-number", "collection-entry", "regional-census-fact"].includes(recordModel)) {
+    if (["catalog-number", "collection-entry", "regional-census-fact", "collection-representation-fact"].includes(recordModel)) {
       requireSchema(Array.isArray(record.catalogPages) && record.catalogPages.length > 0 && record.catalogPages.every((page, pageIndex) =>
         Number.isInteger(page) && page > 0 && registry[record.catalogId].sourcePages.includes(page) &&
         (pageIndex === 0 || page > record.catalogPages[pageIndex - 1])
@@ -2742,6 +2785,20 @@ function prepareRecord(source, index, registry = catalogRegistry) {
         }));
       }
     }
+  } else if (recordModel === "collection-representation-fact") {
+    record.entryOrder = Number(source.entryOrder);
+    record.reportedNumber = cleanText(source.reportedNumber);
+    record.pane = cleanText(source.pane);
+    record.eventDate = cleanText(source.eventDate);
+    record.reference = cleanText(source.reference);
+    record.representedWeight = {
+      valueText: cleanText(source.representedWeight.valueText),
+      componentTexts: source.representedWeight.componentTexts.map(cleanText),
+      grams: source.representedWeight.grams === null ? null : Number(source.representedWeight.grams),
+      semantics: source.representedWeight.semantics
+    };
+    record.section = cleanText(source.section);
+    record.catalogPages = source.catalogPages.map(Number);
   } else if (recordModel === "regional-census-fact") {
     record.entryOrder = Number(source.entryOrder);
     record.reportedNumber = cleanText(source.reportedNumber);
@@ -2799,6 +2856,10 @@ function prepareRecord(source, index, registry = catalogRegistry) {
   record.proseSearchText = searchable([
     ...(record.holdings || []).flatMap((holding) => [holding.description, holding.provenance]),
     record.description,
+    record.pane,
+    record.reference,
+    record.representedWeight?.valueText,
+    ...(record.representedWeight?.componentTexts || []),
     record.classification,
     record.classification ? `class ${record.classification}` : null,
     record.metbull?.alternateNameNote,
@@ -2812,8 +2873,8 @@ function prepareRecord(source, index, registry = catalogRegistry) {
   record.searchText = searchable([
     record.catalogItem === undefined ? null : `catalog item ${record.catalogItem}`,
     record.catalogNumber === undefined ? null : `catalog no ${record.catalogNumber}`,
-    record.entryOrder === undefined ? null : `collection entry ${record.entryOrder}`,
-    record.reportedNumber === undefined ? null : `reported no ${record.reportedNumber}`,
+    record.entryOrder === undefined ? null : `${record.recordModel === "collection-representation-fact" ? "list entry" : "collection entry"} ${record.entryOrder}`,
+    record.reportedNumber === undefined ? null : `${record.recordModel === "collection-representation-fact" ? "list no" : "reported no"} ${record.reportedNumber}`,
     record.specimenId === undefined ? null : `specimen id ${record.specimenId}`,
     record.typeNumber === undefined ? null : `type number ${record.typeNumber}`,
     record.recordModel === "table-a-specimen" ? `reported mass ${record.weight.grams} grams` : null,
@@ -2829,6 +2890,10 @@ function prepareRecord(source, index, registry = catalogRegistry) {
     ]),
     record.name,
     record.description,
+    record.pane ? `pane ${record.pane}` : null,
+    record.reference ? `reference ${record.reference}` : null,
+    record.representedWeight?.valueText ? `represented weight ${record.representedWeight.valueText}` : null,
+    ...(record.representedWeight?.componentTexts || []),
     record.metbull?.canonicalName,
     record.metbull?.meteoriteCode,
     record.metbull?.alternateNameNote,
@@ -2856,6 +2921,7 @@ function prepareRecord(source, index, registry = catalogRegistry) {
     record.recordModel === "regional-census-fact" ? "regional census catalog observation" : null,
     record.recordModel === "table-a-specimen" ? "table a individual specimen" : null,
     record.recordModel === "dealer-offer-fact" ? "dealer catalog observation not a specimen or holding" : null,
+    record.recordModel === "collection-representation-fact" ? "collection representation observation not a specimen, holding, or inventory identity" : null,
     record.publicationState,
     ...(record.amendments || []).flatMap((amendment) => [
       amendment.kind, amendment.effectiveDate, amendment.targetHolding, amendment.resultingState
@@ -3006,6 +3072,7 @@ function recordMasses(record) {
 }
 
 function recordSchemaMasses(record) {
+  if (record?.representedWeight) return record.representedWeight.componentTexts;
   if (Array.isArray(record?.holdings)) {
     return record.holdings.flatMap((holding) => Array.isArray(holding.weights)
       ? holding.weights.map((weight) => weight.grams).filter(Number.isFinite)
@@ -3046,6 +3113,10 @@ function numericSearchTokens(record) {
   add(record?.metbull?.meteoriteCode);
   addNumericTokens(record?.catalogNumber);
   addNumericTokens(record?.reportedNumber);
+  addNumericTokens(record?.pane);
+  addNumericTokens(record?.reference);
+  addNumericTokens(record?.representedWeight?.valueText);
+  for (const componentText of record?.representedWeight?.componentTexts || []) addNumericTokens(componentText);
   for (const value of [record?.catalogItem, record?.entryOrder, record?.typeNumber]) add(value);
   addNumericTokens([record?.year, record?.dateOfDiscovery, record?.eventDate].filter(Boolean).join(" "));
   addNumericTokens((record?.holdings || []).flatMap((holding) => [
@@ -3279,7 +3350,8 @@ const HARMONIZED_CARD_KINDS = Object.freeze({
   atomic: "projected-atomic-specimen",
   collection: "collection-observation",
   regional: "regional-observation",
-  dealer: "dealer-observation"
+  dealer: "dealer-observation",
+  representation: "collection-representation-observation"
 });
 
 const HARMONIZED_SEMANTIC_LABELS = Object.freeze({
@@ -3287,7 +3359,8 @@ const HARMONIZED_SEMANTIC_LABELS = Object.freeze({
   [HARMONIZED_CARD_KINDS.atomic]: "Individual specimen.",
   [HARMONIZED_CARD_KINDS.collection]: "Collection catalog observation; not asserted here as one individual specimen.",
   [HARMONIZED_CARD_KINDS.regional]: "Regional census/catalog observation, not a specimen or holding.",
-  [HARMONIZED_CARD_KINDS.dealer]: "Dealer catalog observation, not a specimen or holding"
+  [HARMONIZED_CARD_KINDS.dealer]: "Dealer catalog observation, not a specimen or holding",
+  [HARMONIZED_CARD_KINDS.representation]: "Collection representation observation; not a specimen, holding, or inventory identity."
 });
 
 function classifyHarmonizedCard(recordOrDescriptor) {
@@ -3316,6 +3389,7 @@ function classifyHarmonizedCard(recordOrDescriptor) {
     return HARMONIZED_CARD_KINDS.collection;
   }
   if (record.recordModel === "regional-census-fact") return HARMONIZED_CARD_KINDS.regional;
+  if (record.recordModel === "collection-representation-fact") return HARMONIZED_CARD_KINDS.representation;
   return record.recordModel === "dealer-offer-fact" ? HARMONIZED_CARD_KINDS.dealer : null;
 }
 
@@ -3335,6 +3409,7 @@ function harmonizedCardIdentifier(record, kind, descriptor = null) {
   if (record.recordModel === "regional-census-fact") {
     return record.reportedNumber ? `Source number ${record.reportedNumber}` : `Regional census entry ${record.entryOrder}`;
   }
+  if (record.recordModel === "collection-representation-fact") return `List no. ${record.reportedNumber}`;
   if (record.recordModel === "table-a-specimen") return record.specimenId || "Unknown";
   if (record.recordModel === "dealer-offer-fact") return `Type number ${record.typeNumber}`;
   return record.designation || "Unknown";
@@ -3342,7 +3417,7 @@ function harmonizedCardIdentifier(record, kind, descriptor = null) {
 
 function harmonizedCardEvent(record) {
   if (record.recordModel === "catalog-number") return record.dateOfDiscovery;
-  if (record.recordModel === "collection-entry" || record.recordModel === "regional-census-fact") return record.eventDate;
+  if (["collection-entry", "regional-census-fact", "collection-representation-fact"].includes(record.recordModel)) return record.eventDate;
   if (record.recordModel === "specimen" || record.recordModel === "catalog-item") return record.year;
   return null;
 }
@@ -3403,6 +3478,12 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
   });
   if (specimen) facts.push({ label: "Individual find location", value: record.individualFindLocation || "Unknown" });
   facts.push({ label: "Event", value: harmonizedCardEvent(record) || "Unknown" });
+  if (record.recordModel === "collection-representation-fact") {
+    facts.push({ label: "Section", value: record.section || "Unknown" });
+    facts.push({ label: "Pane or case", value: record.pane || "Unknown" });
+    facts.push({ label: "Reference", value: record.reference || "Unknown" });
+    facts.push({ label: "Represented weight", value: record.representedWeight.valueText || "Unknown" });
+  }
 
   if (specimen) {
     const sourceLineage = Array.isArray(options.lineageEntries) ? options.lineageEntries : [];
@@ -3458,7 +3539,7 @@ function createRecordCard(recordOrDescriptor) {
   const card = elements.template.content.firstElementChild.cloneNode(true);
   card.dataset.cardKind = dto.kind;
   card.classList.toggle("specimen-card", dto.kind === HARMONIZED_CARD_KINDS.specimen || dto.kind === HARMONIZED_CARD_KINDS.atomic);
-  card.classList.toggle("observation-card", [HARMONIZED_CARD_KINDS.collection, HARMONIZED_CARD_KINDS.regional, HARMONIZED_CARD_KINDS.dealer].includes(dto.kind));
+  card.classList.toggle("observation-card", [HARMONIZED_CARD_KINDS.collection, HARMONIZED_CARD_KINDS.regional, HARMONIZED_CARD_KINDS.dealer, HARMONIZED_CARD_KINDS.representation].includes(dto.kind));
   card.querySelector(".designation").textContent = displayText(dto.identifier);
   const semanticLabel = card.querySelector(".record-semantic-label, .record-model-label");
   const displaySemanticLabel = shouldDisplaySemanticLabel(dto.kind);

@@ -13,18 +13,19 @@ const sha256 = (value) => createHash("sha256").update(value).digest("hex");
 const jsonSha256 = (value) => sha256(JSON.stringify(value));
 
 test("installs the exact accepted schema-11 export without changing non-correction data", () => {
-  assert.equal(sha256(catalogText), "0fc4c08011747a2a33e3a884f700c6e9a04e8b3b35ed21e5848f41f6f61bd1a6");
-  assert.equal(sha256(foliosText), "5e9a7729cff93545aa15c5f758bdef66b0f5da584b9c39349d46961ae7eda29c");
+  assert.equal(sha256(catalogText), "139204292af05a7fa0b33bb71e4228faebf750436de41790cfb68c4b63cec7c0");
+  assert.equal(sha256(foliosText), "ed23bc9af5bb73eb932fd928f7d46b02379265bbeb43911d44004aa4cddacdd5");
   assert.equal(catalog.metadata.schemaVersion, 11);
-  assert.equal(catalog.metadata.catalogs.length, 44);
-  assert.equal(catalog.records.length, 15753);
+  assert.equal(catalog.metadata.catalogs.length, 49);
+  assert.equal(catalog.records.length, 18217);
   const correctedRecordIds = new Set([
     "obs-68c7e39b-9d99-4f9a-a1d2-7b2374d76d47",
     "obs-38554aa8-007c-447f-9410-91d447f74149",
   ]);
   const wave2CatalogIds = new Set(["berlin-1903", "berlin-1904", "greifswald-1895", "greifswald-1901"]);
-  const nonCorrectionRecords = catalog.records.filter(({ id, catalogId }) => !correctedRecordIds.has(id) && !wave2CatalogIds.has(catalogId));
-  const nonVictoriaDescriptors = catalog.metadata.catalogs.filter(({ id }) => id !== "victoria-land-1982" && !wave2CatalogIds.has(id));
+  const fletcherCatalogIds = new Set(["fletcher-1886", "fletcher-1894", "fletcher-1896", "fletcher-1904", "fletcher-1908"]);
+  const nonCorrectionRecords = catalog.records.filter(({ id, catalogId }) => !correctedRecordIds.has(id) && !wave2CatalogIds.has(catalogId) && !fletcherCatalogIds.has(catalogId));
+  const nonVictoriaDescriptors = catalog.metadata.catalogs.filter(({ id }) => id !== "victoria-land-1982" && !wave2CatalogIds.has(id) && !fletcherCatalogIds.has(id));
   assert.equal(nonCorrectionRecords.length, 14475);
   assert.equal(jsonSha256(nonCorrectionRecords), "5892e877d2b41a018bbd1836f3d9369a60e923f0dd31920b6671970aa32686b1");
   assert.equal(jsonSha256(nonVictoriaDescriptors), "8066f1c06de5c8021ffa24020cfe37c4e9cdc5ce1d357e95c20268c2699a1d6e");
@@ -60,6 +61,6 @@ test("Wave 1 public outputs contain no source artifacts or private leakage", () 
   const records = catalog.records.filter(({ catalogId }) => waveCatalogIds.has(catalogId));
   assert.doesNotMatch(JSON.stringify(records),
     /(?:\/private\/|\/Users\/|file:\/\/|data\/ocr\/|source-images|assets\/|\.(?:pdf|png|webp|tiff?|txt|csv))/iu);
-  assert.equal(Object.keys(folios.catalogs).length, 44);
+  assert.equal(Object.keys(folios.catalogs).length, 49);
   assert.equal(releaseLock.assets.filter(({ path }) => [...waveCatalogIds].some((id) => path.includes(id))).length, 0);
 });

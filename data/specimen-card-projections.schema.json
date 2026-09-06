@@ -23,8 +23,8 @@
         "schemaVersion": { "const": 4 },
         "scope": { "const": "reviewed-atomic-specimen-card-display-projections" },
         "catalogSchemaVersion": { "const": 11 },
-        "sourceRecordCount": { "const": 15753 },
-        "sourceCatalogSha256": { "const": "0fc4c08011747a2a33e3a884f700c6e9a04e8b3b35ed21e5848f41f6f61bd1a6" },
+        "sourceRecordCount": { "const": 18217 },
+        "sourceCatalogSha256": { "const": "139204292af05a7fa0b33bb71e4228faebf750436de41790cfb68c4b63cec7c0" },
         "projectionCount": { "const": 3062 },
         "atomicCardCount": { "const": 8062 },
         "sourceContextCardCount": { "const": 2532 }

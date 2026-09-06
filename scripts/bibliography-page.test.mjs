@@ -27,17 +27,17 @@ test("publishes a safe and accessible bibliography table", async () => {
 
   assert.equal((bibliography.match(/<tr(?: |>)/g) || []).length, 265);
   assert.equal((bibliography.match(/data-control="MCB-\d+"/g) || []).length, 264);
-  assert.equal((bibliography.match(/<li class="project complete/g) || []).length, 44);
-  assert.equal((bibliography.match(/<tr class="worked-row">/g) || []).length, 43);
-  assert.equal((bibliography.match(/class="processing-cell complete"/g) || []).length, 43);
+  assert.equal((bibliography.match(/<li class="project complete/g) || []).length, 49);
+  assert.equal((bibliography.match(/<tr class="worked-row">/g) || []).length, 48);
+  assert.equal((bibliography.match(/class="processing-cell complete"/g) || []).length, 48);
   assert.match(bibliography, /<strong>264<\/strong><span>Total controls<\/span>/);
-  assert.match(bibliography, /<strong>44<\/strong><span>Catalog projects done<\/span>/);
-  assert.match(bibliography, /<strong>43<\/strong><span>Integrated controls<\/span>/);
-  assert.match(bibliography, /<strong>31<\/strong><span>Remaining acquired backlog<\/span>/);
-  assert.match(bibliography, /Acquisition-to-integration backlog: 31 remaining/);
+  assert.match(bibliography, /<strong>49<\/strong><span>Catalog projects done<\/span>/);
+  assert.match(bibliography, /<strong>48<\/strong><span>Integrated controls<\/span>/);
+  assert.match(bibliography, /<strong>26<\/strong><span>Remaining acquired backlog<\/span>/);
+  assert.match(bibliography, /Acquisition-to-integration backlog: 26 remaining/);
   assert.match(bibliography, /class="table-wrap" role="region" aria-label="Bibliography master list; scroll horizontally to see all columns" tabindex="0"/);
   assert.match(bibliography, /\.table-wrap:focus-visible \{[^}]*outline:/);
-  for (const controlId of ["MCB-80", "MCB-86", "MCB-93", "MCB-94", "MCB-117", "MCB-141", "MCB-165", "MCB-175", "MCB-197", "MCB-204"]) {
+  for (const controlId of ["MCB-62", "MCB-71", "MCB-75", "MCB-80", "MCB-86", "MCB-93", "MCB-94", "MCB-99", "MCB-111", "MCB-117", "MCB-141", "MCB-165", "MCB-175", "MCB-197", "MCB-204"]) {
     assert.match(rowFor(controlId), /processing-cell complete/);
   }
   assert.match(rowFor("MCB-141"), /Catalogue of the collection of meteorites in the Mineralogical Museum of Harvard University[^]*SP1949-0125/);

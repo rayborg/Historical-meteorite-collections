@@ -146,8 +146,8 @@ test("publishes locked source and relationship counts", () => {
   assert.equal(flattenInventoryObservations(catalog).length, 3627);
   assert.deepEqual(published.metadata.source, {
     catalogSchemaVersion: 11,
-    recordCount: 15753,
-    catalogCount: 44,
+    recordCount: 18217,
+    catalogCount: 49,
     flattenedMassObservationCount: 16816,
     inventoryObservationCount: 3627,
     sourceClaimsSchemaVersion: 1,
@@ -184,7 +184,7 @@ test("publishes locked source and relationship counts", () => {
     "a3a4a9e2ca09ab7259eb1b7d5321a0f7cf79b42d85488b19117a78d440caf5eb",
   );
   assert.equal(createHash("sha256").update(publishedText).digest("hex"),
-    "72f7013edad00c286671c96774734f688e70e4d0e742753948380f1351a2ffe6");
+    "8529a4823eba3541c9dd0a0d44e2fb7275c40613b248be2fabfbf955679f1d37");
   assert.equal(createHash("sha256").update(JSON.stringify(published.relationships)).digest("hex"),
     "a6724d150de83514ccb53043ea6e3fde3e31ff54d60febd8645a5211f7e774d6");
   const baseline = current37Relationships();
@@ -338,8 +338,8 @@ test("Palache publishes only locked facts and blocked folios", () => {
     "id", "locality", "name", "reportedNumber", "section",
   ].sort();
 
-  assert.equal(catalog.metadata.catalogs.length, 44);
-  assert.equal(catalog.records.length, 15753);
+  assert.equal(catalog.metadata.catalogs.length, 49);
+  assert.equal(catalog.records.length, 18217);
   assert.deepEqual(descriptor.sourcePages, [151, 152, 153, 154, 155, 156, 157, 158, 159]);
   assert.equal(descriptor.sourcePageCount, 9);
   assert.equal(descriptor.recordCount, 361);
@@ -372,11 +372,11 @@ test("Palache publishes only locked facts and blocked folios", () => {
   }
 
   const allReviewed = catalog.records.filter((record) => Object.hasOwn(record, "metbull"));
-  assert.equal(allReviewed.length, 12072);
+  assert.equal(allReviewed.length, 13704);
   assert.equal(allReviewed.filter(({ metbull }) => metbull.matchType === "unresolved").length, 304);
-  assert.equal(allReviewed.filter(({ metbull }) => metbull.matchType !== "unresolved").length, 11768);
+  assert.equal(allReviewed.filter(({ metbull }) => metbull.matchType !== "unresolved").length, 13400);
   assert.equal(10368 - 10296, 72);
-  assert.equal(catalog.records.length - allReviewed.length, 3681);
+  assert.equal(catalog.records.length - allReviewed.length, 4513);
 });
 
 test("Madrid publishes the accepted facts, blocked folios, atomic holdings, and only new unreviewed candidates", () => {
@@ -586,7 +586,7 @@ test("Kanagawa publishes only the approved controlled facts with no glass mappin
   assert(!published.metadata.collectionSeries.some(({ catalogIds }) => catalogIds.includes("kanagawa-1996")));
   assert(!published.relationships.some(({ observations }) =>
     observations.some(({ catalogId }) => catalogId === "kanagawa-1996")));
-  assert.equal(catalog.records.filter(({ catalogId }) => catalogId !== "kanagawa-1996").length, 15521);
+  assert.equal(catalog.records.filter(({ catalogId }) => catalogId !== "kanagawa-1996").length, 17985);
 });
 
 test("Merrill, Prior, and Reeds publish locked facts with blocked folios and derived lineages", () => {
@@ -959,6 +959,7 @@ test("Anderson, Astapovich, and Kantor publish complete reviewed mappings withou
   const preservationExcludedCatalogIds = new Set([
     ...newCatalogIds, "madrid-1923", "hamburg-1913", "hodge-smith-1939", "victoria-land-1982",
     "brown-1916", "minnesota-1892", "foote-1909", ...WAVE2_CATALOG_IDS,
+    "fletcher-1886", "fletcher-1894", "fletcher-1896", "fletcher-1904", "fletcher-1908",
   ]);
 
   for (const [catalogId, counts] of Object.entries(expected)) {

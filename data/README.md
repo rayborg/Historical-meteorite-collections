@@ -1,12 +1,14 @@
 # Public Catalog Data
 
 <!-- release-summary:data-overview:start -->
-`catalog.json` is a schema-11 facts-only dataset containing 15,753 source observations from 44 historical meteorite catalogs. `specimen-card-projections.json` replaces 3,062 reviewed parent observations with 8,062 atomic specimen cards while retaining context-only records as observations, for 20,753 display descriptors. `folios.json` is a separate schema-2, deny-by-default display manifest with 49 reviewed page entries.
+`catalog.json` is a schema-11 facts-only dataset containing 18,217 source observations from 49 historical meteorite catalogs. `specimen-card-projections.json` replaces 3,062 reviewed parent observations with 8,062 atomic specimen cards while retaining context-only records as observations, for 23,217 display descriptors. `folios.json` is a separate schema-2, deny-by-default display manifest with 49 reviewed page entries.
 <!-- release-summary:data-overview:end -->
 
 A searchable transcription of the 1976 Huss Meteorite Collection catalog, compiled and published by Glenn Huss.
 
 The other configured descriptors identify their compilers without inferring a publisher: Jean Andre Henri Lucas for 1813; E. F. F. Chladni, with a Vienna appendix by Karl von Schreibers, for 1819; E. F. F. Chladni for 1825; Wilhelm Haidinger for 1859; Otto Buchner for 1863; A. E. Nordenskiöld for 1870; Henry A. Ward for 1881; Valentine Ball for 1882; F. W. Clarke for 1886; Edmund Otis Hovey for 1896; Henry S. Washington for 1897; Wirt Tassin for 1902; A. G. Högbom for 1902; Oliver Cummings Farrington for 1903; Henry A. Ward for 1904; R. Schreiter for 1912; Warren M. Foote for 1912; C. Anderson and E. Horn for their respective 1913 catalogs; Oliver Cummings Farrington for 1916; George P. Merrill for 1916; M. Kantor for 1920; G. T. Prior for 1923; Lucas Fernández Navarro for the Madrid catalog of 1923; Charles Palache for 1926; H. H. Nininger for 1933; Chester A. Reeds for 1937; I. S. Astapowitsch for 1938; T. Hodge-Smith for 1939; Virgil E. Barnes for 1940; H. H. Nininger and Addie D. Nininger for 1950; Brian Mason for 1964; Ursula B. Marvin and Brian Mason for 1982; Glenn I. Huss for 1986; the Kanagawa Prefectural Museum of Natural History for 1996; and the Buseck Center for Meteorite Studies, Arizona State University, for the September 2024 ASU dataset.
+
+Lazarus Fletcher compiled the five included British Museum editions of 1886, 1894, 1896, 1904, and 1908.
 
 The current public data was generated from the accepted canonical source integrations and retains their reviewed identity and source-name decisions.
 
@@ -26,6 +28,11 @@ The current public data was generated from the accepted canonical source integra
 | `chladni-1825` | `collection-entry` | 42 | 41 | 33 |
 | `farrington-1903` | `collection-entry` | 251 | 38 | 38 |
 | `farrington-1916` | `collection-entry` | 738 | 82 | 78 |
+| `fletcher-1886` | `collection-representation-fact` | 375 | 26 | 26 |
+| `fletcher-1894` | `collection-representation-fact` | 461 | 30 | 30 |
+| `fletcher-1896` | `collection-representation-fact` | 481 | 31 | 31 |
+| `fletcher-1904` | `collection-representation-fact` | 562 | 38 | 38 |
+| `fletcher-1908` | `collection-representation-fact` | 585 | 41 | 41 |
 | `foote-1909` | `dealer-offer-fact` | 6 | 2 | 2 |
 | `foote-1912` | `collection-entry` | 205 | 35 | 25 |
 | `greifswald-1895` | `collection-entry` | 145 | 11 | 11 |
@@ -57,7 +64,7 @@ The current public data was generated from the accepted canonical source integra
 | `ward-1881` | `collection-entry` | 3 | 1 | 1 |
 | `ward-1904` | `collection-entry` | 697 | 74 | 74 |
 | `washington-1897` | `collection-entry` | 201 | 4 | 4 |
-| **Total** |  | **15,753** | **1,521** | **1,344** |
+| **Total** |  | **18,217** | **1,687** | **1,510** |
 <!-- release-summary:data-catalog-table:end -->
 
 Metadata source-page coverage is not a count of pages cited by records. Some covered pages are introductory or narrative-only.
@@ -84,7 +91,7 @@ Chladni 1825 pages 200-207 are introductory folios. `haidinger-1859` page 21 int
 
 ## Catalog Contract
 
-The root contains exactly `metadata` and `records`. `metadata.schemaVersion` is 11 and each catalog descriptor declares one of seven `recordModel` values.
+The root contains exactly `metadata` and `records`. `metadata.schemaVersion` is 11 and each catalog descriptor declares one of eight `recordModel` values.
 
 ### Specimen
 
@@ -132,6 +139,18 @@ Each holding has `description`, `provenance`, `count`, and `weights`; every nume
 
 Schema 11 retains Hamburg's reviewed additive weight semantics: weights may include `kind`; holdings may include `reportedTotalWeight` and `representations`; and records may include `reportedTotalWeight`, `publicationState`, and `amendments`. They distinguish individual from aggregate weights, base-register observations from supplements, and source-reported amendments from the unchanged base observation.
 
+### Collection Representation Fact
+
+Used by the Fletcher British Museum editions of 1886, 1894, 1896, 1904, and 1908:
+
+```text
+id, catalogId, entryOrder, reportedNumber, pane, name, eventDate, reference,
+representedWeight: { valueText, componentTexts, grams, semantics },
+section, catalogPages, confidence, [metbull]
+```
+
+The five editions contribute 2,464 principal-list observations. `reportedNumber` and `pane` remain edition-local finding context and cannot establish inventory identity. `representedWeight` is collection-representation context rather than an atomic holding or specimen mass; multiple source values retain ordered component text and require `grams: null`. This model has no holdings and contributes no specimen-card projection or lineage endpoint. Public IDs are deterministic and distinct from private source UUIDs. All five folio entries are blocked/undetermined with empty page arrays.
+
 ### Regional Census Fact
 
 Used only by `hodge-smith-1939`:
@@ -161,7 +180,7 @@ The audited catalog correction is byte-locked at SHA-256 `f339b16bf0b799ee0abedb
 
 Every model permits an optional reviewed `metbull` object with exactly `matchType`, `canonicalName`, `meteoriteCode`, `metbullUrl`, and `alternateNameNote`. Resolved mappings require a canonical name, positive decimal code string, and exact `https://www.lpi.usra.edu/meteor/metbull.cfm?code=<code>` URL. Unresolved mappings cannot claim any canonical identity. This additive layer does not alter source names, catalog identifiers, holdings, or weights and is never populated by fuzzy matching. Every specimen card includes the current-name field: the reviewed canonical name when different, `Same as source catalog name` when display-equivalent, or `Unknown` without a reviewed canonical identity. The dedicated catalog directory renders all descriptor cards separately from the homepage search and bibliography master list.
 
-The current release contains 12,072 reviewed mappings: 11,768 resolved and 304 unresolved. The remaining 3,681 records are pending observations without reviewed mappings. Victoria Land contributes 273 `official-abbreviation` mappings; Foote's dealer observations intentionally have no mapping.
+The current release contains 13,704 reviewed mappings: 13,400 resolved and 304 unresolved. The remaining 4,513 records are pending observations without reviewed mappings. Victoria Land contributes 273 `official-abbreviation` mappings; Foote's dealer observations intentionally have no mapping.
 
 Validated continuation evidence recovers formerly blank source names only where supported. Reviewed historical entries that genuinely print no separate proper source name retain null names and unresolved reviews without an inferred modern identity.
 
@@ -177,7 +196,15 @@ catalogItem
 catalogNumber
 entryOrder
 reportedNumber
+pane
 specimenId
+typeNumber
+description
+reference
+representedWeight.valueText
+representedWeight.componentTexts[]
+representedWeight.grams
+representedWeight.semantics
 australianMuseumRepresentation.status
 australianMuseumRepresentation.representedOccurrences
 australianMuseumRepresentation.notRepresentedOccurrences
@@ -242,9 +269,11 @@ Hamburg 1913 source scans, OCR, transcription files, private notes and evidence,
 
 Hodge-Smith 1939 and Victoria Land 1982 are also facts-only, blocked/undetermined releases with no public folios or media. Their source scans or PDFs, OCR/transcriptions, source filenames, private review material, notes, paths, derivatives, raw row text, and working files remain excluded. Victoria publishes only normalized Table A/Table B evidence and deterministic conflict labels in the closed schema-11 shape described above; no raw evidence is copied into the public catalog. Foote 1909 publishes six closed `dealer-offer-fact` observations with type number, source name, description, and citation only; prices, specimens, holdings, masses, MetBull identities, and lineage claims are excluded.
 
+The five Fletcher catalogs are facts-only and folio-blocked. Private source UUIDs, source-first ledgers, adjudication reports, receipts, digests, filenames, manifests, renders, OCR batches, source paths, and raw evidence are excluded. The public model retains only independently structured list, pane/case, source-name, event/reference, represented-weight context, section, printed-page citation, confidence, and reviewed MetBull facts.
+
 ## Harmonized Card Projection
 
-The runtime derives 20,753 closed display DTOs without changing parent result counts: 5,742 `direct-specimen`, 8,062 `projected-atomic-specimen`, 6,859 `collection-observation`, 84 `regional-observation`, and 6 `dealer-observation` cards. Every DTO contains exactly `kind`, `identifier`, `semanticLabel`, `sourceName`, `description`, `facts`, `sourceCitation`, `sourceLabel`, `catalogId`, and `catalogPages`; every fact contains exactly `label` and `value`.
+The runtime derives 23,217 closed display DTOs without changing parent result counts: 5,742 `direct-specimen`, 8,062 `projected-atomic-specimen`, 6,859 `collection-observation`, 2,464 `collection-representation-observation`, 84 `regional-observation`, and 6 `dealer-observation` cards. Every DTO contains exactly `kind`, `identifier`, `semanticLabel`, `sourceName`, `description`, `facts`, `sourceCitation`, `sourceLabel`, `catalogId`, and `catalogPages`; every fact contains exactly `label` and `value`.
 
 Every specimen uses this exact fact order: current Meteoritical Bulletin name, class, specimen form, source locality, individual find location, event, lineage, and specimen weight. Missing values use `Unknown`. Collection, regional, and dealer observations omit specimen-only fields. Foote dealer descriptions are the only populated `description` values in this release. Other catalog-specific holdings, provenance, coordinates, mineral chemistry, sections, totals, amendments, representation facts, and occurrence counts remain searchable rather than becoming standard card fields.
 
@@ -252,7 +281,7 @@ Every specimen uses this exact fact order: current Meteoritical Bulletin name, c
 
 ## Specimen Card Projections
 
-`specimen-card-projections.json` is a schema-4, display-only positive allowlist with `catalogSchemaVersion: 11`, source count 15,753, and the exact schema-11 catalog hash. Each card references an immutable parent observation and an exact public `holdingPath`, then uses a source-bound reviewed UTF-16 `clause` span or a typed Hamburg `componentPath`. Clause cards retain nullable `massPath`; component cards require the exact component grams path. A repeated clause card additionally carries exactly `repeatedMass: { valuePath, countPath, totalPath, occurrence, occurrenceCount }` with `massPath: null`. The manifest contains 3,062 reviewed parent projections, 8,062 atomic cards, and 2,532 derived source-context audit partitions. Of those cards, 8,032 have ordinary mass paths, 2 Kuleschowka cards use repeated mass, and 28 have no normalized display mass. Berlin contributes 838 reviewed cards; Greifswald contributes none. Brown's 385 and Minnesota's 164 reviewed cards exclude group and non-meteorite context and all remain in weighted-only display under the accepted harmonized rule.
+`specimen-card-projections.json` is a schema-4, display-only positive allowlist with `catalogSchemaVersion: 11`, source count 18,217, and the exact schema-11 catalog hash. Each card references an immutable parent observation and an exact public `holdingPath`, then uses a source-bound reviewed UTF-16 `clause` span or a typed Hamburg `componentPath`. Clause cards retain nullable `massPath`; component cards require the exact component grams path. A repeated clause card additionally carries exactly `repeatedMass: { valuePath, countPath, totalPath, occurrence, occurrenceCount }` with `massPath: null`. The manifest contains 3,062 reviewed parent projections, 8,062 atomic cards, and 2,532 derived source-context audit partitions. Of those cards, 8,032 have ordinary mass paths, 2 Kuleschowka cards use repeated mass, and 28 have no normalized display mass. Berlin contributes 838 reviewed cards; Greifswald and Fletcher contribute none. Fletcher represented weights remain context and do not enter specimen mass filtering or lineage. Brown's 385 and Minnesota's 164 reviewed cards exclude group and non-meteorite context and all remain in weighted-only display under the accepted harmonized rule.
 
 Projection order follows canonical parent, holding, and evidence source order. Exact non-null mass paths also scope displayed lineage. Repeated masses contribute to card weight and filtering but never to lineage routing. The El Capitan cards are rebound from the former weight indexes 0/2/3 to 0/1/2 after removal of the unsupported zero; they still resolve to 66 g, 753 g, and 4,000 g, and the complete projection semantic hash remains `615e4448aab42607cf0d8a4ba0adbd7c542e686db6ec658af5b757be53816eef`. Hamburg component cards resolve only to `individual-holding` weights; its 4 aggregate components, 5 associated-material components, grouped counts, reported totals, and 26 thin-section representations remain context only. The amendment is not a specimen or mass and is displayed only on its exact target component card. Other ranges, totals, grouped counts, casts, aggregates, and unsupported material likewise remain parent-record audit context and are not emitted as specimen cards. Madrid's 23 multi-holding parents produce 54 atomic cards; its 5 context partitions and grouped holdings remain non-displayed context. Reeds 1937 entry 366 is locked to ten ordered atomic cards. Prior 1923 entry 630 is locked to seventeen mass-bound direct specimen clauses; four normalized range endpoints and totals remain non-displayed context. The schema-4 allowlist remains atomic-only and contains no Hodge-Smith or Victoria Land projection. Parent observation counts, statistics, citations, folio authorization, and lineage relationships retain their established semantics.
 
@@ -308,6 +337,11 @@ The deployment-specific `scripts/folio-release-lock.json` pins every catalog pol
 | `chladni-1825` | blocked | undetermined | 0 |
 | `farrington-1903` | blocked | undetermined | 0 |
 | `farrington-1916` | blocked | undetermined | 0 |
+| `fletcher-1886` | blocked | undetermined | 0 |
+| `fletcher-1894` | blocked | undetermined | 0 |
+| `fletcher-1896` | blocked | undetermined | 0 |
+| `fletcher-1904` | blocked | undetermined | 0 |
+| `fletcher-1908` | blocked | undetermined | 0 |
 | `foote-1909` | blocked | undetermined | 0 |
 | `foote-1912` | blocked | undetermined | 0 |
 | `greifswald-1895` | blocked | undetermined | 0 |

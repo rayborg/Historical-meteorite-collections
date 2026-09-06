@@ -1,11 +1,11 @@
 {
   "schemaVersion": 2,
-  "sourceExportCatalogSha256": "0fc4c08011747a2a33e3a884f700c6e9a04e8b3b35ed21e5848f41f6f61bd1a6",
-  "foliosSha256": "5e9a7729cff93545aa15c5f758bdef66b0f5da584b9c39349d46961ae7eda29c",
-  "catalogSha256": "0fc4c08011747a2a33e3a884f700c6e9a04e8b3b35ed21e5848f41f6f61bd1a6",
-  "metadataSha256": "9fbf0d6b2107e61baa1c5546c974b2af8acbe6d5cbe8626cb5fe2fafad153528",
-  "orderedIdsSha256": "007758eb611151fd0e3e4933a34753149d4c6d2f28913ee95eb18ead32655fa9",
-  "nonNameRecordsSha256": "6b8a10444ad3276c739d4872b8d5084fc3a334c117381be35b147c17f8e498a4",
+  "sourceExportCatalogSha256": "139204292af05a7fa0b33bb71e4228faebf750436de41790cfb68c4b63cec7c0",
+  "foliosSha256": "ed23bc9af5bb73eb932fd928f7d46b02379265bbeb43911d44004aa4cddacdd5",
+  "catalogSha256": "139204292af05a7fa0b33bb71e4228faebf750436de41790cfb68c4b63cec7c0",
+  "metadataSha256": "091b5fd492bd7267071b5a4ab5258a8cbff90ebe9f40a1d577980eeebe9d51e1",
+  "orderedIdsSha256": "18c01c82c57d45b615cedbd2e3af7a053b12b8583ae4f6bbf30689447b0bb649",
+  "nonNameRecordsSha256": "e266f18747379d2f8249d3e8653e539f4e3d1a9d97493af065f0462c3b7a4489",
   "correctedProjectionSha256": "cf6b47b02d135f2743a963b956a31940257065ed88dd2dc9ab8e8551d91512c4",
   "recordIdsByCatalog": {
     "mason-1964": [

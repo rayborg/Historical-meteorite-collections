@@ -162,8 +162,8 @@ test("statistics count each Victoria mass once, no Hodge mass, and retain parent
   assert.deepEqual({ observations: hodgeStats.observations, grams: hodgeStats.grams }, { observations: 84, grams: 0 });
   assert.equal(victoriaStats.observations, 273);
   assert.equal(victoriaStats.grams, victoria.reduce((sum, record) => sum + record.weight.grams, 0));
-  assert.equal(total.observations, 15753);
-  assert.equal(total.catalogs, 44);
+  assert.equal(total.observations, 18217);
+  assert.equal(total.catalogs, 49);
   assert(Math.abs(total.grams - (app.calculateStatistics(legacy).grams + victoriaStats.grams)) < 1e-6);
 });
 
@@ -194,10 +194,10 @@ test("schema 11 card semantics, cache keys, responsive layout, and privacy bound
   assert.match(styles, /@media \(max-width: 700px\)[\s\S]*\.catalog-grid \{ grid-template-columns: 1fr; \}/u);
   assert.match(styles, /\.record-meta div \{[^}]*grid-template-columns: minmax\(0, 1fr\);/u);
   assert.match(styles, /\.record-meta dt \{[^}]*overflow-wrap: normal;/u);
-  assert.equal(app.CACHE_VERSION, "20260905-catalog-wave2-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260905-catalog-wave2-1");
-  assert.match(html, /styles\.css\?v=20260905-catalog-wave2-1/u);
-  assert.match(html, /app\.js\?v=20260905-catalog-wave2-1/u);
+  assert.equal(app.CACHE_VERSION, "20260906-fletcher-editions-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260906-fletcher-editions-1");
+  assert.match(html, /styles\.css\?v=20260906-fletcher-editions-1/u);
+  assert.match(html, /app\.js\?v=20260906-fletcher-editions-1/u);
   const newSourceRecords = catalog.records.filter(({ catalogId }) => ["hodge-smith-1939", "victoria-land-1982"].includes(catalogId));
   assert.doesNotMatch(JSON.stringify(newSourceRecords), /(?:raw[ _-]*ocr|\/private\/|\/Users\/|source[ _-]*image|scan[ _-]*(?:file|path)|research[ _-]*notes?)/iu);
 });
