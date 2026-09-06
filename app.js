@@ -1,15 +1,16 @@
 "use strict";
 
-const CACHE_VERSION = "20260905-audited-corrections-1";
+const CACHE_VERSION = "20260905-catalog-wave2-1";
 const ASSET_CACHE_VERSION = CACHE_VERSION;
 const CATALOG_SCHEMA_VERSION = 11;
-const CATALOG_RECORD_COUNT = 14477;
-const DISPLAY_DESCRIPTOR_COUNT = 19477;
-const SPECIMEN_DESCRIPTOR_COUNT = 12966;
-const OBSERVATION_DESCRIPTOR_COUNT = 6511;
-const WEIGHTED_DESCRIPTOR_COUNT = 19304;
+const CATALOG_RECORD_COUNT = 15753;
+const DISPLAY_DESCRIPTOR_COUNT = 20753;
+const SPECIMEN_DESCRIPTOR_COUNT = 13804;
+const OBSERVATION_DESCRIPTOR_COUNT = 6949;
+const WEIGHTED_DESCRIPTOR_COUNT = 20580;
 const UNKNOWN_WEIGHT_EXCLUSION_COUNT = 173;
 const WAVE1_PROJECTED_CATALOGS = new Set(["brown-1916", "minnesota-1892"]);
+const REVIEW_GATED_LINEAGE_CATALOGS = new Set(["brown-1916", "minnesota-1892", "greifswald-1895", "greifswald-1901", "berlin-1903", "berlin-1904"]);
 const WAVE1_LINEAGE_RELATIONSHIP_IDS = new Set([
   "possible-lineage-015140ad-87ce-5595-a68e-afb9f85836b2",
   "possible-lineage-20ef2648-5722-529f-8b8f-21c07bd64607",
@@ -263,10 +264,10 @@ const SPECIMEN_CARD_COMPONENT_FIELDS = new Set(["holdingPath", "componentPath", 
 const SPECIMEN_CARD_CLAUSE_FIELDS = new Set(["textPath", "start", "end"]);
 const SPECIMEN_CARD_REPEATED_MASS_FIELDS = new Set(["valuePath", "countPath", "totalPath", "occurrence", "occurrenceCount"]);
 const SHA256_HEX = /^[0-9a-f]{64}$/u;
-const SPECIMEN_CARD_SOURCE_CATALOG_SHA256 = "f339b16bf0b799ee0abedb4ce17d41b0f457ab2f7d2afbfda8581523c134d221";
-const SPECIMEN_CARD_PROJECTION_DATA_SHA256 = "36a4d1ae4849409e5acb5dbdddccb37cc3425bb35f2efc174636627b8019ddf0";
-const SPECIMEN_CARD_PROJECTION_SET_SHA256 = "e4f801ab2d5385576c3302c00c96cc9a06b398a76cfa54ebfe6d3f05ecda720d";
-const SPECIMEN_LINEAGE_DATA_SHA256 = "cd6dfcc00b6c08b0305e3862f5e82ae7b11a6e533127d717ea8dde61ad0993f5";
+const SPECIMEN_CARD_SOURCE_CATALOG_SHA256 = "0fc4c08011747a2a33e3a884f700c6e9a04e8b3b35ed21e5848f41f6f61bd1a6";
+const SPECIMEN_CARD_PROJECTION_DATA_SHA256 = "84da050bb4e0c4b5e9849cdec65257316ab0a02205f2ae3159de345c40069152";
+const SPECIMEN_CARD_PROJECTION_SET_SHA256 = "7a37c5791373bb1613fc7180931e8dfe155868909785a976273e4b64e307d787";
+const SPECIMEN_LINEAGE_DATA_SHA256 = "72f7013edad00c286671c96774734f688e70e4d0e742753948380f1351a2ffe6";
 const SOURCE_CLAIMS_CONTENT_SHA256 = "141ed60b9560596ac8ab392babfc4af6e1d22921bacbf979d3b975e0fc2f20c2";
 const LINEAGE_ROOT_FIELDS = new Set(["metadata", "sourceAttestedGroups", "relationships"]);
 const LINEAGE_METADATA_FIELDS = new Set(["schemaVersion", "scope", "source", "collectionSeries", "methodology", "counts"]);
@@ -1922,9 +1923,11 @@ function validateLineageCandidates(lineageData, sourceRecords, registry) {
   requireLineage(sourceRecordsById.size === sourceRecords.length && isPlainObject(registry) && Object.keys(registry).length > 0);
   validateSourceAttestedGroups(lineageData.sourceAttestedGroups, sourceRecords, metadata);
   const inventorySummary = expectedSameInventoryRelationships(sourceRecords);
+  const publishedReviewedIds = new Set(lineageData.relationships.filter(({ relationship, review }) =>
+    relationship === "possible-match" && review?.status === "reviewed" && review.outcome === "retain-as-possible").map(({ id }) => id));
   const expectedPossible = new Map([...expectedPossibleRelationships(sourceRecords)].filter(([, candidate]) =>
-    !candidate.endpoints.some(({ record }) => WAVE1_PROJECTED_CATALOGS.has(record.catalogId)) ||
-    WAVE1_LINEAGE_RELATIONSHIP_IDS.has(candidate.relationshipId)
+    !candidate.endpoints.some(({ record }) => REVIEW_GATED_LINEAGE_CATALOGS.has(record.catalogId)) ||
+    WAVE1_LINEAGE_RELATIONSHIP_IDS.has(candidate.relationshipId) || publishedReviewedIds.has(candidate.relationshipId)
   ));
   const inventoryObservationCount = lineageInventoryEndpoints(sourceRecords).length;
   requireLineage(metadata.source.catalogSchemaVersion === CATALOG_SCHEMA_VERSION && metadata.source.recordCount === sourceRecords.length &&

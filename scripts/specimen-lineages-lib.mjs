@@ -33,7 +33,11 @@ export const EVIDENCE_STRENGTH_ORDER = [
   "limited-matching-evidence",
 ];
 export const EMPTY_REVIEW_SOURCE = Object.freeze({ schemaVersion: 1, reviews: Object.freeze([]) });
-const REVIEW_GATED_CATALOGS = new Set(["brown-1916", "minnesota-1892"]);
+const MASS_ENDPOINT_GATED_CATALOGS = new Set(["brown-1916", "minnesota-1892"]);
+const REVIEW_GATED_CATALOGS = new Set([
+  "brown-1916", "minnesota-1892",
+  "greifswald-1895", "greifswald-1901", "berlin-1903", "berlin-1904",
+]);
 
 const ROOT_KEYS = ["metadata", "sourceAttestedGroups", "relationships"];
 const METADATA_KEYS = ["schemaVersion", "scope", "source", "collectionSeries", "methodology", "counts"];
@@ -226,7 +230,7 @@ export function flattenMassObservations(catalog) {
       }));
     } else if (descriptor.recordModel === "catalog-number" || descriptor.recordModel === "collection-entry") {
       record.holdings.forEach((holding, holdingIndex) => holding.weights.forEach((weight, weightIndex) => {
-        if (REVIEW_GATED_CATALOGS.has(record.catalogId) && !holding.description.startsWith("Specimen:")) return;
+        if (MASS_ENDPOINT_GATED_CATALOGS.has(record.catalogId) && !holding.description.startsWith("Specimen:")) return;
         if (weight.kind !== undefined && weight.kind !== "individual-holding") return;
         add(record, descriptor, {
           designation: null,

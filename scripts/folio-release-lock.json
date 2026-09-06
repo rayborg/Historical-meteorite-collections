@@ -36,6 +36,20 @@
       "basisUrl": null,
       "pageIds": []
     },
+    "berlin-1903": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "basis": null,
+      "basisUrl": null,
+      "pageIds": []
+    },
+    "berlin-1904": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "basis": null,
+      "basisUrl": null,
+      "pageIds": []
+    },
     "brown-1916": {
       "displayPolicy": "blocked",
       "rightsStatus": "undetermined",
@@ -99,6 +113,20 @@
       "pageIds": []
     },
     "foote-1912": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "basis": null,
+      "basisUrl": null,
+      "pageIds": []
+    },
+    "greifswald-1895": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "basis": null,
+      "basisUrl": null,
+      "pageIds": []
+    },
+    "greifswald-1901": {
       "displayPolicy": "blocked",
       "rightsStatus": "undetermined",
       "basis": null,

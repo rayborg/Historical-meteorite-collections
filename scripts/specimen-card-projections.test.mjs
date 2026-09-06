@@ -51,34 +51,35 @@ function cardTuple(card) {
 
 test("production manifest is deterministic and validates against the locked catalog", () => {
   assert.deepEqual(validateSpecimenCardProjections(published, catalog, catalogText), {
-    projectionCount: 2224,
-    atomicCardCount: 7224,
-    massBoundCardCount: 7194,
+    projectionCount: 3062,
+    atomicCardCount: 8062,
+    massBoundCardCount: 8032,
     masslessCardCount: 30,
     repeatedMassCardCount: 2,
-    sourceContextCardCount: 1694,
+    sourceContextCardCount: 2532,
   });
   assert.equal(serializeSpecimenCardProjections(published), projectionText);
   assert.equal(createHash("sha256").update(catalogText).digest("hex"), published.metadata.sourceCatalogSha256);
-  assert.equal(createHash("sha256").update(JSON.stringify(published.projections)).digest("hex"), "e4f801ab2d5385576c3302c00c96cc9a06b398a76cfa54ebfe6d3f05ecda720d");
-  const baseline = published.projections.filter(({ parentRecordId }) => !wave1Ids.has(parentRecordId));
+  assert.equal(createHash("sha256").update(JSON.stringify(published.projections)).digest("hex"), "7a37c5791373bb1613fc7180931e8dfe155868909785a976273e4b64e307d787");
+  const wave2Ids = new Set(catalog.records.filter(({ catalogId }) => ["berlin-1903", "berlin-1904", "greifswald-1895", "greifswald-1901"].includes(catalogId)).map(({ id }) => id));
+  const baseline = published.projections.filter(({ parentRecordId }) => !wave1Ids.has(parentRecordId) && !wave2Ids.has(parentRecordId));
   assert.equal(createHash("sha256").update(JSON.stringify(baseline)).digest("hex"), "3f887829ffcd2a344e64383bdd748061bc64ed596308d6952f7ebe69ae298ff5");
   assert.equal(createHash("sha256").update(JSON.stringify(baseline.filter(({ parentRecordId }) => !hamburgIds.has(parentRecordId)))).digest("hex"), "75f1aa06fe2b2f5e83a464001989a888b11d98c053e49ee4e2dcc8a24c1a6c84");
-  assert.equal(createHash("sha256").update(projectionText).digest("hex"), "36a4d1ae4849409e5acb5dbdddccb37cc3425bb35f2efc174636627b8019ddf0");
+  assert.equal(createHash("sha256").update(projectionText).digest("hex"), "84da050bb4e0c4b5e9849cdec65257316ab0a02205f2ae3159de345c40069152");
 });
 
 test("schema is a closed schema-4 count-locked atomic projection contract", () => {
   assert.equal(schema.$schema, "https://json-schema.org/draft/2020-12/schema");
   assert.equal(schema.$id, "urn:hmc:schema:specimen-card-projections:4");
   assert.deepEqual(schema.required, ["metadata", "projections"]);
-  assert.equal(schema.properties.projections.minItems, 2224);
-  assert.equal(schema.properties.projections.maxItems, 2224);
-  assert.equal(schema.$defs.metadata.properties.atomicCardCount.const, 7224);
-  assert.equal(schema.$defs.metadata.properties.sourceContextCardCount.const, 1694);
+  assert.equal(schema.properties.projections.minItems, 3062);
+  assert.equal(schema.properties.projections.maxItems, 3062);
+  assert.equal(schema.$defs.metadata.properties.atomicCardCount.const, 8062);
+  assert.equal(schema.$defs.metadata.properties.sourceContextCardCount.const, 2532);
   assert.equal(schema.$defs.metadata.properties.catalogSchemaVersion.const, 11);
-  assert.equal(schema.$defs.metadata.properties.sourceRecordCount.const, 14477);
+  assert.equal(schema.$defs.metadata.properties.sourceRecordCount.const, 15753);
   assert.equal(schema.$defs.metadata.properties.sourceCatalogSha256.const,
-    "f339b16bf0b799ee0abedb4ce17d41b0f457ab2f7d2afbfda8581523c134d221");
+    "0fc4c08011747a2a33e3a884f700c6e9a04e8b3b35ed21e5848f41f6f61bd1a6");
   assert.deepEqual(schema.$defs.projection.required, ["parentRecordId", "cards"]);
   assert.deepEqual(schema.$defs.card.oneOf, [
     { $ref: "#/$defs/clauseCard" },
@@ -113,7 +114,7 @@ test("unprojected sources remain unprojected and schema 11 retains specimen loca
   assert.equal(footeIds.size, 6);
   assert(!published.projections.some(({ parentRecordId }) => footeIds.has(parentRecordId)));
   assert.equal(published.metadata.catalogSchemaVersion, 11);
-  assert.equal(published.metadata.sourceRecordCount, 14477);
+  assert.equal(published.metadata.sourceRecordCount, 15753);
 });
 
 test("Brown and Minnesota projections are exact one-to-one reviewed atomic holding projections", () => {
@@ -296,8 +297,8 @@ test("every evidence variant and optional mass resolves exactly in canonical sou
       assert(projection.cards.length + Number(hasContext) >= 2);
     }
   }
-  assert.equal(cardCount, 7224);
-  assert.equal(contextCount, 1694);
+  assert.equal(cardCount, 8062);
+  assert.equal(contextCount, 2532);
 });
 
 test("Prior 630 has exact 17 reviewed clauses plus context; Reeds 366 has ten full holdings and no context", () => {

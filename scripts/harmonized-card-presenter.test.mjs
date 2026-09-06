@@ -95,13 +95,13 @@ test("every production display descriptor has the closed harmonized DTO and exac
     assert(dto.facts.every(({ label, value }) => typeof label === "string" && label && typeof value === "string" && value));
   }
   assert.deepEqual(counts, {
-    "collection-observation": 6421,
-    "projected-atomic-specimen": 7224,
+    "collection-observation": 6859,
+    "projected-atomic-specimen": 8062,
     "direct-specimen": 5742,
     "regional-observation": 84,
     "dealer-observation": 6,
   });
-  assert.equal(descriptors.length, 19477);
+  assert.equal(descriptors.length, 20753);
 });
 
 test("semantic type labels are hidden for specimens and retained for observations", () => {
@@ -148,14 +148,14 @@ test("every production card uses the approved fact order, values, missing behavi
       if (dto.sourceName === "Unknown") missing.sourceName = (missing.sourceName || 0) + 1;
     }
   }
-  assert.equal(specimenCount, 12966);
+  assert.equal(specimenCount, 13804);
   assert.deepEqual(missing, {
-    "Current Meteoritical Bulletin name": 2102,
-    "Individual find location": 12855,
-    Lineage: 12247,
+    "Current Meteoritical Bulletin name": 2341,
+    "Individual find location": 13693,
+    Lineage: 12848,
     Event: 2739,
-    Class: 228,
-    "Source locality": 257,
+    Class: 230,
+    "Source locality": 1095,
     "Specimen weight": 184,
   });
   assert.deepEqual({
@@ -166,12 +166,12 @@ test("every production card uses the approved fact order, values, missing behavi
     lineageResolved: specimenCount - missing.Lineage,
     weightResolved: specimenCount - missing["Specimen weight"],
   }, {
-    currentNameResolved: 10864,
-    classResolved: 12738,
-    eventResolved: 10227,
+    currentNameResolved: 11463,
+    classResolved: 13574,
+    eventResolved: 11065,
     locationResolved: 111,
-    lineageResolved: 719,
-    weightResolved: 12782,
+    lineageResolved: 956,
+    weightResolved: 13620,
   });
 });
 
@@ -314,8 +314,8 @@ test("projection changes display-card multiplicity without changing parent resul
     query: "", catalog: null, min: null, max: null,
     lineageOnly: false, includeUnknownWeight: true, sort: app.DEFAULT_SORT
   };
-  assert.equal(app.filterRecords(records, filters, lineageIndex).length, 14477);
-  assert.equal(new Set(descriptors.map(({ parentRecord }) => parentRecord.id)).size, 14477);
+  assert.equal(app.filterRecords(records, filters, lineageIndex).length, 15753);
+  assert.equal(new Set(descriptors.map(({ parentRecord }) => parentRecord.id)).size, 15753);
   for (const descriptor of catalog.metadata.catalogs) {
     const parents = app.filterRecords(records, { ...filters, catalog: descriptor.id }, lineageIndex);
     assert.equal(parents.length, descriptor.recordCount, descriptor.id);
@@ -331,8 +331,8 @@ test("unknown-weight toggle excludes only the 173 weightless specimen cards", ()
   const weightedOnly = app.filterSpecimenCardDescriptors(descriptors, {
     min: null, max: null, lineageOnly: false, includeUnknownWeight: false
   }, lineageIndex);
-  assert.equal(inclusive.length, 19477);
-  assert.equal(weightedOnly.length, 19304);
+  assert.equal(inclusive.length, 20753);
+  assert.equal(weightedOnly.length, 20580);
   assert.equal(inclusive.length - weightedOnly.length, 173);
   assert(weightedOnly.every((descriptor) => {
     const kind = app.classifyHarmonizedCard(descriptor);
@@ -340,7 +340,7 @@ test("unknown-weight toggle excludes only the 173 weightless specimen cards", ()
       app.specimenCardDescriptorHasKnownWeight(descriptor);
   }));
   assert.equal(weightedOnly.filter((descriptor) =>
-    ["collection-observation", "regional-observation", "dealer-observation"].includes(app.classifyHarmonizedCard(descriptor))).length, 6511);
+    ["collection-observation", "regional-observation", "dealer-observation"].includes(app.classifyHarmonizedCard(descriptor))).length, 6949);
 
   const byParent = Map.groupBy(descriptors, ({ parentRecord }) => parentRecord.id);
   const mixed = [...byParent.values()].find((cards) => {
@@ -412,22 +412,22 @@ test("accessible shell, responsive breakpoints, approved cache, and immutable da
   assert.match(styles, /@media \(max-width: 700px\)[\s\S]*\.catalog-grid \{ grid-template-columns: 1fr; \}/u);
   assert.match(styles, /@media \(max-width: 420px\)[\s\S]*\.record-card \{ padding-inline: 1rem; \}/u);
   assert.doesNotMatch(styles, /\.record-meta dt \{[^}]*overflow-wrap: anywhere;/u);
-  assert.equal(app.CACHE_VERSION, "20260905-audited-corrections-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260905-audited-corrections-1");
+  assert.equal(app.CACHE_VERSION, "20260905-catalog-wave2-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260905-catalog-wave2-1");
   for (const document of [html, catalogsHtml]) {
-    assert.match(document, /styles\.css\?v=20260905-audited-corrections-1/u);
-    assert.match(document, /app\.js\?v=20260905-audited-corrections-1/u);
+    assert.match(document, /styles\.css\?v=20260905-catalog-wave2-1/u);
+    assert.match(document, /app\.js\?v=20260905-catalog-wave2-1/u);
   }
-  assert.match(catalogsHtml, /catalogs\.js\?v=20260905-audited-corrections-1/u);
+  assert.match(catalogsHtml, /catalogs\.js\?v=20260905-catalog-wave2-1/u);
   assert.deepEqual({
     catalog: sha256(catalogText),
     projections: sha256(projectionText),
     lineages: sha256(lineageText),
     reviews: sha256(reviewText),
   }, {
-    catalog: "f339b16bf0b799ee0abedb4ce17d41b0f457ab2f7d2afbfda8581523c134d221",
-    projections: "36a4d1ae4849409e5acb5dbdddccb37cc3425bb35f2efc174636627b8019ddf0",
-    lineages: "cd6dfcc00b6c08b0305e3862f5e82ae7b11a6e533127d717ea8dde61ad0993f5",
-    reviews: "6ca87f08ccb4e903ace0331732d982df17425ae672dd09cfb423df731b6ee98e",
+    catalog: "0fc4c08011747a2a33e3a884f700c6e9a04e8b3b35ed21e5848f41f6f61bd1a6",
+    projections: "84da050bb4e0c4b5e9849cdec65257316ab0a02205f2ae3159de345c40069152",
+    lineages: "72f7013edad00c286671c96774734f688e70e4d0e742753948380f1351a2ffe6",
+    reviews: "8262150ef01a0996d9f63ab0b3234e3d927d1d49c9200861778d763a2034963f",
   });
 });

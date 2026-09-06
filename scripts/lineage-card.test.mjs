@@ -79,10 +79,10 @@ test("main template presents lineage through the harmonized specimen contract", 
   });
   assert.doesNotMatch(source, /\.innerHTML\b/);
   assert.doesNotMatch(css, /\.earlier-records \{/);
-  assert.equal(app.CACHE_VERSION, "20260905-audited-corrections-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260905-audited-corrections-1");
-  assert.match(html, /styles\.css\?v=20260905-audited-corrections-1/);
-  assert.match(html, /app\.js\?v=20260905-audited-corrections-1/);
+  assert.equal(app.CACHE_VERSION, "20260905-catalog-wave2-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260905-catalog-wave2-1");
+  assert.match(html, /styles\.css\?v=20260905-catalog-wave2-1/);
+  assert.match(html, /app\.js\?v=20260905-catalog-wave2-1/);
   for (const file of ["possible-specimen-lineages.html", "possible-specimen-lineages.css", "possible-specimen-lineages.js"]) {
     await assert.rejects(access(path.join(projectRoot, file)));
   }
@@ -136,11 +136,11 @@ test("real catalog Allende search retains reviewed names and synonyms without Al
 
 test("real release locks all catalogs and chronological dropdown entries", () => {
   const entries = app.catalogSelectorEntries(registry);
-  assert.equal(entries.length, 40);
+  assert.equal(entries.length, 44);
   assert.deepEqual(entries.map(([id]) => id), [
     "lucas-1813", "chladni-1819", "chladni-1825", "haidinger-1859", "buchner-1863",
-    "nordenskiold-1870", "ward-1881", "ball-1882", "usnm-1886", "minnesota-1892", "hovey-1896", "washington-1897",
-    "tassin-1902", "hogbom-1902", "farrington-1903", "ward-1904", "foote-1909", "schreiter-1912", "foote-1912",
+    "nordenskiold-1870", "ward-1881", "ball-1882", "usnm-1886", "minnesota-1892", "greifswald-1895", "hovey-1896", "washington-1897",
+    "greifswald-1901", "tassin-1902", "hogbom-1902", "farrington-1903", "berlin-1903", "ward-1904", "berlin-1904", "foote-1909", "schreiter-1912", "foote-1912",
     "anderson-1913", "hamburg-1913", "brown-1916", "farrington-1916", "merrill-1916", "kantor-1920", "prior-1923", "madrid-1923", "palache-1926",
     "nininger-1933", "reeds-1937", "astapovich-1938", "hodge-smith-1939", "barnes-1940", "nininger-1950", "mason-1964",
     "huss-1976", "victoria-land-1982", "huss-1986", "kanagawa-1996", "asu-2024-09",
@@ -267,7 +267,7 @@ test("review outcomes apply only to possible matches and not-supported entries a
 
   const notSupported = clone(retained);
   notSupported.relationships.find(({ id }) => id === target.id).review.outcome = "not-supported";
-  assert.equal(entryCount(app.deriveEarlierRecordIndex(notSupported, records, registry)), 1632);
+  assert.equal(entryCount(app.deriveEarlierRecordIndex(notSupported, records, registry)), 2500);
 
   const confirmed = clone(retained);
   confirmed.relationships.find(({ id }) => id === target.id).review.outcome = "confirmed";
@@ -278,14 +278,14 @@ test("real data maps only later records without mutation and matches the locked 
   const before = JSON.stringify(lineageData);
   const index = app.deriveEarlierRecordIndex(lineageData, records, registry);
   assert.equal(JSON.stringify(lineageData), before);
-  assert.equal(index.size, 1063);
-  assert.equal(entryCount(index), 1633);
+  assert.equal(index.size, 1398);
+  assert.equal(entryCount(index), 2501);
   assert.equal(Math.max(...[...index.values()].map((entries) => entries.length)), 98);
   const distribution = [...index.values()].reduce((counts, entries) => {
     counts[entries.length] = (counts[entries.length] || 0) + 1;
     return counts;
   }, {});
-  assert.deepEqual(distribution, { 1: 870, 2: 145, 3: 17, 4: 10, 5: 4, 6: 4, 7: 1, 8: 2, 9: 2, 11: 1, 13: 1, 15: 1, 18: 1, 25: 1, 36: 1, 81: 1, 98: 1 });
+  assert.deepEqual(distribution, { 1: 967, 2: 244, 3: 31, 4: 124, 5: 5, 6: 10, 7: 1, 8: 5, 9: 2, 10: 1, 11: 1, 13: 1, 15: 1, 18: 1, 25: 1, 36: 1, 81: 1, 98: 1 });
   assert.ok(records.some((record) => !index.has(record.id)));
 });
 
@@ -354,7 +354,7 @@ test("Sandia receives 108b continuity while Rosebud receives none", () => {
   assert.equal(index.has(rosebud.id), false);
 });
 
-test("all 1554 earlier links resolve to exact public source records", () => {
+test("all 2422 earlier links resolve to exact public source records", () => {
   const index = app.deriveEarlierRecordIndex(lineageData, records, registry);
   const earlierEntries = [...index.values()].flat().filter(({ kind }) => !kind);
   for (const entry of earlierEntries) {
@@ -366,10 +366,10 @@ test("all 1554 earlier links resolve to exact public source records", () => {
       ).map(({ id }) => id);
       assert.deepEqual(destinationIds, [entry.recordId], `${entry.catalogSearchUrl} did not resolve exactly to ${entry.recordId}`);
   }
-  assert.equal(earlierEntries.length, 1554);
+  assert.equal(earlierEntries.length, 2422);
 });
 
-test("all 3118 published observation links resolve to exact public source records", () => {
+test("all 4858 published observation links resolve to exact public source records", () => {
   let count = 0;
   for (const relationship of lineageData.relationships) {
     for (const observation of relationship.observations) {
@@ -384,7 +384,7 @@ test("all 3118 published observation links resolve to exact public source record
       assert.deepEqual(destinationIds, [observation.recordId], `${observation.catalogSearchUrl} did not resolve exactly`);
     }
   }
-  assert.equal(count, 3118);
+  assert.equal(count, 4858);
 });
 
 test("optional fetch failures and malformed payloads return an empty enhancement", async () => {
@@ -400,9 +400,9 @@ test("optional fetch failures and malformed payloads return an empty enhancement
   const loaded = await app.loadEarlierRecordIndex(records, registry, async () => ({
     ok: true, text: async () => lineageText,
   }), { sha256 });
-  assert.equal(entryCount(loaded), 1633);
+  assert.equal(entryCount(loaded), 2501);
   assert.equal(app.SPECIMEN_LINEAGE_DATA_SHA256,
-    "cd6dfcc00b6c08b0305e3862f5e82ae7b11a6e533127d717ea8dde61ad0993f5");
+    "72f7013edad00c286671c96774734f688e70e4d0e742753948380f1351a2ffe6");
   for (const mutate of forgedFactMutations) {
     const forged = clone(lineageData);
     mutate(forged);

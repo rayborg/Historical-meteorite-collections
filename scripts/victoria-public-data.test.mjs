@@ -18,11 +18,11 @@ const victoriaDescriptor = catalog.metadata.catalogs.find(({ id }) => id === "vi
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
 
 test("imports all three accepted public package files exactly", () => {
-  assert.equal(sha256(catalogText), "f339b16bf0b799ee0abedb4ce17d41b0f457ab2f7d2afbfda8581523c134d221");
-  assert.equal(sha256(foliosText), "145498213ac8ddd24527b5092bfc4cad8dce1880f8d304d29e2c2c4d44595460");
+  assert.equal(sha256(catalogText), "0fc4c08011747a2a33e3a884f700c6e9a04e8b3b35ed21e5848f41f6f61bd1a6");
+  assert.equal(sha256(foliosText), "5e9a7729cff93545aa15c5f758bdef66b0f5da584b9c39349d46961ae7eda29c");
   assert.equal(sha256(sourceClaimsText), "edb201339e9e1068ac45d3333a9224959b4dcdbf8e317afcbb0657c6635b85fb");
   assert.deepEqual({ schema: catalog.metadata.schemaVersion, records: catalog.records.length, catalogs: catalog.metadata.catalogs.length },
-    { schema: 11, records: 14477, catalogs: 40 });
+    { schema: 11, records: 15753, catalogs: 44 });
   assert.doesNotThrow(() => validatePublicCatalog(catalog, folios));
 });
 
@@ -139,8 +139,9 @@ test("preserves every non-correction record and descriptor byte-semantically", (
     "obs-68c7e39b-9d99-4f9a-a1d2-7b2374d76d47",
     "obs-38554aa8-007c-447f-9410-91d447f74149",
   ]);
-  assert.equal(sha256(JSON.stringify(catalog.records.filter(({ id }) => !correctedRecordIds.has(id)))),
+  const wave2CatalogIds = new Set(["berlin-1903", "berlin-1904", "greifswald-1895", "greifswald-1901"]);
+  assert.equal(sha256(JSON.stringify(catalog.records.filter(({ id, catalogId }) => !correctedRecordIds.has(id) && !wave2CatalogIds.has(catalogId)))),
     "5892e877d2b41a018bbd1836f3d9369a60e923f0dd31920b6671970aa32686b1");
-  assert.equal(sha256(JSON.stringify(catalog.metadata.catalogs.filter(({ id }) => id !== "victoria-land-1982"))),
+  assert.equal(sha256(JSON.stringify(catalog.metadata.catalogs.filter(({ id }) => id !== "victoria-land-1982" && !wave2CatalogIds.has(id)))),
     "8066f1c06de5c8021ffa24020cfe37c4e9cdc5ce1d357e95c20268c2699a1d6e");
 });

@@ -1,7 +1,7 @@
 # Historical Meteorite Collection
 
 <!-- release-summary:readme-overview:start -->
-This repository is a dependency-free, facts-only index of 14,477 source observations from 40 historical meteorite catalogs. The coordinated catalog uses public metadata schema 11 and supports 7 source-specific record models: `catalog-item`, `catalog-number`, `collection-entry`, `dealer-offer-fact`, `regional-census-fact`, `specimen`, `table-a-specimen`. Reviewed projection metadata expands 2,224 parent observations into 7,224 atomic specimen cards, producing 19,477 searchable display descriptors: 12,966 specimen cards and 6,511 observations.
+This repository is a dependency-free, facts-only index of 15,753 source observations from 44 historical meteorite catalogs. The coordinated catalog uses public metadata schema 11 and supports 7 source-specific record models: `catalog-item`, `catalog-number`, `collection-entry`, `dealer-offer-fact`, `regional-census-fact`, `specimen`, `table-a-specimen`. Reviewed projection metadata expands 3,062 parent observations into 8,062 atomic specimen cards, producing 20,753 searchable display descriptors: 13,804 specimen cards and 6,949 observations.
 <!-- release-summary:readme-overview:end -->
 
 The repository also publishes [`data/specimen-lineages.json`](./data/specimen-lineages.json), a deterministic index that distinguishes same collection inventory IDs across consecutive editions from possible matches across separate collection sources. Same-inventory continuity is series-scoped and does not infer custody or ownership. Cross-source candidates retain public review decisions from [`data/specimen-lineage-reviews.json`](./data/specimen-lineage-reviews.json) and do not assert physical identity, custody, or ownership transfer. The separate [`data/specimen-card-projections.json`](./data/specimen-card-projections.json) manifest identifies reviewed source holdings that may be displayed as individual specimen cards without splitting or replacing their parent observations.
@@ -10,7 +10,7 @@ A searchable transcription of the 1976 Huss Meteorite Collection catalog, compil
 
 The other configured sources identify their compilers without inferring a publisher: Jean Andre Henri Lucas for 1813; E. F. F. Chladni, with a Vienna appendix by Karl von Schreibers, for 1819; E. F. F. Chladni for 1825; Wilhelm Haidinger for 1859; Otto Buchner for 1863; A. E. Nordenskiöld for 1870; Henry A. Ward for 1881; Valentine Ball for 1882; F. W. Clarke for 1886; Edmund Otis Hovey for 1896; Henry S. Washington for 1897; Wirt Tassin for 1902; A. G. Högbom for 1902; Oliver Cummings Farrington for 1903; Henry A. Ward for 1904; R. Schreiter for 1912; Warren M. Foote for 1912; C. Anderson and E. Horn for their respective 1913 catalogs; Oliver Cummings Farrington for 1916; George P. Merrill for 1916; M. Kantor for 1920; G. T. Prior for 1923; Lucas Fernández Navarro for the Madrid catalog of 1923; Charles Palache for 1926; H. H. Nininger for 1933; Chester A. Reeds for 1937; I. S. Astapowitsch for 1938; T. Hodge-Smith for 1939; Virgil E. Barnes for 1940; H. H. Nininger and Addie D. Nininger for 1950; Brian Mason for 1964; Ursula B. Marvin and Brian Mason for 1982; Glenn I. Huss for 1986; the Kanagawa Prefectural Museum of Natural History for 1996; and the Buseck Center for Meteorite Studies, Arizona State University, for the September 2024 ASU dataset.
 
-This public facts-only release was generated from the accepted canonical source integrations and retains their reviewed identity and source-name decisions.
+This public facts-only release was generated from the accepted canonical source integrations and retains their reviewed identity and source-name decisions. E. Cohen compiled the 1895 and 1901 Greifswald catalogs, and Carl Klein compiled the 1903 and 1904 Berlin catalogs. The research and publication rules are summarized in [`METHODOLOGY.md`](./METHODOLOGY.md).
 
 The site supports catalog filtering, model-aware search, segment-aware H-designation search, numeric gram ranges across scalar and nested masses, six deterministic sort orders, URL-persisted filters, incremental rendering, and rights-gated source folios. The homepage links to a dedicated catalog directory that presents every catalog card and its authorized folio actions; the bibliography master list remains a separate resource. Catalog facts and folio authorization are validated separately.
 
@@ -124,6 +124,8 @@ The current catalog contains:
 | `asu-2024-09` | `specimen` | 2,169 | 53 | 53 |
 | `ball-1882` | `collection-entry` | 44 | 4 | 2 |
 | `barnes-1940` | `collection-entry` | 70 | 30 | 16 |
+| `berlin-1903` | `collection-entry` | 380 | 13 | 13 |
+| `berlin-1904` | `collection-entry` | 470 | 17 | 17 |
 | `brown-1916` | `collection-entry` | 237 | 78 | 78 |
 | `buchner-1863` | `collection-entry` | 185 | 5 | 5 |
 | `chladni-1819` | `collection-entry` | 74 | 12 | 12 |
@@ -132,6 +134,8 @@ The current catalog contains:
 | `farrington-1916` | `collection-entry` | 738 | 82 | 78 |
 | `foote-1909` | `dealer-offer-fact` | 6 | 2 | 2 |
 | `foote-1912` | `collection-entry` | 205 | 35 | 25 |
+| `greifswald-1895` | `collection-entry` | 145 | 11 | 11 |
+| `greifswald-1901` | `collection-entry` | 281 | 21 | 21 |
 | `haidinger-1859` | `collection-entry` | 137 | 6 | 5 |
 | `hamburg-1913` | `collection-entry` | 147 | 27 | 11 |
 | `hodge-smith-1939` | `regional-census-fact` | 84 | 25 | 19 |
@@ -159,7 +163,7 @@ The current catalog contains:
 | `ward-1881` | `collection-entry` | 3 | 1 | 1 |
 | `ward-1904` | `collection-entry` | 697 | 74 | 74 |
 | `washington-1897` | `collection-entry` | 201 | 4 | 4 |
-| **Total** |  | **14,477** | **1,459** | **1,282** |
+| **Total** |  | **15,753** | **1,521** | **1,344** |
 <!-- release-summary:readme-catalog-table:end -->
 
 Metadata source-page coverage is not a claim that every covered page contains a record. Some covered pages are introductory or narrative-only.
@@ -190,19 +194,19 @@ Records are source observations, not canonical meteorites. A `table-a-specimen` 
 
 ### Harmonized Public Cards
 
-The public presenter derives 19,477 display cards from 14,477 parent observations and the reviewed projection manifest: 5,742 direct specimens, 7,224 projected atomic specimens, 6,421 collection observations, 84 regional observations, and 6 dealer observations. Projection changes display-card multiplicity only; search result counts, statistics, citations, folio authorization, and source data remain parent-observation based.
+The public presenter derives 20,753 display cards from 15,753 parent observations and the reviewed projection manifest: 5,742 direct specimens, 8,062 projected atomic specimens, 6,859 collection observations, 84 regional observations, and 6 dealer observations. Projection changes display-card multiplicity only; search result counts, statistics, citations, folio authorization, and source data remain parent-observation based.
 
 Every specimen card uses one closed standard vocabulary. After the specimen identifier, semantic type, and source catalog meteorite name, every specimen displays these fact rows in order: **Current Meteoritical Bulletin name**, **Class**, **Specimen form**, **Source locality**, **Individual find location**, **Event**, **Lineage**, and **Specimen weight**. Unavailable values read **Unknown**. A resolved display-equivalent current name reads **Same as source catalog name** rather than repeating it. No catalog-specific holdings, provenance, coordinate, mineral-chemistry, amendment, total, representation, occurrence-count, or section labels are inserted into cards. Those public source facts remain searchable.
 
 The checked-by-default **Include specimens without weight** filter preserves the complete register. Clearing it removes exactly 173 unknown-mass specimen cards. Brown's 385 and Minnesota's 164 reviewed cards remain under the accepted harmonized rule even though 11 lack a specific mass path; collection, regional, and dealer observations remain listed.
 
-`direct-specimen` and `projected-atomic-specimen` cards are specimen presentations. `collection-observation`, `regional-observation`, and `dealer-observation` cards are explicitly observations and omit specimen-only fields. **Specimen form** is controlled only by reviewed card kind; it is not inferred from locality, coordinates, names, MetBull data, or descriptive prose. **Source locality** preserves the catalog's locality scope and is not an individual find-location field. The 111 typed specimen locations display exactly; the other 12,855 specimen cards display **Individual find location: Unknown**.
+`direct-specimen` and `projected-atomic-specimen` cards are specimen presentations. `collection-observation`, `regional-observation`, and `dealer-observation` cards are explicitly observations and omit specimen-only fields. **Specimen form** is controlled only by reviewed card kind; it is not inferred from locality, coordinates, names, MetBull data, or descriptive prose. **Source locality** preserves the catalog's locality scope and is not an individual find-location field. The 111 typed specimen locations display exactly; the other 13,693 specimen cards display **Individual find location: Unknown**.
 
 ### Reviewed Specimen Cards
 
-`specimen-card-projections.json` is a schema-4 display-only positive allowlist whose metadata binds the schema-11 catalog, its 14,477 records, and its exact source hash. Every card references an immutable parent observation and exact public holding, then uses one evidence variant: a reviewed UTF-16 clause span in an already-public description or designation, or an exact typed Hamburg `componentPath`. Schema 4 also permits a closed `repeatedMass` object on a clause card with `massPath: null`; it binds one per-item value, count, aggregate total, occurrence, and occurrence count in the same holding. It does not create observation or canonical-specimen IDs or copy source prose into the manifest. Grouped holdings, aggregate components, associated material, representations, counts, ranges, totals, dealer offers, and otherwise unprojected material remain observation or audit context and are not promoted into specimen claims.
+`specimen-card-projections.json` is a schema-4 display-only positive allowlist whose metadata binds the schema-11 catalog, its 15,753 records, and its exact source hash. Every card references an immutable parent observation and exact public holding, then uses one evidence variant: a reviewed UTF-16 clause span in an already-public description or designation, or an exact typed Hamburg `componentPath`. Schema 4 also permits a closed `repeatedMass` object on a clause card with `massPath: null`; it binds one per-item value, count, aggregate total, occurrence, and occurrence count in the same holding. It does not create observation or canonical-specimen IDs or copy source prose into the manifest. Grouped holdings, aggregate components, associated material, representations, counts, ranges, totals, dealer offers, and otherwise unprojected material remain observation or audit context and are not promoted into specimen claims.
 
-The manifest covers 2,224 parent observations and 7,224 atomic specimen cards: 7,194 ordinary cards bind an exact `massPath`, 2 Kuleschowka cards bind the same 2.7 g per-item value through distinct `repeatedMass` occurrences, and 28 cards have no normalized display mass. It retains 1,694 source-context audit partitions that are not rendered as specimens. Brown contributes 385 reviewed cards and Minnesota 164; group context and excluded non-meteorite context remain unrendered. Hamburg contributes 218 component cards across 142 parents, Madrid contributes 54 cards across 23 parents, Reeds entry 366 produces ten cards, and Prior entry 630 produces seventeen. The allowlist does not project dealer, regional-census, or Table A observations. Search results and statistics remain based on all 14,477 parents across 40 catalogs. Lineage is routed only by exact non-null `massPath`; the 22 reviewed Brown/Minnesota relationships remain possible matches rather than identity, custody, ownership-transfer, or merge claims.
+The manifest covers 3,062 parent observations and 8,062 atomic specimen cards: 8,032 ordinary cards bind an exact `massPath`, 2 Kuleschowka cards bind the same 2.7 g per-item value through distinct `repeatedMass` occurrences, and 28 cards have no normalized display mass. It retains 2,532 source-context audit partitions that are not rendered as specimens. Berlin contributes 838 reviewed cards; Greifswald contributes none because its source structure does not establish atomic specimen display units. Brown contributes 385 reviewed cards and Minnesota 164; group context and excluded non-meteorite context remain unrendered. Hamburg contributes 218 component cards across 142 parents, Madrid contributes 54 cards across 23 parents, Reeds entry 366 produces ten cards, and Prior entry 630 produces seventeen. The allowlist does not project dealer, regional-census, or Table A observations. Search results and statistics remain based on all 15,753 parents across 44 catalogs. Lineage is routed only by exact non-null `massPath`; reviewed relationships remain possible matches rather than identity, custody, ownership-transfer, or merge claims.
 
 ### Reviewed MetBull Harmonization
 
@@ -217,10 +221,10 @@ matchType, canonicalName, meteoriteCode, metbullUrl, alternateNameNote
 The historical `name`, designation/catalog identifier fields, printed private weight strings, and numeric source weights are never replaced by this object. Every specimen displays a **Current Meteoritical Bulletin name** row: a substantively different resolved name, **Same as source catalog name** for a display-equivalent resolved name, or **Unknown** when no canonical identity is reviewed. Comparison uses Unicode NFC, collapsed whitespace, and locale-aware lowercase. No client, build, or export path fuzzy-matches names or infers identity.
 
 <!-- release-summary:readme-metbull:start -->
-The current release includes reviewed MetBull harmonization for 11,177 of 14,477 records: 10,873 have a resolved current identity and 304 remain explicitly unresolved. 13 records currently have a null `name` value.
+The current release includes reviewed MetBull harmonization for 12,072 of 15,753 records: 11,768 have a resolved current identity and 304 remain explicitly unresolved. 13 records currently have a null `name` value.
 <!-- release-summary:readme-metbull:end -->
 
-The remaining 3,300 records are pending observations without reviewed MetBull mappings. Victoria Land's 273 Table A specimens have accepted `official-abbreviation` mappings; Foote's six dealer observations intentionally have no MetBull mapping or current-name panel.
+The remaining 3,681 records are pending observations without reviewed MetBull mappings. Victoria Land's 273 Table A specimens have accepted `official-abbreviation` mappings; Foote's six dealer observations intentionally have no MetBull mapping or current-name panel.
 
 Validated continuation evidence recovers formerly blank source names where supported; it does not infer modern identity.
 
@@ -258,6 +262,8 @@ Any missing, blocked, incomplete, contradictory, malformed, or unsafe value deni
 | `asu-2024-09` | blocked | undetermined | 0 |
 | `ball-1882` | blocked | undetermined | 0 |
 | `barnes-1940` | blocked | undetermined | 0 |
+| `berlin-1903` | blocked | undetermined | 0 |
+| `berlin-1904` | blocked | undetermined | 0 |
 | `brown-1916` | blocked | undetermined | 0 |
 | `buchner-1863` | blocked | undetermined | 0 |
 | `chladni-1819` | display | public-domain | 12 |
@@ -266,6 +272,8 @@ Any missing, blocked, incomplete, contradictory, malformed, or unsafe value deni
 | `farrington-1916` | blocked | undetermined | 0 |
 | `foote-1909` | blocked | undetermined | 0 |
 | `foote-1912` | blocked | undetermined | 0 |
+| `greifswald-1895` | blocked | undetermined | 0 |
+| `greifswald-1901` | blocked | undetermined | 0 |
 | `haidinger-1859` | display | public-domain | 6 |
 | `hamburg-1913` | blocked | undetermined | 0 |
 | `hodge-smith-1939` | blocked | undetermined | 0 |

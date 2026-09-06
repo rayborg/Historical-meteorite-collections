@@ -876,7 +876,7 @@ function validatePublicCatalog(data, folios, path = "catalog") {
   assertExactSet(representedCatalogs, metadataByCatalog.keys(), `${path} record catalog IDs`);
   assertExactSet(Object.keys(folios.catalogs), metadataByCatalog.keys(), `${path} folio catalog IDs`);
   assert(data.metadata.recordCount === data.records.length, `${path}.metadata.recordCount does not match records`);
-  if (data.records.length === 14477 && metadataByCatalog.size === 40) {
+  if (data.records.length === 15753 && metadataByCatalog.size === 44) {
     assert(individualFindLocationCount === 111,
       `${path} must contain exactly 111 specimen individualFindLocation values`);
     const victoria = data.records.filter(({ catalogId }) => catalogId === "victoria-land-1982");
@@ -918,6 +918,21 @@ function validatePublicCatalog(data, folios, path = "catalog") {
     assert(createHash("sha256").update(JSON.stringify(victoria)).digest("hex") ===
       "c427fa0bf07a8ce57c01d4520fc3b2eb2c2aa7483f1d8bf5d7f8bce483f96806",
     `${path} Victoria public records differ from the accepted schema 11 package`);
+    const wave2Locks = {
+      "berlin-1903": [380, 270, "8b31e744f0eee3ac776b7000a1f93a1786ae6be5c3a47ce33b98f26acc03f061"],
+      "berlin-1904": [470, 337, "3c5358afab70d4e22fa27c0b4c756a81c62c5212be2ff08cf27ad504bae89e6c"],
+      "greifswald-1895": [145, 98, "a8a9499f44c9f9b01e1c673c9267737d0b7f22740187081c9e8be5d931f04d7e"],
+      "greifswald-1901": [281, 190, "c86348cabfc439d1e2bff2a395196fb75cc38a9b47ec8eec61c4e4eedf32cb19"],
+    };
+    for (const [catalogId, [recordCount, mappingCount, digest]] of Object.entries(wave2Locks)) {
+      const records = data.records.filter((record) => record.catalogId === catalogId);
+      assert(records.length === recordCount && records.filter((record) => record.metbull).length === mappingCount,
+        `${path} ${catalogId} record or mapping census changed`);
+      assert(createHash("sha256").update(JSON.stringify(records)).digest("hex") === digest,
+        `${path} ${catalogId} facts differ from the accepted Wave 2 export`);
+      assert(folios.catalogs[catalogId].displayPolicy === "blocked" && folios.catalogs[catalogId].rightsStatus === "undetermined" && folios.catalogs[catalogId].pages.length === 0,
+        `${path} ${catalogId} folio policy must remain blocked and empty`);
+    }
     const elCapitan = data.records.find(({ id }) => id === "obs-68c7e39b-9d99-4f9a-a1d2-7b2374d76d47");
     assert(JSON.stringify(elCapitan?.holdings[0]?.weights) === "[{\"grams\":66},{\"grams\":753},{\"grams\":4000}]",
       `${path} Merrill El Capitan masses differ from the audited correction`);

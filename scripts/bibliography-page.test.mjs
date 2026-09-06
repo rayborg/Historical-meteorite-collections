@@ -27,14 +27,14 @@ test("publishes a safe and accessible bibliography table", async () => {
 
   assert.equal((bibliography.match(/<tr(?: |>)/g) || []).length, 265);
   assert.equal((bibliography.match(/data-control="MCB-\d+"/g) || []).length, 264);
-  assert.equal((bibliography.match(/<li class="project complete/g) || []).length, 40);
-  assert.equal((bibliography.match(/<tr class="worked-row">/g) || []).length, 39);
-  assert.equal((bibliography.match(/class="processing-cell complete"/g) || []).length, 39);
+  assert.equal((bibliography.match(/<li class="project complete/g) || []).length, 44);
+  assert.equal((bibliography.match(/<tr class="worked-row">/g) || []).length, 43);
+  assert.equal((bibliography.match(/class="processing-cell complete"/g) || []).length, 43);
   assert.match(bibliography, /<strong>264<\/strong><span>Total controls<\/span>/);
-  assert.match(bibliography, /<strong>40<\/strong><span>Catalog projects done<\/span>/);
-  assert.match(bibliography, /<strong>39<\/strong><span>Integrated controls<\/span>/);
-  assert.match(bibliography, /<strong>36<\/strong><span>Remaining acquired backlog<\/span>/);
-  assert.match(bibliography, /Acquisition-to-integration backlog: 36 remaining/);
+  assert.match(bibliography, /<strong>44<\/strong><span>Catalog projects done<\/span>/);
+  assert.match(bibliography, /<strong>43<\/strong><span>Integrated controls<\/span>/);
+  assert.match(bibliography, /<strong>31<\/strong><span>Remaining acquired backlog<\/span>/);
+  assert.match(bibliography, /Acquisition-to-integration backlog: 31 remaining/);
   assert.match(bibliography, /class="table-wrap" role="region" aria-label="Bibliography master list; scroll horizontally to see all columns" tabindex="0"/);
   assert.match(bibliography, /\.table-wrap:focus-visible \{[^}]*outline:/);
   for (const controlId of ["MCB-80", "MCB-86", "MCB-93", "MCB-94", "MCB-117", "MCB-141", "MCB-165", "MCB-175", "MCB-197", "MCB-204"]) {
@@ -46,6 +46,11 @@ test("publishes a safe and accessible bibliography table", async () => {
   assert.match(rowFor("MCB-130"), /A descriptive catalogue of the meteorites comprised in the collection of the Geological Survey of India[^]*processing-cell complete[^]*Catalogue of Meteorites, with Special Reference/);
   assert.match(rowFor("MCB-69"), /Catalogue of the meteorites in the university collection[^]*processing-cell complete[^]*Catalogue of the Meteorites in the University Collection/);
   assert.match(rowFor("MCB-113"), /Complete Mineral Catalog[^]*processing-cell complete[^]*Complete Mineral Catalog \(1909\)/);
+  assert.match(rowFor("MCB-74"), /processing-cell complete[^]*Die Meteoritensammlung der Universität Greifswald \(1895\)/);
+  assert.match(rowFor("MCB-90"), /processing-cell complete[^]*Die Meteoritensammlung der Universität Greifswald \(1901\)/);
+  assert.match(rowFor("MCB-95"), /processing-cell complete[^]*Die Meteoritensammlung des Königlichen Mineralogischen Museums in Berlin \(1903\)/);
+  assert.match(rowFor("MCB-103"), /processing-cell complete[^]*Die Meteoritensammlung des Königlichen Mineralogischen Museums in Berlin \(1904\)/);
+  assert.match(bibliography, /ACQ-20260723-036 primary, ACQ-20260723-053 supplemental; one byte-identical artifact/);
 
   const morelliRow = rowFor("MCB-203");
   assert.doesNotMatch(morelliRow, /worked-row|processing-cell complete/);

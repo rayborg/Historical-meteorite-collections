@@ -4,17 +4,17 @@ import { pathToFileURL } from "node:url";
 
 const LOCKS = Object.freeze({
   catalogSchemaVersion: 11,
-  sourceRecordCount: 14477,
-  sourceCatalogSha256: "f339b16bf0b799ee0abedb4ce17d41b0f457ab2f7d2afbfda8581523c134d221",
-  projectionCount: 2224,
-  atomicCardCount: 7224,
+  sourceRecordCount: 15753,
+  sourceCatalogSha256: "0fc4c08011747a2a33e3a884f700c6e9a04e8b3b35ed21e5848f41f6f61bd1a6",
+  projectionCount: 3062,
+  atomicCardCount: 8062,
   legacyMassBoundCardCount: 6656,
-  massBoundCardCount: 7194,
+  massBoundCardCount: 8032,
   masslessCardCount: 30,
   repeatedMassCardCount: 2,
-  sourceContextCardCount: 1694,
+  sourceContextCardCount: 2532,
   baselineProjectionSetSha256: "3f887829ffcd2a344e64383bdd748061bc64ed596308d6952f7ebe69ae298ff5",
-  projectionSetSha256: "e4f801ab2d5385576c3302c00c96cc9a06b398a76cfa54ebfe6d3f05ecda720d",
+  projectionSetSha256: "7a37c5791373bb1613fc7180931e8dfe155868909785a976273e4b64e307d787",
   nonHamburgProjectionSetSha256: "75f1aa06fe2b2f5e83a464001989a888b11d98c053e49ee4e2dcc8a24c1a6c84",
 });
 export const BROWN_AUDIT_COVERAGE = Object.freeze({
@@ -356,7 +356,7 @@ export function validateSpecimenCardProjections(document, catalog, catalogText) 
 
   if (atomicCardCount !== LOCKS.atomicCardCount) fail("atomic card count differs from metadata");
   if (massBoundCardCount !== LOCKS.massBoundCardCount || masslessCardCount !== LOCKS.masslessCardCount ||
-      massBoundCardCount - LOCKS.legacyMassBoundCardCount !== 538) {
+       massBoundCardCount - LOCKS.legacyMassBoundCardCount !== 1376) {
     fail("ordinary mass assignment counts differ from the accepted Wave 1 lock");
   }
   if (sourceContextCardCount !== LOCKS.sourceContextCardCount) fail("derived source context count differs from metadata");
@@ -460,6 +460,33 @@ export function validateSpecimenCardProjections(document, catalog, catalogText) 
   for (const [key, expected] of Object.entries(MADRID_AUDIT_COVERAGE)) {
     if (madridActual[key] !== expected) fail(`Madrid ${key} differs from the reviewed audit lock`);
   }
+  const greifswaldIds = new Set(catalog.records.filter(({ catalogId }) => catalogId.startsWith("greifswald-")).map(({ id }) => id));
+  if (document.projections.some(({ parentRecordId }) => greifswaldIds.has(parentRecordId))) fail("Greifswald context-only observations must not produce specimen cards");
+  const berlinRecords = catalog.records.filter(({ catalogId }) => catalogId.startsWith("berlin-"));
+  const berlinIds = new Set(berlinRecords.map(({ id }) => id));
+  const berlinProjections = document.projections.filter(({ parentRecordId }) => berlinIds.has(parentRecordId));
+  const berlinById = new Map(berlinProjections.map((projection) => [projection.parentRecordId, projection]));
+  let berlinPrincipalMass = 0;
+  for (const record of berlinRecords) {
+    const principal = record.holdings[0];
+    const eligible = principal.description.startsWith("Principal piece") && principal.count === 1 && Number.isFinite(principal.weights[0]?.grams);
+    const projection = berlinById.get(record.id);
+    if (!eligible) {
+      if (projection) fail(`Berlin context-only observation ${record.id} must not produce a card`);
+      continue;
+    }
+    berlinPrincipalMass += principal.weights[0].grams;
+    const expected = [{
+      holdingPath: "holdings[0]",
+      clause: { textPath: "holdings[0].description", start: 0, end: principal.description.length },
+      massPath: "holdings[0].weights[0].grams",
+    }];
+    if (!projection || JSON.stringify(projection.cards) !== JSON.stringify(expected)) fail(`Berlin principal-piece projection changed for ${record.id}`);
+  }
+  if (berlinRecords.length !== 850 || berlinProjections.length !== 838 || Math.abs(berlinPrincipalMass - 347775) > 1e-8 ||
+      sha256(JSON.stringify(berlinProjections)) !== "3e69241a8813900879d5ae6ce2d3965379884e6ed7876edb62e59f21ba09ce6f") {
+    fail("Berlin reviewed principal-piece projection audit changed");
+  }
   const hamburgRecords = catalog.records.filter(({ catalogId }) => catalogId === "hamburg-1913");
   const hamburgIds = new Set(hamburgRecords.map(({ id }) => id));
   const hamburgProjections = document.projections.filter(({ parentRecordId }) => hamburgIds.has(parentRecordId));
@@ -533,7 +560,7 @@ export function validateSpecimenCardProjections(document, catalog, catalogText) 
   for (const [key, expected] of Object.entries(HAMBURG_AUDIT_COVERAGE)) {
     if (hamburgActual[key] !== expected) fail(`Hamburg ${key} differs from the reviewed audit lock`);
   }
-  const reviewedCatalogIds = new Set(["brown-1916", "minnesota-1892"]);
+  const reviewedCatalogIds = new Set(["brown-1916", "minnesota-1892", "berlin-1903", "berlin-1904"]);
   const validateReviewedCatalog = (catalogId, lock) => {
     const sourceRecords = catalog.records.filter((record) => record.catalogId === catalogId);
     const sourceIds = new Set(sourceRecords.map(({ id }) => id));
