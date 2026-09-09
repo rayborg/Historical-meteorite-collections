@@ -81,7 +81,7 @@ function recordById(catalog, recordId) {
 function filters(overrides = {}) {
   return {
     query: "", catalog: null, min: null, max: null,
-    lineageOnly: false, includeUnknownWeight: true, sort: "designation-asc", ...overrides
+    lineageOnly: false, includeUnknownWeight: false, sort: "designation-asc", ...overrides
   };
 }
 
@@ -1011,7 +1011,7 @@ test("catalog dropdown labels are concise and leave summary titles unchanged", (
   assert.equal(app.catalogDropdownLabel({ label: "Future catalog" }), "Future catalog");
 });
 
-test("URL filters strictly round-trip lineage and unknown-weight state", () => {
+test("URL filters default to strict specimens and canonicalize the explicit inclusive state", () => {
   const registry = app.normalizeCatalogRegistry(fixture.metadata);
   const html = readFileSync(join(__dirname, "..", "index.html"), "utf8");
   const parsed = app.parseUrlFilters("?q=catalog+item+2&catalog=nininger-1933&min=3&max=12&lineage=1&weighted=1&sort=weight-desc", registry);
@@ -1019,15 +1019,26 @@ test("URL filters strictly round-trip lineage and unknown-weight state", () => {
     query: "catalog item 2", catalog: "nininger-1933", min: "3", max: "12",
     lineageOnly: true, includeUnknownWeight: false, sort: "weight-desc"
   });
-  assert.equal(app.serializeUrlFilters(parsed).toString(), "q=catalog+item+2&catalog=nininger-1933&min=3&max=12&lineage=1&weighted=1&sort=weight-desc");
+  assert.equal(app.serializeUrlFilters(parsed).toString(), "q=catalog+item+2&catalog=nininger-1933&min=3&max=12&lineage=1&sort=weight-desc");
+  const inclusive = app.parseUrlFilters("?q=catalog+item+2&catalog=nininger-1933&min=3&max=12&lineage=1&weighted=0&sort=weight-desc", registry);
+  assert.equal(inclusive.includeUnknownWeight, true);
+  assert.equal(app.serializeUrlFilters(inclusive).toString(), "q=catalog+item+2&catalog=nininger-1933&min=3&max=12&lineage=1&weighted=0&sort=weight-desc");
   for (const search of ["", "?lineage=0", "?lineage=true", "?lineage=1&lineage=1", "?lineage=1&lineage=0"]) {
     assert.equal(app.parseUrlFilters(search, registry).lineageOnly, false, search);
   }
-  for (const search of ["", "?weighted=0", "?weighted=true", "?weighted=1&weighted=1", "?weighted=1&weighted=0"]) {
-    assert.equal(app.parseUrlFilters(search, registry).includeUnknownWeight, true, search);
+  for (const search of ["", "?weighted=", "?weighted=-1", "?weighted=1", "?weighted=true", "?weighted=0&weighted=0", "?weighted=1&weighted=1", "?weighted=1&weighted=0"]) {
+    assert.equal(app.parseUrlFilters(search, registry).includeUnknownWeight, false, search);
   }
-  assert.equal(app.CACHE_VERSION, "20260908-fletcher-fields-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260908-fletcher-fields-1");
+  assert.deepEqual(app.resultDisplayState(13631, 60, 10742, false), {
+    count: 13631, unit: "weighted specimens", status: "Showing 60 of 13,631 weighted specimens."
+  });
+  assert.deepEqual(app.resultDisplayState(23217, 60, 18217, true), {
+    count: 18217,
+    unit: "observations",
+    status: "Showing 60 of 23,217 display cards from 18,217 matching source observations."
+  });
+  assert.equal(app.CACHE_VERSION, "20260909-global-fields-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260909-global-fields-1");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.ASSET_CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.ASSET_CACHE_VERSION}`));
 });
@@ -1411,14 +1422,14 @@ test("an empty catalog filter retains matching records from every catalog", () =
 test("URL filters discard unknown catalogs and malformed values", () => {
   const registry = app.normalizeCatalogRegistry(fixture.metadata);
   assert.deepEqual(app.parseUrlFilters("?catalog=missing&min=-1&max=NaN&sort=unknown", registry),
-    { query: "", catalog: "", min: "", max: "", lineageOnly: false, includeUnknownWeight: true, sort: app.DEFAULT_SORT });
+    { query: "", catalog: "", min: "", max: "", lineageOnly: false, includeUnknownWeight: false, sort: app.DEFAULT_SORT });
   assert.equal(app.serializeUrlFilters({ query: "", catalog: "", min: "-1", max: "Infinity", sort: "unknown" }).toString(), "");
 });
 
 test("URL filters discard crossed minimum and maximum ranges", () => {
   const registry = app.normalizeCatalogRegistry(fixture.metadata);
   assert.deepEqual(app.parseUrlFilters("?q=H27&catalog=huss-1976&min=50&max=10&sort=name-asc", registry),
-    { query: "H27", catalog: "huss-1976", min: "", max: "", lineageOnly: false, includeUnknownWeight: true, sort: "name-asc" });
+    { query: "H27", catalog: "huss-1976", min: "", max: "", lineageOnly: false, includeUnknownWeight: false, sort: "name-asc" });
   assert.equal(app.serializeUrlFilters({
     query: "H27", catalog: "huss-1976", min: "50", max: "10", sort: "name-asc"
   }).toString(), "q=H27&catalog=huss-1976");
@@ -1627,6 +1638,25 @@ test("incomplete, extra, and out-of-range folio manifests fail closed", () => {
     assert.equal(app.getAuthorizedFolio(candidate, "museum-1890", 27, registry), null);
     assert.deepEqual(app.getAuthorizedFolioPages(candidate, "university-1912", registry), []);
   }
+});
+
+test("nullable catalog-number descriptions render a neutral Holding label without literal null", () => {
+  const nullable = clone(fixture);
+  recordById(nullable, "hovey-catalog-z9").holdings[0].description = null;
+  assert.doesNotThrow(() => app.validateCatalog(nullable));
+
+  const catalog = JSON.parse(readFileSync(join(__dirname, "..", "data", "catalog.json"), "utf8"));
+  const mason3986 = catalog.records.find(({ catalogId, catalogNumber }) =>
+    catalogId === "mason-1964" && catalogNumber === "3986");
+  assert.ok(mason3986);
+  assert.equal(mason3986.holdings[0].description, null);
+
+  const renderedText = [
+    app.holdingHeadingText(mason3986.holdings[0], "catalog-number"),
+    ...app.catalogNumberHoldingDetails(mason3986.holdings[0]),
+  ].join(" ");
+  assert.equal(renderedText, "Holding Masses: 2.9 g");
+  assert.doesNotMatch(renderedText, /\bnull\b/iu);
 });
 
 let passed = 0;

@@ -13,7 +13,7 @@ const sha256 = (value) => createHash("sha256").update(value).digest("hex");
 const jsonSha256 = (value) => sha256(JSON.stringify(value));
 
 test("installs the exact accepted schema-11 export without changing non-correction data", () => {
-  assert.equal(sha256(catalogText), "c3171437ffdc80852bd66494f519aa2385602f0ef9599be456953b2038186b30");
+  assert.equal(sha256(catalogText), "fd3af1b04765f25fa792329e142321a4dd0eb018045462d5d4c4fd86c8a01e05");
   assert.equal(sha256(foliosText), "ed23bc9af5bb73eb932fd928f7d46b02379265bbeb43911d44004aa4cddacdd5");
   assert.equal(catalog.metadata.schemaVersion, 11);
   assert.equal(catalog.metadata.catalogs.length, 49);
@@ -27,13 +27,13 @@ test("installs the exact accepted schema-11 export without changing non-correcti
   const nonCorrectionRecords = catalog.records.filter(({ id, catalogId }) => !correctedRecordIds.has(id) && !wave2CatalogIds.has(catalogId) && !fletcherCatalogIds.has(catalogId));
   const nonVictoriaDescriptors = catalog.metadata.catalogs.filter(({ id }) => id !== "victoria-land-1982" && !wave2CatalogIds.has(id) && !fletcherCatalogIds.has(id));
   assert.equal(nonCorrectionRecords.length, 14475);
-  assert.equal(jsonSha256(nonCorrectionRecords), "5892e877d2b41a018bbd1836f3d9369a60e923f0dd31920b6671970aa32686b1");
+  assert.equal(jsonSha256(nonCorrectionRecords), "f7795c457d1f88015072680ef8a7c77ab15fdd5c82f8d859f85c0a40d574d58f");
   assert.equal(jsonSha256(nonVictoriaDescriptors), "8066f1c06de5c8021ffa24020cfe37c4e9cdc5ce1d357e95c20268c2699a1d6e");
 });
 
 test("publishes exact Brown, Minnesota, and non-specimen Foote facts with blocked folios", () => {
   const expectations = {
-    "brown-1916": { count: 237, hash: "7a66d453fa13b4ffc26627549e6957d4b4a000b77be58a99783ff24813f1117a" },
+    "brown-1916": { count: 237, hash: "2419781ce8aa17b1e091371ffe2f10628e5df540da187522875e8764e51f62fa" },
     "minnesota-1892": { count: 58, hash: "29a66c19e0435a94df00451169a9f94d0ae841f74b87650ee7f0d5da84abfeec" },
     "foote-1909": { count: 6, hash: "020b6a4f635b16afef7c8305d0717373b41958b6bb12e4eaa016e5f7664a0bfc" },
   };

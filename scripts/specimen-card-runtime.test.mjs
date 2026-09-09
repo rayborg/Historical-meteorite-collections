@@ -240,7 +240,7 @@ test("context partition remains auditable but is not emitted as a specimen card"
   assert.deepEqual(contextEntries.filter(({ type }) => type === "mass").map(({ grams }) => grams), [99, 2]);
 });
 
-test("massless atomic cards remain visible without a range and are excluded by any range", () => {
+test("massless atomic cards require the explicit inclusive state and are excluded by any range", () => {
   const parent = weightedRecord("massless-parent", 1);
   parent.holdings[0].description = "Massless. Weighted.";
   const projection = {
@@ -253,8 +253,13 @@ test("massless atomic cards remain visible without a range and are excluded by a
   const document = syntheticManifest([parent], [projection]);
   const descriptors = app.expandSpecimenCardDescriptors([parent], app.deriveSpecimenCardProjectionIndex(document, [parent]));
   const noRange = app.filterSpecimenCardDescriptors(descriptors, { min: null, max: null, lineageOnly: false });
+  const inclusive = app.filterSpecimenCardDescriptors(descriptors, {
+    min: null, max: null, lineageOnly: false, includeUnknownWeight: true
+  });
   const ranged = app.filterSpecimenCardDescriptors(descriptors, { min: 0, max: 10, lineageOnly: false });
-  assert.equal(noRange.filter(({ kind }) => kind === "atomic").length, 2);
+  assert.deepEqual(noRange.filter(({ kind }) => kind === "atomic").map(({ massPath }) => massPath),
+    ["holdings[0].weights[0].grams"]);
+  assert.equal(inclusive.filter(({ kind }) => kind === "atomic").length, 2);
   assert.deepEqual(ranged.filter(({ kind }) => kind === "atomic").map(({ massPath }) => massPath), ["holdings[0].weights[0].grams"]);
   assert.deepEqual(descriptors.map(app.specimenCardDescriptorHoldings), [
     [{ type: "detail", text: "Massless." }],
@@ -335,7 +340,7 @@ test("lineage routes only to emitted atomic cards", () => {
   assert.deepEqual(app.lineageEntriesForSpecimenCard(descriptors[1], entries), []);
 });
 
-test("search, statistics, result observations, and citations remain parent-based", () => {
+test("search, statistics, and citations remain parent-based while result summaries match their state", () => {
   const parent = weightedRecord("parent-based", 2);
   const projection = { parentRecordId: parent.id, cards: parent.holdings.map((holding, index) => fullCard(parent, index)) };
   const document = syntheticManifest([parent], [projection]);
@@ -343,6 +348,12 @@ test("search, statistics, result observations, and citations remain parent-based
   assert.equal(descriptors.length, 2);
   assert.deepEqual(app.calculateStatistics([parent]), app.calculateStatistics(descriptors.map(({ parentRecord }) => parentRecord).slice(0, 1)));
   assert.equal(app.presentHarmonizedCard(descriptors[0]).sourceCitation, "synthetic-1937 · p. 1");
+  assert.deepEqual(app.resultDisplayState(2, 2, 1, false), {
+    count: 2, unit: "weighted specimens", status: "Showing all 2 weighted specimens."
+  });
+  assert.deepEqual(app.resultDisplayState(2, 2, 1, true), {
+    count: 1, unit: "observation", status: "Showing all 2 display cards from 1 matching source observation."
+  });
   assert.match(source, /const parentMatches = filterRecords\(records,/u);
   assert.match(source, /new Set\(displayCards\.map\(\(\{ parentRecord \}\) => parentRecord\.id\)\)/u);
 });
@@ -377,8 +388,8 @@ test("digest lock loads the exact set and fails closed to parent cards on mismat
   const altered = structuredClone(manifest);
   altered.projections[0].cards[0].clause.end -= 1;
   assert.equal((await app.loadSpecimenCardProjectionIndex(records, async () => projectionResponse(altered), options)).size, 0);
-  assert.equal(app.SPECIMEN_CARD_SOURCE_CATALOG_SHA256, "c3171437ffdc80852bd66494f519aa2385602f0ef9599be456953b2038186b30");
-  assert.equal(app.SPECIMEN_CARD_PROJECTION_DATA_SHA256, "76a56b36c7f8c6ec63a9cd2c04a9372e06fc18f863830b5afc20b3aba2b431bb");
+  assert.equal(app.SPECIMEN_CARD_SOURCE_CATALOG_SHA256, "fd3af1b04765f25fa792329e142321a4dd0eb018045462d5d4c4fd86c8a01e05");
+  assert.equal(app.SPECIMEN_CARD_PROJECTION_DATA_SHA256, "ef41bf9770b5328e6471ca51adaf817148b22305415bed2034639f8eed188ef1");
   assert.equal(app.SPECIMEN_CARD_PROJECTION_SET_SHA256, "7a37c5791373bb1613fc7180931e8dfe155868909785a976273e4b64e307d787");
 });
 
@@ -391,9 +402,9 @@ test("rendering is text-only, omits context cards, and synchronizes cache keys",
   assert.match(html, /<p class="record-semantic-label"><\/p>/u);
   assert.match(html, /<dl class="record-meta" aria-label="Catalog record details"><\/dl>/u);
   assert.doesNotMatch(html, /specimen-position|record-holdings|earlier-records/u);
-  assert.match(html, /styles\.css\?v=20260908-fletcher-fields-1/u);
-  assert.match(html, /app\.js\?v=20260908-fletcher-fields-1/u);
-  assert.equal(app.ASSET_CACHE_VERSION, "20260908-fletcher-fields-1");
+  assert.match(html, /styles\.css\?v=20260909-global-fields-1/u);
+  assert.match(html, /app\.js\?v=20260909-global-fields-1/u);
+  assert.equal(app.ASSET_CACHE_VERSION, "20260909-global-fields-1");
 });
 
 test("production schema-4 projection fixture validates against schema 11", () => {

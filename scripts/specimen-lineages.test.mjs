@@ -184,9 +184,9 @@ test("publishes locked source and relationship counts", () => {
     "a3a4a9e2ca09ab7259eb1b7d5321a0f7cf79b42d85488b19117a78d440caf5eb",
   );
   assert.equal(createHash("sha256").update(publishedText).digest("hex"),
-    "8529a4823eba3541c9dd0a0d44e2fb7275c40613b248be2fabfbf955679f1d37");
+    "b9129fc75a5dda3f70b806615f498c59c21816a2d058877c88058967b559cbd0");
   assert.equal(createHash("sha256").update(JSON.stringify(published.relationships)).digest("hex"),
-    "a6724d150de83514ccb53043ea6e3fde3e31ff54d60febd8645a5211f7e774d6");
+    "77beb87fe1a16a46cd2a213064a88905dc315eb6f5500e3ef7bae74a3bc779da");
   const baseline = current37Relationships();
   assert.equal(createHash("sha256").update(JSON.stringify(baseline)).digest("hex"),
     "7f3ec9e5fcaf9de1af0250d6dd5cded8edc6a41b144527dc8162af59a8ef5389");
@@ -373,8 +373,8 @@ test("Palache publishes only locked facts and blocked folios", () => {
 
   const allReviewed = catalog.records.filter((record) => Object.hasOwn(record, "metbull"));
   assert.equal(allReviewed.length, 13704);
-  assert.equal(allReviewed.filter(({ metbull }) => metbull.matchType === "unresolved").length, 304);
-  assert.equal(allReviewed.filter(({ metbull }) => metbull.matchType !== "unresolved").length, 13400);
+  assert.equal(allReviewed.filter(({ metbull }) => metbull.matchType === "unresolved").length, 303);
+  assert.equal(allReviewed.filter(({ metbull }) => metbull.matchType !== "unresolved").length, 13401);
   assert.equal(10368 - 10296, 72);
   assert.equal(catalog.records.length - allReviewed.length, 4513);
 });
@@ -416,7 +416,7 @@ test("Madrid publishes the accepted facts, blocked folios, atomic holdings, and 
   assert.equal(records.filter(({ metbull }) => metbull.matchType !== "unresolved").length, 84);
   assert.equal(records.filter(({ metbull }) => metbull.matchType === "unresolved").length, 46);
   assert.equal(createHash("sha256").update(JSON.stringify(records)).digest("hex"),
-    "261dfbb110b03c55964da0a193547732689d259c0d8c4eb996e1e4039ae575e0");
+    "f8d2ce55629ce9f97cb61e53a0e042bbf87a44825b5dfea270261a5612f84cef");
   assert.equal(createHash("sha256").update(JSON.stringify(records.map(({ id }) => id))).digest("hex"),
     "4db21953aa7bba881c8a1a5c940a0dd82425e9262687f54cd2d270ad8ae45eba");
   assert.deepEqual(folios.catalogs[catalogId], {
@@ -780,7 +780,7 @@ test("Ward and Farrington 1916 publish exact facts with blocked folios and no sa
       citedPages: 74,
       recordsWithWeight: 608,
       relationships: 12,
-      recordsHash: "86b1ae7ea9d0b6af2573c0e64a7a9dbb52b82844f03d6fc5ae4fe0522adb262c",
+      recordsHash: "026b144da17bf95a56836315f3109ff4c8e917b806302c89c2cf36f19a864aad",
       idsHash: "4613f97ab8fabbd19e071a083e5ef2fed9c2619b1e8b456e4597ac072b6b4609",
     },
     "farrington-1916": {
@@ -949,8 +949,8 @@ test("Anderson, Astapovich, and Kantor publish complete reviewed mappings withou
       citedPages: 16,
       holdings: 34,
       weights: 34,
-      recordsHash: "219ac98d8a68faaa6f9741958c4f8ac28d002f2d3615400becc285e83bb46b80",
-      nonMappingHash: "3b0afddc30a1f4f87e55c1dfba828be802ee5311c3b49c4b4338688686c2c11f",
+      recordsHash: "576dc3060705c1f20f3826051d37540d2e6e8216f469c58ee01c5ba2726d739c",
+      nonMappingHash: "59c7a7165182bfa7e2de6574eeb5a689146a8a99cc37c00ba3096b767fdc5067",
       mappingsHash: "ec3cc0e6cc7956b460ca9db43d9d81a778e2a34784126b9b69fce672c08f6890",
       idsHash: "31a86211b4ce6dafd97bbcf3d7229b2bc3a12c438948d707353fce7e25464755",
     },
@@ -1010,7 +1010,7 @@ test("Anderson, Astapovich, and Kantor publish complete reviewed mappings withou
   );
   assert.equal(
     createHash("sha256").update(JSON.stringify(catalog.records.filter(({ catalogId }) => !preservationExcludedCatalogIds.has(catalogId)))).digest("hex"),
-    "6c82da74ec918f3edd24076b85abd32fadb6224dce8a907aa3a313c8d0274803",
+    "d9ab02a6a0c95399a455cc15e4aa3b56d8c4970154f43a3d6963b32f8a095ae9",
   );
   assert.equal(
     createHash("sha256").update(JSON.stringify(current37Relationships().filter(({ observations }) =>

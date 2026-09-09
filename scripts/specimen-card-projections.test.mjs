@@ -65,7 +65,7 @@ test("production manifest is deterministic and validates against the locked cata
   const baseline = published.projections.filter(({ parentRecordId }) => !wave1Ids.has(parentRecordId) && !wave2Ids.has(parentRecordId));
   assert.equal(createHash("sha256").update(JSON.stringify(baseline)).digest("hex"), "3f887829ffcd2a344e64383bdd748061bc64ed596308d6952f7ebe69ae298ff5");
   assert.equal(createHash("sha256").update(JSON.stringify(baseline.filter(({ parentRecordId }) => !hamburgIds.has(parentRecordId)))).digest("hex"), "75f1aa06fe2b2f5e83a464001989a888b11d98c053e49ee4e2dcc8a24c1a6c84");
-  assert.equal(createHash("sha256").update(projectionText).digest("hex"), "76a56b36c7f8c6ec63a9cd2c04a9372e06fc18f863830b5afc20b3aba2b431bb");
+  assert.equal(createHash("sha256").update(projectionText).digest("hex"), "ef41bf9770b5328e6471ca51adaf817148b22305415bed2034639f8eed188ef1");
 });
 
 test("schema is a closed schema-4 count-locked atomic projection contract", () => {
@@ -79,7 +79,7 @@ test("schema is a closed schema-4 count-locked atomic projection contract", () =
   assert.equal(schema.$defs.metadata.properties.catalogSchemaVersion.const, 11);
   assert.equal(schema.$defs.metadata.properties.sourceRecordCount.const, 18217);
   assert.equal(schema.$defs.metadata.properties.sourceCatalogSha256.const,
-    "c3171437ffdc80852bd66494f519aa2385602f0ef9599be456953b2038186b30");
+    "fd3af1b04765f25fa792329e142321a4dd0eb018045462d5d4c4fd86c8a01e05");
   assert.deepEqual(schema.$defs.projection.required, ["parentRecordId", "cards"]);
   assert.deepEqual(schema.$defs.card.oneOf, [
     { $ref: "#/$defs/clauseCard" },

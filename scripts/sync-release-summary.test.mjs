@@ -130,7 +130,7 @@ test("locks the production schema11 release summary and display projection total
     recordCount: 18217,
     sourcePageCount: 1687,
     citedPageCount: 1510,
-    metbull: { reviewed: 13704, resolved: 13400, unresolved: 304 },
+    metbull: { reviewed: 13704, resolved: 13401, unresolved: 303 },
     display: {
       projectionCount: 3062,
       atomicCardCount: 8062,

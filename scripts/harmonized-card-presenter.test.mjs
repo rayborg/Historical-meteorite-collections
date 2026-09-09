@@ -158,13 +158,14 @@ test("every production card uses the approved fact order, values, missing behavi
   }
   assert.equal(specimenCount, 13804);
   assert.deepEqual(missing, {
-    "Current Meteoritical Bulletin name": 2341,
+    "Current Meteoritical Bulletin name": 2340,
     "Individual find location": 13693,
     Lineage: 12848,
     Event: 2739,
     Class: 230,
-    "Source locality": 1095,
+    "Source locality": 1097,
     "Specimen weight": 184,
+    sourceName: 57,
   });
   assert.deepEqual({
     currentNameResolved: specimenCount - missing["Current Meteoritical Bulletin name"],
@@ -174,7 +175,7 @@ test("every production card uses the approved fact order, values, missing behavi
     lineageResolved: specimenCount - missing.Lineage,
     weightResolved: specimenCount - missing["Specimen weight"],
   }, {
-    currentNameResolved: 11463,
+    currentNameResolved: 11464,
     classResolved: 13574,
     eventResolved: 11065,
     locationResolved: 111,
@@ -338,23 +339,39 @@ test("projection changes display-card multiplicity without changing parent resul
   }
 });
 
-test("unknown-weight toggle excludes only the 173 weightless specimen cards", () => {
+test("default strict filter retains only the 13,631 known-weight specimen cards", () => {
   const inclusive = app.filterSpecimenCardDescriptors(descriptors, {
     min: null, max: null, lineageOnly: false, includeUnknownWeight: true
   }, lineageIndex);
   const weightedOnly = app.filterSpecimenCardDescriptors(descriptors, {
     min: null, max: null, lineageOnly: false, includeUnknownWeight: false
   }, lineageIndex);
+  const defaultFiltered = app.filterSpecimenCardDescriptors(descriptors, {
+    min: null, max: null, lineageOnly: false
+  }, lineageIndex);
+  const unknownSpecimens = inclusive.filter((descriptor) =>
+    ["direct-specimen", "projected-atomic-specimen"].includes(app.classifyHarmonizedCard(descriptor)) &&
+    !app.specimenCardDescriptorHasKnownWeight(descriptor));
   assert.equal(inclusive.length, 23217);
-  assert.equal(weightedOnly.length, 23044);
-  assert.equal(inclusive.length - weightedOnly.length, 173);
+  assert.equal(weightedOnly.length, 13631);
+  assert.equal(defaultFiltered.length, 13631);
+  assert.deepEqual(defaultFiltered, weightedOnly);
+  assert.equal(app.WEIGHTED_DESCRIPTOR_COUNT, 13631);
+  assert.equal(unknownSpecimens.length, 173);
   assert(weightedOnly.every((descriptor) => {
     const kind = app.classifyHarmonizedCard(descriptor);
-    return !["direct-specimen", "projected-atomic-specimen"].includes(kind) ||
+    return ["direct-specimen", "projected-atomic-specimen"].includes(kind) &&
       app.specimenCardDescriptorHasKnownWeight(descriptor);
   }));
   assert.equal(weightedOnly.filter((descriptor) =>
-    ["collection-observation", "regional-observation", "dealer-observation", "collection-representation-observation"].includes(app.classifyHarmonizedCard(descriptor))).length, 9413);
+    ["collection-observation", "regional-observation", "dealer-observation", "collection-representation-observation"].includes(app.classifyHarmonizedCard(descriptor))).length, 0);
+
+  const mason3986 = descriptors.find(({ parentRecord }) =>
+    parentRecord.id === "obs-6ce2e39e-311c-4fb2-83e2-d8c726b52c44");
+  assert(mason3986);
+  assert.equal(app.classifyHarmonizedCard(mason3986), "collection-observation");
+  assert.deepEqual(app.specimenCardDescriptorMasses(mason3986), [2.9]);
+  assert.equal(weightedOnly.includes(mason3986), false);
 
   const byParent = Map.groupBy(descriptors, ({ parentRecord }) => parentRecord.id);
   const mixed = [...byParent.values()].find((cards) => {
@@ -418,30 +435,31 @@ test("accessible shell, responsive breakpoints, approved cache, and immutable da
   assert.match(html, /<article class="record-card">[\s\S]*<p class="record-semantic-label"><\/p>[\s\S]*<h3 class="record-name"><\/h3>/u);
   assert.match(html, /<dl class="record-meta" aria-label="Catalog record details"><\/dl>/u);
   assert.match(html, /<p class="record-source"><\/p>/u);
-  assert.match(html, /<input id="include-unknown-weight" name="include-unknown-weight" type="checkbox" checked>/u);
-  assert.match(html, /<span>Include specimens without weight<\/span>/u);
+  assert.match(html, /<input id="include-unknown-weight" name="include-unknown-weight" type="checkbox">/u);
+  assert.doesNotMatch(html, /id="include-unknown-weight"[^>]*\bchecked\b/u);
+  assert.match(html, /<span>Include observations and specimens without weight<\/span>/u);
   assert.match(styles, /\.filters > \.filter-toggles \{[^}]*display: flex;[^}]*flex-wrap: wrap;/u);
   assert.match(styles, /\.catalog-grid \{[^}]*grid-template-columns: repeat\(3, minmax\(0, 1fr\)\);/u);
   assert.match(styles, /@media \(max-width: 1200px\)[\s\S]*\.catalog-grid \{ grid-template-columns: repeat\(2, minmax\(0, 1fr\)\); \}/u);
   assert.match(styles, /@media \(max-width: 700px\)[\s\S]*\.catalog-grid \{ grid-template-columns: 1fr; \}/u);
   assert.match(styles, /@media \(max-width: 420px\)[\s\S]*\.record-card \{ padding-inline: 1rem; \}/u);
   assert.doesNotMatch(styles, /\.record-meta dt \{[^}]*overflow-wrap: anywhere;/u);
-  assert.equal(app.CACHE_VERSION, "20260908-fletcher-fields-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260908-fletcher-fields-1");
+  assert.equal(app.CACHE_VERSION, "20260909-global-fields-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260909-global-fields-1");
   for (const document of [html, catalogsHtml]) {
-    assert.match(document, /styles\.css\?v=20260908-fletcher-fields-1/u);
-    assert.match(document, /app\.js\?v=20260908-fletcher-fields-1/u);
+    assert.match(document, /styles\.css\?v=20260909-global-fields-1/u);
+    assert.match(document, /app\.js\?v=20260909-global-fields-1/u);
   }
-  assert.match(catalogsHtml, /catalogs\.js\?v=20260908-fletcher-fields-1/u);
+  assert.match(catalogsHtml, /catalogs\.js\?v=20260909-global-fields-1/u);
   assert.deepEqual({
     catalog: sha256(catalogText),
     projections: sha256(projectionText),
     lineages: sha256(lineageText),
     reviews: sha256(reviewText),
   }, {
-    catalog: "c3171437ffdc80852bd66494f519aa2385602f0ef9599be456953b2038186b30",
-    projections: "76a56b36c7f8c6ec63a9cd2c04a9372e06fc18f863830b5afc20b3aba2b431bb",
-    lineages: "8529a4823eba3541c9dd0a0d44e2fb7275c40613b248be2fabfbf955679f1d37",
+    catalog: "fd3af1b04765f25fa792329e142321a4dd0eb018045462d5d4c4fd86c8a01e05",
+    projections: "ef41bf9770b5328e6471ca51adaf817148b22305415bed2034639f8eed188ef1",
+    lineages: "b9129fc75a5dda3f70b806615f498c59c21816a2d058877c88058967b559cbd0",
     reviews: "8262150ef01a0996d9f63ab0b3234e3d927d1d49c9200861778d763a2034963f",
   });
 });

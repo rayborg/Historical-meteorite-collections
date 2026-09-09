@@ -1,13 +1,13 @@
 "use strict";
 
-const CACHE_VERSION = "20260908-fletcher-fields-1";
+const CACHE_VERSION = "20260909-global-fields-1";
 const ASSET_CACHE_VERSION = CACHE_VERSION;
 const CATALOG_SCHEMA_VERSION = 11;
 const CATALOG_RECORD_COUNT = 18217;
 const DISPLAY_DESCRIPTOR_COUNT = 23217;
 const SPECIMEN_DESCRIPTOR_COUNT = 13804;
 const OBSERVATION_DESCRIPTOR_COUNT = 9413;
-const WEIGHTED_DESCRIPTOR_COUNT = 23044;
+const WEIGHTED_DESCRIPTOR_COUNT = 13631;
 const UNKNOWN_WEIGHT_EXCLUSION_COUNT = 173;
 const WAVE1_PROJECTED_CATALOGS = new Set(["brown-1916", "minnesota-1892"]);
 const REVIEW_GATED_LINEAGE_CATALOGS = new Set(["brown-1916", "minnesota-1892", "greifswald-1895", "greifswald-1901", "berlin-1903", "berlin-1904"]);
@@ -284,10 +284,10 @@ const SPECIMEN_CARD_COMPONENT_FIELDS = new Set(["holdingPath", "componentPath", 
 const SPECIMEN_CARD_CLAUSE_FIELDS = new Set(["textPath", "start", "end"]);
 const SPECIMEN_CARD_REPEATED_MASS_FIELDS = new Set(["valuePath", "countPath", "totalPath", "occurrence", "occurrenceCount"]);
 const SHA256_HEX = /^[0-9a-f]{64}$/u;
-const SPECIMEN_CARD_SOURCE_CATALOG_SHA256 = "c3171437ffdc80852bd66494f519aa2385602f0ef9599be456953b2038186b30";
-const SPECIMEN_CARD_PROJECTION_DATA_SHA256 = "76a56b36c7f8c6ec63a9cd2c04a9372e06fc18f863830b5afc20b3aba2b431bb";
+const SPECIMEN_CARD_SOURCE_CATALOG_SHA256 = "fd3af1b04765f25fa792329e142321a4dd0eb018045462d5d4c4fd86c8a01e05";
+const SPECIMEN_CARD_PROJECTION_DATA_SHA256 = "ef41bf9770b5328e6471ca51adaf817148b22305415bed2034639f8eed188ef1";
 const SPECIMEN_CARD_PROJECTION_SET_SHA256 = "7a37c5791373bb1613fc7180931e8dfe155868909785a976273e4b64e307d787";
-const SPECIMEN_LINEAGE_DATA_SHA256 = "8529a4823eba3541c9dd0a0d44e2fb7275c40613b248be2fabfbf955679f1d37";
+const SPECIMEN_LINEAGE_DATA_SHA256 = "b9129fc75a5dda3f70b806615f498c59c21816a2d058877c88058967b559cbd0";
 const SOURCE_CLAIMS_CONTENT_SHA256 = "141ed60b9560596ac8ab392babfc4af6e1d22921bacbf979d3b975e0fc2f20c2";
 const LINEAGE_ROOT_FIELDS = new Set(["metadata", "sourceAttestedGroups", "relationships"]);
 const LINEAGE_METADATA_FIELDS = new Set(["schemaVersion", "scope", "source", "collectionSeries", "methodology", "counts"]);
@@ -800,9 +800,11 @@ function hasValidMetbull(value, sourceName) {
   if (value.matchType === "unresolved") {
     return value.canonicalName === null && value.meteoriteCode === null && value.metbullUrl === null;
   }
+  const acceptedMigheiEmendation = sourceName === "MIGHEI" && value.canonicalName === "Mighei" &&
+    value.meteoriteCode === "16634";
   const namesAgree = value.matchType === "case-normalized-exact"
     ? differsOnlyByCase(sourceName, value.canonicalName)
-    : value.matchType === "exact" ? sourceName === value.canonicalName : sourceName !== value.canonicalName;
+    : value.matchType === "exact" ? sourceName === value.canonicalName || acceptedMigheiEmendation : sourceName !== value.canonicalName;
   return isLeakageSafeText(value.canonicalName) && value.canonicalName.length <= 200 &&
     typeof value.meteoriteCode === "string" && /^[1-9][0-9]{0,9}$/.test(value.meteoriteCode) &&
     value.metbullUrl === metbullUrlForCode(value.meteoriteCode) &&
@@ -1371,10 +1373,11 @@ function validateCatalog(catalog) {
           return;
         }
         requireSchema(hasExactFields(holding, CATALOG_NUMBER_HOLDING_FIELDS));
-        requireSchema(holding.description !== "" && isLeakageSafeHoldingText(holding.description, true));
+        requireSchema(holding.description === null || (holding.description !== "" && isLeakageSafeHoldingText(holding.description, true)));
         requireSchema(holding.provenance === null || (holding.provenance !== "" && isLeakageSafeHoldingText(holding.provenance, true)));
         requireSchema(holding.count === null || (Number.isInteger(holding.count) && holding.count > 0));
         requireSchema(Array.isArray(holding.weights) && (recordModel !== "catalog-number" || holding.weights.length > 0));
+        requireSchema(holding.description !== null || holding.provenance !== null || holding.count !== null || holding.weights.length > 0);
         holding.weights.forEach((weight) => requireSchema(
           hasExactFields(weight, new Set(["grams"])) && Number.isFinite(weight.grams) && weight.grams >= 0
         ));
@@ -2607,7 +2610,8 @@ function filterSpecimenCardDescriptors(descriptors, filters, lineageIndex = new 
     const specimen = [HARMONIZED_CARD_KINDS.specimen, HARMONIZED_CARD_KINDS.atomic].includes(
       classifyHarmonizedCard(descriptor)
     );
-    const unknownWeightMatches = filters.includeUnknownWeight !== false || !specimen || specimenCardDescriptorHasKnownWeight(descriptor);
+    const unknownWeightMatches = filters.includeUnknownWeight === true ||
+      (specimen && specimenCardDescriptorHasKnownWeight(descriptor));
     const weightMatches = (filters.min === null && filters.max === null) || masses.some((grams) =>
       (filters.min === null || grams >= filters.min) && (filters.max === null || grams <= filters.max));
     const lineageMatches = filters.lineageOnly !== true || lineageEntriesForSpecimenCard(
@@ -2874,7 +2878,7 @@ function prepareRecord(source, index, registry = catalogRegistry) {
     record.catalogItem === undefined ? null : `catalog item ${record.catalogItem}`,
     record.catalogNumber === undefined ? null : `catalog no ${record.catalogNumber}`,
     record.entryOrder === undefined ? null : `${record.recordModel === "collection-representation-fact" ? "list entry" : "collection entry"} ${record.entryOrder}`,
-    record.reportedNumber === undefined ? null : `${record.recordModel === "collection-representation-fact" ? "list no" : "reported no"} ${record.reportedNumber}`,
+    record.reportedNumber == null ? null : `${record.recordModel === "collection-representation-fact" ? "list no" : "reported no"} ${record.reportedNumber}`,
     record.specimenId === undefined ? null : `specimen id ${record.specimenId}`,
     record.typeNumber === undefined ? null : `type number ${record.typeNumber}`,
     record.recordModel === "table-a-specimen" ? `reported mass ${record.weight.grams} grams` : null,
@@ -2908,9 +2912,9 @@ function prepareRecord(source, index, registry = catalogRegistry) {
     record.dateOfDiscovery,
     record.eventDate,
     record.section,
-    record.olivineFa === undefined ? null : `olivine fa ${record.olivineFa}`,
-    record.pyroxeneFs === undefined ? null : `pyroxene fs ${record.pyroxeneFs}`,
-    record.weathering === undefined ? null : `weathering ${record.weathering}`,
+    record.olivineFa == null ? null : `olivine fa ${record.olivineFa}`,
+    record.pyroxeneFs == null ? null : `pyroxene fs ${record.pyroxeneFs}`,
+    record.weathering == null ? null : `weathering ${record.weathering}`,
     record.sourceEvidence?.tableB ? `table b reported mass ${record.sourceEvidence.tableB.massGrams} grams` : null,
     record.sourceEvidence?.tableB?.classification,
     record.sourceEvidence?.tableB?.classification ? `table b class ${record.sourceEvidence.tableB.classification}` : null,
@@ -3248,23 +3252,47 @@ function render() {
   elements.results.replaceChildren(fragment);
   elements.results.classList.toggle("single-result", isSingleResultCount(matches.length));
   elements.results.setAttribute("aria-busy", "false");
-  elements.count.textContent = integerFormat.format(matchingObservationCount);
-  elements.countUnit.textContent = matchingObservationCount === 1 ? "observation" : "observations";
-  const observationLabel = matchingObservationCount === 1 ? "source observation" : "source observations";
-  if (displayCards.length !== matchingObservationCount) {
-    elements.status.textContent = displayCards.length > visibleCards.length
-      ? `Showing ${integerFormat.format(visibleCards.length)} of ${integerFormat.format(displayCards.length)} display cards from ${integerFormat.format(matchingObservationCount)} matching ${observationLabel}.`
-      : displayCards.length ? `Showing all ${integerFormat.format(displayCards.length)} display cards from ${integerFormat.format(matchingObservationCount)} matching ${observationLabel}.` : "No matching source observations.";
-  } else {
-    elements.status.textContent = displayCards.length > visibleCards.length
-      ? `Showing ${integerFormat.format(visibleCards.length)} of ${integerFormat.format(matchingObservationCount)} matching ${observationLabel}.`
-      : matchingObservationCount ? `Showing all ${integerFormat.format(matchingObservationCount)} matching ${observationLabel}.` : "No matching source observations.";
-  }
+  const resultState = resultDisplayState(
+    displayCards.length, visibleCards.length, matchingObservationCount, filters.includeUnknownWeight
+  );
+  elements.count.textContent = integerFormat.format(resultState.count);
+  elements.countUnit.textContent = resultState.unit;
+  elements.status.textContent = resultState.status;
   elements.showMore.hidden = visibleCards.length >= displayCards.length;
-  elements.empty.hidden = matchingObservationCount !== 0;
+  elements.empty.hidden = displayCards.length !== 0;
   elements.error.hidden = true;
   elements.clear.hidden = !hasActiveFilters();
   updateUrl();
+}
+
+function resultDisplayState(displayCardCount, visibleCardCount, matchingObservationCount, includeUnknownWeight) {
+  if (includeUnknownWeight !== true) {
+    const unit = displayCardCount === 1 ? "weighted specimen" : "weighted specimens";
+    return {
+      count: displayCardCount,
+      unit,
+      status: displayCardCount > visibleCardCount
+        ? `Showing ${integerFormat.format(visibleCardCount)} of ${integerFormat.format(displayCardCount)} ${unit}.`
+        : displayCardCount ? `Showing all ${integerFormat.format(displayCardCount)} ${unit}.` : "No matching weighted specimens."
+    };
+  }
+
+  const observationLabel = matchingObservationCount === 1 ? "source observation" : "source observations";
+  let status;
+  if (displayCardCount !== matchingObservationCount) {
+    status = displayCardCount > visibleCardCount
+      ? `Showing ${integerFormat.format(visibleCardCount)} of ${integerFormat.format(displayCardCount)} display cards from ${integerFormat.format(matchingObservationCount)} matching ${observationLabel}.`
+      : displayCardCount ? `Showing all ${integerFormat.format(displayCardCount)} display cards from ${integerFormat.format(matchingObservationCount)} matching ${observationLabel}.` : "No matching source observations.";
+  } else {
+    status = displayCardCount > visibleCardCount
+      ? `Showing ${integerFormat.format(visibleCardCount)} of ${integerFormat.format(matchingObservationCount)} matching ${observationLabel}.`
+      : matchingObservationCount ? `Showing all ${integerFormat.format(matchingObservationCount)} matching ${observationLabel}.` : "No matching source observations.";
+  }
+  return {
+    count: matchingObservationCount,
+    unit: matchingObservationCount === 1 ? "observation" : "observations",
+    status
+  };
 }
 
 function isSingleResultCount(count) {
@@ -3664,6 +3692,13 @@ function hamburgHoldingDetails(holding) {
   return details;
 }
 
+function holdingHeadingText(holding, recordModel) {
+  if (recordModel === "catalog-number" || recordModel === "collection-entry") {
+    return holding.description === null ? "Holding" : displayText(holding.description);
+  }
+  return holding.designation ? displayText(holding.designation) : "Unnumbered";
+}
+
 function hamburgRecordFacts(record) {
   const facts = [{
     label: "Publication",
@@ -3712,9 +3747,7 @@ function renderHoldings(card, holdings, recordModel = "catalog-item", headingTex
     const heading = document.createElement("div");
     const designation = document.createElement("strong");
     const weightedHolding = recordModel === "catalog-number" || recordModel === "collection-entry";
-    designation.textContent = weightedHolding
-      ? displayText(holding.description)
-      : holding.designation ? displayText(holding.designation) : "Unnumbered";
+    designation.textContent = holdingHeadingText(holding, recordModel);
     heading.append(designation);
     if (!weightedHolding && holding.weight.grams !== null) {
       const mass = document.createElement("span");
@@ -3865,7 +3898,7 @@ function moveFolio(direction) {
 
 function hasActiveFilters() {
   const filters = currentFilters();
-  return Boolean(filters.query || filters.catalog || filters.min !== null || filters.max !== null || filters.lineageOnly || filters.includeUnknownWeight === false || filters.sort !== DEFAULT_SORT);
+  return Boolean(filters.query || filters.catalog || filters.min !== null || filters.max !== null || filters.lineageOnly || filters.includeUnknownWeight === true || filters.sort !== DEFAULT_SORT);
 }
 
 function clearFilters() {
@@ -3910,7 +3943,7 @@ function serializeUrlFilters(filters) {
   if (min !== "") params.set("min", String(min));
   if (max !== "") params.set("max", String(max));
   if (filters.lineageOnly === true) params.set("lineage", "1");
-  if (filters.includeUnknownWeight === false) params.set("weighted", "1");
+  if (filters.includeUnknownWeight === true) params.set("weighted", "0");
   if (VALID_SORTS.has(filters.sort) && filters.sort !== DEFAULT_SORT) params.set("sort", filters.sort);
   return params;
 }
@@ -3928,7 +3961,7 @@ function parseUrlFilters(search, registry = {}) {
     min,
     max,
     lineageOnly: lineage.length === 1 && lineage[0] === "1",
-    includeUnknownWeight: !(weighted.length === 1 && weighted[0] === "1"),
+    includeUnknownWeight: weighted.length === 1 && weighted[0] === "0",
     sort: VALID_SORTS.has(sort) ? sort : DEFAULT_SORT
   };
 }
@@ -4124,6 +4157,7 @@ if (typeof module !== "undefined" && module.exports) {
     getAuthorizedFolioPages,
     genericDesignation,
     hamburgHoldingDetails,
+    holdingHeadingText,
     hamburgRecordFacts,
     specimenCardHamburgFacts,
     holdingDetails,
@@ -4150,6 +4184,7 @@ if (typeof module !== "undefined" && module.exports) {
     prepareRecord,
     presentHarmonizedCard,
     regionalCensusFacts,
+    resultDisplayState,
     recordDesignations,
     recordCatalogPages,
     recordMasses,

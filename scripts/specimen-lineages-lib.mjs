@@ -132,7 +132,7 @@ function sourceRecordLabel(record, model) {
   if (model === "catalog-number") return `Catalog no. ${record.catalogNumber}`;
   if (model === "collection-entry" || model === "regional-census-fact") return `Collection entry ${record.entryOrder}`;
   if (model === "table-a-specimen") return record.specimenId;
-  return record.designation ?? record.name;
+  return record.designation ?? record.name ?? "Unnamed source record";
 }
 
 function catalogSearchUrl(catalogId, recordId) {

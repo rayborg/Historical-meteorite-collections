@@ -180,7 +180,7 @@ The audited catalog correction is byte-locked at SHA-256 `f339b16bf0b799ee0abedb
 
 Every model permits an optional reviewed `metbull` object with exactly `matchType`, `canonicalName`, `meteoriteCode`, `metbullUrl`, and `alternateNameNote`. Resolved mappings require a canonical name, positive decimal code string, and exact `https://www.lpi.usra.edu/meteor/metbull.cfm?code=<code>` URL. Unresolved mappings cannot claim any canonical identity. This additive layer does not alter source names, catalog identifiers, holdings, or weights and is never populated by fuzzy matching. Every specimen card includes the current-name field: the reviewed canonical name when different, `Same as source catalog name` when display-equivalent, or `Unknown` without a reviewed canonical identity. The dedicated catalog directory renders all descriptor cards separately from the homepage search and bibliography master list.
 
-The current release contains 13,704 reviewed mappings: 13,400 resolved and 304 unresolved. The remaining 4,513 records are pending observations without reviewed mappings. Victoria Land contributes 273 `official-abbreviation` mappings; Foote's dealer observations intentionally have no mapping.
+The current release contains 13,704 reviewed mappings: 13,401 resolved and 303 unresolved. The remaining 4,513 records are pending observations without reviewed mappings. Victoria Land contributes 273 `official-abbreviation` mappings; Foote's dealer observations intentionally have no mapping.
 
 Validated continuation evidence recovers formerly blank source names only where supported. Reviewed historical entries that genuinely print no separate proper source name retain null names and unresolved reviews without an inferred modern identity.
 

@@ -8,8 +8,8 @@
   <meta name="theme-color" content="#2d241b">
   <title>The Meteorite Cabinet | Historical Collection Index</title>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=20260908-fletcher-fields-1">
-  <script src="./app.js?v=20260908-fletcher-fields-1" defer></script>
+  <link rel="stylesheet" href="./styles.css?v=20260909-global-fields-1">
+  <script src="./app.js?v=20260909-global-fields-1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#catalog">Skip to catalog</a>
@@ -105,8 +105,8 @@
             <span>Known or suspected lineage only</span>
           </label>
           <label class="filter-toggle unknown-weight-field">
-            <input id="include-unknown-weight" name="include-unknown-weight" type="checkbox" checked>
-            <span>Include specimens without weight</span>
+            <input id="include-unknown-weight" name="include-unknown-weight" type="checkbox">
+            <span>Include observations and specimens without weight</span>
           </label>
         </div>
       </form>
@@ -116,7 +116,7 @@
       <div class="results-bar">
         <div>
           <p class="eyebrow">Source ledger</p>
-          <h2 id="results-heading"><span id="result-count">Loading</span> <small id="result-unit">observations</small></h2>
+          <h2 id="results-heading"><span id="result-count">Loading</span> <small id="result-unit">weighted specimens</small></h2>
         </div>
         <button id="clear-filters" class="text-button" type="button" hidden>Clear filters</button>
       </div>
@@ -127,7 +127,7 @@
 
       <div id="empty-state" class="empty-state" hidden>
         <span aria-hidden="true">&#10022;</span>
-        <h3>No source observations answer that description</h3>
+        <h3>No cards answer that description</h3>
         <p>Try a broader name, specimen ID, source number, holding, classification, locality, date, composition, catalog, or mass interval.</p>
         <button class="button" type="button" data-clear-filters>Clear the search</button>
       </div>

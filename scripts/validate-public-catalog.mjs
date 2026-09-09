@@ -333,7 +333,9 @@ function validateMetbull(value, sourceName, path) {
     assert(differsOnlyByCase(sourceName, value.canonicalName),
       `${path}.matchType requires names that differ only by case`);
   } else {
-    assert(value.matchType === "exact" ? sourceName === value.canonicalName : sourceName !== value.canonicalName,
+    const acceptedMigheiEmendation = sourceName === "MIGHEI" && value.canonicalName === "Mighei" &&
+      value.meteoriteCode === "16634";
+    assert(value.matchType === "exact" ? sourceName === value.canonicalName || acceptedMigheiEmendation : sourceName !== value.canonicalName,
       `${path}.matchType does not agree with the source and canonical names`);
   }
 }
@@ -617,7 +619,7 @@ function validateHolding(holding, path) {
 
 function validateCatalogNumberHolding(holding, path, allowEmptyWeights = false) {
   assertExactKeys(holding, CATALOG_NUMBER_HOLDING_KEYS, path);
-  assertString(holding.description, `${path}.description`);
+  assertString(holding.description, `${path}.description`, true);
   assertHoldingText(holding.description, `${path}.description`, true);
   assertString(holding.provenance, `${path}.provenance`, true);
   assertHoldingText(holding.provenance, `${path}.provenance`, true);
@@ -625,6 +627,8 @@ function validateCatalogNumberHolding(holding, path, allowEmptyWeights = false) 
     `${path}.count must be a positive integer or null`);
   assert(Array.isArray(holding.weights) && (allowEmptyWeights || holding.weights.length > 0),
     `${path}.weights must be ${allowEmptyWeights ? "an ordered" : "a nonempty ordered"} array`);
+  assert(holding.description !== null || holding.provenance !== null || holding.count !== null || holding.weights.length > 0,
+    `${path} must retain a source-backed holding fact when description is null`);
   holding.weights.forEach((weight, weightIndex) => {
     const weightPath = `${path}.weights[${weightIndex}]`;
     assertExactKeys(weight, ["grams"], weightPath);
@@ -933,27 +937,27 @@ function validatePublicCatalog(data, folios, path = "catalog") {
       "fletcher-1886": {
         count: 375, mappings: 223, pages: [42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67],
         suffixes: ["97a", "97b", "97c", "100a", "100b", "106a", "106b", "123a", "123b", "123c", "128a", "128b", "131a", "131b", "131c"],
-        multiweights: 8, digest: "8fafa1c6f533337c30788d82efde1b8251c07adcdb16b450740442870f68374e",
+        multiweights: 8, digest: "f1fab33dda42808743224096ac37262bf24c224fafaa919a9b2d084f8f3fb304",
       },
       "fletcher-1894": {
         count: 461, mappings: 297, pages: [54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83],
         suffixes: ["34a", "34b", "34c", "34d", "34e", "58a", "58b", "113a", "113b", "120a", "120b", "131a", "131b", "154a", "154b", "154c", "164a", "164b", "164c"],
-        multiweights: 10, digest: "96df24fa9fde9b564e5bb5ca20fd589198dddf2cb1b84dc6c42e1f64728c4c68",
+        multiweights: 10, digest: "acb1622b4d0e550c0080f756447cab630ed642f4cadf13a65928a94fba7f78b6",
       },
       "fletcher-1896": {
         count: 481, mappings: 318, pages: [54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84],
         suffixes: ["126a", "126b", "133a", "133b", "145a", "145b", "169a", "169b", "169c"],
-        multiweights: 9, digest: "21e1c3b888573320e457eb07ae22cc1800fa40640f019bb4d34b11829ec5aa5f",
+        multiweights: 9, digest: "ebe5582634355e849755aeef6987e99d73f245cddc5e5182acee86047f0f92d8",
       },
       "fletcher-1904": {
         count: 562, mappings: 387, pages: [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95],
         suffixes: ["75a", "75b", "151a", "151b", "163a", "163b", "215a", "215b", "215c"],
-        multiweights: 10, digest: "3a4cbfd6e25ef58e664f94757d0a54031cb3dca7d9023b5078ed64a85724b9db",
+        multiweights: 10, digest: "0a21d59edbb6d797bbcbbe2caf65e0e39b97339b43dd85c6ac8fff00aa973362",
       },
       "fletcher-1908": {
         count: 585, mappings: 407, pages: [66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106],
         suffixes: ["78a", "78b", "158a", "158b", "170a", "170b", "225a", "225b", "225c"],
-        multiweights: 11, digest: "abafc6eb9cd32d26e240f956ab5d7cb366ee7340eaa377080446df288c1e21fa",
+        multiweights: 11, digest: "30e3355589f75749fa2dd88030276767787d1485fc343d9d93ac1df03fe0448d",
       },
     };
     for (const [catalogId, lock] of Object.entries(fletcherLocks)) {
@@ -1010,10 +1014,10 @@ function validatePublicCatalog(data, folios, path = "catalog") {
       "c427fa0bf07a8ce57c01d4520fc3b2eb2c2aa7483f1d8bf5d7f8bce483f96806",
     `${path} Victoria public records differ from the accepted schema 11 package`);
     const wave2Locks = {
-      "berlin-1903": [380, 270, "8b31e744f0eee3ac776b7000a1f93a1786ae6be5c3a47ce33b98f26acc03f061"],
-      "berlin-1904": [470, 337, "3c5358afab70d4e22fa27c0b4c756a81c62c5212be2ff08cf27ad504bae89e6c"],
+      "berlin-1903": [380, 270, "170fa30af35f2c85afeb41e67a7f283f0badd64197263cdab3a6b3ca4ba06092"],
+      "berlin-1904": [470, 337, "a85fc2a4eb9cd704fba14dd7c6690ccc32de1bf70baba4904b2dfecd43cd87b5"],
       "greifswald-1895": [145, 98, "a8a9499f44c9f9b01e1c673c9267737d0b7f22740187081c9e8be5d931f04d7e"],
-      "greifswald-1901": [281, 190, "c86348cabfc439d1e2bff2a395196fb75cc38a9b47ec8eec61c4e4eedf32cb19"],
+      "greifswald-1901": [281, 190, "bcbaf01f0cc95e4fe9bf2d6841e37f20b75ce661562b91407b196f922eba5092"],
     };
     for (const [catalogId, [recordCount, mappingCount, digest]] of Object.entries(wave2Locks)) {
       const records = data.records.filter((record) => record.catalogId === catalogId);
@@ -1832,7 +1836,6 @@ function runSyntheticCatalogTests(modelFixture) {
   assertCatalogNumberRejection("catalog-number record extra key", ({ records }) => { hoveyRecord(records).year = "1890"; });
   assertCatalogNumberRejection("catalog-number empty holdings", ({ records }) => { hoveyRecord(records).holdings = []; });
   assertCatalogNumberRejection("catalog-number empty description", ({ records }) => { hoveyRecord(records).holdings[0].description = ""; });
-  assertCatalogNumberRejection("catalog-number null description", ({ records }) => { hoveyRecord(records).holdings[0].description = null; });
   assertCatalogNumberRejection("catalog-number empty provenance", ({ records }) => { hoveyRecord(records).holdings[0].provenance = ""; });
   assertCatalogNumberRejection("catalog-number private provenance", ({ records }) => {
     hoveyRecord(records).holdings[0].provenance = "Reviewer note: uncertain";

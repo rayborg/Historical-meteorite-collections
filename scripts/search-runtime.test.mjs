@@ -156,7 +156,7 @@ test("every resolved MetBull code owner and displayed regional identifier is sea
   const resolved = records.filter(({ metbull }) => metbull && metbull.matchType !== "unresolved");
   const regional = records.filter(({ recordModel }) => recordModel === "regional-census-fact");
   const numbered = regional.filter(({ reportedNumber }) => reportedNumber);
-  assert.equal(resolved.length, 13400);
+  assert.equal(resolved.length, 13401);
   assert.equal(regional.length, 84);
   assert.equal(numbered.length, 77);
   for (const record of resolved) assert.equal(app.matchesSearch(record, record.metbull.meteoriteCode), true, record.id);
