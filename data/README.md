@@ -149,7 +149,7 @@ representedWeight: { valueText, componentTexts, grams, semantics },
 section, catalogPages, confidence, [metbull]
 ```
 
-The five editions contribute 2,464 principal-list observations. `reportedNumber` and `pane` remain edition-local finding context and cannot establish inventory identity. `representedWeight` is collection-representation context rather than an atomic holding or specimen mass; multiple source values retain ordered component text and require `grams: null`. This model has no holdings and contributes no specimen-card projection or lineage endpoint. Public IDs are deterministic and distinct from private source UUIDs. All five folio entries are blocked/undetermined with empty page arrays.
+The five editions contribute 2,464 principal-list observations. The release keeps the source meteorite/locality heading, date or report of find, and bibliographic reference separate: all 2,464 names are nonempty, 2,440 event/report fields are populated, and 939 references are populated. Nine source-blank grouped continuations inherit only a source-proven preceding locality name and remain MetBull-unresolved. `reportedNumber` and `pane` remain edition-local finding context and cannot establish inventory identity. `representedWeight` is collection-representation context rather than an atomic holding or specimen mass; multiple source values retain ordered component text and require `grams: null`. This model has no holdings and contributes no specimen-card projection or lineage endpoint. Public IDs are deterministic and distinct from private source UUIDs. All five folio entries are blocked/undetermined with empty page arrays.
 
 ### Regional Census Fact
 

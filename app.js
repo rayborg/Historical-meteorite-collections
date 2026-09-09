@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260906-fletcher-editions-1";
+const CACHE_VERSION = "20260908-fletcher-fields-1";
 const ASSET_CACHE_VERSION = CACHE_VERSION;
 const CATALOG_SCHEMA_VERSION = 11;
 const CATALOG_RECORD_COUNT = 18217;
@@ -284,8 +284,8 @@ const SPECIMEN_CARD_COMPONENT_FIELDS = new Set(["holdingPath", "componentPath", 
 const SPECIMEN_CARD_CLAUSE_FIELDS = new Set(["textPath", "start", "end"]);
 const SPECIMEN_CARD_REPEATED_MASS_FIELDS = new Set(["valuePath", "countPath", "totalPath", "occurrence", "occurrenceCount"]);
 const SHA256_HEX = /^[0-9a-f]{64}$/u;
-const SPECIMEN_CARD_SOURCE_CATALOG_SHA256 = "139204292af05a7fa0b33bb71e4228faebf750436de41790cfb68c4b63cec7c0";
-const SPECIMEN_CARD_PROJECTION_DATA_SHA256 = "8ef67a79e5c0911bc71e981ed86bc078951e3aa45b920caaceb89ba847353079";
+const SPECIMEN_CARD_SOURCE_CATALOG_SHA256 = "c3171437ffdc80852bd66494f519aa2385602f0ef9599be456953b2038186b30";
+const SPECIMEN_CARD_PROJECTION_DATA_SHA256 = "76a56b36c7f8c6ec63a9cd2c04a9372e06fc18f863830b5afc20b3aba2b431bb";
 const SPECIMEN_CARD_PROJECTION_SET_SHA256 = "7a37c5791373bb1613fc7180931e8dfe155868909785a976273e4b64e307d787";
 const SPECIMEN_LINEAGE_DATA_SHA256 = "8529a4823eba3541c9dd0a0d44e2fb7275c40613b248be2fabfbf955679f1d37";
 const SOURCE_CLAIMS_CONTENT_SHA256 = "141ed60b9560596ac8ab392babfc4af6e1d22921bacbf979d3b975e0fc2f20c2";
@@ -3477,7 +3477,10 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
     value: (record.recordModel === "table-a-specimen" ? record.locality?.name : record.locality) || "Unknown"
   });
   if (specimen) facts.push({ label: "Individual find location", value: record.individualFindLocation || "Unknown" });
-  facts.push({ label: "Event", value: harmonizedCardEvent(record) || "Unknown" });
+  facts.push({
+    label: record.recordModel === "collection-representation-fact" ? "Date or report of find" : "Event",
+    value: harmonizedCardEvent(record) || "Unknown"
+  });
   if (record.recordModel === "collection-representation-fact") {
     facts.push({ label: "Section", value: record.section || "Unknown" });
     facts.push({ label: "Pane or case", value: record.pane || "Unknown" });
@@ -3546,7 +3549,10 @@ function createRecordCard(recordOrDescriptor) {
   semanticLabel.textContent = displaySemanticLabel ? dto.semanticLabel : "";
   semanticLabel.hidden = !displaySemanticLabel;
   card.querySelector(".source-name-label").textContent = dto.kind === HARMONIZED_CARD_KINDS.dealer
-    ? "Source catalog name" : "Source catalog meteorite name";
+    ? "Source catalog name"
+    : dto.kind === HARMONIZED_CARD_KINDS.representation
+      ? "Source catalog meteorite or locality name"
+      : "Source catalog meteorite name";
   card.querySelector(".record-name").textContent = displayText(dto.sourceName);
   const description = card.querySelector(".record-description");
   if (dto.description) {

@@ -69,7 +69,7 @@ function projectionSemantics() {
 }
 
 test("CF001 installs the exact accepted catalog bytes", () => {
-  assert.equal(sha256(catalogText), "139204292af05a7fa0b33bb71e4228faebf750436de41790cfb68c4b63cec7c0");
+  assert.equal(sha256(catalogText), "c3171437ffdc80852bd66494f519aa2385602f0ef9599be456953b2038186b30");
   assert.deepEqual([catalog.records.length, catalog.metadata.catalogs.length], [18217, 49]);
 });
 
@@ -131,7 +131,7 @@ test("CF009 projections retain exact counts and source semantics after rebinding
     scope: "reviewed-atomic-specimen-card-display-projections",
     catalogSchemaVersion: 11,
     sourceRecordCount: 18217,
-    sourceCatalogSha256: "139204292af05a7fa0b33bb71e4228faebf750436de41790cfb68c4b63cec7c0",
+    sourceCatalogSha256: "c3171437ffdc80852bd66494f519aa2385602f0ef9599be456953b2038186b30",
     projectionCount: 3062,
     atomicCardCount: 8062,
     sourceContextCardCount: 2532,
@@ -159,8 +159,8 @@ test("CF010 preserves non-target data, privacy, cache, and label behavior", () =
     "62d82f6d4b38643e55f49f78734ab0523aa7a2a52d2116b1a4aae0ee0e86c932");
   assert.doesNotMatch(catalogText + sourceClaimsText + projectionText,
     /(?:\/private\/|\/Users\/|file:\/\/|sourcePath|sourceFile|rawRowText|raw\s+ocr)/iu);
-  assert.equal(app.CACHE_VERSION, "20260906-fletcher-editions-1");
-  for (const html of [indexHtml, catalogsHtml]) assert.match(html, /20260906-fletcher-editions-1/u);
+  assert.equal(app.CACHE_VERSION, "20260908-fletcher-fields-1");
+  for (const html of [indexHtml, catalogsHtml]) assert.match(html, /20260908-fletcher-fields-1/u);
   assert.equal(app.shouldDisplaySemanticLabel("direct-specimen"), false);
   assert.equal(app.shouldDisplaySemanticLabel("projected-atomic-specimen"), false);
   assert.equal(app.shouldDisplaySemanticLabel("collection-observation"), true);

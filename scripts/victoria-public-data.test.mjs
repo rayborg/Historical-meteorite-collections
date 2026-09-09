@@ -18,7 +18,7 @@ const victoriaDescriptor = catalog.metadata.catalogs.find(({ id }) => id === "vi
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
 
 test("imports all three accepted public package files exactly", () => {
-  assert.equal(sha256(catalogText), "139204292af05a7fa0b33bb71e4228faebf750436de41790cfb68c4b63cec7c0");
+  assert.equal(sha256(catalogText), "c3171437ffdc80852bd66494f519aa2385602f0ef9599be456953b2038186b30");
   assert.equal(sha256(foliosText), "ed23bc9af5bb73eb932fd928f7d46b02379265bbeb43911d44004aa4cddacdd5");
   assert.equal(sha256(sourceClaimsText), "edb201339e9e1068ac45d3333a9224959b4dcdbf8e317afcbb0657c6635b85fb");
   assert.deepEqual({ schema: catalog.metadata.schemaVersion, records: catalog.records.length, catalogs: catalog.metadata.catalogs.length },

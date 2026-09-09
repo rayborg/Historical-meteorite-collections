@@ -38,7 +38,7 @@ node scripts/test-multicatalog.cjs
 node --test scripts/*.test.mjs
 ```
 
-The validator checks both synthetic rejection fixtures and the real catalog, manifest, and folio files. The standalone runtime harness contains 123 tests, and the complete MJS suite contains 169 tests.
+The validator checks both synthetic rejection fixtures and the real catalog, manifest, and folio files. The standalone runtime harness contains 123 tests, and the complete MJS suite contains 173 tests.
 
 After changing either public data file, run `node scripts/sync-release-summary.mjs --write`; use `--json` to inspect the derived release summary without changing documentation.
 
@@ -124,7 +124,7 @@ representedWeight: { valueText, componentTexts, grams, semantics },
 section, catalogPages, confidence, [metbull]
 ```
 
-The five Lazarus Fletcher British Museum editions contribute 2,464 edition-local observations: 375, 461, 481, 562, and 585 in edition order. List numbers and pane/case labels are source finding context, not inventory identifiers. `representedWeight` describes collection representation, never an atomic holding or specimen mass; multiple printed values remain ordered in `componentTexts` with `grams: null`. These observations create no atomic cards, lineage endpoints, same-inventory links, or merges. Their deterministic public IDs do not expose private source UUIDs. All five folio policies are blocked with rights undetermined and no pages or media.
+The five Lazarus Fletcher British Museum editions contribute 2,464 edition-local observations: 375, 461, 481, 562, and 585 in edition order. Their source heading, date or report of find, and bibliographic reference are independently reviewed fields; all 2,464 source names are nonempty, while 2,440 event/report fields and 939 references are populated. Nine source-blank grouped continuations inherit only the exact preceding source-proven locality heading and remain unresolved rather than inheriting a MetBull identity. List numbers and pane/case labels are source finding context, not inventory identifiers. `representedWeight` describes collection representation, never an atomic holding or specimen mass; multiple printed values remain ordered in `componentTexts` with `grams: null`. These observations create no atomic cards, lineage endpoints, same-inventory links, or merges. Their deterministic public IDs do not expose private source UUIDs. All five folio policies are blocked with rights undetermined and no pages or media.
 
 The current catalog contains:
 
@@ -213,7 +213,7 @@ Records are source observations, not canonical meteorites. A `table-a-specimen` 
 
 The public presenter derives 23,217 display cards from 18,217 parent observations and the reviewed projection manifest: 5,742 direct specimens, 8,062 projected atomic specimens, 6,859 collection observations, 2,464 collection-representation observations, 84 regional observations, and 6 dealer observations. Projection changes display-card multiplicity only; search result counts, statistics, citations, folio authorization, and source data remain parent-observation based.
 
-Every specimen card uses one closed standard vocabulary. After the specimen identifier, semantic type, and source catalog meteorite name, every specimen displays these fact rows in order: **Current Meteoritical Bulletin name**, **Class**, **Specimen form**, **Source locality**, **Individual find location**, **Event**, **Lineage**, and **Specimen weight**. Unavailable values read **Unknown**. A resolved display-equivalent current name reads **Same as source catalog name** rather than repeating it. General cards do not insert catalog-specific holdings, provenance, coordinate, mineral-chemistry, amendment, total, or occurrence-count labels. Fletcher context cards explicitly show section, pane/case, reference, and represented-weight text while stating that the observation is not a specimen, holding, or inventory identity.
+Every specimen card uses one closed standard vocabulary. After the specimen identifier, semantic type, and source catalog meteorite name, every specimen displays these fact rows in order: **Current Meteoritical Bulletin name**, **Class**, **Specimen form**, **Source locality**, **Individual find location**, **Event**, **Lineage**, and **Specimen weight**. Unavailable values read **Unknown**. A resolved display-equivalent current name reads **Same as source catalog name** rather than repeating it. General cards do not insert catalog-specific holdings, provenance, coordinate, mineral-chemistry, amendment, total, or occurrence-count labels. Fletcher context cards label the heading **Source catalog meteorite or locality name**, label event text **Date or report of find**, show **Reference** separately, and retain section, pane/case, and represented-weight text while stating that the observation is not a specimen, holding, or inventory identity.
 
 The checked-by-default **Include specimens without weight** filter preserves the complete register. Clearing it removes exactly 173 unknown-mass specimen cards. Brown's 385 and Minnesota's 164 reviewed cards remain under the accepted harmonized rule even though 11 lack a specific mass path; collection, collection-representation, regional, and dealer observations remain listed.
 
@@ -238,7 +238,7 @@ matchType, canonicalName, meteoriteCode, metbullUrl, alternateNameNote
 The historical `name`, designation/catalog identifier fields, printed private weight strings, and numeric source weights are never replaced by this object. Every specimen displays a **Current Meteoritical Bulletin name** row: a substantively different resolved name, **Same as source catalog name** for a display-equivalent resolved name, or **Unknown** when no canonical identity is reviewed. Comparison uses Unicode NFC, collapsed whitespace, and locale-aware lowercase. No client, build, or export path fuzzy-matches names or infers identity.
 
 <!-- release-summary:readme-metbull:start -->
-The current release includes reviewed MetBull harmonization for 13,704 of 18,217 records: 13,400 have a resolved current identity and 304 remain explicitly unresolved. 17 records currently have a null `name` value.
+The current release includes reviewed MetBull harmonization for 13,704 of 18,217 records: 13,400 have a resolved current identity and 304 remain explicitly unresolved. 13 records currently have a null `name` value.
 <!-- release-summary:readme-metbull:end -->
 
 The remaining 4,513 records are pending observations without reviewed MetBull mappings. Victoria Land's 273 Table A specimens have accepted `official-abbreviation` mappings; Foote's six dealer observations intentionally have no MetBull mapping or current-name panel.

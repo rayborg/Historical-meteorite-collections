@@ -377,8 +377,8 @@ test("digest lock loads the exact set and fails closed to parent cards on mismat
   const altered = structuredClone(manifest);
   altered.projections[0].cards[0].clause.end -= 1;
   assert.equal((await app.loadSpecimenCardProjectionIndex(records, async () => projectionResponse(altered), options)).size, 0);
-  assert.equal(app.SPECIMEN_CARD_SOURCE_CATALOG_SHA256, "139204292af05a7fa0b33bb71e4228faebf750436de41790cfb68c4b63cec7c0");
-  assert.equal(app.SPECIMEN_CARD_PROJECTION_DATA_SHA256, "8ef67a79e5c0911bc71e981ed86bc078951e3aa45b920caaceb89ba847353079");
+  assert.equal(app.SPECIMEN_CARD_SOURCE_CATALOG_SHA256, "c3171437ffdc80852bd66494f519aa2385602f0ef9599be456953b2038186b30");
+  assert.equal(app.SPECIMEN_CARD_PROJECTION_DATA_SHA256, "76a56b36c7f8c6ec63a9cd2c04a9372e06fc18f863830b5afc20b3aba2b431bb");
   assert.equal(app.SPECIMEN_CARD_PROJECTION_SET_SHA256, "7a37c5791373bb1613fc7180931e8dfe155868909785a976273e4b64e307d787");
 });
 
@@ -391,9 +391,9 @@ test("rendering is text-only, omits context cards, and synchronizes cache keys",
   assert.match(html, /<p class="record-semantic-label"><\/p>/u);
   assert.match(html, /<dl class="record-meta" aria-label="Catalog record details"><\/dl>/u);
   assert.doesNotMatch(html, /specimen-position|record-holdings|earlier-records/u);
-  assert.match(html, /styles\.css\?v=20260906-fletcher-editions-1/u);
-  assert.match(html, /app\.js\?v=20260906-fletcher-editions-1/u);
-  assert.equal(app.ASSET_CACHE_VERSION, "20260906-fletcher-editions-1");
+  assert.match(html, /styles\.css\?v=20260908-fletcher-fields-1/u);
+  assert.match(html, /app\.js\?v=20260908-fletcher-fields-1/u);
+  assert.equal(app.ASSET_CACHE_VERSION, "20260908-fletcher-fields-1");
 });
 
 test("production schema-4 projection fixture validates against schema 11", () => {

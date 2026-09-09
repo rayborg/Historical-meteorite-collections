@@ -933,27 +933,27 @@ function validatePublicCatalog(data, folios, path = "catalog") {
       "fletcher-1886": {
         count: 375, mappings: 223, pages: [42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67],
         suffixes: ["97a", "97b", "97c", "100a", "100b", "106a", "106b", "123a", "123b", "123c", "128a", "128b", "131a", "131b", "131c"],
-        multiweights: 8, digest: "24cab31f0322b7b82f265c287442cc7377f411e63137ee18fb7d811a8927811a",
+        multiweights: 8, digest: "8fafa1c6f533337c30788d82efde1b8251c07adcdb16b450740442870f68374e",
       },
       "fletcher-1894": {
         count: 461, mappings: 297, pages: [54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83],
         suffixes: ["34a", "34b", "34c", "34d", "34e", "58a", "58b", "113a", "113b", "120a", "120b", "131a", "131b", "154a", "154b", "154c", "164a", "164b", "164c"],
-        multiweights: 10, digest: "4f028927b5766d12923f74c72c80dc8554dc564357d1d4afe35f50403dc88df8",
+        multiweights: 10, digest: "96df24fa9fde9b564e5bb5ca20fd589198dddf2cb1b84dc6c42e1f64728c4c68",
       },
       "fletcher-1896": {
         count: 481, mappings: 318, pages: [54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84],
         suffixes: ["126a", "126b", "133a", "133b", "145a", "145b", "169a", "169b", "169c"],
-        multiweights: 9, digest: "e909367d17acd11790f88f7b43d357cc7f06e66ea479abceb223b83737f22eba",
+        multiweights: 9, digest: "21e1c3b888573320e457eb07ae22cc1800fa40640f019bb4d34b11829ec5aa5f",
       },
       "fletcher-1904": {
         count: 562, mappings: 387, pages: [58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95],
         suffixes: ["75a", "75b", "151a", "151b", "163a", "163b", "215a", "215b", "215c"],
-        multiweights: 10, digest: "06cb89e3983d82094bad7bd6156f8ec2dad9c7d2ac52eac57fbecffc4e48e41a",
+        multiweights: 10, digest: "3a4cbfd6e25ef58e664f94757d0a54031cb3dca7d9023b5078ed64a85724b9db",
       },
       "fletcher-1908": {
         count: 585, mappings: 407, pages: [66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106],
         suffixes: ["78a", "78b", "158a", "158b", "170a", "170b", "225a", "225b", "225c"],
-        multiweights: 11, digest: "a070a089ee8e16312343a4967b628725ae678dad34f7695d85c17e9e2b62fc69",
+        multiweights: 11, digest: "abafc6eb9cd32d26e240f956ab5d7cb366ee7340eaa377080446df288c1e21fa",
       },
     };
     for (const [catalogId, lock] of Object.entries(fletcherLocks)) {

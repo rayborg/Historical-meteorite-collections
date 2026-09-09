@@ -13,7 +13,7 @@ const sha256 = (value) => createHash("sha256").update(value).digest("hex");
 const jsonSha256 = (value) => sha256(JSON.stringify(value));
 
 test("installs the exact accepted schema-11 export without changing non-correction data", () => {
-  assert.equal(sha256(catalogText), "139204292af05a7fa0b33bb71e4228faebf750436de41790cfb68c4b63cec7c0");
+  assert.equal(sha256(catalogText), "c3171437ffdc80852bd66494f519aa2385602f0ef9599be456953b2038186b30");
   assert.equal(sha256(foliosText), "ed23bc9af5bb73eb932fd928f7d46b02379265bbeb43911d44004aa4cddacdd5");
   assert.equal(catalog.metadata.schemaVersion, 11);
   assert.equal(catalog.metadata.catalogs.length, 49);

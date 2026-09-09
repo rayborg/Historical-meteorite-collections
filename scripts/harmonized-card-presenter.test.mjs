@@ -33,6 +33,7 @@ const STANDARD_SPECIMEN_LABELS = [
   "Individual find location", "Event", "Lineage", "Specimen weight"
 ];
 const STANDARD_OBSERVATION_LABELS = ["Class", "Source locality", "Event"];
+const FLETCHER_OBSERVATION_LABELS = ["Class", "Source locality", "Date or report of find"];
 const FLETCHER_LABELS = ["Section", "Pane or case", "Reference", "Represented weight"];
 const SEMANTIC_LABELS = {
   "direct-specimen": "Specimen.",
@@ -128,7 +129,8 @@ test("every production card uses the approved fact order, values, missing behavi
       ? record.metbull.canonicalName : null;
     const expectedLabels = specimen
       ? [...STANDARD_SPECIMEN_LABELS, ...app.victoriaConflictFacts(record).map(({ label }) => label)]
-      : [...(currentName ? ["Current Meteoritical Bulletin name"] : []), ...STANDARD_OBSERVATION_LABELS,
+      : [...(currentName ? ["Current Meteoritical Bulletin name"] : []),
+        ...(record.recordModel === "collection-representation-fact" ? FLETCHER_OBSERVATION_LABELS : STANDARD_OBSERVATION_LABELS),
         ...(record.recordModel === "collection-representation-fact" ? FLETCHER_LABELS : [])];
     assert.deepEqual(dto.facts.map(({ label }) => label), expectedLabels, record.id);
     assert.equal(dto.sourceName, record.name || "Unknown", record.id);
@@ -141,7 +143,7 @@ test("every production card uses the approved fact order, values, missing behavi
     assert.equal(fact(dto, "Class"), record.classification || "Unknown", record.id);
     assert.equal(fact(dto, "Source locality"),
       (record.recordModel === "table-a-specimen" ? record.locality?.name : record.locality) || "Unknown", record.id);
-    assert.equal(fact(dto, "Event"), expectedEvent(record) || "Unknown", record.id);
+    assert.equal(fact(dto, record.recordModel === "collection-representation-fact" ? "Date or report of find" : "Event"), expectedEvent(record) || "Unknown", record.id);
     if (specimen) {
       specimenCount += 1;
       assert.equal(fact(dto, "Specimen form"),
@@ -289,7 +291,7 @@ test("representative corrected and unresolved specimen cards preserve the comple
 
 test("catalog-specific source facts stay out of cards while representative hidden facts remain searchable", () => {
   const allowed = new Set([
-    "Current Meteoritical Bulletin name", ...STANDARD_SPECIMEN_LABELS, ...STANDARD_OBSERVATION_LABELS, ...FLETCHER_LABELS
+    "Current Meteoritical Bulletin name", ...STANDARD_SPECIMEN_LABELS, ...STANDARD_OBSERVATION_LABELS, ...FLETCHER_OBSERVATION_LABELS, ...FLETCHER_LABELS
   ]);
   for (const descriptor of descriptors) {
     assert(present(descriptor).facts.every(({ label }) => allowed.has(label) ||
@@ -424,21 +426,21 @@ test("accessible shell, responsive breakpoints, approved cache, and immutable da
   assert.match(styles, /@media \(max-width: 700px\)[\s\S]*\.catalog-grid \{ grid-template-columns: 1fr; \}/u);
   assert.match(styles, /@media \(max-width: 420px\)[\s\S]*\.record-card \{ padding-inline: 1rem; \}/u);
   assert.doesNotMatch(styles, /\.record-meta dt \{[^}]*overflow-wrap: anywhere;/u);
-  assert.equal(app.CACHE_VERSION, "20260906-fletcher-editions-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260906-fletcher-editions-1");
+  assert.equal(app.CACHE_VERSION, "20260908-fletcher-fields-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260908-fletcher-fields-1");
   for (const document of [html, catalogsHtml]) {
-    assert.match(document, /styles\.css\?v=20260906-fletcher-editions-1/u);
-    assert.match(document, /app\.js\?v=20260906-fletcher-editions-1/u);
+    assert.match(document, /styles\.css\?v=20260908-fletcher-fields-1/u);
+    assert.match(document, /app\.js\?v=20260908-fletcher-fields-1/u);
   }
-  assert.match(catalogsHtml, /catalogs\.js\?v=20260906-fletcher-editions-1/u);
+  assert.match(catalogsHtml, /catalogs\.js\?v=20260908-fletcher-fields-1/u);
   assert.deepEqual({
     catalog: sha256(catalogText),
     projections: sha256(projectionText),
     lineages: sha256(lineageText),
     reviews: sha256(reviewText),
   }, {
-    catalog: "139204292af05a7fa0b33bb71e4228faebf750436de41790cfb68c4b63cec7c0",
-    projections: "8ef67a79e5c0911bc71e981ed86bc078951e3aa45b920caaceb89ba847353079",
+    catalog: "c3171437ffdc80852bd66494f519aa2385602f0ef9599be456953b2038186b30",
+    projections: "76a56b36c7f8c6ec63a9cd2c04a9372e06fc18f863830b5afc20b3aba2b431bb",
     lineages: "8529a4823eba3541c9dd0a0d44e2fb7275c40613b248be2fabfbf955679f1d37",
     reviews: "8262150ef01a0996d9f63ab0b3234e3d927d1d49c9200861778d763a2034963f",
   });

@@ -167,6 +167,14 @@ do not reveal private source UUIDs. The unavailable 1886 historical manifest
 and the 1908 TXT/HTML page-binding evidence remain private provenance rather
 than public folios or claims about scan media.
 
+The Fletcher heading, date or report of find, and bibliographic reference are
+separate semantic fields. Combined OCR text is never a fallback name. A blank
+grouped continuation may inherit only its immediately preceding source-proven
+locality heading and never its MetBull identity. Release validation requires
+every name to be nonempty and free of narrative or citation contamination,
+complete event/reference accounting, exact continuation controls, and search
+coverage for all three public fields.
+
 ## 7. Reviewed MetBull Identity
 
 MetBull harmonization is additive. The historical source name and every other
