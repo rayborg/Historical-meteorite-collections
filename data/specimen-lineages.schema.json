@@ -33,7 +33,7 @@
           "additionalProperties": false,
           "required": ["catalogSchemaVersion", "recordCount", "catalogCount", "flattenedMassObservationCount", "inventoryObservationCount", "sourceClaimsSchemaVersion", "sourceClaimsContentSha256"],
           "properties": {
-            "catalogSchemaVersion": { "const": 11 },
+        "catalogSchemaVersion": { "const": 12 },
             "recordCount": { "type": "integer", "minimum": 0 },
             "catalogCount": { "type": "integer", "minimum": 0 },
             "flattenedMassObservationCount": { "type": "integer", "minimum": 0 },

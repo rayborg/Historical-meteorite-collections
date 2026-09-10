@@ -142,13 +142,13 @@ test("build is deterministic, canonical, and identical to the published file", (
 });
 
 test("publishes locked source and relationship counts", () => {
-  assert.equal(flattenMassObservations(catalog).length, 16816);
+  assert.equal(flattenMassObservations(catalog).length, 16819);
   assert.equal(flattenInventoryObservations(catalog).length, 3627);
   assert.deepEqual(published.metadata.source, {
-    catalogSchemaVersion: 11,
+    catalogSchemaVersion: 12,
     recordCount: 18217,
     catalogCount: 49,
-    flattenedMassObservationCount: 16816,
+    flattenedMassObservationCount: 16819,
     inventoryObservationCount: 3627,
     sourceClaimsSchemaVersion: 1,
     sourceClaimsContentSha256: "141ed60b9560596ac8ab392babfc4af6e1d22921bacbf979d3b975e0fc2f20c2",
@@ -184,7 +184,7 @@ test("publishes locked source and relationship counts", () => {
     "a3a4a9e2ca09ab7259eb1b7d5321a0f7cf79b42d85488b19117a78d440caf5eb",
   );
   assert.equal(createHash("sha256").update(publishedText).digest("hex"),
-    "b9129fc75a5dda3f70b806615f498c59c21816a2d058877c88058967b559cbd0");
+    "ab9960cdb5bebc83b9132e72c1369f0073e2735cdc7995925a3feb36948debd2");
   assert.equal(createHash("sha256").update(JSON.stringify(published.relationships)).digest("hex"),
     "77beb87fe1a16a46cd2a213064a88905dc315eb6f5500e3ef7bae74a3bc779da");
   const baseline = current37Relationships();
@@ -264,11 +264,11 @@ test("Victoria admits 233 conflict-free Table A masses and preserves Table C onl
   assert(!observations.some(({ public: observation }) => observation.designation === "ALHA76009"));
   const admitted = clone(catalog);
   admitted.records.find(({ specimenId }) => specimenId === "ALHA76009").sourceEvidence.conflicts = [];
-  assert.equal(flattenMassObservations(admitted).length, 16817);
+  assert.equal(flattenMassObservations(admitted).length, 16820);
   const excluded = clone(catalog);
   excluded.records.find(({ catalogId, sourceEvidence }) =>
     catalogId === "victoria-land-1982" && sourceEvidence.conflicts.length === 0).sourceEvidence.conflicts = ["mass"];
-  assert.equal(flattenMassObservations(excluded).length, 16815);
+  assert.equal(flattenMassObservations(excluded).length, 16818);
   assert.deepEqual(published.sourceAttestedGroups, sourceClaims.claims);
   assert.equal(createHash("sha256").update(JSON.stringify(published.sourceAttestedGroups)).digest("hex"),
     "141ed60b9560596ac8ab392babfc4af6e1d22921bacbf979d3b975e0fc2f20c2");
@@ -1006,11 +1006,11 @@ test("Anderson, Astapovich, and Kantor publish complete reviewed mappings withou
 
   assert.equal(
     createHash("sha256").update(JSON.stringify(catalog.metadata.catalogs.filter(({ id }) => !preservationExcludedCatalogIds.has(id)))).digest("hex"),
-    "e9e3eb1a8612408ff4bb8d953db2cb6a51abef19298f0d7aa7318132199dae27",
+    "0aac739a21c9d8ab58b307ff009b8a1d0634eb66a6fccf3643e4dc6be764b472",
   );
   assert.equal(
     createHash("sha256").update(JSON.stringify(catalog.records.filter(({ catalogId }) => !preservationExcludedCatalogIds.has(catalogId)))).digest("hex"),
-    "d9ab02a6a0c95399a455cc15e4aa3b56d8c4970154f43a3d6963b32f8a095ae9",
+    "160c737b88dd9fccf64034e15fa2386a74697175249b2c07b1817b7937a6a274",
   );
   assert.equal(
     createHash("sha256").update(JSON.stringify(current37Relationships().filter(({ observations }) =>
@@ -1071,7 +1071,7 @@ test("same-series continuity survives missing mass while possible matches requir
   const relationship = rebuilt.relationships.find((item) => item.relationship === "same-inventory" && item.collectionSeries.inventoryId === "h160.1");
   assert.ok(relationship);
   assert(relationship.observations.some(({ massGrams }) => massGrams === null));
-  assert.equal(rebuilt.metadata.source.flattenedMassObservationCount, 16815);
+  assert.equal(rebuilt.metadata.source.flattenedMassObservationCount, 16818);
 
   for (const possible of possibleRelationships()) {
     const [left, right] = possible.observations;
@@ -1196,7 +1196,7 @@ test("reviews apply only to possible candidates", () => {
 test("schemas are closed draft 2020-12 contracts with relationship-specific review rules", () => {
   assert.equal(schema.$schema, "https://json-schema.org/draft/2020-12/schema");
   assert.equal(schema.$id, "urn:hmc:schema:specimen-lineages:3");
-  assert.equal(schema.$defs.metadata.properties.source.properties.catalogSchemaVersion.const, 11);
+  assert.equal(schema.$defs.metadata.properties.source.properties.catalogSchemaVersion.const, 12);
   assert.equal(reviewSchema.$schema, "https://json-schema.org/draft/2020-12/schema");
   assert.equal(reviewSchema.properties.reviews.minItems, 896);
   assert.equal(reviewSchema.properties.reviews.maxItems, 896);

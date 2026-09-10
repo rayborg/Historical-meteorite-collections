@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "schemaVersion": 11,
+    "schemaVersion": 12,
     "scope": "facts-only",
     "factualFields": [
       "id",
@@ -8,6 +8,14 @@
       "designation",
       "name",
       "weight.grams",
+      "weightEvidence.type",
+      "weightEvidence.statement",
+      "associatedMaterial.type",
+      "associatedMaterial.description",
+      "associatedMaterial.grams",
+      "associatedMaterial.count",
+      "specimenDisposition.type",
+      "specimenDisposition.reason",
       "catalogItem",
       "catalogNumber",
       "entryOrder",

@@ -24,8 +24,8 @@ const victoria = records.filter(({ catalogId }) => catalogId === "victoria-land-
 const clone = structuredClone;
 const fixtureRecord = (document, catalogId) => document.records.find((record) => record.catalogId === catalogId);
 
-test("schema 11 runtime accepts all closed models and rejects schema or shape widening", () => {
-  assert.equal(app.validateCatalog(clone(fixture)).metadata.schemaVersion, 11);
+test("schema 12 runtime accepts all closed models and rejects schema or shape widening", () => {
+  assert.equal(app.validateCatalog(clone(fixture)).metadata.schemaVersion, 12);
   for (const mutate of [
     (value) => { value.metadata.schemaVersion = 10; },
     (value) => { value.metadata.factualFields.splice(9, 1); },
@@ -167,14 +167,14 @@ test("statistics count each Victoria mass once, no Hodge mass, and retain parent
   assert(Math.abs(total.grams - (app.calculateStatistics(legacy).grams + victoriaStats.grams)) < 1e-6);
 });
 
-test("lineage and projection enhancements bind schema 11 and retain exact source-attested groups", () => {
-  assert.equal(lineages.metadata.source.catalogSchemaVersion, 11);
+test("lineage and projection enhancements bind schema 12 and retain exact source-attested groups", () => {
+  assert.equal(lineages.metadata.source.catalogSchemaVersion, 12);
   const lineageIndex = app.deriveEarlierRecordIndex(lineages, records, registry);
   assert(hodge.every(({ id }) => !lineageIndex.has(id)));
   assert.equal(victoria.filter(({ id }) => lineageIndex.get(id)?.some(({ kind }) =>
-    kind === "source-attested-tentative-pairing-group")).length, 77);
+    kind === "group-route")).length, 77);
   assert.equal([...lineageIndex.values()].flat().filter(({ kind }) =>
-    kind === "source-attested-tentative-pairing-group").length, 79);
+    kind === "group-route").length, 79);
   const sourceCatalogSha256 = createHash("sha256").update(catalogText).digest("hex");
   assert.equal(sourceCatalogSha256, projections.metadata.sourceCatalogSha256);
   const projectionIndex = app.deriveSpecimenCardProjectionIndex(projections, records, { sourceCatalogSha256 });
@@ -184,7 +184,7 @@ test("lineage and projection enhancements bind schema 11 and retain exact source
   assert(descriptors.every(({ kind, projected }) => kind === "parent" && projected === false));
 });
 
-test("schema 11 card semantics, cache keys, responsive layout, and privacy boundary are explicit", () => {
+test("schema 12 card semantics, cache keys, responsive layout, and privacy boundary are explicit", () => {
   assert.match(html, /<p class="record-semantic-label"><\/p>/u);
   const hodgeDto = app.presentHarmonizedCard(hodge[0]);
   const victoriaDto = app.presentHarmonizedCard(victoria[0]);
@@ -194,10 +194,10 @@ test("schema 11 card semantics, cache keys, responsive layout, and privacy bound
   assert.match(styles, /@media \(max-width: 700px\)[\s\S]*\.catalog-grid \{ grid-template-columns: 1fr; \}/u);
   assert.match(styles, /\.record-meta div \{[^}]*grid-template-columns: minmax\(0, 1fr\);/u);
   assert.match(styles, /\.record-meta dt \{[^}]*overflow-wrap: normal;/u);
-  assert.equal(app.CACHE_VERSION, "20260909-global-fields-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260909-global-fields-1");
-  assert.match(html, /styles\.css\?v=20260909-global-fields-1/u);
-  assert.match(html, /app\.js\?v=20260909-global-fields-1/u);
+  assert.equal(app.CACHE_VERSION, "20260910-weight-lineage-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260910-weight-lineage-1");
+  assert.match(html, /styles\.css\?v=20260910-weight-lineage-1/u);
+  assert.match(html, /app\.js\?v=20260910-weight-lineage-1/u);
   const newSourceRecords = catalog.records.filter(({ catalogId }) => ["hodge-smith-1939", "victoria-land-1982"].includes(catalogId));
   assert.doesNotMatch(JSON.stringify(newSourceRecords), /(?:raw[ _-]*ocr|\/private\/|\/Users\/|source[ _-]*image|scan[ _-]*(?:file|path)|research[ _-]*notes?)/iu);
 });

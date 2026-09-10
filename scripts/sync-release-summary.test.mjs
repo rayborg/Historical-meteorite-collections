@@ -110,7 +110,7 @@ test("derives release counts, page spans, MetBull status, and folios from record
   assert.equal(summary.folios.displayCatalogCount, 1);
 });
 
-test("locks the production schema11 release summary and display projection totals", () => {
+test("locks the production schema12 release summary and display projection totals", () => {
   const summary = buildReleaseSummary(productionCatalog, productionFolios, productionProjections);
 
   assert.deepEqual({
@@ -125,7 +125,7 @@ test("locks the production schema11 release summary and display projection total
     folioCatalogCount: summary.folios.catalogs.length,
     folioPageCount: summary.folios.pageCount,
   }, {
-    schemaVersion: 11,
+    schemaVersion: 12,
     catalogCount: 49,
     recordCount: 18217,
     sourcePageCount: 1687,
@@ -136,9 +136,9 @@ test("locks the production schema11 release summary and display projection total
       atomicCardCount: 8062,
       sourceContextCount: 2532,
       descriptorCount: 23217,
-      specimenCount: 13804,
-      observationCount: 9413,
-      weightedOnlyExcludedSpecimenCount: 173,
+      specimenCount: 13801,
+      observationCount: 9416,
+      weightedOnlyExcludedSpecimenCount: 172,
     },
     pending: 4513,
     folioCatalogCount: 49,

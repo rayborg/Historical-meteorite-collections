@@ -3,19 +3,19 @@ import { readFile } from "node:fs/promises";
 import { pathToFileURL } from "node:url";
 
 const LOCKS = Object.freeze({
-  catalogSchemaVersion: 11,
+  catalogSchemaVersion: 12,
   sourceRecordCount: 18217,
-  sourceCatalogSha256: "fd3af1b04765f25fa792329e142321a4dd0eb018045462d5d4c4fd86c8a01e05",
+  sourceCatalogSha256: "d06cb3c737ffec0259e43e778ed62056d88701c36637b661d20a91dd1061d5b3",
   projectionCount: 3062,
   atomicCardCount: 8062,
   legacyMassBoundCardCount: 6656,
-  massBoundCardCount: 8032,
-  masslessCardCount: 30,
+  massBoundCardCount: 8034,
+  masslessCardCount: 28,
   repeatedMassCardCount: 2,
   sourceContextCardCount: 2532,
-  baselineProjectionSetSha256: "3f887829ffcd2a344e64383bdd748061bc64ed596308d6952f7ebe69ae298ff5",
-  projectionSetSha256: "7a37c5791373bb1613fc7180931e8dfe155868909785a976273e4b64e307d787",
-  nonHamburgProjectionSetSha256: "75f1aa06fe2b2f5e83a464001989a888b11d98c053e49ee4e2dcc8a24c1a6c84",
+  baselineProjectionSetSha256: "2aba43bd9d205ae21502f3f76cdb213c1bac26f90513389b876bf047d6087e4b",
+  projectionSetSha256: "bca32f44f17079170b45a57b858dc71cc00097f69ec829e519e63d5283d32499",
+  nonHamburgProjectionSetSha256: "895bf19525ea363dd20068417c4cb4e7af667dd10c4e8c746085f40b2e3ea528",
 });
 export const BROWN_AUDIT_COVERAGE = Object.freeze({
   parentObservationCount: 237,
@@ -93,9 +93,11 @@ const METADATA_KEYS = [
 const PROJECTION_KEYS = ["parentRecordId", "cards"];
 const CLAUSE_CARD_KEYS = ["holdingPath", "clause", "massPath"];
 const REPEATED_CLAUSE_CARD_KEYS = ["holdingPath", "clause", "massPath", "repeatedMass"];
+const QUALITATIVE_CLAUSE_CARD_KEYS = ["holdingPath", "clause", "massPath", "qualitativeWeightEvidence"];
 const COMPONENT_CARD_KEYS = ["holdingPath", "componentPath", "massPath"];
 const CLAUSE_KEYS = ["textPath", "start", "end"];
 const REPEATED_MASS_KEYS = ["valuePath", "countPath", "totalPath", "occurrence", "occurrenceCount"];
+const QUALITATIVE_WEIGHT_EVIDENCE_KEYS = ["type", "statement"];
 const HOLDING_PATH = /^holdings\[(0|[1-9][0-9]*)\]$/u;
 const TEXT_PATH = /^holdings\[(0|[1-9][0-9]*)\]\.(description|designation)$/u;
 const ARRAY_MASS_PATH = /^holdings\[(0|[1-9][0-9]*)\]\.weights\[(0|[1-9][0-9]*)\]\.grams$/u;
@@ -195,8 +197,9 @@ function parseCard(card, record, recordModel, location) {
   const hasComponent = card !== null && typeof card === "object" && Object.hasOwn(card, "componentPath");
   if (hasClause === hasComponent) fail(`${location} must have exactly one clause or componentPath evidence variant`);
   const hasRepeatedMass = hasClause && Object.hasOwn(card, "repeatedMass");
+  const hasQualitativeWeight = hasClause && Object.hasOwn(card, "qualitativeWeightEvidence");
   assertExactKeys(card, hasClause
-    ? hasRepeatedMass ? REPEATED_CLAUSE_CARD_KEYS : CLAUSE_CARD_KEYS
+    ? hasRepeatedMass ? REPEATED_CLAUSE_CARD_KEYS : hasQualitativeWeight ? QUALITATIVE_CLAUSE_CARD_KEYS : CLAUSE_CARD_KEYS
     : COMPONENT_CARD_KEYS, location);
   if (hasClause) assertExactKeys(card.clause, CLAUSE_KEYS, `${location}.clause`);
   if (typeof card.holdingPath !== "string") fail(`${location}.holdingPath must be a string`);
@@ -254,9 +257,14 @@ function parseCard(card, record, recordModel, location) {
         fail(`${location}.repeatedMass occurrence is invalid`);
       }
     }
+    if (hasQualitativeWeight) {
+      assertExactKeys(card.qualitativeWeightEvidence, QUALITATIVE_WEIGHT_EVIDENCE_KEYS, `${location}.qualitativeWeightEvidence`);
+      if (card.qualitativeWeightEvidence.type !== "qualitative" || typeof card.qualitativeWeightEvidence.statement !== "string" ||
+          card.qualitativeWeightEvidence.statement.length === 0) fail(`${location}.qualitativeWeightEvidence is invalid`);
+    }
     return { holdingIndex, text, mass: null, repeatedMass: hasRepeatedMass };
   }
-  if (hasRepeatedMass) fail(`${location}.repeatedMass cannot also be a lineage massPath endpoint`);
+  if (hasRepeatedMass || hasQualitativeWeight) fail(`${location} qualitative or repeated evidence cannot also be a lineage massPath endpoint`);
   if (typeof card.massPath !== "string") fail(`${location}.massPath must be a string or null`);
   const massMatch = card.massPath.match(recordModel === "catalog-item" ? SCALAR_MASS_PATH : ARRAY_MASS_PATH);
   if (!massMatch) fail(`${location}.massPath is unsupported for ${recordModel}`);
@@ -278,7 +286,7 @@ export function validateSpecimenCardProjections(document, catalog, catalogText) 
   assertExactKeys(document, ROOT_KEYS, "root");
   assertExactKeys(document.metadata, METADATA_KEYS, "metadata");
   const expectedMetadata = {
-    schemaVersion: 4,
+    schemaVersion: 5,
     scope: "reviewed-atomic-specimen-card-display-projections",
     catalogSchemaVersion: LOCKS.catalogSchemaVersion,
     sourceRecordCount: LOCKS.sourceRecordCount,
@@ -304,6 +312,7 @@ export function validateSpecimenCardProjections(document, catalog, catalogText) 
   let masslessCardCount = 0;
   let sourceContextCardCount = 0;
   const repeatedMassCards = [];
+  const qualitativeWeightCards = [];
 
   for (const [projectionIndex, projection] of document.projections.entries()) {
     const location = `projections[${projectionIndex}]`;
@@ -327,6 +336,7 @@ export function validateSpecimenCardProjections(document, catalog, catalogText) 
       const cardLocation = `${location}.cards[${cardIndex}]`;
       parseCard(card, source.record, recordModel, cardLocation);
       if (card.repeatedMass) repeatedMassCards.push({ parentRecordId: projection.parentRecordId, cardIndex, card });
+      if (card.qualitativeWeightEvidence) qualitativeWeightCards.push({ parentRecordId: projection.parentRecordId, cardIndex, evidence: card.qualitativeWeightEvidence });
       if (previousCard && compareCards(previousCard, card) >= 0) fail(`${location}.cards are not in canonical holding and evidence source order`);
       previousCard = card;
       if (card.clause) {
@@ -356,10 +366,17 @@ export function validateSpecimenCardProjections(document, catalog, catalogText) 
 
   if (atomicCardCount !== LOCKS.atomicCardCount) fail("atomic card count differs from metadata");
   if (massBoundCardCount !== LOCKS.massBoundCardCount || masslessCardCount !== LOCKS.masslessCardCount ||
-       massBoundCardCount - LOCKS.legacyMassBoundCardCount !== 1376) {
+       massBoundCardCount - LOCKS.legacyMassBoundCardCount !== 1378) {
     fail("ordinary mass assignment counts differ from the accepted Wave 1 lock");
   }
   if (sourceContextCardCount !== LOCKS.sourceContextCardCount) fail("derived source context count differs from metadata");
+  if (JSON.stringify(qualitativeWeightCards) !== JSON.stringify([
+    { parentRecordId: "obs-e2b4f522-b31d-4dcb-9cf6-7b8ba35da649", cardIndex: 0, evidence: { type: "qualitative", statement: "main mass" } },
+    { parentRecordId: "obs-014fa351-665c-4bcb-b83f-3610f0ff425c", cardIndex: 4, evidence: { type: "qualitative", statement: "one-third of mass" } },
+    { parentRecordId: "obs-26389145-2d52-4acf-8b33-06aa8489edfe", cardIndex: 2, evidence: { type: "qualitative", statement: "less than a gram" } },
+  ].sort((left, right) => records.get(left.parentRecordId).index - records.get(right.parentRecordId).index))) {
+    fail("qualitative weight evidence differs from the accepted three-card authority");
+  }
   const kuleschowka = document.projections.find(({ parentRecordId }) => parentRecordId === KULESCHOWKA_ID);
   if (!kuleschowka || repeatedMassCards.length !== LOCKS.repeatedMassCardCount ||
       repeatedMassCards.some(({ parentRecordId }) => parentRecordId !== KULESCHOWKA_ID) ||

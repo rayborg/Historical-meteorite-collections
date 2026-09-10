@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "schemaVersion": 4,
+    "schemaVersion": 5,
     "scope": "reviewed-atomic-specimen-card-display-projections",
-    "catalogSchemaVersion": 11,
+    "catalogSchemaVersion": 12,
     "sourceRecordCount": 18217,
-    "sourceCatalogSha256": "fd3af1b04765f25fa792329e142321a4dd0eb018045462d5d4c4fd86c8a01e05",
+    "sourceCatalogSha256": "d06cb3c737ffec0259e43e778ed62056d88701c36637b661d20a91dd1061d5b3",
     "projectionCount": 3062,
     "atomicCardCount": 8062,
     "sourceContextCardCount": 2532
@@ -3739,7 +3739,11 @@
             "start": 0,
             "end": 9
           },
-          "massPath": null
+          "massPath": null,
+          "qualitativeWeightEvidence": {
+            "type": "qualitative",
+            "statement": "main mass"
+          }
         },
         {
           "holdingPath": "holdings[3]",
@@ -3821,7 +3825,11 @@
             "start": 0,
             "end": 17
           },
-          "massPath": null
+          "massPath": null,
+          "qualitativeWeightEvidence": {
+            "type": "qualitative",
+            "statement": "one-third of mass"
+          }
         },
         {
           "holdingPath": "holdings[7]",
@@ -38009,7 +38017,7 @@
             "start": 36,
             "end": 55
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[0].grams"
         },
         {
           "holdingPath": "holdings[0]",
@@ -38018,7 +38026,7 @@
             "start": 60,
             "end": 86
           },
-          "massPath": null
+          "massPath": "holdings[0].weights[1].grams"
         }
       ]
     },
@@ -45681,9 +45689,13 @@
           "clause": {
             "textPath": "holdings[0].description",
             "start": 116,
-            "end": 142
+            "end": 141
           },
-          "massPath": null
+          "massPath": null,
+          "qualitativeWeightEvidence": {
+            "type": "qualitative",
+            "statement": "less than a gram"
+          }
         }
       ]
     },

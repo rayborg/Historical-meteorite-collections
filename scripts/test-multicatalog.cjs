@@ -210,8 +210,8 @@ test("runtime fixture projection validates with exact legacy model-aware shapes"
   });
 });
 
-test("schema 11 public fixture carries all three exact newer data models", () => {
-  assert.equal(publicFixture.metadata.schemaVersion, 11);
+test("schema 12 public fixture carries all three exact newer data models", () => {
+  assert.equal(publicFixture.metadata.schemaVersion, 12);
   assert.deepEqual(publicFixture.metadata.catalogs.slice(-3).map(({ id, recordModel }) => [id, recordModel]), [
     ["hodge-smith-1939", "regional-census-fact"],
     ["victoria-land-1982", "table-a-specimen"],
@@ -227,7 +227,7 @@ test("schema 11 public fixture carries all three exact newer data models", () =>
     .map(({ typeNumber }) => typeNumber), [95, 96]);
 });
 
-test("schema 11 permits individualFindLocation only as an optional specimen fact", () => {
+test("schema 12 permits individualFindLocation only as an optional specimen fact", () => {
   const located = clone(fixture);
   const specimen = located.records.find(({ id }) => id === "huss-h27-3");
   assert.equal(specimen.individualFindLocation, "32-19-13");
@@ -1030,15 +1030,15 @@ test("URL filters default to strict specimens and canonicalize the explicit incl
     assert.equal(app.parseUrlFilters(search, registry).includeUnknownWeight, false, search);
   }
   assert.deepEqual(app.resultDisplayState(13631, 60, 10742, false), {
-    count: 13631, unit: "weighted specimens", status: "Showing 60 of 13,631 weighted specimens."
+    count: 13631, unit: "source-listed specimens", status: "Showing 60 of 13,631 source-listed specimens."
   });
   assert.deepEqual(app.resultDisplayState(23217, 60, 18217, true), {
     count: 18217,
     unit: "observations",
     status: "Showing 60 of 23,217 display cards from 18,217 matching source observations."
   });
-  assert.equal(app.CACHE_VERSION, "20260909-global-fields-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260909-global-fields-1");
+  assert.equal(app.CACHE_VERSION, "20260910-weight-lineage-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260910-weight-lineage-1");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.ASSET_CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.ASSET_CACHE_VERSION}`));
 });

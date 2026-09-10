@@ -12,10 +12,10 @@ const waveCatalogIds = new Set(["brown-1916", "minnesota-1892", "foote-1909"]);
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
 const jsonSha256 = (value) => sha256(JSON.stringify(value));
 
-test("installs the exact accepted schema-11 export without changing non-correction data", () => {
-  assert.equal(sha256(catalogText), "fd3af1b04765f25fa792329e142321a4dd0eb018045462d5d4c4fd86c8a01e05");
+test("installs the exact accepted schema-12 export without changing non-correction data", () => {
+  assert.equal(sha256(catalogText), "d06cb3c737ffec0259e43e778ed62056d88701c36637b661d20a91dd1061d5b3");
   assert.equal(sha256(foliosText), "ed23bc9af5bb73eb932fd928f7d46b02379265bbeb43911d44004aa4cddacdd5");
-  assert.equal(catalog.metadata.schemaVersion, 11);
+  assert.equal(catalog.metadata.schemaVersion, 12);
   assert.equal(catalog.metadata.catalogs.length, 49);
   assert.equal(catalog.records.length, 18217);
   const correctedRecordIds = new Set([
@@ -27,8 +27,8 @@ test("installs the exact accepted schema-11 export without changing non-correcti
   const nonCorrectionRecords = catalog.records.filter(({ id, catalogId }) => !correctedRecordIds.has(id) && !wave2CatalogIds.has(catalogId) && !fletcherCatalogIds.has(catalogId));
   const nonVictoriaDescriptors = catalog.metadata.catalogs.filter(({ id }) => id !== "victoria-land-1982" && !wave2CatalogIds.has(id) && !fletcherCatalogIds.has(id));
   assert.equal(nonCorrectionRecords.length, 14475);
-  assert.equal(jsonSha256(nonCorrectionRecords), "f7795c457d1f88015072680ef8a7c77ab15fdd5c82f8d859f85c0a40d574d58f");
-  assert.equal(jsonSha256(nonVictoriaDescriptors), "8066f1c06de5c8021ffa24020cfe37c4e9cdc5ce1d357e95c20268c2699a1d6e");
+  assert.equal(jsonSha256(nonCorrectionRecords), "ec2a8ad5fea13c2503a5d3db84f26a263baf086d18f89eaab5849b1b5a6948a7");
+  assert.equal(jsonSha256(nonVictoriaDescriptors), "31aa040fb71302cb0b8c3a9c691ad747ead2eafec725ac804bdca58cc9b7849e");
 });
 
 test("publishes exact Brown, Minnesota, and non-specimen Foote facts with blocked folios", () => {

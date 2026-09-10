@@ -68,6 +68,9 @@ const SYNTHETIC_ONLY = process.argv.includes("--synthetic-only");
 const SPECIMEN_KEYS = [
   "id", "catalogId", "designation", "name", "weight", "classification", "locality", "year", "catalogPage", "confidence",
 ];
+const WEIGHT_EVIDENCE_KEYS = ["type", "statement"];
+const ASSOCIATED_MATERIAL_KEYS = ["type", "description", "grams", "count"];
+const SPECIMEN_DISPOSITION_KEYS = ["type", "reason"];
 const CATALOG_ITEM_KEYS = [
   "id", "catalogId", "catalogItem", "holdings", "name", "classification", "locality", "year", "catalogPage", "confidence",
 ];
@@ -121,6 +124,14 @@ const FACTUAL_FIELDS = [
   "designation",
   "name",
   "weight.grams",
+  "weightEvidence.type",
+  "weightEvidence.statement",
+  "associatedMaterial.type",
+  "associatedMaterial.description",
+  "associatedMaterial.grams",
+  "associatedMaterial.count",
+  "specimenDisposition.type",
+  "specimenDisposition.reason",
   "catalogItem",
   "catalogNumber",
   "entryOrder",
@@ -361,12 +372,12 @@ function assertCountSummary(value, path) {
 
 function validateMetadata(metadata, path) {
   assertExactKeys(metadata, METADATA_KEYS, path);
-  assert(metadata.schemaVersion === 11, `${path}.schemaVersion must be 11`);
+  assert(metadata.schemaVersion === 12, `${path}.schemaVersion must be 12`);
   assert(metadata.scope === "facts-only", `${path}.scope must be facts-only`);
   assert(
     Array.isArray(metadata.factualFields) && metadata.factualFields.length === FACTUAL_FIELDS.length &&
       metadata.factualFields.every((field, index) => field === FACTUAL_FIELDS[index]),
-    `${path}.factualFields does not match the schema 11 public record models`,
+    `${path}.factualFields does not match the schema 12 public record models`,
   );
   assertCountSummary(metadata, path);
   assert(Array.isArray(metadata.catalogs) && metadata.catalogs.length > 0, `${path}.catalogs must be a nonempty array`);
@@ -681,6 +692,9 @@ function validatePublicCatalog(data, folios, path = "catalog") {
   const previousCollectionEntries = new Map();
   const representedCatalogs = new Set();
   let individualFindLocationCount = 0;
+  const qualitativeWeightIds = new Set();
+  const associatedMaterialIds = new Set();
+  const notIndividualIds = new Set();
   const statsByCatalog = new Map([...metadataByCatalog].map(([catalogId]) => [catalogId, {
     recordCount: 0,
     recordsWithDesignation: 0,
@@ -707,6 +721,11 @@ function validatePublicCatalog(data, folios, path = "catalog") {
               : record.catalogId === "hamburg-1913" ? HAMBURG_COLLECTION_ENTRY_KEYS : COLLECTION_ENTRY_KEYS)];
     if (recordModel === "specimen" && Object.hasOwn(record, "individualFindLocation")) {
       expectedRecordKeys.splice(expectedRecordKeys.indexOf("year"), 0, "individualFindLocation");
+    }
+    if (recordModel === "specimen") {
+      for (const field of ["description", "weightEvidence", "associatedMaterial", "specimenDisposition"]) {
+        if (Object.hasOwn(record, field)) expectedRecordKeys.push(field);
+      }
     }
     if (Object.hasOwn(record, "metbull")) expectedRecordKeys.push("metbull");
     assertExactKeys(record, expectedRecordKeys, recordPath);
@@ -741,6 +760,47 @@ function validatePublicCatalog(data, folios, path = "catalog") {
         assert(record.individualFindLocation.length <= 200,
           `${recordPath}.individualFindLocation must be at most 200 characters`);
         individualFindLocationCount += 1;
+      }
+      if (Object.hasOwn(record, "description")) {
+        assertString(record.description, `${recordPath}.description`);
+        assertHoldingText(record.description, `${recordPath}.description`, true);
+      }
+      if (Object.hasOwn(record, "weightEvidence")) {
+        assertExactKeys(record.weightEvidence, WEIGHT_EVIDENCE_KEYS, `${recordPath}.weightEvidence`);
+        assert(record.weightEvidence.type === "qualitative", `${recordPath}.weightEvidence.type must be qualitative`);
+        assertString(record.weightEvidence.statement, `${recordPath}.weightEvidence.statement`);
+        assert(record.weight.grams === null, `${recordPath}.weightEvidence requires a null numeric weight`);
+        assert(record.id === "obs-9286c6b5-4942-41f0-a905-8854f457bd9d" && record.weightEvidence.statement === "Less than a gram",
+          `${recordPath}.weightEvidence is not an accepted qualitative source statement`);
+        qualitativeWeightIds.add(record.id);
+      }
+      if (Object.hasOwn(record, "associatedMaterial")) {
+        assertExactKeys(record.associatedMaterial, ASSOCIATED_MATERIAL_KEYS, `${recordPath}.associatedMaterial`);
+        assert(record.associatedMaterial.type === "aggregate-context", `${recordPath}.associatedMaterial.type must be aggregate-context`);
+        assertString(record.associatedMaterial.description, `${recordPath}.associatedMaterial.description`);
+        assertHoldingText(record.associatedMaterial.description, `${recordPath}.associatedMaterial.description`, true);
+        assert(Number.isFinite(record.associatedMaterial.grams) && record.associatedMaterial.grams > 0,
+          `${recordPath}.associatedMaterial.grams must be finite and positive`);
+        assert(record.associatedMaterial.count === null, `${recordPath}.associatedMaterial.count must be null`);
+        assert(record.id === "h53-181-9fc59ccfdb76" && record.weight.grams === 5265.8 &&
+          record.associatedMaterial.description === "box of small fragments" && record.associatedMaterial.grams === 1813.3,
+        `${recordPath}.associatedMaterial is not the accepted Lakewood aggregate context`);
+        associatedMaterialIds.add(record.id);
+      }
+      if (Object.hasOwn(record, "specimenDisposition")) {
+        assertExactKeys(record.specimenDisposition, SPECIMEN_DISPOSITION_KEYS, `${recordPath}.specimenDisposition`);
+        assert(record.specimenDisposition.type === "not-individual", `${recordPath}.specimenDisposition.type must be not-individual`);
+        assertString(record.specimenDisposition.reason, `${recordPath}.specimenDisposition.reason`);
+        assert(record.designation === null && record.weight.grams === null,
+          `${recordPath}.specimenDisposition requires null designation and null numeric weight`);
+        const acceptedReasons = {
+          "obs-1de4992c-82a8-4488-919e-f5276a9263e8": "Plural granite and quartz samples from the crater.",
+          "obs-3363901d-8a38-4523-ba56-2068d71e1a32": "Plural soil samples from the crater and rim.",
+          "obs-ce4d4701-a060-45ed-a6af-ebd5994e0b69": "Plural terrestrial laterite pebbles.",
+        };
+        assert(record.specimenDisposition.reason === acceptedReasons[record.id],
+          `${recordPath}.specimenDisposition is not an accepted not-individual observation`);
+        notIndividualIds.add(record.id);
       }
     } else if (recordModel === "catalog-item") {
       assert(Number.isInteger(record.catalogItem) && record.catalogItem > 0,
@@ -921,6 +981,13 @@ function validatePublicCatalog(data, folios, path = "catalog") {
   if (data.records.length === 18217 && metadataByCatalog.size === 49) {
     assert(individualFindLocationCount === 111,
       `${path} must contain exactly 111 specimen individualFindLocation values`);
+    assertExactSet(qualitativeWeightIds, ["obs-9286c6b5-4942-41f0-a905-8854f457bd9d"], `${path} qualitative weight record IDs`);
+    assertExactSet(associatedMaterialIds, ["h53-181-9fc59ccfdb76"], `${path} associated material record IDs`);
+    assertExactSet(notIndividualIds, [
+      "obs-1de4992c-82a8-4488-919e-f5276a9263e8",
+      "obs-3363901d-8a38-4523-ba56-2068d71e1a32",
+      "obs-ce4d4701-a060-45ed-a6af-ebd5994e0b69",
+    ], `${path} not-individual record IDs`);
     const victoria = data.records.filter(({ catalogId }) => catalogId === "victoria-land-1982");
     const victoriaDescriptor = metadataByCatalog.get("victoria-land-1982").descriptor;
     assert(JSON.stringify(victoriaDescriptor.sourcePages) === "[85,86,87,88,89,90,91,92,93,94]" &&
@@ -1012,7 +1079,7 @@ function validatePublicCatalog(data, folios, path = "catalog") {
     `${path} ALHA76009 primary public facts changed`);
     assert(createHash("sha256").update(JSON.stringify(victoria)).digest("hex") ===
       "c427fa0bf07a8ce57c01d4520fc3b2eb2c2aa7483f1d8bf5d7f8bce483f96806",
-    `${path} Victoria public records differ from the accepted schema 11 package`);
+    `${path} Victoria public records differ from the accepted schema 12 package`);
     const wave2Locks = {
       "berlin-1903": [380, 270, "170fa30af35f2c85afeb41e67a7f283f0badd64197263cdab3a6b3ca4ba06092"],
       "berlin-1904": [470, 337, "a85fc2a4eb9cd704fba14dd7c6690ccc32de1bf70baba4904b2dfecd43cd87b5"],
@@ -1326,7 +1393,7 @@ function multiCatalogFixture() {
   return {
     data: {
       metadata: {
-        schemaVersion: 11,
+        schemaVersion: 12,
         scope: "facts-only",
         factualFields: [...FACTUAL_FIELDS],
         catalogs: [
@@ -1827,7 +1894,7 @@ function runSyntheticCatalogTests(modelFixture) {
     catalogNumberRejectionCount += 1;
   };
   const hoveyRecord = (records, id = "hovey-catalog-z9") => records.find((record) => record.id === id);
-  assertCatalogNumberRejection("older metadata under schema 11", ({ metadata }) => { metadata.schemaVersion = 10; });
+  assertCatalogNumberRejection("older metadata under schema 12", ({ metadata }) => { metadata.schemaVersion = 10; });
   assertCatalogNumberRejection("empty catalog number", ({ records }) => { hoveyRecord(records).catalogNumber = ""; });
   assertCatalogNumberRejection("nonnull non-string catalog number", ({ records }) => { hoveyRecord(records).catalogNumber = 9; });
   assertCatalogNumberRejection("duplicate catalog number within one catalog", ({ records }) => {
@@ -2268,7 +2335,7 @@ console.log(
   `${catalogFixtureStats.holdingPrivacyAllowCount} holding-privacy boundary allow, ` +
   `${catalogFixtureStats.modelRejectionCount} model/holding rejections, ` +
   `${catalogFixtureStats.catalogNumberRejectionCount} catalog-number rejections, ` +
-  `${catalogFixtureStats.collectionEntryRejectionCount} collection-entry/schema-11 rejections, ` +
+  `${catalogFixtureStats.collectionEntryRejectionCount} collection-entry/schema-12 rejections, ` +
   `${metbullFixtureStats.allowCount} MetBull allows, ${metbullFixtureStats.rejectionCount} MetBull rejections, ` +
   `${folioFixtureStats.allowCount} folio allows, ${folioFixtureStats.rejectionCount} folio rejections, ` +
   `${folioFileFixtureStats.allowCount} folio-file allows, ${folioFileFixtureStats.rejectionCount} folio-file rejections passed.`,
@@ -2302,6 +2369,9 @@ if (!SYNTHETIC_ONLY) {
     assert(rejected, `deployed folio mutation must reject ${label}`);
   };
   const locationRecord = data.records.find((record) => Object.hasOwn(record, "individualFindLocation"));
+  const qualitativeRecord = data.records.find((record) => Object.hasOwn(record, "weightEvidence"));
+  const associatedMaterialRecord = data.records.find((record) => Object.hasOwn(record, "associatedMaterial"));
+  const dispositionRecord = data.records.find((record) => Object.hasOwn(record, "specimenDisposition"));
   assertDeployedRejection("schema-10 downgrade", ({ metadata }) => { metadata.schemaVersion = 10; });
   assertDeployedRejection("missing one of 111 individual find locations", ({ records }) => {
     delete records.find(({ id }) => id === locationRecord.id).individualFindLocation;
@@ -2311,6 +2381,34 @@ if (!SYNTHETIC_ONLY) {
   });
   assertDeployedRejection("individual find location on a non-specimen model", ({ records }) => {
     records.find(({ catalogId }) => catalogId === "farrington-1916").individualFindLocation = "Shelf 1";
+  });
+  assertDeployedRejection("qualitative weight evidence widening", ({ records }) => {
+    records.find(({ id }) => id === qualitativeRecord.id).weightEvidence.source = "private";
+  });
+  assertDeployedRejection("missing qualitative weight evidence", ({ records }) => {
+    delete records.find(({ id }) => id === qualitativeRecord.id).weightEvidence;
+  });
+  assertDeployedRejection("qualitative evidence with numeric weight", ({ records }) => {
+    records.find(({ id }) => id === qualitativeRecord.id).weight.grams = 1;
+  });
+  assertDeployedRejection("associated material promoted to specimen weight", ({ records }) => {
+    const record = records.find(({ id }) => id === associatedMaterialRecord.id);
+    record.weight.grams = record.associatedMaterial.grams;
+  });
+  assertDeployedRejection("missing associated material context", ({ records }) => {
+    delete records.find(({ id }) => id === associatedMaterialRecord.id).associatedMaterial;
+  });
+  assertDeployedRejection("associated material count synthesis", ({ records }) => {
+    records.find(({ id }) => id === associatedMaterialRecord.id).associatedMaterial.count = 1;
+  });
+  assertDeployedRejection("not-individual disposition weakening", ({ records }) => {
+    records.find(({ id }) => id === dispositionRecord.id).specimenDisposition.type = "specimen";
+  });
+  assertDeployedRejection("missing not-individual disposition", ({ records }) => {
+    delete records.find(({ id }) => id === dispositionRecord.id).specimenDisposition;
+  });
+  assertDeployedRejection("not-individual disposition with designation", ({ records }) => {
+    records.find(({ id }) => id === dispositionRecord.id).designation = "H160.3";
   });
   assertDeployedRejection("Fletcher suffix omission", ({ records }) => {
     records.find(({ catalogId, reportedNumber }) => catalogId === "fletcher-1904" && reportedNumber === "75a").reportedNumber = "75";
@@ -2350,7 +2448,7 @@ if (!SYNTHETIC_ONLY) {
   );
   console.log(
     `Validated data/catalog.json and data/folios.json: ${deployedStats.recordCount} records across ` +
-      `${deployedStats.catalogCount} schema 11 facts-only catalogs, ${deployedStats.individualFindLocationCount} individual find locations, ` +
+      `${deployedStats.catalogCount} schema 12 facts-only catalogs, ${deployedStats.individualFindLocationCount} individual find locations, ` +
       `${totalPageCount} metadata source pages, ` +
     `${deployedStats.folioStats.pageEntryCount} displayable folio pages with locked SHA-256 assets.`,
   );

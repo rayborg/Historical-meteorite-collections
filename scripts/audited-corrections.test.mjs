@@ -63,13 +63,14 @@ function projectionSemantics() {
           key,
           key.endsWith("Path") ? resolvePath(record, value) : value,
         ])) : null,
+        qualitativeWeightEvidence: card.qualitativeWeightEvidence || null,
       };
     }),
   }));
 }
 
 test("CF001 installs the exact accepted catalog bytes", () => {
-  assert.equal(sha256(catalogText), "fd3af1b04765f25fa792329e142321a4dd0eb018045462d5d4c4fd86c8a01e05");
+  assert.equal(sha256(catalogText), "d06cb3c737ffec0259e43e778ed62056d88701c36637b661d20a91dd1061d5b3");
   assert.deepEqual([catalog.records.length, catalog.metadata.catalogs.length], [18217, 49]);
 });
 
@@ -105,7 +106,7 @@ test("CF005 publishes the exact Mantos Blancos classification", () => {
 
 test("CF006 lineage derivation admits only positive masses", () => {
   const masses = flattenMassObservations(catalog);
-  assert.equal(masses.length, 16816);
+  assert.equal(masses.length, 16819);
   assert(masses.every(({ public: observation }) => observation.massGrams > 0));
 });
 
@@ -127,11 +128,11 @@ test("CF008 every established same-inventory pair is identity-consistent", () =>
 
 test("CF009 projections retain exact counts and source semantics after rebinding", () => {
   assert.deepEqual(projections.metadata, {
-    schemaVersion: 4,
+    schemaVersion: 5,
     scope: "reviewed-atomic-specimen-card-display-projections",
-    catalogSchemaVersion: 11,
+    catalogSchemaVersion: 12,
     sourceRecordCount: 18217,
-    sourceCatalogSha256: "fd3af1b04765f25fa792329e142321a4dd0eb018045462d5d4c4fd86c8a01e05",
+    sourceCatalogSha256: "d06cb3c737ffec0259e43e778ed62056d88701c36637b661d20a91dd1061d5b3",
     projectionCount: 3062,
     atomicCardCount: 8062,
     sourceContextCardCount: 2532,
@@ -144,7 +145,7 @@ test("CF009 projections retain exact counts and source semantics after rebinding
     "holdings[0].weights[2].grams",
   ]);
   assert.equal(sha256(JSON.stringify(projectionSemantics())),
-    "15ce99a799064ed901db0290c2cef66b16396fec599d2f833d207b26fb5eb407");
+    "2d7c6e3f8ad71df9db01a9dc4f4eee94c2dacafd58b00bc3db45dcca9f3daa2d");
 });
 
 test("CF010 preserves non-target data, privacy, cache, and label behavior", () => {
@@ -154,13 +155,13 @@ test("CF010 preserves non-target data, privacy, cache, and label behavior", () =
   ]);
   const fletcherCatalogIds = new Set(["fletcher-1886", "fletcher-1894", "fletcher-1896", "fletcher-1904", "fletcher-1908"]);
   assert.equal(sha256(JSON.stringify(catalog.records.filter(({ id, catalogId }) => !correctedRecordIds.has(id) && !fletcherCatalogIds.has(catalogId)))),
-    "d38bda5db624f8c6b7e3bec6c7775fa0d5c1f0e2e90473768a87621ff7c4d744");
+    "72fbc9707d77858f22ec34f683143ebd6bddf942bb20ef6209799be26b4ea485");
   assert.equal(sha256(JSON.stringify(catalog.metadata.catalogs.filter(({ id }) => id !== "victoria-land-1982" && !fletcherCatalogIds.has(id)))),
-    "62d82f6d4b38643e55f49f78734ab0523aa7a2a52d2116b1a4aae0ee0e86c932");
+    "35898f917b2302583d7d1101eed5958c268699bf7de8af31990b14e09d0546ae");
   assert.doesNotMatch(catalogText + sourceClaimsText + projectionText,
     /(?:\/private\/|\/Users\/|file:\/\/|sourcePath|sourceFile|rawRowText|raw\s+ocr)/iu);
-  assert.equal(app.CACHE_VERSION, "20260909-global-fields-1");
-  for (const html of [indexHtml, catalogsHtml]) assert.match(html, /20260909-global-fields-1/u);
+  assert.equal(app.CACHE_VERSION, "20260910-weight-lineage-1");
+  for (const html of [indexHtml, catalogsHtml]) assert.match(html, /20260910-weight-lineage-1/u);
   assert.equal(app.shouldDisplaySemanticLabel("direct-specimen"), false);
   assert.equal(app.shouldDisplaySemanticLabel("projected-atomic-specimen"), false);
   assert.equal(app.shouldDisplaySemanticLabel("collection-observation"), true);

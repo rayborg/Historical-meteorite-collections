@@ -143,6 +143,16 @@ Calculated sums are audit results, not printed facts. Both are retained when
 they differ. Zero can be retained as a catalog fact only when affirmatively
 reported, and zero is never a lineage mass endpoint.
 
+The specimen-weight census is a closed partition over the 13,804 current
+specimen descriptors. After exact source correction and reviewed disposition,
+13,625 actual specimen cards have numeric source-listed weight, 4 have an
+affirmative qualitative source statement, 172 are source-unlisted, and 3 are
+not individual specimens. Thus 13,801 cards are actual specimens and the
+default source-listed view is exactly 13,629. A parent, group, sibling,
+aggregate, range, total, or nearby value is never inherited by a card. The
+three not-individual rows remain searchable observations rather than being
+deleted or assigned synthetic mass.
+
 Brown and Minnesota show how nested source clauses are reviewed: atomic
 components can become cards, while grouped context and excluded non-meteorite
 context do not become specimens. Hamburg types individual, aggregate, and
@@ -205,8 +215,10 @@ statistics, page citations, and folio authorization remain parent-observation
 based. Group totals, casts, aggregates, associated material, counts, ranges,
 dealer offers, and unreviewed clauses remain observation or audit context.
 
-Every lineage route from a projected card uses an exact non-null mass path.
-Repeated display masses and massless cards do not become lineage endpoints.
+Every numeric lineage route from a projected card uses an exact non-null mass
+path. Repeated display masses and qualitative or source-unlisted cards do not
+become numeric lineage endpoints. A qualitative clause can enter the default
+source-listed view only through the closed schema-5 evidence variant.
 
 ## 9. Lineage Semantics
 
@@ -261,6 +273,21 @@ Some sources publish n-ary groups rather than pairwise relationships.
 [`data/source-claims.json`](./data/source-claims.json) retains those claims in
 source order with exact members. They are digest-bound into the lineage output
 but are never expanded into pairwise identity edges.
+
+### 9.4 Card-level provenance
+
+Lineage display is source-complete at the card level. Routing selects only
+claims applicable to the exact direct or projected card, then materializes a
+closed presentation object rather than a free-text summary. Binary claims
+retain both source endpoints, catalog labels and years, source record labels,
+available masses, printed-page citations, and exact record-search links.
+Same-inventory continuity is labeled `known`; possible cross-catalog matches
+are `suspected` and retain evidence strength plus public review state;
+source-attested n-ary groups are `tentative` and retain complete membership.
+Controlled caution text prevents any of these labels from implying physical
+identity, custody, ownership, transfer, or a record merge. The current
+inclusive lineage-only view contains 956 cards and 1,443 claims: 194 known,
+1,170 suspected, and 79 tentative.
 
 ## 10. Supplements, Amendments, And Corrections
 

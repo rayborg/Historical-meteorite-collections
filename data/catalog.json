@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "schemaVersion": 11,
+    "schemaVersion": 12,
     "scope": "facts-only",
     "factualFields": [
       "id",
@@ -8,6 +8,14 @@
       "designation",
       "name",
       "weight.grams",
+      "weightEvidence.type",
+      "weightEvidence.statement",
+      "associatedMaterial.type",
+      "associatedMaterial.description",
+      "associatedMaterial.grams",
+      "associatedMaterial.count",
+      "specimenDisposition.type",
+      "specimenDisposition.reason",
       "catalogItem",
       "catalogNumber",
       "entryOrder",
@@ -1377,7 +1385,7 @@
         "sourcePageCount": 46,
         "recordCount": 1078,
         "recordsWithDesignation": 1075,
-        "recordsWithWeight": 1077,
+        "recordsWithWeight": 1078,
         "confidenceCounts": {
           "high": 1078,
           "medium": 0,
@@ -1998,7 +2006,7 @@
         "sourcePageCount": 79,
         "recordCount": 1678,
         "recordsWithDesignation": 1652,
-        "recordsWithWeight": 1609,
+        "recordsWithWeight": 1611,
         "confidenceCounts": {
           "high": 1678,
           "medium": 0,
@@ -2745,7 +2753,7 @@
     ],
     "recordCount": 18217,
     "recordsWithDesignation": 5872,
-    "recordsWithWeight": 16677,
+    "recordsWithWeight": 16680,
     "confidenceCounts": {
       "high": 16862,
       "medium": 1355,
@@ -60151,7 +60159,7 @@
       "designation": "453.1",
       "name": "Waterville",
       "weight": {
-        "grams": null
+        "grams": 26.4
       },
       "classification": "Iron. Siderite with pallasitic distribution of troilite nodules",
       "locality": "Douglas County, Washington",
@@ -60172,7 +60180,7 @@
       "designation": "453.2",
       "name": "Waterville",
       "weight": {
-        "grams": null
+        "grams": 286
       },
       "classification": "Iron. Siderite with pallasitic distribution of troilite nodules",
       "locality": "Douglas County, Washington",
@@ -62608,6 +62616,10 @@
       "year": "1938",
       "catalogPage": 43,
       "confidence": "high",
+      "weightEvidence": {
+        "type": "qualitative",
+        "statement": "Less than a gram"
+      },
       "metbull": {
         "matchType": "exact",
         "canonicalName": "Chicora",
@@ -107023,13 +107035,20 @@
       "designation": "H53.181",
       "name": "LAKEWOOD",
       "weight": {
-        "grams": null
+        "grams": 5265.8
       },
       "classification": "Stone. Chondrite",
       "locality": "Eddy Co., New Mexico; 32° 37' 47\" N., 104° 21' W.",
       "year": "1966",
       "catalogPage": 27,
       "confidence": "high",
+      "description": "Main mass. Associated aggregate context: box of small fragments, 1,813.3 grams; fragment count not reported.",
+      "associatedMaterial": {
+        "type": "aggregate-context",
+        "description": "box of small fragments",
+        "grams": 1813.3,
+        "count": null
+      },
       "metbull": {
         "matchType": "case-normalized-exact",
         "canonicalName": "Lakewood",
@@ -123369,6 +123388,10 @@
       "year": null,
       "catalogPage": 11,
       "confidence": "high",
+      "specimenDisposition": {
+        "type": "not-individual",
+        "reason": "Plural granite and quartz samples from the crater."
+      },
       "metbull": {
         "matchType": "unresolved",
         "canonicalName": null,
@@ -123390,6 +123413,10 @@
       "year": null,
       "catalogPage": 11,
       "confidence": "high",
+      "specimenDisposition": {
+        "type": "not-individual",
+        "reason": "Plural soil samples from the crater and rim."
+      },
       "metbull": {
         "matchType": "unresolved",
         "canonicalName": null,
@@ -123411,6 +123438,10 @@
       "year": null,
       "catalogPage": 11,
       "confidence": "high",
+      "specimenDisposition": {
+        "type": "not-individual",
+        "reason": "Plural terrestrial laterite pebbles."
+      },
       "metbull": {
         "matchType": "unresolved",
         "canonicalName": null,
@@ -397489,7 +397520,7 @@
       "section": "A. Museum Collection",
       "holdings": [
         {
-          "description": "Stone, K. Weights. 61 and 08 grams. Fragment with crust and nearly complete individual. Fell on the evening of May 14, 1864, a few minutes after 8 o'clock, the fall being accompanied by the usual phenomena. Over 20 stones fell, weighing in the aggregate some 11,523 grams. This is one of the most interesting of carbonaceous meteorites, but perfectly satisfactory analyses are lacking. The stone is described as a black, porous, friable mass, falling to pieces in water. Cloez found it to contain 21.33 per cent water and organic matter. The mineral composition as calculated from his analysis would be, ex- clusive of the organic matter: Nickel-iron, 17.58; pyrrhotite, 11.62; chromite 0.35; and mixed silicates, 41.91. In detail his results are as follows on material dried at 110° C, the loss under this treat- ment being 5.975 Per cent. Silica (SiOj) 26.031 Sulphuric acid (SO,) 2.3345 Sulphur (S) 4.6466 Chlorine (CI) .0776 Phosphorus (P)_^ Traces. Aluinlua (AUOa) 1. 249S Chromic oxide (Cr^Os) .2392 Ferric oxide (Fe203) 14.2360 Ferrous oxide (FeO) 19.0630 Nickel oxide (NiO) 2.6057 Cobalt oxide (CoO) .0904 Mangauous oxide (MnO) 1.9302 Lime (CaO) 2.322 Magnesia (MgO) 8.6711 Soda (Na^O) 1.323 Potash (K2O) .3265 Ammonia (NH4OH) .1042 Humic substance 6.41 Combined water 7.812 99. 4728 M. Pisani gives results as follows (the material likewise dried at 110° C.) : Percent. Silica (SiO^) 26.08 Magnesia (MgO) 17.00 Protoxide of iron (FeO) 7.78 Lime (CaO) 1.85 Soda (Na^O) 2.26 Potash (K2O) .19 Oxide of manganese .36 Alumina (Al.Os) .90 Chrome-iron .49 Magnetite -. 15. 77 Sulphide of iron 13.43 Water and supposed organic matter . 13. 89 100. 00 According to Des Cloizeaux the stone contains small crystals of a carbonate of magnesia and iron corresponding to the formula (Mg Fe) CO3, which is that of the mineral breunnerite. The exact character of the carbonaceous material is still in doubt. Cloez re- garded it as a humus compound. This J. Lawrence Smith was dis- posed to doubt, but thought it more nearly allied to the so-called hydrated carbon obtained by Schutzenbergen and Bourgeois from white cast iron. References.— M. Cloez, Compt. Rend., vol. 58, 1864, pp. 986-988, and vol. 59, 1864, p. 37. M. Pisani, Compt. Rend., vol. 59, 1864, p. 132. J. L. Smith, Original Researches in Mineralogy and Chemis- try, 1884, p.",
+          "description": "Stone, K. Weights. 61 and 98 grams. Fragment with crust and nearly complete individual. Fell on the evening of May 14, 1864, a few minutes after 8 o'clock, the fall being accompanied by the usual phenomena. Over 20 stones fell, weighing in the aggregate some 11,523 grams. This is one of the most interesting of carbonaceous meteorites, but perfectly satisfactory analyses are lacking. The stone is described as a black, porous, friable mass, falling to pieces in water. Cloez found it to contain 21.33 per cent water and organic matter. The mineral composition as calculated from his analysis would be, ex- clusive of the organic matter: Nickel-iron, 17.58; pyrrhotite, 11.62; chromite 0.35; and mixed silicates, 41.91. In detail his results are as follows on material dried at 110° C, the loss under this treat- ment being 5.975 Per cent. Silica (SiOj) 26.031 Sulphuric acid (SO,) 2.3345 Sulphur (S) 4.6466 Chlorine (CI) .0776 Phosphorus (P)_^ Traces. Aluinlua (AUOa) 1. 249S Chromic oxide (Cr^Os) .2392 Ferric oxide (Fe203) 14.2360 Ferrous oxide (FeO) 19.0630 Nickel oxide (NiO) 2.6057 Cobalt oxide (CoO) .0904 Mangauous oxide (MnO) 1.9302 Lime (CaO) 2.322 Magnesia (MgO) 8.6711 Soda (Na^O) 1.323 Potash (K2O) .3265 Ammonia (NH4OH) .1042 Humic substance 6.41 Combined water 7.812 99. 4728 M. Pisani gives results as follows (the material likewise dried at 110° C.) : Percent. Silica (SiO^) 26.08 Magnesia (MgO) 17.00 Protoxide of iron (FeO) 7.78 Lime (CaO) 1.85 Soda (Na^O) 2.26 Potash (K2O) .19 Oxide of manganese .36 Alumina (Al.Os) .90 Chrome-iron .49 Magnetite -. 15. 77 Sulphide of iron 13.43 Water and supposed organic matter . 13. 89 100. 00 According to Des Cloizeaux the stone contains small crystals of a carbonate of magnesia and iron corresponding to the formula (Mg Fe) CO3, which is that of the mineral breunnerite. The exact character of the carbonaceous material is still in doubt. Cloez re- garded it as a humus compound. This J. Lawrence Smith was dis- posed to doubt, but thought it more nearly allied to the so-called hydrated carbon obtained by Schutzenbergen and Bourgeois from white cast iron. References.— M. Cloez, Compt. Rend., vol. 58, 1864, pp. 986-988, and vol. 59, 1864, p. 37. M. Pisani, Compt. Rend., vol. 59, 1864, p. 132. J. L. Smith, Original Researches in Mineralogy and Chemis- try, 1884, p.",
           "provenance": null,
           "count": 1,
           "weights": [
@@ -397497,7 +397528,7 @@
               "grams": 61
             },
             {
-              "grams": 8
+              "grams": 98
             }
           ]
         }
@@ -446551,7 +446582,7 @@
       "section": "Global catalogue of adopted meteorite names",
       "holdings": [
         {
-          "description": "Represented in the British Museum Collection at the end of 1922. Specimens: [90264], 161 grams; [1920,334], 1 gram; [46011], less than a grain.",
+          "description": "Represented in the British Museum Collection at the end of 1922. Specimens: [90264], 161 grams; [1920,334], 1 gram; [46011], less than a gram.",
           "provenance": null,
           "count": null,
           "weights": [

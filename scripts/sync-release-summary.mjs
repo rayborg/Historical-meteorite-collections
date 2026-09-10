@@ -144,15 +144,16 @@ export function buildReleaseSummary(catalog, folios, projections = null) {
   const projectionByParent = new Map((projections?.projections ?? []).map((projection) => [projection.parentRecordId, projection]));
   const atomicCardCount = [...projectionByParent.values()].reduce((count, projection) => count + projection.cards.length, 0);
   const nativeSpecimenCount = catalog.records.filter((record) => !projectionByParent.has(record.id) &&
-    ["specimen", "table-a-specimen"].includes(descriptors.find(({ id }) => id === record.catalogId).recordModel)).length;
+    ["specimen", "table-a-specimen"].includes(descriptors.find(({ id }) => id === record.catalogId).recordModel) &&
+    record.specimenDisposition?.type !== "not-individual").length;
   const displayDescriptorCount = catalog.records.length - projectionByParent.size + atomicCardCount;
   const specimenDescriptorCount = nativeSpecimenCount + atomicCardCount;
   const nativeUnknownWeightCount = catalog.records.filter((record) => !projectionByParent.has(record.id) &&
-    descriptors.find(({ id }) => id === record.catalogId).recordModel === "specimen" && record.weight?.grams === null).length;
-  const projectionUnknownWeightCount = [...projectionByParent].reduce((count, [recordId, projection]) => {
-    const catalogId = catalog.records.find(({ id }) => id === recordId).catalogId;
-    if (["brown-1916", "minnesota-1892"].includes(catalogId)) return count;
-    return count + projection.cards.filter((card) => card.massPath === null && !card.repeatedMass).length;
+    descriptors.find(({ id }) => id === record.catalogId).recordModel === "specimen" && record.weight?.grams === null &&
+    record.weightEvidence?.type !== "qualitative" && record.specimenDisposition?.type !== "not-individual").length;
+  const projectionUnknownWeightCount = [...projectionByParent].reduce((count, [, projection]) => {
+    return count + projection.cards.filter((card) => card.massPath === null && !card.repeatedMass &&
+      card.qualitativeWeightEvidence?.type !== "qualitative").length;
   }, 0);
 
   return {

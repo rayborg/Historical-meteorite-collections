@@ -1,6 +1,6 @@
 # Project Session Memory
 
-Last updated: 2026-09-06
+Last updated: 2026-09-10
 
 ## Mission
 
@@ -9,8 +9,8 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 ## Current State
 
 <!-- release-summary:session-current-state:start -->
-- Schema 11 contains 18,217 facts-only records across 49 catalogs.
-- Reviewed display projections replace 3,062 parents with 8,062 atomic cards: 23,217 descriptors comprise 13,804 specimens and 9,413 observations; weighted-only display excludes 173 unknown-mass specimens.
+- Schema 12 contains 18,217 facts-only records across 49 catalogs.
+- Reviewed display projections replace 3,062 parents with 8,062 atomic cards: 23,217 descriptors comprise 13,801 specimens and 9,416 observations; weighted-only display excludes 172 unknown-mass specimens.
 
 | `catalogId` | Record model | Records | Metadata source pages | Pages cited by records |
 | --- | --- | ---: | ---: | ---: |
@@ -91,10 +91,11 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 - Foote 1912 has 205 facts-only collection entries across 35 metadata pages, with records citing 25 pages, 227 holdings and numeric gram values, 132 reviewed exact-name mappings, and 73 pending observations. Its source material and media remain private, and its folio is blocked/undetermined with zero pages.
 - Anderson 1913 has 57 fully reviewed facts-only entries (52 resolved and 5 unresolved); Kantor 1920 has 30 fully reviewed entries (27 resolved and 3 unresolved); Astapovich 1938 has 90 fully reviewed entries (81 resolved and 9 unresolved). All three are blocked/undetermined with empty folios and no public images.
 - Madrid 1923 has 130 fully reviewed facts-only collection entries citing pages 226-233 within metadata pages 224-233. Its 168 holdings comprise 151 `Specimen` and 17 `Specimen group` descriptions with 168 normalized masses totaling 190,083.41 g; this detailed-entry sum remains distinct from the source's narrative collection-total claim. The reviews are 84 resolved and 46 unresolved. Madrid has no public media or private evidence, remains folio-blocked/undetermined, and projects 23 multi-holding parents into 54 atomic specimen cards; its 5 context partitions are audit-only and are not rendered as specimens.
-- The schema-4 projection manifest contains 3,062 projected parents, 8,062 atomic cards, and 2,532 non-displayed context audit partitions. Its cards comprise 8,032 ordinary mass paths, 2 repeated Kuleschowka displays, and 28 cards without normalized display mass. Berlin contributes 838 reviewed cards; Greifswald contributes none. Brown contributes 385 cards and Minnesota 164; group context and excluded non-meteorite context are not cards. Hamburg continues to project 218 individual components across 142 parents, with aggregate and associated components, representations, counts, and totals retained only as source context.
-- The harmonized presenter derives 23,217 cards from 18,217 parent observations: 5,742 direct specimens, 8,062 projected atomic specimens, 6,859 collection observations, 2,464 collection-representation observations, 84 regional observations, and 6 dealer observations. The 13,804 specimen cards use the standard eight-field order. Fletcher context cards show list, pane/case, reference, section, represented-weight text, and citation without specimen claims.
-- The unchecked default is strict: it shows 13,631 known-weight specimen cards, excludes all observations and 173 unknown-mass specimen cards, and retains all 549 Brown/Minnesota specimen cards. The inclusive 23,217-card state is explicit and uses `weighted=0`; omitted, malformed, duplicate, and legacy `weighted=1` states remain strict.
-- The regenerated lineage index contains 2,429 relationships: 194 identity-consistent same-inventory relationships and 2,235 possible cross-source matches from 16,816 positive flattened masses. Incompatible Nininger inventory `139b` is omitted and counted once as ambiguous; no unrelated relationship changed. Of the possible candidates, 1,339 are unreviewed and 896 are reviewed; the 870 Wave 2 reviews retain their candidates as possible only. None asserts physical identity, custody, ownership, transfer, or merge.
+- The schema-5 projection manifest contains 3,062 projected parents, 8,062 atomic cards, and 2,532 non-displayed context audit partitions. Its cards comprise 8,034 ordinary mass paths, 2 repeated Kuleschowka displays, and 28 cards without normalized display mass, including 3 closed qualitative clauses. Berlin contributes 838 reviewed cards; Greifswald contributes none. Brown contributes 385 cards and Minnesota 164; group context and excluded non-meteorite context are not cards. Hamburg continues to project 218 individual components across 142 parents, with aggregate and associated components, representations, counts, and totals retained only as source context.
+- The harmonized presenter derives 23,217 cards from 18,217 parent observations: 5,739 direct specimens, 8,062 projected atomic specimens, 6,859 collection observations, 2,464 collection-representation observations, 84 regional observations, 6 dealer observations, and 3 not-individual source observations. The 13,801 specimen cards use the standard eight-field order. Fletcher context cards show list, pane/case, reference, section, represented-weight text, and citation without specimen claims.
+- The unchecked default is strict: it shows 13,629 source-listed specimen cards, partitioned as 13,625 numeric and 4 qualitative; it excludes all 9,416 observations and 172 source-unlisted specimen cards. The inclusive 23,217-card state is explicit and uses `weighted=0`; omitted, malformed, duplicate, and legacy `weighted=1` states remain strict.
+- The regenerated lineage index contains 2,429 relationships: 194 identity-consistent same-inventory relationships and 2,235 possible cross-source matches from 16,819 positive flattened masses. Incompatible Nininger inventory `139b` is omitted and counted once as ambiguous; no unrelated relationship changed. Of the possible candidates, 1,339 are unreviewed and 896 are reviewed; the 870 Wave 2 reviews retain their candidates as possible only. None asserts physical identity, custody, ownership, transfer, or merge.
+- Source-complete card routing exposes 956 cards and 1,443 closed provenance claims in the inclusive lineage-only view: 194 known same-inventory claims, 1,170 suspected cross-catalog claims, and 79 tentative source-attested group claims. Claims retain applicable endpoint, citation, evidence, review, and caution details rather than only a count summary.
 - Nininger 1933 includes printed pages 1-20; pages 12-20 are narrative-only, and the printed catalog numbering skips item 139.
 - The latest release candidate passes the runtime suite and integrated public validator; both must continue to pass before release.
 - Validated continuation evidence recovers formerly blank source names where supported, without inferring modern identity. Reviewed historical entries that genuinely print no separate proper source name retain null names and unresolved reviews.
@@ -129,7 +130,7 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 
 ## Active Work State
 
-- The accepted canonical integrations are the source for the current 49-catalog, 18,217-record schema-11 facts-only public candidate, which retains 49 reviewed public folios.
+- The accepted canonical integrations are the source for the current 49-catalog, 18,217-record schema-12 facts-only public candidate, which retains 49 reviewed public folios.
 - Every specimen card includes the current-name field: a reviewed canonical name, `Same as source catalog name`, or `Unknown`. Victoria Land records carry reviewed `official-abbreviation` mappings to the same canonical names and retain `Unknown` lineage values. The homepage links to the dedicated 40-card catalog directory and separately to the bibliography master list.
 - No release-blocking validation issue remains. Any future public change must still be produced from the private canonical data and pass deterministic byte comparison and the facts-only privacy checks.
 
@@ -182,7 +183,7 @@ Distinct specimens with the same meteorite name and similar mass must not be col
 2. Keep all currently blocked catalogs, including Madrid 1923, Anderson 1913, Kantor 1920, Astapovich 1938, Foote 1912, Ward 1904, and Farrington 1916, blocked unless separate catalog-specific rights reviews explicitly authorize exact ordered page sets; source age or online availability alone is insufficient.
 3. Select the next processable bibliography control only after preserving and validating the current 49-catalog release candidate.
 4. Resolve the missing scan for `SP1949-0039` (currently MCB-107) and correct the source evidence for MCB-4 and MCB-5 when primary evidence is available.
-5. Keep schema 11 validation, deterministic private/public equality, release summaries, lineage checks, folio hashes, Node tests, runtime checks, and the facts-only privacy boundary green for every future release.
+5. Keep schema 12 validation, deterministic private/public equality, release summaries, lineage checks, folio hashes, Node tests, runtime checks, and the facts-only privacy boundary green for every future release.
 
 ## Maintenance Rule
 

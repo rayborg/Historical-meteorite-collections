@@ -145,10 +145,10 @@ test("every structured and Victoria Table B mass is searchable by grams and disp
     }
     if (Number.isFinite(record.sourceEvidence?.tableB?.massGrams)) tableBMasses += 1;
   }
-  assert.equal(structuredOccurrences, 22703);
-  assert.equal(structuredPairs.size, 19516);
-  assert.equal(searchableOccurrences, 22974);
-  assert.equal(searchablePairs.size, 19556);
+  assert.equal(structuredOccurrences, 22706);
+  assert.equal(structuredPairs.size, 19519);
+  assert.equal(searchableOccurrences, 22977);
+  assert.equal(searchablePairs.size, 19559);
   assert.equal(tableBMasses, 270);
 });
 

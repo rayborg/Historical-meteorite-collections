@@ -9,10 +9,12 @@ import { fileURLToPath } from "node:url";
 const require = createRequire(import.meta.url);
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const app = require(path.join(projectRoot, "app.js"));
-const [lineageText, catalog] = await Promise.all([
+const [lineageText, catalogText, projectionText] = await Promise.all([
   readFile(path.join(projectRoot, "data", "specimen-lineages.json"), "utf8"),
-  readFile(path.join(projectRoot, "data", "catalog.json"), "utf8").then(JSON.parse),
+  readFile(path.join(projectRoot, "data", "catalog.json"), "utf8"),
+  readFile(path.join(projectRoot, "data", "specimen-card-projections.json"), "utf8"),
 ]);
+const catalog = JSON.parse(catalogText);
 const lineageData = JSON.parse(lineageText);
 const registry = app.normalizeCatalogRegistry(catalog.metadata);
 const records = catalog.records.map((record, index) => app.prepareRecord(record, index, registry));
@@ -75,14 +77,14 @@ test("main template presents lineage through the harmonized specimen contract", 
   const record = records.find(({ catalogId, designation }) => catalogId === "huss-1986" && designation === "(2)H160.1");
   const dto = app.presentHarmonizedCard(record, { lineageEntries: index.get(record.id) });
   assert.deepEqual(dto.facts.find(({ label }) => label === "Lineage"), {
-    label: "Lineage", value: "1 earlier lineage record"
+    label: "Lineage", value: "Known same-inventory continuity: 1 | Suspected cross-catalog matches: 0 | Source-attested tentative groups: 0"
   });
   assert.doesNotMatch(source, /\.innerHTML\b/);
   assert.doesNotMatch(css, /\.earlier-records \{/);
-  assert.equal(app.CACHE_VERSION, "20260909-global-fields-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260909-global-fields-1");
-  assert.match(html, /styles\.css\?v=20260909-global-fields-1/);
-  assert.match(html, /app\.js\?v=20260909-global-fields-1/);
+  assert.equal(app.CACHE_VERSION, "20260910-weight-lineage-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260910-weight-lineage-1");
+  assert.match(html, /styles\.css\?v=20260910-weight-lineage-1/);
+  assert.match(html, /app\.js\?v=20260910-weight-lineage-1/);
   for (const file of ["possible-specimen-lineages.html", "possible-specimen-lineages.css", "possible-specimen-lineages.js"]) {
     await assert.rejects(access(path.join(projectRoot, file)));
   }
@@ -93,9 +95,9 @@ test("lineage filter markup and asynchronous settlement remain fail-closed", asy
     readFile(path.join(projectRoot, "index.html"), "utf8"),
     readFile(path.join(projectRoot, "app.js"), "utf8"),
   ]);
-  assert.match(html, /<label class="filter-toggle lineage-field">\s*<input id="lineage-only" name="lineage" type="checkbox" value="1">\s*<span>Known or suspected lineage only<\/span>\s*<\/label>/);
+  assert.match(html, /<label class="filter-toggle lineage-field">\s*<input id="lineage-only" name="lineage" type="checkbox" value="1">\s*<span>Source-complete lineage claims only<\/span>\s*<\/label>/);
   assert.match(html, /<input id="include-unknown-weight" name="include-unknown-weight" type="checkbox">/);
-  assert.match(source, /filterRecords\(records, currentFilters\(\), earlierRecordsByLaterId\)/);
+  assert.match(source, /filterSpecimenCardDescriptors\([\s\S]*earlierRecordsByLaterId/);
   assert.match(source, /if \(index\.size \|\| elements\.lineageOnly\.checked\) render\(\);/);
   assert.match(source, /filters\.lineageOnly \|\| filters\.includeUnknownWeight === true \|\| filters\.sort !== DEFAULT_SORT/);
   assert.match(source, /function clearFilters\(\) \{\s*elements\.form\.reset\(\);/);
@@ -106,8 +108,8 @@ test("every card receives a concise lineage summary", () => {
   assert.equal(app.formatLineageSummary(0), "No lineage known");
   assert.equal(app.formatLineageSummary(1), "1 earlier lineage record");
   assert.equal(app.formatLineageSummary(98), "98 earlier lineage records");
-  assert.equal(app.formatLineageSummary([{ kind: "source-attested-tentative-pairing-group" }]),
-    "1 source-attested tentative pairing group");
+  assert.equal(app.formatLineageSummary([{ presentationStatus: "tentative" }]),
+    "Known same-inventory continuity: 0 | Suspected cross-catalog matches: 0 | Source-attested tentative groups: 1");
 });
 
 test("real catalog Allende search retains reviewed names and synonyms without Alais infix matches", () => {
@@ -295,52 +297,102 @@ test("source-attested Table C groups retain exact n-ary membership and feed card
   const groups = lineageData.sourceAttestedGroups;
   const members = groups.flatMap(({ members: groupMembers }) => groupMembers);
   const exactMemberIndex = app.deriveSourceAttestedGroupIndex(groups);
-  const entries = [...index.values()].flat().filter(({ kind }) => kind === "source-attested-tentative-pairing-group");
+  const entries = [...index.values()].flat().filter(({ kind }) => kind === "group-route");
   assert.deepEqual({ groups: groups.length, occurrences: members.length, uniqueMembers: new Set(members).size },
     { groups: 21, occurrences: 89, uniqueMembers: 87 });
   assert.equal(exactMemberIndex.size, 87);
   assert.equal([...exactMemberIndex.values()].flat().length, 89);
   assert.equal(exactMemberIndex.has("ALHA77034"), true);
   assert.equal(exactMemberIndex.has("BTNA77034"), false);
-  assert.deepEqual({ indexedRecords: new Set(entries.flatMap(({ members: groupMembers }) => groupMembers
-    .filter((member) => records.some(({ specimenId }) => specimenId === member)))).size, indexedEntries: entries.length },
+  assert.deepEqual({ indexedRecords: new Set(entries.map(({ currentMember }) => currentMember)).size, indexedEntries: entries.length },
   { indexedRecords: 77, indexedEntries: 79 });
   for (const entry of entries) {
-    const source = groups.find(({ id }) => id === entry.groupId);
-    assert.deepEqual(entry.members, source.members);
-    assert.equal(entry.sourceSection, "Appendix Table C");
-    assert.equal(entry.printedPage, 94);
-    assert.equal(Object.hasOwn(entry, "recordId"), false);
+    const source = groups.find(({ id }) => id === entry.claim.groupId);
+    assert.deepEqual(entry.claim.members, source.members);
+    assert.equal(entry.claim.source.sourceSection, "Appendix Table C");
+    assert.equal(entry.claim.source.printedPage, 94);
+    assert.equal(Object.hasOwn(entry.claim, "recordId"), false);
   }
   const alha76005 = records.find(({ specimenId }) => specimenId === "ALHA76005");
   assert.equal(app.presentHarmonizedCard(alha76005, { lineageEntries: index.get(alha76005.id) })
-    .facts.find(({ label }) => label === "Lineage").value, "1 source-attested tentative pairing group");
-  const lineageOnly = app.filterRecords(records, {
+    .facts.find(({ label }) => label === "Lineage").value,
+  "Known same-inventory continuity: 0 | Suspected cross-catalog matches: 0 | Source-attested tentative groups: 1");
+  const descriptors = app.expandSpecimenCardDescriptors(
+    records.filter(({ catalogId }) => catalogId === "victoria-land-1982"), new Map());
+  const lineageOnly = app.filterSpecimenCardDescriptors(descriptors, {
     query: "", catalog: "victoria-land-1982", min: null, max: null, lineageOnly: true, sort: app.DEFAULT_SORT
   }, index);
   assert.equal(lineageOnly.length, 77);
 });
 
+test("source-complete lineage routing exposes exactly 956 cards and 1,443 closed claims", () => {
+  const index = app.deriveEarlierRecordIndex(lineageData, records, registry);
+  const projectionData = JSON.parse(projectionText);
+  const projectionIndex = app.deriveSpecimenCardProjectionIndex(projectionData, records, {
+    sourceCatalogSha256: createHash("sha256").update(catalogText).digest("hex"),
+  });
+  const descriptors = app.expandSpecimenCardDescriptors(records, projectionIndex);
+  const routed = descriptors.map((descriptor) => ({
+    descriptor,
+    claims: app.renderableLineageClaimsForCard(descriptor, index.get(descriptor.parentRecord.id) || []),
+  })).filter(({ claims }) => claims.length > 0);
+  const claims = routed.flatMap(({ claims: cardClaims }) => cardClaims);
+  assert.deepEqual({ cards: routed.length, claims: claims.length }, { cards: 956, claims: 1443 });
+  assert.deepEqual(Object.fromEntries(["known", "suspected", "tentative"].map((status) =>
+    [status, claims.filter(({ presentationStatus }) => presentationStatus === status).length])),
+  { known: 194, suspected: 1170, tentative: 79 });
+  assert(claims.every((claim) => ["known", "suspected", "tentative"].includes(claim.presentationStatus)));
+  for (const claim of claims) {
+    assert.match(claim.caution, /does not (?:establish|create)|Suspected match only/u);
+    if (claim.kind === "source-attested-tentative-group") {
+      assert.equal(claim.rawClaimType, "tentative-n-ary-group");
+      assert.equal(claim.source.printedPage, 94);
+      assert(claim.members.includes(claim.currentMember));
+      continue;
+    }
+    for (const endpoint of [claim.earlierEndpoint, claim.laterEndpoint]) {
+      assert(endpoint.catalogLabel && Number.isInteger(endpoint.catalogYear));
+      assert(endpoint.sourceRecordLabel && endpoint.sourcePages.length > 0);
+      assert.equal(typeof endpoint.catalogSearchUrl, "string");
+      assert(endpoint.massGrams === null || Number.isFinite(endpoint.massGrams));
+    }
+    if (claim.kind === "same-inventory") {
+      assert.equal(claim.basis.code, "series-scoped-normalized-inventory-id");
+    } else {
+      assert(claim.evidence.factCodes.length >= 2);
+      assert(["reviewed", "unreviewed"].includes(claim.review.status));
+      assert(Array.isArray(claim.review.citations));
+      if (claim.review.status === "reviewed") assert.equal(claim.review.outcome, "retain-as-possible");
+    }
+  }
+  assert.equal(app.filterSpecimenCardDescriptors(descriptors, {
+    min: null, max: null, lineageOnly: true, includeUnknownWeight: true,
+  }, index).length, 956);
+});
+
 test("cards distinguish same inventory continuity from possible matching", () => {
   const index = app.deriveEarlierRecordIndex(lineageData, records, registry);
   const dalgaranga = records.find((record) => record.catalogId === "huss-1986" && record.designation === "(2)H160.1");
-  assert.deepEqual(index.get(dalgaranga.id), [{
-    relationshipId: sameInventory(lineageData, "h160.1").id,
-    relationship: "same-inventory",
+  const [dalgarangaEntry] = index.get(dalgaranga.id);
+  assert.equal(dalgarangaEntry.kind, "relationship-route");
+  assert.equal(dalgarangaEntry.claim.relationshipId, sameInventory(lineageData, "h160.1").id);
+  assert.equal(dalgarangaEntry.claim.presentationStatus, "known");
+  assert.deepEqual(dalgarangaEntry.claim.collectionSeries, { id: "huss", inventoryId: "h160.1" });
+  assert.deepEqual(dalgarangaEntry.claim.earlierEndpoint, {
     recordId: "h160-1-585a63ba5ded",
-    catalogYear: 1976,
+    catalogId: "huss-1976",
     catalogLabel: "Huss Meteorite Collection catalog (1976)",
+    catalogYear: 1976,
+    sourceRecordLabel: "H160.1",
     sourceName: "Dalgaranga",
+    designation: "H160.1",
     massGrams: 3.4,
-    seriesId: "huss",
-    inventoryId: "h160.1",
-    strength: null,
+    sourcePages: [12],
     catalogSearchUrl: "./index.html?catalog=huss-1976&q=record%20id%20h160-1-585a63ba5ded#catalog",
-  }]);
-  const possibleEntry = [...index.values()].flat().find(({ relationship }) => relationship === "possible-match");
-  assert.equal(possibleEntry.seriesId, null);
-  assert.equal(possibleEntry.inventoryId, null);
-  assert(LINEAGE_STRENGTH_VALUES.has(possibleEntry.strength));
+  });
+  const possibleEntry = [...index.values()].flat().find(({ claim }) => claim?.kind === "possible-match");
+  assert.equal(possibleEntry.claim.presentationStatus, "suspected");
+  assert(LINEAGE_STRENGTH_VALUES.has(possibleEntry.claim.evidence.strength));
   assert.equal(app.formatEarlierRecordMass(null), "Not recorded");
 });
 
@@ -350,22 +402,23 @@ test("Sandia receives 108b continuity while Rosebud receives none", () => {
   const index = app.deriveEarlierRecordIndex(lineageData, records, registry);
   const sandia = records.find((record) => record.catalogId === "nininger-1950" && record.designation === "108b" && record.name === "Sandia Mountains");
   const rosebud = records.find((record) => record.catalogId === "nininger-1950" && record.designation === "108b" && record.name === "Rosebud");
-  assert.equal(index.get(sandia.id)[0].sourceName, "Sandia Mts.");
-  assert.equal(index.get(sandia.id)[0].inventoryId, "108b");
+  assert.equal(index.get(sandia.id)[0].claim.earlierEndpoint.sourceName, "Sandia Mts.");
+  assert.equal(index.get(sandia.id)[0].claim.collectionSeries.inventoryId, "108b");
   assert.equal(index.has(rosebud.id), false);
 });
 
 test("all 2422 earlier links resolve to exact public source records", () => {
   const index = app.deriveEarlierRecordIndex(lineageData, records, registry);
-  const earlierEntries = [...index.values()].flat().filter(({ kind }) => !kind);
+  const earlierEntries = [...index.values()].flat().filter(({ kind }) => kind === "relationship-route");
   for (const entry of earlierEntries) {
-      const url = new URL(entry.catalogSearchUrl, "https://example.test/");
+      const endpoint = entry.claim.earlierEndpoint;
+      const url = new URL(endpoint.catalogSearchUrl, "https://example.test/");
       assert.equal(url.pathname, "/index.html");
       assert.equal(url.hash, "#catalog");
       const destinationIds = records.filter((record) =>
         record.catalogId === url.searchParams.get("catalog") && app.matchesSearch(record, url.searchParams.get("q"))
       ).map(({ id }) => id);
-      assert.deepEqual(destinationIds, [entry.recordId], `${entry.catalogSearchUrl} did not resolve exactly to ${entry.recordId}`);
+      assert.deepEqual(destinationIds, [endpoint.recordId], `${endpoint.catalogSearchUrl} did not resolve exactly to ${endpoint.recordId}`);
   }
   assert.equal(earlierEntries.length, 2422);
 });
@@ -403,7 +456,7 @@ test("optional fetch failures and malformed payloads return an empty enhancement
   }), { sha256 });
   assert.equal(entryCount(loaded), 2501);
   assert.equal(app.SPECIMEN_LINEAGE_DATA_SHA256,
-    "b9129fc75a5dda3f70b806615f498c59c21816a2d058877c88058967b559cbd0");
+    "ab9960cdb5bebc83b9132e72c1369f0073e2735cdc7995925a3feb36948debd2");
   for (const mutate of forgedFactMutations) {
     const forged = clone(lineageData);
     mutate(forged);

@@ -1,15 +1,15 @@
 "use strict";
 
-const CACHE_VERSION = "20260909-global-fields-1";
+const CACHE_VERSION = "20260910-weight-lineage-1";
 const ASSET_CACHE_VERSION = CACHE_VERSION;
-const CATALOG_SCHEMA_VERSION = 11;
+const CATALOG_SCHEMA_VERSION = 12;
 const CATALOG_RECORD_COUNT = 18217;
 const DISPLAY_DESCRIPTOR_COUNT = 23217;
-const SPECIMEN_DESCRIPTOR_COUNT = 13804;
-const OBSERVATION_DESCRIPTOR_COUNT = 9413;
-const WEIGHTED_DESCRIPTOR_COUNT = 13631;
-const UNKNOWN_WEIGHT_EXCLUSION_COUNT = 173;
-const WAVE1_PROJECTED_CATALOGS = new Set(["brown-1916", "minnesota-1892"]);
+const SPECIMEN_DESCRIPTOR_COUNT = 13801;
+const OBSERVATION_DESCRIPTOR_COUNT = 9416;
+const WEIGHTED_DESCRIPTOR_COUNT = 13629;
+const UNKNOWN_WEIGHT_EXCLUSION_COUNT = 172;
+const SPECIMEN_PREFIX_GATED_CATALOGS = new Set(["brown-1916", "minnesota-1892"]);
 const REVIEW_GATED_LINEAGE_CATALOGS = new Set(["brown-1916", "minnesota-1892", "greifswald-1895", "greifswald-1901", "berlin-1903", "berlin-1904"]);
 const WAVE1_LINEAGE_RELATIONSHIP_IDS = new Set([
   "possible-lineage-015140ad-87ce-5595-a68e-afb9f85836b2",
@@ -59,6 +59,9 @@ const SPECIMEN_RECORD_FIELDS = new Set([
   "catalogPage",
   "confidence"
 ]);
+const WEIGHT_EVIDENCE_FIELDS = new Set(["type", "statement"]);
+const ASSOCIATED_MATERIAL_FIELDS = new Set(["type", "description", "grams", "count"]);
+const SPECIMEN_DISPOSITION_FIELDS = new Set(["type", "reason"]);
 const CATALOG_ITEM_RECORD_FIELDS = new Set([
   "id",
   "catalogId",
@@ -174,6 +177,14 @@ const FACTUAL_FIELDS = [
   "designation",
   "name",
   "weight.grams",
+  "weightEvidence.type",
+  "weightEvidence.statement",
+  "associatedMaterial.type",
+  "associatedMaterial.description",
+  "associatedMaterial.grams",
+  "associatedMaterial.count",
+  "specimenDisposition.type",
+  "specimenDisposition.reason",
   "catalogItem",
   "catalogNumber",
   "entryOrder",
@@ -279,15 +290,16 @@ const SPECIMEN_CARD_METADATA_FIELDS = new Set([
 ]);
 const SPECIMEN_CARD_PROJECTION_FIELDS = new Set(["parentRecordId", "cards"]);
 const SPECIMEN_CARD_CLAUSE_CARD_FIELDS = new Set(["holdingPath", "clause", "massPath"]);
+const SPECIMEN_CARD_QUALITATIVE_CLAUSE_CARD_FIELDS = new Set(["holdingPath", "clause", "massPath", "qualitativeWeightEvidence"]);
 const SPECIMEN_CARD_REPEATED_CLAUSE_CARD_FIELDS = new Set(["holdingPath", "clause", "massPath", "repeatedMass"]);
 const SPECIMEN_CARD_COMPONENT_FIELDS = new Set(["holdingPath", "componentPath", "massPath"]);
 const SPECIMEN_CARD_CLAUSE_FIELDS = new Set(["textPath", "start", "end"]);
 const SPECIMEN_CARD_REPEATED_MASS_FIELDS = new Set(["valuePath", "countPath", "totalPath", "occurrence", "occurrenceCount"]);
 const SHA256_HEX = /^[0-9a-f]{64}$/u;
-const SPECIMEN_CARD_SOURCE_CATALOG_SHA256 = "fd3af1b04765f25fa792329e142321a4dd0eb018045462d5d4c4fd86c8a01e05";
-const SPECIMEN_CARD_PROJECTION_DATA_SHA256 = "ef41bf9770b5328e6471ca51adaf817148b22305415bed2034639f8eed188ef1";
-const SPECIMEN_CARD_PROJECTION_SET_SHA256 = "7a37c5791373bb1613fc7180931e8dfe155868909785a976273e4b64e307d787";
-const SPECIMEN_LINEAGE_DATA_SHA256 = "b9129fc75a5dda3f70b806615f498c59c21816a2d058877c88058967b559cbd0";
+const SPECIMEN_CARD_SOURCE_CATALOG_SHA256 = "d06cb3c737ffec0259e43e778ed62056d88701c36637b661d20a91dd1061d5b3";
+const SPECIMEN_CARD_PROJECTION_DATA_SHA256 = "f7f547fc6a22fe7cec794593db716d59896280ae3a1767fc1c050f80f1f02ea0";
+const SPECIMEN_CARD_PROJECTION_SET_SHA256 = "bca32f44f17079170b45a57b858dc71cc00097f69ec829e519e63d5283d32499";
+const SPECIMEN_LINEAGE_DATA_SHA256 = "ab9960cdb5bebc83b9132e72c1369f0073e2735cdc7995925a3feb36948debd2";
 const SOURCE_CLAIMS_CONTENT_SHA256 = "141ed60b9560596ac8ab392babfc4af6e1d22921bacbf979d3b975e0fc2f20c2";
 const LINEAGE_ROOT_FIELDS = new Set(["metadata", "sourceAttestedGroups", "relationships"]);
 const LINEAGE_METADATA_FIELDS = new Set(["schemaVersion", "scope", "source", "collectionSeries", "methodology", "counts"]);
@@ -343,6 +355,47 @@ const LINEAGE_STRENGTH_LABELS = {
   "two-matching-facts": "Two matching facts",
   "limited-matching-evidence": "Limited matching evidence"
 };
+const LINEAGE_DISPLAY_LABELS = Object.freeze({
+  presentationStatus: Object.freeze({
+    known: "Known same-inventory continuity",
+    suspected: "Suspected cross-catalog match",
+    tentative: "Source-attested tentative pairing group"
+  }),
+  identityMethod: Object.freeze({
+    "metbull-code": "Shared Meteoritical Bulletin identity code",
+    "normalized-source-name": "Shared normalized source name"
+  }),
+  evidenceStrength: Object.freeze({ ...LINEAGE_STRENGTH_LABELS }),
+  factCode: Object.freeze({
+    "shared-metbull-code": "Shared Meteoritical Bulletin identity code",
+    "shared-normalized-source-name": "Shared normalized source name",
+    "exact-reported-mass": "Exact reported-mass match",
+    "near-reported-mass": "Near reported-mass match",
+    "same-designation": "Same source designation",
+    "designation-family": "Same designation family"
+  }),
+  cautionCode: Object.freeze({
+    "normalized-name-identity": "Identity is based on normalized source names",
+    "near-reported-mass": "Reported masses are near, not exact",
+    "designation-differs-or-missing": "Source designations differ or are missing",
+    "aggregate-or-multiple": "At least one endpoint describes an aggregate or multiple specimens",
+    cast: "At least one endpoint is a cast"
+  }),
+  massMatch: Object.freeze({ exact: "Exact reported-mass match", near: "Near reported-mass match" }),
+  reviewStatus: Object.freeze({ unreviewed: "Not yet individually reviewed", reviewed: "Individually reviewed" }),
+  reviewOutcome: Object.freeze({ null: "No review outcome", "retain-as-possible": "Retain as possible", "not-supported": "Not supported" }),
+  rawRelationship: Object.freeze({
+    "same-inventory": "Same inventory ID across catalog editions",
+    "possible-match": "Possible match across catalogs"
+  }),
+  rawRelationshipStatus: Object.freeze({
+    established: "Inventory-ID continuity established",
+    possible: "Possible relationship"
+  })
+});
+const SAME_INVENTORY_CAUTION = "Known same-inventory continuity means that these catalog editions use the same series-scoped normalized inventory ID. It does not establish that the observations describe the same physical specimen, or establish custody, ownership, or transfer.";
+const POSSIBLE_MATCH_CAUTION = "Suspected match only. Matching identity and reported-mass facts do not establish that the observations describe the same physical specimen, or establish custody, ownership, or transfer.";
+const TENTATIVE_GROUP_CAUTION = "Source-attested tentative group. The source presents these members as one n-ary tentative grouping; this display does not create pairwise specimen identities or establish custody, ownership, or transfer.";
 const MAX_CATALOG_ID_LENGTH = 80;
 const MAX_DESCRIPTOR_TEXT_LENGTH = 160;
 const PRIVATE_LANGUAGE =
@@ -914,6 +967,11 @@ function hasValidVictoriaSourceEvidence(value, record, sourcePages) {
 function recordFields(record, baseFields, allowIndividualFindLocation = false) {
   const fields = new Set(baseFields);
   if (allowIndividualFindLocation && Object.hasOwn(record, "individualFindLocation")) fields.add("individualFindLocation");
+  if (allowIndividualFindLocation) {
+    for (const field of ["description", "weightEvidence", "associatedMaterial", "specimenDisposition"]) {
+      if (Object.hasOwn(record, field)) fields.add(field);
+    }
+  }
   if (Object.hasOwn(record, "metbull")) fields.add("metbull");
   return fields;
 }
@@ -1260,6 +1318,21 @@ function validateCatalog(catalog) {
         requireSchema(record.individualFindLocation !== "" && record.individualFindLocation.length <= 200 &&
           isLeakageSafeText(record.individualFindLocation));
       }
+      if (Object.hasOwn(record, "description")) requireSchema(record.description !== "" && isLeakageSafeHoldingText(record.description, true));
+      if (Object.hasOwn(record, "weightEvidence")) requireSchema(
+        hasExactFields(record.weightEvidence, WEIGHT_EVIDENCE_FIELDS) && record.weightEvidence.type === "qualitative" &&
+        record.weightEvidence.statement !== "" && isLeakageSafeText(record.weightEvidence.statement) && record.weight.grams === null
+      );
+      if (Object.hasOwn(record, "associatedMaterial")) requireSchema(
+        hasExactFields(record.associatedMaterial, ASSOCIATED_MATERIAL_FIELDS) && record.associatedMaterial.type === "aggregate-context" &&
+        record.associatedMaterial.description !== "" && isLeakageSafeHoldingText(record.associatedMaterial.description, true) &&
+        Number.isFinite(record.associatedMaterial.grams) && record.associatedMaterial.grams > 0 && record.associatedMaterial.count === null
+      );
+      if (Object.hasOwn(record, "specimenDisposition")) requireSchema(
+        hasExactFields(record.specimenDisposition, SPECIMEN_DISPOSITION_FIELDS) && record.specimenDisposition.type === "not-individual" &&
+        record.specimenDisposition.reason !== "" && isLeakageSafeText(record.specimenDisposition.reason) &&
+        record.designation === null && record.weight.grams === null
+      );
       requireSchema(record.designation !== null || record.name !== null || record.weight.grams !== null ||
         record.classification !== null || record.locality !== null || record.year !== null);
     } else if (recordModel === "catalog-item") {
@@ -1856,7 +1929,7 @@ function lineageMassEndpoints(sourceRecords) {
       record.holdings.forEach((holding, index) => add(record, holding.weight.grams, `holdings[${index}].weight.grams`));
     } else if (record.recordModel === "catalog-number" || record.recordModel === "collection-entry") {
       record.holdings.forEach((holding, holdingIndex) => holding.weights.forEach((weight, weightIndex) => {
-        if (WAVE1_PROJECTED_CATALOGS.has(record.catalogId) && !holding.description.startsWith("Specimen:")) return;
+        if (SPECIMEN_PREFIX_GATED_CATALOGS.has(record.catalogId) && !holding.description.startsWith("Specimen:")) return;
         if (weight.kind && weight.kind !== "individual-holding") return;
         add(record, weight.grams, `holdings[${holdingIndex}].weights[${weightIndex}].grams`);
       }));
@@ -1906,7 +1979,7 @@ function lineageMassObservationCount(sourceRecords) {
     }
     else if (record.recordModel === "catalog-item") count += record.holdings.filter((holding) => Number.isFinite(holding.weight.grams) && holding.weight.grams > 0).length;
     else if (record.recordModel === "catalog-number" || record.recordModel === "collection-entry") count += record.holdings.reduce((sum, holding) =>
-      WAVE1_PROJECTED_CATALOGS.has(record.catalogId) && !holding.description.startsWith("Specimen:") ? sum : sum + holding.weights.filter((weight) =>
+      SPECIMEN_PREFIX_GATED_CATALOGS.has(record.catalogId) && !holding.description.startsWith("Specimen:") ? sum : sum + holding.weights.filter((weight) =>
         Number.isFinite(weight.grams) && weight.grams > 0 && (!weight.kind || weight.kind === "individual-holding")).length, 0);
   });
   return count;
@@ -2003,6 +2076,7 @@ function validateLineageCandidates(lineageData, sourceRecords, registry) {
       const descriptor = registry[observation.catalogId];
       const sourceRecord = sourceRecordsById.get(observation.recordId);
       requireLineage(sourceRecord.catalogId === observation.catalogId && sourceRecord.recordModel === observation.recordModel);
+      requireLineage(recordCatalogPages(sourceRecord).length > 0);
       requireLineage(observation.catalogYear === descriptor.year && observation.catalogLabel === descriptor.label);
       requireLineage(isLineageText(observation.sourceRecordLabel) && observation.sourceRecordLabel === lineageRecordLabel(sourceRecord));
       requireLineage(isLineageText(observation.sourceName, true) && observation.sourceName === sourceRecord.name);
@@ -2137,19 +2211,113 @@ function chronologicalEarlierPair(observations) {
     : null;
 }
 
+function lineageDisplayLabel(family, value) {
+  const key = value === null ? "null" : value;
+  const label = LINEAGE_DISPLAY_LABELS[family]?.[key];
+  requireLineage(typeof label === "string" && label.length > 0);
+  return label;
+}
+
+function lineageEndpointDto(observation, sourceRecordsById) {
+  const sourceRecord = sourceRecordsById.get(observation.recordId);
+  requireLineage(sourceRecord?.catalogId === observation.catalogId);
+  const sourcePages = recordCatalogPages(sourceRecord);
+  requireLineage(sourcePages.length > 0 && sourcePages.every((page) => Number.isInteger(page) && page > 0));
+  return {
+    recordId: observation.recordId,
+    catalogId: observation.catalogId,
+    catalogLabel: observation.catalogLabel,
+    catalogYear: observation.catalogYear,
+    sourceRecordLabel: observation.sourceRecordLabel,
+    sourceName: observation.sourceName,
+    designation: observation.designation,
+    massGrams: observation.massGrams,
+    sourcePages,
+    catalogSearchUrl: observation.catalogSearchUrl
+  };
+}
+
+function relationshipClaimDto(relationship, pair, sourceRecordsById) {
+  const earlierEndpoint = lineageEndpointDto(pair.earlier, sourceRecordsById);
+  const laterEndpoint = lineageEndpointDto(pair.later, sourceRecordsById);
+  if (relationship.relationship === "same-inventory") {
+    lineageDisplayLabel("presentationStatus", "known");
+    lineageDisplayLabel("rawRelationship", relationship.relationship);
+    lineageDisplayLabel("rawRelationshipStatus", relationship.status);
+    return {
+      kind: "same-inventory",
+      presentationStatus: "known",
+      rawRelationship: relationship.relationship,
+      rawStatus: relationship.status,
+      relationshipId: relationship.id,
+      displayName: relationship.displayName,
+      basis: { code: relationship.basis, label: "Series-scoped normalized inventory ID" },
+      collectionSeries: { ...relationship.collectionSeries },
+      earlierEndpoint,
+      laterEndpoint,
+      caution: SAME_INVENTORY_CAUTION
+    };
+  }
+  lineageDisplayLabel("presentationStatus", "suspected");
+  lineageDisplayLabel("rawRelationship", relationship.relationship);
+  lineageDisplayLabel("rawRelationshipStatus", relationship.status);
+  lineageDisplayLabel("identityMethod", relationship.identity.method);
+  lineageDisplayLabel("evidenceStrength", relationship.evidence.strength);
+  lineageDisplayLabel("massMatch", relationship.evidence.massMatch);
+  relationship.evidence.factCodes.forEach((code) => lineageDisplayLabel("factCode", code));
+  relationship.evidence.cautionCodes.forEach((code) => lineageDisplayLabel("cautionCode", code));
+  lineageDisplayLabel("reviewStatus", relationship.review.status);
+  lineageDisplayLabel("reviewOutcome", relationship.review.outcome);
+  return {
+    kind: "possible-match",
+    presentationStatus: "suspected",
+    rawRelationship: relationship.relationship,
+    rawStatus: relationship.status,
+    relationshipId: relationship.id,
+    displayName: relationship.displayName,
+    basis: { code: relationship.basis, label: "Identity and reported-mass comparison" },
+    identity: { ...relationship.identity },
+    evidence: { ...relationship.evidence, factCodes: [...relationship.evidence.factCodes], cautionCodes: [...relationship.evidence.cautionCodes] },
+    review: { ...relationship.review, citations: relationship.review.citations.map((citation) => ({ ...citation })) },
+    earlierEndpoint,
+    laterEndpoint,
+    caution: POSSIBLE_MATCH_CAUTION
+  };
+}
+
+function tentativeGroupClaimDto(group, currentMember, registry) {
+  const descriptor = registry[group.catalogId];
+  requireLineage(descriptor && group.claimType === "tentative-n-ary-group" && group.members.includes(currentMember));
+  lineageDisplayLabel("presentationStatus", "tentative");
+  return {
+    kind: "source-attested-tentative-group",
+    presentationStatus: "tentative",
+    rawClaimType: group.claimType,
+    groupId: group.id,
+    source: {
+      catalogId: group.catalogId,
+      catalogLabel: descriptor.label,
+      catalogYear: descriptor.year,
+      sourceSection: group.sourceSection,
+      printedPage: group.printedPage,
+      reference: group.reference
+    },
+    classification: group.classification,
+    members: [...group.members],
+    currentMember,
+    caution: TENTATIVE_GROUP_CAUTION
+  };
+}
+
 function deriveSourceAttestedGroupIndex(groups) {
   const index = new Map();
   groups.forEach((group) => {
     group.members.forEach((member) => {
       const entries = index.get(member) || [];
       entries.push({
-        kind: "source-attested-tentative-pairing-group",
-        groupId: group.id,
-        sourceSection: group.sourceSection,
-        classification: group.classification,
-        members: [...group.members],
-        reference: group.reference,
-        printedPage: group.printedPage
+        kind: "group-route",
+        group,
+        currentMember: member
       });
       index.set(member, entries);
     });
@@ -2160,43 +2328,29 @@ function deriveSourceAttestedGroupIndex(groups) {
 function deriveEarlierRecordIndex(lineageData, sourceRecords, registry) {
   validateLineageCandidates(lineageData, sourceRecords, registry);
   const index = new Map();
+  const sourceRecordsById = new Map(sourceRecords.map((record) => [record.id, record]));
   const sourceAttestedGroupsByMember = deriveSourceAttestedGroupIndex(lineageData.sourceAttestedGroups);
   sourceRecords.filter(({ catalogId }) => catalogId === "victoria-land-1982").forEach((record) => {
     const entries = sourceAttestedGroupsByMember.get(record.specimenId);
-    if (entries) index.set(record.id, entries);
+    if (entries) {
+      entries.forEach((entry) => { entry.claim = tentativeGroupClaimDto(entry.group, entry.currentMember, registry); });
+      index.set(record.id, entries);
+    }
   });
   lineageData.relationships.forEach((relationship) => {
     if (relationship.review?.outcome === "not-supported") return;
     const pair = chronologicalEarlierPair(relationship.observations);
     if (!pair) return;
-    const { earlier, later } = pair;
-    const entries = index.get(later.recordId) || [];
-    const entry = {
-      relationshipId: relationship.id,
-      relationship: relationship.relationship,
-      recordId: earlier.recordId,
-      catalogYear: earlier.catalogYear,
-      catalogLabel: earlier.catalogLabel,
-      sourceName: earlier.sourceName,
-      massGrams: earlier.massGrams,
-      seriesId: relationship.collectionSeries?.id || null,
-      inventoryId: relationship.collectionSeries?.inventoryId || null,
-      strength: relationship.evidence?.strength || null,
-      catalogSearchUrl: `./index.html?catalog=${encodeURIComponent(earlier.catalogId)}&q=${encodeURIComponent(`record id ${earlier.recordId}`)}#catalog`
-    };
-    // Keep the established enumerable entry shape while retaining the exact later endpoint for card routing.
-    Object.defineProperty(entry, "massPath", { value: later.massPath, enumerable: false });
-    entries.push(entry);
-    index.set(later.recordId, entries);
+    const claim = relationshipClaimDto(relationship, pair, sourceRecordsById);
+    const entries = index.get(pair.later.recordId) || [];
+    entries.push({ kind: "relationship-route", relationship, pair, claim, massPath: pair.later.massPath });
+    index.set(pair.later.recordId, entries);
   });
   index.forEach((entries) => entries.sort((left, right) => {
-    if (left.kind || right.kind) {
-      if (!left.kind) return -1;
-      if (!right.kind) return 1;
-      return left.groupId.localeCompare(right.groupId);
-    }
-    return left.catalogYear - right.catalogYear || collator.compare(left.catalogLabel, right.catalogLabel) ||
-      collator.compare(left.sourceName || "", right.sourceName || "") || left.relationshipId.localeCompare(right.relationshipId);
+    if (left.kind !== right.kind) return left.kind === "relationship-route" ? -1 : 1;
+    return left.kind === "relationship-route"
+      ? left.pair.earlier.catalogYear - right.pair.earlier.catalogYear || left.relationship.id.localeCompare(right.relationship.id)
+      : left.group.id.localeCompare(right.group.id);
   }));
   return index;
 }
@@ -2346,7 +2500,7 @@ function validateSpecimenCardManifest(manifest, sourceRecords, options = {}) {
   if (!hasExactFields(manifest, SPECIMEN_CARD_ROOT_FIELDS) || !Array.isArray(manifest.projections) ||
       !hasExactFields(manifest.metadata, SPECIMEN_CARD_METADATA_FIELDS) || !Array.isArray(sourceRecords)) return false;
   const metadata = manifest.metadata;
-  if (metadata.schemaVersion !== 4 || metadata.scope !== "reviewed-atomic-specimen-card-display-projections" ||
+  if (metadata.schemaVersion !== 5 || metadata.scope !== "reviewed-atomic-specimen-card-display-projections" ||
       metadata.catalogSchemaVersion !== CATALOG_SCHEMA_VERSION || metadata.sourceRecordCount !== sourceRecords.length ||
       !SHA256_HEX.test(metadata.sourceCatalogSha256) || !Number.isInteger(metadata.projectionCount) ||
       metadata.projectionCount !== manifest.projections.length || !Number.isInteger(metadata.atomicCardCount) ||
@@ -2377,9 +2531,11 @@ function validateSpecimenCardManifest(manifest, sourceRecords, options = {}) {
       const hasClause = isPlainObject(card) && Object.hasOwn(card, "clause");
       const hasComponent = isPlainObject(card) && Object.hasOwn(card, "componentPath");
       const hasRepeatedMass = hasClause && Object.hasOwn(card, "repeatedMass");
+      const hasQualitativeWeight = hasClause && Object.hasOwn(card, "qualitativeWeightEvidence");
       if (hasClause === hasComponent || !hasExactFields(card,
         hasClause
-          ? hasRepeatedMass ? SPECIMEN_CARD_REPEATED_CLAUSE_CARD_FIELDS : SPECIMEN_CARD_CLAUSE_CARD_FIELDS
+          ? hasRepeatedMass ? SPECIMEN_CARD_REPEATED_CLAUSE_CARD_FIELDS
+            : hasQualitativeWeight ? SPECIMEN_CARD_QUALITATIVE_CLAUSE_CARD_FIELDS : SPECIMEN_CARD_CLAUSE_CARD_FIELDS
           : SPECIMEN_CARD_COMPONENT_FIELDS) ||
         (card.massPath !== null && selectedMassPaths.has(card.massPath))) return false;
       if (hasClause) {
@@ -2399,6 +2555,11 @@ function validateSpecimenCardManifest(manifest, sourceRecords, options = {}) {
           occurrences.add(repeated.occurrence);
           repeatedMassGroups.set(groupKey, occurrences);
         }
+        if (hasQualitativeWeight) {
+          if (card.massPath !== null || hasRepeatedMass || !hasExactFields(card.qualitativeWeightEvidence, WEIGHT_EVIDENCE_FIELDS) ||
+              card.qualitativeWeightEvidence.type !== "qualitative" || card.qualitativeWeightEvidence.statement === "" ||
+              !isLeakageSafeText(card.qualitativeWeightEvidence.statement)) return false;
+        }
         const previousEnd = previousEndsByTextPath.get(card.clause.textPath);
         if (previousEnd !== undefined && card.clause.start < previousEnd) return false;
         previousEndsByTextPath.set(card.clause.textPath, card.clause.end);
@@ -2416,7 +2577,7 @@ function validateSpecimenCardManifest(manifest, sourceRecords, options = {}) {
           !Array.from({ length: occurrenceCount }, (_, index) => index + 1).every((value) => occurrences.has(value))) return false;
     }
     const hasSourceContext = specimenCardContextEntries(source.record, projection).length > 0;
-    if (!WAVE1_PROJECTED_CATALOGS.has(source.record.catalogId) &&
+    if (!SPECIMEN_PREFIX_GATED_CATALOGS.has(source.record.catalogId) &&
         projection.cards.length + Number(hasSourceContext) < 2) return false;
     atomicCardCount += projection.cards.length;
     if (hasSourceContext) sourceContextCardCount += 1;
@@ -2543,6 +2704,7 @@ function expandSpecimenCardDescriptors(sourceRecords, projectionIndex = new Map(
       componentPath: card.componentPath || null,
       massPath: card.massPath,
       repeatedMass: card.repeatedMass || null,
+      qualitativeWeightEvidence: card.qualitativeWeightEvidence || null,
       clause: card.clause || null,
       clauseText: card.clause ? resolveSpecimenCardClause(parentRecord, card).text : null,
       sourcePosition,
@@ -2594,14 +2756,55 @@ function specimenCardDescriptorMasses(descriptor) {
 }
 
 function specimenCardDescriptorHasKnownWeight(descriptor) {
-  return specimenCardDescriptorMasses(descriptor).length > 0 ||
-    (descriptor?.kind === "atomic" && WAVE1_PROJECTED_CATALOGS.has(descriptor.parentRecord?.catalogId));
+  return specimenCardDescriptorMasses(descriptor).length > 0 || descriptor?.qualitativeWeightEvidence?.type === "qualitative" ||
+    descriptor?.parentRecord?.weightEvidence?.type === "qualitative";
 }
 
 function lineageEntriesForSpecimenCard(descriptor, entries) {
-  if (!descriptor?.projected) return entries;
-  if (descriptor.kind === "atomic") return descriptor.massPath === null ? [] : entries.filter((entry) => entry.massPath === descriptor.massPath);
-  return [];
+  return renderableLineageClaimsForCard(descriptor, entries);
+}
+
+function renderableLineageClaimsForCard(descriptor, entries = [], registry = catalogRegistry) {
+  if (!descriptor?.parentRecord || !Array.isArray(entries)) return [];
+  const record = descriptor.parentRecord;
+  const cardKind = classifyHarmonizedCard(descriptor);
+  if (![HARMONIZED_CARD_KINDS.specimen, HARMONIZED_CARD_KINDS.atomic].includes(cardKind)) return [];
+  const claims = [];
+  for (const entry of entries) {
+    if (entry.kind === "group-route") {
+      if (!descriptor.projected && record.recordModel === "table-a-specimen" && record.specimenId === entry.currentMember) {
+        claims.push(entry.claim);
+      }
+      continue;
+    }
+    if (entry.kind !== "relationship-route" || entry.pair.later.recordId !== record.id) continue;
+    if (descriptor.projected) {
+      if (descriptor.kind === "atomic" && descriptor.repeatedMass === null && descriptor.massPath !== null &&
+          entry.massPath === descriptor.massPath) claims.push(entry.claim);
+    } else if (["specimen", "table-a-specimen"].includes(record.recordModel) && entry.massPath === "weight.grams") {
+      const resolved = resolveLineageObservation(record, entry.pair.later.designationPath, entry.pair.later.massPath);
+      if (resolved?.massGrams === entry.pair.later.massGrams) claims.push(entry.claim);
+    }
+  }
+  return claims;
+}
+
+function lineageCardDto(descriptor, entries = [], registry = catalogRegistry) {
+  const claims = renderableLineageClaimsForCard(descriptor, entries, registry);
+  const knownCount = claims.filter(({ presentationStatus }) => presentationStatus === "known").length;
+  const suspectedCount = claims.filter(({ presentationStatus }) => presentationStatus === "suspected").length;
+  const tentativeCount = claims.filter(({ presentationStatus }) => presentationStatus === "tentative").length;
+  requireLineage(knownCount + suspectedCount + tentativeCount === claims.length);
+  return {
+    cardKey: `${descriptor.parentRecord.id}\u0000${descriptor.projected ? descriptor.massPath : "@direct"}`,
+    summary: {
+      knownCount,
+      suspectedCount,
+      tentativeCount,
+      text: `Known same-inventory continuity: ${knownCount} | Suspected cross-catalog matches: ${suspectedCount} | Source-attested tentative groups: ${tentativeCount}`
+    },
+    claims
+  };
 }
 
 function filterSpecimenCardDescriptors(descriptors, filters, lineageIndex = new Map()) {
@@ -2614,7 +2817,7 @@ function filterSpecimenCardDescriptors(descriptors, filters, lineageIndex = new 
       (specimen && specimenCardDescriptorHasKnownWeight(descriptor));
     const weightMatches = (filters.min === null && filters.max === null) || masses.some((grams) =>
       (filters.min === null || grams >= filters.min) && (filters.max === null || grams <= filters.max));
-    const lineageMatches = filters.lineageOnly !== true || lineageEntriesForSpecimenCard(
+    const lineageMatches = filters.lineageOnly !== true || renderableLineageClaimsForCard(
       descriptor, lineageIndex.get(descriptor.parentRecord.id) || []
     ).length > 0;
     return unknownWeightMatches && weightMatches && lineageMatches;
@@ -2845,6 +3048,10 @@ function prepareRecord(source, index, registry = catalogRegistry) {
     if (Object.hasOwn(source, "individualFindLocation")) {
       record.individualFindLocation = cleanText(source.individualFindLocation);
     }
+    if (Object.hasOwn(source, "description")) record.description = cleanText(source.description);
+    if (Object.hasOwn(source, "weightEvidence")) record.weightEvidence = { ...source.weightEvidence };
+    if (Object.hasOwn(source, "associatedMaterial")) record.associatedMaterial = { ...source.associatedMaterial };
+    if (Object.hasOwn(source, "specimenDisposition")) record.specimenDisposition = { ...source.specimenDisposition };
   }
   if (source.metbull) {
     record.metbull = {
@@ -2860,6 +3067,9 @@ function prepareRecord(source, index, registry = catalogRegistry) {
   record.proseSearchText = searchable([
     ...(record.holdings || []).flatMap((holding) => [holding.description, holding.provenance]),
     record.description,
+    record.weightEvidence?.statement,
+    record.associatedMaterial?.description,
+    record.specimenDisposition?.reason,
     record.pane,
     record.reference,
     record.representedWeight?.valueText,
@@ -3240,7 +3450,7 @@ function compareRecords(a, b, sort) {
 
 function render() {
   const filters = currentFilters();
-  const parentMatches = filterRecords(records, currentFilters(), earlierRecordsByLaterId);
+  const parentMatches = filterRecords(records, { ...filters, lineageOnly: false }, earlierRecordsByLaterId);
   const displayCards = filterSpecimenCardDescriptors(
     expandSpecimenCardDescriptors(parentMatches, specimenCardProjectionsByParentId), filters, earlierRecordsByLaterId
   );
@@ -3267,13 +3477,13 @@ function render() {
 
 function resultDisplayState(displayCardCount, visibleCardCount, matchingObservationCount, includeUnknownWeight) {
   if (includeUnknownWeight !== true) {
-    const unit = displayCardCount === 1 ? "weighted specimen" : "weighted specimens";
+    const unit = displayCardCount === 1 ? "source-listed specimen" : "source-listed specimens";
     return {
       count: displayCardCount,
       unit,
       status: displayCardCount > visibleCardCount
         ? `Showing ${integerFormat.format(visibleCardCount)} of ${integerFormat.format(displayCardCount)} ${unit}.`
-        : displayCardCount ? `Showing all ${integerFormat.format(displayCardCount)} ${unit}.` : "No matching weighted specimens."
+        : displayCardCount ? `Showing all ${integerFormat.format(displayCardCount)} ${unit}.` : "No matching source-listed specimens."
     };
   }
 
@@ -3376,6 +3586,7 @@ function victoriaConflictFacts(record) {
 const HARMONIZED_CARD_KINDS = Object.freeze({
   specimen: "direct-specimen",
   atomic: "projected-atomic-specimen",
+  source: "source-observation",
   collection: "collection-observation",
   regional: "regional-observation",
   dealer: "dealer-observation",
@@ -3385,6 +3596,7 @@ const HARMONIZED_CARD_KINDS = Object.freeze({
 const HARMONIZED_SEMANTIC_LABELS = Object.freeze({
   [HARMONIZED_CARD_KINDS.specimen]: "Specimen.",
   [HARMONIZED_CARD_KINDS.atomic]: "Individual specimen.",
+  [HARMONIZED_CARD_KINDS.source]: "Source catalog observation; reviewed as plural terrestrial material, not an individual specimen.",
   [HARMONIZED_CARD_KINDS.collection]: "Collection catalog observation; not asserted here as one individual specimen.",
   [HARMONIZED_CARD_KINDS.regional]: "Regional census/catalog observation, not a specimen or holding.",
   [HARMONIZED_CARD_KINDS.dealer]: "Dealer catalog observation, not a specimen or holding",
@@ -3409,6 +3621,9 @@ function classifyHarmonizedCard(recordOrDescriptor) {
       return HARMONIZED_CARD_KINDS.atomic;
     }
     if (descriptor.kind !== "parent" || descriptor.projected !== false) return null;
+  }
+  if (record.recordModel === "specimen" && record.specimenDisposition?.type === "not-individual") {
+    return HARMONIZED_CARD_KINDS.source;
   }
   if (record.recordModel === "specimen" || record.recordModel === "table-a-specimen") {
     return HARMONIZED_CARD_KINDS.specimen;
@@ -3518,9 +3733,7 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
 
   if (specimen) {
     const sourceLineage = Array.isArray(options.lineageEntries) ? options.lineageEntries : [];
-    const lineageEntries = kind === HARMONIZED_CARD_KINDS.atomic
-      ? descriptor.massPath === null ? [] : sourceLineage.filter((entry) => entry.massPath === descriptor.massPath)
-      : sourceLineage;
+    const lineage = lineageCardDto(descriptor, sourceLineage, options.registry || catalogRegistry);
     const grams = kind === HARMONIZED_CARD_KINDS.atomic
       ? descriptor.repeatedMass
         ? resolveSpecimenCardRepeatedMass(record, descriptor.holdingPath, descriptor.repeatedMass)?.grams
@@ -3528,11 +3741,13 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
           record, descriptor.holdingPath, descriptor.massPath
         )?.grams
       : record.weight?.grams;
+    const qualitativeWeight = kind === HARMONIZED_CARD_KINDS.atomic
+      ? descriptor.qualitativeWeightEvidence?.statement : record.weightEvidence?.statement;
     facts.push({
       label: "Lineage",
-      value: lineageEntries.length ? formatLineageSummary(lineageEntries) : "Unknown"
+      value: lineage.claims.length ? lineage.summary.text : "Unknown"
     });
-    facts.push({ label: "Specimen weight", value: Number.isFinite(grams) ? formatMass(grams) : "Unknown" });
+    facts.push({ label: "Specimen weight", value: Number.isFinite(grams) ? formatMass(grams) : qualitativeWeight || "Unknown" });
     facts.push(...victoriaConflictFacts(record));
   }
 
@@ -3546,7 +3761,8 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
     sourceCitation: harmonizedSourceCitation(record),
     sourceLabel: record.catalogLabel || record.catalogId,
     catalogId: record.catalogId,
-    catalogPages: recordCatalogPages(record)
+    catalogPages: recordCatalogPages(record),
+    lineage: specimen ? lineageCardDto(descriptor, Array.isArray(options.lineageEntries) ? options.lineageEntries : [], options.registry || catalogRegistry) : null
   };
 }
 
@@ -3570,7 +3786,7 @@ function createRecordCard(recordOrDescriptor) {
   const card = elements.template.content.firstElementChild.cloneNode(true);
   card.dataset.cardKind = dto.kind;
   card.classList.toggle("specimen-card", dto.kind === HARMONIZED_CARD_KINDS.specimen || dto.kind === HARMONIZED_CARD_KINDS.atomic);
-  card.classList.toggle("observation-card", [HARMONIZED_CARD_KINDS.collection, HARMONIZED_CARD_KINDS.regional, HARMONIZED_CARD_KINDS.dealer, HARMONIZED_CARD_KINDS.representation].includes(dto.kind));
+    card.classList.toggle("observation-card", [HARMONIZED_CARD_KINDS.source, HARMONIZED_CARD_KINDS.collection, HARMONIZED_CARD_KINDS.regional, HARMONIZED_CARD_KINDS.dealer, HARMONIZED_CARD_KINDS.representation].includes(dto.kind));
   card.querySelector(".designation").textContent = displayText(dto.identifier);
   const semanticLabel = card.querySelector(".record-semantic-label, .record-model-label");
   const displaySemanticLabel = shouldDisplaySemanticLabel(dto.kind);
@@ -3592,6 +3808,7 @@ function createRecordCard(recordOrDescriptor) {
   const meta = card.querySelector(".record-meta");
   meta.replaceChildren();
   dto.facts.forEach(({ label, value }) => appendMetaRow(meta, label, value));
+  if (dto.lineage?.claims.length) card.querySelector(".record-footer").before(renderLineageClaims(dto.lineage));
 
   [".metbull-name", ".specimen-position", ".record-weight", ".record-holdings", ".earlier-records"]
     .forEach((selector) => card.querySelector(selector)?.remove());
@@ -3612,34 +3829,100 @@ function createRecordCard(recordOrDescriptor) {
   return card;
 }
 
-function renderEarlierRecords(card, entries) {
-  const lineageRow = card.querySelector(".lineage-row");
-  lineageRow.querySelector("dd").textContent = formatLineageSummary(entries.length);
-  lineageRow.classList.toggle("unknown", !entries.length);
-  const section = card.querySelector(".earlier-records");
-  if (!entries.length) {
-    section.remove();
-    return;
-  }
-  section.querySelector(".earlier-records-title").textContent = `Earlier specimen-lineage records (${integerFormat.format(entries.length)})`;
-  const list = section.querySelector(".earlier-records-list");
-  entries.forEach((entry) => {
+function appendLineageText(parent, label, value) {
+  const paragraph = document.createElement("p");
+  const strong = document.createElement("strong");
+  strong.textContent = `${label}: `;
+  paragraph.append(strong, document.createTextNode(displayText(value)));
+  parent.append(paragraph);
+}
+
+function appendLineageEndpoint(parent, label, endpoint) {
+  const section = document.createElement("section");
+  section.className = "lineage-endpoint";
+  const heading = document.createElement("h5");
+  heading.textContent = label;
+  const link = document.createElement("a");
+  link.href = endpoint.catalogSearchUrl;
+  link.textContent = `${endpoint.catalogLabel} (${endpoint.catalogYear})`;
+  section.append(heading, link);
+  appendLineageText(section, "Source record", endpoint.sourceRecordLabel);
+  appendLineageText(section, "Source name", endpoint.sourceName || "Not recorded");
+  appendLineageText(section, "Designation", endpoint.designation || "Not recorded");
+  appendLineageText(section, endpoint.sourcePages.length === 1 ? "Source page" : "Source pages", endpoint.sourcePages.join(", "));
+  appendLineageText(section, "Reported mass", formatEarlierRecordMass(endpoint.massGrams));
+  parent.append(section);
+}
+
+function renderLineageClaims(lineage) {
+  const section = document.createElement("section");
+  section.className = "lineage-claims";
+  section.setAttribute("aria-label", "Source-complete lineage claims");
+  const heading = document.createElement("h4");
+  heading.textContent = "Lineage evidence";
+  const summary = document.createElement("p");
+  summary.className = "lineage-summary";
+  summary.textContent = lineage.summary.text;
+  const list = document.createElement("ol");
+  lineage.claims.forEach((claim) => {
     const item = document.createElement("li");
-    const link = document.createElement("a");
-    link.className = "earlier-record-link";
-    link.href = entry.catalogSearchUrl;
-    link.textContent = `${entry.catalogYear} · ${displayText(entry.catalogLabel)}`;
-    const name = document.createElement("p");
-    name.textContent = `Source name: ${entry.sourceName ? displayText(entry.sourceName) : "Not recorded"}`;
-    const facts = document.createElement("p");
-    facts.className = "earlier-record-facts";
-    facts.textContent = entry.relationship === "same-inventory"
-      ? `Same collection inventory ID: ${entry.seriesId}:${entry.inventoryId} · Reported mass: ${formatEarlierRecordMass(entry.massGrams)}`
-      : `Possible match · Reported mass: ${formatEarlierRecordMass(entry.massGrams)} · ${LINEAGE_STRENGTH_LABELS[entry.strength]}`;
-    item.append(link, name, facts);
+    const details = document.createElement("details");
+    const disclosure = document.createElement("summary");
+    disclosure.textContent = claim.kind === "source-attested-tentative-group"
+      ? `${lineageDisplayLabel("presentationStatus", claim.presentationStatus)} · ${claim.groupId}`
+      : `${lineageDisplayLabel("presentationStatus", claim.presentationStatus)} · ${claim.relationshipId}`;
+    details.append(disclosure);
+    if (claim.kind === "source-attested-tentative-group") {
+      appendLineageText(details, "Source", `${claim.source.catalogLabel} (${claim.source.catalogYear})`);
+      appendLineageText(details, "Source section", claim.source.sourceSection);
+      appendLineageText(details, "Source page", claim.source.printedPage);
+      appendLineageText(details, "Claim type", claim.rawClaimType);
+      appendLineageText(details, "Classification", claim.classification);
+      appendLineageText(details, "Current member", claim.currentMember);
+      appendLineageText(details, "Complete group membership", claim.members.join(", "));
+      appendLineageText(details, "Reference", claim.source.reference);
+      appendLineageText(details, "Caution", claim.caution);
+    } else {
+      appendLineageText(details, "Relationship ID", claim.relationshipId);
+      appendLineageText(details, "Relationship", lineageDisplayLabel("rawRelationship", claim.rawRelationship));
+      appendLineageText(details, "Raw status", lineageDisplayLabel("rawRelationshipStatus", claim.rawStatus));
+      appendLineageText(details, "Identity basis", claim.basis.label);
+      if (claim.kind === "same-inventory") {
+        appendLineageText(details, "Collection series", claim.collectionSeries.id);
+        appendLineageText(details, "Normalized inventory ID", claim.collectionSeries.inventoryId);
+      } else {
+        appendLineageText(details, "Identity method", lineageDisplayLabel("identityMethod", claim.identity.method));
+        appendLineageText(details, "Identity key", claim.identity.key);
+        appendLineageText(details, "Canonical name", claim.identity.canonicalName || "Not recorded");
+        appendLineageText(details, "Evidence strength", lineageDisplayLabel("evidenceStrength", claim.evidence.strength));
+        appendLineageText(details, "Mass comparison", lineageDisplayLabel("massMatch", claim.evidence.massMatch));
+        appendLineageText(details, "Matching facts", claim.evidence.factCodes.map((code) => lineageDisplayLabel("factCode", code)).join("; "));
+        appendLineageText(details, "Evidence cautions", claim.evidence.cautionCodes.map((code) => lineageDisplayLabel("cautionCode", code)).join("; "));
+        appendLineageText(details, "Review status", lineageDisplayLabel("reviewStatus", claim.review.status));
+        if (claim.review.status === "reviewed") {
+          appendLineageText(details, "Review outcome", lineageDisplayLabel("reviewOutcome", claim.review.outcome));
+          appendLineageText(details, "Reviewed on", claim.review.reviewedOn);
+          appendLineageText(details, "Review note", claim.review.publicNote || "No public note supplied");
+          if (!claim.review.citations.length) appendLineageText(details, "Review citations", "No public citations supplied");
+          claim.review.citations.forEach((citation) => {
+            const citationLink = document.createElement("a");
+            citationLink.href = citation.url;
+            citationLink.target = "_blank";
+            citationLink.rel = "noopener noreferrer";
+            citationLink.textContent = citation.label;
+            details.append(citationLink);
+          });
+        }
+      }
+      appendLineageEndpoint(details, "Earlier endpoint", claim.earlierEndpoint);
+      appendLineageEndpoint(details, "Later endpoint", claim.laterEndpoint);
+      appendLineageText(details, "Caution", claim.caution);
+    }
+    item.append(details);
     list.append(item);
   });
-  section.hidden = false;
+  section.append(heading, summary, list);
+  return section;
 }
 
 function formatLineageSummary(value) {
@@ -3647,7 +3930,11 @@ function formatLineageSummary(value) {
     if (!value) return "No lineage known";
     return `${integerFormat.format(value)} earlier lineage ${value === 1 ? "record" : "records"}`;
   }
-  const groupCount = value.filter(({ kind }) => kind === "source-attested-tentative-pairing-group").length;
+  if (value.every(({ presentationStatus }) => ["known", "suspected", "tentative"].includes(presentationStatus))) {
+    const count = (status) => value.filter(({ presentationStatus }) => presentationStatus === status).length;
+    return `Known same-inventory continuity: ${count("known")} | Suspected cross-catalog matches: ${count("suspected")} | Source-attested tentative groups: ${count("tentative")}`;
+  }
+  const groupCount = value.filter(({ kind }) => ["group-route", "source-attested-tentative-group"].includes(kind)).length;
   const earlierCount = value.length - groupCount;
   const summaries = [];
   if (earlierCount) summaries.push(`${integerFormat.format(earlierCount)} earlier lineage ${earlierCount === 1 ? "record" : "records"}`);
@@ -4120,6 +4407,7 @@ if (typeof module !== "undefined" && module.exports) {
     SPECIMEN_LINEAGE_DATA_SHA256,
     SOURCE_CLAIMS_CONTENT_SHA256,
     LINEAGE_SHA256: SPECIMEN_LINEAGE_DATA_SHA256,
+    LINEAGE_DISPLAY_LABELS,
     OBSERVATION_DESCRIPTOR_COUNT,
     PROJECTION_SHA256: SPECIMEN_CARD_PROJECTION_DATA_SHA256,
     SPECIMEN_DESCRIPTOR_COUNT,
@@ -4201,6 +4489,8 @@ if (typeof module !== "undefined" && module.exports) {
     sha256TextSync,
     serializeUrlFilters,
     lineageEntriesForSpecimenCard,
+    lineageCardDto,
+    lineageDisplayLabel,
     paginateSpecimenCardDescriptors,
     specimenCardDescriptorHoldings,
     specimenCardDescriptorMasses,
@@ -4209,6 +4499,7 @@ if (typeof module !== "undefined" && module.exports) {
     specimenCardPositionLabel,
     specimenCardContextEntries,
     specimenCardSourceMasses,
+    renderableLineageClaimsForCard,
     tableASpecimenFacts,
     victoriaConflictFacts,
     weightSortValue,

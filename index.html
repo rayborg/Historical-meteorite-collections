@@ -8,8 +8,8 @@
   <meta name="theme-color" content="#2d241b">
   <title>The Meteorite Cabinet | Historical Collection Index</title>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=20260909-global-fields-1">
-  <script src="./app.js?v=20260909-global-fields-1" defer></script>
+  <link rel="stylesheet" href="./styles.css?v=20260910-weight-lineage-1">
+  <script src="./app.js?v=20260910-weight-lineage-1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#catalog">Skip to catalog</a>
@@ -102,11 +102,11 @@
         <div class="filter-toggles">
           <label class="filter-toggle lineage-field">
             <input id="lineage-only" name="lineage" type="checkbox" value="1">
-            <span>Known or suspected lineage only</span>
+            <span>Source-complete lineage claims only</span>
           </label>
           <label class="filter-toggle unknown-weight-field">
             <input id="include-unknown-weight" name="include-unknown-weight" type="checkbox">
-            <span>Include observations and specimens without weight</span>
+            <span>Include observations and source-unlisted specimens</span>
           </label>
         </div>
       </form>
@@ -116,7 +116,7 @@
       <div class="results-bar">
         <div>
           <p class="eyebrow">Source ledger</p>
-          <h2 id="results-heading"><span id="result-count">Loading</span> <small id="result-unit">weighted specimens</small></h2>
+          <h2 id="results-heading"><span id="result-count">Loading</span> <small id="result-unit">source-listed specimens</small></h2>
         </div>
         <button id="clear-filters" class="text-button" type="button" hidden>Clear filters</button>
       </div>
