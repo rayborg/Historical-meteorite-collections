@@ -290,7 +290,8 @@ test("representative corrected and unresolved specimen cards preserve the comple
   assert.equal(fact(present(corrected), "Current Meteoritical Bulletin name"), corrected.parentRecord.metbull.canonicalName);
   assert.equal(fact(present(unresolved), "Current Meteoritical Bulletin name"), undefined);
   assert.match(styles, /overflow-wrap: anywhere;/u);
-  assert.match(styles, /\.record-meta div \{[^}]*grid-template-columns: minmax\(0, 1fr\);/u);
+  assert.match(styles, /\.record-meta div \{[^}]*grid-template-columns: minmax\(7\.25rem, 9rem\) minmax\(0, 1fr\);/u);
+  assert.match(styles, /@media \(max-width: 520px\)[\s\S]*\.record-meta div \{ grid-template-columns: minmax\(0, 1fr\);/u);
   assert.match(styles, /\.record-meta dt \{[^}]*word-break: normal;[^}]*overflow-wrap: normal;/u);
 });
 
@@ -476,15 +477,20 @@ test("accessible shell, responsive breakpoints, approved cache, and immutable da
   assert.match(styles, /\.catalog-grid \{[^}]*grid-template-columns: repeat\(3, minmax\(0, 1fr\)\);/u);
   assert.match(styles, /@media \(max-width: 1200px\)[\s\S]*\.catalog-grid \{ grid-template-columns: repeat\(2, minmax\(0, 1fr\)\); \}/u);
   assert.match(styles, /@media \(max-width: 700px\)[\s\S]*\.catalog-grid \{ grid-template-columns: 1fr; \}/u);
+  assert.match(styles, /@media \(max-width: 520px\)[\s\S]*\.record-meta div \{ grid-template-columns: minmax\(0, 1fr\);/u);
   assert.match(styles, /@media \(max-width: 420px\)[\s\S]*\.record-card \{ padding-inline: 1rem; \}/u);
+  assert.match(styles, /\.record-card \{[^}]*padding: 1rem 1rem \.85rem;/u);
+  assert.match(styles, /\.record-name \{[^}]*font-size: clamp\(1\.2rem, 1\.8vw, 1\.55rem\);/u);
+  assert.match(styles, /\.record-meta dt \{[^}]*font-size: \.6rem;/u);
+  assert.match(styles, /\.record-meta dd \{[^}]*font-size: \.8rem;/u);
   assert.doesNotMatch(styles, /\.record-meta dt \{[^}]*overflow-wrap: anywhere;/u);
-  assert.equal(app.CACHE_VERSION, "20260911-current-name-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260911-current-name-1");
+  assert.equal(app.CACHE_VERSION, "20260911-compact-cards-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260911-compact-cards-1");
   for (const document of [html, catalogsHtml]) {
-    assert.match(document, /styles\.css\?v=20260911-current-name-1/u);
-    assert.match(document, /app\.js\?v=20260911-current-name-1/u);
+    assert.match(document, /styles\.css\?v=20260911-compact-cards-1/u);
+    assert.match(document, /app\.js\?v=20260911-compact-cards-1/u);
   }
-  assert.match(catalogsHtml, /catalogs\.js\?v=20260911-current-name-1/u);
+  assert.match(catalogsHtml, /catalogs\.js\?v=20260911-compact-cards-1/u);
   assert.deepEqual({
     catalog: sha256(catalogText),
     projections: sha256(projectionText),

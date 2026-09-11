@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260911-current-name-1";
+const CACHE_VERSION = "20260911-compact-cards-1";
 const ASSET_CACHE_VERSION = CACHE_VERSION;
 const CATALOG_SCHEMA_VERSION = 12;
 const CATALOG_RECORD_COUNT = 19553;

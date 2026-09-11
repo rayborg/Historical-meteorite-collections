@@ -192,12 +192,13 @@ test("schema 12 card semantics, cache keys, responsive layout, and privacy bound
   assert.equal(victoriaDto.facts.find(({ label }) => label === "Specimen form").value, "Individual specimen");
   assert.equal(victoriaDto.facts.some(({ label }) => label === "Coordinate"), false);
   assert.match(styles, /@media \(max-width: 700px\)[\s\S]*\.catalog-grid \{ grid-template-columns: 1fr; \}/u);
-  assert.match(styles, /\.record-meta div \{[^}]*grid-template-columns: minmax\(0, 1fr\);/u);
+  assert.match(styles, /\.record-meta div \{[^}]*grid-template-columns: minmax\(7\.25rem, 9rem\) minmax\(0, 1fr\);/u);
+  assert.match(styles, /@media \(max-width: 520px\)[\s\S]*\.record-meta div \{ grid-template-columns: minmax\(0, 1fr\);/u);
   assert.match(styles, /\.record-meta dt \{[^}]*overflow-wrap: normal;/u);
-  assert.equal(app.CACHE_VERSION, "20260911-current-name-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260911-current-name-1");
-  assert.match(html, /styles\.css\?v=20260911-current-name-1/u);
-  assert.match(html, /app\.js\?v=20260911-current-name-1/u);
+  assert.equal(app.CACHE_VERSION, "20260911-compact-cards-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260911-compact-cards-1");
+  assert.match(html, /styles\.css\?v=20260911-compact-cards-1/u);
+  assert.match(html, /app\.js\?v=20260911-compact-cards-1/u);
   const newSourceRecords = catalog.records.filter(({ catalogId }) => ["hodge-smith-1939", "victoria-land-1982"].includes(catalogId));
   assert.doesNotMatch(JSON.stringify(newSourceRecords), /(?:raw[ _-]*ocr|\/private\/|\/Users\/|source[ _-]*image|scan[ _-]*(?:file|path)|research[ _-]*notes?)/iu);
 });
