@@ -162,8 +162,8 @@ test("statistics count each Victoria mass once, no Hodge mass, and retain parent
   assert.deepEqual({ observations: hodgeStats.observations, grams: hodgeStats.grams }, { observations: 84, grams: 0 });
   assert.equal(victoriaStats.observations, 273);
   assert.equal(victoriaStats.grams, victoria.reduce((sum, record) => sum + record.weight.grams, 0));
-  assert.equal(total.observations, 18217);
-  assert.equal(total.catalogs, 49);
+  assert.equal(total.observations, 19553);
+  assert.equal(total.catalogs, 52);
   assert(Math.abs(total.grams - (app.calculateStatistics(legacy).grams + victoriaStats.grams)) < 1e-6);
 });
 
@@ -178,7 +178,7 @@ test("lineage and projection enhancements bind schema 12 and retain exact source
   const sourceCatalogSha256 = createHash("sha256").update(catalogText).digest("hex");
   assert.equal(sourceCatalogSha256, projections.metadata.sourceCatalogSha256);
   const projectionIndex = app.deriveSpecimenCardProjectionIndex(projections, records, { sourceCatalogSha256 });
-  assert.equal(projectionIndex.size, 3062);
+  assert.equal(projectionIndex.size, 3407);
   const descriptors = app.expandSpecimenCardDescriptors([...hodge, ...victoria], projectionIndex);
   assert.equal(descriptors.length, 357);
   assert(descriptors.every(({ kind, projected }) => kind === "parent" && projected === false));
@@ -194,10 +194,10 @@ test("schema 12 card semantics, cache keys, responsive layout, and privacy bound
   assert.match(styles, /@media \(max-width: 700px\)[\s\S]*\.catalog-grid \{ grid-template-columns: 1fr; \}/u);
   assert.match(styles, /\.record-meta div \{[^}]*grid-template-columns: minmax\(0, 1fr\);/u);
   assert.match(styles, /\.record-meta dt \{[^}]*overflow-wrap: normal;/u);
-  assert.equal(app.CACHE_VERSION, "20260910-weight-lineage-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260910-weight-lineage-1");
-  assert.match(html, /styles\.css\?v=20260910-weight-lineage-1/u);
-  assert.match(html, /app\.js\?v=20260910-weight-lineage-1/u);
+  assert.equal(app.CACHE_VERSION, "20260911-museum3-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260911-museum3-1");
+  assert.match(html, /styles\.css\?v=20260911-museum3-1/u);
+  assert.match(html, /app\.js\?v=20260911-museum3-1/u);
   const newSourceRecords = catalog.records.filter(({ catalogId }) => ["hodge-smith-1939", "victoria-land-1982"].includes(catalogId));
   assert.doesNotMatch(JSON.stringify(newSourceRecords), /(?:raw[ _-]*ocr|\/private\/|\/Users\/|source[ _-]*image|scan[ _-]*(?:file|path)|research[ _-]*notes?)/iu);
 });

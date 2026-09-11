@@ -72,7 +72,9 @@ function expectedIdentifier(descriptor, kind) {
   if (record.recordModel === "regional-census-fact") {
     return record.reportedNumber ? `Source number ${record.reportedNumber}` : `Regional census entry ${record.entryOrder}`;
   }
-  if (record.recordModel === "collection-representation-fact") return `List no. ${record.reportedNumber}`;
+  if (record.recordModel === "collection-representation-fact") {
+    return record.reportedNumber ? `List no. ${record.reportedNumber}` : `Collection representation ${record.entryOrder}`;
+  }
   if (record.recordModel === "table-a-specimen") return record.specimenId || "Unknown";
   if (record.recordModel === "dealer-offer-fact") return `Type number ${record.typeNumber}`;
   return record.designation || "Unknown";
@@ -100,15 +102,15 @@ test("every production display descriptor has the closed harmonized DTO and exac
     assert(dto.facts.every(({ label, value }) => typeof label === "string" && label && typeof value === "string" && value));
   }
   assert.deepEqual(counts, {
-    "collection-observation": 6859,
-    "projected-atomic-specimen": 8062,
+    "collection-observation": 6867,
+    "projected-atomic-specimen": 8410,
     "direct-specimen": 5739,
     "source-observation": 3,
     "regional-observation": 84,
     "dealer-observation": 6,
-    "collection-representation-observation": 2464,
+    "collection-representation-observation": 3447,
   });
-  assert.equal(descriptors.length, 23217);
+  assert.equal(descriptors.length, 24556);
 });
 
 test("semantic type labels are hidden for specimens and retained for observations", () => {
@@ -158,13 +160,13 @@ test("every production card uses the approved fact order, values, missing behavi
       if (dto.sourceName === "Unknown") missing.sourceName = (missing.sourceName || 0) + 1;
     }
   }
-  assert.equal(specimenCount, 13801);
+  assert.equal(specimenCount, 14149);
   assert.deepEqual(missing, {
-    "Current Meteoritical Bulletin name": 2337,
-    "Individual find location": 13690,
-    Lineage: 12845,
+    "Current Meteoritical Bulletin name": 2375,
+    "Individual find location": 14038,
+    Lineage: 13186,
     Event: 2736,
-    Class: 230,
+    Class: 232,
     "Source locality": 1097,
     "Specimen weight": 172,
     sourceName: 57,
@@ -177,12 +179,12 @@ test("every production card uses the approved fact order, values, missing behavi
     lineageResolved: specimenCount - missing.Lineage,
     weightResolved: specimenCount - missing["Specimen weight"],
   }, {
-    currentNameResolved: 11464,
-    classResolved: 13571,
-    eventResolved: 11065,
+    currentNameResolved: 11774,
+    classResolved: 13917,
+    eventResolved: 11413,
     locationResolved: 111,
-    lineageResolved: 956,
-    weightResolved: 13629,
+    lineageResolved: 963,
+    weightResolved: 13977,
   });
 });
 
@@ -331,8 +333,8 @@ test("projection changes display-card multiplicity without changing parent resul
     query: "", catalog: null, min: null, max: null,
     lineageOnly: false, includeUnknownWeight: true, sort: app.DEFAULT_SORT
   };
-  assert.equal(app.filterRecords(records, filters, lineageIndex).length, 18217);
-  assert.equal(new Set(descriptors.map(({ parentRecord }) => parentRecord.id)).size, 18217);
+  assert.equal(app.filterRecords(records, filters, lineageIndex).length, 19553);
+  assert.equal(new Set(descriptors.map(({ parentRecord }) => parentRecord.id)).size, 19553);
   for (const descriptor of catalog.metadata.catalogs) {
     const parents = app.filterRecords(records, { ...filters, catalog: descriptor.id }, lineageIndex);
     assert.equal(parents.length, descriptor.recordCount, descriptor.id);
@@ -341,7 +343,7 @@ test("projection changes display-card multiplicity without changing parent resul
   }
 });
 
-test("default strict filter retains only the 13,629 source-listed-weight specimen cards", () => {
+test("default strict filter retains only the 13,977 source-listed-weight specimen cards", () => {
   const inclusive = app.filterSpecimenCardDescriptors(descriptors, {
     min: null, max: null, lineageOnly: false, includeUnknownWeight: true
   }, lineageIndex);
@@ -354,11 +356,11 @@ test("default strict filter retains only the 13,629 source-listed-weight specime
   const unknownSpecimens = inclusive.filter((descriptor) =>
     ["direct-specimen", "projected-atomic-specimen"].includes(app.classifyHarmonizedCard(descriptor)) &&
     !app.specimenCardDescriptorHasKnownWeight(descriptor));
-  assert.equal(inclusive.length, 23217);
-  assert.equal(weightedOnly.length, 13629);
-  assert.equal(defaultFiltered.length, 13629);
+  assert.equal(inclusive.length, 24556);
+  assert.equal(weightedOnly.length, 13977);
+  assert.equal(defaultFiltered.length, 13977);
   assert.deepEqual(defaultFiltered, weightedOnly);
-  assert.equal(app.WEIGHTED_DESCRIPTOR_COUNT, 13629);
+  assert.equal(app.WEIGHTED_DESCRIPTOR_COUNT, 13977);
   assert.equal(unknownSpecimens.length, 172);
   assert(weightedOnly.every((descriptor) => {
     const kind = app.classifyHarmonizedCard(descriptor);
@@ -388,7 +390,7 @@ test("default strict filter retains only the 13,629 source-listed-weight specime
   assert(mixedFiltered.every((descriptor) => app.specimenCardDescriptorMasses(descriptor).length > 0));
 });
 
-test("weight census is a closed 13,625 numeric, 4 qualitative, and 172 source-unlisted specimen partition", () => {
+test("weight census is a closed 13,966 numeric, 11 qualitative, and 172 source-unlisted specimen partition", () => {
   const specimens = descriptors.filter((descriptor) =>
     ["direct-specimen", "projected-atomic-specimen"].includes(app.classifyHarmonizedCard(descriptor)));
   const numeric = specimens.filter((descriptor) => app.specimenCardDescriptorMasses(descriptor).length > 0);
@@ -398,15 +400,22 @@ test("weight census is a closed 13,625 numeric, 4 qualitative, and 172 source-un
   const notIndividual = descriptors.filter((descriptor) => app.classifyHarmonizedCard(descriptor) === "source-observation");
   assert.deepEqual({ specimens: specimens.length, numeric: numeric.length, qualitative: qualitative.length,
     sourceUnlisted: sourceUnlisted.length, notIndividual: notIndividual.length },
-  { specimens: 13801, numeric: 13625, qualitative: 4, sourceUnlisted: 172, notIndividual: 3 });
+  { specimens: 14149, numeric: 13966, qualitative: 11, sourceUnlisted: 172, notIndividual: 3 });
   assert.equal(app.filterSpecimenCardDescriptors(specimens, {
     min: 0, max: null, lineageOnly: false, includeUnknownWeight: true,
-  }, lineageIndex).length, 13625);
+  }, lineageIndex).length, 13966);
   assert.deepEqual(qualitative.map(({ parentRecord, projected, sourcePosition }) =>
     projected ? `${parentRecord.id}--specimen-${sourcePosition + 1}` : parentRecord.id).sort(), [
     "obs-014fa351-665c-4bcb-b83f-3610f0ff425c--specimen-5",
     "obs-26389145-2d52-4acf-8b33-06aa8489edfe--specimen-3",
+    "obs-327f24de-1d9e-4d32-beb5-02d92da394ed--specimen-1",
+    "obs-3d14d6ee-ac0e-4ee1-afa2-6e120be03784--specimen-1",
+    "obs-4abadfcd-cac6-495a-baa3-6247c4f23029--specimen-1",
+    "obs-6a96e225-20b3-48c2-b29d-abc6e3b6993e--specimen-1",
     "obs-9286c6b5-4942-41f0-a905-8854f457bd9d",
+    "obs-9dec06e1-df7f-4306-9a80-1dca86be2974--specimen-1",
+    "obs-b9a75360-da41-4407-8e2a-4283bfe2a566--specimen-1",
+    "obs-c826a6f7-d9a3-417f-a304-a4e566f36f6c--specimen-1",
     "obs-e2b4f522-b31d-4dcb-9cf6-7b8ba35da649--specimen-1",
   ]);
 });
@@ -469,22 +478,22 @@ test("accessible shell, responsive breakpoints, approved cache, and immutable da
   assert.match(styles, /@media \(max-width: 700px\)[\s\S]*\.catalog-grid \{ grid-template-columns: 1fr; \}/u);
   assert.match(styles, /@media \(max-width: 420px\)[\s\S]*\.record-card \{ padding-inline: 1rem; \}/u);
   assert.doesNotMatch(styles, /\.record-meta dt \{[^}]*overflow-wrap: anywhere;/u);
-  assert.equal(app.CACHE_VERSION, "20260910-weight-lineage-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260910-weight-lineage-1");
+  assert.equal(app.CACHE_VERSION, "20260911-museum3-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260911-museum3-1");
   for (const document of [html, catalogsHtml]) {
-    assert.match(document, /styles\.css\?v=20260910-weight-lineage-1/u);
-    assert.match(document, /app\.js\?v=20260910-weight-lineage-1/u);
+    assert.match(document, /styles\.css\?v=20260911-museum3-1/u);
+    assert.match(document, /app\.js\?v=20260911-museum3-1/u);
   }
-  assert.match(catalogsHtml, /catalogs\.js\?v=20260910-weight-lineage-1/u);
+  assert.match(catalogsHtml, /catalogs\.js\?v=20260911-museum3-1/u);
   assert.deepEqual({
     catalog: sha256(catalogText),
     projections: sha256(projectionText),
     lineages: sha256(lineageText),
     reviews: sha256(reviewText),
   }, {
-    catalog: "d06cb3c737ffec0259e43e778ed62056d88701c36637b661d20a91dd1061d5b3",
-    projections: "f7f547fc6a22fe7cec794593db716d59896280ae3a1767fc1c050f80f1f02ea0",
-    lineages: "ab9960cdb5bebc83b9132e72c1369f0073e2735cdc7995925a3feb36948debd2",
-    reviews: "8262150ef01a0996d9f63ab0b3234e3d927d1d49c9200861778d763a2034963f",
+    catalog: "cf429e6660f00272f2f81fe69bac81c891f41574bbfff6e6bb46499d2d0672b4",
+    projections: "e128dc388ede6590b5e373fe36958d4b5d068641a4454719c23044c146e13e0e",
+    lineages: "3f1d63db2effbe497e328ac99831c22d661fd72a2fba2fd1ec74a83186a523a9",
+    reviews: "aff7c3773af3e812578776b82ee81cd20060009eb72ca1326220cd2e0c8d5283",
   });
 });

@@ -70,12 +70,12 @@ function projectionSemantics() {
 }
 
 test("CF001 installs the exact accepted catalog bytes", () => {
-  assert.equal(sha256(catalogText), "d06cb3c737ffec0259e43e778ed62056d88701c36637b661d20a91dd1061d5b3");
-  assert.deepEqual([catalog.records.length, catalog.metadata.catalogs.length], [18217, 49]);
+  assert.equal(sha256(catalogText), "cf429e6660f00272f2f81fe69bac81c891f41574bbfff6e6bb46499d2d0672b4");
+  assert.deepEqual([catalog.records.length, catalog.metadata.catalogs.length], [19553, 52]);
 });
 
 test("CF002 installs the exact accepted folio and source-claims bytes", () => {
-  assert.equal(sha256(foliosText), "ed23bc9af5bb73eb932fd928f7d46b02379265bbeb43911d44004aa4cddacdd5");
+  assert.equal(sha256(foliosText), "1c8f08b357358789b9133a568246f48964970748635adbf6f21b7ac156e16165");
   assert.equal(sha256(sourceClaimsText), "edb201339e9e1068ac45d3333a9224959b4dcdbf8e317afcbb0657c6635b85fb");
   assert.equal(sourceClaims.claims.length, 21);
 });
@@ -106,7 +106,7 @@ test("CF005 publishes the exact Mantos Blancos classification", () => {
 
 test("CF006 lineage derivation admits only positive masses", () => {
   const masses = flattenMassObservations(catalog);
-  assert.equal(masses.length, 16819);
+  assert.equal(masses.length, 17160);
   assert(masses.every(({ public: observation }) => observation.massGrams > 0));
 });
 
@@ -117,7 +117,7 @@ test("CF007 omits incompatible inventory 139b and reconciles lineage counts", ()
     sameInventory: lineages.metadata.counts.sameInventoryRelationshipCount,
     possible: lineages.metadata.counts.possibleMatchRelationshipCount,
     omitted: lineages.metadata.counts.omittedAmbiguousInventoryKeyCount,
-  }, { relationships: 2429, sameInventory: 194, possible: 2235, omitted: 1 });
+  }, { relationships: 2439, sameInventory: 194, possible: 2245, omitted: 1 });
 });
 
 test("CF008 every established same-inventory pair is identity-consistent", () => {
@@ -131,11 +131,11 @@ test("CF009 projections retain exact counts and source semantics after rebinding
     schemaVersion: 5,
     scope: "reviewed-atomic-specimen-card-display-projections",
     catalogSchemaVersion: 12,
-    sourceRecordCount: 18217,
-    sourceCatalogSha256: "d06cb3c737ffec0259e43e778ed62056d88701c36637b661d20a91dd1061d5b3",
-    projectionCount: 3062,
-    atomicCardCount: 8062,
-    sourceContextCardCount: 2532,
+    sourceRecordCount: 19553,
+    sourceCatalogSha256: "cf429e6660f00272f2f81fe69bac81c891f41574bbfff6e6bb46499d2d0672b4",
+    projectionCount: 3407,
+    atomicCardCount: 8410,
+    sourceContextCardCount: 2877,
   });
   const elCapitan = projections.projections.find(({ parentRecordId }) =>
     parentRecordId === "obs-68c7e39b-9d99-4f9a-a1d2-7b2374d76d47");
@@ -145,7 +145,7 @@ test("CF009 projections retain exact counts and source semantics after rebinding
     "holdings[0].weights[2].grams",
   ]);
   assert.equal(sha256(JSON.stringify(projectionSemantics())),
-    "2d7c6e3f8ad71df9db01a9dc4f4eee94c2dacafd58b00bc3db45dcca9f3daa2d");
+    "cb4802f2895f9992ae05a4b6c0e2f3023ad04b31fddc5151522eb0e341f106a6");
 });
 
 test("CF010 preserves non-target data, privacy, cache, and label behavior", () => {
@@ -154,14 +154,15 @@ test("CF010 preserves non-target data, privacy, cache, and label behavior", () =
     "obs-38554aa8-007c-447f-9410-91d447f74149",
   ]);
   const fletcherCatalogIds = new Set(["fletcher-1886", "fletcher-1894", "fletcher-1896", "fletcher-1904", "fletcher-1908"]);
-  assert.equal(sha256(JSON.stringify(catalog.records.filter(({ id, catalogId }) => !correctedRecordIds.has(id) && !fletcherCatalogIds.has(catalogId)))),
+  const museum3CatalogIds = new Set(["story-maskelyne-1872", "prior-guide-1926", "brauns-bonn-1926"]);
+  assert.equal(sha256(JSON.stringify(catalog.records.filter(({ id, catalogId }) => !correctedRecordIds.has(id) && !fletcherCatalogIds.has(catalogId) && !museum3CatalogIds.has(catalogId)))),
     "72fbc9707d77858f22ec34f683143ebd6bddf942bb20ef6209799be26b4ea485");
-  assert.equal(sha256(JSON.stringify(catalog.metadata.catalogs.filter(({ id }) => id !== "victoria-land-1982" && !fletcherCatalogIds.has(id)))),
+  assert.equal(sha256(JSON.stringify(catalog.metadata.catalogs.filter(({ id }) => id !== "victoria-land-1982" && !fletcherCatalogIds.has(id) && !museum3CatalogIds.has(id)))),
     "35898f917b2302583d7d1101eed5958c268699bf7de8af31990b14e09d0546ae");
   assert.doesNotMatch(catalogText + sourceClaimsText + projectionText,
     /(?:\/private\/|\/Users\/|file:\/\/|sourcePath|sourceFile|rawRowText|raw\s+ocr)/iu);
-  assert.equal(app.CACHE_VERSION, "20260910-weight-lineage-1");
-  for (const html of [indexHtml, catalogsHtml]) assert.match(html, /20260910-weight-lineage-1/u);
+  assert.equal(app.CACHE_VERSION, "20260911-museum3-1");
+  for (const html of [indexHtml, catalogsHtml]) assert.match(html, /20260911-museum3-1/u);
   assert.equal(app.shouldDisplaySemanticLabel("direct-specimen"), false);
   assert.equal(app.shouldDisplaySemanticLabel("projected-atomic-specimen"), false);
   assert.equal(app.shouldDisplaySemanticLabel("collection-observation"), true);

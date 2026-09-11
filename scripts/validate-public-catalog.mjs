@@ -888,10 +888,17 @@ function validatePublicCatalog(data, folios, path = "catalog") {
       entryOrders.add(record.entryOrder);
       collectionEntryOrders.set(record.catalogId, entryOrders);
       previousCollectionEntries.set(record.catalogId, record.entryOrder);
-      for (const field of ["reportedNumber", "section"]) assertString(record[field], `${recordPath}.${field}`);
+      assertString(record.reportedNumber, `${recordPath}.reportedNumber`, true);
+      assertString(record.section, `${recordPath}.section`);
       for (const field of ["pane", "name", "eventDate", "reference"]) assertString(record[field], `${recordPath}.${field}`, true);
-      assert(record.id === `${record.catalogId}-representation-${String(record.entryOrder).padStart(4, "0")}`,
-        `${recordPath}.id must be the deterministic public representation ID`);
+      if (record.catalogId.startsWith("fletcher-")) {
+        assert(record.id === `${record.catalogId}-representation-${String(record.entryOrder).padStart(4, "0")}`,
+          `${recordPath}.id must be the deterministic Fletcher representation ID`);
+      } else {
+        assert(["story-maskelyne-1872", "prior-guide-1926"].includes(record.catalogId) &&
+          /^obs-[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/u.test(record.id),
+        `${recordPath}.id must be a frozen Museum3 observation UUID`);
+      }
       assertExactKeys(record.representedWeight, ["valueText", "componentTexts", "grams", "semantics"], `${recordPath}.representedWeight`);
       assertString(record.representedWeight.valueText, `${recordPath}.representedWeight.valueText`, true);
       assert(Array.isArray(record.representedWeight.componentTexts), `${recordPath}.representedWeight.componentTexts must be an array`);
@@ -978,7 +985,7 @@ function validatePublicCatalog(data, folios, path = "catalog") {
   assertExactSet(representedCatalogs, metadataByCatalog.keys(), `${path} record catalog IDs`);
   assertExactSet(Object.keys(folios.catalogs), metadataByCatalog.keys(), `${path} folio catalog IDs`);
   assert(data.metadata.recordCount === data.records.length, `${path}.metadata.recordCount does not match records`);
-  if (data.records.length === 18217 && metadataByCatalog.size === 49) {
+  if (data.records.length === 19553 && metadataByCatalog.size === 52) {
     assert(individualFindLocationCount === 111,
       `${path} must contain exactly 111 specimen individualFindLocation values`);
     assertExactSet(qualitativeWeightIds, ["obs-9286c6b5-4942-41f0-a905-8854f457bd9d"], `${path} qualitative weight record IDs`);

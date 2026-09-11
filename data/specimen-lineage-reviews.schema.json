@@ -9,8 +9,8 @@
     "schemaVersion": { "const": 1 },
     "reviews": {
       "type": "array",
-      "minItems": 896,
-      "maxItems": 896,
+      "minItems": 906,
+      "maxItems": 906,
       "uniqueItems": true,
       "items": { "$ref": "#/$defs/review" }
     }

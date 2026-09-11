@@ -13,19 +13,20 @@ const sha256 = (value) => createHash("sha256").update(value).digest("hex");
 const jsonSha256 = (value) => sha256(JSON.stringify(value));
 
 test("installs the exact accepted schema-12 export without changing non-correction data", () => {
-  assert.equal(sha256(catalogText), "d06cb3c737ffec0259e43e778ed62056d88701c36637b661d20a91dd1061d5b3");
-  assert.equal(sha256(foliosText), "ed23bc9af5bb73eb932fd928f7d46b02379265bbeb43911d44004aa4cddacdd5");
+  assert.equal(sha256(catalogText), "cf429e6660f00272f2f81fe69bac81c891f41574bbfff6e6bb46499d2d0672b4");
+  assert.equal(sha256(foliosText), "1c8f08b357358789b9133a568246f48964970748635adbf6f21b7ac156e16165");
   assert.equal(catalog.metadata.schemaVersion, 12);
-  assert.equal(catalog.metadata.catalogs.length, 49);
-  assert.equal(catalog.records.length, 18217);
+  assert.equal(catalog.metadata.catalogs.length, 52);
+  assert.equal(catalog.records.length, 19553);
   const correctedRecordIds = new Set([
     "obs-68c7e39b-9d99-4f9a-a1d2-7b2374d76d47",
     "obs-38554aa8-007c-447f-9410-91d447f74149",
   ]);
   const wave2CatalogIds = new Set(["berlin-1903", "berlin-1904", "greifswald-1895", "greifswald-1901"]);
   const fletcherCatalogIds = new Set(["fletcher-1886", "fletcher-1894", "fletcher-1896", "fletcher-1904", "fletcher-1908"]);
-  const nonCorrectionRecords = catalog.records.filter(({ id, catalogId }) => !correctedRecordIds.has(id) && !wave2CatalogIds.has(catalogId) && !fletcherCatalogIds.has(catalogId));
-  const nonVictoriaDescriptors = catalog.metadata.catalogs.filter(({ id }) => id !== "victoria-land-1982" && !wave2CatalogIds.has(id) && !fletcherCatalogIds.has(id));
+  const museum3CatalogIds = new Set(["story-maskelyne-1872", "prior-guide-1926", "brauns-bonn-1926"]);
+  const nonCorrectionRecords = catalog.records.filter(({ id, catalogId }) => !correctedRecordIds.has(id) && !wave2CatalogIds.has(catalogId) && !fletcherCatalogIds.has(catalogId) && !museum3CatalogIds.has(catalogId));
+  const nonVictoriaDescriptors = catalog.metadata.catalogs.filter(({ id }) => id !== "victoria-land-1982" && !wave2CatalogIds.has(id) && !fletcherCatalogIds.has(id) && !museum3CatalogIds.has(id));
   assert.equal(nonCorrectionRecords.length, 14475);
   assert.equal(jsonSha256(nonCorrectionRecords), "ec2a8ad5fea13c2503a5d3db84f26a263baf086d18f89eaab5849b1b5a6948a7");
   assert.equal(jsonSha256(nonVictoriaDescriptors), "31aa040fb71302cb0b8c3a9c691ad747ead2eafec725ac804bdca58cc9b7849e");
@@ -61,6 +62,6 @@ test("Wave 1 public outputs contain no source artifacts or private leakage", () 
   const records = catalog.records.filter(({ catalogId }) => waveCatalogIds.has(catalogId));
   assert.doesNotMatch(JSON.stringify(records),
     /(?:\/private\/|\/Users\/|file:\/\/|data\/ocr\/|source-images|assets\/|\.(?:pdf|png|webp|tiff?|txt|csv))/iu);
-  assert.equal(Object.keys(folios.catalogs).length, 49);
+  assert.equal(Object.keys(folios.catalogs).length, 52);
   assert.equal(releaseLock.assets.filter(({ path }) => [...waveCatalogIds].some((id) => path.includes(id))).length, 0);
 });

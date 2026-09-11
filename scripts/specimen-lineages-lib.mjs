@@ -33,10 +33,11 @@ export const EVIDENCE_STRENGTH_ORDER = [
   "limited-matching-evidence",
 ];
 export const EMPTY_REVIEW_SOURCE = Object.freeze({ schemaVersion: 1, reviews: Object.freeze([]) });
-const MASS_ENDPOINT_GATED_CATALOGS = new Set(["brown-1916", "minnesota-1892"]);
+const MASS_ENDPOINT_GATED_CATALOGS = new Set(["brown-1916", "minnesota-1892", "brauns-bonn-1926"]);
 const REVIEW_GATED_CATALOGS = new Set([
   "brown-1916", "minnesota-1892",
   "greifswald-1895", "greifswald-1901", "berlin-1903", "berlin-1904",
+  "brauns-bonn-1926",
 ]);
 
 const ROOT_KEYS = ["metadata", "sourceAttestedGroups", "relationships"];

@@ -4,9 +4,9 @@
     "scope": "series-inventory-and-cross-source-candidates",
     "source": {
       "catalogSchemaVersion": 12,
-      "recordCount": 18217,
-      "catalogCount": 49,
-      "flattenedMassObservationCount": 16819,
+      "recordCount": 19553,
+      "catalogCount": 52,
+      "flattenedMassObservationCount": 17160,
       "inventoryObservationCount": 3627,
       "sourceClaimsSchemaVersion": 1,
       "sourceClaimsContentSha256": "141ed60b9560596ac8ab392babfc4af6e1d22921bacbf979d3b975e0fc2f20c2"
@@ -56,13 +56,13 @@
       ]
     },
     "counts": {
-      "relationshipCount": 2429,
+      "relationshipCount": 2439,
       "sameInventoryRelationshipCount": 194,
-      "possibleMatchRelationshipCount": 2235,
+      "possibleMatchRelationshipCount": 2245,
       "unreviewedPossibleMatchCount": 1339,
-      "exactMassPossibleMatchCount": 2004,
+      "exactMassPossibleMatchCount": 2014,
       "nearMassPossibleMatchCount": 231,
-      "metbullIdentityPossibleMatchCount": 2235,
+      "metbullIdentityPossibleMatchCount": 2245,
       "normalizedNameIdentityPossibleMatchCount": 0,
       "sameDesignationPossibleMatchCount": 0,
       "designationFamilyPossibleMatchCount": 0,
@@ -72,7 +72,7 @@
       "omittedAmbiguousInventoryKeyCount": 1,
       "possibleMatchEvidenceStrength": {
         "multiple-matching-facts": 0,
-        "two-matching-facts": 2004,
+        "two-matching-facts": 2014,
         "limited-matching-evidence": 231
       },
       "catalogPairs": [
@@ -285,6 +285,26 @@
           "catalogPair": "berlin-1904|washington-1897",
           "sameInventoryCount": 0,
           "possibleMatchCount": 10
+        },
+        {
+          "catalogPair": "brauns-bonn-1926|farrington-1903",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 1
+        },
+        {
+          "catalogPair": "brauns-bonn-1926|farrington-1916",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 6
+        },
+        {
+          "catalogPair": "brauns-bonn-1926|palache-1926",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 2
+        },
+        {
+          "catalogPair": "brauns-bonn-1926|washington-1897",
+          "sameInventoryCount": 0,
+          "possibleMatchCount": 1
         },
         {
           "catalogPair": "brown-1916|farrington-1916",
@@ -2970,6 +2990,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=greifswald-1901&q=record%20id%20obs-19ce6a23-4970-4f32-b7af-9e6345925574#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-03977ba0-ffcb-589c-81c5-dfb57e7a8ed7",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Ternera",
+      "catalogPair": "brauns-bonn-1926|farrington-1916",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "23903",
+        "canonicalName": "Ternera"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-09-11",
+        "publicNote": "Reviewed Bonn principal-piece evidence and the cited comparison observation share an exact reviewed Meteoritical Bulletin identity and reported mass. The publication ordinal is not an inventory identifier; no same-inventory, custody, ownership-transfer, physical-continuity, or merge claim is made.",
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-68223c95-147d-5a5c-b93b-ed057ab2f093",
+          "recordId": "obs-f31c87f6-d423-407e-8c52-df094ab2fe6e",
+          "catalogId": "brauns-bonn-1926",
+          "catalogLabel": "Die Meteoritensammlung der Universität Bonn (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 116",
+          "sourceName": "Ternera",
+          "canonicalName": "Ternera",
+          "meteoriteCode": "23903",
+          "designation": null,
+          "massGrams": 1,
+          "kind": null,
+          "count": 1,
+          "catalogSearchUrl": "./index.html?catalog=brauns-bonn-1926&q=record%20id%20obs-f31c87f6-d423-407e-8c52-df094ab2fe6e#catalog"
+        },
+        {
+          "id": "mass-observation-be312c09-1de5-565c-9576-d333c0735179",
+          "recordId": "obs-011fd657-ccd9-4547-b9e2-ed9a173d13cf",
+          "catalogId": "farrington-1916",
+          "catalogLabel": "Catalogue of the Collection of Meteorites (1916)",
+          "catalogYear": 1916,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 590",
+          "sourceName": "Ternera",
+          "canonicalName": "Ternera",
+          "meteoriteCode": "23903",
+          "designation": null,
+          "massGrams": 1,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=farrington-1916&q=record%20id%20obs-011fd657-ccd9-4547-b9e2-ed9a173d13cf#catalog"
         }
       ]
     },
@@ -25206,6 +25302,82 @@
       ]
     },
     {
+      "id": "possible-lineage-235f9bc3-8b23-5b90-8c99-bfc7bb67cd5b",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Ivanpah",
+      "catalogPair": "brauns-bonn-1926|farrington-1916",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "12062",
+        "canonicalName": "Ivanpah"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-09-11",
+        "publicNote": "Reviewed Bonn principal-piece evidence and the cited comparison observation share an exact reviewed Meteoritical Bulletin identity and reported mass. The publication ordinal is not an inventory identifier; no same-inventory, custody, ownership-transfer, physical-continuity, or merge claim is made.",
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-12f7f9df-9625-505d-90cb-80f68617fb23",
+          "recordId": "obs-8d6d490c-4157-4d0c-814e-86776257a3a6",
+          "catalogId": "farrington-1916",
+          "catalogLabel": "Catalogue of the Collection of Meteorites (1916)",
+          "catalogYear": 1916,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 268",
+          "sourceName": "Ivanpah",
+          "canonicalName": "Ivanpah",
+          "meteoriteCode": "12062",
+          "designation": null,
+          "massGrams": 3,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=farrington-1916&q=record%20id%20obs-8d6d490c-4157-4d0c-814e-86776257a3a6#catalog"
+        },
+        {
+          "id": "mass-observation-1a8d7339-a378-50ce-abc9-0e156eac96c7",
+          "recordId": "obs-7542b8ac-5502-432e-8a1c-f6846dc2627c",
+          "catalogId": "brauns-bonn-1926",
+          "catalogLabel": "Die Meteoritensammlung der Universität Bonn (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 46",
+          "sourceName": "Ivanpah",
+          "canonicalName": "Ivanpah",
+          "meteoriteCode": "12062",
+          "designation": null,
+          "massGrams": 3,
+          "kind": null,
+          "count": 1,
+          "catalogSearchUrl": "./index.html?catalog=brauns-bonn-1926&q=record%20id%20obs-7542b8ac-5502-432e-8a1c-f6846dc2627c#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-23bfdbb3-2d70-5b07-9981-b3fa599e90d3",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -29085,6 +29257,82 @@
           "kind": null,
           "count": 1,
           "catalogSearchUrl": "./index.html?catalog=berlin-1904&q=record%20id%20obs-1db6663d-1869-4477-a9f9-7da66d05d7af#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-281abc9f-d3a5-56d2-b9d7-8a6331c7e55a",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Ivanpah",
+      "catalogPair": "brauns-bonn-1926|farrington-1903",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "12062",
+        "canonicalName": "Ivanpah"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-09-11",
+        "publicNote": "Reviewed Bonn principal-piece evidence and the cited comparison observation share an exact reviewed Meteoritical Bulletin identity and reported mass. The publication ordinal is not an inventory identifier; no same-inventory, custody, ownership-transfer, physical-continuity, or merge claim is made.",
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-c2fbac1a-b1ed-5673-aae7-7d7a8cbf0b62",
+          "recordId": "obs-77247bb6-4181-413a-9262-d21b3fa558fb",
+          "catalogId": "farrington-1903",
+          "catalogLabel": "Catalogue of the Meteorite Collection of the Field Columbian Museum, May 1, 1903 (1903)",
+          "catalogYear": 1903,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 113",
+          "sourceName": "Ivanpah",
+          "canonicalName": "Ivanpah",
+          "meteoriteCode": "12062",
+          "designation": null,
+          "massGrams": 3,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=farrington-1903&q=record%20id%20obs-77247bb6-4181-413a-9262-d21b3fa558fb#catalog"
+        },
+        {
+          "id": "mass-observation-d0177fdd-d3e2-5b7e-b475-f7eaf3447c08",
+          "recordId": "obs-7542b8ac-5502-432e-8a1c-f6846dc2627c",
+          "catalogId": "brauns-bonn-1926",
+          "catalogLabel": "Die Meteoritensammlung der Universität Bonn (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 46",
+          "sourceName": "Ivanpah",
+          "canonicalName": "Ivanpah",
+          "meteoriteCode": "12062",
+          "designation": null,
+          "massGrams": 3,
+          "kind": null,
+          "count": 1,
+          "catalogSearchUrl": "./index.html?catalog=brauns-bonn-1926&q=record%20id%20obs-7542b8ac-5502-432e-8a1c-f6846dc2627c#catalog"
         }
       ]
     },
@@ -39440,6 +39688,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=huss-1986&q=record%20id%20obs-eee059aa-510f-4bc1-ba9c-c1521360fac7#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-38f6f2e9-cdaa-59ce-ad02-be30c93438c9",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Cookeville",
+      "catalogPair": "brauns-bonn-1926|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "5431",
+        "canonicalName": "Cookeville"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-09-11",
+        "publicNote": "Reviewed Bonn principal-piece evidence and the cited comparison observation share an exact reviewed Meteoritical Bulletin identity and reported mass. The publication ordinal is not an inventory identifier; no same-inventory, custody, ownership-transfer, physical-continuity, or merge claim is made.",
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-e926fc1a-4d75-5545-9c70-4cf509acff98",
+          "recordId": "obs-4354da6a-e77b-4abf-a57f-1c95378c76f9",
+          "catalogId": "brauns-bonn-1926",
+          "catalogLabel": "Die Meteoritensammlung der Universität Bonn (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 30",
+          "sourceName": "Cookeville",
+          "canonicalName": "Cookeville",
+          "meteoriteCode": "5431",
+          "designation": null,
+          "massGrams": 79,
+          "kind": null,
+          "count": 1,
+          "catalogSearchUrl": "./index.html?catalog=brauns-bonn-1926&q=record%20id%20obs-4354da6a-e77b-4abf-a57f-1c95378c76f9#catalog"
+        },
+        {
+          "id": "mass-observation-fef3f8bc-4081-5ea2-b03e-655532f158cd",
+          "recordId": "obs-19b855a0-94e0-491e-8147-71f708813337",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 87",
+          "sourceName": "Cookeville",
+          "canonicalName": "Cookeville",
+          "meteoriteCode": "5431",
+          "designation": null,
+          "massGrams": 79,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-19b855a0-94e0-491e-8147-71f708813337#catalog"
         }
       ]
     },
@@ -90080,6 +90404,82 @@
       ]
     },
     {
+      "id": "possible-lineage-86ed17af-3ad9-52b0-ad77-99c3634b8f46",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Assisi",
+      "catalogPair": "brauns-bonn-1926|palache-1926",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "2353",
+        "canonicalName": "Assisi"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-09-11",
+        "publicNote": "Reviewed Bonn principal-piece evidence and the cited comparison observation share an exact reviewed Meteoritical Bulletin identity and reported mass. The publication ordinal is not an inventory identifier; no same-inventory, custody, ownership-transfer, physical-continuity, or merge claim is made.",
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-80e142b7-863e-53c5-89af-1ef67fe65c89",
+          "recordId": "obs-05a3f9af-190a-46e8-9620-f102d1ce479d",
+          "catalogId": "brauns-bonn-1926",
+          "catalogLabel": "Die Meteoritensammlung der Universität Bonn (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 165",
+          "sourceName": "Assisi",
+          "canonicalName": "Assisi",
+          "meteoriteCode": "2353",
+          "designation": null,
+          "massGrams": 3,
+          "kind": null,
+          "count": 1,
+          "catalogSearchUrl": "./index.html?catalog=brauns-bonn-1926&q=record%20id%20obs-05a3f9af-190a-46e8-9620-f102d1ce479d#catalog"
+        },
+        {
+          "id": "mass-observation-e0b61cf6-417a-5264-a727-ddc87a25855c",
+          "recordId": "obs-364c5889-dc2e-4fd5-8099-3448ec3958b3",
+          "catalogId": "palache-1926",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Mineralogical Museum of Harvard University (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 17",
+          "sourceName": "Assisi",
+          "canonicalName": "Assisi",
+          "meteoriteCode": "2353",
+          "designation": null,
+          "massGrams": 3,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=palache-1926&q=record%20id%20obs-364c5889-dc2e-4fd5-8099-3448ec3958b3#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-86f7ab1e-a3f8-586a-80d5-7fd33d2cd935",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -98304,6 +98704,82 @@
       ]
     },
     {
+      "id": "possible-lineage-9122fc73-3498-5514-a91b-87c5601fb867",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Linum",
+      "catalogPair": "brauns-bonn-1926|farrington-1916",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "14655",
+        "canonicalName": "Linum"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-09-11",
+        "publicNote": "Reviewed Bonn principal-piece evidence and the cited comparison observation share an exact reviewed Meteoritical Bulletin identity and reported mass. The publication ordinal is not an inventory identifier; no same-inventory, custody, ownership-transfer, physical-continuity, or merge claim is made.",
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-319db40a-f73a-56ba-8331-384809618d36",
+          "recordId": "obs-43757acd-3af5-4d84-951f-8cfc2916895d",
+          "catalogId": "brauns-bonn-1926",
+          "catalogLabel": "Die Meteoritensammlung der Universität Bonn (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 258",
+          "sourceName": "Linum",
+          "canonicalName": "Linum",
+          "meteoriteCode": "14655",
+          "designation": null,
+          "massGrams": 0.5,
+          "kind": null,
+          "count": 1,
+          "catalogSearchUrl": "./index.html?catalog=brauns-bonn-1926&q=record%20id%20obs-43757acd-3af5-4d84-951f-8cfc2916895d#catalog"
+        },
+        {
+          "id": "mass-observation-b828912f-0c42-5d3e-a64e-82e5c0143a7a",
+          "recordId": "obs-d0625087-99a4-4d33-8d21-da94025b4411",
+          "catalogId": "farrington-1916",
+          "catalogLabel": "Catalogue of the Collection of Meteorites (1916)",
+          "catalogYear": 1916,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 333",
+          "sourceName": "Linum",
+          "canonicalName": "Linum",
+          "meteoriteCode": "14655",
+          "designation": null,
+          "massGrams": 0.5,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=farrington-1916&q=record%20id%20obs-d0625087-99a4-4d33-8d21-da94025b4411#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-912f3d1e-0eb9-5575-9dce-d020cd92491c",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -101351,6 +101827,82 @@
       ]
     },
     {
+      "id": "possible-lineage-96114a8f-3884-5b40-8252-86883ea89b2f",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Butler",
+      "catalogPair": "brauns-bonn-1926|farrington-1916",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "5182",
+        "canonicalName": "Butler"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-09-11",
+        "publicNote": "Reviewed Bonn principal-piece evidence and the cited comparison observation share an exact reviewed Meteoritical Bulletin identity and reported mass. The publication ordinal is not an inventory identifier; no same-inventory, custody, ownership-transfer, physical-continuity, or merge claim is made.",
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-1b558630-50a7-5534-a065-332beb9b80f8",
+          "recordId": "obs-2c00a8e0-0bb7-40c6-9664-daf1a6ee93c2",
+          "catalogId": "brauns-bonn-1926",
+          "catalogLabel": "Die Meteoritensammlung der Universität Bonn (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 20",
+          "sourceName": "Butler",
+          "canonicalName": "Butler",
+          "meteoriteCode": "5182",
+          "designation": null,
+          "massGrams": 110,
+          "kind": null,
+          "count": 1,
+          "catalogSearchUrl": "./index.html?catalog=brauns-bonn-1926&q=record%20id%20obs-2c00a8e0-0bb7-40c6-9664-daf1a6ee93c2#catalog"
+        },
+        {
+          "id": "mass-observation-ad1b052a-c179-5719-b465-18ef1174ef46",
+          "recordId": "obs-d16d167e-0890-432f-aff4-15aaae6349ed",
+          "catalogId": "farrington-1916",
+          "catalogLabel": "Catalogue of the Collection of Meteorites (1916)",
+          "catalogYear": 1916,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 93",
+          "sourceName": "Butler",
+          "canonicalName": "Butler",
+          "meteoriteCode": "5182",
+          "designation": null,
+          "massGrams": 110,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=farrington-1916&q=record%20id%20obs-d16d167e-0890-432f-aff4-15aaae6349ed#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-9631e2c4-9b60-5b3a-b5fe-225b79fa7a4d",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -103098,6 +103650,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=greifswald-1901&q=record%20id%20obs-ec190096-0e07-4add-91cf-1f3c53d28f3c#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-9885aff0-cc41-586e-a84e-c4367b1f73b5",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "La Caille",
+      "catalogPair": "brauns-bonn-1926|farrington-1916",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "12393",
+        "canonicalName": "La Caille"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-09-11",
+        "publicNote": "Reviewed Bonn principal-piece evidence and the cited comparison observation share an exact reviewed Meteoritical Bulletin identity and reported mass. The publication ordinal is not an inventory identifier; no same-inventory, custody, ownership-transfer, physical-continuity, or merge claim is made.",
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-46a0fbb2-5fdd-54ba-a207-a6be682489b1",
+          "recordId": "obs-2af1e626-3686-4fa5-9a06-b477a020e65c",
+          "catalogId": "brauns-bonn-1926",
+          "catalogLabel": "Die Meteoritensammlung der Universität Bonn (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 56",
+          "sourceName": "La Caille",
+          "canonicalName": "La Caille",
+          "meteoriteCode": "12393",
+          "designation": null,
+          "massGrams": 8,
+          "kind": null,
+          "count": 1,
+          "catalogSearchUrl": "./index.html?catalog=brauns-bonn-1926&q=record%20id%20obs-2af1e626-3686-4fa5-9a06-b477a020e65c#catalog"
+        },
+        {
+          "id": "mass-observation-4a9a40e6-ea77-5d41-b1a5-441788136875",
+          "recordId": "obs-14549dcc-8df8-43e3-82c8-67a3d343fafe",
+          "catalogId": "farrington-1916",
+          "catalogLabel": "Catalogue of the Collection of Meteorites (1916)",
+          "catalogYear": 1916,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 313",
+          "sourceName": "La Caille",
+          "canonicalName": "La Caille",
+          "meteoriteCode": "12393",
+          "designation": null,
+          "massGrams": 8,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=farrington-1916&q=record%20id%20obs-14549dcc-8df8-43e3-82c8-67a3d343fafe#catalog"
         }
       ]
     },
@@ -127852,6 +128480,82 @@
       ]
     },
     {
+      "id": "possible-lineage-bfdce519-7984-5b83-b1e2-c2d3d68d8881",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Trenzano",
+      "catalogPair": "brauns-bonn-1926|washington-1897",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "24046",
+        "canonicalName": "Trenzano"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-09-11",
+        "publicNote": "Reviewed Bonn principal-piece evidence and the cited comparison observation share an exact reviewed Meteoritical Bulletin identity and reported mass. The publication ordinal is not an inventory identifier; no same-inventory, custody, ownership-transfer, physical-continuity, or merge claim is made.",
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-426922bc-cb4c-5238-8d4a-c23f43e50017",
+          "recordId": "obs-d186d3ab-d661-49a5-a46f-b1fcf7d446ef",
+          "catalogId": "brauns-bonn-1926",
+          "catalogLabel": "Die Meteoritensammlung der Universität Bonn (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 332",
+          "sourceName": "Trenzano",
+          "canonicalName": "Trenzano",
+          "meteoriteCode": "24046",
+          "designation": null,
+          "massGrams": 43,
+          "kind": null,
+          "count": 1,
+          "catalogSearchUrl": "./index.html?catalog=brauns-bonn-1926&q=record%20id%20obs-d186d3ab-d661-49a5-a46f-b1fcf7d446ef#catalog"
+        },
+        {
+          "id": "mass-observation-daf24957-e08d-5e3b-a33c-347cde4defb7",
+          "recordId": "obs-5d3eb72b-e5a6-4794-9fc1-b0b5f9a0219d",
+          "catalogId": "washington-1897",
+          "catalogLabel": "Catalogue of the Collection of Meteorites in the Peabody Museum of Yale University (1897)",
+          "catalogYear": 1897,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 51",
+          "sourceName": "Trenzano",
+          "canonicalName": "Trenzano",
+          "meteoriteCode": "24046",
+          "designation": null,
+          "massGrams": 43,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=washington-1897&q=record%20id%20obs-5d3eb72b-e5a6-4794-9fc1-b0b5f9a0219d#catalog"
+        }
+      ]
+    },
+    {
       "id": "possible-lineage-c01e8c53-360c-5ea7-b9a5-2237ed1808d1",
       "relationship": "possible-match",
       "basis": "reviewed-identity-and-reported-mass",
@@ -145512,6 +146216,82 @@
           "kind": null,
           "count": null,
           "catalogSearchUrl": "./index.html?catalog=huss-1986&q=record%20id%20obs-7b7cea9e-bb7f-4248-8564-1cc5c0a77291#catalog"
+        }
+      ]
+    },
+    {
+      "id": "possible-lineage-d9b8858a-c52c-5f2e-9f92-448748c74bc8",
+      "relationship": "possible-match",
+      "basis": "reviewed-identity-and-reported-mass",
+      "status": "possible",
+      "displayName": "Macau",
+      "catalogPair": "brauns-bonn-1926|farrington-1916",
+      "collectionSeries": null,
+      "identity": {
+        "method": "metbull-code",
+        "key": "15370",
+        "canonicalName": "Macau"
+      },
+      "evidence": {
+        "strength": "two-matching-facts",
+        "massMatch": "exact",
+        "absoluteDifferenceGrams": 0,
+        "relativeDifference": 0,
+        "sameDesignation": false,
+        "designationFamily": false,
+        "factCodes": [
+          "shared-metbull-code",
+          "exact-reported-mass"
+        ],
+        "cautionCodes": [
+          "designation-differs-or-missing"
+        ]
+      },
+      "review": {
+        "status": "reviewed",
+        "outcome": "retain-as-possible",
+        "reviewedOn": "2026-09-11",
+        "publicNote": "Reviewed Bonn principal-piece evidence and the cited comparison observation share an exact reviewed Meteoritical Bulletin identity and reported mass. The publication ordinal is not an inventory identifier; no same-inventory, custody, ownership-transfer, physical-continuity, or merge claim is made.",
+        "citations": []
+      },
+      "observations": [
+        {
+          "id": "mass-observation-4f74dfba-01ac-5e81-9abc-cfac0fd66915",
+          "recordId": "obs-89fca884-e89d-46c7-9eb2-45c2d19320d5",
+          "catalogId": "brauns-bonn-1926",
+          "catalogLabel": "Die Meteoritensammlung der Universität Bonn (1926)",
+          "catalogYear": 1926,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 265",
+          "sourceName": "Macao",
+          "canonicalName": "Macau",
+          "meteoriteCode": "15370",
+          "designation": null,
+          "massGrams": 4,
+          "kind": null,
+          "count": 1,
+          "catalogSearchUrl": "./index.html?catalog=brauns-bonn-1926&q=record%20id%20obs-89fca884-e89d-46c7-9eb2-45c2d19320d5#catalog"
+        },
+        {
+          "id": "mass-observation-e79a4608-b6f6-5b20-8740-6fd69205f61d",
+          "recordId": "obs-d77bffd5-a4ca-425b-a5f8-828e04a58529",
+          "catalogId": "farrington-1916",
+          "catalogLabel": "Catalogue of the Collection of Meteorites (1916)",
+          "catalogYear": 1916,
+          "recordModel": "collection-entry",
+          "designationPath": null,
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceRecordLabel": "Collection entry 352",
+          "sourceName": "Macao",
+          "canonicalName": "Macau",
+          "meteoriteCode": "15370",
+          "designation": null,
+          "massGrams": 4,
+          "kind": null,
+          "count": null,
+          "catalogSearchUrl": "./index.html?catalog=farrington-1916&q=record%20id%20obs-d77bffd5-a4ca-425b-a5f8-828e04a58529#catalog"
         }
       ]
     },

@@ -18,11 +18,11 @@ const victoriaDescriptor = catalog.metadata.catalogs.find(({ id }) => id === "vi
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
 
 test("imports all three accepted public package files exactly", () => {
-  assert.equal(sha256(catalogText), "d06cb3c737ffec0259e43e778ed62056d88701c36637b661d20a91dd1061d5b3");
-  assert.equal(sha256(foliosText), "ed23bc9af5bb73eb932fd928f7d46b02379265bbeb43911d44004aa4cddacdd5");
+  assert.equal(sha256(catalogText), "cf429e6660f00272f2f81fe69bac81c891f41574bbfff6e6bb46499d2d0672b4");
+  assert.equal(sha256(foliosText), "1c8f08b357358789b9133a568246f48964970748635adbf6f21b7ac156e16165");
   assert.equal(sha256(sourceClaimsText), "edb201339e9e1068ac45d3333a9224959b4dcdbf8e317afcbb0657c6635b85fb");
   assert.deepEqual({ schema: catalog.metadata.schemaVersion, records: catalog.records.length, catalogs: catalog.metadata.catalogs.length },
-    { schema: 12, records: 18217, catalogs: 49 });
+    { schema: 12, records: 19553, catalogs: 52 });
   assert.doesNotThrow(() => validatePublicCatalog(catalog, folios));
 });
 
@@ -141,8 +141,9 @@ test("preserves every non-correction record and descriptor byte-semantically", (
   ]);
   const wave2CatalogIds = new Set(["berlin-1903", "berlin-1904", "greifswald-1895", "greifswald-1901"]);
   const fletcherCatalogIds = new Set(["fletcher-1886", "fletcher-1894", "fletcher-1896", "fletcher-1904", "fletcher-1908"]);
-  assert.equal(sha256(JSON.stringify(catalog.records.filter(({ id, catalogId }) => !correctedRecordIds.has(id) && !wave2CatalogIds.has(catalogId) && !fletcherCatalogIds.has(catalogId)))),
+  const museum3CatalogIds = new Set(["story-maskelyne-1872", "prior-guide-1926", "brauns-bonn-1926"]);
+  assert.equal(sha256(JSON.stringify(catalog.records.filter(({ id, catalogId }) => !correctedRecordIds.has(id) && !wave2CatalogIds.has(catalogId) && !fletcherCatalogIds.has(catalogId) && !museum3CatalogIds.has(catalogId)))),
     "ec2a8ad5fea13c2503a5d3db84f26a263baf086d18f89eaab5849b1b5a6948a7");
-  assert.equal(sha256(JSON.stringify(catalog.metadata.catalogs.filter(({ id }) => id !== "victoria-land-1982" && !wave2CatalogIds.has(id) && !fletcherCatalogIds.has(id)))),
+  assert.equal(sha256(JSON.stringify(catalog.metadata.catalogs.filter(({ id }) => id !== "victoria-land-1982" && !wave2CatalogIds.has(id) && !fletcherCatalogIds.has(id) && !museum3CatalogIds.has(id)))),
     "31aa040fb71302cb0b8c3a9c691ad747ead2eafec725ac804bdca58cc9b7849e");
 });

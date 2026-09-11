@@ -143,12 +143,12 @@ Calculated sums are audit results, not printed facts. Both are retained when
 they differ. Zero can be retained as a catalog fact only when affirmatively
 reported, and zero is never a lineage mass endpoint.
 
-The specimen-weight census is a closed partition over the 13,804 current
-specimen descriptors. After exact source correction and reviewed disposition,
-13,625 actual specimen cards have numeric source-listed weight, 4 have an
-affirmative qualitative source statement, 172 are source-unlisted, and 3 are
-not individual specimens. Thus 13,801 cards are actual specimens and the
-default source-listed view is exactly 13,629. A parent, group, sibling,
+The specimen-weight census is a closed partition over the 14,152 current
+specimen or not-individual descriptors. After exact source correction and
+reviewed disposition, 13,966 actual specimen cards have numeric source-listed
+weight, 11 have an affirmative qualitative source statement, 172 are
+source-unlisted, and 3 are not individual specimens. Thus 14,149 cards are
+actual specimens and the default source-listed view is exactly 13,977. A parent, group, sibling,
 aggregate, range, total, or nearby value is never inherited by a card. The
 three not-individual rows remain searchable observations rather than being
 deleted or assigned synthetic mass.
@@ -176,6 +176,14 @@ privacy, projection, lineage, and folio-denial checks. Public IDs intentionally
 do not reveal private source UUIDs. The unavailable 1886 historical manifest
 and the 1908 TXT/HTML page-binding evidence remain private provenance rather
 than public folios or claims about scan media.
+
+Story-Maskelyne 1872 and Prior 1926 use the same representation-only boundary:
+source numbers and panes do not become inventory identifiers, and represented
+weights do not become specimen masses. Brauns Bonn 1926 uses collection-entry
+observations. Only a directly weighted principal piece or an independently
+reviewed source-established single piece can become a card. Collection totals
+remain aggregate context, and printed `Spl.` stays qualitative and nonnumeric.
+Brauns ordinals never support same-inventory continuity or a merge.
 
 The Fletcher heading, date or report of find, and bibliographic reference are
 separate semantic fields. Combined OCR text is never a fallback name. A blank
@@ -286,8 +294,8 @@ are `suspected` and retain evidence strength plus public review state;
 source-attested n-ary groups are `tentative` and retain complete membership.
 Controlled caution text prevents any of these labels from implying physical
 identity, custody, ownership, transfer, or a record merge. The current
-inclusive lineage-only view contains 956 cards and 1,443 claims: 194 known,
-1,170 suspected, and 79 tentative.
+inclusive lineage-only view contains 963 cards and 1,451 claims: 194 known,
+1,178 suspected, and 79 tentative.
 
 ## 10. Supplements, Amendments, And Corrections
 

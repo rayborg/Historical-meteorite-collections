@@ -145,10 +145,10 @@ test("every structured and Victoria Table B mass is searchable by grams and disp
     }
     if (Number.isFinite(record.sourceEvidence?.tableB?.massGrams)) tableBMasses += 1;
   }
-  assert.equal(structuredOccurrences, 22706);
-  assert.equal(structuredPairs.size, 19519);
-  assert.equal(searchableOccurrences, 22977);
-  assert.equal(searchablePairs.size, 19559);
+  assert.equal(structuredOccurrences, 23393);
+  assert.equal(structuredPairs.size, 19996);
+  assert.equal(searchableOccurrences, 23664);
+  assert.equal(searchablePairs.size, 20036);
   assert.equal(tableBMasses, 270);
 });
 
@@ -156,7 +156,7 @@ test("every resolved MetBull code owner and displayed regional identifier is sea
   const resolved = records.filter(({ metbull }) => metbull && metbull.matchType !== "unresolved");
   const regional = records.filter(({ recordModel }) => recordModel === "regional-census-fact");
   const numbered = regional.filter(({ reportedNumber }) => reportedNumber);
-  assert.equal(resolved.length, 13401);
+  assert.equal(resolved.length, 14521);
   assert.equal(regional.length, 84);
   assert.equal(numbered.length, 77);
   for (const record of resolved) assert.equal(app.matchesSearch(record, record.metbull.meteoriteCode), true, record.id);
@@ -197,7 +197,7 @@ test("all real pure Huss designation result sets retain exact segment semantics"
 test("all numeric result sets equal the deterministic union oracle", () => {
   const queries = numericQueries();
   const expectedTokens = records.map(expectedNumericTokens);
-  assert.equal(queries.length, 6182);
+  assert.equal(queries.length, 6194);
   for (const query of queries) {
     const expected = records.filter((record, index) => expectedTokens[index].has(query)).map(({ id }) => id).sort();
     const actual = stableIds(records.filter((record) => record.numericSearchTokens.has(query)));

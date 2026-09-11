@@ -36,6 +36,11 @@
       "rightsStatus": "undetermined",
       "pages": []
     },
+    "brauns-bonn-1926": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "pages": []
+    },
     "brown-1916": {
       "displayPolicy": "blocked",
       "rightsStatus": "undetermined",
@@ -554,12 +559,22 @@
       "rightsStatus": "undetermined",
       "pages": []
     },
+    "prior-guide-1926": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "pages": []
+    },
     "reeds-1937": {
       "displayPolicy": "blocked",
       "rightsStatus": "undetermined",
       "pages": []
     },
     "schreiter-1912": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "pages": []
+    },
+    "story-maskelyne-1872": {
       "displayPolicy": "blocked",
       "rightsStatus": "undetermined",
       "pages": []

@@ -4,17 +4,17 @@ import { pathToFileURL } from "node:url";
 
 const LOCKS = Object.freeze({
   catalogSchemaVersion: 12,
-  sourceRecordCount: 18217,
-  sourceCatalogSha256: "d06cb3c737ffec0259e43e778ed62056d88701c36637b661d20a91dd1061d5b3",
-  projectionCount: 3062,
-  atomicCardCount: 8062,
+  sourceRecordCount: 19553,
+  sourceCatalogSha256: "cf429e6660f00272f2f81fe69bac81c891f41574bbfff6e6bb46499d2d0672b4",
+  projectionCount: 3407,
+  atomicCardCount: 8410,
   legacyMassBoundCardCount: 6656,
-  massBoundCardCount: 8034,
-  masslessCardCount: 28,
+  massBoundCardCount: 8375,
+  masslessCardCount: 35,
   repeatedMassCardCount: 2,
-  sourceContextCardCount: 2532,
+  sourceContextCardCount: 2877,
   baselineProjectionSetSha256: "2aba43bd9d205ae21502f3f76cdb213c1bac26f90513389b876bf047d6087e4b",
-  projectionSetSha256: "bca32f44f17079170b45a57b858dc71cc00097f69ec829e519e63d5283d32499",
+  projectionSetSha256: "c4ac216d619ee08210bb43cb5a284280d807b35694ece4105b9611680478f1e0",
   nonHamburgProjectionSetSha256: "895bf19525ea363dd20068417c4cb4e7af667dd10c4e8c746085f40b2e3ea528",
 });
 export const BROWN_AUDIT_COVERAGE = Object.freeze({
@@ -366,16 +366,19 @@ export function validateSpecimenCardProjections(document, catalog, catalogText) 
 
   if (atomicCardCount !== LOCKS.atomicCardCount) fail("atomic card count differs from metadata");
   if (massBoundCardCount !== LOCKS.massBoundCardCount || masslessCardCount !== LOCKS.masslessCardCount ||
-       massBoundCardCount - LOCKS.legacyMassBoundCardCount !== 1378) {
-    fail("ordinary mass assignment counts differ from the accepted Wave 1 lock");
+       massBoundCardCount - LOCKS.legacyMassBoundCardCount !== 1719) {
+    fail("ordinary mass assignment counts differ from the accepted release lock");
   }
   if (sourceContextCardCount !== LOCKS.sourceContextCardCount) fail("derived source context count differs from metadata");
-  if (JSON.stringify(qualitativeWeightCards) !== JSON.stringify([
+  const legacyQualitative = [
     { parentRecordId: "obs-e2b4f522-b31d-4dcb-9cf6-7b8ba35da649", cardIndex: 0, evidence: { type: "qualitative", statement: "main mass" } },
     { parentRecordId: "obs-014fa351-665c-4bcb-b83f-3610f0ff425c", cardIndex: 4, evidence: { type: "qualitative", statement: "one-third of mass" } },
     { parentRecordId: "obs-26389145-2d52-4acf-8b33-06aa8489edfe", cardIndex: 2, evidence: { type: "qualitative", statement: "less than a gram" } },
-  ].sort((left, right) => records.get(left.parentRecordId).index - records.get(right.parentRecordId).index))) {
-    fail("qualitative weight evidence differs from the accepted three-card authority");
+  ];
+  const bonnQualitative = qualitativeWeightCards.filter(({ parentRecordId }) => records.get(parentRecordId).record.catalogId === "brauns-bonn-1926");
+  if (qualitativeWeightCards.length !== 10 || bonnQualitative.length !== 7 || bonnQualitative.some(({ evidence }) => evidence.statement !== "Spl.") ||
+      legacyQualitative.some((expected) => !qualitativeWeightCards.some((actual) => JSON.stringify(actual) === JSON.stringify(expected)))) {
+    fail("qualitative weight evidence differs from the accepted ten-card authority");
   }
   const kuleschowka = document.projections.find(({ parentRecordId }) => parentRecordId === KULESCHOWKA_ID);
   if (!kuleschowka || repeatedMassCards.length !== LOCKS.repeatedMassCardCount ||
@@ -577,7 +580,25 @@ export function validateSpecimenCardProjections(document, catalog, catalogText) 
   for (const [key, expected] of Object.entries(HAMBURG_AUDIT_COVERAGE)) {
     if (hamburgActual[key] !== expected) fail(`Hamburg ${key} differs from the reviewed audit lock`);
   }
-  const reviewedCatalogIds = new Set(["brown-1916", "minnesota-1892", "berlin-1903", "berlin-1904"]);
+  const bonnRecords = catalog.records.filter(({ catalogId }) => catalogId === "brauns-bonn-1926");
+  const bonnIds = new Set(bonnRecords.map(({ id }) => id));
+  const bonnProjections = document.projections.filter(({ parentRecordId }) => bonnIds.has(parentRecordId));
+  const bonnCards = bonnProjections.flatMap(({ cards }) => cards);
+  const bonnMultiParents = bonnProjections.filter(({ cards }) => cards.length === 2).map(({ parentRecordId }) => records.get(parentRecordId).record.reportedNumber);
+  if (bonnRecords.length !== 353 || bonnProjections.length !== 345 || bonnCards.length !== 348 ||
+      bonnCards.filter(({ massPath }) => massPath !== null).length !== 341 || bonnCards.filter(({ qualitativeWeightEvidence }) => qualitativeWeightEvidence).length !== 7 ||
+      JSON.stringify(bonnMultiParents) !== JSON.stringify(["69", "137", "151"])) {
+    fail("Bonn reviewed 345-parent, 348-card projection census changed");
+  }
+  for (const projection of bonnProjections) {
+    const record = records.get(projection.parentRecordId).record;
+    for (const card of projection.cards) {
+      if (!["holdings[1]", "holdings[3]"].includes(card.holdingPath) || !record.holdings[Number(card.holdingPath.match(/\d+/u)[0])].description.startsWith("Specimen:")) {
+        fail(`Bonn projection ${projection.parentRecordId} uses an unsupported parent or aggregate holding`);
+      }
+    }
+  }
+  const reviewedCatalogIds = new Set(["brown-1916", "minnesota-1892", "berlin-1903", "berlin-1904", "brauns-bonn-1926"]);
   const validateReviewedCatalog = (catalogId, lock) => {
     const sourceRecords = catalog.records.filter((record) => record.catalogId === catalogId);
     const sourceIds = new Set(sourceRecords.map(({ id }) => id));

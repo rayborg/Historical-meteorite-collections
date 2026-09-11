@@ -4,36 +4,71 @@
   "title": "Historical Meteorite Collection reviewed atomic specimen-card display projections",
   "type": "object",
   "additionalProperties": false,
-  "required": ["metadata", "projections"],
+  "required": [
+    "metadata",
+    "projections"
+  ],
   "properties": {
-    "metadata": { "$ref": "#/$defs/metadata" },
+    "metadata": {
+      "$ref": "#/$defs/metadata"
+    },
     "projections": {
       "type": "array",
-      "minItems": 3062,
-      "maxItems": 3062,
-      "items": { "$ref": "#/$defs/projection" }
+      "minItems": 3407,
+      "maxItems": 3407,
+      "items": {
+        "$ref": "#/$defs/projection"
+      }
     }
   },
   "$defs": {
     "metadata": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["schemaVersion", "scope", "catalogSchemaVersion", "sourceRecordCount", "sourceCatalogSha256", "projectionCount", "atomicCardCount", "sourceContextCardCount"],
+      "required": [
+        "schemaVersion",
+        "scope",
+        "catalogSchemaVersion",
+        "sourceRecordCount",
+        "sourceCatalogSha256",
+        "projectionCount",
+        "atomicCardCount",
+        "sourceContextCardCount"
+      ],
       "properties": {
-        "schemaVersion": { "const": 5 },
-        "scope": { "const": "reviewed-atomic-specimen-card-display-projections" },
-        "catalogSchemaVersion": { "const": 12 },
-        "sourceRecordCount": { "const": 18217 },
-        "sourceCatalogSha256": { "const": "d06cb3c737ffec0259e43e778ed62056d88701c36637b661d20a91dd1061d5b3" },
-        "projectionCount": { "const": 3062 },
-        "atomicCardCount": { "const": 8062 },
-        "sourceContextCardCount": { "const": 2532 }
+        "schemaVersion": {
+          "const": 5
+        },
+        "scope": {
+          "const": "reviewed-atomic-specimen-card-display-projections"
+        },
+        "catalogSchemaVersion": {
+          "const": 12
+        },
+        "sourceRecordCount": {
+          "const": 19553
+        },
+        "sourceCatalogSha256": {
+          "const": "cf429e6660f00272f2f81fe69bac81c891f41574bbfff6e6bb46499d2d0672b4"
+        },
+        "projectionCount": {
+          "const": 3407
+        },
+        "atomicCardCount": {
+          "const": 8410
+        },
+        "sourceContextCardCount": {
+          "const": 2877
+        }
       }
     },
     "projection": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["parentRecordId", "cards"],
+      "required": [
+        "parentRecordId",
+        "cards"
+      ],
       "properties": {
         "parentRecordId": {
           "type": "string",
@@ -42,49 +77,82 @@
         "cards": {
           "type": "array",
           "minItems": 1,
-          "items": { "$ref": "#/$defs/card" }
+          "items": {
+            "$ref": "#/$defs/card"
+          }
         }
       }
     },
     "card": {
       "oneOf": [
-        { "$ref": "#/$defs/clauseCard" },
-        { "$ref": "#/$defs/qualitativeClauseCard" },
-        { "$ref": "#/$defs/repeatedClauseCard" },
-        { "$ref": "#/$defs/componentCard" }
+        {
+          "$ref": "#/$defs/clauseCard"
+        },
+        {
+          "$ref": "#/$defs/qualitativeClauseCard"
+        },
+        {
+          "$ref": "#/$defs/repeatedClauseCard"
+        },
+        {
+          "$ref": "#/$defs/componentCard"
+        }
       ]
     },
     "clauseCard": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["holdingPath", "clause", "massPath"],
+      "required": [
+        "holdingPath",
+        "clause",
+        "massPath"
+      ],
       "properties": {
         "holdingPath": {
           "type": "string",
           "pattern": "^holdings\\[(0|[1-9][0-9]*)\\]$"
         },
-        "clause": { "$ref": "#/$defs/clause" },
-        "massPath": { "$ref": "#/$defs/nullableMassPath" }
+        "clause": {
+          "$ref": "#/$defs/clause"
+        },
+        "massPath": {
+          "$ref": "#/$defs/nullableMassPath"
+        }
       }
     },
     "qualitativeClauseCard": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["holdingPath", "clause", "massPath", "qualitativeWeightEvidence"],
+      "required": [
+        "holdingPath",
+        "clause",
+        "massPath",
+        "qualitativeWeightEvidence"
+      ],
       "properties": {
         "holdingPath": {
           "type": "string",
           "pattern": "^holdings\\[(0|[1-9][0-9]*)\\]$"
         },
-        "clause": { "$ref": "#/$defs/clause" },
-        "massPath": { "type": "null" },
-        "qualitativeWeightEvidence": { "$ref": "#/$defs/qualitativeWeightEvidence" }
+        "clause": {
+          "$ref": "#/$defs/clause"
+        },
+        "massPath": {
+          "type": "null"
+        },
+        "qualitativeWeightEvidence": {
+          "$ref": "#/$defs/qualitativeWeightEvidence"
+        }
       }
     },
     "componentCard": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["holdingPath", "componentPath", "massPath"],
+      "required": [
+        "holdingPath",
+        "componentPath",
+        "massPath"
+      ],
       "properties": {
         "holdingPath": {
           "type": "string",
@@ -94,51 +162,92 @@
           "type": "string",
           "pattern": "^holdings\\[(0|[1-9][0-9]*)\\]\\.weights\\[(0|[1-9][0-9]*)\\]$"
         },
-        "massPath": { "$ref": "#/$defs/componentMassPath" }
+        "massPath": {
+          "$ref": "#/$defs/componentMassPath"
+        }
       }
     },
     "repeatedClauseCard": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["holdingPath", "clause", "massPath", "repeatedMass"],
+      "required": [
+        "holdingPath",
+        "clause",
+        "massPath",
+        "repeatedMass"
+      ],
       "properties": {
         "holdingPath": {
           "type": "string",
           "pattern": "^holdings\\[(0|[1-9][0-9]*)\\]$"
         },
-        "clause": { "$ref": "#/$defs/clause" },
-        "massPath": { "type": "null" },
-        "repeatedMass": { "$ref": "#/$defs/repeatedMass" }
+        "clause": {
+          "$ref": "#/$defs/clause"
+        },
+        "massPath": {
+          "type": "null"
+        },
+        "repeatedMass": {
+          "$ref": "#/$defs/repeatedMass"
+        }
       }
     },
     "repeatedMass": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["valuePath", "countPath", "totalPath", "occurrence", "occurrenceCount"],
+      "required": [
+        "valuePath",
+        "countPath",
+        "totalPath",
+        "occurrence",
+        "occurrenceCount"
+      ],
       "properties": {
-        "valuePath": { "$ref": "#/$defs/componentMassPath" },
+        "valuePath": {
+          "$ref": "#/$defs/componentMassPath"
+        },
         "countPath": {
           "type": "string",
           "pattern": "^holdings\\[(0|[1-9][0-9]*)\\]\\.count$"
         },
-        "totalPath": { "$ref": "#/$defs/componentMassPath" },
-        "occurrence": { "type": "integer", "minimum": 1 },
-        "occurrenceCount": { "type": "integer", "minimum": 2 }
+        "totalPath": {
+          "$ref": "#/$defs/componentMassPath"
+        },
+        "occurrence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "occurrenceCount": {
+          "type": "integer",
+          "minimum": 2
+        }
       }
     },
     "qualitativeWeightEvidence": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["type", "statement"],
+      "required": [
+        "type",
+        "statement"
+      ],
       "properties": {
-        "type": { "const": "qualitative" },
-        "statement": { "type": "string", "minLength": 1 }
+        "type": {
+          "const": "qualitative"
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 1
+        }
       }
     },
     "nullableMassPath": {
       "anyOf": [
-        { "type": "null" },
-        { "$ref": "#/$defs/massPath" }
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/$defs/massPath"
+        }
       ]
     },
     "massPath": {
@@ -152,14 +261,24 @@
     "clause": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["textPath", "start", "end"],
+      "required": [
+        "textPath",
+        "start",
+        "end"
+      ],
       "properties": {
         "textPath": {
           "type": "string",
           "pattern": "^holdings\\[(0|[1-9][0-9]*)\\]\\.(?:description|designation)$"
         },
-        "start": { "type": "integer", "minimum": 0 },
-        "end": { "type": "integer", "minimum": 1 }
+        "start": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "end": {
+          "type": "integer",
+          "minimum": 1
+        }
       }
     }
   }

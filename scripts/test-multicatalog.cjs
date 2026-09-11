@@ -1037,8 +1037,8 @@ test("URL filters default to strict specimens and canonicalize the explicit incl
     unit: "observations",
     status: "Showing 60 of 23,217 display cards from 18,217 matching source observations."
   });
-  assert.equal(app.CACHE_VERSION, "20260910-weight-lineage-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260910-weight-lineage-1");
+  assert.equal(app.CACHE_VERSION, "20260911-museum3-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260911-museum3-1");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.ASSET_CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.ASSET_CACHE_VERSION}`));
 });

@@ -1,16 +1,16 @@
 "use strict";
 
-const CACHE_VERSION = "20260910-weight-lineage-1";
+const CACHE_VERSION = "20260911-museum3-1";
 const ASSET_CACHE_VERSION = CACHE_VERSION;
 const CATALOG_SCHEMA_VERSION = 12;
-const CATALOG_RECORD_COUNT = 18217;
-const DISPLAY_DESCRIPTOR_COUNT = 23217;
-const SPECIMEN_DESCRIPTOR_COUNT = 13801;
-const OBSERVATION_DESCRIPTOR_COUNT = 9416;
-const WEIGHTED_DESCRIPTOR_COUNT = 13629;
+const CATALOG_RECORD_COUNT = 19553;
+const DISPLAY_DESCRIPTOR_COUNT = 24556;
+const SPECIMEN_DESCRIPTOR_COUNT = 14149;
+const OBSERVATION_DESCRIPTOR_COUNT = 10407;
+const WEIGHTED_DESCRIPTOR_COUNT = 13977;
 const UNKNOWN_WEIGHT_EXCLUSION_COUNT = 172;
-const SPECIMEN_PREFIX_GATED_CATALOGS = new Set(["brown-1916", "minnesota-1892"]);
-const REVIEW_GATED_LINEAGE_CATALOGS = new Set(["brown-1916", "minnesota-1892", "greifswald-1895", "greifswald-1901", "berlin-1903", "berlin-1904"]);
+const SPECIMEN_PREFIX_GATED_CATALOGS = new Set(["brown-1916", "minnesota-1892", "brauns-bonn-1926"]);
+const REVIEW_GATED_LINEAGE_CATALOGS = new Set(["brown-1916", "minnesota-1892", "greifswald-1895", "greifswald-1901", "berlin-1903", "berlin-1904", "brauns-bonn-1926"]);
 const WAVE1_LINEAGE_RELATIONSHIP_IDS = new Set([
   "possible-lineage-015140ad-87ce-5595-a68e-afb9f85836b2",
   "possible-lineage-20ef2648-5722-529f-8b8f-21c07bd64607",
@@ -296,10 +296,10 @@ const SPECIMEN_CARD_COMPONENT_FIELDS = new Set(["holdingPath", "componentPath", 
 const SPECIMEN_CARD_CLAUSE_FIELDS = new Set(["textPath", "start", "end"]);
 const SPECIMEN_CARD_REPEATED_MASS_FIELDS = new Set(["valuePath", "countPath", "totalPath", "occurrence", "occurrenceCount"]);
 const SHA256_HEX = /^[0-9a-f]{64}$/u;
-const SPECIMEN_CARD_SOURCE_CATALOG_SHA256 = "d06cb3c737ffec0259e43e778ed62056d88701c36637b661d20a91dd1061d5b3";
-const SPECIMEN_CARD_PROJECTION_DATA_SHA256 = "f7f547fc6a22fe7cec794593db716d59896280ae3a1767fc1c050f80f1f02ea0";
-const SPECIMEN_CARD_PROJECTION_SET_SHA256 = "bca32f44f17079170b45a57b858dc71cc00097f69ec829e519e63d5283d32499";
-const SPECIMEN_LINEAGE_DATA_SHA256 = "ab9960cdb5bebc83b9132e72c1369f0073e2735cdc7995925a3feb36948debd2";
+const SPECIMEN_CARD_SOURCE_CATALOG_SHA256 = "cf429e6660f00272f2f81fe69bac81c891f41574bbfff6e6bb46499d2d0672b4";
+const SPECIMEN_CARD_PROJECTION_DATA_SHA256 = "e128dc388ede6590b5e373fe36958d4b5d068641a4454719c23044c146e13e0e";
+const SPECIMEN_CARD_PROJECTION_SET_SHA256 = "c4ac216d619ee08210bb43cb5a284280d807b35694ece4105b9611680478f1e0";
+const SPECIMEN_LINEAGE_DATA_SHA256 = "3f1d63db2effbe497e328ac99831c22d661fd72a2fba2fd1ec74a83186a523a9";
 const SOURCE_CLAIMS_CONTENT_SHA256 = "141ed60b9560596ac8ab392babfc4af6e1d22921bacbf979d3b975e0fc2f20c2";
 const LINEAGE_ROOT_FIELDS = new Set(["metadata", "sourceAttestedGroups", "relationships"]);
 const LINEAGE_METADATA_FIELDS = new Set(["schemaVersion", "scope", "source", "collectionSeries", "methodology", "counts"]);
@@ -1387,7 +1387,8 @@ function validateCatalog(catalog) {
       entryOrders.add(record.entryOrder);
       collectionEntryOrders[record.catalogId] = entryOrders;
       previousCollectionEntries[record.catalogId] = record.entryOrder;
-      requireSchema(record.reportedNumber !== "" && isLeakageSafeText(record.reportedNumber));
+      requireSchema(record.reportedNumber === null ||
+        (record.reportedNumber !== "" && isLeakageSafeText(record.reportedNumber)));
       requireSchema(record.section !== "" && isLeakageSafeText(record.section));
       [record.pane, record.name, record.eventDate, record.reference].forEach((value) =>
         requireSchema(value === null || (value !== "" && isLeakageSafeText(value))));
@@ -3652,7 +3653,9 @@ function harmonizedCardIdentifier(record, kind, descriptor = null) {
   if (record.recordModel === "regional-census-fact") {
     return record.reportedNumber ? `Source number ${record.reportedNumber}` : `Regional census entry ${record.entryOrder}`;
   }
-  if (record.recordModel === "collection-representation-fact") return `List no. ${record.reportedNumber}`;
+  if (record.recordModel === "collection-representation-fact") {
+    return record.reportedNumber ? `List no. ${record.reportedNumber}` : `Collection representation ${record.entryOrder}`;
+  }
   if (record.recordModel === "table-a-specimen") return record.specimenId || "Unknown";
   if (record.recordModel === "dealer-offer-fact") return `Type number ${record.typeNumber}`;
   return record.designation || "Unknown";

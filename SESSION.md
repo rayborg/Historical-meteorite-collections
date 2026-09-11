@@ -9,8 +9,8 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 ## Current State
 
 <!-- release-summary:session-current-state:start -->
-- Schema 12 contains 18,217 facts-only records across 49 catalogs.
-- Reviewed display projections replace 3,062 parents with 8,062 atomic cards: 23,217 descriptors comprise 13,801 specimens and 9,416 observations; weighted-only display excludes 172 unknown-mass specimens.
+- Schema 12 contains 19,553 facts-only records across 52 catalogs.
+- Reviewed display projections replace 3,407 parents with 8,410 atomic cards: 24,556 descriptors comprise 14,149 specimens and 10,407 observations; weighted-only display excludes 172 unknown-mass specimens.
 
 | `catalogId` | Record model | Records | Metadata source pages | Pages cited by records |
 | --- | --- | ---: | ---: | ---: |
@@ -21,6 +21,7 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 | `barnes-1940` | `collection-entry` | 70 | 30 | 16 |
 | `berlin-1903` | `collection-entry` | 380 | 13 | 13 |
 | `berlin-1904` | `collection-entry` | 470 | 17 | 17 |
+| `brauns-bonn-1926` | `collection-entry` | 353 | 23 | 23 |
 | `brown-1916` | `collection-entry` | 237 | 78 | 78 |
 | `buchner-1863` | `collection-entry` | 185 | 5 | 5 |
 | `chladni-1819` | `collection-entry` | 74 | 12 | 12 |
@@ -55,25 +56,27 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 | `nordenskiold-1870` | `collection-entry` | 127 | 10 | 10 |
 | `palache-1926` | `collection-entry` | 361 | 9 | 8 |
 | `prior-1923` | `collection-entry` | 949 | 196 | 196 |
+| `prior-guide-1926` | `collection-representation-fact` | 680 | 15 | 15 |
 | `reeds-1937` | `collection-entry` | 500 | 156 | 111 |
 | `schreiter-1912` | `collection-entry` | 162 | 18 | 8 |
+| `story-maskelyne-1872` | `collection-representation-fact` | 303 | 8 | 8 |
 | `tassin-1902` | `collection-entry` | 340 | 26 | 24 |
 | `usnm-1886` | `collection-entry` | 349 | 11 | 11 |
 | `victoria-land-1982` | `table-a-specimen` | 273 | 10 | 4 |
 | `ward-1881` | `collection-entry` | 3 | 1 | 1 |
 | `ward-1904` | `collection-entry` | 697 | 74 | 74 |
 | `washington-1897` | `collection-entry` | 201 | 4 | 4 |
-| **Total** |  | **18,217** | **1,687** | **1,510** |
+| **Total** |  | **19,553** | **1,733** | **1,556** |
 
-- Metadata covers 1,687 catalog-scoped source pages; records cite 1,510 of them.
+- Metadata covers 1,733 catalog-scoped source pages; records cite 1,556 of them.
 - Nininger coverage is derived without page-boundary assumptions: `nininger-1933` has 171 records; its metadata source pages span 1-20, and its record citations span 1-11. `nininger-1950` has 1,678 records; its metadata source pages span 26-104, and its record citations span 26-104.
 - Public folios use schema 2 and expose 49 display pages across 5 catalogs: `chladni-1819` (12 pages, `public-domain`); `haidinger-1859` (6 pages, `public-domain`); `hovey-1896` (7 pages, `public-domain`); `lucas-1813` (3 pages, `public-domain`); `nininger-1933` (21 pages, `no-copyright-us`).
-- Blocked folio catalogs are: `anderson-1913` (0 pages, `undetermined`); `astapovich-1938` (0 pages, `undetermined`); `asu-2024-09` (0 pages, `undetermined`); `ball-1882` (0 pages, `undetermined`); `barnes-1940` (0 pages, `undetermined`); `berlin-1903` (0 pages, `undetermined`); `berlin-1904` (0 pages, `undetermined`); `brown-1916` (0 pages, `undetermined`); `buchner-1863` (0 pages, `undetermined`); `chladni-1825` (0 pages, `undetermined`); `farrington-1903` (0 pages, `undetermined`); `farrington-1916` (0 pages, `undetermined`); `fletcher-1886` (0 pages, `undetermined`); `fletcher-1894` (0 pages, `undetermined`); `fletcher-1896` (0 pages, `undetermined`); `fletcher-1904` (0 pages, `undetermined`); `fletcher-1908` (0 pages, `undetermined`); `foote-1909` (0 pages, `undetermined`); `foote-1912` (0 pages, `undetermined`); `greifswald-1895` (0 pages, `undetermined`); `greifswald-1901` (0 pages, `undetermined`); `hamburg-1913` (0 pages, `undetermined`); `hodge-smith-1939` (0 pages, `undetermined`); `hogbom-1902` (0 pages, `undetermined`); `huss-1976` (0 pages, `undetermined`); `huss-1986` (0 pages, `undetermined`); `kanagawa-1996` (0 pages, `undetermined`); `kantor-1920` (0 pages, `undetermined`); `madrid-1923` (0 pages, `undetermined`); `mason-1964` (0 pages, `undetermined`); `merrill-1916` (0 pages, `undetermined`); `minnesota-1892` (0 pages, `undetermined`); `nininger-1950` (0 pages, `undetermined`); `nordenskiold-1870` (0 pages, `undetermined`); `palache-1926` (0 pages, `undetermined`); `prior-1923` (0 pages, `undetermined`); `reeds-1937` (0 pages, `undetermined`); `schreiter-1912` (0 pages, `undetermined`); `tassin-1902` (0 pages, `undetermined`); `usnm-1886` (0 pages, `undetermined`); `victoria-land-1982` (0 pages, `undetermined`); `ward-1881` (0 pages, `undetermined`); `ward-1904` (0 pages, `undetermined`); `washington-1897` (0 pages, `undetermined`).
-- Reviewed MetBull harmonization covers 13,704 of 18,217 records: 13,401 resolved and 303 explicitly unresolved.
+- Blocked folio catalogs are: `anderson-1913` (0 pages, `undetermined`); `astapovich-1938` (0 pages, `undetermined`); `asu-2024-09` (0 pages, `undetermined`); `ball-1882` (0 pages, `undetermined`); `barnes-1940` (0 pages, `undetermined`); `berlin-1903` (0 pages, `undetermined`); `berlin-1904` (0 pages, `undetermined`); `brauns-bonn-1926` (0 pages, `undetermined`); `brown-1916` (0 pages, `undetermined`); `buchner-1863` (0 pages, `undetermined`); `chladni-1825` (0 pages, `undetermined`); `farrington-1903` (0 pages, `undetermined`); `farrington-1916` (0 pages, `undetermined`); `fletcher-1886` (0 pages, `undetermined`); `fletcher-1894` (0 pages, `undetermined`); `fletcher-1896` (0 pages, `undetermined`); `fletcher-1904` (0 pages, `undetermined`); `fletcher-1908` (0 pages, `undetermined`); `foote-1909` (0 pages, `undetermined`); `foote-1912` (0 pages, `undetermined`); `greifswald-1895` (0 pages, `undetermined`); `greifswald-1901` (0 pages, `undetermined`); `hamburg-1913` (0 pages, `undetermined`); `hodge-smith-1939` (0 pages, `undetermined`); `hogbom-1902` (0 pages, `undetermined`); `huss-1976` (0 pages, `undetermined`); `huss-1986` (0 pages, `undetermined`); `kanagawa-1996` (0 pages, `undetermined`); `kantor-1920` (0 pages, `undetermined`); `madrid-1923` (0 pages, `undetermined`); `mason-1964` (0 pages, `undetermined`); `merrill-1916` (0 pages, `undetermined`); `minnesota-1892` (0 pages, `undetermined`); `nininger-1950` (0 pages, `undetermined`); `nordenskiold-1870` (0 pages, `undetermined`); `palache-1926` (0 pages, `undetermined`); `prior-1923` (0 pages, `undetermined`); `prior-guide-1926` (0 pages, `undetermined`); `reeds-1937` (0 pages, `undetermined`); `schreiter-1912` (0 pages, `undetermined`); `story-maskelyne-1872` (0 pages, `undetermined`); `tassin-1902` (0 pages, `undetermined`); `usnm-1886` (0 pages, `undetermined`); `victoria-land-1982` (0 pages, `undetermined`); `ward-1881` (0 pages, `undetermined`); `ward-1904` (0 pages, `undetermined`); `washington-1897` (0 pages, `undetermined`).
+- Reviewed MetBull harmonization covers 14,861 of 19,553 records: 14,521 resolved and 340 explicitly unresolved.
 - Records currently having a null `name` value: 70.
 <!-- release-summary:session-current-state:end -->
 
-- The remaining 4,513 records are pending observations without reviewed MetBull mappings.
+- The remaining 4,692 records are pending observations without reviewed MetBull mappings.
 - Fletcher 1886/1894/1896/1904/1908 contribute 2,464 `collection-representation-fact` observations. List and pane values are not inventory identifiers; represented weights are context, not specimen masses. They create no projection cards or lineage endpoints, expose no private source UUIDs, and remain folio-blocked/undetermined.
 - Hodge-Smith 1939 contributes 84 `regional-census-fact` observations: 77 numbered Australian falls and 7 additional falls, with 58 resolved reviews and 26 pending records. Controlled Australian Museum representation facts remain searchable source data but are omitted from harmonized cards; no specimen, holding, mass, custody, or ownership claim is made.
 - Victoria Land 1982 contributes 273 individual `table-a-specimen` observations from Table A on cited pages 85-88 within descriptor pages 85-94. Every Table A, Table B, and Table C reference is descriptor-scoped. Exact specimen IDs, one primary mass per specimen, classifications, localities, mineral chemistry, weathering, citations, and accepted `official-abbreviation` mappings are public. Closed normalized evidence retains 270 Table B cross-views and deterministic labels for 40 mass, 2 classification, and 8 weathering conflicts; raw rows remain private. The primary masses total 969,562.2 g and are counted once each, while the 40 mass-conflict records are excluded from lineage candidate generation.
@@ -91,11 +94,11 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 - Foote 1912 has 205 facts-only collection entries across 35 metadata pages, with records citing 25 pages, 227 holdings and numeric gram values, 132 reviewed exact-name mappings, and 73 pending observations. Its source material and media remain private, and its folio is blocked/undetermined with zero pages.
 - Anderson 1913 has 57 fully reviewed facts-only entries (52 resolved and 5 unresolved); Kantor 1920 has 30 fully reviewed entries (27 resolved and 3 unresolved); Astapovich 1938 has 90 fully reviewed entries (81 resolved and 9 unresolved). All three are blocked/undetermined with empty folios and no public images.
 - Madrid 1923 has 130 fully reviewed facts-only collection entries citing pages 226-233 within metadata pages 224-233. Its 168 holdings comprise 151 `Specimen` and 17 `Specimen group` descriptions with 168 normalized masses totaling 190,083.41 g; this detailed-entry sum remains distinct from the source's narrative collection-total claim. The reviews are 84 resolved and 46 unresolved. Madrid has no public media or private evidence, remains folio-blocked/undetermined, and projects 23 multi-holding parents into 54 atomic specimen cards; its 5 context partitions are audit-only and are not rendered as specimens.
-- The schema-5 projection manifest contains 3,062 projected parents, 8,062 atomic cards, and 2,532 non-displayed context audit partitions. Its cards comprise 8,034 ordinary mass paths, 2 repeated Kuleschowka displays, and 28 cards without normalized display mass, including 3 closed qualitative clauses. Berlin contributes 838 reviewed cards; Greifswald contributes none. Brown contributes 385 cards and Minnesota 164; group context and excluded non-meteorite context are not cards. Hamburg continues to project 218 individual components across 142 parents, with aggregate and associated components, representations, counts, and totals retained only as source context.
-- The harmonized presenter derives 23,217 cards from 18,217 parent observations: 5,739 direct specimens, 8,062 projected atomic specimens, 6,859 collection observations, 2,464 collection-representation observations, 84 regional observations, 6 dealer observations, and 3 not-individual source observations. The 13,801 specimen cards use the standard eight-field order. Fletcher context cards show list, pane/case, reference, section, represented-weight text, and citation without specimen claims.
-- The unchecked default is strict: it shows 13,629 source-listed specimen cards, partitioned as 13,625 numeric and 4 qualitative; it excludes all 9,416 observations and 172 source-unlisted specimen cards. The inclusive 23,217-card state is explicit and uses `weighted=0`; omitted, malformed, duplicate, and legacy `weighted=1` states remain strict.
-- The regenerated lineage index contains 2,429 relationships: 194 identity-consistent same-inventory relationships and 2,235 possible cross-source matches from 16,819 positive flattened masses. Incompatible Nininger inventory `139b` is omitted and counted once as ambiguous; no unrelated relationship changed. Of the possible candidates, 1,339 are unreviewed and 896 are reviewed; the 870 Wave 2 reviews retain their candidates as possible only. None asserts physical identity, custody, ownership, transfer, or merge.
-- Source-complete card routing exposes 956 cards and 1,443 closed provenance claims in the inclusive lineage-only view: 194 known same-inventory claims, 1,170 suspected cross-catalog claims, and 79 tentative source-attested group claims. Claims retain applicable endpoint, citation, evidence, review, and caution details rather than only a count summary.
+- The schema-5 projection manifest contains 3,407 projected parents, 8,410 atomic cards, and 2,877 non-displayed context audit partitions. Its cards comprise 8,375 ordinary mass paths, 2 repeated Kuleschowka displays, and 35 cards without normalized display mass, including 10 qualitative clauses. Bonn contributes 348 reviewed cards across 345 parents; its aggregate totals remain context and seven printed `Spl.` cards remain qualitative.
+- The harmonized presenter derives 24,556 cards from 19,553 parent observations: 5,739 direct specimens, 8,410 projected atomic specimens, 6,867 collection observations, 3,447 collection-representation observations, 84 regional observations, 6 dealer observations, and 3 not-individual source observations. The 14,149 specimen cards use the standard eight-field order. Story and Prior context cards preserve representation facts without specimen claims.
+- The unchecked default is strict: it shows 13,977 source-listed specimen cards, partitioned as 13,966 numeric and 11 qualitative; it excludes all 10,407 observations and 172 source-unlisted specimen cards. The inclusive 24,556-card state is explicit and uses `weighted=0`; omitted, malformed, duplicate, and legacy `weighted=1` states remain strict.
+- The regenerated lineage index contains 2,439 relationships: 194 identity-consistent same-inventory relationships and 2,245 possible cross-source matches from 17,160 positive flattened masses. Incompatible Nininger inventory `139b` is omitted and counted once as ambiguous; no unrelated relationship changed. Of the possible candidates, 1,339 are unreviewed and 906 are reviewed, including 10 Bonn candidates retained as possible only. None asserts physical identity, custody, ownership, transfer, or merge.
+- Source-complete card routing exposes 963 cards and 1,451 closed provenance claims in the inclusive lineage-only view: 194 known same-inventory claims, 1,178 suspected cross-catalog claims, and 79 tentative source-attested group claims. Claims retain applicable endpoint, citation, evidence, review, and caution details rather than only a count summary.
 - Nininger 1933 includes printed pages 1-20; pages 12-20 are narrative-only, and the printed catalog numbering skips item 139.
 - The latest release candidate passes the runtime suite and integrated public validator; both must continue to pass before release.
 - Validated continuation evidence recovers formerly blank source names where supported, without inferring modern identity. Reviewed historical entries that genuinely print no separate proper source name retain null names and unresolved reviews.
@@ -103,6 +106,7 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 
 ## Latest Completed Catalogs
 
+- `story-maskelyne-1872` and `prior-guide-1926` add 303 and 680 source-local collection-representation observations with zero specimen cards or lineage endpoints. `brauns-bonn-1926` adds 353 collection entries, 348 reviewed atomic cards, and 10 reviewed possible lineages without same-inventory or merge claims. All three folios and source media remain blocked.
 - `fletcher-1886`, `fletcher-1894`, `fletcher-1896`, `fletcher-1904`, and `fletcher-1908` integrate the five Lazarus Fletcher British Museum editions with 375, 461, 481, 562, and 585 principal-list observations. Together they have 1,632 resolved mappings and 832 explicit unresolved reviews.
 - `hodge-smith-1939` integrates T. Hodge-Smith, *Australian Meteorites* (1939), with 84 regional census/catalog observations that are explicitly not specimen cards or holdings.
 - `victoria-land-1982` integrates Ursula B. Marvin and Brian Mason, *Catalog of Meteorites from Victoria Land, Antarctica, 1978-1980* (1982), with 273 individual Table A specimens.
@@ -130,7 +134,7 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 
 ## Active Work State
 
-- The accepted canonical integrations are the source for the current 49-catalog, 18,217-record schema-12 facts-only public candidate, which retains 49 reviewed public folios.
+- The accepted canonical integrations are the source for the current 52-catalog, 19,553-record schema-12 facts-only public candidate, which retains 49 reviewed public folios.
 - Every specimen card includes the current-name field: a reviewed canonical name, `Same as source catalog name`, or `Unknown`. Victoria Land records carry reviewed `official-abbreviation` mappings to the same canonical names and retain `Unknown` lineage values. The homepage links to the dedicated 40-card catalog directory and separately to the bibliography master list.
 - No release-blocking validation issue remains. Any future public change must still be produced from the private canonical data and pass deterministic byte comparison and the facts-only privacy checks.
 
@@ -179,9 +183,9 @@ Distinct specimens with the same meteorite name and similar mass must not be col
 
 ## Immediate Next Steps
 
-1. Preserve the current 49-catalog facts-only public release candidate. Commit or push only when explicitly requested.
+1. Preserve the current 52-catalog facts-only public release candidate. Commit or push only when explicitly requested.
 2. Keep all currently blocked catalogs, including Madrid 1923, Anderson 1913, Kantor 1920, Astapovich 1938, Foote 1912, Ward 1904, and Farrington 1916, blocked unless separate catalog-specific rights reviews explicitly authorize exact ordered page sets; source age or online availability alone is insufficient.
-3. Select the next processable bibliography control only after preserving and validating the current 49-catalog release candidate.
+3. Select the next processable bibliography control only after preserving and validating the current 52-catalog release candidate.
 4. Resolve the missing scan for `SP1949-0039` (currently MCB-107) and correct the source evidence for MCB-4 and MCB-5 when primary evidence is available.
 5. Keep schema 12 validation, deterministic private/public equality, release summaries, lineage checks, folio hashes, Node tests, runtime checks, and the facts-only privacy boundary green for every future release.
 

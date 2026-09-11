@@ -388,9 +388,9 @@ test("digest lock loads the exact set and fails closed to parent cards on mismat
   const altered = structuredClone(manifest);
   altered.projections[0].cards[0].clause.end -= 1;
   assert.equal((await app.loadSpecimenCardProjectionIndex(records, async () => projectionResponse(altered), options)).size, 0);
-  assert.equal(app.SPECIMEN_CARD_SOURCE_CATALOG_SHA256, "d06cb3c737ffec0259e43e778ed62056d88701c36637b661d20a91dd1061d5b3");
-  assert.equal(app.SPECIMEN_CARD_PROJECTION_DATA_SHA256, "f7f547fc6a22fe7cec794593db716d59896280ae3a1767fc1c050f80f1f02ea0");
-  assert.equal(app.SPECIMEN_CARD_PROJECTION_SET_SHA256, "bca32f44f17079170b45a57b858dc71cc00097f69ec829e519e63d5283d32499");
+  assert.equal(app.SPECIMEN_CARD_SOURCE_CATALOG_SHA256, "cf429e6660f00272f2f81fe69bac81c891f41574bbfff6e6bb46499d2d0672b4");
+  assert.equal(app.SPECIMEN_CARD_PROJECTION_DATA_SHA256, "e128dc388ede6590b5e373fe36958d4b5d068641a4454719c23044c146e13e0e");
+  assert.equal(app.SPECIMEN_CARD_PROJECTION_SET_SHA256, "c4ac216d619ee08210bb43cb5a284280d807b35694ece4105b9611680478f1e0");
 });
 
 test("rendering is text-only, omits context cards, and synchronizes cache keys", () => {
@@ -402,9 +402,9 @@ test("rendering is text-only, omits context cards, and synchronizes cache keys",
   assert.match(html, /<p class="record-semantic-label"><\/p>/u);
   assert.match(html, /<dl class="record-meta" aria-label="Catalog record details"><\/dl>/u);
   assert.doesNotMatch(html, /specimen-position|record-holdings|earlier-records/u);
-  assert.match(html, /styles\.css\?v=20260910-weight-lineage-1/u);
-  assert.match(html, /app\.js\?v=20260910-weight-lineage-1/u);
-  assert.equal(app.ASSET_CACHE_VERSION, "20260910-weight-lineage-1");
+  assert.match(html, /styles\.css\?v=20260911-museum3-1/u);
+  assert.match(html, /app\.js\?v=20260911-museum3-1/u);
+  assert.equal(app.ASSET_CACHE_VERSION, "20260911-museum3-1");
 });
 
 test("production schema-5 projection fixture validates against schema 12", () => {
@@ -413,7 +413,7 @@ test("production schema-5 projection fixture validates against schema 12", () =>
     manifest.metadata.projectionCount,
     manifest.metadata.atomicCardCount,
     manifest.metadata.sourceContextCardCount,
-  ], [3062, 8062, 2532]);
+  ], [3407, 8410, 2877]);
   assert.equal(app.validateSpecimenCardManifest(manifest, records, { sourceCatalogSha256 }), true);
   const index = app.deriveSpecimenCardProjectionIndex(manifest, records, { sourceCatalogSha256 });
   assert.equal(index.size, manifest.metadata.projectionCount);
@@ -421,11 +421,11 @@ test("production schema-5 projection fixture validates against schema 12", () =>
   const descriptors = app.expandSpecimenCardDescriptors(projectedRecords, index);
   assert.equal(descriptors.filter(({ kind }) => kind === "atomic").length, manifest.metadata.atomicCardCount);
   assert.equal(descriptors.filter(({ kind }) => kind === "context").length, 0);
-  assert.equal(descriptors.filter(({ massPath }) => massPath !== null).length, 8034);
+  assert.equal(descriptors.filter(({ massPath }) => massPath !== null).length, 8375);
   assert.equal(descriptors.filter(({ repeatedMass }) => repeatedMass !== null).length, 2);
   assert.equal(descriptors.filter(({ massPath, repeatedMass, qualitativeWeightEvidence }) =>
     massPath === null && repeatedMass === null && qualitativeWeightEvidence === null).length, 23);
-  assert.equal(descriptors.filter(({ qualitativeWeightEvidence }) => qualitativeWeightEvidence !== null).length, 3);
+  assert.equal(descriptors.filter(({ qualitativeWeightEvidence }) => qualitativeWeightEvidence !== null).length, 10);
   assert(descriptors.filter(({ massPath }) => massPath !== null).every((descriptor) => {
     const [grams] = app.specimenCardDescriptorMasses(descriptor);
     return grams === app.resolveSpecimenCardSelection(
@@ -451,8 +451,8 @@ test("Madrid runtime keeps parent statistics while loading reviewed atomic cards
   const loadedRelationshipIds = new Set([...lineageIndex.values()].flatMap((entries) =>
     entries.filter(({ kind }) => kind === "relationship-route").map(({ relationship }) => relationship.id)));
 
-  assert.equal(app.calculateStatistics(records).observations, 18217);
-  assert.equal(app.calculateStatistics(records).catalogs, 49);
+  assert.equal(app.calculateStatistics(records).observations, 19553);
+  assert.equal(app.calculateStatistics(records).catalogs, 52);
   assert.equal(madridRecords.filter(({ id }) => projectionIndex.has(id)).length, 23);
   assert.equal(madridDescriptors.filter(({ kind }) => kind === "atomic").length, 54);
   assert.equal(madridDescriptors.filter(({ kind }) => kind === "context").length, 0);

@@ -81,10 +81,10 @@ test("main template presents lineage through the harmonized specimen contract", 
   });
   assert.doesNotMatch(source, /\.innerHTML\b/);
   assert.doesNotMatch(css, /\.earlier-records \{/);
-  assert.equal(app.CACHE_VERSION, "20260910-weight-lineage-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260910-weight-lineage-1");
-  assert.match(html, /styles\.css\?v=20260910-weight-lineage-1/);
-  assert.match(html, /app\.js\?v=20260910-weight-lineage-1/);
+  assert.equal(app.CACHE_VERSION, "20260911-museum3-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260911-museum3-1");
+  assert.match(html, /styles\.css\?v=20260911-museum3-1/);
+  assert.match(html, /app\.js\?v=20260911-museum3-1/);
   for (const file of ["possible-specimen-lineages.html", "possible-specimen-lineages.css", "possible-specimen-lineages.js"]) {
     await assert.rejects(access(path.join(projectRoot, file)));
   }
@@ -138,12 +138,12 @@ test("real catalog Allende search retains reviewed names and synonyms without Al
 
 test("real release locks all catalogs and chronological dropdown entries", () => {
   const entries = app.catalogSelectorEntries(registry);
-  assert.equal(entries.length, 49);
+  assert.equal(entries.length, 52);
   assert.deepEqual(entries.map(([id]) => id), [
     "lucas-1813", "chladni-1819", "chladni-1825", "haidinger-1859", "buchner-1863",
-    "nordenskiold-1870", "ward-1881", "ball-1882", "fletcher-1886", "usnm-1886", "minnesota-1892", "fletcher-1894", "greifswald-1895", "fletcher-1896", "hovey-1896", "washington-1897",
+    "nordenskiold-1870", "story-maskelyne-1872", "ward-1881", "ball-1882", "fletcher-1886", "usnm-1886", "minnesota-1892", "fletcher-1894", "greifswald-1895", "fletcher-1896", "hovey-1896", "washington-1897",
     "greifswald-1901", "tassin-1902", "hogbom-1902", "farrington-1903", "berlin-1903", "fletcher-1904", "ward-1904", "berlin-1904", "fletcher-1908", "foote-1909", "schreiter-1912", "foote-1912",
-    "anderson-1913", "hamburg-1913", "brown-1916", "farrington-1916", "merrill-1916", "kantor-1920", "prior-1923", "madrid-1923", "palache-1926",
+    "anderson-1913", "hamburg-1913", "brown-1916", "farrington-1916", "merrill-1916", "kantor-1920", "prior-1923", "madrid-1923", "prior-guide-1926", "palache-1926", "brauns-bonn-1926",
     "nininger-1933", "reeds-1937", "astapovich-1938", "hodge-smith-1939", "barnes-1940", "nininger-1950", "mason-1964",
     "huss-1976", "victoria-land-1982", "huss-1986", "kanagawa-1996", "asu-2024-09",
   ]);
@@ -270,7 +270,7 @@ test("review outcomes apply only to possible matches and not-supported entries a
 
   const notSupported = clone(retained);
   notSupported.relationships.find(({ id }) => id === target.id).review.outcome = "not-supported";
-  assert.equal(entryCount(app.deriveEarlierRecordIndex(notSupported, records, registry)), 2500);
+  assert.equal(entryCount(app.deriveEarlierRecordIndex(notSupported, records, registry)), 2508);
 
   const confirmed = clone(retained);
   confirmed.relationships.find(({ id }) => id === target.id).review.outcome = "confirmed";
@@ -281,14 +281,14 @@ test("real data maps only later records without mutation and matches the locked 
   const before = JSON.stringify(lineageData);
   const index = app.deriveEarlierRecordIndex(lineageData, records, registry);
   assert.equal(JSON.stringify(lineageData), before);
-  assert.equal(index.size, 1398);
-  assert.equal(entryCount(index), 2501);
+  assert.equal(index.size, 1405);
+  assert.equal(entryCount(index), 2509);
   assert.equal(Math.max(...[...index.values()].map((entries) => entries.length)), 98);
   const distribution = [...index.values()].reduce((counts, entries) => {
     counts[entries.length] = (counts[entries.length] || 0) + 1;
     return counts;
   }, {});
-  assert.deepEqual(distribution, { 1: 967, 2: 244, 3: 31, 4: 124, 5: 5, 6: 10, 7: 1, 8: 5, 9: 2, 10: 1, 11: 1, 13: 1, 15: 1, 18: 1, 25: 1, 36: 1, 81: 1, 98: 1 });
+  assert.deepEqual(distribution, { 1: 973, 2: 245, 3: 31, 4: 124, 5: 5, 6: 10, 7: 1, 8: 5, 9: 2, 10: 1, 11: 1, 13: 1, 15: 1, 18: 1, 25: 1, 36: 1, 81: 1, 98: 1 });
   assert.ok(records.some((record) => !index.has(record.id)));
 });
 
@@ -325,7 +325,7 @@ test("source-attested Table C groups retain exact n-ary membership and feed card
   assert.equal(lineageOnly.length, 77);
 });
 
-test("source-complete lineage routing exposes exactly 956 cards and 1,443 closed claims", () => {
+test("source-complete lineage routing exposes exactly 963 cards and 1,451 closed claims", () => {
   const index = app.deriveEarlierRecordIndex(lineageData, records, registry);
   const projectionData = JSON.parse(projectionText);
   const projectionIndex = app.deriveSpecimenCardProjectionIndex(projectionData, records, {
@@ -337,10 +337,10 @@ test("source-complete lineage routing exposes exactly 956 cards and 1,443 closed
     claims: app.renderableLineageClaimsForCard(descriptor, index.get(descriptor.parentRecord.id) || []),
   })).filter(({ claims }) => claims.length > 0);
   const claims = routed.flatMap(({ claims: cardClaims }) => cardClaims);
-  assert.deepEqual({ cards: routed.length, claims: claims.length }, { cards: 956, claims: 1443 });
+  assert.deepEqual({ cards: routed.length, claims: claims.length }, { cards: 963, claims: 1451 });
   assert.deepEqual(Object.fromEntries(["known", "suspected", "tentative"].map((status) =>
     [status, claims.filter(({ presentationStatus }) => presentationStatus === status).length])),
-  { known: 194, suspected: 1170, tentative: 79 });
+  { known: 194, suspected: 1178, tentative: 79 });
   assert(claims.every((claim) => ["known", "suspected", "tentative"].includes(claim.presentationStatus)));
   for (const claim of claims) {
     assert.match(claim.caution, /does not (?:establish|create)|Suspected match only/u);
@@ -367,7 +367,7 @@ test("source-complete lineage routing exposes exactly 956 cards and 1,443 closed
   }
   assert.equal(app.filterSpecimenCardDescriptors(descriptors, {
     min: null, max: null, lineageOnly: true, includeUnknownWeight: true,
-  }, index).length, 956);
+  }, index).length, 963);
 });
 
 test("cards distinguish same inventory continuity from possible matching", () => {
@@ -407,7 +407,7 @@ test("Sandia receives 108b continuity while Rosebud receives none", () => {
   assert.equal(index.has(rosebud.id), false);
 });
 
-test("all 2422 earlier links resolve to exact public source records", () => {
+test("all 2430 earlier links resolve to exact public source records", () => {
   const index = app.deriveEarlierRecordIndex(lineageData, records, registry);
   const earlierEntries = [...index.values()].flat().filter(({ kind }) => kind === "relationship-route");
   for (const entry of earlierEntries) {
@@ -420,10 +420,10 @@ test("all 2422 earlier links resolve to exact public source records", () => {
       ).map(({ id }) => id);
       assert.deepEqual(destinationIds, [endpoint.recordId], `${endpoint.catalogSearchUrl} did not resolve exactly to ${endpoint.recordId}`);
   }
-  assert.equal(earlierEntries.length, 2422);
+  assert.equal(earlierEntries.length, 2430);
 });
 
-test("all 4858 published observation links resolve to exact public source records", () => {
+test("all 4878 published observation links resolve to exact public source records", () => {
   let count = 0;
   for (const relationship of lineageData.relationships) {
     for (const observation of relationship.observations) {
@@ -438,7 +438,7 @@ test("all 4858 published observation links resolve to exact public source record
       assert.deepEqual(destinationIds, [observation.recordId], `${observation.catalogSearchUrl} did not resolve exactly`);
     }
   }
-  assert.equal(count, 4858);
+  assert.equal(count, 4878);
 });
 
 test("optional fetch failures and malformed payloads return an empty enhancement", async () => {
@@ -454,9 +454,9 @@ test("optional fetch failures and malformed payloads return an empty enhancement
   const loaded = await app.loadEarlierRecordIndex(records, registry, async () => ({
     ok: true, text: async () => lineageText,
   }), { sha256 });
-  assert.equal(entryCount(loaded), 2501);
+  assert.equal(entryCount(loaded), 2509);
   assert.equal(app.SPECIMEN_LINEAGE_DATA_SHA256,
-    "ab9960cdb5bebc83b9132e72c1369f0073e2735cdc7995925a3feb36948debd2");
+    "3f1d63db2effbe497e328ac99831c22d661fd72a2fba2fd1ec74a83186a523a9");
   for (const mutate of forgedFactMutations) {
     const forged = clone(lineageData);
     mutate(forged);

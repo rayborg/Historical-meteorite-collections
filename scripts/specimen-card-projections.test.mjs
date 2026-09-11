@@ -29,6 +29,7 @@ const madridIds = new Set(catalog.records.filter(({ catalogId }) => catalogId ==
 const hamburgIds = new Set(catalog.records.filter(({ catalogId }) => catalogId === "hamburg-1913").map(({ id }) => id));
 const wave1Ids = new Set(catalog.records.filter(({ catalogId }) =>
   ["brown-1916", "minnesota-1892"].includes(catalogId)).map(({ id }) => id));
+const bonnIds = new Set(catalog.records.filter(({ catalogId }) => catalogId === "brauns-bonn-1926").map(({ id }) => id));
 
 function clone(value = published) {
   return structuredClone(value);
@@ -51,35 +52,36 @@ function cardTuple(card) {
 
 test("production manifest is deterministic and validates against the locked catalog", () => {
   assert.deepEqual(validateSpecimenCardProjections(published, catalog, catalogText), {
-    projectionCount: 3062,
-    atomicCardCount: 8062,
-    massBoundCardCount: 8034,
-    masslessCardCount: 28,
+    projectionCount: 3407,
+    atomicCardCount: 8410,
+    massBoundCardCount: 8375,
+    masslessCardCount: 35,
     repeatedMassCardCount: 2,
-    sourceContextCardCount: 2532,
+    sourceContextCardCount: 2877,
   });
   assert.equal(serializeSpecimenCardProjections(published), projectionText);
   assert.equal(createHash("sha256").update(catalogText).digest("hex"), published.metadata.sourceCatalogSha256);
-  assert.equal(createHash("sha256").update(JSON.stringify(published.projections)).digest("hex"), "bca32f44f17079170b45a57b858dc71cc00097f69ec829e519e63d5283d32499");
+  assert.equal(createHash("sha256").update(JSON.stringify(published.projections)).digest("hex"), "c4ac216d619ee08210bb43cb5a284280d807b35694ece4105b9611680478f1e0");
   const wave2Ids = new Set(catalog.records.filter(({ catalogId }) => ["berlin-1903", "berlin-1904", "greifswald-1895", "greifswald-1901"].includes(catalogId)).map(({ id }) => id));
-  const baseline = published.projections.filter(({ parentRecordId }) => !wave1Ids.has(parentRecordId) && !wave2Ids.has(parentRecordId));
+  const baseline = published.projections.filter(({ parentRecordId }) =>
+    !wave1Ids.has(parentRecordId) && !wave2Ids.has(parentRecordId) && !bonnIds.has(parentRecordId));
   assert.equal(createHash("sha256").update(JSON.stringify(baseline)).digest("hex"), "2aba43bd9d205ae21502f3f76cdb213c1bac26f90513389b876bf047d6087e4b");
   assert.equal(createHash("sha256").update(JSON.stringify(baseline.filter(({ parentRecordId }) => !hamburgIds.has(parentRecordId)))).digest("hex"), "895bf19525ea363dd20068417c4cb4e7af667dd10c4e8c746085f40b2e3ea528");
-  assert.equal(createHash("sha256").update(projectionText).digest("hex"), "f7f547fc6a22fe7cec794593db716d59896280ae3a1767fc1c050f80f1f02ea0");
+  assert.equal(createHash("sha256").update(projectionText).digest("hex"), "e128dc388ede6590b5e373fe36958d4b5d068641a4454719c23044c146e13e0e");
 });
 
 test("schema is a closed schema-5 count-locked atomic projection contract", () => {
   assert.equal(schema.$schema, "https://json-schema.org/draft/2020-12/schema");
   assert.equal(schema.$id, "urn:hmc:schema:specimen-card-projections:5");
   assert.deepEqual(schema.required, ["metadata", "projections"]);
-  assert.equal(schema.properties.projections.minItems, 3062);
-  assert.equal(schema.properties.projections.maxItems, 3062);
-  assert.equal(schema.$defs.metadata.properties.atomicCardCount.const, 8062);
-  assert.equal(schema.$defs.metadata.properties.sourceContextCardCount.const, 2532);
+  assert.equal(schema.properties.projections.minItems, 3407);
+  assert.equal(schema.properties.projections.maxItems, 3407);
+  assert.equal(schema.$defs.metadata.properties.atomicCardCount.const, 8410);
+  assert.equal(schema.$defs.metadata.properties.sourceContextCardCount.const, 2877);
   assert.equal(schema.$defs.metadata.properties.catalogSchemaVersion.const, 12);
-  assert.equal(schema.$defs.metadata.properties.sourceRecordCount.const, 18217);
+  assert.equal(schema.$defs.metadata.properties.sourceRecordCount.const, 19553);
   assert.equal(schema.$defs.metadata.properties.sourceCatalogSha256.const,
-    "d06cb3c737ffec0259e43e778ed62056d88701c36637b661d20a91dd1061d5b3");
+    "cf429e6660f00272f2f81fe69bac81c891f41574bbfff6e6bb46499d2d0672b4");
   assert.deepEqual(schema.$defs.projection.required, ["parentRecordId", "cards"]);
   assert.deepEqual(schema.$defs.card.oneOf, [
     { $ref: "#/$defs/clauseCard" },
@@ -118,7 +120,7 @@ test("unprojected sources remain unprojected and schema 12 retains specimen loca
   assert.equal(footeIds.size, 6);
   assert(!published.projections.some(({ parentRecordId }) => footeIds.has(parentRecordId)));
   assert.equal(published.metadata.catalogSchemaVersion, 12);
-  assert.equal(published.metadata.sourceRecordCount, 18217);
+  assert.equal(published.metadata.sourceRecordCount, 19553);
 });
 
 test("Brown and Minnesota projections are exact one-to-one reviewed atomic holding projections", () => {
@@ -301,8 +303,8 @@ test("every evidence variant and optional mass resolves exactly in canonical sou
       assert(projection.cards.length + Number(hasContext) >= 2);
     }
   }
-  assert.equal(cardCount, 8062);
-  assert.equal(contextCount, 2532);
+  assert.equal(cardCount, 8410);
+  assert.equal(contextCount, 2877);
 });
 
 test("Prior 630 has exact 17 reviewed clauses plus context; Reeds 366 has ten full holdings and no context", () => {
@@ -351,6 +353,13 @@ test("manifest exposes only identifiers, paths, boundaries, and accepted qualita
     card.qualitativeWeightEvidence ? [{ parentRecordId, cardIndex, ...card.qualitativeWeightEvidence }] : [])), [
     { parentRecordId: "obs-e2b4f522-b31d-4dcb-9cf6-7b8ba35da649", cardIndex: 0, type: "qualitative", statement: "main mass" },
     { parentRecordId: "obs-014fa351-665c-4bcb-b83f-3610f0ff425c", cardIndex: 4, type: "qualitative", statement: "one-third of mass" },
+    { parentRecordId: "obs-c826a6f7-d9a3-417f-a304-a4e566f36f6c", cardIndex: 0, type: "qualitative", statement: "Spl." },
+    { parentRecordId: "obs-4abadfcd-cac6-495a-baa3-6247c4f23029", cardIndex: 0, type: "qualitative", statement: "Spl." },
+    { parentRecordId: "obs-b9a75360-da41-4407-8e2a-4283bfe2a566", cardIndex: 0, type: "qualitative", statement: "Spl." },
+    { parentRecordId: "obs-9dec06e1-df7f-4306-9a80-1dca86be2974", cardIndex: 0, type: "qualitative", statement: "Spl." },
+    { parentRecordId: "obs-327f24de-1d9e-4d32-beb5-02d92da394ed", cardIndex: 0, type: "qualitative", statement: "Spl." },
+    { parentRecordId: "obs-3d14d6ee-ac0e-4ee1-afa2-6e120be03784", cardIndex: 0, type: "qualitative", statement: "Spl." },
+    { parentRecordId: "obs-6a96e225-20b3-48c2-b29d-abc6e3b6993e", cardIndex: 0, type: "qualitative", statement: "Spl." },
     { parentRecordId: "obs-26389145-2d52-4acf-8b33-06aa8489edfe", cardIndex: 2, type: "qualitative", statement: "less than a gram" },
   ]);
 });
@@ -371,7 +380,7 @@ test("rejects wrong metadata, extra fields, free text, and altered source bytes"
   mutate("changed qualitative evidence", (value) => {
     value.projections.find(({ parentRecordId }) => parentRecordId === "obs-e2b4f522-b31d-4dcb-9cf6-7b8ba35da649")
       .cards[0].qualitativeWeightEvidence.statement = "principal mass";
-  }, /accepted three-card authority/iu);
+  }, /accepted ten-card authority/iu);
   assert.throws(() => validateSpecimenCardProjections(published, catalog, `${catalogText} `), /SHA-256/iu);
 });
 
