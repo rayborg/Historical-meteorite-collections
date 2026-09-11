@@ -62,7 +62,7 @@ function fact(dto, label) {
 function expectedIdentifier(descriptor, kind) {
   const record = descriptor.parentRecord;
   if (kind === "projected-atomic-specimen") {
-    return app.specimenCardHolding(record, descriptor.holdingPath)?.holding?.designation || "Unknown";
+    return app.specimenCardHolding(record, descriptor.holdingPath)?.holding?.designation || null;
   }
   if (record.recordModel === "catalog-item") return `Catalog item ${record.catalogItem}`;
   if (record.recordModel === "catalog-number") return `Catalog no. ${record.catalogNumber}`;
@@ -75,9 +75,9 @@ function expectedIdentifier(descriptor, kind) {
   if (record.recordModel === "collection-representation-fact") {
     return record.reportedNumber ? `List no. ${record.reportedNumber}` : `Collection representation ${record.entryOrder}`;
   }
-  if (record.recordModel === "table-a-specimen") return record.specimenId || "Unknown";
+  if (record.recordModel === "table-a-specimen") return record.specimenId || null;
   if (record.recordModel === "dealer-offer-fact") return `Type number ${record.typeNumber}`;
-  return record.designation || "Unknown";
+  return record.designation || null;
 }
 
 function expectedEvent(record) {
@@ -85,6 +85,52 @@ function expectedEvent(record) {
   if (["collection-entry", "regional-census-fact", "collection-representation-fact"].includes(record.recordModel)) return record.eventDate;
   if (["specimen", "catalog-item"].includes(record.recordModel)) return record.year;
   return null;
+}
+
+function expectedFacts(descriptor) {
+  const record = descriptor.parentRecord;
+  const kind = app.classifyHarmonizedCard(descriptor);
+  const specimen = ["direct-specimen", "projected-atomic-specimen"].includes(kind);
+  const entries = [];
+  const add = (label, value) => {
+    if (typeof value === "string" && value.length > 0 && value.toLocaleLowerCase() !== "unknown") {
+      entries.push({ label, value });
+    }
+  };
+  const currentName = record.metbull?.canonicalName &&
+    !app.namesAreDisplayEquivalent(record.name, record.metbull.canonicalName)
+    ? record.metbull.canonicalName : null;
+  add("Current Meteoritical Bulletin name", currentName);
+  add("Class", record.classification);
+  if (specimen) entries.push({
+    label: "Specimen form",
+    value: kind === "projected-atomic-specimen" || record.recordModel === "table-a-specimen"
+      ? "Individual specimen" : "Specimen",
+  });
+  add("Source locality", record.recordModel === "table-a-specimen" ? record.locality?.name : record.locality);
+  if (specimen) add("Individual find location", record.individualFindLocation);
+  add(record.recordModel === "collection-representation-fact" ? "Date or report of find" : "Event", expectedEvent(record));
+  if (record.recordModel === "collection-representation-fact") {
+    add("Section", record.section);
+    add("Pane or case", record.pane);
+    add("Reference", record.reference);
+    add("Represented weight", record.representedWeight.valueText);
+  }
+  if (specimen) {
+    const claims = app.lineageEntriesForSpecimenCard(descriptor, lineageIndex.get(record.id) || []);
+    if (claims.length) entries.push({ label: "Lineage", value: app.formatLineageSummary(claims) });
+    const grams = kind === "projected-atomic-specimen"
+      ? descriptor.repeatedMass
+        ? app.resolveSpecimenCardRepeatedMass(record, descriptor.holdingPath, descriptor.repeatedMass)?.grams
+        : descriptor.massPath === null ? null
+          : app.resolveSpecimenCardSelection(record, descriptor.holdingPath, descriptor.massPath)?.grams
+      : record.weight?.grams;
+    const qualitativeWeight = kind === "projected-atomic-specimen"
+      ? descriptor.qualitativeWeightEvidence?.statement : record.weightEvidence?.statement;
+    add("Specimen weight", Number.isFinite(grams) ? app.formatMass(grams) : qualitativeWeight);
+    entries.push(...app.victoriaConflictFacts(record));
+  }
+  return entries;
 }
 
 test("every production display descriptor has the closed harmonized DTO and exact kind counts", () => {
@@ -122,45 +168,44 @@ test("semantic type labels are hidden for specimens and retained for observation
   assert.equal(app.shouldDisplaySemanticLabel("collection-representation-observation"), true);
 });
 
-test("every production card uses the approved fact order, values, missing behavior, and current-name suppression", () => {
-  const missing = {};
+test("every production card uses the approved known-fact order and omits unavailable values", () => {
+  const omitted = {};
   let specimenCount = 0;
   let displayedCurrentNameCount = 0;
+  let omittedIdentifierCount = 0;
   for (const descriptor of descriptors) {
     const record = descriptor.parentRecord;
     const dto = present(descriptor);
     const specimen = ["direct-specimen", "projected-atomic-specimen"].includes(dto.kind);
     const currentName = record.metbull?.canonicalName && !app.namesAreDisplayEquivalent(record.name, record.metbull.canonicalName)
       ? record.metbull.canonicalName : null;
-    const expectedLabels = specimen
-      ? [...(currentName ? ["Current Meteoritical Bulletin name"] : []),
-        ...STANDARD_SPECIMEN_LABELS, ...app.victoriaConflictFacts(record).map(({ label }) => label)]
-      : [...(currentName ? ["Current Meteoritical Bulletin name"] : []),
-        ...(record.recordModel === "collection-representation-fact" ? FLETCHER_OBSERVATION_LABELS : STANDARD_OBSERVATION_LABELS),
-        ...(record.recordModel === "collection-representation-fact" ? FLETCHER_LABELS : [])];
-    assert.deepEqual(dto.facts.map(({ label }) => label), expectedLabels, record.id);
-    assert.equal(dto.sourceName, record.name || "Unknown", record.id);
+    assert.deepEqual(dto.facts, expectedFacts(descriptor), record.id);
+    assert.equal(dto.sourceName, record.name || null, record.id);
+    assert.equal(dto.facts.some(({ value }) => value === "Unknown"), false, record.id);
+    if (dto.identifier === null) omittedIdentifierCount += 1;
     assert.equal(fact(dto, "Current Meteoritical Bulletin name"), currentName || undefined, record.id);
-    assert.equal(fact(dto, "Class"), record.classification || "Unknown", record.id);
+    assert.equal(fact(dto, "Class"), record.classification?.toLocaleLowerCase() === "unknown"
+      ? undefined : record.classification || undefined, record.id);
     assert.equal(fact(dto, "Source locality"),
-      (record.recordModel === "table-a-specimen" ? record.locality?.name : record.locality) || "Unknown", record.id);
-    assert.equal(fact(dto, record.recordModel === "collection-representation-fact" ? "Date or report of find" : "Event"), expectedEvent(record) || "Unknown", record.id);
+      (record.recordModel === "table-a-specimen" ? record.locality?.name : record.locality) || undefined, record.id);
+    assert.equal(fact(dto, record.recordModel === "collection-representation-fact" ? "Date or report of find" : "Event"), expectedEvent(record) || undefined, record.id);
     if (specimen) {
       specimenCount += 1;
       if (currentName) displayedCurrentNameCount += 1;
       assert.equal(fact(dto, "Specimen form"),
         dto.kind === "projected-atomic-specimen" || record.recordModel === "table-a-specimen" ? "Individual specimen" : "Specimen",
         record.id);
-      assert.equal(fact(dto, "Individual find location"), record.individualFindLocation || "Unknown", record.id);
-      for (const { label, value } of dto.facts) {
-        if (value === "Unknown") missing[label] = (missing[label] || 0) + 1;
+      assert.equal(fact(dto, "Individual find location"), record.individualFindLocation || undefined, record.id);
+      for (const label of STANDARD_SPECIMEN_LABELS.filter((value) => value !== "Specimen form")) {
+        if (fact(dto, label) === undefined) omitted[label] = (omitted[label] || 0) + 1;
       }
-      if (dto.sourceName === "Unknown") missing.sourceName = (missing.sourceName || 0) + 1;
+      if (dto.sourceName === null) omitted.sourceName = (omitted.sourceName || 0) + 1;
     }
   }
   assert.equal(specimenCount, 14149);
   assert.equal(displayedCurrentNameCount, 2231);
-  assert.deepEqual(missing, {
+  assert.equal(omittedIdentifierCount, 8210);
+  assert.deepEqual(omitted, {
     "Individual find location": 14038,
     Lineage: 13186,
     Event: 2736,
@@ -170,17 +215,17 @@ test("every production card uses the approved fact order, values, missing behavi
     sourceName: 57,
   });
   assert.deepEqual({
-    classResolved: specimenCount - missing.Class,
-    eventResolved: specimenCount - missing.Event,
-    locationResolved: specimenCount - missing["Individual find location"],
-    lineageResolved: specimenCount - missing.Lineage,
-    weightResolved: specimenCount - missing["Specimen weight"],
+    classDisplayed: specimenCount - omitted.Class,
+    eventDisplayed: specimenCount - omitted.Event,
+    locationDisplayed: specimenCount - omitted["Individual find location"],
+    lineageDisplayed: specimenCount - omitted.Lineage,
+    weightDisplayed: specimenCount - omitted["Specimen weight"],
   }, {
-    classResolved: 13917,
-    eventResolved: 11413,
-    locationResolved: 111,
-    lineageResolved: 963,
-    weightResolved: 13977,
+    classDisplayed: 13917,
+    eventDisplayed: 11413,
+    locationDisplayed: 111,
+    lineageDisplayed: 963,
+    weightDisplayed: 13977,
   });
 });
 
@@ -198,8 +243,8 @@ test("specimen mass and lineage facts resolve exactly from source and projection
       : record.weight?.grams;
     const qualitativeWeight = dto.kind === "projected-atomic-specimen"
       ? descriptor.qualitativeWeightEvidence?.statement : record.weightEvidence?.statement;
-    assert.equal(fact(dto, "Lineage"), expectedClaims.length ? app.formatLineageSummary(expectedClaims) : "Unknown", record.id);
-    assert.equal(fact(dto, "Specimen weight"), Number.isFinite(grams) ? app.formatMass(grams) : qualitativeWeight || "Unknown", record.id);
+    assert.equal(fact(dto, "Lineage"), expectedClaims.length ? app.formatLineageSummary(expectedClaims) : undefined, record.id);
+    assert.equal(fact(dto, "Specimen weight"), Number.isFinite(grams) ? app.formatMass(grams) : qualitativeWeight || undefined, record.id);
   }
 });
 
@@ -253,11 +298,11 @@ test("only typed specimen locations can create an individual find location or sp
     const dto = present(descriptor);
     const specimen = ["direct-specimen", "projected-atomic-specimen"].includes(dto.kind);
     assert.equal(fact(dto, "Individual find location"),
-      specimen ? descriptor.parentRecord.individualFindLocation || "Unknown" : undefined, descriptor.parentRecord.id);
+      specimen ? descriptor.parentRecord.individualFindLocation || undefined : undefined, descriptor.parentRecord.id);
   }
 });
 
-test("Kuleschowka renders two 2.7 g repeated specimens with unknown lineage", () => {
+test("Kuleschowka renders two 2.7 g repeated specimens without an unsupported lineage field", () => {
   const cards = descriptors.filter(({ parentRecord }) => parentRecord.id === "obs-4611763e-40ee-4872-920e-968183aa348b");
   assert.equal(cards.length, 3);
   assert.deepEqual(cards.map(({ massPath, repeatedMass }) => ({ massPath, occurrence: repeatedMass?.occurrence || null })), [
@@ -266,13 +311,13 @@ test("Kuleschowka renders two 2.7 g repeated specimens with unknown lineage", ()
     { massPath: null, occurrence: 2 },
   ]);
   assert.deepEqual(cards.map((descriptor) => fact(present(descriptor), "Specimen weight")), ["5.95 g", "2.7 g", "2.7 g"]);
-  assert(cards.slice(1).every((descriptor) => fact(present(descriptor), "Lineage") === "Unknown"));
+  assert(cards.slice(1).every((descriptor) => fact(present(descriptor), "Lineage") === undefined));
   assert(cards.slice(1).every((descriptor) => app.lineageEntriesForSpecimenCard(
     descriptor, lineageIndex.get(descriptor.parentRecord.id) || []
   ).length === 0));
 });
 
-test("representative corrected and unresolved specimen cards preserve the complete Safari-safe text DTO", () => {
+test("representative corrected and unresolved specimen cards preserve the known Safari-safe text DTO", () => {
   const corrected = descriptors.find((descriptor) => descriptor.parentRecord.metbull?.matchType === "corrected-spelling" &&
     ["direct-specimen", "projected-atomic-specimen"].includes(app.classifyHarmonizedCard(descriptor)));
   const unresolved = descriptors.find((descriptor) => descriptor.parentRecord.metbull?.matchType === "unresolved" &&
@@ -280,11 +325,7 @@ test("representative corrected and unresolved specimen cards preserve the comple
   for (const descriptor of [corrected, unresolved]) {
     const dto = present(descriptor);
     assert(["direct-specimen", "projected-atomic-specimen"].includes(dto.kind));
-    const currentName = descriptor.parentRecord.metbull?.canonicalName &&
-      !app.namesAreDisplayEquivalent(descriptor.parentRecord.name, descriptor.parentRecord.metbull.canonicalName);
-    assert.deepEqual(dto.facts.map(({ label }) => label), [
-      ...(currentName ? ["Current Meteoritical Bulletin name"] : []), ...STANDARD_SPECIMEN_LABELS
-    ]);
+    assert.deepEqual(dto.facts, expectedFacts(descriptor));
     assert(dto.facts.every(({ value }) => typeof value === "string" && value.length > 0));
   }
   assert.equal(fact(present(corrected), "Current Meteoritical Bulletin name"), corrected.parentRecord.metbull.canonicalName);
@@ -444,7 +485,7 @@ test("Foote and Wave 1 lineage endpoints retain non-specimen and exact-path sema
     assert.equal(dto.kind, "dealer-observation");
     assert.equal(dto.semanticLabel, "Dealer catalog observation, not a specimen or holding");
     assert.equal(dto.description, descriptor.parentRecord.description);
-    assert.deepEqual(dto.facts.map(({ label }) => label), STANDARD_OBSERVATION_LABELS);
+    assert.deepEqual(dto.facts, expectedFacts(descriptor));
     assert.equal(descriptor.parentRecord.metbull, undefined);
     assert.equal(descriptor.parentRecord.weight, undefined);
     assert.equal(descriptor.parentRecord.holdings, undefined);
@@ -484,13 +525,13 @@ test("accessible shell, responsive breakpoints, approved cache, and immutable da
   assert.match(styles, /\.record-meta dt \{[^}]*font-size: \.6rem;/u);
   assert.match(styles, /\.record-meta dd \{[^}]*font-size: \.8rem;/u);
   assert.doesNotMatch(styles, /\.record-meta dt \{[^}]*overflow-wrap: anywhere;/u);
-  assert.equal(app.CACHE_VERSION, "20260911-compact-cards-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260911-compact-cards-1");
+  assert.equal(app.CACHE_VERSION, "20260911-known-facts-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260911-known-facts-1");
   for (const document of [html, catalogsHtml]) {
-    assert.match(document, /styles\.css\?v=20260911-compact-cards-1/u);
-    assert.match(document, /app\.js\?v=20260911-compact-cards-1/u);
+    assert.match(document, /styles\.css\?v=20260911-known-facts-1/u);
+    assert.match(document, /app\.js\?v=20260911-known-facts-1/u);
   }
-  assert.match(catalogsHtml, /catalogs\.js\?v=20260911-compact-cards-1/u);
+  assert.match(catalogsHtml, /catalogs\.js\?v=20260911-known-facts-1/u);
   assert.deepEqual({
     catalog: sha256(catalogText),
     projections: sha256(projectionText),

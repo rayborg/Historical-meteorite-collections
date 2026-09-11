@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260911-compact-cards-1";
+const CACHE_VERSION = "20260911-known-facts-1";
 const ASSET_CACHE_VERSION = CACHE_VERSION;
 const CATALOG_SCHEMA_VERSION = 12;
 const CATALOG_RECORD_COUNT = 19553;
@@ -3643,7 +3643,7 @@ function shouldDisplaySemanticLabel(kind) {
 
 function harmonizedCardIdentifier(record, kind, descriptor = null) {
   if (kind === HARMONIZED_CARD_KINDS.atomic) {
-    return specimenCardHolding(record, descriptor?.holdingPath)?.holding?.designation || "Unknown";
+    return specimenCardHolding(record, descriptor?.holdingPath)?.holding?.designation || null;
   }
   if (record.recordModel === "catalog-item") return `Catalog item ${record.catalogItem}`;
   if (record.recordModel === "catalog-number") return `Catalog no. ${record.catalogNumber}`;
@@ -3656,9 +3656,9 @@ function harmonizedCardIdentifier(record, kind, descriptor = null) {
   if (record.recordModel === "collection-representation-fact") {
     return record.reportedNumber ? `List no. ${record.reportedNumber}` : `Collection representation ${record.entryOrder}`;
   }
-  if (record.recordModel === "table-a-specimen") return record.specimenId || "Unknown";
+  if (record.recordModel === "table-a-specimen") return record.specimenId || null;
   if (record.recordModel === "dealer-offer-fact") return `Type number ${record.typeNumber}`;
-  return record.designation || "Unknown";
+  return record.designation || null;
 }
 
 function harmonizedCardEvent(record) {
@@ -3697,10 +3697,13 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
     ? record.metbull.canonicalName
     : null;
   const facts = [];
-  if (canonicalName) {
-    facts.push({ label: "Current Meteoritical Bulletin name", value: canonicalName });
-  }
-  facts.push({ label: "Class", value: record.classification || "Unknown" });
+  const addKnownFact = (label, value) => {
+    if (typeof value === "string" && value.length > 0 && value.toLocaleLowerCase() !== "unknown") {
+      facts.push({ label, value });
+    }
+  };
+  addKnownFact("Current Meteoritical Bulletin name", canonicalName);
+  addKnownFact("Class", record.classification);
   if (specimen) {
     facts.push({
       label: "Specimen form",
@@ -3709,20 +3712,15 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
         : "Specimen"
     });
   }
-  facts.push({
-    label: "Source locality",
-    value: (record.recordModel === "table-a-specimen" ? record.locality?.name : record.locality) || "Unknown"
-  });
-  if (specimen) facts.push({ label: "Individual find location", value: record.individualFindLocation || "Unknown" });
-  facts.push({
-    label: record.recordModel === "collection-representation-fact" ? "Date or report of find" : "Event",
-    value: harmonizedCardEvent(record) || "Unknown"
-  });
+  addKnownFact("Source locality", record.recordModel === "table-a-specimen" ? record.locality?.name : record.locality);
+  if (specimen) addKnownFact("Individual find location", record.individualFindLocation);
+  addKnownFact(record.recordModel === "collection-representation-fact" ? "Date or report of find" : "Event",
+    harmonizedCardEvent(record));
   if (record.recordModel === "collection-representation-fact") {
-    facts.push({ label: "Section", value: record.section || "Unknown" });
-    facts.push({ label: "Pane or case", value: record.pane || "Unknown" });
-    facts.push({ label: "Reference", value: record.reference || "Unknown" });
-    facts.push({ label: "Represented weight", value: record.representedWeight.valueText || "Unknown" });
+    addKnownFact("Section", record.section);
+    addKnownFact("Pane or case", record.pane);
+    addKnownFact("Reference", record.reference);
+    addKnownFact("Represented weight", record.representedWeight.valueText);
   }
 
   if (specimen) {
@@ -3737,11 +3735,8 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
       : record.weight?.grams;
     const qualitativeWeight = kind === HARMONIZED_CARD_KINDS.atomic
       ? descriptor.qualitativeWeightEvidence?.statement : record.weightEvidence?.statement;
-    facts.push({
-      label: "Lineage",
-      value: lineage.claims.length ? lineage.summary.text : "Unknown"
-    });
-    facts.push({ label: "Specimen weight", value: Number.isFinite(grams) ? formatMass(grams) : qualitativeWeight || "Unknown" });
+    if (lineage.claims.length) facts.push({ label: "Lineage", value: lineage.summary.text });
+    addKnownFact("Specimen weight", Number.isFinite(grams) ? formatMass(grams) : qualitativeWeight);
     facts.push(...victoriaConflictFacts(record));
   }
 
@@ -3749,7 +3744,7 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
     kind,
     identifier: harmonizedCardIdentifier(record, kind, descriptor),
     semanticLabel: HARMONIZED_SEMANTIC_LABELS[kind],
-    sourceName: sourceName || "Unknown",
+    sourceName: sourceName || null,
     description: record.description || null,
     facts,
     sourceCitation: harmonizedSourceCitation(record),
@@ -3766,7 +3761,6 @@ function appendMetaRow(meta, label, value) {
   const description = document.createElement("dd");
   term.textContent = label;
   description.textContent = displayText(value);
-  if (value === "Unknown") row.classList.add("unknown");
   row.append(term, description);
   meta.append(row);
 }
@@ -3781,17 +3775,30 @@ function createRecordCard(recordOrDescriptor) {
   card.dataset.cardKind = dto.kind;
   card.classList.toggle("specimen-card", dto.kind === HARMONIZED_CARD_KINDS.specimen || dto.kind === HARMONIZED_CARD_KINDS.atomic);
     card.classList.toggle("observation-card", [HARMONIZED_CARD_KINDS.source, HARMONIZED_CARD_KINDS.collection, HARMONIZED_CARD_KINDS.regional, HARMONIZED_CARD_KINDS.dealer, HARMONIZED_CARD_KINDS.representation].includes(dto.kind));
-  card.querySelector(".designation").textContent = displayText(dto.identifier);
+  const designation = card.querySelector(".designation");
+  if (dto.identifier) designation.textContent = dto.identifier;
+  else designation.remove();
   const semanticLabel = card.querySelector(".record-semantic-label, .record-model-label");
   const displaySemanticLabel = shouldDisplaySemanticLabel(dto.kind);
   semanticLabel.textContent = displaySemanticLabel ? dto.semanticLabel : "";
   semanticLabel.hidden = !displaySemanticLabel;
-  card.querySelector(".source-name-label").textContent = dto.kind === HARMONIZED_CARD_KINDS.dealer
-    ? "Source catalog name"
-    : dto.kind === HARMONIZED_CARD_KINDS.representation
-      ? "Source catalog meteorite or locality name"
-      : "Source catalog meteorite name";
-  card.querySelector(".record-name").textContent = displayText(dto.sourceName);
+  const sourceNameLabel = card.querySelector(".source-name-label");
+  const recordName = card.querySelector(".record-name");
+  if (dto.sourceName) {
+    sourceNameLabel.textContent = dto.kind === HARMONIZED_CARD_KINDS.dealer
+      ? "Source catalog name"
+      : dto.kind === HARMONIZED_CARD_KINDS.representation
+        ? "Source catalog meteorite or locality name"
+        : "Source catalog meteorite name";
+    recordName.textContent = dto.sourceName;
+  } else if (dto.identifier) {
+    sourceNameLabel.textContent = "Source catalog identifier";
+    recordName.textContent = dto.identifier;
+    designation.remove();
+  } else {
+    sourceNameLabel.textContent = "Source catalog record";
+    recordName.textContent = dto.sourceLabel;
+  }
   const description = card.querySelector(".record-description");
   if (dto.description) {
     description.querySelector("p").textContent = displayText(dto.description);
@@ -3862,11 +3869,10 @@ function renderLineageClaims(lineage) {
     const item = document.createElement("li");
     const details = document.createElement("details");
     const disclosure = document.createElement("summary");
-    disclosure.textContent = claim.kind === "source-attested-tentative-group"
-      ? `${lineageDisplayLabel("presentationStatus", claim.presentationStatus)} · ${claim.groupId}`
-      : `${lineageDisplayLabel("presentationStatus", claim.presentationStatus)} · ${claim.relationshipId}`;
+    disclosure.textContent = lineageClaimDisclosureText(claim);
     details.append(disclosure);
     if (claim.kind === "source-attested-tentative-group") {
+      appendLineageText(details, "Group ID", claim.groupId);
       appendLineageText(details, "Source", `${claim.source.catalogLabel} (${claim.source.catalogYear})`);
       appendLineageText(details, "Source section", claim.source.sourceSection);
       appendLineageText(details, "Source page", claim.source.printedPage);
@@ -3917,6 +3923,13 @@ function renderLineageClaims(lineage) {
   });
   section.append(heading, summary, list);
   return section;
+}
+
+function lineageClaimDisclosureText(claim) {
+  const status = lineageDisplayLabel("presentationStatus", claim.presentationStatus);
+  return claim.kind === "source-attested-tentative-group"
+    ? `${status} · Source catalog: ${claim.source.catalogLabel}`
+    : `${status} · Earlier catalog: ${claim.earlierEndpoint.catalogLabel}`;
 }
 
 function formatLineageSummary(value) {
@@ -4484,6 +4497,7 @@ if (typeof module !== "undefined" && module.exports) {
     serializeUrlFilters,
     lineageEntriesForSpecimenCard,
     lineageCardDto,
+    lineageClaimDisclosureText,
     lineageDisplayLabel,
     paginateSpecimenCardDescriptors,
     specimenCardDescriptorHoldings,

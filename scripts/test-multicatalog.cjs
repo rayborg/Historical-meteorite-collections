@@ -1037,8 +1037,8 @@ test("URL filters default to strict specimens and canonicalize the explicit incl
     unit: "observations",
     status: "Showing 60 of 23,217 display cards from 18,217 matching source observations."
   });
-  assert.equal(app.CACHE_VERSION, "20260911-compact-cards-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260911-compact-cards-1");
+  assert.equal(app.CACHE_VERSION, "20260911-known-facts-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260911-known-facts-1");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.ASSET_CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.ASSET_CACHE_VERSION}`));
 });
@@ -1104,11 +1104,14 @@ test("HTML and runtime expose the accessible harmonized card contract", () => {
   assert.equal(dto.kind, "direct-specimen");
   assert.deepEqual(dto.facts.map(({ label }) => label), [
     "Class", "Specimen form", "Source locality",
-    "Individual find location", "Event", "Lineage", "Specimen weight"
+    "Individual find location", "Event", "Specimen weight"
   ]);
+  assert.equal(dto.facts.some(({ value }) => value === "Unknown"), false);
   assert.equal(dto.facts.some(({ label }) => label === "Current Meteoritical Bulletin name"), false);
   assert.equal(dto.facts.find(({ label }) => label === "Individual find location").value, "32-19-13");
   assert.match(script, /dto\.facts\.forEach\(\(\{ label, value \}\) => appendMetaRow\(meta, label, value\)\)/);
+  assert.match(script, /if \(dto\.identifier\) designation\.textContent = dto\.identifier;\s*else designation\.remove\(\);/);
+  assert.match(script, /else if \(dto\.identifier\) \{\s*sourceNameLabel\.textContent = "Source catalog identifier";/);
 });
 
 test("default cross-catalog order is alphabetical by source name", () => {
