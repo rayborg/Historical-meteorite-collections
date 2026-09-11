@@ -29,7 +29,7 @@ const DTO_KEYS = [
   "kind", "identifier", "semanticLabel", "sourceName", "description", "facts", "sourceCitation", "sourceLabel", "catalogId", "catalogPages", "lineage"
 ];
 const STANDARD_SPECIMEN_LABELS = [
-  "Current Meteoritical Bulletin name", "Class", "Specimen form", "Source locality",
+  "Class", "Specimen form", "Source locality",
   "Individual find location", "Event", "Lineage", "Specimen weight"
 ];
 const STANDARD_OBSERVATION_LABELS = ["Class", "Source locality", "Event"];
@@ -125,6 +125,7 @@ test("semantic type labels are hidden for specimens and retained for observation
 test("every production card uses the approved fact order, values, missing behavior, and current-name suppression", () => {
   const missing = {};
   let specimenCount = 0;
+  let displayedCurrentNameCount = 0;
   for (const descriptor of descriptors) {
     const record = descriptor.parentRecord;
     const dto = present(descriptor);
@@ -132,24 +133,21 @@ test("every production card uses the approved fact order, values, missing behavi
     const currentName = record.metbull?.canonicalName && !app.namesAreDisplayEquivalent(record.name, record.metbull.canonicalName)
       ? record.metbull.canonicalName : null;
     const expectedLabels = specimen
-      ? [...STANDARD_SPECIMEN_LABELS, ...app.victoriaConflictFacts(record).map(({ label }) => label)]
+      ? [...(currentName ? ["Current Meteoritical Bulletin name"] : []),
+        ...STANDARD_SPECIMEN_LABELS, ...app.victoriaConflictFacts(record).map(({ label }) => label)]
       : [...(currentName ? ["Current Meteoritical Bulletin name"] : []),
         ...(record.recordModel === "collection-representation-fact" ? FLETCHER_OBSERVATION_LABELS : STANDARD_OBSERVATION_LABELS),
         ...(record.recordModel === "collection-representation-fact" ? FLETCHER_LABELS : [])];
     assert.deepEqual(dto.facts.map(({ label }) => label), expectedLabels, record.id);
     assert.equal(dto.sourceName, record.name || "Unknown", record.id);
-    assert.equal(fact(dto, "Current Meteoritical Bulletin name"), specimen
-      ? record.metbull?.canonicalName
-        ? app.namesAreDisplayEquivalent(record.name, record.metbull.canonicalName)
-          ? "Same as source catalog name" : record.metbull.canonicalName
-        : "Unknown"
-      : currentName || undefined, record.id);
+    assert.equal(fact(dto, "Current Meteoritical Bulletin name"), currentName || undefined, record.id);
     assert.equal(fact(dto, "Class"), record.classification || "Unknown", record.id);
     assert.equal(fact(dto, "Source locality"),
       (record.recordModel === "table-a-specimen" ? record.locality?.name : record.locality) || "Unknown", record.id);
     assert.equal(fact(dto, record.recordModel === "collection-representation-fact" ? "Date or report of find" : "Event"), expectedEvent(record) || "Unknown", record.id);
     if (specimen) {
       specimenCount += 1;
+      if (currentName) displayedCurrentNameCount += 1;
       assert.equal(fact(dto, "Specimen form"),
         dto.kind === "projected-atomic-specimen" || record.recordModel === "table-a-specimen" ? "Individual specimen" : "Specimen",
         record.id);
@@ -161,8 +159,8 @@ test("every production card uses the approved fact order, values, missing behavi
     }
   }
   assert.equal(specimenCount, 14149);
+  assert.equal(displayedCurrentNameCount, 2231);
   assert.deepEqual(missing, {
-    "Current Meteoritical Bulletin name": 2375,
     "Individual find location": 14038,
     Lineage: 13186,
     Event: 2736,
@@ -172,14 +170,12 @@ test("every production card uses the approved fact order, values, missing behavi
     sourceName: 57,
   });
   assert.deepEqual({
-    currentNameResolved: specimenCount - missing["Current Meteoritical Bulletin name"],
     classResolved: specimenCount - missing.Class,
     eventResolved: specimenCount - missing.Event,
     locationResolved: specimenCount - missing["Individual find location"],
     lineageResolved: specimenCount - missing.Lineage,
     weightResolved: specimenCount - missing["Specimen weight"],
   }, {
-    currentNameResolved: 11774,
     classResolved: 13917,
     eventResolved: 11413,
     locationResolved: 111,
@@ -284,11 +280,15 @@ test("representative corrected and unresolved specimen cards preserve the comple
   for (const descriptor of [corrected, unresolved]) {
     const dto = present(descriptor);
     assert(["direct-specimen", "projected-atomic-specimen"].includes(dto.kind));
-    assert.deepEqual(dto.facts.map(({ label }) => label), STANDARD_SPECIMEN_LABELS);
+    const currentName = descriptor.parentRecord.metbull?.canonicalName &&
+      !app.namesAreDisplayEquivalent(descriptor.parentRecord.name, descriptor.parentRecord.metbull.canonicalName);
+    assert.deepEqual(dto.facts.map(({ label }) => label), [
+      ...(currentName ? ["Current Meteoritical Bulletin name"] : []), ...STANDARD_SPECIMEN_LABELS
+    ]);
     assert(dto.facts.every(({ value }) => typeof value === "string" && value.length > 0));
   }
   assert.equal(fact(present(corrected), "Current Meteoritical Bulletin name"), corrected.parentRecord.metbull.canonicalName);
-  assert.equal(fact(present(unresolved), "Current Meteoritical Bulletin name"), "Unknown");
+  assert.equal(fact(present(unresolved), "Current Meteoritical Bulletin name"), undefined);
   assert.match(styles, /overflow-wrap: anywhere;/u);
   assert.match(styles, /\.record-meta div \{[^}]*grid-template-columns: minmax\(0, 1fr\);/u);
   assert.match(styles, /\.record-meta dt \{[^}]*word-break: normal;[^}]*overflow-wrap: normal;/u);
@@ -478,13 +478,13 @@ test("accessible shell, responsive breakpoints, approved cache, and immutable da
   assert.match(styles, /@media \(max-width: 700px\)[\s\S]*\.catalog-grid \{ grid-template-columns: 1fr; \}/u);
   assert.match(styles, /@media \(max-width: 420px\)[\s\S]*\.record-card \{ padding-inline: 1rem; \}/u);
   assert.doesNotMatch(styles, /\.record-meta dt \{[^}]*overflow-wrap: anywhere;/u);
-  assert.equal(app.CACHE_VERSION, "20260911-museum3-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260911-museum3-1");
+  assert.equal(app.CACHE_VERSION, "20260911-current-name-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260911-current-name-1");
   for (const document of [html, catalogsHtml]) {
-    assert.match(document, /styles\.css\?v=20260911-museum3-1/u);
-    assert.match(document, /app\.js\?v=20260911-museum3-1/u);
+    assert.match(document, /styles\.css\?v=20260911-current-name-1/u);
+    assert.match(document, /app\.js\?v=20260911-current-name-1/u);
   }
-  assert.match(catalogsHtml, /catalogs\.js\?v=20260911-museum3-1/u);
+  assert.match(catalogsHtml, /catalogs\.js\?v=20260911-current-name-1/u);
   assert.deepEqual({
     catalog: sha256(catalogText),
     projections: sha256(projectionText),

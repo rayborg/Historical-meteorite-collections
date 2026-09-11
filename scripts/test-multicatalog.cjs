@@ -1037,8 +1037,8 @@ test("URL filters default to strict specimens and canonicalize the explicit incl
     unit: "observations",
     status: "Showing 60 of 23,217 display cards from 18,217 matching source observations."
   });
-  assert.equal(app.CACHE_VERSION, "20260911-museum3-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260911-museum3-1");
+  assert.equal(app.CACHE_VERSION, "20260911-current-name-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260911-current-name-1");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.ASSET_CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.ASSET_CACHE_VERSION}`));
 });
@@ -1103,9 +1103,10 @@ test("HTML and runtime expose the accessible harmonized card contract", () => {
   const dto = app.presentHarmonizedCard(record);
   assert.equal(dto.kind, "direct-specimen");
   assert.deepEqual(dto.facts.map(({ label }) => label), [
-    "Current Meteoritical Bulletin name", "Class", "Specimen form", "Source locality",
+    "Class", "Specimen form", "Source locality",
     "Individual find location", "Event", "Lineage", "Specimen weight"
   ]);
+  assert.equal(dto.facts.some(({ label }) => label === "Current Meteoritical Bulletin name"), false);
   assert.equal(dto.facts.find(({ label }) => label === "Individual find location").value, "32-19-13");
   assert.match(script, /dto\.facts\.forEach\(\(\{ label, value \}\) => appendMetaRow\(meta, label, value\)\)/);
 });

@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260911-museum3-1";
+const CACHE_VERSION = "20260911-current-name-1";
 const ASSET_CACHE_VERSION = CACHE_VERSION;
 const CATALOG_SCHEMA_VERSION = 12;
 const CATALOG_RECORD_COUNT = 19553;
@@ -3697,16 +3697,7 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
     ? record.metbull.canonicalName
     : null;
   const facts = [];
-  if (specimen) {
-    facts.push({
-      label: "Current Meteoritical Bulletin name",
-      value: record.metbull?.canonicalName
-        ? namesAreDisplayEquivalent(sourceName, record.metbull.canonicalName)
-          ? "Same as source catalog name"
-          : record.metbull.canonicalName
-        : "Unknown"
-    });
-  } else if (canonicalName) {
+  if (canonicalName) {
     facts.push({ label: "Current Meteoritical Bulletin name", value: canonicalName });
   }
   facts.push({ label: "Class", value: record.classification || "Unknown" });

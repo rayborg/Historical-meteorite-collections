@@ -135,7 +135,7 @@ Build a durable, searchable historical meteorite catalog and, over time, reconst
 ## Active Work State
 
 - The accepted canonical integrations are the source for the current 52-catalog, 19,553-record schema-12 facts-only public candidate, which retains 49 reviewed public folios.
-- Every specimen card includes the current-name field: a reviewed canonical name, `Same as source catalog name`, or `Unknown`. Victoria Land records carry reviewed `official-abbreviation` mappings to the same canonical names and retain `Unknown` lineage values. The homepage links to the dedicated 40-card catalog directory and separately to the bibliography master list.
+- A specimen card includes the current-name field only when a reviewed canonical name differs substantively from the source-catalog name; equivalent and unresolved names omit the row. The homepage links to the dedicated catalog directory and separately to the bibliography master list.
 - No release-blocking validation issue remains. Any future public change must still be produced from the private canonical data and pass deterministic byte comparison and the facts-only privacy checks.
 
 ## Preservation And Data Rules
