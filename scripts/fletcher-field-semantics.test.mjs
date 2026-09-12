@@ -5,10 +5,7 @@ import test from "node:test";
 
 const require = createRequire(import.meta.url);
 const app = require("../app.js");
-const [catalog, appText] = await Promise.all([
-  readFile(new URL("../data/catalog.json", import.meta.url), "utf8").then(JSON.parse),
-  readFile(new URL("../app.js", import.meta.url), "utf8"),
-]);
+const catalog = JSON.parse(await readFile(new URL("../data/catalog.json", import.meta.url), "utf8"));
 const ids = new Set(["fletcher-1886", "fletcher-1894", "fletcher-1896", "fletcher-1904", "fletcher-1908"]);
 const records = catalog.records.filter(({ catalogId }) => ids.has(catalogId));
 const byNumber = new Map(records.map((record) => [`${record.catalogId}:${record.reportedNumber}`, record]));
@@ -65,5 +62,5 @@ test("searches all three fields and presents field-specific Fletcher labels", ()
   assert(dto.facts.some(({ label, value }) => label === "Date or report of find" && value === record.eventDate));
   assert(dto.facts.some(({ label, value }) => label === "Reference" && value === record.reference));
   assert.equal(app.shouldDisplaySemanticLabel(dto.kind), true);
-  assert.match(appText, /Source catalog meteorite or locality name/u);
+  assert.equal(app.harmonizedCardNameLabel(dto.kind), "Meteorite or locality name");
 });

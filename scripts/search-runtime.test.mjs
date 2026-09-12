@@ -152,7 +152,7 @@ test("every structured and Victoria Table B mass is searchable by grams and disp
   assert.equal(tableBMasses, 270);
 });
 
-test("every resolved MetBull code owner and displayed regional identifier is searchable", () => {
+test("every resolved MetBull code owner and regional source/order query is searchable", () => {
   const resolved = records.filter(({ metbull }) => metbull && metbull.matchType !== "unresolved");
   const regional = records.filter(({ recordModel }) => recordModel === "regional-census-fact");
   const numbered = regional.filter(({ reportedNumber }) => reportedNumber);

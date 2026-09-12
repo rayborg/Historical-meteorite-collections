@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260911-scoped-ids-1";
+const CACHE_VERSION = "20260911-card-audit-1";
 const ASSET_CACHE_VERSION = CACHE_VERSION;
 const CATALOG_SCHEMA_VERSION = 12;
 const CATALOG_RECORD_COUNT = 19553;
@@ -3648,13 +3648,13 @@ function harmonizedCardIdentifier(record, kind, descriptor = null) {
   if (record.recordModel === "catalog-item") return `Catalog item ${record.catalogItem}`;
   if (record.recordModel === "catalog-number") return `Catalog no. ${record.catalogNumber}`;
   if (record.recordModel === "collection-entry") {
-    return record.reportedNumber ? `Reported no. ${record.reportedNumber}` : `Collection entry ${record.entryOrder}`;
+    return record.reportedNumber ? `Reported no. ${record.reportedNumber}` : null;
   }
   if (record.recordModel === "regional-census-fact") {
-    return record.reportedNumber ? `Source number ${record.reportedNumber}` : `Regional census entry ${record.entryOrder}`;
+    return record.reportedNumber ? `Source number ${record.reportedNumber}` : null;
   }
   if (record.recordModel === "collection-representation-fact") {
-    return record.reportedNumber ? `List no. ${record.reportedNumber}` : `Collection representation ${record.entryOrder}`;
+    return record.reportedNumber ? `List no. ${record.reportedNumber}` : null;
   }
   if (record.recordModel === "table-a-specimen") return record.specimenId || null;
   if (record.recordModel === "dealer-offer-fact") return `Type number ${record.typeNumber}`;
@@ -3679,7 +3679,34 @@ function harmonizedSourceCitation(record) {
   const pages = recordCatalogPages(record);
   return pages.length
     ? `${sourceLabel} \u00b7 ${pages.length === 1 ? "p." : "pp."} ${pages.join(", ")}`
-    : `${sourceLabel} \u00b7 page not recorded`;
+    : sourceLabel;
+}
+
+function normalizedCardFactValue(value) {
+  if (typeof value !== "string") return null;
+  return value.normalize("NFC").trim().replace(/\s+/gu, " ").replace(/\.+$/u, "").toLocaleLowerCase("en-US");
+}
+
+function isKnownCardFact(label, value) {
+  const normalized = normalizedCardFactValue(value);
+  if (!normalized || normalized === "unknown") return false;
+  if (label === "Source locality" && ["locality unknown", "exact locality unknown"].includes(normalized)) return false;
+  if (["Event", "Date or report of find"].includes(label) &&
+      ["date of fall unknown", "date of find unknown"].includes(normalized)) return false;
+  return true;
+}
+
+function harmonizedCardNameLabel(kind) {
+  if ([
+    HARMONIZED_CARD_KINDS.specimen,
+    HARMONIZED_CARD_KINDS.atomic,
+    HARMONIZED_CARD_KINDS.collection,
+    HARMONIZED_CARD_KINDS.regional
+  ].includes(kind)) return "Meteorite name";
+  if (kind === HARMONIZED_CARD_KINDS.source) return "Source name";
+  if (kind === HARMONIZED_CARD_KINDS.representation) return "Meteorite or locality name";
+  if (kind === HARMONIZED_CARD_KINDS.dealer) return "Catalog name";
+  return null;
 }
 
 function presentHarmonizedCard(recordOrDescriptor, options = {}) {
@@ -3698,9 +3725,7 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
     : null;
   const facts = [];
   const addKnownFact = (label, value) => {
-    if (typeof value === "string" && value.length > 0 && value.toLocaleLowerCase() !== "unknown") {
-      facts.push({ label, value });
-    }
+    if (isKnownCardFact(label, value)) facts.push({ label, value });
   };
   addKnownFact("Current Meteoritical Bulletin name", canonicalName);
   addKnownFact("Class", record.classification);
@@ -3788,13 +3813,7 @@ function createRecordCard(recordOrDescriptor) {
   const sourceNameLabel = card.querySelector(".source-name-label");
   const recordName = card.querySelector(".record-name");
   if (dto.sourceName) {
-    sourceNameLabel.textContent = [HARMONIZED_CARD_KINDS.specimen, HARMONIZED_CARD_KINDS.atomic].includes(dto.kind)
-      ? "Meteorite name"
-      : dto.kind === HARMONIZED_CARD_KINDS.dealer
-        ? "Source catalog name"
-        : dto.kind === HARMONIZED_CARD_KINDS.representation
-          ? "Source catalog meteorite or locality name"
-          : "Source catalog meteorite name";
+    sourceNameLabel.textContent = harmonizedCardNameLabel(dto.kind);
     recordName.textContent = dto.sourceName;
   } else if (dto.identifier) {
     sourceNameLabel.textContent = "Source catalog identifier";
@@ -3853,10 +3872,12 @@ function appendLineageEndpoint(parent, label, endpoint) {
   link.textContent = `${endpoint.catalogLabel} (${endpoint.catalogYear})`;
   section.append(heading, link);
   appendLineageText(section, "Source record", endpoint.sourceRecordLabel);
-  appendLineageText(section, "Source name", endpoint.sourceName || "Not recorded");
-  appendLineageText(section, "Designation", endpoint.designation || "Not recorded");
-  appendLineageText(section, endpoint.sourcePages.length === 1 ? "Source page" : "Source pages", endpoint.sourcePages.join(", "));
-  appendLineageText(section, "Reported mass", formatEarlierRecordMass(endpoint.massGrams));
+  if (endpoint.sourceName) appendLineageText(section, "Source name", endpoint.sourceName);
+  if (endpoint.designation) appendLineageText(section, "Designation", endpoint.designation);
+  if (endpoint.sourcePages.length) {
+    appendLineageText(section, endpoint.sourcePages.length === 1 ? "Source page" : "Source pages", endpoint.sourcePages.join(", "));
+  }
+  if (Number.isFinite(endpoint.massGrams)) appendLineageText(section, "Reported mass", formatEarlierRecordMass(endpoint.massGrams));
   parent.append(section);
 }
 
@@ -3877,7 +3898,6 @@ function renderLineageClaims(lineage) {
     disclosure.textContent = lineageClaimDisclosureText(claim);
     details.append(disclosure);
     if (claim.kind === "source-attested-tentative-group") {
-      appendLineageText(details, "Group ID", claim.groupId);
       appendLineageText(details, "Source", `${claim.source.catalogLabel} (${claim.source.catalogYear})`);
       appendLineageText(details, "Source section", claim.source.sourceSection);
       appendLineageText(details, "Source page", claim.source.printedPage);
@@ -3888,7 +3908,6 @@ function renderLineageClaims(lineage) {
       appendLineageText(details, "Reference", claim.source.reference);
       appendLineageText(details, "Caution", claim.caution);
     } else {
-      appendLineageText(details, "Relationship ID", claim.relationshipId);
       appendLineageText(details, "Relationship", lineageDisplayLabel("rawRelationship", claim.rawRelationship));
       appendLineageText(details, "Raw status", lineageDisplayLabel("rawRelationshipStatus", claim.rawStatus));
       appendLineageText(details, "Identity basis", claim.basis.label);
@@ -3898,7 +3917,7 @@ function renderLineageClaims(lineage) {
       } else {
         appendLineageText(details, "Identity method", lineageDisplayLabel("identityMethod", claim.identity.method));
         appendLineageText(details, "Identity key", claim.identity.key);
-        appendLineageText(details, "Canonical name", claim.identity.canonicalName || "Not recorded");
+        if (claim.identity.canonicalName) appendLineageText(details, "Canonical name", claim.identity.canonicalName);
         appendLineageText(details, "Evidence strength", lineageDisplayLabel("evidenceStrength", claim.evidence.strength));
         appendLineageText(details, "Mass comparison", lineageDisplayLabel("massMatch", claim.evidence.massMatch));
         appendLineageText(details, "Matching facts", claim.evidence.factCodes.map((code) => lineageDisplayLabel("factCode", code)).join("; "));
@@ -3907,8 +3926,7 @@ function renderLineageClaims(lineage) {
         if (claim.review.status === "reviewed") {
           appendLineageText(details, "Review outcome", lineageDisplayLabel("reviewOutcome", claim.review.outcome));
           appendLineageText(details, "Reviewed on", claim.review.reviewedOn);
-          appendLineageText(details, "Review note", claim.review.publicNote || "No public note supplied");
-          if (!claim.review.citations.length) appendLineageText(details, "Review citations", "No public citations supplied");
+          if (claim.review.publicNote) appendLineageText(details, "Review note", claim.review.publicNote);
           claim.review.citations.forEach((citation) => {
             const citationLink = document.createElement("a");
             citationLink.href = citation.url;
@@ -4461,9 +4479,11 @@ if (typeof module !== "undefined" && module.exports) {
     hamburgRecordFacts,
     specimenCardHamburgFacts,
     holdingDetails,
+    harmonizedCardNameLabel,
     hasMatchingFolioPolicy,
     isDesignationQuery,
     isSingleResultCount,
+    isKnownCardFact,
     isSafeLineageSearchUrl,
     isSafeFolioPath,
     isValidFolioAlt,

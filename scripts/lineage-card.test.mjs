@@ -81,10 +81,10 @@ test("main template presents lineage through the harmonized specimen contract", 
   });
   assert.doesNotMatch(source, /\.innerHTML\b/);
   assert.doesNotMatch(css, /\.earlier-records \{/);
-  assert.equal(app.CACHE_VERSION, "20260911-scoped-ids-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260911-scoped-ids-1");
-  assert.match(html, /styles\.css\?v=20260911-scoped-ids-1/);
-  assert.match(html, /app\.js\?v=20260911-scoped-ids-1/);
+  assert.equal(app.CACHE_VERSION, "20260911-card-audit-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260911-card-audit-1");
+  assert.match(html, /styles\.css\?v=20260911-card-audit-1/);
+  assert.match(html, /app\.js\?v=20260911-card-audit-1/);
   for (const file of ["possible-specimen-lineages.html", "possible-specimen-lineages.css", "possible-specimen-lineages.js"]) {
     await assert.rejects(access(path.join(projectRoot, file)));
   }
@@ -396,7 +396,7 @@ test("cards distinguish same inventory continuity from possible matching", () =>
   assert.equal(app.formatEarlierRecordMass(null), "Not recorded");
 });
 
-test("lineage disclosures name source catalogs while stable IDs remain audit details", async () => {
+test("lineage disclosures name source catalogs without rendering stable IDs or absence placeholders", async () => {
   const index = app.deriveEarlierRecordIndex(lineageData, records, registry);
   const relationship = lineageData.relationships.find(({ id }) =>
     id === "possible-lineage-9c24421a-5be6-577b-b380-18451834c2ed");
@@ -410,8 +410,12 @@ test("lineage disclosures name source catalogs while stable IDs remain audit det
   assert.equal(app.lineageClaimDisclosureText(groupEntry.claim),
     `${app.lineageDisplayLabel("presentationStatus", groupEntry.claim.presentationStatus)} · Source catalog: ${groupEntry.claim.source.catalogLabel}`);
   const source = await readFile(path.join(projectRoot, "app.js"), "utf8");
-  assert.match(source, /appendLineageText\(details, "Relationship ID", claim\.relationshipId\)/u);
-  assert.match(source, /appendLineageText\(details, "Group ID", claim\.groupId\)/u);
+  assert.doesNotMatch(source, /appendLineageText\(details, "(?:Relationship|Group) ID"/u);
+  assert.doesNotMatch(source, /appendLineageText\([^\n]+(?:Not recorded|No public (?:note|citations) supplied)/u);
+  assert.match(source, /if \(endpoint\.sourceName\) appendLineageText\(section, "Source name", endpoint\.sourceName\)/u);
+  assert.match(source, /if \(Number\.isFinite\(endpoint\.massGrams\)\) appendLineageText/u);
+  assert.match(source, /if \(claim\.identity\.canonicalName\) appendLineageText/u);
+  assert.match(source, /if \(claim\.review\.publicNote\) appendLineageText/u);
 });
 
 const LINEAGE_STRENGTH_VALUES = new Set(["multiple-matching-facts", "two-matching-facts", "limited-matching-evidence"]);

@@ -198,9 +198,9 @@ test("homepage and catalog page markup keep navigation and UI states accessible"
   assert.match(html, /id="catalog-directory-list" aria-busy="true"/);
   assert.match(html, /id="catalog-directory-error"[^>]*role="alert"[^>]*hidden/);
   assert.match(html, /<noscript><p class="empty-state">/);
-  assert.match(html, /catalogs\.js\?v=20260911-scoped-ids-1/);
-  assert.match(html, /app\.js\?v=20260911-scoped-ids-1/);
-  assert.match(html, /styles\.css\?v=20260911-scoped-ids-1/);
+  assert.match(html, /catalogs\.js\?v=20260911-card-audit-1/);
+  assert.match(html, /app\.js\?v=20260911-card-audit-1/);
+  assert.match(html, /styles\.css\?v=20260911-card-audit-1/);
   assert.doesNotMatch(source, /\.innerHTML\b/);
   assert.match(source, /\.textContent = summary\.label/);
   assert.doesNotMatch(source, /error\.message/);

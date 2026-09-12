@@ -6,7 +6,7 @@ import test from "node:test";
 
 const require = createRequire(import.meta.url);
 const app = require("../app.js");
-const [catalogText, projectionText, lineageText, reviewText, html, catalogsHtml, styles] = await Promise.all([
+const [catalogText, projectionText, lineageText, reviewText, html, catalogsHtml, styles, appSource] = await Promise.all([
   readFile(new URL("../data/catalog.json", import.meta.url), "utf8"),
   readFile(new URL("../data/specimen-card-projections.json", import.meta.url), "utf8"),
   readFile(new URL("../data/specimen-lineages.json", import.meta.url), "utf8"),
@@ -14,6 +14,7 @@ const [catalogText, projectionText, lineageText, reviewText, html, catalogsHtml,
   readFile(new URL("../index.html", import.meta.url), "utf8"),
   readFile(new URL("../catalogs.html", import.meta.url), "utf8"),
   readFile(new URL("../styles.css", import.meta.url), "utf8"),
+  readFile(new URL("../app.js", import.meta.url), "utf8"),
 ]);
 const catalog = JSON.parse(catalogText);
 const projections = JSON.parse(projectionText);
@@ -67,13 +68,13 @@ function expectedSourceIdentifier(descriptor, kind) {
   if (record.recordModel === "catalog-item") return `Catalog item ${record.catalogItem}`;
   if (record.recordModel === "catalog-number") return `Catalog no. ${record.catalogNumber}`;
   if (record.recordModel === "collection-entry") {
-    return record.reportedNumber ? `Reported no. ${record.reportedNumber}` : `Collection entry ${record.entryOrder}`;
+    return record.reportedNumber ? `Reported no. ${record.reportedNumber}` : null;
   }
   if (record.recordModel === "regional-census-fact") {
-    return record.reportedNumber ? `Source number ${record.reportedNumber}` : `Regional census entry ${record.entryOrder}`;
+    return record.reportedNumber ? `Source number ${record.reportedNumber}` : null;
   }
   if (record.recordModel === "collection-representation-fact") {
-    return record.reportedNumber ? `List no. ${record.reportedNumber}` : `Collection representation ${record.entryOrder}`;
+    return record.reportedNumber ? `List no. ${record.reportedNumber}` : null;
   }
   if (record.recordModel === "table-a-specimen") return record.specimenId || null;
   if (record.recordModel === "dealer-offer-fact") return `Type number ${record.typeNumber}`;
@@ -101,9 +102,7 @@ function expectedFacts(descriptor) {
   const specimen = ["direct-specimen", "projected-atomic-specimen"].includes(kind);
   const entries = [];
   const add = (label, value) => {
-    if (typeof value === "string" && value.length > 0 && value.toLocaleLowerCase() !== "unknown") {
-      entries.push({ label, value });
-    }
+    if (app.isKnownCardFact(label, value)) entries.push({ label, value });
   };
   const currentName = record.metbull?.canonicalName &&
     !app.namesAreDisplayEquivalent(record.name, record.metbull.canonicalName)
@@ -170,6 +169,27 @@ test("every production display descriptor has the closed harmonized DTO and exac
   assert.equal(descriptors.length, 24556);
 });
 
+test("all seven populated-name branches use concise kind-specific labels", () => {
+  assert.deepEqual(Object.fromEntries(Object.keys(SEMANTIC_LABELS).map((kind) => [kind, app.harmonizedCardNameLabel(kind)])), {
+    "direct-specimen": "Meteorite name",
+    "projected-atomic-specimen": "Meteorite name",
+    "source-observation": "Source name",
+    "collection-observation": "Meteorite name",
+    "regional-observation": "Meteorite name",
+    "dealer-observation": "Catalog name",
+    "collection-representation-observation": "Meteorite or locality name",
+  });
+  assert.equal(app.harmonizedCardNameLabel("not-a-card-kind"), null);
+  assert(descriptors.every((descriptor) => {
+    const dto = present(descriptor);
+    return dto.sourceName === null || app.harmonizedCardNameLabel(dto.kind) !== null;
+  }));
+  assert.doesNotMatch(appSource,
+    /Source catalog (?:meteorite name|meteorite or locality name|name)/u);
+  assert.match(appSource, /sourceNameLabel\.textContent = "Source catalog identifier"/u);
+  assert.match(appSource, /sourceNameLabel\.textContent = "Source catalog record"/u);
+});
+
 test("semantic type labels are hidden for specimens and retained for observations", () => {
   assert.equal(app.shouldDisplaySemanticLabel("direct-specimen"), false);
   assert.equal(app.shouldDisplaySemanticLabel("projected-atomic-specimen"), false);
@@ -193,14 +213,17 @@ test("every production card uses the approved known-fact order and omits unavail
       ? record.metbull.canonicalName : null;
     assert.deepEqual(dto.facts, expectedFacts(descriptor), record.id);
     assert.equal(dto.sourceName, record.name || null, record.id);
-    assert.equal(dto.facts.some(({ value }) => value === "Unknown"), false, record.id);
+    assert(dto.facts.every(({ label, value }) => app.isKnownCardFact(label, value)), record.id);
     if (dto.identifier === null) omittedIdentifierCount += 1;
     assert.equal(fact(dto, "Current Meteoritical Bulletin name"), currentName || undefined, record.id);
     assert.equal(fact(dto, "Class"), record.classification?.toLocaleLowerCase() === "unknown"
       ? undefined : record.classification || undefined, record.id);
+    const locality = record.recordModel === "table-a-specimen" ? record.locality?.name : record.locality;
     assert.equal(fact(dto, "Source locality"),
-      (record.recordModel === "table-a-specimen" ? record.locality?.name : record.locality) || undefined, record.id);
-    assert.equal(fact(dto, record.recordModel === "collection-representation-fact" ? "Date or report of find" : "Event"), expectedEvent(record) || undefined, record.id);
+      app.isKnownCardFact("Source locality", locality) ? locality : undefined, record.id);
+    const eventLabel = record.recordModel === "collection-representation-fact" ? "Date or report of find" : "Event";
+    const event = expectedEvent(record);
+    assert.equal(fact(dto, eventLabel), app.isKnownCardFact(eventLabel, event) ? event : undefined, record.id);
     if (specimen) {
       specimenCount += 1;
       if (currentName) displayedCurrentNameCount += 1;
@@ -217,14 +240,21 @@ test("every production card uses the approved known-fact order and omits unavail
   assert.equal(specimenCount, 14149);
   assert.equal(individualSpecimenCount, 8683);
   assert.equal(displayedCurrentNameCount, 2231);
-  assert.equal(omittedIdentifierCount, 8210);
+  assert.equal(omittedIdentifierCount, 11116);
+  assert.equal(descriptors.length - omittedIdentifierCount, 13440);
+  const generatedEntryOrderFallbacks = descriptors.filter(({ parentRecord }) =>
+    ["collection-entry", "regional-census-fact", "collection-representation-fact"].includes(parentRecord.recordModel) &&
+    !parentRecord.reportedNumber).filter((descriptor) => app.classifyHarmonizedCard(descriptor) !== "projected-atomic-specimen");
+  assert.equal(generatedEntryOrderFallbacks.length, 2906);
+  assert(generatedEntryOrderFallbacks.every((descriptor) => present(descriptor).identifier === null));
+  assert.equal(13440 + generatedEntryOrderFallbacks.length, 16346);
   assert.deepEqual(omitted, {
     "Individual find location": 14038,
     "Specimen form": 5466,
     Lineage: 13186,
-    Event: 2736,
+    Event: 2746,
     Class: 232,
-    "Source locality": 1097,
+    "Source locality": 1102,
     "Specimen weight": 172,
     sourceName: 57,
   });
@@ -238,11 +268,48 @@ test("every production card uses the approved known-fact order and omits unavail
   }, {
     classDisplayed: 13917,
     formDisplayed: 8683,
-    eventDisplayed: 11413,
+    eventDisplayed: 11403,
     locationDisplayed: 111,
     lineageDisplayed: 963,
     weightDisplayed: 13977,
   });
+});
+
+test("field-aware availability removes only complete placeholders and preserves all compound evidence", () => {
+  for (const value of ["unknown", " Unknown. ", "UNKNOWN..."]) {
+    assert.equal(app.isKnownCardFact("Class", value), false, value);
+  }
+  for (const value of ["locality unknown", " Exact   locality unknown. "]) {
+    assert.equal(app.isKnownCardFact("Source locality", value), false, value);
+    assert.equal(app.isKnownCardFact("Event", value), true, value);
+  }
+  for (const value of ["Date of fall unknown.", "date of find unknown"]) {
+    assert.equal(app.isKnownCardFact("Event", value), false, value);
+    assert.equal(app.isKnownCardFact("Date or report of find", value), false, value);
+    assert.equal(app.isKnownCardFact("Source locality", value), true, value);
+  }
+  assert.equal(app.isKnownCardFact("Event", "Date of fall unknown; found in 1842"), true);
+  assert.equal(app.isKnownCardFact("Source locality", "locality unknown, probably Toluca, Mexico"), true);
+
+  const completePlaceholders = descriptors.flatMap(({ parentRecord: record }) => [{
+    label: "Source locality",
+    value: record.recordModel === "table-a-specimen" ? record.locality?.name : record.locality,
+  }, {
+    label: record.recordModel === "collection-representation-fact" ? "Date or report of find" : "Event",
+    value: expectedEvent(record),
+  }]).filter(({ label, value }) => typeof value === "string" && value.trim() &&
+    value.trim().toLocaleLowerCase() !== "unknown" && !app.isKnownCardFact(label, value));
+  assert.equal(completePlaceholders.length, 39);
+  assert.deepEqual([...new Set(completePlaceholders.map(({ value }) => value))].sort(), [
+    "Date of fall unknown.", "Date of find unknown", "Locality unknown", "exact locality unknown", "locality unknown",
+  ]);
+
+  const compoundFacts = descriptors.flatMap((descriptor) => present(descriptor).facts)
+    .filter(({ value }) => value.toLocaleLowerCase().includes("unknown"));
+  assert.equal(compoundFacts.length, 64);
+  assert(compoundFacts.every(({ label, value }) => app.isKnownCardFact(label, value)));
+  assert(compoundFacts.some(({ value }) => value === "Date of fall unknown; found in 1842."));
+  assert(compoundFacts.some(({ value }) => value === "locality unknown, probably Toluca, Mexico"));
 });
 
 test("specimen mass and lineage facts resolve exactly from source and projection paths", () => {
@@ -275,12 +342,20 @@ test("observation cards omit specimen claims and catalog-specific facts", () => 
         ? ` \u00b7 Table B printed page ${record.sourceEvidence.tableB.printedPage}` : ""}`
       : pages.length
         ? `${sourceLabel} \u00b7 ${pages.length === 1 ? "p." : "pp."} ${pages.join(", ")}`
-        : `${sourceLabel} \u00b7 page not recorded`, record.id);
+        : sourceLabel, record.id);
     if (["collection-observation", "regional-observation"].includes(dto.kind)) {
       assert.equal(dto.facts.some(({ label }) => ["Specimen form", "Lineage", "Specimen weight"].includes(label)), false, record.id);
     }
     assert.equal(dto.facts.some(({ label }) => /Australian Museum|occurrences/u.test(label)), false, record.id);
   }
+});
+
+test("source citations omit page placeholders when no source page is available", () => {
+  const descriptor = structuredClone(descriptors.find(({ parentRecord }) =>
+    parentRecord.recordModel === "collection-entry"));
+  descriptor.parentRecord.catalogPages = [];
+  assert.equal(app.presentHarmonizedCard(descriptor).sourceCitation,
+    descriptor.parentRecord.catalogLabel || descriptor.parentRecord.catalogId);
 });
 
 test("only typed specimen locations can create an individual find location or specimen form", () => {
@@ -550,13 +625,13 @@ test("accessible shell, responsive breakpoints, approved cache, and immutable da
   assert.match(styles, /\.record-meta dt \{[^}]*font-size: \.6rem;/u);
   assert.match(styles, /\.record-meta dd \{[^}]*font-size: \.8rem;/u);
   assert.doesNotMatch(styles, /\.record-meta dt \{[^}]*overflow-wrap: anywhere;/u);
-  assert.equal(app.CACHE_VERSION, "20260911-scoped-ids-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260911-scoped-ids-1");
+  assert.equal(app.CACHE_VERSION, "20260911-card-audit-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260911-card-audit-1");
   for (const document of [html, catalogsHtml]) {
-    assert.match(document, /styles\.css\?v=20260911-scoped-ids-1/u);
-    assert.match(document, /app\.js\?v=20260911-scoped-ids-1/u);
+    assert.match(document, /styles\.css\?v=20260911-card-audit-1/u);
+    assert.match(document, /app\.js\?v=20260911-card-audit-1/u);
   }
-  assert.match(catalogsHtml, /catalogs\.js\?v=20260911-scoped-ids-1/u);
+  assert.match(catalogsHtml, /catalogs\.js\?v=20260911-card-audit-1/u);
   assert.deepEqual({
     catalog: sha256(catalogText),
     projections: sha256(projectionText),

@@ -849,7 +849,7 @@ test("search indexes exact gram values and their displayed mass text without cha
   }, before);
 });
 
-test("displayed regional identifiers are exact aliases", () => {
+test("regional source/order search aliases remain exact", () => {
   const registry = app.normalizeCatalogRegistry(publicFixture.metadata);
   const source = publicFixture.records.find(({ id }) => id === "hodge-census-1");
   const record = app.prepareRecord(source, 0, registry);
@@ -1037,8 +1037,8 @@ test("URL filters default to strict specimens and canonicalize the explicit incl
     unit: "observations",
     status: "Showing 60 of 23,217 display cards from 18,217 matching source observations."
   });
-  assert.equal(app.CACHE_VERSION, "20260911-scoped-ids-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260911-scoped-ids-1");
+  assert.equal(app.CACHE_VERSION, "20260911-card-audit-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260911-card-audit-1");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.ASSET_CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.ASSET_CACHE_VERSION}`));
 });
@@ -1095,7 +1095,7 @@ test("HTML and runtime expose the accessible harmonized card contract", () => {
   assert.match(html, /<p class="record-semantic-label"><\/p>/);
   assert.match(html, /<dl class="record-meta" aria-label="Catalog record details"><\/dl>/);
   assert.match(html, /<section class="record-description" aria-label="Description" hidden>/);
-  assert.match(html, /Source catalog name/);
+  assert.match(html, /<p class="source-name-label">Meteorite name<\/p>/);
   assert.match(html, /An open-source project started by Raymond Borges Hink in July 2026\./);
   assert.match(html, /Designation \/ source identifier, ascending/);
   assert.doesNotMatch(html, /record-holdings|metbull-name|lineage-row|earlier-records/);
@@ -1113,7 +1113,8 @@ test("HTML and runtime expose the accessible harmonized card contract", () => {
   assert.match(script, /dto\.facts\.forEach\(\(\{ label, value \}\) => appendMetaRow\(meta, label, value\)\)/);
   assert.match(script, /if \(dto\.identifier\) designation\.textContent = dto\.identifier;\s*else designation\.remove\(\);/);
   assert.match(script, /else if \(dto\.identifier\) \{\s*sourceNameLabel\.textContent = "Source catalog identifier";/);
-  assert.match(script, /\[HARMONIZED_CARD_KINDS\.specimen, HARMONIZED_CARD_KINDS\.atomic\]\.includes\(dto\.kind\)\s*\? "Meteorite name"/);
+  assert.match(script, /sourceNameLabel\.textContent = harmonizedCardNameLabel\(dto\.kind\)/);
+  assert.equal(app.harmonizedCardNameLabel(dto.kind), "Meteorite name");
 });
 
 test("default cross-catalog order is alphabetical by source name", () => {
