@@ -214,8 +214,9 @@ coherence. The browser never performs fuzzy identity matching.
 [`data/specimen-card-projections.json`](./data/specimen-card-projections.json)
 is a display-only positive allowlist. It binds an immutable parent observation
 to an exact public holding and either a reviewed UTF-16 clause range or an exact
-typed component path. It copies no source-layout transcription into the
-manifest.
+typed component path. Schema 6 may also bind an opaque nonempty source catalog
+number to an exact same-holding `designation`, `description`, or `provenance`
+UTF-16 span. Only the exact public value, path, and bounds enter the manifest.
 
 Projection can change the number of display cards, but it does not split,
 delete, replace, or merge source observations. Search result counts,
@@ -226,7 +227,15 @@ dealer offers, and unreviewed clauses remain observation or audit context.
 Every numeric lineage route from a projected card uses an exact non-null mass
 path. Repeated display masses and qualitative or source-unlisted cards do not
 become numeric lineage endpoints. A qualitative clause can enter the default
-source-listed view only through the closed schema-5 evidence variant.
+source-listed view only through the closed schema-6 evidence variant.
+
+The current source-number release is deliberately catalog-specific: a bounded
+one-time migration reviewed the 232 projected Farrington 1903 cards against
+their complete public holding descriptions. The committed evidence objects are
+authoritative at runtime; the browser never parses descriptive prose or infers
+catalog numbers. The 192 nonprojected Farrington holdings and four holdings with
+multi/range expressions remain unannotated, and no unreviewed catalog coverage
+is claimed.
 
 ## 9. Lineage Semantics
 

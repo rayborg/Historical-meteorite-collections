@@ -1037,8 +1037,8 @@ test("URL filters default to strict specimens and canonicalize the explicit incl
     unit: "observations",
     status: "Showing 60 of 23,217 display cards from 18,217 matching source observations."
   });
-  assert.equal(app.CACHE_VERSION, "20260911-card-audit-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260911-card-audit-1");
+  assert.equal(app.CACHE_VERSION, "20260912-source-numbers-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260912-source-numbers-1");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.ASSET_CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.ASSET_CACHE_VERSION}`));
 });
@@ -1112,7 +1112,8 @@ test("HTML and runtime expose the accessible harmonized card contract", () => {
   assert.equal(dto.facts.find(({ label }) => label === "Individual find location").value, "32-19-13");
   assert.match(script, /dto\.facts\.forEach\(\(\{ label, value \}\) => appendMetaRow\(meta, label, value\)\)/);
   assert.match(script, /if \(dto\.identifier\) designation\.textContent = dto\.identifier;\s*else designation\.remove\(\);/);
-  assert.match(script, /else if \(dto\.identifier\) \{\s*sourceNameLabel\.textContent = "Source catalog identifier";/);
+  assert.match(script, /const heading = harmonizedCardNullNameHeading\(record, dto\.kind, descriptor, dto\.identifier\);/);
+  assert.match(script, /sourceNameLabel\.textContent = heading\.label;\s*recordName\.textContent = heading\.value;\s*designation\.remove\(\);/);
   assert.match(script, /sourceNameLabel\.textContent = harmonizedCardNameLabel\(dto\.kind\)/);
   assert.equal(app.harmonizedCardNameLabel(dto.kind), "Meteorite name");
 });

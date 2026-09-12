@@ -25,6 +25,7 @@ const modelByCatalog = new Map(catalog.metadata.catalogs.map(({ id, recordModel 
 const PRIOR_630_ID = "obs-344d0b6d-920e-403f-8fd5-c113fc05291d";
 const REEDS_366_ID = "obs-b02789ea-869e-447a-97cc-28c2c6900e88";
 const KULESCHOWKA_ID = "obs-4611763e-40ee-4872-920e-968183aa348b";
+const ENSISHEIM_ID = "obs-43d6c2fe-be9b-4d2e-93a1-eecea0e09c9a";
 const madridIds = new Set(catalog.records.filter(({ catalogId }) => catalogId === "madrid-1923").map(({ id }) => id));
 const hamburgIds = new Set(catalog.records.filter(({ catalogId }) => catalogId === "hamburg-1913").map(({ id }) => id));
 const wave1Ids = new Set(catalog.records.filter(({ catalogId }) =>
@@ -50,6 +51,21 @@ function cardTuple(card) {
   return [card.clause.start, card.clause.end, massMatch ? Number(massMatch[1]) : null];
 }
 
+function structuralProjections(projections) {
+  return projections.map((projection) => ({
+    ...projection,
+    cards: projection.cards.map(({ sourceCatalogNumber, ...card }) => card),
+  }));
+}
+
+function sourceCatalogNumberTuples(projections) {
+  return projections.flatMap(({ parentRecordId, cards }) => cards.flatMap((card, cardIndex) =>
+    card.sourceCatalogNumber
+      ? [[parentRecordId, cardIndex, card.sourceCatalogNumber.value, card.sourceCatalogNumber.textPath,
+        card.sourceCatalogNumber.start, card.sourceCatalogNumber.end]]
+      : []));
+}
+
 test("production manifest is deterministic and validates against the locked catalog", () => {
   assert.deepEqual(validateSpecimenCardProjections(published, catalog, catalogText), {
     projectionCount: 3407,
@@ -58,26 +74,32 @@ test("production manifest is deterministic and validates against the locked cata
     masslessCardCount: 35,
     repeatedMassCardCount: 2,
     sourceContextCardCount: 2877,
+    sourceCatalogNumberCount: 232,
   });
   assert.equal(serializeSpecimenCardProjections(published), projectionText);
   assert.equal(createHash("sha256").update(catalogText).digest("hex"), published.metadata.sourceCatalogSha256);
-  assert.equal(createHash("sha256").update(JSON.stringify(published.projections)).digest("hex"), "c4ac216d619ee08210bb43cb5a284280d807b35694ece4105b9611680478f1e0");
+  assert.equal(createHash("sha256").update(JSON.stringify(published.projections)).digest("hex"), "560e6934fe495e731637184afabbedbcd842d37034bcd1354abbc2e51ad4a325");
+  assert.equal(createHash("sha256").update(JSON.stringify(structuralProjections(published.projections))).digest("hex"),
+    "c4ac216d619ee08210bb43cb5a284280d807b35694ece4105b9611680478f1e0");
+  assert.equal(createHash("sha256").update(JSON.stringify(sourceCatalogNumberTuples(published.projections))).digest("hex"),
+    "85645d87b5c7a8677996ab4bd36dcc54e3d95ef1bb9fbb544ea6d8aaf26bb5d3");
   const wave2Ids = new Set(catalog.records.filter(({ catalogId }) => ["berlin-1903", "berlin-1904", "greifswald-1895", "greifswald-1901"].includes(catalogId)).map(({ id }) => id));
   const baseline = published.projections.filter(({ parentRecordId }) =>
     !wave1Ids.has(parentRecordId) && !wave2Ids.has(parentRecordId) && !bonnIds.has(parentRecordId));
-  assert.equal(createHash("sha256").update(JSON.stringify(baseline)).digest("hex"), "2aba43bd9d205ae21502f3f76cdb213c1bac26f90513389b876bf047d6087e4b");
-  assert.equal(createHash("sha256").update(JSON.stringify(baseline.filter(({ parentRecordId }) => !hamburgIds.has(parentRecordId)))).digest("hex"), "895bf19525ea363dd20068417c4cb4e7af667dd10c4e8c746085f40b2e3ea528");
-  assert.equal(createHash("sha256").update(projectionText).digest("hex"), "e128dc388ede6590b5e373fe36958d4b5d068641a4454719c23044c146e13e0e");
+  assert.equal(createHash("sha256").update(JSON.stringify(structuralProjections(baseline))).digest("hex"), "2aba43bd9d205ae21502f3f76cdb213c1bac26f90513389b876bf047d6087e4b");
+  assert.equal(createHash("sha256").update(JSON.stringify(structuralProjections(baseline.filter(({ parentRecordId }) => !hamburgIds.has(parentRecordId))))).digest("hex"), "895bf19525ea363dd20068417c4cb4e7af667dd10c4e8c746085f40b2e3ea528");
+  assert.equal(createHash("sha256").update(projectionText).digest("hex"), "d257ba5d188d5dac8bdb8ea356786d09e60a4e47f6af7fa3f4e44c8fe9363b8a");
 });
 
-test("schema is a closed schema-5 count-locked atomic projection contract", () => {
+test("schema is a closed schema-6 count-locked atomic projection contract", () => {
   assert.equal(schema.$schema, "https://json-schema.org/draft/2020-12/schema");
-  assert.equal(schema.$id, "urn:hmc:schema:specimen-card-projections:5");
+  assert.equal(schema.$id, "urn:hmc:schema:specimen-card-projections:6");
   assert.deepEqual(schema.required, ["metadata", "projections"]);
   assert.equal(schema.properties.projections.minItems, 3407);
   assert.equal(schema.properties.projections.maxItems, 3407);
   assert.equal(schema.$defs.metadata.properties.atomicCardCount.const, 8410);
   assert.equal(schema.$defs.metadata.properties.sourceContextCardCount.const, 2877);
+  assert.equal(schema.$defs.metadata.properties.sourceCatalogNumberCount.const, 232);
   assert.equal(schema.$defs.metadata.properties.catalogSchemaVersion.const, 12);
   assert.equal(schema.$defs.metadata.properties.sourceRecordCount.const, 19553);
   assert.equal(schema.$defs.metadata.properties.sourceCatalogSha256.const,
@@ -99,6 +121,10 @@ test("schema is a closed schema-5 count-locked atomic projection contract", () =
   assert.deepEqual(schema.$defs.repeatedMass.required,
     ["valuePath", "countPath", "totalPath", "occurrence", "occurrenceCount"]);
   assert.deepEqual(schema.$defs.clause.required, ["textPath", "start", "end"]);
+  assert.deepEqual(schema.$defs.sourceCatalogNumber.required, ["value", "textPath", "start", "end"]);
+  for (const variant of ["clauseCard", "qualitativeClauseCard", "repeatedClauseCard", "componentCard"]) {
+    assert.deepEqual(schema.$defs[variant].properties.sourceCatalogNumber, { $ref: "#/$defs/sourceCatalogNumber" });
+  }
   const visit = (value) => {
     if (Array.isArray(value)) return value.forEach(visit);
     if (value === null || typeof value !== "object") return;
@@ -307,6 +333,44 @@ test("every evidence variant and optional mass resolves exactly in canonical sou
   assert.equal(contextCount, 2877);
 });
 
+test("all and only the 232 projected Farrington cards carry exact source-bound scalar numbers", () => {
+  const annotations = [];
+  const farringtonProjectedHoldings = new Set();
+  for (const projection of published.projections) {
+    const record = recordById.get(projection.parentRecordId);
+    for (const [cardIndex, card] of projection.cards.entries()) {
+      if (!card.sourceCatalogNumber) {
+        assert.notEqual(record.catalogId, "farrington-1903", `${record.id}:${cardIndex}`);
+        continue;
+      }
+      assert.equal(record.catalogId, "farrington-1903", `${record.id}:${cardIndex}`);
+      assert.match(card.sourceCatalogNumber.value, /^[0-9]+$/u);
+      assert.equal(Number(card.holdingPath.match(/[0-9]+/u)[0]),
+        Number(card.sourceCatalogNumber.textPath.match(/[0-9]+/u)[0]));
+      const text = resolve(record, card.sourceCatalogNumber.textPath);
+      assert.equal(text.slice(card.sourceCatalogNumber.start, card.sourceCatalogNumber.end),
+        card.sourceCatalogNumber.value);
+      annotations.push({ parentRecordId: record.id, cardIndex, ...card.sourceCatalogNumber });
+      farringtonProjectedHoldings.add(`${record.id}:${card.holdingPath}`);
+    }
+  }
+  const farringtonHoldings = catalog.records.filter(({ catalogId }) => catalogId === "farrington-1903")
+    .flatMap((record) => record.holdings.map((holding, holdingIndex) => ({ record, holding, holdingIndex })));
+  assert.equal(farringtonHoldings.length, 424);
+  assert.equal(annotations.length, 232);
+  assert.equal(farringtonProjectedHoldings.size, 232);
+  assert.equal(farringtonHoldings.filter(({ record, holdingIndex }) =>
+    !farringtonProjectedHoldings.has(`${record.id}:holdings[${holdingIndex}]`)).length, 192);
+  assert.equal(farringtonHoldings.filter(({ holding }) =>
+    /Cat\.?\s+Nos?\.,?\s+(?:[0-9]+-[0-9]+(?:, [0-9]+)?|[0-9]+, [0-9]+)\./iu.test(holding.description)).length, 4);
+
+  const ensisheim = published.projections.find(({ parentRecordId }) => parentRecordId === ENSISHEIM_ID);
+  assert.deepEqual(ensisheim.cards.map(({ sourceCatalogNumber }) => sourceCatalogNumber), [
+    { value: "207", textPath: "holdings[0].description", start: 91, end: 94 },
+    { value: "208", textPath: "holdings[1].description", start: 40, end: 43 },
+  ]);
+});
+
 test("Prior 630 has exact 17 reviewed clauses plus context; Reeds 366 has ten full holdings and no context", () => {
   const prior = published.projections.find(({ parentRecordId }) => parentRecordId === PRIOR_630_ID);
   assert.deepEqual(prior.cards.map(cardTuple), [
@@ -335,6 +399,7 @@ test("manifest exposes only identifiers, paths, boundaries, and accepted qualita
   const allowedKeys = new Set([
     "metadata", "projections", "schemaVersion", "scope", "catalogSchemaVersion", "sourceRecordCount",
     "sourceCatalogSha256", "projectionCount", "atomicCardCount", "sourceContextCardCount", "parentRecordId",
+    "sourceCatalogNumberCount", "sourceCatalogNumber", "value",
     "cards", "holdingPath", "clause", "componentPath", "textPath", "start", "end", "massPath",
     "repeatedMass", "valuePath", "countPath", "totalPath", "occurrence", "occurrenceCount",
     "qualitativeWeightEvidence", "type", "statement",
@@ -365,7 +430,7 @@ test("manifest exposes only identifiers, paths, boundaries, and accepted qualita
 });
 
 test("rejects wrong metadata, extra fields, free text, and altered source bytes", () => {
-  for (const key of ["schemaVersion", "scope", "catalogSchemaVersion", "sourceRecordCount", "sourceCatalogSha256", "projectionCount", "atomicCardCount", "sourceContextCardCount"]) {
+  for (const key of ["schemaVersion", "scope", "catalogSchemaVersion", "sourceRecordCount", "sourceCatalogSha256", "projectionCount", "atomicCardCount", "sourceContextCardCount", "sourceCatalogNumberCount"]) {
     mutate(`wrong ${key}`, (value) => { value.metadata[key] = key === "scope" ? "other" : 0; });
   }
   mutate("schema-9 compatibility metadata", (value) => { value.metadata.catalogSchemaVersion = 9; });
@@ -382,6 +447,48 @@ test("rejects wrong metadata, extra fields, free text, and altered source bytes"
       .cards[0].qualitativeWeightEvidence.statement = "principal mass";
   }, /accepted ten-card authority/iu);
   assert.throws(() => validateSpecimenCardProjections(published, catalog, `${catalogText} `), /SHA-256/iu);
+});
+
+test("rejects malformed, cross-holding, forged, surrogate-splitting, and extended source catalog number evidence", () => {
+  const ensisheim = (value) => value.projections.find(({ parentRecordId }) => parentRecordId === ENSISHEIM_ID);
+  mutate("empty source catalog number", (value) => {
+    const evidence = ensisheim(value).cards[0].sourceCatalogNumber;
+    evidence.value = "";
+    evidence.end = evidence.start;
+  }, /sourceCatalogNumber|range/iu);
+  mutate("forged source catalog number", (value) => {
+    ensisheim(value).cards[0].sourceCatalogNumber.value = "999";
+  }, /substring differs/iu);
+  mutate("cross-holding source catalog number", (value) => {
+    ensisheim(value).cards[0].sourceCatalogNumber.textPath = "holdings[1].description";
+  }, /different holding/iu);
+  mutate("unsupported source catalog number path", (value) => {
+    ensisheim(value).cards[0].sourceCatalogNumber.textPath = "holdings[0].weights";
+  }, /malformed|unsupported/iu);
+  mutate("reversed source catalog number span", (value) => {
+    ensisheim(value).cards[0].sourceCatalogNumber.end = ensisheim(value).cards[0].sourceCatalogNumber.start;
+  }, /UTF-16|range/iu);
+  mutate("extra source catalog number key", (value) => {
+    ensisheim(value).cards[0].sourceCatalogNumber.note = "forged";
+  }, /exactly keys/iu);
+  mutate("source catalog number on another catalog", (value) => {
+    const projection = value.projections.find(({ parentRecordId }) => recordById.get(parentRecordId).catalogId !== "farrington-1903");
+    const record = recordById.get(projection.parentRecordId);
+    const card = projection.cards[0];
+    const textPath = card.clause?.textPath || `${card.holdingPath}.description`;
+    const text = resolve(record, textPath);
+    card.sourceCatalogNumber = { value: text.slice(0, 1), textPath, start: 0, end: 1 };
+  }, /all and only Farrington/iu);
+
+  const changed = clone();
+  const changedCatalog = structuredClone(catalog);
+  const evidence = ensisheim(changed).cards[0].sourceCatalogNumber;
+  const record = changedCatalog.records.find(({ id }) => id === ENSISHEIM_ID);
+  const sourceText = record.holdings[0].description;
+  record.holdings[0].description = `${sourceText.slice(0, evidence.start)}😀${sourceText.slice(evidence.start)}`;
+  evidence.start += 1;
+  evidence.end += 2;
+  assert.throws(() => validateSpecimenCardProjections(changed, changedCatalog, catalogText), /surrogate pair/iu);
 });
 
 test("rejects duplicate, dangling, reordered, malformed, mismatched, and overlapping references", () => {

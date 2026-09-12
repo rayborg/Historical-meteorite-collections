@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:hmc:schema:specimen-card-projections:5",
+  "$id": "urn:hmc:schema:specimen-card-projections:6",
   "title": "Historical Meteorite Collection reviewed atomic specimen-card display projections",
   "type": "object",
   "additionalProperties": false,
@@ -33,11 +33,12 @@
         "sourceCatalogSha256",
         "projectionCount",
         "atomicCardCount",
-        "sourceContextCardCount"
+        "sourceContextCardCount",
+        "sourceCatalogNumberCount"
       ],
       "properties": {
         "schemaVersion": {
-          "const": 5
+          "const": 6
         },
         "scope": {
           "const": "reviewed-atomic-specimen-card-display-projections"
@@ -59,6 +60,9 @@
         },
         "sourceContextCardCount": {
           "const": 2877
+        },
+        "sourceCatalogNumberCount": {
+          "const": 232
         }
       }
     },
@@ -117,6 +121,9 @@
         },
         "massPath": {
           "$ref": "#/$defs/nullableMassPath"
+        },
+        "sourceCatalogNumber": {
+          "$ref": "#/$defs/sourceCatalogNumber"
         }
       }
     },
@@ -142,6 +149,9 @@
         },
         "qualitativeWeightEvidence": {
           "$ref": "#/$defs/qualitativeWeightEvidence"
+        },
+        "sourceCatalogNumber": {
+          "$ref": "#/$defs/sourceCatalogNumber"
         }
       }
     },
@@ -164,6 +174,9 @@
         },
         "massPath": {
           "$ref": "#/$defs/componentMassPath"
+        },
+        "sourceCatalogNumber": {
+          "$ref": "#/$defs/sourceCatalogNumber"
         }
       }
     },
@@ -189,6 +202,37 @@
         },
         "repeatedMass": {
           "$ref": "#/$defs/repeatedMass"
+        },
+        "sourceCatalogNumber": {
+          "$ref": "#/$defs/sourceCatalogNumber"
+        }
+      }
+    },
+    "sourceCatalogNumber": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "textPath",
+        "start",
+        "end"
+      ],
+      "properties": {
+        "value": {
+          "type": "string",
+          "minLength": 1
+        },
+        "textPath": {
+          "type": "string",
+          "pattern": "^holdings\\[(0|[1-9][0-9]*)\\]\\.(?:designation|description|provenance)$"
+        },
+        "start": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "end": {
+          "type": "integer",
+          "minimum": 1
         }
       }
     },

@@ -13,8 +13,11 @@ const LOCKS = Object.freeze({
   masslessCardCount: 35,
   repeatedMassCardCount: 2,
   sourceContextCardCount: 2877,
+  sourceCatalogNumberCount: 232,
   baselineProjectionSetSha256: "2aba43bd9d205ae21502f3f76cdb213c1bac26f90513389b876bf047d6087e4b",
-  projectionSetSha256: "c4ac216d619ee08210bb43cb5a284280d807b35694ece4105b9611680478f1e0",
+  structuralProjectionSetSha256: "c4ac216d619ee08210bb43cb5a284280d807b35694ece4105b9611680478f1e0",
+  projectionSetSha256: "560e6934fe495e731637184afabbedbcd842d37034bcd1354abbc2e51ad4a325",
+  sourceCatalogNumberSetSha256: "85645d87b5c7a8677996ab4bd36dcc54e3d95ef1bb9fbb544ea6d8aaf26bb5d3",
   nonHamburgProjectionSetSha256: "895bf19525ea363dd20068417c4cb4e7af667dd10c4e8c746085f40b2e3ea528",
 });
 export const BROWN_AUDIT_COVERAGE = Object.freeze({
@@ -88,7 +91,7 @@ const KULESCHOWKA_ID = "obs-4611763e-40ee-4872-920e-968183aa348b";
 const ROOT_KEYS = ["metadata", "projections"];
 const METADATA_KEYS = [
   "schemaVersion", "scope", "catalogSchemaVersion", "sourceRecordCount", "sourceCatalogSha256",
-  "projectionCount", "atomicCardCount", "sourceContextCardCount",
+  "projectionCount", "atomicCardCount", "sourceContextCardCount", "sourceCatalogNumberCount",
 ];
 const PROJECTION_KEYS = ["parentRecordId", "cards"];
 const CLAUSE_CARD_KEYS = ["holdingPath", "clause", "massPath"];
@@ -98,8 +101,10 @@ const COMPONENT_CARD_KEYS = ["holdingPath", "componentPath", "massPath"];
 const CLAUSE_KEYS = ["textPath", "start", "end"];
 const REPEATED_MASS_KEYS = ["valuePath", "countPath", "totalPath", "occurrence", "occurrenceCount"];
 const QUALITATIVE_WEIGHT_EVIDENCE_KEYS = ["type", "statement"];
+const SOURCE_CATALOG_NUMBER_KEYS = ["value", "textPath", "start", "end"];
 const HOLDING_PATH = /^holdings\[(0|[1-9][0-9]*)\]$/u;
 const TEXT_PATH = /^holdings\[(0|[1-9][0-9]*)\]\.(description|designation)$/u;
+const SOURCE_CATALOG_NUMBER_TEXT_PATH = /^holdings\[(0|[1-9][0-9]*)\]\.(designation|description|provenance)$/u;
 const ARRAY_MASS_PATH = /^holdings\[(0|[1-9][0-9]*)\]\.weights\[(0|[1-9][0-9]*)\]\.grams$/u;
 const SCALAR_MASS_PATH = /^holdings\[(0|[1-9][0-9]*)\]\.weight\.grams$/u;
 const COMPONENT_PATH = /^holdings\[(0|[1-9][0-9]*)\]\.weights\[(0|[1-9][0-9]*)\]$/u;
@@ -125,6 +130,13 @@ function sha256(value) {
 
 function resolvePath(value, path) {
   return path.match(/[A-Za-z]+|[0-9]+/gu).reduce((current, key) => current?.[key], value);
+}
+
+function structuralProjections(projections) {
+  return projections.map((projection) => ({
+    ...projection,
+    cards: projection.cards.map(({ sourceCatalogNumber, ...card }) => card),
+  }));
 }
 
 function splitsSurrogatePair(text, index) {
@@ -198,9 +210,11 @@ function parseCard(card, record, recordModel, location) {
   if (hasClause === hasComponent) fail(`${location} must have exactly one clause or componentPath evidence variant`);
   const hasRepeatedMass = hasClause && Object.hasOwn(card, "repeatedMass");
   const hasQualitativeWeight = hasClause && Object.hasOwn(card, "qualitativeWeightEvidence");
-  assertExactKeys(card, hasClause
+  const expectedCardKeys = hasClause
     ? hasRepeatedMass ? REPEATED_CLAUSE_CARD_KEYS : hasQualitativeWeight ? QUALITATIVE_CLAUSE_CARD_KEYS : CLAUSE_CARD_KEYS
-    : COMPONENT_CARD_KEYS, location);
+    : COMPONENT_CARD_KEYS;
+  const hasSourceCatalogNumber = Object.hasOwn(card, "sourceCatalogNumber");
+  assertExactKeys(card, hasSourceCatalogNumber ? [...expectedCardKeys, "sourceCatalogNumber"] : expectedCardKeys, location);
   if (hasClause) assertExactKeys(card.clause, CLAUSE_KEYS, `${location}.clause`);
   if (typeof card.holdingPath !== "string") fail(`${location}.holdingPath must be a string`);
   const holdingMatch = card.holdingPath.match(HOLDING_PATH);
@@ -209,6 +223,25 @@ function parseCard(card, record, recordModel, location) {
   const holding = record.holdings[holdingIndex];
   if (!holding) fail(`${location}.holdingPath is dangling`);
   if (recordModel === "catalog-item" && holding.kind !== "specimen") fail(`${location} resolves to a non-specimen catalog item`);
+
+  if (hasSourceCatalogNumber) {
+    const evidence = card.sourceCatalogNumber;
+    assertExactKeys(evidence, SOURCE_CATALOG_NUMBER_KEYS, `${location}.sourceCatalogNumber`);
+    const textMatch = typeof evidence.textPath === "string" ? evidence.textPath.match(SOURCE_CATALOG_NUMBER_TEXT_PATH) : null;
+    if (!textMatch) fail(`${location}.sourceCatalogNumber.textPath is malformed or unsupported`);
+    if (Number(textMatch[1]) !== holdingIndex) fail(`${location}.sourceCatalogNumber.textPath refers to a different holding`);
+    const sourceText = resolvePath(record, evidence.textPath);
+    const { value, start, end } = evidence;
+    if (typeof value !== "string" || value.length === 0) fail(`${location}.sourceCatalogNumber.value must be nonempty source text`);
+    if (typeof sourceText !== "string") fail(`${location}.sourceCatalogNumber.textPath does not resolve to text`);
+    if (!Number.isInteger(start) || !Number.isInteger(end) || start < 0 || end <= start || end > sourceText.length) {
+      fail(`${location}.sourceCatalogNumber must be a nonempty UTF-16 half-open range within its source text`);
+    }
+    if (splitsSurrogatePair(sourceText, start) || splitsSurrogatePair(sourceText, end)) {
+      fail(`${location}.sourceCatalogNumber splits a UTF-16 surrogate pair`);
+    }
+    if (sourceText.slice(start, end) !== value) fail(`${location}.sourceCatalogNumber source substring differs from value`);
+  }
 
   let text = null;
   if (hasClause) {
@@ -286,7 +319,7 @@ export function validateSpecimenCardProjections(document, catalog, catalogText) 
   assertExactKeys(document, ROOT_KEYS, "root");
   assertExactKeys(document.metadata, METADATA_KEYS, "metadata");
   const expectedMetadata = {
-    schemaVersion: 5,
+    schemaVersion: 6,
     scope: "reviewed-atomic-specimen-card-display-projections",
     catalogSchemaVersion: LOCKS.catalogSchemaVersion,
     sourceRecordCount: LOCKS.sourceRecordCount,
@@ -294,6 +327,7 @@ export function validateSpecimenCardProjections(document, catalog, catalogText) 
     projectionCount: LOCKS.projectionCount,
     atomicCardCount: LOCKS.atomicCardCount,
     sourceContextCardCount: LOCKS.sourceContextCardCount,
+    sourceCatalogNumberCount: LOCKS.sourceCatalogNumberCount,
   };
   for (const key of METADATA_KEYS) {
     if (document.metadata[key] !== expectedMetadata[key]) fail(`metadata.${key} differs from the production lock`);
@@ -311,6 +345,8 @@ export function validateSpecimenCardProjections(document, catalog, catalogText) 
   let massBoundCardCount = 0;
   let masslessCardCount = 0;
   let sourceContextCardCount = 0;
+  let sourceCatalogNumberCount = 0;
+  const sourceCatalogNumberTuples = [];
   const repeatedMassCards = [];
   const qualitativeWeightCards = [];
 
@@ -335,6 +371,15 @@ export function validateSpecimenCardProjections(document, catalog, catalogText) 
     for (const [cardIndex, card] of projection.cards.entries()) {
       const cardLocation = `${location}.cards[${cardIndex}]`;
       parseCard(card, source.record, recordModel, cardLocation);
+      const hasSourceCatalogNumber = Object.hasOwn(card, "sourceCatalogNumber");
+      if ((source.record.catalogId === "farrington-1903") !== hasSourceCatalogNumber) {
+        fail(`${cardLocation}.sourceCatalogNumber must appear on all and only Farrington 1903 projected cards`);
+      }
+      if (hasSourceCatalogNumber) {
+        sourceCatalogNumberCount++;
+        const { value, textPath, start, end } = card.sourceCatalogNumber;
+        sourceCatalogNumberTuples.push([projection.parentRecordId, cardIndex, value, textPath, start, end]);
+      }
       if (card.repeatedMass) repeatedMassCards.push({ parentRecordId: projection.parentRecordId, cardIndex, card });
       if (card.qualitativeWeightEvidence) qualitativeWeightCards.push({ parentRecordId: projection.parentRecordId, cardIndex, evidence: card.qualitativeWeightEvidence });
       if (previousCard && compareCards(previousCard, card) >= 0) fail(`${location}.cards are not in canonical holding and evidence source order`);
@@ -370,6 +415,13 @@ export function validateSpecimenCardProjections(document, catalog, catalogText) 
     fail("ordinary mass assignment counts differ from the accepted release lock");
   }
   if (sourceContextCardCount !== LOCKS.sourceContextCardCount) fail("derived source context count differs from metadata");
+  if (sourceCatalogNumberCount !== LOCKS.sourceCatalogNumberCount ||
+      sourceCatalogNumberCount !== document.metadata.sourceCatalogNumberCount) {
+    fail("source catalog number count differs from metadata");
+  }
+  if (sha256(JSON.stringify(sourceCatalogNumberTuples)) !== LOCKS.sourceCatalogNumberSetSha256) {
+    fail("Farrington source catalog number evidence differs from the reviewed production lock");
+  }
   const legacyQualitative = [
     { parentRecordId: "obs-e2b4f522-b31d-4dcb-9cf6-7b8ba35da649", cardIndex: 0, evidence: { type: "qualitative", statement: "main mass" } },
     { parentRecordId: "obs-014fa351-665c-4bcb-b83f-3610f0ff425c", cardIndex: 4, evidence: { type: "qualitative", statement: "one-third of mass" } },
@@ -666,12 +718,15 @@ export function validateSpecimenCardProjections(document, catalog, catalogText) 
 
   const baselineProjections = document.projections.filter(({ parentRecordId }) =>
     !reviewedCatalogIds.has(records.get(parentRecordId).record.catalogId));
-  if (sha256(JSON.stringify(baselineProjections)) !== LOCKS.baselineProjectionSetSha256) {
+  if (sha256(JSON.stringify(structuralProjections(baselineProjections))) !== LOCKS.baselineProjectionSetSha256) {
     fail("current37 projection set differs from the schema-4 baseline lock");
   }
   const nonHamburgProjections = baselineProjections.filter(({ parentRecordId }) => !hamburgIds.has(parentRecordId));
-  if (sha256(JSON.stringify(nonHamburgProjections)) !== LOCKS.nonHamburgProjectionSetSha256) {
+  if (sha256(JSON.stringify(structuralProjections(nonHamburgProjections))) !== LOCKS.nonHamburgProjectionSetSha256) {
     fail("non-Hamburg projection set differs from the current37 production lock");
+  }
+  if (sha256(JSON.stringify(structuralProjections(document.projections))) !== LOCKS.structuralProjectionSetSha256) {
+    fail("projection paths, clauses, masses, or ordering differ from the reviewed structural lock");
   }
   if (sha256(JSON.stringify(document.projections)) !== LOCKS.projectionSetSha256) fail("projection set differs from the reviewed production lock");
 
@@ -682,6 +737,7 @@ export function validateSpecimenCardProjections(document, catalog, catalogText) 
     masslessCardCount,
     repeatedMassCardCount: repeatedMassCards.length,
     sourceContextCardCount,
+    sourceCatalogNumberCount,
   };
 }
 
@@ -695,5 +751,5 @@ if (isMain) {
   const document = JSON.parse(projectionText);
   const result = validateSpecimenCardProjections(document, JSON.parse(sourceCatalogText), sourceCatalogText);
   if (projectionText !== serializeSpecimenCardProjections(document)) fail("projection JSON is not deterministically serialized");
-  console.log(`validated ${result.projectionCount} atomic specimen-card projections (${result.atomicCardCount} atomic cards, ${result.sourceContextCardCount} non-displayed context audit partitions)`);
+  console.log(`validated ${result.projectionCount} atomic specimen-card projections (${result.atomicCardCount} atomic cards, ${result.sourceContextCardCount} non-displayed context audit partitions, ${result.sourceCatalogNumberCount} source catalog numbers)`);
 }

@@ -67,7 +67,7 @@ function fullCard(record, holdingIndex, massPath = `holdings[${holdingIndex}].we
 function syntheticManifest(sourceRecords, projections) {
   return {
     metadata: {
-      schemaVersion: 5,
+      schemaVersion: 6,
       scope: "reviewed-atomic-specimen-card-display-projections",
       catalogSchemaVersion: 12,
       sourceRecordCount: sourceRecords.length,
@@ -78,23 +78,26 @@ function syntheticManifest(sourceRecords, projections) {
         const record = sourceRecords.find(({ id }) => id === projection.parentRecordId);
         return app.specimenCardContextEntries(record, projection).length > 0;
       }).length,
+      sourceCatalogNumberCount: projections.reduce((count, projection) => count +
+        projection.cards.filter((card) => card.sourceCatalogNumber).length, 0),
     },
     projections,
   };
 }
 
-test("schema-5 contract is closed and has no schema-4 fallback", () => {
+test("schema-6 contract is closed and has no schema-5 fallback", () => {
   const parent = weightedRecord("schema-parent", 2);
   const projection = { parentRecordId: parent.id, cards: [fullCard(parent, 0), fullCard(parent, 1)] };
   const document = syntheticManifest([parent], [projection]);
   assert.equal(app.validateSpecimenCardManifest(document, [parent]), true);
 
   for (const mutate of [
-    (value) => { value.metadata.schemaVersion = 4; },
+    (value) => { value.metadata.schemaVersion = 5; },
     (value) => { value.metadata.catalogSchemaVersion = 8; },
     (value) => { value.metadata.scope = "reviewed-specimen-card-display-projections"; },
     (value) => { value.metadata.atomicCardCount += 1; },
     (value) => { value.metadata.sourceContextCardCount += 1; },
+    (value) => { value.metadata.sourceCatalogNumberCount += 1; },
     (value) => { value.metadata.privatePath = "/private/review.json"; },
     (value) => { value.projections[0].retainParentContext = false; },
     (value) => { value.projections[0].cards[0].text = "forged"; },
@@ -109,6 +112,64 @@ test("schema-5 contract is closed and has no schema-4 fallback", () => {
   assert.equal(app.validateSpecimenCardManifest(
     syntheticManifest([single], [{ parentRecordId: single.id, cards: [fullCard(single, 0)] }]), [single]
   ), false);
+});
+
+test("source catalog numbers resolve exact same-holding UTF-16 evidence on every card variant", () => {
+  const examples = [
+    manifest.projections.flatMap(({ cards }) => cards).find((card) => card.clause &&
+      !card.qualitativeWeightEvidence && !card.repeatedMass),
+    manifest.projections.flatMap(({ cards }) => cards).find((card) => card.qualitativeWeightEvidence),
+    manifest.projections.flatMap(({ cards }) => cards).find((card) => card.repeatedMass),
+    manifest.projections.flatMap(({ cards }) => cards).find((card) => card.componentPath),
+  ];
+  for (const example of examples) {
+    assert(example);
+    const projection = manifest.projections.find(({ cards }) => cards.includes(example));
+    const record = records.find(({ id }) => id === projection.parentRecordId);
+    const candidate = structuredClone(projection);
+    const cardIndex = projection.cards.indexOf(example);
+    const card = candidate.cards[cardIndex];
+    const holdingIndex = Number(card.holdingPath.match(/[0-9]+/u)[0]);
+    const holding = record.holdings[holdingIndex];
+    const field = ["designation", "description", "provenance"].find((key) => typeof holding[key] === "string" && holding[key].length > 0);
+    assert(field);
+    card.sourceCatalogNumber = {
+      value: holding[field].slice(0, 1),
+      textPath: `${card.holdingPath}.${field}`,
+      start: 0,
+      end: 1,
+    };
+    const document = syntheticManifest([record], [candidate]);
+    assert.equal(app.validateSpecimenCardManifest(document, [record]), true);
+    const descriptor = app.expandSpecimenCardDescriptors([record], app.deriveSpecimenCardProjectionIndex(document, [record]))[cardIndex];
+    assert.deepEqual(descriptor.sourceCatalogNumber, card.sourceCatalogNumber);
+  }
+});
+
+test("runtime rejects malformed, forged, cross-holding, surrogate-splitting, and extended source number evidence", () => {
+  const parent = weightedRecord("source-number-parent", 2);
+  parent.holdings[0].description = "A😀B Catalog 207";
+  const card = fullCard(parent, 0);
+  card.sourceCatalogNumber = { value: "207", textPath: "holdings[0].description", start: 13, end: 16 };
+  const make = (candidate = card, record = parent) => syntheticManifest([record], [{
+    parentRecordId: record.id,
+    cards: [candidate, fullCard(record, 1)],
+  }]);
+  assert.equal(app.validateSpecimenCardManifest(make(), [parent]), true);
+  for (const mutate of [
+    (evidence) => { evidence.value = "999"; },
+    (evidence) => { evidence.textPath = "holdings[1].description"; },
+    (evidence) => { evidence.textPath = "holdings[0].weights"; },
+    (evidence) => { evidence.end = evidence.start; },
+    (evidence) => { evidence.note = "forged"; },
+  ]) {
+    const changed = structuredClone(card);
+    mutate(changed.sourceCatalogNumber);
+    assert.equal(app.validateSpecimenCardManifest(make(changed), [parent]), false);
+  }
+  const split = structuredClone(card);
+  split.sourceCatalogNumber = { value: "😀", textPath: "holdings[0].description", start: 2, end: 3 };
+  assert.equal(app.validateSpecimenCardManifest(make(split), [parent]), false);
 });
 
 test("span validation rejects empty, reversed, overlapping, reordered, and surrogate-splitting clauses", () => {
@@ -389,8 +450,8 @@ test("digest lock loads the exact set and fails closed to parent cards on mismat
   altered.projections[0].cards[0].clause.end -= 1;
   assert.equal((await app.loadSpecimenCardProjectionIndex(records, async () => projectionResponse(altered), options)).size, 0);
   assert.equal(app.SPECIMEN_CARD_SOURCE_CATALOG_SHA256, "cf429e6660f00272f2f81fe69bac81c891f41574bbfff6e6bb46499d2d0672b4");
-  assert.equal(app.SPECIMEN_CARD_PROJECTION_DATA_SHA256, "e128dc388ede6590b5e373fe36958d4b5d068641a4454719c23044c146e13e0e");
-  assert.equal(app.SPECIMEN_CARD_PROJECTION_SET_SHA256, "c4ac216d619ee08210bb43cb5a284280d807b35694ece4105b9611680478f1e0");
+  assert.equal(app.SPECIMEN_CARD_PROJECTION_DATA_SHA256, "d257ba5d188d5dac8bdb8ea356786d09e60a4e47f6af7fa3f4e44c8fe9363b8a");
+  assert.equal(app.SPECIMEN_CARD_PROJECTION_SET_SHA256, "560e6934fe495e731637184afabbedbcd842d37034bcd1354abbc2e51ad4a325");
 });
 
 test("rendering is text-only, omits context cards, and synchronizes cache keys", () => {
@@ -402,18 +463,19 @@ test("rendering is text-only, omits context cards, and synchronizes cache keys",
   assert.match(html, /<p class="record-semantic-label"><\/p>/u);
   assert.match(html, /<dl class="record-meta" aria-label="Catalog record details"><\/dl>/u);
   assert.doesNotMatch(html, /specimen-position|record-holdings|earlier-records/u);
-  assert.match(html, /styles\.css\?v=20260911-card-audit-1/u);
-  assert.match(html, /app\.js\?v=20260911-card-audit-1/u);
-  assert.equal(app.ASSET_CACHE_VERSION, "20260911-card-audit-1");
+  assert.match(html, /styles\.css\?v=20260912-source-numbers-1/u);
+  assert.match(html, /app\.js\?v=20260912-source-numbers-1/u);
+  assert.equal(app.ASSET_CACHE_VERSION, "20260912-source-numbers-1");
 });
 
-test("production schema-5 projection fixture validates against schema 12", () => {
+test("production schema-6 projection fixture validates against schema 12", () => {
   assert.equal(sourceCatalogSha256, manifest.metadata.sourceCatalogSha256);
   assert.deepEqual([
     manifest.metadata.projectionCount,
     manifest.metadata.atomicCardCount,
     manifest.metadata.sourceContextCardCount,
-  ], [3407, 8410, 2877]);
+    manifest.metadata.sourceCatalogNumberCount,
+  ], [3407, 8410, 2877, 232]);
   assert.equal(app.validateSpecimenCardManifest(manifest, records, { sourceCatalogSha256 }), true);
   const index = app.deriveSpecimenCardProjectionIndex(manifest, records, { sourceCatalogSha256 });
   assert.equal(index.size, manifest.metadata.projectionCount);
@@ -426,6 +488,7 @@ test("production schema-5 projection fixture validates against schema 12", () =>
   assert.equal(descriptors.filter(({ massPath, repeatedMass, qualitativeWeightEvidence }) =>
     massPath === null && repeatedMass === null && qualitativeWeightEvidence === null).length, 23);
   assert.equal(descriptors.filter(({ qualitativeWeightEvidence }) => qualitativeWeightEvidence !== null).length, 10);
+  assert.equal(descriptors.filter(({ sourceCatalogNumber }) => sourceCatalogNumber !== null).length, 232);
   assert(descriptors.filter(({ massPath }) => massPath !== null).every((descriptor) => {
     const [grams] = app.specimenCardDescriptorMasses(descriptor);
     return grams === app.resolveSpecimenCardSelection(

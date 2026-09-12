@@ -1,13 +1,14 @@
 {
   "metadata": {
-    "schemaVersion": 5,
+    "schemaVersion": 6,
     "scope": "reviewed-atomic-specimen-card-display-projections",
     "catalogSchemaVersion": 12,
     "sourceRecordCount": 19553,
     "sourceCatalogSha256": "cf429e6660f00272f2f81fe69bac81c891f41574bbfff6e6bb46499d2d0672b4",
     "projectionCount": 3407,
     "atomicCardCount": 8410,
-    "sourceContextCardCount": 2877
+    "sourceContextCardCount": 2877,
+    "sourceCatalogNumberCount": 232
   },
   "projections": [
     {
@@ -25307,7 +25308,13 @@
             "start": 0,
             "end": 122
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "235",
+            "textPath": "holdings[0].description",
+            "start": 118,
+            "end": 121
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -25316,7 +25323,13 @@
             "start": 0,
             "end": 150
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "526",
+            "textPath": "holdings[1].description",
+            "start": 146,
+            "end": 149
+          }
         }
       ]
     },
@@ -25330,7 +25343,13 @@
             "start": 0,
             "end": 56
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "222",
+            "textPath": "holdings[1].description",
+            "start": 52,
+            "end": 55
+          }
         }
       ]
     },
@@ -25344,7 +25363,13 @@
             "start": 0,
             "end": 226
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "332",
+            "textPath": "holdings[0].description",
+            "start": 222,
+            "end": 225
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -25353,7 +25378,13 @@
             "start": 0,
             "end": 184
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "333",
+            "textPath": "holdings[1].description",
+            "start": 180,
+            "end": 183
+          }
         },
         {
           "holdingPath": "holdings[2]",
@@ -25362,7 +25393,13 @@
             "start": 0,
             "end": 86
           },
-          "massPath": "holdings[2].weights[0].grams"
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "334",
+            "textPath": "holdings[2].description",
+            "start": 82,
+            "end": 85
+          }
         }
       ]
     },
@@ -25376,7 +25413,13 @@
             "start": 0,
             "end": 86
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "498",
+            "textPath": "holdings[0].description",
+            "start": 82,
+            "end": 85
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -25385,7 +25428,13 @@
             "start": 0,
             "end": 64
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "500",
+            "textPath": "holdings[1].description",
+            "start": 60,
+            "end": 63
+          }
         }
       ]
     },
@@ -25399,7 +25448,13 @@
             "start": 0,
             "end": 121
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "508",
+            "textPath": "holdings[0].description",
+            "start": 117,
+            "end": 120
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -25408,7 +25463,13 @@
             "start": 0,
             "end": 83
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "507",
+            "textPath": "holdings[1].description",
+            "start": 79,
+            "end": 82
+          }
         }
       ]
     },
@@ -25422,7 +25483,13 @@
             "start": 0,
             "end": 118
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "271",
+            "textPath": "holdings[0].description",
+            "start": 114,
+            "end": 117
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -25431,7 +25498,13 @@
             "start": 0,
             "end": 218
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "272",
+            "textPath": "holdings[1].description",
+            "start": 214,
+            "end": 217
+          }
         }
       ]
     },
@@ -25445,7 +25518,13 @@
             "start": 0,
             "end": 103
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "213",
+            "textPath": "holdings[0].description",
+            "start": 99,
+            "end": 102
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -25454,7 +25533,13 @@
             "start": 0,
             "end": 83
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "214",
+            "textPath": "holdings[1].description",
+            "start": 79,
+            "end": 82
+          }
         }
       ]
     },
@@ -25468,7 +25553,13 @@
             "start": 0,
             "end": 73
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "88",
+            "textPath": "holdings[0].description",
+            "start": 70,
+            "end": 72
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -25477,7 +25568,13 @@
             "start": 0,
             "end": 110
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "89",
+            "textPath": "holdings[1].description",
+            "start": 107,
+            "end": 109
+          }
         }
       ]
     },
@@ -25491,7 +25588,13 @@
             "start": 0,
             "end": 117
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "352",
+            "textPath": "holdings[0].description",
+            "start": 113,
+            "end": 116
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -25500,7 +25603,13 @@
             "start": 0,
             "end": 77
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "353",
+            "textPath": "holdings[1].description",
+            "start": 73,
+            "end": 76
+          }
         }
       ]
     },
@@ -25514,7 +25623,13 @@
             "start": 0,
             "end": 166
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "5",
+            "textPath": "holdings[1].description",
+            "start": 164,
+            "end": 165
+          }
         },
         {
           "holdingPath": "holdings[2]",
@@ -25523,7 +25638,13 @@
             "start": 0,
             "end": 149
           },
-          "massPath": "holdings[2].weights[0].grams"
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "6",
+            "textPath": "holdings[2].description",
+            "start": 147,
+            "end": 148
+          }
         }
       ]
     },
@@ -25537,7 +25658,13 @@
             "start": 0,
             "end": 93
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "217",
+            "textPath": "holdings[1].description",
+            "start": 89,
+            "end": 92
+          }
         }
       ]
     },
@@ -25551,7 +25678,13 @@
             "start": 0,
             "end": 154
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "251",
+            "textPath": "holdings[0].description",
+            "start": 150,
+            "end": 153
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -25560,7 +25693,13 @@
             "start": 0,
             "end": 66
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "252",
+            "textPath": "holdings[1].description",
+            "start": 62,
+            "end": 65
+          }
         },
         {
           "holdingPath": "holdings[2]",
@@ -25569,7 +25708,13 @@
             "start": 0,
             "end": 37
           },
-          "massPath": "holdings[2].weights[0].grams"
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "253",
+            "textPath": "holdings[2].description",
+            "start": 33,
+            "end": 36
+          }
         }
       ]
     },
@@ -25583,7 +25728,13 @@
             "start": 0,
             "end": 119
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "30",
+            "textPath": "holdings[0].description",
+            "start": 116,
+            "end": 118
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -25592,7 +25743,13 @@
             "start": 0,
             "end": 101
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "31",
+            "textPath": "holdings[1].description",
+            "start": 98,
+            "end": 100
+          }
         }
       ]
     },
@@ -25606,7 +25763,13 @@
             "start": 0,
             "end": 292
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "173",
+            "textPath": "holdings[0].description",
+            "start": 288,
+            "end": 291
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -25615,7 +25778,13 @@
             "start": 0,
             "end": 92
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "174",
+            "textPath": "holdings[1].description",
+            "start": 88,
+            "end": 91
+          }
         }
       ]
     },
@@ -25629,7 +25798,13 @@
             "start": 0,
             "end": 37
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "265",
+            "textPath": "holdings[0].description",
+            "start": 33,
+            "end": 36
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -25638,7 +25813,13 @@
             "start": 0,
             "end": 184
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "438",
+            "textPath": "holdings[1].description",
+            "start": 180,
+            "end": 183
+          }
         }
       ]
     },
@@ -25652,7 +25833,13 @@
             "start": 0,
             "end": 144
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "195",
+            "textPath": "holdings[0].description",
+            "start": 140,
+            "end": 143
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -25661,7 +25848,13 @@
             "start": 0,
             "end": 177
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "196",
+            "textPath": "holdings[1].description",
+            "start": 173,
+            "end": 176
+          }
         },
         {
           "holdingPath": "holdings[2]",
@@ -25670,7 +25863,13 @@
             "start": 0,
             "end": 115
           },
-          "massPath": "holdings[2].weights[0].grams"
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "197",
+            "textPath": "holdings[2].description",
+            "start": 111,
+            "end": 114
+          }
         },
         {
           "holdingPath": "holdings[3]",
@@ -25679,7 +25878,13 @@
             "start": 0,
             "end": 129
           },
-          "massPath": "holdings[3].weights[0].grams"
+          "massPath": "holdings[3].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "198",
+            "textPath": "holdings[3].description",
+            "start": 125,
+            "end": 128
+          }
         },
         {
           "holdingPath": "holdings[4]",
@@ -25688,7 +25893,13 @@
             "start": 0,
             "end": 49
           },
-          "massPath": "holdings[4].weights[0].grams"
+          "massPath": "holdings[4].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "199",
+            "textPath": "holdings[4].description",
+            "start": 45,
+            "end": 48
+          }
         },
         {
           "holdingPath": "holdings[5]",
@@ -25697,7 +25908,13 @@
             "start": 0,
             "end": 216
           },
-          "massPath": "holdings[5].weights[0].grams"
+          "massPath": "holdings[5].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "200",
+            "textPath": "holdings[5].description",
+            "start": 212,
+            "end": 215
+          }
         },
         {
           "holdingPath": "holdings[6]",
@@ -25706,7 +25923,13 @@
             "start": 0,
             "end": 63
           },
-          "massPath": "holdings[6].weights[0].grams"
+          "massPath": "holdings[6].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "201",
+            "textPath": "holdings[6].description",
+            "start": 59,
+            "end": 62
+          }
         },
         {
           "holdingPath": "holdings[7]",
@@ -25715,7 +25938,13 @@
             "start": 0,
             "end": 142
           },
-          "massPath": "holdings[7].weights[0].grams"
+          "massPath": "holdings[7].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "202",
+            "textPath": "holdings[7].description",
+            "start": 138,
+            "end": 141
+          }
         },
         {
           "holdingPath": "holdings[8]",
@@ -25724,7 +25953,13 @@
             "start": 0,
             "end": 123
           },
-          "massPath": "holdings[8].weights[0].grams"
+          "massPath": "holdings[8].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "203",
+            "textPath": "holdings[8].description",
+            "start": 119,
+            "end": 122
+          }
         },
         {
           "holdingPath": "holdings[9]",
@@ -25733,7 +25968,13 @@
             "start": 0,
             "end": 155
           },
-          "massPath": "holdings[9].weights[0].grams"
+          "massPath": "holdings[9].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "204",
+            "textPath": "holdings[9].description",
+            "start": 151,
+            "end": 154
+          }
         },
         {
           "holdingPath": "holdings[10]",
@@ -25742,7 +25983,13 @@
             "start": 0,
             "end": 107
           },
-          "massPath": "holdings[10].weights[0].grams"
+          "massPath": "holdings[10].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "205",
+            "textPath": "holdings[10].description",
+            "start": 103,
+            "end": 106
+          }
         },
         {
           "holdingPath": "holdings[11]",
@@ -25751,7 +25998,13 @@
             "start": 0,
             "end": 180
           },
-          "massPath": "holdings[11].weights[0].grams"
+          "massPath": "holdings[11].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "206",
+            "textPath": "holdings[11].description",
+            "start": 176,
+            "end": 179
+          }
         },
         {
           "holdingPath": "holdings[12]",
@@ -25760,7 +26013,13 @@
             "start": 0,
             "end": 75
           },
-          "massPath": "holdings[12].weights[0].grams"
+          "massPath": "holdings[12].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "432",
+            "textPath": "holdings[12].description",
+            "start": 71,
+            "end": 74
+          }
         },
         {
           "holdingPath": "holdings[13]",
@@ -25769,7 +26028,13 @@
             "start": 0,
             "end": 51
           },
-          "massPath": "holdings[13].weights[0].grams"
+          "massPath": "holdings[13].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "450",
+            "textPath": "holdings[13].description",
+            "start": 47,
+            "end": 50
+          }
         },
         {
           "holdingPath": "holdings[14]",
@@ -25778,7 +26043,13 @@
             "start": 0,
             "end": 28
           },
-          "massPath": "holdings[14].weights[0].grams"
+          "massPath": "holdings[14].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "436",
+            "textPath": "holdings[14].description",
+            "start": 24,
+            "end": 27
+          }
         }
       ]
     },
@@ -25792,7 +26063,13 @@
             "start": 0,
             "end": 140
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "141",
+            "textPath": "holdings[0].description",
+            "start": 136,
+            "end": 139
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -25801,7 +26078,13 @@
             "start": 0,
             "end": 150
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "143",
+            "textPath": "holdings[1].description",
+            "start": 146,
+            "end": 149
+          }
         },
         {
           "holdingPath": "holdings[2]",
@@ -25810,7 +26093,13 @@
             "start": 0,
             "end": 256
           },
-          "massPath": "holdings[2].weights[0].grams"
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "144",
+            "textPath": "holdings[2].description",
+            "start": 252,
+            "end": 255
+          }
         },
         {
           "holdingPath": "holdings[3]",
@@ -25819,7 +26108,13 @@
             "start": 0,
             "end": 56
           },
-          "massPath": "holdings[3].weights[0].grams"
+          "massPath": "holdings[3].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "145",
+            "textPath": "holdings[3].description",
+            "start": 52,
+            "end": 55
+          }
         },
         {
           "holdingPath": "holdings[4]",
@@ -25828,7 +26123,13 @@
             "start": 0,
             "end": 107
           },
-          "massPath": "holdings[4].weights[0].grams"
+          "massPath": "holdings[4].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "146",
+            "textPath": "holdings[4].description",
+            "start": 103,
+            "end": 106
+          }
         },
         {
           "holdingPath": "holdings[5]",
@@ -25837,7 +26138,13 @@
             "start": 0,
             "end": 95
           },
-          "massPath": "holdings[5].weights[0].grams"
+          "massPath": "holdings[5].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "147",
+            "textPath": "holdings[5].description",
+            "start": 91,
+            "end": 94
+          }
         },
         {
           "holdingPath": "holdings[6]",
@@ -25846,7 +26153,13 @@
             "start": 0,
             "end": 176
           },
-          "massPath": "holdings[6].weights[0].grams"
+          "massPath": "holdings[6].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "148",
+            "textPath": "holdings[6].description",
+            "start": 172,
+            "end": 175
+          }
         },
         {
           "holdingPath": "holdings[7]",
@@ -25855,7 +26168,13 @@
             "start": 0,
             "end": 98
           },
-          "massPath": "holdings[7].weights[0].grams"
+          "massPath": "holdings[7].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "149",
+            "textPath": "holdings[7].description",
+            "start": 94,
+            "end": 97
+          }
         },
         {
           "holdingPath": "holdings[8]",
@@ -25864,7 +26183,13 @@
             "start": 0,
             "end": 78
           },
-          "massPath": "holdings[8].weights[0].grams"
+          "massPath": "holdings[8].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "150",
+            "textPath": "holdings[8].description",
+            "start": 74,
+            "end": 77
+          }
         },
         {
           "holdingPath": "holdings[9]",
@@ -25873,7 +26198,13 @@
             "start": 0,
             "end": 94
           },
-          "massPath": "holdings[9].weights[0].grams"
+          "massPath": "holdings[9].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "151",
+            "textPath": "holdings[9].description",
+            "start": 90,
+            "end": 93
+          }
         },
         {
           "holdingPath": "holdings[11]",
@@ -25882,7 +26213,13 @@
             "start": 0,
             "end": 107
           },
-          "massPath": "holdings[11].weights[0].grams"
+          "massPath": "holdings[11].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "373",
+            "textPath": "holdings[11].description",
+            "start": 103,
+            "end": 106
+          }
         },
         {
           "holdingPath": "holdings[12]",
@@ -25891,7 +26228,13 @@
             "start": 0,
             "end": 35
           },
-          "massPath": "holdings[12].weights[0].grams"
+          "massPath": "holdings[12].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "455",
+            "textPath": "holdings[12].description",
+            "start": 31,
+            "end": 34
+          }
         },
         {
           "holdingPath": "holdings[13]",
@@ -25900,7 +26243,13 @@
             "start": 0,
             "end": 50
           },
-          "massPath": "holdings[13].weights[0].grams"
+          "massPath": "holdings[13].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "497",
+            "textPath": "holdings[13].description",
+            "start": 46,
+            "end": 49
+          }
         }
       ]
     },
@@ -25914,7 +26263,13 @@
             "start": 0,
             "end": 144
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "307",
+            "textPath": "holdings[0].description",
+            "start": 140,
+            "end": 143
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -25923,7 +26278,13 @@
             "start": 0,
             "end": 74
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "308",
+            "textPath": "holdings[1].description",
+            "start": 70,
+            "end": 73
+          }
         }
       ]
     },
@@ -25937,7 +26298,13 @@
             "start": 0,
             "end": 124
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "232",
+            "textPath": "holdings[0].description",
+            "start": 120,
+            "end": 123
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -25946,7 +26313,13 @@
             "start": 0,
             "end": 44
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "443",
+            "textPath": "holdings[1].description",
+            "start": 40,
+            "end": 43
+          }
         }
       ]
     },
@@ -25960,7 +26333,13 @@
             "start": 0,
             "end": 124
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "229",
+            "textPath": "holdings[0].description",
+            "start": 120,
+            "end": 123
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -25969,7 +26348,13 @@
             "start": 0,
             "end": 99
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "230",
+            "textPath": "holdings[1].description",
+            "start": 95,
+            "end": 98
+          }
         }
       ]
     },
@@ -25983,7 +26368,13 @@
             "start": 0,
             "end": 122
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "249",
+            "textPath": "holdings[0].description",
+            "start": 118,
+            "end": 121
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -25992,7 +26383,13 @@
             "start": 0,
             "end": 38
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "248",
+            "textPath": "holdings[1].description",
+            "start": 34,
+            "end": 37
+          }
         },
         {
           "holdingPath": "holdings[2]",
@@ -26001,7 +26398,13 @@
             "start": 0,
             "end": 28
           },
-          "massPath": "holdings[2].weights[0].grams"
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "247",
+            "textPath": "holdings[2].description",
+            "start": 24,
+            "end": 27
+          }
         }
       ]
     },
@@ -26015,7 +26418,13 @@
             "start": 0,
             "end": 52
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "37",
+            "textPath": "holdings[0].description",
+            "start": 49,
+            "end": 51
+          }
         },
         {
           "holdingPath": "holdings[2]",
@@ -26024,7 +26433,13 @@
             "start": 0,
             "end": 174
           },
-          "massPath": "holdings[2].weights[0].grams"
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "42",
+            "textPath": "holdings[2].description",
+            "start": 171,
+            "end": 173
+          }
         },
         {
           "holdingPath": "holdings[3]",
@@ -26033,7 +26448,13 @@
             "start": 0,
             "end": 151
           },
-          "massPath": "holdings[3].weights[0].grams"
+          "massPath": "holdings[3].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "43",
+            "textPath": "holdings[3].description",
+            "start": 148,
+            "end": 150
+          }
         }
       ]
     },
@@ -26047,7 +26468,13 @@
             "start": 0,
             "end": 169
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "153",
+            "textPath": "holdings[0].description",
+            "start": 165,
+            "end": 168
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -26056,7 +26483,13 @@
             "start": 0,
             "end": 82
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "156",
+            "textPath": "holdings[1].description",
+            "start": 78,
+            "end": 81
+          }
         }
       ]
     },
@@ -26070,7 +26503,13 @@
             "start": 0,
             "end": 63
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "49",
+            "textPath": "holdings[1].description",
+            "start": 60,
+            "end": 62
+          }
         }
       ]
     },
@@ -26084,7 +26523,13 @@
             "start": 0,
             "end": 325
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "184",
+            "textPath": "holdings[0].description",
+            "start": 321,
+            "end": 324
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -26093,7 +26538,13 @@
             "start": 0,
             "end": 135
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "185",
+            "textPath": "holdings[1].description",
+            "start": 131,
+            "end": 134
+          }
         },
         {
           "holdingPath": "holdings[2]",
@@ -26102,7 +26553,13 @@
             "start": 0,
             "end": 264
           },
-          "massPath": "holdings[2].weights[0].grams"
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "186",
+            "textPath": "holdings[2].description",
+            "start": 260,
+            "end": 263
+          }
         },
         {
           "holdingPath": "holdings[3]",
@@ -26111,7 +26568,13 @@
             "start": 0,
             "end": 98
           },
-          "massPath": "holdings[3].weights[0].grams"
+          "massPath": "holdings[3].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "187",
+            "textPath": "holdings[3].description",
+            "start": 94,
+            "end": 97
+          }
         },
         {
           "holdingPath": "holdings[4]",
@@ -26120,7 +26583,13 @@
             "start": 0,
             "end": 102
           },
-          "massPath": "holdings[4].weights[0].grams"
+          "massPath": "holdings[4].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "374",
+            "textPath": "holdings[4].description",
+            "start": 98,
+            "end": 101
+          }
         },
         {
           "holdingPath": "holdings[5]",
@@ -26129,7 +26598,13 @@
             "start": 0,
             "end": 102
           },
-          "massPath": "holdings[5].weights[0].grams"
+          "massPath": "holdings[5].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "336",
+            "textPath": "holdings[5].description",
+            "start": 98,
+            "end": 101
+          }
         }
       ]
     },
@@ -26143,7 +26618,13 @@
             "start": 0,
             "end": 138
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "68",
+            "textPath": "holdings[0].description",
+            "start": 135,
+            "end": 137
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -26152,7 +26633,13 @@
             "start": 0,
             "end": 63
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "69",
+            "textPath": "holdings[1].description",
+            "start": 60,
+            "end": 62
+          }
         },
         {
           "holdingPath": "holdings[2]",
@@ -26161,7 +26648,13 @@
             "start": 0,
             "end": 166
           },
-          "massPath": "holdings[2].weights[0].grams"
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "70",
+            "textPath": "holdings[2].description",
+            "start": 163,
+            "end": 165
+          }
         }
       ]
     },
@@ -26175,7 +26668,13 @@
             "start": 0,
             "end": 232
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "276",
+            "textPath": "holdings[1].description",
+            "start": 228,
+            "end": 231
+          }
         }
       ]
     },
@@ -26189,7 +26688,13 @@
             "start": 0,
             "end": 205
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "191",
+            "textPath": "holdings[0].description",
+            "start": 201,
+            "end": 204
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -26198,7 +26703,13 @@
             "start": 0,
             "end": 140
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "192",
+            "textPath": "holdings[1].description",
+            "start": 136,
+            "end": 139
+          }
         },
         {
           "holdingPath": "holdings[2]",
@@ -26207,7 +26718,13 @@
             "start": 0,
             "end": 176
           },
-          "massPath": "holdings[2].weights[0].grams"
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "193",
+            "textPath": "holdings[2].description",
+            "start": 172,
+            "end": 175
+          }
         },
         {
           "holdingPath": "holdings[3]",
@@ -26216,7 +26733,13 @@
             "start": 0,
             "end": 46
           },
-          "massPath": "holdings[3].weights[0].grams"
+          "massPath": "holdings[3].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "194",
+            "textPath": "holdings[3].description",
+            "start": 42,
+            "end": 45
+          }
         }
       ]
     },
@@ -26230,7 +26753,13 @@
             "start": 0,
             "end": 223
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "180",
+            "textPath": "holdings[0].description",
+            "start": 219,
+            "end": 222
+          }
         }
       ]
     },
@@ -26244,7 +26773,13 @@
             "start": 0,
             "end": 95
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "207",
+            "textPath": "holdings[0].description",
+            "start": 91,
+            "end": 94
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -26253,7 +26788,13 @@
             "start": 0,
             "end": 44
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "208",
+            "textPath": "holdings[1].description",
+            "start": 40,
+            "end": 43
+          }
         }
       ]
     },
@@ -26267,7 +26808,13 @@
             "start": 0,
             "end": 49
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "176",
+            "textPath": "holdings[0].description",
+            "start": 45,
+            "end": 48
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -26276,7 +26823,13 @@
             "start": 0,
             "end": 199
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "177",
+            "textPath": "holdings[1].description",
+            "start": 195,
+            "end": 198
+          }
         },
         {
           "holdingPath": "holdings[3]",
@@ -26285,7 +26838,13 @@
             "start": 0,
             "end": 35
           },
-          "massPath": "holdings[3].weights[0].grams"
+          "massPath": "holdings[3].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "458",
+            "textPath": "holdings[3].description",
+            "start": 31,
+            "end": 34
+          }
         }
       ]
     },
@@ -26299,7 +26858,13 @@
             "start": 0,
             "end": 194
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "342",
+            "textPath": "holdings[0].description",
+            "start": 190,
+            "end": 193
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -26308,7 +26873,13 @@
             "start": 0,
             "end": 109
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "344",
+            "textPath": "holdings[1].description",
+            "start": 105,
+            "end": 108
+          }
         },
         {
           "holdingPath": "holdings[2]",
@@ -26317,7 +26888,13 @@
             "start": 0,
             "end": 34
           },
-          "massPath": "holdings[2].weights[0].grams"
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "345",
+            "textPath": "holdings[2].description",
+            "start": 30,
+            "end": 33
+          }
         },
         {
           "holdingPath": "holdings[3]",
@@ -26326,7 +26903,13 @@
             "start": 0,
             "end": 81
           },
-          "massPath": "holdings[3].weights[0].grams"
+          "massPath": "holdings[3].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "346",
+            "textPath": "holdings[3].description",
+            "start": 77,
+            "end": 80
+          }
         },
         {
           "holdingPath": "holdings[4]",
@@ -26335,7 +26918,13 @@
             "start": 0,
             "end": 251
           },
-          "massPath": "holdings[4].weights[0].grams"
+          "massPath": "holdings[4].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "347",
+            "textPath": "holdings[4].description",
+            "start": 247,
+            "end": 250
+          }
         },
         {
           "holdingPath": "holdings[5]",
@@ -26344,7 +26933,13 @@
             "start": 0,
             "end": 145
           },
-          "massPath": "holdings[5].weights[0].grams"
+          "massPath": "holdings[5].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "348",
+            "textPath": "holdings[5].description",
+            "start": 141,
+            "end": 144
+          }
         },
         {
           "holdingPath": "holdings[6]",
@@ -26353,7 +26948,13 @@
             "start": 0,
             "end": 184
           },
-          "massPath": "holdings[6].weights[0].grams"
+          "massPath": "holdings[6].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "349",
+            "textPath": "holdings[6].description",
+            "start": 180,
+            "end": 183
+          }
         },
         {
           "holdingPath": "holdings[7]",
@@ -26362,7 +26963,13 @@
             "start": 0,
             "end": 61
           },
-          "massPath": "holdings[7].weights[0].grams"
+          "massPath": "holdings[7].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "343",
+            "textPath": "holdings[7].description",
+            "start": 57,
+            "end": 60
+          }
         }
       ]
     },
@@ -26376,7 +26983,13 @@
             "start": 0,
             "end": 97
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "340",
+            "textPath": "holdings[1].description",
+            "start": 93,
+            "end": 96
+          }
         },
         {
           "holdingPath": "holdings[2]",
@@ -26385,7 +26998,13 @@
             "start": 0,
             "end": 97
           },
-          "massPath": "holdings[2].weights[0].grams"
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "340",
+            "textPath": "holdings[2].description",
+            "start": 93,
+            "end": 96
+          }
         }
       ]
     },
@@ -26399,7 +27018,13 @@
             "start": 0,
             "end": 98
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "241",
+            "textPath": "holdings[1].description",
+            "start": 94,
+            "end": 97
+          }
         }
       ]
     },
@@ -26413,7 +27038,13 @@
             "start": 0,
             "end": 137
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "122",
+            "textPath": "holdings[0].description",
+            "start": 133,
+            "end": 136
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -26422,7 +27053,13 @@
             "start": 0,
             "end": 89
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "123",
+            "textPath": "holdings[1].description",
+            "start": 85,
+            "end": 88
+          }
         }
       ]
     },
@@ -26436,7 +27073,13 @@
             "start": 0,
             "end": 174
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "116",
+            "textPath": "holdings[0].description",
+            "start": 170,
+            "end": 173
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -26445,7 +27088,13 @@
             "start": 0,
             "end": 121
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "117",
+            "textPath": "holdings[1].description",
+            "start": 117,
+            "end": 120
+          }
         }
       ]
     },
@@ -26459,7 +27108,13 @@
             "start": 0,
             "end": 158
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "165",
+            "textPath": "holdings[0].description",
+            "start": 154,
+            "end": 157
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -26468,7 +27123,13 @@
             "start": 0,
             "end": 59
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "267",
+            "textPath": "holdings[1].description",
+            "start": 55,
+            "end": 58
+          }
         }
       ]
     },
@@ -26482,7 +27143,13 @@
             "start": 0,
             "end": 96
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "297",
+            "textPath": "holdings[0].description",
+            "start": 92,
+            "end": 95
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -26491,7 +27158,13 @@
             "start": 0,
             "end": 62
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "298",
+            "textPath": "holdings[1].description",
+            "start": 58,
+            "end": 61
+          }
         }
       ]
     },
@@ -26505,7 +27178,13 @@
             "start": 0,
             "end": 158
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "312",
+            "textPath": "holdings[0].description",
+            "start": 154,
+            "end": 157
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -26514,7 +27193,13 @@
             "start": 0,
             "end": 181
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "313",
+            "textPath": "holdings[1].description",
+            "start": 177,
+            "end": 180
+          }
         },
         {
           "holdingPath": "holdings[2]",
@@ -26523,7 +27208,13 @@
             "start": 0,
             "end": 152
           },
-          "massPath": "holdings[2].weights[0].grams"
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "314",
+            "textPath": "holdings[2].description",
+            "start": 148,
+            "end": 151
+          }
         }
       ]
     },
@@ -26537,7 +27228,13 @@
             "start": 0,
             "end": 44
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "480",
+            "textPath": "holdings[0].description",
+            "start": 40,
+            "end": 43
+          }
         }
       ]
     },
@@ -26551,7 +27248,13 @@
             "start": 0,
             "end": 85
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "160",
+            "textPath": "holdings[0].description",
+            "start": 81,
+            "end": 84
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -26560,7 +27263,13 @@
             "start": 0,
             "end": 38
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "161",
+            "textPath": "holdings[1].description",
+            "start": 34,
+            "end": 37
+          }
         },
         {
           "holdingPath": "holdings[2]",
@@ -26569,7 +27278,13 @@
             "start": 0,
             "end": 185
           },
-          "massPath": "holdings[2].weights[0].grams"
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "162",
+            "textPath": "holdings[2].description",
+            "start": 181,
+            "end": 184
+          }
         }
       ]
     },
@@ -26583,7 +27298,13 @@
             "start": 0,
             "end": 108
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "188",
+            "textPath": "holdings[0].description",
+            "start": 104,
+            "end": 107
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -26592,7 +27313,13 @@
             "start": 0,
             "end": 172
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "189",
+            "textPath": "holdings[1].description",
+            "start": 168,
+            "end": 171
+          }
         },
         {
           "holdingPath": "holdings[2]",
@@ -26601,7 +27328,13 @@
             "start": 0,
             "end": 84
           },
-          "massPath": "holdings[2].weights[0].grams"
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "190",
+            "textPath": "holdings[2].description",
+            "start": 80,
+            "end": 83
+          }
         }
       ]
     },
@@ -26615,7 +27348,13 @@
             "start": 0,
             "end": 220
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "154",
+            "textPath": "holdings[0].description",
+            "start": 216,
+            "end": 219
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -26624,7 +27363,13 @@
             "start": 0,
             "end": 204
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "463",
+            "textPath": "holdings[1].description",
+            "start": 200,
+            "end": 203
+          }
         }
       ]
     },
@@ -26638,7 +27383,13 @@
             "start": 0,
             "end": 115
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "305",
+            "textPath": "holdings[0].description",
+            "start": 111,
+            "end": 114
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -26647,7 +27398,13 @@
             "start": 0,
             "end": 82
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "306",
+            "textPath": "holdings[1].description",
+            "start": 78,
+            "end": 81
+          }
         }
       ]
     },
@@ -26661,7 +27418,13 @@
             "start": 0,
             "end": 130
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "133",
+            "textPath": "holdings[0].description",
+            "start": 126,
+            "end": 129
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -26670,7 +27433,13 @@
             "start": 0,
             "end": 234
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "134",
+            "textPath": "holdings[1].description",
+            "start": 230,
+            "end": 233
+          }
         },
         {
           "holdingPath": "holdings[2]",
@@ -26679,7 +27448,13 @@
             "start": 0,
             "end": 64
           },
-          "massPath": "holdings[2].weights[0].grams"
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "135",
+            "textPath": "holdings[2].description",
+            "start": 60,
+            "end": 63
+          }
         }
       ]
     },
@@ -26693,7 +27468,13 @@
             "start": 0,
             "end": 38
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "299",
+            "textPath": "holdings[0].description",
+            "start": 34,
+            "end": 37
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -26702,7 +27483,13 @@
             "start": 0,
             "end": 211
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "300",
+            "textPath": "holdings[1].description",
+            "start": 207,
+            "end": 210
+          }
         },
         {
           "holdingPath": "holdings[2]",
@@ -26711,7 +27498,13 @@
             "start": 0,
             "end": 39
           },
-          "massPath": "holdings[2].weights[0].grams"
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "301",
+            "textPath": "holdings[2].description",
+            "start": 35,
+            "end": 38
+          }
         }
       ]
     },
@@ -26725,7 +27518,13 @@
             "start": 0,
             "end": 398
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "257",
+            "textPath": "holdings[0].description",
+            "start": 394,
+            "end": 397
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -26734,7 +27533,13 @@
             "start": 0,
             "end": 93
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "258",
+            "textPath": "holdings[1].description",
+            "start": 89,
+            "end": 92
+          }
         }
       ]
     },
@@ -26748,7 +27553,13 @@
             "start": 0,
             "end": 168
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "284",
+            "textPath": "holdings[0].description",
+            "start": 164,
+            "end": 167
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -26757,7 +27568,13 @@
             "start": 0,
             "end": 67
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "285",
+            "textPath": "holdings[1].description",
+            "start": 63,
+            "end": 66
+          }
         },
         {
           "holdingPath": "holdings[2]",
@@ -26766,7 +27583,13 @@
             "start": 0,
             "end": 122
           },
-          "massPath": "holdings[2].weights[0].grams"
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "286",
+            "textPath": "holdings[2].description",
+            "start": 118,
+            "end": 121
+          }
         },
         {
           "holdingPath": "holdings[3]",
@@ -26775,7 +27598,13 @@
             "start": 0,
             "end": 342
           },
-          "massPath": "holdings[3].weights[0].grams"
+          "massPath": "holdings[3].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "287",
+            "textPath": "holdings[3].description",
+            "start": 338,
+            "end": 341
+          }
         },
         {
           "holdingPath": "holdings[4]",
@@ -26784,7 +27613,13 @@
             "start": 0,
             "end": 107
           },
-          "massPath": "holdings[4].weights[0].grams"
+          "massPath": "holdings[4].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "288",
+            "textPath": "holdings[4].description",
+            "start": 103,
+            "end": 106
+          }
         }
       ]
     },
@@ -26798,7 +27633,13 @@
             "start": 0,
             "end": 68
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "157",
+            "textPath": "holdings[0].description",
+            "start": 64,
+            "end": 67
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -26807,7 +27648,13 @@
             "start": 0,
             "end": 66
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "158",
+            "textPath": "holdings[1].description",
+            "start": 62,
+            "end": 65
+          }
         },
         {
           "holdingPath": "holdings[3]",
@@ -26816,7 +27663,13 @@
             "start": 0,
             "end": 83
           },
-          "massPath": "holdings[3].weights[0].grams"
+          "massPath": "holdings[3].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "505",
+            "textPath": "holdings[3].description",
+            "start": 79,
+            "end": 82
+          }
         }
       ]
     },
@@ -26830,7 +27683,13 @@
             "start": 0,
             "end": 135
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "219",
+            "textPath": "holdings[1].description",
+            "start": 131,
+            "end": 134
+          }
         },
         {
           "holdingPath": "holdings[2]",
@@ -26839,7 +27698,13 @@
             "start": 0,
             "end": 202
           },
-          "massPath": "holdings[2].weights[0].grams"
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "220",
+            "textPath": "holdings[2].description",
+            "start": 198,
+            "end": 201
+          }
         }
       ]
     },
@@ -26853,7 +27718,13 @@
             "start": 0,
             "end": 107
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "38",
+            "textPath": "holdings[0].description",
+            "start": 104,
+            "end": 106
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -26862,7 +27733,13 @@
             "start": 0,
             "end": 26
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "39",
+            "textPath": "holdings[1].description",
+            "start": 23,
+            "end": 25
+          }
         },
         {
           "holdingPath": "holdings[2]",
@@ -26871,7 +27748,13 @@
             "start": 0,
             "end": 34
           },
-          "massPath": "holdings[2].weights[0].grams"
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "434",
+            "textPath": "holdings[2].description",
+            "start": 30,
+            "end": 33
+          }
         }
       ]
     },
@@ -26885,7 +27768,13 @@
             "start": 0,
             "end": 128
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "62",
+            "textPath": "holdings[0].description",
+            "start": 125,
+            "end": 127
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -26894,7 +27783,13 @@
             "start": 0,
             "end": 68
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "376",
+            "textPath": "holdings[1].description",
+            "start": 64,
+            "end": 67
+          }
         }
       ]
     },
@@ -26908,7 +27803,13 @@
             "start": 0,
             "end": 72
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "65",
+            "textPath": "holdings[0].description",
+            "start": 69,
+            "end": 71
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -26917,7 +27818,13 @@
             "start": 0,
             "end": 52
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "66",
+            "textPath": "holdings[1].description",
+            "start": 49,
+            "end": 51
+          }
         }
       ]
     },
@@ -26931,7 +27838,13 @@
             "start": 0,
             "end": 63
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "46",
+            "textPath": "holdings[0].description",
+            "start": 60,
+            "end": 62
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -26940,7 +27853,13 @@
             "start": 0,
             "end": 84
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "47",
+            "textPath": "holdings[1].description",
+            "start": 81,
+            "end": 83
+          }
         }
       ]
     },
@@ -26954,7 +27873,13 @@
             "start": 0,
             "end": 178
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "260",
+            "textPath": "holdings[0].description",
+            "start": 174,
+            "end": 177
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -26963,7 +27888,13 @@
             "start": 0,
             "end": 116
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "261",
+            "textPath": "holdings[1].description",
+            "start": 112,
+            "end": 115
+          }
         }
       ]
     },
@@ -26977,7 +27908,13 @@
             "start": 0,
             "end": 162
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "338",
+            "textPath": "holdings[0].description",
+            "start": 158,
+            "end": 161
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -26986,7 +27923,13 @@
             "start": 0,
             "end": 126
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "339",
+            "textPath": "holdings[1].description",
+            "start": 122,
+            "end": 125
+          }
         }
       ]
     },
@@ -27000,7 +27943,13 @@
             "start": 0,
             "end": 145
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "167",
+            "textPath": "holdings[0].description",
+            "start": 141,
+            "end": 144
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -27009,7 +27958,13 @@
             "start": 0,
             "end": 114
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "168",
+            "textPath": "holdings[1].description",
+            "start": 110,
+            "end": 113
+          }
         },
         {
           "holdingPath": "holdings[2]",
@@ -27018,7 +27973,13 @@
             "start": 0,
             "end": 44
           },
-          "massPath": "holdings[2].weights[0].grams"
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "77",
+            "textPath": "holdings[2].description",
+            "start": 41,
+            "end": 43
+          }
         }
       ]
     },
@@ -27032,7 +27993,13 @@
             "start": 0,
             "end": 164
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "322",
+            "textPath": "holdings[0].description",
+            "start": 160,
+            "end": 163
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -27041,7 +28008,13 @@
             "start": 0,
             "end": 126
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "323",
+            "textPath": "holdings[1].description",
+            "start": 122,
+            "end": 125
+          }
         },
         {
           "holdingPath": "holdings[3]",
@@ -27050,7 +28023,13 @@
             "start": 0,
             "end": 162
           },
-          "massPath": "holdings[3].weights[0].grams"
+          "massPath": "holdings[3].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "330",
+            "textPath": "holdings[3].description",
+            "start": 158,
+            "end": 161
+          }
         },
         {
           "holdingPath": "holdings[4]",
@@ -27059,7 +28038,13 @@
             "start": 0,
             "end": 172
           },
-          "massPath": "holdings[4].weights[0].grams"
+          "massPath": "holdings[4].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "331",
+            "textPath": "holdings[4].description",
+            "start": 168,
+            "end": 171
+          }
         }
       ]
     },
@@ -27073,7 +28058,13 @@
             "start": 0,
             "end": 80
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "552",
+            "textPath": "holdings[0].description",
+            "start": 76,
+            "end": 79
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -27082,7 +28073,13 @@
             "start": 0,
             "end": 112
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "569",
+            "textPath": "holdings[1].description",
+            "start": 108,
+            "end": 111
+          }
         }
       ]
     },
@@ -27096,7 +28093,13 @@
             "start": 0,
             "end": 138
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "320",
+            "textPath": "holdings[0].description",
+            "start": 134,
+            "end": 137
+          }
         }
       ]
     },
@@ -27110,7 +28113,13 @@
             "start": 0,
             "end": 47
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "73",
+            "textPath": "holdings[0].description",
+            "start": 44,
+            "end": 46
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -27119,7 +28128,13 @@
             "start": 0,
             "end": 110
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "488",
+            "textPath": "holdings[1].description",
+            "start": 106,
+            "end": 109
+          }
         }
       ]
     },
@@ -27133,7 +28148,13 @@
             "start": 0,
             "end": 245
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "273",
+            "textPath": "holdings[0].description",
+            "start": 241,
+            "end": 244
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -27142,7 +28163,13 @@
             "start": 0,
             "end": 312
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "274",
+            "textPath": "holdings[1].description",
+            "start": 308,
+            "end": 311
+          }
         }
       ]
     },
@@ -27156,7 +28183,13 @@
             "start": 0,
             "end": 75
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "71",
+            "textPath": "holdings[0].description",
+            "start": 72,
+            "end": 74
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -27165,7 +28198,13 @@
             "start": 0,
             "end": 88
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "72",
+            "textPath": "holdings[1].description",
+            "start": 85,
+            "end": 87
+          }
         }
       ]
     },
@@ -27179,7 +28218,13 @@
             "start": 0,
             "end": 175
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "270",
+            "textPath": "holdings[0].description",
+            "start": 171,
+            "end": 174
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -27188,7 +28233,13 @@
             "start": 0,
             "end": 266
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "437",
+            "textPath": "holdings[1].description",
+            "start": 262,
+            "end": 265
+          }
         }
       ]
     },
@@ -27202,7 +28253,13 @@
             "start": 0,
             "end": 165
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "289",
+            "textPath": "holdings[0].description",
+            "start": 161,
+            "end": 164
+          }
         }
       ]
     },
@@ -27216,7 +28273,13 @@
             "start": 0,
             "end": 210
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "527",
+            "textPath": "holdings[0].description",
+            "start": 206,
+            "end": 209
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -27225,7 +28288,13 @@
             "start": 0,
             "end": 199
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "565",
+            "textPath": "holdings[1].description",
+            "start": 195,
+            "end": 198
+          }
         }
       ]
     },
@@ -27239,7 +28308,13 @@
             "start": 0,
             "end": 43
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "536",
+            "textPath": "holdings[0].description",
+            "start": 39,
+            "end": 42
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -27248,7 +28323,13 @@
             "start": 0,
             "end": 139
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "556",
+            "textPath": "holdings[1].description",
+            "start": 135,
+            "end": 138
+          }
         }
       ]
     },
@@ -27262,7 +28343,13 @@
             "start": 0,
             "end": 50
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "302",
+            "textPath": "holdings[0].description",
+            "start": 46,
+            "end": 49
+          }
         }
       ]
     },
@@ -27276,7 +28363,13 @@
             "start": 0,
             "end": 63
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "57",
+            "textPath": "holdings[0].description",
+            "start": 60,
+            "end": 62
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -27285,7 +28378,13 @@
             "start": 0,
             "end": 122
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "375",
+            "textPath": "holdings[1].description",
+            "start": 118,
+            "end": 121
+          }
         }
       ]
     },
@@ -27299,7 +28398,13 @@
             "start": 0,
             "end": 113
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "85",
+            "textPath": "holdings[0].description",
+            "start": 110,
+            "end": 112
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -27308,7 +28413,13 @@
             "start": 0,
             "end": 36
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "452",
+            "textPath": "holdings[1].description",
+            "start": 32,
+            "end": 35
+          }
         }
       ]
     },
@@ -27322,7 +28433,13 @@
             "start": 0,
             "end": 98
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "315",
+            "textPath": "holdings[0].description",
+            "start": 94,
+            "end": 97
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -27331,7 +28448,13 @@
             "start": 0,
             "end": 206
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "316",
+            "textPath": "holdings[1].description",
+            "start": 202,
+            "end": 205
+          }
         }
       ]
     },
@@ -27345,7 +28468,13 @@
             "start": 0,
             "end": 93
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "225",
+            "textPath": "holdings[0].description",
+            "start": 89,
+            "end": 92
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -27354,7 +28483,13 @@
             "start": 0,
             "end": 140
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "226",
+            "textPath": "holdings[1].description",
+            "start": 136,
+            "end": 139
+          }
         },
         {
           "holdingPath": "holdings[2]",
@@ -27363,7 +28498,13 @@
             "start": 0,
             "end": 58
           },
-          "massPath": "holdings[2].weights[0].grams"
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "227",
+            "textPath": "holdings[2].description",
+            "start": 54,
+            "end": 57
+          }
         }
       ]
     },
@@ -27377,7 +28518,13 @@
             "start": 0,
             "end": 183
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "78",
+            "textPath": "holdings[0].description",
+            "start": 180,
+            "end": 182
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -27386,7 +28533,13 @@
             "start": 0,
             "end": 113
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "79",
+            "textPath": "holdings[1].description",
+            "start": 110,
+            "end": 112
+          }
         },
         {
           "holdingPath": "holdings[2]",
@@ -27395,7 +28548,13 @@
             "start": 0,
             "end": 120
           },
-          "massPath": "holdings[2].weights[0].grams"
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "80",
+            "textPath": "holdings[2].description",
+            "start": 117,
+            "end": 119
+          }
         }
       ]
     },
@@ -27409,7 +28568,13 @@
             "start": 0,
             "end": 75
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "164",
+            "textPath": "holdings[0].description",
+            "start": 71,
+            "end": 74
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -27418,7 +28583,13 @@
             "start": 0,
             "end": 107
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "169",
+            "textPath": "holdings[1].description",
+            "start": 103,
+            "end": 106
+          }
         }
       ]
     },
@@ -27432,7 +28603,13 @@
             "start": 0,
             "end": 50
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "7",
+            "textPath": "holdings[0].description",
+            "start": 48,
+            "end": 49
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -27441,7 +28618,13 @@
             "start": 0,
             "end": 85
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "8",
+            "textPath": "holdings[1].description",
+            "start": 83,
+            "end": 84
+          }
         },
         {
           "holdingPath": "holdings[2]",
@@ -27450,7 +28633,13 @@
             "start": 0,
             "end": 50
           },
-          "massPath": "holdings[2].weights[0].grams"
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "9",
+            "textPath": "holdings[2].description",
+            "start": 48,
+            "end": 49
+          }
         },
         {
           "holdingPath": "holdings[3]",
@@ -27459,7 +28648,13 @@
             "start": 0,
             "end": 57
           },
-          "massPath": "holdings[3].weights[0].grams"
+          "massPath": "holdings[3].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "10",
+            "textPath": "holdings[3].description",
+            "start": 54,
+            "end": 56
+          }
         },
         {
           "holdingPath": "holdings[4]",
@@ -27468,7 +28663,13 @@
             "start": 0,
             "end": 51
           },
-          "massPath": "holdings[4].weights[0].grams"
+          "massPath": "holdings[4].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "11",
+            "textPath": "holdings[4].description",
+            "start": 48,
+            "end": 50
+          }
         },
         {
           "holdingPath": "holdings[5]",
@@ -27477,7 +28678,13 @@
             "start": 0,
             "end": 128
           },
-          "massPath": "holdings[5].weights[0].grams"
+          "massPath": "holdings[5].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "12",
+            "textPath": "holdings[5].description",
+            "start": 125,
+            "end": 127
+          }
         },
         {
           "holdingPath": "holdings[6]",
@@ -27486,7 +28693,13 @@
             "start": 0,
             "end": 72
           },
-          "massPath": "holdings[6].weights[0].grams"
+          "massPath": "holdings[6].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "13",
+            "textPath": "holdings[6].description",
+            "start": 69,
+            "end": 71
+          }
         },
         {
           "holdingPath": "holdings[7]",
@@ -27495,7 +28708,13 @@
             "start": 0,
             "end": 34
           },
-          "massPath": "holdings[7].weights[0].grams"
+          "massPath": "holdings[7].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "14",
+            "textPath": "holdings[7].description",
+            "start": 31,
+            "end": 33
+          }
         },
         {
           "holdingPath": "holdings[8]",
@@ -27504,7 +28723,13 @@
             "start": 0,
             "end": 157
           },
-          "massPath": "holdings[8].weights[0].grams"
+          "massPath": "holdings[8].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "15",
+            "textPath": "holdings[8].description",
+            "start": 154,
+            "end": 156
+          }
         },
         {
           "holdingPath": "holdings[9]",
@@ -27513,7 +28738,13 @@
             "start": 0,
             "end": 73
           },
-          "massPath": "holdings[9].weights[0].grams"
+          "massPath": "holdings[9].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "16",
+            "textPath": "holdings[9].description",
+            "start": 70,
+            "end": 72
+          }
         },
         {
           "holdingPath": "holdings[10]",
@@ -27522,7 +28753,13 @@
             "start": 0,
             "end": 70
           },
-          "massPath": "holdings[10].weights[0].grams"
+          "massPath": "holdings[10].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "17",
+            "textPath": "holdings[10].description",
+            "start": 67,
+            "end": 69
+          }
         },
         {
           "holdingPath": "holdings[11]",
@@ -27531,7 +28768,13 @@
             "start": 0,
             "end": 73
           },
-          "massPath": "holdings[11].weights[0].grams"
+          "massPath": "holdings[11].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "18",
+            "textPath": "holdings[11].description",
+            "start": 70,
+            "end": 72
+          }
         },
         {
           "holdingPath": "holdings[13]",
@@ -27540,7 +28783,13 @@
             "start": 0,
             "end": 34
           },
-          "massPath": "holdings[13].weights[0].grams"
+          "massPath": "holdings[13].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "20",
+            "textPath": "holdings[13].description",
+            "start": 31,
+            "end": 33
+          }
         },
         {
           "holdingPath": "holdings[14]",
@@ -27549,7 +28798,13 @@
             "start": 0,
             "end": 67
           },
-          "massPath": "holdings[14].weights[0].grams"
+          "massPath": "holdings[14].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "21",
+            "textPath": "holdings[14].description",
+            "start": 64,
+            "end": 66
+          }
         },
         {
           "holdingPath": "holdings[15]",
@@ -27558,7 +28813,13 @@
             "start": 0,
             "end": 79
           },
-          "massPath": "holdings[15].weights[0].grams"
+          "massPath": "holdings[15].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "22",
+            "textPath": "holdings[15].description",
+            "start": 76,
+            "end": 78
+          }
         },
         {
           "holdingPath": "holdings[16]",
@@ -27567,7 +28828,13 @@
             "start": 0,
             "end": 86
           },
-          "massPath": "holdings[16].weights[0].grams"
+          "massPath": "holdings[16].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "23",
+            "textPath": "holdings[16].description",
+            "start": 83,
+            "end": 85
+          }
         },
         {
           "holdingPath": "holdings[17]",
@@ -27576,7 +28843,13 @@
             "start": 0,
             "end": 73
           },
-          "massPath": "holdings[17].weights[0].grams"
+          "massPath": "holdings[17].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "24",
+            "textPath": "holdings[17].description",
+            "start": 70,
+            "end": 72
+          }
         },
         {
           "holdingPath": "holdings[18]",
@@ -27585,7 +28858,13 @@
             "start": 0,
             "end": 150
           },
-          "massPath": "holdings[18].weights[0].grams"
+          "massPath": "holdings[18].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "25",
+            "textPath": "holdings[18].description",
+            "start": 147,
+            "end": 149
+          }
         },
         {
           "holdingPath": "holdings[19]",
@@ -27594,7 +28873,13 @@
             "start": 0,
             "end": 98
           },
-          "massPath": "holdings[19].weights[0].grams"
+          "massPath": "holdings[19].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "26",
+            "textPath": "holdings[19].description",
+            "start": 95,
+            "end": 97
+          }
         },
         {
           "holdingPath": "holdings[20]",
@@ -27603,7 +28888,13 @@
             "start": 0,
             "end": 149
           },
-          "massPath": "holdings[20].weights[0].grams"
+          "massPath": "holdings[20].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "27",
+            "textPath": "holdings[20].description",
+            "start": 146,
+            "end": 148
+          }
         },
         {
           "holdingPath": "holdings[21]",
@@ -27612,7 +28903,13 @@
             "start": 0,
             "end": 213
           },
-          "massPath": "holdings[21].weights[0].grams"
+          "massPath": "holdings[21].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "370",
+            "textPath": "holdings[21].description",
+            "start": 209,
+            "end": 212
+          }
         },
         {
           "holdingPath": "holdings[22]",
@@ -27621,7 +28918,13 @@
             "start": 0,
             "end": 132
           },
-          "massPath": "holdings[22].weights[0].grams"
+          "massPath": "holdings[22].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "371",
+            "textPath": "holdings[22].description",
+            "start": 128,
+            "end": 131
+          }
         },
         {
           "holdingPath": "holdings[23]",
@@ -27630,7 +28933,13 @@
             "start": 0,
             "end": 90
           },
-          "massPath": "holdings[23].weights[0].grams"
+          "massPath": "holdings[23].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "372",
+            "textPath": "holdings[23].description",
+            "start": 86,
+            "end": 89
+          }
         },
         {
           "holdingPath": "holdings[24]",
@@ -27639,7 +28948,13 @@
             "start": 0,
             "end": 80
           },
-          "massPath": "holdings[24].weights[0].grams"
+          "massPath": "holdings[24].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "454",
+            "textPath": "holdings[24].description",
+            "start": 76,
+            "end": 79
+          }
         }
       ]
     },
@@ -27653,7 +28968,13 @@
             "start": 0,
             "end": 127
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "280",
+            "textPath": "holdings[0].description",
+            "start": 123,
+            "end": 126
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -27662,7 +28983,13 @@
             "start": 0,
             "end": 77
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "281",
+            "textPath": "holdings[1].description",
+            "start": 73,
+            "end": 76
+          }
         }
       ]
     },
@@ -27676,7 +29003,13 @@
             "start": 0,
             "end": 268
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "268",
+            "textPath": "holdings[0].description",
+            "start": 264,
+            "end": 267
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -27685,7 +29018,13 @@
             "start": 0,
             "end": 56
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "325",
+            "textPath": "holdings[1].description",
+            "start": 52,
+            "end": 55
+          }
         }
       ]
     },
@@ -27699,7 +29038,13 @@
             "start": 0,
             "end": 127
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "170",
+            "textPath": "holdings[0].description",
+            "start": 123,
+            "end": 126
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -27708,7 +29053,13 @@
             "start": 0,
             "end": 106
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "171",
+            "textPath": "holdings[1].description",
+            "start": 102,
+            "end": 105
+          }
         }
       ]
     },
@@ -27722,7 +29073,13 @@
             "start": 0,
             "end": 143
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "242",
+            "textPath": "holdings[0].description",
+            "start": 139,
+            "end": 142
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -27731,7 +29088,13 @@
             "start": 0,
             "end": 127
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "243",
+            "textPath": "holdings[1].description",
+            "start": 123,
+            "end": 126
+          }
         }
       ]
     },
@@ -27745,7 +29108,13 @@
             "start": 0,
             "end": 163
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "309",
+            "textPath": "holdings[0].description",
+            "start": 159,
+            "end": 162
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -27754,7 +29123,13 @@
             "start": 0,
             "end": 126
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "310",
+            "textPath": "holdings[1].description",
+            "start": 122,
+            "end": 125
+          }
         },
         {
           "holdingPath": "holdings[2]",
@@ -27763,7 +29138,13 @@
             "start": 0,
             "end": 54
           },
-          "massPath": "holdings[2].weights[0].grams"
+          "massPath": "holdings[2].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "311",
+            "textPath": "holdings[2].description",
+            "start": 50,
+            "end": 53
+          }
         }
       ]
     },
@@ -27777,7 +29158,13 @@
             "start": 0,
             "end": 262
           },
-          "massPath": "holdings[0].weights[0].grams"
+          "massPath": "holdings[0].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "224",
+            "textPath": "holdings[0].description",
+            "start": 258,
+            "end": 261
+          }
         },
         {
           "holdingPath": "holdings[1]",
@@ -27786,7 +29173,13 @@
             "start": 0,
             "end": 30
           },
-          "massPath": "holdings[1].weights[0].grams"
+          "massPath": "holdings[1].weights[0].grams",
+          "sourceCatalogNumber": {
+            "value": "223",
+            "textPath": "holdings[1].description",
+            "start": 26,
+            "end": 29
+          }
         }
       ]
     },

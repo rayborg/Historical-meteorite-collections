@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260911-card-audit-1";
+const CACHE_VERSION = "20260912-source-numbers-1";
 const ASSET_CACHE_VERSION = CACHE_VERSION;
 const CATALOG_SCHEMA_VERSION = 12;
 const CATALOG_RECORD_COUNT = 19553;
@@ -286,7 +286,7 @@ const FOLIO_RIGHTS_STATUSES = new Set(["undetermined", "public-domain", "no-copy
 const FOLIO_DISPLAY_RIGHTS_STATUSES = new Set(["public-domain", "no-copyright-us"]);
 const SPECIMEN_CARD_ROOT_FIELDS = new Set(["metadata", "projections"]);
 const SPECIMEN_CARD_METADATA_FIELDS = new Set([
-  "schemaVersion", "scope", "catalogSchemaVersion", "sourceRecordCount", "sourceCatalogSha256", "projectionCount", "atomicCardCount", "sourceContextCardCount"
+  "schemaVersion", "scope", "catalogSchemaVersion", "sourceRecordCount", "sourceCatalogSha256", "projectionCount", "atomicCardCount", "sourceContextCardCount", "sourceCatalogNumberCount"
 ]);
 const SPECIMEN_CARD_PROJECTION_FIELDS = new Set(["parentRecordId", "cards"]);
 const SPECIMEN_CARD_CLAUSE_CARD_FIELDS = new Set(["holdingPath", "clause", "massPath"]);
@@ -295,10 +295,11 @@ const SPECIMEN_CARD_REPEATED_CLAUSE_CARD_FIELDS = new Set(["holdingPath", "claus
 const SPECIMEN_CARD_COMPONENT_FIELDS = new Set(["holdingPath", "componentPath", "massPath"]);
 const SPECIMEN_CARD_CLAUSE_FIELDS = new Set(["textPath", "start", "end"]);
 const SPECIMEN_CARD_REPEATED_MASS_FIELDS = new Set(["valuePath", "countPath", "totalPath", "occurrence", "occurrenceCount"]);
+const SPECIMEN_CARD_SOURCE_CATALOG_NUMBER_FIELDS = new Set(["value", "textPath", "start", "end"]);
 const SHA256_HEX = /^[0-9a-f]{64}$/u;
 const SPECIMEN_CARD_SOURCE_CATALOG_SHA256 = "cf429e6660f00272f2f81fe69bac81c891f41574bbfff6e6bb46499d2d0672b4";
-const SPECIMEN_CARD_PROJECTION_DATA_SHA256 = "e128dc388ede6590b5e373fe36958d4b5d068641a4454719c23044c146e13e0e";
-const SPECIMEN_CARD_PROJECTION_SET_SHA256 = "c4ac216d619ee08210bb43cb5a284280d807b35694ece4105b9611680478f1e0";
+const SPECIMEN_CARD_PROJECTION_DATA_SHA256 = "d257ba5d188d5dac8bdb8ea356786d09e60a4e47f6af7fa3f4e44c8fe9363b8a";
+const SPECIMEN_CARD_PROJECTION_SET_SHA256 = "560e6934fe495e731637184afabbedbcd842d37034bcd1354abbc2e51ad4a325";
 const SPECIMEN_LINEAGE_DATA_SHA256 = "3f1d63db2effbe497e328ac99831c22d661fd72a2fba2fd1ec74a83186a523a9";
 const SOURCE_CLAIMS_CONTENT_SHA256 = "141ed60b9560596ac8ab392babfc4af6e1d22921bacbf979d3b975e0fc2f20c2";
 const LINEAGE_ROOT_FIELDS = new Set(["metadata", "sourceAttestedGroups", "relationships"]);
@@ -2467,6 +2468,23 @@ function resolveSpecimenCardClause(record, card) {
   return /[\p{L}\p{N}]/u.test(text) ? { ...resolved, sourceText, text } : null;
 }
 
+function resolveSpecimenCardSourceCatalogNumber(record, card) {
+  const resolved = specimenCardHolding(record, card?.holdingPath);
+  const evidence = card?.sourceCatalogNumber;
+  const textMatch = typeof evidence?.textPath === "string"
+    ? evidence.textPath.match(/^holdings\[([0-9]+)\]\.(designation|description|provenance)$/u)
+    : null;
+  if (!resolved || !hasExactFields(evidence, SPECIMEN_CARD_SOURCE_CATALOG_NUMBER_FIELDS) || !textMatch ||
+      Number(textMatch[1]) !== resolved.holdingIndex) return null;
+  const sourceText = resolved.holding[textMatch[2]];
+  const { value, start, end } = evidence;
+  if (typeof value !== "string" || value.length === 0 || typeof sourceText !== "string" ||
+      !Number.isInteger(start) || !Number.isInteger(end) || start < 0 || start >= end || end > sourceText.length ||
+      splitsSurrogatePair(sourceText, start) || splitsSurrogatePair(sourceText, end) ||
+      sourceText.slice(start, end) !== value) return null;
+  return { ...resolved, sourceText, value };
+}
+
 function resolveSpecimenCardComponent(record, card) {
   const resolved = specimenCardHolding(record, card?.holdingPath);
   const componentMatch = typeof card?.componentPath === "string"
@@ -2501,12 +2519,14 @@ function validateSpecimenCardManifest(manifest, sourceRecords, options = {}) {
   if (!hasExactFields(manifest, SPECIMEN_CARD_ROOT_FIELDS) || !Array.isArray(manifest.projections) ||
       !hasExactFields(manifest.metadata, SPECIMEN_CARD_METADATA_FIELDS) || !Array.isArray(sourceRecords)) return false;
   const metadata = manifest.metadata;
-  if (metadata.schemaVersion !== 5 || metadata.scope !== "reviewed-atomic-specimen-card-display-projections" ||
+  if (metadata.schemaVersion !== 6 || metadata.scope !== "reviewed-atomic-specimen-card-display-projections" ||
       metadata.catalogSchemaVersion !== CATALOG_SCHEMA_VERSION || metadata.sourceRecordCount !== sourceRecords.length ||
       !SHA256_HEX.test(metadata.sourceCatalogSha256) || !Number.isInteger(metadata.projectionCount) ||
       metadata.projectionCount !== manifest.projections.length || !Number.isInteger(metadata.atomicCardCount) ||
       metadata.atomicCardCount < 0 || !Number.isInteger(metadata.sourceContextCardCount) ||
-      metadata.sourceContextCardCount < 0 || metadata.sourceContextCardCount > manifest.projections.length) return false;
+      metadata.sourceContextCardCount < 0 || metadata.sourceContextCardCount > manifest.projections.length ||
+      !Number.isInteger(metadata.sourceCatalogNumberCount) || metadata.sourceCatalogNumberCount < 0 ||
+      metadata.sourceCatalogNumberCount > metadata.atomicCardCount) return false;
   if (options.sourceCatalogSha256 !== undefined && metadata.sourceCatalogSha256 !== options.sourceCatalogSha256) return false;
 
   const recordsById = new Map(sourceRecords.map((record, index) => [record.id, { record, index }]));
@@ -2515,6 +2535,7 @@ function validateSpecimenCardManifest(manifest, sourceRecords, options = {}) {
   let previousParentIndex = -1;
   let atomicCardCount = 0;
   let sourceContextCardCount = 0;
+  let sourceCatalogNumberCount = 0;
   for (const projection of manifest.projections) {
     if (!hasExactFields(projection, SPECIMEN_CARD_PROJECTION_FIELDS) || !LINEAGE_RECORD_ID.test(projection.parentRecordId) ||
         parentIds.has(projection.parentRecordId) ||
@@ -2533,12 +2554,20 @@ function validateSpecimenCardManifest(manifest, sourceRecords, options = {}) {
       const hasComponent = isPlainObject(card) && Object.hasOwn(card, "componentPath");
       const hasRepeatedMass = hasClause && Object.hasOwn(card, "repeatedMass");
       const hasQualitativeWeight = hasClause && Object.hasOwn(card, "qualitativeWeightEvidence");
-      if (hasClause === hasComponent || !hasExactFields(card,
-        hasClause
+      const expectedCardFields = hasClause
           ? hasRepeatedMass ? SPECIMEN_CARD_REPEATED_CLAUSE_CARD_FIELDS
             : hasQualitativeWeight ? SPECIMEN_CARD_QUALITATIVE_CLAUSE_CARD_FIELDS : SPECIMEN_CARD_CLAUSE_CARD_FIELDS
-          : SPECIMEN_CARD_COMPONENT_FIELDS) ||
+          : SPECIMEN_CARD_COMPONENT_FIELDS;
+      const hasSourceCatalogNumber = isPlainObject(card) && Object.hasOwn(card, "sourceCatalogNumber");
+      const actualCardFields = hasSourceCatalogNumber
+        ? new Set([...expectedCardFields, "sourceCatalogNumber"])
+        : expectedCardFields;
+      if (hasClause === hasComponent || !hasExactFields(card, actualCardFields) ||
         (card.massPath !== null && selectedMassPaths.has(card.massPath))) return false;
+      if (hasSourceCatalogNumber) {
+        if (!resolveSpecimenCardSourceCatalogNumber(source.record, card)) return false;
+        sourceCatalogNumberCount += 1;
+      }
       if (hasClause) {
         const clause = resolveSpecimenCardClause(source.record, card);
         if (!clause || source.record.catalogId === "hamburg-1913" ||
@@ -2583,7 +2612,8 @@ function validateSpecimenCardManifest(manifest, sourceRecords, options = {}) {
     atomicCardCount += projection.cards.length;
     if (hasSourceContext) sourceContextCardCount += 1;
   }
-  return atomicCardCount === metadata.atomicCardCount && sourceContextCardCount === metadata.sourceContextCardCount;
+  return atomicCardCount === metadata.atomicCardCount && sourceContextCardCount === metadata.sourceContextCardCount &&
+    sourceCatalogNumberCount === metadata.sourceCatalogNumberCount;
 }
 
 function deriveSpecimenCardProjectionIndex(manifest, sourceRecords, options = {}) {
@@ -2623,6 +2653,7 @@ function parentSpecimenCardDescriptor(parentRecord) {
     componentPath: null,
     massPath: null,
     repeatedMass: null,
+    sourceCatalogNumber: null,
     clause: null,
     clauseText: null,
     sourcePosition: 0,
@@ -2705,6 +2736,7 @@ function expandSpecimenCardDescriptors(sourceRecords, projectionIndex = new Map(
       componentPath: card.componentPath || null,
       massPath: card.massPath,
       repeatedMass: card.repeatedMass || null,
+      sourceCatalogNumber: card.sourceCatalogNumber || null,
       qualitativeWeightEvidence: card.qualitativeWeightEvidence || null,
       clause: card.clause || null,
       clauseText: card.clause ? resolveSpecimenCardClause(parentRecord, card).text : null,
@@ -3661,6 +3693,15 @@ function harmonizedCardIdentifier(record, kind, descriptor = null) {
   return record.designation || null;
 }
 
+function harmonizedCardNullNameHeading(record, kind, descriptor, identifier) {
+  const hasSourceIdentifier = Boolean(harmonizedCardIdentifier(record, kind, descriptor) ||
+    resolveSpecimenCardSourceCatalogNumber(record, descriptor));
+  return {
+    label: hasSourceIdentifier ? "Source catalog identifier" : "Source catalog record",
+    value: identifier
+  };
+}
+
 function harmonizedCardEvent(record) {
   if (record.recordModel === "catalog-number") return record.dateOfDiscovery;
   if (["collection-entry", "regional-census-fact", "collection-representation-fact"].includes(record.recordModel)) return record.eventDate;
@@ -3764,9 +3805,12 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
   }
 
   const sourceIdentifier = harmonizedCardIdentifier(record, kind, descriptor);
-  const identifier = sourceIdentifier
-    ? `${catalogDropdownLabel((options.registry || catalogRegistry)[record.catalogId], record.catalogId)} · ${sourceIdentifier}`
-    : null;
+  const identifierParts = [catalogDropdownLabel((options.registry || catalogRegistry)[record.catalogId], record.catalogId)];
+  if (sourceIdentifier) identifierParts.push(sourceIdentifier);
+  if (kind === HARMONIZED_CARD_KINDS.atomic && descriptor.sourceCatalogNumber) {
+    identifierParts.push(`Catalog no. ${descriptor.sourceCatalogNumber.value}`);
+  }
+  const identifier = identifierParts.join(" · ");
 
   return {
     kind,
@@ -3815,13 +3859,11 @@ function createRecordCard(recordOrDescriptor) {
   if (dto.sourceName) {
     sourceNameLabel.textContent = harmonizedCardNameLabel(dto.kind);
     recordName.textContent = dto.sourceName;
-  } else if (dto.identifier) {
-    sourceNameLabel.textContent = "Source catalog identifier";
-    recordName.textContent = dto.identifier;
-    designation.remove();
   } else {
-    sourceNameLabel.textContent = "Source catalog record";
-    recordName.textContent = dto.sourceLabel;
+    const heading = harmonizedCardNullNameHeading(record, dto.kind, descriptor, dto.identifier);
+    sourceNameLabel.textContent = heading.label;
+    recordName.textContent = heading.value;
+    designation.remove();
   }
   const description = card.querySelector(".record-description");
   if (dto.description) {
@@ -4480,6 +4522,7 @@ if (typeof module !== "undefined" && module.exports) {
     specimenCardHamburgFacts,
     holdingDetails,
     harmonizedCardNameLabel,
+    harmonizedCardNullNameHeading,
     hasMatchingFolioPolicy,
     isDesignationQuery,
     isSingleResultCount,
@@ -4512,6 +4555,7 @@ if (typeof module !== "undefined" && module.exports) {
     recordSearchMasses,
     resolveSpecimenCardSelection,
     resolveSpecimenCardRepeatedMass,
+    resolveSpecimenCardSourceCatalogNumber,
     resolveSpecimenCardClause,
     resolveSpecimenCardComponent,
     searchable,

@@ -84,9 +84,12 @@ function expectedSourceIdentifier(descriptor, kind) {
 function expectedIdentifier(descriptor, kind) {
   const sourceIdentifier = expectedSourceIdentifier(descriptor, kind);
   const catalogId = descriptor.parentRecord.catalogId;
-  return sourceIdentifier
-    ? `${app.catalogDropdownLabel(registry[catalogId], catalogId)} · ${sourceIdentifier}`
-    : null;
+  return [
+    app.catalogDropdownLabel(registry[catalogId], catalogId),
+    sourceIdentifier,
+    kind === "projected-atomic-specimen" && descriptor.sourceCatalogNumber
+      ? `Catalog no. ${descriptor.sourceCatalogNumber.value}` : null,
+  ].filter(Boolean).join(" · ");
 }
 
 function expectedEvent(record) {
@@ -148,10 +151,8 @@ test("every production display descriptor has the closed harmonized DTO and exac
     assert.deepEqual(dto.facts.map(Object.keys), dto.facts.map(() => ["label", "value"]), descriptor.parentRecord.id);
     assert.equal(dto.kind, app.classifyHarmonizedCard(descriptor), descriptor.parentRecord.id);
     assert.equal(dto.identifier, expectedIdentifier(descriptor, dto.kind), descriptor.parentRecord.id);
-    if (dto.identifier) {
-      const shortCatalogLabel = app.catalogDropdownLabel(registry[descriptor.parentRecord.catalogId], descriptor.parentRecord.catalogId);
-      assert.match(dto.identifier, new RegExp(`^${shortCatalogLabel.replace(/[.*+?^${}()|[\]\\]/gu, "\\$&")} · `, "u"), descriptor.parentRecord.id);
-    }
+    const shortCatalogLabel = app.catalogDropdownLabel(registry[descriptor.parentRecord.catalogId], descriptor.parentRecord.catalogId);
+    assert.match(dto.identifier, new RegExp(`^${shortCatalogLabel.replace(/[.*+?^${}()|[\]\\]/gu, "\\$&")}(?: · |$)`, "u"), descriptor.parentRecord.id);
     assert.equal(dto.semanticLabel, SEMANTIC_LABELS[dto.kind], descriptor.parentRecord.id);
     assert.equal(dto.catalogId, descriptor.parentRecord.catalogId, descriptor.parentRecord.id);
     assert.deepEqual(dto.catalogPages, app.recordCatalogPages(descriptor.parentRecord), descriptor.parentRecord.id);
@@ -186,8 +187,45 @@ test("all seven populated-name branches use concise kind-specific labels", () =>
   }));
   assert.doesNotMatch(appSource,
     /Source catalog (?:meteorite name|meteorite or locality name|name)/u);
-  assert.match(appSource, /sourceNameLabel\.textContent = "Source catalog identifier"/u);
-  assert.match(appSource, /sourceNameLabel\.textContent = "Source catalog record"/u);
+  assert.match(appSource, /label: hasSourceIdentifier \? "Source catalog identifier" : "Source catalog record"/u);
+});
+
+test("null source names distinguish genuine identifiers from bare catalog shortnames", () => {
+  const nullNameCards = descriptors.filter((descriptor) => present(descriptor).sourceName === null);
+  const counts = { "Source catalog identifier": 0, "Source catalog record": 0 };
+  for (const descriptor of nullNameCards) {
+    const kind = app.classifyHarmonizedCard(descriptor);
+    const dto = present(descriptor);
+    const heading = app.harmonizedCardNullNameHeading(descriptor.parentRecord, kind, descriptor, dto.identifier);
+    const typedIdentifier = expectedSourceIdentifier(descriptor, kind);
+    const sourceCatalogNumber = app.resolveSpecimenCardSourceCatalogNumber(descriptor.parentRecord, descriptor);
+    assert.deepEqual(Object.keys(heading), ["label", "value"]);
+    assert.equal(heading.value, dto.identifier);
+    assert.equal(heading.label, typedIdentifier || sourceCatalogNumber
+      ? "Source catalog identifier" : "Source catalog record");
+    counts[heading.label] += 1;
+  }
+  assert.equal(nullNameCards.length, 70);
+  assert.deepEqual(counts, { "Source catalog identifier": 62, "Source catalog record": 8 });
+
+  const bare = nullNameCards.find((descriptor) => {
+    const kind = app.classifyHarmonizedCard(descriptor);
+    return !expectedSourceIdentifier(descriptor, kind) && !descriptor.sourceCatalogNumber;
+  });
+  const bareDto = present(bare);
+  assert.deepEqual(app.harmonizedCardNullNameHeading(
+    bare.parentRecord, bareDto.kind, bare, bareDto.identifier
+  ), {
+    label: "Source catalog record",
+    value: app.catalogDropdownLabel(registry[bare.parentRecord.catalogId], bare.parentRecord.catalogId),
+  });
+
+  const evidenceBound = structuredClone(descriptors.find(({ sourceCatalogNumber }) => sourceCatalogNumber));
+  evidenceBound.parentRecord.name = null;
+  const evidenceDto = app.presentHarmonizedCard(evidenceBound, { registry });
+  assert.deepEqual(app.harmonizedCardNullNameHeading(
+    evidenceBound.parentRecord, evidenceDto.kind, evidenceBound, evidenceDto.identifier
+  ), { label: "Source catalog identifier", value: evidenceDto.identifier });
 });
 
 test("semantic type labels are hidden for specimens and retained for observations", () => {
@@ -204,7 +242,7 @@ test("every production card uses the approved known-fact order and omits unavail
   let specimenCount = 0;
   let individualSpecimenCount = 0;
   let displayedCurrentNameCount = 0;
-  let omittedIdentifierCount = 0;
+  let shortnameOnlyIdentifierCount = 0;
   for (const descriptor of descriptors) {
     const record = descriptor.parentRecord;
     const dto = present(descriptor);
@@ -214,7 +252,7 @@ test("every production card uses the approved known-fact order and omits unavail
     assert.deepEqual(dto.facts, expectedFacts(descriptor), record.id);
     assert.equal(dto.sourceName, record.name || null, record.id);
     assert(dto.facts.every(({ label, value }) => app.isKnownCardFact(label, value)), record.id);
-    if (dto.identifier === null) omittedIdentifierCount += 1;
+    if (dto.identifier === app.catalogDropdownLabel(registry[record.catalogId], record.catalogId)) shortnameOnlyIdentifierCount += 1;
     assert.equal(fact(dto, "Current Meteoritical Bulletin name"), currentName || undefined, record.id);
     assert.equal(fact(dto, "Class"), record.classification?.toLocaleLowerCase() === "unknown"
       ? undefined : record.classification || undefined, record.id);
@@ -240,14 +278,14 @@ test("every production card uses the approved known-fact order and omits unavail
   assert.equal(specimenCount, 14149);
   assert.equal(individualSpecimenCount, 8683);
   assert.equal(displayedCurrentNameCount, 2231);
-  assert.equal(omittedIdentifierCount, 11116);
-  assert.equal(descriptors.length - omittedIdentifierCount, 13440);
+  assert.equal(shortnameOnlyIdentifierCount, 10884);
+  assert(descriptors.every((descriptor) => present(descriptor).identifier !== null));
   const generatedEntryOrderFallbacks = descriptors.filter(({ parentRecord }) =>
     ["collection-entry", "regional-census-fact", "collection-representation-fact"].includes(parentRecord.recordModel) &&
     !parentRecord.reportedNumber).filter((descriptor) => app.classifyHarmonizedCard(descriptor) !== "projected-atomic-specimen");
   assert.equal(generatedEntryOrderFallbacks.length, 2906);
-  assert(generatedEntryOrderFallbacks.every((descriptor) => present(descriptor).identifier === null));
-  assert.equal(13440 + generatedEntryOrderFallbacks.length, 16346);
+  assert(generatedEntryOrderFallbacks.every((descriptor) => present(descriptor).identifier ===
+    app.catalogDropdownLabel(registry[descriptor.parentRecord.catalogId], descriptor.parentRecord.catalogId)));
   assert.deepEqual(omitted, {
     "Individual find location": 14038,
     "Specimen form": 5466,
@@ -272,6 +310,47 @@ test("every production card uses the approved known-fact order and omits unavail
     locationDisplayed: 111,
     lineageDisplayed: 963,
     weightDisplayed: 13977,
+  });
+});
+
+test("Farrington source catalog numbers render from projection evidence without changing typed identifiers", () => {
+  const sourceNumberCards = descriptors.filter(({ sourceCatalogNumber }) => sourceCatalogNumber);
+  assert.equal(sourceNumberCards.length, 232);
+  assert(sourceNumberCards.every(({ parentRecord }) => parentRecord.catalogId === "farrington-1903"));
+  const ensisheim = sourceNumberCards.filter(({ parentRecord }) =>
+    parentRecord.id === "obs-43d6c2fe-be9b-4d2e-93a1-eecea0e09c9a");
+  assert.deepEqual(ensisheim.map((descriptor) => present(descriptor).identifier), [
+    "Farrington (1903) · Catalog no. 207",
+    "Farrington (1903) · Catalog no. 208",
+  ]);
+
+  const typed = descriptors.filter((descriptor) => expectedSourceIdentifier(descriptor, app.classifyHarmonizedCard(descriptor)));
+  assert.equal(typed.length, 13440);
+  assert(typed.every((descriptor) => present(descriptor).identifier.includes(
+    ` · ${expectedSourceIdentifier(descriptor, app.classifyHarmonizedCard(descriptor))}`)));
+});
+
+test("all seven card kinds use only shortname, typed-identifier, or reviewed-number identifier branches", () => {
+  const census = {};
+  for (const descriptor of descriptors) {
+    const kind = app.classifyHarmonizedCard(descriptor);
+    const dto = present(descriptor);
+    const shortname = app.catalogDropdownLabel(registry[descriptor.parentRecord.catalogId], descriptor.parentRecord.catalogId);
+    const branch = descriptor.sourceCatalogNumber ? "number"
+      : expectedSourceIdentifier(descriptor, kind) ? "typed" : "shortname";
+    census[kind] ||= { shortname: 0, typed: 0, number: 0 };
+    census[kind][branch] += 1;
+    assert.equal(dto.identifier.startsWith(shortname), true);
+    assert.doesNotMatch(dto.identifier, /unknown/iu);
+  }
+  assert.deepEqual(census, {
+    "collection-observation": { shortname: 2219, typed: 4648, number: 0 },
+    "projected-atomic-specimen": { shortname: 7937, typed: 241, number: 232 },
+    "direct-specimen": { shortname: 38, typed: 5701, number: 0 },
+    "source-observation": { shortname: 3, typed: 0, number: 0 },
+    "regional-observation": { shortname: 7, typed: 77, number: 0 },
+    "dealer-observation": { shortname: 0, typed: 6, number: 0 },
+    "collection-representation-observation": { shortname: 680, typed: 2767, number: 0 },
   });
 });
 
@@ -625,13 +704,13 @@ test("accessible shell, responsive breakpoints, approved cache, and immutable da
   assert.match(styles, /\.record-meta dt \{[^}]*font-size: \.6rem;/u);
   assert.match(styles, /\.record-meta dd \{[^}]*font-size: \.8rem;/u);
   assert.doesNotMatch(styles, /\.record-meta dt \{[^}]*overflow-wrap: anywhere;/u);
-  assert.equal(app.CACHE_VERSION, "20260911-card-audit-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260911-card-audit-1");
+  assert.equal(app.CACHE_VERSION, "20260912-source-numbers-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260912-source-numbers-1");
   for (const document of [html, catalogsHtml]) {
-    assert.match(document, /styles\.css\?v=20260911-card-audit-1/u);
-    assert.match(document, /app\.js\?v=20260911-card-audit-1/u);
+    assert.match(document, /styles\.css\?v=20260912-source-numbers-1/u);
+    assert.match(document, /app\.js\?v=20260912-source-numbers-1/u);
   }
-  assert.match(catalogsHtml, /catalogs\.js\?v=20260911-card-audit-1/u);
+  assert.match(catalogsHtml, /catalogs\.js\?v=20260912-source-numbers-1/u);
   assert.deepEqual({
     catalog: sha256(catalogText),
     projections: sha256(projectionText),
@@ -639,7 +718,7 @@ test("accessible shell, responsive breakpoints, approved cache, and immutable da
     reviews: sha256(reviewText),
   }, {
     catalog: "cf429e6660f00272f2f81fe69bac81c891f41574bbfff6e6bb46499d2d0672b4",
-    projections: "e128dc388ede6590b5e373fe36958d4b5d068641a4454719c23044c146e13e0e",
+    projections: "d257ba5d188d5dac8bdb8ea356786d09e60a4e47f6af7fa3f4e44c8fe9363b8a",
     lineages: "3f1d63db2effbe497e328ac99831c22d661fd72a2fba2fd1ec74a83186a523a9",
     reviews: "aff7c3773af3e812578776b82ee81cd20060009eb72ca1326220cd2e0c8d5283",
   });
