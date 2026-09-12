@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260911-card-labels-1";
+const CACHE_VERSION = "20260911-scoped-ids-1";
 const ASSET_CACHE_VERSION = CACHE_VERSION;
 const CATALOG_SCHEMA_VERSION = 12;
 const CATALOG_RECORD_COUNT = 19553;
@@ -3738,9 +3738,14 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
     facts.push(...victoriaConflictFacts(record));
   }
 
+  const sourceIdentifier = harmonizedCardIdentifier(record, kind, descriptor);
+  const identifier = sourceIdentifier
+    ? `${catalogDropdownLabel((options.registry || catalogRegistry)[record.catalogId], record.catalogId)} · ${sourceIdentifier}`
+    : null;
+
   return {
     kind,
-    identifier: harmonizedCardIdentifier(record, kind, descriptor),
+    identifier,
     semanticLabel: HARMONIZED_SEMANTIC_LABELS[kind],
     sourceName: sourceName || null,
     description: record.description || null,

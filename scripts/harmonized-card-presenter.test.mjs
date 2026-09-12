@@ -59,7 +59,7 @@ function fact(dto, label) {
   return dto.facts.find((entry) => entry.label === label)?.value;
 }
 
-function expectedIdentifier(descriptor, kind) {
+function expectedSourceIdentifier(descriptor, kind) {
   const record = descriptor.parentRecord;
   if (kind === "projected-atomic-specimen") {
     return app.specimenCardHolding(record, descriptor.holdingPath)?.holding?.designation || null;
@@ -78,6 +78,14 @@ function expectedIdentifier(descriptor, kind) {
   if (record.recordModel === "table-a-specimen") return record.specimenId || null;
   if (record.recordModel === "dealer-offer-fact") return `Type number ${record.typeNumber}`;
   return record.designation || null;
+}
+
+function expectedIdentifier(descriptor, kind) {
+  const sourceIdentifier = expectedSourceIdentifier(descriptor, kind);
+  const catalogId = descriptor.parentRecord.catalogId;
+  return sourceIdentifier
+    ? `${app.catalogDropdownLabel(registry[catalogId], catalogId)} · ${sourceIdentifier}`
+    : null;
 }
 
 function expectedEvent(record) {
@@ -141,6 +149,10 @@ test("every production display descriptor has the closed harmonized DTO and exac
     assert.deepEqual(dto.facts.map(Object.keys), dto.facts.map(() => ["label", "value"]), descriptor.parentRecord.id);
     assert.equal(dto.kind, app.classifyHarmonizedCard(descriptor), descriptor.parentRecord.id);
     assert.equal(dto.identifier, expectedIdentifier(descriptor, dto.kind), descriptor.parentRecord.id);
+    if (dto.identifier) {
+      const shortCatalogLabel = app.catalogDropdownLabel(registry[descriptor.parentRecord.catalogId], descriptor.parentRecord.catalogId);
+      assert.match(dto.identifier, new RegExp(`^${shortCatalogLabel.replace(/[.*+?^${}()|[\]\\]/gu, "\\$&")} · `, "u"), descriptor.parentRecord.id);
+    }
     assert.equal(dto.semanticLabel, SEMANTIC_LABELS[dto.kind], descriptor.parentRecord.id);
     assert.equal(dto.catalogId, descriptor.parentRecord.catalogId, descriptor.parentRecord.id);
     assert.deepEqual(dto.catalogPages, app.recordCatalogPages(descriptor.parentRecord), descriptor.parentRecord.id);
@@ -374,6 +386,15 @@ test("catalog-specific source facts stay out of cards while representative hidde
   assert.equal(app.matchesSearch(noted, noted.metbull.alternateNameNote), true);
 });
 
+test("catalog-scoped identifiers distinguish duplicate source numbers across catalogs", () => {
+  const duplicateNineB = descriptors
+    .filter((descriptor) => expectedSourceIdentifier(descriptor, app.classifyHarmonizedCard(descriptor)) === "9b")
+    .map((descriptor) => present(descriptor).identifier);
+  assert(duplicateNineB.includes("Nininger (1933) · 9b"));
+  assert(duplicateNineB.includes("Nininger (1950) · 9b"));
+  assert.notEqual("Nininger (1933) · 9b", "Nininger (1950) · 9b");
+});
+
 test("projection changes display-card multiplicity without changing parent result counts", () => {
   const filters = {
     query: "", catalog: null, min: null, max: null,
@@ -483,7 +504,7 @@ test("Brown and Minnesota retain exactly 538 source-listed specimen cards in def
 test("Foote and Wave 1 lineage endpoints retain non-specimen and exact-path semantics", () => {
   const foote = descriptors.filter(({ parentRecord }) => parentRecord.catalogId === "foote-1909");
   assert.deepEqual(foote.map((descriptor) => present(descriptor).identifier),
-    [95, 96, 97, 98, 99, 100].map((typeNumber) => `Type number ${typeNumber}`));
+    [95, 96, 97, 98, 99, 100].map((typeNumber) => `Foote (1909) · Type number ${typeNumber}`));
   for (const descriptor of foote) {
     const dto = present(descriptor);
     assert.equal(dto.kind, "dealer-observation");
@@ -529,13 +550,13 @@ test("accessible shell, responsive breakpoints, approved cache, and immutable da
   assert.match(styles, /\.record-meta dt \{[^}]*font-size: \.6rem;/u);
   assert.match(styles, /\.record-meta dd \{[^}]*font-size: \.8rem;/u);
   assert.doesNotMatch(styles, /\.record-meta dt \{[^}]*overflow-wrap: anywhere;/u);
-  assert.equal(app.CACHE_VERSION, "20260911-card-labels-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260911-card-labels-1");
+  assert.equal(app.CACHE_VERSION, "20260911-scoped-ids-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260911-scoped-ids-1");
   for (const document of [html, catalogsHtml]) {
-    assert.match(document, /styles\.css\?v=20260911-card-labels-1/u);
-    assert.match(document, /app\.js\?v=20260911-card-labels-1/u);
+    assert.match(document, /styles\.css\?v=20260911-scoped-ids-1/u);
+    assert.match(document, /app\.js\?v=20260911-scoped-ids-1/u);
   }
-  assert.match(catalogsHtml, /catalogs\.js\?v=20260911-card-labels-1/u);
+  assert.match(catalogsHtml, /catalogs\.js\?v=20260911-scoped-ids-1/u);
   assert.deepEqual({
     catalog: sha256(catalogText),
     projections: sha256(projectionText),

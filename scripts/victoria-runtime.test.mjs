@@ -24,7 +24,7 @@ test("all Victoria cards preserve exact source IDs and resolved current names", 
   assert.equal(victoria.length, 273);
   for (const record of victoria) {
     const dto = app.presentHarmonizedCard(record);
-    assert.equal(dto.identifier, record.specimenId, record.id);
+    assert.equal(dto.identifier, `Victoria Land (1982) · ${record.specimenId}`, record.id);
     assert.equal(dto.sourceName, record.specimenId, record.id);
     assert.equal(fact(dto, "Current Meteoritical Bulletin name"), record.metbull.canonicalName, record.id);
     assert.equal(app.matchesSearch(record, record.specimenId), true, record.id);

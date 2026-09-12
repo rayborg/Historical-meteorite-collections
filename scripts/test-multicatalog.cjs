@@ -1037,8 +1037,8 @@ test("URL filters default to strict specimens and canonicalize the explicit incl
     unit: "observations",
     status: "Showing 60 of 23,217 display cards from 18,217 matching source observations."
   });
-  assert.equal(app.CACHE_VERSION, "20260911-card-labels-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260911-card-labels-1");
+  assert.equal(app.CACHE_VERSION, "20260911-scoped-ids-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260911-scoped-ids-1");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.ASSET_CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.ASSET_CACHE_VERSION}`));
 });
@@ -1102,6 +1102,7 @@ test("HTML and runtime expose the accessible harmonized card contract", () => {
   const record = preparedRecords().find(({ id }) => id === "huss-h27-3");
   const dto = app.presentHarmonizedCard(record);
   assert.equal(dto.kind, "direct-specimen");
+  assert.equal(dto.identifier, "Huss (1976) · H27.3");
   assert.deepEqual(dto.facts.map(({ label }) => label), [
     "Class", "Source locality",
     "Individual find location", "Event", "Specimen weight"
