@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260911-known-facts-1";
+const CACHE_VERSION = "20260911-card-labels-1";
 const ASSET_CACHE_VERSION = CACHE_VERSION;
 const CATALOG_SCHEMA_VERSION = 12;
 const CATALOG_RECORD_COUNT = 19553;
@@ -3704,12 +3704,10 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
   };
   addKnownFact("Current Meteoritical Bulletin name", canonicalName);
   addKnownFact("Class", record.classification);
-  if (specimen) {
+  if (specimen && (kind === HARMONIZED_CARD_KINDS.atomic || record.recordModel === "table-a-specimen")) {
     facts.push({
       label: "Specimen form",
-      value: kind === HARMONIZED_CARD_KINDS.atomic || record.recordModel === "table-a-specimen"
-        ? "Individual specimen"
-        : "Specimen"
+      value: "Individual specimen"
     });
   }
   addKnownFact("Source locality", record.recordModel === "table-a-specimen" ? record.locality?.name : record.locality);
@@ -3785,11 +3783,13 @@ function createRecordCard(recordOrDescriptor) {
   const sourceNameLabel = card.querySelector(".source-name-label");
   const recordName = card.querySelector(".record-name");
   if (dto.sourceName) {
-    sourceNameLabel.textContent = dto.kind === HARMONIZED_CARD_KINDS.dealer
-      ? "Source catalog name"
-      : dto.kind === HARMONIZED_CARD_KINDS.representation
-        ? "Source catalog meteorite or locality name"
-        : "Source catalog meteorite name";
+    sourceNameLabel.textContent = [HARMONIZED_CARD_KINDS.specimen, HARMONIZED_CARD_KINDS.atomic].includes(dto.kind)
+      ? "Meteorite name"
+      : dto.kind === HARMONIZED_CARD_KINDS.dealer
+        ? "Source catalog name"
+        : dto.kind === HARMONIZED_CARD_KINDS.representation
+          ? "Source catalog meteorite or locality name"
+          : "Source catalog meteorite name";
     recordName.textContent = dto.sourceName;
   } else if (dto.identifier) {
     sourceNameLabel.textContent = "Source catalog identifier";

@@ -102,10 +102,9 @@ function expectedFacts(descriptor) {
     ? record.metbull.canonicalName : null;
   add("Current Meteoritical Bulletin name", currentName);
   add("Class", record.classification);
-  if (specimen) entries.push({
+  if (specimen && (kind === "projected-atomic-specimen" || record.recordModel === "table-a-specimen")) entries.push({
     label: "Specimen form",
-    value: kind === "projected-atomic-specimen" || record.recordModel === "table-a-specimen"
-      ? "Individual specimen" : "Specimen",
+    value: "Individual specimen",
   });
   add("Source locality", record.recordModel === "table-a-specimen" ? record.locality?.name : record.locality);
   if (specimen) add("Individual find location", record.individualFindLocation);
@@ -171,6 +170,7 @@ test("semantic type labels are hidden for specimens and retained for observation
 test("every production card uses the approved known-fact order and omits unavailable values", () => {
   const omitted = {};
   let specimenCount = 0;
+  let individualSpecimenCount = 0;
   let displayedCurrentNameCount = 0;
   let omittedIdentifierCount = 0;
   for (const descriptor of descriptors) {
@@ -192,21 +192,23 @@ test("every production card uses the approved known-fact order and omits unavail
     if (specimen) {
       specimenCount += 1;
       if (currentName) displayedCurrentNameCount += 1;
-      assert.equal(fact(dto, "Specimen form"),
-        dto.kind === "projected-atomic-specimen" || record.recordModel === "table-a-specimen" ? "Individual specimen" : "Specimen",
-        record.id);
+      const individualSpecimen = dto.kind === "projected-atomic-specimen" || record.recordModel === "table-a-specimen";
+      assert.equal(fact(dto, "Specimen form"), individualSpecimen ? "Individual specimen" : undefined, record.id);
+      if (individualSpecimen) individualSpecimenCount += 1;
       assert.equal(fact(dto, "Individual find location"), record.individualFindLocation || undefined, record.id);
-      for (const label of STANDARD_SPECIMEN_LABELS.filter((value) => value !== "Specimen form")) {
+      for (const label of STANDARD_SPECIMEN_LABELS) {
         if (fact(dto, label) === undefined) omitted[label] = (omitted[label] || 0) + 1;
       }
       if (dto.sourceName === null) omitted.sourceName = (omitted.sourceName || 0) + 1;
     }
   }
   assert.equal(specimenCount, 14149);
+  assert.equal(individualSpecimenCount, 8683);
   assert.equal(displayedCurrentNameCount, 2231);
   assert.equal(omittedIdentifierCount, 8210);
   assert.deepEqual(omitted, {
     "Individual find location": 14038,
+    "Specimen form": 5466,
     Lineage: 13186,
     Event: 2736,
     Class: 232,
@@ -216,12 +218,14 @@ test("every production card uses the approved known-fact order and omits unavail
   });
   assert.deepEqual({
     classDisplayed: specimenCount - omitted.Class,
+    formDisplayed: specimenCount - omitted["Specimen form"],
     eventDisplayed: specimenCount - omitted.Event,
     locationDisplayed: specimenCount - omitted["Individual find location"],
     lineageDisplayed: specimenCount - omitted.Lineage,
     weightDisplayed: specimenCount - omitted["Specimen weight"],
   }, {
     classDisplayed: 13917,
+    formDisplayed: 8683,
     eventDisplayed: 11413,
     locationDisplayed: 111,
     lineageDisplayed: 963,
@@ -525,13 +529,13 @@ test("accessible shell, responsive breakpoints, approved cache, and immutable da
   assert.match(styles, /\.record-meta dt \{[^}]*font-size: \.6rem;/u);
   assert.match(styles, /\.record-meta dd \{[^}]*font-size: \.8rem;/u);
   assert.doesNotMatch(styles, /\.record-meta dt \{[^}]*overflow-wrap: anywhere;/u);
-  assert.equal(app.CACHE_VERSION, "20260911-known-facts-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260911-known-facts-1");
+  assert.equal(app.CACHE_VERSION, "20260911-card-labels-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260911-card-labels-1");
   for (const document of [html, catalogsHtml]) {
-    assert.match(document, /styles\.css\?v=20260911-known-facts-1/u);
-    assert.match(document, /app\.js\?v=20260911-known-facts-1/u);
+    assert.match(document, /styles\.css\?v=20260911-card-labels-1/u);
+    assert.match(document, /app\.js\?v=20260911-card-labels-1/u);
   }
-  assert.match(catalogsHtml, /catalogs\.js\?v=20260911-known-facts-1/u);
+  assert.match(catalogsHtml, /catalogs\.js\?v=20260911-card-labels-1/u);
   assert.deepEqual({
     catalog: sha256(catalogText),
     projections: sha256(projectionText),

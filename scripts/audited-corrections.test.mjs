@@ -161,8 +161,8 @@ test("CF010 preserves non-target data, privacy, cache, and label behavior", () =
     "35898f917b2302583d7d1101eed5958c268699bf7de8af31990b14e09d0546ae");
   assert.doesNotMatch(catalogText + sourceClaimsText + projectionText,
     /(?:\/private\/|\/Users\/|file:\/\/|sourcePath|sourceFile|rawRowText|raw\s+ocr)/iu);
-  assert.equal(app.CACHE_VERSION, "20260911-known-facts-1");
-  for (const html of [indexHtml, catalogsHtml]) assert.match(html, /20260911-known-facts-1/u);
+  assert.equal(app.CACHE_VERSION, "20260911-card-labels-1");
+  for (const html of [indexHtml, catalogsHtml]) assert.match(html, /20260911-card-labels-1/u);
   assert.equal(app.shouldDisplaySemanticLabel("direct-specimen"), false);
   assert.equal(app.shouldDisplaySemanticLabel("projected-atomic-specimen"), false);
   assert.equal(app.shouldDisplaySemanticLabel("collection-observation"), true);
