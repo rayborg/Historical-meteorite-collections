@@ -278,7 +278,7 @@ test("every production card uses the approved known-fact order and omits unavail
   assert.equal(specimenCount, 14149);
   assert.equal(individualSpecimenCount, 8683);
   assert.equal(displayedCurrentNameCount, 2231);
-  assert.equal(shortnameOnlyIdentifierCount, 10884);
+  assert.equal(shortnameOnlyIdentifierCount, 6058);
   assert(descriptors.every((descriptor) => present(descriptor).identifier !== null));
   const generatedEntryOrderFallbacks = descriptors.filter(({ parentRecord }) =>
     ["collection-entry", "regional-census-fact", "collection-representation-fact"].includes(parentRecord.recordModel) &&
@@ -313,16 +313,35 @@ test("every production card uses the approved known-fact order and omits unavail
   });
 });
 
-test("Farrington source catalog numbers render from projection evidence without changing typed identifiers", () => {
+test("all reviewed projected source catalog numbers render exact representative identifiers without changing typed identifiers", () => {
   const sourceNumberCards = descriptors.filter(({ sourceCatalogNumber }) => sourceCatalogNumber);
-  assert.equal(sourceNumberCards.length, 232);
-  assert(sourceNumberCards.every(({ parentRecord }) => parentRecord.catalogId === "farrington-1903"));
+  assert.equal(sourceNumberCards.length, 5058);
   const ensisheim = sourceNumberCards.filter(({ parentRecord }) =>
     parentRecord.id === "obs-43d6c2fe-be9b-4d2e-93a1-eecea0e09c9a");
   assert.deepEqual(ensisheim.map((descriptor) => present(descriptor).identifier), [
     "Farrington (1903) · Catalog no. 207",
     "Farrington (1903) · Catalog no. 208",
   ]);
+  const representativeDisplays = new Map([
+    ["obs-47bef700-eb27-4908-b683-91a388b33f0b", [
+      "Reeds (1937) · Catalog no. 128", "Reeds (1937) · Catalog no. 716",
+    ]],
+    ["obs-8a35b787-68ed-4bb9-97b2-851535d915a2", [
+      "Farrington (1916) · Catalog no. 1013", "Farrington (1916) · Catalog no. 1012",
+    ]],
+    ["obs-a95a5abf-da69-4648-8d6f-a85e49a3ee08", [
+      "Prior (1923) · Catalog no. [1913,177]", "Prior (1923) · Catalog no. [1912,112]",
+    ]],
+    ["obs-97675b82-6728-4606-8a99-a6d5931ae224", ["Tassin (1902) · Catalog no. 44363"]],
+    ["obs-bc046387-49aa-469f-b9cb-2d68f42193b8", ["Merrill (1916) · Catalog no. 13"]],
+  ]);
+  for (const [parentRecordId, expected] of representativeDisplays) {
+    assert.deepEqual(sourceNumberCards.filter(({ parentRecord }) => parentRecord.id === parentRecordId)
+      .map((descriptor) => present(descriptor).identifier), expected);
+  }
+  const shortnameOnly = descriptors.find(({ parentRecord, sourceCatalogNumber }) =>
+    parentRecord.id === "obs-95822a38-806a-47e5-b73a-e84e71fc9d7a" && !sourceCatalogNumber);
+  assert.equal(present(shortnameOnly).identifier, "Hovey (1896)");
 
   const typed = descriptors.filter((descriptor) => expectedSourceIdentifier(descriptor, app.classifyHarmonizedCard(descriptor)));
   assert.equal(typed.length, 13440);
@@ -345,7 +364,7 @@ test("all seven card kinds use only shortname, typed-identifier, or reviewed-num
   }
   assert.deepEqual(census, {
     "collection-observation": { shortname: 2219, typed: 4648, number: 0 },
-    "projected-atomic-specimen": { shortname: 7937, typed: 241, number: 232 },
+    "projected-atomic-specimen": { shortname: 3111, typed: 241, number: 5058 },
     "direct-specimen": { shortname: 38, typed: 5701, number: 0 },
     "source-observation": { shortname: 3, typed: 0, number: 0 },
     "regional-observation": { shortname: 7, typed: 77, number: 0 },
@@ -704,13 +723,13 @@ test("accessible shell, responsive breakpoints, approved cache, and immutable da
   assert.match(styles, /\.record-meta dt \{[^}]*font-size: \.6rem;/u);
   assert.match(styles, /\.record-meta dd \{[^}]*font-size: \.8rem;/u);
   assert.doesNotMatch(styles, /\.record-meta dt \{[^}]*overflow-wrap: anywhere;/u);
-  assert.equal(app.CACHE_VERSION, "20260912-source-numbers-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260912-source-numbers-1");
+  assert.equal(app.CACHE_VERSION, "20260912-all-source-numbers-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260912-all-source-numbers-1");
   for (const document of [html, catalogsHtml]) {
-    assert.match(document, /styles\.css\?v=20260912-source-numbers-1/u);
-    assert.match(document, /app\.js\?v=20260912-source-numbers-1/u);
+    assert.match(document, /styles\.css\?v=20260912-all-source-numbers-1/u);
+    assert.match(document, /app\.js\?v=20260912-all-source-numbers-1/u);
   }
-  assert.match(catalogsHtml, /catalogs\.js\?v=20260912-source-numbers-1/u);
+  assert.match(catalogsHtml, /catalogs\.js\?v=20260912-all-source-numbers-1/u);
   assert.deepEqual({
     catalog: sha256(catalogText),
     projections: sha256(projectionText),
@@ -718,7 +737,7 @@ test("accessible shell, responsive breakpoints, approved cache, and immutable da
     reviews: sha256(reviewText),
   }, {
     catalog: "cf429e6660f00272f2f81fe69bac81c891f41574bbfff6e6bb46499d2d0672b4",
-    projections: "d257ba5d188d5dac8bdb8ea356786d09e60a4e47f6af7fa3f4e44c8fe9363b8a",
+    projections: "7ab4ca4fef524f94e68d977f3a8106dc3b7a29ba7112ffe491deff91964ab445",
     lineages: "3f1d63db2effbe497e328ac99831c22d661fd72a2fba2fd1ec74a83186a523a9",
     reviews: "aff7c3773af3e812578776b82ee81cd20060009eb72ca1326220cd2e0c8d5283",
   });

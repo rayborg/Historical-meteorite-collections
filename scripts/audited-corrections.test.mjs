@@ -136,7 +136,7 @@ test("CF009 projections retain exact counts and source semantics after rebinding
     projectionCount: 3407,
     atomicCardCount: 8410,
     sourceContextCardCount: 2877,
-    sourceCatalogNumberCount: 232,
+    sourceCatalogNumberCount: 5058,
   });
   const elCapitan = projections.projections.find(({ parentRecordId }) =>
     parentRecordId === "obs-68c7e39b-9d99-4f9a-a1d2-7b2374d76d47");
@@ -162,8 +162,8 @@ test("CF010 preserves non-target data, privacy, cache, and label behavior", () =
     "35898f917b2302583d7d1101eed5958c268699bf7de8af31990b14e09d0546ae");
   assert.doesNotMatch(catalogText + sourceClaimsText + projectionText,
     /(?:\/private\/|\/Users\/|file:\/\/|sourcePath|sourceFile|rawRowText|raw\s+ocr)/iu);
-  assert.equal(app.CACHE_VERSION, "20260912-source-numbers-1");
-  for (const html of [indexHtml, catalogsHtml]) assert.match(html, /20260912-source-numbers-1/u);
+  assert.equal(app.CACHE_VERSION, "20260912-all-source-numbers-1");
+  for (const html of [indexHtml, catalogsHtml]) assert.match(html, /20260912-all-source-numbers-1/u);
   assert.equal(app.shouldDisplaySemanticLabel("direct-specimen"), false);
   assert.equal(app.shouldDisplaySemanticLabel("projected-atomic-specimen"), false);
   assert.equal(app.shouldDisplaySemanticLabel("collection-observation"), true);

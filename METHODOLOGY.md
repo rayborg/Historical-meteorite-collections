@@ -229,13 +229,21 @@ path. Repeated display masses and qualitative or source-unlisted cards do not
 become numeric lineage endpoints. A qualitative clause can enter the default
 source-listed view only through the closed schema-6 evidence variant.
 
-The current source-number release is deliberately catalog-specific: a bounded
-one-time migration reviewed the 232 projected Farrington 1903 cards against
-their complete public holding descriptions. The committed evidence objects are
-authoritative at runtime; the browser never parses descriptive prose or infers
-catalog numbers. The 192 nonprojected Farrington holdings and four holdings with
-multi/range expressions remain unannotated, and no unreviewed catalog coverage
-is claimed.
+The current source-number release is deliberately catalog-specific. Four
+completed source audits reviewed all 14,149 specimen cards and accepted 5,058
+same-card numbers from six catalogs. Coverage is
+Farrington 1903 (232), Farrington 1916 (1,100), Reeds 1937 (2,988), Prior 1923
+(653), Tassin 1902 (84), and Merrill 1916 (1). The committed evidence objects
+are authoritative at runtime; the browser never parses descriptive prose or
+infers catalog numbers. Nininger's 241 projected designations remain typed
+identifiers rather than duplicate annotations. Parent-row values, ambiguous or
+multiple values, external references, private-only values, and source absences
+remain unannotated.
+
+The reviewed catalogs currently have blocked or undetermined folio policies, so
+these bindings resolve public facts-only catalog text and cited printed pages,
+not an in-app facsimile. Consult the cited source edition when visual comparison
+with the printed page is required.
 
 ## 9. Lineage Semantics
 

@@ -450,8 +450,8 @@ test("digest lock loads the exact set and fails closed to parent cards on mismat
   altered.projections[0].cards[0].clause.end -= 1;
   assert.equal((await app.loadSpecimenCardProjectionIndex(records, async () => projectionResponse(altered), options)).size, 0);
   assert.equal(app.SPECIMEN_CARD_SOURCE_CATALOG_SHA256, "cf429e6660f00272f2f81fe69bac81c891f41574bbfff6e6bb46499d2d0672b4");
-  assert.equal(app.SPECIMEN_CARD_PROJECTION_DATA_SHA256, "d257ba5d188d5dac8bdb8ea356786d09e60a4e47f6af7fa3f4e44c8fe9363b8a");
-  assert.equal(app.SPECIMEN_CARD_PROJECTION_SET_SHA256, "560e6934fe495e731637184afabbedbcd842d37034bcd1354abbc2e51ad4a325");
+  assert.equal(app.SPECIMEN_CARD_PROJECTION_DATA_SHA256, "7ab4ca4fef524f94e68d977f3a8106dc3b7a29ba7112ffe491deff91964ab445");
+  assert.equal(app.SPECIMEN_CARD_PROJECTION_SET_SHA256, "9e3452b6ff8cc23000311de4e36f0deae70654392cfb08a19956934ee46b3802");
 });
 
 test("rendering is text-only, omits context cards, and synchronizes cache keys", () => {
@@ -463,9 +463,9 @@ test("rendering is text-only, omits context cards, and synchronizes cache keys",
   assert.match(html, /<p class="record-semantic-label"><\/p>/u);
   assert.match(html, /<dl class="record-meta" aria-label="Catalog record details"><\/dl>/u);
   assert.doesNotMatch(html, /specimen-position|record-holdings|earlier-records/u);
-  assert.match(html, /styles\.css\?v=20260912-source-numbers-1/u);
-  assert.match(html, /app\.js\?v=20260912-source-numbers-1/u);
-  assert.equal(app.ASSET_CACHE_VERSION, "20260912-source-numbers-1");
+  assert.match(html, /styles\.css\?v=20260912-all-source-numbers-1/u);
+  assert.match(html, /app\.js\?v=20260912-all-source-numbers-1/u);
+  assert.equal(app.ASSET_CACHE_VERSION, "20260912-all-source-numbers-1");
 });
 
 test("production schema-6 projection fixture validates against schema 12", () => {
@@ -475,7 +475,7 @@ test("production schema-6 projection fixture validates against schema 12", () =>
     manifest.metadata.atomicCardCount,
     manifest.metadata.sourceContextCardCount,
     manifest.metadata.sourceCatalogNumberCount,
-  ], [3407, 8410, 2877, 232]);
+  ], [3407, 8410, 2877, 5058]);
   assert.equal(app.validateSpecimenCardManifest(manifest, records, { sourceCatalogSha256 }), true);
   const index = app.deriveSpecimenCardProjectionIndex(manifest, records, { sourceCatalogSha256 });
   assert.equal(index.size, manifest.metadata.projectionCount);
@@ -488,7 +488,7 @@ test("production schema-6 projection fixture validates against schema 12", () =>
   assert.equal(descriptors.filter(({ massPath, repeatedMass, qualitativeWeightEvidence }) =>
     massPath === null && repeatedMass === null && qualitativeWeightEvidence === null).length, 23);
   assert.equal(descriptors.filter(({ qualitativeWeightEvidence }) => qualitativeWeightEvidence !== null).length, 10);
-  assert.equal(descriptors.filter(({ sourceCatalogNumber }) => sourceCatalogNumber !== null).length, 232);
+  assert.equal(descriptors.filter(({ sourceCatalogNumber }) => sourceCatalogNumber !== null).length, 5058);
   assert(descriptors.filter(({ massPath }) => massPath !== null).every((descriptor) => {
     const [grams] = app.specimenCardDescriptorMasses(descriptor);
     return grams === app.resolveSpecimenCardSelection(

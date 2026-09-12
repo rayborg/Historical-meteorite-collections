@@ -13,12 +13,20 @@ const LOCKS = Object.freeze({
   masslessCardCount: 35,
   repeatedMassCardCount: 2,
   sourceContextCardCount: 2877,
-  sourceCatalogNumberCount: 232,
+  sourceCatalogNumberCount: 5058,
   baselineProjectionSetSha256: "2aba43bd9d205ae21502f3f76cdb213c1bac26f90513389b876bf047d6087e4b",
   structuralProjectionSetSha256: "c4ac216d619ee08210bb43cb5a284280d807b35694ece4105b9611680478f1e0",
-  projectionSetSha256: "560e6934fe495e731637184afabbedbcd842d37034bcd1354abbc2e51ad4a325",
-  sourceCatalogNumberSetSha256: "85645d87b5c7a8677996ab4bd36dcc54e3d95ef1bb9fbb544ea6d8aaf26bb5d3",
+  projectionSetSha256: "9e3452b6ff8cc23000311de4e36f0deae70654392cfb08a19956934ee46b3802",
+  sourceCatalogNumberSetSha256: "9b2ae634fba6a301958e409d7714dd2108e9d8d1b219ea63346eec5aad2ad88c",
   nonHamburgProjectionSetSha256: "895bf19525ea363dd20068417c4cb4e7af667dd10c4e8c746085f40b2e3ea528",
+});
+const SOURCE_CATALOG_NUMBER_LOCKS = Object.freeze({
+  "farrington-1903": Object.freeze({ count: 232, tupleSha256: "85645d87b5c7a8677996ab4bd36dcc54e3d95ef1bb9fbb544ea6d8aaf26bb5d3" }),
+  "farrington-1916": Object.freeze({ count: 1100, tupleSha256: "63dc034acf89a41c9c4d95427ccd881548df8c97dc31f23502899bfd661681bd" }),
+  "merrill-1916": Object.freeze({ count: 1, tupleSha256: "f83cbe4c22d8683b522c9987f027b64a88d24c538c0748cc0cea70a56c923bb5" }),
+  "prior-1923": Object.freeze({ count: 653, tupleSha256: "236fd52dbd0667f536d64c7ef4874af912a5bbd75ee1bd09582c415672a241af" }),
+  "reeds-1937": Object.freeze({ count: 2988, tupleSha256: "eb39b8057da35cfb94d6d30ab484f68b67e78ab189f1871aed74f4af1bde7555" }),
+  "tassin-1902": Object.freeze({ count: 84, tupleSha256: "a4355c92c19d4faac40948122e587a7cae8772426edb46b2447db78e7d250ead" }),
 });
 export const BROWN_AUDIT_COVERAGE = Object.freeze({
   parentObservationCount: 237,
@@ -347,6 +355,8 @@ export function validateSpecimenCardProjections(document, catalog, catalogText) 
   let sourceContextCardCount = 0;
   let sourceCatalogNumberCount = 0;
   const sourceCatalogNumberTuples = [];
+  const sourceCatalogNumberTuplesByCatalog = new Map(Object.keys(SOURCE_CATALOG_NUMBER_LOCKS)
+    .map((catalogId) => [catalogId, []]));
   const repeatedMassCards = [];
   const qualitativeWeightCards = [];
 
@@ -372,13 +382,15 @@ export function validateSpecimenCardProjections(document, catalog, catalogText) 
       const cardLocation = `${location}.cards[${cardIndex}]`;
       parseCard(card, source.record, recordModel, cardLocation);
       const hasSourceCatalogNumber = Object.hasOwn(card, "sourceCatalogNumber");
-      if ((source.record.catalogId === "farrington-1903") !== hasSourceCatalogNumber) {
-        fail(`${cardLocation}.sourceCatalogNumber must appear on all and only Farrington 1903 projected cards`);
-      }
       if (hasSourceCatalogNumber) {
+        if (!sourceCatalogNumberTuplesByCatalog.has(source.record.catalogId)) {
+          fail(`${cardLocation}.sourceCatalogNumber belongs to an unreviewed catalog`);
+        }
         sourceCatalogNumberCount++;
         const { value, textPath, start, end } = card.sourceCatalogNumber;
-        sourceCatalogNumberTuples.push([projection.parentRecordId, cardIndex, value, textPath, start, end]);
+        const tuple = [projection.parentRecordId, cardIndex, value, textPath, start, end];
+        sourceCatalogNumberTuples.push(tuple);
+        sourceCatalogNumberTuplesByCatalog.get(source.record.catalogId).push(tuple);
       }
       if (card.repeatedMass) repeatedMassCards.push({ parentRecordId: projection.parentRecordId, cardIndex, card });
       if (card.qualitativeWeightEvidence) qualitativeWeightCards.push({ parentRecordId: projection.parentRecordId, cardIndex, evidence: card.qualitativeWeightEvidence });
@@ -420,7 +432,13 @@ export function validateSpecimenCardProjections(document, catalog, catalogText) 
     fail("source catalog number count differs from metadata");
   }
   if (sha256(JSON.stringify(sourceCatalogNumberTuples)) !== LOCKS.sourceCatalogNumberSetSha256) {
-    fail("Farrington source catalog number evidence differs from the reviewed production lock");
+    fail("source catalog number evidence differs from the reviewed production lock");
+  }
+  for (const [catalogId, expected] of Object.entries(SOURCE_CATALOG_NUMBER_LOCKS)) {
+    const tuples = sourceCatalogNumberTuplesByCatalog.get(catalogId);
+    if (tuples.length !== expected.count || sha256(JSON.stringify(tuples)) !== expected.tupleSha256) {
+      fail(`${catalogId} source catalog number evidence differs from its reviewed production lock`);
+    }
   }
   const legacyQualitative = [
     { parentRecordId: "obs-e2b4f522-b31d-4dcb-9cf6-7b8ba35da649", cardIndex: 0, evidence: { type: "qualitative", statement: "main mass" } },
@@ -465,7 +483,7 @@ export function validateSpecimenCardProjections(document, catalog, catalogText) 
   const priorSource = records.get(PRIOR_630_ID);
   if (!prior || prior.cards.length !== 17 || prior.cards.some(({ massPath }) => massPath === null) ||
       !deriveSourceContext(prior, priorSource.record, catalogModels.get(priorSource.record.catalogId)) ||
-      sha256(JSON.stringify(prior.cards)) !== PRIOR_630_CARDS_SHA256) {
+      sha256(JSON.stringify(structuralProjections([prior])[0].cards)) !== PRIOR_630_CARDS_SHA256) {
     fail("Prior entry 630 exact 17-card plus context lock is missing or malformed");
   }
   const reeds = document.projections.find(({ parentRecordId }) => parentRecordId === REEDS_366_ID);
