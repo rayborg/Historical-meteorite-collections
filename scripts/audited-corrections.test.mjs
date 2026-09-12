@@ -115,9 +115,9 @@ test("CF007 omits incompatible inventory 139b and reconciles lineage counts", ()
   assert.deepEqual({
     relationships: lineages.metadata.counts.relationshipCount,
     sameInventory: lineages.metadata.counts.sameInventoryRelationshipCount,
-    possible: lineages.metadata.counts.possibleMatchRelationshipCount,
+    comparisons: lineages.metadata.counts.comparisonCandidateCount,
     omitted: lineages.metadata.counts.omittedAmbiguousInventoryKeyCount,
-  }, { relationships: 2439, sameInventory: 194, possible: 2245, omitted: 1 });
+  }, { relationships: 194, sameInventory: 194, comparisons: 2245, omitted: 1 });
 });
 
 test("CF008 every established same-inventory pair is identity-consistent", () => {
@@ -162,8 +162,8 @@ test("CF010 preserves non-target data, privacy, cache, and label behavior", () =
     "35898f917b2302583d7d1101eed5958c268699bf7de8af31990b14e09d0546ae");
   assert.doesNotMatch(catalogText + sourceClaimsText + projectionText,
     /(?:\/private\/|\/Users\/|file:\/\/|sourcePath|sourceFile|rawRowText|raw\s+ocr)/iu);
-  assert.equal(app.CACHE_VERSION, "20260912-all-source-numbers-1");
-  for (const html of [indexHtml, catalogsHtml]) assert.match(html, /20260912-all-source-numbers-1/u);
+  assert.equal(app.CACHE_VERSION, "20260912-comparison-groups-1");
+  for (const html of [indexHtml, catalogsHtml]) assert.match(html, /20260912-comparison-groups-1/u);
   assert.equal(app.shouldDisplaySemanticLabel("direct-specimen"), false);
   assert.equal(app.shouldDisplaySemanticLabel("projected-atomic-specimen"), false);
   assert.equal(app.shouldDisplaySemanticLabel("collection-observation"), true);

@@ -241,10 +241,10 @@ test("Prior entry 630 renders only seventeen exact atomic clauses", () => {
   ]);
   assert.deepEqual(contextEntries.filter(({ type }) => type === "mass").map(({ grams }) => grams), [64, 999, 50, 243]);
 
-  const lineageIndex = app.deriveEarlierRecordIndex(lineageData, records, registry);
-  const entries = lineageIndex.get(prior.id);
+  const comparisonIndex = app.deriveComparisonGroupIndex(lineageData, records, registry);
+  const entries = comparisonIndex.get(prior.id);
   assert.equal(entries.length, 2);
-  assert.deepEqual(descriptors.map((descriptor) => app.lineageEntriesForSpecimenCard(descriptor, entries).length),
+  assert.deepEqual(descriptors.map((descriptor) => app.comparisonGroupsForSpecimenCard(descriptor, entries).length),
     [0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0]);
 });
 
@@ -463,9 +463,9 @@ test("rendering is text-only, omits context cards, and synchronizes cache keys",
   assert.match(html, /<p class="record-semantic-label"><\/p>/u);
   assert.match(html, /<dl class="record-meta" aria-label="Catalog record details"><\/dl>/u);
   assert.doesNotMatch(html, /specimen-position|record-holdings|earlier-records/u);
-  assert.match(html, /styles\.css\?v=20260912-all-source-numbers-1/u);
-  assert.match(html, /app\.js\?v=20260912-all-source-numbers-1/u);
-  assert.equal(app.ASSET_CACHE_VERSION, "20260912-all-source-numbers-1");
+  assert.match(html, /styles\.css\?v=20260912-comparison-groups-1/u);
+  assert.match(html, /app\.js\?v=20260912-comparison-groups-1/u);
+  assert.equal(app.ASSET_CACHE_VERSION, "20260912-comparison-groups-1");
 });
 
 test("production schema-6 projection fixture validates against schema 12", () => {
@@ -505,25 +505,22 @@ test("Madrid runtime keeps parent statistics while loading reviewed atomic cards
   });
   const madridDescriptors = app.expandSpecimenCardDescriptors(madridRecords, projectionIndex);
   const madridRecordIds = new Set(madridRecords.map(({ id }) => id));
-  const madridRelationships = lineageData.relationships.filter(({ observations }) =>
-    observations.some(({ recordId }) => madridRecordIds.has(recordId)));
-  const lineageIndex = await app.loadEarlierRecordIndex(records, registry, async () => ({
+  const madridGroups = lineageData.comparisonGroups.filter(({ candidates }) => candidates.some(({ observations }) =>
+    observations.some(({ recordId }) => madridRecordIds.has(recordId))));
+  const { comparisonIndex } = await app.loadLineageAndComparisonIndexes(records, registry, async () => ({
     ok: true,
     text: async () => lineageText,
   }), { sha256 });
-  const loadedRelationshipIds = new Set([...lineageIndex.values()].flatMap((entries) =>
-    entries.filter(({ kind }) => kind === "relationship-route").map(({ relationship }) => relationship.id)));
+  const loadedGroupIds = new Set([...comparisonIndex.values()].flatMap((entries) => entries.map(({ groupId }) => groupId)));
 
   assert.equal(app.calculateStatistics(records).observations, 19553);
   assert.equal(app.calculateStatistics(records).catalogs, 52);
   assert.equal(madridRecords.filter(({ id }) => projectionIndex.has(id)).length, 23);
   assert.equal(madridDescriptors.filter(({ kind }) => kind === "atomic").length, 54);
   assert.equal(madridDescriptors.filter(({ kind }) => kind === "context").length, 0);
-  assert.equal(madridRelationships.length, 4);
-  assert(madridRelationships.every(({ relationship, review }) =>
-    relationship === "possible-match" && review.status === "unreviewed"));
-  assert.equal(madridRelationships.filter(({ id }) => loadedRelationshipIds.has(id)).length, 2);
-  assert.equal(madridRelationships.filter(({ catalogPair }) => catalogPair === "madrid-1923|prior-1923").length, 2);
-  assert.equal(madridRelationships.filter(({ catalogPair }) => catalogPair === "madrid-1923|prior-1923")
-    .every(({ observations }) => observations.every(({ catalogYear }) => catalogYear === 1923)), true);
+  assert.equal(madridGroups.length, 4);
+  assert.equal(madridGroups.filter(({ id }) => loadedGroupIds.has(id)).length, 4);
+  assert.equal(madridGroups.filter(({ catalogPair }) => catalogPair === "madrid-1923|prior-1923").length, 2);
+  assert.equal(madridGroups.filter(({ catalogPair }) => catalogPair === "madrid-1923|prior-1923")
+    .every(({ candidates }) => candidates.every(({ observations }) => observations.every(({ catalogYear }) => catalogYear === 1923))), true);
 });

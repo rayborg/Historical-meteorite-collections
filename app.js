@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260912-all-source-numbers-1";
+const CACHE_VERSION = "20260912-comparison-groups-1";
 const ASSET_CACHE_VERSION = CACHE_VERSION;
 const CATALOG_SCHEMA_VERSION = 12;
 const CATALOG_RECORD_COUNT = 19553;
@@ -10,31 +10,7 @@ const OBSERVATION_DESCRIPTOR_COUNT = 10407;
 const WEIGHTED_DESCRIPTOR_COUNT = 13977;
 const UNKNOWN_WEIGHT_EXCLUSION_COUNT = 172;
 const SPECIMEN_PREFIX_GATED_CATALOGS = new Set(["brown-1916", "minnesota-1892", "brauns-bonn-1926"]);
-const REVIEW_GATED_LINEAGE_CATALOGS = new Set(["brown-1916", "minnesota-1892", "greifswald-1895", "greifswald-1901", "berlin-1903", "berlin-1904", "brauns-bonn-1926"]);
-const WAVE1_LINEAGE_RELATIONSHIP_IDS = new Set([
-  "possible-lineage-015140ad-87ce-5595-a68e-afb9f85836b2",
-  "possible-lineage-20ef2648-5722-529f-8b8f-21c07bd64607",
-  "possible-lineage-27533024-d8f9-5335-a0b8-e538b1d5726f",
-  "possible-lineage-28cad19f-e42d-5837-9ca0-43346b04f9fb",
-  "possible-lineage-2ae3f247-8b02-5082-8fe8-725c409d0380",
-  "possible-lineage-4f695b8c-0b48-56f6-85cc-a171d3bda5ed",
-  "possible-lineage-61d9e034-e89e-5dcb-bc0e-4de6035654bb",
-  "possible-lineage-6569e465-c2c3-5ce2-b46f-fe8cc177d4c0",
-  "possible-lineage-97817b5e-85ff-5191-8f4c-767236146f4d",
-  "possible-lineage-9be1fe18-4367-5d2c-ab06-bd76f8193430",
-  "possible-lineage-ae993216-9d2d-5794-80a3-b164e7759cd9",
-  "possible-lineage-affd5c82-515b-5cdd-83c8-6f908c4f37d5",
-  "possible-lineage-b1f5088c-e065-5c51-b5dc-1c00a4c0904f",
-  "possible-lineage-b890eaa7-df2f-599c-b16a-2fab57708500",
-  "possible-lineage-b8cdd278-99aa-5729-9fca-d1b451bdfa30",
-  "possible-lineage-ce67e96f-8984-58ea-893f-489130ab6994",
-  "possible-lineage-d894b254-a96b-563e-8f37-f363cf31b835",
-  "possible-lineage-df7aa936-8c6d-5ec0-a1ac-4a18ca2e6856",
-  "possible-lineage-e8169766-7ea4-5ca2-871b-da0a1e4c4cd9",
-  "possible-lineage-eb0022b1-5b35-5d6a-9b6d-cfabb5ef29a0",
-  "possible-lineage-f994b310-4343-5ad4-9ed1-a97d79b61eec",
-  "possible-lineage-fe3fdb26-c81e-501c-829b-c0995ef4081a"
-]);
+const REVIEW_GATED_COMPARISON_CATALOGS = new Set(["brown-1916", "minnesota-1892", "greifswald-1895", "greifswald-1901", "berlin-1903", "berlin-1904", "brauns-bonn-1926"]);
 const PAGE_SIZE = 120;
 const DEFAULT_SORT = "name-asc";
 const ISSUE_FORM_URL = "https://github.com/rayborg/Historical-meteorite-collections/issues/new?template=data-error.yml";
@@ -300,27 +276,33 @@ const SHA256_HEX = /^[0-9a-f]{64}$/u;
 const SPECIMEN_CARD_SOURCE_CATALOG_SHA256 = "cf429e6660f00272f2f81fe69bac81c891f41574bbfff6e6bb46499d2d0672b4";
 const SPECIMEN_CARD_PROJECTION_DATA_SHA256 = "7ab4ca4fef524f94e68d977f3a8106dc3b7a29ba7112ffe491deff91964ab445";
 const SPECIMEN_CARD_PROJECTION_SET_SHA256 = "9e3452b6ff8cc23000311de4e36f0deae70654392cfb08a19956934ee46b3802";
-const SPECIMEN_LINEAGE_DATA_SHA256 = "3f1d63db2effbe497e328ac99831c22d661fd72a2fba2fd1ec74a83186a523a9";
+const SPECIMEN_LINEAGE_DATA_SHA256 = "b592065b07412b8d09d955f9276b2de0790a56f1649c7987a8b10bcc62c32199";
+const COMPARISON_REVIEW_PARTITION_SHA256 = "6abd02c9cf57c0ddae9ab786e8ec73ec69ffc6e291c37d30ae73c845999ac131";
 const SOURCE_CLAIMS_CONTENT_SHA256 = "141ed60b9560596ac8ab392babfc4af6e1d22921bacbf979d3b975e0fc2f20c2";
-const LINEAGE_ROOT_FIELDS = new Set(["metadata", "sourceAttestedGroups", "relationships"]);
+const LINEAGE_ROOT_FIELDS = new Set(["metadata", "sourceAttestedGroups", "relationships", "comparisonGroups"]);
 const LINEAGE_METADATA_FIELDS = new Set(["schemaVersion", "scope", "source", "collectionSeries", "methodology", "counts"]);
 const LINEAGE_SOURCE_FIELDS = new Set(["catalogSchemaVersion", "recordCount", "catalogCount", "flattenedMassObservationCount", "inventoryObservationCount", "sourceClaimsSchemaVersion", "sourceClaimsContentSha256"]);
 const LINEAGE_SERIES_FIELDS = new Set(["id", "catalogIds"]);
-const LINEAGE_METHODOLOGY_FIELDS = new Set(["inventoryNormalization", "possibleMatchIdentity", "massThresholds", "ambiguityPolicy", "evidenceStrengthOrder", "nonAssertions"]);
+const LINEAGE_METHODOLOGY_FIELDS = new Set(["inventoryNormalization", "comparisonIdentity", "massThresholds", "comparisonGrouping", "ambiguityPolicy", "evidenceStrengthOrder", "nonAssertions"]);
 const LINEAGE_INVENTORY_NORMALIZATION_FIELDS = new Set(["unicode", "case", "whitespace", "hussEditionMarker"]);
-const LINEAGE_POSSIBLE_IDENTITY_FIELDS = new Set(["resolved", "unresolved"]);
+const LINEAGE_COMPARISON_IDENTITY_FIELDS = new Set(["resolved", "unresolved"]);
 const LINEAGE_MASS_THRESHOLD_FIELDS = new Set(["exactDifferenceGrams", "nearMinimumMassGrams", "nearMaximumRelativeDifference", "nearMaximumAbsoluteDifferenceGrams"]);
 const LINEAGE_COUNT_FIELDS = new Set([
-  "relationshipCount", "sameInventoryRelationshipCount", "possibleMatchRelationshipCount", "unreviewedPossibleMatchCount",
-  "exactMassPossibleMatchCount", "nearMassPossibleMatchCount", "metbullIdentityPossibleMatchCount", "normalizedNameIdentityPossibleMatchCount",
-  "sameDesignationPossibleMatchCount", "designationFamilyPossibleMatchCount", "aggregateOrMultiplePossibleMatchCount", "castPossibleMatchCount",
-  "identityResolvedInventoryCollisionCount", "omittedAmbiguousInventoryKeyCount", "possibleMatchEvidenceStrength", "catalogPairs",
+  "relationshipCount", "sameInventoryRelationshipCount", "comparisonGroupCount", "singletonComparisonGroupCount", "ambiguousComparisonGroupCount",
+  "comparisonCandidateCount", "reviewedComparisonCandidateCount", "unreviewedComparisonCandidateCount",
+  "exactMassComparisonCandidateCount", "nearMassComparisonCandidateCount", "metbullIdentityComparisonCandidateCount", "normalizedNameIdentityComparisonCandidateCount",
+  "sameDesignationComparisonCandidateCount", "designationFamilyComparisonCandidateCount", "aggregateOrMultipleComparisonCandidateCount", "castComparisonCandidateCount",
+  "identityResolvedInventoryCollisionCount", "omittedAmbiguousInventoryKeyCount", "comparisonCandidateEvidenceStrength", "comparisonGroupCardinalityDistribution", "catalogPairs",
   "sourceAttestedGroupCount", "sourceAttestedMemberOccurrenceCount", "sourceAttestedUniqueMemberCount"
 ]);
 const LINEAGE_STRENGTHS = ["multiple-matching-facts", "two-matching-facts", "limited-matching-evidence"];
 const LINEAGE_STRENGTH_FIELDS = new Set(LINEAGE_STRENGTHS);
-const LINEAGE_PAIR_COUNT_FIELDS = new Set(["catalogPair", "sameInventoryCount", "possibleMatchCount"]);
+const LINEAGE_CARDINALITY_COUNT_FIELDS = new Set(["candidateCount", "groupCount"]);
+const LINEAGE_PAIR_COUNT_FIELDS = new Set(["catalogPair", "sameInventoryCount", "comparisonGroupCount", "comparisonCandidateCount"]);
 const LINEAGE_RELATIONSHIP_FIELDS = new Set(["id", "relationship", "basis", "status", "displayName", "catalogPair", "collectionSeries", "identity", "evidence", "review", "observations"]);
+const COMPARISON_GROUP_FIELDS = new Set(["id", "type", "basis", "displayName", "catalogPair", "identity", "massPair", "candidateCount", "candidates"]);
+const COMPARISON_MASS_PAIR_FIELDS = new Set(["catalogId", "massGrams"]);
+const COMPARISON_CANDIDATE_FIELDS = new Set(["id", "v3CandidateId", "evidence", "review", "observations"]);
 const LINEAGE_COLLECTION_SERIES_FIELDS = new Set(["id", "inventoryId"]);
 const LINEAGE_IDENTITY_FIELDS = new Set(["method", "key", "canonicalName"]);
 const LINEAGE_EVIDENCE_FIELDS = new Set(["strength", "massMatch", "absoluteDifferenceGrams", "relativeDifference", "sameDesignation", "designationFamily", "factCodes", "cautionCodes"]);
@@ -337,7 +319,9 @@ const VICTORIA_SOURCE_EVIDENCE_FIELDS = new Set(["primary", "tableA", "tableB", 
 const VICTORIA_TABLE_A_EVIDENCE_FIELDS = new Set(["printedPage", "massGrams", "classification", "olivineFa", "pyroxeneFs", "weathering"]);
 const VICTORIA_TABLE_B_EVIDENCE_FIELDS = new Set(["printedPage", "massGrams", "classification", "classificationContext", "weathering", "fracturing"]);
 const VICTORIA_CONFLICT_FIELDS = ["classification", "mass", "weathering"];
-const LINEAGE_RELATIONSHIP_ID = /^(?:same-inventory-lineage|possible-lineage)-[0-9a-f]{8}-[0-9a-f]{4}-5[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/u;
+const LINEAGE_RELATIONSHIP_ID = /^same-inventory-lineage-[0-9a-f]{8}-[0-9a-f]{4}-5[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/u;
+const COMPARISON_GROUP_ID = /^comparison-group-[0-9a-f]{8}-[0-9a-f]{4}-5[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/u;
+const COMPARISON_CANDIDATE_ID = /^comparison-candidate-[0-9a-f]{8}-[0-9a-f]{4}-5[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/u;
 const LINEAGE_OBSERVATION_ID = /^(?:inventory|mass)-observation-[0-9a-f]{8}-[0-9a-f]{4}-5[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/u;
 const LINEAGE_RECORD_ID = /^[A-Za-z0-9][A-Za-z0-9._-]*$/u;
 const LINEAGE_IDENTITY_METHODS = new Set(["metbull-code", "normalized-source-name"]);
@@ -359,7 +343,6 @@ const LINEAGE_STRENGTH_LABELS = {
 const LINEAGE_DISPLAY_LABELS = Object.freeze({
   presentationStatus: Object.freeze({
     known: "Known same-inventory continuity",
-    suspected: "Suspected cross-catalog match",
     tentative: "Source-attested tentative pairing group"
   }),
   identityMethod: Object.freeze({
@@ -386,17 +369,15 @@ const LINEAGE_DISPLAY_LABELS = Object.freeze({
   reviewStatus: Object.freeze({ unreviewed: "Not yet individually reviewed", reviewed: "Individually reviewed" }),
   reviewOutcome: Object.freeze({ null: "No review outcome", "retain-as-possible": "Retain as possible", "not-supported": "Not supported" }),
   rawRelationship: Object.freeze({
-    "same-inventory": "Same inventory ID across catalog editions",
-    "possible-match": "Possible match across catalogs"
+    "same-inventory": "Same inventory ID across catalog editions"
   }),
   rawRelationshipStatus: Object.freeze({
-    established: "Inventory-ID continuity established",
-    possible: "Possible relationship"
+    established: "Inventory-ID continuity established"
   })
 });
 const SAME_INVENTORY_CAUTION = "Known same-inventory continuity means that these catalog editions use the same series-scoped normalized inventory ID. It does not establish that the observations describe the same physical specimen, or establish custody, ownership, or transfer.";
-const POSSIBLE_MATCH_CAUTION = "Suspected match only. Matching identity and reported-mass facts do not establish that the observations describe the same physical specimen, or establish custody, ownership, or transfer.";
 const TENTATIVE_GROUP_CAUTION = "Source-attested tentative group. The source presents these members as one n-ary tentative grouping; this display does not create pairwise specimen identities or establish custody, ownership, or transfer.";
+const COMPARISON_CAUTION = "Shared identity and reported mass do not establish the same physical specimen, lineage, custody, ownership, transfer, or merge.";
 const MAX_CATALOG_ID_LENGTH = 80;
 const MAX_DESCRIPTOR_TEXT_LENGTH = 160;
 const PRIVATE_LANGUAGE =
@@ -523,6 +504,7 @@ let records = [];
 let catalogRegistry = {};
 let folioManifest = null;
 let earlierRecordsByLaterId = new Map();
+let comparisonGroupsByRecordId = new Map();
 let specimenCardProjectionsByParentId = new Map();
 let activeFolioPages = [];
 let activeFolioIndex = -1;
@@ -1776,36 +1758,49 @@ function validateLineageReview(review) {
   });
 }
 
-function calculateLineageCounts(relationships, inventorySummary = {}) {
-  const possible = relationships.filter(({ relationship }) => relationship === "possible-match");
-  const sameInventory = relationships.filter(({ relationship }) => relationship === "same-inventory");
+function calculateLineageCounts(relationships, comparisonGroups = [], inventorySummary = {}) {
+  const comparisonCandidates = comparisonGroups.flatMap((group) => group.candidates.map((candidate) => ({ ...candidate, identity: group.identity })));
   const count = (items, predicate) => items.filter(predicate).length;
   const evidenceStrength = Object.fromEntries(LINEAGE_STRENGTHS.map((strength) => [
     strength,
-    count(possible, (relationship) => relationship.evidence.strength === strength)
+    count(comparisonCandidates, (candidate) => candidate.evidence.strength === strength)
   ]));
+  const cardinalities = new Map();
+  comparisonGroups.forEach(({ candidateCount }) => cardinalities.set(candidateCount, (cardinalities.get(candidateCount) || 0) + 1));
   const catalogPairs = new Map();
   relationships.forEach((relationship) => {
-    const counts = catalogPairs.get(relationship.catalogPair) || { sameInventoryCount: 0, possibleMatchCount: 0 };
-    counts[relationship.relationship === "same-inventory" ? "sameInventoryCount" : "possibleMatchCount"] += 1;
+    const counts = catalogPairs.get(relationship.catalogPair) || { sameInventoryCount: 0, comparisonGroupCount: 0, comparisonCandidateCount: 0 };
+    counts.sameInventoryCount += 1;
     catalogPairs.set(relationship.catalogPair, counts);
+  });
+  comparisonGroups.forEach((group) => {
+    const counts = catalogPairs.get(group.catalogPair) || { sameInventoryCount: 0, comparisonGroupCount: 0, comparisonCandidateCount: 0 };
+    counts.comparisonGroupCount += 1;
+    counts.comparisonCandidateCount += group.candidateCount;
+    catalogPairs.set(group.catalogPair, counts);
   });
   return {
     relationshipCount: relationships.length,
-    sameInventoryRelationshipCount: sameInventory.length,
-    possibleMatchRelationshipCount: possible.length,
-    unreviewedPossibleMatchCount: count(possible, (relationship) => relationship.review.status === "unreviewed"),
-    exactMassPossibleMatchCount: count(possible, (relationship) => relationship.evidence.massMatch === "exact"),
-    nearMassPossibleMatchCount: count(possible, (relationship) => relationship.evidence.massMatch === "near"),
-    metbullIdentityPossibleMatchCount: count(possible, (relationship) => relationship.identity.method === "metbull-code"),
-    normalizedNameIdentityPossibleMatchCount: count(possible, (relationship) => relationship.identity.method === "normalized-source-name"),
-    sameDesignationPossibleMatchCount: count(possible, (relationship) => relationship.evidence.sameDesignation),
-    designationFamilyPossibleMatchCount: count(possible, (relationship) => relationship.evidence.designationFamily),
-    aggregateOrMultiplePossibleMatchCount: count(possible, (relationship) => relationship.evidence.cautionCodes.includes("aggregate-or-multiple")),
-    castPossibleMatchCount: count(possible, (relationship) => relationship.evidence.cautionCodes.includes("cast")),
+    sameInventoryRelationshipCount: relationships.length,
+    comparisonGroupCount: comparisonGroups.length,
+    singletonComparisonGroupCount: count(comparisonGroups, ({ candidateCount }) => candidateCount === 1),
+    ambiguousComparisonGroupCount: count(comparisonGroups, ({ candidateCount }) => candidateCount > 1),
+    comparisonCandidateCount: comparisonCandidates.length,
+    reviewedComparisonCandidateCount: count(comparisonCandidates, ({ review }) => review.status === "reviewed"),
+    unreviewedComparisonCandidateCount: count(comparisonCandidates, ({ review }) => review.status === "unreviewed"),
+    exactMassComparisonCandidateCount: count(comparisonCandidates, ({ evidence }) => evidence.massMatch === "exact"),
+    nearMassComparisonCandidateCount: count(comparisonCandidates, ({ evidence }) => evidence.massMatch === "near"),
+    metbullIdentityComparisonCandidateCount: count(comparisonCandidates, ({ identity }) => identity.method === "metbull-code"),
+    normalizedNameIdentityComparisonCandidateCount: count(comparisonCandidates, ({ identity }) => identity.method === "normalized-source-name"),
+    sameDesignationComparisonCandidateCount: count(comparisonCandidates, ({ evidence }) => evidence.sameDesignation),
+    designationFamilyComparisonCandidateCount: count(comparisonCandidates, ({ evidence }) => evidence.designationFamily),
+    aggregateOrMultipleComparisonCandidateCount: count(comparisonCandidates, ({ evidence }) => evidence.cautionCodes.includes("aggregate-or-multiple")),
+    castComparisonCandidateCount: count(comparisonCandidates, ({ evidence }) => evidence.cautionCodes.includes("cast")),
     identityResolvedInventoryCollisionCount: inventorySummary.identityResolvedInventoryCollisionCount || 0,
     omittedAmbiguousInventoryKeyCount: inventorySummary.omittedAmbiguousInventoryKeyCount || 0,
-    possibleMatchEvidenceStrength: evidenceStrength,
+    comparisonCandidateEvidenceStrength: evidenceStrength,
+    comparisonGroupCardinalityDistribution: [...cardinalities].sort(([left], [right]) => left - right)
+      .map(([candidateCount, groupCount]) => ({ candidateCount, groupCount })),
     catalogPairs
   };
 }
@@ -1961,14 +1956,33 @@ function expectedPossibleRelationships(sourceRecords) {
         if (!exact && !near) continue;
         const endpointReferences = [left.sourceReference, right.sourceReference].sort();
         const key = endpointReferences.join("\u0001");
+        const ids = expectedLineageIds("possible-match", key, null, null, endpointReferences);
         expected.set(key, {
           endpoints: [left, right],
-          ...expectedLineageIds("possible-match", key, null, null, endpointReferences)
+          v3CandidateId: ids.relationshipId,
+          candidateId: `comparison-candidate-${ids.relationshipId.slice("possible-lineage-".length)}`,
+          observationIds: ids.observationIds
         });
       }
     }
   });
   return expected;
+}
+
+function expectedComparisonGroup(candidate, observations) {
+  const identityMethod = candidate.endpoints[0].identityMethod;
+  const identityKey = candidate.endpoints[0].identityKey;
+  const massPair = observations.map(({ catalogId, massGrams }) => ({ catalogId, massGrams }))
+    .sort((left, right) => left.catalogId.localeCompare(right.catalogId));
+  const reference = [
+    "comparison-group", identityMethod, identityKey,
+    ...massPair.flatMap(({ catalogId, massGrams }) => [catalogId, JSON.stringify(massGrams)])
+  ].join("\u0000");
+  return {
+    key: reference,
+    id: `comparison-group-${lineageUuidV5(reference)}`,
+    massPair
+  };
 }
 
 function lineageMassObservationCount(sourceRecords) {
@@ -2019,55 +2033,53 @@ function validateSourceAttestedGroups(groups, sourceRecords, metadata) {
 }
 
 function validateLineageCandidates(lineageData, sourceRecords, registry) {
-  requireLineage(hasExactFields(lineageData, LINEAGE_ROOT_FIELDS) && Array.isArray(lineageData.relationships));
+  requireLineage(hasExactFields(lineageData, LINEAGE_ROOT_FIELDS) && Array.isArray(lineageData.relationships) &&
+    Array.isArray(lineageData.comparisonGroups));
   requireLineage(hasExactFields(lineageData.metadata, LINEAGE_METADATA_FIELDS));
   const metadata = lineageData.metadata;
-  requireLineage(metadata.schemaVersion === 3 && metadata.scope === "series-inventory-and-cross-source-candidates");
+  requireLineage(metadata.schemaVersion === 4 && metadata.scope === "attested-lineage-and-cross-catalog-comparisons");
   requireLineage(hasExactFields(metadata.source, LINEAGE_SOURCE_FIELDS) && hasExactFields(metadata.methodology, LINEAGE_METHODOLOGY_FIELDS));
   requireLineage(hasExactFields(metadata.methodology.inventoryNormalization, LINEAGE_INVENTORY_NORMALIZATION_FIELDS));
-  requireLineage(hasExactFields(metadata.methodology.possibleMatchIdentity, LINEAGE_POSSIBLE_IDENTITY_FIELDS));
+  requireLineage(hasExactFields(metadata.methodology.comparisonIdentity, LINEAGE_COMPARISON_IDENTITY_FIELDS));
   requireLineage(hasExactFields(metadata.methodology.massThresholds, LINEAGE_MASS_THRESHOLD_FIELDS));
   requireLineage(metadata.methodology.inventoryNormalization.unicode === "NFKC" && metadata.methodology.inventoryNormalization.case === "lowercase" &&
     metadata.methodology.inventoryNormalization.whitespace === "removed" && metadata.methodology.inventoryNormalization.hussEditionMarker === "one leading (2) removed");
   requireLineage(metadata.methodology.massThresholds.exactDifferenceGrams === 0 && metadata.methodology.massThresholds.nearMinimumMassGrams === 10 &&
     metadata.methodology.massThresholds.nearMaximumRelativeDifference === 0.0025 && metadata.methodology.massThresholds.nearMaximumAbsoluteDifferenceGrams === 2);
-  requireLineage(isLineageText(metadata.methodology.possibleMatchIdentity.resolved) && isLineageText(metadata.methodology.possibleMatchIdentity.unresolved) &&
-    isLineageText(metadata.methodology.ambiguityPolicy));
+  requireLineage(isLineageText(metadata.methodology.comparisonIdentity.resolved) && isLineageText(metadata.methodology.comparisonIdentity.unresolved) &&
+    isLineageText(metadata.methodology.comparisonGrouping) && isLineageText(metadata.methodology.ambiguityPolicy));
   requireLineage(JSON.stringify(metadata.methodology.evidenceStrengthOrder) === JSON.stringify(LINEAGE_STRENGTHS) &&
     JSON.stringify(metadata.methodology.nonAssertions) === JSON.stringify(["custody-chain", "ownership-transfer"]));
   requireLineage(Array.isArray(metadata.collectionSeries) && JSON.stringify(metadata.collectionSeries) === JSON.stringify(LINEAGE_COLLECTION_SERIES) &&
     metadata.collectionSeries.every((series) => hasExactFields(series, LINEAGE_SERIES_FIELDS)));
-  requireLineage(hasExactFields(metadata.counts, LINEAGE_COUNT_FIELDS) && hasExactFields(metadata.counts.possibleMatchEvidenceStrength, LINEAGE_STRENGTH_FIELDS));
-  requireLineage(Array.isArray(metadata.counts.catalogPairs));
+  requireLineage(hasExactFields(metadata.counts, LINEAGE_COUNT_FIELDS) &&
+    hasExactFields(metadata.counts.comparisonCandidateEvidenceStrength, LINEAGE_STRENGTH_FIELDS));
+  requireLineage(Array.isArray(metadata.counts.comparisonGroupCardinalityDistribution) && Array.isArray(metadata.counts.catalogPairs));
 
   const sourceRecordsById = new Map(sourceRecords.map((record) => [record.id, record]));
   requireLineage(sourceRecordsById.size === sourceRecords.length && isPlainObject(registry) && Object.keys(registry).length > 0);
   validateSourceAttestedGroups(lineageData.sourceAttestedGroups, sourceRecords, metadata);
   const inventorySummary = expectedSameInventoryRelationships(sourceRecords);
-  const publishedReviewedIds = new Set(lineageData.relationships.filter(({ relationship, review }) =>
-    relationship === "possible-match" && review?.status === "reviewed" && review.outcome === "retain-as-possible").map(({ id }) => id));
-  const expectedPossible = new Map([...expectedPossibleRelationships(sourceRecords)].filter(([, candidate]) =>
-    !candidate.endpoints.some(({ record }) => REVIEW_GATED_LINEAGE_CATALOGS.has(record.catalogId)) ||
-    WAVE1_LINEAGE_RELATIONSHIP_IDS.has(candidate.relationshipId) || publishedReviewedIds.has(candidate.relationshipId)
-  ));
+  const expectedComparisons = expectedPossibleRelationships(sourceRecords);
   const inventoryObservationCount = lineageInventoryEndpoints(sourceRecords).length;
   requireLineage(metadata.source.catalogSchemaVersion === CATALOG_SCHEMA_VERSION && metadata.source.recordCount === sourceRecords.length &&
     metadata.source.catalogCount === Object.keys(registry).length && metadata.source.flattenedMassObservationCount === lineageMassObservationCount(sourceRecords) &&
-    metadata.source.inventoryObservationCount === inventoryObservationCount);
+    metadata.source.inventoryObservationCount === inventoryObservationCount && metadata.source.sourceClaimsSchemaVersion === 1 &&
+    metadata.source.sourceClaimsContentSha256 === SOURCE_CLAIMS_CONTENT_SHA256);
   const relationshipIds = new Set();
   const observationIds = new Set();
   const seenInventoryRelationships = new Set();
-  const seenPossibleRelationships = new Set();
-  const seriesByCatalog = lineageSeriesByCatalog();
+  let previousRelationshipId = "";
 
   lineageData.relationships.forEach((relationship) => {
-    requireLineage(hasExactFields(relationship, LINEAGE_RELATIONSHIP_FIELDS) && LINEAGE_RELATIONSHIP_ID.test(relationship.id) && !relationshipIds.has(relationship.id));
+    requireLineage(hasExactFields(relationship, LINEAGE_RELATIONSHIP_FIELDS) && LINEAGE_RELATIONSHIP_ID.test(relationship.id) &&
+      !relationshipIds.has(relationship.id) && relationship.id > previousRelationshipId);
     relationshipIds.add(relationship.id);
-    const sameInventory = relationship.relationship === "same-inventory";
-    requireLineage(["same-inventory", "possible-match"].includes(relationship.relationship) && isLineageText(relationship.displayName));
-    requireLineage(relationship.basis === (sameInventory ? "series-scoped-normalized-inventory-id" : "reviewed-identity-and-reported-mass") &&
-      relationship.status === (sameInventory ? "established" : "possible"));
+    previousRelationshipId = relationship.id;
+    requireLineage(relationship.relationship === "same-inventory" && isLineageText(relationship.displayName));
+    requireLineage(relationship.basis === "series-scoped-normalized-inventory-id" && relationship.status === "established");
     requireLineage(Array.isArray(relationship.observations) && relationship.observations.length === 2);
+    requireLineage(relationship.observations[0].id < relationship.observations[1].id);
 
     relationship.observations.forEach((observation) => {
       requireLineage(hasExactFields(observation, LINEAGE_OBSERVATION_FIELDS));
@@ -2085,7 +2097,7 @@ function validateLineageCandidates(lineageData, sourceRecords, registry) {
       requireLineage(isLineageText(observation.canonicalName, true) &&
         (observation.meteoriteCode === null || (typeof observation.meteoriteCode === "string" && /^[1-9][0-9]{0,9}$/u.test(observation.meteoriteCode))));
       const resolved = resolveLineageObservation(sourceRecord, observation.designationPath, observation.massPath);
-      requireLineage(resolved && (sameInventory ? observation.massGrams === null || (Number.isFinite(observation.massGrams) && observation.massGrams >= 0) : Number.isFinite(observation.massGrams) && observation.massGrams >= 0));
+      requireLineage(resolved && (observation.massGrams === null || (Number.isFinite(observation.massGrams) && observation.massGrams >= 0)));
       requireLineage(resolved.massGrams === observation.massGrams);
       requireLineage(observation.designation === resolved.designation && observation.kind === resolved.kind && observation.count === resolved.count);
       requireLineage(sourceRecord.metbull && (sourceRecord.metbull.matchType === "unresolved"
@@ -2102,104 +2114,163 @@ function validateLineageCandidates(lineageData, sourceRecords, registry) {
       sourceOrdered.map((observation) => observation.sourceName).filter(Boolean).sort()[0];
     requireLineage(relationship.displayName === displayName);
 
-    if (sameInventory) {
-      requireLineage(relationship.id.startsWith("same-inventory-lineage-") && hasExactFields(relationship.collectionSeries, LINEAGE_COLLECTION_SERIES_FIELDS));
-      requireLineage(relationship.identity === null && relationship.evidence === null && relationship.review === null);
-      const endpointKey = relationship.observations.map((observation) => `${observation.recordId}\u0000${observation.designationPath}`).sort().join("\u0001");
-      const expected = inventorySummary.expected.get(endpointKey);
-      requireLineage(expected && !seenInventoryRelationships.has(endpointKey));
-      seenInventoryRelationships.add(endpointKey);
-      requireLineage(relationship.id === expected.relationshipId);
-      relationship.observations.forEach((observation) => requireLineage(
-        observation.id === expected.observationIds.get(`${observation.recordId}\u0000${observation.designationPath}`)
-      ));
-      requireLineage(relationship.collectionSeries.id === expected.seriesId && relationship.collectionSeries.inventoryId === expected.inventoryId);
-      requireLineage(relationship.observations.every((observation) => observation.designation !== null &&
-        normalizeLineageInventoryId(observation.designation, expected.seriesId) === expected.inventoryId));
-      return;
-    }
-
-    requireLineage(relationship.id.startsWith("possible-lineage-") && relationship.collectionSeries === null);
-    const endpointKey = relationship.observations.map((observation) => `${observation.recordId}\u0000${observation.massPath}`).sort().join("\u0001");
-    const expected = expectedPossible.get(endpointKey);
-    requireLineage(expected && !seenPossibleRelationships.has(endpointKey) && relationship.id === expected.relationshipId);
-    seenPossibleRelationships.add(endpointKey);
+    requireLineage(hasExactFields(relationship.collectionSeries, LINEAGE_COLLECTION_SERIES_FIELDS));
+    requireLineage(relationship.identity === null && relationship.evidence === null && relationship.review === null);
+    const endpointKey = relationship.observations.map((observation) => `${observation.recordId}\u0000${observation.designationPath}`).sort().join("\u0001");
+    const expected = inventorySummary.expected.get(endpointKey);
+    requireLineage(expected && !seenInventoryRelationships.has(endpointKey));
+    seenInventoryRelationships.add(endpointKey);
+    requireLineage(relationship.id === expected.relationshipId);
     relationship.observations.forEach((observation) => requireLineage(
-      observation.id === expected.observationIds.get(`${observation.recordId}\u0000${observation.massPath}`)
+      observation.id === expected.observationIds.get(`${observation.recordId}\u0000${observation.designationPath}`)
     ));
-    requireLineage((seriesByCatalog.get(relationship.observations[0].catalogId) || relationship.observations[0].catalogId) !==
-      (seriesByCatalog.get(relationship.observations[1].catalogId) || relationship.observations[1].catalogId));
-    requireLineage(hasExactFields(relationship.identity, LINEAGE_IDENTITY_FIELDS) && LINEAGE_IDENTITY_METHODS.has(relationship.identity.method) && isLineageText(relationship.identity.key));
-    requireLineage(relationship.identity.canonicalName === null || isLineageText(relationship.identity.canonicalName));
-    requireLineage(hasExactFields(relationship.evidence, LINEAGE_EVIDENCE_FIELDS) && LINEAGE_STRENGTHS.includes(relationship.evidence.strength));
-    requireLineage(LINEAGE_MASS_MATCHES.has(relationship.evidence.massMatch) && Number.isFinite(relationship.evidence.absoluteDifferenceGrams) && relationship.evidence.absoluteDifferenceGrams >= 0);
-    requireLineage(Number.isFinite(relationship.evidence.relativeDifference) && relationship.evidence.relativeDifference >= 0 &&
-      typeof relationship.evidence.sameDesignation === "boolean" && typeof relationship.evidence.designationFamily === "boolean");
-    requireLineage(Array.isArray(relationship.evidence.factCodes) && Array.isArray(relationship.evidence.cautionCodes));
-    validateLineageReview(relationship.review);
-
-    const [left, right] = relationship.observations;
-    const difference = Math.abs(left.massGrams - right.massGrams);
-    const maximumMass = Math.max(left.massGrams, right.massGrams);
-    const relativeDifference = maximumMass === 0 ? 0 : difference / maximumMass;
-    const massMatch = difference === 0 ? "exact" : "near";
-    requireLineage(relationship.evidence.absoluteDifferenceGrams === difference && relationship.evidence.relativeDifference === relativeDifference &&
-      relationship.evidence.massMatch === massMatch);
-    requireLineage(massMatch === "exact" || (Math.min(left.massGrams, right.massGrams) >= 10 && difference <= 2 && relativeDifference <= 0.0025));
-    const leftDesignation = left.designation === null ? null : left.designation.toLowerCase();
-    const rightDesignation = right.designation === null ? null : right.designation.toLowerCase();
-    const sameDesignation = leftDesignation !== null && rightDesignation !== null && leftDesignation === rightDesignation;
-    const leftFamily = left.designation === null ? null : left.designation.replace(/^\(2\)/u, "").toLowerCase();
-    const rightFamily = right.designation === null ? null : right.designation.replace(/^\(2\)/u, "").toLowerCase();
-    const designationFamily = leftFamily !== null && rightFamily !== null && leftFamily === rightFamily;
-    requireLineage(relationship.evidence.sameDesignation === sameDesignation && relationship.evidence.designationFamily === designationFamily);
-    if (relationship.identity.method === "metbull-code") {
-      requireLineage(relationship.observations.every((observation) => observation.meteoriteCode === relationship.identity.key &&
-        observation.canonicalName === relationship.identity.canonicalName));
-    } else {
-      requireLineage(relationship.identity.canonicalName === null && relationship.observations.every((observation) =>
-        observation.canonicalName === null && observation.meteoriteCode === null && isLineageText(observation.sourceName) &&
-        normalizeLineageName(observation.sourceName) === relationship.identity.key));
-    }
-    const aggregateOrMultiple = relationship.observations.some((observation) => observation.kind === "aggregate" || (observation.count ?? 1) > 1);
-    const cast = relationship.observations.some((observation) => observation.kind === "cast");
-    const expectedFacts = [
-      relationship.identity.method === "metbull-code" ? "shared-metbull-code" : "shared-normalized-source-name",
-      massMatch === "exact" ? "exact-reported-mass" : "near-reported-mass",
-      ...(sameDesignation ? ["same-designation"] : []),
-      ...(designationFamily ? ["designation-family"] : [])
-    ];
-    const expectedCautions = [
-      ...(relationship.identity.method === "normalized-source-name" ? ["normalized-name-identity"] : []),
-      ...(massMatch === "near" ? ["near-reported-mass"] : []),
-      ...(!sameDesignation ? ["designation-differs-or-missing"] : []),
-      ...(aggregateOrMultiple ? ["aggregate-or-multiple"] : []),
-      ...(cast ? ["cast"] : [])
-    ];
-    requireLineage(equalLineageCodes(relationship.evidence.factCodes, expectedFacts, LINEAGE_FACT_CODE_ORDER, LINEAGE_FACT_CODES));
-    requireLineage(equalLineageCodes(relationship.evidence.cautionCodes, expectedCautions, LINEAGE_CAUTION_CODE_ORDER, LINEAGE_CAUTION_CODES));
-    const expectedStrength = sameDesignation || designationFamily
-      ? "multiple-matching-facts" : massMatch === "exact" ? "two-matching-facts" : "limited-matching-evidence";
-    requireLineage(relationship.evidence.strength === expectedStrength);
+    requireLineage(relationship.collectionSeries.id === expected.seriesId && relationship.collectionSeries.inventoryId === expected.inventoryId);
+    requireLineage(relationship.observations.every((observation) => observation.designation !== null &&
+      normalizeLineageInventoryId(observation.designation, expected.seriesId) === expected.inventoryId));
   });
 
   requireLineage(seenInventoryRelationships.size === inventorySummary.expected.size);
-  requireLineage(seenPossibleRelationships.size === expectedPossible.size);
+  const comparisonGroupIds = new Set();
+  const comparisonCandidateIds = new Set();
+  const seenComparisonEndpoints = new Set();
+  const reviewPartition = [];
+  let previousGroupId = "";
+  lineageData.comparisonGroups.forEach((group) => {
+    requireLineage(hasExactFields(group, COMPARISON_GROUP_FIELDS) && COMPARISON_GROUP_ID.test(group.id) &&
+      !comparisonGroupIds.has(group.id) && group.id > previousGroupId);
+    comparisonGroupIds.add(group.id);
+    previousGroupId = group.id;
+    requireLineage(group.type === "comparison-only" && group.basis === "reviewed-identity-and-reported-mass" &&
+      isLineageText(group.displayName) && /^[a-z0-9-]+\|[a-z0-9-]+$/u.test(group.catalogPair));
+    requireLineage(hasExactFields(group.identity, LINEAGE_IDENTITY_FIELDS) && LINEAGE_IDENTITY_METHODS.has(group.identity.method) &&
+      isLineageText(group.identity.key) && (group.identity.canonicalName === null || isLineageText(group.identity.canonicalName)));
+    requireLineage(Array.isArray(group.massPair) && group.massPair.length === 2 && group.massPair.every((item) =>
+      hasExactFields(item, COMPARISON_MASS_PAIR_FIELDS) && Object.hasOwn(registry, item.catalogId) && Number.isFinite(item.massGrams) && item.massGrams >= 0));
+    requireLineage(Array.isArray(group.candidates) && group.candidates.length > 0 && group.candidateCount === group.candidates.length);
+    let previousCandidateId = "";
+    let expectedGroupKey = null;
+    const candidateNames = [];
+    group.candidates.forEach((candidate) => {
+      requireLineage(hasExactFields(candidate, COMPARISON_CANDIDATE_FIELDS) && COMPARISON_CANDIDATE_ID.test(candidate.id) &&
+        /^possible-lineage-[0-9a-f]{8}-[0-9a-f]{4}-5[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/u.test(candidate.v3CandidateId) &&
+        !comparisonCandidateIds.has(candidate.id) && candidate.id > previousCandidateId);
+      comparisonCandidateIds.add(candidate.id);
+      previousCandidateId = candidate.id;
+      requireLineage(Array.isArray(candidate.observations) && candidate.observations.length === 2 &&
+        hasExactFields(candidate.evidence, LINEAGE_EVIDENCE_FIELDS));
+      requireLineage(candidate.observations[0].id < candidate.observations[1].id);
+      validateLineageReview(candidate.review);
+      candidate.observations.forEach((observation) => {
+        requireLineage(hasExactFields(observation, LINEAGE_OBSERVATION_FIELDS) && LINEAGE_OBSERVATION_ID.test(observation.id) &&
+          observation.id.startsWith("mass-observation-") && !observationIds.has(observation.id));
+        observationIds.add(observation.id);
+        requireLineage(LINEAGE_RECORD_ID.test(observation.recordId) && sourceRecordsById.has(observation.recordId) &&
+          Object.hasOwn(registry, observation.catalogId));
+        const sourceRecord = sourceRecordsById.get(observation.recordId);
+        const descriptor = registry[observation.catalogId];
+        requireLineage(sourceRecord.catalogId === observation.catalogId && sourceRecord.recordModel === observation.recordModel &&
+          observation.catalogYear === descriptor.year && observation.catalogLabel === descriptor.label &&
+          observation.sourceRecordLabel === lineageRecordLabel(sourceRecord) && observation.sourceName === sourceRecord.name);
+        const resolved = resolveLineageObservation(sourceRecord, observation.designationPath, observation.massPath);
+        requireLineage(resolved && Number.isFinite(observation.massGrams) && observation.massGrams > 0 && resolved.massGrams === observation.massGrams &&
+          observation.designation === resolved.designation && observation.kind === resolved.kind && observation.count === resolved.count);
+        requireLineage(sourceRecord.metbull && (sourceRecord.metbull.matchType === "unresolved"
+          ? observation.canonicalName === null && observation.meteoriteCode === null
+          : observation.canonicalName === sourceRecord.metbull.canonicalName && observation.meteoriteCode === sourceRecord.metbull.meteoriteCode));
+        requireLineage(isSafeLineageSearchUrl(observation.catalogSearchUrl, observation));
+      });
+      requireLineage(candidate.observations[0].catalogId !== candidate.observations[1].catalogId);
+      const endpointKey = candidate.observations.map(({ recordId, massPath }) => `${recordId}\u0000${massPath}`).sort().join("\u0001");
+      const expected = expectedComparisons.get(endpointKey);
+      requireLineage(expected && !seenComparisonEndpoints.has(endpointKey) && candidate.id === expected.candidateId &&
+        candidate.v3CandidateId === expected.v3CandidateId);
+      seenComparisonEndpoints.add(endpointKey);
+      candidate.observations.forEach((observation) => requireLineage(
+        observation.id === expected.observationIds.get(`${observation.recordId}\u0000${observation.massPath}`)
+      ));
+      const [left, right] = candidate.observations;
+      const difference = Math.abs(left.massGrams - right.massGrams);
+      const relativeDifference = difference / Math.max(left.massGrams, right.massGrams);
+      const massMatch = difference === 0 ? "exact" : "near";
+      const leftDesignation = left.designation === null ? null : left.designation.toLowerCase();
+      const rightDesignation = right.designation === null ? null : right.designation.toLowerCase();
+      const sameDesignation = leftDesignation !== null && rightDesignation !== null && leftDesignation === rightDesignation;
+      const leftFamily = left.designation === null ? null : left.designation.replace(/^\(2\)/u, "").toLowerCase();
+      const rightFamily = right.designation === null ? null : right.designation.replace(/^\(2\)/u, "").toLowerCase();
+      const designationFamily = leftFamily !== null && rightFamily !== null && leftFamily === rightFamily;
+      requireLineage(candidate.evidence.absoluteDifferenceGrams === difference && candidate.evidence.relativeDifference === relativeDifference &&
+        candidate.evidence.massMatch === massMatch && candidate.evidence.sameDesignation === sameDesignation &&
+        candidate.evidence.designationFamily === designationFamily && (massMatch === "exact" ||
+          (Math.min(left.massGrams, right.massGrams) >= 10 && difference <= 2 && relativeDifference <= 0.0025)));
+      requireLineage(LINEAGE_STRENGTHS.includes(candidate.evidence.strength) && LINEAGE_MASS_MATCHES.has(candidate.evidence.massMatch) &&
+        Array.isArray(candidate.evidence.factCodes) && Array.isArray(candidate.evidence.cautionCodes));
+      const expectedFacts = [
+        group.identity.method === "metbull-code" ? "shared-metbull-code" : "shared-normalized-source-name",
+        massMatch === "exact" ? "exact-reported-mass" : "near-reported-mass",
+        ...(sameDesignation ? ["same-designation"] : []), ...(designationFamily ? ["designation-family"] : [])
+      ];
+      const aggregateOrMultiple = candidate.observations.some((observation) => observation.kind === "aggregate" || (observation.count ?? 1) > 1);
+      const cast = candidate.observations.some((observation) => observation.kind === "cast");
+      const expectedCautions = [
+        ...(group.identity.method === "normalized-source-name" ? ["normalized-name-identity"] : []),
+        ...(massMatch === "near" ? ["near-reported-mass"] : []), ...(!sameDesignation ? ["designation-differs-or-missing"] : []),
+        ...(aggregateOrMultiple ? ["aggregate-or-multiple"] : []), ...(cast ? ["cast"] : [])
+      ];
+      requireLineage(equalLineageCodes(candidate.evidence.factCodes, expectedFacts, LINEAGE_FACT_CODE_ORDER, LINEAGE_FACT_CODES) &&
+        equalLineageCodes(candidate.evidence.cautionCodes, expectedCautions, LINEAGE_CAUTION_CODE_ORDER, LINEAGE_CAUTION_CODES));
+      requireLineage(candidate.evidence.strength === (sameDesignation || designationFamily
+        ? "multiple-matching-facts" : massMatch === "exact" ? "two-matching-facts" : "limited-matching-evidence"));
+      requireLineage(group.identity.method === expected.endpoints[0].identityMethod && group.identity.key === expected.endpoints[0].identityKey);
+      if (group.identity.method === "metbull-code") {
+        requireLineage(candidate.observations.every((observation) => observation.meteoriteCode === group.identity.key &&
+          observation.canonicalName === group.identity.canonicalName));
+      } else {
+        requireLineage(group.identity.canonicalName === null && candidate.observations.every((observation) =>
+          observation.canonicalName === null && observation.meteoriteCode === null && isLineageText(observation.sourceName) &&
+          normalizeLineageName(observation.sourceName) === group.identity.key));
+      }
+      const expectedGroup = expectedComparisonGroup(expected, candidate.observations);
+      requireLineage(expectedGroup.id === group.id && JSON.stringify(expectedGroup.massPair) === JSON.stringify(group.massPair));
+      requireLineage(expectedGroupKey === null || expectedGroupKey === expectedGroup.key);
+      expectedGroupKey = expectedGroup.key;
+      const pair = candidate.observations.map(({ catalogId }) => catalogId).sort().join("|");
+      requireLineage(pair === group.catalogPair);
+      const candidateName = candidate.observations.map(({ canonicalName }) => canonicalName).find(Boolean) ||
+        candidate.observations.map(({ sourceName }) => sourceName).filter(Boolean).sort()[0];
+      candidateNames.push(candidateName);
+      const gated = expected.endpoints.some(({ record }) => REVIEW_GATED_COMPARISON_CATALOGS.has(record.catalogId));
+      requireLineage(hasRequiredComparisonReview(candidate, gated));
+      reviewPartition.push({ groupId: group.id, id: candidate.id, v3CandidateId: candidate.v3CandidateId, review: candidate.review });
+    });
+    requireLineage(group.displayName === candidateNames.sort()[0]);
+  });
+  for (const [endpointKey, expected] of expectedComparisons) {
+    if (!expected.endpoints.some(({ record }) => REVIEW_GATED_COMPARISON_CATALOGS.has(record.catalogId))) {
+      requireLineage(seenComparisonEndpoints.has(endpointKey));
+    }
+  }
+  reviewPartition.sort((left, right) => left.id.localeCompare(right.id));
+  requireLineage(sha256TextSync(JSON.stringify(reviewPartition)) === COMPARISON_REVIEW_PARTITION_SHA256);
 
-  const calculated = calculateLineageCounts(lineageData.relationships, inventorySummary);
+  const calculated = calculateLineageCounts(lineageData.relationships, lineageData.comparisonGroups, inventorySummary);
   const scalarFields = [...LINEAGE_COUNT_FIELDS].filter((field) => ![
-    "possibleMatchEvidenceStrength", "catalogPairs", "sourceAttestedGroupCount",
+    "comparisonCandidateEvidenceStrength", "comparisonGroupCardinalityDistribution", "catalogPairs", "sourceAttestedGroupCount",
     "sourceAttestedMemberOccurrenceCount", "sourceAttestedUniqueMemberCount"
   ].includes(field));
   scalarFields.forEach((field) => requireLineage(Number.isInteger(metadata.counts[field]) && metadata.counts[field] === calculated[field]));
-  LINEAGE_STRENGTHS.forEach((strength) => requireLineage(metadata.counts.possibleMatchEvidenceStrength[strength] === calculated.possibleMatchEvidenceStrength[strength]));
+  LINEAGE_STRENGTHS.forEach((strength) => requireLineage(metadata.counts.comparisonCandidateEvidenceStrength[strength] === calculated.comparisonCandidateEvidenceStrength[strength]));
+  requireLineage(JSON.stringify(metadata.counts.comparisonGroupCardinalityDistribution) === JSON.stringify(calculated.comparisonGroupCardinalityDistribution) &&
+    metadata.counts.comparisonGroupCardinalityDistribution.every((item) => hasExactFields(item, LINEAGE_CARDINALITY_COUNT_FIELDS)));
   requireLineage(metadata.counts.catalogPairs.length === calculated.catalogPairs.size);
   const seenPairs = new Set();
+  let previousPair = "";
   metadata.counts.catalogPairs.forEach((item) => {
-    requireLineage(hasExactFields(item, LINEAGE_PAIR_COUNT_FIELDS) && !seenPairs.has(item.catalogPair));
+    requireLineage(hasExactFields(item, LINEAGE_PAIR_COUNT_FIELDS) && !seenPairs.has(item.catalogPair) && item.catalogPair > previousPair);
     const counts = calculated.catalogPairs.get(item.catalogPair);
-    requireLineage(counts && counts.sameInventoryCount === item.sameInventoryCount && counts.possibleMatchCount === item.possibleMatchCount);
+    requireLineage(counts && counts.sameInventoryCount === item.sameInventoryCount && counts.comparisonGroupCount === item.comparisonGroupCount &&
+      counts.comparisonCandidateCount === item.comparisonCandidateCount);
     seenPairs.add(item.catalogPair);
+    previousPair = item.catalogPair;
   });
   return lineageData;
 }
@@ -2242,48 +2313,22 @@ function lineageEndpointDto(observation, sourceRecordsById) {
 function relationshipClaimDto(relationship, pair, sourceRecordsById) {
   const earlierEndpoint = lineageEndpointDto(pair.earlier, sourceRecordsById);
   const laterEndpoint = lineageEndpointDto(pair.later, sourceRecordsById);
-  if (relationship.relationship === "same-inventory") {
-    lineageDisplayLabel("presentationStatus", "known");
-    lineageDisplayLabel("rawRelationship", relationship.relationship);
-    lineageDisplayLabel("rawRelationshipStatus", relationship.status);
-    return {
-      kind: "same-inventory",
-      presentationStatus: "known",
-      rawRelationship: relationship.relationship,
-      rawStatus: relationship.status,
-      relationshipId: relationship.id,
-      displayName: relationship.displayName,
-      basis: { code: relationship.basis, label: "Series-scoped normalized inventory ID" },
-      collectionSeries: { ...relationship.collectionSeries },
-      earlierEndpoint,
-      laterEndpoint,
-      caution: SAME_INVENTORY_CAUTION
-    };
-  }
-  lineageDisplayLabel("presentationStatus", "suspected");
+  requireLineage(relationship.relationship === "same-inventory");
+  lineageDisplayLabel("presentationStatus", "known");
   lineageDisplayLabel("rawRelationship", relationship.relationship);
   lineageDisplayLabel("rawRelationshipStatus", relationship.status);
-  lineageDisplayLabel("identityMethod", relationship.identity.method);
-  lineageDisplayLabel("evidenceStrength", relationship.evidence.strength);
-  lineageDisplayLabel("massMatch", relationship.evidence.massMatch);
-  relationship.evidence.factCodes.forEach((code) => lineageDisplayLabel("factCode", code));
-  relationship.evidence.cautionCodes.forEach((code) => lineageDisplayLabel("cautionCode", code));
-  lineageDisplayLabel("reviewStatus", relationship.review.status);
-  lineageDisplayLabel("reviewOutcome", relationship.review.outcome);
   return {
-    kind: "possible-match",
-    presentationStatus: "suspected",
+    kind: "same-inventory",
+    presentationStatus: "known",
     rawRelationship: relationship.relationship,
     rawStatus: relationship.status,
     relationshipId: relationship.id,
     displayName: relationship.displayName,
-    basis: { code: relationship.basis, label: "Identity and reported-mass comparison" },
-    identity: { ...relationship.identity },
-    evidence: { ...relationship.evidence, factCodes: [...relationship.evidence.factCodes], cautionCodes: [...relationship.evidence.cautionCodes] },
-    review: { ...relationship.review, citations: relationship.review.citations.map((citation) => ({ ...citation })) },
+    basis: { code: relationship.basis, label: "Series-scoped normalized inventory ID" },
+    collectionSeries: { ...relationship.collectionSeries },
     earlierEndpoint,
     laterEndpoint,
-    caution: POSSIBLE_MATCH_CAUTION
+    caution: SAME_INVENTORY_CAUTION
   };
 }
 
@@ -2327,8 +2372,77 @@ function deriveSourceAttestedGroupIndex(groups) {
   return index;
 }
 
-function deriveEarlierRecordIndex(lineageData, sourceRecords, registry) {
+function comparisonCandidateDto(candidate, sourceRecordsById) {
+  return {
+    evidence: {
+      strength: candidate.evidence.strength,
+      massMatch: candidate.evidence.massMatch,
+      absoluteDifferenceGrams: candidate.evidence.absoluteDifferenceGrams,
+      relativeDifference: candidate.evidence.relativeDifference,
+      factCodes: [...candidate.evidence.factCodes],
+      cautionCodes: [...candidate.evidence.cautionCodes]
+    },
+    review: { ...candidate.review, citations: candidate.review.citations.map((citation) => ({ ...citation })) },
+    endpoints: candidate.observations.map((observation) => lineageEndpointDto(observation, sourceRecordsById))
+  };
+}
+
+function hasRequiredComparisonReview(candidate, reviewRequired) {
+  return !reviewRequired || (candidate?.review?.status === "reviewed" &&
+    ["retain-as-possible", "not-supported"].includes(candidate.review.outcome));
+}
+
+function isRenderableComparisonCandidate(candidate) {
+  return candidate?.review?.outcome !== "not-supported";
+}
+
+function comparisonGroupDto(group, sourceRecordsById) {
+  const candidates = group.candidates.filter(isRenderableComparisonCandidate);
+  return {
+    groupId: group.id,
+    displayName: group.displayName,
+    identity: { ...group.identity },
+    massPair: group.massPair.map((item) => ({ ...item })),
+    candidateCount: candidates.length,
+    candidates: candidates.map((candidate) => comparisonCandidateDto(candidate, sourceRecordsById)),
+    caution: COMPARISON_CAUTION
+  };
+}
+
+function buildComparisonGroupIndex(lineageData, sourceRecords) {
+  const index = new Map();
+  const sourceRecordsById = new Map(sourceRecords.map((record) => [record.id, record]));
+  lineageData.comparisonGroups.forEach((group) => {
+    const candidates = group.candidates.filter(isRenderableComparisonCandidate);
+    if (!candidates.length) return;
+    const comparison = comparisonGroupDto(group, sourceRecordsById);
+    const endpoints = new Map(candidates.flatMap(({ observations }) => observations.map((observation) => [
+      `${observation.recordId}\u0000${observation.massPath}`,
+      observation
+    ])));
+    endpoints.forEach((observation) => {
+      const entries = index.get(observation.recordId) || [];
+      entries.push({
+        kind: "comparison-route",
+        groupId: group.id,
+        massPath: observation.massPath,
+        currentObservation: observation,
+        comparison
+      });
+      index.set(observation.recordId, entries);
+    });
+  });
+  index.forEach((entries) => entries.sort((left, right) => left.groupId.localeCompare(right.groupId) ||
+    left.massPath.localeCompare(right.massPath)));
+  return index;
+}
+
+function deriveComparisonGroupIndex(lineageData, sourceRecords, registry) {
   validateLineageCandidates(lineageData, sourceRecords, registry);
+  return buildComparisonGroupIndex(lineageData, sourceRecords);
+}
+
+function buildEarlierRecordIndex(lineageData, sourceRecords, registry) {
   const index = new Map();
   const sourceRecordsById = new Map(sourceRecords.map((record) => [record.id, record]));
   const sourceAttestedGroupsByMember = deriveSourceAttestedGroupIndex(lineageData.sourceAttestedGroups);
@@ -2340,7 +2454,6 @@ function deriveEarlierRecordIndex(lineageData, sourceRecords, registry) {
     }
   });
   lineageData.relationships.forEach((relationship) => {
-    if (relationship.review?.outcome === "not-supported") return;
     const pair = chronologicalEarlierPair(relationship.observations);
     if (!pair) return;
     const claim = relationshipClaimDto(relationship, pair, sourceRecordsById);
@@ -2357,16 +2470,33 @@ function deriveEarlierRecordIndex(lineageData, sourceRecords, registry) {
   return index;
 }
 
+function deriveEarlierRecordIndex(lineageData, sourceRecords, registry) {
+  validateLineageCandidates(lineageData, sourceRecords, registry);
+  return buildEarlierRecordIndex(lineageData, sourceRecords, registry);
+}
+
+function deriveLineageAndComparisonIndexes(lineageData, sourceRecords, registry) {
+  validateLineageCandidates(lineageData, sourceRecords, registry);
+  return {
+    lineageIndex: buildEarlierRecordIndex(lineageData, sourceRecords, registry),
+    comparisonIndex: buildComparisonGroupIndex(lineageData, sourceRecords)
+  };
+}
+
 async function loadEarlierRecordIndex(sourceRecords = records, registry = catalogRegistry, fetcher = fetch, options = {}) {
+  return (await loadLineageAndComparisonIndexes(sourceRecords, registry, fetcher, options)).lineageIndex;
+}
+
+async function loadLineageAndComparisonIndexes(sourceRecords = records, registry = catalogRegistry, fetcher = fetch, options = {}) {
   try {
     const response = await fetcher(`./data/specimen-lineages.json?v=${CACHE_VERSION}`, { cache: "no-cache" });
-    if (!response.ok) return new Map();
+    if (!response.ok) return { lineageIndex: new Map(), comparisonIndex: new Map() };
     const text = await response.text();
     const digest = await (options.sha256 || sha256Text)(text);
-    if (digest !== SPECIMEN_LINEAGE_DATA_SHA256) return new Map();
-    return deriveEarlierRecordIndex(JSON.parse(text), sourceRecords, registry);
+    if (digest !== SPECIMEN_LINEAGE_DATA_SHA256) return { lineageIndex: new Map(), comparisonIndex: new Map() };
+    return deriveLineageAndComparisonIndexes(JSON.parse(text), sourceRecords, registry);
   } catch {
-    return new Map();
+    return { lineageIndex: new Map(), comparisonIndex: new Map() };
   }
 }
 
@@ -2822,19 +2952,47 @@ function renderableLineageClaimsForCard(descriptor, entries = [], registry = cat
   return claims;
 }
 
+function comparisonGroupsForSpecimenCard(descriptor, entries = []) {
+  if (!descriptor?.parentRecord || !Array.isArray(entries)) return [];
+  const record = descriptor.parentRecord;
+  const cardKind = classifyHarmonizedCard(descriptor);
+  if (![HARMONIZED_CARD_KINDS.specimen, HARMONIZED_CARD_KINDS.atomic].includes(cardKind)) return [];
+  return entries.filter((entry) => {
+    if (entry.kind !== "comparison-route" || entry.currentObservation.recordId !== record.id) return false;
+    if (descriptor.projected) {
+      return descriptor.kind === "atomic" && descriptor.repeatedMass === null && descriptor.massPath !== null &&
+        descriptor.massPath === entry.massPath;
+    }
+    return ["specimen", "table-a-specimen"].includes(record.recordModel) && entry.massPath === "weight.grams";
+  }).map(({ comparison }) => comparison);
+}
+
+function comparisonCardDto(descriptor, entries = []) {
+  const groups = comparisonGroupsForSpecimenCard(descriptor, entries);
+  const candidateCount = groups.reduce((sum, group) => sum + group.candidateCount, 0);
+  return {
+    cardKey: `${descriptor.parentRecord.id}\u0000${descriptor.projected ? descriptor.massPath : "@direct"}`,
+    summary: {
+      groupCount: groups.length,
+      candidateCount,
+      text: `${integerFormat.format(groups.length)} cross-catalog comparison ${groups.length === 1 ? "group" : "groups"} · ${integerFormat.format(candidateCount)} candidate ${candidateCount === 1 ? "pairing" : "pairings"}`
+    },
+    warning: COMPARISON_CAUTION,
+    groups
+  };
+}
+
 function lineageCardDto(descriptor, entries = [], registry = catalogRegistry) {
   const claims = renderableLineageClaimsForCard(descriptor, entries, registry);
   const knownCount = claims.filter(({ presentationStatus }) => presentationStatus === "known").length;
-  const suspectedCount = claims.filter(({ presentationStatus }) => presentationStatus === "suspected").length;
   const tentativeCount = claims.filter(({ presentationStatus }) => presentationStatus === "tentative").length;
-  requireLineage(knownCount + suspectedCount + tentativeCount === claims.length);
+  requireLineage(knownCount + tentativeCount === claims.length);
   return {
     cardKey: `${descriptor.parentRecord.id}\u0000${descriptor.projected ? descriptor.massPath : "@direct"}`,
     summary: {
       knownCount,
-      suspectedCount,
       tentativeCount,
-      text: `Known same-inventory continuity: ${knownCount} | Suspected cross-catalog matches: ${suspectedCount} | Source-attested tentative groups: ${tentativeCount}`
+      text: `Known same-inventory continuity: ${knownCount} | Source-attested tentative groups: ${tentativeCount}`
     },
     claims
   };
@@ -3189,6 +3347,7 @@ async function loadData() {
   const currentLoadToken = ++loadToken;
   folioManifest = null;
   earlierRecordsByLaterId = new Map();
+  comparisonGroupsByRecordId = new Map();
   specimenCardProjectionsByParentId = new Map();
   setLoadingState();
   try {
@@ -3212,10 +3371,11 @@ async function loadData() {
       specimenCardProjectionsByParentId = index;
       if (index.size) render();
     });
-    loadEarlierRecordIndex(records, catalogRegistry).then((index) => {
+    loadLineageAndComparisonIndexes(records, catalogRegistry).then(({ lineageIndex, comparisonIndex }) => {
       if (currentLoadToken !== loadToken) return;
-      earlierRecordsByLaterId = index;
-      if (index.size || elements.lineageOnly.checked) render();
+      earlierRecordsByLaterId = lineageIndex;
+      comparisonGroupsByRecordId = comparisonIndex;
+      if (lineageIndex.size || comparisonIndex.size || elements.lineageOnly.checked) render();
     });
     loadFolioManifest().then((manifest) => {
       if (currentLoadToken !== loadToken) return;
@@ -3789,7 +3949,9 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
 
   if (specimen) {
     const sourceLineage = Array.isArray(options.lineageEntries) ? options.lineageEntries : [];
+    const sourceComparisons = Array.isArray(options.comparisonEntries) ? options.comparisonEntries : [];
     const lineage = lineageCardDto(descriptor, sourceLineage, options.registry || catalogRegistry);
+    const comparison = comparisonCardDto(descriptor, sourceComparisons);
     const grams = kind === HARMONIZED_CARD_KINDS.atomic
       ? descriptor.repeatedMass
         ? resolveSpecimenCardRepeatedMass(record, descriptor.holdingPath, descriptor.repeatedMass)?.grams
@@ -3800,6 +3962,7 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
     const qualitativeWeight = kind === HARMONIZED_CARD_KINDS.atomic
       ? descriptor.qualitativeWeightEvidence?.statement : record.weightEvidence?.statement;
     if (lineage.claims.length) facts.push({ label: "Lineage", value: lineage.summary.text });
+    if (comparison.groups.length) facts.push({ label: "Cross-catalog comparisons", value: comparison.summary.text });
     addKnownFact("Specimen weight", Number.isFinite(grams) ? formatMass(grams) : qualitativeWeight);
     facts.push(...victoriaConflictFacts(record));
   }
@@ -3823,7 +3986,8 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
     sourceLabel: record.catalogLabel || record.catalogId,
     catalogId: record.catalogId,
     catalogPages: recordCatalogPages(record),
-    lineage: specimen ? lineageCardDto(descriptor, Array.isArray(options.lineageEntries) ? options.lineageEntries : [], options.registry || catalogRegistry) : null
+    lineage: specimen ? lineageCardDto(descriptor, Array.isArray(options.lineageEntries) ? options.lineageEntries : [], options.registry || catalogRegistry) : null,
+    comparison: specimen ? comparisonCardDto(descriptor, Array.isArray(options.comparisonEntries) ? options.comparisonEntries : []) : null
   };
 }
 
@@ -3841,7 +4005,8 @@ function createRecordCard(recordOrDescriptor) {
   const descriptor = recordOrDescriptor?.parentRecord ? recordOrDescriptor : parentSpecimenCardDescriptor(recordOrDescriptor);
   const record = descriptor.parentRecord;
   const dto = presentHarmonizedCard(descriptor, {
-    lineageEntries: earlierRecordsByLaterId.get(record.id) || []
+    lineageEntries: earlierRecordsByLaterId.get(record.id) || [],
+    comparisonEntries: comparisonGroupsByRecordId.get(record.id) || []
   });
   const card = elements.template.content.firstElementChild.cloneNode(true);
   card.dataset.cardKind = dto.kind;
@@ -3876,6 +4041,7 @@ function createRecordCard(recordOrDescriptor) {
   meta.replaceChildren();
   dto.facts.forEach(({ label, value }) => appendMetaRow(meta, label, value));
   if (dto.lineage?.claims.length) card.querySelector(".record-footer").before(renderLineageClaims(dto.lineage));
+  if (dto.comparison?.groups.length) card.querySelector(".record-footer").before(renderComparisonGroups(dto.comparison));
 
   [".metbull-name", ".specimen-position", ".record-weight", ".record-holdings", ".earlier-records"]
     .forEach((selector) => card.querySelector(selector)?.remove());
@@ -3990,6 +4156,67 @@ function renderLineageClaims(lineage) {
   return section;
 }
 
+function renderComparisonGroups(comparison) {
+  const section = document.createElement("section");
+  section.className = "comparison-groups";
+  section.setAttribute("aria-label", "Cross-catalog comparison candidates");
+  const heading = document.createElement("h4");
+  heading.textContent = "Cross-catalog comparisons";
+  const summary = document.createElement("p");
+  summary.className = "comparison-summary";
+  summary.textContent = comparison.summary.text;
+  const warning = document.createElement("p");
+  warning.className = "comparison-warning";
+  warning.setAttribute("role", "note");
+  warning.textContent = comparison.warning;
+  const list = document.createElement("ol");
+  comparison.groups.forEach((group) => {
+    const item = document.createElement("li");
+    const details = document.createElement("details");
+    const disclosure = document.createElement("summary");
+    disclosure.textContent = `${group.displayName} · ${group.massPair.map(({ massGrams }) => formatMass(massGrams)).join(" / ")} · ${integerFormat.format(group.candidateCount)} candidate ${group.candidateCount === 1 ? "pairing" : "pairings"}`;
+    details.append(disclosure);
+    appendLineageText(details, "Identity comparison", lineageDisplayLabel("identityMethod", group.identity.method));
+    if (group.identity.canonicalName) appendLineageText(details, "Canonical name", group.identity.canonicalName);
+    appendLineageText(details, "Compared catalogs", group.massPair.map(({ catalogId }) => catalogDropdownLabel(catalogRegistry[catalogId], catalogId)).join(" / "));
+    const candidates = document.createElement("ol");
+    candidates.className = "comparison-candidates";
+    group.candidates.forEach((candidate, index) => {
+      const candidateItem = document.createElement("li");
+      const candidateDetails = document.createElement("details");
+      const candidateSummary = document.createElement("summary");
+      candidateSummary.textContent = `Candidate pairing ${integerFormat.format(index + 1)} of ${integerFormat.format(group.candidateCount)} · ${lineageDisplayLabel("massMatch", candidate.evidence.massMatch)}`;
+      candidateDetails.append(candidateSummary);
+      appendLineageText(candidateDetails, "Matching facts", candidate.evidence.factCodes.map((code) => lineageDisplayLabel("factCode", code)).join("; "));
+      appendLineageText(candidateDetails, "Evidence cautions", candidate.evidence.cautionCodes.map((code) => lineageDisplayLabel("cautionCode", code)).join("; "));
+      appendLineageText(candidateDetails, "Review status", lineageDisplayLabel("reviewStatus", candidate.review.status));
+      if (candidate.review.status === "reviewed") {
+        appendLineageText(candidateDetails, "Review outcome", lineageDisplayLabel("reviewOutcome", candidate.review.outcome));
+        appendLineageText(candidateDetails, "Reviewed on", candidate.review.reviewedOn);
+        if (candidate.review.publicNote) appendLineageText(candidateDetails, "Review note", candidate.review.publicNote);
+        candidate.review.citations.forEach((citation) => {
+          const citationLink = document.createElement("a");
+          citationLink.href = citation.url;
+          citationLink.target = "_blank";
+          citationLink.rel = "noopener noreferrer";
+          citationLink.textContent = citation.label;
+          candidateDetails.append(citationLink);
+        });
+      }
+      candidate.endpoints.forEach((endpoint, endpointIndex) => appendLineageEndpoint(
+        candidateDetails, `Catalog observation ${endpointIndex + 1}`, endpoint
+      ));
+      candidateItem.append(candidateDetails);
+      candidates.append(candidateItem);
+    });
+    details.append(candidates);
+    item.append(details);
+    list.append(item);
+  });
+  section.append(heading, summary, warning, list);
+  return section;
+}
+
 function lineageClaimDisclosureText(claim) {
   const status = lineageDisplayLabel("presentationStatus", claim.presentationStatus);
   return claim.kind === "source-attested-tentative-group"
@@ -4002,9 +4229,9 @@ function formatLineageSummary(value) {
     if (!value) return "No lineage known";
     return `${integerFormat.format(value)} earlier lineage ${value === 1 ? "record" : "records"}`;
   }
-  if (value.every(({ presentationStatus }) => ["known", "suspected", "tentative"].includes(presentationStatus))) {
+  if (value.every(({ presentationStatus }) => ["known", "tentative"].includes(presentationStatus))) {
     const count = (status) => value.filter(({ presentationStatus }) => presentationStatus === status).length;
-    return `Known same-inventory continuity: ${count("known")} | Suspected cross-catalog matches: ${count("suspected")} | Source-attested tentative groups: ${count("tentative")}`;
+    return `Known same-inventory continuity: ${count("known")} | Source-attested tentative groups: ${count("tentative")}`;
   }
   const groupCount = value.filter(({ kind }) => ["group-route", "source-attested-tentative-group"].includes(kind)).length;
   const earlierCount = value.length - groupCount;
@@ -4477,6 +4704,7 @@ if (typeof module !== "undefined" && module.exports) {
     SPECIMEN_CARD_PROJECTION_SET_SHA256,
     SPECIMEN_CARD_SOURCE_CATALOG_SHA256,
     SPECIMEN_LINEAGE_DATA_SHA256,
+    COMPARISON_REVIEW_PARTITION_SHA256,
     SOURCE_CLAIMS_CONTENT_SHA256,
     LINEAGE_SHA256: SPECIMEN_LINEAGE_DATA_SHA256,
     LINEAGE_DISPLAY_LABELS,
@@ -4491,6 +4719,7 @@ if (typeof module !== "undefined" && module.exports) {
     FACTUAL_FORMULA_VALID_SUFFIXES,
     calculateStatistics,
     calculateLineageCounts,
+    buildComparisonGroupIndex,
     createIssueReportChallenge,
     chronologicalEarlierPair,
     catalogDropdownLabel,
@@ -4503,6 +4732,8 @@ if (typeof module !== "undefined" && module.exports) {
     containsUnsafePath,
     designationComponents,
     deriveEarlierRecordIndex,
+    deriveComparisonGroupIndex,
+    deriveLineageAndComparisonIndexes,
     deriveSourceAttestedGroupIndex,
     deriveSpecimenCardProjectionIndex,
     expandSpecimenCardDescriptors,
@@ -4524,9 +4755,11 @@ if (typeof module !== "undefined" && module.exports) {
     harmonizedCardNameLabel,
     harmonizedCardNullNameHeading,
     hasMatchingFolioPolicy,
+    hasRequiredComparisonReview,
     isDesignationQuery,
     isSingleResultCount,
     isKnownCardFact,
+    isRenderableComparisonCandidate,
     isSafeLineageSearchUrl,
     isSafeFolioPath,
     isValidFolioAlt,
@@ -4534,6 +4767,7 @@ if (typeof module !== "undefined" && module.exports) {
     metbullPanelDetails,
     namesAreDisplayEquivalent,
     loadEarlierRecordIndex,
+    loadLineageAndComparisonIndexes,
     loadSpecimenCardProjectionIndex,
     normalizeWeightRange,
     normalizeFolioAlt,
@@ -4566,6 +4800,8 @@ if (typeof module !== "undefined" && module.exports) {
     serializeUrlFilters,
     lineageEntriesForSpecimenCard,
     lineageCardDto,
+    comparisonGroupsForSpecimenCard,
+    comparisonCardDto,
     lineageClaimDisclosureText,
     lineageDisplayLabel,
     paginateSpecimenCardDescriptors,

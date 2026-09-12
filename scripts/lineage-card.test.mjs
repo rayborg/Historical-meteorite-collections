@@ -2,114 +2,74 @@ import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { access, readFile } from "node:fs/promises";
 import { createRequire } from "node:module";
-import path from "node:path";
 import test from "node:test";
-import { fileURLToPath } from "node:url";
 
 const require = createRequire(import.meta.url);
-const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const app = require(path.join(projectRoot, "app.js"));
-const [lineageText, catalogText, projectionText] = await Promise.all([
-  readFile(path.join(projectRoot, "data", "specimen-lineages.json"), "utf8"),
-  readFile(path.join(projectRoot, "data", "catalog.json"), "utf8"),
-  readFile(path.join(projectRoot, "data", "specimen-card-projections.json"), "utf8"),
+const app = require("../app.js");
+const [lineageText, catalogText, projectionText, html, css, source] = await Promise.all([
+  readFile(new URL("../data/specimen-lineages.json", import.meta.url), "utf8"),
+  readFile(new URL("../data/catalog.json", import.meta.url), "utf8"),
+  readFile(new URL("../data/specimen-card-projections.json", import.meta.url), "utf8"),
+  readFile(new URL("../index.html", import.meta.url), "utf8"),
+  readFile(new URL("../styles.css", import.meta.url), "utf8"),
+  readFile(new URL("../app.js", import.meta.url), "utf8"),
 ]);
 const catalog = JSON.parse(catalogText);
 const lineageData = JSON.parse(lineageText);
 const registry = app.normalizeCatalogRegistry(catalog.metadata);
 const records = catalog.records.map((record, index) => app.prepareRecord(record, index, registry));
+const projectionIndex = app.deriveSpecimenCardProjectionIndex(JSON.parse(projectionText), records, {
+  sourceCatalogSha256: createHash("sha256").update(catalogText).digest("hex"),
+});
+const descriptors = app.expandSpecimenCardDescriptors(records, projectionIndex);
+const lineageIndex = app.deriveEarlierRecordIndex(lineageData, records, registry);
+const comparisonIndex = app.deriveComparisonGroupIndex(lineageData, records, registry);
 
-function clone(value) {
-  return structuredClone(value);
-}
+const clone = structuredClone;
+const flattenIndex = (index) => [...index.values()].flat();
+const sameInventory = (data, inventoryId = "h160.1") => data.relationships.find((relationship) =>
+  relationship.collectionSeries.inventoryId === inventoryId);
 
-function entryCount(index) {
-  return [...index.values()].reduce((sum, entries) => sum + entries.length, 0);
-}
-
-function possible(data) {
-  return data.relationships.find(({ relationship, review }) => relationship === "possible-match" && review.status === "unreviewed");
-}
-
-function sameInventory(data, inventoryId = "h160.1") {
-  return data.relationships.find((relationship) => relationship.relationship === "same-inventory" && relationship.collectionSeries.inventoryId === inventoryId);
-}
-
-function recomputeCounts(data) {
-  const calculated = app.calculateLineageCounts(data.relationships, {
-    identityResolvedInventoryCollisionCount: data.metadata.counts.identityResolvedInventoryCollisionCount,
-    omittedAmbiguousInventoryKeyCount: data.metadata.counts.omittedAmbiguousInventoryKeyCount,
+test("main template presents lineage and comparisons through separate harmonized card contracts", async () => {
+  assert.doesNotMatch(html, /possible-specimen-lineages\.html/u);
+  assert.match(html, /<p class="record-semantic-label"><\/p>/u);
+  assert.match(html, /<dl class="record-meta" aria-label="Catalog record details"><\/dl>/u);
+  assert.doesNotMatch(html, /lineage-row|earlier-records/u);
+  const record = records.find(({ catalogId, designation }) =>
+    catalogId === "huss-1986" && designation === "(2)H160.1");
+  const dto = app.presentHarmonizedCard(record, {
+    lineageEntries: lineageIndex.get(record.id),
+    comparisonEntries: comparisonIndex.get(record.id),
+    registry,
   });
-  data.metadata.counts = {
-    ...calculated,
-    catalogPairs: [...calculated.catalogPairs]
-      .sort(([left], [right]) => left.localeCompare(right))
-      .map(([catalogPair, counts]) => ({ catalogPair, ...counts })),
-  };
-}
-
-const forgedFactMutations = [
-  (data) => { data.relationships[0].observations[0].sourceName = "Forged source name"; },
-  (data) => {
-    const observation = data.relationships[0].observations[0];
-    observation.sourceRecordLabel = "Forged record label";
-    observation.catalogSearchUrl = `./index.html?catalog=${encodeURIComponent(observation.catalogId)}&q=${encodeURIComponent(observation.sourceRecordLabel)}#catalog`;
-  },
-  (data) => { data.relationships[0].observations[0].catalogLabel = "Forged catalog"; },
-  (data) => { data.relationships[0].observations[0].catalogYear += 1; },
-  (data) => { possible(data).evidence.factCodes[0] = "unknown-fact"; },
-  (data) => { possible(data).evidence.factCodes.push(possible(data).evidence.factCodes[0]); },
-  (data) => { possible(data).evidence.strength = "multiple-matching-facts"; },
-  (data) => { sameInventory(data).collectionSeries.inventoryId = "forged"; },
-];
-
-test("main template presents lineage through the harmonized specimen contract", async () => {
-  const [html, css, source] = await Promise.all([
-    readFile(path.join(projectRoot, "index.html"), "utf8"),
-    readFile(path.join(projectRoot, "styles.css"), "utf8"),
-    readFile(path.join(projectRoot, "app.js"), "utf8"),
-  ]);
-  assert.doesNotMatch(html, /possible-specimen-lineages\.html/);
-  assert.match(html, /<p class="record-semantic-label"><\/p>/);
-  assert.match(html, /<dl class="record-meta" aria-label="Catalog record details"><\/dl>/);
-  assert.doesNotMatch(html, /lineage-row|earlier-records/);
-  const index = app.deriveEarlierRecordIndex(lineageData, records, registry);
-  const record = records.find(({ catalogId, designation }) => catalogId === "huss-1986" && designation === "(2)H160.1");
-  const dto = app.presentHarmonizedCard(record, { lineageEntries: index.get(record.id) });
   assert.deepEqual(dto.facts.find(({ label }) => label === "Lineage"), {
-    label: "Lineage", value: "Known same-inventory continuity: 1 | Suspected cross-catalog matches: 0 | Source-attested tentative groups: 0"
+    label: "Lineage",
+    value: "Known same-inventory continuity: 1 | Source-attested tentative groups: 0",
   });
-  assert.doesNotMatch(source, /\.innerHTML\b/);
-  assert.doesNotMatch(css, /\.earlier-records \{/);
-  assert.equal(app.CACHE_VERSION, "20260912-all-source-numbers-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260912-all-source-numbers-1");
-  assert.match(html, /styles\.css\?v=20260912-all-source-numbers-1/);
-  assert.match(html, /app\.js\?v=20260912-all-source-numbers-1/);
+  assert(dto.comparison === null || dto.comparison.groups.every(({ groupId }) => groupId.startsWith("comparison-group-")));
+  assert.doesNotMatch(source, /\.innerHTML\b/u);
+  assert.doesNotMatch(css, /\.earlier-records \{/u);
   for (const file of ["possible-specimen-lineages.html", "possible-specimen-lineages.css", "possible-specimen-lineages.js"]) {
-    await assert.rejects(access(path.join(projectRoot, file)));
+    await assert.rejects(access(new URL(`../${file}`, import.meta.url)));
   }
 });
 
-test("lineage filter markup and asynchronous settlement remain fail-closed", async () => {
-  const [html, source] = await Promise.all([
-    readFile(path.join(projectRoot, "index.html"), "utf8"),
-    readFile(path.join(projectRoot, "app.js"), "utf8"),
-  ]);
-  assert.match(html, /<label class="filter-toggle lineage-field">\s*<input id="lineage-only" name="lineage" type="checkbox" value="1">\s*<span>Source-complete lineage claims only<\/span>\s*<\/label>/);
-  assert.match(html, /<input id="include-unknown-weight" name="include-unknown-weight" type="checkbox">/);
-  assert.match(source, /filterSpecimenCardDescriptors\([\s\S]*earlierRecordsByLaterId/);
-  assert.match(source, /if \(index\.size \|\| elements\.lineageOnly\.checked\) render\(\);/);
-  assert.match(source, /filters\.lineageOnly \|\| filters\.includeUnknownWeight === true \|\| filters\.sort !== DEFAULT_SORT/);
-  assert.match(source, /function clearFilters\(\) \{\s*elements\.form\.reset\(\);/);
-  assert.doesNotMatch(source, /\.innerHTML\b/);
+test("lineage filter markup and asynchronous settlement remain fail-closed", () => {
+  assert.match(html, /<label class="filter-toggle lineage-field">\s*<input id="lineage-only" name="lineage" type="checkbox" value="1">\s*<span>Source-complete lineage claims only<\/span>\s*<\/label>/u);
+  assert.match(html, /<input id="include-unknown-weight" name="include-unknown-weight" type="checkbox">/u);
+  assert.match(source, /filterSpecimenCardDescriptors\([\s\S]*earlierRecordsByLaterId/u);
+  assert.match(source, /if \(lineageIndex\.size \|\| comparisonIndex\.size \|\| elements\.lineageOnly\.checked\) render\(\);/u);
+  assert.match(source, /filters\.lineageOnly \|\| filters\.includeUnknownWeight === true \|\| filters\.sort !== DEFAULT_SORT/u);
+  assert.match(source, /function clearFilters\(\) \{\s*elements\.form\.reset\(\);/u);
+  assert.doesNotMatch(source, /\.innerHTML\b/u);
 });
 
-test("every card receives a concise lineage summary", () => {
+test("concise lineage summaries retain zero, singular, plural, and tentative behavior", () => {
   assert.equal(app.formatLineageSummary(0), "No lineage known");
   assert.equal(app.formatLineageSummary(1), "1 earlier lineage record");
   assert.equal(app.formatLineageSummary(98), "98 earlier lineage records");
   assert.equal(app.formatLineageSummary([{ presentationStatus: "tentative" }]),
-    "Known same-inventory continuity: 0 | Suspected cross-catalog matches: 0 | Source-attested tentative groups: 1");
+    "Known same-inventory continuity: 0 | Source-attested tentative groups: 1");
 });
 
 test("real catalog Allende search retains reviewed names and synonyms without Alais infix matches", () => {
@@ -147,20 +107,18 @@ test("real release locks all catalogs and chronological dropdown entries", () =>
     "nininger-1933", "reeds-1937", "astapovich-1938", "hodge-smith-1939", "barnes-1940", "nininger-1950", "mason-1964",
     "huss-1976", "victoria-land-1982", "huss-1986", "kanagawa-1996", "asu-2024-09",
   ]);
-  assert.equal(app.catalogDropdownLabel(registry["anderson-1913"], "anderson-1913"), "Anderson (1913)");
-  assert.equal(app.catalogDropdownLabel(registry["kantor-1920"], "kantor-1920"), "Kantor (1920)");
-  assert.equal(app.catalogDropdownLabel(registry["astapovich-1938"], "astapovich-1938"), "Astapovich (1938)");
-  assert.equal(app.catalogDropdownLabel(registry["merrill-1916"], "merrill-1916"), "Merrill (1916)");
-  assert.equal(app.catalogDropdownLabel(registry["ward-1881"], "ward-1881"), "Ward (1881)");
-  assert.equal(app.catalogDropdownLabel(registry["ward-1904"], "ward-1904"), "Ward (1904)");
-  assert.equal(app.catalogDropdownLabel(registry["farrington-1916"], "farrington-1916"), "Farrington (1916)");
-  assert.equal(app.catalogDropdownLabel(registry["foote-1912"], "foote-1912"), "Foote (1912)");
-  assert.equal(app.catalogDropdownLabel(registry["fletcher-1904"], "fletcher-1904"), "Fletcher (1904)");
-  assert.equal(app.catalogDropdownLabel(registry["prior-1923"], "prior-1923"), "Prior (1923)");
-  assert.equal(app.catalogDropdownLabel(registry["madrid-1923"], "madrid-1923"), "Madrid (1923)");
-  assert.equal(app.catalogDropdownLabel(registry["palache-1926"], "palache-1926"), "Palache (1926)");
-  assert.equal(app.catalogDropdownLabel(registry["reeds-1937"], "reeds-1937"), "Reeds (1937)");
-  assert.equal(app.catalogDropdownLabel(registry["kanagawa-1996"], "kanagawa-1996"), "Kanagawa (1996)");
+  const expectedLabels = {
+    "anderson-1913": "Anderson (1913)", "kantor-1920": "Kantor (1920)",
+    "astapovich-1938": "Astapovich (1938)", "merrill-1916": "Merrill (1916)",
+    "ward-1881": "Ward (1881)", "ward-1904": "Ward (1904)",
+    "farrington-1916": "Farrington (1916)", "foote-1912": "Foote (1912)",
+    "fletcher-1904": "Fletcher (1904)", "prior-1923": "Prior (1923)",
+    "madrid-1923": "Madrid (1923)", "palache-1926": "Palache (1926)",
+    "reeds-1937": "Reeds (1937)", "kanagawa-1996": "Kanagawa (1996)",
+  };
+  for (const [catalogId, label] of Object.entries(expectedLabels)) {
+    assert.equal(app.catalogDropdownLabel(registry[catalogId], catalogId), label);
+  }
 });
 
 test("new facts-only catalogs filter, search, sort, and retain catalog-scoped pages", () => {
@@ -170,7 +128,6 @@ test("new facts-only catalogs filter, search, sort, and retain catalog-scoped pa
     "kantor-1920": { count: 30, query: "Caperr Aiken", id: "obs-8a2c7865-6048-4576-b52f-17bc489d3506", pages: [107, 108, 109] },
     "madrid-1923": { count: 130, query: "Agen", id: "obs-a6a576fb-4a5c-42b0-ad4d-b71a78632453", pages: [226] },
   };
-
   for (const [catalogId, item] of Object.entries(expected)) {
     const filtered = app.filterRecords(records, { query: "", catalog: catalogId, min: null, max: null, sort: app.DEFAULT_SORT });
     assert.equal(filtered.length, item.count);
@@ -178,13 +135,8 @@ test("new facts-only catalogs filter, search, sort, and retain catalog-scoped pa
     assert.deepEqual(searched.map(({ id }) => id), [item.id]);
     assert.deepEqual(app.recordCatalogPages(searched[0]), item.pages);
   }
-
   const weighted = app.filterRecords(records, {
-    query: "",
-    catalog: "kantor-1920",
-    min: null,
-    max: null,
-    sort: "weight-desc",
+    query: "", catalog: "kantor-1920", min: null, max: null, sort: "weight-desc",
   });
   assert.equal(weighted[0].id, expected["kantor-1920"].id);
   assert.deepEqual(app.recordMasses(weighted[0]), [114000]);
@@ -203,288 +155,342 @@ test("chronological mapping copies pairs and excludes equal-year comparisons", (
   ]), null);
 });
 
-test("strict runtime validation rejects malformed or forged enhancement data", () => {
-  const mutations = [
-    (data) => { data.metadata.schemaVersion = 1; },
-    (data) => { data.metadata.scope = "candidate-only"; },
-    (data) => { data.metadata.collectionSeries[0].id = "forged"; },
-    (data) => { data.metadata.counts.relationshipCount += 1; },
-    (data) => { data.relationships[1].id = data.relationships[0].id; },
-    (data) => { data.relationships[1].observations[0].id = data.relationships[0].observations[0].id; },
-    (data) => { data.relationships[0].observations.pop(); },
-    (data) => { data.relationships[0].observations[0].recordId = "missing-record"; },
-    (data) => { data.relationships[0].observations[0].catalogSearchUrl = "https://example.org/"; },
-    (data) => { possible(data).status = "confirmed"; },
-    (data) => { sameInventory(data).relationship = "possible-match"; },
-    (data) => { data.sourceAttestedGroups[0].members[0] = "ALHA76006"; },
-    (data) => { data.metadata.source.sourceClaimsContentSha256 = "0".repeat(64); },
-    ...forgedFactMutations,
-  ];
-  for (const mutate of mutations) {
-    const candidate = clone(lineageData);
-    mutate(candidate);
-    assert.throws(() => app.validateLineageCandidates(candidate, records, registry), /specimen-lineage data/);
-  }
+test("schema v4 artifact is independently validated and reconstructed", () => {
+  assert.equal(app.validateLineageCandidates(lineageData, records, registry), lineageData);
+  assert.deepEqual({
+    schema: lineageData.metadata.schemaVersion,
+    relationships: lineageData.relationships.length,
+    sourceGroups: lineageData.sourceAttestedGroups.length,
+    comparisonGroups: lineageData.comparisonGroups.length,
+    candidates: lineageData.comparisonGroups.reduce((sum, group) => sum + group.candidates.length, 0),
+  }, { schema: 4, relationships: 194, sourceGroups: 21, comparisonGroups: 1541, candidates: 2245 });
+  assert.equal(createHash("sha256").update(lineageText).digest("hex"), app.SPECIMEN_LINEAGE_DATA_SHA256);
+  assert.equal(app.SPECIMEN_LINEAGE_DATA_SHA256, "b592065b07412b8d09d955f9276b2de0790a56f1649c7987a8b10bcc62c32199");
 });
 
-test("runtime rederives IDs and requires complete possible relationships", () => {
-  const forgedRelationship = clone(lineageData);
-  possible(forgedRelationship).id = "possible-lineage-00000000-0000-5000-8000-000000000000";
-  assert.throws(() => app.validateLineageCandidates(forgedRelationship, records, registry), /specimen-lineage data/);
-
-  const forgedObservation = clone(lineageData);
-  possible(forgedObservation).observations[0].id = "mass-observation-00000000-0000-5000-8000-000000000000";
-  assert.throws(() => app.validateLineageCandidates(forgedObservation, records, registry), /specimen-lineage data/);
-
-  const incomplete = clone(lineageData);
-  incomplete.relationships.splice(incomplete.relationships.findIndex(({ relationship }) => relationship === "possible-match"), 1);
-  recomputeCounts(incomplete);
-  assert.throws(() => app.validateLineageCandidates(incomplete, records, registry), /specimen-lineage data/);
+test("strict v4 validation rejects schema, partition, source, fact, review, and count mutations", () => {
+  const mutations = [
+    (data) => { data.metadata.schemaVersion = 3; },
+    (data) => { data.metadata.scope = "series-inventory-and-cross-source-candidates"; },
+    (data) => { data.metadata.methodology.possibleMatchIdentity = data.metadata.methodology.comparisonIdentity; },
+    (data) => { data.metadata.counts.comparisonCandidateCount += 1; },
+    (data) => { data.metadata.source.sourceClaimsContentSha256 = "0".repeat(64); },
+    (data) => { data.relationships[0].relationship = "possible-match"; },
+    (data) => { data.relationships[0].observations[0].sourceName = "Forged"; },
+    (data) => { data.comparisonGroups[0].type = "possible-lineage"; },
+    (data) => { data.comparisonGroups[0].massPair[0].massGrams += 1; },
+    (data) => { data.comparisonGroups[0].candidateCount += 1; },
+    (data) => { data.comparisonGroups[0].candidates[0].id = "comparison-candidate-00000000-0000-5000-8000-000000000000"; },
+    (data) => { data.comparisonGroups[0].candidates[0].observations[0].massGrams += 1; },
+    (data) => { data.comparisonGroups[0].candidates[0].evidence.factCodes.reverse(); },
+    (data) => { data.comparisonGroups.flatMap(({ candidates }) => candidates).find(({ review }) => review.status === "reviewed").review.reviewedOn = "2026-02-30"; },
+    (data) => { data.comparisonGroups.pop(); },
+  ];
+  for (const mutate of mutations) {
+    const changed = clone(lineageData);
+    mutate(changed);
+    assert.throws(() => app.validateLineageCandidates(changed, records, registry), /specimen-lineage data/u);
+  }
 });
 
 test("runtime collision validation rejects Rosebud as the Nininger 108b endpoint", () => {
   const forged = clone(lineageData);
   const relationship = sameInventory(forged, "108b");
   const observation = relationship.observations.find(({ catalogId }) => catalogId === "nininger-1950");
-  const rosebud = records.find(({ catalogId, designation, name }) => catalogId === "nininger-1950" && designation === "108b" && name === "Rosebud");
+  const rosebud = records.find(({ catalogId, designation, name }) =>
+    catalogId === "nininger-1950" && designation === "108b" && name === "Rosebud");
   observation.recordId = rosebud.id;
   observation.sourceName = rosebud.name;
   observation.canonicalName = rosebud.metbull.canonicalName;
   observation.meteoriteCode = rosebud.metbull.meteoriteCode;
   observation.massGrams = null;
-  assert.throws(() => app.validateLineageCandidates(forged, records, registry), /specimen-lineage data/);
+  assert.throws(() => app.validateLineageCandidates(forged, records, registry), /specimen-lineage data/u);
 });
 
-test("review outcomes apply only to possible matches and not-supported entries are omitted", () => {
-  const retained = clone(lineageData);
-  const target = possible(retained);
-  target.review = {
-    status: "reviewed",
-    outcome: "retain-as-possible",
-    reviewedOn: "2026-07-28",
-    publicNote: "Retained as a possible comparison.",
-    citations: [{ label: "Public evidence", url: "https://dead.beef/evidence" }],
+test("Sandia receives 108b continuity while Rosebud receives none", () => {
+  const sandia = records.find(({ catalogId, designation, name }) =>
+    catalogId === "nininger-1950" && designation === "108b" && name === "Sandia Mountains");
+  const rosebud = records.find(({ catalogId, designation, name }) =>
+    catalogId === "nininger-1950" && designation === "108b" && name === "Rosebud");
+  assert.equal(lineageIndex.get(sandia.id)[0].claim.earlierEndpoint.sourceName, "Sandia Mts.");
+  assert.equal(lineageIndex.get(sandia.id)[0].claim.collectionSeries.inventoryId, "108b");
+  assert.equal(lineageIndex.has(rosebud.id), false);
+});
+
+test("review outcomes remain comparison-only and the accepted review partition is fail-closed", () => {
+  const gatedCatalogs = new Set([
+    "brown-1916", "minnesota-1892", "greifswald-1895", "greifswald-1901",
+    "berlin-1903", "berlin-1904", "brauns-bonn-1926",
+  ]);
+  const reviewedGroup = lineageData.comparisonGroups.find(({ candidates }) => candidates.some(({ review, observations }) =>
+    review.status === "reviewed" && observations.some(({ catalogId }) => gatedCatalogs.has(catalogId))));
+  const reviewed = reviewedGroup.candidates.find(({ review, observations }) =>
+    review.status === "reviewed" && observations.some(({ catalogId }) => gatedCatalogs.has(catalogId)));
+  const unreviewedGroup = lineageData.comparisonGroups.find(({ candidates }) =>
+    candidates.some(({ review }) => review.status === "unreviewed"));
+  const unreviewed = unreviewedGroup.candidates.find(({ review }) => review.status === "unreviewed");
+  assert.equal(reviewed.review.outcome, "retain-as-possible");
+  assert(Number.isInteger(Date.parse(`${reviewed.review.reviewedOn}T00:00:00Z`)));
+  assert.deepEqual(unreviewed.review, {
+    status: "unreviewed", outcome: null, reviewedOn: null, publicNote: null, citations: [],
+  });
+  assert(flattenIndex(comparisonIndex).some(({ groupId }) => groupId === reviewedGroup.id));
+  assert(flattenIndex(comparisonIndex).some(({ groupId }) => groupId === unreviewedGroup.id));
+  assert(flattenIndex(lineageIndex).every(({ claim }) => claim.presentationStatus !== "suspected"));
+  const rejectedDecision = {
+    review: { status: "reviewed", outcome: "not-supported", reviewedOn: "2026-09-12", publicNote: null, citations: [] },
   };
-  retained.metadata.counts.unreviewedPossibleMatchCount -= 1;
-  assert.equal(app.validateLineageCandidates(retained, records, registry), retained);
+  assert.equal(app.hasRequiredComparisonReview(reviewed, true), true);
+  assert.equal(app.hasRequiredComparisonReview(rejectedDecision, true), true);
+  assert.equal(app.hasRequiredComparisonReview(unreviewed, true), false);
+  assert.equal(app.hasRequiredComparisonReview({ review: { ...rejectedDecision.review, outcome: "confirmed" } }, true), false);
+  assert.equal(app.hasRequiredComparisonReview(unreviewed, false), true);
+  assert.equal(app.isRenderableComparisonCandidate(reviewed), true);
+  assert.equal(app.isRenderableComparisonCandidate(rejectedDecision), false);
 
-  const notSupported = clone(retained);
-  notSupported.relationships.find(({ id }) => id === target.id).review.outcome = "not-supported";
-  assert.equal(entryCount(app.deriveEarlierRecordIndex(notSupported, records, registry)), 2508);
-
-  const confirmed = clone(retained);
-  confirmed.relationships.find(({ id }) => id === target.id).review.outcome = "confirmed";
-  assert.throws(() => app.validateLineageCandidates(confirmed, records, registry), /specimen-lineage data/);
+  for (const outcome of ["not-supported", "confirmed"]) {
+    const changed = clone(lineageData);
+    const target = changed.comparisonGroups.flatMap(({ candidates }) => candidates)
+      .find(({ id }) => id === reviewed.id);
+    target.review.outcome = outcome;
+    assert.throws(() => app.validateLineageCandidates(changed, records, registry), /specimen-lineage data/u);
+  }
 });
 
-test("real data maps only later records without mutation and matches the locked distribution", () => {
-  const before = JSON.stringify(lineageData);
-  const index = app.deriveEarlierRecordIndex(lineageData, records, registry);
-  assert.equal(JSON.stringify(lineageData), before);
-  assert.equal(index.size, 1405);
-  assert.equal(entryCount(index), 2509);
-  assert.equal(Math.max(...[...index.values()].map((entries) => entries.length)), 98);
-  const distribution = [...index.values()].reduce((counts, entries) => {
-    counts[entries.length] = (counts[entries.length] || 0) + 1;
-    return counts;
-  }, {});
-  assert.deepEqual(distribution, { 1: 973, 2: 245, 3: 31, 4: 124, 5: 5, 6: 10, 7: 1, 8: 5, 9: 2, 10: 1, 11: 1, 13: 1, 15: 1, 18: 1, 25: 1, 36: 1, 81: 1, 98: 1 });
-  assert.ok(records.some((record) => !index.has(record.id)));
+test("not-supported comparison candidates remain in source data but never enter DTOs or routes", () => {
+  const endpointKey = ({ recordId, massPath }) => `${recordId}\u0000${massPath}`;
+  const sourceGroup = lineageData.comparisonGroups.find(({ candidates }) => {
+    if (candidates.length < 2) return false;
+    const otherEndpoints = new Set(candidates.slice(1).flatMap(({ observations }) => observations.map(endpointKey)));
+    return candidates[0].observations.some((observation) => !otherEndpoints.has(endpointKey(observation)));
+  });
+  assert(sourceGroup);
+  const mixedGroup = clone(sourceGroup);
+  const rejected = mixedGroup.candidates[0];
+  rejected.review = {
+    status: "reviewed", outcome: "not-supported", reviewedOn: "2026-09-12",
+    publicNote: "The reviewed comparison is not supported.", citations: [],
+  };
+  const sourceDocument = { comparisonGroups: [mixedGroup] };
+  const sourceBeforeBuild = JSON.stringify(sourceDocument);
+  const mixedIndex = app.buildComparisonGroupIndex(sourceDocument, records);
+  const routes = flattenIndex(mixedIndex);
+  const expectedRouteKeys = new Set(mixedGroup.candidates.slice(1)
+    .flatMap(({ observations }) => observations.map(endpointKey)));
+  assert.equal(mixedGroup.candidateCount, sourceGroup.candidateCount);
+  assert.equal(mixedGroup.candidates.length, sourceGroup.candidates.length);
+  assert.equal(mixedGroup.candidates[0].review.outcome, "not-supported");
+  assert.equal(JSON.stringify(sourceDocument), sourceBeforeBuild);
+  assert.deepEqual(new Set(routes.map(({ currentObservation }) => endpointKey(currentObservation))), expectedRouteKeys);
+  assert(routes.every(({ comparison }) => comparison.candidateCount === mixedGroup.candidates.length - 1 &&
+    comparison.candidates.length === mixedGroup.candidates.length - 1));
+  assert(routes.every(({ comparison }) => !JSON.stringify(comparison).includes("The reviewed comparison is not supported.")));
+
+  const rejectedOnly = clone(sourceGroup);
+  rejectedOnly.candidates = [clone(sourceGroup.candidates[0])];
+  rejectedOnly.candidateCount = 1;
+  rejectedOnly.candidates[0].review = clone(rejected.review);
+  const rejectedOnlySource = { comparisonGroups: [rejectedOnly] };
+  assert.equal(app.buildComparisonGroupIndex(rejectedOnlySource, records).size, 0);
+  assert.equal(rejectedOnlySource.comparisonGroups[0].candidates.length, 1);
+  assert.equal(rejectedOnlySource.comparisonGroups[0].candidates[0].review.outcome, "not-supported");
 });
 
-test("source-attested Table C groups retain exact n-ary membership and feed card lineage without pair expansion", () => {
-  const index = app.deriveEarlierRecordIndex(lineageData, records, registry);
+test("lineage and comparison disclosures hide stable IDs and unavailable placeholders", () => {
+  const dalgaranga = records.find(({ catalogId, designation }) =>
+    catalogId === "huss-1986" && designation === "(2)H160.1");
+  const known = lineageIndex.get(dalgaranga.id)[0].claim;
+  assert.equal(app.lineageClaimDisclosureText(known),
+    "Known same-inventory continuity · Earlier catalog: Huss Meteorite Collection catalog (1976)");
+  assert.doesNotMatch(app.lineageClaimDisclosureText(known), /same-inventory-lineage|[0-9a-f]{8}-[0-9a-f-]{27}/u);
+
+  const groupEntry = flattenIndex(lineageIndex).find(({ kind }) => kind === "group-route");
+  assert.equal(app.lineageClaimDisclosureText(groupEntry.claim),
+    `${app.lineageDisplayLabel("presentationStatus", groupEntry.claim.presentationStatus)} · Source catalog: ${groupEntry.claim.source.catalogLabel}`);
+  assert.doesNotMatch(app.lineageClaimDisclosureText(groupEntry.claim), /victoria-land-1982-table-c-\d{3}/u);
+
+  const comparisonRenderer = source.slice(source.indexOf("function renderComparisonGroups"),
+    source.indexOf("function lineageClaimDisclosureText"));
+  assert.doesNotMatch(comparisonRenderer, /(?:Group|Candidate) ID|comparison-group-[0-9a-f]/u);
+  assert.doesNotMatch(source, /appendLineageText\([^\n]+(?:Not recorded|No public (?:note|citations) supplied)/u);
+  assert.match(source, /if \(endpoint\.sourceName\) appendLineageText\(section, "Source name", endpoint\.sourceName\)/u);
+  assert.match(source, /if \(Number\.isFinite\(endpoint\.massGrams\)\) appendLineageText/u);
+  assert.match(comparisonRenderer, /if \(group\.identity\.canonicalName\) appendLineageText/u);
+  assert.match(comparisonRenderer, /if \(candidate\.review\.publicNote\) appendLineageText/u);
+});
+
+test("source-attested Table C groups retain exact n-ary membership without pair expansion", () => {
   const groups = lineageData.sourceAttestedGroups;
   const members = groups.flatMap(({ members: groupMembers }) => groupMembers);
   const exactMemberIndex = app.deriveSourceAttestedGroupIndex(groups);
-  const entries = [...index.values()].flat().filter(({ kind }) => kind === "group-route");
+  const entries = flattenIndex(lineageIndex).filter(({ kind }) => kind === "group-route");
   assert.deepEqual({ groups: groups.length, occurrences: members.length, uniqueMembers: new Set(members).size },
     { groups: 21, occurrences: 89, uniqueMembers: 87 });
   assert.equal(exactMemberIndex.size, 87);
-  assert.equal([...exactMemberIndex.values()].flat().length, 89);
+  assert.equal(flattenIndex(exactMemberIndex).length, 89);
   assert.equal(exactMemberIndex.has("ALHA77034"), true);
   assert.equal(exactMemberIndex.has("BTNA77034"), false);
   assert.deepEqual({ indexedRecords: new Set(entries.map(({ currentMember }) => currentMember)).size, indexedEntries: entries.length },
-  { indexedRecords: 77, indexedEntries: 79 });
+    { indexedRecords: 77, indexedEntries: 79 });
   for (const entry of entries) {
-    const source = groups.find(({ id }) => id === entry.claim.groupId);
-    assert.deepEqual(entry.claim.members, source.members);
+    const sourceGroup = groups.find(({ id }) => id === entry.claim.groupId);
+    assert.deepEqual(entry.claim.members, sourceGroup.members);
     assert.equal(entry.claim.source.sourceSection, "Appendix Table C");
     assert.equal(entry.claim.source.printedPage, 94);
     assert.equal(Object.hasOwn(entry.claim, "recordId"), false);
   }
   const alha76005 = records.find(({ specimenId }) => specimenId === "ALHA76005");
-  assert.equal(app.presentHarmonizedCard(alha76005, { lineageEntries: index.get(alha76005.id) })
-    .facts.find(({ label }) => label === "Lineage").value,
-  "Known same-inventory continuity: 0 | Suspected cross-catalog matches: 0 | Source-attested tentative groups: 1");
-  const descriptors = app.expandSpecimenCardDescriptors(
+  assert.equal(app.presentHarmonizedCard(alha76005, {
+    lineageEntries: lineageIndex.get(alha76005.id), registry,
+  }).facts.find(({ label }) => label === "Lineage").value,
+  "Known same-inventory continuity: 0 | Source-attested tentative groups: 1");
+  const victoriaDescriptors = app.expandSpecimenCardDescriptors(
     records.filter(({ catalogId }) => catalogId === "victoria-land-1982"), new Map());
-  const lineageOnly = app.filterSpecimenCardDescriptors(descriptors, {
-    query: "", catalog: "victoria-land-1982", min: null, max: null, lineageOnly: true, sort: app.DEFAULT_SORT
-  }, index);
-  assert.equal(lineageOnly.length, 77);
+  assert.equal(app.filterSpecimenCardDescriptors(victoriaDescriptors, {
+    query: "", catalog: "victoria-land-1982", min: null, max: null, lineageOnly: true,
+    includeUnknownWeight: true, sort: app.DEFAULT_SORT,
+  }, lineageIndex).length, 77);
 });
 
-test("source-complete lineage routing exposes exactly 963 cards and 1,451 closed claims", () => {
-  const index = app.deriveEarlierRecordIndex(lineageData, records, registry);
-  const projectionData = JSON.parse(projectionText);
-  const projectionIndex = app.deriveSpecimenCardProjectionIndex(projectionData, records, {
-    sourceCatalogSha256: createHash("sha256").update(catalogText).digest("hex"),
-  });
-  const descriptors = app.expandSpecimenCardDescriptors(records, projectionIndex);
-  const routed = descriptors.map((descriptor) => ({
-    descriptor,
-    claims: app.renderableLineageClaimsForCard(descriptor, index.get(descriptor.parentRecord.id) || []),
-  })).filter(({ claims }) => claims.length > 0);
-  const claims = routed.flatMap(({ claims: cardClaims }) => cardClaims);
-  assert.deepEqual({ cards: routed.length, claims: claims.length }, { cards: 963, claims: 1451 });
-  assert.deepEqual(Object.fromEntries(["known", "suspected", "tentative"].map((status) =>
-    [status, claims.filter(({ presentationStatus }) => presentationStatus === status).length])),
-  { known: 194, suspected: 1178, tentative: 79 });
-  assert(claims.every((claim) => ["known", "suspected", "tentative"].includes(claim.presentationStatus)));
-  for (const claim of claims) {
-    assert.match(claim.caution, /does not (?:establish|create)|Suspected match only/u);
-    if (claim.kind === "source-attested-tentative-group") {
-      assert.equal(claim.rawClaimType, "tentative-n-ary-group");
-      assert.equal(claim.source.printedPage, 94);
-      assert(claim.members.includes(claim.currentMember));
-      continue;
-    }
-    for (const endpoint of [claim.earlierEndpoint, claim.laterEndpoint]) {
-      assert(endpoint.catalogLabel && Number.isInteger(endpoint.catalogYear));
-      assert(endpoint.sourceRecordLabel && endpoint.sourcePages.length > 0);
-      assert.equal(typeof endpoint.catalogSearchUrl, "string");
-      assert(endpoint.massGrams === null || Number.isFinite(endpoint.massGrams));
-    }
-    if (claim.kind === "same-inventory") {
-      assert.equal(claim.basis.code, "series-scoped-normalized-inventory-id");
-    } else {
-      assert(claim.evidence.factCodes.length >= 2);
-      assert(["reviewed", "unreviewed"].includes(claim.review.status));
-      assert(Array.isArray(claim.review.citations));
-      if (claim.review.status === "reviewed") assert.equal(claim.review.outcome, "retain-as-possible");
-    }
-  }
+test("lineage index contains only established and source-attested claims", () => {
+  const claims = flattenIndex(lineageIndex).map(({ claim }) => claim);
+  assert.deepEqual({ records: lineageIndex.size, claims: claims.length }, { records: 271, claims: 273 });
+  assert.deepEqual(Object.fromEntries(["known", "tentative"].map((status) => [
+    status, claims.filter(({ presentationStatus }) => presentationStatus === status).length,
+  ])), { known: 194, tentative: 79 });
+  assert(claims.every(({ presentationStatus }) => presentationStatus !== "suspected"));
+
+  const routed = descriptors.map((descriptor) => app.lineageEntriesForSpecimenCard(
+    descriptor, lineageIndex.get(descriptor.parentRecord.id) || []
+  )).filter((claimsForCard) => claimsForCard.length > 0);
+  assert.deepEqual({ cards: routed.length, claims: routed.flat().length }, { cards: 271, claims: 273 });
   assert.equal(app.filterSpecimenCardDescriptors(descriptors, {
     min: null, max: null, lineageOnly: true, includeUnknownWeight: true,
-  }, index).length, 963);
+  }, lineageIndex).length, 271);
 });
 
-test("cards distinguish same inventory continuity from possible matching", () => {
-  const index = app.deriveEarlierRecordIndex(lineageData, records, registry);
-  const dalgaranga = records.find((record) => record.catalogId === "huss-1986" && record.designation === "(2)H160.1");
-  const [dalgarangaEntry] = index.get(dalgaranga.id);
-  assert.equal(dalgarangaEntry.kind, "relationship-route");
-  assert.equal(dalgarangaEntry.claim.relationshipId, sameInventory(lineageData, "h160.1").id);
-  assert.equal(dalgarangaEntry.claim.presentationStatus, "known");
-  assert.deepEqual(dalgarangaEntry.claim.collectionSeries, { id: "huss", inventoryId: "h160.1" });
-  assert.deepEqual(dalgarangaEntry.claim.earlierEndpoint, {
-    recordId: "h160-1-585a63ba5ded",
-    catalogId: "huss-1976",
-    catalogLabel: "Huss Meteorite Collection catalog (1976)",
-    catalogYear: 1976,
-    sourceRecordLabel: "H160.1",
-    sourceName: "Dalgaranga",
-    designation: "H160.1",
-    massGrams: 3.4,
-    sourcePages: [12],
-    catalogSearchUrl: "./index.html?catalog=huss-1976&q=record%20id%20h160-1-585a63ba5ded#catalog",
+test("comparison index is symmetric, grouped, and deduplicated per exact endpoint path", () => {
+  const routes = flattenIndex(comparisonIndex);
+  assert.deepEqual({ records: comparisonIndex.size, routes: routes.length }, { records: 2069, routes: 3668 });
+  const routeKeys = routes.map(({ groupId, currentObservation, massPath }) =>
+    `${groupId}\u0000${currentObservation.recordId}\u0000${massPath}`);
+  assert.equal(new Set(routeKeys).size, routes.length);
+
+  for (const group of lineageData.comparisonGroups) {
+    const expected = new Set(group.candidates.flatMap(({ observations }) => observations.map(({ recordId, massPath }) =>
+      `${group.id}\u0000${recordId}\u0000${massPath}`)));
+    const actual = new Set(routes.filter(({ groupId }) => groupId === group.id).map(({ currentObservation, massPath }) =>
+      `${group.id}\u0000${currentObservation.recordId}\u0000${massPath}`));
+    assert.deepEqual(actual, expected, group.id);
+  }
+});
+
+test("comparison routing selects exact atomic mass paths and never sibling cards", () => {
+  const prior = records.find((record) => record.catalogId === "prior-1923" && record.entryOrder === 630);
+  const cards = descriptors.filter(({ parentRecord }) => parentRecord.id === prior.id);
+  const entries = comparisonIndex.get(prior.id) || [];
+  const routedPaths = cards.filter((descriptor) => app.comparisonGroupsForSpecimenCard(descriptor, entries).length)
+    .map(({ massPath }) => massPath);
+  const expectedPaths = new Set(entries.map(({ massPath }) => massPath));
+  assert(routedPaths.every((massPath) => expectedPaths.has(massPath)));
+  for (const descriptor of cards) {
+    const groups = app.comparisonGroupsForSpecimenCard(descriptor, entries);
+    assert(groups.every((group) => entries.some(({ groupId, massPath }) =>
+      groupId === group.groupId && massPath === descriptor.massPath)));
+  }
+});
+
+test("Holbrook 98 is one top-level group with candidate audit rows", () => {
+  const holbrook = lineageData.comparisonGroups.find(({ displayName, candidateCount }) =>
+    displayName === "Holbrook" && candidateCount === 98);
+  assert(holbrook);
+  const route = flattenIndex(comparisonIndex).find(({ groupId }) => groupId === holbrook.id);
+  const descriptor = descriptors.find((item) => item.parentRecord.id === route.currentObservation.recordId &&
+    item.massPath === route.massPath);
+  assert(descriptor);
+  const dto = app.comparisonCardDto(descriptor, comparisonIndex.get(descriptor.parentRecord.id));
+  assert.equal(dto.groups.filter(({ groupId }) => groupId === holbrook.id).length, 1);
+  const group = dto.groups.find(({ groupId }) => groupId === holbrook.id);
+  assert.equal(group.candidateCount, 98);
+  assert.equal(group.candidates.length, 98);
+  assert.match(dto.warning, /same physical specimen, lineage, custody, ownership, transfer, or merge/u);
+  assert.doesNotMatch(JSON.stringify(dto), /suspected|possible lineage|relationship/iu);
+});
+
+test("comparison facts and details remain separate from the Lineage fact", () => {
+  let comparisonCards = 0;
+  let routedGroups = 0;
+  let routedCandidates = 0;
+  for (const descriptor of descriptors) {
+    const comparisonEntries = comparisonIndex.get(descriptor.parentRecord.id) || [];
+    const comparisonGroups = app.comparisonGroupsForSpecimenCard(descriptor, comparisonEntries);
+    if (!comparisonGroups.length) continue;
+    comparisonCards += 1;
+    routedGroups += comparisonGroups.length;
+    routedCandidates += comparisonGroups.reduce((sum, group) => sum + group.candidateCount, 0);
+    const dto = app.presentHarmonizedCard(descriptor, {
+      lineageEntries: lineageIndex.get(descriptor.parentRecord.id) || [],
+      comparisonEntries,
+      registry,
+    });
+    assert(dto.facts.some(({ label }) => label === "Cross-catalog comparisons"));
+    assert.equal(dto.facts.some(({ label, value }) => label === "Lineage" && /comparison|suspected/iu.test(value)), false);
+  }
+  assert.deepEqual({ comparisonCards, routedGroups, routedCandidates }, {
+    comparisonCards: 1717, routedGroups: 1889, routedCandidates: 20972,
   });
-  const possibleEntry = [...index.values()].flat().find(({ claim }) => claim?.kind === "possible-match");
-  assert.equal(possibleEntry.claim.presentationStatus, "suspected");
-  assert(LINEAGE_STRENGTH_VALUES.has(possibleEntry.claim.evidence.strength));
-  assert.equal(app.formatEarlierRecordMass(null), "Not recorded");
 });
 
-test("lineage disclosures name source catalogs without rendering stable IDs or absence placeholders", async () => {
-  const index = app.deriveEarlierRecordIndex(lineageData, records, registry);
-  const relationship = lineageData.relationships.find(({ id }) =>
-    id === "possible-lineage-9c24421a-5be6-577b-b380-18451834c2ed");
-  const laterRecordId = relationship.observations.find(({ catalogId }) => catalogId === "farrington-1916").recordId;
-  const entry = index.get(laterRecordId).find(({ claim }) => claim.relationshipId === relationship.id);
-  assert.equal(app.lineageClaimDisclosureText(entry.claim),
-    "Suspected cross-catalog match · Earlier catalog: Catalogue of the Meteorite Collection of the Field Columbian Museum, May 1, 1903 (1903)");
-  assert.doesNotMatch(app.lineageClaimDisclosureText(entry.claim), /possible-lineage|[0-9a-f]{8}-[0-9a-f-]{27}/u);
-
-  const groupEntry = [...index.values()].flat().find(({ kind }) => kind === "group-route");
-  assert.equal(app.lineageClaimDisclosureText(groupEntry.claim),
-    `${app.lineageDisplayLabel("presentationStatus", groupEntry.claim.presentationStatus)} · Source catalog: ${groupEntry.claim.source.catalogLabel}`);
-  const source = await readFile(path.join(projectRoot, "app.js"), "utf8");
-  assert.doesNotMatch(source, /appendLineageText\(details, "(?:Relationship|Group) ID"/u);
-  assert.doesNotMatch(source, /appendLineageText\([^\n]+(?:Not recorded|No public (?:note|citations) supplied)/u);
-  assert.match(source, /if \(endpoint\.sourceName\) appendLineageText\(section, "Source name", endpoint\.sourceName\)/u);
-  assert.match(source, /if \(Number\.isFinite\(endpoint\.massGrams\)\) appendLineageText/u);
-  assert.match(source, /if \(claim\.identity\.canonicalName\) appendLineageText/u);
-  assert.match(source, /if \(claim\.review\.publicNote\) appendLineageText/u);
-});
-
-const LINEAGE_STRENGTH_VALUES = new Set(["multiple-matching-facts", "two-matching-facts", "limited-matching-evidence"]);
-
-test("Sandia receives 108b continuity while Rosebud receives none", () => {
-  const index = app.deriveEarlierRecordIndex(lineageData, records, registry);
-  const sandia = records.find((record) => record.catalogId === "nininger-1950" && record.designation === "108b" && record.name === "Sandia Mountains");
-  const rosebud = records.find((record) => record.catalogId === "nininger-1950" && record.designation === "108b" && record.name === "Rosebud");
-  assert.equal(index.get(sandia.id)[0].claim.earlierEndpoint.sourceName, "Sandia Mts.");
-  assert.equal(index.get(sandia.id)[0].claim.collectionSeries.inventoryId, "108b");
-  assert.equal(index.has(rosebud.id), false);
-});
-
-test("all 2430 earlier links resolve to exact public source records", () => {
-  const index = app.deriveEarlierRecordIndex(lineageData, records, registry);
-  const earlierEntries = [...index.values()].flat().filter(({ kind }) => kind === "relationship-route");
-  for (const entry of earlierEntries) {
-      const endpoint = entry.claim.earlierEndpoint;
-      const url = new URL(endpoint.catalogSearchUrl, "https://example.test/");
-      assert.equal(url.pathname, "/index.html");
-      assert.equal(url.hash, "#catalog");
-      const destinationIds = records.filter((record) =>
-        record.catalogId === url.searchParams.get("catalog") && app.matchesSearch(record, url.searchParams.get("q"))
-      ).map(({ id }) => id);
-      assert.deepEqual(destinationIds, [endpoint.recordId], `${endpoint.catalogSearchUrl} did not resolve exactly to ${endpoint.recordId}`);
+test("all published observation links resolve to exact public source records", () => {
+  const observations = [
+    ...lineageData.relationships.flatMap(({ observations: items }) => items),
+    ...lineageData.comparisonGroups.flatMap(({ candidates }) => candidates.flatMap(({ observations: items }) => items)),
+  ];
+  assert.equal(observations.length, 4878);
+  for (const observation of observations) {
+    const url = new URL(observation.catalogSearchUrl, "https://example.test/");
+    assert.equal(url.pathname, "/index.html");
+    assert.equal(url.hash, "#catalog");
+    assert.equal(url.searchParams.get("q"), `record id ${observation.recordId}`);
+    assert.deepEqual(records.filter((record) => record.catalogId === url.searchParams.get("catalog") &&
+      app.matchesSearch(record, url.searchParams.get("q"))).map(({ id }) => id), [observation.recordId]);
   }
-  assert.equal(earlierEntries.length, 2430);
-});
-
-test("all 4878 published observation links resolve to exact public source records", () => {
-  let count = 0;
-  for (const relationship of lineageData.relationships) {
-    for (const observation of relationship.observations) {
-      count += 1;
-      const url = new URL(observation.catalogSearchUrl, "https://example.test/");
-      assert.equal(url.pathname, "/index.html");
-      assert.equal(url.hash, "#catalog");
-      assert.equal(url.searchParams.get("q"), `record id ${observation.recordId}`);
-      const destinationIds = records.filter((record) =>
-        record.catalogId === url.searchParams.get("catalog") && app.matchesSearch(record, url.searchParams.get("q"))
-      ).map(({ id }) => id);
-      assert.deepEqual(destinationIds, [observation.recordId], `${observation.catalogSearchUrl} did not resolve exactly`);
-    }
+  const earlierEntries = flattenIndex(lineageIndex).filter(({ kind }) => kind === "relationship-route");
+  assert.equal(earlierEntries.length, 194);
+  for (const { claim } of earlierEntries) {
+    const url = new URL(claim.earlierEndpoint.catalogSearchUrl, "https://example.test/");
+    assert.deepEqual(records.filter((record) => record.catalogId === url.searchParams.get("catalog") &&
+      app.matchesSearch(record, url.searchParams.get("q"))).map(({ id }) => id), [claim.earlierEndpoint.recordId]);
   }
-  assert.equal(count, 4878);
 });
 
-test("optional fetch failures and malformed payloads return an empty enhancement", async () => {
-  const failed = await app.loadEarlierRecordIndex(records, registry, async () => { throw new Error("offline"); });
-  assert.equal(failed.size, 0);
-  const missing = await app.loadEarlierRecordIndex(records, registry, async () => ({ ok: false }));
-  assert.equal(missing.size, 0);
+test("hash mismatch, malformed input, and fetch failure fail closed for both indexes", async () => {
   const sha256 = async (value) => createHash("sha256").update(value).digest("hex");
-  const malformed = await app.loadEarlierRecordIndex(records, registry, async () => ({
-    ok: true, text: async () => JSON.stringify({ metadata: {}, relationships: [] }),
-  }), { sha256 });
-  assert.equal(malformed.size, 0);
-  const loaded = await app.loadEarlierRecordIndex(records, registry, async () => ({
-    ok: true, text: async () => lineageText,
-  }), { sha256 });
-  assert.equal(entryCount(loaded), 2509);
-  assert.equal(app.SPECIMEN_LINEAGE_DATA_SHA256,
-    "3f1d63db2effbe497e328ac99831c22d661fd72a2fba2fd1ec74a83186a523a9");
-  for (const mutate of forgedFactMutations) {
-    const forged = clone(lineageData);
-    mutate(forged);
-    const rejected = await app.loadEarlierRecordIndex(records, registry, async () => ({
-      ok: true, text: async () => JSON.stringify(forged),
-    }), { sha256 });
-    assert.equal(rejected.size, 0);
+  const response = (value) => ({ ok: true, text: async () => value });
+  for (const fetcher of [
+    async () => { throw new Error("offline"); },
+    async () => ({ ok: false }),
+    async () => response(JSON.stringify({ metadata: {}, relationships: [] })),
+    async () => response(`${lineageText} `),
+  ]) {
+    const loaded = await app.loadLineageAndComparisonIndexes(records, registry, fetcher, { sha256 });
+    assert.equal(loaded.lineageIndex.size, 0);
+    assert.equal(loaded.comparisonIndex.size, 0);
   }
+  const loaded = await app.loadLineageAndComparisonIndexes(records, registry, async () => response(lineageText), { sha256 });
+  assert.deepEqual({ lineage: loaded.lineageIndex.size, comparison: loaded.comparisonIndex.size }, { lineage: 271, comparison: 2069 });
+});
+
+test("accessible static contracts, warning language, and cache keys are synchronized", () => {
+  assert.match(html, /<dl class="record-meta" aria-label="Catalog record details"><\/dl>/u);
+  assert.match(source, /aria-label", "Cross-catalog comparison candidates"/u);
+  assert.match(source, /Shared identity and reported mass do not establish the same physical specimen, lineage, custody, ownership, transfer, or merge\./u);
+  assert.doesNotMatch(source, /Suspected cross-catalog|POSSIBLE_MATCH_CAUTION/u);
+  assert.match(css, /\.comparison-warning/u);
+  assert.match(css, /\.comparison-candidates/u);
+  assert.equal(app.CACHE_VERSION, "20260912-comparison-groups-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260912-comparison-groups-1");
+  assert.match(html, /styles\.css\?v=20260912-comparison-groups-1/u);
+  assert.match(html, /app\.js\?v=20260912-comparison-groups-1/u);
+  assert.doesNotMatch(source, /\.innerHTML\b/u);
 });

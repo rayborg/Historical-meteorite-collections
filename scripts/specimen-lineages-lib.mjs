@@ -40,27 +40,32 @@ const REVIEW_GATED_CATALOGS = new Set([
   "brauns-bonn-1926",
 ]);
 
-const ROOT_KEYS = ["metadata", "sourceAttestedGroups", "relationships"];
+const ROOT_KEYS = ["metadata", "sourceAttestedGroups", "relationships", "comparisonGroups"];
 const METADATA_KEYS = ["schemaVersion", "scope", "source", "collectionSeries", "methodology", "counts"];
 const SOURCE_KEYS = [
   "catalogSchemaVersion", "recordCount", "catalogCount", "flattenedMassObservationCount", "inventoryObservationCount",
   "sourceClaimsSchemaVersion", "sourceClaimsContentSha256",
 ];
 const SERIES_KEYS = ["id", "catalogIds"];
-const METHODOLOGY_KEYS = ["inventoryNormalization", "possibleMatchIdentity", "massThresholds", "ambiguityPolicy", "evidenceStrengthOrder", "nonAssertions"];
+const METHODOLOGY_KEYS = ["inventoryNormalization", "comparisonIdentity", "massThresholds", "comparisonGrouping", "ambiguityPolicy", "evidenceStrengthOrder", "nonAssertions"];
 const INVENTORY_NORMALIZATION_KEYS = ["unicode", "case", "whitespace", "hussEditionMarker"];
-const POSSIBLE_IDENTITY_KEYS = ["resolved", "unresolved"];
+const COMPARISON_IDENTITY_KEYS = ["resolved", "unresolved"];
 const MASS_THRESHOLD_KEYS = ["exactDifferenceGrams", "nearMinimumMassGrams", "nearMaximumRelativeDifference", "nearMaximumAbsoluteDifferenceGrams"];
 const COUNT_KEYS = [
-  "relationshipCount", "sameInventoryRelationshipCount", "possibleMatchRelationshipCount", "unreviewedPossibleMatchCount",
-  "exactMassPossibleMatchCount", "nearMassPossibleMatchCount", "metbullIdentityPossibleMatchCount", "normalizedNameIdentityPossibleMatchCount",
-  "sameDesignationPossibleMatchCount", "designationFamilyPossibleMatchCount", "aggregateOrMultiplePossibleMatchCount", "castPossibleMatchCount",
-  "identityResolvedInventoryCollisionCount", "omittedAmbiguousInventoryKeyCount", "possibleMatchEvidenceStrength", "catalogPairs",
+  "relationshipCount", "sameInventoryRelationshipCount", "comparisonGroupCount", "singletonComparisonGroupCount", "ambiguousComparisonGroupCount",
+  "comparisonCandidateCount", "reviewedComparisonCandidateCount", "unreviewedComparisonCandidateCount",
+  "exactMassComparisonCandidateCount", "nearMassComparisonCandidateCount", "metbullIdentityComparisonCandidateCount", "normalizedNameIdentityComparisonCandidateCount",
+  "sameDesignationComparisonCandidateCount", "designationFamilyComparisonCandidateCount", "aggregateOrMultipleComparisonCandidateCount", "castComparisonCandidateCount",
+  "identityResolvedInventoryCollisionCount", "omittedAmbiguousInventoryKeyCount", "comparisonCandidateEvidenceStrength", "comparisonGroupCardinalityDistribution", "catalogPairs",
   "sourceAttestedGroupCount", "sourceAttestedMemberOccurrenceCount", "sourceAttestedUniqueMemberCount",
 ];
 const STRENGTH_COUNT_KEYS = EVIDENCE_STRENGTH_ORDER;
-const PAIR_COUNT_KEYS = ["catalogPair", "sameInventoryCount", "possibleMatchCount"];
+const CARDINALITY_COUNT_KEYS = ["candidateCount", "groupCount"];
+const PAIR_COUNT_KEYS = ["catalogPair", "sameInventoryCount", "comparisonGroupCount", "comparisonCandidateCount"];
 const RELATIONSHIP_KEYS = ["id", "relationship", "basis", "status", "displayName", "catalogPair", "collectionSeries", "identity", "evidence", "review", "observations"];
+const COMPARISON_GROUP_KEYS = ["id", "type", "basis", "displayName", "catalogPair", "identity", "massPair", "candidateCount", "candidates"];
+const MASS_PAIR_KEYS = ["catalogId", "massGrams"];
+const COMPARISON_CANDIDATE_KEYS = ["id", "v3CandidateId", "evidence", "review", "observations"];
 const COLLECTION_SERIES_KEYS = ["id", "inventoryId"];
 const IDENTITY_KEYS = ["method", "key", "canonicalName"];
 const EVIDENCE_KEYS = [
@@ -309,7 +314,7 @@ function publicObservations(observations, candidateReference, type) {
   })).sort((left, right) => compareText(left.id, right.id));
 }
 
-function possibleRelationship(left, right) {
+function comparisonCandidate(left, right) {
   const observations = [left, right].sort((a, b) => compareText(a.sourceReference, b.sourceReference));
   const [a, b] = observations;
   const absoluteDifferenceGrams = Math.abs(a.public.massGrams - b.public.massGrams);
@@ -339,15 +344,10 @@ function possibleRelationship(left, right) {
   const catalogPair = [a.public.catalogId, b.public.catalogId].sort(compareText).join("|");
   const candidateReference = observations.map(({ sourceReference }) => sourceReference).sort(compareText).join("\u0001");
   const canonicalName = a.public.canonicalName ?? b.public.canonicalName;
+  const suffix = uuidV5(`possible-lineage\u0000${candidateReference}`);
   return {
-    id: `possible-lineage-${uuidV5(`possible-lineage\u0000${candidateReference}`)}`,
-    relationship: "possible-match",
-    basis: "reviewed-identity-and-reported-mass",
-    status: "possible",
-    displayName: canonicalName ?? [a.public.sourceName, b.public.sourceName].filter(Boolean).sort(compareText)[0],
-    catalogPair,
-    collectionSeries: null,
-    identity: { method: a.identityMethod, key: a.identityKey, canonicalName },
+    id: `comparison-candidate-${suffix}`,
+    v3CandidateId: `possible-lineage-${suffix}`,
     evidence: {
       strength: candidateStrength(sameDesignation, designationFamily, massMatch),
       massMatch,
@@ -360,6 +360,30 @@ function possibleRelationship(left, right) {
     },
     review: { status: "unreviewed", outcome: null, reviewedOn: null, publicNote: null, citations: [] },
     observations: publicObservations(observations, candidateReference, "possible"),
+    catalogPair,
+    identity: { method: a.identityMethod, key: a.identityKey, canonicalName },
+    displayName: canonicalName ?? [a.public.sourceName, b.public.sourceName].filter(Boolean).sort(compareText)[0],
+  };
+}
+
+function comparisonGroup(candidate) {
+  const massPair = candidate.observations
+    .map(({ catalogId, massGrams }) => ({ catalogId, massGrams }))
+    .sort((left, right) => compareText(left.catalogId, right.catalogId));
+  const groupReference = [
+    "comparison-group",
+    candidate.identity.method,
+    candidate.identity.key,
+    ...massPair.flatMap(({ catalogId, massGrams }) => [catalogId, JSON.stringify(massGrams)]),
+  ].join("\u0000");
+  return {
+    key: groupReference,
+    id: `comparison-group-${uuidV5(groupReference)}`,
+    type: "comparison-only",
+    basis: "reviewed-identity-and-reported-mass",
+    catalogPair: candidate.catalogPair,
+    identity: candidate.identity,
+    massPair,
   };
 }
 
@@ -488,7 +512,7 @@ export function validateReviewSource(reviewSource, candidateIds = null) {
   for (const [index, review] of reviewSource.reviews.entries()) {
     const path = `review source reviews[${index}]`;
     assertExactKeys(review, REVIEW_SOURCE_RECORD_KEYS, path);
-    assert(review.candidateId.startsWith("possible-lineage-") && UUID_V5_PATTERN.test(review.candidateId.slice("possible-lineage-".length)), `${path}.candidateId is invalid`);
+    assert(review.candidateId.startsWith("comparison-candidate-") && UUID_V5_PATTERN.test(review.candidateId.slice("comparison-candidate-".length)), `${path}.candidateId is invalid`);
     assert(!seen.has(review.candidateId), `${path}.candidateId is duplicated: ${review.candidateId}`);
     seen.add(review.candidateId);
     if (candidateIds !== null) assert(candidateIds.has(review.candidateId), `${path}.candidateId is dangling: ${review.candidateId}`);
@@ -502,11 +526,10 @@ export function validateReviewSource(reviewSource, candidateIds = null) {
   return true;
 }
 
-function applyReviewSource(relationships, reviewSource) {
-  const possible = relationships.filter(({ relationship }) => relationship === "possible-match");
-  const candidateIds = new Set(possible.map(({ id }) => id));
+function applyReviewSource(candidates, reviewSource) {
+  const candidateIds = new Set(candidates.map(({ id }) => id));
   validateReviewSource(reviewSource, candidateIds);
-  const candidatesById = new Map(possible.map((candidate) => [candidate.id, candidate]));
+  const candidatesById = new Map(candidates.map((candidate) => [candidate.id, candidate]));
   for (const review of reviewSource.reviews) {
     candidatesById.get(review.candidateId).review = {
       status: "reviewed",
@@ -530,7 +553,7 @@ export function buildSpecimenLineages(
   const catalogNamespace = new Map(catalog.metadata.catalogs.map(({ id }) => [id, id]));
   collectionSeries.forEach((series) => series.catalogIds.forEach((catalogId) => catalogNamespace.set(catalogId, `series:${series.id}`)));
   const grouped = Map.groupBy(massObservations.filter((item) => identityGroupKey(item) !== null), identityGroupKey);
-  const possibleRelationships = [];
+  const comparisonCandidates = [];
   for (const group of grouped.values()) {
     for (let leftIndex = 0; leftIndex < group.length; leftIndex += 1) {
       for (let rightIndex = leftIndex + 1; rightIndex < group.length; rightIndex += 1) {
@@ -542,34 +565,58 @@ export function buildSpecimenLineages(
         const relativeDifference = maximumMass === 0 ? 0 : absoluteDifference / maximumMass;
         const exact = absoluteDifference === 0;
         const near = Math.min(left.public.massGrams, right.public.massGrams) >= 10 && absoluteDifference <= 2 && relativeDifference <= 0.0025;
-        if (exact || near) possibleRelationships.push(possibleRelationship(left, right));
+        if (exact || near) comparisonCandidates.push(comparisonCandidate(left, right));
       }
     }
   }
   const reviewedCandidateIds = new Set(reviewSource.reviews.map(({ candidateId }) => candidateId));
-  const acceptedPossibleRelationships = possibleRelationships.filter((relationship) =>
-    !relationship.observations.some(({ catalogId }) => REVIEW_GATED_CATALOGS.has(catalogId)) ||
-    reviewedCandidateIds.has(relationship.id));
+  const acceptedComparisonCandidates = comparisonCandidates.filter((candidate) =>
+    !candidate.observations.some(({ catalogId }) => REVIEW_GATED_CATALOGS.has(catalogId)) ||
+    reviewedCandidateIds.has(candidate.id));
   const inventoryResult = buildSameInventoryRelationships(inventoryObservations, collectionSeries);
-  const relationships = [...acceptedPossibleRelationships, ...inventoryResult.relationships].sort((a, b) => compareText(a.id, b.id));
+  const relationships = inventoryResult.relationships.sort((a, b) => compareText(a.id, b.id));
   assert(new Set(relationships.map(({ id }) => id)).size === relationships.length, "generated relationship IDs must be unique");
-  applyReviewSource(relationships, reviewSource);
-  const possible = relationships.filter(({ relationship }) => relationship === "possible-match");
-  const sameInventory = relationships.filter(({ relationship }) => relationship === "same-inventory");
-  const strengthCounts = countBy(possible, (relationship) => relationship.evidence.strength);
+  acceptedComparisonCandidates.sort((a, b) => compareText(a.id, b.id));
+  assert(new Set(acceptedComparisonCandidates.map(({ id }) => id)).size === acceptedComparisonCandidates.length, "generated comparison candidate IDs must be unique");
+  applyReviewSource(acceptedComparisonCandidates, reviewSource);
+  const candidatesByGroup = Map.groupBy(acceptedComparisonCandidates, (candidate) => comparisonGroup(candidate).key);
+  const comparisonGroups = [...candidatesByGroup.values()].map((candidates) => {
+    const group = comparisonGroup(candidates[0]);
+    const displayName = candidates.map(({ displayName }) => displayName).sort(compareText)[0];
+    return {
+      id: group.id,
+      type: group.type,
+      basis: group.basis,
+      displayName,
+      catalogPair: group.catalogPair,
+      identity: group.identity,
+      massPair: group.massPair,
+      candidateCount: candidates.length,
+      candidates: candidates.map(({ id, v3CandidateId, evidence, review, observations }) => ({ id, v3CandidateId, evidence, review, observations })),
+    };
+  }).sort((a, b) => compareText(a.id, b.id));
+  const sameInventory = relationships;
+  const strengthCounts = countBy(acceptedComparisonCandidates, (candidate) => candidate.evidence.strength);
+  const cardinalityCounts = countBy(comparisonGroups, ({ candidateCount }) => candidateCount);
   const sourceAttestedGroups = sourceClaims.claims.map((claim) => structuredClone(claim));
   const sourceAttestedMembers = sourceAttestedGroups.flatMap(({ members }) => members);
   const pairCounts = new Map();
   relationships.forEach((relationship) => {
-    const counts = pairCounts.get(relationship.catalogPair) ?? { sameInventoryCount: 0, possibleMatchCount: 0 };
-    counts[relationship.relationship === "same-inventory" ? "sameInventoryCount" : "possibleMatchCount"] += 1;
+    const counts = pairCounts.get(relationship.catalogPair) ?? { sameInventoryCount: 0, comparisonGroupCount: 0, comparisonCandidateCount: 0 };
+    counts.sameInventoryCount += 1;
     pairCounts.set(relationship.catalogPair, counts);
+  });
+  comparisonGroups.forEach((group) => {
+    const counts = pairCounts.get(group.catalogPair) ?? { sameInventoryCount: 0, comparisonGroupCount: 0, comparisonCandidateCount: 0 };
+    counts.comparisonGroupCount += 1;
+    counts.comparisonCandidateCount += group.candidateCount;
+    pairCounts.set(group.catalogPair, counts);
   });
   const count = (items, predicate) => items.filter(predicate).length;
   return {
     metadata: {
-      schemaVersion: 3,
-      scope: "series-inventory-and-cross-source-candidates",
+      schemaVersion: 4,
+      scope: "attested-lineage-and-cross-catalog-comparisons",
       source: {
         catalogSchemaVersion: catalog.metadata.schemaVersion,
         recordCount: catalog.records.length,
@@ -582,11 +629,12 @@ export function buildSpecimenLineages(
       collectionSeries: collectionSeries.map(({ id, catalogIds }) => ({ id, catalogIds: [...catalogIds] })),
       methodology: {
         inventoryNormalization: { unicode: "NFKC", case: "lowercase", whitespace: "removed", hussEditionMarker: "one leading (2) removed" },
-        possibleMatchIdentity: {
+        comparisonIdentity: {
           resolved: "Records in different collection namespaces share the same reviewed Meteoritical Bulletin meteorite code.",
           unresolved: "Only unresolved records in different collection namespaces share an NFKD, diacritic-free, lowercase source name with non-alphanumeric runs collapsed to spaces.",
         },
         massThresholds: { exactDifferenceGrams: 0, nearMinimumMassGrams: 10, nearMaximumRelativeDifference: 0.0025, nearMaximumAbsoluteDifferenceGrams: 2 },
+        comparisonGrouping: "Candidates are partitioned by identity method and key, canonical catalog pair, and catalog-side ordered reported mass pair.",
         ambiguityPolicy: "A duplicated normalized inventory key is linked only when exactly one endpoint pair is identity-consistent; otherwise the key is omitted.",
         evidenceStrengthOrder: EVIDENCE_STRENGTH_ORDER,
         nonAssertions: ["custody-chain", "ownership-transfer"],
@@ -594,19 +642,25 @@ export function buildSpecimenLineages(
       counts: {
         relationshipCount: relationships.length,
         sameInventoryRelationshipCount: sameInventory.length,
-        possibleMatchRelationshipCount: possible.length,
-        unreviewedPossibleMatchCount: count(possible, (item) => item.review.status === "unreviewed"),
-        exactMassPossibleMatchCount: count(possible, (item) => item.evidence.massMatch === "exact"),
-        nearMassPossibleMatchCount: count(possible, (item) => item.evidence.massMatch === "near"),
-        metbullIdentityPossibleMatchCount: count(possible, (item) => item.identity.method === "metbull-code"),
-        normalizedNameIdentityPossibleMatchCount: count(possible, (item) => item.identity.method === "normalized-source-name"),
-        sameDesignationPossibleMatchCount: count(possible, (item) => item.evidence.sameDesignation),
-        designationFamilyPossibleMatchCount: count(possible, (item) => item.evidence.designationFamily),
-        aggregateOrMultiplePossibleMatchCount: count(possible, (item) => item.evidence.cautionCodes.includes("aggregate-or-multiple")),
-        castPossibleMatchCount: count(possible, (item) => item.evidence.cautionCodes.includes("cast")),
+        comparisonGroupCount: comparisonGroups.length,
+        singletonComparisonGroupCount: count(comparisonGroups, ({ candidateCount }) => candidateCount === 1),
+        ambiguousComparisonGroupCount: count(comparisonGroups, ({ candidateCount }) => candidateCount > 1),
+        comparisonCandidateCount: acceptedComparisonCandidates.length,
+        reviewedComparisonCandidateCount: count(acceptedComparisonCandidates, (item) => item.review.status === "reviewed"),
+        unreviewedComparisonCandidateCount: count(acceptedComparisonCandidates, (item) => item.review.status === "unreviewed"),
+        exactMassComparisonCandidateCount: count(acceptedComparisonCandidates, (item) => item.evidence.massMatch === "exact"),
+        nearMassComparisonCandidateCount: count(acceptedComparisonCandidates, (item) => item.evidence.massMatch === "near"),
+        metbullIdentityComparisonCandidateCount: count(acceptedComparisonCandidates, (item) => item.identity.method === "metbull-code"),
+        normalizedNameIdentityComparisonCandidateCount: count(acceptedComparisonCandidates, (item) => item.identity.method === "normalized-source-name"),
+        sameDesignationComparisonCandidateCount: count(acceptedComparisonCandidates, (item) => item.evidence.sameDesignation),
+        designationFamilyComparisonCandidateCount: count(acceptedComparisonCandidates, (item) => item.evidence.designationFamily),
+        aggregateOrMultipleComparisonCandidateCount: count(acceptedComparisonCandidates, (item) => item.evidence.cautionCodes.includes("aggregate-or-multiple")),
+        castComparisonCandidateCount: count(acceptedComparisonCandidates, (item) => item.evidence.cautionCodes.includes("cast")),
         identityResolvedInventoryCollisionCount: inventoryResult.identityResolvedInventoryCollisionCount,
         omittedAmbiguousInventoryKeyCount: inventoryResult.omittedAmbiguousInventoryKeyCount,
-        possibleMatchEvidenceStrength: Object.fromEntries(EVIDENCE_STRENGTH_ORDER.map((strength) => [strength, strengthCounts.get(strength) ?? 0])),
+        comparisonCandidateEvidenceStrength: Object.fromEntries(EVIDENCE_STRENGTH_ORDER.map((strength) => [strength, strengthCounts.get(strength) ?? 0])),
+        comparisonGroupCardinalityDistribution: [...cardinalityCounts].sort(([a], [b]) => a - b)
+          .map(([candidateCount, groupCount]) => ({ candidateCount, groupCount })),
         catalogPairs: [...pairCounts].sort(([a], [b]) => compareText(a, b)).map(([catalogPair, counts]) => ({ catalogPair, ...counts })),
         sourceAttestedGroupCount: sourceAttestedGroups.length,
         sourceAttestedMemberOccurrenceCount: sourceAttestedMembers.length,
@@ -615,6 +669,7 @@ export function buildSpecimenLineages(
     },
     sourceAttestedGroups,
     relationships,
+    comparisonGroups,
   };
 }
 
@@ -673,8 +728,8 @@ function validateReview(review, path) {
 export function validateLineageShape(document) {
   assertExactKeys(document, ROOT_KEYS, "root");
   assertExactKeys(document.metadata, METADATA_KEYS, "metadata");
-  assert(document.metadata.schemaVersion === 3, "metadata.schemaVersion must be 3");
-  assert(document.metadata.scope === "series-inventory-and-cross-source-candidates", "metadata.scope is invalid");
+  assert(document.metadata.schemaVersion === 4, "metadata.schemaVersion must be 4");
+  assert(document.metadata.scope === "attested-lineage-and-cross-catalog-comparisons", "metadata.scope is invalid");
   assertExactKeys(document.metadata.source, SOURCE_KEYS, "metadata.source");
   assert(Array.isArray(document.metadata.collectionSeries), "metadata.collectionSeries must be an array");
   document.metadata.collectionSeries.forEach((series, index) => {
@@ -683,13 +738,23 @@ export function validateLineageShape(document) {
   });
   assertExactKeys(document.metadata.methodology, METHODOLOGY_KEYS, "metadata.methodology");
   assertExactKeys(document.metadata.methodology.inventoryNormalization, INVENTORY_NORMALIZATION_KEYS, "metadata.methodology.inventoryNormalization");
-  assertExactKeys(document.metadata.methodology.possibleMatchIdentity, POSSIBLE_IDENTITY_KEYS, "metadata.methodology.possibleMatchIdentity");
+  assertExactKeys(document.metadata.methodology.comparisonIdentity, COMPARISON_IDENTITY_KEYS, "metadata.methodology.comparisonIdentity");
   assertExactKeys(document.metadata.methodology.massThresholds, MASS_THRESHOLD_KEYS, "metadata.methodology.massThresholds");
+  assert(typeof document.metadata.methodology.comparisonGrouping === "string" && document.metadata.methodology.comparisonGrouping.length > 0,
+    "metadata.methodology.comparisonGrouping must be nonempty");
   assertCanonicalSubset(document.metadata.methodology.evidenceStrengthOrder, EVIDENCE_STRENGTH_ORDER, "metadata.methodology.evidenceStrengthOrder");
   assert(document.metadata.methodology.evidenceStrengthOrder.length === 3, "metadata.methodology.evidenceStrengthOrder must include all strengths");
   assert(document.metadata.methodology.nonAssertions.join("|") === "custody-chain|ownership-transfer", "metadata.methodology.nonAssertions is invalid");
   assertExactKeys(document.metadata.counts, COUNT_KEYS, "metadata.counts");
-  assertExactKeys(document.metadata.counts.possibleMatchEvidenceStrength, STRENGTH_COUNT_KEYS, "metadata.counts.possibleMatchEvidenceStrength");
+  assertExactKeys(document.metadata.counts.comparisonCandidateEvidenceStrength, STRENGTH_COUNT_KEYS, "metadata.counts.comparisonCandidateEvidenceStrength");
+  assert(Array.isArray(document.metadata.counts.comparisonGroupCardinalityDistribution), "metadata.counts.comparisonGroupCardinalityDistribution must be an array");
+  document.metadata.counts.comparisonGroupCardinalityDistribution.forEach((item, index) => {
+    assertExactKeys(item, CARDINALITY_COUNT_KEYS, `metadata.counts.comparisonGroupCardinalityDistribution[${index}]`);
+    assert(Number.isInteger(item.candidateCount) && item.candidateCount > 0 && Number.isInteger(item.groupCount) && item.groupCount > 0,
+      `metadata.counts.comparisonGroupCardinalityDistribution[${index}] is invalid`);
+    assert(index === 0 || document.metadata.counts.comparisonGroupCardinalityDistribution[index - 1].candidateCount < item.candidateCount,
+      "metadata.counts.comparisonGroupCardinalityDistribution must be canonically ordered");
+  });
   assert(Array.isArray(document.metadata.counts.catalogPairs), "metadata.counts.catalogPairs must be an array");
   document.metadata.counts.catalogPairs.forEach((item, index) => assertExactKeys(item, PAIR_COUNT_KEYS, `metadata.counts.catalogPairs[${index}]`));
   assert(Array.isArray(document.sourceAttestedGroups), "sourceAttestedGroups must be an array");
@@ -707,42 +772,27 @@ export function validateLineageShape(document) {
   assert(document.metadata.counts.sourceAttestedUniqueMemberCount === sourceClaimStats.uniqueMemberCount,
     "metadata.counts.sourceAttestedUniqueMemberCount differs from sourceAttestedGroups");
   assert(Array.isArray(document.relationships), "relationships must be an array");
+  const relationshipIds = new Set();
   for (const [relationshipIndex, relationship] of document.relationships.entries()) {
     const path = `relationships[${relationshipIndex}]`;
     assertExactKeys(relationship, RELATIONSHIP_KEYS, path);
-    const sameInventory = relationship.relationship === "same-inventory";
-    const prefix = sameInventory ? "same-inventory-lineage-" : "possible-lineage-";
-    assert(["same-inventory", "possible-match"].includes(relationship.relationship), `${path}.relationship is invalid`);
+    const prefix = "same-inventory-lineage-";
+    assert(relationship.relationship === "same-inventory", `${path}.relationship must be same-inventory`);
     assert(relationship.id.startsWith(prefix) && UUID_V5_PATTERN.test(relationship.id.slice(prefix.length)), `${path}.id is invalid`);
-    assert(relationship.basis === (sameInventory ? "series-scoped-normalized-inventory-id" : "reviewed-identity-and-reported-mass"), `${path}.basis is invalid`);
-    assert(relationship.status === (sameInventory ? "established" : "possible"), `${path}.status is invalid`);
+    assert(!relationshipIds.has(relationship.id), `${path}.id is duplicated`);
+    relationshipIds.add(relationship.id);
+    assert(relationship.basis === "series-scoped-normalized-inventory-id", `${path}.basis is invalid`);
+    assert(relationship.status === "established", `${path}.status is invalid`);
     assert(typeof relationship.displayName === "string" && relationship.displayName.length > 0, `${path}.displayName must be nonempty`);
     assert(/^[a-z0-9-]+\|[a-z0-9-]+$/u.test(relationship.catalogPair), `${path}.catalogPair is invalid`);
-    if (sameInventory) {
-      assertExactKeys(relationship.collectionSeries, COLLECTION_SERIES_KEYS, `${path}.collectionSeries`);
-      assert(typeof relationship.collectionSeries.id === "string" && typeof relationship.collectionSeries.inventoryId === "string" && relationship.collectionSeries.inventoryId.length > 0, `${path}.collectionSeries is invalid`);
-      assert(relationship.identity === null && relationship.evidence === null && relationship.review === null, `${path} same-inventory optional fields must be null`);
-    } else {
-      assert(relationship.collectionSeries === null, `${path}.collectionSeries must be null`);
-      assertExactKeys(relationship.identity, IDENTITY_KEYS, `${path}.identity`);
-      assertEnum(relationship.identity.method, ["metbull-code", "normalized-source-name"], `${path}.identity.method`);
-      assert(typeof relationship.identity.key === "string" && relationship.identity.key.length > 0, `${path}.identity.key must be nonempty`);
-      assert(relationship.identity.canonicalName === null || typeof relationship.identity.canonicalName === "string", `${path}.identity.canonicalName is invalid`);
-      assertExactKeys(relationship.evidence, EVIDENCE_KEYS, `${path}.evidence`);
-      assertEnum(relationship.evidence.strength, EVIDENCE_STRENGTH_ORDER, `${path}.evidence.strength`);
-      assertEnum(relationship.evidence.massMatch, ["exact", "near"], `${path}.evidence.massMatch`);
-      assertFiniteNonnegative(relationship.evidence.absoluteDifferenceGrams, `${path}.evidence.absoluteDifferenceGrams`);
-      assertFiniteNonnegative(relationship.evidence.relativeDifference, `${path}.evidence.relativeDifference`);
-      assert(typeof relationship.evidence.sameDesignation === "boolean" && typeof relationship.evidence.designationFamily === "boolean", `${path}.evidence designation flags are invalid`);
-      assertCanonicalSubset(relationship.evidence.factCodes, FACT_CODE_ORDER, `${path}.evidence.factCodes`);
-      assertCanonicalSubset(relationship.evidence.cautionCodes, CAUTION_CODE_ORDER, `${path}.evidence.cautionCodes`);
-      validateReview(relationship.review, `${path}.review`);
-    }
+    assertExactKeys(relationship.collectionSeries, COLLECTION_SERIES_KEYS, `${path}.collectionSeries`);
+    assert(typeof relationship.collectionSeries.id === "string" && typeof relationship.collectionSeries.inventoryId === "string" && relationship.collectionSeries.inventoryId.length > 0, `${path}.collectionSeries is invalid`);
+    assert(relationship.identity === null && relationship.evidence === null && relationship.review === null, `${path} same-inventory optional fields must be null`);
     assert(Array.isArray(relationship.observations) && relationship.observations.length === 2, `${path}.observations must contain exactly two items`);
     for (const [observationIndex, observation] of relationship.observations.entries()) {
       const observationPath = `${path}.observations[${observationIndex}]`;
       assertExactKeys(observation, OBSERVATION_KEYS, observationPath);
-      const observationPrefix = sameInventory ? "inventory-observation-" : "mass-observation-";
+      const observationPrefix = "inventory-observation-";
       assert(observation.id.startsWith(observationPrefix) && UUID_V5_PATTERN.test(observation.id.slice(observationPrefix.length)), `${observationPath}.id is invalid`);
       assert(/^[A-Za-z0-9][A-Za-z0-9._-]*$/u.test(observation.recordId), `${observationPath}.recordId is invalid`);
       assert(typeof observation.catalogId === "string" && Number.isInteger(observation.catalogYear), `${observationPath} catalog descriptor is invalid`);
@@ -750,11 +800,114 @@ export function validateLineageShape(document) {
       assert(observation.designationPath === null || /^(?:designation|specimenId|holdings\[[0-9]+\]\.designation)$/u.test(observation.designationPath), `${observationPath}.designationPath is invalid`);
       assert(typeof observation.massPath === "string" && /^(?:weight\.grams|holdings\[[0-9]+\]\.(?:weight\.grams|weights\[[0-9]+\]\.grams))$/u.test(observation.massPath), `${observationPath}.massPath is invalid`);
       for (const key of ["sourceName", "canonicalName", "meteoriteCode", "designation", "kind"]) assert(observation[key] === null || typeof observation[key] === "string", `${observationPath}.${key} is invalid`);
-      assertFiniteNonnegative(observation.massGrams, `${observationPath}.massGrams`, sameInventory);
+      assertFiniteNonnegative(observation.massGrams, `${observationPath}.massGrams`, true);
       assert(observation.count === null || (Number.isInteger(observation.count) && observation.count > 0), `${observationPath}.count is invalid`);
       assert(/^\.\/index\.html\?catalog=[a-z0-9%_-]+&q=[^\s#&]+#catalog$/u.test(observation.catalogSearchUrl), `${observationPath}.catalogSearchUrl is unsafe`);
     }
   }
+  assert(document.relationships.every((item, index) => index === 0 || compareText(document.relationships[index - 1].id, item.id) < 0),
+    "relationships must be uniquely and canonically ordered");
+
+  assert(Array.isArray(document.comparisonGroups), "comparisonGroups must be an array");
+  const groupIds = new Set();
+  const candidateIds = new Set();
+  const v3CandidateIds = new Set();
+  let candidateCount = 0;
+  for (const [groupIndex, group] of document.comparisonGroups.entries()) {
+    const path = `comparisonGroups[${groupIndex}]`;
+    assertExactKeys(group, COMPARISON_GROUP_KEYS, path);
+    const groupPrefix = "comparison-group-";
+    assert(group.id.startsWith(groupPrefix) && UUID_V5_PATTERN.test(group.id.slice(groupPrefix.length)), `${path}.id is invalid`);
+    assert(!groupIds.has(group.id), `${path}.id is duplicated`);
+    groupIds.add(group.id);
+    assert(group.type === "comparison-only", `${path}.type is invalid`);
+    assert(group.basis === "reviewed-identity-and-reported-mass", `${path}.basis is invalid`);
+    assert(typeof group.displayName === "string" && group.displayName.length > 0, `${path}.displayName must be nonempty`);
+    assert(/^[a-z0-9-]+\|[a-z0-9-]+$/u.test(group.catalogPair), `${path}.catalogPair is invalid`);
+    assertExactKeys(group.identity, IDENTITY_KEYS, `${path}.identity`);
+    assertEnum(group.identity.method, ["metbull-code", "normalized-source-name"], `${path}.identity.method`);
+    assert(typeof group.identity.key === "string" && group.identity.key.length > 0, `${path}.identity.key must be nonempty`);
+    assert(group.identity.canonicalName === null || typeof group.identity.canonicalName === "string", `${path}.identity.canonicalName is invalid`);
+    assert(Array.isArray(group.massPair) && group.massPair.length === 2, `${path}.massPair must contain exactly two items`);
+    group.massPair.forEach((mass, massIndex) => {
+      assertExactKeys(mass, MASS_PAIR_KEYS, `${path}.massPair[${massIndex}]`);
+      assert(typeof mass.catalogId === "string" && mass.catalogId.length > 0, `${path}.massPair[${massIndex}].catalogId is invalid`);
+      assertFiniteNonnegative(mass.massGrams, `${path}.massPair[${massIndex}].massGrams`);
+    });
+    assert(compareText(group.massPair[0].catalogId, group.massPair[1].catalogId) < 0, `${path}.massPair must be in catalog-side order`);
+    assert(group.catalogPair === group.massPair.map(({ catalogId }) => catalogId).join("|"), `${path}.catalogPair differs from massPair`);
+    const groupReference = ["comparison-group", group.identity.method, group.identity.key,
+      ...group.massPair.flatMap(({ catalogId, massGrams }) => [catalogId, JSON.stringify(massGrams)])].join("\u0000");
+    assert(group.id === `comparison-group-${uuidV5(groupReference)}`, `${path}.id differs from canonical partition ID`);
+    assert(Number.isInteger(group.candidateCount) && group.candidateCount > 0, `${path}.candidateCount is invalid`);
+    assert(Array.isArray(group.candidates) && group.candidates.length === group.candidateCount, `${path}.candidates differs from candidateCount`);
+    for (const [candidateIndex, candidate] of group.candidates.entries()) {
+      const candidatePath = `${path}.candidates[${candidateIndex}]`;
+      assertExactKeys(candidate, COMPARISON_CANDIDATE_KEYS, candidatePath);
+      const candidatePrefix = "comparison-candidate-";
+      const v3Prefix = "possible-lineage-";
+      assert(candidate.id.startsWith(candidatePrefix) && UUID_V5_PATTERN.test(candidate.id.slice(candidatePrefix.length)), `${candidatePath}.id is invalid`);
+      assert(candidate.v3CandidateId.startsWith(v3Prefix) && UUID_V5_PATTERN.test(candidate.v3CandidateId.slice(v3Prefix.length)), `${candidatePath}.v3CandidateId is invalid`);
+      assert(candidate.id.slice(candidatePrefix.length) === candidate.v3CandidateId.slice(v3Prefix.length), `${candidatePath} v3 ID suffix differs`);
+      assert(!candidateIds.has(candidate.id), `${candidatePath}.id is duplicated`);
+      assert(!v3CandidateIds.has(candidate.v3CandidateId), `${candidatePath}.v3CandidateId is duplicated`);
+      candidateIds.add(candidate.id);
+      v3CandidateIds.add(candidate.v3CandidateId);
+      assertExactKeys(candidate.evidence, EVIDENCE_KEYS, `${candidatePath}.evidence`);
+      assertEnum(candidate.evidence.strength, EVIDENCE_STRENGTH_ORDER, `${candidatePath}.evidence.strength`);
+      assertEnum(candidate.evidence.massMatch, ["exact", "near"], `${candidatePath}.evidence.massMatch`);
+      assertFiniteNonnegative(candidate.evidence.absoluteDifferenceGrams, `${candidatePath}.evidence.absoluteDifferenceGrams`);
+      assertFiniteNonnegative(candidate.evidence.relativeDifference, `${candidatePath}.evidence.relativeDifference`);
+      assert(typeof candidate.evidence.sameDesignation === "boolean" && typeof candidate.evidence.designationFamily === "boolean", `${candidatePath}.evidence designation flags are invalid`);
+      assertCanonicalSubset(candidate.evidence.factCodes, FACT_CODE_ORDER, `${candidatePath}.evidence.factCodes`);
+      assertCanonicalSubset(candidate.evidence.cautionCodes, CAUTION_CODE_ORDER, `${candidatePath}.evidence.cautionCodes`);
+      validateReview(candidate.review, `${candidatePath}.review`);
+      assert(Array.isArray(candidate.observations) && candidate.observations.length === 2, `${candidatePath}.observations must contain exactly two items`);
+      const observedMassPair = candidate.observations.map(({ catalogId, massGrams }) => ({ catalogId, massGrams }))
+        .sort((left, right) => compareText(left.catalogId, right.catalogId));
+      assert(JSON.stringify(observedMassPair) === JSON.stringify(group.massPair), `${candidatePath}.observations differ from group massPair`);
+      const references = candidate.observations.map(({ recordId, massPath }) => `${recordId}\u0000${massPath}`).sort(compareText);
+      const candidateReference = references.join("\u0001");
+      assert(candidate.v3CandidateId === `possible-lineage-${uuidV5(`possible-lineage\u0000${candidateReference}`)}`, `${candidatePath}.v3CandidateId differs from observations`);
+      for (const [observationIndex, observation] of candidate.observations.entries()) {
+        const observationPath = `${candidatePath}.observations[${observationIndex}]`;
+        assertExactKeys(observation, OBSERVATION_KEYS, observationPath);
+        const observationPrefix = "mass-observation-";
+        assert(observation.id.startsWith(observationPrefix) && UUID_V5_PATTERN.test(observation.id.slice(observationPrefix.length)), `${observationPath}.id is invalid`);
+        assert(observation.id === `${observationPrefix}${uuidV5(`mass-observation\u0000${candidateReference}\u0000${observation.recordId}\u0000${observation.massPath}`)}`, `${observationPath}.id differs from observations`);
+        assert(/^[A-Za-z0-9][A-Za-z0-9._-]*$/u.test(observation.recordId), `${observationPath}.recordId is invalid`);
+        assert(typeof observation.catalogId === "string" && Number.isInteger(observation.catalogYear), `${observationPath} catalog descriptor is invalid`);
+        assertEnum(observation.recordModel, ["specimen", "catalog-item", "catalog-number", "collection-entry", "table-a-specimen"], `${observationPath}.recordModel`);
+        assert(observation.designationPath === null || /^(?:designation|specimenId|holdings\[[0-9]+\]\.designation)$/u.test(observation.designationPath), `${observationPath}.designationPath is invalid`);
+        assert(typeof observation.massPath === "string" && /^(?:weight\.grams|holdings\[[0-9]+\]\.(?:weight\.grams|weights\[[0-9]+\]\.grams))$/u.test(observation.massPath), `${observationPath}.massPath is invalid`);
+        for (const key of ["sourceName", "canonicalName", "meteoriteCode", "designation", "kind"]) assert(observation[key] === null || typeof observation[key] === "string", `${observationPath}.${key} is invalid`);
+        assertFiniteNonnegative(observation.massGrams, `${observationPath}.massGrams`);
+        assert(observation.count === null || (Number.isInteger(observation.count) && observation.count > 0), `${observationPath}.count is invalid`);
+        assert(/^\.\/index\.html\?catalog=[a-z0-9%_-]+&q=[^\s#&]+#catalog$/u.test(observation.catalogSearchUrl), `${observationPath}.catalogSearchUrl is unsafe`);
+      }
+      assert(candidate.observations.every((item, index) => index === 0 || compareText(candidate.observations[index - 1].id, item.id) < 0), `${candidatePath}.observations must be canonically ordered`);
+      candidateCount += 1;
+    }
+    assert(group.candidates.every((item, index) => index === 0 || compareText(group.candidates[index - 1].id, item.id) < 0), `${path}.candidates must be canonically ordered`);
+  }
+  assert(document.comparisonGroups.every((item, index) => index === 0 || compareText(document.comparisonGroups[index - 1].id, item.id) < 0),
+    "comparisonGroups must be uniquely and canonically ordered");
+  const cardinalityCounts = countBy(document.comparisonGroups, ({ candidateCount: size }) => size);
+  const expectedCardinality = [...cardinalityCounts].sort(([a], [b]) => a - b).map(([size, groupCount]) => ({ candidateCount: size, groupCount }));
+  assert(JSON.stringify(document.metadata.counts.comparisonGroupCardinalityDistribution) === JSON.stringify(expectedCardinality),
+    "metadata.counts.comparisonGroupCardinalityDistribution differs from comparisonGroups");
+  assert(document.metadata.counts.relationshipCount === document.relationships.length, "metadata.counts.relationshipCount differs from relationships");
+  assert(document.metadata.counts.sameInventoryRelationshipCount === document.relationships.length, "metadata.counts.sameInventoryRelationshipCount differs from relationships");
+  assert(document.metadata.counts.comparisonGroupCount === document.comparisonGroups.length, "metadata.counts.comparisonGroupCount differs from comparisonGroups");
+  assert(document.metadata.counts.singletonComparisonGroupCount === document.comparisonGroups.filter(({ candidateCount: size }) => size === 1).length,
+    "metadata.counts.singletonComparisonGroupCount differs from comparisonGroups");
+  assert(document.metadata.counts.ambiguousComparisonGroupCount === document.comparisonGroups.filter(({ candidateCount: size }) => size > 1).length,
+    "metadata.counts.ambiguousComparisonGroupCount differs from comparisonGroups");
+  assert(document.metadata.counts.comparisonCandidateCount === candidateCount, "metadata.counts.comparisonCandidateCount differs from comparisonGroups");
+  assert(document.metadata.counts.reviewedComparisonCandidateCount === document.comparisonGroups.flatMap(({ candidates }) => candidates).filter(({ review }) => review.status === "reviewed").length,
+    "metadata.counts.reviewedComparisonCandidateCount differs from comparisonGroups");
+  assert(document.metadata.counts.unreviewedComparisonCandidateCount === document.comparisonGroups.flatMap(({ candidates }) => candidates).filter(({ review }) => review.status === "unreviewed").length,
+    "metadata.counts.unreviewedComparisonCandidateCount differs from comparisonGroups");
   inspectPrivateMarkers(document);
   return true;
 }
@@ -791,12 +944,14 @@ export function validateSpecimenLineages(
 ) {
   validateLineageShape(document);
   validateSourceClaims(sourceClaims, catalog);
+  validateReviewSource(reviewSource, new Set(document.comparisonGroups.flatMap(({ candidates }) => candidates.map(({ id }) => id))));
   const expected = buildSpecimenLineages(catalog, reviewSource, sourceClaims);
   const difference = firstDifference(document, expected);
   assert(difference === null, `specimen lineage data differs from public catalog derivation at ${difference}`);
   return {
     relationshipCount: document.relationships.length,
     sameInventoryRelationshipCount: document.metadata.counts.sameInventoryRelationshipCount,
-    possibleMatchRelationshipCount: document.metadata.counts.possibleMatchRelationshipCount,
+    comparisonGroupCount: document.metadata.counts.comparisonGroupCount,
+    comparisonCandidateCount: document.metadata.counts.comparisonCandidateCount,
   };
 }

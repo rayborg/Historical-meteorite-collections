@@ -10,7 +10,7 @@ const [catalogText, projectionText, lineageText, reviewText, html, catalogsHtml,
   readFile(new URL("../data/catalog.json", import.meta.url), "utf8"),
   readFile(new URL("../data/specimen-card-projections.json", import.meta.url), "utf8"),
   readFile(new URL("../data/specimen-lineages.json", import.meta.url), "utf8"),
-  readFile(new URL("../data/specimen-lineage-reviews.json", import.meta.url), "utf8"),
+  readFile(new URL("../data/specimen-comparison-reviews.json", import.meta.url), "utf8"),
   readFile(new URL("../index.html", import.meta.url), "utf8"),
   readFile(new URL("../catalogs.html", import.meta.url), "utf8"),
   readFile(new URL("../styles.css", import.meta.url), "utf8"),
@@ -25,13 +25,14 @@ const sourceCatalogSha256 = createHash("sha256").update(catalogText).digest("hex
 const projectionIndex = app.deriveSpecimenCardProjectionIndex(projections, records, { sourceCatalogSha256 });
 const descriptors = app.expandSpecimenCardDescriptors(records, projectionIndex);
 const lineageIndex = app.deriveEarlierRecordIndex(lineages, records, registry);
+const comparisonIndex = app.deriveComparisonGroupIndex(lineages, records, registry);
 
 const DTO_KEYS = [
-  "kind", "identifier", "semanticLabel", "sourceName", "description", "facts", "sourceCitation", "sourceLabel", "catalogId", "catalogPages", "lineage"
+  "kind", "identifier", "semanticLabel", "sourceName", "description", "facts", "sourceCitation", "sourceLabel", "catalogId", "catalogPages", "lineage", "comparison"
 ];
 const STANDARD_SPECIMEN_LABELS = [
   "Class", "Specimen form", "Source locality",
-  "Individual find location", "Event", "Lineage", "Specimen weight"
+  "Individual find location", "Event", "Lineage", "Cross-catalog comparisons", "Specimen weight"
 ];
 const STANDARD_OBSERVATION_LABELS = ["Class", "Source locality", "Event"];
 const FLETCHER_OBSERVATION_LABELS = ["Class", "Source locality", "Date or report of find"];
@@ -53,6 +54,7 @@ function sha256(value) {
 function present(descriptor) {
   return app.presentHarmonizedCard(descriptor, {
     lineageEntries: lineageIndex.get(descriptor.parentRecord.id) || [],
+    comparisonEntries: comparisonIndex.get(descriptor.parentRecord.id) || [],
   });
 }
 
@@ -128,6 +130,8 @@ function expectedFacts(descriptor) {
   if (specimen) {
     const claims = app.lineageEntriesForSpecimenCard(descriptor, lineageIndex.get(record.id) || []);
     if (claims.length) entries.push({ label: "Lineage", value: app.formatLineageSummary(claims) });
+    const comparisons = app.comparisonCardDto(descriptor, comparisonIndex.get(record.id) || []);
+    if (comparisons.groups.length) entries.push({ label: "Cross-catalog comparisons", value: comparisons.summary.text });
     const grams = kind === "projected-atomic-specimen"
       ? descriptor.repeatedMass
         ? app.resolveSpecimenCardRepeatedMass(record, descriptor.holdingPath, descriptor.repeatedMass)?.grams
@@ -289,7 +293,8 @@ test("every production card uses the approved known-fact order and omits unavail
   assert.deepEqual(omitted, {
     "Individual find location": 14038,
     "Specimen form": 5466,
-    Lineage: 13186,
+    Lineage: 13878,
+    "Cross-catalog comparisons": 12432,
     Event: 2746,
     Class: 232,
     "Source locality": 1102,
@@ -302,13 +307,15 @@ test("every production card uses the approved known-fact order and omits unavail
     eventDisplayed: specimenCount - omitted.Event,
     locationDisplayed: specimenCount - omitted["Individual find location"],
     lineageDisplayed: specimenCount - omitted.Lineage,
+    comparisonDisplayed: specimenCount - omitted["Cross-catalog comparisons"],
     weightDisplayed: specimenCount - omitted["Specimen weight"],
   }, {
     classDisplayed: 13917,
     formDisplayed: 8683,
     eventDisplayed: 11403,
     locationDisplayed: 111,
-    lineageDisplayed: 963,
+    lineageDisplayed: 271,
+    comparisonDisplayed: 1717,
     weightDisplayed: 13977,
   });
 });
@@ -674,7 +681,7 @@ test("Brown and Minnesota retain exactly 538 source-listed specimen cards in def
   }
 });
 
-test("Foote and Wave 1 lineage endpoints retain non-specimen and exact-path semantics", () => {
+test("Foote and reviewed comparison endpoints retain non-specimen and exact-path semantics", () => {
   const foote = descriptors.filter(({ parentRecord }) => parentRecord.catalogId === "foote-1909");
   assert.deepEqual(foote.map((descriptor) => present(descriptor).identifier),
     [95, 96, 97, 98, 99, 100].map((typeNumber) => `Foote (1909) · Type number ${typeNumber}`));
@@ -692,13 +699,13 @@ test("Foote and Wave 1 lineage endpoints retain non-specimen and exact-path sema
   assert.equal(foote.filter(({ parentRecord }) => app.matchesSearch(parentRecord, "etched plate")).length, 2);
 
   const waveCatalogs = new Set(["brown-1916", "minnesota-1892"]);
-  const relationships = lineages.relationships.filter(({ observations }) =>
-    observations.some(({ catalogId }) => waveCatalogs.has(catalogId)));
-  assert.equal(relationships.length, 22);
-  for (const relationship of relationships) {
-    for (const endpoint of relationship.observations.filter(({ catalogId }) => waveCatalogs.has(catalogId))) {
+  const candidates = lineages.comparisonGroups.flatMap(({ candidates: groupCandidates }) => groupCandidates)
+    .filter(({ observations }) => observations.some(({ catalogId }) => waveCatalogs.has(catalogId)));
+  assert.equal(candidates.length, 22);
+  for (const candidate of candidates) {
+    for (const endpoint of candidate.observations.filter(({ catalogId }) => waveCatalogs.has(catalogId))) {
       assert(descriptors.some((descriptor) => descriptor.parentRecord.id === endpoint.recordId &&
-        descriptor.massPath === endpoint.massPath), `${relationship.id}: ${endpoint.massPath}`);
+        descriptor.massPath === endpoint.massPath), `${candidate.id}: ${endpoint.massPath}`);
     }
   }
 });
@@ -723,13 +730,13 @@ test("accessible shell, responsive breakpoints, approved cache, and immutable da
   assert.match(styles, /\.record-meta dt \{[^}]*font-size: \.6rem;/u);
   assert.match(styles, /\.record-meta dd \{[^}]*font-size: \.8rem;/u);
   assert.doesNotMatch(styles, /\.record-meta dt \{[^}]*overflow-wrap: anywhere;/u);
-  assert.equal(app.CACHE_VERSION, "20260912-all-source-numbers-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260912-all-source-numbers-1");
+  assert.equal(app.CACHE_VERSION, "20260912-comparison-groups-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260912-comparison-groups-1");
   for (const document of [html, catalogsHtml]) {
-    assert.match(document, /styles\.css\?v=20260912-all-source-numbers-1/u);
-    assert.match(document, /app\.js\?v=20260912-all-source-numbers-1/u);
+    assert.match(document, /styles\.css\?v=20260912-comparison-groups-1/u);
+    assert.match(document, /app\.js\?v=20260912-comparison-groups-1/u);
   }
-  assert.match(catalogsHtml, /catalogs\.js\?v=20260912-all-source-numbers-1/u);
+  assert.match(catalogsHtml, /catalogs\.js\?v=20260912-comparison-groups-1/u);
   assert.deepEqual({
     catalog: sha256(catalogText),
     projections: sha256(projectionText),
@@ -738,7 +745,7 @@ test("accessible shell, responsive breakpoints, approved cache, and immutable da
   }, {
     catalog: "cf429e6660f00272f2f81fe69bac81c891f41574bbfff6e6bb46499d2d0672b4",
     projections: "7ab4ca4fef524f94e68d977f3a8106dc3b7a29ba7112ffe491deff91964ab445",
-    lineages: "3f1d63db2effbe497e328ac99831c22d661fd72a2fba2fd1ec74a83186a523a9",
-    reviews: "aff7c3773af3e812578776b82ee81cd20060009eb72ca1326220cd2e0c8d5283",
+    lineages: "b592065b07412b8d09d955f9276b2de0790a56f1649c7987a8b10bcc62c32199",
+    reviews: "32580c887d4e26a7c22950c95e2b8629de12a60c3f307708c1ea76e33fb31938",
   });
 });

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:hmc:schema:specimen-lineage-reviews:1",
-  "title": "Historical Meteorite Collection public specimen-lineage reviews",
+  "$id": "urn:hmc:schema:specimen-comparison-reviews:1",
+  "title": "Historical Meteorite Collection public specimen comparison reviews",
   "type": "object",
   "additionalProperties": false,
   "required": ["schemaVersion", "reviews"],
@@ -35,7 +35,7 @@
       "additionalProperties": false,
       "required": ["candidateId", "outcome", "reviewedOn", "publicNote", "citations"],
       "properties": {
-        "candidateId": { "type": "string", "pattern": "^possible-lineage-[0-9a-f]{8}-[0-9a-f]{4}-5[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$" },
+        "candidateId": { "type": "string", "pattern": "^comparison-candidate-[0-9a-f]{8}-[0-9a-f]{4}-5[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$" },
         "outcome": { "enum": ["retain-as-possible", "not-supported"] },
         "reviewedOn": { "type": "string", "format": "date", "pattern": "^[1-9][0-9]{3}-[0-9]{2}-[0-9]{2}$" },
         "publicNote": {

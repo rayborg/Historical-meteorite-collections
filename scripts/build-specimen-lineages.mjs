@@ -3,7 +3,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import { buildSpecimenLineages, serializeSpecimenLineages } from "./specimen-lineages-lib.mjs";
 
 const CATALOG_URL = new URL("../data/catalog.json", import.meta.url);
-const REVIEWS_URL = new URL("../data/specimen-lineage-reviews.json", import.meta.url);
+const REVIEWS_URL = new URL("../data/specimen-comparison-reviews.json", import.meta.url);
 const SOURCE_CLAIMS_URL = new URL("../data/source-claims.json", import.meta.url);
 const OUTPUT_URL = new URL("../data/specimen-lineages.json", import.meta.url);
 

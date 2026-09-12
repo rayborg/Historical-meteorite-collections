@@ -18,10 +18,10 @@ The project keeps these claims distinct:
 | --- | --- | --- |
 | Source observation | One source row or explicitly modeled source unit | Unique meteorite or physical specimen |
 | Source fact | A structured value reported by that source | Modern scientific correctness |
-| Reviewed MetBull identity | A reviewed current meteorite/fall identity | Same physical fragment |
+| Reviewed MetBull identity | A reviewed current meteorite-event/fall identity | Same physical specimen or fragment |
 | Specimen card | A reviewed display projection of one atomic holding/component | A replacement for its parent observation |
 | Same inventory | Continuity of a source-attested persistent inventory ID within one collection series | Unchanged piece, mass, custody, or ownership |
-| Possible match | A candidate based on reviewed identity and reported mass | Proven physical identity or authorization to merge |
+| Cross-catalog comparison | A candidate based on reviewed event identity and reported mass | Lineage, physical identity, or authorization to merge |
 | Source-attested group | An n-ary grouping printed by a source | Pairwise specimen equivalence |
 | Amendment | A later source statement about an earlier observation or component | Permission to rewrite historical base facts |
 
@@ -81,7 +81,7 @@ content-identical rows remain separate. Corrections preserve the observation's
 ID. New public IDs are opaque and do not expose source storage or mutable fact
 values.
 
-The public catalog supports seven closed models:
+The public catalog supports eight closed models:
 
 - `specimen` for a row that explicitly describes one source-identified
   specimen.
@@ -90,6 +90,8 @@ The public catalog supports seven closed models:
   possibly multiple page citations.
 - `collection-entry` for a source-order collection observation with ordered
   holdings and a nullable or repeated printed number.
+- `collection-representation-fact` for edition-local representation evidence
+  that is not an atomic holding or specimen.
 - `regional-census-fact` for occurrence and representation facts that are not
   physical holdings.
 - `table-a-specimen` for a source's primary specimen table with separately
@@ -141,7 +143,7 @@ The following inferences are prohibited:
 
 Calculated sums are audit results, not printed facts. Both are retained when
 they differ. Zero can be retained as a catalog fact only when affirmatively
-reported, and zero is never a lineage mass endpoint.
+reported, and zero is never a comparison mass endpoint.
 
 The specimen-weight census is a closed partition over the 14,152 current
 specimen or not-individual descriptors. After exact source correction and
@@ -166,7 +168,7 @@ numbers and pane/case labels are finding context, not inventory; represented
 weights are source context, not atomic holdings or specimen masses. Multiple
 printed values remain ordered text components with no scalar grams value. The
 model therefore has no holdings and is excluded from specimen-card projection,
-mass-range filtering, same-inventory continuity, and lineage generation.
+mass-range filtering, same-inventory continuity, and comparison generation.
 
 Fletcher corrections begin in the private accepted source-first evidence, not
 in this public repository. A corrected release must re-adjudicate exact source
@@ -201,6 +203,11 @@ the current canonical name, a positive decimal Meteoritical Bulletin code, and
 the canonical HTTPS detail URL. An unresolved review has no canonical identity
 fields.
 
+A resolved code identifies the meteorite event represented by the observation.
+It does not identify an individual physical specimen. Even two observations with
+the same reviewed code and reported mass remain distinct observations unless
+separate lineage evidence applies; mass is only comparison evidence.
+
 Exact spelling can still conflict by date, jurisdiction, object type, or source
 scope. Similar spelling, normalized spelling, shared mass, or fuzzy search does
 not authorize a mapping. Pending observations remain pending; ambiguous
@@ -224,9 +231,9 @@ statistics, page citations, and folio authorization remain parent-observation
 based. Group totals, casts, aggregates, associated material, counts, ranges,
 dealer offers, and unreviewed clauses remain observation or audit context.
 
-Every numeric lineage route from a projected card uses an exact non-null mass
+Every numeric comparison route from a projected card uses an exact non-null mass
 path. Repeated display masses and qualitative or source-unlisted cards do not
-become numeric lineage endpoints. A qualitative clause can enter the default
+become numeric comparison endpoints. A qualitative clause can enter the default
 source-listed view only through the closed schema-6 evidence variant.
 
 The current source-number release is deliberately catalog-specific. Four
@@ -245,12 +252,14 @@ these bindings resolve public facts-only catalog text and cited printed pages,
 not an in-app facsimile. Consult the cited source edition when visual comparison
 with the printed page is required.
 
-## 9. Lineage Semantics
+## 9. Lineage And Comparison Semantics
 
-The generated relationship layer is
+The generated schema-4 lineage and comparison layer is
 [`data/specimen-lineages.json`](./data/specimen-lineages.json). Its schemas and
-review source are published beside it. Relationships preserve both endpoint
-observations.
+comparison review source are published beside it. Root-level `relationships`
+contain only same-inventory lineage, while `comparisonGroups` are non-lineage
+research candidates. The current artifact SHA-256 is
+`b592065b07412b8d09d955f9276b2de0790a56f1649c7987a8b10bcc62c32199`.
 
 ### 9.1 Same inventory
 
@@ -273,9 +282,9 @@ An emitted relationship means the collection's identifier continued. It does
 not mean the specimen was physically unchanged and does not assert custody,
 ownership, or transfer.
 
-### 9.2 Possible matches
+### 9.2 Cross-catalog comparisons
 
-`possible-match` is a cross-source candidate class. The current generator first
+Cross-catalog comparison is a non-lineage candidate class. The current generator first
 requires either a shared reviewed MetBull code or, only when both endpoints are
 unresolved, an equal normalized source name. It then requires:
 
@@ -284,13 +293,17 @@ unresolved, an equal normalized source name. It then requires:
   difference at most 0.0025.
 
 These rules generate review candidates; they do not establish physical
-identity. Evidence codes can note shared identity, exact/near mass, and
+identity or lineage. The shared MetBull code identifies a meteorite event, not a
+physical specimen, and mass remains comparison evidence only. Evidence codes can note shared identity, exact/near mass, and
 designation agreement. Caution codes retain normalized-name identity,
 near-mass, missing/different designation, aggregate/multiple, and cast risks.
 
 A review outcome of `retain-as-possible` still does not prove identity. An
 outcome of `not-supported` rejects the candidate, not either observation.
-Possible matches never merge records.
+Comparisons never merge records. Candidates are grouped by event-identity
+partition, catalog pair, and ordered reported-mass pair so ambiguity remains
+visible without presenting every alternative as a falsely precise pairwise
+claim. Holbrook 98 is one such ambiguity group.
 
 ### 9.3 Source-attested groups
 
@@ -306,13 +319,16 @@ claims applicable to the exact direct or projected card, then materializes a
 closed presentation object rather than a free-text summary. Binary claims
 retain both source endpoints, catalog labels and years, source record labels,
 available masses, printed-page citations, and exact record-search links.
-Same-inventory continuity is labeled `known`; possible cross-catalog matches
-are `suspected` and retain evidence strength plus public review state;
-source-attested n-ary groups are `tentative` and retain complete membership.
-Controlled caution text prevents any of these labels from implying physical
-identity, custody, ownership, transfer, or a record merge. The current
-inclusive lineage-only view contains 963 cards and 1,451 claims: 194 known,
-1,178 suspected, and 79 tentative.
+Same-inventory continuity is labeled `known`; source-attested n-ary groups are
+`tentative` and retain complete membership. The lineage-only view contains 271
+cards and 273 claims: 194 known same-inventory claims and 79 tentative group
+occurrences. Comparisons do not enter lineage-only; separate comparison routing
+contains 1,717 cards and 1,889 top-level group occurrences. The 1,541 comparison
+groups contain 1,323 singleton and 218 ambiguous groups, totaling 2,245
+candidates: 2,014 exact-mass and 231 near-mass, with 906 reviewed
+`retain-as-possible` and 1,339 unreviewed. Controlled caution text prevents any
+lineage or comparison presentation from implying physical identity, custody,
+ownership, transfer, or a record merge.
 
 ## 10. Supplements, Amendments, And Corrections
 
