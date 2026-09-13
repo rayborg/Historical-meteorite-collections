@@ -19,6 +19,7 @@ The project keeps these claims distinct:
 | Source observation | One source row or explicitly modeled source unit | Unique meteorite or physical specimen |
 | Source fact | A structured value reported by that source | Modern scientific correctness |
 | Reviewed MetBull identity | A reviewed current meteorite-event/fall identity | Same physical specimen or fragment |
+| Current MetBull context | Current Official event name, class, place, year, and fall/find category for a reviewed code | Historical source fact, specimen fact, or matching confidence |
 | Specimen card | A reviewed display projection of one atomic holding/component | A replacement for its parent observation |
 | Same inventory | Continuity of a source-attested persistent inventory ID within one collection series | Unchanged piece, mass, custody, or ownership |
 | Cross-catalog comparison | A candidate based on reviewed event identity and reported mass | Lineage, physical identity, or authorization to merge |
@@ -218,6 +219,56 @@ observations are explicitly unresolved rather than guessed.
 The public validator checks the exact `metbull` shape and source-name/match-type
 coherence. The browser never performs fuzzy identity matching.
 
+### 7.1 Current event context
+
+The current Official CSV is a separately acquired, byte-pinned source. The
+accepted snapshot has 80,224 rows and SHA-256
+`1e22fb5cac0e46628e73e74f2ad3dac15240fd247ccffa621bf89539c5b18d68`.
+It is joined only through an already reviewed positive `meteoriteCode`; current
+name, class, place, year, or mass similarity never creates or changes a mapping.
+The resulting schema-1 public sidecar has SHA-256
+`9ac2997e1386cc9c2bf3b134f742aa30e5c4bdd23ac9233d18f57900d741d3f3`.
+
+The sidecar covers the complete 14,149-card specimen partition. Exactly 11,774
+cards from 7,651 parents map to 2,548 Official codes, and 2,375 remain unmapped.
+Every mapped event object contains only current Official name, status, fall
+code, year, place, and classification. Official mass, latitude, longitude, and
+comments are excluded, as is the raw CSV. Classification is contextual after
+event identity has been established; it is not independent match likelihood or
+lineage evidence.
+
+Historical source facts retain precedence for what a catalog reported and for
+all specimen-specific facts. They remain immutable and searchable. A mapped
+card may lead with current event context, but differing source context remains
+under the collapsed **Show catalog notes** disclosure rather than being deleted.
+Equivalent repetition may be collapsed. Observations, unmapped cards, and any
+card affected by a missing or invalid sidecar remain source-only.
+
+For fall/find display, `Y` renders `Fall` and empty renders `Find`. Exceptional
+`Yc`, `Yp`, and `Np` values render literally as `Code Yc`, `Code Yp`, and
+`Code Np`; suffixes are preserved rather than interpreted as confidence. `Nd`
+occurs in the acquired source but is absent from the current used-code set and
+public allowlist; future use must fail until explicitly reviewed.
+The private receipt and exhaustive audit paths are
+`data/private/metbull-current-context-2026-09-12/acquisition.json` and
+`data/private/metbull-current-context-2026-09-12/specimen-card-audit.json`.
+The audit SHA-256 is
+`8bb453b7a970e14bf877fdd32c81e9b7b1888a97433a13e0410c099e42f514b9`.
+Its private-generation assignment digest is
+`a732537ef524872ec7bce3340a04db1eb0694453cc158b6497cfd363a973bb44`;
+it binds ordered card route/mapping assignments to full Official-row hashes.
+The sidecar exposes this digest value as provenance but never exposes the row
+hashes or assignment tuples.
+
+The separate `METBULL_PUBLIC_CARD_BINDINGS_SHA256` runtime digest is
+`2729240dd574b40ed5b9526d0ab81e99108b80894683c9b69157bb9576ef7504`.
+It covers all 14,149 ordered public card keys, routes, parent IDs, projected
+positions, mapping statuses, meteorite codes, and canonical names. Runtime
+recomputation from the public catalog and projection catches route, status,
+code, or canonical-name drift before attaching current context. It is not a
+replacement for the private audit digest because it deliberately contains no
+Official-row hashes.
+
 ## 8. Specimen Cards
 
 [`data/specimen-card-projections.json`](./data/specimen-card-projections.json)
@@ -307,6 +358,13 @@ partition, catalog pair, and ordered reported-mass pair so ambiguity remains
 visible without presenting every alternative as a falsely precise pairwise
 claim. Holbrook 98 is one such ambiguity group.
 
+The current-context sidecar is never a lineage or candidate-generation input.
+Changing current Official name, classification, place, year, or fall code cannot
+change lineage JSON, IDs, evidence strength, grouping, or counts. The dedicated
+isolation test repeats the build with accepted, absent, and changed sidecars and
+locks the result to SHA-256
+`b592065b07412b8d09d955f9276b2de0790a56f1649c7987a8b10bcc62c32199`.
+
 ### 9.3 Source-attested groups
 
 Some sources publish n-ary groups rather than pairwise relationships.
@@ -390,8 +448,10 @@ node scripts/build-specimen-lineages.mjs
 node scripts/build-specimen-lineages.mjs --check
 node scripts/validate-specimen-lineages.mjs
 node scripts/validate-specimen-card-projections.mjs
+node scripts/validate-metbull-current-context.mjs
 node scripts/validate-public-catalog.mjs
 node scripts/test-multicatalog.cjs
+node --test scripts/metbull-lineage-isolation.test.mjs
 node --test scripts/*.test.mjs
 git diff --check
 ```
@@ -404,8 +464,10 @@ node scripts/build-specimen-lineages.mjs --check
 node scripts/validate-source-claims.mjs
 node scripts/validate-specimen-lineages.mjs
 node scripts/validate-specimen-card-projections.mjs
+node scripts/validate-metbull-current-context.mjs
 node scripts/validate-public-catalog.mjs
 node scripts/test-multicatalog.cjs
+node --test scripts/metbull-lineage-isolation.test.mjs
 node --test scripts/*.test.mjs
 git diff --check
 ```
@@ -496,6 +558,10 @@ source state.
 - [ ] Counts, masses, aggregates, representations, and totals retain distinct
   meanings.
 - [ ] Source facts are separate from MetBull identity review.
+- [ ] Current MetBull context is code-bound, every-card audited, and excluded
+  from lineage and specimen-fact generation.
+- [ ] Official mass, coordinates, comments, and the raw CSV remain private and
+  absent from the public sidecar.
 - [ ] Card projections are positive allowlists over retained parents.
 - [ ] Same-inventory links use source-attested persistent IDs only.
 - [ ] Established inventory continuity is not described as unchanged piece or

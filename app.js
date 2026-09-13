@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260912-catalog-classification-1";
+const CACHE_VERSION = "20260912-metbull-context-1";
 const ASSET_CACHE_VERSION = CACHE_VERSION;
 const CATALOG_SCHEMA_VERSION = 12;
 const CATALOG_RECORD_COUNT = 19553;
@@ -277,6 +277,22 @@ const SPECIMEN_CARD_SOURCE_CATALOG_SHA256 = "cf429e6660f00272f2f81fe69bac81c891f
 const SPECIMEN_CARD_PROJECTION_DATA_SHA256 = "7ab4ca4fef524f94e68d977f3a8106dc3b7a29ba7112ffe491deff91964ab445";
 const SPECIMEN_CARD_PROJECTION_SET_SHA256 = "9e3452b6ff8cc23000311de4e36f0deae70654392cfb08a19956934ee46b3802";
 const SPECIMEN_LINEAGE_DATA_SHA256 = "b592065b07412b8d09d955f9276b2de0790a56f1649c7987a8b10bcc62c32199";
+const METBULL_CURRENT_CONTEXT_DATA_SHA256 = "9ac2997e1386cc9c2bf3b134f742aa30e5c4bdd23ac9233d18f57900d741d3f3";
+const METBULL_CARD_ASSIGNMENTS_SHA256 = "a732537ef524872ec7bce3340a04db1eb0694453cc158b6497cfd363a973bb44";
+const METBULL_PUBLIC_CARD_BINDINGS_SHA256 = "2729240dd574b40ed5b9526d0ab81e99108b80894683c9b69157bb9576ef7504";
+const METBULL_CURRENT_CONTEXT_ROOT_FIELDS = new Set(["metadata", "meteorites"]);
+const METBULL_CURRENT_CONTEXT_METADATA_FIELDS = new Set([
+  "schemaVersion", "scope", "acquiredAt", "sourceUrl", "sourceSha256", "sourceBytes", "sourceRowCount",
+  "sourceStatusCounts", "catalogSchemaVersion", "catalogSha256", "catalogRecordCount", "projectionSchemaVersion",
+  "projectionSha256", "projectionCount", "lineageSchemaVersion", "lineageSha256", "cardCount", "directCardCount",
+  "mappedDirectCardCount", "unmappedDirectCardCount", "projectedCardCount", "mappedProjectedCardCount",
+  "unmappedProjectedCardCount", "mappedCardCount", "unmappedCardCount", "mappedParentCount",
+  "usedMeteoriteCodeCount", "cardAssignmentsSha256"
+]);
+const METBULL_CURRENT_CONTEXT_STATUS_FIELDS = new Set(["Official", "Relict"]);
+const METBULL_CURRENT_METEORITE_FIELDS = new Set(["name", "status", "fall", "year", "place", "classification"]);
+const METBULL_ATTACHED_METEORITE_FIELDS = new Set(["meteoriteCode", ...METBULL_CURRENT_METEORITE_FIELDS]);
+const METBULL_FALL_CODES = new Set(["", "Y", "Yc", "Yp", "Np"]);
 const COMPARISON_REVIEW_PARTITION_SHA256 = "6abd02c9cf57c0ddae9ab786e8ec73ec69ffc6e291c37d30ae73c845999ac131";
 const SOURCE_CLAIMS_CONTENT_SHA256 = "141ed60b9560596ac8ab392babfc4af6e1d22921bacbf979d3b975e0fc2f20c2";
 const LINEAGE_ROOT_FIELDS = new Set(["metadata", "sourceAttestedGroups", "relationships", "comparisonGroups"]);
@@ -464,6 +480,7 @@ const elements = typeof document === "undefined" || !document.querySelector("#fi
   count: document.querySelector("#result-count"),
   countUnit: document.querySelector("#result-unit"),
   status: document.querySelector("#status"),
+  currentContextStatus: document.querySelector("#current-context-status"),
   clear: document.querySelector("#clear-filters"),
   showMore: document.querySelector("#show-more"),
   empty: document.querySelector("#empty-state"),
@@ -506,6 +523,7 @@ let folioManifest = null;
 let earlierRecordsByLaterId = new Map();
 let comparisonGroupsByRecordId = new Map();
 let specimenCardProjectionsByParentId = new Map();
+let metbullCurrentContextByCardKey = new Map();
 let activeFolioPages = [];
 let activeFolioIndex = -1;
 let folioOpener = null;
@@ -2897,6 +2915,192 @@ function expandSpecimenCardDescriptors(sourceRecords, projectionIndex = new Map(
   });
 }
 
+function metbullCardKey(descriptor) {
+  if (!descriptor?.parentRecord) return null;
+  return descriptor.projected
+    ? `${descriptor.parentRecord.id}\u0000card:${descriptor.sourcePosition}`
+    : `${descriptor.parentRecord.id}\u0000direct`;
+}
+
+function isValidMetbullCurrentText(value, maximumLength, allowEmpty = false) {
+  if (typeof value !== "string" || value !== value.normalize("NFC") || value.trim() !== value ||
+      Array.from(value).length > maximumLength || (!allowEmpty && value.length === 0)) return false;
+  if (/[\p{Cc}\p{Cf}<>`]/u.test(value) || /!?\[[^\]]*\]\([^)]*\)/u.test(value)) return false;
+  return value.length === 0 || isLeakageSafeText(value);
+}
+
+function isValidAttachedMetbullCurrent(value) {
+  return hasExactFields(value, METBULL_ATTACHED_METEORITE_FIELDS) &&
+    /^[1-9][0-9]{0,9}$/u.test(value.meteoriteCode) && value.status === "Official" &&
+    METBULL_FALL_CODES.has(value.fall) && isValidMetbullCurrentText(value.name, 80) &&
+    isValidMetbullCurrentText(value.year, 24, true) && isValidMetbullCurrentText(value.place, 120) &&
+    isValidMetbullCurrentText(value.classification, 80);
+}
+
+function metbullPublicCardBindingLines(descriptors) {
+  return descriptors.filter((descriptor) => [
+    HARMONIZED_CARD_KINDS.specimen, HARMONIZED_CARD_KINDS.atomic
+  ].includes(classifyHarmonizedCard(descriptor))).map((descriptor) => {
+    const identity = descriptor.parentRecord.metbull;
+    const mapped = identity?.matchType !== "unresolved" && typeof identity?.meteoriteCode === "string";
+    return [
+      metbullCardKey(descriptor),
+      descriptor.projected ? "projected" : "direct",
+      descriptor.parentRecord.id,
+      descriptor.projected ? String(descriptor.sourcePosition) : "",
+      mapped ? "mapped" : "unmapped",
+      mapped ? identity.meteoriteCode : "",
+      mapped ? identity.canonicalName : ""
+    ].join("\u0000");
+  });
+}
+
+function metbullPublicCardBindingsSha256(descriptors) {
+  return sha256TextSync(metbullPublicCardBindingLines(descriptors).join("\n"));
+}
+
+function validMetbullCurrentMetadata(metadata) {
+  return hasExactFields(metadata, METBULL_CURRENT_CONTEXT_METADATA_FIELDS) &&
+    metadata.schemaVersion === 1 && metadata.scope === "current-metbull-context-for-specimen-cards" &&
+    metadata.acquiredAt === "2026-09-13T00:55:27Z" &&
+    metadata.sourceUrl === "https://www.lpi.usra.edu/meteor/metbull.php?sea=&sfor=names&stype=contains&valids=1&lrec=100000&csv=1" &&
+    metadata.sourceSha256 === "1e22fb5cac0e46628e73e74f2ad3dac15240fd247ccffa621bf89539c5b18d68" &&
+    metadata.sourceBytes === 10234673 && metadata.sourceRowCount === 80224 &&
+    hasExactFields(metadata.sourceStatusCounts, METBULL_CURRENT_CONTEXT_STATUS_FIELDS) &&
+    metadata.sourceStatusCounts.Official === 80124 && metadata.sourceStatusCounts.Relict === 100 &&
+    metadata.catalogSchemaVersion === CATALOG_SCHEMA_VERSION &&
+    metadata.catalogSha256 === SPECIMEN_CARD_SOURCE_CATALOG_SHA256 && metadata.catalogRecordCount === CATALOG_RECORD_COUNT &&
+    metadata.projectionSchemaVersion === 6 && metadata.projectionSha256 === SPECIMEN_CARD_PROJECTION_DATA_SHA256 &&
+    metadata.projectionCount === 3407 && metadata.lineageSchemaVersion === 4 &&
+    metadata.lineageSha256 === SPECIMEN_LINEAGE_DATA_SHA256 && metadata.cardCount === SPECIMEN_DESCRIPTOR_COUNT &&
+    metadata.directCardCount === 5739 && metadata.mappedDirectCardCount === 5568 &&
+    metadata.unmappedDirectCardCount === 171 && metadata.projectedCardCount === 8410 &&
+    metadata.mappedProjectedCardCount === 6206 && metadata.unmappedProjectedCardCount === 2204 &&
+    metadata.mappedCardCount === 11774 && metadata.unmappedCardCount === 2375 &&
+    metadata.mappedParentCount === 7651 && metadata.usedMeteoriteCodeCount === 2548 &&
+    metadata.cardAssignmentsSha256 === METBULL_CARD_ASSIGNMENTS_SHA256;
+}
+
+function validateMetbullCurrentContext(context, descriptors, options = {}) {
+  if (!hasExactFields(context, METBULL_CURRENT_CONTEXT_ROOT_FIELDS) ||
+      !validMetbullCurrentMetadata(context.metadata) || !isPlainObject(context.meteorites) ||
+      sha256TextSync(`${JSON.stringify(context, null, 2)}\n`) !== METBULL_CURRENT_CONTEXT_DATA_SHA256 ||
+      !Array.isArray(descriptors) ||
+      (options.catalogSha256 !== undefined && options.catalogSha256 !== context.metadata.catalogSha256) ||
+      (options.projectionSha256 !== undefined && options.projectionSha256 !== context.metadata.projectionSha256) ||
+      (options.lineageSha256 !== undefined && options.lineageSha256 !== context.metadata.lineageSha256)) return false;
+
+  const codes = Object.keys(context.meteorites);
+  if (codes.length !== context.metadata.usedMeteoriteCodeCount || codes.some((code, index) =>
+    !/^[1-9][0-9]*$/u.test(code) || (index > 0 && Number(codes[index - 1]) >= Number(code)))) return false;
+  for (const code of codes) {
+    const meteorite = context.meteorites[code];
+    if (!hasExactFields(meteorite, METBULL_CURRENT_METEORITE_FIELDS) || meteorite.status !== "Official" ||
+        !METBULL_FALL_CODES.has(meteorite.fall) || !isValidMetbullCurrentText(meteorite.name, 80) ||
+        !isValidMetbullCurrentText(meteorite.year, 24, true) || !isValidMetbullCurrentText(meteorite.place, 120) ||
+        !isValidMetbullCurrentText(meteorite.classification, 80)) return false;
+  }
+
+  const specimenDescriptors = descriptors.filter((descriptor) => [
+    HARMONIZED_CARD_KINDS.specimen, HARMONIZED_CARD_KINDS.atomic
+  ].includes(classifyHarmonizedCard(descriptor)));
+  if (specimenDescriptors.length !== context.metadata.cardCount ||
+      new Set(specimenDescriptors.map(metbullCardKey)).size !== specimenDescriptors.length ||
+      metbullPublicCardBindingsSha256(specimenDescriptors) !== METBULL_PUBLIC_CARD_BINDINGS_SHA256) return false;
+
+  const counts = { direct: 0, projected: 0, mappedDirect: 0, unmappedDirect: 0, mappedProjected: 0, unmappedProjected: 0 };
+  const mappedParents = new Set();
+  const usedCodes = new Set();
+  for (const descriptor of specimenDescriptors) {
+    const route = descriptor.projected ? "Projected" : "Direct";
+    counts[descriptor.projected ? "projected" : "direct"] += 1;
+    const sourceIdentity = descriptor.parentRecord.metbull;
+    const mapped = sourceIdentity?.matchType !== "unresolved" && typeof sourceIdentity?.meteoriteCode === "string";
+    counts[`${mapped ? "mapped" : "unmapped"}${route}`] += 1;
+    if (!mapped) continue;
+    const meteorite = context.meteorites[sourceIdentity.meteoriteCode];
+    if (!meteorite || meteorite.name !== sourceIdentity.canonicalName ||
+        sourceIdentity.metbullUrl !== metbullUrlForCode(sourceIdentity.meteoriteCode)) return false;
+    mappedParents.add(descriptor.parentRecord.id);
+    usedCodes.add(sourceIdentity.meteoriteCode);
+  }
+  return counts.direct === context.metadata.directCardCount && counts.projected === context.metadata.projectedCardCount &&
+    counts.mappedDirect === context.metadata.mappedDirectCardCount &&
+    counts.unmappedDirect === context.metadata.unmappedDirectCardCount &&
+    counts.mappedProjected === context.metadata.mappedProjectedCardCount &&
+    counts.unmappedProjected === context.metadata.unmappedProjectedCardCount &&
+    counts.mappedDirect + counts.mappedProjected === context.metadata.mappedCardCount &&
+    counts.unmappedDirect + counts.unmappedProjected === context.metadata.unmappedCardCount &&
+    mappedParents.size === context.metadata.mappedParentCount && usedCodes.size === context.metadata.usedMeteoriteCodeCount &&
+    codes.every((code) => usedCodes.has(code));
+}
+
+function reconstructMetbullCardAssignments(context, descriptors) {
+  if (!validateMetbullCurrentContext(context, descriptors)) return [];
+  return descriptors.filter((descriptor) => [
+    HARMONIZED_CARD_KINDS.specimen, HARMONIZED_CARD_KINDS.atomic
+  ].includes(classifyHarmonizedCard(descriptor))).map((descriptor) => {
+    const identity = descriptor.parentRecord.metbull;
+    const code = identity?.matchType !== "unresolved" ? identity?.meteoriteCode || null : null;
+    const meteorite = code ? context.meteorites[code] : null;
+    return {
+      cardKey: metbullCardKey(descriptor),
+      route: descriptor.projected ? "projected" : "direct",
+      parentRecordId: descriptor.parentRecord.id,
+      cardIndex: descriptor.projected ? descriptor.sourcePosition : null,
+      status: meteorite ? "mapped" : "unmapped",
+      meteoriteCode: meteorite ? code : null,
+      officialName: meteorite?.name || null
+    };
+  });
+}
+
+function deriveMetbullCurrentContextIndex(context, descriptors, options = {}) {
+  if (!validateMetbullCurrentContext(context, descriptors, options)) return new Map();
+  return new Map(reconstructMetbullCardAssignments(context, descriptors).flatMap((assignment) => {
+    if (assignment.status !== "mapped") return [];
+    return [[assignment.cardKey, Object.freeze({
+      meteoriteCode: assignment.meteoriteCode,
+      ...context.meteorites[assignment.meteoriteCode]
+    })]];
+  }));
+}
+
+function attachMetbullCurrentContext(descriptors, contextIndex = new Map()) {
+  return descriptors.map((descriptor) => {
+    descriptor.currentMetbull = contextIndex.get(metbullCardKey(descriptor)) || null;
+    return descriptor;
+  });
+}
+
+async function loadMetbullCurrentContext(descriptors, fetcher = fetch, options = {}) {
+  try {
+    const response = await fetcher(`./data/metbull-current-context.json?v=${CACHE_VERSION}`, { cache: "no-cache" });
+    if (!response?.ok) return { valid: false, index: new Map(), assignments: [] };
+    const text = await response.text();
+    const hash = options.sha256 || sha256Text;
+    if (await hash(text) !== METBULL_CURRENT_CONTEXT_DATA_SHA256) {
+      return { valid: false, index: new Map(), assignments: [] };
+    }
+    const context = JSON.parse(text);
+    const validationOptions = {
+      catalogSha256: options.catalogSha256,
+      projectionSha256: options.projectionSha256,
+      lineageSha256: options.lineageSha256
+    };
+    if (!validateMetbullCurrentContext(context, descriptors, validationOptions)) {
+      return { valid: false, index: new Map(), assignments: [] };
+    }
+    return {
+      valid: true,
+      index: deriveMetbullCurrentContextIndex(context, descriptors, validationOptions),
+      assignments: reconstructMetbullCardAssignments(context, descriptors)
+    };
+  } catch {
+    return { valid: false, index: new Map(), assignments: [] };
+  }
+}
+
 function specimenCardPositionLabel(descriptor) {
   if (descriptor?.kind !== "atomic" || descriptor.duplicateMassCount < 2 || descriptor.duplicateMassPosition === null) return null;
   return `Specimen ${descriptor.duplicateMassPosition} of ${descriptor.duplicateMassCount} with this reported mass`;
@@ -3011,8 +3215,28 @@ function filterSpecimenCardDescriptors(descriptors, filters, lineageIndex = new 
     const lineageMatches = filters.lineageOnly !== true || renderableLineageClaimsForCard(
       descriptor, lineageIndex.get(descriptor.parentRecord.id) || []
     ).length > 0;
-    return unknownWeightMatches && weightMatches && lineageMatches;
+    const catalogMatches = !filters.catalog || descriptor.parentRecord.catalogId === filters.catalog;
+    return unknownWeightMatches && weightMatches && lineageMatches && catalogMatches &&
+      matchesSpecimenCardSearch(descriptor, filters.query);
   });
+}
+
+function matchesSpecimenCardSearch(descriptor, rawQuery) {
+  const query = searchable(rawQuery);
+  if (!query) return true;
+  if (descriptor.currentMetbull && catalogNotesForCurrentMetbull(
+    descriptor.parentRecord, descriptor.currentMetbull
+  ).some(({ value }) => searchable(value) === query)) return true;
+  if (matchesSearch(descriptor.parentRecord, rawQuery)) return true;
+  if (!descriptor.currentMetbull) return false;
+  const currentText = searchable([
+    descriptor.currentMetbull.name,
+    descriptor.currentMetbull.classification,
+    descriptor.currentMetbull.place,
+    metbullFallDisplay(descriptor.currentMetbull.fall),
+    descriptor.currentMetbull.year
+  ].filter(Boolean).join(" "));
+  return matchesTokenPrefixes(currentText, query.split(/\s+/u));
 }
 
 function paginateSpecimenCardDescriptors(descriptors, limit = PAGE_SIZE) {
@@ -3267,7 +3491,6 @@ function prepareRecord(source, index, registry = catalogRegistry) {
     ...(record.representedWeight?.componentTexts || []),
     record.classification,
     record.classification ? `class ${record.classification}` : null,
-    record.metbull?.alternateNameNote,
     record.sourceEvidence?.tableB?.classification,
     record.sourceEvidence?.tableB?.classification ? `table b class ${record.sourceEvidence.tableB.classification}` : null,
     record.sourceEvidence?.tableB?.classificationContext,
@@ -3299,9 +3522,6 @@ function prepareRecord(source, index, registry = catalogRegistry) {
     record.reference ? `reference ${record.reference}` : null,
     record.representedWeight?.valueText ? `represented weight ${record.representedWeight.valueText}` : null,
     ...(record.representedWeight?.componentTexts || []),
-    record.metbull?.canonicalName,
-    record.metbull?.meteoriteCode,
-    record.metbull?.alternateNameNote,
     record.classification,
     record.classification ? `class ${record.classification}` : null,
     typeof record.locality === "string" ? record.locality : null,
@@ -3349,6 +3569,7 @@ async function loadData() {
   earlierRecordsByLaterId = new Map();
   comparisonGroupsByRecordId = new Map();
   specimenCardProjectionsByParentId = new Map();
+  metbullCurrentContextByCardKey = new Map();
   setLoadingState();
   try {
     const response = await fetch(`./data/catalog.json?v=${CACHE_VERSION}`, { cache: "no-cache" });
@@ -3366,10 +3587,20 @@ async function loadData() {
     applyUrlState();
     visibleLimit = PAGE_SIZE;
     render();
-    loadSpecimenCardProjectionIndex(records, fetch, { sourceCatalogSha256 }).then((index) => {
+    loadSpecimenCardProjectionIndex(records, fetch, { sourceCatalogSha256 }).then(async (index) => {
       if (currentLoadToken !== loadToken) return;
       specimenCardProjectionsByParentId = index;
       if (index.size) render();
+      const descriptors = expandSpecimenCardDescriptors(records, specimenCardProjectionsByParentId);
+      const currentContext = await loadMetbullCurrentContext(descriptors, fetch, {
+        catalogSha256: sourceCatalogSha256,
+        projectionSha256: SPECIMEN_CARD_PROJECTION_DATA_SHA256,
+        lineageSha256: SPECIMEN_LINEAGE_DATA_SHA256
+      });
+      if (currentLoadToken !== loadToken) return;
+      metbullCurrentContextByCardKey = currentContext.valid ? currentContext.index : new Map();
+      setMetbullCurrentContextStatus(currentContext.valid);
+      render();
     });
     loadLineageAndComparisonIndexes(records, catalogRegistry).then(({ lineageIndex, comparisonIndex }) => {
       if (currentLoadToken !== loadToken) return;
@@ -3411,6 +3642,10 @@ function setLoadingState() {
   elements.showMore.hidden = true;
   elements.empty.hidden = true;
   elements.error.hidden = true;
+  if (elements.currentContextStatus) {
+    elements.currentContextStatus.textContent = "";
+    elements.currentContextStatus.hidden = true;
+  }
   if (elements.catalogSummary) {
     const summaryStatus = document.createElement("p");
     summaryStatus.className = "catalog-summary-status";
@@ -3419,6 +3654,14 @@ function setLoadingState() {
     elements.catalogSummary.replaceChildren(summaryStatus);
     elements.catalogSummary.setAttribute("aria-busy", "true");
   }
+}
+
+function setMetbullCurrentContextStatus(valid) {
+  if (!elements.currentContextStatus) return;
+  elements.currentContextStatus.textContent = valid
+    ? ""
+    : "Current MetBull context is unavailable; showing source catalog facts only.";
+  elements.currentContextStatus.hidden = valid;
 }
 
 function showError(error) {
@@ -3517,7 +3760,6 @@ function numericSearchTokens(record) {
   }
   if (record?.recordModel === "table-a-specimen" && record.specimenId) add(record.specimenId.slice(-5));
   for (const grams of recordSearchMasses(record)) add(grams);
-  add(record?.metbull?.meteoriteCode);
   addNumericTokens(record?.catalogNumber);
   addNumericTokens(record?.reportedNumber);
   addNumericTokens(record?.pane);
@@ -3643,9 +3885,11 @@ function compareRecords(a, b, sort) {
 
 function render() {
   const filters = currentFilters();
-  const parentMatches = filterRecords(records, { ...filters, lineageOnly: false }, earlierRecordsByLaterId);
+  const parentMatches = filterRecords(records, { ...filters, query: "", lineageOnly: false }, earlierRecordsByLaterId);
   const displayCards = filterSpecimenCardDescriptors(
-    expandSpecimenCardDescriptors(parentMatches, specimenCardProjectionsByParentId), filters, earlierRecordsByLaterId
+    attachMetbullCurrentContext(
+      expandSpecimenCardDescriptors(parentMatches, specimenCardProjectionsByParentId), metbullCurrentContextByCardKey
+    ), filters, earlierRecordsByLaterId
   );
   const matches = displayCards;
   const visibleCards = paginateSpecimenCardDescriptors(displayCards, visibleLimit);
@@ -3910,6 +4154,35 @@ function harmonizedCardNameLabel(kind) {
   return null;
 }
 
+function metbullFallDisplay(code) {
+  if (code === "Y") return "Fall";
+  if (code === "") return "Find";
+  return METBULL_FALL_CODES.has(code) ? `Code ${code}` : null;
+}
+
+function cardFactValuesEquivalent(left, right) {
+  const normalized = (value) => typeof value === "string"
+    ? value.normalize("NFC").trim().replace(/\s+/gu, " ").toLocaleLowerCase("en-US")
+    : null;
+  return normalized(left) !== null && normalized(left) === normalized(right);
+}
+
+function catalogNotesForCurrentMetbull(record, currentMetbull) {
+  if (!currentMetbull) return [];
+  const notes = [];
+  const addDifference = (label, sourceValue, currentValue, knownLabel = label) => {
+    if (isKnownCardFact(knownLabel, sourceValue) && !cardFactValuesEquivalent(sourceValue, currentValue)) {
+      notes.push({ label, value: sourceValue });
+    }
+  };
+  addDifference("Catalog meteorite name", record.name, currentMetbull.name);
+  addDifference("Catalog classification", record.classification, currentMetbull.classification);
+  addDifference("Catalog locality", record.recordModel === "table-a-specimen" ? record.locality?.name : record.locality,
+    currentMetbull.place, "Source locality");
+  addDifference("Catalog event or date", harmonizedCardEvent(record), currentMetbull.year, "Event");
+  return notes;
+}
+
 function presentHarmonizedCard(recordOrDescriptor, options = {}) {
   const descriptor = recordOrDescriptor?.parentRecord
     ? recordOrDescriptor
@@ -3920,26 +4193,34 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
 
   const specimen = kind === HARMONIZED_CARD_KINDS.specimen || kind === HARMONIZED_CARD_KINDS.atomic;
   const sourceName = record.name;
-  const canonicalName = record.metbull?.canonicalName &&
-    !namesAreDisplayEquivalent(sourceName, record.metbull.canonicalName)
-    ? record.metbull.canonicalName
-    : null;
+  const currentCandidate = specimen ? descriptor.currentMetbull || options.currentMetbull || null : null;
+  const currentMetbull = isValidAttachedMetbullCurrent(currentCandidate) ? currentCandidate : null;
   const facts = [];
   const addKnownFact = (label, value) => {
     if (isKnownCardFact(label, value)) facts.push({ label, value });
   };
-  addKnownFact("Current Meteoritical Bulletin name", canonicalName);
-  addKnownFact("Catalog classification", record.classification);
+  if (currentMetbull) {
+    addKnownFact("Current MetBull classification", currentMetbull.classification);
+    addKnownFact("Current MetBull place", currentMetbull.place);
+    addKnownFact("Current MetBull fall/find", metbullFallDisplay(currentMetbull.fall));
+    addKnownFact("Current MetBull year", currentMetbull.year);
+  } else {
+    addKnownFact("Catalog classification", record.classification);
+  }
   if (specimen && (kind === HARMONIZED_CARD_KINDS.atomic || record.recordModel === "table-a-specimen")) {
     facts.push({
       label: "Specimen form",
       value: "Individual specimen"
     });
   }
-  addKnownFact("Source locality", record.recordModel === "table-a-specimen" ? record.locality?.name : record.locality);
+  if (!currentMetbull) {
+    addKnownFact("Source locality", record.recordModel === "table-a-specimen" ? record.locality?.name : record.locality);
+  }
   if (specimen) addKnownFact("Individual find location", record.individualFindLocation);
-  addKnownFact(record.recordModel === "collection-representation-fact" ? "Date or report of find" : "Event",
-    harmonizedCardEvent(record));
+  if (!currentMetbull) {
+    addKnownFact(record.recordModel === "collection-representation-fact" ? "Date or report of find" : "Event",
+      harmonizedCardEvent(record));
+  }
   if (record.recordModel === "collection-representation-fact") {
     addKnownFact("Section", record.section);
     addKnownFact("Pane or case", record.pane);
@@ -3980,8 +4261,12 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
     identifier,
     semanticLabel: HARMONIZED_SEMANTIC_LABELS[kind],
     sourceName: sourceName || null,
+    headingName: currentMetbull?.name || sourceName || null,
+    headingLabel: currentMetbull ? "Current MetBull meteorite name" : harmonizedCardNameLabel(kind),
+    headingUrl: currentMetbull ? metbullUrlForCode(currentMetbull.meteoriteCode) : null,
     description: record.description || null,
     facts,
+    catalogNotes: catalogNotesForCurrentMetbull(record, currentMetbull),
     sourceCitation: harmonizedSourceCitation(record),
     sourceLabel: record.catalogLabel || record.catalogId,
     catalogId: record.catalogId,
@@ -3999,6 +4284,18 @@ function appendMetaRow(meta, label, value) {
   description.textContent = displayText(value);
   row.append(term, description);
   meta.append(row);
+}
+
+function renderCatalogNotes(notes) {
+  const details = document.createElement("details");
+  details.className = "catalog-notes";
+  const summary = document.createElement("summary");
+  summary.textContent = "Show catalog notes";
+  const list = document.createElement("dl");
+  list.setAttribute("aria-label", "Historical catalog notes");
+  notes.forEach(({ label, value }) => appendMetaRow(list, label, value));
+  details.append(summary, list);
+  return details;
 }
 
 function createRecordCard(recordOrDescriptor) {
@@ -4021,9 +4318,16 @@ function createRecordCard(recordOrDescriptor) {
   semanticLabel.hidden = !displaySemanticLabel;
   const sourceNameLabel = card.querySelector(".source-name-label");
   const recordName = card.querySelector(".record-name");
-  if (dto.sourceName) {
-    sourceNameLabel.textContent = harmonizedCardNameLabel(dto.kind);
-    recordName.textContent = dto.sourceName;
+  if (dto.headingName) {
+    sourceNameLabel.textContent = dto.headingLabel;
+    if (dto.headingUrl) {
+      const officialLink = document.createElement("a");
+      officialLink.href = dto.headingUrl;
+      officialLink.textContent = dto.headingName;
+      recordName.replaceChildren(officialLink);
+    } else {
+      recordName.textContent = dto.headingName;
+    }
   } else {
     const heading = harmonizedCardNullNameHeading(record, dto.kind, descriptor, dto.identifier);
     sourceNameLabel.textContent = heading.label;
@@ -4040,6 +4344,7 @@ function createRecordCard(recordOrDescriptor) {
   const meta = card.querySelector(".record-meta");
   meta.replaceChildren();
   dto.facts.forEach(({ label, value }) => appendMetaRow(meta, label, value));
+  if (dto.catalogNotes.length) meta.after(renderCatalogNotes(dto.catalogNotes));
   if (dto.lineage?.claims.length) card.querySelector(".record-footer").before(renderLineageClaims(dto.lineage));
   if (dto.comparison?.groups.length) card.querySelector(".record-footer").before(renderComparisonGroups(dto.comparison));
 
@@ -4682,6 +4987,7 @@ const publicRuntime = {
   getAuthorizedFolioPages,
   normalizeCatalogRegistry,
   presentHarmonizedCard,
+  validateMetbullCurrentContext,
   validateSpecimenCardManifest,
   validateCatalog,
   validateFolioManifest
@@ -4707,6 +5013,9 @@ if (typeof module !== "undefined" && module.exports) {
     COMPARISON_REVIEW_PARTITION_SHA256,
     SOURCE_CLAIMS_CONTENT_SHA256,
     LINEAGE_SHA256: SPECIMEN_LINEAGE_DATA_SHA256,
+    METBULL_CARD_ASSIGNMENTS_SHA256,
+    METBULL_CURRENT_CONTEXT_DATA_SHA256,
+    METBULL_PUBLIC_CARD_BINDINGS_SHA256,
     LINEAGE_DISPLAY_LABELS,
     OBSERVATION_DESCRIPTOR_COUNT,
     PROJECTION_SHA256: SPECIMEN_CARD_PROJECTION_DATA_SHA256,
@@ -4734,9 +5043,11 @@ if (typeof module !== "undefined" && module.exports) {
     deriveEarlierRecordIndex,
     deriveComparisonGroupIndex,
     deriveLineageAndComparisonIndexes,
+    deriveMetbullCurrentContextIndex,
     deriveSourceAttestedGroupIndex,
     deriveSpecimenCardProjectionIndex,
     expandSpecimenCardDescriptors,
+    attachMetbullCurrentContext,
     evaluateIssueReportGate,
     filterRecords,
     filterSpecimenCardDescriptors,
@@ -4764,10 +5075,15 @@ if (typeof module !== "undefined" && module.exports) {
     isSafeFolioPath,
     isValidFolioAlt,
     matchesSearch,
+    matchesSpecimenCardSearch,
+    metbullCardKey,
+    metbullFallDisplay,
+    metbullPublicCardBindingsSha256,
     metbullPanelDetails,
     namesAreDisplayEquivalent,
     loadEarlierRecordIndex,
     loadLineageAndComparisonIndexes,
+    loadMetbullCurrentContext,
     loadSpecimenCardProjectionIndex,
     normalizeWeightRange,
     normalizeFolioAlt,
@@ -4780,6 +5096,7 @@ if (typeof module !== "undefined" && module.exports) {
     parseSearchQuery,
     prepareRecord,
     presentHarmonizedCard,
+    reconstructMetbullCardAssignments,
     regionalCensusFacts,
     resultDisplayState,
     recordDesignations,
@@ -4819,6 +5136,7 @@ if (typeof module !== "undefined" && module.exports) {
     validateCatalog,
     validateFolioManifest,
     validateLineageCandidates,
+    validateMetbullCurrentContext,
     validateSpecimenCardManifest
   };
 }

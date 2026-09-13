@@ -76,9 +76,6 @@ test("real catalog Allende search retains reviewed names and synonyms without Al
   const matchingIds = records.filter((record) => app.matchesSearch(record, "Allende")).map(({ id }) => id);
   assert.deepEqual(matchingIds, [
     "obs-5346df67-1886-4d25-8be0-c598f0a06f4a",
-    "obs-34b0eb76-c9d6-455d-90eb-68ed797d3f7c",
-    "obs-e4e7bb92-45a3-4b4e-8359-339ffe83aa2e",
-    "obs-9bc17c10-3a0c-439e-b84f-ff811601bd02",
     "obs-089f2273-8fbd-4c6a-a41f-c74a2ca01cdb",
     "h103-9-79db393f7a76",
     "h103-11-29b257683337",
@@ -488,9 +485,9 @@ test("accessible static contracts, warning language, and cache keys are synchron
   assert.doesNotMatch(source, /Suspected cross-catalog|POSSIBLE_MATCH_CAUTION/u);
   assert.match(css, /\.comparison-warning/u);
   assert.match(css, /\.comparison-candidates/u);
-  assert.equal(app.CACHE_VERSION, "20260912-catalog-classification-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260912-catalog-classification-1");
-  assert.match(html, /styles\.css\?v=20260912-catalog-classification-1/u);
-  assert.match(html, /app\.js\?v=20260912-catalog-classification-1/u);
+  assert.equal(app.CACHE_VERSION, "20260912-metbull-context-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260912-metbull-context-1");
+  assert.match(html, /styles\.css\?v=20260912-metbull-context-1/u);
+  assert.match(html, /app\.js\?v=20260912-metbull-context-1/u);
   assert.doesNotMatch(source, /\.innerHTML\b/u);
 });

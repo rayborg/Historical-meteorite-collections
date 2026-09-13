@@ -282,7 +282,7 @@ test("record shape must agree exactly with descriptor recordModel", () => {
   assert.throws(() => app.validateCatalog(wrongDescriptor), /facts-only schema/);
 });
 
-test("validates, prepares, and searches explicit reviewed MetBull harmonization", () => {
+test("validates and prepares reviewed source identity without treating it as loaded current context", () => {
   const candidate = clone(fixture);
   const source = candidate.records.find(({ id }) => id === "huss-h27-3");
   source.metbull = {
@@ -299,10 +299,10 @@ test("validates, prepares, and searches explicit reviewed MetBull harmonization"
   assert.equal(prepared.name, source.name);
   assert.equal(prepared.metbull.canonicalName, "Current Alpha Name");
   assert.equal(app.metbullUrlForCode("12345"), "https://www.lpi.usra.edu/meteor/metbull.cfm?code=12345");
-  assert.equal(app.matchesSearch(prepared, "Current Alpha"), true);
-  assert.equal(app.matchesSearch(prepared, "Current Alp"), true);
+  assert.equal(app.matchesSearch(prepared, "Current Alpha"), false);
+  assert.equal(app.matchesSearch(prepared, "Current Alp"), false);
   assert.equal(app.matchesSearch(prepared, "urrent Alpha"), false);
-  assert.equal(app.matchesSearch(prepared, "historical name"), true);
+  assert.equal(app.matchesSearch(prepared, "historical name"), false);
 
   const caseCandidate = clone(fixture);
   const caseSource = caseCandidate.records.find(({ id }) => id === "huss-h27-3");
@@ -811,7 +811,7 @@ test("search covers catalog items and rendered holding facts", () => {
   assert.deepEqual(ids(records.filter((record) => app.matchesSearch(record, "count 4"))), ["nininger-item-4"]);
 });
 
-test("numeric search unions identifiers, masses, reviewed codes, years, and Victoria suffixes", () => {
+test("numeric search unions source identifiers, masses, years, and Victoria suffixes", () => {
   const registry = app.normalizeCatalogRegistry(publicFixture.metadata);
   const sourceRecords = publicFixture.records.map((record, index) => app.prepareRecord(record, index, registry));
   const nininger = sourceRecords.find(({ id }) => id === "nininger-item-2");
@@ -820,11 +820,11 @@ test("numeric search unions identifiers, masses, reviewed codes, years, and Vict
 
   assert.equal(app.matchesSearch(nininger, "2"), true);
   assert.equal(app.matchesSearch(nininger, "12"), true);
-  assert.equal(app.matchesSearch(hodge, "10"), true);
+  assert.equal(app.matchesSearch(hodge, "10"), false);
   assert.equal(app.matchesSearch(hodge, "1917"), true);
   assert.equal(app.matchesSearch(victoria, "76001"), true);
   assert.equal(app.matchesSearch(victoria, "20151"), true);
-  assert.equal(app.matchesSearch(victoria, "1308"), true);
+  assert.equal(app.matchesSearch(victoria, "1308"), false);
   assert.equal(app.matchesSearch(victoria, "7600"), false);
 });
 
@@ -1037,8 +1037,8 @@ test("URL filters default to strict specimens and canonicalize the explicit incl
     unit: "observations",
     status: "Showing 60 of 23,217 display cards from 18,217 matching source observations."
   });
-  assert.equal(app.CACHE_VERSION, "20260912-catalog-classification-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260912-catalog-classification-1");
+  assert.equal(app.CACHE_VERSION, "20260912-metbull-context-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260912-metbull-context-1");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.ASSET_CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.ASSET_CACHE_VERSION}`));
 });
@@ -1114,7 +1114,7 @@ test("HTML and runtime expose the accessible harmonized card contract", () => {
   assert.match(script, /if \(dto\.identifier\) designation\.textContent = dto\.identifier;\s*else designation\.remove\(\);/);
   assert.match(script, /const heading = harmonizedCardNullNameHeading\(record, dto\.kind, descriptor, dto\.identifier\);/);
   assert.match(script, /sourceNameLabel\.textContent = heading\.label;\s*recordName\.textContent = heading\.value;\s*designation\.remove\(\);/);
-  assert.match(script, /sourceNameLabel\.textContent = harmonizedCardNameLabel\(dto\.kind\)/);
+  assert.match(script, /sourceNameLabel\.textContent = dto\.headingLabel/);
   assert.equal(app.harmonizedCardNameLabel(dto.kind), "Meteorite name");
 });
 

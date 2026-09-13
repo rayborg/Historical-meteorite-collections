@@ -82,7 +82,6 @@ function expectedNumericTokens(record) {
   }
   if (record.recordModel === "table-a-specimen") add(record.specimenId.slice(-5));
   for (const grams of app.recordSearchMasses(record)) add(grams);
-  add(record.metbull?.meteoriteCode);
   addTokens(record.catalogNumber);
   addTokens(record.reportedNumber);
   addTokens(record.pane);
@@ -152,14 +151,11 @@ test("every structured and Victoria Table B mass is searchable by grams and disp
   assert.equal(tableBMasses, 270);
 });
 
-test("every resolved MetBull code owner and regional source/order query is searchable", () => {
-  const resolved = records.filter(({ metbull }) => metbull && metbull.matchType !== "unresolved");
+test("regional source/order queries remain searchable without legacy current-identity leakage", () => {
   const regional = records.filter(({ recordModel }) => recordModel === "regional-census-fact");
   const numbered = regional.filter(({ reportedNumber }) => reportedNumber);
-  assert.equal(resolved.length, 14521);
   assert.equal(regional.length, 84);
   assert.equal(numbered.length, 77);
-  for (const record of resolved) assert.equal(app.matchesSearch(record, record.metbull.meteoriteCode), true, record.id);
   for (const record of regional) {
     const query = record.reportedNumber
       ? `Source number ${record.reportedNumber}`
@@ -171,11 +167,10 @@ test("every resolved MetBull code owner and regional source/order query is searc
 test("H-style classification and collateral prose no longer lose owners", () => {
   const classifications = records.filter((record) => record.classification && legacyParserWouldOmit(record, record.classification));
   const collateral = records.flatMap((record) => [
-    record.metbull?.alternateNameNote,
     ...(record.holdings || []).map((holding) => holding.description)
   ].filter((value) => value && legacyParserWouldOmit(record, value)).map((value) => ({ record, value })));
   assert.equal(classifications.length, 511);
-  assert.equal(collateral.length, 483);
+  assert.equal(collateral.length, 1);
   for (const record of classifications) assert.equal(app.matchesSearch(record, record.classification), true, record.id);
   for (const { record, value } of collateral) assert.equal(app.matchesSearch(record, value), true, record.id);
 });

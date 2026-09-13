@@ -42,6 +42,10 @@ button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible
   outline: 3px solid var(--oxblood);
   outline-offset: 3px;
 }
+summary:focus-visible {
+  outline: 3px solid var(--oxblood);
+  outline-offset: 3px;
+}
 
 .skip-link {
   position: fixed;
@@ -280,6 +284,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible
 .text-button { padding: .25rem 0; color: var(--oxblood); background: transparent; border: 0; border-bottom: 1px solid currentColor; font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 .status { min-height: 1.5rem; margin: 0 0 .8rem; color: var(--ink-soft); font-style: italic; }
 .status:empty { display: none; }
+.current-context-status { padding: .55rem .7rem; border-left: 3px solid var(--brass); }
 
 .catalog-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: 1rem; }
 .catalog-grid.single-result { grid-template-columns: minmax(0, 1fr); }
@@ -303,6 +308,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible
 .record-semantic-label:empty { display: none; }
 .source-name-label { margin: .55rem 0 .08rem; color: var(--ink-soft); font-size: .56rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
 .record-name { margin: 0; font-size: clamp(1.2rem, 1.8vw, 1.55rem); font-weight: 400; line-height: 1.08; overflow-wrap: anywhere; }
+.record-name a { color: inherit; text-decoration-color: var(--brass); text-decoration-thickness: 1px; text-underline-offset: .18em; }
 .record-description { min-width: 0; margin: .6rem 0 0; }
 .record-description h4 { margin: 0 0 .2rem; color: var(--ink-soft); font-size: .6rem; letter-spacing: .08em; text-transform: uppercase; }
 .record-description p { margin: 0; font-size: .8rem; line-height: 1.4; overflow-wrap: anywhere; }
@@ -312,6 +318,13 @@ button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible
 .record-meta dd { min-width: 0; margin: 0; font-size: .8rem; line-height: 1.35; word-break: normal; overflow-wrap: anywhere; hyphens: none; }
 .record-meta a { color: var(--oxblood-dark); font-weight: 700; overflow-wrap: anywhere; }
 .record-meta .current-name-row dd { padding: .25rem .4rem; background: rgba(154, 119, 55, .09); border-left: 2px solid var(--brass); }
+.catalog-notes { min-width: 0; margin: .15rem 0 .65rem; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.catalog-notes summary { padding: .45rem 0; color: var(--oxblood-dark); font-size: .72rem; font-weight: 700; cursor: pointer; }
+.catalog-notes dl { min-width: 0; margin: 0 0 .45rem; }
+.catalog-notes dl div { min-width: 0; display: grid; grid-template-columns: minmax(7.25rem, 9rem) minmax(0, 1fr); gap: .65rem; padding: .28rem 0; border-bottom: 1px dotted rgba(64, 48, 31, .25); }
+.catalog-notes dl div:last-child { border-bottom: 0; }
+.catalog-notes dt { min-width: 0; color: var(--ink-soft); font-size: .6rem; font-weight: 700; letter-spacing: .08em; line-height: 1.35; text-transform: uppercase; }
+.catalog-notes dd { min-width: 0; margin: 0; font-size: .8rem; line-height: 1.35; overflow-wrap: anywhere; }
 .lineage-claims, .comparison-groups { min-width: 0; margin: .1rem 0 .6rem; padding-top: .55rem; border-top: 1px solid rgba(64, 48, 31, .28); }
 .lineage-claims h4, .comparison-groups h4 { margin: 0 0 .25rem; color: var(--oxblood-dark); font-family: Georgia, serif; font-size: .9rem; }
 .lineage-summary, .comparison-summary { margin: 0 0 .55rem; color: var(--ink-soft); font-size: .7rem; line-height: 1.45; overflow-wrap: anywhere; }
@@ -449,6 +462,7 @@ dialog::backdrop { background: rgba(24, 19, 14, .84); backdrop-filter: blur(2px)
 
 @media (max-width: 520px) {
   .record-meta div { grid-template-columns: minmax(0, 1fr); gap: .08rem; padding: .3rem 0; }
+  .catalog-notes dl div { grid-template-columns: minmax(0, 1fr); gap: .08rem; padding: .3rem 0; }
 }
 
 @media (max-width: 420px) {

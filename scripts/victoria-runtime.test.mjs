@@ -5,15 +5,24 @@ import test from "node:test";
 
 const require = createRequire(import.meta.url);
 const app = require("../app.js");
-const catalog = JSON.parse(await readFile(new URL("../data/catalog.json", import.meta.url), "utf8"));
+const [catalog, projections, currentContext] = await Promise.all([
+  readFile(new URL("../data/catalog.json", import.meta.url), "utf8").then(JSON.parse),
+  readFile(new URL("../data/specimen-card-projections.json", import.meta.url), "utf8").then(JSON.parse),
+  readFile(new URL("../data/metbull-current-context.json", import.meta.url), "utf8").then(JSON.parse),
+]);
 const registry = app.normalizeCatalogRegistry(catalog.metadata);
 const records = catalog.records.map((record, index) => app.prepareRecord(record, index, registry));
 const victoria = records.filter(({ catalogId }) => catalogId === "victoria-land-1982");
+const projectionIndex = app.deriveSpecimenCardProjectionIndex(projections, records, { sourceCatalogSha256: app.CATALOG_SHA256 });
+const rawDescriptors = app.expandSpecimenCardDescriptors(records, projectionIndex);
+const descriptors = app.attachMetbullCurrentContext(rawDescriptors,
+  app.deriveMetbullCurrentContextIndex(currentContext, rawDescriptors));
+const victoriaDescriptors = descriptors.filter(({ parentRecord }) => parentRecord.catalogId === "victoria-land-1982");
 
 function search(query) {
-  return app.filterRecords(victoria, {
-    query, catalog: "victoria-land-1982", min: null, max: null, lineageOnly: false, sort: "designation-asc"
-  }).map(({ specimenId }) => specimenId);
+  return app.filterSpecimenCardDescriptors(victoriaDescriptors, {
+    query, catalog: "victoria-land-1982", min: null, max: null, lineageOnly: false, includeUnknownWeight: true,
+  }).map(({ parentRecord }) => parentRecord.specimenId).toSorted();
 }
 
 function fact(dto, label) {
@@ -22,11 +31,13 @@ function fact(dto, label) {
 
 test("all Victoria cards preserve exact source IDs and resolved current names", () => {
   assert.equal(victoria.length, 273);
-  for (const record of victoria) {
-    const dto = app.presentHarmonizedCard(record);
+  for (const descriptor of victoriaDescriptors) {
+    const record = descriptor.parentRecord;
+    const dto = app.presentHarmonizedCard(descriptor);
     assert.equal(dto.identifier, `Victoria Land (1982) · ${record.specimenId}`, record.id);
     assert.equal(dto.sourceName, record.specimenId, record.id);
-    assert.equal(fact(dto, "Current Meteoritical Bulletin name"), record.metbull.canonicalName, record.id);
+    assert.equal(dto.headingName, record.metbull.canonicalName, record.id);
+    assert.equal(fact(dto, "Current MetBull classification"), descriptor.currentMetbull.classification, record.id);
     assert.equal(app.matchesSearch(record, record.specimenId), true, record.id);
     assert.equal(app.matchesSearch(record, `${record.specimenId.slice(0, -5)} ${record.specimenId.slice(-5)}`), true, record.id);
     assert.equal(app.matchesSearch(record, `${record.specimenId.slice(0, -5)}-${record.specimenId.slice(-5)}`), true, record.id);
@@ -48,9 +59,10 @@ test("five-digit searches resolve exact terminal suffix groups without prefix in
 
 test("ALHA76009 exposes Table A primary and Table B reported mass without changing primary mass behavior", () => {
   const record = victoria.find(({ specimenId }) => specimenId === "ALHA76009");
-  const dto = app.presentHarmonizedCard(record);
+  const descriptor = victoriaDescriptors.find(({ parentRecord }) => parentRecord === record);
+  const dto = app.presentHarmonizedCard(descriptor);
   assert.equal(dto.sourceName, "ALHA76009");
-  assert.equal(fact(dto, "Current Meteoritical Bulletin name"), "Allan Hills A76009");
+  assert.equal(dto.headingName, "Allan Hills A76009");
   assert.equal(fact(dto, "Specimen weight"), "407 kg");
   assert.equal(fact(dto, "Specimen weight, Table A primary (printed page 85)"), "407 kg");
   assert.equal(fact(dto, "Specimen weight, Table B reported (printed page 91)"), "3.95 kg");
@@ -93,11 +105,11 @@ test("all Victoria conflicts are visibly dual, non-conflicts stay concise, and c
   assert.equal(tableBCitations, 270);
 });
 
-test("Table B, official-name, and area-reference facts are searchable without entering primary statistics", () => {
-  for (const record of victoria) {
+test("Table B, current official, and area-reference facts are searchable without entering primary statistics", () => {
+  for (const descriptor of victoriaDescriptors) {
+    const record = descriptor.parentRecord;
     const tableB = record.sourceEvidence.tableB;
-    assert.equal(app.matchesSearch(record, record.metbull.canonicalName), true, record.id);
-    assert.equal(app.matchesSearch(record, record.metbull.meteoriteCode), true, record.id);
+    assert.equal(app.matchesSpecimenCardSearch(descriptor, descriptor.currentMetbull.name), true, record.id);
     if (record.locality.areaReferenceCoordinate) {
       assert.equal(app.matchesSearch(record, record.locality.areaReferenceCoordinate), true, record.id);
     }

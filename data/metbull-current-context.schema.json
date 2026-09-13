@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:hmc:schema:metbull-current-context:1",
+  "title": "Current Meteoritical Bulletin context for public specimen cards",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["metadata", "meteorites"],
+  "properties": {
+    "metadata": { "$ref": "#/$defs/metadata" },
+    "meteorites": {
+      "type": "object",
+      "minProperties": 2548,
+      "maxProperties": 2548,
+      "additionalProperties": false,
+      "propertyNames": { "pattern": "^[1-9][0-9]*$" },
+      "patternProperties": {
+        "^[1-9][0-9]*$": { "$ref": "#/$defs/meteorite" }
+      }
+    }
+  },
+  "$defs": {
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion", "scope", "acquiredAt", "sourceUrl", "sourceSha256", "sourceBytes", "sourceRowCount",
+        "sourceStatusCounts", "catalogSchemaVersion", "catalogSha256", "catalogRecordCount", "projectionSchemaVersion",
+        "projectionSha256", "projectionCount", "lineageSchemaVersion", "lineageSha256", "cardCount", "directCardCount",
+        "mappedDirectCardCount", "unmappedDirectCardCount", "projectedCardCount", "mappedProjectedCardCount",
+        "unmappedProjectedCardCount", "mappedCardCount", "unmappedCardCount", "mappedParentCount",
+        "usedMeteoriteCodeCount", "cardAssignmentsSha256"
+      ],
+      "properties": {
+        "schemaVersion": { "const": 1 },
+        "scope": { "const": "current-metbull-context-for-specimen-cards" },
+        "acquiredAt": { "const": "2026-09-13T00:55:27Z" },
+        "sourceUrl": { "const": "https://www.lpi.usra.edu/meteor/metbull.php?sea=&sfor=names&stype=contains&valids=1&lrec=100000&csv=1" },
+        "sourceSha256": { "const": "1e22fb5cac0e46628e73e74f2ad3dac15240fd247ccffa621bf89539c5b18d68" },
+        "sourceBytes": { "const": 10234673 },
+        "sourceRowCount": { "const": 80224 },
+        "sourceStatusCounts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["Official", "Relict"],
+          "properties": {
+            "Official": { "const": 80124 },
+            "Relict": { "const": 100 }
+          }
+        },
+        "catalogSchemaVersion": { "const": 12 },
+        "catalogSha256": { "const": "cf429e6660f00272f2f81fe69bac81c891f41574bbfff6e6bb46499d2d0672b4" },
+        "catalogRecordCount": { "const": 19553 },
+        "projectionSchemaVersion": { "const": 6 },
+        "projectionSha256": { "const": "7ab4ca4fef524f94e68d977f3a8106dc3b7a29ba7112ffe491deff91964ab445" },
+        "projectionCount": { "const": 3407 },
+        "lineageSchemaVersion": { "const": 4 },
+        "lineageSha256": { "const": "b592065b07412b8d09d955f9276b2de0790a56f1649c7987a8b10bcc62c32199" },
+        "cardCount": { "const": 14149 },
+        "directCardCount": { "const": 5739 },
+        "mappedDirectCardCount": { "const": 5568 },
+        "unmappedDirectCardCount": { "const": 171 },
+        "projectedCardCount": { "const": 8410 },
+        "mappedProjectedCardCount": { "const": 6206 },
+        "unmappedProjectedCardCount": { "const": 2204 },
+        "mappedCardCount": { "const": 11774 },
+        "unmappedCardCount": { "const": 2375 },
+        "mappedParentCount": { "const": 7651 },
+        "usedMeteoriteCodeCount": { "const": 2548 },
+        "cardAssignmentsSha256": { "const": "a732537ef524872ec7bce3340a04db1eb0694453cc158b6497cfd363a973bb44" }
+      }
+    },
+    "safeText": {
+      "type": "string",
+      "allOf": [
+        { "pattern": "^(?!\\s)(?!.*\\s$)[^<>`\\u0000-\\u001f\\u007f]*$" },
+        { "not": { "pattern": "!?\\[[^\\]]*\\]\\([^)]*\\)" } },
+        { "not": { "pattern": "^(?:[\\\\/]|\\.\\.?[\\\\/]|~[\\\\/]|[A-Za-z]:[\\\\/])" } }
+      ]
+    },
+    "meteorite": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "status", "fall", "year", "place", "classification"],
+      "properties": {
+        "name": { "allOf": [{ "$ref": "#/$defs/safeText" }, { "minLength": 1, "maxLength": 80 }] },
+        "status": { "const": "Official" },
+        "fall": { "enum": ["", "Y", "Yc", "Yp", "Np"] },
+        "year": { "allOf": [{ "$ref": "#/$defs/safeText" }, { "maxLength": 24 }] },
+        "place": { "allOf": [{ "$ref": "#/$defs/safeText" }, { "minLength": 1, "maxLength": 120 }] },
+        "classification": { "allOf": [{ "$ref": "#/$defs/safeText" }, { "minLength": 1, "maxLength": 80 }] }
+      }
+    }
+  }
+}
