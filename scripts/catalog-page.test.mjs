@@ -80,7 +80,7 @@ test("production cards suppress equal canonical names, including Aba Panu, while
 
   assert.deepEqual(
     { reviewed: reviewed.length, resolved: resolved.length, unresolved: unresolved.length, pending: catalog.records.length - reviewed.length },
-    { reviewed: 14946, resolved: 14606, unresolved: 340, pending: 4692 }
+    { reviewed: 15299, resolved: 14606, unresolved: 693, pending: 4692 }
   );
   assert.deepEqual({ equivalent: equivalent.length, substantive: resolved.length - equivalent.length }, { equivalent: 9620, substantive: 4986 });
   const abaPanu = catalog.records.find(({ id }) => id === "obs-bc3edcf5-25d8-4921-8ace-ceedd6882e3b");
@@ -115,14 +115,14 @@ test("production cards suppress equal canonical names, including Aba Panu, while
 test("production catalog directory preserves all canonical cards and authorized actions", async () => {
   const directory = await catalogPage.loadCatalogDirectoryData(fetchFixture());
   const expected = app.catalogSummaryEntries(app.normalizeCatalogRegistry(catalog.metadata));
-  assert.equal(directory.entries.length, 53);
+  assert.equal(directory.entries.length, 55);
   assert.deepEqual(directory.entries.map(({ folios: _pages, ...summary }) => summary), expected);
   assert.deepEqual(directory.entries.map(({ id }) => id), [
     "lucas-1813", "chladni-1819", "chladni-1825", "haidinger-1859", "buchner-1863",
     "nordenskiold-1870", "story-maskelyne-1872", "ward-1881", "ball-1882", "fletcher-1886", "usnm-1886", "minnesota-1892", "fletcher-1894", "greifswald-1895", "fletcher-1896", "hovey-1896", "washington-1897",
     "greifswald-1901", "tassin-1902", "hogbom-1902", "farrington-1903", "berlin-1903", "fletcher-1904", "ward-1904", "berlin-1904", "fletcher-1908", "foote-1909", "schreiter-1912", "foote-1912",
-    "anderson-1913", "hamburg-1913", "brown-1916", "farrington-1916", "merrill-1916", "kantor-1920", "prior-1923", "madrid-1923", "prior-guide-1926", "palache-1926", "brauns-bonn-1926",
-    "nininger-1933", "reeds-1937", "astapovich-1938", "hodge-smith-1939", "barnes-1940", "nininger-1950", "mason-1964",
+    "anderson-1913", "hamburg-1913", "farrington-north-america-1915", "brown-1916", "farrington-1916", "merrill-1916", "kantor-1920", "prior-1923", "madrid-1923", "prior-guide-1926", "palache-1926", "brauns-bonn-1926",
+    "silberrad-1932", "nininger-1933", "reeds-1937", "astapovich-1938", "hodge-smith-1939", "barnes-1940", "nininger-1950", "mason-1964",
     "huss-1976", "antarctic-1980", "victoria-land-1982", "huss-1986", "kanagawa-1996", "asu-2024-09"
   ]);
   const browseable = directory.entries.filter(({ folios: pages }) => pages.length);
@@ -198,9 +198,9 @@ test("homepage and catalog page markup keep navigation and UI states accessible"
   assert.match(html, /id="catalog-directory-list" aria-busy="true"/);
   assert.match(html, /id="catalog-directory-error"[^>]*role="alert"[^>]*hidden/);
   assert.match(html, /<noscript><p class="empty-state">/);
-  assert.match(html, /catalogs\.js\?v=20260913-antarctic-1980-1/);
-  assert.match(html, /app\.js\?v=20260913-antarctic-1980-1/);
-  assert.match(html, /styles\.css\?v=20260913-antarctic-1980-1/);
+  assert.match(html, /catalogs\.js\?v=20260913-catalog10-historical-1/);
+  assert.match(html, /app\.js\?v=20260913-catalog10-historical-1/);
+  assert.match(html, /styles\.css\?v=20260913-catalog10-historical-1/);
   assert.doesNotMatch(source, /\.innerHTML\b/);
   assert.match(source, /\.textContent = summary\.label/);
   assert.doesNotMatch(source, /error\.message/);

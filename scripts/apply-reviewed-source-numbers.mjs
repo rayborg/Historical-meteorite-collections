@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
 
-const CATALOG_SHA256 = "9c11b7478b2ec1ce4bd8d13c275272b28f6409570c246820c2e3ce28f2f73e74";
+const CATALOG_SHA256 = "8458ae9dfee5136014af4e68202880830e17fde92f4ebd664f3a1cdd6092d349";
 const STRUCTURAL_PROJECTION_SET_SHA256 = "c4ac216d619ee08210bb43cb5a284280d807b35694ece4105b9611680478f1e0";
 const FARRINGTON_1903_SOURCE_NUMBER = /\bCat\.?\s+Nos?\.,?\s+([^.]+)\./giu;
 const FARRINGTON_1916_SOURCE_NUMBER = /\bCat\.?\s+No\.?,?\s+(\d+)/giu;

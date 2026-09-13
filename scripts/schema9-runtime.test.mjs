@@ -25,8 +25,8 @@ const antarctic = records.filter(({ catalogId }) => catalogId === "antarctic-198
 const clone = structuredClone;
 const fixtureRecord = (document, catalogId) => document.records.find((record) => record.catalogId === catalogId);
 
-test("schema 13 runtime accepts all closed models and rejects schema or shape widening", () => {
-  assert.equal(app.validateCatalog(clone(fixture)).metadata.schemaVersion, 13);
+test("schema 14 runtime accepts all closed models and rejects schema or shape widening", () => {
+  assert.equal(app.validateCatalog(clone(fixture)).metadata.schemaVersion, 14);
   for (const mutate of [
     (value) => { value.metadata.schemaVersion = 10; },
     (value) => { value.metadata.factualFields.splice(9, 1); },
@@ -159,20 +159,20 @@ test("statistics count each Victoria and Antarctic mass once, no Hodge mass, and
   const victoriaStats = app.calculateStatistics(victoria);
   const antarcticStats = app.calculateStatistics(antarctic);
   const legacy = records.filter(({ recordModel }) =>
-    !["regional-census-fact", "table-a-specimen", "appendix-specimen"].includes(recordModel));
+    !["regional-census-fact", "regional-event-fact", "table-a-specimen", "appendix-specimen"].includes(recordModel));
   const total = app.calculateStatistics(records);
   assert.deepEqual({ observations: hodgeStats.observations, grams: hodgeStats.grams }, { observations: 84, grams: 0 });
   assert.equal(victoriaStats.observations, 273);
   assert.equal(victoriaStats.grams, victoria.reduce((sum, record) => sum + record.weight.grams, 0));
   assert.equal(antarcticStats.observations, 85);
   assert.equal(antarcticStats.grams, 89891.1);
-  assert.equal(total.observations, 19638);
-  assert.equal(total.catalogs, 53);
+  assert.equal(total.observations, 19991);
+  assert.equal(total.catalogs, 55);
   assert(Math.abs(total.grams - (app.calculateStatistics(legacy).grams + victoriaStats.grams + antarcticStats.grams)) < 1e-6);
 });
 
-test("schema-13 lineage and projection dependencies are regenerated and fail closed on stale metadata", () => {
-  assert.equal(lineages.metadata.source.catalogSchemaVersion, 13);
+test("schema-14 lineage and projection dependencies are regenerated and fail closed on stale metadata", () => {
+  assert.equal(lineages.metadata.source.catalogSchemaVersion, 14);
   assert.equal(app.deriveEarlierRecordIndex(lineages, records, registry).size, 303);
   const sourceCatalogSha256 = createHash("sha256").update(catalogText).digest("hex");
   assert.equal(sourceCatalogSha256, app.CATALOG_SHA256);
@@ -186,7 +186,7 @@ test("schema-13 lineage and projection dependencies are regenerated and fail clo
   assert.equal(app.deriveSpecimenCardProjectionIndex(staleProjections, records, { sourceCatalogSha256 }).size, 0);
 });
 
-test("schema 13 card semantics, cache keys, responsive layout, and privacy boundary are explicit", () => {
+test("schema 14 card semantics, cache keys, responsive layout, and privacy boundary are explicit", () => {
   assert.match(html, /<p class="record-semantic-label"><\/p>/u);
   const hodgeDto = app.presentHarmonizedCard(hodge[0]);
   const victoriaDto = app.presentHarmonizedCard(victoria[0]);
@@ -197,11 +197,11 @@ test("schema 13 card semantics, cache keys, responsive layout, and privacy bound
   assert.match(styles, /\.record-meta div \{[^}]*grid-template-columns: minmax\(7\.25rem, 9rem\) minmax\(0, 1fr\);/u);
   assert.match(styles, /@media \(max-width: 520px\)[\s\S]*\.record-meta div \{ grid-template-columns: minmax\(0, 1fr\);/u);
   assert.match(styles, /\.record-meta dt \{[^}]*overflow-wrap: normal;/u);
-  assert.equal(app.CACHE_VERSION, "20260913-antarctic-1980-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260913-antarctic-1980-1");
-  assert.match(html, /styles\.css\?v=20260913-antarctic-1980-1/u);
-  assert.match(html, /app\.js\?v=20260913-antarctic-1980-1/u);
+  assert.equal(app.CACHE_VERSION, "20260913-catalog10-historical-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260913-catalog10-historical-1");
+  assert.match(html, /styles\.css\?v=20260913-catalog10-historical-1/u);
+  assert.match(html, /app\.js\?v=20260913-catalog10-historical-1/u);
   const newSourceRecords = catalog.records.filter(({ catalogId }) =>
-    ["antarctic-1980", "hodge-smith-1939", "victoria-land-1982"].includes(catalogId));
+    ["antarctic-1980", "hodge-smith-1939", "victoria-land-1982", "farrington-north-america-1915", "silberrad-1932"].includes(catalogId));
   assert.doesNotMatch(JSON.stringify(newSourceRecords), /(?:raw[ _-]*ocr|\/private\/|\/Users\/|source[ _-]*image|scan[ _-]*(?:file|path)|research[ _-]*notes?)/iu);
 });

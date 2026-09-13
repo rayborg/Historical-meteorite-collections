@@ -195,7 +195,7 @@ function makeObservation(record, descriptor, { designation, designationPath, mas
 }
 
 function catalogDescriptors(catalog) {
-  assert(catalog?.metadata?.schemaVersion === 13, "catalog metadata schemaVersion must be 13");
+  assert(catalog?.metadata?.schemaVersion === 14, "catalog metadata schemaVersion must be 14");
   assert(Array.isArray(catalog.metadata.catalogs), "catalog metadata catalogs must be an array");
   assert(Array.isArray(catalog.records), "catalog records must be an array");
   const descriptors = new Map(catalog.metadata.catalogs.map((descriptor) => [descriptor.id, descriptor]));
@@ -213,7 +213,7 @@ export function flattenMassObservations(catalog) {
     const descriptor = descriptors.get(record.catalogId);
     assert(descriptor, `record ${record.id} refers to unknown catalog ${record.catalogId}`);
     if (!record.metbull || typeof record.metbull !== "object") continue;
-    if (["regional-census-fact", "collection-representation-fact", "dealer-offer-fact"].includes(descriptor.recordModel)) {
+    if (["regional-census-fact", "regional-event-fact", "collection-representation-fact", "dealer-offer-fact"].includes(descriptor.recordModel)) {
       // Context-only facts do not identify physical specimens or report specimen masses.
       continue;
     }

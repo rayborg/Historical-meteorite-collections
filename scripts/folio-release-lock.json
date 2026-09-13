@@ -119,6 +119,13 @@
       "basisUrl": null,
       "pageIds": []
     },
+    "farrington-north-america-1915": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "basis": null,
+      "basisUrl": null,
+      "pageIds": []
+    },
     "fletcher-1886": {
       "displayPolicy": "blocked",
       "rightsStatus": "undetermined",
@@ -371,6 +378,13 @@
       "pageIds": []
     },
     "schreiter-1912": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "basis": null,
+      "basisUrl": null,
+      "pageIds": []
+    },
+    "silberrad-1932": {
       "displayPolicy": "blocked",
       "rightsStatus": "undetermined",
       "basis": null,

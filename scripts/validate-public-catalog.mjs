@@ -104,6 +104,11 @@ const COLLECTION_REPRESENTATION_FACT_KEYS = [
   "id", "catalogId", "entryOrder", "reportedNumber", "pane", "name", "eventDate", "reference",
   "representedWeight", "section", "catalogPages", "confidence",
 ];
+const REGIONAL_EVENT_FACT_KEYS = [
+  "id", "catalogId", "entryOrder", "reportedNumber", "section", "name", "jurisdiction", "eventText",
+  "reportedMaterial", "catalogPages", "confidence",
+];
+const REPORTED_MATERIAL_KEYS = ["statement", "quantityType", "semantics"];
 const HAMBURG_COLLECTION_ENTRY_KEYS = [
   ...COLLECTION_ENTRY_KEYS, "reportedTotalWeight", "publicationState", "amendments",
 ];
@@ -121,6 +126,7 @@ const HOLDING_KINDS = ["specimen", "cast", "aggregate"];
 const RECORD_MODELS = [
   "catalog-item", "specimen", "catalog-number", "collection-entry", "regional-census-fact", "table-a-specimen",
   "appendix-specimen", "dealer-offer-fact", "collection-representation-fact",
+  "regional-event-fact",
 ];
 const FACTUAL_FIELDS = [
   "id",
@@ -149,6 +155,11 @@ const FACTUAL_FIELDS = [
   "representedWeight.componentTexts[]",
   "representedWeight.grams",
   "representedWeight.semantics",
+  "jurisdiction",
+  "eventText",
+  "reportedMaterial[].statement",
+  "reportedMaterial[].quantityType",
+  "reportedMaterial[].semantics",
   "australianMuseumRepresentation.status",
   "australianMuseumRepresentation.representedOccurrences",
   "australianMuseumRepresentation.notRepresentedOccurrences",
@@ -376,12 +387,12 @@ function assertCountSummary(value, path) {
 
 function validateMetadata(metadata, path) {
   assertExactKeys(metadata, METADATA_KEYS, path);
-  assert(metadata.schemaVersion === 13, `${path}.schemaVersion must be 13`);
+  assert(metadata.schemaVersion === 14, `${path}.schemaVersion must be 14`);
   assert(metadata.scope === "facts-only", `${path}.scope must be facts-only`);
   assert(
     Array.isArray(metadata.factualFields) && metadata.factualFields.length === FACTUAL_FIELDS.length &&
       metadata.factualFields.every((field, index) => field === FACTUAL_FIELDS[index]),
-    `${path}.factualFields does not match the schema 13 public record models`,
+    `${path}.factualFields does not match the schema 14 public record models`,
   );
   assertCountSummary(metadata, path);
   assert(Array.isArray(metadata.catalogs) && metadata.catalogs.length > 0, `${path}.catalogs must be a nonempty array`);
@@ -436,7 +447,7 @@ function validateMetadata(metadata, path) {
 function recordDesignations(record, recordModel) {
   if (recordModel === "specimen") return record.designation === null ? [] : [record.designation];
   if (["table-a-specimen", "appendix-specimen"].includes(recordModel)) return [record.specimenId];
-  if (["catalog-number", "collection-entry", "regional-census-fact", "dealer-offer-fact", "collection-representation-fact"].includes(recordModel)) return [];
+  if (["catalog-number", "collection-entry", "regional-census-fact", "dealer-offer-fact", "collection-representation-fact", "regional-event-fact"].includes(recordModel)) return [];
   return record.holdings.map((holding) => holding.designation).filter((value) => value !== null);
 }
 
@@ -444,7 +455,7 @@ function recordMasses(record, recordModel) {
   if (["specimen", "table-a-specimen", "appendix-specimen"].includes(recordModel)) {
     return record.weight.grams === null ? [] : [record.weight.grams];
   }
-  if (["regional-census-fact", "dealer-offer-fact"].includes(recordModel)) return [];
+  if (["regional-census-fact", "dealer-offer-fact", "regional-event-fact"].includes(recordModel)) return [];
   if (recordModel === "collection-representation-fact") return record.representedWeight.componentTexts;
   if (recordModel === "catalog-number" || recordModel === "collection-entry") {
     return record.holdings.flatMap((holding) => holding.weights.map(({ grams }) => grams));
@@ -503,7 +514,7 @@ function compareRecords(left, right, metadataByCatalog) {
     return left.catalogPages[0] - right.catalogPages[0] || compareText(left.catalogNumber, right.catalogNumber) ||
       compareText(left.name, right.name) || compareText(left.id, right.id);
   }
-  if (["collection-entry", "regional-census-fact", "table-a-specimen", "appendix-specimen", "collection-representation-fact"].includes(leftModel)) {
+  if (["collection-entry", "regional-census-fact", "table-a-specimen", "appendix-specimen", "collection-representation-fact", "regional-event-fact"].includes(leftModel)) {
     return compareText(left.catalogId, right.catalogId) || left.entryOrder - right.entryOrder || compareText(left.id, right.id);
   }
   if (leftModel === "dealer-offer-fact") {
@@ -723,6 +734,7 @@ function validatePublicCatalog(data, folios, path = "catalog") {
         ? CATALOG_ITEM_KEYS
         : recordModel === "catalog-number" ? CATALOG_NUMBER_KEYS
           : recordModel === "regional-census-fact" ? REGIONAL_CENSUS_FACT_KEYS
+            : recordModel === "regional-event-fact" ? REGIONAL_EVENT_FACT_KEYS
             : recordModel === "table-a-specimen" ? TABLE_A_SPECIMEN_KEYS
               : recordModel === "appendix-specimen" ? APPENDIX_SPECIMEN_KEYS
                 : recordModel === "dealer-offer-fact" ? DEALER_OFFER_FACT_KEYS
@@ -742,7 +754,7 @@ function validatePublicCatalog(data, folios, path = "catalog") {
     assert(!ids.has(record.id), `${recordPath}.id is duplicated: ${record.id}`);
     ids.add(record.id);
     representedCatalogs.add(record.catalogId);
-    if (!["table-a-specimen", "appendix-specimen", "dealer-offer-fact", "collection-representation-fact"].includes(recordModel)) {
+    if (!["table-a-specimen", "appendix-specimen", "dealer-offer-fact", "collection-representation-fact", "regional-event-fact"].includes(recordModel)) {
       const dateField = recordModel === "catalog-number" ? "dateOfDiscovery" :
         ["collection-entry", "regional-census-fact"].includes(recordModel) ? "eventDate" : "year";
       for (const field of ["name", "classification", "locality", dateField]) {
@@ -849,6 +861,32 @@ function validatePublicCatalog(data, folios, path = "catalog") {
       assertString(record.eventDate, `${recordPath}.eventDate`, true);
       validateAustralianMuseumRepresentation(record.australianMuseumRepresentation,
         `${recordPath}.australianMuseumRepresentation`);
+    } else if (recordModel === "regional-event-fact") {
+      assert(Number.isInteger(record.entryOrder) && record.entryOrder > 0,
+        `${recordPath}.entryOrder must be a positive integer`);
+      const entryOrders = collectionEntryOrders.get(record.catalogId) ?? new Set();
+      const previousEntryOrder = previousCollectionEntries.get(record.catalogId);
+      assert(!entryOrders.has(record.entryOrder) &&
+        (previousEntryOrder === undefined || record.entryOrder > previousEntryOrder),
+      `${recordPath}.entryOrder must be unique and increasing within ${record.catalogId}`);
+      entryOrders.add(record.entryOrder);
+      collectionEntryOrders.set(record.catalogId, entryOrders);
+      previousCollectionEntries.set(record.catalogId, record.entryOrder);
+      assertString(record.reportedNumber, `${recordPath}.reportedNumber`, true);
+      assertString(record.section, `${recordPath}.section`);
+      assertString(record.name, `${recordPath}.name`);
+      assertString(record.jurisdiction, `${recordPath}.jurisdiction`, true);
+      assertString(record.eventText, `${recordPath}.eventText`, true);
+      assert(Array.isArray(record.reportedMaterial), `${recordPath}.reportedMaterial must be an array`);
+      record.reportedMaterial.forEach((material, materialIndex) => {
+        const materialPath = `${recordPath}.reportedMaterial[${materialIndex}]`;
+        assertExactKeys(material, REPORTED_MATERIAL_KEYS, materialPath);
+        assertString(material.statement, `${materialPath}.statement`);
+        assert(["reported-mass-expression", "qualitative"].includes(material.quantityType),
+          `${materialPath}.quantityType is invalid`);
+        assert(material.semantics === "regional-event-context-only", `${materialPath}.semantics is invalid`);
+      });
+      assert(record.metbull?.matchType === "unresolved", `${recordPath}.metbull must remain explicitly unresolved`);
     } else if (recordModel === "table-a-specimen") {
       assert(Number.isInteger(record.entryOrder) && record.entryOrder > 0,
         `${recordPath}.entryOrder must be a positive integer`);
@@ -995,7 +1033,7 @@ function validatePublicCatalog(data, folios, path = "catalog") {
         }
       }
     }
-    if (["catalog-number", "collection-entry", "regional-census-fact", "collection-representation-fact"].includes(recordModel)) {
+    if (["catalog-number", "collection-entry", "regional-census-fact", "collection-representation-fact", "regional-event-fact"].includes(recordModel)) {
       assert(Array.isArray(record.catalogPages) && record.catalogPages.length > 0,
         `${recordPath}.catalogPages must be a nonempty ordered unique array`);
       record.catalogPages.forEach((page, pageIndex) => {
@@ -1022,7 +1060,7 @@ function validatePublicCatalog(data, folios, path = "catalog") {
   assertExactSet(representedCatalogs, metadataByCatalog.keys(), `${path} record catalog IDs`);
   assertExactSet(Object.keys(folios.catalogs), metadataByCatalog.keys(), `${path} folio catalog IDs`);
   assert(data.metadata.recordCount === data.records.length, `${path}.metadata.recordCount does not match records`);
-  if (data.records.length === 19638 && metadataByCatalog.size === 53) {
+  if (data.records.length === 19991 && metadataByCatalog.size === 55) {
     assert(individualFindLocationCount === 111,
       `${path} must contain exactly 111 specimen individualFindLocation values`);
     assertExactSet(qualitativeWeightIds, ["obs-9286c6b5-4942-41f0-a905-8854f457bd9d"], `${path} qualitative weight record IDs`);
@@ -1179,6 +1217,21 @@ function validatePublicCatalog(data, folios, path = "catalog") {
       folios.catalogs["antarctic-1980"].rightsStatus === "undetermined" &&
       folios.catalogs["antarctic-1980"].pages.length === 0,
     `${path} Antarctic 1980 folio policy must remain blocked and empty`);
+    const farrington = data.records.filter(({ catalogId }) => catalogId === "farrington-north-america-1915");
+    const silberrad = data.records.filter(({ catalogId }) => catalogId === "silberrad-1932");
+    assert(farrington.length === 247 && farrington.every((record, index) =>
+      record.entryOrder === index + 1 && record.reportedNumber === null && record.jurisdiction !== null &&
+      record.eventText === null && record.reportedMaterial.length === 0 && record.metbull.matchType === "unresolved"),
+    `${path} Farrington compact regional-event facts changed`);
+    assert(silberrad.length === 106 && silberrad.every((record, index) =>
+      record.entryOrder === index + 1 && record.jurisdiction === null && record.eventText !== null &&
+      record.metbull.matchType === "unresolved") &&
+      silberrad.flatMap(({ reportedMaterial }) => reportedMaterial).length === 108 &&
+      silberrad.filter(({ reportedMaterial }) => reportedMaterial.length > 0).length === 100,
+    `${path} Silberrad regional-event facts or material census changed`);
+    assert([...farrington, ...silberrad].every((record) => !Object.hasOwn(record, "weight") &&
+      !Object.hasOwn(record, "holdings") && !Object.hasOwn(record, "lineage")),
+    `${path} regional-event facts became specimens, holdings, or lineage endpoints`);
     const elCapitan = data.records.find(({ id }) => id === "obs-68c7e39b-9d99-4f9a-a1d2-7b2374d76d47");
     assert(JSON.stringify(elCapitan?.holdings[0]?.weights) === "[{\"grams\":66},{\"grams\":753},{\"grams\":4000}]",
       `${path} Merrill El Capitan masses differ from the audited correction`);
@@ -1477,7 +1530,7 @@ function multiCatalogFixture() {
   return {
     data: {
       metadata: {
-        schemaVersion: 13,
+        schemaVersion: 14,
         scope: "facts-only",
         factualFields: [...FACTUAL_FIELDS],
         catalogs: [
@@ -1979,7 +2032,7 @@ function runSyntheticCatalogTests(modelFixture) {
     catalogNumberRejectionCount += 1;
   };
   const hoveyRecord = (records, id = "hovey-catalog-z9") => records.find((record) => record.id === id);
-  assertCatalogNumberRejection("older metadata under schema 13", ({ metadata }) => { metadata.schemaVersion = 12; });
+  assertCatalogNumberRejection("older metadata under schema 14", ({ metadata }) => { metadata.schemaVersion = 13; });
   assertCatalogNumberRejection("empty catalog number", ({ records }) => { hoveyRecord(records).catalogNumber = ""; });
   assertCatalogNumberRejection("nonnull non-string catalog number", ({ records }) => { hoveyRecord(records).catalogNumber = 9; });
   assertCatalogNumberRejection("duplicate catalog number within one catalog", ({ records }) => {
@@ -2420,7 +2473,7 @@ console.log(
   `${catalogFixtureStats.holdingPrivacyAllowCount} holding-privacy boundary allow, ` +
   `${catalogFixtureStats.modelRejectionCount} model/holding rejections, ` +
   `${catalogFixtureStats.catalogNumberRejectionCount} catalog-number rejections, ` +
-  `${catalogFixtureStats.collectionEntryRejectionCount} collection-entry/schema-13 rejections, ` +
+  `${catalogFixtureStats.collectionEntryRejectionCount} collection-entry/schema-14 rejections, ` +
   `${metbullFixtureStats.allowCount} MetBull allows, ${metbullFixtureStats.rejectionCount} MetBull rejections, ` +
   `${folioFixtureStats.allowCount} folio allows, ${folioFixtureStats.rejectionCount} folio rejections, ` +
   `${folioFileFixtureStats.allowCount} folio-file allows, ${folioFileFixtureStats.rejectionCount} folio-file rejections passed.`,
@@ -2458,7 +2511,24 @@ if (!SYNTHETIC_ONLY) {
   const associatedMaterialRecord = data.records.find((record) => Object.hasOwn(record, "associatedMaterial"));
   const dispositionRecord = data.records.find((record) => Object.hasOwn(record, "specimenDisposition"));
   const antarcticRecord = data.records.find(({ catalogId }) => catalogId === "antarctic-1980");
-  assertDeployedRejection("schema-10 downgrade", ({ metadata }) => { metadata.schemaVersion = 10; });
+  const regionalEventRecord = data.records.find(({ catalogId, reportedMaterial }) =>
+    catalogId === "silberrad-1932" && reportedMaterial.length > 0);
+  assertDeployedRejection("schema-13 downgrade", ({ metadata }) => { metadata.schemaVersion = 13; });
+  assertDeployedRejection("regional-event material promoted to weight", ({ records }) => {
+    records.find(({ id }) => id === regionalEventRecord.id).weight = { grams: 1 };
+  });
+  assertDeployedRejection("regional-event material gains normalized grams", ({ records }) => {
+    records.find(({ id }) => id === regionalEventRecord.id).reportedMaterial[0].grams = 1;
+  });
+  assertDeployedRejection("regional-event material semantics widened", ({ records }) => {
+    records.find(({ id }) => id === regionalEventRecord.id).reportedMaterial[0].semantics = "specimen-weight";
+  });
+  assertDeployedRejection("regional-event unresolved identity promoted", ({ records }) => {
+    records.find(({ id }) => id === regionalEventRecord.id).metbull = {
+      matchType: "exact", canonicalName: "Promoted", meteoriteCode: "1",
+      metbullUrl: "https://www.lpi.usra.edu/meteor/metbull.php?code=1", alternateNameNote: null,
+    };
+  });
   assertDeployedRejection("missing one of 111 individual find locations", ({ records }) => {
     delete records.find(({ id }) => id === locationRecord.id).individualFindLocation;
   });
@@ -2558,7 +2628,7 @@ if (!SYNTHETIC_ONLY) {
   );
   console.log(
     `Validated data/catalog.json and data/folios.json: ${deployedStats.recordCount} records across ` +
-      `${deployedStats.catalogCount} schema 13 facts-only catalogs, ${deployedStats.individualFindLocationCount} individual find locations, ` +
+      `${deployedStats.catalogCount} schema 14 facts-only catalogs, ${deployedStats.individualFindLocationCount} individual find locations, ` +
       `${totalPageCount} metadata source pages, ` +
     `${deployedStats.folioStats.pageEntryCount} displayable folio pages with locked SHA-256 assets.`,
   );

@@ -88,6 +88,8 @@ function expectedNumericTokens(record) {
   addTokens(record.reference);
   addTokens(record.representedWeight?.valueText);
   for (const componentText of record.representedWeight?.componentTexts || []) addTokens(componentText);
+  addTokens(record.eventText);
+  for (const material of record.reportedMaterial || []) addTokens(material.statement);
   for (const value of [record.catalogItem, record.entryOrder, record.typeNumber]) add(value);
   addTokens([record.year, record.dateOfDiscovery, record.eventDate].filter(Boolean).join(" "));
   addTokens((record.holdings || []).flatMap((holding) => [

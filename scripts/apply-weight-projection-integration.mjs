@@ -8,7 +8,7 @@ const path = new URL("../data/specimen-card-projections.json", import.meta.url);
 const manifest = JSON.parse(await readFile(path, "utf8"));
 const byParent = new Map(manifest.projections.map((projection) => [projection.parentRecordId, projection]));
 
-assert.equal(catalog.metadata.schemaVersion, 13);
+assert.equal(catalog.metadata.schemaVersion, 14);
 manifest.metadata.schemaVersion = 5;
 manifest.metadata.catalogSchemaVersion = 12;
 manifest.metadata.sourceCatalogSha256 = createHash("sha256").update(catalogText).digest("hex");

@@ -217,8 +217,8 @@ test("runtime fixture projection validates with exact legacy model-aware shapes"
   });
 });
 
-test("schema 13 public fixture carries all four exact newer data models", () => {
-  assert.equal(publicFixture.metadata.schemaVersion, 13);
+test("schema 14 public fixture carries all closed data models", () => {
+  assert.equal(publicFixture.metadata.schemaVersion, 14);
   assert.deepEqual(publicFixture.metadata.catalogs.slice(-4).map(({ id, recordModel }) => [id, recordModel]), [
     ["antarctic-1980", "appendix-specimen"],
     ["hodge-smith-1939", "regional-census-fact"],
@@ -236,7 +236,7 @@ test("schema 13 public fixture carries all four exact newer data models", () => 
     .map(({ typeNumber }) => typeNumber), [95, 96]);
 });
 
-test("schema 13 permits individualFindLocation only as an optional specimen fact", () => {
+test("schema 14 permits individualFindLocation only as an optional specimen fact", () => {
   const located = clone(fixture);
   const specimen = located.records.find(({ id }) => id === "huss-h27-3");
   assert.equal(specimen.individualFindLocation, "32-19-13");
@@ -1047,8 +1047,8 @@ test("URL filters default to strict specimens and canonicalize the explicit incl
     unit: "observations",
     status: "Showing 60 of 23,217 display cards from 18,217 matching source observations."
   });
-  assert.equal(app.CACHE_VERSION, "20260913-antarctic-1980-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260913-antarctic-1980-1");
+  assert.equal(app.CACHE_VERSION, "20260913-catalog10-historical-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260913-catalog10-historical-1");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.ASSET_CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.ASSET_CACHE_VERSION}`));
 });

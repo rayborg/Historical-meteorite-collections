@@ -95,13 +95,13 @@ test("real catalog Allende search retains reviewed names and synonyms without Al
 
 test("real release locks all catalogs and chronological dropdown entries", () => {
   const entries = app.catalogSelectorEntries(registry);
-  assert.equal(entries.length, 53);
+  assert.equal(entries.length, 55);
   assert.deepEqual(entries.map(([id]) => id), [
     "lucas-1813", "chladni-1819", "chladni-1825", "haidinger-1859", "buchner-1863",
     "nordenskiold-1870", "story-maskelyne-1872", "ward-1881", "ball-1882", "fletcher-1886", "usnm-1886", "minnesota-1892", "fletcher-1894", "greifswald-1895", "fletcher-1896", "hovey-1896", "washington-1897",
     "greifswald-1901", "tassin-1902", "hogbom-1902", "farrington-1903", "berlin-1903", "fletcher-1904", "ward-1904", "berlin-1904", "fletcher-1908", "foote-1909", "schreiter-1912", "foote-1912",
-    "anderson-1913", "hamburg-1913", "brown-1916", "farrington-1916", "merrill-1916", "kantor-1920", "prior-1923", "madrid-1923", "prior-guide-1926", "palache-1926", "brauns-bonn-1926",
-    "nininger-1933", "reeds-1937", "astapovich-1938", "hodge-smith-1939", "barnes-1940", "nininger-1950", "mason-1964",
+    "anderson-1913", "hamburg-1913", "farrington-north-america-1915", "brown-1916", "farrington-1916", "merrill-1916", "kantor-1920", "prior-1923", "madrid-1923", "prior-guide-1926", "palache-1926", "brauns-bonn-1926",
+    "silberrad-1932", "nininger-1933", "reeds-1937", "astapovich-1938", "hodge-smith-1939", "barnes-1940", "nininger-1950", "mason-1964",
     "huss-1976", "antarctic-1980", "victoria-land-1982", "huss-1986", "kanagawa-1996", "asu-2024-09",
   ]);
   const expectedLabels = {
@@ -109,6 +109,7 @@ test("real release locks all catalogs and chronological dropdown entries", () =>
     "astapovich-1938": "Astapovich (1938)", "merrill-1916": "Merrill (1916)",
     "ward-1881": "Ward (1881)", "ward-1904": "Ward (1904)",
     "farrington-1916": "Farrington (1916)", "foote-1912": "Foote (1912)",
+    "farrington-north-america-1915": "Farrington North America (1915)", "silberrad-1932": "Silberrad (1932)",
     "fletcher-1904": "Fletcher (1904)", "prior-1923": "Prior (1923)",
     "madrid-1923": "Madrid (1923)", "palache-1926": "Palache (1926)",
     "reeds-1937": "Reeds (1937)", "kanagawa-1996": "Kanagawa (1996)",
@@ -162,7 +163,7 @@ test("schema v4 artifact is independently validated and reconstructed", () => {
     candidates: lineageData.comparisonGroups.reduce((sum, group) => sum + group.candidates.length, 0),
   }, { schema: 4, relationships: 279, sourceGroups: 21, comparisonGroups: 1541, candidates: 2245 });
   assert.equal(createHash("sha256").update(lineageText).digest("hex"), app.SPECIMEN_LINEAGE_DATA_SHA256);
-  assert.equal(app.SPECIMEN_LINEAGE_DATA_SHA256, "0cd635900d1c3e961112e07301dc462e7e10a0bf168f5a7c1951c97394f45d87");
+  assert.equal(app.SPECIMEN_LINEAGE_DATA_SHA256, "0f99792c052527ed9a00690b989ea9e6980f12701d07b75c70e54f55874dcc04");
 });
 
 test("strict v4 validation rejects schema, partition, source, fact, review, and count mutations", () => {
@@ -485,9 +486,9 @@ test("accessible static contracts, warning language, and cache keys are synchron
   assert.doesNotMatch(source, /Suspected cross-catalog|POSSIBLE_MATCH_CAUTION/u);
   assert.match(css, /\.comparison-warning/u);
   assert.match(css, /\.comparison-candidates/u);
-  assert.equal(app.CACHE_VERSION, "20260913-antarctic-1980-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260913-antarctic-1980-1");
-  assert.match(html, /styles\.css\?v=20260913-antarctic-1980-1/u);
-  assert.match(html, /app\.js\?v=20260913-antarctic-1980-1/u);
+  assert.equal(app.CACHE_VERSION, "20260913-catalog10-historical-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260913-catalog10-historical-1");
+  assert.match(html, /styles\.css\?v=20260913-catalog10-historical-1/u);
+  assert.match(html, /app\.js\?v=20260913-catalog10-historical-1/u);
   assert.doesNotMatch(source, /\.innerHTML\b/u);
 });

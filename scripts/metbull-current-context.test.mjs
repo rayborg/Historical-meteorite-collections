@@ -108,7 +108,7 @@ test("schema and runtime contracts are closed against extras, unsafe text, stale
 
 test("loader applies all current context or returns one complete source-only fallback", async () => {
   const valid = await app.loadMetbullCurrentContext(rawDescriptors, async (url, options) => {
-    assert.equal(url, "./data/metbull-current-context.json?v=20260913-antarctic-1980-1");
+    assert.equal(url, "./data/metbull-current-context.json?v=20260913-catalog10-historical-1");
     assert.deepEqual(options, { cache: "no-cache" });
     return response();
   }, { sha256: async (text) => sha256(text), catalogSha256: app.CATALOG_SHA256,
@@ -160,7 +160,7 @@ test("presenter applies official headings and exact ordered catalog notes only t
     { label: "Current MetBull year", value: "1969" },
   ]);
   assert.deepEqual(dto.catalogNotes, [{ label: "Catalog classification", value: "Stone. Carbonaceous chondrite, Type III" }]);
-  assert.equal(sha256(catalogText), "9c11b7478b2ec1ce4bd8d13c275272b28f6409570c246820c2e3ce28f2f73e74");
+  assert.equal(sha256(catalogText), "8458ae9dfee5136014af4e68202880830e17fde92f4ebd664f3a1cdd6092d349");
 });
 
 test("fall/find codes are never inferred and current fields contain no mass or coordinate claims", () => {
@@ -229,7 +229,7 @@ test("official heading links are complete and remain absent from fallback and ob
   assert.equal(mapped.filter((descriptor) => app.presentHarmonizedCard(descriptor).headingUrl ===
     app.metbullUrlForCode(descriptor.currentMetbull.meteoriteCode)).length, 11859);
   assert.equal(unmatched.filter((descriptor) => app.presentHarmonizedCard(descriptor).headingUrl === null).length, 2375);
-  assert.equal(observations.filter((descriptor) => app.presentHarmonizedCard(descriptor).headingUrl === null).length, 10407);
+  assert.equal(observations.filter((descriptor) => app.presentHarmonizedCard(descriptor).headingUrl === null).length, 10760);
   assert.match(source, /officialLink\.href = dto\.headingUrl;/u);
   assert.match(source, /officialLink\.textContent = dto\.headingName;/u);
   assert.doesNotMatch(source, /officialLink\.innerHTML/u);
@@ -238,7 +238,7 @@ test("official heading links are complete and remain absent from fallback and ob
 test("observation cards stay source-only and static rendering is accessible, responsive, and text-only", () => {
   const observations = descriptors.filter((descriptor) => !["direct-specimen", "projected-atomic-specimen"]
     .includes(app.classifyHarmonizedCard(descriptor)));
-  assert.equal(observations.length, 10407);
+  assert.equal(observations.length, 10760);
   assert(observations.every(({ currentMetbull }) => currentMetbull === null));
   assert(observations.every((descriptor) => {
     const dto = app.presentHarmonizedCard(descriptor, { currentMetbull: sidecar.meteorites["5"] });

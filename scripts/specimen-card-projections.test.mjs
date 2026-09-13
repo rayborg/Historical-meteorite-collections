@@ -97,7 +97,7 @@ test("production manifest is deterministic and validates against the locked cata
     !wave1Ids.has(parentRecordId) && !wave2Ids.has(parentRecordId) && !bonnIds.has(parentRecordId));
   assert.equal(createHash("sha256").update(JSON.stringify(structuralProjections(baseline))).digest("hex"), "2aba43bd9d205ae21502f3f76cdb213c1bac26f90513389b876bf047d6087e4b");
   assert.equal(createHash("sha256").update(JSON.stringify(structuralProjections(baseline.filter(({ parentRecordId }) => !hamburgIds.has(parentRecordId))))).digest("hex"), "895bf19525ea363dd20068417c4cb4e7af667dd10c4e8c746085f40b2e3ea528");
-  assert.equal(createHash("sha256").update(projectionText).digest("hex"), "3437976048240713b3dbfd10cf3558bf7c6a32336560731ce89ea40455cce489");
+  assert.equal(createHash("sha256").update(projectionText).digest("hex"), "707666e22b647bcbbdbf6088cb1ff8964aa9beb813fe4bc805ac7b1b841155d5");
 });
 
 test("schema is a closed schema-6 count-locked atomic projection contract", () => {
@@ -109,10 +109,10 @@ test("schema is a closed schema-6 count-locked atomic projection contract", () =
   assert.equal(schema.$defs.metadata.properties.atomicCardCount.const, 8410);
   assert.equal(schema.$defs.metadata.properties.sourceContextCardCount.const, 2877);
   assert.equal(schema.$defs.metadata.properties.sourceCatalogNumberCount.const, 5058);
-  assert.equal(schema.$defs.metadata.properties.catalogSchemaVersion.const, 13);
-  assert.equal(schema.$defs.metadata.properties.sourceRecordCount.const, 19638);
+  assert.equal(schema.$defs.metadata.properties.catalogSchemaVersion.const, 14);
+  assert.equal(schema.$defs.metadata.properties.sourceRecordCount.const, 19991);
   assert.equal(schema.$defs.metadata.properties.sourceCatalogSha256.const,
-    "9c11b7478b2ec1ce4bd8d13c275272b28f6409570c246820c2e3ce28f2f73e74");
+    "8458ae9dfee5136014af4e68202880830e17fde92f4ebd664f3a1cdd6092d349");
   assert.deepEqual(schema.$defs.projection.required, ["parentRecordId", "cards"]);
   assert.deepEqual(schema.$defs.card.oneOf, [
     { $ref: "#/$defs/clauseCard" },
@@ -143,7 +143,7 @@ test("schema is a closed schema-6 count-locked atomic projection contract", () =
   visit(schema);
 });
 
-test("unprojected sources remain unprojected and schema 13 retains specimen locations", () => {
+test("unprojected sources remain unprojected and schema 14 retains specimen locations", () => {
   const newRecordIds = new Set(catalog.records.filter(({ catalogId }) =>
     ["antarctic-1980", "hodge-smith-1939", "victoria-land-1982"].includes(catalogId)).map(({ id }) => id));
   assert.equal(newRecordIds.size, 442);
@@ -154,8 +154,8 @@ test("unprojected sources remain unprojected and schema 13 retains specimen loca
   const footeIds = new Set(catalog.records.filter(({ catalogId }) => catalogId === "foote-1909").map(({ id }) => id));
   assert.equal(footeIds.size, 6);
   assert(!published.projections.some(({ parentRecordId }) => footeIds.has(parentRecordId)));
-  assert.equal(published.metadata.catalogSchemaVersion, 13);
-  assert.equal(published.metadata.sourceRecordCount, 19638);
+  assert.equal(published.metadata.catalogSchemaVersion, 14);
+  assert.equal(published.metadata.sourceRecordCount, 19991);
 });
 
 test("Brown and Minnesota projections are exact one-to-one reviewed atomic holding projections", () => {

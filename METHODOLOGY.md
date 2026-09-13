@@ -82,7 +82,7 @@ content-identical rows remain separate. Corrections preserve the observation's
 ID. New public IDs are opaque and do not expose source storage or mutable fact
 values.
 
-The public catalog supports nine closed models:
+The public catalog supports ten closed models:
 
 - `specimen` for a row that explicitly describes one source-identified
   specimen.
@@ -97,6 +97,8 @@ The public catalog supports nine closed models:
   that is not an atomic holding or specimen.
 - `regional-census-fact` for occurrence and representation facts that are not
   physical holdings.
+- `regional-event-fact` for jurisdiction or event evidence whose reported
+  material remains context rather than a specimen mass.
 - `table-a-specimen` for a source's primary specimen table with separately
   retained cross-view evidence.
 - `dealer-offer-fact` for a dealer type/offer observation that is not modeled as
@@ -188,6 +190,12 @@ printed values remain ordered text components with no scalar grams value. The
 model therefore has no holdings and is excluded from specimen-card projection,
 mass-range filtering, same-inventory continuity, and comparison generation.
 
+Farrington 1915 and Silberrad 1932 use `regional-event-fact`. Their names,
+jurisdictions, event statements, and material statements remain searchable
+observations. Reported material is retained only as closed
+`regional-event-context-only` text and is excluded from normalized grams,
+specimen cards, mass filters, lineage, and comparison generation.
+
 Fletcher corrections begin in the private accepted source-first evidence, not
 in this public repository. A corrected release must re-adjudicate exact source
 evidence, regenerate the canonical catalog and crosswalk, export twice
@@ -242,7 +250,7 @@ accepted snapshot has 80,224 rows and SHA-256
 It is joined only through an already reviewed positive `meteoriteCode`; current
 name, class, place, year, or mass similarity never creates or changes a mapping.
 The resulting schema-1 public sidecar has SHA-256
-`75e9818c98bc045402ceee8bd603e2c8346daf7e5338729a98d2d0fa35e7447e`.
+`3e7555561eba6653200c0c0f6c5954580139efad59391f6ae323c47d27133824`.
 
 The sidecar covers the complete 14,234-card specimen partition. Exactly 11,859
 cards from 7,736 parents map to 2,548 Official codes, and 2,375 remain unmapped.
@@ -327,7 +335,7 @@ The generated schema-4 lineage and comparison layer is
 comparison review source are published beside it. Root-level `relationships`
 contain only same-inventory lineage, while `comparisonGroups` are non-lineage
 research candidates. The current artifact SHA-256 is
-`0cd635900d1c3e961112e07301dc462e7e10a0bf168f5a7c1951c97394f45d87`.
+`0f99792c052527ed9a00690b989ea9e6980f12701d07b75c70e54f55874dcc04`.
 
 ### 9.1 Same inventory
 
@@ -380,7 +388,7 @@ Changing current Official name, classification, place, year, or fall code cannot
 change lineage JSON, IDs, evidence strength, grouping, or counts. The dedicated
 isolation test repeats the build with accepted, absent, and changed sidecars and
 locks the result to SHA-256
-`0cd635900d1c3e961112e07301dc462e7e10a0bf168f5a7c1951c97394f45d87`.
+`0f99792c052527ed9a00690b989ea9e6980f12701d07b75c70e54f55874dcc04`.
 
 ### 9.3 Source-attested groups
 

@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "schemaVersion": 13,
+    "schemaVersion": 14,
     "scope": "facts-only",
     "factualFields": [
       "id",
@@ -29,6 +29,11 @@
       "representedWeight.componentTexts[]",
       "representedWeight.grams",
       "representedWeight.semantics",
+      "jurisdiction",
+      "eventText",
+      "reportedMaterial[].statement",
+      "reportedMaterial[].quantityType",
+      "reportedMaterial[].semantics",
       "australianMuseumRepresentation.status",
       "australianMuseumRepresentation.representedOccurrences",
       "australianMuseumRepresentation.notRepresentedOccurrences",
