@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260912-comparison-groups-1";
+const CACHE_VERSION = "20260912-catalog-classification-1";
 const ASSET_CACHE_VERSION = CACHE_VERSION;
 const CATALOG_SCHEMA_VERSION = 12;
 const CATALOG_RECORD_COUNT = 19553;
@@ -3929,7 +3929,7 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
     if (isKnownCardFact(label, value)) facts.push({ label, value });
   };
   addKnownFact("Current Meteoritical Bulletin name", canonicalName);
-  addKnownFact("Class", record.classification);
+  addKnownFact("Catalog classification", record.classification);
   if (specimen && (kind === HARMONIZED_CARD_KINDS.atomic || record.recordModel === "table-a-specimen")) {
     facts.push({
       label: "Specimen form",

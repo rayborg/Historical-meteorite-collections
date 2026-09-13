@@ -70,7 +70,7 @@ test("all Victoria conflicts are visibly dual, non-conflicts stay concise, and c
   for (const record of victoria) {
     const dto = app.presentHarmonizedCard(record);
     const conflictFacts = app.victoriaConflictFacts(record);
-    assert.equal(fact(dto, "Class"), record.classification, record.id);
+    assert.equal(fact(dto, "Catalog classification"), record.classification, record.id);
     assert.equal(fact(dto, "Specimen weight"), app.formatMass(record.weight.grams), record.id);
     assert.equal(conflictFacts.length, record.sourceEvidence.conflicts.length * 2, record.id);
     for (const field of record.sourceEvidence.conflicts) conflictCounts[field] += 1;

@@ -31,11 +31,11 @@ const DTO_KEYS = [
   "kind", "identifier", "semanticLabel", "sourceName", "description", "facts", "sourceCitation", "sourceLabel", "catalogId", "catalogPages", "lineage", "comparison"
 ];
 const STANDARD_SPECIMEN_LABELS = [
-  "Class", "Specimen form", "Source locality",
+  "Catalog classification", "Specimen form", "Source locality",
   "Individual find location", "Event", "Lineage", "Cross-catalog comparisons", "Specimen weight"
 ];
-const STANDARD_OBSERVATION_LABELS = ["Class", "Source locality", "Event"];
-const FLETCHER_OBSERVATION_LABELS = ["Class", "Source locality", "Date or report of find"];
+const STANDARD_OBSERVATION_LABELS = ["Catalog classification", "Source locality", "Event"];
+const FLETCHER_OBSERVATION_LABELS = ["Catalog classification", "Source locality", "Date or report of find"];
 const FLETCHER_LABELS = ["Section", "Pane or case", "Reference", "Represented weight"];
 const SEMANTIC_LABELS = {
   "direct-specimen": "Specimen.",
@@ -113,7 +113,7 @@ function expectedFacts(descriptor) {
     !app.namesAreDisplayEquivalent(record.name, record.metbull.canonicalName)
     ? record.metbull.canonicalName : null;
   add("Current Meteoritical Bulletin name", currentName);
-  add("Class", record.classification);
+  add("Catalog classification", record.classification);
   if (specimen && (kind === "projected-atomic-specimen" || record.recordModel === "table-a-specimen")) entries.push({
     label: "Specimen form",
     value: "Individual specimen",
@@ -258,7 +258,7 @@ test("every production card uses the approved known-fact order and omits unavail
     assert(dto.facts.every(({ label, value }) => app.isKnownCardFact(label, value)), record.id);
     if (dto.identifier === app.catalogDropdownLabel(registry[record.catalogId], record.catalogId)) shortnameOnlyIdentifierCount += 1;
     assert.equal(fact(dto, "Current Meteoritical Bulletin name"), currentName || undefined, record.id);
-    assert.equal(fact(dto, "Class"), record.classification?.toLocaleLowerCase() === "unknown"
+    assert.equal(fact(dto, "Catalog classification"), record.classification?.toLocaleLowerCase() === "unknown"
       ? undefined : record.classification || undefined, record.id);
     const locality = record.recordModel === "table-a-specimen" ? record.locality?.name : record.locality;
     assert.equal(fact(dto, "Source locality"),
@@ -296,13 +296,13 @@ test("every production card uses the approved known-fact order and omits unavail
     Lineage: 13878,
     "Cross-catalog comparisons": 12432,
     Event: 2746,
-    Class: 232,
+    "Catalog classification": 232,
     "Source locality": 1102,
     "Specimen weight": 172,
     sourceName: 57,
   });
   assert.deepEqual({
-    classDisplayed: specimenCount - omitted.Class,
+    classDisplayed: specimenCount - omitted["Catalog classification"],
     formDisplayed: specimenCount - omitted["Specimen form"],
     eventDisplayed: specimenCount - omitted.Event,
     locationDisplayed: specimenCount - omitted["Individual find location"],
@@ -318,6 +318,17 @@ test("every production card uses the approved known-fact order and omits unavail
     comparisonDisplayed: 1717,
     weightDisplayed: 13977,
   });
+});
+
+test("Allende keeps the Huss 1976 classification explicitly source-scoped", () => {
+  const descriptor = descriptors.find(({ parentRecord }) =>
+    parentRecord.catalogId === "huss-1976" && parentRecord.designation === "H103.11");
+  const dto = present(descriptor);
+  assert.equal(dto.sourceName, "Allende");
+  assert.equal(fact(dto, "Catalog classification"), "Stone. Carbonaceous chondrite, Type III");
+  assert.equal(fact(dto, "Class"), undefined);
+  assert.equal(fact(dto, "Current Meteoritical Bulletin classification"), undefined);
+  assert.equal(descriptor.parentRecord.metbull.meteoriteCode, "2278");
 });
 
 test("all reviewed projected source catalog numbers render exact representative identifiers without changing typed identifiers", () => {
@@ -382,7 +393,7 @@ test("all seven card kinds use only shortname, typed-identifier, or reviewed-num
 
 test("field-aware availability removes only complete placeholders and preserves all compound evidence", () => {
   for (const value of ["unknown", " Unknown. ", "UNKNOWN..."]) {
-    assert.equal(app.isKnownCardFact("Class", value), false, value);
+    assert.equal(app.isKnownCardFact("Catalog classification", value), false, value);
   }
   for (const value of ["locality unknown", " Exact   locality unknown. "]) {
     assert.equal(app.isKnownCardFact("Source locality", value), false, value);
@@ -730,13 +741,13 @@ test("accessible shell, responsive breakpoints, approved cache, and immutable da
   assert.match(styles, /\.record-meta dt \{[^}]*font-size: \.6rem;/u);
   assert.match(styles, /\.record-meta dd \{[^}]*font-size: \.8rem;/u);
   assert.doesNotMatch(styles, /\.record-meta dt \{[^}]*overflow-wrap: anywhere;/u);
-  assert.equal(app.CACHE_VERSION, "20260912-comparison-groups-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260912-comparison-groups-1");
+  assert.equal(app.CACHE_VERSION, "20260912-catalog-classification-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260912-catalog-classification-1");
   for (const document of [html, catalogsHtml]) {
-    assert.match(document, /styles\.css\?v=20260912-comparison-groups-1/u);
-    assert.match(document, /app\.js\?v=20260912-comparison-groups-1/u);
+    assert.match(document, /styles\.css\?v=20260912-catalog-classification-1/u);
+    assert.match(document, /app\.js\?v=20260912-catalog-classification-1/u);
   }
-  assert.match(catalogsHtml, /catalogs\.js\?v=20260912-comparison-groups-1/u);
+  assert.match(catalogsHtml, /catalogs\.js\?v=20260912-catalog-classification-1/u);
   assert.deepEqual({
     catalog: sha256(catalogText),
     projections: sha256(projectionText),

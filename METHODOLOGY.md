@@ -125,7 +125,9 @@ from components, and later source amendments do not rewrite the base register.
 
 Historical names, classifications, localities, dates, identifiers, counts,
 weights, units, sections, and descriptions are preserved as source facts. A
-modern identity review cannot silently correct them.
+modern identity review cannot silently correct them. Cards therefore label the
+source wording as `Catalog classification`; the current MetBull harmonization
+stores reviewed name and code identity, not current classification.
 
 Missing or ambiguous is not zero. Blank, illegible, absent, ditto, dash,
 question-mark, range, inequality, compound-unit, or unsupported values remain
