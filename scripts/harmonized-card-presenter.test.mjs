@@ -767,6 +767,27 @@ test("default strict filter retains only the 14,062 source-listed-weight specime
   assert(mixedFiltered.every((descriptor) => app.specimenCardDescriptorMasses(descriptor).length > 0));
 });
 
+test("four-column eligibility requires a complete non-single specimen result set", () => {
+  const direct = descriptors.find((descriptor) => app.classifyHarmonizedCard(descriptor) === "direct-specimen");
+  const projected = descriptors.find((descriptor) => app.classifyHarmonizedCard(descriptor) === "projected-atomic-specimen");
+  const observation = descriptors.find((descriptor) => app.classifyHarmonizedCard(descriptor) === "collection-observation");
+  const defaultWeighted = app.filterSpecimenCardDescriptors(descriptors, {
+    min: null, max: null, lineageOnly: false, includeUnknownWeight: false
+  }, lineageIndex);
+
+  assert.equal(app.isFourColumnSpecimenResultSet([direct, projected]), true);
+  assert.equal(app.isFourColumnSpecimenResultSet(defaultWeighted), true);
+  assert.equal(app.isFourColumnSpecimenResultSet([direct, observation]), false);
+  assert.equal(app.isFourColumnSpecimenResultSet([observation, observation]), false);
+  assert.equal(app.isFourColumnSpecimenResultSet([]), false);
+  assert.equal(app.isFourColumnSpecimenResultSet([direct]), false);
+  assert.equal(app.isFourColumnSpecimenResultSet(new Array(2)), false);
+  assert.equal(app.isFourColumnSpecimenResultSet([direct, ,]), false);
+  assert.equal(app.isFourColumnSpecimenResultSet(null), false);
+  assert.match(appSource, /elements\.results\.classList\.toggle\("four-column-specimens", isFourColumnSpecimenResultSet\(displayCards\)\);/u);
+  assert.doesNotMatch(appSource, /isFourColumnSpecimenResultSet\(visibleCards\)/u);
+});
+
 test("weight census is a closed 14,051 numeric, 11 qualitative, and 172 source-unlisted specimen partition", () => {
   const specimens = descriptors.filter((descriptor) =>
     ["direct-specimen", "projected-atomic-specimen"].includes(app.classifyHarmonizedCard(descriptor)));
@@ -851,8 +872,16 @@ test("accessible shell, responsive breakpoints, approved cache, and immutable da
   assert.match(html, /<span>Include observations and source-unlisted specimens<\/span>/u);
   assert.match(styles, /\.filters > \.filter-toggles \{[^}]*display: flex;[^}]*flex-wrap: wrap;/u);
   assert.match(styles, /\.catalog-grid \{[^}]*grid-template-columns: repeat\(3, minmax\(0, 1fr\)\);/u);
+  assert.match(styles, /@media \(min-width: 1320px\) \{[\s\S]*\.catalog-grid\.four-column-specimens:not\(\.single-result\) \{ grid-template-columns: repeat\(4, minmax\(0, 1fr\)\); gap: \.8rem; \}/u);
+  assert.match(styles, /@media \(min-width: 1320px\) \{[\s\S]*\.catalog-grid\.four-column-specimens:not\(\.single-result\) \.specimen-card \.record-meta div,[\s\S]*grid-template-columns: minmax\(4rem, 5\.25rem\) minmax\(0, 1fr\);/u);
   assert.match(styles, /@media \(max-width: 1200px\)[\s\S]*\.catalog-grid \{ grid-template-columns: repeat\(2, minmax\(0, 1fr\)\); \}/u);
   assert.match(styles, /@media \(max-width: 700px\)[\s\S]*\.catalog-grid \{ grid-template-columns: 1fr; \}/u);
+  const wideBreakpoint = Number(styles.match(/@media \(min-width: (\d+)px\)/u)?.[1]);
+  const maxBreakpoints = [...styles.matchAll(/@media \(max-width: (\d+)px\)/gu)].map((match) => Number(match[1]));
+  assert.deepEqual({ wideStart: wideBreakpoint, standardWideEnd: wideBreakpoint - 1,
+    twoColumnEnd: maxBreakpoints[0], oneColumnEnd: maxBreakpoints[1] }, {
+    wideStart: 1320, standardWideEnd: 1319, twoColumnEnd: 1200, oneColumnEnd: 700
+  });
   assert.match(styles, /@media \(max-width: 520px\)[\s\S]*\.observation-card \.record-meta div \{ grid-template-columns: minmax\(0, 1fr\);/u);
   assert.match(styles, /@media \(max-width: 350px\)[\s\S]*\.specimen-card \.record-meta div,[\s\S]*grid-template-columns: minmax\(0, 1fr\);/u);
   assert.match(styles, /\.specimen-card \{ padding: \.72rem \.75rem \.62rem; \}/u);
@@ -867,13 +896,13 @@ test("accessible shell, responsive breakpoints, approved cache, and immutable da
   assert.match(styles, /\.record-meta dt \{[^}]*font-size: \.6rem;/u);
   assert.match(styles, /\.record-meta dd \{[^}]*font-size: \.8rem;/u);
   assert.doesNotMatch(styles, /\.record-meta dt \{[^}]*overflow-wrap: anywhere;/u);
-  assert.equal(app.CACHE_VERSION, "20260913-compact-cards-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260913-compact-cards-1");
+  assert.equal(app.CACHE_VERSION, "20260913-four-card-grid-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260913-four-card-grid-1");
   for (const document of [html, catalogsHtml]) {
-    assert.match(document, /styles\.css\?v=20260913-compact-cards-1/u);
-    assert.match(document, /app\.js\?v=20260913-compact-cards-1/u);
+    assert.match(document, /styles\.css\?v=20260913-four-card-grid-1/u);
+    assert.match(document, /app\.js\?v=20260913-four-card-grid-1/u);
   }
-  assert.match(catalogsHtml, /catalogs\.js\?v=20260913-compact-cards-1/u);
+  assert.match(catalogsHtml, /catalogs\.js\?v=20260913-four-card-grid-1/u);
   assert.deepEqual({
     catalog: sha256(catalogText),
     projections: sha256(projectionText),

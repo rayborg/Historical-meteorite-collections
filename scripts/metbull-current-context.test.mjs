@@ -108,7 +108,7 @@ test("schema and runtime contracts are closed against extras, unsafe text, stale
 
 test("loader applies all current context or returns one complete source-only fallback", async () => {
   const valid = await app.loadMetbullCurrentContext(rawDescriptors, async (url, options) => {
-    assert.equal(url, "./data/metbull-current-context.json?v=20260913-compact-cards-1");
+    assert.equal(url, "./data/metbull-current-context.json?v=20260913-four-card-grid-1");
     assert.deepEqual(options, { cache: "no-cache" });
     return response();
   }, { sha256: async (text) => sha256(text), catalogSha256: app.CATALOG_SHA256,

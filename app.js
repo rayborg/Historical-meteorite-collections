@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260913-compact-cards-1";
+const CACHE_VERSION = "20260913-four-card-grid-1";
 const ASSET_CACHE_VERSION = CACHE_VERSION;
 const CATALOG_SCHEMA_VERSION = 14;
 const CATALOG_RECORD_COUNT = 19991;
@@ -4030,6 +4030,7 @@ function render() {
   visibleCards.forEach((descriptor) => fragment.append(createRecordCard(descriptor)));
   elements.results.replaceChildren(fragment);
   elements.results.classList.toggle("single-result", isSingleResultCount(matches.length));
+  elements.results.classList.toggle("four-column-specimens", isFourColumnSpecimenResultSet(displayCards));
   elements.results.setAttribute("aria-busy", "false");
   const resultState = resultDisplayState(
     displayCards.length, visibleCards.length, matchingObservationCount, filters.includeUnknownWeight
@@ -4218,6 +4219,14 @@ function classifyHarmonizedCard(recordOrDescriptor) {
   if (record.recordModel === "collection-representation-fact") return HARMONIZED_CARD_KINDS.representation;
   if (record.recordModel === "regional-event-fact") return HARMONIZED_CARD_KINDS.event;
   return record.recordModel === "dealer-offer-fact" ? HARMONIZED_CARD_KINDS.dealer : null;
+}
+
+function isFourColumnSpecimenResultSet(descriptors) {
+  return Array.isArray(descriptors) && descriptors.length > 1 && [...descriptors.keys()].every((index) =>
+    Object.hasOwn(descriptors, index) && [
+      HARMONIZED_CARD_KINDS.specimen,
+      HARMONIZED_CARD_KINDS.atomic
+    ].includes(classifyHarmonizedCard(descriptors[index])));
 }
 
 function shouldDisplaySemanticLabel(kind) {
@@ -5283,6 +5292,7 @@ if (typeof module !== "undefined" && module.exports) {
     hasMatchingFolioPolicy,
     hasRequiredComparisonReview,
     isDesignationQuery,
+    isFourColumnSpecimenResultSet,
     isSingleResultCount,
     isKnownCardFact,
     isRenderableComparisonCandidate,

@@ -433,6 +433,12 @@ dialog::backdrop { background: rgba(24, 19, 14, .84); backdrop-filter: blur(2px)
 .issue-report-error { margin: .7rem 0 0; padding: .55rem .65rem; color: var(--oxblood-dark); background: rgba(118, 47, 45, .08); border-left: 3px solid var(--oxblood); font-size: .8rem; font-weight: 700; }
 .issue-report-actions { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1.1rem; }
 
+@media (min-width: 1320px) {
+  .catalog-grid.four-column-specimens:not(.single-result) { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; }
+  .catalog-grid.four-column-specimens:not(.single-result) .specimen-card .record-meta div,
+  .catalog-grid.four-column-specimens:not(.single-result) .specimen-card .catalog-notes dl div { grid-template-columns: minmax(4rem, 5.25rem) minmax(0, 1fr); gap: .4rem; }
+}
+
 @media (max-width: 1200px) {
   .filters { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   .catalog-summary-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }

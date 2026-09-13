@@ -16,7 +16,7 @@ Ursula B. Marvin and Brian Mason compiled *Catalog of Antarctic Meteorites, 1977
 
 This public facts-only release was generated from the accepted canonical source integrations and retains their reviewed identity and source-name decisions. E. Cohen compiled the 1895 and 1901 Greifswald catalogs, and Carl Klein compiled the 1903 and 1904 Berlin catalogs. The research and publication rules are summarized in [`METHODOLOGY.md`](./METHODOLOGY.md).
 
-The site supports catalog filtering, model-aware search, segment-aware H-designation search, numeric gram ranges across scalar and nested masses, six deterministic sort orders, URL-persisted filters, incremental rendering, and rights-gated source folios. The homepage links to a dedicated catalog directory that presents every catalog card and its authorized folio actions; the bibliography master list remains a separate resource. Catalog facts and folio authorization are validated separately.
+The site supports catalog filtering, model-aware search, segment-aware H-designation search, numeric gram ranges across scalar and nested masses, six deterministic sort orders, URL-persisted filters, incremental rendering, and rights-gated source folios. On viewports at least 1320 px wide, non-single specimen-only result sets use four fluid columns; mixed and observation results retain the standard three-column desktop layout. The homepage links to a dedicated catalog directory that presents every catalog card and its authorized folio actions; the bibliography master list remains a separate resource. Catalog facts and folio authorization are validated separately.
 
 ## Local Preview
 
@@ -42,7 +42,7 @@ node --test scripts/metbull-lineage-isolation.test.mjs
 node --test scripts/*.test.mjs
 ```
 
-The validator checks both synthetic rejection fixtures and the real catalog, manifest, and folio files, including exactly 22 catalog-number rejection cases. The standalone CommonJS runtime harness contains 124 tests, and the complete MJS suite contains 224 tests.
+The validator checks both synthetic rejection fixtures and the real catalog, manifest, and folio files, including exactly 22 catalog-number rejection cases. The standalone CommonJS runtime harness contains 124 tests, and the complete MJS suite contains 225 tests.
 
 After changing either public data file, run `node scripts/sync-release-summary.mjs --write`; use `--json` to inspect the derived release summary without changing documentation.
 
