@@ -95,14 +95,14 @@ test("real catalog Allende search retains reviewed names and synonyms without Al
 
 test("real release locks all catalogs and chronological dropdown entries", () => {
   const entries = app.catalogSelectorEntries(registry);
-  assert.equal(entries.length, 52);
+  assert.equal(entries.length, 53);
   assert.deepEqual(entries.map(([id]) => id), [
     "lucas-1813", "chladni-1819", "chladni-1825", "haidinger-1859", "buchner-1863",
     "nordenskiold-1870", "story-maskelyne-1872", "ward-1881", "ball-1882", "fletcher-1886", "usnm-1886", "minnesota-1892", "fletcher-1894", "greifswald-1895", "fletcher-1896", "hovey-1896", "washington-1897",
     "greifswald-1901", "tassin-1902", "hogbom-1902", "farrington-1903", "berlin-1903", "fletcher-1904", "ward-1904", "berlin-1904", "fletcher-1908", "foote-1909", "schreiter-1912", "foote-1912",
     "anderson-1913", "hamburg-1913", "brown-1916", "farrington-1916", "merrill-1916", "kantor-1920", "prior-1923", "madrid-1923", "prior-guide-1926", "palache-1926", "brauns-bonn-1926",
     "nininger-1933", "reeds-1937", "astapovich-1938", "hodge-smith-1939", "barnes-1940", "nininger-1950", "mason-1964",
-    "huss-1976", "victoria-land-1982", "huss-1986", "kanagawa-1996", "asu-2024-09",
+    "huss-1976", "antarctic-1980", "victoria-land-1982", "huss-1986", "kanagawa-1996", "asu-2024-09",
   ]);
   const expectedLabels = {
     "anderson-1913": "Anderson (1913)", "kantor-1920": "Kantor (1920)",
@@ -160,9 +160,9 @@ test("schema v4 artifact is independently validated and reconstructed", () => {
     sourceGroups: lineageData.sourceAttestedGroups.length,
     comparisonGroups: lineageData.comparisonGroups.length,
     candidates: lineageData.comparisonGroups.reduce((sum, group) => sum + group.candidates.length, 0),
-  }, { schema: 4, relationships: 194, sourceGroups: 21, comparisonGroups: 1541, candidates: 2245 });
+  }, { schema: 4, relationships: 279, sourceGroups: 21, comparisonGroups: 1541, candidates: 2245 });
   assert.equal(createHash("sha256").update(lineageText).digest("hex"), app.SPECIMEN_LINEAGE_DATA_SHA256);
-  assert.equal(app.SPECIMEN_LINEAGE_DATA_SHA256, "b592065b07412b8d09d955f9276b2de0790a56f1649c7987a8b10bcc62c32199");
+  assert.equal(app.SPECIMEN_LINEAGE_DATA_SHA256, "0cd635900d1c3e961112e07301dc462e7e10a0bf168f5a7c1951c97394f45d87");
 });
 
 test("strict v4 validation rejects schema, partition, source, fact, review, and count mutations", () => {
@@ -346,24 +346,24 @@ test("source-attested Table C groups retain exact n-ary membership without pair 
   assert.equal(app.filterSpecimenCardDescriptors(victoriaDescriptors, {
     query: "", catalog: "victoria-land-1982", min: null, max: null, lineageOnly: true,
     includeUnknownWeight: true, sort: app.DEFAULT_SORT,
-  }, lineageIndex).length, 77);
+  }, lineageIndex).length, 109);
 });
 
 test("lineage index contains only established and source-attested claims", () => {
   const claims = flattenIndex(lineageIndex).map(({ claim }) => claim);
-  assert.deepEqual({ records: lineageIndex.size, claims: claims.length }, { records: 271, claims: 273 });
+  assert.deepEqual({ records: lineageIndex.size, claims: claims.length }, { records: 303, claims: 358 });
   assert.deepEqual(Object.fromEntries(["known", "tentative"].map((status) => [
     status, claims.filter(({ presentationStatus }) => presentationStatus === status).length,
-  ])), { known: 194, tentative: 79 });
+  ])), { known: 279, tentative: 79 });
   assert(claims.every(({ presentationStatus }) => presentationStatus !== "suspected"));
 
   const routed = descriptors.map((descriptor) => app.lineageEntriesForSpecimenCard(
     descriptor, lineageIndex.get(descriptor.parentRecord.id) || []
   )).filter((claimsForCard) => claimsForCard.length > 0);
-  assert.deepEqual({ cards: routed.length, claims: routed.flat().length }, { cards: 271, claims: 273 });
+  assert.deepEqual({ cards: routed.length, claims: routed.flat().length }, { cards: 303, claims: 358 });
   assert.equal(app.filterSpecimenCardDescriptors(descriptors, {
     min: null, max: null, lineageOnly: true, includeUnknownWeight: true,
-  }, lineageIndex).length, 271);
+  }, lineageIndex).length, 303);
 });
 
 test("comparison index is symmetric, grouped, and deduplicated per exact endpoint path", () => {
@@ -443,7 +443,7 @@ test("all published observation links resolve to exact public source records", (
     ...lineageData.relationships.flatMap(({ observations: items }) => items),
     ...lineageData.comparisonGroups.flatMap(({ candidates }) => candidates.flatMap(({ observations: items }) => items)),
   ];
-  assert.equal(observations.length, 4878);
+  assert.equal(observations.length, 5048);
   for (const observation of observations) {
     const url = new URL(observation.catalogSearchUrl, "https://example.test/");
     assert.equal(url.pathname, "/index.html");
@@ -453,7 +453,7 @@ test("all published observation links resolve to exact public source records", (
       app.matchesSearch(record, url.searchParams.get("q"))).map(({ id }) => id), [observation.recordId]);
   }
   const earlierEntries = flattenIndex(lineageIndex).filter(({ kind }) => kind === "relationship-route");
-  assert.equal(earlierEntries.length, 194);
+  assert.equal(earlierEntries.length, 279);
   for (const { claim } of earlierEntries) {
     const url = new URL(claim.earlierEndpoint.catalogSearchUrl, "https://example.test/");
     assert.deepEqual(records.filter((record) => record.catalogId === url.searchParams.get("catalog") &&
@@ -475,7 +475,7 @@ test("hash mismatch, malformed input, and fetch failure fail closed for both ind
     assert.equal(loaded.comparisonIndex.size, 0);
   }
   const loaded = await app.loadLineageAndComparisonIndexes(records, registry, async () => response(lineageText), { sha256 });
-  assert.deepEqual({ lineage: loaded.lineageIndex.size, comparison: loaded.comparisonIndex.size }, { lineage: 271, comparison: 2069 });
+  assert.deepEqual({ lineage: loaded.lineageIndex.size, comparison: loaded.comparisonIndex.size }, { lineage: 303, comparison: 2069 });
 });
 
 test("accessible static contracts, warning language, and cache keys are synchronized", () => {
@@ -485,9 +485,9 @@ test("accessible static contracts, warning language, and cache keys are synchron
   assert.doesNotMatch(source, /Suspected cross-catalog|POSSIBLE_MATCH_CAUTION/u);
   assert.match(css, /\.comparison-warning/u);
   assert.match(css, /\.comparison-candidates/u);
-  assert.equal(app.CACHE_VERSION, "20260912-metbull-context-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260912-metbull-context-1");
-  assert.match(html, /styles\.css\?v=20260912-metbull-context-1/u);
-  assert.match(html, /app\.js\?v=20260912-metbull-context-1/u);
+  assert.equal(app.CACHE_VERSION, "20260913-antarctic-1980-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260913-antarctic-1980-1");
+  assert.match(html, /styles\.css\?v=20260913-antarctic-1980-1/u);
+  assert.match(html, /app\.js\?v=20260913-antarctic-1980-1/u);
   assert.doesNotMatch(source, /\.innerHTML\b/u);
 });

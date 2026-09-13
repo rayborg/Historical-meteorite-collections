@@ -72,7 +72,7 @@ export function validateSourceClaims(sourceClaims, catalog = null) {
   assert(sourceClaimsContentSha256(sourceClaims) === ACCEPTED_SOURCE_CLAIMS_CONTENT_SHA256,
     "source claims content or order differs from the accepted Table C projection");
   if (catalog !== null) {
-    assert(catalog?.metadata?.schemaVersion === 12, "source claims require catalog schemaVersion 12");
+    assert(catalog?.metadata?.schemaVersion === 13, "source claims require catalog schemaVersion 13");
     const victoria = new Map(catalog.records
       .filter(({ catalogId }) => catalogId === "victoria-land-1982")
       .map((record) => [record.specimenId, record]));

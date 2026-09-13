@@ -23,7 +23,9 @@ const lineages = JSON.parse(lineageText);
 const registry = app.normalizeCatalogRegistry(catalog.metadata);
 const records = catalog.records.map((record, index) => app.prepareRecord(record, index, registry));
 const sourceCatalogSha256 = createHash("sha256").update(catalogText).digest("hex");
-const projectionIndex = app.deriveSpecimenCardProjectionIndex(projections, records, { sourceCatalogSha256 });
+const projectionIndex = app.deriveSpecimenCardProjectionIndex(projections, records, {
+  sourceCatalogSha256,
+});
 const rawDescriptors = app.expandSpecimenCardDescriptors(records, projectionIndex);
 const currentContext = JSON.parse(currentContextText);
 const currentContextIndex = app.deriveMetbullCurrentContextIndex(currentContext, rawDescriptors);
@@ -82,7 +84,7 @@ function expectedSourceIdentifier(descriptor, kind) {
   if (record.recordModel === "collection-representation-fact") {
     return record.reportedNumber ? `List no. ${record.reportedNumber}` : null;
   }
-  if (record.recordModel === "table-a-specimen") return record.specimenId || null;
+  if (["table-a-specimen", "appendix-specimen"].includes(record.recordModel)) return record.specimenId || null;
   if (record.recordModel === "dealer-offer-fact") return `Type number ${record.typeNumber}`;
   return record.designation || null;
 }
@@ -121,12 +123,12 @@ function expectedFacts(descriptor) {
   } else {
     add("Catalog classification", record.classification);
   }
-  if (specimen && (kind === "projected-atomic-specimen" || record.recordModel === "table-a-specimen")) entries.push({
+  if (specimen && (kind === "projected-atomic-specimen" || ["table-a-specimen", "appendix-specimen"].includes(record.recordModel))) entries.push({
     label: "Specimen form",
     value: "Individual specimen",
   });
   if (!descriptor.currentMetbull) {
-    add("Source locality", record.recordModel === "table-a-specimen" ? record.locality?.name : record.locality);
+    add("Source locality", ["table-a-specimen", "appendix-specimen"].includes(record.recordModel) ? record.locality?.name : record.locality);
   }
   if (specimen) add("Individual find location", record.individualFindLocation);
   if (!descriptor.currentMetbull) {
@@ -153,6 +155,7 @@ function expectedFacts(descriptor) {
       ? descriptor.qualitativeWeightEvidence?.statement : record.weightEvidence?.statement;
     add("Specimen weight", Number.isFinite(grams) ? app.formatMass(grams) : qualitativeWeight);
     entries.push(...app.victoriaConflictFacts(record));
+    entries.push(...app.appendixSpecimenFacts(record).filter(({ value }) => value !== null));
   }
   return entries;
 }
@@ -176,13 +179,13 @@ test("every production display descriptor has the closed harmonized DTO and exac
   assert.deepEqual(counts, {
     "collection-observation": 6867,
     "projected-atomic-specimen": 8410,
-    "direct-specimen": 5739,
+    "direct-specimen": 5824,
     "source-observation": 3,
     "regional-observation": 84,
     "dealer-observation": 6,
     "collection-representation-observation": 3447,
   });
-  assert.equal(descriptors.length, 24556);
+  assert.equal(descriptors.length, 24641);
 });
 
 test("all seven populated-name branches use concise kind-specific labels", () => {
@@ -273,19 +276,20 @@ test("every production card uses the approved known-fact order and omits unavail
       census.specimens += 1;
       census[descriptor.currentMetbull ? "mapped" : "unmapped"] += 1;
       assert.equal(dto.headingName, descriptor.currentMetbull?.name || record.name || null, record.id);
-      const individualSpecimen = dto.kind === "projected-atomic-specimen" || record.recordModel === "table-a-specimen";
+      const individualSpecimen = dto.kind === "projected-atomic-specimen" ||
+        ["table-a-specimen", "appendix-specimen"].includes(record.recordModel);
       assert.equal(fact(dto, "Specimen form"), individualSpecimen ? "Individual specimen" : undefined, record.id);
       assert.equal(fact(dto, "Individual find location"), record.individualFindLocation || undefined, record.id);
       assert.equal(Boolean(fact(dto, "Current MetBull classification")), Boolean(descriptor.currentMetbull), record.id);
     }
   }
   assert.deepEqual(census, {
-    specimens: 14149, mapped: 11774, unmapped: 2375, factRows: 111000, noteCards: 11713, noteRows: 29782,
+    specimens: 14234, mapped: 11859, unmapped: 2375, factRows: 112030, noteCards: 11798, noteRows: 29984,
   });
   assert.deepEqual(noteLabels, {
-    "Catalog classification": 11320,
-    "Catalog locality": 9831,
-    "Catalog meteorite name": 2231,
+    "Catalog classification": 11352,
+    "Catalog locality": 9916,
+    "Catalog meteorite name": 2316,
     "Catalog event or date": 6400,
   });
   assert.equal(shortnameOnlyIdentifierCount, 6058);
@@ -344,7 +348,7 @@ test("all reviewed projected source catalog numbers render exact representative 
   assert.equal(present(shortnameOnly).identifier, "Hovey (1896)");
 
   const typed = descriptors.filter((descriptor) => expectedSourceIdentifier(descriptor, app.classifyHarmonizedCard(descriptor)));
-  assert.equal(typed.length, 13440);
+  assert.equal(typed.length, 13525);
   assert(typed.every((descriptor) => present(descriptor).identifier.includes(
     ` · ${expectedSourceIdentifier(descriptor, app.classifyHarmonizedCard(descriptor))}`)));
 });
@@ -365,7 +369,7 @@ test("all seven card kinds use only shortname, typed-identifier, or reviewed-num
   assert.deepEqual(census, {
     "collection-observation": { shortname: 2219, typed: 4648, number: 0 },
     "projected-atomic-specimen": { shortname: 3111, typed: 241, number: 5058 },
-    "direct-specimen": { shortname: 38, typed: 5701, number: 0 },
+    "direct-specimen": { shortname: 38, typed: 5786, number: 0 },
     "source-observation": { shortname: 3, typed: 0, number: 0 },
     "regional-observation": { shortname: 7, typed: 77, number: 0 },
     "dealer-observation": { shortname: 0, typed: 6, number: 0 },
@@ -438,6 +442,8 @@ test("observation cards omit specimen claims and catalog-specific facts", () => 
     assert.equal(dto.sourceCitation, record.recordModel === "table-a-specimen"
       ? `${sourceLabel} \u00b7 Appendix Table A printed page ${record.sourceEvidence.tableA.printedPage}${record.sourceEvidence.tableB
         ? ` \u00b7 Table B printed page ${record.sourceEvidence.tableB.printedPage}` : ""}`
+      : record.recordModel === "appendix-specimen"
+        ? `${sourceLabel} \u00b7 Appendix printed page ${record.catalogPage}`
       : pages.length
         ? `${sourceLabel} \u00b7 ${pages.length === 1 ? "p." : "pp."} ${pages.join(", ")}`
         : sourceLabel, record.id);
@@ -526,10 +532,11 @@ test("representative corrected and unresolved specimen cards preserve the known 
   assert.match(styles, /\.record-meta dt \{[^}]*word-break: normal;[^}]*overflow-wrap: normal;/u);
 });
 
-test("catalog-specific source facts stay out of cards while representative hidden facts remain searchable", () => {
+test("closed catalog-specific card facts and representative hidden facts remain searchable", () => {
   const allowed = new Set([
     "Current MetBull classification", "Current MetBull place", "Current MetBull fall/find", "Current MetBull year",
-    ...STANDARD_SPECIMEN_LABELS, ...STANDARD_OBSERVATION_LABELS, ...FLETCHER_OBSERVATION_LABELS, ...FLETCHER_LABELS
+    ...STANDARD_SPECIMEN_LABELS, ...STANDARD_OBSERVATION_LABELS, ...FLETCHER_OBSERVATION_LABELS, ...FLETCHER_LABELS,
+    "Locality code", "Area reference coordinate", "Olivine Fa", "Pyroxene Fs", "Weathering", "Source section"
   ]);
   for (const descriptor of descriptors) {
     assert(present(descriptor).facts.every(({ label }) => allowed.has(label) ||
@@ -575,8 +582,8 @@ test("projection changes display-card multiplicity without changing parent resul
     query: "", catalog: null, min: null, max: null,
     lineageOnly: false, includeUnknownWeight: true, sort: app.DEFAULT_SORT
   };
-  assert.equal(app.filterRecords(records, filters, lineageIndex).length, 19553);
-  assert.equal(new Set(descriptors.map(({ parentRecord }) => parentRecord.id)).size, 19553);
+  assert.equal(app.filterRecords(records, filters, lineageIndex).length, 19638);
+  assert.equal(new Set(descriptors.map(({ parentRecord }) => parentRecord.id)).size, 19638);
   for (const descriptor of catalog.metadata.catalogs) {
     const parents = app.filterRecords(records, { ...filters, catalog: descriptor.id }, lineageIndex);
     assert.equal(parents.length, descriptor.recordCount, descriptor.id);
@@ -585,7 +592,7 @@ test("projection changes display-card multiplicity without changing parent resul
   }
 });
 
-test("default strict filter retains only the 13,977 source-listed-weight specimen cards", () => {
+test("default strict filter retains only the 14,062 source-listed-weight specimen cards", () => {
   const inclusive = app.filterSpecimenCardDescriptors(descriptors, {
     min: null, max: null, lineageOnly: false, includeUnknownWeight: true
   }, lineageIndex);
@@ -598,11 +605,11 @@ test("default strict filter retains only the 13,977 source-listed-weight specime
   const unknownSpecimens = inclusive.filter((descriptor) =>
     ["direct-specimen", "projected-atomic-specimen"].includes(app.classifyHarmonizedCard(descriptor)) &&
     !app.specimenCardDescriptorHasKnownWeight(descriptor));
-  assert.equal(inclusive.length, 24556);
-  assert.equal(weightedOnly.length, 13977);
-  assert.equal(defaultFiltered.length, 13977);
+  assert.equal(inclusive.length, 24641);
+  assert.equal(weightedOnly.length, 14062);
+  assert.equal(defaultFiltered.length, 14062);
   assert.deepEqual(defaultFiltered, weightedOnly);
-  assert.equal(app.WEIGHTED_DESCRIPTOR_COUNT, 13977);
+  assert.equal(app.WEIGHTED_DESCRIPTOR_COUNT, 14062);
   assert.equal(unknownSpecimens.length, 172);
   assert(weightedOnly.every((descriptor) => {
     const kind = app.classifyHarmonizedCard(descriptor);
@@ -632,7 +639,7 @@ test("default strict filter retains only the 13,977 source-listed-weight specime
   assert(mixedFiltered.every((descriptor) => app.specimenCardDescriptorMasses(descriptor).length > 0));
 });
 
-test("weight census is a closed 13,966 numeric, 11 qualitative, and 172 source-unlisted specimen partition", () => {
+test("weight census is a closed 14,051 numeric, 11 qualitative, and 172 source-unlisted specimen partition", () => {
   const specimens = descriptors.filter((descriptor) =>
     ["direct-specimen", "projected-atomic-specimen"].includes(app.classifyHarmonizedCard(descriptor)));
   const numeric = specimens.filter((descriptor) => app.specimenCardDescriptorMasses(descriptor).length > 0);
@@ -642,10 +649,10 @@ test("weight census is a closed 13,966 numeric, 11 qualitative, and 172 source-u
   const notIndividual = descriptors.filter((descriptor) => app.classifyHarmonizedCard(descriptor) === "source-observation");
   assert.deepEqual({ specimens: specimens.length, numeric: numeric.length, qualitative: qualitative.length,
     sourceUnlisted: sourceUnlisted.length, notIndividual: notIndividual.length },
-  { specimens: 14149, numeric: 13966, qualitative: 11, sourceUnlisted: 172, notIndividual: 3 });
+  { specimens: 14234, numeric: 14051, qualitative: 11, sourceUnlisted: 172, notIndividual: 3 });
   assert.equal(app.filterSpecimenCardDescriptors(specimens, {
     min: 0, max: null, lineageOnly: false, includeUnknownWeight: true,
-  }, lineageIndex).length, 13966);
+  }, lineageIndex).length, 14051);
   assert.deepEqual(qualitative.map(({ parentRecord, projected, sourcePosition }) =>
     projected ? `${parentRecord.id}--specimen-${sourcePosition + 1}` : parentRecord.id).sort(), [
     "obs-014fa351-665c-4bcb-b83f-3610f0ff425c--specimen-5",
@@ -725,22 +732,22 @@ test("accessible shell, responsive breakpoints, approved cache, and immutable da
   assert.match(styles, /\.record-meta dt \{[^}]*font-size: \.6rem;/u);
   assert.match(styles, /\.record-meta dd \{[^}]*font-size: \.8rem;/u);
   assert.doesNotMatch(styles, /\.record-meta dt \{[^}]*overflow-wrap: anywhere;/u);
-  assert.equal(app.CACHE_VERSION, "20260912-metbull-context-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260912-metbull-context-1");
+  assert.equal(app.CACHE_VERSION, "20260913-antarctic-1980-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260913-antarctic-1980-1");
   for (const document of [html, catalogsHtml]) {
-    assert.match(document, /styles\.css\?v=20260912-metbull-context-1/u);
-    assert.match(document, /app\.js\?v=20260912-metbull-context-1/u);
+    assert.match(document, /styles\.css\?v=20260913-antarctic-1980-1/u);
+    assert.match(document, /app\.js\?v=20260913-antarctic-1980-1/u);
   }
-  assert.match(catalogsHtml, /catalogs\.js\?v=20260912-metbull-context-1/u);
+  assert.match(catalogsHtml, /catalogs\.js\?v=20260913-antarctic-1980-1/u);
   assert.deepEqual({
     catalog: sha256(catalogText),
     projections: sha256(projectionText),
     lineages: sha256(lineageText),
     reviews: sha256(reviewText),
   }, {
-    catalog: "cf429e6660f00272f2f81fe69bac81c891f41574bbfff6e6bb46499d2d0672b4",
-    projections: "7ab4ca4fef524f94e68d977f3a8106dc3b7a29ba7112ffe491deff91964ab445",
-    lineages: "b592065b07412b8d09d955f9276b2de0790a56f1649c7987a8b10bcc62c32199",
+    catalog: "9c11b7478b2ec1ce4bd8d13c275272b28f6409570c246820c2e3ce28f2f73e74",
+    projections: "3437976048240713b3dbfd10cf3558bf7c6a32336560731ce89ea40455cce489",
+    lineages: "0cd635900d1c3e961112e07301dc462e7e10a0bf168f5a7c1951c97394f45d87",
     reviews: "32580c887d4e26a7c22950c95e2b8629de12a60c3f307708c1ea76e33fb31938",
   });
 });

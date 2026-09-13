@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "schemaVersion": 12,
+    "schemaVersion": 13,
     "scope": "facts-only",
     "factualFields": [
       "id",
@@ -159,6 +159,21 @@
         "rightsStatus": "undetermined"
       },
       {
+        "id": "antarctic-1980",
+        "recordModel": "appendix-specimen",
+        "label": "Catalog of Antarctic Meteorites, 1977-1978 (1980)",
+        "compiler": "Ursula B. Marvin; Brian Mason",
+        "year": 1980,
+        "sourcePages": [47, 48],
+        "sourcePageCount": 2,
+        "recordCount": 1,
+        "recordsWithDesignation": 1,
+        "recordsWithWeight": 1,
+        "confidenceCounts": { "high": 1, "medium": 0, "low": 0 },
+        "folioDisplayPolicy": "blocked",
+        "rightsStatus": "undetermined"
+      },
+      {
         "id": "hodge-smith-1939",
         "recordModel": "regional-census-fact",
         "label": "Australian Meteorites (1939)",
@@ -204,10 +219,10 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 19,
-    "recordsWithDesignation": 8,
-    "recordsWithWeight": 13,
-    "confidenceCounts": { "high": 12, "medium": 6, "low": 1 }
+    "recordCount": 20,
+    "recordsWithDesignation": 9,
+    "recordsWithWeight": 14,
+    "confidenceCounts": { "high": 13, "medium": 6, "low": 1 }
   },
   "records": [
     {
@@ -451,6 +466,32 @@
       "dateOfDiscovery": null,
       "catalogPages": [150],
       "confidence": "medium"
+    },
+    {
+      "id": "antarctic-appendix-1",
+      "catalogId": "antarctic-1980",
+      "entryOrder": 1,
+      "specimenId": "ALHA77001",
+      "name": "ALHA77001",
+      "weight": { "grams": 252 },
+      "classification": "L6",
+      "olivineFa": "25",
+      "pyroxeneFs": "21",
+      "weathering": "B",
+      "locality": {
+        "code": "ALH",
+        "name": "Allan Hills",
+        "areaReferenceCoordinate": "77°S, 159°E"
+      },
+      "catalogPage": 47,
+      "confidence": "high",
+      "metbull": {
+        "matchType": "official-abbreviation",
+        "canonicalName": "Allan Hills A77001",
+        "meteoriteCode": "1317",
+        "metbullUrl": "https://www.lpi.usra.edu/meteor/metbull.cfm?code=1317",
+        "alternateNameNote": null
+      }
     },
     {
       "id": "hodge-census-1",

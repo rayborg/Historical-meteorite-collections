@@ -82,7 +82,7 @@ content-identical rows remain separate. Corrections preserve the observation's
 ID. New public IDs are opaque and do not expose source storage or mutable fact
 values.
 
-The public catalog supports eight closed models:
+The public catalog supports nine closed models:
 
 - `specimen` for a row that explicitly describes one source-identified
   specimen.
@@ -91,6 +91,8 @@ The public catalog supports eight closed models:
   possibly multiple page citations.
 - `collection-entry` for a source-order collection observation with ordered
   holdings and a nullable or repeated printed number.
+- `appendix-specimen` for one source-order specimen row in a strictly bounded
+  catalog appendix.
 - `collection-representation-fact` for edition-local representation evidence
   that is not an atomic holding or specimen.
 - `regional-census-fact` for occurrence and representation facts that are not
@@ -148,12 +150,12 @@ Calculated sums are audit results, not printed facts. Both are retained when
 they differ. Zero can be retained as a catalog fact only when affirmatively
 reported, and zero is never a comparison mass endpoint.
 
-The specimen-weight census is a closed partition over the 14,152 current
+The specimen-weight census is a closed partition over the 14,237 current
 specimen or not-individual descriptors. After exact source correction and
-reviewed disposition, 13,966 actual specimen cards have numeric source-listed
+reviewed disposition, 14,051 actual specimen cards have numeric source-listed
 weight, 11 have an affirmative qualitative source statement, 172 are
-source-unlisted, and 3 are not individual specimens. Thus 14,149 cards are
-actual specimens and the default source-listed view is exactly 13,977. A parent, group, sibling,
+source-unlisted, and 3 are not individual specimens. Thus 14,234 cards are
+actual specimens and the default source-listed view is exactly 14,062. A parent, group, sibling,
 aggregate, range, total, or nearby value is never inherited by a card. The
 three not-individual rows remain searchable observations rather than being
 deleted or assigned synthetic mass.
@@ -164,6 +166,19 @@ context do not become specimens. Hamburg types individual, aggregate, and
 associated components separately. Victoria Land keeps its primary table at the
 top level, preserves normalized secondary-table conflicts, and excludes
 mass-conflict records from computed candidates.
+
+Antarctic 1980 demonstrates the bounded `appendix-specimen` model. Only the 85
+Appendix 1 rows on printed pages 47-48 are observations; Appendix 2 and all
+other source matter are excluded. Each row retains its source-order `ALHA77`
+identifier, source name, positive source mass, classification, Allan Hills
+locality, and nullable olivine Fa, pyroxene Fs, and weathering values. The
+source masses total 89,891.1 g and no missing chemistry or weathering value is
+converted to zero or inferred. All 85 rows remain independent from the later
+Victoria Land observations. Exact identifier continuity creates 85
+`same-inventory` links but no record merge or claim of unchanged physical
+specimen, mass, custody, ownership, or transfer. Current Official context is
+code-bound display context only, and Antarctic masses do not generate
+cross-catalog comparisons.
 
 Fletcher's British Museum lists use `collection-representation-fact`. Each
 principal numbered or suffixed row remains one edition-local observation. List
@@ -227,10 +242,10 @@ accepted snapshot has 80,224 rows and SHA-256
 It is joined only through an already reviewed positive `meteoriteCode`; current
 name, class, place, year, or mass similarity never creates or changes a mapping.
 The resulting schema-1 public sidecar has SHA-256
-`9ac2997e1386cc9c2bf3b134f742aa30e5c4bdd23ac9233d18f57900d741d3f3`.
+`75e9818c98bc045402ceee8bd603e2c8346daf7e5338729a98d2d0fa35e7447e`.
 
-The sidecar covers the complete 14,149-card specimen partition. Exactly 11,774
-cards from 7,651 parents map to 2,548 Official codes, and 2,375 remain unmapped.
+The sidecar covers the complete 14,234-card specimen partition. Exactly 11,859
+cards from 7,736 parents map to 2,548 Official codes, and 2,375 remain unmapped.
 Every mapped event object contains only current Official name, status, fall
 code, year, place, and classification. Official mass, latitude, longitude, and
 comments are excluded, as is the raw CSV. Classification is contextual after
@@ -253,16 +268,16 @@ The private receipt and exhaustive audit paths are
 `data/private/metbull-current-context-2026-09-12/acquisition.json` and
 `data/private/metbull-current-context-2026-09-12/specimen-card-audit.json`.
 The audit SHA-256 is
-`8bb453b7a970e14bf877fdd32c81e9b7b1888a97433a13e0410c099e42f514b9`.
+`f705358e9d80a08cd09194f7d0cd3e68c2ded3540a073796fb5d99b1269e8d41`.
 Its private-generation assignment digest is
-`a732537ef524872ec7bce3340a04db1eb0694453cc158b6497cfd363a973bb44`;
+`131daf40b44e07e71de896ad9d6e375e03931e33af4a2e8e7a152d8ebbff8150`;
 it binds ordered card route/mapping assignments to full Official-row hashes.
 The sidecar exposes this digest value as provenance but never exposes the row
 hashes or assignment tuples.
 
 The separate `METBULL_PUBLIC_CARD_BINDINGS_SHA256` runtime digest is
-`2729240dd574b40ed5b9526d0ab81e99108b80894683c9b69157bb9576ef7504`.
-It covers all 14,149 ordered public card keys, routes, parent IDs, projected
+`cd49c34ca0539ca94e95d1677c724bf8ebe7ce635c92f080fc8cea0f6eefe48d`.
+It covers all 14,234 ordered public card keys, routes, parent IDs, projected
 positions, mapping statuses, meteorite codes, and canonical names. Runtime
 recomputation from the public catalog and projection catches route, status,
 code, or canonical-name drift before attaching current context. It is not a
@@ -290,7 +305,7 @@ become numeric comparison endpoints. A qualitative clause can enter the default
 source-listed view only through the closed schema-6 evidence variant.
 
 The current source-number release is deliberately catalog-specific. Four
-completed source audits reviewed all 14,149 specimen cards and accepted 5,058
+completed source audits reviewed all 14,234 specimen cards and accepted 5,058
 same-card numbers from six catalogs. Coverage is
 Farrington 1903 (232), Farrington 1916 (1,100), Reeds 1937 (2,988), Prior 1923
 (653), Tassin 1902 (84), and Merrill 1916 (1). The committed evidence objects
@@ -312,7 +327,7 @@ The generated schema-4 lineage and comparison layer is
 comparison review source are published beside it. Root-level `relationships`
 contain only same-inventory lineage, while `comparisonGroups` are non-lineage
 research candidates. The current artifact SHA-256 is
-`b592065b07412b8d09d955f9276b2de0790a56f1649c7987a8b10bcc62c32199`.
+`0cd635900d1c3e961112e07301dc462e7e10a0bf168f5a7c1951c97394f45d87`.
 
 ### 9.1 Same inventory
 
@@ -321,8 +336,10 @@ series and only for a source-attested persistent inventory identifier. Row
 numbers, page numbers, edition-local sequence numbers, and project-generated
 IDs are not inventory continuity evidence.
 
-The current Huss series documents normalization of one leading `(2)` edition
-marker while preserving the printed designations. Nininger continuity is also
+The Antarctic Marvin-Mason series links the exact 85 Appendix specimen IDs to
+their Victoria Land IDs without admitting Appendix masses to comparison. The
+Huss series documents normalization of one leading `(2)` edition marker while
+preserving the printed designations. Nininger continuity is also
 series-scoped and collision checked. Equal identifiers in unrelated collection
 namespaces do not link.
 
@@ -363,7 +380,7 @@ Changing current Official name, classification, place, year, or fall code cannot
 change lineage JSON, IDs, evidence strength, grouping, or counts. The dedicated
 isolation test repeats the build with accepted, absent, and changed sidecars and
 locks the result to SHA-256
-`b592065b07412b8d09d955f9276b2de0790a56f1649c7987a8b10bcc62c32199`.
+`0cd635900d1c3e961112e07301dc462e7e10a0bf168f5a7c1951c97394f45d87`.
 
 ### 9.3 Source-attested groups
 
@@ -380,8 +397,8 @@ closed presentation object rather than a free-text summary. Binary claims
 retain both source endpoints, catalog labels and years, source record labels,
 available masses, printed-page citations, and exact record-search links.
 Same-inventory continuity is labeled `known`; source-attested n-ary groups are
-`tentative` and retain complete membership. The lineage-only view contains 271
-cards and 273 claims: 194 known same-inventory claims and 79 tentative group
+`tentative` and retain complete membership. The lineage-only view contains 303
+cards and 358 claims: 279 known same-inventory claims and 79 tentative group
 occurrences. Comparisons do not enter lineage-only; separate comparison routing
 contains 1,717 cards and 1,889 top-level group occurrences. The 1,541 comparison
 groups contain 1,323 singleton and 218 ambiguous groups, totaling 2,245

@@ -49,18 +49,18 @@ export async function validateMetbullCurrentContextFiles(root = repoRoot) {
   const attached = app.attachMetbullCurrentContext(descriptors, currentIndex);
   const specimenCards = attached.filter((descriptor) => ["direct-specimen", "projected-atomic-specimen"]
     .includes(app.classifyHarmonizedCard(descriptor)));
-  assert.equal(assignments.length, 14149);
-  assert.equal(new Set(assignments.map(({ cardKey }) => cardKey)).size, 14149);
-  assert.equal(direct.length, 5739);
-  assert.equal(direct.filter(({ status }) => status === "mapped").length, 5568);
+  assert.equal(assignments.length, 14234);
+  assert.equal(new Set(assignments.map(({ cardKey }) => cardKey)).size, 14234);
+  assert.equal(direct.length, 5824);
+  assert.equal(direct.filter(({ status }) => status === "mapped").length, 5653);
   assert.equal(projected.length, 8410);
   assert.equal(projected.filter(({ status }) => status === "mapped").length, 6206);
-  assert.equal(mapped.length, 11774);
-  assert.equal(currentIndex.size, 11774);
-  assert.equal(specimenCards.filter(({ currentMetbull }) => currentMetbull).length, 11774);
+  assert.equal(mapped.length, 11859);
+  assert.equal(currentIndex.size, 11859);
+  assert.equal(specimenCards.filter(({ currentMetbull }) => currentMetbull).length, 11859);
   assert.equal(specimenCards.filter(({ currentMetbull }) => !currentMetbull).length, 2375);
-  assert.equal(specimenCards.filter(({ currentMetbull }) => currentMetbull?.year).length, 11765);
-  assert.equal(new Set(mapped.map(({ parentRecordId }) => parentRecordId)).size, 7651);
+  assert.equal(specimenCards.filter(({ currentMetbull }) => currentMetbull?.year).length, 11850);
+  assert.equal(new Set(mapped.map(({ parentRecordId }) => parentRecordId)).size, 7736);
   assert.equal(new Set(mapped.map(({ meteoriteCode }) => meteoriteCode)).size, 2548);
   assert.equal(context.metadata.cardAssignmentsSha256, app.METBULL_CARD_ASSIGNMENTS_SHA256);
   assert.equal(app.metbullPublicCardBindingsSha256(descriptors), app.METBULL_PUBLIC_CARD_BINDINGS_SHA256);

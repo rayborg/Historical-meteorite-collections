@@ -47,26 +47,26 @@
             "Relict": { "const": 100 }
           }
         },
-        "catalogSchemaVersion": { "const": 12 },
-        "catalogSha256": { "const": "cf429e6660f00272f2f81fe69bac81c891f41574bbfff6e6bb46499d2d0672b4" },
-        "catalogRecordCount": { "const": 19553 },
+        "catalogSchemaVersion": { "const": 13 },
+        "catalogSha256": { "const": "9c11b7478b2ec1ce4bd8d13c275272b28f6409570c246820c2e3ce28f2f73e74" },
+        "catalogRecordCount": { "const": 19638 },
         "projectionSchemaVersion": { "const": 6 },
-        "projectionSha256": { "const": "7ab4ca4fef524f94e68d977f3a8106dc3b7a29ba7112ffe491deff91964ab445" },
+        "projectionSha256": { "const": "3437976048240713b3dbfd10cf3558bf7c6a32336560731ce89ea40455cce489" },
         "projectionCount": { "const": 3407 },
         "lineageSchemaVersion": { "const": 4 },
-        "lineageSha256": { "const": "b592065b07412b8d09d955f9276b2de0790a56f1649c7987a8b10bcc62c32199" },
-        "cardCount": { "const": 14149 },
-        "directCardCount": { "const": 5739 },
-        "mappedDirectCardCount": { "const": 5568 },
+        "lineageSha256": { "const": "0cd635900d1c3e961112e07301dc462e7e10a0bf168f5a7c1951c97394f45d87" },
+        "cardCount": { "const": 14234 },
+        "directCardCount": { "const": 5824 },
+        "mappedDirectCardCount": { "const": 5653 },
         "unmappedDirectCardCount": { "const": 171 },
         "projectedCardCount": { "const": 8410 },
         "mappedProjectedCardCount": { "const": 6206 },
         "unmappedProjectedCardCount": { "const": 2204 },
-        "mappedCardCount": { "const": 11774 },
+        "mappedCardCount": { "const": 11859 },
         "unmappedCardCount": { "const": 2375 },
-        "mappedParentCount": { "const": 7651 },
+        "mappedParentCount": { "const": 7736 },
         "usedMeteoriteCodeCount": { "const": 2548 },
-        "cardAssignmentsSha256": { "const": "a732537ef524872ec7bce3340a04db1eb0694453cc158b6497cfd363a973bb44" }
+        "cardAssignmentsSha256": { "const": "131daf40b44e07e71de896ad9d6e375e03931e33af4a2e8e7a152d8ebbff8150" }
       }
     },
     "safeText": {

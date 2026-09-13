@@ -144,7 +144,7 @@ export function buildReleaseSummary(catalog, folios, projections = null) {
   const projectionByParent = new Map((projections?.projections ?? []).map((projection) => [projection.parentRecordId, projection]));
   const atomicCardCount = [...projectionByParent.values()].reduce((count, projection) => count + projection.cards.length, 0);
   const nativeSpecimenCount = catalog.records.filter((record) => !projectionByParent.has(record.id) &&
-    ["specimen", "table-a-specimen"].includes(descriptors.find(({ id }) => id === record.catalogId).recordModel) &&
+    ["specimen", "appendix-specimen", "table-a-specimen"].includes(descriptors.find(({ id }) => id === record.catalogId).recordModel) &&
     record.specimenDisposition?.type !== "not-individual").length;
   const displayDescriptorCount = catalog.records.length - projectionByParent.size + atomicCardCount;
   const specimenDescriptorCount = nativeSpecimenCount + atomicCardCount;

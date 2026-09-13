@@ -15,10 +15,10 @@ fixture.metadata.catalogs = fixture.metadata.catalogs.filter(({ id }) =>
 fixture.records = fixture.records.filter(({ catalogId }) =>
   !["hodge-smith-1939", "victoria-land-1982", "dealer-1909"].includes(catalogId));
 Object.assign(fixture.metadata, {
-  recordCount: 15,
-  recordsWithDesignation: 7,
-  recordsWithWeight: 12,
-  confidenceCounts: { high: 8, medium: 6, low: 1 },
+  recordCount: 16,
+  recordsWithDesignation: 8,
+  recordsWithWeight: 13,
+  confidenceCounts: { high: 9, medium: 6, low: 1 },
 });
 
 const SPECIMEN_FIELDS = [
@@ -41,6 +41,10 @@ const REGIONAL_CENSUS_FACT_FIELDS = [
 const TABLE_A_SPECIMEN_FIELDS = [
   "id", "catalogId", "entryOrder", "specimenId", "name", "weight", "classification", "olivineFa", "pyroxeneFs",
   "weathering", "locality", "catalogPage", "sourceEvidence", "confidence",
+];
+const APPENDIX_SPECIMEN_FIELDS = [
+  "id", "catalogId", "entryOrder", "specimenId", "name", "weight", "classification", "olivineFa", "pyroxeneFs",
+  "weathering", "locality", "catalogPage", "confidence",
 ];
 const DEALER_OFFER_FACT_FIELDS = [
   "id", "catalogId", "typeNumber", "name", "description", "catalogPage", "confidence",
@@ -183,7 +187,8 @@ test("runtime fixture projection validates with exact legacy model-aware shapes"
     ["huss-1986", "specimen"],
     ["nininger-1933", "catalog-item"],
     ["hovey-1896", "catalog-number"],
-    ["museum-1914", "collection-entry"]
+    ["museum-1914", "collection-entry"],
+    ["antarctic-1980", "appendix-specimen"]
   ]);
   fixture.metadata.catalogs.forEach((descriptor) => {
     assert.deepEqual(Object.keys(descriptor).sort(), [...CATALOG_FIELDS].sort());
@@ -196,30 +201,34 @@ test("runtime fixture projection validates with exact legacy model-aware shapes"
         ? [...SPECIMEN_FIELDS, ...(Object.hasOwn(record, "individualFindLocation") ? ["individualFindLocation"] : [])]
         : descriptor.recordModel === "catalog-item"
           ? CATALOG_ITEM_FIELDS
-          : descriptor.recordModel === "catalog-number" ? CATALOG_NUMBER_FIELDS : COLLECTION_ENTRY_FIELDS)].sort()
+          : descriptor.recordModel === "catalog-number" ? CATALOG_NUMBER_FIELDS
+            : descriptor.recordModel === "appendix-specimen" ? [...APPENDIX_SPECIMEN_FIELDS, "metbull"]
+              : COLLECTION_ENTRY_FIELDS)].sort()
     );
     if (descriptor.recordModel === "specimen") assert.deepEqual(Object.keys(record.weight), ["grams"]);
     else if (descriptor.recordModel === "catalog-item") record.holdings.forEach((holding) => {
       assert.deepEqual(Object.keys(holding).sort(), [...HOLDING_FIELDS].sort());
       assert.deepEqual(Object.keys(holding.weight), ["grams"]);
     });
-    else record.holdings.forEach((holding) => {
+    else if (["catalog-number", "collection-entry"].includes(descriptor.recordModel)) record.holdings.forEach((holding) => {
       assert.deepEqual(Object.keys(holding).sort(), [...CATALOG_NUMBER_HOLDING_FIELDS].sort());
       holding.weights.forEach((weight) => assert.deepEqual(Object.keys(weight), ["grams"]));
     });
   });
 });
 
-test("schema 12 public fixture carries all three exact newer data models", () => {
-  assert.equal(publicFixture.metadata.schemaVersion, 12);
-  assert.deepEqual(publicFixture.metadata.catalogs.slice(-3).map(({ id, recordModel }) => [id, recordModel]), [
+test("schema 13 public fixture carries all four exact newer data models", () => {
+  assert.equal(publicFixture.metadata.schemaVersion, 13);
+  assert.deepEqual(publicFixture.metadata.catalogs.slice(-4).map(({ id, recordModel }) => [id, recordModel]), [
+    ["antarctic-1980", "appendix-specimen"],
     ["hodge-smith-1939", "regional-census-fact"],
     ["victoria-land-1982", "table-a-specimen"],
     ["dealer-1909", "dealer-offer-fact"],
   ]);
   for (const record of publicFixture.records.filter(({ catalogId }) =>
-    ["hodge-smith-1939", "victoria-land-1982", "dealer-1909"].includes(catalogId))) {
-    const expected = record.catalogId === "hodge-smith-1939" ? REGIONAL_CENSUS_FACT_FIELDS :
+    ["antarctic-1980", "hodge-smith-1939", "victoria-land-1982", "dealer-1909"].includes(catalogId))) {
+    const expected = record.catalogId === "antarctic-1980" ? APPENDIX_SPECIMEN_FIELDS :
+      record.catalogId === "hodge-smith-1939" ? REGIONAL_CENSUS_FACT_FIELDS :
       record.catalogId === "victoria-land-1982" ? TABLE_A_SPECIMEN_FIELDS : DEALER_OFFER_FACT_FIELDS;
     assert.deepEqual(Object.keys(record).filter((key) => key !== "metbull").sort(), [...expected].sort());
   }
@@ -227,7 +236,7 @@ test("schema 12 public fixture carries all three exact newer data models", () =>
     .map(({ typeNumber }) => typeNumber), [95, 96]);
 });
 
-test("schema 12 permits individualFindLocation only as an optional specimen fact", () => {
+test("schema 13 permits individualFindLocation only as an optional specimen fact", () => {
   const located = clone(fixture);
   const specimen = located.records.find(({ id }) => id === "huss-h27-3");
   assert.equal(specimen.individualFindLocation, "32-19-13");
@@ -422,6 +431,7 @@ test("catalog item gaps and independent catalog numbering are valid", () => {
     nininger[0], secondCollection[0], nininger[1], secondCollection[1], ...nininger.slice(2),
     ...candidate.records.filter(({ catalogId }) => catalogId === "huss-1976"),
     ...candidate.records.filter(({ catalogId }) => catalogId === "hovey-1896"),
+    ...candidate.records.filter(({ catalogId }) => catalogId === "antarctic-1980"),
     ...candidate.records.filter(({ catalogId }) => catalogId === "museum-1914")
   ];
   assert.equal(app.validateCatalog(candidate), candidate);
@@ -547,8 +557,8 @@ test("holding privacy permits factual designation and description boundaries", (
 });
 
 test("metadata summaries use holding designation and mass presence", () => {
-  assert.equal(fixture.metadata.recordsWithDesignation, 7);
-  assert.equal(fixture.metadata.recordsWithWeight, 12);
+  assert.equal(fixture.metadata.recordsWithDesignation, 8);
+  assert.equal(fixture.metadata.recordsWithWeight, 13);
   assert.deepEqual(app.recordDesignations(recordById(fixture, "hovey-catalog-z9")), []);
   const candidate = clone(fixture);
   recordById(candidate, "nininger-item-4").holdings[0].designation = "N. 404";
@@ -933,11 +943,11 @@ test("designation sorting uses numeric Nininger catalog items", () => {
 
 test("statistics keep parent observations and sum every holding mass once", () => {
   const statistics = app.calculateStatistics(preparedRecords());
-  assert.equal(statistics.observations, 15);
-  assert.equal(statistics.specimens, 15);
-  assert.equal(statistics.catalogs, 5);
-  assert.equal(statistics.grams, 520.45);
-  assert.equal(statistics.pages, 15);
+  assert.equal(statistics.observations, 16);
+  assert.equal(statistics.specimens, 16);
+  assert.equal(statistics.catalogs, 6);
+  assert.equal(statistics.grams, 772.45);
+  assert.equal(statistics.pages, 16);
 });
 
 test("statistics expose the responsive catalog-count tile", () => {
@@ -962,12 +972,12 @@ test("holding labels are concise for count, cast, and aggregate rows", () => {
 test("catalog selector and summaries retain descriptor model identity", () => {
   const registry = app.normalizeCatalogRegistry(fixture.metadata);
   assert.deepEqual(app.catalogSelectorEntries(registry).map(([id]) => id), [
-    "hovey-1896", "museum-1914", "nininger-1933", "huss-1976", "huss-1986"
+    "hovey-1896", "museum-1914", "nininger-1933", "huss-1976", "antarctic-1980", "huss-1986"
   ]);
   assert.equal(registry["nininger-1933"].recordModel, "catalog-item");
   assert.equal(registry["hovey-1896"].recordModel, "catalog-number");
   assert.equal(registry["museum-1914"].recordModel, "collection-entry");
-  assert.deepEqual(app.catalogSummaryEntries(registry).map(({ observationCount }) => observationCount), [2, 3, 6, 2, 2]);
+  assert.deepEqual(app.catalogSummaryEntries(registry).map(({ observationCount }) => observationCount), [2, 3, 6, 2, 1, 2]);
 });
 
 test("catalog dropdown labels are concise and leave summary titles unchanged", () => {
@@ -1037,8 +1047,8 @@ test("URL filters default to strict specimens and canonicalize the explicit incl
     unit: "observations",
     status: "Showing 60 of 23,217 display cards from 18,217 matching source observations."
   });
-  assert.equal(app.CACHE_VERSION, "20260912-metbull-context-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260912-metbull-context-1");
+  assert.equal(app.CACHE_VERSION, "20260913-antarctic-1980-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260913-antarctic-1980-1");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.ASSET_CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.ASSET_CACHE_VERSION}`));
 });
@@ -1168,7 +1178,7 @@ test("canonical order preserves existing models before collection entries", () =
   assert.deepEqual(ids(fixture.records), [
     "nininger-item-1", "nininger-item-2", "nininger-item-3", "nininger-item-4", "nininger-item-5",
     "nininger-item-6", "huss-second-h399-1", "huss-second-h400", "huss-h27-3", "huss-h42",
-    "hovey-catalog-z9", "hovey-catalog-fraction-like", "museum-entry-duplicate-a",
+    "hovey-catalog-z9", "hovey-catalog-fraction-like", "antarctic-appendix-1", "museum-entry-duplicate-a",
     "museum-entry-duplicate-b", "museum-entry-anonymous"
   ]);
   const parenthesized = preparedRecords().find(({ id }) => id === "huss-second-h399-1");
@@ -1281,11 +1291,11 @@ test("catalog selector and summary order public sources chronologically without 
   const registry = app.normalizeCatalogRegistry(fixture.metadata);
   const sourceOrder = fixture.metadata.catalogs.map(({ id }) => id);
   assert.deepEqual(app.catalogSelectorEntries(registry).map(([id]) => id), [
-    "hovey-1896", "museum-1914", "nininger-1933", "huss-1976", "huss-1986"
+    "hovey-1896", "museum-1914", "nininger-1933", "huss-1976", "antarctic-1980", "huss-1986"
   ]);
   assert.deepEqual(fixture.metadata.catalogs.map(({ id }) => id), sourceOrder);
   assert.deepEqual(app.catalogSummaryEntries(registry).map(({ id }) => id), [
-    "hovey-1896", "museum-1914", "nininger-1933", "huss-1976", "huss-1986"
+    "hovey-1896", "museum-1914", "nininger-1933", "huss-1976", "antarctic-1980", "huss-1986"
   ]);
 });
 

@@ -89,6 +89,10 @@ const TABLE_A_SPECIMEN_KEYS = [
   "id", "catalogId", "entryOrder", "specimenId", "name", "weight", "classification", "olivineFa", "pyroxeneFs",
   "weathering", "locality", "catalogPage", "sourceEvidence", "confidence",
 ];
+const APPENDIX_SPECIMEN_KEYS = [
+  "id", "catalogId", "entryOrder", "specimenId", "name", "weight", "classification", "olivineFa", "pyroxeneFs",
+  "weathering", "locality", "catalogPage", "confidence",
+];
 const VICTORIA_SOURCE_EVIDENCE_KEYS = ["primary", "tableA", "tableB", "conflicts"];
 const VICTORIA_TABLE_A_EVIDENCE_KEYS = ["printedPage", "massGrams", "classification", "olivineFa", "pyroxeneFs", "weathering"];
 const VICTORIA_TABLE_B_EVIDENCE_KEYS = ["printedPage", "massGrams", "classification", "classificationContext", "weathering", "fracturing"];
@@ -116,7 +120,7 @@ const HAMBURG_HOLDING_KEYS = [
 const HOLDING_KINDS = ["specimen", "cast", "aggregate"];
 const RECORD_MODELS = [
   "catalog-item", "specimen", "catalog-number", "collection-entry", "regional-census-fact", "table-a-specimen",
-  "dealer-offer-fact", "collection-representation-fact",
+  "appendix-specimen", "dealer-offer-fact", "collection-representation-fact",
 ];
 const FACTUAL_FIELDS = [
   "id",
@@ -372,12 +376,12 @@ function assertCountSummary(value, path) {
 
 function validateMetadata(metadata, path) {
   assertExactKeys(metadata, METADATA_KEYS, path);
-  assert(metadata.schemaVersion === 12, `${path}.schemaVersion must be 12`);
+  assert(metadata.schemaVersion === 13, `${path}.schemaVersion must be 13`);
   assert(metadata.scope === "facts-only", `${path}.scope must be facts-only`);
   assert(
     Array.isArray(metadata.factualFields) && metadata.factualFields.length === FACTUAL_FIELDS.length &&
       metadata.factualFields.every((field, index) => field === FACTUAL_FIELDS[index]),
-    `${path}.factualFields does not match the schema 12 public record models`,
+    `${path}.factualFields does not match the schema 13 public record models`,
   );
   assertCountSummary(metadata, path);
   assert(Array.isArray(metadata.catalogs) && metadata.catalogs.length > 0, `${path}.catalogs must be a nonempty array`);
@@ -389,6 +393,10 @@ function validateMetadata(metadata, path) {
     assertCatalogId(descriptor.id, `${descriptorPath}.id`);
     assert(!metadataByCatalog.has(descriptor.id), `${descriptorPath}.id is duplicated: ${descriptor.id}`);
     assert(RECORD_MODELS.includes(descriptor.recordModel), `${descriptorPath}.recordModel is invalid`);
+    assert(descriptor.recordModel !== "appendix-specimen" || descriptor.id === "antarctic-1980",
+      `${descriptorPath}.recordModel appendix-specimen is restricted to antarctic-1980`);
+    assert(descriptor.id !== "antarctic-1980" || descriptor.recordModel === "appendix-specimen",
+      `${descriptorPath}.recordModel must be appendix-specimen for antarctic-1980`);
     assertCatalogText(descriptor.label, `${descriptorPath}.label`);
     assertCatalogText(descriptor.compiler, `${descriptorPath}.compiler`);
     assert(Number.isInteger(descriptor.year) && descriptor.year > 0, `${descriptorPath}.year must be a positive integer`);
@@ -427,13 +435,13 @@ function validateMetadata(metadata, path) {
 
 function recordDesignations(record, recordModel) {
   if (recordModel === "specimen") return record.designation === null ? [] : [record.designation];
-  if (recordModel === "table-a-specimen") return [record.specimenId];
+  if (["table-a-specimen", "appendix-specimen"].includes(recordModel)) return [record.specimenId];
   if (["catalog-number", "collection-entry", "regional-census-fact", "dealer-offer-fact", "collection-representation-fact"].includes(recordModel)) return [];
   return record.holdings.map((holding) => holding.designation).filter((value) => value !== null);
 }
 
 function recordMasses(record, recordModel) {
-  if (recordModel === "specimen" || recordModel === "table-a-specimen") {
+  if (["specimen", "table-a-specimen", "appendix-specimen"].includes(recordModel)) {
     return record.weight.grams === null ? [] : [record.weight.grams];
   }
   if (["regional-census-fact", "dealer-offer-fact"].includes(recordModel)) return [];
@@ -495,7 +503,7 @@ function compareRecords(left, right, metadataByCatalog) {
     return left.catalogPages[0] - right.catalogPages[0] || compareText(left.catalogNumber, right.catalogNumber) ||
       compareText(left.name, right.name) || compareText(left.id, right.id);
   }
-  if (["collection-entry", "regional-census-fact", "table-a-specimen", "collection-representation-fact"].includes(leftModel)) {
+  if (["collection-entry", "regional-census-fact", "table-a-specimen", "appendix-specimen", "collection-representation-fact"].includes(leftModel)) {
     return compareText(left.catalogId, right.catalogId) || left.entryOrder - right.entryOrder || compareText(left.id, right.id);
   }
   if (leftModel === "dealer-offer-fact") {
@@ -716,7 +724,8 @@ function validatePublicCatalog(data, folios, path = "catalog") {
         : recordModel === "catalog-number" ? CATALOG_NUMBER_KEYS
           : recordModel === "regional-census-fact" ? REGIONAL_CENSUS_FACT_KEYS
             : recordModel === "table-a-specimen" ? TABLE_A_SPECIMEN_KEYS
-              : recordModel === "dealer-offer-fact" ? DEALER_OFFER_FACT_KEYS
+              : recordModel === "appendix-specimen" ? APPENDIX_SPECIMEN_KEYS
+                : recordModel === "dealer-offer-fact" ? DEALER_OFFER_FACT_KEYS
                 : recordModel === "collection-representation-fact" ? COLLECTION_REPRESENTATION_FACT_KEYS
               : record.catalogId === "hamburg-1913" ? HAMBURG_COLLECTION_ENTRY_KEYS : COLLECTION_ENTRY_KEYS)];
     if (recordModel === "specimen" && Object.hasOwn(record, "individualFindLocation")) {
@@ -733,7 +742,7 @@ function validatePublicCatalog(data, folios, path = "catalog") {
     assert(!ids.has(record.id), `${recordPath}.id is duplicated: ${record.id}`);
     ids.add(record.id);
     representedCatalogs.add(record.catalogId);
-    if (!["table-a-specimen", "dealer-offer-fact", "collection-representation-fact"].includes(recordModel)) {
+    if (!["table-a-specimen", "appendix-specimen", "dealer-offer-fact", "collection-representation-fact"].includes(recordModel)) {
       const dateField = recordModel === "catalog-number" ? "dateOfDiscovery" :
         ["collection-entry", "regional-census-fact"].includes(recordModel) ? "eventDate" : "year";
       for (const field of ["name", "classification", "locality", dateField]) {
@@ -744,8 +753,8 @@ function validatePublicCatalog(data, folios, path = "catalog") {
     }
     if (Object.hasOwn(record, "metbull")) {
       validateMetbull(record.metbull, record.name, `${recordPath}.metbull`);
-      assert(recordModel === "table-a-specimen" || record.metbull.matchType !== "official-abbreviation",
-        `${recordPath}.metbull.official-abbreviation is restricted to Table A specimens`);
+      assert(["table-a-specimen", "appendix-specimen"].includes(recordModel) || record.metbull.matchType !== "official-abbreviation",
+        `${recordPath}.metbull.official-abbreviation is restricted to closed specimen models`);
     }
     if (recordModel === "specimen") {
       assertString(record.designation, `${recordPath}.designation`, true);
@@ -865,6 +874,34 @@ function validatePublicCatalog(data, folios, path = "catalog") {
       }
       validateTableALocality(record.locality, `${recordPath}.locality`);
       validateVictoriaSourceEvidence(record.sourceEvidence, record, catalog.sourcePages, `${recordPath}.sourceEvidence`);
+    } else if (recordModel === "appendix-specimen") {
+      assert(record.catalogId === "antarctic-1980", `${recordPath}.catalogId is invalid for appendix-specimen`);
+      assert(Number.isInteger(record.entryOrder) && record.entryOrder > 0,
+        `${recordPath}.entryOrder must be a positive integer`);
+      const entryOrders = collectionEntryOrders.get(record.catalogId) ?? new Set();
+      assert(!entryOrders.has(record.entryOrder), `${recordPath}.entryOrder is duplicated within ${record.catalogId}`);
+      entryOrders.add(record.entryOrder);
+      collectionEntryOrders.set(record.catalogId, entryOrders);
+      assert(typeof record.specimenId === "string" && /^ALHA77[0-9]{3}$/u.test(record.specimenId),
+        `${recordPath}.specimenId must be an Antarctic 1980 ALHA77 identifier`);
+      const identifiers = specimenIds.get(record.catalogId) ?? new Set();
+      assert(!identifiers.has(record.specimenId), `${recordPath}.specimenId is duplicated within ${record.catalogId}`);
+      identifiers.add(record.specimenId);
+      specimenIds.set(record.catalogId, identifiers);
+      assertExactKeys(record.weight, ["grams"], `${recordPath}.weight`);
+      assert(Number.isFinite(record.weight.grams) && record.weight.grams > 0,
+        `${recordPath}.weight.grams must be a finite positive number`);
+      assertString(record.classification, `${recordPath}.classification`);
+      assert(record.name === record.specimenId, `${recordPath}.name must equal specimenId`);
+      assert(record.metbull?.matchType === "official-abbreviation",
+        `${recordPath}.metbull must be an official-abbreviation mapping`);
+      for (const field of ["olivineFa", "pyroxeneFs", "weathering"]) {
+        assertString(record[field], `${recordPath}.${field}`, true);
+      }
+      validateTableALocality(record.locality, `${recordPath}.locality`);
+      assert(record.locality.code === "ALH" && record.locality.name === "Allan Hills" &&
+        record.locality.areaReferenceCoordinate === "77°S, 159°E",
+      `${recordPath}.locality must retain the Antarctic 1980 Allan Hills source locality`);
     } else if (recordModel === "dealer-offer-fact") {
       assert(Number.isInteger(record.typeNumber) && record.typeNumber > 0,
         `${recordPath}.typeNumber must be a positive integer`);
@@ -985,7 +1022,7 @@ function validatePublicCatalog(data, folios, path = "catalog") {
   assertExactSet(representedCatalogs, metadataByCatalog.keys(), `${path} record catalog IDs`);
   assertExactSet(Object.keys(folios.catalogs), metadataByCatalog.keys(), `${path} folio catalog IDs`);
   assert(data.metadata.recordCount === data.records.length, `${path}.metadata.recordCount does not match records`);
-  if (data.records.length === 19553 && metadataByCatalog.size === 52) {
+  if (data.records.length === 19638 && metadataByCatalog.size === 53) {
     assert(individualFindLocationCount === 111,
       `${path} must contain exactly 111 specimen individualFindLocation values`);
     assertExactSet(qualitativeWeightIds, ["obs-9286c6b5-4942-41f0-a905-8854f457bd9d"], `${path} qualitative weight record IDs`);
@@ -1086,7 +1123,7 @@ function validatePublicCatalog(data, folios, path = "catalog") {
     `${path} ALHA76009 primary public facts changed`);
     assert(createHash("sha256").update(JSON.stringify(victoria)).digest("hex") ===
       "c427fa0bf07a8ce57c01d4520fc3b2eb2c2aa7483f1d8bf5d7f8bce483f96806",
-    `${path} Victoria public records differ from the accepted schema 12 package`);
+    `${path} Victoria public records differ from the accepted schema 13 package`);
     const wave2Locks = {
       "berlin-1903": [380, 270, "170fa30af35f2c85afeb41e67a7f283f0badd64197263cdab3a6b3ca4ba06092"],
       "berlin-1904": [470, 337, "a85fc2a4eb9cd704fba14dd7c6690ccc32de1bf70baba4904b2dfecd43cd87b5"],
@@ -1102,6 +1139,46 @@ function validatePublicCatalog(data, folios, path = "catalog") {
       assert(folios.catalogs[catalogId].displayPolicy === "blocked" && folios.catalogs[catalogId].rightsStatus === "undetermined" && folios.catalogs[catalogId].pages.length === 0,
         `${path} ${catalogId} folio policy must remain blocked and empty`);
     }
+    const antarctic = data.records.filter(({ catalogId }) => catalogId === "antarctic-1980");
+    const antarcticDescriptor = metadataByCatalog.get("antarctic-1980").descriptor;
+    assert(antarcticDescriptor.recordModel === "appendix-specimen" &&
+      JSON.stringify(antarcticDescriptor.sourcePages) === "[47,48]" && antarcticDescriptor.sourcePageCount === 2 &&
+      antarcticDescriptor.recordCount === 85 && antarcticDescriptor.recordsWithDesignation === 85 &&
+      antarcticDescriptor.recordsWithWeight === 85 && JSON.stringify(antarcticDescriptor.confidenceCounts) ===
+        '{"high":85,"medium":0,"low":0}',
+    `${path} Antarctic 1980 descriptor changed`);
+    assert(antarctic.length === 85 && antarctic.every((record, index) =>
+      record.entryOrder === index + 1 && record.name === record.specimenId &&
+      record.metbull?.matchType === "official-abbreviation"),
+    `${path} Antarctic 1980 row order, names, or mappings changed`);
+    assert(new Set(antarctic.map(({ specimenId }) => specimenId)).size === 85 &&
+      new Set(antarctic.map(({ metbull }) => metbull.meteoriteCode)).size === 85,
+    `${path} Antarctic 1980 specimen IDs and MetBull codes must be unique`);
+    assert(JSON.stringify([...new Set(antarctic.map(({ catalogPage }) => catalogPage))]) === "[47,48]",
+      `${path} Antarctic 1980 printed pages changed`);
+    assert(Math.abs(antarctic.reduce((sum, { weight }) => sum + weight.grams, 0) - 89891.1) < 1e-9,
+      `${path} Antarctic 1980 mass total changed`);
+    assert(JSON.stringify({
+      olivineFa: antarctic.filter(({ olivineFa }) => olivineFa === null).length,
+      pyroxeneFs: antarctic.filter(({ pyroxeneFs }) => pyroxeneFs === null).length,
+      weathering: antarctic.filter(({ weathering }) => weathering === null).length,
+    }) === '{"olivineFa":9,"pyroxeneFs":7,"weathering":6}', `${path} Antarctic 1980 null coverage changed`);
+    const antarcticClasses = Object.fromEntries([...Map.groupBy(antarctic, ({ classification }) => classification)]
+      .sort(([left], [right]) => left.localeCompare(right)).map(([classification, records]) => [classification, records.length]));
+    assert(JSON.stringify(antarcticClasses) ===
+      '{"A":1,"C2":1,"C3":1,"Di":1,"Eu":1,"H?":1,"H3":2,"H4":8,"H5":19,"H6":6,"iron":6,"L3":10,"L4":5,"L5":2,"L6":17,"LL3":2,"M":1,"Ur":1}',
+    `${path} Antarctic 1980 classification distribution changed`);
+    assert(createHash("sha256").update(JSON.stringify(antarctic)).digest("hex") ===
+      "c44e0b794a25f18088f836b32b10504dc955bddc0bb105d7fab595d46929fb08",
+    `${path} Antarctic 1980 records differ from the accepted W1 export`);
+    assert(createHash("sha256").update(JSON.stringify(antarctic.map(({ id, specimenId, metbull }) =>
+      [id, specimenId, metbull]))).digest("hex") ===
+      "1b1b3a39c808e21822cf5ac95b77514e456f1f68a374ac47f92ebaca078911c1",
+    `${path} Antarctic 1980 exact IDs or MetBull mappings changed`);
+    assert(folios.catalogs["antarctic-1980"].displayPolicy === "blocked" &&
+      folios.catalogs["antarctic-1980"].rightsStatus === "undetermined" &&
+      folios.catalogs["antarctic-1980"].pages.length === 0,
+    `${path} Antarctic 1980 folio policy must remain blocked and empty`);
     const elCapitan = data.records.find(({ id }) => id === "obs-68c7e39b-9d99-4f9a-a1d2-7b2374d76d47");
     assert(JSON.stringify(elCapitan?.holdings[0]?.weights) === "[{\"grams\":66},{\"grams\":753},{\"grams\":4000}]",
       `${path} Merrill El Capitan masses differ from the audited correction`);
@@ -1400,7 +1477,7 @@ function multiCatalogFixture() {
   return {
     data: {
       metadata: {
-        schemaVersion: 12,
+        schemaVersion: 13,
         scope: "facts-only",
         factualFields: [...FACTUAL_FIELDS],
         catalogs: [
@@ -1715,6 +1792,7 @@ function runSyntheticCatalogTests(modelFixture) {
     secondIndependent,
     ...independentNumbering.records.filter(({ catalogId }) => catalogId === "huss-1976"),
     ...independentNumbering.records.filter(({ catalogId }) => catalogId === "hovey-1896"),
+    ...independentNumbering.records.filter(({ catalogId }) => catalogId === "antarctic-1980"),
     ...independentNumbering.records.filter(({ catalogId }) => catalogId === "hodge-smith-1939"),
     ...independentNumbering.records.filter(({ catalogId }) => catalogId === "museum-1914"),
     ...independentNumbering.records.filter(({ catalogId }) => catalogId === "victoria-land-1982"),
@@ -1901,7 +1979,7 @@ function runSyntheticCatalogTests(modelFixture) {
     catalogNumberRejectionCount += 1;
   };
   const hoveyRecord = (records, id = "hovey-catalog-z9") => records.find((record) => record.id === id);
-  assertCatalogNumberRejection("older metadata under schema 12", ({ metadata }) => { metadata.schemaVersion = 10; });
+  assertCatalogNumberRejection("older metadata under schema 13", ({ metadata }) => { metadata.schemaVersion = 12; });
   assertCatalogNumberRejection("empty catalog number", ({ records }) => { hoveyRecord(records).catalogNumber = ""; });
   assertCatalogNumberRejection("nonnull non-string catalog number", ({ records }) => { hoveyRecord(records).catalogNumber = 9; });
   assertCatalogNumberRejection("duplicate catalog number within one catalog", ({ records }) => {
@@ -2342,7 +2420,7 @@ console.log(
   `${catalogFixtureStats.holdingPrivacyAllowCount} holding-privacy boundary allow, ` +
   `${catalogFixtureStats.modelRejectionCount} model/holding rejections, ` +
   `${catalogFixtureStats.catalogNumberRejectionCount} catalog-number rejections, ` +
-  `${catalogFixtureStats.collectionEntryRejectionCount} collection-entry/schema-12 rejections, ` +
+  `${catalogFixtureStats.collectionEntryRejectionCount} collection-entry/schema-13 rejections, ` +
   `${metbullFixtureStats.allowCount} MetBull allows, ${metbullFixtureStats.rejectionCount} MetBull rejections, ` +
   `${folioFixtureStats.allowCount} folio allows, ${folioFixtureStats.rejectionCount} folio rejections, ` +
   `${folioFileFixtureStats.allowCount} folio-file allows, ${folioFileFixtureStats.rejectionCount} folio-file rejections passed.`,
@@ -2379,6 +2457,7 @@ if (!SYNTHETIC_ONLY) {
   const qualitativeRecord = data.records.find((record) => Object.hasOwn(record, "weightEvidence"));
   const associatedMaterialRecord = data.records.find((record) => Object.hasOwn(record, "associatedMaterial"));
   const dispositionRecord = data.records.find((record) => Object.hasOwn(record, "specimenDisposition"));
+  const antarcticRecord = data.records.find(({ catalogId }) => catalogId === "antarctic-1980");
   assertDeployedRejection("schema-10 downgrade", ({ metadata }) => { metadata.schemaVersion = 10; });
   assertDeployedRejection("missing one of 111 individual find locations", ({ records }) => {
     delete records.find(({ id }) => id === locationRecord.id).individualFindLocation;
@@ -2416,6 +2495,30 @@ if (!SYNTHETIC_ONLY) {
   });
   assertDeployedRejection("not-individual disposition with designation", ({ records }) => {
     records.find(({ id }) => id === dispositionRecord.id).designation = "H160.3";
+  });
+  assertDeployedRejection("Antarctic appendix model widening", ({ records }) => {
+    records.find(({ id }) => id === antarcticRecord.id).sourceEvidence = {};
+  });
+  assertDeployedRejection("Antarctic specimen identifier mutation", ({ records }) => {
+    records.find(({ id }) => id === antarcticRecord.id).specimenId = "ALHA77000";
+  });
+  assertDeployedRejection("Antarctic nullable source fact mutation", ({ records }) => {
+    records.find(({ id }) => id === antarcticRecord.id).olivineFa = null;
+  });
+  assertDeployedRejection("Antarctic source locality mutation", ({ records }) => {
+    records.find(({ id }) => id === antarcticRecord.id).locality.name = "Victoria Land";
+  });
+  assertDeployedRejection("Antarctic source page mutation", ({ records }) => {
+    records.find(({ id }) => id === antarcticRecord.id).catalogPage = 48;
+  });
+  assertDeployedRejection("Antarctic mapping mutation", ({ records }) => {
+    records.find(({ id }) => id === antarcticRecord.id).metbull.meteoriteCode = "1";
+  });
+  assertDeployedRejection("Antarctic descriptor count mutation", ({ metadata }) => {
+    metadata.catalogs.find(({ id }) => id === "antarctic-1980").recordCount = 84;
+  });
+  assertDeployedRejection("Antarctic descriptor model mutation", ({ metadata }) => {
+    metadata.catalogs.find(({ id }) => id === "antarctic-1980").recordModel = "table-a-specimen";
   });
   assertDeployedRejection("Fletcher suffix omission", ({ records }) => {
     records.find(({ catalogId, reportedNumber }) => catalogId === "fletcher-1904" && reportedNumber === "75a").reportedNumber = "75";
@@ -2455,7 +2558,7 @@ if (!SYNTHETIC_ONLY) {
   );
   console.log(
     `Validated data/catalog.json and data/folios.json: ${deployedStats.recordCount} records across ` +
-      `${deployedStats.catalogCount} schema 12 facts-only catalogs, ${deployedStats.individualFindLocationCount} individual find locations, ` +
+      `${deployedStats.catalogCount} schema 13 facts-only catalogs, ${deployedStats.individualFindLocationCount} individual find locations, ` +
       `${totalPageCount} metadata source pages, ` +
     `${deployedStats.folioStats.pageEntryCount} displayable folio pages with locked SHA-256 assets.`,
   );

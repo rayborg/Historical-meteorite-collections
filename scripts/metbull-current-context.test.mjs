@@ -39,12 +39,12 @@ const response = (text = sidecarText, ok = true) => ({ ok, text: async () => tex
 test("standalone and runtime validators reconstruct the locked complete assignment partition", async () => {
   const validated = await validateMetbullCurrentContextFiles();
   const assignments = app.reconstructMetbullCardAssignments(sidecar, rawDescriptors);
-  assert.equal(validated.assignments.length, 14149);
+  assert.equal(validated.assignments.length, 14234);
   assert.equal(app.validateMetbullCurrentContext(sidecar, rawDescriptors, {
     catalogSha256: sha256(catalogText), projectionSha256: sha256(projectionText), lineageSha256: sha256(lineageText),
   }), true);
-  assert.equal(assignments.length, 14149);
-  assert.equal(new Set(assignments.map(({ cardKey }) => cardKey)).size, 14149);
+  assert.equal(assignments.length, 14234);
+  assert.equal(new Set(assignments.map(({ cardKey }) => cardKey)).size, 14234);
   assert.deepEqual({
     direct: assignments.filter(({ route }) => route === "direct").length,
     mappedDirect: assignments.filter(({ route, status }) => route === "direct" && status === "mapped").length,
@@ -54,12 +54,12 @@ test("standalone and runtime validators reconstruct the locked complete assignme
     unmapped: assignments.filter(({ status }) => status === "unmapped").length,
     mappedParents: new Set(assignments.filter(({ status }) => status === "mapped").map(({ parentRecordId }) => parentRecordId)).size,
     codes: new Set(assignments.filter(({ status }) => status === "mapped").map(({ meteoriteCode }) => meteoriteCode)).size,
-  }, { direct: 5739, mappedDirect: 5568, projected: 8410, mappedProjected: 6206,
-    mapped: 11774, unmapped: 2375, mappedParents: 7651, codes: 2548 });
-  assert.equal(sidecar.metadata.cardAssignmentsSha256, "a732537ef524872ec7bce3340a04db1eb0694453cc158b6497cfd363a973bb44");
+  }, { direct: 5824, mappedDirect: 5653, projected: 8410, mappedProjected: 6206,
+    mapped: 11859, unmapped: 2375, mappedParents: 7736, codes: 2548 });
+  assert.equal(sidecar.metadata.cardAssignmentsSha256, "131daf40b44e07e71de896ad9d6e375e03931e33af4a2e8e7a152d8ebbff8150");
   assert.equal(app.metbullPublicCardBindingsSha256(rawDescriptors),
-    "2729240dd574b40ed5b9526d0ab81e99108b80894683c9b69157bb9576ef7504");
-  assert.equal(jsonSha256(assignments), "2817fe5f88e74155c8913ff64119216bae552672f45a6a514b57428ec688b3bc");
+    "cd49c34ca0539ca94e95d1677c724bf8ebe7ce635c92f080fc8cea0f6eefe48d");
+  assert.equal(jsonSha256(assignments), "353acee9c5b38e6c65a0f531746d9616db98fa17b27cd4e7673065181be1e2cb");
 });
 
 test("assignment digest rejects valid-looking direct and projection identity swaps", () => {
@@ -108,14 +108,14 @@ test("schema and runtime contracts are closed against extras, unsafe text, stale
 
 test("loader applies all current context or returns one complete source-only fallback", async () => {
   const valid = await app.loadMetbullCurrentContext(rawDescriptors, async (url, options) => {
-    assert.equal(url, "./data/metbull-current-context.json?v=20260912-metbull-context-1");
+    assert.equal(url, "./data/metbull-current-context.json?v=20260913-antarctic-1980-1");
     assert.deepEqual(options, { cache: "no-cache" });
     return response();
   }, { sha256: async (text) => sha256(text), catalogSha256: app.CATALOG_SHA256,
     projectionSha256: app.PROJECTION_SHA256, lineageSha256: app.LINEAGE_SHA256 });
   assert.equal(valid.valid, true);
-  assert.equal(valid.index.size, 11774);
-  assert.equal(valid.assignments.length, 14149);
+  assert.equal(valid.index.size, 11859);
+  assert.equal(valid.assignments.length, 14234);
 
   const malformed = structuredClone(sidecar);
   malformed.meteorites["5"].classification = "<script>alert(1)</script>";
@@ -139,14 +139,14 @@ test("presenter applies official headings and exact ordered catalog notes only t
     return [app.metbullCardKey(descriptor), dto.headingName, dto.headingLabel, dto.headingUrl, dto.facts, dto.catalogNotes];
   });
   const notes = presentation.map((entry) => [entry[0], entry[5]]).filter((entry) => entry[1].length);
-  assert.equal(specimenDescriptors.filter(({ currentMetbull }) => currentMetbull).length, 11774);
+  assert.equal(specimenDescriptors.filter(({ currentMetbull }) => currentMetbull).length, 11859);
   assert.equal(specimenDescriptors.filter(({ currentMetbull }) => !currentMetbull).length, 2375);
-  assert.equal(specimenDescriptors.filter(({ currentMetbull }) => currentMetbull?.year).length, 11765);
-  assert.equal(presentation.reduce((count, entry) => count + entry[4].length, 0), 78685);
-  assert.equal(notes.length, 11713);
-  assert.equal(notes.reduce((count, entry) => count + entry[1].length, 0), 29782);
-  assert.equal(jsonSha256(presentation), "a7a3036524223dce64352f4f363a8cb9d08aaf3b56b4c049f768c0c329cf6336");
-  assert.equal(jsonSha256(notes), "e1ea8299d91d675821ac7ac8012d6b483b58f2b6a24d330af88022533c7b903a");
+  assert.equal(specimenDescriptors.filter(({ currentMetbull }) => currentMetbull?.year).length, 11850);
+  assert.equal(presentation.reduce((count, entry) => count + entry[4].length, 0), 79715);
+  assert.equal(notes.length, 11798);
+  assert.equal(notes.reduce((count, entry) => count + entry[1].length, 0), 29984);
+  assert.equal(jsonSha256(presentation), "85e57daf678517ca601d5de08107e80cd56e026b00af0070ad80fa60861be565");
+  assert.equal(jsonSha256(notes), "69aeac90864fac796b1994e514e7cf4883d2ee9f519355e45681918a851b3a62");
 
   const allende = specimenDescriptors.find(({ parentRecord }) => parentRecord.designation === "H103.11");
   const dto = app.presentHarmonizedCard(allende);
@@ -160,7 +160,7 @@ test("presenter applies official headings and exact ordered catalog notes only t
     { label: "Current MetBull year", value: "1969" },
   ]);
   assert.deepEqual(dto.catalogNotes, [{ label: "Catalog classification", value: "Stone. Carbonaceous chondrite, Type III" }]);
-  assert.equal(sha256(catalogText), "cf429e6660f00272f2f81fe69bac81c891f41574bbfff6e6bb46499d2d0672b4");
+  assert.equal(sha256(catalogText), "9c11b7478b2ec1ce4bd8d13c275272b28f6409570c246820c2e3ce28f2f73e74");
 });
 
 test("fall/find codes are never inferred and current fields contain no mass or coordinate claims", () => {
@@ -173,7 +173,7 @@ test("fall/find codes are never inferred and current fields contain no mass or c
       currentMetbull.fall === "Y" ? "Fall" : currentMetbull.fall === "" ? "Find" : `Code ${currentMetbull.fall}`);
     assert.equal(dto.facts.some(({ label }) => /^Current MetBull (?:mass|latitude|longitude|coordinates?)$/iu.test(label)), false);
   }
-  assert.deepEqual(codeCounts, { Y: 5050, "": 6676, Yp: 9, Yc: 37, Np: 2 });
+  assert.deepEqual(codeCounts, { Y: 5050, "": 6761, Yp: 9, Yc: 37, Np: 2 });
   assert.deepEqual(Object.keys(sidecar.meteorites["5"]), ["name", "status", "fall", "year", "place", "classification"]);
 });
 
@@ -195,10 +195,10 @@ test("current and historical terms search together only after valid attachment",
     return [app.metbullCardKey(descriptor), ...currentValues.map((value) =>
       app.matchesSpecimenCardSearch(descriptor, value))];
   });
-  assert.equal(searches.length, 11774);
-  assert.equal(searches.reduce((count, entry) => count + entry.length - 1, 0), 58861);
+  assert.equal(searches.length, 11859);
+  assert.equal(searches.reduce((count, entry) => count + entry.length - 1, 0), 59286);
   assert(searches.every((entry) => entry.slice(1).every(Boolean)));
-  assert.equal(jsonSha256(searches), "c9db5a6e74aaa166bcdd8878af20f15ef52d19a959a78ee7ec3c6155ab5306e2");
+  assert.equal(jsonSha256(searches), "5257dcbe91820381f992cbb20e294b96c49f330e2492ae83795eb384578401dc");
 });
 
 test("every catalog-note value is searchable without weakening numeric holding-code boundaries", () => {
@@ -212,7 +212,7 @@ test("every catalog-note value is searchable without weakening numeric holding-c
       if (["1834 Gefallen", "1876 1896 beschr"].includes(value)) reportedValues.add(value);
     }
   }
-  assert.equal(noteCount, 29782);
+  assert.equal(noteCount, 29984);
   assert.deepEqual([...reportedValues].sort(), ["1834 Gefallen", "1876 1896 beschr"]);
   const fallback = structuredClone(specimenDescriptors.find(({ parentRecord }) =>
     parentRecord.id === "obs-5dea7247-414e-425e-9484-02988fe91a18"));
@@ -227,7 +227,7 @@ test("official heading links are complete and remain absent from fallback and ob
   const observations = descriptors.filter((descriptor) => !["direct-specimen", "projected-atomic-specimen"]
     .includes(app.classifyHarmonizedCard(descriptor)));
   assert.equal(mapped.filter((descriptor) => app.presentHarmonizedCard(descriptor).headingUrl ===
-    app.metbullUrlForCode(descriptor.currentMetbull.meteoriteCode)).length, 11774);
+    app.metbullUrlForCode(descriptor.currentMetbull.meteoriteCode)).length, 11859);
   assert.equal(unmatched.filter((descriptor) => app.presentHarmonizedCard(descriptor).headingUrl === null).length, 2375);
   assert.equal(observations.filter((descriptor) => app.presentHarmonizedCard(descriptor).headingUrl === null).length, 10407);
   assert.match(source, /officialLink\.href = dto\.headingUrl;/u);

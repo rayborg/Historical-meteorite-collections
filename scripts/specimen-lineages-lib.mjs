@@ -9,6 +9,7 @@ import {
 
 export const UUID_NAMESPACE = "65b19e0b-1f86-5ca5-a65b-81c38ec53040";
 export const COLLECTION_SERIES = Object.freeze([
+  Object.freeze({ id: "antarctic-marvin-mason", catalogIds: Object.freeze(["antarctic-1980", "victoria-land-1982"]) }),
   Object.freeze({ id: "huss", catalogIds: Object.freeze(["huss-1976", "huss-1986"]) }),
   Object.freeze({ id: "nininger", catalogIds: Object.freeze(["nininger-1933", "nininger-1950"]) }),
 ]);
@@ -137,7 +138,7 @@ function sourceRecordLabel(record, model) {
   if (model === "catalog-item") return `Catalog item ${record.catalogItem}`;
   if (model === "catalog-number") return `Catalog no. ${record.catalogNumber}`;
   if (model === "collection-entry" || model === "regional-census-fact") return `Collection entry ${record.entryOrder}`;
-  if (model === "table-a-specimen") return record.specimenId;
+  if (["appendix-specimen", "table-a-specimen"].includes(model)) return record.specimenId;
   return record.designation ?? record.name ?? "Unnamed source record";
 }
 
@@ -194,7 +195,7 @@ function makeObservation(record, descriptor, { designation, designationPath, mas
 }
 
 function catalogDescriptors(catalog) {
-  assert(catalog?.metadata?.schemaVersion === 12, "catalog metadata schemaVersion must be 12");
+  assert(catalog?.metadata?.schemaVersion === 13, "catalog metadata schemaVersion must be 13");
   assert(Array.isArray(catalog.metadata.catalogs), "catalog metadata catalogs must be an array");
   assert(Array.isArray(catalog.records), "catalog records must be an array");
   const descriptors = new Map(catalog.metadata.catalogs.map((descriptor) => [descriptor.id, descriptor]));
@@ -218,6 +219,9 @@ export function flattenMassObservations(catalog) {
     }
     if (descriptor.recordModel === "specimen") {
       add(record, descriptor, { designation: record.designation ?? null, designationPath: record.designation === null ? null : "designation", massGrams: record.weight?.grams, massPath: "weight.grams" });
+    } else if (descriptor.recordModel === "appendix-specimen") {
+      // Appendix specimens contribute inventory continuity, not mass comparisons.
+      continue;
     } else if (descriptor.recordModel === "table-a-specimen") {
       if (record.catalogId === "victoria-land-1982") {
         assert(record.sourceEvidence?.primary === "tableA" && Array.isArray(record.sourceEvidence.conflicts),
@@ -278,6 +282,8 @@ export function flattenInventoryObservations(catalog, collectionSeries = COLLECT
     };
     if (descriptor.recordModel === "specimen") {
       add({ designation: record.designation, designationPath: "designation", massGrams: record.weight?.grams ?? null, massPath: "weight.grams" });
+    } else if (["appendix-specimen", "table-a-specimen"].includes(descriptor.recordModel)) {
+      add({ designation: record.specimenId, designationPath: "specimenId", massGrams: record.weight?.grams ?? null, massPath: "weight.grams" });
     } else if (descriptor.recordModel === "catalog-item") {
       record.holdings.forEach((holding, index) => add({
         designation: holding.designation,
@@ -796,7 +802,7 @@ export function validateLineageShape(document) {
       assert(observation.id.startsWith(observationPrefix) && UUID_V5_PATTERN.test(observation.id.slice(observationPrefix.length)), `${observationPath}.id is invalid`);
       assert(/^[A-Za-z0-9][A-Za-z0-9._-]*$/u.test(observation.recordId), `${observationPath}.recordId is invalid`);
       assert(typeof observation.catalogId === "string" && Number.isInteger(observation.catalogYear), `${observationPath} catalog descriptor is invalid`);
-      assertEnum(observation.recordModel, ["specimen", "catalog-item", "catalog-number", "collection-entry", "table-a-specimen"], `${observationPath}.recordModel`);
+      assertEnum(observation.recordModel, ["specimen", "catalog-item", "catalog-number", "collection-entry", "appendix-specimen", "table-a-specimen"], `${observationPath}.recordModel`);
       assert(observation.designationPath === null || /^(?:designation|specimenId|holdings\[[0-9]+\]\.designation)$/u.test(observation.designationPath), `${observationPath}.designationPath is invalid`);
       assert(typeof observation.massPath === "string" && /^(?:weight\.grams|holdings\[[0-9]+\]\.(?:weight\.grams|weights\[[0-9]+\]\.grams))$/u.test(observation.massPath), `${observationPath}.massPath is invalid`);
       for (const key of ["sourceName", "canonicalName", "meteoriteCode", "designation", "kind"]) assert(observation[key] === null || typeof observation[key] === "string", `${observationPath}.${key} is invalid`);
@@ -877,7 +883,7 @@ export function validateLineageShape(document) {
         assert(observation.id === `${observationPrefix}${uuidV5(`mass-observation\u0000${candidateReference}\u0000${observation.recordId}\u0000${observation.massPath}`)}`, `${observationPath}.id differs from observations`);
         assert(/^[A-Za-z0-9][A-Za-z0-9._-]*$/u.test(observation.recordId), `${observationPath}.recordId is invalid`);
         assert(typeof observation.catalogId === "string" && Number.isInteger(observation.catalogYear), `${observationPath} catalog descriptor is invalid`);
-        assertEnum(observation.recordModel, ["specimen", "catalog-item", "catalog-number", "collection-entry", "table-a-specimen"], `${observationPath}.recordModel`);
+        assertEnum(observation.recordModel, ["specimen", "catalog-item", "catalog-number", "collection-entry", "appendix-specimen", "table-a-specimen"], `${observationPath}.recordModel`);
         assert(observation.designationPath === null || /^(?:designation|specimenId|holdings\[[0-9]+\]\.designation)$/u.test(observation.designationPath), `${observationPath}.designationPath is invalid`);
         assert(typeof observation.massPath === "string" && /^(?:weight\.grams|holdings\[[0-9]+\]\.(?:weight\.grams|weights\[[0-9]+\]\.grams))$/u.test(observation.massPath), `${observationPath}.massPath is invalid`);
         for (const key of ["sourceName", "canonicalName", "meteoriteCode", "designation", "kind"]) assert(observation[key] === null || typeof observation[key] === "string", `${observationPath}.${key} is invalid`);

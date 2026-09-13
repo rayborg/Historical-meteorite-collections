@@ -97,20 +97,20 @@ test("publishes the locked schema-v4 source, lineage, comparison, and cardinalit
   assert.equal(published.metadata.schemaVersion, 4);
   assert.equal(published.metadata.scope, "attested-lineage-and-cross-catalog-comparisons");
   assert.equal(flattenMassObservations(catalog).length, 17160);
-  assert.equal(flattenInventoryObservations(catalog).length, 3627);
+  assert.equal(flattenInventoryObservations(catalog).length, 3985);
   assert.deepEqual(published.metadata.source, {
-    catalogSchemaVersion: 12,
-    recordCount: 19553,
-    catalogCount: 52,
+    catalogSchemaVersion: 13,
+    recordCount: 19638,
+    catalogCount: 53,
     flattenedMassObservationCount: 17160,
-    inventoryObservationCount: 3627,
+    inventoryObservationCount: 3985,
     sourceClaimsSchemaVersion: 1,
     sourceClaimsContentSha256: "141ed60b9560596ac8ab392babfc4af6e1d22921bacbf979d3b975e0fc2f20c2",
   });
   const { catalogPairs, ...counts } = published.metadata.counts;
   assert.deepEqual(counts, {
-    relationshipCount: 194,
-    sameInventoryRelationshipCount: 194,
+    relationshipCount: 279,
+    sameInventoryRelationshipCount: 279,
     comparisonGroupCount: 1541,
     singletonComparisonGroupCount: 1323,
     ambiguousComparisonGroupCount: 218,
@@ -149,24 +149,29 @@ test("publishes the locked schema-v4 source, lineage, comparison, and cardinalit
     sourceAttestedMemberOccurrenceCount: 89,
     sourceAttestedUniqueMemberCount: 87,
   });
-  assert.equal(catalogPairs.length, 152);
-  assert.equal(catalogPairs.reduce((sum, item) => sum + item.sameInventoryCount, 0), 194);
+  assert.equal(catalogPairs.length, 153);
+  assert.equal(catalogPairs.reduce((sum, item) => sum + item.sameInventoryCount, 0), 279);
   assert.equal(catalogPairs.reduce((sum, item) => sum + item.comparisonGroupCount, 0), 1541);
   assert.equal(catalogPairs.reduce((sum, item) => sum + item.comparisonCandidateCount, 0), 2245);
 });
 
-test("relationships contain only unchanged same-inventory continuity", () => {
-  assert.equal(published.relationships.length, 194);
+test("relationships add only the exact Antarctic same-inventory continuity", () => {
+  assert.equal(published.relationships.length, 279);
   assert(published.relationships.every(({ relationship, basis, status, identity, evidence, review }) =>
     relationship === "same-inventory" && basis === "series-scoped-normalized-inventory-id" && status === "established" &&
     identity === null && evidence === null && review === null));
   assert(!publishedText.includes('"relationship": "possible-match"'));
   assert.deepEqual(published.metadata.collectionSeries, [
+    { id: "antarctic-marvin-mason", catalogIds: ["antarctic-1980", "victoria-land-1982"] },
     { id: "huss", catalogIds: ["huss-1976", "huss-1986"] },
     { id: "nininger", catalogIds: ["nininger-1933", "nininger-1950"] },
   ]);
-  assert.equal(createHash("sha256").update(JSON.stringify(published.relationships)).digest("hex"),
+  const existing = published.relationships.filter(({ collectionSeries }) => collectionSeries.id !== "antarctic-marvin-mason");
+  assert.equal(existing.length, 194);
+  assert.equal(createHash("sha256").update(JSON.stringify(existing)).digest("hex"),
     "48eb6add50f2c78159e801c6d032641265786e87b73aa9330b70c70804feb4bc");
+  assert.equal(createHash("sha256").update(JSON.stringify(published.relationships)).digest("hex"),
+    "cbb360e0e77dd5931c8e5d08fb3e509729266e802fd039399f8161be536a17a1");
 });
 
 test("source-attested groups are unchanged", () => {
@@ -313,8 +318,9 @@ test("Brown and Minnesota contribute only their 22 reviewed comparison candidate
   assert.throws(() => validateSpecimenLineages(published, catalog, missingReview, sourceClaims), /dangling|differs/iu);
 });
 
-test("Hodge-Smith and Victoria retain facts without pairwise lineage or comparison output", () => {
+test("Antarctic and Victoria add exact inventory continuity without mass comparisons", () => {
   const hodge = catalog.records.filter(({ catalogId }) => catalogId === "hodge-smith-1939");
+  const antarctic = catalog.records.filter(({ catalogId }) => catalogId === "antarctic-1980");
   const victoria = catalog.records.filter(({ catalogId }) => catalogId === "victoria-land-1982");
   assert.equal(hodge.length, 84);
   assert.equal(hodge.filter((record) => Object.hasOwn(record, "metbull")).length, 58);
@@ -325,14 +331,29 @@ test("Hodge-Smith and Victoria retain facts without pairwise lineage or comparis
     "7ca605ed679a55b21cae9574f9f33665a3d4665db7a40eceb2017e57781980b5");
   assert.equal(createHash("sha256").update(JSON.stringify(victoria)).digest("hex"),
     "c427fa0bf07a8ce57c01d4520fc3b2eb2c2aa7483f1d8bf5d7f8bce483f96806");
-  for (const catalogId of ["hodge-smith-1939", "victoria-land-1982"]) {
+  const recordsById = new Map([...antarctic, ...victoria].map((record) => [record.id, record]));
+  const continuity = published.relationships.filter(({ collectionSeries }) =>
+    collectionSeries.id === "antarctic-marvin-mason");
+  assert.equal(continuity.length, 85);
+  assert.equal(new Set(continuity.flatMap(({ observations }) => observations
+    .filter(({ catalogId }) => catalogId === "antarctic-1980").map(({ recordId }) => recordId))).size, 85);
+  for (const relationship of continuity) {
+    assert.equal(relationship.catalogPair, "antarctic-1980|victoria-land-1982");
+    assert.deepEqual(new Set(relationship.observations.map(({ catalogId }) => catalogId)),
+      new Set(["antarctic-1980", "victoria-land-1982"]));
+    const [left, right] = relationship.observations.map(({ recordId }) => recordsById.get(recordId));
+    assert.equal(left.specimenId, right.specimenId);
+    assert.equal(left.metbull.meteoriteCode, right.metbull.meteoriteCode);
+  }
+  assert(!published.relationships.some(({ observations }) =>
+    observations.some(({ catalogId }) => catalogId === "hodge-smith-1939")));
+  for (const catalogId of ["antarctic-1980", "hodge-smith-1939", "victoria-land-1982"]) {
     assert.deepEqual(folios.catalogs[catalogId], { displayPolicy: "blocked", rightsStatus: "undetermined", pages: [] });
     assert.deepEqual(folioReleaseLock.catalogs[catalogId], {
       displayPolicy: "blocked", rightsStatus: "undetermined", basis: null, basisUrl: null, pageIds: [],
     });
     assert(!folioReleaseLock.assets.some(({ path }) => path.includes(catalogId)));
     assert.equal(catalogComparisons(catalogId).length, 0);
-    assert(!published.relationships.some(({ observations }) => observations.some((observation) => observation.catalogId === catalogId)));
   }
 });
 

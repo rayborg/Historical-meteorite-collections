@@ -1,13 +1,13 @@
 "use strict";
 
-const CACHE_VERSION = "20260912-metbull-context-1";
+const CACHE_VERSION = "20260913-antarctic-1980-1";
 const ASSET_CACHE_VERSION = CACHE_VERSION;
-const CATALOG_SCHEMA_VERSION = 12;
-const CATALOG_RECORD_COUNT = 19553;
-const DISPLAY_DESCRIPTOR_COUNT = 24556;
-const SPECIMEN_DESCRIPTOR_COUNT = 14149;
+const CATALOG_SCHEMA_VERSION = 13;
+const CATALOG_RECORD_COUNT = 19638;
+const DISPLAY_DESCRIPTOR_COUNT = 24641;
+const SPECIMEN_DESCRIPTOR_COUNT = 14234;
 const OBSERVATION_DESCRIPTOR_COUNT = 10407;
-const WEIGHTED_DESCRIPTOR_COUNT = 13977;
+const WEIGHTED_DESCRIPTOR_COUNT = 14062;
 const UNKNOWN_WEIGHT_EXCLUSION_COUNT = 172;
 const SPECIMEN_PREFIX_GATED_CATALOGS = new Set(["brown-1916", "minnesota-1892", "brauns-bonn-1926"]);
 const REVIEW_GATED_COMPARISON_CATALOGS = new Set(["brown-1916", "minnesota-1892", "greifswald-1895", "greifswald-1901", "berlin-1903", "berlin-1904", "brauns-bonn-1926"]);
@@ -105,6 +105,21 @@ const TABLE_A_SPECIMEN_RECORD_FIELDS = new Set([
   "sourceEvidence",
   "confidence"
 ]);
+const APPENDIX_SPECIMEN_RECORD_FIELDS = new Set([
+  "id",
+  "catalogId",
+  "entryOrder",
+  "specimenId",
+  "name",
+  "weight",
+  "classification",
+  "olivineFa",
+  "pyroxeneFs",
+  "weathering",
+  "locality",
+  "catalogPage",
+  "confidence"
+]);
 const DEALER_OFFER_FACT_RECORD_FIELDS = new Set([
   "id",
   "catalogId",
@@ -145,7 +160,7 @@ const HOLDING_KINDS = new Set(["specimen", "cast", "aggregate"]);
 const HAMBURG_WEIGHT_KINDS = new Set(["individual-holding", "aggregate-holding", "associated-material"]);
 const HAMBURG_PUBLICATION_STATES = new Set(["base-register", "supplement"]);
 const RECORD_MODELS = new Set([
-  "catalog-item", "specimen", "catalog-number", "collection-entry", "regional-census-fact", "table-a-specimen", "dealer-offer-fact", "collection-representation-fact"
+  "catalog-item", "specimen", "catalog-number", "collection-entry", "regional-census-fact", "table-a-specimen", "appendix-specimen", "dealer-offer-fact", "collection-representation-fact"
 ]);
 const FACTUAL_FIELDS = [
   "id",
@@ -273,13 +288,13 @@ const SPECIMEN_CARD_CLAUSE_FIELDS = new Set(["textPath", "start", "end"]);
 const SPECIMEN_CARD_REPEATED_MASS_FIELDS = new Set(["valuePath", "countPath", "totalPath", "occurrence", "occurrenceCount"]);
 const SPECIMEN_CARD_SOURCE_CATALOG_NUMBER_FIELDS = new Set(["value", "textPath", "start", "end"]);
 const SHA256_HEX = /^[0-9a-f]{64}$/u;
-const SPECIMEN_CARD_SOURCE_CATALOG_SHA256 = "cf429e6660f00272f2f81fe69bac81c891f41574bbfff6e6bb46499d2d0672b4";
-const SPECIMEN_CARD_PROJECTION_DATA_SHA256 = "7ab4ca4fef524f94e68d977f3a8106dc3b7a29ba7112ffe491deff91964ab445";
+const SPECIMEN_CARD_SOURCE_CATALOG_SHA256 = "9c11b7478b2ec1ce4bd8d13c275272b28f6409570c246820c2e3ce28f2f73e74";
+const SPECIMEN_CARD_PROJECTION_DATA_SHA256 = "3437976048240713b3dbfd10cf3558bf7c6a32336560731ce89ea40455cce489";
 const SPECIMEN_CARD_PROJECTION_SET_SHA256 = "9e3452b6ff8cc23000311de4e36f0deae70654392cfb08a19956934ee46b3802";
-const SPECIMEN_LINEAGE_DATA_SHA256 = "b592065b07412b8d09d955f9276b2de0790a56f1649c7987a8b10bcc62c32199";
-const METBULL_CURRENT_CONTEXT_DATA_SHA256 = "9ac2997e1386cc9c2bf3b134f742aa30e5c4bdd23ac9233d18f57900d741d3f3";
-const METBULL_CARD_ASSIGNMENTS_SHA256 = "a732537ef524872ec7bce3340a04db1eb0694453cc158b6497cfd363a973bb44";
-const METBULL_PUBLIC_CARD_BINDINGS_SHA256 = "2729240dd574b40ed5b9526d0ab81e99108b80894683c9b69157bb9576ef7504";
+const SPECIMEN_LINEAGE_DATA_SHA256 = "0cd635900d1c3e961112e07301dc462e7e10a0bf168f5a7c1951c97394f45d87";
+const METBULL_CURRENT_CONTEXT_DATA_SHA256 = "75e9818c98bc045402ceee8bd603e2c8346daf7e5338729a98d2d0fa35e7447e";
+const METBULL_CARD_ASSIGNMENTS_SHA256 = "131daf40b44e07e71de896ad9d6e375e03931e33af4a2e8e7a152d8ebbff8150";
+const METBULL_PUBLIC_CARD_BINDINGS_SHA256 = "cd49c34ca0539ca94e95d1677c724bf8ebe7ce635c92f080fc8cea0f6eefe48d";
 const METBULL_CURRENT_CONTEXT_ROOT_FIELDS = new Set(["metadata", "meteorites"]);
 const METBULL_CURRENT_CONTEXT_METADATA_FIELDS = new Set([
   "schemaVersion", "scope", "acquiredAt", "sourceUrl", "sourceSha256", "sourceBytes", "sourceRowCount",
@@ -331,6 +346,8 @@ const SOURCE_ATTESTED_GROUP_FIELDS = new Set([
   "id", "catalogId", "sourceSection", "claimType", "classification", "members", "reference", "printedPage"
 ]);
 const VICTORIA_SPECIMEN_ID = /^(?:ALHA|BTNA|DRPA|EETA|META|MBRA|PGPA|RKPA)[0-9]{5}$/u;
+const ANTARCTIC_1980_SPECIMEN_ID = /^ALHA77[0-9]{3}$/u;
+const ANTARCTIC_1980_RECORDS_SHA256 = "c44e0b794a25f18088f836b32b10504dc955bddc0bb105d7fab595d46929fb08";
 const VICTORIA_SOURCE_EVIDENCE_FIELDS = new Set(["primary", "tableA", "tableB", "conflicts"]);
 const VICTORIA_TABLE_A_EVIDENCE_FIELDS = new Set(["printedPage", "massGrams", "classification", "olivineFa", "pyroxeneFs", "weathering"]);
 const VICTORIA_TABLE_B_EVIDENCE_FIELDS = new Set(["printedPage", "massGrams", "classification", "classificationContext", "weathering", "fracturing"]);
@@ -347,6 +364,7 @@ const LINEAGE_FACT_CODE_ORDER = ["shared-metbull-code", "shared-normalized-sourc
 const LINEAGE_CAUTION_CODE_ORDER = ["normalized-name-identity", "near-reported-mass", "designation-differs-or-missing", "aggregate-or-multiple", "cast"];
 const LINEAGE_FACT_CODES = new Set(LINEAGE_FACT_CODE_ORDER);
 const LINEAGE_COLLECTION_SERIES = [
+  { id: "antarctic-marvin-mason", catalogIds: ["antarctic-1980", "victoria-land-1982"] },
   { id: "huss", catalogIds: ["huss-1976", "huss-1986"] },
   { id: "nininger", catalogIds: ["nininger-1933", "nininger-1950"] }
 ];
@@ -1056,7 +1074,7 @@ function compareCanonicalRecords(left, right, registry) {
       compareCanonicalText(left.catalogNumber, right.catalogNumber) ||
       compareCanonicalText(left.name, right.name) || compareCanonicalText(left.id, right.id);
   }
-  if (["collection-entry", "regional-census-fact", "table-a-specimen", "collection-representation-fact"].includes(leftModel)) {
+  if (["collection-entry", "regional-census-fact", "table-a-specimen", "appendix-specimen", "collection-representation-fact"].includes(leftModel)) {
     return compareCanonicalText(left.catalogId, right.catalogId) ||
       left.entryOrder - right.entryOrder || compareCanonicalText(left.id, right.id);
   }
@@ -1112,6 +1130,8 @@ function validateCanonicalDescriptor(descriptor) {
   requireSchema(descriptor.sourcePageCount === descriptor.sourcePages.length);
   requireSchema(hasValidSummary(descriptor));
   requireSchema(hasValidCatalogPolicy(descriptor));
+  requireSchema(descriptor.recordModel !== "appendix-specimen" || descriptor.id === "antarctic-1980");
+  requireSchema(descriptor.id !== "antarctic-1980" || descriptor.recordModel === "appendix-specimen");
 }
 
 function catalogLabel(descriptor, catalogId = "") {
@@ -1292,13 +1312,16 @@ function validateCatalog(catalog) {
             : recordModel === "table-a-specimen"
               ? hasExactFields(record, recordFields(record, TABLE_A_SPECIMEN_RECORD_FIELDS)) &&
                 hasExactFields(record.weight, new Set(["grams"]))
+              : recordModel === "appendix-specimen"
+                ? hasExactFields(record, recordFields(record, APPENDIX_SPECIMEN_RECORD_FIELDS)) &&
+                  hasExactFields(record.weight, new Set(["grams"]))
               : recordModel === "dealer-offer-fact"
                 ? hasExactFields(record, DEALER_OFFER_FACT_RECORD_FIELDS)
                 : recordModel === "collection-representation-fact"
                   ? hasExactFields(record, recordFields(record, COLLECTION_REPRESENTATION_FACT_RECORD_FIELDS))
                 : hasExactFields(record, recordFields(record, record.catalogId === "hamburg-1913"
                   ? HAMBURG_COLLECTION_ENTRY_RECORD_FIELDS : COLLECTION_ENTRY_RECORD_FIELDS)));
-    if (!["table-a-specimen", "dealer-offer-fact", "collection-representation-fact"].includes(recordModel)) {
+    if (!["table-a-specimen", "appendix-specimen", "dealer-offer-fact", "collection-representation-fact"].includes(recordModel)) {
       const dateField = recordModel === "catalog-number" ? "dateOfDiscovery" :
         ["collection-entry", "regional-census-fact"].includes(recordModel) ? "eventDate" : "year";
       ["name", "classification", dateField].forEach((field) =>
@@ -1310,7 +1333,7 @@ function validateCatalog(catalog) {
     }
     if (Object.hasOwn(record, "metbull")) {
       requireSchema(hasValidMetbull(record.metbull, record.name));
-      requireSchema(recordModel === "table-a-specimen" || record.metbull.matchType !== "official-abbreviation");
+      requireSchema(["table-a-specimen", "appendix-specimen"].includes(recordModel) || record.metbull.matchType !== "official-abbreviation");
     }
     if (recordModel === "specimen") {
       requireSchema(record.designation === null || (record.designation !== "" && isLeakageSafeText(record.designation)));
@@ -1421,6 +1444,25 @@ function validateCatalog(catalog) {
       ));
       requireSchema(hasValidTableALocality(record.locality));
       requireSchema(hasValidVictoriaSourceEvidence(record.sourceEvidence, record, registry[record.catalogId].sourcePages));
+    } else if (recordModel === "appendix-specimen") {
+      requireSchema(record.catalogId === "antarctic-1980" && Number.isInteger(record.entryOrder) && record.entryOrder > 0);
+      const entryOrders = collectionEntryOrders[record.catalogId] || new Set();
+      requireSchema(!entryOrders.has(record.entryOrder));
+      entryOrders.add(record.entryOrder);
+      collectionEntryOrders[record.catalogId] = entryOrders;
+      const specimenIds = catalogNumbers[record.catalogId] || new Set();
+      requireSchema(typeof record.specimenId === "string" && ANTARCTIC_1980_SPECIMEN_ID.test(record.specimenId) &&
+        !specimenIds.has(record.specimenId));
+      specimenIds.add(record.specimenId);
+      catalogNumbers[record.catalogId] = specimenIds;
+      requireSchema(Number.isFinite(record.weight.grams) && record.weight.grams > 0);
+      requireSchema(record.name === record.specimenId && record.metbull?.matchType === "official-abbreviation");
+      requireSchema(record.classification !== "" && isLeakageSafeText(record.classification));
+      ["olivineFa", "pyroxeneFs", "weathering"].forEach((field) => requireSchema(
+        record[field] === null || (record[field] !== "" && isLeakageSafeText(record[field]))
+      ));
+      requireSchema(hasValidTableALocality(record.locality) && record.locality.code === "ALH" &&
+        record.locality.name === "Allan Hills" && record.locality.areaReferenceCoordinate === "77°S, 159°E");
     } else {
       if (recordModel === "catalog-number") {
         requireSchema(record.catalogNumber !== "" && isLeakageSafeText(record.catalogNumber));
@@ -1491,6 +1533,15 @@ function validateCatalog(catalog) {
     requireSchema(summary.recordsWithWeight === descriptor.recordsWithWeight);
     CONFIDENCE_LEVELS.forEach((level) => requireSchema(summary.confidenceCounts[level] === descriptor.confidenceCounts[level]));
   });
+  if (catalog.records.length === CATALOG_RECORD_COUNT && Object.keys(registry).length === 53) {
+    const descriptor = registry["antarctic-1980"];
+    const antarctic = catalog.records.filter(({ catalogId }) => catalogId === "antarctic-1980");
+    requireSchema(descriptor?.recordModel === "appendix-specimen" && descriptor.recordCount === 85 &&
+      JSON.stringify(descriptor.sourcePages) === "[47,48]" && descriptor.sourcePageCount === 2 &&
+      descriptor.recordsWithDesignation === 85 && descriptor.recordsWithWeight === 85 &&
+      descriptor.confidenceCounts.high === 85 && descriptor.confidenceCounts.medium === 0 && descriptor.confidenceCounts.low === 0);
+    requireSchema(antarctic.length === 85 && sha256TextSync(JSON.stringify(antarctic)) === ANTARCTIC_1980_RECORDS_SHA256);
+  }
   return catalog;
 }
 
@@ -1534,7 +1585,7 @@ function lineageRecordLabel(record) {
   if (record.recordModel === "catalog-item") return `Catalog item ${record.catalogItem}`;
   if (record.recordModel === "catalog-number") return `Catalog no. ${record.catalogNumber}`;
   if (record.recordModel === "collection-entry") return `Collection entry ${record.entryOrder}`;
-  if (record.recordModel === "table-a-specimen") return record.specimenId;
+  if (["table-a-specimen", "appendix-specimen"].includes(record.recordModel)) return record.specimenId;
   return record.designation ?? record.name;
 }
 
@@ -1548,13 +1599,20 @@ function resolveLineageObservation(record, designationPath, massPath) {
     } : null;
   }
   if (record.recordModel === "table-a-specimen") {
-    return massPath === "weight.grams" && designationPath === "specimenId" &&
-      !record.sourceEvidence.conflicts.includes("mass") ? {
+    return massPath === "weight.grams" && designationPath === "specimenId" ? {
         massGrams: record.weight.grams,
         designation: record.specimenId,
         kind: null,
         count: null
       } : null;
+  }
+  if (record.recordModel === "appendix-specimen") {
+    return massPath === "weight.grams" && designationPath === "specimenId" ? {
+      massGrams: record.weight.grams,
+      designation: record.specimenId,
+      kind: null,
+      count: null
+    } : null;
   }
   if (record.recordModel === "catalog-item") {
     const match = massPath.match(/^holdings\[([0-9]+)\]\.weight\.grams$/u);
@@ -1839,6 +1897,8 @@ function lineageInventoryEndpoints(sourceRecords) {
     };
     if (record.recordModel === "specimen") {
       add(record.designation, "designation", record.weight.grams, "weight.grams");
+    } else if (["appendix-specimen", "table-a-specimen"].includes(record.recordModel)) {
+      add(record.specimenId, "specimenId", record.weight.grams, "weight.grams");
     } else if (record.recordModel === "catalog-item") {
       record.holdings.forEach((holding, index) => add(
         holding.designation,
@@ -1940,6 +2000,8 @@ function lineageMassEndpoints(sourceRecords) {
       add(record, record.weight.grams, "weight.grams");
     } else if (record.recordModel === "table-a-specimen") {
       if (!record.sourceEvidence.conflicts.includes("mass")) add(record, record.weight.grams, "weight.grams");
+    } else if (record.recordModel === "appendix-specimen") {
+      return;
     } else if (record.recordModel === "catalog-item") {
       record.holdings.forEach((holding, index) => add(record, holding.weight.grams, `holdings[${index}].weight.grams`));
     } else if (record.recordModel === "catalog-number" || record.recordModel === "collection-entry") {
@@ -2973,11 +3035,11 @@ function validMetbullCurrentMetadata(metadata) {
     metadata.projectionSchemaVersion === 6 && metadata.projectionSha256 === SPECIMEN_CARD_PROJECTION_DATA_SHA256 &&
     metadata.projectionCount === 3407 && metadata.lineageSchemaVersion === 4 &&
     metadata.lineageSha256 === SPECIMEN_LINEAGE_DATA_SHA256 && metadata.cardCount === SPECIMEN_DESCRIPTOR_COUNT &&
-    metadata.directCardCount === 5739 && metadata.mappedDirectCardCount === 5568 &&
+    metadata.directCardCount === 5824 && metadata.mappedDirectCardCount === 5653 &&
     metadata.unmappedDirectCardCount === 171 && metadata.projectedCardCount === 8410 &&
     metadata.mappedProjectedCardCount === 6206 && metadata.unmappedProjectedCardCount === 2204 &&
-    metadata.mappedCardCount === 11774 && metadata.unmappedCardCount === 2375 &&
-    metadata.mappedParentCount === 7651 && metadata.usedMeteoriteCodeCount === 2548 &&
+    metadata.mappedCardCount === 11859 && metadata.unmappedCardCount === 2375 &&
+    metadata.mappedParentCount === 7736 && metadata.usedMeteoriteCodeCount === 2548 &&
     metadata.cardAssignmentsSha256 === METBULL_CARD_ASSIGNMENTS_SHA256;
 }
 
@@ -3148,7 +3210,7 @@ function renderableLineageClaimsForCard(descriptor, entries = [], registry = cat
     if (descriptor.projected) {
       if (descriptor.kind === "atomic" && descriptor.repeatedMass === null && descriptor.massPath !== null &&
           entry.massPath === descriptor.massPath) claims.push(entry.claim);
-    } else if (["specimen", "table-a-specimen"].includes(record.recordModel) && entry.massPath === "weight.grams") {
+    } else if (["specimen", "table-a-specimen", "appendix-specimen"].includes(record.recordModel) && entry.massPath === "weight.grams") {
       const resolved = resolveLineageObservation(record, entry.pair.later.designationPath, entry.pair.later.massPath);
       if (resolved?.massGrams === entry.pair.later.massGrams) claims.push(entry.claim);
     }
@@ -3355,7 +3417,7 @@ function prepareRecord(source, index, registry = catalogRegistry) {
     catalogId: cleanText(source.catalogId),
     name: cleanText(source.name),
     classification: cleanText(source.classification),
-    locality: recordModel === "table-a-specimen" ? null : cleanText(source.locality),
+    locality: ["table-a-specimen", "appendix-specimen"].includes(recordModel) ? null : cleanText(source.locality),
     confidence: normalizeConfidence(source.confidence),
     recordModel,
     catalogLabel: catalogLabel(registry[cleanText(source.catalogId)], cleanText(source.catalogId)),
@@ -3432,7 +3494,7 @@ function prepareRecord(source, index, registry = catalogRegistry) {
       representedOccurrences: source.australianMuseumRepresentation.representedOccurrences,
       notRepresentedOccurrences: source.australianMuseumRepresentation.notRepresentedOccurrences
     };
-  } else if (recordModel === "table-a-specimen") {
+  } else if (["table-a-specimen", "appendix-specimen"].includes(recordModel)) {
     record.entryOrder = Number(source.entryOrder);
     record.specimenId = cleanText(source.specimenId);
     record.weight = { grams: Number(source.weight.grams) };
@@ -3445,12 +3507,14 @@ function prepareRecord(source, index, registry = catalogRegistry) {
       areaReferenceCoordinate: cleanText(source.locality.areaReferenceCoordinate)
     };
     record.catalogPage = Number(source.catalogPage);
-    record.sourceEvidence = {
-      primary: source.sourceEvidence.primary,
-      tableA: { ...source.sourceEvidence.tableA },
-      tableB: source.sourceEvidence.tableB === null ? null : { ...source.sourceEvidence.tableB },
-      conflicts: [...source.sourceEvidence.conflicts]
-    };
+    if (recordModel === "table-a-specimen") {
+      record.sourceEvidence = {
+        primary: source.sourceEvidence.primary,
+        tableA: { ...source.sourceEvidence.tableA },
+        tableB: source.sourceEvidence.tableB === null ? null : { ...source.sourceEvidence.tableB },
+        conflicts: [...source.sourceEvidence.conflicts]
+      };
+    }
   } else if (recordModel === "dealer-offer-fact") {
     record.typeNumber = Number(source.typeNumber);
     record.description = cleanText(source.description);
@@ -3505,7 +3569,7 @@ function prepareRecord(source, index, registry = catalogRegistry) {
     record.reportedNumber == null ? null : `${record.recordModel === "collection-representation-fact" ? "list no" : "reported no"} ${record.reportedNumber}`,
     record.specimenId === undefined ? null : `specimen id ${record.specimenId}`,
     record.typeNumber === undefined ? null : `type number ${record.typeNumber}`,
-    record.recordModel === "table-a-specimen" ? `reported mass ${record.weight.grams} grams` : null,
+    ["table-a-specimen", "appendix-specimen"].includes(record.recordModel) ? `reported mass ${record.weight.grams} grams` : null,
     ...searchMasses.flatMap((grams) => [String(grams), formatMass(grams)]),
     ...recordDesignations(record),
     ...(record.holdings || []).flatMap((holding) => [
@@ -3545,6 +3609,7 @@ function prepareRecord(source, index, registry = catalogRegistry) {
     ...(record.australianMuseumRepresentation ? regionalCensusFacts(record).flatMap(({ label, value }) => [label, value]) : []),
     record.recordModel === "regional-census-fact" ? "regional census catalog observation" : null,
     record.recordModel === "table-a-specimen" ? "table a individual specimen" : null,
+    record.recordModel === "appendix-specimen" ? "appendix individual specimen" : null,
     record.recordModel === "dealer-offer-fact" ? "dealer catalog observation not a specimen or holding" : null,
     record.recordModel === "collection-representation-fact" ? "collection representation observation not a specimen, holding, or inventory identity" : null,
     record.publicationState,
@@ -3758,7 +3823,9 @@ function numericSearchTokens(record) {
     add(designation);
     add(searchable(designation).replace(/ /g, ""));
   }
-  if (record?.recordModel === "table-a-specimen" && record.specimenId) add(record.specimenId.slice(-5));
+  if (["table-a-specimen", "appendix-specimen"].includes(record?.recordModel) && record.specimenId) {
+    add(record.specimenId.slice(-5));
+  }
   for (const grams of recordSearchMasses(record)) add(grams);
   addNumericTokens(record?.catalogNumber);
   addNumericTokens(record?.reportedNumber);
@@ -4001,6 +4068,18 @@ function tableASpecimenFacts(record) {
   ];
 }
 
+function appendixSpecimenFacts(record) {
+  if (record?.recordModel !== "appendix-specimen") return [];
+  return [
+    { label: "Locality code", value: record.locality.code },
+    { label: "Area reference coordinate", value: record.locality.areaReferenceCoordinate },
+    { label: "Olivine Fa", value: record.olivineFa },
+    { label: "Pyroxene Fs", value: record.pyroxeneFs },
+    { label: "Weathering", value: record.weathering },
+    { label: "Source section", value: "Appendix" }
+  ];
+}
+
 function victoriaConflictFacts(record) {
   if (record?.recordModel !== "table-a-specimen" || !record.sourceEvidence.conflicts.length) return [];
   const { tableA, tableB, conflicts } = record.sourceEvidence;
@@ -4062,7 +4141,7 @@ function classifyHarmonizedCard(recordOrDescriptor) {
   if (record.recordModel === "specimen" && record.specimenDisposition?.type === "not-individual") {
     return HARMONIZED_CARD_KINDS.source;
   }
-  if (record.recordModel === "specimen" || record.recordModel === "table-a-specimen") {
+  if (["specimen", "table-a-specimen", "appendix-specimen"].includes(record.recordModel)) {
     return HARMONIZED_CARD_KINDS.specimen;
   }
   if (["catalog-item", "catalog-number", "collection-entry"].includes(record.recordModel)) {
@@ -4092,7 +4171,7 @@ function harmonizedCardIdentifier(record, kind, descriptor = null) {
   if (record.recordModel === "collection-representation-fact") {
     return record.reportedNumber ? `List no. ${record.reportedNumber}` : null;
   }
-  if (record.recordModel === "table-a-specimen") return record.specimenId || null;
+  if (["table-a-specimen", "appendix-specimen"].includes(record.recordModel)) return record.specimenId || null;
   if (record.recordModel === "dealer-offer-fact") return `Type number ${record.typeNumber}`;
   return record.designation || null;
 }
@@ -4120,6 +4199,9 @@ function harmonizedSourceCitation(record) {
     return `${sourceLabel} \u00b7 Appendix Table A printed page ${tableA.printedPage}${
       tableB === null ? "" : ` \u00b7 Table B printed page ${tableB.printedPage}`
     }`;
+  }
+  if (record.recordModel === "appendix-specimen") {
+    return `${sourceLabel} · Appendix printed page ${record.catalogPage}`;
   }
   const pages = recordCatalogPages(record);
   return pages.length
@@ -4177,7 +4259,7 @@ function catalogNotesForCurrentMetbull(record, currentMetbull) {
   };
   addDifference("Catalog meteorite name", record.name, currentMetbull.name);
   addDifference("Catalog classification", record.classification, currentMetbull.classification);
-  addDifference("Catalog locality", record.recordModel === "table-a-specimen" ? record.locality?.name : record.locality,
+  addDifference("Catalog locality", ["table-a-specimen", "appendix-specimen"].includes(record.recordModel) ? record.locality?.name : record.locality,
     currentMetbull.place, "Source locality");
   addDifference("Catalog event or date", harmonizedCardEvent(record), currentMetbull.year, "Event");
   return notes;
@@ -4207,14 +4289,14 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
   } else {
     addKnownFact("Catalog classification", record.classification);
   }
-  if (specimen && (kind === HARMONIZED_CARD_KINDS.atomic || record.recordModel === "table-a-specimen")) {
+  if (specimen && (kind === HARMONIZED_CARD_KINDS.atomic || ["table-a-specimen", "appendix-specimen"].includes(record.recordModel))) {
     facts.push({
       label: "Specimen form",
       value: "Individual specimen"
     });
   }
   if (!currentMetbull) {
-    addKnownFact("Source locality", record.recordModel === "table-a-specimen" ? record.locality?.name : record.locality);
+    addKnownFact("Source locality", ["table-a-specimen", "appendix-specimen"].includes(record.recordModel) ? record.locality?.name : record.locality);
   }
   if (specimen) addKnownFact("Individual find location", record.individualFindLocation);
   if (!currentMetbull) {
@@ -4246,6 +4328,7 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
     if (comparison.groups.length) facts.push({ label: "Cross-catalog comparisons", value: comparison.summary.text });
     addKnownFact("Specimen weight", Number.isFinite(grams) ? formatMass(grams) : qualitativeWeight);
     facts.push(...victoriaConflictFacts(record));
+    facts.push(...appendixSpecimenFacts(record).filter(({ value }) => value !== null));
   }
 
   const sourceIdentifier = harmonizedCardIdentifier(record, kind, descriptor);
@@ -5048,6 +5131,7 @@ if (typeof module !== "undefined" && module.exports) {
     deriveSpecimenCardProjectionIndex,
     expandSpecimenCardDescriptors,
     attachMetbullCurrentContext,
+    appendixSpecimenFacts,
     evaluateIssueReportGate,
     filterRecords,
     filterSpecimenCardDescriptors,

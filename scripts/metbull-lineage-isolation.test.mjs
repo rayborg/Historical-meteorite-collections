@@ -10,8 +10,8 @@ import { fileURLToPath } from "node:url";
 
 const execute = promisify(execFile);
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const lineageSha256 = "b592065b07412b8d09d955f9276b2de0790a56f1649c7987a8b10bcc62c32199";
-const sidecarSha256 = "9ac2997e1386cc9c2bf3b134f742aa30e5c4bdd23ac9233d18f57900d741d3f3";
+const lineageSha256 = "0cd635900d1c3e961112e07301dc462e7e10a0bf168f5a7c1951c97394f45d87";
+const sidecarSha256 = "75e9818c98bc045402ceee8bd603e2c8346daf7e5338729a98d2d0fa35e7447e";
 
 function sha256(value) {
   return createHash("sha256").update(value).digest("hex");
@@ -96,12 +96,12 @@ test("public current context is card-complete and cannot supply official mass or
   const sidecarText = await readFile(path.join(projectRoot, "data", "metbull-current-context.json"), "utf8");
   const sidecar = JSON.parse(sidecarText);
   assert.equal(sha256(sidecarText), sidecarSha256);
-  assert.equal(sidecar.metadata.cardCount, 14149);
-  assert.equal(sidecar.metadata.mappedCardCount, 11774);
+  assert.equal(sidecar.metadata.cardCount, 14234);
+  assert.equal(sidecar.metadata.mappedCardCount, 11859);
   assert.equal(sidecar.metadata.unmappedCardCount, 2375);
   assert.equal(sidecar.metadata.usedMeteoriteCodeCount, 2548);
-  assert.equal(sidecar.metadata.mappedParentCount, 7651);
-  assert.equal(sidecar.metadata.cardAssignmentsSha256, "a732537ef524872ec7bce3340a04db1eb0694453cc158b6497cfd363a973bb44");
+  assert.equal(sidecar.metadata.mappedParentCount, 7736);
+  assert.equal(sidecar.metadata.cardAssignmentsSha256, "131daf40b44e07e71de896ad9d6e375e03931e33af4a2e8e7a152d8ebbff8150");
 
   const facts = Object.values(sidecar.meteorites);
   assert.equal(facts.length, 2548);

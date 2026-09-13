@@ -80,7 +80,7 @@ function expectedNumericTokens(record) {
     add(designation);
     add(app.searchable(designation).replace(/ /g, ""));
   }
-  if (record.recordModel === "table-a-specimen") add(record.specimenId.slice(-5));
+  if (["table-a-specimen", "appendix-specimen"].includes(record.recordModel)) add(record.specimenId.slice(-5));
   for (const grams of app.recordSearchMasses(record)) add(grams);
   addTokens(record.catalogNumber);
   addTokens(record.reportedNumber);
@@ -144,10 +144,10 @@ test("every structured and Victoria Table B mass is searchable by grams and disp
     }
     if (Number.isFinite(record.sourceEvidence?.tableB?.massGrams)) tableBMasses += 1;
   }
-  assert.equal(structuredOccurrences, 23393);
-  assert.equal(structuredPairs.size, 19996);
-  assert.equal(searchableOccurrences, 23664);
-  assert.equal(searchablePairs.size, 20036);
+  assert.equal(structuredOccurrences, 23478);
+  assert.equal(structuredPairs.size, 20081);
+  assert.equal(searchableOccurrences, 23749);
+  assert.equal(searchablePairs.size, 20121);
   assert.equal(tableBMasses, 270);
 });
 

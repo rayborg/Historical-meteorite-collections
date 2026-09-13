@@ -31,7 +31,7 @@
           "additionalProperties": false,
           "required": ["catalogSchemaVersion", "recordCount", "catalogCount", "flattenedMassObservationCount", "inventoryObservationCount", "sourceClaimsSchemaVersion", "sourceClaimsContentSha256"],
           "properties": {
-            "catalogSchemaVersion": { "const": 12 },
+            "catalogSchemaVersion": { "const": 13 },
             "recordCount": { "type": "integer", "minimum": 0 },
             "catalogCount": { "type": "integer", "minimum": 0 },
             "flattenedMassObservationCount": { "type": "integer", "minimum": 0 },
@@ -301,7 +301,7 @@
         "catalogId": { "type": "string", "minLength": 1 },
         "catalogLabel": { "type": "string", "minLength": 1 },
         "catalogYear": { "type": "integer" },
-        "recordModel": { "enum": ["specimen", "catalog-item", "catalog-number", "collection-entry", "table-a-specimen"] },
+        "recordModel": { "enum": ["specimen", "catalog-item", "catalog-number", "collection-entry", "appendix-specimen", "table-a-specimen"] },
         "designationPath": { "type": ["string", "null"], "pattern": "^(?:designation|specimenId|holdings\\[[0-9]+\\]\\.designation)$" },
         "massPath": { "type": "string", "pattern": "^(?:weight\\.grams|holdings\\[[0-9]+\\]\\.(?:weight\\.grams|weights\\[[0-9]+\\]\\.grams))$" },
         "sourceRecordLabel": { "type": "string", "minLength": 1 },

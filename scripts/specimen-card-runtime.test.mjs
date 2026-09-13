@@ -69,7 +69,7 @@ function syntheticManifest(sourceRecords, projections) {
     metadata: {
       schemaVersion: 6,
       scope: "reviewed-atomic-specimen-card-display-projections",
-      catalogSchemaVersion: 12,
+      catalogSchemaVersion: 13,
       sourceRecordCount: sourceRecords.length,
       sourceCatalogSha256: "0".repeat(64),
       projectionCount: projections.length,
@@ -449,8 +449,8 @@ test("digest lock loads the exact set and fails closed to parent cards on mismat
   const altered = structuredClone(manifest);
   altered.projections[0].cards[0].clause.end -= 1;
   assert.equal((await app.loadSpecimenCardProjectionIndex(records, async () => projectionResponse(altered), options)).size, 0);
-  assert.equal(app.SPECIMEN_CARD_SOURCE_CATALOG_SHA256, "cf429e6660f00272f2f81fe69bac81c891f41574bbfff6e6bb46499d2d0672b4");
-  assert.equal(app.SPECIMEN_CARD_PROJECTION_DATA_SHA256, "7ab4ca4fef524f94e68d977f3a8106dc3b7a29ba7112ffe491deff91964ab445");
+  assert.equal(app.SPECIMEN_CARD_SOURCE_CATALOG_SHA256, "9c11b7478b2ec1ce4bd8d13c275272b28f6409570c246820c2e3ce28f2f73e74");
+  assert.equal(app.SPECIMEN_CARD_PROJECTION_DATA_SHA256, "3437976048240713b3dbfd10cf3558bf7c6a32336560731ce89ea40455cce489");
   assert.equal(app.SPECIMEN_CARD_PROJECTION_SET_SHA256, "9e3452b6ff8cc23000311de4e36f0deae70654392cfb08a19956934ee46b3802");
 });
 
@@ -463,12 +463,12 @@ test("rendering is text-only, omits context cards, and synchronizes cache keys",
   assert.match(html, /<p class="record-semantic-label"><\/p>/u);
   assert.match(html, /<dl class="record-meta" aria-label="Catalog record details"><\/dl>/u);
   assert.doesNotMatch(html, /specimen-position|record-holdings|earlier-records/u);
-  assert.match(html, /styles\.css\?v=20260912-metbull-context-1/u);
-  assert.match(html, /app\.js\?v=20260912-metbull-context-1/u);
-  assert.equal(app.ASSET_CACHE_VERSION, "20260912-metbull-context-1");
+  assert.match(html, /styles\.css\?v=20260913-antarctic-1980-1/u);
+  assert.match(html, /app\.js\?v=20260913-antarctic-1980-1/u);
+  assert.equal(app.ASSET_CACHE_VERSION, "20260913-antarctic-1980-1");
 });
 
-test("production schema-6 projection fixture validates against schema 12", () => {
+test("production schema-6 projection fixture validates against schema 13", () => {
   assert.equal(sourceCatalogSha256, manifest.metadata.sourceCatalogSha256);
   assert.deepEqual([
     manifest.metadata.projectionCount,
@@ -513,8 +513,8 @@ test("Madrid runtime keeps parent statistics while loading reviewed atomic cards
   }), { sha256 });
   const loadedGroupIds = new Set([...comparisonIndex.values()].flatMap((entries) => entries.map(({ groupId }) => groupId)));
 
-  assert.equal(app.calculateStatistics(records).observations, 19553);
-  assert.equal(app.calculateStatistics(records).catalogs, 52);
+  assert.equal(app.calculateStatistics(records).observations, 19638);
+  assert.equal(app.calculateStatistics(records).catalogs, 53);
   assert.equal(madridRecords.filter(({ id }) => projectionIndex.has(id)).length, 23);
   assert.equal(madridDescriptors.filter(({ kind }) => kind === "atomic").length, 54);
   assert.equal(madridDescriptors.filter(({ kind }) => kind === "context").length, 0);

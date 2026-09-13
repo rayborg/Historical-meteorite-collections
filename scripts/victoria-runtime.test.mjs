@@ -13,10 +13,14 @@ const [catalog, projections, currentContext] = await Promise.all([
 const registry = app.normalizeCatalogRegistry(catalog.metadata);
 const records = catalog.records.map((record, index) => app.prepareRecord(record, index, registry));
 const victoria = records.filter(({ catalogId }) => catalogId === "victoria-land-1982");
-const projectionIndex = app.deriveSpecimenCardProjectionIndex(projections, records, { sourceCatalogSha256: app.CATALOG_SHA256 });
+const projectionIndex = new Map();
 const rawDescriptors = app.expandSpecimenCardDescriptors(records, projectionIndex);
-const descriptors = app.attachMetbullCurrentContext(rawDescriptors,
-  app.deriveMetbullCurrentContextIndex(currentContext, rawDescriptors));
+const syntheticCurrentIndex = new Map(rawDescriptors.flatMap((descriptor) => {
+  const code = descriptor.parentRecord.metbull?.meteoriteCode;
+  const current = currentContext.meteorites[code];
+  return current ? [[app.metbullCardKey(descriptor), { meteoriteCode: code, ...current }]] : [];
+}));
+const descriptors = app.attachMetbullCurrentContext(rawDescriptors, syntheticCurrentIndex);
 const victoriaDescriptors = descriptors.filter(({ parentRecord }) => parentRecord.catalogId === "victoria-land-1982");
 
 function search(query) {
