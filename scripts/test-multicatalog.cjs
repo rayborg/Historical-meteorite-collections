@@ -1047,8 +1047,8 @@ test("URL filters default to strict specimens and canonicalize the explicit incl
     unit: "observations",
     status: "Showing 60 of 23,217 display cards from 18,217 matching source observations."
   });
-  assert.equal(app.CACHE_VERSION, "20260913-catalog10-historical-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260913-catalog10-historical-1");
+  assert.equal(app.CACHE_VERSION, "20260913-compact-cards-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260913-compact-cards-1");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.ASSET_CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.ASSET_CACHE_VERSION}`));
 });
@@ -1120,11 +1120,19 @@ test("HTML and runtime expose the accessible harmonized card contract", () => {
   assert.equal(dto.facts.some(({ value }) => value === "Unknown"), false);
   assert.equal(dto.facts.some(({ label }) => label === "Current Meteoritical Bulletin name"), false);
   assert.equal(dto.facts.find(({ label }) => label === "Individual find location").value, "32-19-13");
-  assert.match(script, /dto\.facts\.forEach\(\(\{ label, value \}\) => appendMetaRow\(meta, label, value\)\)/);
+  assert.match(script, /dto\.facts\.forEach\(\(\{ label, value \}\) => appendMetaRow\(meta, label, value, specimenCard\)\)/);
   assert.match(script, /if \(dto\.identifier\) designation\.textContent = dto\.identifier;\s*else designation\.remove\(\);/);
   assert.match(script, /const heading = harmonizedCardNullNameHeading\(record, dto\.kind, descriptor, dto\.identifier\);/);
-  assert.match(script, /sourceNameLabel\.textContent = heading\.label;\s*recordName\.textContent = heading\.value;\s*designation\.remove\(\);/);
-  assert.match(script, /sourceNameLabel\.textContent = dto\.headingLabel/);
+  assert.match(script, /const visibleHeadingLabel = specimenCard \? compactSpecimenLabel\(heading\.label\) : heading\.label;/);
+  assert.match(script, /const visibleHeadingLabel = specimenCard \? compactSpecimenLabel\(dto\.headingLabel\) : dto\.headingLabel;/);
+  assert.match(script, /setCompactAccessibleText\(term, label, visibleLabel\)/);
+  assert.match(script, /setCompactAccessibleText\(sourceNameLabel, dto\.headingLabel, visibleHeadingLabel\)/);
+  assert.match(script, /setCompactAccessibleText\(source, sourceCitation, visibleSourceCitation\)/);
+  assert.doesNotMatch(script, /(?:term|sourceNameLabel|source)\.setAttribute\("aria-label"/);
+  assert.equal(app.compactSpecimenLabel("Current MetBull meteorite name"), "Official name");
+  assert.equal(app.compactSpecimenLabel("Specimen weight, Table A primary (printed page 85)"),
+    "Weight, Table A primary (p. 85)");
+  assert.equal(app.compactSpecimenLabel("Unrecognized label"), "Unrecognized label");
   assert.equal(app.harmonizedCardNameLabel(dto.kind), "Meteorite name");
 });
 

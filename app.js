@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260913-catalog10-historical-1";
+const CACHE_VERSION = "20260913-compact-cards-1";
 const ASSET_CACHE_VERSION = CACHE_VERSION;
 const CATALOG_SCHEMA_VERSION = 14;
 const CATALOG_RECORD_COUNT = 19991;
@@ -4437,24 +4437,69 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
   };
 }
 
-function appendMetaRow(meta, label, value) {
+function compactSpecimenLabel(label) {
+  const compactLabels = {
+    "Current MetBull meteorite name": "Official name",
+    "Meteorite name": "Source name",
+    "Current MetBull classification": "Official class",
+    "Current MetBull place": "Official place",
+    "Current MetBull fall/find": "Fall / find",
+    "Current MetBull year": "Official year",
+    "Catalog classification": "Source class",
+    "Catalog meteorite name": "Source name",
+    "Catalog locality": "Source place",
+    "Catalog event or date": "Source date",
+    "Specimen form": "Form",
+    "Individual find location": "Find location",
+    "Cross-catalog comparisons": "Comparisons",
+    "Specimen weight": "Weight",
+    "Locality code": "Locality",
+    "Area reference coordinate": "Grid ref.",
+    "Olivine Fa": "Fa",
+    "Pyroxene Fs": "Fs",
+    "Source section": "Section",
+    "Source citation": "Source"
+  };
+  if (Object.hasOwn(compactLabels, label)) return compactLabels[label];
+  const conflict = /^(Class|Specimen weight|Weathering), Table ([AB]) (primary|reported) \(printed page (\d+)\)$/u.exec(label);
+  if (!conflict) return label;
+  const [, field, table, context, page] = conflict;
+  return `${compactLabels[field] || field}, Table ${table} ${context} (p. ${page})`;
+}
+
+function setCompactAccessibleText(element, fullText, visibleText = fullText) {
+  if (visibleText === fullText) {
+    element.textContent = fullText;
+    return;
+  }
+  const visible = element.ownerDocument.createElement("span");
+  visible.setAttribute("aria-hidden", "true");
+  visible.textContent = visibleText;
+  const assistive = element.ownerDocument.createElement("span");
+  assistive.className = "visually-hidden";
+  assistive.textContent = fullText;
+  element.replaceChildren(visible, assistive);
+}
+
+function appendMetaRow(meta, label, value, compactLabel = false) {
   const row = document.createElement("div");
   const term = document.createElement("dt");
   const description = document.createElement("dd");
-  term.textContent = label;
+  const visibleLabel = compactLabel ? compactSpecimenLabel(label) : label;
+  setCompactAccessibleText(term, label, visibleLabel);
   description.textContent = displayText(value);
   row.append(term, description);
   meta.append(row);
 }
 
-function renderCatalogNotes(notes) {
+function renderCatalogNotes(notes, compactLabels = false) {
   const details = document.createElement("details");
   details.className = "catalog-notes";
   const summary = document.createElement("summary");
   summary.textContent = "Show catalog notes";
   const list = document.createElement("dl");
   list.setAttribute("aria-label", "Historical catalog notes");
-  notes.forEach(({ label, value }) => appendMetaRow(list, label, value));
+  notes.forEach(({ label, value }) => appendMetaRow(list, label, value, compactLabels));
   details.append(summary, list);
   return details;
 }
@@ -4467,8 +4512,9 @@ function createRecordCard(recordOrDescriptor) {
     comparisonEntries: comparisonGroupsByRecordId.get(record.id) || []
   });
   const card = elements.template.content.firstElementChild.cloneNode(true);
+  const specimenCard = dto.kind === HARMONIZED_CARD_KINDS.specimen || dto.kind === HARMONIZED_CARD_KINDS.atomic;
   card.dataset.cardKind = dto.kind;
-  card.classList.toggle("specimen-card", dto.kind === HARMONIZED_CARD_KINDS.specimen || dto.kind === HARMONIZED_CARD_KINDS.atomic);
+  card.classList.toggle("specimen-card", specimenCard);
   card.classList.toggle("observation-card", [HARMONIZED_CARD_KINDS.source, HARMONIZED_CARD_KINDS.collection, HARMONIZED_CARD_KINDS.regional, HARMONIZED_CARD_KINDS.dealer, HARMONIZED_CARD_KINDS.representation, HARMONIZED_CARD_KINDS.event].includes(dto.kind));
   const designation = card.querySelector(".designation");
   if (dto.identifier) designation.textContent = dto.identifier;
@@ -4480,7 +4526,8 @@ function createRecordCard(recordOrDescriptor) {
   const sourceNameLabel = card.querySelector(".source-name-label");
   const recordName = card.querySelector(".record-name");
   if (dto.headingName) {
-    sourceNameLabel.textContent = dto.headingLabel;
+    const visibleHeadingLabel = specimenCard ? compactSpecimenLabel(dto.headingLabel) : dto.headingLabel;
+    setCompactAccessibleText(sourceNameLabel, dto.headingLabel, visibleHeadingLabel);
     if (dto.headingUrl) {
       const officialLink = document.createElement("a");
       officialLink.href = dto.headingUrl;
@@ -4491,7 +4538,8 @@ function createRecordCard(recordOrDescriptor) {
     }
   } else {
     const heading = harmonizedCardNullNameHeading(record, dto.kind, descriptor, dto.identifier);
-    sourceNameLabel.textContent = heading.label;
+    const visibleHeadingLabel = specimenCard ? compactSpecimenLabel(heading.label) : heading.label;
+    setCompactAccessibleText(sourceNameLabel, heading.label, visibleHeadingLabel);
     recordName.textContent = heading.value;
     designation.remove();
   }
@@ -4504,8 +4552,8 @@ function createRecordCard(recordOrDescriptor) {
   }
   const meta = card.querySelector(".record-meta");
   meta.replaceChildren();
-  dto.facts.forEach(({ label, value }) => appendMetaRow(meta, label, value));
-  if (dto.catalogNotes.length) meta.after(renderCatalogNotes(dto.catalogNotes));
+  dto.facts.forEach(({ label, value }) => appendMetaRow(meta, label, value, specimenCard));
+  if (dto.catalogNotes.length) meta.after(renderCatalogNotes(dto.catalogNotes, specimenCard));
   if (dto.lineage?.claims.length) card.querySelector(".record-footer").before(renderLineageClaims(dto.lineage));
   if (dto.comparison?.groups.length) card.querySelector(".record-footer").before(renderComparisonGroups(dto.comparison));
 
@@ -4513,7 +4561,11 @@ function createRecordCard(recordOrDescriptor) {
     .forEach((selector) => card.querySelector(selector)?.remove());
   card.querySelector(".confidence")?.remove();
   const source = card.querySelector(".record-source, .catalog-reference");
-  source.textContent = `Source citation: ${displayText(dto.sourceCitation)}`;
+  const sourceCitation = `Source citation: ${displayText(dto.sourceCitation)}`;
+  const visibleSourceCitation = specimenCard
+    ? `${compactSpecimenLabel("Source citation")}: ${displayText(dto.sourceCitation)}`
+    : sourceCitation;
+  setCompactAccessibleText(source, sourceCitation, visibleSourceCitation);
   dto.catalogPages.forEach((catalogPage) => {
     const folio = getAuthorizedFolio(folioManifest, record.catalogId, catalogPage, catalogRegistry);
     if (!folio) return;
@@ -5199,6 +5251,7 @@ if (typeof module !== "undefined" && module.exports) {
     catalogNumberHoldingDetails,
     classifyHarmonizedCard,
     compareRecords,
+    compactSpecimenLabel,
     containsUnsafePath,
     designationComponents,
     deriveEarlierRecordIndex,
@@ -5277,6 +5330,7 @@ if (typeof module !== "undefined" && module.exports) {
     sha256Text,
     sha256TextSync,
     serializeUrlFilters,
+    setCompactAccessibleText,
     lineageEntriesForSpecimenCard,
     lineageCardDto,
     comparisonGroupsForSpecimenCard,

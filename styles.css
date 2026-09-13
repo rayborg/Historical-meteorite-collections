@@ -15,6 +15,8 @@
 
 * { box-sizing: border-box; }
 
+.visually-hidden { position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0; letter-spacing: normal; text-transform: none; }
+
 html {
   scroll-behavior: smooth;
   background: #332b21;
@@ -342,6 +344,16 @@ summary:focus-visible {
 .record-footer { position: relative; z-index: 1; margin-top: auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: .35rem .8rem; padding: .55rem 0 0; color: var(--ink-soft); background: transparent; border: 0; }
 .record-footer p { min-width: 0; margin: 0; font-size: .61rem; letter-spacing: .06em; text-transform: uppercase; overflow-wrap: anywhere; }
 .record-source { color: var(--oxblood-dark); }
+.specimen-card { padding: .72rem .75rem .62rem; }
+.specimen-card .record-heading { padding-bottom: .42rem; }
+.specimen-card .source-name-label { margin-top: .38rem; }
+.specimen-card .record-meta { margin: .42rem 0 .3rem; }
+.specimen-card .record-meta div,
+.specimen-card .catalog-notes dl div { grid-template-columns: minmax(4.5rem, 5.75rem) minmax(0, 1fr); gap: .45rem; padding: .18rem 0; }
+.specimen-card .catalog-notes { margin: .1rem 0 .42rem; }
+.specimen-card .catalog-notes summary { padding: .32rem 0; }
+.specimen-card .catalog-notes dl { margin-bottom: .3rem; }
+.specimen-card .record-footer { gap: .25rem .6rem; padding-top: .38rem; }
 .folio-button {
   flex: 1 0 100%;
   justify-self: start;
@@ -461,18 +473,24 @@ dialog::backdrop { background: rgba(24, 19, 14, .84); backdrop-filter: blur(2px)
 }
 
 @media (max-width: 520px) {
-  .record-meta div { grid-template-columns: minmax(0, 1fr); gap: .08rem; padding: .3rem 0; }
-  .catalog-notes dl div { grid-template-columns: minmax(0, 1fr); gap: .08rem; padding: .3rem 0; }
+  .observation-card .record-meta div { grid-template-columns: minmax(0, 1fr); gap: .08rem; padding: .3rem 0; }
+  .observation-card .catalog-notes dl div { grid-template-columns: minmax(0, 1fr); gap: .08rem; padding: .3rem 0; }
 }
 
 @media (max-width: 420px) {
   .weight-range { grid-template-columns: 1fr; }
   .range-rule { display: none; }
-  .record-card { padding-inline: 1rem; }
+  .observation-card { padding-inline: 1rem; }
+}
+
+@media (max-width: 350px) {
+  .specimen-card .record-meta div,
+  .specimen-card .catalog-notes dl div { grid-template-columns: minmax(0, 1fr); gap: .08rem; padding: .22rem 0; }
 }
 
 @media (max-width: 320px) {
-  .record-card { padding-inline: .8rem; }
+  .observation-card { padding-inline: .8rem; }
+  .specimen-card { padding-inline: .65rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

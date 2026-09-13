@@ -108,7 +108,7 @@ test("schema and runtime contracts are closed against extras, unsafe text, stale
 
 test("loader applies all current context or returns one complete source-only fallback", async () => {
   const valid = await app.loadMetbullCurrentContext(rawDescriptors, async (url, options) => {
-    assert.equal(url, "./data/metbull-current-context.json?v=20260913-catalog10-historical-1");
+    assert.equal(url, "./data/metbull-current-context.json?v=20260913-compact-cards-1");
     assert.deepEqual(options, { cache: "no-cache" });
     return response();
   }, { sha256: async (text) => sha256(text), catalogSha256: app.CATALOG_SHA256,
@@ -251,6 +251,7 @@ test("observation cards stay source-only and static rendering is accessible, res
   assert.match(source, /document\.createElement\("details"\)/u);
   assert.doesNotMatch(source, /\.innerHTML\b/u);
   assert.match(styles, /\.catalog-notes summary \{/u);
-  assert.match(styles, /@media \(max-width: 520px\)[\s\S]*\.catalog-notes dl div \{ grid-template-columns: minmax\(0, 1fr\)/u);
-  assert.match(styles, /@media \(max-width: 320px\)[\s\S]*\.record-card \{ padding-inline: \.8rem; \}/u);
+  assert.match(styles, /@media \(max-width: 520px\)[\s\S]*\.observation-card \.catalog-notes dl div \{ grid-template-columns: minmax\(0, 1fr\)/u);
+  assert.match(styles, /@media \(max-width: 350px\)[\s\S]*\.specimen-card \.catalog-notes dl div \{ grid-template-columns: minmax\(0, 1fr\)/u);
+  assert.match(styles, /@media \(max-width: 320px\)[\s\S]*\.observation-card \{ padding-inline: \.8rem; \}/u);
 });

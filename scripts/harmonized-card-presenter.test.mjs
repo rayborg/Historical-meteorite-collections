@@ -268,6 +268,111 @@ test("semantic type labels are hidden for specimens and retained for observation
   assert.equal(app.shouldDisplaySemanticLabel("regional-event-observation"), true);
 });
 
+test("specimen display labels compact exactly, including conflict pages, and unknown labels pass through", () => {
+  const labels = {
+    "Current MetBull meteorite name": "Official name",
+    "Meteorite name": "Source name",
+    "Current MetBull classification": "Official class",
+    "Current MetBull place": "Official place",
+    "Current MetBull fall/find": "Fall / find",
+    "Current MetBull year": "Official year",
+    "Catalog classification": "Source class",
+    "Catalog meteorite name": "Source name",
+    "Catalog locality": "Source place",
+    "Catalog event or date": "Source date",
+    "Specimen form": "Form",
+    "Individual find location": "Find location",
+    "Cross-catalog comparisons": "Comparisons",
+    "Specimen weight": "Weight",
+    "Locality code": "Locality",
+    "Area reference coordinate": "Grid ref.",
+    "Olivine Fa": "Fa",
+    "Pyroxene Fs": "Fs",
+    "Source section": "Section",
+    "Source citation": "Source",
+  };
+  for (const [full, compact] of Object.entries(labels)) {
+    assert.equal(app.compactSpecimenLabel(full), compact, full);
+  }
+  for (const [field, compact] of [["Class", "Class"], ["Specimen weight", "Weight"], ["Weathering", "Weathering"]]) {
+    for (const [table, context, page] of [["A", "primary", "85"], ["B", "reported", "94"]]) {
+      assert.equal(app.compactSpecimenLabel(`${field}, Table ${table} ${context} (printed page ${page})`),
+        `${compact}, Table ${table} ${context} (p. ${page})`);
+    }
+  }
+  for (const unchanged of [
+    "Unknown field", "Specimen weight, Table C primary (printed page 85)",
+    "Specimen weight, Table A primary", "Other, Table B reported (printed page 94)",
+  ]) assert.equal(app.compactSpecimenLabel(unchanged), unchanged);
+});
+
+test("compact labels are a specimen-only DOM concern with full accessible names", () => {
+  const presenterSource = appSource.slice(appSource.indexOf("function presentHarmonizedCard"),
+    appSource.indexOf("function compactSpecimenLabel"));
+  assert.doesNotMatch(presenterSource, /compactSpecimenLabel/u);
+  assert.match(appSource,
+    /const visibleHeadingLabel = specimenCard \? compactSpecimenLabel\(dto\.headingLabel\) : dto\.headingLabel;/u);
+  assert.match(appSource, /setCompactAccessibleText\(sourceNameLabel, dto\.headingLabel, visibleHeadingLabel\);/u);
+  assert.match(appSource, /setCompactAccessibleText\(sourceNameLabel, heading\.label, visibleHeadingLabel\);/u);
+  assert.match(appSource, /dto\.facts\.forEach\(\(\{ label, value \}\) => appendMetaRow\(meta, label, value, specimenCard\)\);/u);
+  assert.match(appSource, /renderCatalogNotes\(dto\.catalogNotes, specimenCard\)/u);
+  assert.match(appSource, /setCompactAccessibleText\(term, label, visibleLabel\);/u);
+  assert.match(appSource, /setCompactAccessibleText\(source, sourceCitation, visibleSourceCitation\);/u);
+  assert.doesNotMatch(appSource, /(?:term|sourceNameLabel|source)\.setAttribute\("aria-label"/u);
+  assert.match(styles, /\.visually-hidden \{[^}]*position: absolute !important;[^}]*clip-path: inset\(50%\);[^}]*white-space: nowrap;/u);
+
+  const stubDocument = {
+    createElement(tagName) {
+      let ownText = "";
+      return {
+        tagName: tagName.toUpperCase(),
+        ownerDocument: stubDocument,
+        attributes: {},
+        children: [],
+        className: "",
+        setAttribute(name, value) { this.attributes[name] = String(value); },
+        getAttribute(name) { return this.attributes[name] ?? null; },
+        replaceChildren(...children) { this.children = children; ownText = ""; },
+        set textContent(value) { ownText = String(value); this.children = []; },
+        get textContent() {
+          return this.children.length ? this.children.map((child) => child.textContent).join("") : ownText;
+        },
+      };
+    },
+  };
+  for (const [tagName, fullText, visibleText] of [
+    ["p", "Current MetBull meteorite name", "Official name"],
+    ["dt", "Specimen weight", "Weight"],
+    ["p", "Source citation: Catalog (1900) · p. 1", "Source: Catalog (1900) · p. 1"],
+  ]) {
+    const element = stubDocument.createElement(tagName);
+    app.setCompactAccessibleText(element, fullText, visibleText);
+    assert.equal(element.children.length, 2);
+    assert.deepEqual(element.children.map((child) => ({
+      text: child.textContent,
+      ariaHidden: child.getAttribute("aria-hidden"),
+      className: child.className,
+      ariaLabel: child.getAttribute("aria-label"),
+    })), [
+      { text: visibleText, ariaHidden: "true", className: "", ariaLabel: null },
+      { text: fullText, ariaHidden: null, className: "visually-hidden", ariaLabel: null },
+    ]);
+    assert.deepEqual(element.children.filter((child) => child.getAttribute("aria-hidden") !== "true")
+      .map((child) => child.textContent), [fullText]);
+    assert.equal(element.getAttribute("aria-label"), null);
+  }
+
+  const plainObservationLabel = stubDocument.createElement("p");
+  app.setCompactAccessibleText(plainObservationLabel, "Meteorite name");
+  assert.equal(plainObservationLabel.textContent, "Meteorite name");
+  assert.deepEqual(plainObservationLabel.children, []);
+  assert.equal(plainObservationLabel.getAttribute("aria-label"), null);
+  const observation = descriptors.find((descriptor) =>
+    app.classifyHarmonizedCard(descriptor) === "collection-observation");
+  assert.equal(present(observation).headingLabel, "Meteorite name");
+  assert.deepEqual(present(observation).facts, expectedFacts(observation));
+});
+
 test("every production card uses the approved known-fact order and omits unavailable values", () => {
   const census = { specimens: 0, mapped: 0, unmapped: 0, factRows: 0, noteCards: 0, noteRows: 0 };
   const noteLabels = {};
@@ -541,8 +646,8 @@ test("representative corrected and unresolved specimen cards preserve the known 
   assert.equal(present(corrected).headingName, corrected.currentMetbull.name);
   assert.equal(present(unresolved).headingName, unresolved.parentRecord.name);
   assert.match(styles, /overflow-wrap: anywhere;/u);
-  assert.match(styles, /\.record-meta div \{[^}]*grid-template-columns: minmax\(7\.25rem, 9rem\) minmax\(0, 1fr\);/u);
-  assert.match(styles, /@media \(max-width: 520px\)[\s\S]*\.record-meta div \{ grid-template-columns: minmax\(0, 1fr\);/u);
+  assert.match(styles, /\.specimen-card \.record-meta div,[\s\S]*grid-template-columns: minmax\(4\.5rem, 5\.75rem\) minmax\(0, 1fr\);/u);
+  assert.match(styles, /@media \(max-width: 350px\)[\s\S]*\.specimen-card \.record-meta div,[\s\S]*grid-template-columns: minmax\(0, 1fr\);/u);
   assert.match(styles, /\.record-meta dt \{[^}]*word-break: normal;[^}]*overflow-wrap: normal;/u);
 });
 
@@ -748,20 +853,27 @@ test("accessible shell, responsive breakpoints, approved cache, and immutable da
   assert.match(styles, /\.catalog-grid \{[^}]*grid-template-columns: repeat\(3, minmax\(0, 1fr\)\);/u);
   assert.match(styles, /@media \(max-width: 1200px\)[\s\S]*\.catalog-grid \{ grid-template-columns: repeat\(2, minmax\(0, 1fr\)\); \}/u);
   assert.match(styles, /@media \(max-width: 700px\)[\s\S]*\.catalog-grid \{ grid-template-columns: 1fr; \}/u);
-  assert.match(styles, /@media \(max-width: 520px\)[\s\S]*\.record-meta div \{ grid-template-columns: minmax\(0, 1fr\);/u);
-  assert.match(styles, /@media \(max-width: 420px\)[\s\S]*\.record-card \{ padding-inline: 1rem; \}/u);
-  assert.match(styles, /\.record-card \{[^}]*padding: 1rem 1rem \.85rem;/u);
+  assert.match(styles, /@media \(max-width: 520px\)[\s\S]*\.observation-card \.record-meta div \{ grid-template-columns: minmax\(0, 1fr\);/u);
+  assert.match(styles, /@media \(max-width: 350px\)[\s\S]*\.specimen-card \.record-meta div,[\s\S]*grid-template-columns: minmax\(0, 1fr\);/u);
+  assert.match(styles, /\.specimen-card \{ padding: \.72rem \.75rem \.62rem; \}/u);
+  assert.match(styles, /\.specimen-card \.record-meta div,[\s\S]*grid-template-columns: minmax\(4\.5rem, 5\.75rem\) minmax\(0, 1fr\);/u);
+  assert.match(styles, /@media \(max-width: 320px\)[\s\S]*\.specimen-card \{ padding-inline: \.65rem; \}/u);
+  const media520 = styles.slice(styles.indexOf("@media (max-width: 520px)"), styles.indexOf("@media (max-width: 420px)"));
+  const media420 = styles.slice(styles.indexOf("@media (max-width: 420px)"), styles.indexOf("@media (max-width: 350px)"));
+  assert.doesNotMatch(media520 + media420, /\.specimen-card/u);
+  assert.match(styles, /\.record-card \{[^}]*min-width: 0;/u);
+  assert.match(styles, /\.record-meta dd \{[^}]*min-width: 0;[^}]*overflow-wrap: anywhere;/u);
   assert.match(styles, /\.record-name \{[^}]*font-size: clamp\(1\.2rem, 1\.8vw, 1\.55rem\);/u);
   assert.match(styles, /\.record-meta dt \{[^}]*font-size: \.6rem;/u);
   assert.match(styles, /\.record-meta dd \{[^}]*font-size: \.8rem;/u);
   assert.doesNotMatch(styles, /\.record-meta dt \{[^}]*overflow-wrap: anywhere;/u);
-  assert.equal(app.CACHE_VERSION, "20260913-catalog10-historical-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260913-catalog10-historical-1");
+  assert.equal(app.CACHE_VERSION, "20260913-compact-cards-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260913-compact-cards-1");
   for (const document of [html, catalogsHtml]) {
-    assert.match(document, /styles\.css\?v=20260913-catalog10-historical-1/u);
-    assert.match(document, /app\.js\?v=20260913-catalog10-historical-1/u);
+    assert.match(document, /styles\.css\?v=20260913-compact-cards-1/u);
+    assert.match(document, /app\.js\?v=20260913-compact-cards-1/u);
   }
-  assert.match(catalogsHtml, /catalogs\.js\?v=20260913-catalog10-historical-1/u);
+  assert.match(catalogsHtml, /catalogs\.js\?v=20260913-compact-cards-1/u);
   assert.deepEqual({
     catalog: sha256(catalogText),
     projections: sha256(projectionText),
