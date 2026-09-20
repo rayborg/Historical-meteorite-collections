@@ -28,6 +28,8 @@ function numericQueries() {
       record.individualFindLocation, record.year, record.dateOfDiscovery, record.eventDate, record.section,
       record.pane, record.reference, record.representedWeight?.valueText,
       ...(record.representedWeight?.componentTexts || []),
+      record.captionTitle, record.reportedMass?.valueText, record.reportedDimensions?.valueText,
+      record.photoPanelCount, record.sourceRelation?.recordId, record.printedPageLabel,
       record.weight?.grams, record.olivineFa, record.pyroxeneFs, record.weathering,
       record.metbull?.canonicalName, record.metbull?.meteoriteCode, record.metbull?.alternateNameNote,
       record.reportedTotalWeight?.grams, record.publicationState
@@ -90,6 +92,11 @@ function expectedNumericTokens(record) {
   for (const componentText of record.representedWeight?.componentTexts || []) addTokens(componentText);
   addTokens(record.eventText);
   for (const material of record.reportedMaterial || []) addTokens(material.statement);
+  addTokens(record.reportedMass?.valueText);
+  addTokens(record.reportedDimensions?.valueText);
+  addTokens(record.printedPageLabel);
+  addTokens(record.sourceRelation?.recordId);
+  add(record.photoPanelCount);
   for (const value of [record.catalogItem, record.entryOrder, record.typeNumber]) add(value);
   addTokens([record.year, record.dateOfDiscovery, record.eventDate].filter(Boolean).join(" "));
   addTokens((record.holdings || []).flatMap((holding) => [

@@ -20,10 +20,10 @@ const descriptors = app.expandSpecimenCardDescriptors(antarctic);
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
 const fact = (dto, label) => dto.facts.find((entry) => entry.label === label)?.value;
 
-test("retains the accepted Antarctic 1980 package in schema 14", () => {
-  assert.equal(sha256(catalogText), "8458ae9dfee5136014af4e68202880830e17fde92f4ebd664f3a1cdd6092d349");
+test("retains the accepted Antarctic 1980 package in schema 15", () => {
+  assert.equal(sha256(catalogText), "3c23d1c2653bc893819a605c7c0e5e6db7b63a17cd3ab66ab104c2772391dbe7");
   assert.deepEqual({ schema: catalog.metadata.schemaVersion, catalogs: catalog.metadata.catalogs.length,
-    records: catalog.records.length }, { schema: 14, catalogs: 55, records: 19991 });
+    records: catalog.records.length }, { schema: 15, catalogs: 56, records: 20241 });
   assert.equal(app.validateCatalog(catalog), catalog);
   assert.deepEqual(registry["antarctic-1980"], {
     id: "antarctic-1980",

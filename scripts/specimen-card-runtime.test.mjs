@@ -69,7 +69,7 @@ function syntheticManifest(sourceRecords, projections) {
     metadata: {
       schemaVersion: 6,
       scope: "reviewed-atomic-specimen-card-display-projections",
-      catalogSchemaVersion: 14,
+      catalogSchemaVersion: 15,
       sourceRecordCount: sourceRecords.length,
       sourceCatalogSha256: "0".repeat(64),
       projectionCount: projections.length,
@@ -449,8 +449,8 @@ test("digest lock loads the exact set and fails closed to parent cards on mismat
   const altered = structuredClone(manifest);
   altered.projections[0].cards[0].clause.end -= 1;
   assert.equal((await app.loadSpecimenCardProjectionIndex(records, async () => projectionResponse(altered), options)).size, 0);
-  assert.equal(app.SPECIMEN_CARD_SOURCE_CATALOG_SHA256, "8458ae9dfee5136014af4e68202880830e17fde92f4ebd664f3a1cdd6092d349");
-  assert.equal(app.SPECIMEN_CARD_PROJECTION_DATA_SHA256, "707666e22b647bcbbdbf6088cb1ff8964aa9beb813fe4bc805ac7b1b841155d5");
+  assert.equal(app.SPECIMEN_CARD_SOURCE_CATALOG_SHA256, "3c23d1c2653bc893819a605c7c0e5e6db7b63a17cd3ab66ab104c2772391dbe7");
+  assert.equal(app.SPECIMEN_CARD_PROJECTION_DATA_SHA256, "de553de6c7be4fa1d57e5efc50cc843a6f1e03e364e8ea8115d71506aa6ed16e");
   assert.equal(app.SPECIMEN_CARD_PROJECTION_SET_SHA256, "9e3452b6ff8cc23000311de4e36f0deae70654392cfb08a19956934ee46b3802");
 });
 
@@ -463,12 +463,12 @@ test("rendering is text-only, omits context cards, and synchronizes cache keys",
   assert.match(html, /<p class="record-semantic-label"><\/p>/u);
   assert.match(html, /<dl class="record-meta" aria-label="Catalog record details"><\/dl>/u);
   assert.doesNotMatch(html, /specimen-position|record-holdings|earlier-records/u);
-  assert.match(html, /styles\.css\?v=20260919-specimen-card-labels-1/u);
-  assert.match(html, /app\.js\?v=20260919-specimen-card-labels-1/u);
-  assert.equal(app.ASSET_CACHE_VERSION, "20260919-specimen-card-labels-1");
+  assert.match(html, /styles\.css\?v=20260920-haag-2003-1/u);
+  assert.match(html, /app\.js\?v=20260920-haag-2003-1/u);
+  assert.equal(app.ASSET_CACHE_VERSION, "20260920-haag-2003-1");
 });
 
-test("production schema-6 projection fixture validates against schema 14", () => {
+test("production schema-6 projection fixture validates against schema 15", () => {
   assert.equal(sourceCatalogSha256, manifest.metadata.sourceCatalogSha256);
   assert.deepEqual([
     manifest.metadata.projectionCount,
@@ -513,8 +513,8 @@ test("Madrid runtime keeps parent statistics while loading reviewed atomic cards
   }), { sha256 });
   const loadedGroupIds = new Set([...comparisonIndex.values()].flatMap((entries) => entries.map(({ groupId }) => groupId)));
 
-  assert.equal(app.calculateStatistics(records).observations, 19991);
-  assert.equal(app.calculateStatistics(records).catalogs, 55);
+  assert.equal(app.calculateStatistics(records).observations, 20241);
+  assert.equal(app.calculateStatistics(records).catalogs, 56);
   assert.equal(madridRecords.filter(({ id }) => projectionIndex.has(id)).length, 23);
   assert.equal(madridDescriptors.filter(({ kind }) => kind === "atomic").length, 54);
   assert.equal(madridDescriptors.filter(({ kind }) => kind === "context").length, 0);

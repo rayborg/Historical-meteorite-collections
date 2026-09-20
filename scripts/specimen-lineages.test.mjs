@@ -99,9 +99,9 @@ test("publishes the locked schema-v4 source, lineage, comparison, and cardinalit
   assert.equal(flattenMassObservations(catalog).length, 17160);
   assert.equal(flattenInventoryObservations(catalog).length, 3985);
   assert.deepEqual(published.metadata.source, {
-    catalogSchemaVersion: 14,
-    recordCount: 19991,
-    catalogCount: 55,
+    catalogSchemaVersion: 15,
+    recordCount: 20241,
+    catalogCount: 56,
     flattenedMassObservationCount: 17160,
     inventoryObservationCount: 3985,
     sourceClaimsSchemaVersion: 1,

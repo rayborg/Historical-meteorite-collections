@@ -1,7 +1,7 @@
 # Public Catalog Data
 
 <!-- release-summary:data-overview:start -->
-`catalog.json` is a schema-14 facts-only dataset containing 19,991 source observations from 55 historical meteorite catalogs. `specimen-card-projections.json` replaces 3,407 reviewed parent observations with 8,410 atomic specimen cards while retaining context-only records as observations, for 24,994 display descriptors. `folios.json` is a separate schema-2, deny-by-default display manifest with 49 reviewed page entries.
+`catalog.json` is a schema-15 facts-only dataset containing 20,241 source observations from 56 historical meteorite catalogs. `specimen-card-projections.json` replaces 3,407 reviewed parent observations with 8,410 atomic specimen cards while retaining context-only records as observations, for 25,244 display descriptors. `folios.json` is a separate schema-2, deny-by-default display manifest with 49 reviewed page entries.
 <!-- release-summary:data-overview:end -->
 
 A searchable transcription of the 1976 Huss Meteorite Collection catalog, compiled and published by Glenn Huss.
@@ -40,6 +40,7 @@ The current public data was generated from the accepted canonical source integra
 | `foote-1912` | `collection-entry` | 205 | 35 | 25 |
 | `greifswald-1895` | `collection-entry` | 145 | 11 | 11 |
 | `greifswald-1901` | `collection-entry` | 281 | 21 | 21 |
+| `haag-2003` | `caption-observation-fact` | 250 | 146 | 134 |
 | `haidinger-1859` | `collection-entry` | 137 | 6 | 5 |
 | `hamburg-1913` | `collection-entry` | 147 | 27 | 11 |
 | `hodge-smith-1939` | `regional-census-fact` | 84 | 25 | 19 |
@@ -70,7 +71,7 @@ The current public data was generated from the accepted canonical source integra
 | `ward-1881` | `collection-entry` | 3 | 1 | 1 |
 | `ward-1904` | `collection-entry` | 697 | 74 | 74 |
 | `washington-1897` | `collection-entry` | 201 | 4 | 4 |
-| **Total** |  | **19,991** | **1,753** | **1,576** |
+| **Total** |  | **20,241** | **1,899** | **1,710** |
 <!-- release-summary:data-catalog-table:end -->
 
 Metadata source-page coverage is not a count of pages cited by records. Some covered pages are introductory or narrative-only.
@@ -97,7 +98,7 @@ Chladni 1825 pages 200-207 are introductory folios. `haidinger-1859` page 21 int
 
 ## Catalog Contract
 
-The root contains exactly `metadata` and `records`. `metadata.schemaVersion` is 14 and each catalog descriptor declares one of ten `recordModel` values.
+The root contains exactly `metadata` and `records`. `metadata.schemaVersion` is 15 and each catalog descriptor declares one of eleven `recordModel` values.
 
 ### Specimen
 
@@ -111,7 +112,7 @@ locality, [individualFindLocation], year, catalogPage, confidence,
 
 `individualFindLocation` is optional, nonempty when present, and restricted to `specimen` records. The release contains exactly 111 such source values.
 
-The other specimen additions retained in schema 14 are closed evidence fields. One direct Chicora record carries `weightEvidence: { type: "qualitative", statement: "Less than a gram" }`. Lakewood carries a 5,265.8 g specimen weight plus separate `associatedMaterial` for a 1,813.3 g fragment box whose count was not reported. Three reviewed plural terrestrial-material records carry `specimenDisposition.type: "not-individual"` and render as source observations rather than specimens. The validator binds all of these values to their accepted record IDs.
+The other specimen additions retained in schema 15 are closed evidence fields. One direct Chicora record carries `weightEvidence: { type: "qualitative", statement: "Less than a gram" }`. Lakewood carries a 5,265.8 g specimen weight plus separate `associatedMaterial` for a 1,813.3 g fragment box whose count was not reported. Three reviewed plural terrestrial-material records carry `specimenDisposition.type: "not-individual"` and render as source observations rather than specimens. The validator binds all of these values to their accepted record IDs.
 
 ### Appendix Specimen
 
@@ -161,7 +162,7 @@ holdings, name, classification, locality, eventDate, confidence
 
 Each holding has `description`, `provenance`, `count`, and `weights`; every numeric weight contains `grams`. The array may be empty when a historical or ambiguous mass has no supported numeric conversion; independently structured factual description prose may still retain the source-reported mass statement. `entryOrder` preserves source order. `reportedNumber` is nullable opaque text and need not be unique.
 
-Schema 14 retains Hamburg's reviewed additive weight semantics: weights may include `kind`; holdings may include `reportedTotalWeight` and `representations`; and records may include `reportedTotalWeight`, `publicationState`, and `amendments`. They distinguish individual from aggregate weights, base-register observations from supplements, and source-reported amendments from the unchanged base observation.
+Schema 15 retains Hamburg's reviewed additive weight semantics: weights may include `kind`; holdings may include `reportedTotalWeight` and `representations`; and records may include `reportedTotalWeight`, `publicationState`, and `amendments`. They distinguish individual from aggregate weights, base-register observations from supplements, and source-reported amendments from the unchanged base observation.
 
 ### Collection Representation Fact
 
@@ -219,11 +220,24 @@ id, catalogId, typeNumber, name, description, catalogPage, confidence
 
 The six records are source dealer-type observations, not specimens or holdings. They contain no price, mass, MetBull mapping, lineage, custody, ownership, transfer, or merge claim.
 
+### Caption Observation Fact
+
+Used only by `haag-2003`:
+
+```text
+id, catalogId, entryOrder, captionTitle, name, classification,
+reportedMass: { valueText, semantics } | null,
+reportedDimensions: { valueText, semantics } | null,
+photoPanelCount, sourceRelation, catalogPages, printedPageLabel, confidence
+```
+
+The 250 source-order records are caption observations across 134 cited pages, not specimens, holdings, inventory records, or current-custody claims. Reported mass and dimensions are retained only as `caption-context-only` text. A nonnull `sourceRelation` can express only a repeated view of an earlier public Haag caption record. The model prohibits MetBull mappings and contributes no specimen cards, projections, lineage endpoints, or comparison candidates.
+
 Strings are NFC-normalized and whitespace-collapsed. Numeric grams are finite and nonnegative. Confidence is `high`, `medium`, or `low`. Model-specific ordering is deterministic. Statistics count parent records as observations, flatten nested masses, and never multiply a reported mass by holding count.
 
 The audited catalog correction is byte-locked at SHA-256 `f339b16bf0b799ee0abedb4ce17d41b0f457ab2f7d2afbfda8581523c134d221`. Merrill's El Capitan entry now contains only 66 g, 753 g, and 4,000 g, with no zero value. Reeds's Mantos Blancos classification is exactly `Siderite: Fine octahedrite, Of.`. These are the only corrected records; all 14,475 non-target records and all 39 non-target descriptors retain their accepted content.
 
-Every model permits an optional reviewed `metbull` object with exactly `matchType`, `canonicalName`, `meteoriteCode`, `metbullUrl`, and `alternateNameNote`. Resolved mappings require a canonical name, positive decimal code string, and exact `https://www.lpi.usra.edu/meteor/metbull.cfm?code=<code>` URL. Unresolved mappings cannot claim any canonical identity. This additive layer does not alter source names, catalog identifiers, holdings, or weights and is never populated by fuzzy matching. With valid sidecar context, every mapped specimen uses the Official current name as its linked heading, including when it is display-equivalent to the source name; unmapped specimens, observations, and sidecar failure remain source-only. The dedicated catalog directory renders all descriptor cards separately from the homepage search and bibliography master list.
+Every model except `caption-observation-fact` permits an optional reviewed `metbull` object with exactly `matchType`, `canonicalName`, `meteoriteCode`, `metbullUrl`, and `alternateNameNote`. Resolved mappings require a canonical name, positive decimal code string, and exact `https://www.lpi.usra.edu/meteor/metbull.cfm?code=<code>` URL. Unresolved mappings cannot claim any canonical identity. This additive layer does not alter source names, catalog identifiers, holdings, or weights and is never populated by fuzzy matching. With valid sidecar context, every mapped specimen uses the Official current name as its linked heading, including when it is display-equivalent to the source name; unmapped specimens, observations, and sidecar failure remain source-only. The dedicated catalog directory renders all descriptor cards separately from the homepage search and bibliography master list.
 
 The current release contains 15,299 reviewed mappings: 14,606 resolved and 693 unresolved. The remaining 4,692 records are pending observations without reviewed mappings. Farrington 1915 and Silberrad 1932 contribute 353 explicit unresolved reviews. Antarctic 1980 contributes 85 resolved `official-abbreviation` mappings; Story-Maskelyne 1872 contributes 171 resolved mappings and 132 pending observations; Prior 1926 contributes 633 resolved mappings and 47 pending observations; Brauns Bonn 1926 contributes 316 resolved and 37 unresolved mappings. Foote's dealer observations intentionally have no mapping.
 
@@ -325,15 +339,15 @@ Anderson 1913, Kantor 1920, and Astapovich 1938 source images, OCR, source filen
 
 Hamburg 1913 source scans, OCR, transcription files, private notes and evidence, filenames, paths, folios, and media are excluded. It publishes only independently structured facts and public citations, remains blocked/undetermined, and has zero public folios or assets.
 
-Antarctic 1980, Hodge-Smith 1939, Victoria Land 1982, Farrington 1915, and Silberrad 1932 are facts-only, blocked/undetermined releases with no public folios or media. Their source scans or PDFs, OCR/transcriptions, source filenames, private review material, notes, paths, derivatives, raw row text, and working files remain excluded. Antarctic 1980 publishes normalized Appendix 1 specimen facts; Victoria publishes normalized Table A/Table B evidence and deterministic conflict labels in the closed schema-14 shape described above. Farrington 1915 and Silberrad 1932 publish only the closed `regional-event-fact` evidence described above. No raw evidence is copied into the public catalog. Foote 1909 publishes six closed `dealer-offer-fact` observations with type number, source name, description, and citation only; prices, specimens, holdings, masses, MetBull identities, and lineage claims are excluded.
+Antarctic 1980, Hodge-Smith 1939, Victoria Land 1982, Farrington 1915, Silberrad 1932, and Haag 2003 are facts-only, blocked/undetermined releases with no public folios or media. Their source scans or PDFs, OCR/transcriptions, source filenames, private review material, notes, paths, derivatives, raw row text, and working files remain excluded. Antarctic 1980 publishes normalized Appendix 1 specimen facts; Victoria publishes normalized Table A/Table B evidence and deterministic conflict labels in the closed schema-15 shape described above. Farrington 1915 and Silberrad 1932 publish only closed `regional-event-fact` evidence; Haag publishes only closed `caption-observation-fact` evidence. No raw evidence is copied into the public catalog. Foote 1909 publishes six closed `dealer-offer-fact` observations with type number, source name, description, and citation only; prices, specimens, holdings, masses, MetBull identities, and lineage claims are excluded.
 
 The five Fletcher catalogs are facts-only and folio-blocked. Private source UUIDs, source-first ledgers, adjudication reports, receipts, digests, filenames, manifests, renders, OCR batches, source paths, and raw evidence are excluded. The public model retains only independently structured list, pane/case, source-name, event/reference, represented-weight context, section, printed-page citation, confidence, and reviewed MetBull facts.
 
 ## Harmonized Card Projection
 
-The runtime derives 24,994 closed display DTOs without changing parent result counts: 5,824 `direct-specimen`, 8,410 `projected-atomic-specimen`, 6,867 `collection-observation`, 3,447 `collection-representation-observation`, 84 `regional-observation`, 353 `regional-event-observation`, 6 `dealer-observation`, and 3 `source-observation` cards. Every DTO contains exactly `kind`, `identifier`, `semanticLabel`, `sourceName`, `headingName`, `headingLabel`, `headingUrl`, `description`, `facts`, `catalogNotes`, `sourceCitation`, `sourceLabel`, `catalogId`, `catalogPages`, `lineage`, and `comparison`; every fact and catalog-note entry contains exactly `label` and `value`.
+The runtime derives 25,244 closed display DTOs without changing parent result counts: 5,824 `direct-specimen`, 8,410 `projected-atomic-specimen`, 6,867 `collection-observation`, 3,447 `collection-representation-observation`, 250 `caption-observation`, 84 `regional-observation`, 353 `regional-event-observation`, 6 `dealer-observation`, and 3 `source-observation` cards. Every DTO contains exactly `kind`, `identifier`, `semanticLabel`, `sourceName`, `headingName`, `headingLabel`, `headingUrl`, `description`, `facts`, `catalogNotes`, `sourceCitation`, `sourceLabel`, `catalogId`, `catalogPages`, `lineage`, and `comparison`; every fact and catalog-note entry contains exactly `label` and `value`.
 
-Every one of the 24,994 display identifiers starts with the established concise catalog label. Exactly 13,631 typed source identifiers are appended unchanged, such as `Nininger (1933) · 9b`, without changing the stored source value, search index, or sort semantics. Another 5,058 projected cards append an exact `Catalog no.` value; 6,305 cards show the concise catalog shortname alone. Projected cards divide into 241 typed, 5,058 numbered, and 3,111 shortname-only identifiers; direct specimen cards contain 5,786 typed and 38 shortname-only identifiers. The 3,153 internal entry-order values remain available for source ordering but are not presented as source identifiers.
+Every one of the 25,244 display identifiers starts with the established concise catalog label. Existing specimen and projection identifiers remain unchanged. Haag's 250 observations append the explicit source-scoped label `Caption observation <entryOrder>`; this does not create a specimen or inventory identifier.
 
 Mapped specimen DTOs use the Official current MetBull name as `headingName` with the **Current MetBull meteorite name** label and canonical code URL. When the exact source name differs, it becomes the first primary fact and displays as **Source name**. Current event-context facts then follow in classification, place, fall/find, and year order. Source-specific specimen form, individual find location, lineage, comparisons, and specimen weight remain primary facts when applicable. Differing catalog classification, source locality, and event enter `catalogNotes`; the renderer exposes them through initially collapsed **Show catalog notes**, and search continues to index them. The specimen renderer alone substitutes compact visible heading, fact, note, and source labels while retaining every complete DTO label in visually hidden assistive text; unknown labels pass through unchanged. Observation rendering does not use this compactor. Equivalent source context is not duplicated.
 
@@ -343,13 +357,13 @@ Unmapped specimens, observations, and all cards under sidecar failure remain sou
 
 ## Specimen Card Projections
 
-`specimen-card-projections.json` is a schema-6, display-only positive allowlist with `catalogSchemaVersion: 14`, source count 19,991, and exact catalog hash `8458ae9dfee5136014af4e68202880830e17fde92f4ebd664f3a1cdd6092d349`. Each card references an immutable parent observation and exact public source evidence through the closed clause, component, or Bonn projection contract. Optional `sourceCatalogNumber` evidence contains exactly an opaque nonempty source value, same-holding public text path, and valid UTF-16 half-open bounds. The manifest contains 3,407 reviewed parent projections, 8,410 atomic cards, 2,877 derived source-context audit partitions, and 5,058 reviewed numbers across Farrington 1903 and 1916, Reeds 1937, Prior 1923, Tassin 1902, and one Merrill 1916 card. Nininger's 241 projected typed designations are not duplicated. Parent-row values, ambiguous/multiple values, external references, private-only values, and source absences remain unannotated. These six catalogs currently have blocked or undetermined folio policies, so visual source comparison requires the cited source edition rather than an in-app facsimile. Of all cards, 8,375 have ordinary mass paths, 2 Kuleschowka cards use repeated mass, and 35 have no normalized display mass, including 10 qualitative cards. Bonn contributes 348 reviewed cards across 345 parents, including seven qualitative `Spl.` cards; its collection totals remain aggregate context and never become cards or mass paths. Fletcher, Story, Prior represented weights, and regional-event material remain context and do not enter specimen mass filtering or comparisons.
+`specimen-card-projections.json` is a schema-6, display-only positive allowlist with `catalogSchemaVersion: 15`, source count 20,241, and exact catalog hash `3c23d1c2653bc893819a605c7c0e5e6db7b63a17cd3ab66ab104c2772391dbe7`. Each card references an immutable parent observation and exact public source evidence through the closed clause, component, or Bonn projection contract. Optional `sourceCatalogNumber` evidence contains exactly an opaque nonempty source value, same-holding public text path, and valid UTF-16 half-open bounds. The manifest contains 3,407 reviewed parent projections, 8,410 atomic cards, 2,877 derived source-context audit partitions, and 5,058 reviewed numbers across Farrington 1903 and 1916, Reeds 1937, Prior 1923, Tassin 1902, and one Merrill 1916 card. Nininger's 241 projected typed designations are not duplicated. Parent-row values, ambiguous/multiple values, external references, private-only values, and source absences remain unannotated. These six catalogs currently have blocked or undetermined folio policies, so visual source comparison requires the cited source edition rather than an in-app facsimile. Of all cards, 8,375 have ordinary mass paths, 2 Kuleschowka cards use repeated mass, and 35 have no normalized display mass, including 10 qualitative cards. Bonn contributes 348 reviewed cards across 345 parents, including seven qualitative `Spl.` cards; its collection totals remain aggregate context and never become cards or mass paths. Fletcher, Story, Prior represented weights, regional-event material, and Haag captions remain context and do not enter specimen mass filtering or comparisons.
 
 Projection order follows canonical parent and evidence source order. Exact non-null mass paths scope displayed comparisons. Repeated masses contribute to card weight and filtering but never to comparison routing. The complete schema-6 projection-set hash is `9e3452b6ff8cc23000311de4e36f0deae70654392cfb08a19956934ee46b3802`; removing only `sourceCatalogNumber` members reproduces the prior structural hash `c4ac216d619ee08210bb43cb5a284280d807b35694ece4105b9611680478f1e0`. The exact 5,058-row source-number tuple hash is `9b2ae634fba6a301958e409d7714dd2108e9d8d1b219ea63346eec5aad2ad88c`, while the retained Farrington 1903 subset remains `85645d87b5c7a8677996ab4bd36dcc54e3d95ef1bb9fbb544ea6d8aaf26bb5d3`. Hamburg component cards resolve only to `individual-holding` weights; its aggregate and associated components, grouped counts, reported totals, and thin-section representations remain context only. Bonn projections similarly retain collection totals as context, never as a second card or arithmetic mass. Other ranges, totals, grouped counts, casts, aggregates, and unsupported material remain parent-record audit context and are not emitted as specimen cards.
 
 ## Current MetBull Context Sidecar
 
-`metbull-current-context.json` is schema 1 and has SHA-256 `3e7555561eba6653200c0c0f6c5954580139efad59391f6ae323c47d27133824`. It provides current meteorite-event context for the 14,234 specimen cards only: 11,859 mapped cards from 7,736 mapped parents use 2,548 Official codes, while 2,375 cards remain unmapped. The direct partition is 5,653 mapped plus 171 unmapped; the projected partition is 6,206 mapped plus 2,204 unmapped.
+`metbull-current-context.json` is schema 1 and has SHA-256 `18ee18a7396c06d928a30580efc1dfa2c585c0446ae85796b42ce85e44b0ac0e`. It provides current meteorite-event context for the 14,234 specimen cards only: 11,859 mapped cards from 7,736 mapped parents use 2,548 Official codes, while 2,375 cards remain unmapped. The direct partition is 5,653 mapped plus 171 unmapped; the projected partition is 6,206 mapped plus 2,204 unmapped.
 
 `METBULL_PUBLIC_CARD_BINDINGS_SHA256` is `cd49c34ca0539ca94e95d1677c724bf8ebe7ce635c92f080fc8cea0f6eefe48d`. It hashes the ordered public card key, route, parent, projected position, mapping status, code, and canonical-name inputs for all 14,234 cards. Runtime recomputation catches public routing, status, code, or canonical-name drift before context attachment. This public binding differs from sidecar metadata `cardAssignmentsSha256` `131daf40b44e07e71de896ad9d6e375e03931e33af4a2e8e7a152d8ebbff8150`, which is private-generation provenance over assignment tuples that also contain full Official-row hashes. The sidecar publishes the provenance digest value, not the underlying private row hashes or assignment audit.
 
@@ -357,11 +371,11 @@ Each used code contains exactly `name`, `status`, `fall`, `year`, `place`, and `
 
 Source precedence is catalog source facts first, reviewed record-level MetBull code for event identity second, and current sidecar context third. Historical source facts remain immutable and searchable. When mapped current context differs, the exact source name remains directly visible and other source context remains in the collapsed **Show catalog notes** disclosure rather than being deleted; equivalent repetitions may be collapsed. Observations and unmapped specimen cards remain source-only, and a missing or invalid sidecar must produce the same fallback. The private archive retains the acquisition receipt at `data/private/metbull-current-context-2026-09-12/acquisition.json` and the exhaustive every-card audit at `data/private/metbull-current-context-2026-09-12/specimen-card-audit.json`; the audit SHA-256 is `76086f05220cb7224396efaf641c24332fabe76f82f1863fdac18e2d83582ff7`.
 
-The sidecar is intentionally absent from lineage generation inputs. `scripts/metbull-lineage-isolation.test.mjs` runs the lineage build with the accepted sidecar, without a sidecar, and with changed current name/classification/place/year/fall plus forbidden mass/coordinate fields. Every case reproduces lineage SHA-256 `0f99792c052527ed9a00690b989ea9e6980f12701d07b75c70e54f55874dcc04` and identical relationship IDs, source-group IDs, comparison-group and candidate IDs, evidence strengths, group cardinalities, and counts.
+The sidecar is intentionally absent from lineage generation inputs. `scripts/metbull-lineage-isolation.test.mjs` runs the lineage build with the accepted sidecar, without a sidecar, and with changed current name/classification/place/year/fall plus forbidden mass/coordinate fields. Every case reproduces lineage SHA-256 `834b766339614485513d50e5efdcfac0c66b3a9871de73b8533f1978f459fbd2` and identical relationship IDs, source-group IDs, comparison-group and candidate IDs, evidence strengths, group cardinalities, and counts.
 
 ## Specimen Lineages
 
-`specimen-lineages.json` is a generated public schema-version-4 lineage and comparison layer with SHA-256 `0f99792c052527ed9a00690b989ea9e6980f12701d07b75c70e54f55874dcc04`. Root-level `relationships` contain only binary `same-inventory` lineage; `sourceAttestedGroups` retain n-ary source claims; and `comparisonGroups` isolate cross-catalog candidates that are not lineage. `specimen-lineages.schema.json` is its machine-readable JSON Schema 2020-12 contract, while the dependency-free custom validator is authoritative for exact keys, cross-field coherence, source derivation, namespace separation, ambiguity handling, source-claims digest binding, and canonical ordering. Every displayed observation is derived from `catalog.json`; source designations, names, masses, and other source facts remain unchanged.
+`specimen-lineages.json` is a generated public schema-version-4 lineage and comparison layer with SHA-256 `834b766339614485513d50e5efdcfac0c66b3a9871de73b8533f1978f459fbd2`. Root-level `relationships` contain only binary `same-inventory` lineage; `sourceAttestedGroups` retain n-ary source claims; and `comparisonGroups` isolate cross-catalog candidates that are not lineage. `specimen-lineages.schema.json` is its machine-readable JSON Schema 2020-12 contract, while the dependency-free custom validator is authoritative for exact keys, cross-field coherence, source derivation, namespace separation, ambiguity handling, source-claims digest binding, and canonical ordering. Every displayed observation is derived from `catalog.json`; source designations, names, masses, and other source facts remain unchanged.
 
 The collection-series registry defines three ordered series: Antarctic Marvin-Mason (`antarctic-1980`, `victoria-land-1982`), Huss (`huss-1976`, `huss-1986`), and Nininger (`nininger-1933`, `nininger-1950`). Registry membership is separate from source observations, so future edition series can be added without rewriting historical catalog records. Within consecutive catalogs of one series, `same-inventory` continuity requires equal canonical inventory IDs. Canonicalization applies NFKC, lowercases, removes all whitespace, and, for Huss only, removes one leading `(2)` edition marker. Printed designations remain exact in `catalog.json` and relationship observations. Inventory continuity does not require matching or available mass.
 
@@ -425,6 +439,7 @@ The deployment-specific `scripts/folio-release-lock.json` pins every catalog pol
 | `foote-1912` | blocked | undetermined | 0 |
 | `greifswald-1895` | blocked | undetermined | 0 |
 | `greifswald-1901` | blocked | undetermined | 0 |
+| `haag-2003` | blocked | undetermined | 0 |
 | `haidinger-1859` | display | public-domain | 6 |
 | `hamburg-1913` | blocked | undetermined | 0 |
 | `hodge-smith-1939` | blocked | undetermined | 0 |

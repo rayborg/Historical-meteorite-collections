@@ -52,6 +52,7 @@ const SEMANTIC_LABELS = {
   "regional-event-observation": "Regional event observation; not a specimen, holding, or inventory identity.",
   "dealer-observation": "Dealer catalog observation, not a specimen or holding",
   "collection-representation-observation": "Collection representation observation; not a specimen, holding, or inventory identity.",
+  "caption-observation": "Catalog caption observation; not asserted as a specimen, holding, inventory identity, current fact, custody, or ownership.",
 };
 
 function sha256(value) {
@@ -88,6 +89,7 @@ function expectedSourceIdentifier(descriptor, kind) {
   if (record.recordModel === "collection-representation-fact") {
     return record.reportedNumber ? `List no. ${record.reportedNumber}` : null;
   }
+  if (record.recordModel === "caption-observation-fact") return `Caption observation ${record.entryOrder}`;
   if (["table-a-specimen", "appendix-specimen"].includes(record.recordModel)) return record.specimenId || null;
   if (record.recordModel === "dealer-offer-fact") return `Type number ${record.typeNumber}`;
   return record.designation || null;
@@ -127,7 +129,7 @@ function expectedFacts(descriptor) {
     add("Current MetBull place", descriptor.currentMetbull.place);
     add("Current MetBull fall/find", app.metbullFallDisplay(descriptor.currentMetbull.fall));
     add("Current MetBull year", descriptor.currentMetbull.year);
-  } else {
+  } else if (record.recordModel !== "caption-observation-fact") {
     add("Catalog classification", record.classification);
   }
   if (specimen && (kind === "projected-atomic-specimen" || ["table-a-specimen", "appendix-specimen"].includes(record.recordModel))) entries.push({
@@ -152,6 +154,15 @@ function expectedFacts(descriptor) {
     add("Jurisdiction", record.jurisdiction);
     add("Event statement", record.eventText);
     record.reportedMaterial.forEach(({ statement }) => add("Reported material context", statement));
+  }
+  if (record.recordModel === "caption-observation-fact") {
+    if (record.captionTitle !== (record.name || record.captionTitle)) add("Caption title", record.captionTitle);
+    add("Source classification", record.classification);
+    add("Source-reported caption mass", record.reportedMass?.valueText);
+    add("Source-reported dimensions", record.reportedDimensions?.valueText);
+    add("Associated photo panels", `${record.photoPanelCount} ${record.photoPanelCount === 1 ? "panel" : "panels"}`);
+    if (record.sourceRelation) add("Repeated-view context",
+      `Repeated view of earlier public catalog record ${record.sourceRelation.recordId}`);
   }
   if (specimen) {
     const claims = app.lineageEntriesForSpecimenCard(descriptor, lineageIndex.get(record.id) || []);
@@ -198,11 +209,12 @@ test("every production display descriptor has the closed harmonized DTO and exac
     "regional-event-observation": 353,
     "dealer-observation": 6,
     "collection-representation-observation": 3447,
+    "caption-observation": 250,
   });
-  assert.equal(descriptors.length, 24994);
+  assert.equal(descriptors.length, 25244);
 });
 
-test("all eight populated-name branches use concise kind-specific labels", () => {
+test("all nine populated-name branches use concise kind-specific labels", () => {
   assert.deepEqual(Object.fromEntries(Object.keys(SEMANTIC_LABELS).map((kind) => [kind, app.harmonizedCardNameLabel(kind)])), {
     "direct-specimen": "Meteorite name",
     "projected-atomic-specimen": "Meteorite name",
@@ -212,6 +224,7 @@ test("all eight populated-name branches use concise kind-specific labels", () =>
     "regional-event-observation": "Meteorite or event name",
     "dealer-observation": "Catalog name",
     "collection-representation-observation": "Meteorite or locality name",
+    "caption-observation": "Source name",
   });
   assert.equal(app.harmonizedCardNameLabel("not-a-card-kind"), null);
   assert(descriptors.every((descriptor) => {
@@ -220,7 +233,7 @@ test("all eight populated-name branches use concise kind-specific labels", () =>
   }));
   assert.doesNotMatch(appSource,
     /Source catalog (?:meteorite name|meteorite or locality name|name)/u);
-  assert.match(appSource, /label: hasSourceIdentifier \? "Source catalog identifier" : "Source catalog record"/u);
+  assert.match(appSource, /kind === HARMONIZED_CARD_KINDS\.caption \? "Source catalog record"/u);
 });
 
 test("null source names distinguish genuine identifiers from bare catalog shortnames", () => {
@@ -234,12 +247,12 @@ test("null source names distinguish genuine identifiers from bare catalog shortn
     const sourceCatalogNumber = app.resolveSpecimenCardSourceCatalogNumber(descriptor.parentRecord, descriptor);
     assert.deepEqual(Object.keys(heading), ["label", "value"]);
     assert.equal(heading.value, dto.identifier);
-    assert.equal(heading.label, typedIdentifier || sourceCatalogNumber
-      ? "Source catalog identifier" : "Source catalog record");
+    assert.equal(heading.label, kind === "caption-observation" || (!typedIdentifier && !sourceCatalogNumber)
+      ? "Source catalog record" : "Source catalog identifier");
     counts[heading.label] += 1;
   }
-  assert.equal(nullNameCards.length, 70);
-  assert.deepEqual(counts, { "Source catalog identifier": 62, "Source catalog record": 8 });
+  assert.equal(nullNameCards.length, 82);
+  assert.deepEqual(counts, { "Source catalog identifier": 62, "Source catalog record": 20 });
 
   const bare = nullNameCards.find((descriptor) => {
     const kind = app.classifyHarmonizedCard(descriptor);
@@ -405,7 +418,7 @@ test("every production card uses the approved known-fact order and omits unavail
     }
   }
   assert.deepEqual(census, {
-    specimens: 14234, mapped: 11859, unmapped: 2375, factRows: 115160, noteCards: 11638, noteRows: 27668,
+    specimens: 14234, mapped: 11859, unmapped: 2375, factRows: 115892, noteCards: 11638, noteRows: 27668,
   });
   assert.deepEqual(noteLabels, {
     "Catalog classification": 11352,
@@ -468,12 +481,12 @@ test("all reviewed projected source catalog numbers render exact representative 
   assert.equal(present(shortnameOnly).identifier, "Hovey (1896)");
 
   const typed = descriptors.filter((descriptor) => expectedSourceIdentifier(descriptor, app.classifyHarmonizedCard(descriptor)));
-  assert.equal(typed.length, 13631);
+  assert.equal(typed.length, 13881);
   assert(typed.every((descriptor) => present(descriptor).identifier.includes(
     ` · ${expectedSourceIdentifier(descriptor, app.classifyHarmonizedCard(descriptor))}`)));
 });
 
-test("all eight card kinds use only shortname, typed-identifier, or reviewed-number identifier branches", () => {
+test("all nine card kinds use only shortname, typed-identifier, or reviewed-number identifier branches", () => {
   const census = {};
   for (const descriptor of descriptors) {
     const kind = app.classifyHarmonizedCard(descriptor);
@@ -495,6 +508,7 @@ test("all eight card kinds use only shortname, typed-identifier, or reviewed-num
     "regional-observation": { shortname: 7, typed: 77, number: 0 },
     "dealer-observation": { shortname: 0, typed: 6, number: 0 },
     "collection-representation-observation": { shortname: 680, typed: 2767, number: 0 },
+    "caption-observation": { shortname: 0, typed: 250, number: 0 },
   });
 });
 
@@ -659,7 +673,8 @@ test("closed source and catalog-specific card facts remain searchable", () => {
     "Current MetBull classification", "Current MetBull place", "Current MetBull fall/find", "Current MetBull year",
     ...STANDARD_SPECIMEN_LABELS, ...STANDARD_OBSERVATION_LABELS, ...FLETCHER_OBSERVATION_LABELS, ...FLETCHER_LABELS,
     "Locality code", "Area reference coordinate", "Olivine Fa", "Pyroxene Fs", "Weathering", "Source section",
-    "Jurisdiction", "Event statement", "Reported material context"
+    "Jurisdiction", "Event statement", "Reported material context", "Caption title", "Source classification",
+    "Source-reported caption mass", "Source-reported dimensions", "Associated photo panels", "Repeated-view context"
   ]);
   for (const descriptor of descriptors) {
     assert(present(descriptor).facts.every(({ label }) => allowed.has(label) ||
@@ -713,8 +728,8 @@ test("projection changes display-card multiplicity without changing parent resul
     query: "", catalog: null, min: null, max: null,
     lineageOnly: false, includeUnknownWeight: true, sort: app.DEFAULT_SORT
   };
-  assert.equal(app.filterRecords(records, filters, lineageIndex).length, 19991);
-  assert.equal(new Set(descriptors.map(({ parentRecord }) => parentRecord.id)).size, 19991);
+  assert.equal(app.filterRecords(records, filters, lineageIndex).length, 20241);
+  assert.equal(new Set(descriptors.map(({ parentRecord }) => parentRecord.id)).size, 20241);
   for (const descriptor of catalog.metadata.catalogs) {
     const parents = app.filterRecords(records, { ...filters, catalog: descriptor.id }, lineageIndex);
     assert.equal(parents.length, descriptor.recordCount, descriptor.id);
@@ -736,7 +751,7 @@ test("default strict filter retains only the 14,062 source-listed-weight specime
   const unknownSpecimens = inclusive.filter((descriptor) =>
     ["direct-specimen", "projected-atomic-specimen"].includes(app.classifyHarmonizedCard(descriptor)) &&
     !app.specimenCardDescriptorHasKnownWeight(descriptor));
-  assert.equal(inclusive.length, 24994);
+  assert.equal(inclusive.length, 25244);
   assert.equal(weightedOnly.length, 14062);
   assert.equal(defaultFiltered.length, 14062);
   assert.deepEqual(defaultFiltered, weightedOnly);
@@ -899,22 +914,22 @@ test("accessible shell, responsive breakpoints, approved cache, and immutable da
   assert.match(styles, /\.record-meta dt \{[^}]*font-size: \.6rem;/u);
   assert.match(styles, /\.record-meta dd \{[^}]*font-size: \.8rem;/u);
   assert.doesNotMatch(styles, /\.record-meta dt \{[^}]*overflow-wrap: anywhere;/u);
-  assert.equal(app.CACHE_VERSION, "20260919-specimen-card-labels-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260919-specimen-card-labels-1");
+  assert.equal(app.CACHE_VERSION, "20260920-haag-2003-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260920-haag-2003-1");
   for (const document of [html, catalogsHtml]) {
-    assert.match(document, /styles\.css\?v=20260919-specimen-card-labels-1/u);
-    assert.match(document, /app\.js\?v=20260919-specimen-card-labels-1/u);
+    assert.match(document, /styles\.css\?v=20260920-haag-2003-1/u);
+    assert.match(document, /app\.js\?v=20260920-haag-2003-1/u);
   }
-  assert.match(catalogsHtml, /catalogs\.js\?v=20260919-specimen-card-labels-1/u);
+  assert.match(catalogsHtml, /catalogs\.js\?v=20260920-haag-2003-1/u);
   assert.deepEqual({
     catalog: sha256(catalogText),
     projections: sha256(projectionText),
     lineages: sha256(lineageText),
     reviews: sha256(reviewText),
   }, {
-    catalog: "8458ae9dfee5136014af4e68202880830e17fde92f4ebd664f3a1cdd6092d349",
-    projections: "707666e22b647bcbbdbf6088cb1ff8964aa9beb813fe4bc805ac7b1b841155d5",
-    lineages: "0f99792c052527ed9a00690b989ea9e6980f12701d07b75c70e54f55874dcc04",
+    catalog: "3c23d1c2653bc893819a605c7c0e5e6db7b63a17cd3ab66ab104c2772391dbe7",
+    projections: "de553de6c7be4fa1d57e5efc50cc843a6f1e03e364e8ea8115d71506aa6ed16e",
+    lineages: "834b766339614485513d50e5efdcfac0c66b3a9871de73b8533f1978f459fbd2",
     reviews: "32580c887d4e26a7c22950c95e2b8629de12a60c3f307708c1ea76e33fb31938",
   });
 });
