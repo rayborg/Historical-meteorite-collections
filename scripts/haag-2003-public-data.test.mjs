@@ -6,21 +6,37 @@ import { promisify } from "node:util";
 import test from "node:test";
 
 const execFileAsync = promisify(execFile);
-const [acceptedText, ledgerText, catalogText, foliosText, releaseLockText] = await Promise.all([
-  readFile(new URL("../data/private/haag-2003/accepted-records.json", import.meta.url), "utf8"),
-  readFile(new URL("../data/private/haag-2003/observation-id-ledger.json", import.meta.url), "utf8"),
+const acceptedUrl = new URL("../data/private/haag-2003/accepted-records.json", import.meta.url);
+const ledgerUrl = new URL("../data/private/haag-2003/observation-id-ledger.json", import.meta.url);
+
+async function readOptionalPrivateFile(url) {
+  try {
+    return await readFile(url, "utf8");
+  } catch (error) {
+    if (error.code === "ENOENT") return null;
+    throw error;
+  }
+}
+
+const [catalogText, foliosText, releaseLockText, acceptedText, ledgerText] = await Promise.all([
   readFile(new URL("../data/catalog.json", import.meta.url), "utf8"),
   readFile(new URL("../data/folios.json", import.meta.url), "utf8"),
   readFile(new URL("./folio-release-lock.json", import.meta.url), "utf8"),
+  readOptionalPrivateFile(acceptedUrl),
+  readOptionalPrivateFile(ledgerUrl),
 ]);
-const accepted = JSON.parse(acceptedText);
-const ledger = JSON.parse(ledgerText);
+assert.equal(acceptedText === null, ledgerText === null,
+  "private Haag inputs must either both be present or both be absent");
+const hasPrivateInputs = acceptedText !== null;
+const accepted = hasPrivateInputs ? JSON.parse(acceptedText) : null;
+const ledger = hasPrivateInputs ? JSON.parse(ledgerText) : null;
 const catalog = JSON.parse(catalogText);
 const folios = JSON.parse(foliosText);
 const releaseLock = JSON.parse(releaseLockText);
 const records = catalog.records.filter(({ catalogId }) => catalogId === "haag-2003");
 const descriptor = catalog.metadata.catalogs.find(({ id }) => id === "haag-2003");
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
+const privateTest = { skip: hasPrivateInputs ? false : "private Haag source inputs are unavailable" };
 const publicKeys = [
   "id", "catalogId", "entryOrder", "captionTitle", "name", "classification", "reportedMass",
   "reportedDimensions", "photoPanelCount", "sourceRelation", "catalogPages", "printedPageLabel", "confidence",
@@ -56,22 +72,31 @@ function assertRecoveredPrefix(candidate) {
   );
 }
 
-test("locks the accepted package, immutable UUID ledger, and emitted slice", () => {
-  assert.equal(sha256(acceptedText), "c0b800dc176d61a0d1384cf4198d3ed0a0392ae0f344ebf967fbd0623296f039");
-  assert.equal(sha256(ledgerText), "18b25d7c40bc6f4dbcd4c91ac7910602c45153abfc36c1c64704305b924e7639");
+test("locks all public Haag observations and recovered historical identities", () => {
   assert.equal(sha256(JSON.stringify(records)), "9b67eb8920ba5617e4193b32baec09a0cbfaa36fb53ec1197112632d8211b846");
   assert.equal(records.length, 250);
-  assert.deepEqual(Object.keys(ledger.records), accepted.records.map(({ boundaryId }) => boundaryId));
-  assert.deepEqual(records.map(({ id }) => id), Object.values(ledger.records));
+  assert.equal(sha256(JSON.stringify(records.map(({ id }) => id))),
+    "05db17faf592e1f76c9f3ac10b58ccbaeea4b768b1036741802070dc561b3370");
   assert.equal(new Set(records.map(({ id }) => id)).size, 250);
   assert(records.every(({ id }) => /^obs-[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/u.test(id)));
+  assert.deepEqual(
+    records.slice(0, recoveredMappings.length).map(({ entryOrder, id }) => ({ entryOrder, id })),
+    recoveredMappings.map(({ sourceOrder: entryOrder, observationId: id }) => ({ entryOrder, id })),
+  );
+});
+
+test("locks private accepted source and immutable ledger when available", privateTest, () => {
+  assert.equal(sha256(acceptedText), "c0b800dc176d61a0d1384cf4198d3ed0a0392ae0f344ebf967fbd0623296f039");
+  assert.equal(sha256(ledgerText), "18b25d7c40bc6f4dbcd4c91ac7910602c45153abfc36c1c64704305b924e7639");
+  assert.deepEqual(Object.keys(ledger.records), accepted.records.map(({ boundaryId }) => boundaryId));
+  assert.deepEqual(records.map(({ id }) => id), Object.values(ledger.records));
   assert.equal(
     sha256(JSON.stringify(Object.entries(ledger.records).slice(recoveredMappings.length))),
     "c6d606552831853dedb5a323d19f3a8cf25941b0cfda7dfde3171ef909b22056",
   );
 });
 
-test("preserves all 14 recovered historical identities and rejects their reassignment", () => {
+test("private ledger rejects changing or coordinating recovered UUID assignments", privateTest, () => {
   assertRecoveredPrefix(ledger);
   for (let index = 0; index < recoveredMappings.length; index += 1) {
     const boundaryId = recoveredMappings[index].boundaryId;
@@ -86,7 +111,34 @@ test("preserves all 14 recovered historical identities and rejects their reassig
   }
 });
 
-test("publishes one facts-only observation for each accepted caption in source order", () => {
+test("publishes a closed facts-only slice with locked pages and confidence", () => {
+  for (const [index, record] of records.entries()) {
+    assert.deepEqual(Object.keys(record), publicKeys);
+    assert.equal(record.entryOrder, index + 1);
+    assert.equal(record.catalogId, "haag-2003");
+    for (const value of [record.captionTitle, record.name, record.classification, record.printedPageLabel]) {
+      assert(value === null || typeof value === "string");
+    }
+    for (const value of [record.reportedMass, record.reportedDimensions]) {
+      if (value === null) continue;
+      assert.deepEqual(Object.keys(value), ["valueText", "semantics"]);
+      assert.equal(typeof value.valueText, "string");
+      assert.equal(value.semantics, "caption-context-only");
+    }
+    assert(Number.isInteger(record.photoPanelCount) && record.photoPanelCount >= 0);
+    assert(record.catalogPages.length > 0);
+    assert(record.catalogPages.every((page) => Number.isInteger(page) && page >= 1 && page <= 146));
+  }
+
+  assert.equal(new Set(records.flatMap(({ catalogPages }) => catalogPages)).size, 134);
+  assert.deepEqual(
+    records.reduce((counts, { confidence }) => ({ ...counts, [confidence]: counts[confidence] + 1 }),
+      { high: 0, medium: 0, low: 0 }),
+    { high: 247, medium: 0, low: 3 },
+  );
+});
+
+test("matches every public fact to the private accepted source when available", privateTest, () => {
   for (const [index, source] of accepted.records.entries()) {
     const record = records[index];
     assert.deepEqual(Object.keys(record), publicKeys);
@@ -107,27 +159,26 @@ test("publishes one facts-only observation for each accepted caption in source o
       });
     }
   }
-
-  assert.equal(new Set(records.flatMap(({ catalogPages }) => catalogPages)).size, 134);
-  assert.deepEqual(
-    records.reduce((counts, { confidence }) => ({ ...counts, [confidence]: counts[confidence] + 1 }),
-      { high: 0, medium: 0, low: 0 }),
-    { high: 247, medium: 0, low: 3 },
-  );
 });
 
-test("resolves exactly 18 repeated views to earlier public observations", () => {
+test("locks 18 public repeated-view relations to earlier observations", () => {
   const indexById = new Map(records.map(({ id }, index) => [id, index]));
   const relations = records.filter(({ sourceRelation }) => sourceRelation !== null);
   assert.equal(relations.length, 18);
   for (const [index, record] of records.entries()) {
-    const sourceTarget = accepted.records[index].repeatedViewOf;
-    if (sourceTarget === null) {
-      assert.equal(record.sourceRelation, null);
-      continue;
-    }
-    assert.deepEqual(record.sourceRelation, { type: "repeated-view", recordId: ledger.records[sourceTarget] });
+    if (record.sourceRelation === null) continue;
+    assert.deepEqual(Object.keys(record.sourceRelation), ["type", "recordId"]);
+    assert.equal(record.sourceRelation.type, "repeated-view");
     assert(indexById.get(record.sourceRelation.recordId) < index);
+  }
+});
+
+test("matches public repeated views to private source relations when available", privateTest, () => {
+  for (const [index, record] of records.entries()) {
+    const sourceTarget = accepted.records[index].repeatedViewOf;
+    assert.deepEqual(record.sourceRelation, sourceTarget === null
+      ? null
+      : { type: "repeated-view", recordId: ledger.records[sourceTarget] });
   }
 });
 
@@ -164,7 +215,7 @@ test("excludes prose, provenance, normalized specimen claims, and private artifa
   assert.doesNotMatch(rendered, /(?:\/private\/|\/Users\/|file:\/\/|assets\/|\.(?:pdf|png|webp|tiff?|txt|csv))/iu);
 });
 
-test("the builder confirms byte-deterministic checked-in output", async () => {
+test("the private-input builder confirms byte-deterministic output when available", privateTest, async () => {
   const { stdout } = await execFileAsync(process.execPath, [
     new URL("./build-haag-2003-public.mjs", import.meta.url).pathname,
     "--check",
