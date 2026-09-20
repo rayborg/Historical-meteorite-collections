@@ -486,9 +486,9 @@ test("accessible static contracts, warning language, and cache keys are synchron
   assert.doesNotMatch(source, /Suspected cross-catalog|POSSIBLE_MATCH_CAUTION/u);
   assert.match(css, /\.comparison-warning/u);
   assert.match(css, /\.comparison-candidates/u);
-  assert.equal(app.CACHE_VERSION, "20260913-four-card-grid-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260913-four-card-grid-1");
-  assert.match(html, /styles\.css\?v=20260913-four-card-grid-1/u);
-  assert.match(html, /app\.js\?v=20260913-four-card-grid-1/u);
+  assert.equal(app.CACHE_VERSION, "20260919-specimen-card-labels-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260919-specimen-card-labels-1");
+  assert.match(html, /styles\.css\?v=20260919-specimen-card-labels-1/u);
+  assert.match(html, /app\.js\?v=20260919-specimen-card-labels-1/u);
   assert.doesNotMatch(source, /\.innerHTML\b/u);
 });

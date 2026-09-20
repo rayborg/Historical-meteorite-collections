@@ -102,7 +102,8 @@ test("synthetic current context supplies official headings without replacing app
     assert.equal(fact(dto, "Olivine Fa"), record.olivineFa ?? undefined, record.id);
     assert.equal(fact(dto, "Pyroxene Fs"), record.pyroxeneFs ?? undefined, record.id);
     assert.equal(fact(dto, "Weathering"), record.weathering ?? undefined, record.id);
-    assert(dto.catalogNotes.some(({ label, value }) => label === "Catalog meteorite name" && value === record.name), record.id);
+    assert.equal(fact(dto, "Catalog meteorite name"), record.name, record.id);
+    assert.equal(dto.catalogNotes.some(({ label }) => label === "Catalog meteorite name"), false, record.id);
   }
 });
 

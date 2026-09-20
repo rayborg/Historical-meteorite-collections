@@ -1047,8 +1047,8 @@ test("URL filters default to strict specimens and canonicalize the explicit incl
     unit: "observations",
     status: "Showing 60 of 23,217 display cards from 18,217 matching source observations."
   });
-  assert.equal(app.CACHE_VERSION, "20260913-four-card-grid-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260913-four-card-grid-1");
+  assert.equal(app.CACHE_VERSION, "20260919-specimen-card-labels-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260919-specimen-card-labels-1");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.ASSET_CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.ASSET_CACHE_VERSION}`));
 });
@@ -1137,6 +1137,7 @@ test("HTML and runtime expose the accessible harmonized card contract", () => {
 });
 
 test("default cross-catalog order is alphabetical by source name", () => {
+  const html = readFileSync(join(__dirname, "..", "index.html"), "utf8");
   const records = prepareSpecimens([
     specimenSource({ id: "punctuated-designation", designation: "(2)H9.83", name: "Dimitt (a)" }),
     specimenSource({ id: "alphabetical-name", designation: "H1", name: "Aachener Masse" })
@@ -1145,6 +1146,8 @@ test("default cross-catalog order is alphabetical by source name", () => {
   assert.deepEqual(ids(app.filterRecords(records, filters({ sort: app.DEFAULT_SORT }))), [
     "alphabetical-name", "punctuated-designation"
   ]);
+  assert.match(html, /<option value="name-asc">Source name, A-Z<\/option>/u);
+  assert.match(html, /<option value="name-desc">Source name, Z-A<\/option>/u);
 });
 
 test("result grid layout isolates card heights and widens exactly one result", () => {

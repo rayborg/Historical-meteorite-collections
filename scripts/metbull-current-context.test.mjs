@@ -108,7 +108,7 @@ test("schema and runtime contracts are closed against extras, unsafe text, stale
 
 test("loader applies all current context or returns one complete source-only fallback", async () => {
   const valid = await app.loadMetbullCurrentContext(rawDescriptors, async (url, options) => {
-    assert.equal(url, "./data/metbull-current-context.json?v=20260913-four-card-grid-1");
+    assert.equal(url, "./data/metbull-current-context.json?v=20260919-specimen-card-labels-1");
     assert.deepEqual(options, { cache: "no-cache" });
     return response();
   }, { sha256: async (text) => sha256(text), catalogSha256: app.CATALOG_SHA256,
@@ -130,7 +130,7 @@ test("loader applies all current context or returns one complete source-only fal
   }
 });
 
-test("presenter applies official headings and exact ordered catalog notes only to matched specimens", () => {
+test("presenter applies official headings, visible source names, and exact ordered catalog notes only to matched specimens", () => {
   const presentation = specimenDescriptors.map((descriptor) => {
     const dto = app.presentHarmonizedCard(descriptor, {
       lineageEntries: lineageIndex.get(descriptor.parentRecord.id) || [],
@@ -142,11 +142,11 @@ test("presenter applies official headings and exact ordered catalog notes only t
   assert.equal(specimenDescriptors.filter(({ currentMetbull }) => currentMetbull).length, 11859);
   assert.equal(specimenDescriptors.filter(({ currentMetbull }) => !currentMetbull).length, 2375);
   assert.equal(specimenDescriptors.filter(({ currentMetbull }) => currentMetbull?.year).length, 11850);
-  assert.equal(presentation.reduce((count, entry) => count + entry[4].length, 0), 79715);
-  assert.equal(notes.length, 11798);
-  assert.equal(notes.reduce((count, entry) => count + entry[1].length, 0), 29984);
-  assert.equal(jsonSha256(presentation), "85e57daf678517ca601d5de08107e80cd56e026b00af0070ad80fa60861be565");
-  assert.equal(jsonSha256(notes), "69aeac90864fac796b1994e514e7cf4883d2ee9f519355e45681918a851b3a62");
+  assert.equal(presentation.reduce((count, entry) => count + entry[4].length, 0), 82031);
+  assert.equal(notes.length, 11638);
+  assert.equal(notes.reduce((count, entry) => count + entry[1].length, 0), 27668);
+  assert.equal(jsonSha256(presentation), "d3b61c0ea0dfdd3d0f20beaf7d438bc86a4d9fd9615df0602d497e5373f8a280");
+  assert.equal(jsonSha256(notes), "bfa71035dea98b1b395dbcbaf66d6162a6bafaf8de56ed9cb5b5b751b7e7dd24");
 
   const allende = specimenDescriptors.find(({ parentRecord }) => parentRecord.designation === "H103.11");
   const dto = app.presentHarmonizedCard(allende);
@@ -163,18 +163,51 @@ test("presenter applies official headings and exact ordered catalog notes only t
   assert.equal(sha256(catalogText), "8458ae9dfee5136014af4e68202880830e17fde92f4ebd664f3a1cdd6092d349");
 });
 
-test("fall/find codes are never inferred and current fields contain no mass or coordinate claims", () => {
+test("fall/find codes use documented MetBull categories and current fields contain no mass or coordinate claims", () => {
+  const labels = {
+    "": "Find",
+    Y: "Fall",
+    Yc: "Confirmed fall (Yc)",
+    Yp: "Probable fall (Yp)",
+    Np: "Find, possible fall (Np)",
+  };
+  assert.deepEqual(Object.fromEntries(Object.keys(labels).map((code) => [code, app.metbullFallDisplay(code)])), labels);
+  assert.equal(app.metbullFallDisplay("Nd"), null);
+  assert.equal(app.metbullFallDisplay("unknown"), null);
   const codeCounts = {};
   for (const descriptor of specimenDescriptors.filter(({ currentMetbull }) => currentMetbull)) {
     const { currentMetbull } = descriptor;
     codeCounts[currentMetbull.fall] = (codeCounts[currentMetbull.fall] || 0) + 1;
     const dto = app.presentHarmonizedCard(descriptor);
     assert.equal(dto.facts.find(({ label }) => label === "Current MetBull fall/find").value,
-      currentMetbull.fall === "Y" ? "Fall" : currentMetbull.fall === "" ? "Find" : `Code ${currentMetbull.fall}`);
+      labels[currentMetbull.fall]);
     assert.equal(dto.facts.some(({ label }) => /^Current MetBull (?:mass|latitude|longitude|coordinates?)$/iu.test(label)), false);
   }
   assert.deepEqual(codeCounts, { Y: 5050, "": 6761, Yp: 9, Yc: 37, Np: 2 });
   assert.deepEqual(Object.keys(sidecar.meteorites["5"]), ["name", "status", "fall", "year", "place", "classification"]);
+});
+
+test("reported synonym cards retain exact source names beside reviewed Official headings", () => {
+  const cases = [
+    ["obs-bc3edcf5-25d8-4921-8ace-ceedd6882e3b", 1, "Aba Panu", "Aba Panu", "67799", "Confirmed fall (Yc)"],
+    ["obs-9371315d-81bd-4b7e-afba-1396df86df34", 1, "Addison", "Addison", "83275", "Confirmed fall (Yc)"],
+    ["obs-47bef700-eb27-4908-b683-91a388b33f0b", 2, "Adargas", "Chupaderos", "5363", "Find"],
+    ["obs-232aa803-5538-4d5c-8a6b-de9014ae4ddb", 1, "Agram", "Hraschina", "11916", "Fall"],
+  ];
+  for (const [recordId, count, sourceName, officialName, meteoriteCode, fallDisplay] of cases) {
+    const cards = specimenDescriptors.filter(({ parentRecord }) => parentRecord.id === recordId);
+    assert.equal(cards.length, count, recordId);
+    for (const descriptor of cards) {
+      const dto = app.presentHarmonizedCard(descriptor);
+      assert.equal(dto.sourceName, sourceName, recordId);
+      assert.equal(dto.headingName, officialName, recordId);
+      assert.equal(descriptor.currentMetbull.meteoriteCode, meteoriteCode, recordId);
+      assert.equal(dto.facts.find(({ label }) => label === "Current MetBull fall/find").value, fallDisplay, recordId);
+      assert.equal(dto.facts.find(({ label }) => label === "Catalog meteorite name")?.value,
+        sourceName !== officialName ? sourceName : undefined, recordId);
+      assert.equal(dto.catalogNotes.some(({ label }) => label === "Catalog meteorite name"), false, recordId);
+    }
+  }
 });
 
 test("current and historical terms search together only after valid attachment", () => {
@@ -212,7 +245,7 @@ test("every catalog-note value is searchable without weakening numeric holding-c
       if (["1834 Gefallen", "1876 1896 beschr"].includes(value)) reportedValues.add(value);
     }
   }
-  assert.equal(noteCount, 29984);
+  assert.equal(noteCount, 27668);
   assert.deepEqual([...reportedValues].sort(), ["1834 Gefallen", "1876 1896 beschr"]);
   const fallback = structuredClone(specimenDescriptors.find(({ parentRecord }) =>
     parentRecord.id === "obs-5dea7247-414e-425e-9484-02988fe91a18"));
