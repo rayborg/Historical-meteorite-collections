@@ -197,10 +197,10 @@ test("schema 14 card semantics, cache keys, responsive layout, and privacy bound
   assert.match(styles, /\.record-meta div \{[^}]*grid-template-columns: minmax\(7\.25rem, 9rem\) minmax\(0, 1fr\);/u);
   assert.match(styles, /@media \(max-width: 520px\)[\s\S]*\.record-meta div \{ grid-template-columns: minmax\(0, 1fr\);/u);
   assert.match(styles, /\.record-meta dt \{[^}]*overflow-wrap: normal;/u);
-  assert.equal(app.CACHE_VERSION, "20260913-four-card-grid-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260913-four-card-grid-1");
-  assert.match(html, /styles\.css\?v=20260913-four-card-grid-1/u);
-  assert.match(html, /app\.js\?v=20260913-four-card-grid-1/u);
+  assert.equal(app.CACHE_VERSION, "20260919-specimen-card-labels-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260919-specimen-card-labels-1");
+  assert.match(html, /styles\.css\?v=20260919-specimen-card-labels-1/u);
+  assert.match(html, /app\.js\?v=20260919-specimen-card-labels-1/u);
   const newSourceRecords = catalog.records.filter(({ catalogId }) =>
     ["antarctic-1980", "hodge-smith-1939", "victoria-land-1982", "farrington-north-america-1915", "silberrad-1932"].includes(catalogId));
   assert.doesNotMatch(JSON.stringify(newSourceRecords), /(?:raw[ _-]*ocr|\/private\/|\/Users\/|source[ _-]*image|scan[ _-]*(?:file|path)|research[ _-]*notes?)/iu);

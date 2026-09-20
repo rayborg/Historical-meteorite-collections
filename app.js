@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260913-four-card-grid-1";
+const CACHE_VERSION = "20260919-specimen-card-labels-1";
 const ASSET_CACHE_VERSION = CACHE_VERSION;
 const CATALOG_SCHEMA_VERSION = 14;
 const CATALOG_RECORD_COUNT = 19991;
@@ -317,7 +317,14 @@ const METBULL_CURRENT_CONTEXT_METADATA_FIELDS = new Set([
 const METBULL_CURRENT_CONTEXT_STATUS_FIELDS = new Set(["Official", "Relict"]);
 const METBULL_CURRENT_METEORITE_FIELDS = new Set(["name", "status", "fall", "year", "place", "classification"]);
 const METBULL_ATTACHED_METEORITE_FIELDS = new Set(["meteoriteCode", ...METBULL_CURRENT_METEORITE_FIELDS]);
-const METBULL_FALL_CODES = new Set(["", "Y", "Yc", "Yp", "Np"]);
+const METBULL_FALL_LABELS = Object.freeze({
+  "": "Find",
+  Y: "Fall",
+  Yc: "Confirmed fall (Yc)",
+  Yp: "Probable fall (Yp)",
+  Np: "Find, possible fall (Np)"
+});
+const METBULL_FALL_CODES = new Set(Object.keys(METBULL_FALL_LABELS));
 const COMPARISON_REVIEW_PARTITION_SHA256 = "6abd02c9cf57c0ddae9ab786e8ec73ec69ffc6e291c37d30ae73c845999ac131";
 const SOURCE_CLAIMS_CONTENT_SHA256 = "141ed60b9560596ac8ab392babfc4af6e1d22921bacbf979d3b975e0fc2f20c2";
 const LINEAGE_ROOT_FIELDS = new Set(["metadata", "sourceAttestedGroups", "relationships", "comparisonGroups"]);
@@ -4318,9 +4325,7 @@ function harmonizedCardNameLabel(kind) {
 }
 
 function metbullFallDisplay(code) {
-  if (code === "Y") return "Fall";
-  if (code === "") return "Find";
-  return METBULL_FALL_CODES.has(code) ? `Code ${code}` : null;
+  return METBULL_FALL_CODES.has(code) ? METBULL_FALL_LABELS[code] : null;
 }
 
 function cardFactValuesEquivalent(left, right) {
@@ -4338,7 +4343,6 @@ function catalogNotesForCurrentMetbull(record, currentMetbull) {
       notes.push({ label, value: sourceValue });
     }
   };
-  addDifference("Catalog meteorite name", record.name, currentMetbull.name);
   addDifference("Catalog classification", record.classification, currentMetbull.classification);
   addDifference("Catalog locality", ["table-a-specimen", "appendix-specimen"].includes(record.recordModel) ? record.locality?.name : record.locality,
     currentMetbull.place, "Source locality");
@@ -4363,6 +4367,9 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
     if (isKnownCardFact(label, value)) facts.push({ label, value });
   };
   if (currentMetbull) {
+    if (!namesAreDisplayEquivalent(sourceName, currentMetbull.name)) {
+      addKnownFact("Catalog meteorite name", sourceName);
+    }
     addKnownFact("Current MetBull classification", currentMetbull.classification);
     addKnownFact("Current MetBull place", currentMetbull.place);
     addKnownFact("Current MetBull fall/find", metbullFallDisplay(currentMetbull.fall));

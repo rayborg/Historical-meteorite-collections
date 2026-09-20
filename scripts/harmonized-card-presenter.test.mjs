@@ -120,6 +120,9 @@ function expectedFacts(descriptor) {
     if (app.isKnownCardFact(label, value)) entries.push({ label, value });
   };
   if (descriptor.currentMetbull) {
+    if (!app.namesAreDisplayEquivalent(record.name, descriptor.currentMetbull.name)) {
+      add("Catalog meteorite name", record.name);
+    }
     add("Current MetBull classification", descriptor.currentMetbull.classification);
     add("Current MetBull place", descriptor.currentMetbull.place);
     add("Current MetBull fall/find", app.metbullFallDisplay(descriptor.currentMetbull.fall));
@@ -402,12 +405,11 @@ test("every production card uses the approved known-fact order and omits unavail
     }
   }
   assert.deepEqual(census, {
-    specimens: 14234, mapped: 11859, unmapped: 2375, factRows: 112844, noteCards: 11798, noteRows: 29984,
+    specimens: 14234, mapped: 11859, unmapped: 2375, factRows: 115160, noteCards: 11638, noteRows: 27668,
   });
   assert.deepEqual(noteLabels, {
     "Catalog classification": 11352,
     "Catalog locality": 9916,
-    "Catalog meteorite name": 2316,
     "Catalog event or date": 6400,
   });
   assert.equal(shortnameOnlyIdentifierCount, 6305);
@@ -651,8 +653,9 @@ test("representative corrected and unresolved specimen cards preserve the known 
   assert.match(styles, /\.record-meta dt \{[^}]*word-break: normal;[^}]*overflow-wrap: normal;/u);
 });
 
-test("closed catalog-specific card facts and representative hidden facts remain searchable", () => {
+test("closed source and catalog-specific card facts remain searchable", () => {
   const allowed = new Set([
+    "Catalog meteorite name",
     "Current MetBull classification", "Current MetBull place", "Current MetBull fall/find", "Current MetBull year",
     ...STANDARD_SPECIMEN_LABELS, ...STANDARD_OBSERVATION_LABELS, ...FLETCHER_OBSERVATION_LABELS, ...FLETCHER_LABELS,
     "Locality code", "Area reference coordinate", "Olivine Fa", "Pyroxene Fs", "Weathering", "Source section",
@@ -896,13 +899,13 @@ test("accessible shell, responsive breakpoints, approved cache, and immutable da
   assert.match(styles, /\.record-meta dt \{[^}]*font-size: \.6rem;/u);
   assert.match(styles, /\.record-meta dd \{[^}]*font-size: \.8rem;/u);
   assert.doesNotMatch(styles, /\.record-meta dt \{[^}]*overflow-wrap: anywhere;/u);
-  assert.equal(app.CACHE_VERSION, "20260913-four-card-grid-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260913-four-card-grid-1");
+  assert.equal(app.CACHE_VERSION, "20260919-specimen-card-labels-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260919-specimen-card-labels-1");
   for (const document of [html, catalogsHtml]) {
-    assert.match(document, /styles\.css\?v=20260913-four-card-grid-1/u);
-    assert.match(document, /app\.js\?v=20260913-four-card-grid-1/u);
+    assert.match(document, /styles\.css\?v=20260919-specimen-card-labels-1/u);
+    assert.match(document, /app\.js\?v=20260919-specimen-card-labels-1/u);
   }
-  assert.match(catalogsHtml, /catalogs\.js\?v=20260913-four-card-grid-1/u);
+  assert.match(catalogsHtml, /catalogs\.js\?v=20260919-specimen-card-labels-1/u);
   assert.deepEqual({
     catalog: sha256(catalogText),
     projections: sha256(projectionText),

@@ -262,14 +262,16 @@ lineage evidence.
 
 Historical source facts retain precedence for what a catalog reported and for
 all specimen-specific facts. They remain immutable and searchable. A mapped
-card may lead with current event context, but differing source context remains
-under the collapsed **Show catalog notes** disclosure rather than being deleted.
-Equivalent repetition may be collapsed. Observations, unmapped cards, and any
-card affected by a missing or invalid sidecar remain source-only.
+card may lead with current event context, but a differing source name remains
+directly visible. Other differing source context remains under the collapsed
+**Show catalog notes** disclosure rather than being deleted. Equivalent
+repetition may be collapsed. Observations, unmapped cards, and any card affected
+by a missing or invalid sidecar remain source-only.
 
 For fall/find display, `Y` renders `Fall` and empty renders `Find`. Exceptional
-`Yc`, `Yp`, and `Np` values render literally as `Code Yc`, `Code Yp`, and
-`Code Np`; suffixes are preserved rather than interpreted as confidence. `Nd`
+`Yc`, `Yp`, and `Np` use the categories documented by MetBull Database Note 4:
+`Confirmed fall (Yc)`, `Probable fall (Yp)`, and `Find, possible fall (Np)`.
+These are event categories, not mapping confidence. `Nd`
 occurs in the acquired source but is absent from the current used-code set and
 public allowlist; future use must fail until explicitly reviewed.
 The private receipt and exhaustive audit paths are
