@@ -18,11 +18,11 @@ const victoriaDescriptor = catalog.metadata.catalogs.find(({ id }) => id === "vi
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
 
 test("imports all three accepted public package files exactly", () => {
-  assert.equal(sha256(catalogText), "8458ae9dfee5136014af4e68202880830e17fde92f4ebd664f3a1cdd6092d349");
-  assert.equal(sha256(foliosText), "3b130e8fa742b8d67e1e05048fec980dedfaeaa6417691415368fed3d965261f");
+  assert.equal(sha256(catalogText), "3c23d1c2653bc893819a605c7c0e5e6db7b63a17cd3ab66ab104c2772391dbe7");
+  assert.equal(sha256(foliosText), "0eab9dcbe8f04c7eac4bd83a49e88f9f0dd74aa3d411daf7a1ec4f5da68ea4c2");
   assert.equal(sha256(sourceClaimsText), "edb201339e9e1068ac45d3333a9224959b4dcdbf8e317afcbb0657c6635b85fb");
   assert.deepEqual({ schema: catalog.metadata.schemaVersion, records: catalog.records.length, catalogs: catalog.metadata.catalogs.length },
-    { schema: 14, records: 19991, catalogs: 55 });
+    { schema: 15, records: 20241, catalogs: 56 });
   assert.doesNotThrow(() => validatePublicCatalog(catalog, folios));
 });
 
@@ -143,8 +143,8 @@ test("preserves every non-correction record and descriptor byte-semantically", (
   const fletcherCatalogIds = new Set(["fletcher-1886", "fletcher-1894", "fletcher-1896", "fletcher-1904", "fletcher-1908"]);
   const museum3CatalogIds = new Set(["story-maskelyne-1872", "prior-guide-1926", "brauns-bonn-1926"]);
   const catalog10Ids = new Set(["farrington-north-america-1915", "silberrad-1932"]);
-  assert.equal(sha256(JSON.stringify(catalog.records.filter(({ id, catalogId }) => catalogId !== "antarctic-1980" && !correctedRecordIds.has(id) && !wave2CatalogIds.has(catalogId) && !fletcherCatalogIds.has(catalogId) && !museum3CatalogIds.has(catalogId) && !catalog10Ids.has(catalogId)))),
+  assert.equal(sha256(JSON.stringify(catalog.records.filter(({ id, catalogId }) => !["antarctic-1980", "haag-2003"].includes(catalogId) && !correctedRecordIds.has(id) && !wave2CatalogIds.has(catalogId) && !fletcherCatalogIds.has(catalogId) && !museum3CatalogIds.has(catalogId) && !catalog10Ids.has(catalogId)))),
     "ec2a8ad5fea13c2503a5d3db84f26a263baf086d18f89eaab5849b1b5a6948a7");
-  assert.equal(sha256(JSON.stringify(catalog.metadata.catalogs.filter(({ id }) => !["antarctic-1980", "victoria-land-1982"].includes(id) && !wave2CatalogIds.has(id) && !fletcherCatalogIds.has(id) && !museum3CatalogIds.has(id) && !catalog10Ids.has(id)))),
+  assert.equal(sha256(JSON.stringify(catalog.metadata.catalogs.filter(({ id }) => !["antarctic-1980", "victoria-land-1982", "haag-2003"].includes(id) && !wave2CatalogIds.has(id) && !fletcherCatalogIds.has(id) && !museum3CatalogIds.has(id) && !catalog10Ids.has(id)))),
     "31aa040fb71302cb0b8c3a9c691ad747ead2eafec725ac804bdca58cc9b7849e");
 });

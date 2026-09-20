@@ -11,9 +11,9 @@ const fixture = structuredClone(publicFixture);
 fixture.metadata.schemaVersion = runtimeSchemaVersion;
 fixture.metadata.factualFields = [...publicFixture.metadata.factualFields];
 fixture.metadata.catalogs = fixture.metadata.catalogs.filter(({ id }) =>
-  !["hodge-smith-1939", "victoria-land-1982", "dealer-1909"].includes(id));
+  !["haag-2003", "hodge-smith-1939", "victoria-land-1982", "dealer-1909"].includes(id));
 fixture.records = fixture.records.filter(({ catalogId }) =>
-  !["hodge-smith-1939", "victoria-land-1982", "dealer-1909"].includes(catalogId));
+  !["haag-2003", "hodge-smith-1939", "victoria-land-1982", "dealer-1909"].includes(catalogId));
 Object.assign(fixture.metadata, {
   recordCount: 16,
   recordsWithDesignation: 8,
@@ -48,6 +48,10 @@ const APPENDIX_SPECIMEN_FIELDS = [
 ];
 const DEALER_OFFER_FACT_FIELDS = [
   "id", "catalogId", "typeNumber", "name", "description", "catalogPage", "confidence",
+];
+const CAPTION_OBSERVATION_FACT_FIELDS = [
+  "id", "catalogId", "entryOrder", "captionTitle", "name", "classification", "reportedMass",
+  "reportedDimensions", "photoPanelCount", "sourceRelation", "catalogPages", "printedPageLabel", "confidence",
 ];
 const HOLDING_FIELDS = ["designation", "kind", "description", "count", "weight"];
 const CATALOG_NUMBER_HOLDING_FIELDS = ["description", "provenance", "count", "weights"];
@@ -217,17 +221,19 @@ test("runtime fixture projection validates with exact legacy model-aware shapes"
   });
 });
 
-test("schema 14 public fixture carries all closed data models", () => {
-  assert.equal(publicFixture.metadata.schemaVersion, 14);
-  assert.deepEqual(publicFixture.metadata.catalogs.slice(-4).map(({ id, recordModel }) => [id, recordModel]), [
+test("schema 15 public fixture carries all closed data models", () => {
+  assert.equal(publicFixture.metadata.schemaVersion, 15);
+  assert.deepEqual(publicFixture.metadata.catalogs.slice(-5).map(({ id, recordModel }) => [id, recordModel]), [
     ["antarctic-1980", "appendix-specimen"],
+    ["haag-2003", "caption-observation-fact"],
     ["hodge-smith-1939", "regional-census-fact"],
     ["victoria-land-1982", "table-a-specimen"],
     ["dealer-1909", "dealer-offer-fact"],
   ]);
   for (const record of publicFixture.records.filter(({ catalogId }) =>
-    ["antarctic-1980", "hodge-smith-1939", "victoria-land-1982", "dealer-1909"].includes(catalogId))) {
+    ["antarctic-1980", "haag-2003", "hodge-smith-1939", "victoria-land-1982", "dealer-1909"].includes(catalogId))) {
     const expected = record.catalogId === "antarctic-1980" ? APPENDIX_SPECIMEN_FIELDS :
+      record.catalogId === "haag-2003" ? CAPTION_OBSERVATION_FACT_FIELDS :
       record.catalogId === "hodge-smith-1939" ? REGIONAL_CENSUS_FACT_FIELDS :
       record.catalogId === "victoria-land-1982" ? TABLE_A_SPECIMEN_FIELDS : DEALER_OFFER_FACT_FIELDS;
     assert.deepEqual(Object.keys(record).filter((key) => key !== "metbull").sort(), [...expected].sort());
@@ -236,7 +242,91 @@ test("schema 14 public fixture carries all closed data models", () => {
     .map(({ typeNumber }) => typeNumber), [95, 96]);
 });
 
-test("schema 14 permits individualFindLocation only as an optional specimen fact", () => {
+test("caption observations validate as a closed schema-15 model with earlier-record relations", () => {
+  const valid = clone(publicFixture);
+  assert.equal(app.validateCatalog(valid), valid);
+  const captionRecords = publicFixture.records.filter(({ catalogId }) => catalogId === "haag-2003");
+  assert.deepEqual(captionRecords.map(({ entryOrder }) => entryOrder), [1, 2]);
+  assert.deepEqual(captionRecords[1].sourceRelation,
+    { type: "repeated-view", recordId: "haag-2003-caption-0001" });
+
+  const reject = (mutate) => {
+    const changed = clone(publicFixture);
+    mutate(changed.records.filter(({ catalogId }) => catalogId === "haag-2003"), changed);
+    assert.throws(() => app.validateCatalog(changed), /facts-only schema/u);
+  };
+  for (const mutate of [
+    ([record]) => { record.reportedMass.semantics = "specimen-weight"; },
+    ([record]) => { record.reportedDimensions.semantics = "dimensions"; },
+    ([record]) => { record.reportedMass.valueText = null; },
+    ([record]) => { record.reportedMass.grams = 1780; },
+    ([record]) => { record.weight = { grams: 1780 }; },
+    ([record]) => { record.metbull = { matchType: "unresolved" }; },
+    ([record]) => { record.captionText = "Private widened caption"; },
+    ([record]) => { record.captionTitle = "/Users/reviewer/private/source.txt"; },
+    ([record]) => { record.photoPanelCount = 0; },
+    ([record]) => { record.catalogPages = []; },
+    ([record]) => { record.printedPageLabel = ""; },
+    ([, record]) => { record.sourceRelation.type = "same-specimen"; },
+    ([, record]) => { record.sourceRelation.recordId = "missing-record"; },
+    ([record, later]) => { record.sourceRelation = { type: "repeated-view", recordId: later.id }; },
+    ([, record]) => { record.sourceRelation.privateNote = "forged"; },
+  ]) reject(mutate);
+  for (const version of [14, 13, 1]) reject((records, changed) => { changed.metadata.schemaVersion = version; });
+});
+
+test("caption cards search source facts but never acquire specimen weight semantics", () => {
+  const registry = app.normalizeCatalogRegistry(publicFixture.metadata);
+  const captions = publicFixture.records.filter(({ catalogId }) => catalogId === "haag-2003")
+    .map((record, index) => app.prepareRecord(record, index, registry));
+  const descriptors = app.expandSpecimenCardDescriptors(captions, new Map());
+  const [named, repeated] = descriptors.map((descriptor) => app.presentHarmonizedCard(descriptor, { registry }));
+
+  for (const query of [
+    "ADAMANA", "Adamana", "Ordinary chondrite", "1.78 kilos", "12 x 8 x 7 cm",
+    "associated photo panels 2", "caption observation 1"
+  ]) assert.equal(app.matchesSearch(captions[0], query), true, query);
+  for (const query of ["SECOND VIEW", "printed page label 2", "repeated view earlier public catalog record"]) {
+    assert.equal(app.matchesSearch(captions[1], query), true, query);
+  }
+  assert(captions.every((record) => app.recordMasses(record).length === 0 &&
+    app.recordSchemaMasses(record).length === 0 && app.recordSearchMasses(record).length === 0));
+  assert.equal(app.calculateStatistics(captions).grams, 0);
+  assert.equal(app.filterRecords(captions, filters({ min: 1, max: 2000 })).length, 0);
+  assert.deepEqual(app.filterRecords([...captions].reverse(), filters({ sort: "weight-desc" })).map(({ entryOrder }) => entryOrder), [1, 2]);
+  assert.equal(app.filterSpecimenCardDescriptors(descriptors, {
+    min: null, max: null, lineageOnly: false, includeUnknownWeight: false
+  }).length, 0);
+  assert.equal(app.filterSpecimenCardDescriptors(descriptors, {
+    min: null, max: null, lineageOnly: false, includeUnknownWeight: true
+  }).length, 2);
+
+  assert.equal(named.kind, "caption-observation");
+  assert.equal(named.headingName, "Adamana");
+  assert.equal(named.headingLabel, "Source name");
+  assert.match(named.semanticLabel, /caption observation.*not asserted.*specimen.*holding.*inventory.*current.*custody.*ownership/iu);
+  assert.deepEqual(named.facts, [
+    { label: "Caption title", value: "ADAMANA" },
+    { label: "Source classification", value: "Ordinary chondrite" },
+    { label: "Source-reported caption mass", value: "1.78 kilos" },
+    { label: "Source-reported dimensions", value: "12 x 8 x 7 cm" },
+    { label: "Associated photo panels", value: "2 panels" },
+  ]);
+  assert.equal(repeated.headingName, "SECOND VIEW");
+  assert.equal(repeated.headingLabel, "Caption title");
+  assert.deepEqual(repeated.facts, [
+    { label: "Associated photo panels", value: "1 panel" },
+    { label: "Repeated-view context", value: "Repeated view of earlier public catalog record haag-2003-caption-0001" },
+  ]);
+  const noHeading = { ...captions[1], captionTitle: null };
+  const noHeadingDescriptor = app.expandSpecimenCardDescriptors([noHeading], new Map())[0];
+  const noHeadingDto = app.presentHarmonizedCard(noHeadingDescriptor, { registry });
+  assert.equal(noHeadingDto.headingName, null);
+  assert.deepEqual(app.harmonizedCardNullNameHeading(noHeading, noHeadingDto.kind, noHeadingDescriptor,
+    noHeadingDto.identifier), { label: "Source catalog record", value: "Haag (2003) · Caption observation 2" });
+});
+
+test("schema 15 permits individualFindLocation only as an optional specimen fact", () => {
   const located = clone(fixture);
   const specimen = located.records.find(({ id }) => id === "huss-h27-3");
   assert.equal(specimen.individualFindLocation, "32-19-13");
@@ -1047,8 +1137,8 @@ test("URL filters default to strict specimens and canonicalize the explicit incl
     unit: "observations",
     status: "Showing 60 of 23,217 display cards from 18,217 matching source observations."
   });
-  assert.equal(app.CACHE_VERSION, "20260919-specimen-card-labels-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260919-specimen-card-labels-1");
+  assert.equal(app.CACHE_VERSION, "20260920-haag-2003-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260920-haag-2003-1");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.ASSET_CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.ASSET_CACHE_VERSION}`));
 });

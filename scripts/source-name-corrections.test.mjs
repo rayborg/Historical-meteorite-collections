@@ -22,8 +22,8 @@ test("locks the accepted 86-record source-name correction projection without non
     "cf429e6660f00272f2f81fe69bac81c891f41574bbfff6e6bb46499d2d0672b4");
   assert.equal(sha256(foliosText), fixture.foliosSha256);
   assert.equal(sha256(catalogText), fixture.catalogSha256);
-  assert.equal(catalog.metadata.catalogs.length, 55);
-  assert.equal(catalog.records.length, 19991);
+  assert.equal(catalog.metadata.catalogs.length, 56);
+  assert.equal(catalog.records.length, 20241);
   assert.equal(jsonSha256(catalog.metadata), fixture.metadataSha256);
   assert.equal(jsonSha256(catalog.records.map(({ id }) => id)), fixture.orderedIdsSha256);
   assert.equal(jsonSha256(catalog.records.map(({ name: _name, ...record }) => record)), fixture.nonNameRecordsSha256);

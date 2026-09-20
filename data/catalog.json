@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "schemaVersion": 14,
+    "schemaVersion": 15,
     "scope": "facts-only",
     "factualFields": [
       "id",
@@ -85,7 +85,16 @@
       "metbull.canonicalName",
       "metbull.meteoriteCode",
       "metbull.metbullUrl",
-      "metbull.alternateNameNote"
+      "metbull.alternateNameNote",
+      "captionTitle",
+      "reportedMass.valueText",
+      "reportedMass.semantics",
+      "reportedDimensions.valueText",
+      "reportedDimensions.semantics",
+      "photoPanelCount",
+      "sourceRelation.type",
+      "sourceRelation.recordId",
+      "printedPageLabel"
     ],
     "catalogs": [
       {
@@ -1251,6 +1260,172 @@
           "high": 281,
           "medium": 0,
           "low": 0
+        },
+        "folioDisplayPolicy": "blocked",
+        "rightsStatus": "undetermined"
+      },
+      {
+        "id": "haag-2003",
+        "recordModel": "caption-observation-fact",
+        "label": "Robert Haag Meteorite Catalog 2003",
+        "compiler": "Robert Haag",
+        "year": 2003,
+        "sourcePages": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          73,
+          74,
+          75,
+          76,
+          77,
+          78,
+          79,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118,
+          119,
+          120,
+          121,
+          122,
+          123,
+          124,
+          125,
+          126,
+          127,
+          128,
+          129,
+          130,
+          131,
+          132,
+          133,
+          134,
+          135,
+          136,
+          137,
+          138,
+          139,
+          140,
+          141,
+          142,
+          143,
+          144,
+          145,
+          146
+        ],
+        "sourcePageCount": 146,
+        "recordCount": 250,
+        "recordsWithDesignation": 0,
+        "recordsWithWeight": 0,
+        "confidenceCounts": {
+          "high": 247,
+          "medium": 0,
+          "low": 3
         },
         "folioDisplayPolicy": "blocked",
         "rightsStatus": "undetermined"
@@ -2942,13 +3117,13 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 19991,
+    "recordCount": 20241,
     "recordsWithDesignation": 5957,
     "recordsWithWeight": 17982,
     "confidenceCounts": {
-      "high": 18636,
+      "high": 18883,
       "medium": 1355,
-      "low": 0
+      "low": 3
     }
   },
   "records": [
@@ -632059,6 +632234,5027 @@
       "name": "Schreibersite",
       "description": "Graphic steel-gray crystals, in meteoric iron, etched plate.",
       "catalogPage": 38,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-3efe5a17-0bf6-4af0-af8b-1157dc1e73a5",
+      "catalogId": "haag-2003",
+      "entryOrder": 1,
+      "captionTitle": "ADAMANA",
+      "name": "ADAMANA",
+      "classification": "Ordinary chondrite.",
+      "reportedMass": {
+        "valueText": "1.78 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        1,
+        3
+      ],
+      "printedPageLabel": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b0895814-8e72-45c1-b209-30fd720a313c",
+      "catalogId": "haag-2003",
+      "entryOrder": 2,
+      "captionTitle": "ESQUEL",
+      "name": "ESQUEL",
+      "classification": "Pallasite.",
+      "reportedMass": {
+        "valueText": "1.45 kilo",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        2
+      ],
+      "printedPageLabel": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a1f492ce-aee2-44ed-926b-de266d098fb3",
+      "catalogId": "haag-2003",
+      "entryOrder": 3,
+      "captionTitle": "BEN SOUR",
+      "name": "BEN SOUR",
+      "classification": "(LL6)",
+      "reportedMass": {
+        "valueText": "146 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        3
+      ],
+      "printedPageLabel": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-62d5f842-d170-4756-a5f2-d4e8639195c6",
+      "catalogId": "haag-2003",
+      "entryOrder": 4,
+      "captionTitle": "PORTALES VALLEY",
+      "name": "PORTALES VALLEY",
+      "classification": "Unique H-6 with iron “ribs”",
+      "reportedMass": {
+        "valueText": "1.58 kilos | 128 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 2,
+      "sourceRelation": null,
+      "catalogPages": [
+        5
+      ],
+      "printedPageLabel": null,
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b89aac34-3b2e-4de8-830f-257339fec29b",
+      "catalogId": "haag-2003",
+      "entryOrder": 5,
+      "captionTitle": "NATURAL WONDERS",
+      "name": "Gibeon",
+      "classification": null,
+      "reportedMass": {
+        "valueText": "300 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        7
+      ],
+      "printedPageLabel": "2",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8000be81-82f5-4110-ac34-d600a2296f42",
+      "catalogId": "haag-2003",
+      "entryOrder": 6,
+      "captionTitle": "SIKHOTE ALIN",
+      "name": "SIKHOTE ALIN",
+      "classification": "Coarsest octahedrite.",
+      "reportedMass": {
+        "valueText": "117 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        8
+      ],
+      "printedPageLabel": "3",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d93bd883-eff3-47a6-b379-5f1205e97b47",
+      "catalogId": "haag-2003",
+      "entryOrder": 7,
+      "captionTitle": "HENBURY",
+      "name": "HENBURY",
+      "classification": "medium octahedrite.",
+      "reportedMass": {
+        "valueText": "30 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        9
+      ],
+      "printedPageLabel": "4",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-1b8c4840-be2b-4d87-bc42-4c1532312057",
+      "catalogId": "haag-2003",
+      "entryOrder": 8,
+      "captionTitle": "TAZA",
+      "name": "TAZA",
+      "classification": "Plessitic octahedrite.",
+      "reportedMass": {
+        "valueText": "6 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        9
+      ],
+      "printedPageLabel": "4",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a1a42915-3a15-4837-aa2b-4a007b13766a",
+      "catalogId": "haag-2003",
+      "entryOrder": 9,
+      "captionTitle": "MUNDRABILLA",
+      "name": "MUNDRABILLA",
+      "classification": "Medium octahedrite. Anomalous. (IIICD)",
+      "reportedMass": {
+        "valueText": "550 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        10
+      ],
+      "printedPageLabel": "5",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-9fe7ae68-2892-4f00-8dbe-75776be86841",
+      "catalogId": "haag-2003",
+      "entryOrder": 10,
+      "captionTitle": null,
+      "name": null,
+      "classification": null,
+      "reportedMass": {
+        "valueText": "1.56 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": {
+        "type": "repeated-view",
+        "recordId": "obs-a1a42915-3a15-4837-aa2b-4a007b13766a"
+      },
+      "catalogPages": [
+        10
+      ],
+      "printedPageLabel": "5",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-68b13e78-3a89-4c3e-986c-abdcf5925b62",
+      "catalogId": "haag-2003",
+      "entryOrder": 11,
+      "captionTitle": "GIBEON",
+      "name": "GIBEON",
+      "classification": "Fine octahedrite. (IVA)",
+      "reportedMass": {
+        "valueText": "63 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        11
+      ],
+      "printedPageLabel": "6",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-4da1fc86-4833-46d8-9ca5-473a120dd385",
+      "catalogId": "haag-2003",
+      "entryOrder": 12,
+      "captionTitle": "CANYON DIABLO",
+      "name": "CANYON DIABLO",
+      "classification": "Coarse octahedrite. (IAB)",
+      "reportedMass": {
+        "valueText": "1.5 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        12
+      ],
+      "printedPageLabel": "7",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-32287bd9-a55c-4057-8066-7ed42b8a15e2",
+      "catalogId": "haag-2003",
+      "entryOrder": 13,
+      "captionTitle": "The REAL METEORITE MAN",
+      "name": "Canyon Diablo",
+      "classification": null,
+      "reportedMass": {
+        "valueText": "7.7 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": {
+        "type": "repeated-view",
+        "recordId": "obs-4da1fc86-4833-46d8-9ca5-473a120dd385"
+      },
+      "catalogPages": [
+        12
+      ],
+      "printedPageLabel": "7",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-eb124cd9-8e67-47d1-91d8-99af05fc1350",
+      "catalogId": "haag-2003",
+      "entryOrder": 14,
+      "captionTitle": "BOXHOLE",
+      "name": "BOXHOLE",
+      "classification": "Medium octahedrite. (IIIAB)",
+      "reportedMass": {
+        "valueText": "4 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        13
+      ],
+      "printedPageLabel": "8",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-1abb4d80-4e39-4b2a-80bf-ba717839e5f8",
+      "catalogId": "haag-2003",
+      "entryOrder": 15,
+      "captionTitle": "TOLUCA",
+      "name": "TOLUCA",
+      "classification": "Coarse octahedrite. (IAB)",
+      "reportedMass": {
+        "valueText": "3.2 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        13
+      ],
+      "printedPageLabel": "8",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-10166f03-0a30-4cdc-805e-a46e06328fd4",
+      "catalogId": "haag-2003",
+      "entryOrder": 16,
+      "captionTitle": "NANTAN",
+      "name": "NANTAN",
+      "classification": "Medium octahedrite. (IIICD)",
+      "reportedMass": {
+        "valueText": "1.5 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        13
+      ],
+      "printedPageLabel": "8",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f194b0ff-a575-4c32-8c94-f8bff6e6455b",
+      "catalogId": "haag-2003",
+      "entryOrder": 17,
+      "captionTitle": "CAMPO DEL CIELO",
+      "name": "CAMPO DEL CIELO",
+      "classification": "Coarse octahedrite. (IAB)",
+      "reportedMass": {
+        "valueText": "22 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        14
+      ],
+      "printedPageLabel": "9",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e6d53b1f-7655-4147-923f-1901e67ad595",
+      "catalogId": "haag-2003",
+      "entryOrder": 18,
+      "captionTitle": null,
+      "name": null,
+      "classification": null,
+      "reportedMass": null,
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": {
+        "type": "repeated-view",
+        "recordId": "obs-f194b0ff-a575-4c32-8c94-f8bff6e6455b"
+      },
+      "catalogPages": [
+        14
+      ],
+      "printedPageLabel": "9",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-502c45c5-0993-4ca4-90ab-37644182002b",
+      "catalogId": "haag-2003",
+      "entryOrder": 19,
+      "captionTitle": null,
+      "name": null,
+      "classification": null,
+      "reportedMass": null,
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": {
+        "type": "repeated-view",
+        "recordId": "obs-f194b0ff-a575-4c32-8c94-f8bff6e6455b"
+      },
+      "catalogPages": [
+        14
+      ],
+      "printedPageLabel": "9",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-738079e0-cbfa-4c5c-a46a-a2eb9e1c1717",
+      "catalogId": "haag-2003",
+      "entryOrder": 20,
+      "captionTitle": "[unclear]RISPE",
+      "name": "[unclear]RISPE",
+      "classification": "Coarse octahedrite. (IC)",
+      "reportedMass": {
+        "valueText": "3.6 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        15
+      ],
+      "printedPageLabel": "10",
+      "confidence": "low"
+    },
+    {
+      "id": "obs-a9af97dc-7e49-4097-80db-a99e80034fa0",
+      "catalogId": "haag-2003",
+      "entryOrder": 21,
+      "captionTitle": "[unclear]DAMA",
+      "name": "[unclear]DAMA",
+      "classification": "Medium octahedrite. (IIIAB)",
+      "reportedMass": {
+        "valueText": "5.5 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        15
+      ],
+      "printedPageLabel": "10",
+      "confidence": "low"
+    },
+    {
+      "id": "obs-17b319f7-1f02-47c1-833f-c5738ccb4c1c",
+      "catalogId": "haag-2003",
+      "entryOrder": 22,
+      "captionTitle": null,
+      "name": "Gibeon",
+      "classification": null,
+      "reportedMass": null,
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": {
+        "type": "repeated-view",
+        "recordId": "obs-68b13e78-3a89-4c3e-986c-abdcf5925b62"
+      },
+      "catalogPages": [
+        16
+      ],
+      "printedPageLabel": "11",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-ba802ed0-fad8-46b6-9457-c43fd3b88669",
+      "catalogId": "haag-2003",
+      "entryOrder": 23,
+      "captionTitle": null,
+      "name": "Gibeon",
+      "classification": null,
+      "reportedMass": null,
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": {
+        "type": "repeated-view",
+        "recordId": "obs-68b13e78-3a89-4c3e-986c-abdcf5925b62"
+      },
+      "catalogPages": [
+        16
+      ],
+      "printedPageLabel": "11",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a8047df7-ce8e-44d2-8734-20fd54f037a0",
+      "catalogId": "haag-2003",
+      "entryOrder": 24,
+      "captionTitle": "ALVORD",
+      "name": "ALVORD",
+      "classification": "Fine octahedrite. (IVA.)",
+      "reportedMass": {
+        "valueText": "81 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        17
+      ],
+      "printedPageLabel": "12",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-121c2983-8214-44ec-b4ee-7e374b398ef8",
+      "catalogId": "haag-2003",
+      "entryOrder": 25,
+      "captionTitle": "KENTON COUNTY",
+      "name": "KENTON COUNTY",
+      "classification": "Medium Octahedrite. (IIAB)",
+      "reportedMass": {
+        "valueText": "205 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        17
+      ],
+      "printedPageLabel": "12",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-797f4edd-7042-42bf-a035-e82298714735",
+      "catalogId": "haag-2003",
+      "entryOrder": 26,
+      "captionTitle": "GLADSTONE",
+      "name": "GLADSTONE",
+      "classification": "Coarse octahedrite. (IAB)",
+      "reportedMass": {
+        "valueText": "1.17 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        17
+      ],
+      "printedPageLabel": "12",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-57220dcb-50f9-4675-b5ff-03d8c540a59a",
+      "catalogId": "haag-2003",
+      "entryOrder": 27,
+      "captionTitle": "LORETO",
+      "name": "LORETO",
+      "classification": "Medium octahedrite. (IIIAB)",
+      "reportedMass": {
+        "valueText": "1034 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        17
+      ],
+      "printedPageLabel": "12",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f40c2bd7-63b9-40c7-8604-f26feeaadad2",
+      "catalogId": "haag-2003",
+      "entryOrder": 28,
+      "captionTitle": "LOUIS LOPEZ",
+      "name": "LOUIS LOPEZ",
+      "classification": "Medium octahedrite",
+      "reportedMass": {
+        "valueText": "454 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        17
+      ],
+      "printedPageLabel": "12",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b64d1f2b-ead8-43a8-aff0-73568927c5a0",
+      "catalogId": "haag-2003",
+      "entryOrder": 29,
+      "captionTitle": "MAGURA",
+      "name": "MAGURA",
+      "classification": "Coarse octahedrite. (IAB)",
+      "reportedMass": {
+        "valueText": "748 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        17
+      ],
+      "printedPageLabel": "12",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e0c62670-e16b-4ee7-b515-6d174fa5118d",
+      "catalogId": "haag-2003",
+      "entryOrder": 30,
+      "captionTitle": "Cape York",
+      "name": "Cape York",
+      "classification": "Medium octahedrite (IIIAB)",
+      "reportedMass": {
+        "valueText": "37 kilo | 3.5 ton",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        18
+      ],
+      "printedPageLabel": "13",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-76af0d2b-3140-44dc-877d-eb58782f7335",
+      "catalogId": "haag-2003",
+      "entryOrder": 31,
+      "captionTitle": "SEYMORE",
+      "name": "SEYMORE",
+      "classification": "Coarse octahedrite. (IIICD)",
+      "reportedMass": {
+        "valueText": "958 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        18
+      ],
+      "printedPageLabel": "13",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-90d3275d-d379-414c-9c14-f95daef67ae0",
+      "catalogId": "haag-2003",
+      "entryOrder": 32,
+      "captionTitle": "URUACHI",
+      "name": "URUACHI",
+      "classification": "Medium octahedrite. (IIIAB)",
+      "reportedMass": {
+        "valueText": "2.36 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        19
+      ],
+      "printedPageLabel": "14",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-fa2b7d25-3a07-4ec8-9c1c-5181be9375c4",
+      "catalogId": "haag-2003",
+      "entryOrder": 33,
+      "captionTitle": "SACRAMENTO MTNS.",
+      "name": "SACRAMENTO MTNS.",
+      "classification": "Medium octahedrite. (IIIAB)",
+      "reportedMass": {
+        "valueText": "886 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        19
+      ],
+      "printedPageLabel": "14",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-fbc562ad-f90a-4e67-a2cc-1b0fbc6830e5",
+      "catalogId": "haag-2003",
+      "entryOrder": 34,
+      "captionTitle": "FAIRVIEW",
+      "name": "FAIRVIEW",
+      "classification": "Medium octahedrite. (IIIAB)",
+      "reportedMass": {
+        "valueText": "296 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        19
+      ],
+      "printedPageLabel": "14",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c1be2968-a492-4651-ab59-eb073f573e2a",
+      "catalogId": "haag-2003",
+      "entryOrder": 35,
+      "captionTitle": "TOLUCA",
+      "name": "TOLUCA",
+      "classification": "Coarse octahedrite. (IAB)",
+      "reportedMass": {
+        "valueText": "2.92 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        19
+      ],
+      "printedPageLabel": "14",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a2ac7f61-7afe-4d50-a2c8-a2a7b3873cf6",
+      "catalogId": "haag-2003",
+      "entryOrder": 36,
+      "captionTitle": "TRES CASTILLO",
+      "name": "TRES CASTILLO",
+      "classification": "Medium octahedrite. (Ungrouped.)",
+      "reportedMass": {
+        "valueText": "182 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        19
+      ],
+      "printedPageLabel": "14",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f838de66-b571-4f09-8c6a-4a2ad610207f",
+      "catalogId": "haag-2003",
+      "entryOrder": 37,
+      "captionTitle": "OCOTILLO",
+      "name": "OCOTILLO",
+      "classification": "Coarse octahedrite. (IAB)",
+      "reportedMass": {
+        "valueText": "738 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        19
+      ],
+      "printedPageLabel": "14",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-7681e7b4-7e52-4a56-95dc-37564ad1e73e",
+      "catalogId": "haag-2003",
+      "entryOrder": 38,
+      "captionTitle": "KALAMATH FALLS",
+      "name": "KALAMATH FALLS",
+      "classification": "Medium octahedrite. (IIIF)",
+      "reportedMass": {
+        "valueText": "832 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        20
+      ],
+      "printedPageLabel": "15",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-472927e2-4971-4b52-8830-1da7cbd6b94c",
+      "catalogId": "haag-2003",
+      "entryOrder": 39,
+      "captionTitle": "DJEBEL IN-AZZENE",
+      "name": "DJEBEL IN-AZZENE",
+      "classification": "Medium octahedrite. (IIIB)",
+      "reportedMass": {
+        "valueText": "184 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        20
+      ],
+      "printedPageLabel": "15",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-1af7190b-72be-446f-b2c6-9bd5e6429d50",
+      "catalogId": "haag-2003",
+      "entryOrder": 40,
+      "captionTitle": "WOLSEY",
+      "name": "WOLSEY",
+      "classification": "Coarse octahedrite. (IAB)",
+      "reportedMass": {
+        "valueText": "2.98 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        21
+      ],
+      "printedPageLabel": "16",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-750b978e-a1bd-4e10-8cbd-2ffbf336a132",
+      "catalogId": "haag-2003",
+      "entryOrder": 41,
+      "captionTitle": "CANYON DIABLO",
+      "name": "CANYON DIABLO",
+      "classification": null,
+      "reportedMass": {
+        "valueText": "1.17 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        21
+      ],
+      "printedPageLabel": "16",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-9a33f305-9996-4b16-90b4-3e3f90d0fd21",
+      "catalogId": "haag-2003",
+      "entryOrder": 42,
+      "captionTitle": "TAMBO QUEMADO",
+      "name": "TAMBO QUEMADO",
+      "classification": "IIIAB. Medium octahedrite",
+      "reportedMass": {
+        "valueText": "3.85 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        22
+      ],
+      "printedPageLabel": "17",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-108a0617-5361-42be-bdf6-9c36c30b62b5",
+      "catalogId": "haag-2003",
+      "entryOrder": 43,
+      "captionTitle": "BEAR CREEK",
+      "name": "BEAR CREEK",
+      "classification": "Medium octahedrite. (IIIAB)",
+      "reportedMass": {
+        "valueText": "754 grams | 222 kilo",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        22
+      ],
+      "printedPageLabel": "17",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-17bfdecc-b5fe-4c8b-9373-7c9831e759f6",
+      "catalogId": "haag-2003",
+      "entryOrder": 44,
+      "captionTitle": "TWANNBERG",
+      "name": "TWANNBERG",
+      "classification": "Hexahedrite to coarsest octahedrite. Anomalous",
+      "reportedMass": {
+        "valueText": "38 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        22
+      ],
+      "printedPageLabel": "17",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-337789d8-ad2f-4554-819b-7611880db923",
+      "catalogId": "haag-2003",
+      "entryOrder": 45,
+      "captionTitle": "GUADALUPE Y CALDO",
+      "name": "GUADALUPE Y CALDO",
+      "classification": "Hexahedrite. (IIAB)",
+      "reportedMass": {
+        "valueText": "1.47 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        23
+      ],
+      "printedPageLabel": "18",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-043a791d-3002-47db-9b15-604cbe28ef53",
+      "catalogId": "haag-2003",
+      "entryOrder": 46,
+      "captionTitle": "NORTH CHILE",
+      "name": "NORTH CHILE",
+      "classification": "Hexahedrite. (IIAB)",
+      "reportedMass": {
+        "valueText": "1.9 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        23
+      ],
+      "printedPageLabel": "18",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d0464ab4-6028-4700-b58e-70e26cc9235a",
+      "catalogId": "haag-2003",
+      "entryOrder": 47,
+      "captionTitle": "WATSON",
+      "name": "WATSON",
+      "classification": "Medium octahedrite. (IIE)",
+      "reportedMass": {
+        "valueText": "1.83 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        23
+      ],
+      "printedPageLabel": "18",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b9bd11fe-2940-4c9f-ae94-6f1144756137",
+      "catalogId": "haag-2003",
+      "entryOrder": 48,
+      "captionTitle": "TINNIE",
+      "name": "TINNIE",
+      "classification": "Plessitic ataxite. (IVB)",
+      "reportedMass": {
+        "valueText": "291 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        25
+      ],
+      "printedPageLabel": "19",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8853b5cf-c713-43ee-829e-f7a9744a85a9",
+      "catalogId": "haag-2003",
+      "entryOrder": 49,
+      "captionTitle": "SANTA CLARA",
+      "name": "SANTA CLARA",
+      "classification": "Ataxite. (IVB)",
+      "reportedMass": {
+        "valueText": "1.1 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        25
+      ],
+      "printedPageLabel": "19",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f7945d40-e82c-4b37-90d6-34218ba4e0d3",
+      "catalogId": "haag-2003",
+      "entryOrder": 50,
+      "captionTitle": "SANTA CATHARINA",
+      "name": "SANTA CATHARINA",
+      "classification": "Ungrouped nickel-rich ataxite. Anomalous",
+      "reportedMass": {
+        "valueText": "232 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        25
+      ],
+      "printedPageLabel": "19",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-4cd37cbc-5681-4170-a1d7-0d3d0266bb81",
+      "catalogId": "haag-2003",
+      "entryOrder": 51,
+      "captionTitle": null,
+      "name": null,
+      "classification": "Ataxite. IVB",
+      "reportedMass": {
+        "valueText": "1.6 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        26,
+        27
+      ],
+      "printedPageLabel": "20",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b2640866-d8db-4a22-9e7c-5d0c61a6da11",
+      "catalogId": "haag-2003",
+      "entryOrder": 52,
+      "captionTitle": "HOBA",
+      "name": "HOBA",
+      "classification": "Ataxite. IVB",
+      "reportedMass": {
+        "valueText": "63 grams | 60-ton | 20 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        27
+      ],
+      "printedPageLabel": "20",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-45851a05-2376-42ec-b656-190afa744d48",
+      "catalogId": "haag-2003",
+      "entryOrder": 53,
+      "captionTitle": "SHINGLE SPRINGS",
+      "name": "SHINGLE SPRINGS",
+      "classification": "Ungrouped ataxite.",
+      "reportedMass": {
+        "valueText": "456 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        27
+      ],
+      "printedPageLabel": "20",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-462287be-5109-4bf6-8fac-2fbbeeead9de",
+      "catalogId": "haag-2003",
+      "entryOrder": 54,
+      "captionTitle": "TUCSON RING",
+      "name": "TUCSON RING",
+      "classification": "Ataxite",
+      "reportedMass": {
+        "valueText": "199 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        28
+      ],
+      "printedPageLabel": "21",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-0e080192-8a44-4625-8224-5876fb46dab1",
+      "catalogId": "haag-2003",
+      "entryOrder": 55,
+      "captionTitle": "UDEI STATION",
+      "name": "UDEI STATION",
+      "classification": "(IAB) Medium octahedrite with silicate inclusions",
+      "reportedMass": {
+        "valueText": "851 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        28
+      ],
+      "printedPageLabel": "21",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-68c01637-9e83-4040-9ebe-6a9b45316ce7",
+      "catalogId": "haag-2003",
+      "entryOrder": 56,
+      "captionTitle": "COPIAPO",
+      "name": "COPIAPO",
+      "classification": "Coarse octahedrite. (IAB)",
+      "reportedMass": {
+        "valueText": "115 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        29
+      ],
+      "printedPageLabel": "22",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-38ab6f32-0f08-4411-bc41-1fff3e8d8e1a",
+      "catalogId": "haag-2003",
+      "entryOrder": 57,
+      "captionTitle": "GEORGETOWN",
+      "name": "GEORGETOWN",
+      "classification": "(IIICD) Anomalous",
+      "reportedMass": {
+        "valueText": "570 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        29
+      ],
+      "printedPageLabel": "22",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-be2a4f5c-a29d-410d-9388-2c945f090c2a",
+      "catalogId": "haag-2003",
+      "entryOrder": 58,
+      "captionTitle": "MOUNT DIEU",
+      "name": "MOUNT DIEU",
+      "classification": "Fine octahedrite. (IIE)",
+      "reportedMass": {
+        "valueText": "560 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        29
+      ],
+      "printedPageLabel": "22",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b63090f4-ba81-4f67-9c9b-56852fc3f06f",
+      "catalogId": "haag-2003",
+      "entryOrder": 59,
+      "captionTitle": "LANDES",
+      "name": "LANDES",
+      "classification": "Octahedrite. (IAB)",
+      "reportedMass": {
+        "valueText": "337 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        30
+      ],
+      "printedPageLabel": "23",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-1376eb6f-747f-4425-9454-1229925195f5",
+      "catalogId": "haag-2003",
+      "entryOrder": 60,
+      "captionTitle": "STEINBACH",
+      "name": "STEINBACH",
+      "classification": "(IVA) Silicate inclusions. Chemically anomalous",
+      "reportedMass": {
+        "valueText": "45 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        30
+      ],
+      "printedPageLabel": "23",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e395bf82-49f9-4071-b324-4ad269fd5db7",
+      "catalogId": "haag-2003",
+      "entryOrder": 61,
+      "captionTitle": "TARAHUMARA",
+      "name": "TARAHUMARA",
+      "classification": "Anomalous silicated iron. (IIE)",
+      "reportedMass": {
+        "valueText": "963 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        31
+      ],
+      "printedPageLabel": "24",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-986f699f-22cf-4f3f-bc88-5b86c027065b",
+      "catalogId": "haag-2003",
+      "entryOrder": 62,
+      "captionTitle": "MALTAHOHE",
+      "name": "MALTAHOHE",
+      "classification": "Fine octahedrite with silicate inclusions. (IIICD)",
+      "reportedMass": {
+        "valueText": "293 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        31
+      ],
+      "printedPageLabel": "24",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-703ae5c3-e64d-44a9-a2d0-62e6a0948e99",
+      "catalogId": "haag-2003",
+      "entryOrder": 63,
+      "captionTitle": "MILES",
+      "name": "MILES",
+      "classification": "(IIE) Iron with silicate inclusions",
+      "reportedMass": {
+        "valueText": "1.38 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        32
+      ],
+      "printedPageLabel": "25",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-aff278e6-e0a1-4ae4-a200-96d3ac9fd63b",
+      "catalogId": "haag-2003",
+      "entryOrder": 64,
+      "captionTitle": "TOLUCA “B”",
+      "name": "TOLUCA “B”",
+      "classification": "(IAB) Silicated iron",
+      "reportedMass": {
+        "valueText": "943 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        32
+      ],
+      "printedPageLabel": "25",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e90343ca-52ef-4b37-9695-76919084a811",
+      "catalogId": "haag-2003",
+      "entryOrder": 65,
+      "captionTitle": "WOODBINE",
+      "name": "WOODBINE",
+      "classification": "Fine octahedrite. Anomalous (IAB)",
+      "reportedMass": {
+        "valueText": "471 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        32
+      ],
+      "printedPageLabel": "25",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-38353176-2b06-41d1-9c4b-51e7f07e5a55",
+      "catalogId": "haag-2003",
+      "entryOrder": 66,
+      "captionTitle": "CADDO COUNTY",
+      "name": "CADDO COUNTY",
+      "classification": "Octahedrite. (IAB)",
+      "reportedMass": {
+        "valueText": "4 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        33
+      ],
+      "printedPageLabel": "26",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-9fef3713-7765-4637-89d1-d838ea7f8197",
+      "catalogId": "haag-2003",
+      "entryOrder": 67,
+      "captionTitle": "ZAGORA",
+      "name": "ZAGORA",
+      "classification": "Octahedrite. (IAB)",
+      "reportedMass": {
+        "valueText": "1.975 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        33
+      ],
+      "printedPageLabel": "26",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-1acfdb5b-686a-4ba0-89ff-a48337d410a8",
+      "catalogId": "haag-2003",
+      "entryOrder": 68,
+      "captionTitle": "VERMILLION",
+      "name": "VERMILLION",
+      "classification": "Highly anomalous pyroxene pallasite",
+      "reportedMass": {
+        "valueText": "794 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        34,
+        35
+      ],
+      "printedPageLabel": "27",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-997f44cf-2db2-48cd-902b-c05f1016cace",
+      "catalogId": "haag-2003",
+      "entryOrder": 69,
+      "captionTitle": "GLORIETTA",
+      "name": "GLORIETTA",
+      "classification": "Pallasite.",
+      "reportedMass": {
+        "valueText": "127 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        36,
+        37
+      ],
+      "printedPageLabel": "29",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-696eec47-9290-46e3-870e-5eb322de97a6",
+      "catalogId": "haag-2003",
+      "entryOrder": 70,
+      "captionTitle": "GLORIETTA",
+      "name": "GLORIETTA",
+      "classification": null,
+      "reportedMass": null,
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": {
+        "type": "repeated-view",
+        "recordId": "obs-997f44cf-2db2-48cd-902b-c05f1016cace"
+      },
+      "catalogPages": [
+        37
+      ],
+      "printedPageLabel": "29",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-83954d40-4af7-490a-aa54-b84ab7346969",
+      "catalogId": "haag-2003",
+      "entryOrder": 71,
+      "captionTitle": "IMILAC",
+      "name": "IMILAC",
+      "classification": "Pallasite.",
+      "reportedMass": {
+        "valueText": "9.1 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 2,
+      "sourceRelation": null,
+      "catalogPages": [
+        38,
+        39
+      ],
+      "printedPageLabel": "30",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-df5f73db-a838-4e4a-816f-d933b3aa55fa",
+      "catalogId": "haag-2003",
+      "entryOrder": 72,
+      "captionTitle": "IMILAC",
+      "name": "IMILAC",
+      "classification": "Pallasite.",
+      "reportedMass": {
+        "valueText": "598 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": {
+        "type": "repeated-view",
+        "recordId": "obs-83954d40-4af7-490a-aa54-b84ab7346969"
+      },
+      "catalogPages": [
+        39
+      ],
+      "printedPageLabel": "30",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-011ea68a-a755-435c-856e-496b2ab0215c",
+      "catalogId": "haag-2003",
+      "entryOrder": 73,
+      "captionTitle": "IMILAC",
+      "name": "IMILAC",
+      "classification": "Pallasite.",
+      "reportedMass": {
+        "valueText": "17 kilos | 2.8 kilo",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 2,
+      "sourceRelation": null,
+      "catalogPages": [
+        40,
+        41
+      ],
+      "printedPageLabel": "31",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-73f8bfde-b39b-4817-925d-c431a30f162c",
+      "catalogId": "haag-2003",
+      "entryOrder": 74,
+      "captionTitle": "ESQUEL",
+      "name": "ESQUEL",
+      "classification": "Pallasite.",
+      "reportedMass": {
+        "valueText": "300 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        42
+      ],
+      "printedPageLabel": "32",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-25932688-7cf5-4928-863c-890d240bf91e",
+      "catalogId": "haag-2003",
+      "entryOrder": 75,
+      "captionTitle": null,
+      "name": "Esquel",
+      "classification": null,
+      "reportedMass": {
+        "valueText": "1.5 carat",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 2,
+      "sourceRelation": {
+        "type": "repeated-view",
+        "recordId": "obs-73f8bfde-b39b-4817-925d-c431a30f162c"
+      },
+      "catalogPages": [
+        43
+      ],
+      "printedPageLabel": "33",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-abb38854-f603-4fd2-9972-2f65a6f50d18",
+      "catalogId": "haag-2003",
+      "entryOrder": 76,
+      "captionTitle": "SANTA ROSALIA",
+      "name": "SANTA ROSALIA",
+      "classification": "Pallasite.",
+      "reportedMass": {
+        "valueText": "56 grams | 1.6 kilo",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        44
+      ],
+      "printedPageLabel": "34",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b2d4e5a3-3fac-4370-972c-44c5e2dc5de2",
+      "catalogId": "haag-2003",
+      "entryOrder": 77,
+      "captionTitle": "ACOMIDA",
+      "name": "ACOMIDA",
+      "classification": "Pallasite.",
+      "reportedMass": {
+        "valueText": "160 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        44
+      ],
+      "printedPageLabel": "34",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-9cdcb333-ec93-4d19-88e1-599e5108ec44",
+      "catalogId": "haag-2003",
+      "entryOrder": 78,
+      "captionTitle": "AHUMADA",
+      "name": "AHUMADA",
+      "classification": "Pallasite.",
+      "reportedMass": {
+        "valueText": "295 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        44
+      ],
+      "printedPageLabel": "34",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f20b4f79-78ec-4385-9dd7-c1b9352fce29",
+      "catalogId": "haag-2003",
+      "entryOrder": 79,
+      "captionTitle": "MOUNT VERNON",
+      "name": "MOUNT VERNON",
+      "classification": "Pallasite",
+      "reportedMass": {
+        "valueText": "3.15 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        45,
+        46
+      ],
+      "printedPageLabel": "35",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-52ca049b-f65c-491c-bc42-71a253a94d37",
+      "catalogId": "haag-2003",
+      "entryOrder": 80,
+      "captionTitle": "DORA",
+      "name": "DORA",
+      "classification": "Pallasite.",
+      "reportedMass": {
+        "valueText": "161 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        46
+      ],
+      "printedPageLabel": "35",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e2565707-d748-4969-a234-aa44547a29ab",
+      "catalogId": "haag-2003",
+      "entryOrder": 81,
+      "captionTitle": "QUIJINGUE",
+      "name": "QUIJINGUE",
+      "classification": "Pallasite",
+      "reportedMass": {
+        "valueText": "1.07 kilo",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        47
+      ],
+      "printedPageLabel": "36",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f07d4f4b-6c51-4376-a9a6-97823ca4eeaf",
+      "catalogId": "haag-2003",
+      "entryOrder": 82,
+      "captionTitle": "MOLONG",
+      "name": "MOLONG",
+      "classification": "Pallasite.",
+      "reportedMass": {
+        "valueText": "490 grams | 100 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        48
+      ],
+      "printedPageLabel": "36",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-af3cbab0-92a1-4498-ab61-9dbf71654d02",
+      "catalogId": "haag-2003",
+      "entryOrder": 83,
+      "captionTitle": "OTINAPA",
+      "name": "OTINAPA",
+      "classification": "Pallasite.",
+      "reportedMass": {
+        "valueText": "2.5 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        49
+      ],
+      "printedPageLabel": "37",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e239b919-005d-4a48-a4fe-a89debd09dba",
+      "catalogId": "haag-2003",
+      "entryOrder": 84,
+      "captionTitle": "ADMIRE",
+      "name": "ADMIRE",
+      "classification": "Pallasite.",
+      "reportedMass": {
+        "valueText": "400 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        50
+      ],
+      "printedPageLabel": "38",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f75bbf6c-e722-439b-9bb0-7e7fe9f73be6",
+      "catalogId": "haag-2003",
+      "entryOrder": 85,
+      "captionTitle": "ALBIN",
+      "name": "ALBIN",
+      "classification": "Pallasite.",
+      "reportedMass": {
+        "valueText": "740 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        50
+      ],
+      "printedPageLabel": "38",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-3f374d33-4d7d-438c-831b-8cdb63ed874d",
+      "catalogId": "haag-2003",
+      "entryOrder": 86,
+      "captionTitle": "KRASNOJARSK",
+      "name": "KRASNOJARSK",
+      "classification": "pallasite",
+      "reportedMass": {
+        "valueText": "40 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        51
+      ],
+      "printedPageLabel": "39",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-25804f4b-ab25-4771-9a65-66c4f0e4bafa",
+      "catalogId": "haag-2003",
+      "entryOrder": 87,
+      "captionTitle": "THIEL MOUNTAINS",
+      "name": "THIEL MOUNTAINS",
+      "classification": "Pallasite.",
+      "reportedMass": {
+        "valueText": "310 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        51
+      ],
+      "printedPageLabel": "39",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-5f5f133d-a6bc-44fd-8c69-70a3cc67b095",
+      "catalogId": "haag-2003",
+      "entryOrder": 88,
+      "captionTitle": "SPRINGWATER",
+      "name": "SPRINGWATER",
+      "classification": "Pallasite.",
+      "reportedMass": {
+        "valueText": "356 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        51
+      ],
+      "printedPageLabel": "39",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-eca50e8b-670e-4772-80a2-58cbe6fd697f",
+      "catalogId": "haag-2003",
+      "entryOrder": 89,
+      "captionTitle": "BRAHIN",
+      "name": "BRAHIN",
+      "classification": "Pallasite.",
+      "reportedMass": {
+        "valueText": "8 kilos | 1,000 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        52
+      ],
+      "printedPageLabel": "40",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-297b2750-94bb-40b1-b43c-5885a2f4ffda",
+      "catalogId": "haag-2003",
+      "entryOrder": 90,
+      "captionTitle": null,
+      "name": "Brahin",
+      "classification": null,
+      "reportedMass": null,
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": {
+        "type": "repeated-view",
+        "recordId": "obs-eca50e8b-670e-4772-80a2-58cbe6fd697f"
+      },
+      "catalogPages": [
+        52
+      ],
+      "printedPageLabel": "40",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-994a8fc2-752d-4d1c-9dfe-c5db4c12f07c",
+      "catalogId": "haag-2003",
+      "entryOrder": 91,
+      "captionTitle": "BRENHAM",
+      "name": "BRENHAM",
+      "classification": "Pallasite.",
+      "reportedMass": {
+        "valueText": "25 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 2,
+      "sourceRelation": null,
+      "catalogPages": [
+        53
+      ],
+      "printedPageLabel": "41",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-ab36b312-d1d7-476c-a298-53153c156cbb",
+      "catalogId": "haag-2003",
+      "entryOrder": 92,
+      "captionTitle": null,
+      "name": "Brenham",
+      "classification": "coarse iron octahedrite",
+      "reportedMass": null,
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": {
+        "type": "repeated-view",
+        "recordId": "obs-994a8fc2-752d-4d1c-9dfe-c5db4c12f07c"
+      },
+      "catalogPages": [
+        53
+      ],
+      "printedPageLabel": "41",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f5c2a63b-6488-4562-9bb9-c4604611c558",
+      "catalogId": "haag-2003",
+      "entryOrder": 93,
+      "captionTitle": "LOWICZ",
+      "name": "LOWICZ",
+      "classification": "Mesosiderite.",
+      "reportedMass": {
+        "valueText": "979 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        54
+      ],
+      "printedPageLabel": "42",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-1225664c-7dfd-4467-9fe8-bb35693b7af0",
+      "catalogId": "haag-2003",
+      "entryOrder": 94,
+      "captionTitle": "CRAB ORCHARD",
+      "name": "CRAB ORCHARD",
+      "classification": "Mesosiderite.",
+      "reportedMass": {
+        "valueText": "181 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        54
+      ],
+      "printedPageLabel": "42",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-3503742d-21b9-4f6b-b633-e98ec188d3d9",
+      "catalogId": "haag-2003",
+      "entryOrder": 95,
+      "captionTitle": "MINCY",
+      "name": "MINCY",
+      "classification": "Mesosiderite.",
+      "reportedMass": {
+        "valueText": "224 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        55,
+        56
+      ],
+      "printedPageLabel": "43",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-45d7daf7-fa7e-4388-8e80-d07659987909",
+      "catalogId": "haag-2003",
+      "entryOrder": 96,
+      "captionTitle": "CHINGUETTI",
+      "name": "CHINGUETTI",
+      "classification": "Mesosiderite",
+      "reportedMass": {
+        "valueText": "263 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        56
+      ],
+      "printedPageLabel": "43",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-cf9901f5-c3ae-43f4-8bc1-b2071fcd1ba9",
+      "catalogId": "haag-2003",
+      "entryOrder": 97,
+      "captionTitle": "CLOVER SPRINGS",
+      "name": "CLOVER SPRINGS",
+      "classification": "Mesosiderite",
+      "reportedMass": {
+        "valueText": "88 grams | 7 kilo",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        56
+      ],
+      "printedPageLabel": "43",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-cea82903-9a5e-4134-8ee9-73828905ac36",
+      "catalogId": "haag-2003",
+      "entryOrder": 98,
+      "captionTitle": "LAMONT",
+      "name": "LAMONT",
+      "classification": "Mesosiderite.",
+      "reportedMass": {
+        "valueText": "3.8 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        57
+      ],
+      "printedPageLabel": "44",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-31ce8c5e-4a1f-4dc0-86c2-e4d3189c0780",
+      "catalogId": "haag-2003",
+      "entryOrder": 99,
+      "captionTitle": "DALGARANGA",
+      "name": "DALGARANGA",
+      "classification": "Mesosiderite",
+      "reportedMass": {
+        "valueText": "640 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        57
+      ],
+      "printedPageLabel": "44",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-918eb97e-1889-45ea-b02a-3de218225829",
+      "catalogId": "haag-2003",
+      "entryOrder": 100,
+      "captionTitle": "MOUNT PADBURY",
+      "name": "MOUNT PADBURY",
+      "classification": "Old mesosiderite",
+      "reportedMass": {
+        "valueText": "561 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        57
+      ],
+      "printedPageLabel": "44",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-14c27864-d591-458d-8d27-408849d1abaa",
+      "catalogId": "haag-2003",
+      "entryOrder": 101,
+      "captionTitle": "ESTERVILLE",
+      "name": "ESTERVILLE",
+      "classification": "Mesosiderite.",
+      "reportedMass": {
+        "valueText": "3.3 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        58
+      ],
+      "printedPageLabel": "45",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-1123c9ae-8e9b-4c4e-a159-b4e89fb9e357",
+      "catalogId": "haag-2003",
+      "entryOrder": 102,
+      "captionTitle": "ESTERVILLE",
+      "name": "ESTERVILLE",
+      "classification": null,
+      "reportedMass": {
+        "valueText": "818 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        58
+      ],
+      "printedPageLabel": "45",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8cacd646-6f9a-4807-b055-5011954804c8",
+      "catalogId": "haag-2003",
+      "entryOrder": 103,
+      "captionTitle": "EMERY",
+      "name": "EMERY",
+      "classification": "Mesosiderite.",
+      "reportedMass": {
+        "valueText": "205 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        59
+      ],
+      "printedPageLabel": "46",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b2a596dc-1142-42be-8d88-110f72698259",
+      "catalogId": "haag-2003",
+      "entryOrder": 104,
+      "captionTitle": "BUDULAN",
+      "name": "BUDULAN",
+      "classification": "Mesosiderite.",
+      "reportedMass": {
+        "valueText": "1.9 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        59
+      ],
+      "printedPageLabel": "46",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6bf13684-b7d9-44a6-af9e-2ee7fb6c7edc",
+      "catalogId": "haag-2003",
+      "entryOrder": 105,
+      "captionTitle": "SAHARA 85001",
+      "name": "SAHARA 85001",
+      "classification": "Mesosiderite.",
+      "reportedMass": {
+        "valueText": "99 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        59
+      ],
+      "printedPageLabel": "46",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-7791907f-39fd-4c19-9f48-d94b616ceb4f",
+      "catalogId": "haag-2003",
+      "entryOrder": 106,
+      "captionTitle": "VACA MUERTA",
+      "name": "VACA MUERTA",
+      "classification": "Mesosiderite.",
+      "reportedMass": {
+        "valueText": "2.3 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        60
+      ],
+      "printedPageLabel": "47",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-bac3018a-2bec-4d3a-8d25-89da2f9a8150",
+      "catalogId": "haag-2003",
+      "entryOrder": 107,
+      "captionTitle": "BONDOC",
+      "name": "BONDOC",
+      "classification": "Mesosiderite.",
+      "reportedMass": {
+        "valueText": "1.45 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        60
+      ],
+      "printedPageLabel": "47",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-921fcafe-aafd-4927-b7d6-4df971bc4778",
+      "catalogId": "haag-2003",
+      "entryOrder": 108,
+      "captionTitle": "ZAGAMI",
+      "name": "ZAGAMI",
+      "classification": "Shergottite (SNC); volcanic basalt",
+      "reportedMass": {
+        "valueText": "2.35 kilos | 18 kilo",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        61
+      ],
+      "printedPageLabel": "48",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-af067022-f6b8-4ea7-bd88-83a4b20fe2b5",
+      "catalogId": "haag-2003",
+      "entryOrder": 109,
+      "captionTitle": "NWA, 856",
+      "name": "NWA, 856",
+      "classification": "Shergottite. Achondrite.",
+      "reportedMass": {
+        "valueText": "20 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        62
+      ],
+      "printedPageLabel": "49",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-665415f3-a7f3-49f9-9fd5-59d1d3f34beb",
+      "catalogId": "haag-2003",
+      "entryOrder": 110,
+      "captionTitle": "LOS ANGELES",
+      "name": "LOS ANGELES",
+      "classification": "Shergottite. Achondrite.",
+      "reportedMass": {
+        "valueText": "37 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        62
+      ],
+      "printedPageLabel": "49",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-36a28a99-2414-49b4-8fe3-e0f1e8693ec6",
+      "catalogId": "haag-2003",
+      "entryOrder": 111,
+      "captionTitle": "DAR al GANI 476",
+      "name": "DAR al GANI 476",
+      "classification": "Shergottite. Achondrite. Basalt.",
+      "reportedMass": {
+        "valueText": "33 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        62
+      ],
+      "printedPageLabel": "49",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-28a5ba7d-4a39-4c8f-a2da-7e1b855b193c",
+      "catalogId": "haag-2003",
+      "entryOrder": 112,
+      "captionTitle": "NAKHLA",
+      "name": "NAKHLA",
+      "classification": "Nakhlite. Achondrite.",
+      "reportedMass": {
+        "valueText": "13 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        63
+      ],
+      "printedPageLabel": "50",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b439d568-ed65-4ee8-b152-80dc88aae4fc",
+      "catalogId": "haag-2003",
+      "entryOrder": 113,
+      "captionTitle": "NAKHLITE NWA 998",
+      "name": "NAKHLITE NWA 998",
+      "classification": "Nakhlite. Achondrite.",
+      "reportedMass": {
+        "valueText": "13 grams | less than a kilo",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        63
+      ],
+      "printedPageLabel": "50",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8ec2fd47-135b-4059-bc8d-d3b55273174f",
+      "catalogId": "haag-2003",
+      "entryOrder": 114,
+      "captionTitle": "CALCALONG CREEK",
+      "name": "CALCALONG CREEK",
+      "classification": "Lunar achondrite.",
+      "reportedMass": {
+        "valueText": "7 carat",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        64
+      ],
+      "printedPageLabel": "51",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f1986683-0dbb-464a-a0bb-14c8dedc98bd",
+      "catalogId": "haag-2003",
+      "entryOrder": 115,
+      "captionTitle": "CALCALONG CREEK",
+      "name": "CALCALONG CREEK",
+      "classification": "Lunar achondrite.",
+      "reportedMass": {
+        "valueText": "7.5 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        65
+      ],
+      "printedPageLabel": "52",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-cfad25de-120a-4a9c-a670-492e670105a0",
+      "catalogId": "haag-2003",
+      "entryOrder": 116,
+      "captionTitle": "DAR al GHANI, 400",
+      "name": "DAR al GHANI, 400",
+      "classification": "Lunar achondrite. Anorthosite breccia",
+      "reportedMass": {
+        "valueText": "5.8 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        66
+      ],
+      "printedPageLabel": "53",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-5b75d32d-c0a0-4aa6-8780-d6c4fe3229c2",
+      "catalogId": "haag-2003",
+      "entryOrder": 117,
+      "captionTitle": "NWA 482",
+      "name": "NWA 482",
+      "classification": "Lunar achondrite.",
+      "reportedMass": {
+        "valueText": "27.7 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        66
+      ],
+      "printedPageLabel": "53",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-0563be1b-91e3-40fa-adf2-21553dcbdafb",
+      "catalogId": "haag-2003",
+      "entryOrder": 118,
+      "captionTitle": "D’ORBIGNY",
+      "name": "D’ORBIGNY",
+      "classification": "Angrite achondrite.",
+      "reportedMass": {
+        "valueText": "88 grams | 16 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        68
+      ],
+      "printedPageLabel": "55",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d0b12351-5f9b-4f29-914d-cf060d92d294",
+      "catalogId": "haag-2003",
+      "entryOrder": 119,
+      "captionTitle": "SAHARA 98501",
+      "name": "SAHARA 98501",
+      "classification": "Urelite achondrite.",
+      "reportedMass": {
+        "valueText": "136 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        68
+      ],
+      "printedPageLabel": "55",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-4dcf7e65-a02a-4bdf-b88c-a3e60574588a",
+      "catalogId": "haag-2003",
+      "entryOrder": 120,
+      "captionTitle": null,
+      "name": null,
+      "classification": null,
+      "reportedMass": null,
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": {
+        "type": "repeated-view",
+        "recordId": "obs-d0b12351-5f9b-4f29-914d-cf060d92d294"
+      },
+      "catalogPages": [
+        69
+      ],
+      "printedPageLabel": "56",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-0479555c-c7a2-46d5-b1e1-07e0dd8ec547",
+      "catalogId": "haag-2003",
+      "entryOrder": 121,
+      "captionTitle": "PENA BLANCA SPRINGS",
+      "name": "PENA BLANCA SPRINGS",
+      "classification": "Aubrite achondrite.",
+      "reportedMass": {
+        "valueText": "11.5 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        69
+      ],
+      "printedPageLabel": "56",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-72bf406f-8ba7-4a1a-b8f5-13a01278f048",
+      "catalogId": "haag-2003",
+      "entryOrder": 122,
+      "captionTitle": "NORTON COUNTY",
+      "name": "NORTON COUNTY",
+      "classification": "Aubrite achondrite.",
+      "reportedMass": {
+        "valueText": "889 grams | over a ton",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        70
+      ],
+      "printedPageLabel": "57",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-9166b70c-619a-4d4e-a7ad-70cc9ae10b82",
+      "catalogId": "haag-2003",
+      "entryOrder": 123,
+      "captionTitle": "CUMBERLAND FALLS",
+      "name": "CUMBERLAND FALLS",
+      "classification": "Aubrite achondrite.",
+      "reportedMass": {
+        "valueText": "157 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        70
+      ],
+      "printedPageLabel": "57",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d1f0e5b9-7406-47c9-831e-6b5ac17dcf0d",
+      "catalogId": "haag-2003",
+      "entryOrder": 124,
+      "captionTitle": "MAYO BELWA",
+      "name": "MAYO BELWA",
+      "classification": "Aubrite achondrite.",
+      "reportedMass": {
+        "valueText": "82 grams | 4.8 kilo",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        71
+      ],
+      "printedPageLabel": "58",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-bedd027d-c171-457c-8c0d-98efe41994d8",
+      "catalogId": "haag-2003",
+      "entryOrder": 125,
+      "captionTitle": "MOUNT EGERTON",
+      "name": "MOUNT EGERTON",
+      "classification": "Aubrite achondrite or possibly mesosiderite. Anomalous",
+      "reportedMass": {
+        "valueText": "69 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        71
+      ],
+      "printedPageLabel": "58",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8d5868b7-6b96-44ab-ab3f-9a19e0c08782",
+      "catalogId": "haag-2003",
+      "entryOrder": 126,
+      "captionTitle": "BILANGA",
+      "name": "BILANGA",
+      "classification": null,
+      "reportedMass": {
+        "valueText": "754 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 2,
+      "sourceRelation": null,
+      "catalogPages": [
+        72
+      ],
+      "printedPageLabel": "59",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-7fe331a7-3357-4083-9135-1fa6e3e344b2",
+      "catalogId": "haag-2003",
+      "entryOrder": 127,
+      "captionTitle": null,
+      "name": null,
+      "classification": "Diogenite",
+      "reportedMass": {
+        "valueText": "179 gram",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": {
+        "type": "repeated-view",
+        "recordId": "obs-8d5868b7-6b96-44ab-ab3f-9a19e0c08782"
+      },
+      "catalogPages": [
+        72
+      ],
+      "printedPageLabel": "59",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-90c058fa-54c5-4642-8cf3-7f7f2bde4495",
+      "catalogId": "haag-2003",
+      "entryOrder": 128,
+      "captionTitle": null,
+      "name": "JOHNSTOWN",
+      "classification": null,
+      "reportedMass": null,
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        73
+      ],
+      "printedPageLabel": "60",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-1f196e40-6548-430f-9654-fe6c53c791a0",
+      "catalogId": "haag-2003",
+      "entryOrder": 129,
+      "captionTitle": null,
+      "name": null,
+      "classification": null,
+      "reportedMass": null,
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        73
+      ],
+      "printedPageLabel": "60",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a4dc3a76-42c2-4fec-a6c0-cd8bd7f47159",
+      "catalogId": "haag-2003",
+      "entryOrder": 130,
+      "captionTitle": "JOHNSTOWN",
+      "name": "JOHNSTOWN",
+      "classification": "Diogenite achondrite.",
+      "reportedMass": {
+        "valueText": "419 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        73
+      ],
+      "printedPageLabel": "60",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-16e40587-db8b-4783-aa6a-fefc7a81235a",
+      "catalogId": "haag-2003",
+      "entryOrder": 131,
+      "captionTitle": "TATAHOUINE",
+      "name": "TATAHOUINE",
+      "classification": "Diogenite achondrite.",
+      "reportedMass": {
+        "valueText": "37 grams | dozen kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        74
+      ],
+      "printedPageLabel": "61",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-456e8d4a-7a4a-421d-8486-5cd29afdf263",
+      "catalogId": "haag-2003",
+      "entryOrder": 132,
+      "captionTitle": "SHALKA",
+      "name": "SHALKA",
+      "classification": "Diogenite achondrite.",
+      "reportedMass": {
+        "valueText": "41.2 grams | 3.6 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": {
+        "valueText": "nearly a meter across",
+        "semantics": "caption-context-only"
+      },
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        74
+      ],
+      "printedPageLabel": "61",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-deb95f4e-195b-46ba-a955-935d713026e3",
+      "catalogId": "haag-2003",
+      "entryOrder": 133,
+      "captionTitle": "GREAT SAND SEA 010",
+      "name": "GREAT SAND SEA 010",
+      "classification": "Howardite achondrite.",
+      "reportedMass": {
+        "valueText": "302 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        75
+      ],
+      "printedPageLabel": "62",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f892027a-4877-48de-ac55-be4a0c7659e0",
+      "catalogId": "haag-2003",
+      "entryOrder": 134,
+      "captionTitle": "KAPOETA",
+      "name": "KAPOETA",
+      "classification": "Howardite",
+      "reportedMass": {
+        "valueText": "114 grams | 11.3 kilo",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        75
+      ],
+      "printedPageLabel": "62",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-7734f629-17aa-49d8-bd0e-58bb9f714947",
+      "catalogId": "haag-2003",
+      "entryOrder": 135,
+      "captionTitle": "HUGHES 005",
+      "name": "HUGHES 005",
+      "classification": "Howardite achondrite.",
+      "reportedMass": {
+        "valueText": "31 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        76
+      ],
+      "printedPageLabel": "63",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-3129f49f-e2b2-4a1a-a18e-7196f777c184",
+      "catalogId": "haag-2003",
+      "entryOrder": 136,
+      "captionTitle": "MUNDRABILLA 018",
+      "name": "MUNDRABILLA 018",
+      "classification": "Howardite achondrite.",
+      "reportedMass": {
+        "valueText": "24 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        76
+      ],
+      "printedPageLabel": "63",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-67f83b0b-3b21-4f7f-a87f-77ffe5ebcf67",
+      "catalogId": "haag-2003",
+      "entryOrder": 137,
+      "captionTitle": null,
+      "name": "Mundrabilla 018",
+      "classification": null,
+      "reportedMass": null,
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": {
+        "type": "repeated-view",
+        "recordId": "obs-3129f49f-e2b2-4a1a-a18e-7196f777c184"
+      },
+      "catalogPages": [
+        76
+      ],
+      "printedPageLabel": "63",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-428bff73-16ea-4184-a90f-2b3bcb4e7c9e",
+      "catalogId": "haag-2003",
+      "entryOrder": 138,
+      "captionTitle": "DAR al GHANI 779",
+      "name": "DAR al GHANI 779",
+      "classification": "Howardite achondrite.",
+      "reportedMass": {
+        "valueText": "23 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        77
+      ],
+      "printedPageLabel": "64",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8622ebbc-c1fe-4696-9624-a57c563f600c",
+      "catalogId": "haag-2003",
+      "entryOrder": 139,
+      "captionTitle": "PASAMONTE",
+      "name": "PASAMONTE",
+      "classification": "Eucrite achondrite.",
+      "reportedMass": {
+        "valueText": "41 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        77
+      ],
+      "printedPageLabel": "64",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-1cc28cbb-9354-4a84-9615-9d7b8f7973cf",
+      "catalogId": "haag-2003",
+      "entryOrder": 140,
+      "captionTitle": "MILLBILLILLIE",
+      "name": "MILLBILLILLIE",
+      "classification": "Eucrite achondrite.",
+      "reportedMass": {
+        "valueText": "946 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        78
+      ],
+      "printedPageLabel": "65",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-4c34485a-a66e-4447-b933-325d067d7fed",
+      "catalogId": "haag-2003",
+      "entryOrder": 141,
+      "captionTitle": "MILLBILLILLIE",
+      "name": "MILLBILLILLIE",
+      "classification": "Eucrite achondrite.",
+      "reportedMass": {
+        "valueText": "1.71 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        78
+      ],
+      "printedPageLabel": "65",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-42490cbf-7ca7-4c89-9b13-80e0d27d8b39",
+      "catalogId": "haag-2003",
+      "entryOrder": 142,
+      "captionTitle": "MILLBILLILLIE",
+      "name": "MILLBILLILLIE",
+      "classification": "Eucrite achondrite.",
+      "reportedMass": {
+        "valueText": "17 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        79
+      ],
+      "printedPageLabel": "66",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-47f30b92-9811-4754-986f-1d2326639713",
+      "catalogId": "haag-2003",
+      "entryOrder": 143,
+      "captionTitle": "MILLBILLILLIE",
+      "name": "MILLBILLILLIE",
+      "classification": "Eucrite achondrite.",
+      "reportedMass": {
+        "valueText": "16 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        79
+      ],
+      "printedPageLabel": "66",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-945f10f9-f4bb-422c-9cc3-617aa7a049f2",
+      "catalogId": "haag-2003",
+      "entryOrder": 144,
+      "captionTitle": "MILLBILLILLIE",
+      "name": "MILLBILLILLIE",
+      "classification": "Eucrite achondrite.",
+      "reportedMass": {
+        "valueText": "16 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        79
+      ],
+      "printedPageLabel": "66",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-9e9b9ced-1d7d-4c01-b51e-20f9e9d3d667",
+      "catalogId": "haag-2003",
+      "entryOrder": 145,
+      "captionTitle": "SERRA de MAGE",
+      "name": "SERRA de MAGE",
+      "classification": "Eucrite achondrite.",
+      "reportedMass": {
+        "valueText": "24 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        80
+      ],
+      "printedPageLabel": "67",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-0b7084a4-b6d4-4185-a207-b1f381a91afb",
+      "catalogId": "haag-2003",
+      "entryOrder": 146,
+      "captionTitle": "IBITIRA",
+      "name": "IBITIRA",
+      "classification": "Eucrite achondrite. Anomalous",
+      "reportedMass": {
+        "valueText": "143 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        80
+      ],
+      "printedPageLabel": "67",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d4906eb2-0627-45bd-8b3f-79c037a57591",
+      "catalogId": "haag-2003",
+      "entryOrder": 147,
+      "captionTitle": "JUVINAS",
+      "name": "JUVINAS",
+      "classification": "Eucrite achondrite.",
+      "reportedMass": {
+        "valueText": "366 grams | 91 kilo",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        81
+      ],
+      "printedPageLabel": "68",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c24f7cb4-5989-42f4-bc50-7f7f96950251",
+      "catalogId": "haag-2003",
+      "entryOrder": 148,
+      "captionTitle": "STANNERN",
+      "name": "STANNERN",
+      "classification": "Eucrite achondrite.",
+      "reportedMass": {
+        "valueText": "394 grams | 6 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        81
+      ],
+      "printedPageLabel": "68",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-63d3721c-409c-4d82-bb87-9f941edd4053",
+      "catalogId": "haag-2003",
+      "entryOrder": 149,
+      "captionTitle": "BOUVANTE",
+      "name": "BOUVANTE",
+      "classification": "Eucrite achondrite.",
+      "reportedMass": {
+        "valueText": "196 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        81
+      ],
+      "printedPageLabel": "68",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-4040e0c6-3367-4187-90be-7ae0c677fba7",
+      "catalogId": "haag-2003",
+      "entryOrder": 150,
+      "captionTitle": "CAMEL DONGA",
+      "name": "CAMEL DONGA",
+      "classification": "Troilite-rich eucrite achondrite",
+      "reportedMass": {
+        "valueText": "1.13 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        82
+      ],
+      "printedPageLabel": "69",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-1bcf40f1-e1ba-412a-9959-156ee544cb98",
+      "catalogId": "haag-2003",
+      "entryOrder": 151,
+      "captionTitle": "SMARA",
+      "name": "SMARA",
+      "classification": "Eucrite achondrite.",
+      "reportedMass": {
+        "valueText": "145 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        82
+      ],
+      "printedPageLabel": "69",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b6f2a2f6-88a6-4d1c-8ef4-7cf5f26626d4",
+      "catalogId": "haag-2003",
+      "entryOrder": 152,
+      "captionTitle": null,
+      "name": "Caldera",
+      "classification": null,
+      "reportedMass": null,
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        83
+      ],
+      "printedPageLabel": "70",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6b1b392f-6e79-409b-a1c7-1f6afc50bc8a",
+      "catalogId": "haag-2003",
+      "entryOrder": 153,
+      "captionTitle": "CALDERA",
+      "name": "CALDERA",
+      "classification": "Eucrite achondrite.",
+      "reportedMass": {
+        "valueText": "187 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        83
+      ],
+      "printedPageLabel": "70",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-1afb6042-be1b-4366-99d4-f31541156fa1",
+      "catalogId": "haag-2003",
+      "entryOrder": 154,
+      "captionTitle": "PALO BLANCO CREEK",
+      "name": "PALO BLANCO CREEK",
+      "classification": "Eucrite achondrite.",
+      "reportedMass": {
+        "valueText": "94 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        83
+      ],
+      "printedPageLabel": "70",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-de43b0ae-4efa-4137-879a-ea96b1847703",
+      "catalogId": "haag-2003",
+      "entryOrder": 155,
+      "captionTitle": "RANCHO BLANCO",
+      "name": "RANCHO BLANCO",
+      "classification": "Eucrite achondrite.",
+      "reportedMass": {
+        "valueText": "69 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        84
+      ],
+      "printedPageLabel": "71",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-4865b55d-a189-4e40-b6b5-79b9230a08bb",
+      "catalogId": "haag-2003",
+      "entryOrder": 156,
+      "captionTitle": "ABEE",
+      "name": "ABEE",
+      "classification": "Enstatite chondrite. (EH)",
+      "reportedMass": {
+        "valueText": "155 grams | 107 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        85
+      ],
+      "printedPageLabel": "72",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f1041c17-d86a-4a87-979b-14a52168ee60",
+      "catalogId": "haag-2003",
+      "entryOrder": 157,
+      "captionTitle": "INDARCH",
+      "name": "INDARCH",
+      "classification": "Enstatite chondrite. High-metal content (EH4)",
+      "reportedMass": {
+        "valueText": "11 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        85
+      ],
+      "printedPageLabel": "72",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-bb70c46f-3560-449b-ad27-435cd1b05b67",
+      "catalogId": "haag-2003",
+      "entryOrder": 158,
+      "captionTitle": "SAHARA 98044",
+      "name": "SAHARA 98044",
+      "classification": "Enstatite chondrite. (EH3)",
+      "reportedMass": {
+        "valueText": "135 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        86,
+        87
+      ],
+      "printedPageLabel": "73",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-bcb24669-33c9-4a44-9092-3f53c99e851a",
+      "catalogId": "haag-2003",
+      "entryOrder": 159,
+      "captionTitle": "HVITTIS",
+      "name": "HVITTIS",
+      "classification": "Enstatite achondrite. (EL6)",
+      "reportedMass": {
+        "valueText": "565 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        87
+      ],
+      "printedPageLabel": "73",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-98ff5361-050c-422a-a865-f2a2bc2258fc",
+      "catalogId": "haag-2003",
+      "entryOrder": 160,
+      "captionTitle": "EAGLE",
+      "name": "EAGLE",
+      "classification": "Enstatite chondrite. (EL6)",
+      "reportedMass": {
+        "valueText": "100 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        88
+      ],
+      "printedPageLabel": "74",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8e8a9b4d-814a-42ae-a673-11f3b4f70cf3",
+      "catalogId": "haag-2003",
+      "entryOrder": 161,
+      "captionTitle": "PILLISTFER",
+      "name": "PILLISTFER",
+      "classification": "Enstatite chondrite. (EL6)",
+      "reportedMass": {
+        "valueText": "652 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        88
+      ],
+      "printedPageLabel": "74",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-76b4ef14-878c-4e30-b420-2d4e999b4bc9",
+      "catalogId": "haag-2003",
+      "entryOrder": 162,
+      "captionTitle": "RAGLAN",
+      "name": "RAGLAN",
+      "classification": "Ordinary chondrite. (L3.5)",
+      "reportedMass": null,
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        89
+      ],
+      "printedPageLabel": "75",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-780a35a9-5686-428a-aa0e-d2a438495c94",
+      "catalogId": "haag-2003",
+      "entryOrder": 163,
+      "captionTitle": "ORGUEIL",
+      "name": "ORGUEIL",
+      "classification": "Carbonaceous chondrite. (C1)",
+      "reportedMass": {
+        "valueText": "11 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        90
+      ],
+      "printedPageLabel": "76",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8e518d50-739d-415d-8d36-327b82d4b907",
+      "catalogId": "haag-2003",
+      "entryOrder": 164,
+      "captionTitle": "MURCHISON",
+      "name": "MURCHISON",
+      "classification": "Carbonaceous chondrite. (CM2)",
+      "reportedMass": {
+        "valueText": "50 grams | 65 grams | 965 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 2,
+      "sourceRelation": null,
+      "catalogPages": [
+        91
+      ],
+      "printedPageLabel": "77",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b7c9e494-a58b-46a2-b65b-6dafc7199469",
+      "catalogId": "haag-2003",
+      "entryOrder": 165,
+      "captionTitle": "COLD BOKKEVELD",
+      "name": "COLD BOKKEVELD",
+      "classification": "Carbonaceous chondrite. (CM2)",
+      "reportedMass": {
+        "valueText": "20 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        92
+      ],
+      "printedPageLabel": "78",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c6c6bf31-f8e3-4040-89cb-9507f68c5389",
+      "catalogId": "haag-2003",
+      "entryOrder": 166,
+      "captionTitle": "MURRAY",
+      "name": "MURRAY",
+      "classification": "Carbonaceous chondrite. (CM2)",
+      "reportedMass": {
+        "valueText": "87 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        92
+      ],
+      "printedPageLabel": "78",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-cc1f06f8-84ac-4240-82e5-ed0bb13ada68",
+      "catalogId": "haag-2003",
+      "entryOrder": 167,
+      "captionTitle": "BUTHA QI",
+      "name": "BUTHA QI",
+      "classification": "Ordinary chondrite with large, CM2 carbonaceous chondrite inclusion. (LL3?)",
+      "reportedMass": {
+        "valueText": "203 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        93
+      ],
+      "printedPageLabel": "79",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8510753b-255f-4d00-b4ed-54c2363f472d",
+      "catalogId": "haag-2003",
+      "entryOrder": 168,
+      "captionTitle": "NOGOYA",
+      "name": "NOGOYA",
+      "classification": "Carbonaceous chondrite. (CM2)",
+      "reportedMass": {
+        "valueText": "112 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        93
+      ],
+      "printedPageLabel": "79",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-302f2660-4fbf-45fa-a157-08c46f1365fc",
+      "catalogId": "haag-2003",
+      "entryOrder": 169,
+      "captionTitle": "ALLENDE",
+      "name": "ALLENDE",
+      "classification": "Carbonaceous chondrite. (CV3.2)",
+      "reportedMass": {
+        "valueText": "17 kilo | 4.8 kilos | Several tons",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 2,
+      "sourceRelation": null,
+      "catalogPages": [
+        94,
+        95
+      ],
+      "printedPageLabel": "80",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-90541d00-f487-4f22-b6a0-278e03786e4b",
+      "catalogId": "haag-2003",
+      "entryOrder": 170,
+      "captionTitle": "SAHARA 98044",
+      "name": "SAHARA 98044",
+      "classification": "Carbonaceous chondrite. (CV)",
+      "reportedMass": {
+        "valueText": "155 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        96
+      ],
+      "printedPageLabel": "81",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-667b3bab-c577-4736-8760-bf508305b581",
+      "catalogId": "haag-2003",
+      "entryOrder": 171,
+      "captionTitle": "LEOVILLE",
+      "name": "LEOVILLE",
+      "classification": "Carbonaceous chondrite. (CV3.0)",
+      "reportedMass": {
+        "valueText": "20 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        97
+      ],
+      "printedPageLabel": "82",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c6a8726e-2cd3-4ee0-a574-e32ac4216c3f",
+      "catalogId": "haag-2003",
+      "entryOrder": 172,
+      "captionTitle": "VIGARANO",
+      "name": "VIGARANO",
+      "classification": "Carbonaceous chondrite. (CV3.3)",
+      "reportedMass": {
+        "valueText": "61 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        97
+      ],
+      "printedPageLabel": "82",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b2afcfe7-f706-40d1-ac54-da9ff8dcb4c5",
+      "catalogId": "haag-2003",
+      "entryOrder": 173,
+      "captionTitle": "KAINSAZ",
+      "name": "KAINSAZ",
+      "classification": "Carbonaceous chondrite. (CO3.1)",
+      "reportedMass": {
+        "valueText": "548 gram",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        98
+      ],
+      "printedPageLabel": "83",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6a1e727b-c23f-4348-b6b4-af4d793dd27b",
+      "catalogId": "haag-2003",
+      "entryOrder": 174,
+      "captionTitle": "ISNA",
+      "name": "ISNA",
+      "classification": "Carbonaceous chondrite. (CO3.7)",
+      "reportedMass": {
+        "valueText": "244 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        98
+      ],
+      "printedPageLabel": "83",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-3fd08e6b-ba35-452e-9867-2286f78c8a27",
+      "catalogId": "haag-2003",
+      "entryOrder": 175,
+      "captionTitle": "COLONY",
+      "name": "COLONY",
+      "classification": "Carbonaceous chondrite. (CO3.0)",
+      "reportedMass": {
+        "valueText": "164 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        99
+      ],
+      "printedPageLabel": "84",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-0676dd7c-1081-45a7-9956-ef0f25affc83",
+      "catalogId": "haag-2003",
+      "entryOrder": 176,
+      "captionTitle": "DAR AL GHANI 749",
+      "name": "DAR AL GHANI 749",
+      "classification": "Carbonaceous chondrite. (CO3)",
+      "reportedMass": {
+        "valueText": "60 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        99
+      ],
+      "printedPageLabel": "84",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-cea6edd8-0fea-44ea-9baa-4843b12f9c96",
+      "catalogId": "haag-2003",
+      "entryOrder": 177,
+      "captionTitle": "BENCUBBIN",
+      "name": "BENCUBBIN",
+      "classification": "Ungrouped chondrite with carbonaceous chondrite clasts. (!) Anomalous",
+      "reportedMass": {
+        "valueText": "437 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        100,
+        101
+      ],
+      "printedPageLabel": "84",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b0c38cd7-89c9-45b2-afe1-4dc14e8b4af6",
+      "catalogId": "haag-2003",
+      "entryOrder": 178,
+      "captionTitle": "HAMADA al HAMRA 237",
+      "name": "HAMADA al HAMRA 237",
+      "classification": "Carbonaceous chondrite. (CH) Anomalous",
+      "reportedMass": {
+        "valueText": "54 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        101
+      ],
+      "printedPageLabel": "84",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-00fd243d-fb05-4ae2-a813-9a5e30583d71",
+      "catalogId": "haag-2003",
+      "entryOrder": 179,
+      "captionTitle": "KAROONDA",
+      "name": "KAROONDA",
+      "classification": "Carbonaceous chondrite. (CK4)",
+      "reportedMass": {
+        "valueText": "83 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        102
+      ],
+      "printedPageLabel": "85",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-76dc3e0d-1a7e-41c7-9fde-f355b7108247",
+      "catalogId": "haag-2003",
+      "entryOrder": 180,
+      "captionTitle": "MARALINGA",
+      "name": "MARALINGA",
+      "classification": "Carbonaceous chondrite. (CK4) Anomalous",
+      "reportedMass": {
+        "valueText": "180 grams | 3.3 kilo",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        102
+      ],
+      "printedPageLabel": "85",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d95b83c6-b35b-4224-a5fa-80858783816f",
+      "catalogId": "haag-2003",
+      "entryOrder": 181,
+      "captionTitle": "ACFER 059",
+      "name": "ACFER 059",
+      "classification": "Carbonaceous chondrite. (CR2)",
+      "reportedMass": {
+        "valueText": "27 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        103
+      ],
+      "printedPageLabel": "86",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-11b54c74-7678-47e2-9bb8-6e7f0c231bc4",
+      "catalogId": "haag-2003",
+      "entryOrder": 182,
+      "captionTitle": "RUMURUTI",
+      "name": "RUMURUTI",
+      "classification": "R-type chondrite",
+      "reportedMass": {
+        "valueText": "61 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        103
+      ],
+      "printedPageLabel": "86",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-426db4c3-c53a-4710-bf5c-37b16ac21b2e",
+      "catalogId": "haag-2003",
+      "entryOrder": 183,
+      "captionTitle": null,
+      "name": null,
+      "classification": null,
+      "reportedMass": null,
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        104
+      ],
+      "printedPageLabel": "87",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-710c155d-6977-4b6d-b086-d11f967cc1f2",
+      "catalogId": "haag-2003",
+      "entryOrder": 184,
+      "captionTitle": "CAT MOUNTAIN",
+      "name": "CAT MOUNTAIN",
+      "classification": "Ordinary chondrite.",
+      "reportedMass": {
+        "valueText": "905 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        104
+      ],
+      "printedPageLabel": "87",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-cbf0c2a9-5408-4d28-8ba5-41511184947d",
+      "catalogId": "haag-2003",
+      "entryOrder": 185,
+      "captionTitle": "BJURBOLE",
+      "name": "BJURBOLE",
+      "classification": "Chondrite. (LL4)",
+      "reportedMass": {
+        "valueText": "3.02 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        105
+      ],
+      "printedPageLabel": "88",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-875ff338-0992-4928-a06d-ae13a0ceece7",
+      "catalogId": "haag-2003",
+      "entryOrder": 186,
+      "captionTitle": "PARNALLEE",
+      "name": "PARNALLEE",
+      "classification": "Ordinary chondrite. (LL3)",
+      "reportedMass": {
+        "valueText": "260 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        105
+      ],
+      "printedPageLabel": "88",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-353a44c2-dab2-40ae-8ab3-ddc224523b64",
+      "catalogId": "haag-2003",
+      "entryOrder": 187,
+      "captionTitle": "SAINT SEVERIN | ENSISHEIM",
+      "name": "SAINT SEVERIN | ENSISHEIM",
+      "classification": "Amphoterite. chondrites. (LL6)",
+      "reportedMass": {
+        "valueText": "3.1 kilos | 85 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        106
+      ],
+      "printedPageLabel": "89",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-84ee923b-9854-4625-825b-e377cffba828",
+      "catalogId": "haag-2003",
+      "entryOrder": 188,
+      "captionTitle": "TUXTUAC",
+      "name": "TUXTUAC",
+      "classification": "Ordinary chondrite. (LL5)",
+      "reportedMass": {
+        "valueText": "7 kilos | 25 kilo",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 4,
+      "sourceRelation": null,
+      "catalogPages": [
+        107,
+        108
+      ],
+      "printedPageLabel": "90",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-441e0083-6c7a-436f-9bf3-8cd20a9230f3",
+      "catalogId": "haag-2003",
+      "entryOrder": 189,
+      "captionTitle": "BEELER",
+      "name": "BEELER",
+      "classification": "Ordinary chondrite. (LL6)",
+      "reportedMass": {
+        "valueText": "757 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        109
+      ],
+      "printedPageLabel": "92",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b0ef149a-424e-4248-a34d-4b76e65c4086",
+      "catalogId": "haag-2003",
+      "entryOrder": 190,
+      "captionTitle": "BISON",
+      "name": "BISON",
+      "classification": "Ordinary chondrite. (LL6)",
+      "reportedMass": {
+        "valueText": "314 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        109
+      ],
+      "printedPageLabel": "92",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-feb5cea4-fef9-4ec6-bb1e-b304bbeb49e3",
+      "catalogId": "haag-2003",
+      "entryOrder": 191,
+      "captionTitle": "LAKE LABYRINTH",
+      "name": "LAKE LABYRINTH",
+      "classification": "Ordinary chondrite. (LL6)",
+      "reportedMass": null,
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        109
+      ],
+      "printedPageLabel": "92",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-9e652aed-4761-4b7e-9eee-22f0a7dbcd3f",
+      "catalogId": "haag-2003",
+      "entryOrder": 192,
+      "captionTitle": "BANDONG",
+      "name": "BANDONG",
+      "classification": "Ordinary chondrite. (LL6)",
+      "reportedMass": {
+        "valueText": "95 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        110,
+        111
+      ],
+      "printedPageLabel": "93",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-849cbb29-244a-419e-8bab-3f8c69efa7cf",
+      "catalogId": "haag-2003",
+      "entryOrder": 193,
+      "captionTitle": "BOVEDY",
+      "name": "BOVEDY",
+      "classification": "Ordinary chondrite. (L3)",
+      "reportedMass": {
+        "valueText": "83 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        112
+      ],
+      "printedPageLabel": "94",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b9cc57ab-fef2-4211-87b2-5a12e491f387",
+      "catalogId": "haag-2003",
+      "entryOrder": 194,
+      "captionTitle": "RAGLAND",
+      "name": "RAGLAND",
+      "classification": "Ordinary chondrite. (L3.5)",
+      "reportedMass": {
+        "valueText": "186 grams | 12 kilo",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": {
+        "type": "repeated-view",
+        "recordId": "obs-76b4ef14-878c-4e30-b420-2d4e999b4bc9"
+      },
+      "catalogPages": [
+        112
+      ],
+      "printedPageLabel": "94",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-78276fbf-df46-42f9-9354-fb5dbcccedd0",
+      "catalogId": "haag-2003",
+      "entryOrder": 195,
+      "captionTitle": "SARATOV",
+      "name": "SARATOV",
+      "classification": "Ordinary chondrite. (L4)",
+      "reportedMass": {
+        "valueText": "233 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        112
+      ],
+      "printedPageLabel": "94",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e49f95b5-b025-4402-9d45-8135bc2f776e",
+      "catalogId": "haag-2003",
+      "entryOrder": 196,
+      "captionTitle": "MOORABIE",
+      "name": "MOORABIE",
+      "classification": "Ordinary chondrite. (L3.6)",
+      "reportedMass": {
+        "valueText": "4 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        113
+      ],
+      "printedPageLabel": "95",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-b098dde2-7c48-4cb3-ba2f-1a12866790cb",
+      "catalogId": "haag-2003",
+      "entryOrder": 197,
+      "captionTitle": "BARRATTA",
+      "name": "BARRATTA",
+      "classification": "Ordinary chondrite. (L3.8)",
+      "reportedMass": {
+        "valueText": "949 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        113
+      ],
+      "printedPageLabel": "95",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-1e6eaadc-b9c4-452a-8f1e-9594099bef36",
+      "catalogId": "haag-2003",
+      "entryOrder": 198,
+      "captionTitle": "BEAVER",
+      "name": "BEAVER",
+      "classification": "Ordinary chondrite. (L5)",
+      "reportedMass": {
+        "valueText": "575 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        114
+      ],
+      "printedPageLabel": "96",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-4d1e5f5d-b59f-40a6-9116-7dc9a2401a2d",
+      "catalogId": "haag-2003",
+      "entryOrder": 199,
+      "captionTitle": "IOKA",
+      "name": "IOKA",
+      "classification": "Ordinary chondrite. (L3)",
+      "reportedMass": {
+        "valueText": "136 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        114
+      ],
+      "printedPageLabel": "96",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f8ccba5b-2c43-4b2e-b4b6-757503287bdb",
+      "catalogId": "haag-2003",
+      "entryOrder": 200,
+      "captionTitle": "TSAREV",
+      "name": "TSAREV",
+      "classification": "Ordinary chondrite. (L5)",
+      "reportedMass": {
+        "valueText": "978 grams | 1,000 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        114
+      ],
+      "printedPageLabel": "96",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-7f961a0b-d05b-4755-8898-439313dfc874",
+      "catalogId": "haag-2003",
+      "entryOrder": 201,
+      "captionTitle": "KNYAHINYA",
+      "name": "KNYAHINYA",
+      "classification": "Ordinary chondrite. (L5)",
+      "reportedMass": {
+        "valueText": "434 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        115
+      ],
+      "printedPageLabel": "97",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-9bf450c5-b137-4daa-bad6-71492a06dfd2",
+      "catalogId": "haag-2003",
+      "entryOrder": 202,
+      "captionTitle": "HOMESTEAD",
+      "name": "HOMESTEAD",
+      "classification": "Ordinary chondrite. (L5)",
+      "reportedMass": {
+        "valueText": "134 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        115
+      ],
+      "printedPageLabel": "97",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-aa73efa0-e772-456f-90df-8e065b08b7b3",
+      "catalogId": "haag-2003",
+      "entryOrder": 203,
+      "captionTitle": "OHUMA",
+      "name": "OHUMA",
+      "classification": "Ordinary chondrite. (L5)",
+      "reportedMass": {
+        "valueText": "433 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        116,
+        117
+      ],
+      "printedPageLabel": "98",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-15bf6cbf-b5b3-443d-b10d-c609d80d9b43",
+      "catalogId": "haag-2003",
+      "entryOrder": 204,
+      "captionTitle": "ETTER",
+      "name": "ETTER",
+      "classification": "Ordinary chondrite.",
+      "reportedMass": {
+        "valueText": "42 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        117
+      ],
+      "printedPageLabel": "98",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d2a3730d-a713-45c9-8b26-8501983933c2",
+      "catalogId": "haag-2003",
+      "entryOrder": 205,
+      "captionTitle": "M’BALE",
+      "name": "M’BALE",
+      "classification": "Ordinary chondrite. (L6)",
+      "reportedMass": {
+        "valueText": "1.3 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        118
+      ],
+      "printedPageLabel": "99",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-612a7e85-acbe-45dc-9525-86b8365c671c",
+      "catalogId": "haag-2003",
+      "entryOrder": 206,
+      "captionTitle": "MOCS",
+      "name": "MOCS",
+      "classification": "Ordinary chondrite. (L6)",
+      "reportedMass": {
+        "valueText": "218 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        118
+      ],
+      "printedPageLabel": "99",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-164d35bc-eadb-4d74-b5b8-b20c7b43ec62",
+      "catalogId": "haag-2003",
+      "entryOrder": 207,
+      "captionTitle": "LA CRIOLLA",
+      "name": "LA CRIOLLA",
+      "classification": "Ordinary chondrite. (L6)",
+      "reportedMass": {
+        "valueText": "6.1 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        119
+      ],
+      "printedPageLabel": "100",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-afe6da25-0dc5-4566-994b-284b15817c9c",
+      "catalogId": "haag-2003",
+      "entryOrder": 208,
+      "captionTitle": "BRUDERHEIM",
+      "name": "BRUDERHEIM",
+      "classification": "Ordinary chondrite (L6)",
+      "reportedMass": {
+        "valueText": "831 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        119
+      ],
+      "printedPageLabel": "100",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f078f763-dd9b-446d-a9e9-97681e88b45b",
+      "catalogId": "haag-2003",
+      "entryOrder": 209,
+      "captionTitle": "ALFIANELLO",
+      "name": "ALFIANELLO",
+      "classification": "Ordinary chondrite. (L6)",
+      "reportedMass": {
+        "valueText": "1.42 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        120
+      ],
+      "printedPageLabel": "101",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-33fe1a5f-257b-4fbc-a073-afe01d887866",
+      "catalogId": "haag-2003",
+      "entryOrder": 210,
+      "captionTitle": "FORREST “B”",
+      "name": "FORREST “B”",
+      "classification": "Ordinary chondrite. (L6)",
+      "reportedMass": {
+        "valueText": "1.26 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        120
+      ],
+      "printedPageLabel": "101",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-db9314fb-7db3-4805-afe4-9f3d593bcd2a",
+      "catalogId": "haag-2003",
+      "entryOrder": 211,
+      "captionTitle": "HARRISONVILLE",
+      "name": "HARRISONVILLE",
+      "classification": "Ordinary chondrite. (L6)",
+      "reportedMass": {
+        "valueText": "801 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        120
+      ],
+      "printedPageLabel": "101",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-87e29777-2fd8-46b8-b093-890ffeacdc91",
+      "catalogId": "haag-2003",
+      "entryOrder": 212,
+      "captionTitle": "NEENACK",
+      "name": "NEENACK",
+      "classification": "Ordinary chondrite. (L6)",
+      "reportedMass": {
+        "valueText": "427 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        121
+      ],
+      "printedPageLabel": "102",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-643aca63-b622-426c-8715-748ca33b4089",
+      "catalogId": "haag-2003",
+      "entryOrder": 213,
+      "captionTitle": "SUNSITES",
+      "name": "SUNSITES",
+      "classification": "Ordinary chondrite. (L5)",
+      "reportedMass": {
+        "valueText": "590 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        121
+      ],
+      "printedPageLabel": "102",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-9bd7c5de-0779-41e2-b8e2-e52359d58230",
+      "catalogId": "haag-2003",
+      "entryOrder": 214,
+      "captionTitle": "ANTARCTICA 76009",
+      "name": "ANTARCTICA 76009",
+      "classification": "Ordinary chondrite. (L6)",
+      "reportedMass": {
+        "valueText": "202 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 2,
+      "sourceRelation": null,
+      "catalogPages": [
+        121,
+        122
+      ],
+      "printedPageLabel": "102",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e7a3ae2a-5960-4e64-b45a-30ae17c1c134",
+      "catalogId": "haag-2003",
+      "entryOrder": 215,
+      "captionTitle": "DJERMAIA",
+      "name": "DJERMAIA",
+      "classification": "Ordinary chondrite. (H)",
+      "reportedMass": {
+        "valueText": "3.7 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        123
+      ],
+      "printedPageLabel": "104",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-cfdbeb73-75d5-455d-add4-a40ec5b87145",
+      "catalogId": "haag-2003",
+      "entryOrder": 216,
+      "captionTitle": "KABO",
+      "name": "KABO",
+      "classification": "Ordinary chondrite. (H4) Xenolithic.",
+      "reportedMass": {
+        "valueText": "308 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        123
+      ],
+      "printedPageLabel": "104",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-53b182d1-d287-40cd-b8dc-3f02f217bbd2",
+      "catalogId": "haag-2003",
+      "entryOrder": 217,
+      "captionTitle": "[unclear]ORIQUE",
+      "name": "[unclear]ORIQUE",
+      "classification": "Ordinary chondrite. (H4) Brecciated",
+      "reportedMass": {
+        "valueText": "747 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        124
+      ],
+      "printedPageLabel": "105",
+      "confidence": "low"
+    },
+    {
+      "id": "obs-076456bb-15c3-46f8-bd4b-9905180824f0",
+      "catalogId": "haag-2003",
+      "entryOrder": 218,
+      "captionTitle": "CONQUISTA",
+      "name": "CONQUISTA",
+      "classification": "Ordinary chondrite. (H4)",
+      "reportedMass": {
+        "valueText": "387 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        125
+      ],
+      "printedPageLabel": "105",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f3f8db97-b885-43aa-89fc-0aa66728fb18",
+      "catalogId": "haag-2003",
+      "entryOrder": 219,
+      "captionTitle": null,
+      "name": null,
+      "classification": null,
+      "reportedMass": {
+        "valueText": "8 kilo",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        126
+      ],
+      "printedPageLabel": "106",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c061d561-1723-4698-86c5-6df5ac456e00",
+      "catalogId": "haag-2003",
+      "entryOrder": 220,
+      "captionTitle": null,
+      "name": null,
+      "classification": null,
+      "reportedMass": {
+        "valueText": "3 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": {
+        "type": "repeated-view",
+        "recordId": "obs-f3f8db97-b885-43aa-89fc-0aa66728fb18"
+      },
+      "catalogPages": [
+        126
+      ],
+      "printedPageLabel": "106",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-dc488951-58d0-4cbb-8a8c-2c04830a274d",
+      "catalogId": "haag-2003",
+      "entryOrder": 221,
+      "captionTitle": "GAO-GUENIE",
+      "name": "GAO-GUENIE",
+      "classification": "Ordinary chondrite. (H5)",
+      "reportedMass": null,
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        126
+      ],
+      "printedPageLabel": "106",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-a5d6d96f-8b67-49d6-9ca5-22fcbca933ce",
+      "catalogId": "haag-2003",
+      "entryOrder": 222,
+      "captionTitle": null,
+      "name": null,
+      "classification": null,
+      "reportedMass": {
+        "valueText": "7 gram",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": {
+        "type": "repeated-view",
+        "recordId": "obs-dc488951-58d0-4cbb-8a8c-2c04830a274d"
+      },
+      "catalogPages": [
+        126
+      ],
+      "printedPageLabel": "106",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-cc2175d8-7d8f-41e3-a28d-236a358b08bb",
+      "catalogId": "haag-2003",
+      "entryOrder": 223,
+      "captionTitle": "EL HAMMAMI",
+      "name": "EL HAMMAMI",
+      "classification": "Ordinary chondrite. (H5)",
+      "reportedMass": {
+        "valueText": "15 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        127
+      ],
+      "printedPageLabel": "107",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d0b7caf7-adbe-4f33-b01b-9087af6f7280",
+      "catalogId": "haag-2003",
+      "entryOrder": 224,
+      "captionTitle": "FOREST CITY",
+      "name": "FOREST CITY",
+      "classification": "Ordinary chondrite. (H5)",
+      "reportedMass": {
+        "valueText": "5 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        128
+      ],
+      "printedPageLabel": "108",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-fec7afa0-c708-47e6-96f1-c3ec1308ca68",
+      "catalogId": "haag-2003",
+      "entryOrder": 225,
+      "captionTitle": "NUEVO MERCURIO",
+      "name": "NUEVO MERCURIO",
+      "classification": "Ordinary chondrite. (H5)",
+      "reportedMass": {
+        "valueText": "2 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        128
+      ],
+      "printedPageLabel": "108",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c321248b-b812-417a-a3a4-2abe569d4f10",
+      "catalogId": "haag-2003",
+      "entryOrder": 226,
+      "captionTitle": "JILIN",
+      "name": "JILIN",
+      "classification": "Ordinary chondrite. (H5)",
+      "reportedMass": {
+        "valueText": "10 kilos | 4 tons",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        129
+      ],
+      "printedPageLabel": "109",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-eb09c2b1-2c6c-4ccd-ad55-dc6f5f30b251",
+      "catalogId": "haag-2003",
+      "entryOrder": 227,
+      "captionTitle": "CHIANG KHAN",
+      "name": "CHIANG KHAN",
+      "classification": "Ordinary chondrite. (H5)",
+      "reportedMass": {
+        "valueText": "619 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        129
+      ],
+      "printedPageLabel": "109",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-79ca4275-382f-473b-9bae-300baf6d8fd6",
+      "catalogId": "haag-2003",
+      "entryOrder": 228,
+      "captionTitle": "DJERJ, NWA series",
+      "name": "DJERJ, NWA series",
+      "classification": "Ordinary chondrite.",
+      "reportedMass": {
+        "valueText": "417 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        130
+      ],
+      "printedPageLabel": "110",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-33ca3f95-2ca4-4b12-8c62-d762d51645d3",
+      "catalogId": "haag-2003",
+      "entryOrder": 229,
+      "captionTitle": "NADIABONDI",
+      "name": "NADIABONDI",
+      "classification": "Ordinary chondrite. (H5)",
+      "reportedMass": {
+        "valueText": "263 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        130
+      ],
+      "printedPageLabel": "110",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8d1c2dfb-2ac2-4955-aa11-41e48c77072a",
+      "catalogId": "haag-2003",
+      "entryOrder": 230,
+      "captionTitle": "PULTUSK",
+      "name": "PULTUSK",
+      "classification": "Ordinary chondrite. (H5)",
+      "reportedMass": {
+        "valueText": "223 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        130
+      ],
+      "printedPageLabel": "110",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-06c94652-5e89-4856-a71c-b55538cadbf5",
+      "catalogId": "haag-2003",
+      "entryOrder": 231,
+      "captionTitle": "MALVERN LAKE",
+      "name": "MALVERN LAKE",
+      "classification": "Ordinary chondrite. (H5)",
+      "reportedMass": {
+        "valueText": "4.5 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        131
+      ],
+      "printedPageLabel": "111",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-dba2e6fd-79de-498d-897c-32073da370ae",
+      "catalogId": "haag-2003",
+      "entryOrder": 232,
+      "captionTitle": "FAUCETT",
+      "name": "FAUCETT",
+      "classification": "Ordinary chondrite. (H4)",
+      "reportedMass": {
+        "valueText": "4.6 kilos | 100 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        131
+      ],
+      "printedPageLabel": "111",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-c5fa7f26-4af4-4444-9f8e-80a938e0de8c",
+      "catalogId": "haag-2003",
+      "entryOrder": 233,
+      "captionTitle": "FAITH",
+      "name": "FAITH",
+      "classification": "Ordinary chondrite. (H5)",
+      "reportedMass": {
+        "valueText": "7 kilos | 105 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        132
+      ],
+      "printedPageLabel": "112",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-3c104fee-f95b-425b-bac0-943ef1025e38",
+      "catalogId": "haag-2003",
+      "entryOrder": 234,
+      "captionTitle": "CORREO",
+      "name": "CORREO",
+      "classification": "Ordinary chondrite. (H4)",
+      "reportedMass": {
+        "valueText": "66 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        132
+      ],
+      "printedPageLabel": "112",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-78c9dbdd-f729-4855-b7e8-a8003a122123",
+      "catalogId": "haag-2003",
+      "entryOrder": 235,
+      "captionTitle": "GREENLAND BLUE ICE",
+      "name": "GREENLAND BLUE ICE",
+      "classification": "Ordinary chondrite.",
+      "reportedMass": {
+        "valueText": "1.02 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        133
+      ],
+      "printedPageLabel": "113",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f3e6f9e8-d127-4730-b44b-57b2af908763",
+      "catalogId": "haag-2003",
+      "entryOrder": 236,
+      "captionTitle": "TULIA “A”",
+      "name": "TULIA “A”",
+      "classification": "Ordinary chondrite. (H3-4)",
+      "reportedMass": {
+        "valueText": "232 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        133
+      ],
+      "printedPageLabel": "113",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-42a11105-d48d-47c0-af86-4cde33c1b1aa",
+      "catalogId": "haag-2003",
+      "entryOrder": 237,
+      "captionTitle": "GLADSTONE",
+      "name": "GLADSTONE",
+      "classification": "Ordinary chondrite. (H4)",
+      "reportedMass": {
+        "valueText": "2.5 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        133
+      ],
+      "printedPageLabel": "113",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-d623cd5f-737f-44b1-821f-0d901a9684b3",
+      "catalogId": "haag-2003",
+      "entryOrder": 238,
+      "captionTitle": "BIG ROCK DONGA",
+      "name": "BIG ROCK DONGA",
+      "classification": "Ordinary chondrite. (H5)",
+      "reportedMass": {
+        "valueText": "7 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        134
+      ],
+      "printedPageLabel": "114",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-65c2e3ee-4f4b-4249-be9f-963537c74df1",
+      "catalogId": "haag-2003",
+      "entryOrder": 239,
+      "captionTitle": "PEEKSKILL",
+      "name": "PEEKSKILL",
+      "classification": "Ordinary chondrite. (H6) Monomict breccia",
+      "reportedMass": {
+        "valueText": "119 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        134
+      ],
+      "printedPageLabel": "114",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-e3216a10-c016-419c-a95f-3a191e9f6e60",
+      "catalogId": "haag-2003",
+      "entryOrder": 240,
+      "captionTitle": "MARKOVKA",
+      "name": "MARKOVKA",
+      "classification": "Ordinary chondrite. (H4)",
+      "reportedMass": {
+        "valueText": "336 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        135
+      ],
+      "printedPageLabel": "115",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-15f8ef14-8426-48b5-8bbc-933fca90fd7f",
+      "catalogId": "haag-2003",
+      "entryOrder": 241,
+      "captionTitle": "GRADY",
+      "name": "GRADY",
+      "classification": "Ordinary chondrite. (H3)",
+      "reportedMass": {
+        "valueText": "310 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        135
+      ],
+      "printedPageLabel": "115",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f25e040e-4783-4d38-a9d7-73f3faee841f",
+      "catalogId": "haag-2003",
+      "entryOrder": 242,
+      "captionTitle": "BEARDSLEY",
+      "name": "BEARDSLEY",
+      "classification": "Ordinary chondrite. (H)",
+      "reportedMass": {
+        "valueText": "422 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        135
+      ],
+      "printedPageLabel": "115",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6df2e6df-912b-485c-a63e-4f47d6b0827e",
+      "catalogId": "haag-2003",
+      "entryOrder": 243,
+      "captionTitle": "MUSLYUMOVO",
+      "name": "MUSLYUMOVO",
+      "classification": "Ordinary chondrite. (H)",
+      "reportedMass": {
+        "valueText": "756 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        135
+      ],
+      "printedPageLabel": "115",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-22316d3d-ebec-4d52-978e-6d8678340d05",
+      "catalogId": "haag-2003",
+      "entryOrder": 244,
+      "captionTitle": "YBBSITZ",
+      "name": "YBBSITZ",
+      "classification": "Ordinary chondrite. (H4)",
+      "reportedMass": {
+        "valueText": "287 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        135
+      ],
+      "printedPageLabel": "115",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-69e90617-f41d-4e9d-9e44-c268636d84a8",
+      "catalogId": "haag-2003",
+      "entryOrder": 245,
+      "captionTitle": "RANSOM",
+      "name": "RANSOM",
+      "classification": "Ordinary chondrite. (H4)",
+      "reportedMass": {
+        "valueText": "314 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        135
+      ],
+      "printedPageLabel": "115",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-36416354-968b-499b-8439-38164340bf60",
+      "catalogId": "haag-2003",
+      "entryOrder": 246,
+      "captionTitle": "EGYPTIAN CHONDRITE",
+      "name": "EGYPTIAN CHONDRITE",
+      "classification": "Ordinary chondrite. (H)",
+      "reportedMass": {
+        "valueText": "1.5 kilos",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        136
+      ],
+      "printedPageLabel": "116",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-1b5ecc1b-805c-4b22-acdf-73a65ea7f60e",
+      "catalogId": "haag-2003",
+      "entryOrder": 247,
+      "captionTitle": "EGYPTIAN CHONDRITE",
+      "name": "EGYPTIAN CHONDRITE",
+      "classification": "Ordinary chondrite. (Undescribed.)",
+      "reportedMass": {
+        "valueText": "212 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        136
+      ],
+      "printedPageLabel": "116",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-35547fba-afb8-4e29-8024-aba1130db208",
+      "catalogId": "haag-2003",
+      "entryOrder": 248,
+      "captionTitle": null,
+      "name": null,
+      "classification": null,
+      "reportedMass": null,
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": {
+        "type": "repeated-view",
+        "recordId": "obs-1b5ecc1b-805c-4b22-acdf-73a65ea7f60e"
+      },
+      "catalogPages": [
+        136
+      ],
+      "printedPageLabel": "116",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-f1032997-41c6-4b4d-9662-abd39b0fd876",
+      "catalogId": "haag-2003",
+      "entryOrder": 249,
+      "captionTitle": "STONE METEORITES (Undescribed)",
+      "name": "STONE METEORITES",
+      "classification": "(Undescribed)",
+      "reportedMass": {
+        "valueText": "32 grams | 82 grams | 51 grams | 184 grams | 10 grams",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 5,
+      "sourceRelation": null,
+      "catalogPages": [
+        137
+      ],
+      "printedPageLabel": "117",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-23c41402-99d3-4a90-81e6-f5b9a8f85420",
+      "catalogId": "haag-2003",
+      "entryOrder": 250,
+      "captionTitle": "Toluca",
+      "name": "Toluca",
+      "classification": "iron meteorite",
+      "reportedMass": {
+        "valueText": "2.9 Kg",
+        "semantics": "caption-context-only"
+      },
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": null,
+      "catalogPages": [
+        143
+      ],
+      "printedPageLabel": "123",
       "confidence": "high"
     }
   ]

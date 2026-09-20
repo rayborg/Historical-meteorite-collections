@@ -44,13 +44,13 @@
           "const": "reviewed-atomic-specimen-card-display-projections"
         },
         "catalogSchemaVersion": {
-          "const": 14
+          "const": 15
         },
         "sourceRecordCount": {
-          "const": 19991
+          "const": 20241
         },
         "sourceCatalogSha256": {
-          "const": "8458ae9dfee5136014af4e68202880830e17fde92f4ebd664f3a1cdd6092d349"
+          "const": "3c23d1c2653bc893819a605c7c0e5e6db7b63a17cd3ab66ab104c2772391dbe7"
         },
         "projectionCount": {
           "const": 3407

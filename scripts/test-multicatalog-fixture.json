@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "schemaVersion": 14,
+    "schemaVersion": 15,
     "scope": "facts-only",
     "factualFields": [
       "id",
@@ -85,7 +85,16 @@
       "metbull.canonicalName",
       "metbull.meteoriteCode",
       "metbull.metbullUrl",
-      "metbull.alternateNameNote"
+      "metbull.alternateNameNote",
+      "captionTitle",
+      "reportedMass.valueText",
+      "reportedMass.semantics",
+      "reportedDimensions.valueText",
+      "reportedDimensions.semantics",
+      "photoPanelCount",
+      "sourceRelation.type",
+      "sourceRelation.recordId",
+      "printedPageLabel"
     ],
     "catalogs": [
       {
@@ -179,6 +188,21 @@
         "rightsStatus": "undetermined"
       },
       {
+        "id": "haag-2003",
+        "recordModel": "caption-observation-fact",
+        "label": "The Robert Haag Collection of Meteorites (2003)",
+        "compiler": "Robert A. Haag",
+        "year": 2003,
+        "sourcePages": [1, 2],
+        "sourcePageCount": 2,
+        "recordCount": 2,
+        "recordsWithDesignation": 0,
+        "recordsWithWeight": 0,
+        "confidenceCounts": { "high": 1, "medium": 1, "low": 0 },
+        "folioDisplayPolicy": "blocked",
+        "rightsStatus": "undetermined"
+      },
+      {
         "id": "hodge-smith-1939",
         "recordModel": "regional-census-fact",
         "label": "Australian Meteorites (1939)",
@@ -224,10 +248,10 @@
         "rightsStatus": "undetermined"
       }
     ],
-    "recordCount": 20,
+    "recordCount": 22,
     "recordsWithDesignation": 9,
     "recordsWithWeight": 14,
-    "confidenceCounts": { "high": 13, "medium": 6, "low": 1 }
+    "confidenceCounts": { "high": 14, "medium": 7, "low": 1 }
   },
   "records": [
     {
@@ -648,6 +672,36 @@
       "description": "Meteoric stone offered as a polished section.",
       "catalogPage": 37,
       "confidence": "high"
+    },
+    {
+      "id": "haag-2003-caption-0001",
+      "catalogId": "haag-2003",
+      "entryOrder": 1,
+      "captionTitle": "ADAMANA",
+      "name": "Adamana",
+      "classification": "Ordinary chondrite",
+      "reportedMass": { "valueText": "1.78 kilos", "semantics": "caption-context-only" },
+      "reportedDimensions": { "valueText": "12 x 8 x 7 cm", "semantics": "caption-context-only" },
+      "photoPanelCount": 2,
+      "sourceRelation": null,
+      "catalogPages": [1],
+      "printedPageLabel": null,
+      "confidence": "high"
+    },
+    {
+      "id": "haag-2003-caption-0002",
+      "catalogId": "haag-2003",
+      "entryOrder": 2,
+      "captionTitle": "SECOND VIEW",
+      "name": null,
+      "classification": null,
+      "reportedMass": null,
+      "reportedDimensions": null,
+      "photoPanelCount": 1,
+      "sourceRelation": { "type": "repeated-view", "recordId": "haag-2003-caption-0001" },
+      "catalogPages": [2],
+      "printedPageLabel": "2",
+      "confidence": "medium"
     }
   ]
 }

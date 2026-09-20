@@ -2,9 +2,9 @@
   "metadata": {
     "schemaVersion": 6,
     "scope": "reviewed-atomic-specimen-card-display-projections",
-    "catalogSchemaVersion": 14,
-    "sourceRecordCount": 19991,
-    "sourceCatalogSha256": "8458ae9dfee5136014af4e68202880830e17fde92f4ebd664f3a1cdd6092d349",
+    "catalogSchemaVersion": 15,
+    "sourceRecordCount": 20241,
+    "sourceCatalogSha256": "3c23d1c2653bc893819a605c7c0e5e6db7b63a17cd3ab66ab104c2772391dbe7",
     "projectionCount": 3407,
     "atomicCardCount": 8410,
     "sourceContextCardCount": 2877,

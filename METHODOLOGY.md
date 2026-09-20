@@ -103,6 +103,8 @@ The public catalog supports ten closed models:
   retained cross-view evidence.
 - `dealer-offer-fact` for a dealer type/offer observation that is not modeled as
   a specimen or holding.
+- `caption-observation-fact` for bounded catalog-caption facts whose reported
+  mass and dimensions remain context rather than specimen assertions.
 
 A source-specific private representation may be necessary when these public
 models would erase material distinctions. Public projection then uses exact
@@ -196,6 +198,14 @@ observations. Reported material is retained only as closed
 `regional-event-context-only` text and is excluded from normalized grams,
 specimen cards, mass filters, lineage, and comparison generation.
 
+Haag 2003 uses `caption-observation-fact`. Its 250 public records preserve
+caption titles, bounded catalog-page citations, photo-panel counts, and closed
+caption context. Reported mass and dimensions remain unnormalized text with
+`caption-context-only` semantics. Repeated-view links may target only an earlier
+public Haag caption record. These observations have no MetBull mappings and are
+excluded from specimen cards, projections, mass filters, lineage, and comparison
+generation.
+
 Fletcher corrections begin in the private accepted source-first evidence, not
 in this public repository. A corrected release must re-adjudicate exact source
 evidence, regenerate the canonical catalog and crosswalk, export twice
@@ -250,7 +260,7 @@ accepted snapshot has 80,224 rows and SHA-256
 It is joined only through an already reviewed positive `meteoriteCode`; current
 name, class, place, year, or mass similarity never creates or changes a mapping.
 The resulting schema-1 public sidecar has SHA-256
-`3e7555561eba6653200c0c0f6c5954580139efad59391f6ae323c47d27133824`.
+`18ee18a7396c06d928a30580efc1dfa2c585c0446ae85796b42ce85e44b0ac0e`.
 
 The sidecar covers the complete 14,234-card specimen partition. Exactly 11,859
 cards from 7,736 parents map to 2,548 Official codes, and 2,375 remain unmapped.
@@ -337,7 +347,7 @@ The generated schema-4 lineage and comparison layer is
 comparison review source are published beside it. Root-level `relationships`
 contain only same-inventory lineage, while `comparisonGroups` are non-lineage
 research candidates. The current artifact SHA-256 is
-`0f99792c052527ed9a00690b989ea9e6980f12701d07b75c70e54f55874dcc04`.
+`834b766339614485513d50e5efdcfac0c66b3a9871de73b8533f1978f459fbd2`.
 
 ### 9.1 Same inventory
 
@@ -390,7 +400,7 @@ Changing current Official name, classification, place, year, or fall code cannot
 change lineage JSON, IDs, evidence strength, grouping, or counts. The dedicated
 isolation test repeats the build with accepted, absent, and changed sidecars and
 locks the result to SHA-256
-`0f99792c052527ed9a00690b989ea9e6980f12701d07b75c70e54f55874dcc04`.
+`834b766339614485513d50e5efdcfac0c66b3a9871de73b8533f1978f459fbd2`.
 
 ### 9.3 Source-attested groups
 

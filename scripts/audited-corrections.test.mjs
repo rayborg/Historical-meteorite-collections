@@ -70,12 +70,12 @@ function projectionSemantics() {
 }
 
 test("CF001 installs the exact accepted catalog bytes", () => {
-  assert.equal(sha256(catalogText), "8458ae9dfee5136014af4e68202880830e17fde92f4ebd664f3a1cdd6092d349");
-  assert.deepEqual([catalog.records.length, catalog.metadata.catalogs.length], [19991, 55]);
+  assert.equal(sha256(catalogText), "3c23d1c2653bc893819a605c7c0e5e6db7b63a17cd3ab66ab104c2772391dbe7");
+  assert.deepEqual([catalog.records.length, catalog.metadata.catalogs.length], [20241, 56]);
 });
 
 test("CF002 installs the exact accepted folio and source-claims bytes", () => {
-  assert.equal(sha256(foliosText), "3b130e8fa742b8d67e1e05048fec980dedfaeaa6417691415368fed3d965261f");
+  assert.equal(sha256(foliosText), "0eab9dcbe8f04c7eac4bd83a49e88f9f0dd74aa3d411daf7a1ec4f5da68ea4c2");
   assert.equal(sha256(sourceClaimsText), "edb201339e9e1068ac45d3333a9224959b4dcdbf8e317afcbb0657c6635b85fb");
   assert.equal(sourceClaims.claims.length, 21);
 });
@@ -130,9 +130,9 @@ test("CF009 projections retain exact counts and source semantics after rebinding
   assert.deepEqual(projections.metadata, {
     schemaVersion: 6,
     scope: "reviewed-atomic-specimen-card-display-projections",
-    catalogSchemaVersion: 14,
-    sourceRecordCount: 19991,
-    sourceCatalogSha256: "8458ae9dfee5136014af4e68202880830e17fde92f4ebd664f3a1cdd6092d349",
+    catalogSchemaVersion: 15,
+    sourceRecordCount: 20241,
+    sourceCatalogSha256: "3c23d1c2653bc893819a605c7c0e5e6db7b63a17cd3ab66ab104c2772391dbe7",
     projectionCount: 3407,
     atomicCardCount: 8410,
     sourceContextCardCount: 2877,
@@ -157,14 +157,14 @@ test("CF010 preserves non-target data, privacy, cache, and label behavior", () =
   const fletcherCatalogIds = new Set(["fletcher-1886", "fletcher-1894", "fletcher-1896", "fletcher-1904", "fletcher-1908"]);
   const museum3CatalogIds = new Set(["story-maskelyne-1872", "prior-guide-1926", "brauns-bonn-1926"]);
   const catalog10Ids = new Set(["farrington-north-america-1915", "silberrad-1932"]);
-  assert.equal(sha256(JSON.stringify(catalog.records.filter(({ id, catalogId }) => catalogId !== "antarctic-1980" && !correctedRecordIds.has(id) && !fletcherCatalogIds.has(catalogId) && !museum3CatalogIds.has(catalogId) && !catalog10Ids.has(catalogId)))),
+  assert.equal(sha256(JSON.stringify(catalog.records.filter(({ id, catalogId }) => !["antarctic-1980", "haag-2003"].includes(catalogId) && !correctedRecordIds.has(id) && !fletcherCatalogIds.has(catalogId) && !museum3CatalogIds.has(catalogId) && !catalog10Ids.has(catalogId)))),
     "72fbc9707d77858f22ec34f683143ebd6bddf942bb20ef6209799be26b4ea485");
-  assert.equal(sha256(JSON.stringify(catalog.metadata.catalogs.filter(({ id }) => !["antarctic-1980", "victoria-land-1982"].includes(id) && !fletcherCatalogIds.has(id) && !museum3CatalogIds.has(id) && !catalog10Ids.has(id)))),
+  assert.equal(sha256(JSON.stringify(catalog.metadata.catalogs.filter(({ id }) => !["antarctic-1980", "victoria-land-1982", "haag-2003"].includes(id) && !fletcherCatalogIds.has(id) && !museum3CatalogIds.has(id) && !catalog10Ids.has(id)))),
     "35898f917b2302583d7d1101eed5958c268699bf7de8af31990b14e09d0546ae");
   assert.doesNotMatch(catalogText + sourceClaimsText + projectionText,
     /(?:\/private\/|\/Users\/|file:\/\/|sourcePath|sourceFile|rawRowText|raw\s+ocr)/iu);
-  assert.equal(app.CACHE_VERSION, "20260919-specimen-card-labels-1");
-  for (const html of [indexHtml, catalogsHtml]) assert.match(html, /20260919-specimen-card-labels-1/u);
+  assert.equal(app.CACHE_VERSION, "20260920-haag-2003-1");
+  for (const html of [indexHtml, catalogsHtml]) assert.match(html, /20260920-haag-2003-1/u);
   assert.equal(app.shouldDisplaySemanticLabel("direct-specimen"), false);
   assert.equal(app.shouldDisplaySemanticLabel("projected-atomic-specimen"), false);
   assert.equal(app.shouldDisplaySemanticLabel("collection-observation"), true);

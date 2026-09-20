@@ -10,8 +10,8 @@ import { fileURLToPath } from "node:url";
 
 const execute = promisify(execFile);
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const lineageSha256 = "0f99792c052527ed9a00690b989ea9e6980f12701d07b75c70e54f55874dcc04";
-const sidecarSha256 = "3e7555561eba6653200c0c0f6c5954580139efad59391f6ae323c47d27133824";
+const lineageSha256 = "834b766339614485513d50e5efdcfac0c66b3a9871de73b8533f1978f459fbd2";
+const sidecarSha256 = "18ee18a7396c06d928a30580efc1dfa2c585c0446ae85796b42ce85e44b0ac0e";
 
 function sha256(value) {
   return createHash("sha256").update(value).digest("hex");
