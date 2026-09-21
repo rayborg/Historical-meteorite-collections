@@ -271,12 +271,16 @@ event identity has been established; it is not independent match likelihood or
 lineage evidence.
 
 Historical source facts retain precedence for what a catalog reported and for
-all specimen-specific facts. They remain immutable and searchable. A mapped
-card may lead with current event context, but a differing source name remains
-directly visible. Other differing source context remains under the collapsed
-**Show catalog notes** disclosure rather than being deleted. Equivalent
-repetition may be collapsed. Observations, unmapped cards, and any card affected
-by a missing or invalid sidecar remain source-only.
+all specimen-specific facts. They remain immutable and searchable. Every
+specimen card uses the same primary labels: **Name**, **Class**, **Place**,
+**Fall / find**, **Year / date**, **Form**, **Find location**, and **Weight**.
+Mapped current values take precedence and recorded source values are fallbacks
+only when current values are absent or unavailable. Differing source context,
+descriptions, catalog-specific details, lineage, and comparisons remain inside
+collapsed **Show specimen notes**. Equivalent repetition may be collapsed.
+Observations retain their existing labels and **Show catalog notes** behavior;
+unmapped cards and cards affected by a missing or invalid sidecar remain
+source-only without inferred values.
 
 For fall/find display, `Y` renders `Fall` and empty renders `Find`. Exceptional
 `Yc`, `Yp`, and `Np` use the categories documented by MetBull Database Note 4:

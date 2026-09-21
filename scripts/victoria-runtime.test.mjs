@@ -41,7 +41,7 @@ test("all Victoria cards preserve exact source IDs and resolved current names", 
     assert.equal(dto.identifier, `Victoria Land (1982) · ${record.specimenId}`, record.id);
     assert.equal(dto.sourceName, record.specimenId, record.id);
     assert.equal(dto.headingName, record.metbull.canonicalName, record.id);
-    assert.equal(fact(dto, "Current MetBull classification"), descriptor.currentMetbull.classification, record.id);
+    assert.equal(fact(dto, "Class"), descriptor.currentMetbull.classification, record.id);
     assert.equal(app.matchesSearch(record, record.specimenId), true, record.id);
     assert.equal(app.matchesSearch(record, `${record.specimenId.slice(0, -5)} ${record.specimenId.slice(-5)}`), true, record.id);
     assert.equal(app.matchesSearch(record, `${record.specimenId.slice(0, -5)}-${record.specimenId.slice(-5)}`), true, record.id);
@@ -67,9 +67,11 @@ test("ALHA76009 exposes Table A primary and Table B reported mass without changi
   const dto = app.presentHarmonizedCard(descriptor);
   assert.equal(dto.sourceName, "ALHA76009");
   assert.equal(dto.headingName, "Allan Hills A76009");
-  assert.equal(fact(dto, "Specimen weight"), "407 kg");
-  assert.equal(fact(dto, "Specimen weight, Table A primary (printed page 85)"), "407 kg");
-  assert.equal(fact(dto, "Specimen weight, Table B reported (printed page 91)"), "3.95 kg");
+  assert.equal(fact(dto, "Weight"), "407 kg");
+  assert.equal(dto.catalogNotes.find(({ label }) => label ===
+    "Specimen weight, Table A primary (printed page 85)").value, "407 kg");
+  assert.equal(dto.catalogNotes.find(({ label }) => label ===
+    "Specimen weight, Table B reported (printed page 91)").value, "3.95 kg");
   assert.equal(dto.sourceCitation,
     "Catalog of Meteorites from Victoria Land, Antarctica, 1978-1980 (1982) · Appendix Table A printed page 85 · Table B printed page 91");
   assert.deepEqual(search("3950").includes("ALHA76009"), true);
@@ -86,14 +88,16 @@ test("all Victoria conflicts are visibly dual, non-conflicts stay concise, and c
   for (const record of victoria) {
     const dto = app.presentHarmonizedCard(record);
     const conflictFacts = app.victoriaConflictFacts(record);
-    assert.equal(fact(dto, "Catalog classification"), record.classification, record.id);
-    assert.equal(fact(dto, "Specimen weight"), app.formatMass(record.weight.grams), record.id);
+    assert.equal(fact(dto, "Class"), record.classification, record.id);
+    assert.equal(fact(dto, "Weight"), app.formatMass(record.weight.grams), record.id);
     assert.equal(conflictFacts.length, record.sourceEvidence.conflicts.length * 2, record.id);
     for (const field of record.sourceEvidence.conflicts) conflictCounts[field] += 1;
     for (const { label, value } of conflictFacts) {
       assert.match(label, /Table [AB] (?:primary|reported) \(printed page \d+\)$/u, record.id);
       assert.equal(typeof value, "string", record.id);
       assert(value.length > 0, record.id);
+      assert(dto.catalogNotes.some((note) => note.label === label && note.value === value), record.id);
+      assert.equal(dto.facts.some((factEntry) => factEntry.label === label), false, record.id);
     }
     assert.match(dto.sourceCitation, /Appendix Table A printed page (?:85|86|87|88)/u, record.id);
     assert.doesNotMatch(dto.sourceCitation, /PDF|position|folio/iu, record.id);

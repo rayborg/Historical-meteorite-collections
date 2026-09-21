@@ -4417,15 +4417,30 @@ function cardFactValuesEquivalent(left, right) {
 function catalogNotesForCurrentMetbull(record, currentMetbull) {
   if (!currentMetbull) return [];
   const notes = [];
-  const addDifference = (label, sourceValue, currentValue, knownLabel = label) => {
-    if (isKnownCardFact(knownLabel, sourceValue) && !cardFactValuesEquivalent(sourceValue, currentValue)) {
+  const addDifference = (label, sourceValue, currentValue, sourceKnownLabel = label, currentKnownLabel = label) => {
+    if (isKnownCardFact(sourceKnownLabel, sourceValue) && isKnownCardFact(currentKnownLabel, currentValue) &&
+        !cardFactValuesEquivalent(sourceValue, currentValue)) {
       notes.push({ label, value: sourceValue });
     }
   };
-  addDifference("Catalog classification", record.classification, currentMetbull.classification);
-  addDifference("Catalog locality", ["table-a-specimen", "appendix-specimen"].includes(record.recordModel) ? record.locality?.name : record.locality,
+  if (!namesAreDisplayEquivalent(record.name, currentMetbull.name)) {
+    addDifference("Source name", record.name, currentMetbull.name);
+  }
+  addDifference("Source class", record.classification, currentMetbull.classification, "Catalog classification");
+  addDifference("Source place", ["table-a-specimen", "appendix-specimen"].includes(record.recordModel) ? record.locality?.name : record.locality,
     currentMetbull.place, "Source locality");
-  addDifference("Catalog event or date", harmonizedCardEvent(record), currentMetbull.year, "Event");
+  addDifference("Source date", harmonizedCardEvent(record), currentMetbull.year, "Event", "Year / date");
+  return notes;
+}
+
+function specimenCardNotes(record, currentMetbull) {
+  const notes = catalogNotesForCurrentMetbull(record, currentMetbull);
+  const addKnownNote = (label, value, knownLabel = label) => {
+    if (isKnownCardFact(knownLabel, value)) notes.push({ label, value });
+  };
+  addKnownNote("Source description", record.description);
+  [...victoriaConflictFacts(record), ...tableASpecimenFacts(record), ...appendixSpecimenFacts(record)]
+    .forEach(({ label, value }) => addKnownNote(label, value));
   return notes;
 }
 
@@ -4445,44 +4460,43 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
   const addKnownFact = (label, value) => {
     if (isKnownCardFact(label, value)) facts.push({ label, value });
   };
-  if (currentMetbull) {
-    if (!namesAreDisplayEquivalent(sourceName, currentMetbull.name)) {
-      addKnownFact("Catalog meteorite name", sourceName);
-    }
-    addKnownFact("Current MetBull classification", currentMetbull.classification);
-    addKnownFact("Current MetBull place", currentMetbull.place);
-    addKnownFact("Current MetBull fall/find", metbullFallDisplay(currentMetbull.fall));
-    addKnownFact("Current MetBull year", currentMetbull.year);
+  if (specimen) {
+    const sourcePlace = ["table-a-specimen", "appendix-specimen"].includes(record.recordModel)
+      ? record.locality?.name : record.locality;
+    const sourceDate = harmonizedCardEvent(record);
+    const addPreferredFact = (label, currentValue, sourceValue, sourceKnownLabel = label) => {
+      if (isKnownCardFact(label, currentValue)) addKnownFact(label, currentValue);
+      else if (isKnownCardFact(sourceKnownLabel, sourceValue)) facts.push({ label, value: sourceValue });
+    };
+    addPreferredFact("Class", currentMetbull?.classification, record.classification, "Catalog classification");
+    addPreferredFact("Place", currentMetbull?.place, sourcePlace, "Source locality");
+    addKnownFact("Fall / find", currentMetbull ? metbullFallDisplay(currentMetbull.fall) : null);
+    addPreferredFact("Year / date", currentMetbull?.year, sourceDate, "Event");
+    facts.push({
+      label: "Form",
+      value: kind === HARMONIZED_CARD_KINDS.atomic || ["table-a-specimen", "appendix-specimen"].includes(record.recordModel)
+        ? "Individual specimen" : "Specimen"
+    });
+    addKnownFact("Find location", record.individualFindLocation);
   } else if (record.recordModel !== "caption-observation-fact") {
     addKnownFact("Catalog classification", record.classification);
-  }
-  if (specimen && (kind === HARMONIZED_CARD_KINDS.atomic || ["table-a-specimen", "appendix-specimen"].includes(record.recordModel))) {
-    facts.push({
-      label: "Specimen form",
-      value: "Individual specimen"
-    });
-  }
-  if (!currentMetbull) {
     addKnownFact("Source locality", ["table-a-specimen", "appendix-specimen"].includes(record.recordModel) ? record.locality?.name : record.locality);
-  }
-  if (specimen) addKnownFact("Individual find location", record.individualFindLocation);
-  if (!currentMetbull) {
     addKnownFact(record.recordModel === "collection-representation-fact" ? "Date or report of find" : "Event",
       harmonizedCardEvent(record));
   }
-  if (record.recordModel === "collection-representation-fact") {
+  if (!specimen && record.recordModel === "collection-representation-fact") {
     addKnownFact("Section", record.section);
     addKnownFact("Pane or case", record.pane);
     addKnownFact("Reference", record.reference);
     addKnownFact("Represented weight", record.representedWeight.valueText);
   }
-  if (record.recordModel === "regional-event-fact") {
+  if (!specimen && record.recordModel === "regional-event-fact") {
     addKnownFact("Section", record.section);
     addKnownFact("Jurisdiction", record.jurisdiction);
     addKnownFact("Event statement", record.eventText);
     record.reportedMaterial.forEach(({ statement }) => addKnownFact("Reported material context", statement));
   }
-  if (record.recordModel === "caption-observation-fact") {
+  if (!specimen && record.recordModel === "caption-observation-fact") {
     if (record.captionTitle !== (record.name || record.captionTitle)) addKnownFact("Caption title", record.captionTitle);
     addKnownFact("Source classification", record.classification);
     addKnownFact("Source-reported caption mass", record.reportedMass?.valueText);
@@ -4506,11 +4520,7 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
       : record.weight?.grams;
     const qualitativeWeight = kind === HARMONIZED_CARD_KINDS.atomic
       ? descriptor.qualitativeWeightEvidence?.statement : record.weightEvidence?.statement;
-    if (lineage.claims.length) facts.push({ label: "Lineage", value: lineage.summary.text });
-    if (comparison.groups.length) facts.push({ label: "Cross-catalog comparisons", value: comparison.summary.text });
-    addKnownFact("Specimen weight", Number.isFinite(grams) ? formatMass(grams) : qualitativeWeight);
-    facts.push(...victoriaConflictFacts(record));
-    facts.push(...appendixSpecimenFacts(record).filter(({ value }) => value !== null));
+    addKnownFact("Weight", Number.isFinite(grams) ? formatMass(grams) : qualitativeWeight);
   }
 
   const sourceIdentifier = harmonizedCardIdentifier(record, kind, descriptor);
@@ -4527,12 +4537,12 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
     semanticLabel: HARMONIZED_SEMANTIC_LABELS[kind],
     sourceName: sourceName || null,
     headingName: currentMetbull?.name || sourceName || (kind === HARMONIZED_CARD_KINDS.caption ? record.captionTitle : null) || null,
-    headingLabel: currentMetbull ? "Current MetBull meteorite name" :
-      kind === HARMONIZED_CARD_KINDS.caption && !sourceName && record.captionTitle ? "Caption title" : harmonizedCardNameLabel(kind),
+    headingLabel: specimen ? "Name" : kind === HARMONIZED_CARD_KINDS.caption && !sourceName && record.captionTitle
+      ? "Caption title" : harmonizedCardNameLabel(kind),
     headingUrl: currentMetbull ? metbullUrlForCode(currentMetbull.meteoriteCode) : null,
-    description: record.description || null,
+    description: specimen ? null : record.description || null,
     facts,
-    catalogNotes: catalogNotesForCurrentMetbull(record, currentMetbull),
+    catalogNotes: specimen ? specimenCardNotes(record, currentMetbull) : [],
     sourceCitation: harmonizedSourceCitation(record),
     sourceLabel: record.catalogLabel || record.catalogId,
     catalogId: record.catalogId,
@@ -4544,25 +4554,12 @@ function presentHarmonizedCard(recordOrDescriptor, options = {}) {
 
 function compactSpecimenLabel(label) {
   const compactLabels = {
-    "Current MetBull meteorite name": "Official name",
-    "Meteorite name": "Source name",
-    "Current MetBull classification": "Official class",
-    "Current MetBull place": "Official place",
-    "Current MetBull fall/find": "Fall / find",
-    "Current MetBull year": "Official year",
-    "Catalog classification": "Source class",
-    "Catalog meteorite name": "Source name",
-    "Catalog locality": "Source place",
-    "Catalog event or date": "Source date",
-    "Specimen form": "Form",
-    "Individual find location": "Find location",
-    "Cross-catalog comparisons": "Comparisons",
-    "Specimen weight": "Weight",
     "Locality code": "Locality",
     "Area reference coordinate": "Grid ref.",
     "Olivine Fa": "Fa",
     "Pyroxene Fs": "Fs",
     "Source section": "Section",
+    "Specimen weight": "Weight",
     "Source citation": "Source"
   };
   if (Object.hasOwn(compactLabels, label)) return compactLabels[label];
@@ -4597,15 +4594,19 @@ function appendMetaRow(meta, label, value, compactLabel = false) {
   meta.append(row);
 }
 
-function renderCatalogNotes(notes, compactLabels = false) {
+function renderCatalogNotes(notes, specimenNotes = false, nestedSections = []) {
   const details = document.createElement("details");
   details.className = "catalog-notes";
   const summary = document.createElement("summary");
-  summary.textContent = "Show catalog notes";
+  if (specimenNotes) summary.textContent = "Show specimen notes";
+  else summary.textContent = "Show catalog notes";
   const list = document.createElement("dl");
-  list.setAttribute("aria-label", "Historical catalog notes");
-  notes.forEach(({ label, value }) => appendMetaRow(list, label, value, compactLabels));
-  details.append(summary, list);
+  if (specimenNotes) list.setAttribute("aria-label", "Specimen notes");
+  else list.setAttribute("aria-label", "Historical catalog notes");
+  notes.forEach(({ label, value }) => appendMetaRow(list, label, value, specimenNotes));
+  details.append(summary);
+  if (notes.length) details.append(list);
+  details.append(...nestedSections);
   return details;
 }
 
@@ -4643,8 +4644,9 @@ function createRecordCard(recordOrDescriptor) {
     }
   } else {
     const heading = harmonizedCardNullNameHeading(record, dto.kind, descriptor, dto.identifier);
-    const visibleHeadingLabel = specimenCard ? compactSpecimenLabel(heading.label) : heading.label;
-    setCompactAccessibleText(sourceNameLabel, heading.label, visibleHeadingLabel);
+    const headingLabel = specimenCard ? "Name" : heading.label;
+    const visibleHeadingLabel = specimenCard ? compactSpecimenLabel(headingLabel) : headingLabel;
+    setCompactAccessibleText(sourceNameLabel, headingLabel, visibleHeadingLabel);
     recordName.textContent = heading.value;
     designation.remove();
   }
@@ -4658,9 +4660,13 @@ function createRecordCard(recordOrDescriptor) {
   const meta = card.querySelector(".record-meta");
   meta.replaceChildren();
   dto.facts.forEach(({ label, value }) => appendMetaRow(meta, label, value, specimenCard));
-  if (dto.catalogNotes.length) meta.after(renderCatalogNotes(dto.catalogNotes, specimenCard));
-  if (dto.lineage?.claims.length) card.querySelector(".record-footer").before(renderLineageClaims(dto.lineage));
-  if (dto.comparison?.groups.length) card.querySelector(".record-footer").before(renderComparisonGroups(dto.comparison));
+  const specimenNoteSections = specimenCard ? [
+    ...(dto.lineage?.claims.length ? [renderLineageClaims(dto.lineage)] : []),
+    ...(dto.comparison?.groups.length ? [renderComparisonGroups(dto.comparison)] : [])
+  ] : [];
+  if (dto.catalogNotes.length || specimenNoteSections.length) {
+    meta.after(renderCatalogNotes(dto.catalogNotes, specimenCard, specimenNoteSections));
+  }
 
   [".metbull-name", ".specimen-position", ".record-weight", ".record-holdings", ".earlier-records"]
     .forEach((selector) => card.querySelector(selector)?.remove());

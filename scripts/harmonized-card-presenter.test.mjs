@@ -36,10 +36,9 @@ const comparisonIndex = app.deriveComparisonGroupIndex(lineages, records, regist
 const DTO_KEYS = [
   "kind", "identifier", "semanticLabel", "sourceName", "headingName", "headingLabel", "headingUrl", "description", "facts", "catalogNotes", "sourceCitation", "sourceLabel", "catalogId", "catalogPages", "lineage", "comparison"
 ];
-const STANDARD_SPECIMEN_LABELS = [
-  "Catalog classification", "Specimen form", "Source locality",
-  "Individual find location", "Event", "Lineage", "Cross-catalog comparisons", "Specimen weight"
-];
+const APPROVED_SPECIMEN_LABELS = new Set([
+  "Name", "Class", "Place", "Fall / find", "Year / date", "Form", "Find location", "Weight",
+]);
 const STANDARD_OBSERVATION_LABELS = ["Catalog classification", "Source locality", "Event"];
 const FLETCHER_OBSERVATION_LABELS = ["Catalog classification", "Source locality", "Date or report of find"];
 const FLETCHER_LABELS = ["Section", "Pane or case", "Reference", "Represented weight"];
@@ -121,26 +120,37 @@ function expectedFacts(descriptor) {
   const add = (label, value) => {
     if (app.isKnownCardFact(label, value)) entries.push({ label, value });
   };
-  if (descriptor.currentMetbull) {
-    if (!app.namesAreDisplayEquivalent(record.name, descriptor.currentMetbull.name)) {
-      add("Catalog meteorite name", record.name);
-    }
-    add("Current MetBull classification", descriptor.currentMetbull.classification);
-    add("Current MetBull place", descriptor.currentMetbull.place);
-    add("Current MetBull fall/find", app.metbullFallDisplay(descriptor.currentMetbull.fall));
-    add("Current MetBull year", descriptor.currentMetbull.year);
-  } else if (record.recordModel !== "caption-observation-fact") {
+  if (specimen) {
+    const sourcePlace = ["table-a-specimen", "appendix-specimen"].includes(record.recordModel)
+      ? record.locality?.name : record.locality;
+    const addPreferred = (label, currentValue, sourceValue, sourceKnownLabel = label) => {
+      if (app.isKnownCardFact(label, currentValue)) add(label, currentValue);
+      else if (app.isKnownCardFact(sourceKnownLabel, sourceValue)) entries.push({ label, value: sourceValue });
+    };
+    addPreferred("Class", descriptor.currentMetbull?.classification, record.classification, "Catalog classification");
+    addPreferred("Place", descriptor.currentMetbull?.place, sourcePlace, "Source locality");
+    add("Fall / find", descriptor.currentMetbull ? app.metbullFallDisplay(descriptor.currentMetbull.fall) : null);
+    addPreferred("Year / date", descriptor.currentMetbull?.year, expectedEvent(record), "Event");
+    entries.push({
+      label: "Form",
+      value: kind === "projected-atomic-specimen" || ["table-a-specimen", "appendix-specimen"].includes(record.recordModel)
+        ? "Individual specimen" : "Specimen",
+    });
+    add("Find location", record.individualFindLocation);
+    const grams = kind === "projected-atomic-specimen"
+      ? descriptor.repeatedMass
+        ? app.resolveSpecimenCardRepeatedMass(record, descriptor.holdingPath, descriptor.repeatedMass)?.grams
+        : descriptor.massPath === null ? null
+          : app.resolveSpecimenCardSelection(record, descriptor.holdingPath, descriptor.massPath)?.grams
+      : record.weight?.grams;
+    const qualitativeWeight = kind === "projected-atomic-specimen"
+      ? descriptor.qualitativeWeightEvidence?.statement : record.weightEvidence?.statement;
+    add("Weight", Number.isFinite(grams) ? app.formatMass(grams) : qualitativeWeight);
+    return entries;
+  }
+  if (record.recordModel !== "caption-observation-fact") {
     add("Catalog classification", record.classification);
-  }
-  if (specimen && (kind === "projected-atomic-specimen" || ["table-a-specimen", "appendix-specimen"].includes(record.recordModel))) entries.push({
-    label: "Specimen form",
-    value: "Individual specimen",
-  });
-  if (!descriptor.currentMetbull) {
     add("Source locality", ["table-a-specimen", "appendix-specimen"].includes(record.recordModel) ? record.locality?.name : record.locality);
-  }
-  if (specimen) add("Individual find location", record.individualFindLocation);
-  if (!descriptor.currentMetbull) {
     add(record.recordModel === "collection-representation-fact" ? "Date or report of find" : "Event", expectedEvent(record));
   }
   if (record.recordModel === "collection-representation-fact") {
@@ -163,23 +173,6 @@ function expectedFacts(descriptor) {
     add("Associated photo panels", `${record.photoPanelCount} ${record.photoPanelCount === 1 ? "panel" : "panels"}`);
     if (record.sourceRelation) add("Repeated-view context",
       `Repeated view of earlier public catalog record ${record.sourceRelation.recordId}`);
-  }
-  if (specimen) {
-    const claims = app.lineageEntriesForSpecimenCard(descriptor, lineageIndex.get(record.id) || []);
-    if (claims.length) entries.push({ label: "Lineage", value: app.formatLineageSummary(claims) });
-    const comparisons = app.comparisonCardDto(descriptor, comparisonIndex.get(record.id) || []);
-    if (comparisons.groups.length) entries.push({ label: "Cross-catalog comparisons", value: comparisons.summary.text });
-    const grams = kind === "projected-atomic-specimen"
-      ? descriptor.repeatedMass
-        ? app.resolveSpecimenCardRepeatedMass(record, descriptor.holdingPath, descriptor.repeatedMass)?.grams
-        : descriptor.massPath === null ? null
-          : app.resolveSpecimenCardSelection(record, descriptor.holdingPath, descriptor.massPath)?.grams
-      : record.weight?.grams;
-    const qualitativeWeight = kind === "projected-atomic-specimen"
-      ? descriptor.qualitativeWeightEvidence?.statement : record.weightEvidence?.statement;
-    add("Specimen weight", Number.isFinite(grams) ? app.formatMass(grams) : qualitativeWeight);
-    entries.push(...app.victoriaConflictFacts(record));
-    entries.push(...app.appendixSpecimenFacts(record).filter(({ value }) => value !== null));
   }
   return entries;
 }
@@ -214,7 +207,7 @@ test("every production display descriptor has the closed harmonized DTO and exac
   assert.equal(descriptors.length, 25244);
 });
 
-test("all nine populated-name branches use concise kind-specific labels", () => {
+test("specimens use Name while observation populated-name branches retain kind-specific labels", () => {
   assert.deepEqual(Object.fromEntries(Object.keys(SEMANTIC_LABELS).map((kind) => [kind, app.harmonizedCardNameLabel(kind)])), {
     "direct-specimen": "Meteorite name",
     "projected-atomic-specimen": "Meteorite name",
@@ -229,7 +222,9 @@ test("all nine populated-name branches use concise kind-specific labels", () => 
   assert.equal(app.harmonizedCardNameLabel("not-a-card-kind"), null);
   assert(descriptors.every((descriptor) => {
     const dto = present(descriptor);
-    return dto.sourceName === null || app.harmonizedCardNameLabel(dto.kind) !== null;
+    if (dto.sourceName === null) return true;
+    return ["direct-specimen", "projected-atomic-specimen"].includes(dto.kind)
+      ? dto.headingLabel === "Name" : app.harmonizedCardNameLabel(dto.kind) !== null;
   }));
   assert.doesNotMatch(appSource,
     /Source catalog (?:meteorite name|meteorite or locality name|name)/u);
@@ -284,22 +279,8 @@ test("semantic type labels are hidden for specimens and retained for observation
   assert.equal(app.shouldDisplaySemanticLabel("regional-event-observation"), true);
 });
 
-test("specimen display labels compact exactly, including conflict pages, and unknown labels pass through", () => {
+test("specimen note labels compact exactly while primary contract labels pass through", () => {
   const labels = {
-    "Current MetBull meteorite name": "Official name",
-    "Meteorite name": "Source name",
-    "Current MetBull classification": "Official class",
-    "Current MetBull place": "Official place",
-    "Current MetBull fall/find": "Fall / find",
-    "Current MetBull year": "Official year",
-    "Catalog classification": "Source class",
-    "Catalog meteorite name": "Source name",
-    "Catalog locality": "Source place",
-    "Catalog event or date": "Source date",
-    "Specimen form": "Form",
-    "Individual find location": "Find location",
-    "Cross-catalog comparisons": "Comparisons",
-    "Specimen weight": "Weight",
     "Locality code": "Locality",
     "Area reference coordinate": "Grid ref.",
     "Olivine Fa": "Fa",
@@ -310,6 +291,7 @@ test("specimen display labels compact exactly, including conflict pages, and unk
   for (const [full, compact] of Object.entries(labels)) {
     assert.equal(app.compactSpecimenLabel(full), compact, full);
   }
+  for (const label of APPROVED_SPECIMEN_LABELS) assert.equal(app.compactSpecimenLabel(label), label);
   for (const [field, compact] of [["Class", "Class"], ["Specimen weight", "Weight"], ["Weathering", "Weathering"]]) {
     for (const [table, context, page] of [["A", "primary", "85"], ["B", "reported", "94"]]) {
       assert.equal(app.compactSpecimenLabel(`${field}, Table ${table} ${context} (printed page ${page})`),
@@ -322,16 +304,16 @@ test("specimen display labels compact exactly, including conflict pages, and unk
   ]) assert.equal(app.compactSpecimenLabel(unchanged), unchanged);
 });
 
-test("compact labels are a specimen-only DOM concern with full accessible names", () => {
+test("neutral specimen labels are identical visually and accessibly while note/source abbreviations remain complete", () => {
   const presenterSource = appSource.slice(appSource.indexOf("function presentHarmonizedCard"),
     appSource.indexOf("function compactSpecimenLabel"));
   assert.doesNotMatch(presenterSource, /compactSpecimenLabel/u);
   assert.match(appSource,
     /const visibleHeadingLabel = specimenCard \? compactSpecimenLabel\(dto\.headingLabel\) : dto\.headingLabel;/u);
   assert.match(appSource, /setCompactAccessibleText\(sourceNameLabel, dto\.headingLabel, visibleHeadingLabel\);/u);
-  assert.match(appSource, /setCompactAccessibleText\(sourceNameLabel, heading\.label, visibleHeadingLabel\);/u);
+  assert.match(appSource, /setCompactAccessibleText\(sourceNameLabel, headingLabel, visibleHeadingLabel\);/u);
   assert.match(appSource, /dto\.facts\.forEach\(\(\{ label, value \}\) => appendMetaRow\(meta, label, value, specimenCard\)\);/u);
-  assert.match(appSource, /renderCatalogNotes\(dto\.catalogNotes, specimenCard\)/u);
+  assert.match(appSource, /renderCatalogNotes\(dto\.catalogNotes, specimenCard, specimenNoteSections\)/u);
   assert.match(appSource, /setCompactAccessibleText\(term, label, visibleLabel\);/u);
   assert.match(appSource, /setCompactAccessibleText\(source, sourceCitation, visibleSourceCitation\);/u);
   assert.doesNotMatch(appSource, /(?:term|sourceNameLabel|source)\.setAttribute\("aria-label"/u);
@@ -357,8 +339,7 @@ test("compact labels are a specimen-only DOM concern with full accessible names"
     },
   };
   for (const [tagName, fullText, visibleText] of [
-    ["p", "Current MetBull meteorite name", "Official name"],
-    ["dt", "Specimen weight", "Weight"],
+    ["dt", "Area reference coordinate", "Grid ref."],
     ["p", "Source citation: Catalog (1900) · p. 1", "Source: Catalog (1900) · p. 1"],
   ]) {
     const element = stubDocument.createElement(tagName);
@@ -378,6 +359,13 @@ test("compact labels are a specimen-only DOM concern with full accessible names"
     assert.equal(element.getAttribute("aria-label"), null);
   }
 
+  for (const label of APPROVED_SPECIMEN_LABELS) {
+    const element = stubDocument.createElement(label === "Name" ? "p" : "dt");
+    app.setCompactAccessibleText(element, label, app.compactSpecimenLabel(label));
+    assert.equal(element.textContent, label);
+    assert.deepEqual(element.children, []);
+  }
+
   const plainObservationLabel = stubDocument.createElement("p");
   app.setCompactAccessibleText(plainObservationLabel, "Meteorite name");
   assert.equal(plainObservationLabel.textContent, "Meteorite name");
@@ -389,9 +377,11 @@ test("compact labels are a specimen-only DOM concern with full accessible names"
   assert.deepEqual(present(observation).facts, expectedFacts(observation));
 });
 
-test("every production card uses the approved known-fact order and omits unavailable values", () => {
-  const census = { specimens: 0, mapped: 0, unmapped: 0, factRows: 0, noteCards: 0, noteRows: 0 };
+test("all 14,234 production specimen DTOs enforce the closed primary contract and notes boundary", () => {
+  const census = { specimens: 0, mapped: 0, unmapped: 0, factRows: 0, noteCards: 0, noteRows: 0,
+    lineageNoteCards: 0, comparisonNoteCards: 0 };
   const noteLabels = {};
+  let conflictNoteRows = 0;
   let shortnameOnlyIdentifierCount = 0;
   for (const descriptor of descriptors) {
     const record = descriptor.parentRecord;
@@ -410,21 +400,37 @@ test("every production card uses the approved known-fact order and omits unavail
       census.specimens += 1;
       census[descriptor.currentMetbull ? "mapped" : "unmapped"] += 1;
       assert.equal(dto.headingName, descriptor.currentMetbull?.name || record.name || null, record.id);
+      assert.equal(dto.headingLabel, "Name", record.id);
+      assert.equal(dto.description, null, record.id);
+      assert(dto.facts.every(({ label }) => APPROVED_SPECIMEN_LABELS.has(label) && label !== "Name"), record.id);
+      assert.equal(new Set(dto.facts.map(({ label }) => label)).size, dto.facts.length, record.id);
+      assert.equal(dto.facts.some(({ label }) => /^(?:Official|Source|Catalog|Current MetBull)\b/u.test(label)), false, record.id);
       const individualSpecimen = dto.kind === "projected-atomic-specimen" ||
         ["table-a-specimen", "appendix-specimen"].includes(record.recordModel);
-      assert.equal(fact(dto, "Specimen form"), individualSpecimen ? "Individual specimen" : undefined, record.id);
-      assert.equal(fact(dto, "Individual find location"), record.individualFindLocation || undefined, record.id);
-      assert.equal(Boolean(fact(dto, "Current MetBull classification")), Boolean(descriptor.currentMetbull), record.id);
+      assert.equal(fact(dto, "Form"), individualSpecimen ? "Individual specimen" : "Specimen", record.id);
+      assert.equal(fact(dto, "Find location"), record.individualFindLocation || undefined, record.id);
+      assert.equal(fact(dto, "Class"), descriptor.currentMetbull?.classification ||
+        (app.isKnownCardFact("Catalog classification", record.classification) ? record.classification : undefined), record.id);
+      if (dto.lineage?.claims.length) census.lineageNoteCards += 1;
+      if (dto.comparison?.groups.length) census.comparisonNoteCards += 1;
     }
   }
   assert.deepEqual(census, {
-    specimens: 14234, mapped: 11859, unmapped: 2375, factRows: 115892, noteCards: 11638, noteRows: 27668,
+    specimens: 14234, mapped: 11859, unmapped: 2375, factRows: 116436, noteCards: 11798, noteRows: 32102,
+    lineageNoteCards: 303, comparisonNoteCards: 1717,
   });
+  for (const [label, count] of Object.entries(noteLabels)) {
+    if (/^(?:Class|Specimen weight|Weathering), Table [AB] (?:primary|reported) \(printed page \d+\)$/u.test(label)) {
+      conflictNoteRows += count;
+      delete noteLabels[label];
+    }
+  }
   assert.deepEqual(noteLabels, {
-    "Catalog classification": 11352,
-    "Catalog locality": 9916,
-    "Catalog event or date": 6400,
+    "Source class": 11352, "Source place": 9916, "Source name": 2316, "Source date": 6398,
+    "Source description": 1, "Locality code": 358, "Area reference coordinate": 325,
+    "Olivine Fa": 315, "Pyroxene Fs": 331, Weathering: 332, "Source section": 358,
   });
+  assert.equal(conflictNoteRows, 100);
   assert.equal(shortnameOnlyIdentifierCount, 6305);
   assert(descriptors.every((descriptor) => present(descriptor).identifier !== null));
   const generatedEntryOrderFallbacks = descriptors.filter(({ parentRecord }) =>
@@ -435,17 +441,17 @@ test("every production card uses the approved known-fact order and omits unavail
     app.catalogDropdownLabel(registry[descriptor.parentRecord.catalogId], descriptor.parentRecord.catalogId)));
 });
 
-test("Allende keeps the Huss 1976 classification explicitly source-scoped", () => {
+test("Allende uses neutral current class and keeps the Huss 1976 class in specimen notes", () => {
   const descriptor = descriptors.find(({ parentRecord }) =>
     parentRecord.catalogId === "huss-1976" && parentRecord.designation === "H103.11");
   const dto = present(descriptor);
   assert.equal(dto.sourceName, "Allende");
   assert.equal(dto.headingName, "Allende");
-  assert.equal(fact(dto, "Current MetBull classification"), "CV3");
+  assert.equal(fact(dto, "Class"), "CV3");
   assert.deepEqual(dto.catalogNotes, [{
-    label: "Catalog classification", value: "Stone. Carbonaceous chondrite, Type III",
+    label: "Source class", value: "Stone. Carbonaceous chondrite, Type III",
   }]);
-  assert.equal(fact(dto, "Class"), undefined);
+  assert.equal(dto.headingLabel, "Name");
   assert.equal(fact(dto, "Current Meteoritical Bulletin classification"), undefined);
   assert.equal(descriptor.parentRecord.metbull.meteoriteCode, "2278");
 });
@@ -549,7 +555,7 @@ test("field-aware availability removes only complete placeholders and preserves 
   assert(compoundFacts.some(({ value }) => value === "locality unknown, probably Toluca, Mexico"));
 });
 
-test("specimen mass and lineage facts resolve exactly from source and projection paths", () => {
+test("specimen weight resolves exactly while lineage is available only in specimen notes", () => {
   for (const descriptor of descriptors.filter((item) =>
     ["direct-specimen", "projected-atomic-specimen"].includes(app.classifyHarmonizedCard(item)))) {
     const record = descriptor.parentRecord;
@@ -563,12 +569,14 @@ test("specimen mass and lineage facts resolve exactly from source and projection
       : record.weight?.grams;
     const qualitativeWeight = dto.kind === "projected-atomic-specimen"
       ? descriptor.qualitativeWeightEvidence?.statement : record.weightEvidence?.statement;
-    assert.equal(fact(dto, "Lineage"), expectedClaims.length ? app.formatLineageSummary(expectedClaims) : undefined, record.id);
-    assert.equal(fact(dto, "Specimen weight"), Number.isFinite(grams) ? app.formatMass(grams) : qualitativeWeight || undefined, record.id);
+    assert.equal(dto.facts.some(({ label }) => label === "Lineage"), false, record.id);
+    assert.equal(dto.lineage.claims.length, expectedClaims.length, record.id);
+    assert.equal(fact(dto, "Weight"), Number.isFinite(grams) ? app.formatMass(grams) : qualitativeWeight || undefined, record.id);
   }
 });
 
 test("observation cards omit specimen claims and catalog-specific facts", () => {
+  const observationDtos = [];
   for (const descriptor of descriptors) {
     const record = descriptor.parentRecord;
     const dto = present(descriptor);
@@ -583,10 +591,13 @@ test("observation cards omit specimen claims and catalog-specific facts", () => 
         ? `${sourceLabel} \u00b7 ${pages.length === 1 ? "p." : "pp."} ${pages.join(", ")}`
         : sourceLabel, record.id);
     if (["collection-observation", "regional-observation"].includes(dto.kind)) {
-      assert.equal(dto.facts.some(({ label }) => ["Specimen form", "Lineage", "Specimen weight"].includes(label)), false, record.id);
+      assert.equal(dto.facts.some(({ label }) => ["Form", "Lineage", "Weight"].includes(label)), false, record.id);
     }
     assert.equal(dto.facts.some(({ label }) => /Australian Museum|occurrences/u.test(label)), false, record.id);
+    if (!["direct-specimen", "projected-atomic-specimen"].includes(dto.kind)) observationDtos.push(dto);
   }
+  assert.equal(observationDtos.length, 11010);
+  assert.equal(sha256(JSON.stringify(observationDtos)), "0a5075ffbac355ffb5310964be64536ee2ef414526b9eccd739ecc8e31884941");
 });
 
 test("source citations omit page placeholders when no source page is available", () => {
@@ -597,15 +608,16 @@ test("source citations omit page placeholders when no source page is available",
     descriptor.parentRecord.catalogLabel || descriptor.parentRecord.catalogId);
 });
 
-test("only typed specimen locations can create an individual find location or specimen form", () => {
+test("only typed specimen locations populate Find location and form follows reviewed card kind", () => {
   const victoria = structuredClone(descriptors.find(({ parentRecord }) => parentRecord.catalogId === "victoria-land-1982"));
   victoria.parentRecord.locality.name = "General locality only";
   victoria.parentRecord.locality.areaReferenceCoordinate = "INJECTED COORDINATE";
   const victoriaDto = app.presentHarmonizedCard(victoria);
-  assert.equal(fact(victoriaDto, "Current MetBull place"), victoria.currentMetbull.place);
-  assert(victoriaDto.catalogNotes.some(({ label, value }) => label === "Catalog locality" && value === "General locality only"));
-  assert.equal(fact(victoriaDto, "Specimen form"), "Individual specimen");
-  assert.doesNotMatch(JSON.stringify(victoriaDto), /INJECTED COORDINATE/u);
+  assert.equal(fact(victoriaDto, "Place"), victoria.currentMetbull.place);
+  assert(victoriaDto.catalogNotes.some(({ label, value }) => label === "Source place" && value === "General locality only"));
+  assert.equal(fact(victoriaDto, "Form"), "Individual specimen");
+  assert(victoriaDto.catalogNotes.some(({ label, value }) =>
+    label === "Area reference coordinate" && value === "INJECTED COORDINATE"));
 
   const collection = structuredClone(descriptors.find(({ kind, parentRecord }) =>
     kind === "parent" && parentRecord.recordModel === "collection-entry" && parentRecord.holdings[0]?.provenance));
@@ -621,14 +633,14 @@ test("only typed specimen locations can create an individual find location or sp
   };
   const collectionDto = app.presentHarmonizedCard(collection);
   assert.equal(fact(collectionDto, "Source locality"), "General locality only");
-  assert.equal(fact(collectionDto, "Current MetBull classification"), undefined);
-  assert.equal(fact(collectionDto, "Specimen form"), undefined);
+  assert.equal(fact(collectionDto, "Class"), undefined);
+  assert.equal(fact(collectionDto, "Form"), undefined);
   assert.doesNotMatch(JSON.stringify(collectionDto), /INJECTED (?:INDIVIDUAL FORM|FIND LOCATION|LOCATION NOTE)/u);
 
   for (const descriptor of descriptors) {
     const dto = present(descriptor);
     const specimen = ["direct-specimen", "projected-atomic-specimen"].includes(dto.kind);
-    assert.equal(fact(dto, "Individual find location"),
+    assert.equal(fact(dto, "Find location"),
       specimen ? descriptor.parentRecord.individualFindLocation || undefined : undefined, descriptor.parentRecord.id);
   }
 });
@@ -641,7 +653,7 @@ test("Kuleschowka renders two 2.7 g repeated specimens without an unsupported li
     { massPath: null, occurrence: 1 },
     { massPath: null, occurrence: 2 },
   ]);
-  assert.deepEqual(cards.map((descriptor) => fact(present(descriptor), "Specimen weight")), ["5.95 g", "2.7 g", "2.7 g"]);
+  assert.deepEqual(cards.map((descriptor) => fact(present(descriptor), "Weight")), ["5.95 g", "2.7 g", "2.7 g"]);
   assert(cards.slice(1).every((descriptor) => fact(present(descriptor), "Lineage") === undefined));
   assert(cards.slice(1).every((descriptor) => app.lineageEntriesForSpecimenCard(
     descriptor, lineageIndex.get(descriptor.parentRecord.id) || []
@@ -667,18 +679,14 @@ test("representative corrected and unresolved specimen cards preserve the known 
   assert.match(styles, /\.record-meta dt \{[^}]*word-break: normal;[^}]*overflow-wrap: normal;/u);
 });
 
-test("closed source and catalog-specific card facts remain searchable", () => {
+test("primary facts are closed while source and catalog-specific note data remain searchable", () => {
   const allowed = new Set([
-    "Catalog meteorite name",
-    "Current MetBull classification", "Current MetBull place", "Current MetBull fall/find", "Current MetBull year",
-    ...STANDARD_SPECIMEN_LABELS, ...STANDARD_OBSERVATION_LABELS, ...FLETCHER_OBSERVATION_LABELS, ...FLETCHER_LABELS,
-    "Locality code", "Area reference coordinate", "Olivine Fa", "Pyroxene Fs", "Weathering", "Source section",
+    ...APPROVED_SPECIMEN_LABELS, ...STANDARD_OBSERVATION_LABELS, ...FLETCHER_OBSERVATION_LABELS, ...FLETCHER_LABELS,
     "Jurisdiction", "Event statement", "Reported material context", "Caption title", "Source classification",
     "Source-reported caption mass", "Source-reported dimensions", "Associated photo panels", "Repeated-view context"
   ]);
   for (const descriptor of descriptors) {
-    assert(present(descriptor).facts.every(({ label }) => allowed.has(label) ||
-      /^(?:Class|Specimen weight|Weathering), Table [AB] (?:primary|reported) \(printed page \d+\)$/u.test(label)), descriptor.parentRecord.id);
+    assert(present(descriptor).facts.every(({ label }) => allowed.has(label)), descriptor.parentRecord.id);
   }
   assert.doesNotMatch(html, /<dt>|record-holdings|metbull-name|lineage-row|earlier-records/u);
 

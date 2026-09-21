@@ -349,8 +349,8 @@ test("repeatedMass validates a complete occurrence set and supplies per-item wei
   const descriptors = app.expandSpecimenCardDescriptors([parent], app.deriveSpecimenCardProjectionIndex(make(), [parent]));
   assert.deepEqual(descriptors.map(app.specimenCardDescriptorMasses), [[2.7], [2.7]]);
   assert.deepEqual(descriptors.map((descriptor) => app.presentHarmonizedCard(descriptor).facts.at(-1)), [
-    { label: "Specimen weight", value: "2.7 g" },
-    { label: "Specimen weight", value: "2.7 g" },
+    { label: "Weight", value: "2.7 g" },
+    { label: "Weight", value: "2.7 g" },
   ]);
   assert.equal(app.filterSpecimenCardDescriptors(descriptors, { min: 2.7, max: 2.7, lineageOnly: false }).length, 2);
   assert(descriptors.every((descriptor) => app.lineageEntriesForSpecimenCard(descriptor, [

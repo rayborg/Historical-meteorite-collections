@@ -30,7 +30,7 @@ const flattenIndex = (index) => [...index.values()].flat();
 const sameInventory = (data, inventoryId = "h160.1") => data.relationships.find((relationship) =>
   relationship.collectionSeries.inventoryId === inventoryId);
 
-test("main template presents lineage and comparisons through separate harmonized card contracts", async () => {
+test("main template retains lineage and comparisons outside the primary field contract", async () => {
   assert.doesNotMatch(html, /possible-specimen-lineages\.html/u);
   assert.match(html, /<p class="record-semantic-label"><\/p>/u);
   assert.match(html, /<dl class="record-meta" aria-label="Catalog record details"><\/dl>/u);
@@ -42,10 +42,8 @@ test("main template presents lineage and comparisons through separate harmonized
     comparisonEntries: comparisonIndex.get(record.id),
     registry,
   });
-  assert.deepEqual(dto.facts.find(({ label }) => label === "Lineage"), {
-    label: "Lineage",
-    value: "Known same-inventory continuity: 1 | Source-attested tentative groups: 0",
-  });
+  assert.equal(dto.facts.some(({ label }) => label === "Lineage"), false);
+  assert.equal(dto.lineage.summary.text, "Known same-inventory continuity: 1 | Source-attested tentative groups: 0");
   assert(dto.comparison === null || dto.comparison.groups.every(({ groupId }) => groupId.startsWith("comparison-group-")));
   assert.doesNotMatch(source, /\.innerHTML\b/u);
   assert.doesNotMatch(css, /\.earlier-records \{/u);
@@ -341,7 +339,7 @@ test("source-attested Table C groups retain exact n-ary membership without pair 
   const alha76005 = records.find(({ specimenId }) => specimenId === "ALHA76005");
   assert.equal(app.presentHarmonizedCard(alha76005, {
     lineageEntries: lineageIndex.get(alha76005.id), registry,
-  }).facts.find(({ label }) => label === "Lineage").value,
+  }).lineage.summary.text,
   "Known same-inventory continuity: 0 | Source-attested tentative groups: 1");
   const victoriaDescriptors = app.expandSpecimenCardDescriptors(
     records.filter(({ catalogId }) => catalogId === "victoria-land-1982"), new Map());
@@ -416,7 +414,7 @@ test("Holbrook 98 is one top-level group with candidate audit rows", () => {
   assert.doesNotMatch(JSON.stringify(dto), /suspected|possible lineage|relationship/iu);
 });
 
-test("comparison facts and details remain separate from the Lineage fact", () => {
+test("comparison details remain available without entering primary facts", () => {
   let comparisonCards = 0;
   let routedGroups = 0;
   let routedCandidates = 0;
@@ -432,7 +430,8 @@ test("comparison facts and details remain separate from the Lineage fact", () =>
       comparisonEntries,
       registry,
     });
-    assert(dto.facts.some(({ label }) => label === "Cross-catalog comparisons"));
+    assert.equal(dto.facts.some(({ label }) => label === "Cross-catalog comparisons"), false);
+    assert(dto.comparison.groups.length > 0);
     assert.equal(dto.facts.some(({ label, value }) => label === "Lineage" && /comparison|suspected/iu.test(value)), false);
   }
   assert.deepEqual({ comparisonCards, routedGroups, routedCandidates }, {
@@ -482,6 +481,11 @@ test("hash mismatch, malformed input, and fetch failure fail closed for both ind
 
 test("accessible static contracts, warning language, and cache keys are synchronized", () => {
   assert.match(html, /<dl class="record-meta" aria-label="Catalog record details"><\/dl>/u);
+  assert.match(source, /summary\.textContent = "Show specimen notes"/u);
+  assert.match(source, /details\.append\(\.\.\.nestedSections\);/u);
+  assert.match(source, /dto\.lineage\?\.claims\.length \? \[renderLineageClaims\(dto\.lineage\)\] : \[\]/u);
+  assert.match(source, /dto\.comparison\?\.groups\.length \? \[renderComparisonGroups\(dto\.comparison\)\] : \[\]/u);
+  assert.doesNotMatch(source, /record-footer"\)\.before\(render(?:LineageClaims|ComparisonGroups)/u);
   assert.match(source, /aria-label", "Cross-catalog comparison candidates"/u);
   assert.match(source, /Shared identity and reported mass do not establish the same physical specimen, lineage, custody, ownership, transfer, or merge\./u);
   assert.doesNotMatch(source, /Suspected cross-catalog|POSSIBLE_MATCH_CAUTION/u);
