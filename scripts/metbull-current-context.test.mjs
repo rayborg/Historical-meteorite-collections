@@ -130,7 +130,7 @@ test("loader applies all current context or returns one complete source-only fal
   }
 });
 
-test("presenter applies official headings, visible source names, and exact ordered catalog notes only to matched specimens", () => {
+test("presenter applies current values through neutral fields and moves source differences to specimen notes", () => {
   const presentation = specimenDescriptors.map((descriptor) => {
     const dto = app.presentHarmonizedCard(descriptor, {
       lineageEntries: lineageIndex.get(descriptor.parentRecord.id) || [],
@@ -142,24 +142,24 @@ test("presenter applies official headings, visible source names, and exact order
   assert.equal(specimenDescriptors.filter(({ currentMetbull }) => currentMetbull).length, 11859);
   assert.equal(specimenDescriptors.filter(({ currentMetbull }) => !currentMetbull).length, 2375);
   assert.equal(specimenDescriptors.filter(({ currentMetbull }) => currentMetbull?.year).length, 11850);
-  assert.equal(presentation.reduce((count, entry) => count + entry[4].length, 0), 82031);
-  assert.equal(notes.length, 11638);
-  assert.equal(notes.reduce((count, entry) => count + entry[1].length, 0), 27668);
-  assert.equal(jsonSha256(presentation), "d3b61c0ea0dfdd3d0f20beaf7d438bc86a4d9fd9615df0602d497e5373f8a280");
-  assert.equal(jsonSha256(notes), "bfa71035dea98b1b395dbcbaf66d6162a6bafaf8de56ed9cb5b5b751b7e7dd24");
+  assert.equal(presentation.reduce((count, entry) => count + entry[4].length, 0), 82575);
+  assert.equal(notes.length, 11798);
+  assert.equal(notes.reduce((count, entry) => count + entry[1].length, 0), 32102);
+  assert.equal(jsonSha256(presentation), "0d5e9b3fe67f419826c90d9b140be7b3276197ef9b60e228b533f0c948d914b7");
+  assert.equal(jsonSha256(notes), "99adbc9db7753f560548964d78bb241b9fb265f409e846aa1be59f350843b5a1");
 
   const allende = specimenDescriptors.find(({ parentRecord }) => parentRecord.designation === "H103.11");
   const dto = app.presentHarmonizedCard(allende);
   assert.equal(dto.headingName, "Allende");
-  assert.equal(dto.headingLabel, "Current MetBull meteorite name");
+  assert.equal(dto.headingLabel, "Name");
   assert.equal(dto.headingUrl, "https://www.lpi.usra.edu/meteor/metbull.cfm?code=2278");
   assert.deepEqual(dto.facts.slice(0, 4), [
-    { label: "Current MetBull classification", value: "CV3" },
-    { label: "Current MetBull place", value: "Chihuahua, Mexico" },
-    { label: "Current MetBull fall/find", value: "Fall" },
-    { label: "Current MetBull year", value: "1969" },
+    { label: "Class", value: "CV3" },
+    { label: "Place", value: "Chihuahua, Mexico" },
+    { label: "Fall / find", value: "Fall" },
+    { label: "Year / date", value: "1969" },
   ]);
-  assert.deepEqual(dto.catalogNotes, [{ label: "Catalog classification", value: "Stone. Carbonaceous chondrite, Type III" }]);
+  assert.deepEqual(dto.catalogNotes, [{ label: "Source class", value: "Stone. Carbonaceous chondrite, Type III" }]);
   assert.equal(sha256(catalogText), "3c23d1c2653bc893819a605c7c0e5e6db7b63a17cd3ab66ab104c2772391dbe7");
 });
 
@@ -179,15 +179,30 @@ test("fall/find codes use documented MetBull categories and current fields conta
     const { currentMetbull } = descriptor;
     codeCounts[currentMetbull.fall] = (codeCounts[currentMetbull.fall] || 0) + 1;
     const dto = app.presentHarmonizedCard(descriptor);
-    assert.equal(dto.facts.find(({ label }) => label === "Current MetBull fall/find").value,
+    assert.equal(dto.facts.find(({ label }) => label === "Fall / find").value,
       labels[currentMetbull.fall]);
-    assert.equal(dto.facts.some(({ label }) => /^Current MetBull (?:mass|latitude|longitude|coordinates?)$/iu.test(label)), false);
+    assert.equal(dto.facts.some(({ label }) => /^(?:mass|latitude|longitude|coordinates?)$/iu.test(label)), false);
   }
   assert.deepEqual(codeCounts, { Y: 5050, "": 6761, Yp: 9, Yc: 37, Np: 2 });
   assert.deepEqual(Object.keys(sidecar.meteorites["5"]), ["name", "status", "fall", "year", "place", "classification"]);
 });
 
-test("reported synonym cards retain exact source names beside reviewed Official headings", () => {
+test("an unavailable current year uses only an available source date fallback", () => {
+  const withoutCurrentYear = specimenDescriptors.filter(({ currentMetbull }) => currentMetbull?.year === "");
+  assert.equal(withoutCurrentYear.length, 9);
+  const fallbackValues = new Map([
+    ["obs-7b0ead6e-bbdc-452c-abd4-b36b868ab2ce", "found (unreported)"],
+    ["obs-7f745dcf-88bd-4fe3-8427-f55525c9a9ab", "1980"],
+  ]);
+  for (const descriptor of withoutCurrentYear) {
+    const dto = app.presentHarmonizedCard(descriptor);
+    assert.equal(dto.facts.find(({ label }) => label === "Year / date")?.value,
+      fallbackValues.get(descriptor.parentRecord.id), descriptor.parentRecord.id);
+    assert.equal(dto.catalogNotes.some(({ label }) => label === "Source date"), false, descriptor.parentRecord.id);
+  }
+});
+
+test("reported synonym cards retain exact source names inside specimen notes", () => {
   const cases = [
     ["obs-bc3edcf5-25d8-4921-8ace-ceedd6882e3b", 1, "Aba Panu", "Aba Panu", "67799", "Confirmed fall (Yc)"],
     ["obs-9371315d-81bd-4b7e-afba-1396df86df34", 1, "Addison", "Addison", "83275", "Confirmed fall (Yc)"],
@@ -202,10 +217,10 @@ test("reported synonym cards retain exact source names beside reviewed Official 
       assert.equal(dto.sourceName, sourceName, recordId);
       assert.equal(dto.headingName, officialName, recordId);
       assert.equal(descriptor.currentMetbull.meteoriteCode, meteoriteCode, recordId);
-      assert.equal(dto.facts.find(({ label }) => label === "Current MetBull fall/find").value, fallDisplay, recordId);
-      assert.equal(dto.facts.find(({ label }) => label === "Catalog meteorite name")?.value,
+      assert.equal(dto.facts.find(({ label }) => label === "Fall / find").value, fallDisplay, recordId);
+      assert.equal(dto.catalogNotes.find(({ label }) => label === "Source name")?.value,
         sourceName !== officialName ? sourceName : undefined, recordId);
-      assert.equal(dto.catalogNotes.some(({ label }) => label === "Catalog meteorite name"), false, recordId);
+      assert.equal(dto.facts.some(({ label }) => label === "Source name"), false, recordId);
     }
   }
 });
@@ -234,18 +249,19 @@ test("current and historical terms search together only after valid attachment",
   assert.equal(jsonSha256(searches), "5257dcbe91820381f992cbb20e294b96c49f330e2492ae83795eb384578401dc");
 });
 
-test("every catalog-note value is searchable without weakening numeric holding-code boundaries", () => {
+test("every differing source-context note remains searchable without weakening numeric holding-code boundaries", () => {
   let noteCount = 0;
   const reportedValues = new Set();
   for (const descriptor of specimenDescriptors) {
-    for (const { value } of app.presentHarmonizedCard(descriptor).catalogNotes) {
+    for (const { label, value } of app.presentHarmonizedCard(descriptor).catalogNotes
+      .filter(({ label }) => ["Source name", "Source class", "Source place", "Source date"].includes(label))) {
       noteCount += 1;
       assert.equal(app.matchesSpecimenCardSearch(descriptor, value), true,
         `${descriptor.parentRecord.id}: ${value}`);
       if (["1834 Gefallen", "1876 1896 beschr"].includes(value)) reportedValues.add(value);
     }
   }
-  assert.equal(noteCount, 27668);
+  assert.equal(noteCount, 29982);
   assert.deepEqual([...reportedValues].sort(), ["1834 Gefallen", "1876 1896 beschr"]);
   const fallback = structuredClone(specimenDescriptors.find(({ parentRecord }) =>
     parentRecord.id === "obs-5dea7247-414e-425e-9484-02988fe91a18"));
@@ -281,6 +297,8 @@ test("observation cards stay source-only and static rendering is accessible, res
   assert.match(html, /id="current-context-status"[^>]*role="status"[^>]*aria-live="polite"[^>]*hidden/u);
   assert.equal((html.match(/id="current-context-status"/gu) || []).length, 1);
   assert.match(source, /summary\.textContent = "Show catalog notes"/u);
+  assert.match(source, /summary\.textContent = "Show specimen notes"/u);
+  assert.match(source, /list\.setAttribute\("aria-label", "Specimen notes"\)/u);
   assert.match(source, /document\.createElement\("details"\)/u);
   assert.doesNotMatch(source, /\.innerHTML\b/u);
   assert.match(styles, /\.catalog-notes summary \{/u);

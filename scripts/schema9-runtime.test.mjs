@@ -216,7 +216,7 @@ test("schema 15 card semantics, cache keys, responsive layout, and privacy bound
   const hodgeDto = app.presentHarmonizedCard(hodge[0]);
   const victoriaDto = app.presentHarmonizedCard(victoria[0]);
   assert.equal(hodgeDto.semanticLabel, "Regional census/catalog observation, not a specimen or holding.");
-  assert.equal(victoriaDto.facts.find(({ label }) => label === "Specimen form").value, "Individual specimen");
+  assert.equal(victoriaDto.facts.find(({ label }) => label === "Form").value, "Individual specimen");
   assert.equal(victoriaDto.facts.some(({ label }) => label === "Coordinate"), false);
   assert.match(styles, /@media \(max-width: 700px\)[\s\S]*\.catalog-grid \{ grid-template-columns: 1fr; \}/u);
   assert.match(styles, /\.record-meta div \{[^}]*grid-template-columns: minmax\(7\.25rem, 9rem\) minmax\(0, 1fr\);/u);

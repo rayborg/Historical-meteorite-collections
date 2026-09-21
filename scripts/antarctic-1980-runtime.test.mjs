@@ -72,16 +72,16 @@ test("all 85 appendix rows become one direct individual card with exact source f
     const dto = app.presentHarmonizedCard(descriptor);
     assert.equal(dto.identifier, `Antarctic (1980) · ${record.specimenId}`, record.id);
     assert.equal(dto.headingName, record.specimenId, record.id);
-    assert.equal(fact(dto, "Specimen form"), "Individual specimen", record.id);
-    assert.equal(fact(dto, "Catalog classification"), record.classification, record.id);
-    assert.equal(fact(dto, "Source locality"), "Allan Hills", record.id);
-    assert.equal(fact(dto, "Specimen weight"), app.formatMass(record.weight.grams), record.id);
-    assert.equal(fact(dto, "Locality code"), "ALH", record.id);
-    assert.equal(fact(dto, "Area reference coordinate"), "77°S, 159°E", record.id);
-    assert.equal(fact(dto, "Olivine Fa"), record.olivineFa ?? undefined, record.id);
-    assert.equal(fact(dto, "Pyroxene Fs"), record.pyroxeneFs ?? undefined, record.id);
-    assert.equal(fact(dto, "Weathering"), record.weathering ?? undefined, record.id);
-    assert.equal(fact(dto, "Source section"), "Appendix", record.id);
+    assert.equal(fact(dto, "Form"), "Individual specimen", record.id);
+    assert.equal(fact(dto, "Class"), record.classification, record.id);
+    assert.equal(fact(dto, "Place"), "Allan Hills", record.id);
+    assert.equal(fact(dto, "Weight"), app.formatMass(record.weight.grams), record.id);
+    assert.equal(dto.catalogNotes.find(({ label }) => label === "Locality code")?.value, "ALH", record.id);
+    assert.equal(dto.catalogNotes.find(({ label }) => label === "Area reference coordinate")?.value, "77°S, 159°E", record.id);
+    assert.equal(dto.catalogNotes.find(({ label }) => label === "Olivine Fa")?.value, record.olivineFa ?? undefined, record.id);
+    assert.equal(dto.catalogNotes.find(({ label }) => label === "Pyroxene Fs")?.value, record.pyroxeneFs ?? undefined, record.id);
+    assert.equal(dto.catalogNotes.find(({ label }) => label === "Weathering")?.value, record.weathering ?? undefined, record.id);
+    assert.equal(dto.catalogNotes.find(({ label }) => label === "Source section")?.value, "Appendix", record.id);
     assert.equal(dto.sourceCitation,
       `${registry[record.catalogId].label} · Appendix printed page ${record.catalogPage}`, record.id);
     assert.doesNotMatch(JSON.stringify(dto), /Table [AB]|conflict|sourceEvidence/u, record.id);
@@ -97,13 +97,12 @@ test("synthetic current context supplies official headings without replacing app
       currentMetbull: { meteoriteCode: record.metbull.meteoriteCode, ...current },
     });
     assert.equal(dto.headingName, record.metbull.canonicalName, record.id);
-    assert.equal(dto.headingLabel, "Current MetBull meteorite name", record.id);
-    assert.equal(fact(dto, "Current MetBull classification"), current.classification, record.id);
-    assert.equal(fact(dto, "Olivine Fa"), record.olivineFa ?? undefined, record.id);
-    assert.equal(fact(dto, "Pyroxene Fs"), record.pyroxeneFs ?? undefined, record.id);
-    assert.equal(fact(dto, "Weathering"), record.weathering ?? undefined, record.id);
-    assert.equal(fact(dto, "Catalog meteorite name"), record.name, record.id);
-    assert.equal(dto.catalogNotes.some(({ label }) => label === "Catalog meteorite name"), false, record.id);
+    assert.equal(dto.headingLabel, "Name", record.id);
+    assert.equal(fact(dto, "Class"), current.classification, record.id);
+    assert.equal(dto.catalogNotes.find(({ label }) => label === "Olivine Fa")?.value, record.olivineFa ?? undefined, record.id);
+    assert.equal(dto.catalogNotes.find(({ label }) => label === "Pyroxene Fs")?.value, record.pyroxeneFs ?? undefined, record.id);
+    assert.equal(dto.catalogNotes.find(({ label }) => label === "Weathering")?.value, record.weathering ?? undefined, record.id);
+    assert.equal(dto.catalogNotes.find(({ label }) => label === "Source name")?.value, record.name, record.id);
   }
 });
 
