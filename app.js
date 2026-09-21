@@ -1,6 +1,6 @@
 "use strict";
 
-const CACHE_VERSION = "20260920-haag-2003-1";
+const CACHE_VERSION = "20260921-specimen-field-contract-1";
 const ASSET_CACHE_VERSION = CACHE_VERSION;
 const CATALOG_SCHEMA_VERSION = 15;
 const CATALOG_RECORD_COUNT = 20241;

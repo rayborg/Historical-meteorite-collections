@@ -922,13 +922,13 @@ test("accessible shell, responsive breakpoints, approved cache, and immutable da
   assert.match(styles, /\.record-meta dt \{[^}]*font-size: \.6rem;/u);
   assert.match(styles, /\.record-meta dd \{[^}]*font-size: \.8rem;/u);
   assert.doesNotMatch(styles, /\.record-meta dt \{[^}]*overflow-wrap: anywhere;/u);
-  assert.equal(app.CACHE_VERSION, "20260920-haag-2003-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260920-haag-2003-1");
+  assert.equal(app.CACHE_VERSION, "20260921-specimen-field-contract-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260921-specimen-field-contract-1");
   for (const document of [html, catalogsHtml]) {
-    assert.match(document, /styles\.css\?v=20260920-haag-2003-1/u);
-    assert.match(document, /app\.js\?v=20260920-haag-2003-1/u);
+    assert.match(document, /styles\.css\?v=20260921-specimen-field-contract-1/u);
+    assert.match(document, /app\.js\?v=20260921-specimen-field-contract-1/u);
   }
-  assert.match(catalogsHtml, /catalogs\.js\?v=20260920-haag-2003-1/u);
+  assert.match(catalogsHtml, /catalogs\.js\?v=20260921-specimen-field-contract-1/u);
   assert.deepEqual({
     catalog: sha256(catalogText),
     projections: sha256(projectionText),

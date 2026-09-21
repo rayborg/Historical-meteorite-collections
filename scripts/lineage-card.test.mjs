@@ -491,9 +491,9 @@ test("accessible static contracts, warning language, and cache keys are synchron
   assert.doesNotMatch(source, /Suspected cross-catalog|POSSIBLE_MATCH_CAUTION/u);
   assert.match(css, /\.comparison-warning/u);
   assert.match(css, /\.comparison-candidates/u);
-  assert.equal(app.CACHE_VERSION, "20260920-haag-2003-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260920-haag-2003-1");
-  assert.match(html, /styles\.css\?v=20260920-haag-2003-1/u);
-  assert.match(html, /app\.js\?v=20260920-haag-2003-1/u);
+  assert.equal(app.CACHE_VERSION, "20260921-specimen-field-contract-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260921-specimen-field-contract-1");
+  assert.match(html, /styles\.css\?v=20260921-specimen-field-contract-1/u);
+  assert.match(html, /app\.js\?v=20260921-specimen-field-contract-1/u);
   assert.doesNotMatch(source, /\.innerHTML\b/u);
 });
