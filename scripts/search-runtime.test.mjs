@@ -153,10 +153,10 @@ test("every structured and Victoria Table B mass is searchable by grams and disp
     }
     if (Number.isFinite(record.sourceEvidence?.tableB?.massGrams)) tableBMasses += 1;
   }
-  assert.equal(structuredOccurrences, 23478);
-  assert.equal(structuredPairs.size, 20081);
-  assert.equal(searchableOccurrences, 23749);
-  assert.equal(searchablePairs.size, 20121);
+  assert.equal(structuredOccurrences, 26665);
+  assert.equal(structuredPairs.size, 23268);
+  assert.equal(searchableOccurrences, 26936);
+  assert.equal(searchablePairs.size, 23308);
   assert.equal(tableBMasses, 270);
 });
 
@@ -178,7 +178,7 @@ test("H-style classification and collateral prose no longer lose owners", () => 
   const collateral = records.flatMap((record) => [
     ...(record.holdings || []).map((holding) => holding.description)
   ].filter((value) => value && legacyParserWouldOmit(record, value)).map((value) => ({ record, value })));
-  assert.equal(classifications.length, 511);
+  assert.equal(classifications.length, 515);
   assert.equal(collateral.length, 1);
   for (const record of classifications) assert.equal(app.matchesSearch(record, record.classification), true, record.id);
   for (const { record, value } of collateral) assert.equal(app.matchesSearch(record, value), true, record.id);
@@ -201,7 +201,7 @@ test("all real pure Huss designation result sets retain exact segment semantics"
 test("all numeric result sets equal the deterministic union oracle", () => {
   const queries = numericQueries();
   const expectedTokens = records.map(expectedNumericTokens);
-  assert.equal(queries.length, 6194);
+  assert.equal(queries.length, 6220);
   for (const query of queries) {
     const expected = records.filter((record, index) => expectedTokens[index].has(query)).map(({ id }) => id).sort();
     const actual = stableIds(records.filter((record) => record.numericSearchTokens.has(query)));

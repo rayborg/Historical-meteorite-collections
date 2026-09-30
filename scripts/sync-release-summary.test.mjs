@@ -110,7 +110,7 @@ test("derives release counts, page spans, MetBull status, and folios from record
   assert.equal(summary.folios.displayCatalogCount, 1);
 });
 
-test("locks the production schema15 release summary and display projection totals", () => {
+test("locks the production schema16 release summary and display projection totals", () => {
   const summary = buildReleaseSummary(productionCatalog, productionFolios, productionProjections);
 
   assert.deepEqual({
@@ -125,9 +125,9 @@ test("locks the production schema15 release summary and display projection total
     folioCatalogCount: summary.folios.catalogs.length,
     folioPageCount: summary.folios.pageCount,
   }, {
-    schemaVersion: 15,
-    catalogCount: 56,
-    recordCount: 20241,
+    schemaVersion: 16,
+    catalogCount: 57,
+    recordCount: 23459,
     sourcePageCount: 1899,
     citedPageCount: 1710,
     metbull: { reviewed: 15299, resolved: 14606, unresolved: 693 },
@@ -135,13 +135,13 @@ test("locks the production schema15 release summary and display projection total
       projectionCount: 3407,
       atomicCardCount: 8410,
       sourceContextCount: 2877,
-      descriptorCount: 25244,
-      specimenCount: 14234,
+      descriptorCount: 28462,
+      specimenCount: 17452,
       observationCount: 11010,
-      weightedOnlyExcludedSpecimenCount: 172,
+      weightedOnlyExcludedSpecimenCount: 203,
     },
-    pending: 4942,
-    folioCatalogCount: 56,
+    pending: 8160,
+    folioCatalogCount: 57,
     folioPageCount: 49,
   });
   assert.deepEqual(
@@ -171,6 +171,20 @@ test("locks the production schema15 release summary and display projection total
       sourcePageRange: { min: 224, max: 233 },
       citedPageCount: 8,
       citedPageRange: { min: 226, max: 233 },
+    },
+  );
+  assert.deepEqual(
+    summary.catalogs.find(({ catalogId }) => catalogId === "monnig-current"),
+    {
+      catalogId: "monnig-current",
+      label: "Monnig Meteorite Collection Catalog",
+      year: 2026,
+      recordModel: "specimen",
+      recordCount: 3218,
+      sourcePageCount: 0,
+      sourcePageRange: null,
+      citedPageCount: 0,
+      citedPageRange: null,
     },
   );
 });

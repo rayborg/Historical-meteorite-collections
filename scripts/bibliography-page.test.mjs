@@ -25,24 +25,27 @@ test("publishes a safe and accessible bibliography table", async () => {
     return row;
   };
 
-  assert.equal((bibliography.match(/<tr(?: |>)/g) || []).length, 265);
-  assert.equal((bibliography.match(/data-control="MCB-\d+"/g) || []).length, 264);
-  assert.equal((bibliography.match(/<li class="project complete/g) || []).length, 56);
-  assert.equal((bibliography.match(/<tr class="worked-row">/g) || []).length, 55);
-  assert.equal((bibliography.match(/class="processing-cell complete"/g) || []).length, 55);
-  assert.match(bibliography, /<strong>264<\/strong><span>Total controls<\/span>/);
-  assert.match(bibliography, /<strong>56<\/strong><span>Catalog projects done<\/span>/);
-  assert.match(bibliography, /<strong>55<\/strong><span>Integrated controls<\/span>/);
+  assert.equal((bibliography.match(/<tr(?: |>)/g) || []).length, 266);
+  assert.equal((bibliography.match(/data-control="MCB-\d+"/g) || []).length, 265);
+  assert.equal((bibliography.match(/<li class="project complete/g) || []).length, 57);
+  assert.equal((bibliography.match(/<tr class="worked-row">/g) || []).length, 56);
+  assert.equal((bibliography.match(/class="processing-cell complete"/g) || []).length, 56);
+  assert.match(bibliography, /<strong>265<\/strong><span>Total controls<\/span>/);
+  assert.match(bibliography, /<strong>57<\/strong><span>Catalog projects done<\/span>/);
+  assert.match(bibliography, /<strong>56<\/strong><span>Integrated controls<\/span>/);
   assert.match(bibliography, /<strong>19<\/strong><span>Remaining acquired backlog<\/span>/);
   assert.match(bibliography, /Acquisition-to-integration backlog: 19 remaining/);
   assert.match(bibliography, /class="table-wrap" role="region" aria-label="Bibliography master list; scroll horizontally to see all columns" tabindex="0"/);
   assert.match(bibliography, /\.table-wrap:focus-visible \{[^}]*outline:/);
-  for (const controlId of ["MCB-41", "MCB-62", "MCB-71", "MCB-75", "MCB-80", "MCB-86", "MCB-93", "MCB-94", "MCB-99", "MCB-111", "MCB-117", "MCB-128", "MCB-140", "MCB-141", "MCB-142", "MCB-151", "MCB-165", "MCB-175", "MCB-197", "MCB-199", "MCB-204"]) {
+  for (const controlId of ["MCB-41", "MCB-62", "MCB-71", "MCB-75", "MCB-80", "MCB-86", "MCB-93", "MCB-94", "MCB-99", "MCB-111", "MCB-117", "MCB-128", "MCB-140", "MCB-141", "MCB-142", "MCB-151", "MCB-165", "MCB-175", "MCB-197", "MCB-199", "MCB-204", "MCB-265"]) {
     assert.match(rowFor(controlId), /processing-cell complete/);
   }
   assert.match(rowFor("MCB-141"), /Catalogue of the collection of meteorites in the Mineralogical Museum of Harvard University[^]*SP1949-0125/);
   assert.match(rowFor("MCB-197"), /1996-01-31[^]*Meteorite Catalogue of the Kanagawa Prefectural Museum of Natural History \/ 隕石目録/);
   assert.match(rowFor("MCB-204"), /2024-09[^]*Arizona State University Meteorite Collection Catalog/);
+  assert.match(rowFor("MCB-201"), /2008[^]*The Oscar E\. Monnig Meteorite Collection Catalog[^]*Printed book; distinct from the current online database[^]*Unavailable/);
+  assert.doesNotMatch(rowFor("MCB-201"), /worked-row|processing-cell complete/);
+  assert.match(rowFor("MCB-265"), /Accessed 2026-09-30[^]*dataset[^]*Monnig Meteorite Collection Catalog \(current online database\)[^]*https:\/\/monnigcatalog\.tcu\.edu\//);
   assert.match(rowFor("MCB-130"), /A descriptive catalogue of the meteorites comprised in the collection of the Geological Survey of India[^]*processing-cell complete[^]*Catalogue of Meteorites, with Special Reference/);
   assert.match(rowFor("MCB-69"), /Catalogue of the meteorites in the university collection[^]*processing-cell complete[^]*Catalogue of the Meteorites in the University Collection/);
   assert.match(rowFor("MCB-113"), /Complete Mineral Catalog[^]*processing-cell complete[^]*Complete Mineral Catalog \(1909\)/);

@@ -402,12 +402,12 @@ function assertCountSummary(value, path) {
 
 function validateMetadata(metadata, path) {
   assertExactKeys(metadata, METADATA_KEYS, path);
-  assert(metadata.schemaVersion === 15, `${path}.schemaVersion must be 15`);
+  assert(metadata.schemaVersion === 16, `${path}.schemaVersion must be 16`);
   assert(metadata.scope === "facts-only", `${path}.scope must be facts-only`);
   assert(
     Array.isArray(metadata.factualFields) && metadata.factualFields.length === FACTUAL_FIELDS.length &&
       metadata.factualFields.every((field, index) => field === FACTUAL_FIELDS[index]),
-    `${path}.factualFields does not match the schema 15 public record models`,
+    `${path}.factualFields does not match the schema 16 public record models`,
   );
   assertCountSummary(metadata, path);
   assert(Array.isArray(metadata.catalogs) && metadata.catalogs.length > 0, `${path}.catalogs must be a nonempty array`);
@@ -426,7 +426,10 @@ function validateMetadata(metadata, path) {
     assertCatalogText(descriptor.label, `${descriptorPath}.label`);
     assertCatalogText(descriptor.compiler, `${descriptorPath}.compiler`);
     assert(Number.isInteger(descriptor.year) && descriptor.year > 0, `${descriptorPath}.year must be a positive integer`);
-    assert(Array.isArray(descriptor.sourcePages) && descriptor.sourcePages.length > 0, `${descriptorPath}.sourcePages must be nonempty`);
+    const pageLessSpecimen = descriptor.recordModel === "specimen" &&
+      Array.isArray(descriptor.sourcePages) && descriptor.sourcePages.length === 0;
+    assert(pageLessSpecimen || (Array.isArray(descriptor.sourcePages) && descriptor.sourcePages.length > 0),
+      `${descriptorPath}.sourcePages may be empty only for specimen catalogs`);
     descriptor.sourcePages.forEach((page, pageIndex) => {
       assert(Number.isInteger(page) && page > 0, `${descriptorPath}.sourcePages[${pageIndex}] must be positive`);
       if (pageIndex) assert(page > descriptor.sourcePages[pageIndex - 1], `${descriptorPath}.sourcePages must be sorted and unique`);
@@ -468,7 +471,7 @@ function recordDesignations(record, recordModel) {
 
 function recordMasses(record, recordModel) {
   if (["specimen", "table-a-specimen", "appendix-specimen"].includes(recordModel)) {
-    return record.weight.grams === null ? [] : [record.weight.grams];
+    return record.weight?.grams == null ? [] : [record.weight.grams];
   }
   if (["regional-census-fact", "dealer-offer-fact", "regional-event-fact", "caption-observation-fact"].includes(recordModel)) return [];
   if (recordModel === "collection-representation-fact") return record.representedWeight.componentTexts;
@@ -791,10 +794,11 @@ function validatePublicCatalog(data, folios, path = "catalog") {
     }
     if (recordModel === "specimen") {
       assertString(record.designation, `${recordPath}.designation`, true);
-      assertExactKeys(record.weight, ["grams"], `${recordPath}.weight`);
-      assert(record.weight.grams === null || (Number.isFinite(record.weight.grams) && record.weight.grams >= 0),
-        `${recordPath}.weight.grams must be a finite nonnegative number or null`);
-      assert(record.designation !== null || record.name !== null || record.weight.grams !== null ||
+      if (record.weight !== null) assertExactKeys(record.weight, ["grams"], `${recordPath}.weight`);
+      assert(record.weight === null || record.weight.grams === null ||
+        (Number.isFinite(record.weight.grams) && record.weight.grams >= 0),
+      `${recordPath}.weight must be null or contain finite nonnegative grams or null`);
+      assert(record.designation !== null || record.name !== null || record.weight?.grams != null ||
         record.classification !== null || record.locality !== null || record.year !== null,
       `${recordPath} must contain a substantive public fact`);
       if (Object.hasOwn(record, "individualFindLocation")) {
@@ -811,7 +815,7 @@ function validatePublicCatalog(data, folios, path = "catalog") {
         assertExactKeys(record.weightEvidence, WEIGHT_EVIDENCE_KEYS, `${recordPath}.weightEvidence`);
         assert(record.weightEvidence.type === "qualitative", `${recordPath}.weightEvidence.type must be qualitative`);
         assertString(record.weightEvidence.statement, `${recordPath}.weightEvidence.statement`);
-        assert(record.weight.grams === null, `${recordPath}.weightEvidence requires a null numeric weight`);
+        assert(record.weight?.grams === null, `${recordPath}.weightEvidence requires a null numeric weight`);
         assert(record.id === "obs-9286c6b5-4942-41f0-a905-8854f457bd9d" && record.weightEvidence.statement === "Less than a gram",
           `${recordPath}.weightEvidence is not an accepted qualitative source statement`);
         qualitativeWeightIds.add(record.id);
@@ -833,7 +837,7 @@ function validatePublicCatalog(data, folios, path = "catalog") {
         assertExactKeys(record.specimenDisposition, SPECIMEN_DISPOSITION_KEYS, `${recordPath}.specimenDisposition`);
         assert(record.specimenDisposition.type === "not-individual", `${recordPath}.specimenDisposition.type must be not-individual`);
         assertString(record.specimenDisposition.reason, `${recordPath}.specimenDisposition.reason`);
-        assert(record.designation === null && record.weight.grams === null,
+        assert(record.designation === null && record.weight?.grams === null,
           `${recordPath}.specimenDisposition requires null designation and null numeric weight`);
         const acceptedReasons = {
           "obs-1de4992c-82a8-4488-919e-f5276a9263e8": "Plural granite and quartz samples from the crater.",
@@ -1093,8 +1097,10 @@ function validatePublicCatalog(data, folios, path = "catalog") {
           `${recordPath}.catalogPages must be sorted and unique`);
       });
     } else {
-      assert(Number.isInteger(record.catalogPage) && catalog.sourcePages.has(record.catalogPage),
-        `${recordPath}.catalogPage is outside its descriptor sourcePages`);
+      assert(catalog.sourcePages.size === 0
+        ? recordModel === "specimen" && record.catalogPage === null
+        : Number.isInteger(record.catalogPage) && catalog.sourcePages.has(record.catalogPage),
+      `${recordPath}.catalogPage must match its descriptor page contract`);
     }
     assert(CONFIDENCE_LEVELS.includes(record.confidence), `${recordPath}.confidence is invalid`);
 
@@ -1104,14 +1110,17 @@ function validatePublicCatalog(data, folios, path = "catalog") {
     if (recordDesignations(record, recordModel).length) stats.recordsWithDesignation += 1;
     if (recordMasses(record, recordModel).length) stats.recordsWithWeight += 1;
     previousRecords.set(record.id, { ...record, recordModel });
-    if (index) assert(compareRecords(data.records[index - 1], record, metadataByCatalog) < 0,
-      `${recordPath} violates deterministic model-aware order`);
+    if (index && metadataByCatalog.get(data.records[index - 1].catalogId).sourcePages.size > 0 &&
+        catalog.sourcePages.size > 0) {
+      assert(compareRecords(data.records[index - 1], record, metadataByCatalog) < 0,
+        `${recordPath} violates deterministic model-aware order`);
+    }
   });
 
   assertExactSet(representedCatalogs, metadataByCatalog.keys(), `${path} record catalog IDs`);
   assertExactSet(Object.keys(folios.catalogs), metadataByCatalog.keys(), `${path} folio catalog IDs`);
   assert(data.metadata.recordCount === data.records.length, `${path}.metadata.recordCount does not match records`);
-  if (data.records.length === 20241 && metadataByCatalog.size === 56) {
+  if (data.records.length === 23459 && metadataByCatalog.size === 57) {
     assert(individualFindLocationCount === 111,
       `${path} must contain exactly 111 specimen individualFindLocation values`);
     assertExactSet(qualitativeWeightIds, ["obs-9286c6b5-4942-41f0-a905-8854f457bd9d"], `${path} qualitative weight record IDs`);
@@ -1292,6 +1301,13 @@ function validatePublicCatalog(data, folios, path = "catalog") {
   }
   for (const [catalogId, { descriptor, path: descriptorPath, sourcePages }] of metadataByCatalog) {
     const stats = statsByCatalog.get(catalogId);
+    const descriptorRecords = data.records.filter((record) => record.catalogId === catalogId);
+    if (descriptor.recordModel === "specimen") {
+      assert((sourcePages.size === 0) === descriptorRecords.every((record) => record.catalogPage === null),
+        `${descriptorPath}.sourcePages must be empty iff all specimen catalogPage values are null`);
+    } else {
+      assert(sourcePages.size > 0, `${descriptorPath}.sourcePages must be nonempty`);
+    }
     for (const field of ["recordCount", "recordsWithDesignation", "recordsWithWeight"]) {
       assert(stats[field] === descriptor[field], `${descriptorPath}.${field} does not match records`);
     }
@@ -1581,7 +1597,7 @@ function multiCatalogFixture() {
   return {
     data: {
       metadata: {
-        schemaVersion: 15,
+        schemaVersion: 16,
         scope: "facts-only",
         factualFields: [...FACTUAL_FIELDS],
         catalogs: [
@@ -2128,7 +2144,7 @@ function runSyntheticCatalogTests(modelFixture) {
     catalogNumberRejectionCount += 1;
   };
   const hoveyRecord = (records, id = "hovey-catalog-z9") => records.find((record) => record.id === id);
-  assertCatalogNumberRejection("older metadata below schema 15", ({ metadata }) => { metadata.schemaVersion = 14; });
+  assertCatalogNumberRejection("older metadata below schema 16", ({ metadata }) => { metadata.schemaVersion = 15; });
   assertCatalogNumberRejection("empty catalog number", ({ records }) => { hoveyRecord(records).catalogNumber = ""; });
   assertCatalogNumberRejection("nonnull non-string catalog number", ({ records }) => { hoveyRecord(records).catalogNumber = 9; });
   assertCatalogNumberRejection("duplicate catalog number within one catalog", ({ records }) => {
@@ -2569,7 +2585,7 @@ console.log(
   `${catalogFixtureStats.holdingPrivacyAllowCount} holding-privacy boundary allow, ` +
   `${catalogFixtureStats.modelRejectionCount} model/holding rejections, ` +
   `${catalogFixtureStats.catalogNumberRejectionCount} catalog-number rejections, ` +
-  `${catalogFixtureStats.collectionEntryRejectionCount} collection-entry/schema-15 rejections, ` +
+  `${catalogFixtureStats.collectionEntryRejectionCount} collection-entry/schema-16 rejections, ` +
   `${metbullFixtureStats.allowCount} MetBull allows, ${metbullFixtureStats.rejectionCount} MetBull rejections, ` +
   `${folioFixtureStats.allowCount} folio allows, ${folioFixtureStats.rejectionCount} folio rejections, ` +
   `${folioFileFixtureStats.allowCount} folio-file allows, ${folioFileFixtureStats.rejectionCount} folio-file rejections passed.`,
@@ -2612,7 +2628,7 @@ if (!SYNTHETIC_ONLY) {
   const captionMassRecord = data.records.find(({ catalogId, reportedMass }) => catalogId === "haag-2003" && reportedMass !== null);
   const captionNullContextRecord = data.records.find(({ catalogId, reportedMass }) => catalogId === "haag-2003" && reportedMass === null);
   const captionRelationRecord = data.records.find(({ catalogId, sourceRelation }) => catalogId === "haag-2003" && sourceRelation !== null);
-  assertDeployedRejection("schema-14 downgrade", ({ metadata }) => { metadata.schemaVersion = 14; });
+  assertDeployedRejection("schema-15 downgrade", ({ metadata }) => { metadata.schemaVersion = 15; });
   assertDeployedRejection("regional-event material promoted to weight", ({ records }) => {
     records.find(({ id }) => id === regionalEventRecord.id).weight = { grams: 1 };
   });
@@ -2741,7 +2757,7 @@ if (!SYNTHETIC_ONLY) {
   );
   console.log(
     `Validated data/catalog.json and data/folios.json: ${deployedStats.recordCount} records across ` +
-      `${deployedStats.catalogCount} schema 15 facts-only catalogs, ${deployedStats.individualFindLocationCount} individual find locations, ` +
+      `${deployedStats.catalogCount} schema 16 facts-only catalogs, ${deployedStats.individualFindLocationCount} individual find locations, ` +
       `${totalPageCount} metadata source pages, ` +
     `${deployedStats.folioStats.pageEntryCount} displayable folio pages with locked SHA-256 assets.`,
   );

@@ -195,7 +195,7 @@ function makeObservation(record, descriptor, { designation, designationPath, mas
 }
 
 function catalogDescriptors(catalog) {
-  assert(catalog?.metadata?.schemaVersion === 15, "catalog metadata schemaVersion must be 15");
+  assert(catalog?.metadata?.schemaVersion === 16, "catalog metadata schemaVersion must be 16");
   assert(Array.isArray(catalog.metadata.catalogs), "catalog metadata catalogs must be an array");
   assert(Array.isArray(catalog.records), "catalog records must be an array");
   const descriptors = new Map(catalog.metadata.catalogs.map((descriptor) => [descriptor.id, descriptor]));

@@ -209,7 +209,7 @@ function buildCatalog(current, records) {
   return {
     metadata: {
       ...current.metadata,
-      schemaVersion: 15,
+      schemaVersion: 16,
       factualFields: [...current.metadata.factualFields.filter((field) => !FACTUAL_FIELDS.includes(field)), ...FACTUAL_FIELDS],
       catalogs: descriptors,
       recordCount: allRecords.length,

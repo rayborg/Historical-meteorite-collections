@@ -1,14 +1,14 @@
 "use strict";
 
-const CACHE_VERSION = "20260921-specimen-field-contract-1";
+const CACHE_VERSION = "20260930-monnig-current-1";
 const ASSET_CACHE_VERSION = CACHE_VERSION;
-const CATALOG_SCHEMA_VERSION = 15;
-const CATALOG_RECORD_COUNT = 20241;
-const DISPLAY_DESCRIPTOR_COUNT = 25244;
-const SPECIMEN_DESCRIPTOR_COUNT = 14234;
+const CATALOG_SCHEMA_VERSION = 16;
+const CATALOG_RECORD_COUNT = 23459;
+const DISPLAY_DESCRIPTOR_COUNT = 28462;
+const SPECIMEN_DESCRIPTOR_COUNT = 17452;
 const OBSERVATION_DESCRIPTOR_COUNT = 11010;
-const WEIGHTED_DESCRIPTOR_COUNT = 14062;
-const UNKNOWN_WEIGHT_EXCLUSION_COUNT = 172;
+const WEIGHTED_DESCRIPTOR_COUNT = 17249;
+const UNKNOWN_WEIGHT_EXCLUSION_COUNT = 203;
 const SPECIMEN_PREFIX_GATED_CATALOGS = new Set(["brown-1916", "minnesota-1892", "brauns-bonn-1926"]);
 const REVIEW_GATED_COMPARISON_CATALOGS = new Set(["brown-1916", "minnesota-1892", "greifswald-1895", "greifswald-1901", "berlin-1903", "berlin-1904", "brauns-bonn-1926"]);
 const PAGE_SIZE = 120;
@@ -313,13 +313,14 @@ const SPECIMEN_CARD_CLAUSE_FIELDS = new Set(["textPath", "start", "end"]);
 const SPECIMEN_CARD_REPEATED_MASS_FIELDS = new Set(["valuePath", "countPath", "totalPath", "occurrence", "occurrenceCount"]);
 const SPECIMEN_CARD_SOURCE_CATALOG_NUMBER_FIELDS = new Set(["value", "textPath", "start", "end"]);
 const SHA256_HEX = /^[0-9a-f]{64}$/u;
-const SPECIMEN_CARD_SOURCE_CATALOG_SHA256 = "3c23d1c2653bc893819a605c7c0e5e6db7b63a17cd3ab66ab104c2772391dbe7";
-const SPECIMEN_CARD_PROJECTION_DATA_SHA256 = "de553de6c7be4fa1d57e5efc50cc843a6f1e03e364e8ea8115d71506aa6ed16e";
+const SPECIMEN_CARD_SOURCE_CATALOG_SHA256 = "6829c71f8cb15517fe1335336bec6a86065f2f31cdc780534b67b632707953e6";
+const SPECIMEN_CARD_PROJECTION_DATA_SHA256 = "bb417aa0d967fda4857cf27a637dee8f5c78ed4b7fc6d467f6f763ecdfa68edc";
 const SPECIMEN_CARD_PROJECTION_SET_SHA256 = "9e3452b6ff8cc23000311de4e36f0deae70654392cfb08a19956934ee46b3802";
-const SPECIMEN_LINEAGE_DATA_SHA256 = "834b766339614485513d50e5efdcfac0c66b3a9871de73b8533f1978f459fbd2";
-const METBULL_CURRENT_CONTEXT_DATA_SHA256 = "18ee18a7396c06d928a30580efc1dfa2c585c0446ae85796b42ce85e44b0ac0e";
+const SPECIMEN_LINEAGE_DATA_SHA256 = "ffad6fd5196a41548e6a7de717e7cc424f0fd9f5837a2c47f77b3fc53b92c229";
+const METBULL_CURRENT_CONTEXT_DATA_SHA256 = "e180e4268c4fd82f2388110e6479aadceed31f876e88b55618dd4e21d1d549c6";
+const METBULL_ASSIGNMENT_AUDIT_CARD_COUNT = 14234;
 const METBULL_CARD_ASSIGNMENTS_SHA256 = "131daf40b44e07e71de896ad9d6e375e03931e33af4a2e8e7a152d8ebbff8150";
-const METBULL_PUBLIC_CARD_BINDINGS_SHA256 = "cd49c34ca0539ca94e95d1677c724bf8ebe7ce635c92f080fc8cea0f6eefe48d";
+const METBULL_PUBLIC_CARD_BINDINGS_SHA256 = "d35d1ed4fb52e651eeb39cd2bc7e21a5c499a16bd98eed4af3a3d5c30b59e407";
 const METBULL_CURRENT_CONTEXT_ROOT_FIELDS = new Set(["metadata", "meteorites"]);
 const METBULL_CURRENT_CONTEXT_METADATA_FIELDS = new Set([
   "schemaVersion", "scope", "acquiredAt", "sourceUrl", "sourceSha256", "sourceBytes", "sourceRowCount",
@@ -327,7 +328,7 @@ const METBULL_CURRENT_CONTEXT_METADATA_FIELDS = new Set([
   "projectionSha256", "projectionCount", "lineageSchemaVersion", "lineageSha256", "cardCount", "directCardCount",
   "mappedDirectCardCount", "unmappedDirectCardCount", "projectedCardCount", "mappedProjectedCardCount",
   "unmappedProjectedCardCount", "mappedCardCount", "unmappedCardCount", "mappedParentCount",
-  "usedMeteoriteCodeCount", "cardAssignmentsSha256"
+  "usedMeteoriteCodeCount", "assignmentAuditCardCount", "cardAssignmentsSha256"
 ]);
 const METBULL_CURRENT_CONTEXT_STATUS_FIELDS = new Set(["Official", "Relict"]);
 const METBULL_CURRENT_METEORITE_FIELDS = new Set(["name", "status", "fall", "year", "place", "classification"]);
@@ -1168,7 +1169,9 @@ function validateCanonicalDescriptor(descriptor) {
   requireSchema(hasValidDescriptorText(descriptor.label));
   requireSchema(hasValidDescriptorText(descriptor.compiler));
   requireSchema(Number.isInteger(descriptor.year) && descriptor.year > 0);
-  requireSchema(hasValidSourcePages(descriptor.sourcePages));
+  const pageLessSpecimen = descriptor.recordModel === "specimen" &&
+    Array.isArray(descriptor.sourcePages) && descriptor.sourcePages.length === 0;
+  requireSchema(pageLessSpecimen || hasValidSourcePages(descriptor.sourcePages));
   requireSchema(descriptor.sourcePageCount === descriptor.sourcePages.length);
   requireSchema(hasValidSummary(descriptor));
   requireSchema(hasValidCatalogPolicy(descriptor));
@@ -1206,6 +1209,13 @@ function catalogDropdownLabel(descriptor, catalogId = "") {
   return source || catalogLabel(descriptor, id || "");
 }
 
+function catalogSourceTitle(descriptor, catalogId = "") {
+  const label = catalogDropdownLabel(descriptor, catalogId);
+  const year = Number.isInteger(descriptor?.year) ? String(descriptor.year) : cleanText(descriptor?.year);
+  const suffix = year ? ` (${year})` : "";
+  return suffix && label.endsWith(suffix) ? label.slice(0, -suffix.length) : label;
+}
+
 function formatSourcePageCoverage(sourcePages) {
   if (!Array.isArray(sourcePages) || !sourcePages.length) return "No pages recorded";
   const ranges = [];
@@ -1232,7 +1242,9 @@ function catalogSummaryEntries(catalogs) {
     : Object.entries(catalogs || {});
   return entries.sort(compareCatalogEntries).map(([, descriptor]) => ({
     id: descriptor.id,
-    label: cleanText(descriptor.label) || catalogLabel(descriptor, descriptor.id),
+    label: Array.isArray(descriptor.sourcePages) && descriptor.sourcePages.length === 0
+      ? catalogSourceTitle(descriptor, descriptor.id)
+      : cleanText(descriptor.label) || catalogLabel(descriptor, descriptor.id),
     year: descriptor.year,
     compiler: descriptor.compiler,
     pageCoverage: formatSourcePageCoverage(descriptor.sourcePages),
@@ -1345,7 +1357,8 @@ function validateCatalog(catalog) {
     requireSchema(hasValidCatalogId(record.catalogId) && Object.hasOwn(registry, record.catalogId));
     const recordModel = registry[record.catalogId].recordModel;
     requireSchema(recordModel === "specimen"
-      ? hasExactFields(record, recordFields(record, SPECIMEN_RECORD_FIELDS, true)) && hasExactFields(record.weight, new Set(["grams"]))
+      ? hasExactFields(record, recordFields(record, SPECIMEN_RECORD_FIELDS, true)) &&
+        (record.weight === null || hasExactFields(record.weight, new Set(["grams"])))
       : recordModel === "catalog-item"
         ? hasExactFields(record, recordFields(record, CATALOG_ITEM_RECORD_FIELDS))
         : recordModel === "catalog-number"
@@ -1384,7 +1397,8 @@ function validateCatalog(catalog) {
     }
     if (recordModel === "specimen") {
       requireSchema(record.designation === null || (record.designation !== "" && isLeakageSafeText(record.designation)));
-      requireSchema(record.weight.grams === null || (Number.isFinite(record.weight.grams) && record.weight.grams >= 0));
+      requireSchema(record.weight === null || record.weight.grams === null ||
+        (Number.isFinite(record.weight.grams) && record.weight.grams >= 0));
       if (Object.hasOwn(record, "individualFindLocation")) {
         requireSchema(record.individualFindLocation !== "" && record.individualFindLocation.length <= 200 &&
           isLeakageSafeText(record.individualFindLocation));
@@ -1392,7 +1406,7 @@ function validateCatalog(catalog) {
       if (Object.hasOwn(record, "description")) requireSchema(record.description !== "" && isLeakageSafeHoldingText(record.description, true));
       if (Object.hasOwn(record, "weightEvidence")) requireSchema(
         hasExactFields(record.weightEvidence, WEIGHT_EVIDENCE_FIELDS) && record.weightEvidence.type === "qualitative" &&
-        record.weightEvidence.statement !== "" && isLeakageSafeText(record.weightEvidence.statement) && record.weight.grams === null
+        record.weightEvidence.statement !== "" && isLeakageSafeText(record.weightEvidence.statement) && record.weight?.grams === null
       );
       if (Object.hasOwn(record, "associatedMaterial")) requireSchema(
         hasExactFields(record.associatedMaterial, ASSOCIATED_MATERIAL_FIELDS) && record.associatedMaterial.type === "aggregate-context" &&
@@ -1402,9 +1416,9 @@ function validateCatalog(catalog) {
       if (Object.hasOwn(record, "specimenDisposition")) requireSchema(
         hasExactFields(record.specimenDisposition, SPECIMEN_DISPOSITION_FIELDS) && record.specimenDisposition.type === "not-individual" &&
         record.specimenDisposition.reason !== "" && isLeakageSafeText(record.specimenDisposition.reason) &&
-        record.designation === null && record.weight.grams === null
+        record.designation === null && record.weight?.grams === null
       );
-      requireSchema(record.designation !== null || record.name !== null || record.weight.grams !== null ||
+      requireSchema(record.designation !== null || record.name !== null || record.weight?.grams != null ||
         record.classification !== null || record.locality !== null || record.year !== null);
     } else if (recordModel === "catalog-item") {
       requireSchema(Number.isInteger(record.catalogItem) && record.catalogItem > 0);
@@ -1601,10 +1615,16 @@ function validateCatalog(catalog) {
         (pageIndex === 0 || page > record.catalogPages[pageIndex - 1])
       ));
     } else {
-      requireSchema(Number.isInteger(record.catalogPage) && registry[record.catalogId].sourcePages.includes(record.catalogPage));
+      const sourcePages = registry[record.catalogId].sourcePages;
+      requireSchema(sourcePages.length === 0
+        ? recordModel === "specimen" && record.catalogPage === null
+        : Number.isInteger(record.catalogPage) && sourcePages.includes(record.catalogPage));
     }
     requireSchema(CONFIDENCE_LEVELS.includes(record.confidence));
-    if (index) requireSchema(compareCanonicalRecords(catalog.records[index - 1], record, registry) < 0);
+    if (index && registry[catalog.records[index - 1].catalogId].sourcePages.length > 0 &&
+        registry[record.catalogId].sourcePages.length > 0) {
+      requireSchema(compareCanonicalRecords(catalog.records[index - 1], record, registry) < 0);
+    }
 
     const summary = statistics[record.catalogId];
     summary.recordCount += 1;
@@ -1617,12 +1637,19 @@ function validateCatalog(catalog) {
   requireSchema(catalog.metadata.recordCount === catalog.records.length);
   Object.entries(registry).forEach(([catalogId, descriptor]) => {
     const summary = statistics[catalogId];
+    const descriptorRecords = catalog.records.filter((record) => record.catalogId === catalogId);
+    if (descriptor.recordModel === "specimen") {
+      requireSchema((descriptor.sourcePages.length === 0) ===
+        descriptorRecords.every((record) => record.catalogPage === null));
+    } else {
+      requireSchema(descriptor.sourcePages.length > 0);
+    }
     requireSchema(summary.recordCount === descriptor.recordCount);
     requireSchema(summary.recordsWithDesignation === descriptor.recordsWithDesignation);
     requireSchema(summary.recordsWithWeight === descriptor.recordsWithWeight);
     CONFIDENCE_LEVELS.forEach((level) => requireSchema(summary.confidenceCounts[level] === descriptor.confidenceCounts[level]));
   });
-  if (catalog.records.length === CATALOG_RECORD_COUNT && Object.keys(registry).length === 56) {
+  if (catalog.records.length === CATALOG_RECORD_COUNT && Object.keys(registry).length === 57) {
     const descriptor = registry["antarctic-1980"];
     const antarctic = catalog.records.filter(({ catalogId }) => catalogId === "antarctic-1980");
     requireSchema(descriptor?.recordModel === "appendix-specimen" && descriptor.recordCount === 85 &&
@@ -1692,7 +1719,8 @@ function lineageRecordLabel(record) {
 
 function resolveLineageObservation(record, designationPath, massPath) {
   if (record.recordModel === "specimen") {
-    return massPath === "weight.grams" && (designationPath === null || designationPath === "designation") ? {
+    return massPath === "weight.grams" && Number.isFinite(record.weight?.grams) &&
+      (designationPath === null || designationPath === "designation") ? {
       massGrams: record.weight.grams,
       designation: designationPath === null ? null : record.designation,
       kind: null,
@@ -2098,7 +2126,7 @@ function lineageMassEndpoints(sourceRecords) {
   };
   sourceRecords.forEach((record) => {
     if (record.recordModel === "specimen") {
-      add(record, record.weight.grams, "weight.grams");
+      add(record, record.weight?.grams, "weight.grams");
     } else if (record.recordModel === "table-a-specimen") {
       if (!record.sourceEvidence.conflicts.includes("mass")) add(record, record.weight.grams, "weight.grams");
     } else if (record.recordModel === "appendix-specimen") {
@@ -3124,7 +3152,7 @@ function metbullPublicCardBindingsSha256(descriptors) {
 
 function validMetbullCurrentMetadata(metadata) {
   return hasExactFields(metadata, METBULL_CURRENT_CONTEXT_METADATA_FIELDS) &&
-    metadata.schemaVersion === 1 && metadata.scope === "current-metbull-context-for-specimen-cards" &&
+    metadata.schemaVersion === 2 && metadata.scope === "current-metbull-context-for-specimen-cards" &&
     metadata.acquiredAt === "2026-09-13T00:55:27Z" &&
     metadata.sourceUrl === "https://www.lpi.usra.edu/meteor/metbull.php?sea=&sfor=names&stype=contains&valids=1&lrec=100000&csv=1" &&
     metadata.sourceSha256 === "1e22fb5cac0e46628e73e74f2ad3dac15240fd247ccffa621bf89539c5b18d68" &&
@@ -3136,11 +3164,12 @@ function validMetbullCurrentMetadata(metadata) {
     metadata.projectionSchemaVersion === 6 && metadata.projectionSha256 === SPECIMEN_CARD_PROJECTION_DATA_SHA256 &&
     metadata.projectionCount === 3407 && metadata.lineageSchemaVersion === 4 &&
     metadata.lineageSha256 === SPECIMEN_LINEAGE_DATA_SHA256 && metadata.cardCount === SPECIMEN_DESCRIPTOR_COUNT &&
-    metadata.directCardCount === 5824 && metadata.mappedDirectCardCount === 5653 &&
-    metadata.unmappedDirectCardCount === 171 && metadata.projectedCardCount === 8410 &&
+    metadata.directCardCount === 9042 && metadata.mappedDirectCardCount === 5653 &&
+    metadata.unmappedDirectCardCount === 3389 && metadata.projectedCardCount === 8410 &&
     metadata.mappedProjectedCardCount === 6206 && metadata.unmappedProjectedCardCount === 2204 &&
-    metadata.mappedCardCount === 11859 && metadata.unmappedCardCount === 2375 &&
+    metadata.mappedCardCount === 11859 && metadata.unmappedCardCount === 5593 &&
     metadata.mappedParentCount === 7736 && metadata.usedMeteoriteCodeCount === 2548 &&
+    metadata.assignmentAuditCardCount === METBULL_ASSIGNMENT_AUDIT_CARD_COUNT &&
     metadata.cardAssignmentsSha256 === METBULL_CARD_ASSIGNMENTS_SHA256;
 }
 
@@ -3198,8 +3227,7 @@ function validateMetbullCurrentContext(context, descriptors, options = {}) {
     codes.every((code) => usedCodes.has(code));
 }
 
-function reconstructMetbullCardAssignments(context, descriptors) {
-  if (!validateMetbullCurrentContext(context, descriptors)) return [];
+function buildMetbullCardAssignments(context, descriptors) {
   return descriptors.filter((descriptor) => [
     HARMONIZED_CARD_KINDS.specimen, HARMONIZED_CARD_KINDS.atomic
   ].includes(classifyHarmonizedCard(descriptor))).map((descriptor) => {
@@ -3216,6 +3244,11 @@ function reconstructMetbullCardAssignments(context, descriptors) {
       officialName: meteorite?.name || null
     };
   });
+}
+
+function reconstructMetbullCardAssignments(context, descriptors) {
+  if (!validateMetbullCurrentContext(context, descriptors)) return [];
+  return buildMetbullCardAssignments(context, descriptors);
 }
 
 function deriveMetbullCurrentContextIndex(context, descriptors, options = {}) {
@@ -3512,7 +3545,8 @@ function normalizeConfidence(value) {
 }
 
 function prepareRecord(source, index, registry = catalogRegistry) {
-  const recordModel = registry[cleanText(source.catalogId)]?.recordModel;
+  const descriptor = registry[cleanText(source.catalogId)];
+  const recordModel = descriptor?.recordModel;
   const record = {
     id: cleanText(source.id),
     catalogId: cleanText(source.catalogId),
@@ -3521,7 +3555,9 @@ function prepareRecord(source, index, registry = catalogRegistry) {
     locality: ["table-a-specimen", "appendix-specimen"].includes(recordModel) ? null : cleanText(source.locality),
     confidence: normalizeConfidence(source.confidence),
     recordModel,
-    catalogLabel: catalogLabel(registry[cleanText(source.catalogId)], cleanText(source.catalogId)),
+    catalogLabel: descriptor?.sourcePages?.length === 0
+      ? catalogSourceTitle(descriptor, cleanText(source.catalogId))
+      : catalogLabel(descriptor, cleanText(source.catalogId)),
     order: index
   };
   if (recordModel === "catalog-item") {
@@ -3645,7 +3681,9 @@ function prepareRecord(source, index, registry = catalogRegistry) {
     record.year = cleanText(source.year);
     record.catalogPage = source.catalogPage === null || source.catalogPage === "" ? null : Number(source.catalogPage);
     record.designation = cleanText(source.designation);
-    record.weight = { grams: source.weight.grams === null ? null : Number(source.weight.grams) };
+    record.weight = source.weight === null
+      ? null
+      : { grams: source.weight.grams === null ? null : Number(source.weight.grams) };
     if (Object.hasOwn(source, "individualFindLocation")) {
       record.individualFindLocation = cleanText(source.individualFindLocation);
     }
@@ -5337,6 +5375,7 @@ if (typeof module !== "undefined" && module.exports) {
     COMPARISON_REVIEW_PARTITION_SHA256,
     SOURCE_CLAIMS_CONTENT_SHA256,
     LINEAGE_SHA256: SPECIMEN_LINEAGE_DATA_SHA256,
+    METBULL_ASSIGNMENT_AUDIT_CARD_COUNT,
     METBULL_CARD_ASSIGNMENTS_SHA256,
     METBULL_CURRENT_CONTEXT_DATA_SHA256,
     METBULL_PUBLIC_CARD_BINDINGS_SHA256,

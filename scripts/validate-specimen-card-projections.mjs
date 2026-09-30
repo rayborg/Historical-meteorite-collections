@@ -3,9 +3,9 @@ import { readFile } from "node:fs/promises";
 import { pathToFileURL } from "node:url";
 
 const LOCKS = Object.freeze({
-  catalogSchemaVersion: 15,
-  sourceRecordCount: 20241,
-  sourceCatalogSha256: "3c23d1c2653bc893819a605c7c0e5e6db7b63a17cd3ab66ab104c2772391dbe7",
+  catalogSchemaVersion: 16,
+  sourceRecordCount: 23459,
+  sourceCatalogSha256: "6829c71f8cb15517fe1335336bec6a86065f2f31cdc780534b67b632707953e6",
   projectionCount: 3407,
   atomicCardCount: 8410,
   legacyMassBoundCardCount: 6656,

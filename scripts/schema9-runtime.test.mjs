@@ -26,8 +26,8 @@ const haag = records.filter(({ catalogId }) => catalogId === "haag-2003");
 const clone = structuredClone;
 const fixtureRecord = (document, catalogId) => document.records.find((record) => record.catalogId === catalogId);
 
-test("schema 15 runtime accepts all closed models and rejects schema or shape widening", () => {
-  assert.equal(app.validateCatalog(clone(fixture)).metadata.schemaVersion, 15);
+test("schema 16 runtime accepts all closed models and rejects schema or shape widening", () => {
+  assert.equal(app.validateCatalog(clone(fixture)).metadata.schemaVersion, 16);
   for (const mutate of [
     (value) => { value.metadata.schemaVersion = 10; },
     (value) => { value.metadata.factualFields.splice(9, 1); },
@@ -191,13 +191,13 @@ test("statistics isolate caption observations while retaining specimen and paren
   assert.equal(antarcticStats.grams, 89891.1);
   assert.deepEqual({ observations: haag.length, grams: app.calculateStatistics(haag).grams }, { observations: 250, grams: 0 });
   assert(haag.every((record) => app.recordMasses(record).length === 0 && app.recordSchemaMasses(record).length === 0));
-  assert.equal(total.observations, 20241);
-  assert.equal(total.catalogs, 56);
+  assert.equal(total.observations, 23459);
+  assert.equal(total.catalogs, 57);
   assert(Math.abs(total.grams - (app.calculateStatistics(legacy).grams + victoriaStats.grams + antarcticStats.grams)) < 1e-6);
 });
 
-test("schema-15 lineage and projection dependencies are regenerated and fail closed on stale metadata", () => {
-  assert.equal(lineages.metadata.source.catalogSchemaVersion, 15);
+test("schema-16 lineage and projection dependencies are regenerated and fail closed on stale metadata", () => {
+  assert.equal(lineages.metadata.source.catalogSchemaVersion, 16);
   assert.equal(app.deriveEarlierRecordIndex(lineages, records, registry).size, 303);
   const sourceCatalogSha256 = createHash("sha256").update(catalogText).digest("hex");
   assert.equal(sourceCatalogSha256, app.CATALOG_SHA256);
@@ -211,7 +211,7 @@ test("schema-15 lineage and projection dependencies are regenerated and fail clo
   assert.equal(app.deriveSpecimenCardProjectionIndex(staleProjections, records, { sourceCatalogSha256 }).size, 0);
 });
 
-test("schema 15 card semantics, cache keys, responsive layout, and privacy boundary are explicit", () => {
+test("schema 16 card semantics, cache keys, responsive layout, and privacy boundary are explicit", () => {
   assert.match(html, /<p class="record-semantic-label"><\/p>/u);
   const hodgeDto = app.presentHarmonizedCard(hodge[0]);
   const victoriaDto = app.presentHarmonizedCard(victoria[0]);
@@ -222,10 +222,10 @@ test("schema 15 card semantics, cache keys, responsive layout, and privacy bound
   assert.match(styles, /\.record-meta div \{[^}]*grid-template-columns: minmax\(7\.25rem, 9rem\) minmax\(0, 1fr\);/u);
   assert.match(styles, /@media \(max-width: 520px\)[\s\S]*\.record-meta div \{ grid-template-columns: minmax\(0, 1fr\);/u);
   assert.match(styles, /\.record-meta dt \{[^}]*overflow-wrap: normal;/u);
-  assert.equal(app.CACHE_VERSION, "20260921-specimen-field-contract-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260921-specimen-field-contract-1");
-  assert.match(html, /styles\.css\?v=20260921-specimen-field-contract-1/u);
-  assert.match(html, /app\.js\?v=20260921-specimen-field-contract-1/u);
+  assert.equal(app.CACHE_VERSION, "20260930-monnig-current-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260930-monnig-current-1");
+  assert.match(html, /styles\.css\?v=20260930-monnig-current-1/u);
+  assert.match(html, /app\.js\?v=20260930-monnig-current-1/u);
   const newSourceRecords = catalog.records.filter(({ catalogId }) =>
     ["antarctic-1980", "hodge-smith-1939", "victoria-land-1982", "farrington-north-america-1915", "silberrad-1932"].includes(catalogId));
   assert.doesNotMatch(JSON.stringify(newSourceRecords), /(?:raw[ _-]*ocr|\/private\/|\/Users\/|source[ _-]*image|scan[ _-]*(?:file|path)|research[ _-]*notes?)/iu);

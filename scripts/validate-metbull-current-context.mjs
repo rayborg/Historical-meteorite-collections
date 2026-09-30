@@ -13,6 +13,8 @@ function sha256(text) {
   return createHash("sha256").update(text).digest("hex");
 }
 
+const PUBLIC_ASSIGNMENTS_SHA256 = "34232479172ffc30f094907cea97635f10067e8e0f210eb67f521c8afccfb5ac";
+
 export async function validateMetbullCurrentContextFiles(root = repoRoot) {
   const [sidecarText, catalogText, projectionText, lineageText] = await Promise.all([
     readFile(path.join(root, "data", "metbull-current-context.json"), "utf8"),
@@ -20,7 +22,7 @@ export async function validateMetbullCurrentContextFiles(root = repoRoot) {
     readFile(path.join(root, "data", "specimen-card-projections.json"), "utf8"),
     readFile(path.join(root, "data", "specimen-lineages.json"), "utf8")
   ]);
-  assert.equal(Buffer.byteLength(sidecarText), 487436, "sidecar byte count changed");
+  assert.equal(Buffer.byteLength(sidecarText), 487476, "sidecar byte count changed");
   assert.equal(sha256(sidecarText), app.METBULL_CURRENT_CONTEXT_DATA_SHA256, "sidecar SHA-256 changed");
   assert.equal(sha256(catalogText), app.CATALOG_SHA256, "catalog SHA-256 changed");
   assert.equal(sha256(projectionText), app.PROJECTION_SHA256, "projection SHA-256 changed");
@@ -49,20 +51,23 @@ export async function validateMetbullCurrentContextFiles(root = repoRoot) {
   const attached = app.attachMetbullCurrentContext(descriptors, currentIndex);
   const specimenCards = attached.filter((descriptor) => ["direct-specimen", "projected-atomic-specimen"]
     .includes(app.classifyHarmonizedCard(descriptor)));
-  assert.equal(assignments.length, 14234);
-  assert.equal(new Set(assignments.map(({ cardKey }) => cardKey)).size, 14234);
-  assert.equal(direct.length, 5824);
+  assert.equal(assignments.length, 17452);
+  assert.equal(new Set(assignments.map(({ cardKey }) => cardKey)).size, 17452);
+  assert.equal(direct.length, 9042);
   assert.equal(direct.filter(({ status }) => status === "mapped").length, 5653);
   assert.equal(projected.length, 8410);
   assert.equal(projected.filter(({ status }) => status === "mapped").length, 6206);
   assert.equal(mapped.length, 11859);
   assert.equal(currentIndex.size, 11859);
   assert.equal(specimenCards.filter(({ currentMetbull }) => currentMetbull).length, 11859);
-  assert.equal(specimenCards.filter(({ currentMetbull }) => !currentMetbull).length, 2375);
+  assert.equal(specimenCards.filter(({ currentMetbull }) => !currentMetbull).length, 5593);
   assert.equal(specimenCards.filter(({ currentMetbull }) => currentMetbull?.year).length, 11850);
   assert.equal(new Set(mapped.map(({ parentRecordId }) => parentRecordId)).size, 7736);
   assert.equal(new Set(mapped.map(({ meteoriteCode }) => meteoriteCode)).size, 2548);
+  assert.equal(context.metadata.assignmentAuditCardCount, app.METBULL_ASSIGNMENT_AUDIT_CARD_COUNT);
   assert.equal(context.metadata.cardAssignmentsSha256, app.METBULL_CARD_ASSIGNMENTS_SHA256);
+  assert.equal(sha256(JSON.stringify(assignments)), PUBLIC_ASSIGNMENTS_SHA256);
+  assert.notEqual(PUBLIC_ASSIGNMENTS_SHA256, app.METBULL_CARD_ASSIGNMENTS_SHA256);
   assert.equal(app.metbullPublicCardBindingsSha256(descriptors), app.METBULL_PUBLIC_CARD_BINDINGS_SHA256);
   return { context, records, descriptors: attached, assignments };
 }
@@ -73,5 +78,5 @@ if (invokedPath === import.meta.url) {
   assert.deepEqual(unexpected, [], `Unexpected arguments: ${unexpected.join(" ")}`);
   const { assignments } = await validateMetbullCurrentContextFiles();
   const mapped = assignments.filter(({ status }) => status === "mapped").length;
-  console.log(`Validated ${assignments.length} specimen-card assignments: ${mapped} mapped, ${assignments.length - mapped} unmapped; assignment lock ${app.METBULL_CARD_ASSIGNMENTS_SHA256}.`);
+  console.log(`Validated ${assignments.length} public specimen-card assignments: ${mapped} mapped, ${assignments.length - mapped} unmapped; private ${app.METBULL_ASSIGNMENT_AUDIT_CARD_COUNT}-card audit lock ${app.METBULL_CARD_ASSIGNMENTS_SHA256}.`);
 }
