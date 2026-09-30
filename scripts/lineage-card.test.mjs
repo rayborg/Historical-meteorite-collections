@@ -87,6 +87,14 @@ test("real catalog Allende search retains reviewed names and synonyms without Al
     "obs-3a77f20d-b292-4da2-a28a-4fbdb6620717",
     "obs-6b74d083-3119-4899-8f8b-4ee40c6bcb67",
     "obs-302f2660-4fbf-45fa-a157-08c46f1365fc",
+    "obs-68ec7871-2aa7-4cab-98d5-b4f8f7e6fb43",
+    "obs-318f361e-d0d8-4be2-91a3-b5299f34e5f7",
+    "obs-aaee5a72-483d-45cb-8d29-eeaa9ce7d6c5",
+    "obs-1a42d3c6-807c-429d-99cd-ff741b75e1ff",
+    "obs-069145af-9031-4e69-9a9a-529432bdae07",
+    "obs-57ec6bfd-f91c-4646-936a-cdd8d936cf4f",
+    "obs-5f49d126-3906-4b57-9200-70fde1a9d829",
+    "obs-e3e92785-cb76-466b-ac7c-a7127fcc462e",
   ]);
   assert(!matchingIds.includes("obs-abc02f34-6bbf-48de-8486-8d1ec3b6e43e"));
   assert(!matchingIds.includes("obs-0e1dcf64-48f0-43d7-b39b-b6325a07c16e"));
@@ -94,14 +102,14 @@ test("real catalog Allende search retains reviewed names and synonyms without Al
 
 test("real release locks all catalogs and chronological dropdown entries", () => {
   const entries = app.catalogSelectorEntries(registry);
-  assert.equal(entries.length, 56);
+  assert.equal(entries.length, 57);
   assert.deepEqual(entries.map(([id]) => id), [
     "lucas-1813", "chladni-1819", "chladni-1825", "haidinger-1859", "buchner-1863",
     "nordenskiold-1870", "story-maskelyne-1872", "ward-1881", "ball-1882", "fletcher-1886", "usnm-1886", "minnesota-1892", "fletcher-1894", "greifswald-1895", "fletcher-1896", "hovey-1896", "washington-1897",
     "greifswald-1901", "tassin-1902", "hogbom-1902", "farrington-1903", "berlin-1903", "fletcher-1904", "ward-1904", "berlin-1904", "fletcher-1908", "foote-1909", "schreiter-1912", "foote-1912",
     "anderson-1913", "hamburg-1913", "farrington-north-america-1915", "brown-1916", "farrington-1916", "merrill-1916", "kantor-1920", "prior-1923", "madrid-1923", "prior-guide-1926", "palache-1926", "brauns-bonn-1926",
     "silberrad-1932", "nininger-1933", "reeds-1937", "astapovich-1938", "hodge-smith-1939", "barnes-1940", "nininger-1950", "mason-1964",
-    "huss-1976", "antarctic-1980", "victoria-land-1982", "huss-1986", "kanagawa-1996", "haag-2003", "asu-2024-09",
+    "huss-1976", "antarctic-1980", "victoria-land-1982", "huss-1986", "kanagawa-1996", "haag-2003", "asu-2024-09", "monnig-current",
   ]);
   const expectedLabels = {
     "anderson-1913": "Anderson (1913)", "kantor-1920": "Kantor (1920)",
@@ -162,7 +170,7 @@ test("schema v4 artifact is independently validated and reconstructed", () => {
     candidates: lineageData.comparisonGroups.reduce((sum, group) => sum + group.candidates.length, 0),
   }, { schema: 4, relationships: 279, sourceGroups: 21, comparisonGroups: 1541, candidates: 2245 });
   assert.equal(createHash("sha256").update(lineageText).digest("hex"), app.SPECIMEN_LINEAGE_DATA_SHA256);
-  assert.equal(app.SPECIMEN_LINEAGE_DATA_SHA256, "834b766339614485513d50e5efdcfac0c66b3a9871de73b8533f1978f459fbd2");
+  assert.equal(app.SPECIMEN_LINEAGE_DATA_SHA256, "ffad6fd5196a41548e6a7de717e7cc424f0fd9f5837a2c47f77b3fc53b92c229");
 });
 
 test("strict v4 validation rejects schema, partition, source, fact, review, and count mutations", () => {
@@ -491,9 +499,9 @@ test("accessible static contracts, warning language, and cache keys are synchron
   assert.doesNotMatch(source, /Suspected cross-catalog|POSSIBLE_MATCH_CAUTION/u);
   assert.match(css, /\.comparison-warning/u);
   assert.match(css, /\.comparison-candidates/u);
-  assert.equal(app.CACHE_VERSION, "20260921-specimen-field-contract-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260921-specimen-field-contract-1");
-  assert.match(html, /styles\.css\?v=20260921-specimen-field-contract-1/u);
-  assert.match(html, /app\.js\?v=20260921-specimen-field-contract-1/u);
+  assert.equal(app.CACHE_VERSION, "20260930-monnig-current-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260930-monnig-current-1");
+  assert.match(html, /styles\.css\?v=20260930-monnig-current-1/u);
+  assert.match(html, /app\.js\?v=20260930-monnig-current-1/u);
   assert.doesNotMatch(source, /\.innerHTML\b/u);
 });

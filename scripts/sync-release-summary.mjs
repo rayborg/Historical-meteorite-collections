@@ -80,8 +80,8 @@ function plural(value, singular, pluralForm = `${singular}s`) {
 }
 
 function recordPages(record) {
-  if (Array.isArray(record.catalogPages)) return record.catalogPages;
-  if (Object.hasOwn(record, "catalogPage")) return [record.catalogPage];
+  if (Array.isArray(record.catalogPages)) return record.catalogPages.filter(Number.isInteger);
+  if (Number.isInteger(record.catalogPage)) return [record.catalogPage];
   return [];
 }
 
@@ -149,7 +149,8 @@ export function buildReleaseSummary(catalog, folios, projections = null) {
   const displayDescriptorCount = catalog.records.length - projectionByParent.size + atomicCardCount;
   const specimenDescriptorCount = nativeSpecimenCount + atomicCardCount;
   const nativeUnknownWeightCount = catalog.records.filter((record) => !projectionByParent.has(record.id) &&
-    descriptors.find(({ id }) => id === record.catalogId).recordModel === "specimen" && record.weight?.grams === null &&
+    descriptors.find(({ id }) => id === record.catalogId).recordModel === "specimen" &&
+    (record.weight === null || record.weight?.grams === null) &&
     record.weightEvidence?.type !== "qualitative" && record.specimenDisposition?.type !== "not-individual").length;
   const projectionUnknownWeightCount = [...projectionByParent].reduce((count, [, projection]) => {
     return count + projection.cards.filter((card) => card.massPath === null && !card.repeatedMass &&

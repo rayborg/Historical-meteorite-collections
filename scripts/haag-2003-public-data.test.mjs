@@ -182,12 +182,12 @@ test("matches public repeated views to private source relations when available",
   }
 });
 
-test("uses schema 15 totals, a non-specimen descriptor, and blocked empty folios", () => {
+test("uses schema 16 totals, a non-specimen descriptor, and blocked empty folios", () => {
   assert.deepEqual(
     { schema: catalog.metadata.schemaVersion, catalogs: catalog.metadata.catalogs.length, records: catalog.records.length },
-    { schema: 15, catalogs: 56, records: 20241 },
+    { schema: 16, catalogs: 57, records: 23459 },
   );
-  assert.equal(catalog.metadata.recordCount, 20241);
+  assert.equal(catalog.metadata.recordCount, 23459);
   assert.equal(descriptor.recordModel, "caption-observation-fact");
   assert.deepEqual(descriptor.sourcePages, Array.from({ length: 146 }, (_, index) => index + 1));
   assert.equal(descriptor.sourcePageCount, 146);

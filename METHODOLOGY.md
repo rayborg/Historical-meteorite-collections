@@ -48,6 +48,10 @@ Digital sequence and printed pagination are separate. Public records cite
 printed pages through `catalogPage` or ordered `catalogPages`; those citations
 are not record identity and need not be contiguous. Introductory or narrative
 pages can belong to a descriptor's scope without producing observations.
+Schema 16 also admits a page-less online database export only as a `specimen`
+descriptor with no source pages and records whose `catalogPage` is null. This
+closed exception records the absence of printed pagination without inventing a
+page citation.
 
 ## 3. Acquisition, Rights, And Folios
 
@@ -71,6 +75,13 @@ public asset names, verified derivative bytes, and a matching release lock.
 Age, online availability, physical ownership, or absence of a visible notice is
 not sufficient.
 
+The Monnig current source was the official Texas Christian University public
+CSV export from `https://monnigcatalog.tcu.edu/`, accessed 2026-09-30. Public
+endpoint access supports source identification; it does not make the acquired
+CSV or any images public-domain, licensed, or rights-cleared. No rights
+statement was found, so the facts-only catalog has a blocked/undetermined,
+zero-page folio policy and the source bytes and media remain unpublished.
+
 The public manifest is [`data/folios.json`](./data/folios.json). A missing,
 blocked, incomplete, contradictory, malformed, or unsafe policy denies folio
 display while leaving a valid factual catalog available.
@@ -82,7 +93,7 @@ content-identical rows remain separate. Corrections preserve the observation's
 ID. New public IDs are opaque and do not expose source storage or mutable fact
 values.
 
-The public catalog supports ten closed models:
+The public catalog supports eleven closed models:
 
 - `specimen` for a row that explicitly describes one source-identified
   specimen.
@@ -154,12 +165,12 @@ Calculated sums are audit results, not printed facts. Both are retained when
 they differ. Zero can be retained as a catalog fact only when affirmatively
 reported, and zero is never a comparison mass endpoint.
 
-The specimen-weight census is a closed partition over the 14,237 current
+The specimen-weight census is a closed partition over the 17,455 current
 specimen or not-individual descriptors. After exact source correction and
-reviewed disposition, 14,051 actual specimen cards have numeric source-listed
-weight, 11 have an affirmative qualitative source statement, 172 are
-source-unlisted, and 3 are not individual specimens. Thus 14,234 cards are
-actual specimens and the default source-listed view is exactly 14,062. A parent, group, sibling,
+reviewed disposition, 17,238 actual specimen cards have numeric source-listed
+weight, 11 have an affirmative qualitative source statement, 203 are
+source-unlisted, and 3 are not individual specimens. Thus 17,452 cards are
+actual specimens and the default source-listed view is exactly 17,249. A parent, group, sibling,
 aggregate, range, total, or nearby value is never inherited by a card. The
 three not-individual rows remain searchable observations rather than being
 deleted or assigned synthetic mass.
@@ -205,6 +216,22 @@ caption context. Reported mass and dimensions remain unnormalized text with
 public Haag caption record. These observations have no MetBull mappings and are
 excluded from specimen cards, projections, mass filters, lineage, and comparison
 generation.
+
+Monnig current demonstrates the schema-16 page-less `specimen` contract. All
+3,218 exact TCU CSV rows remain source-order observations represented by stable
+public IDs. The 3,215 unique designations include three duplicated designations
+retained as six observations. The transformation repairs exactly 48 enumerated
+unquoted commas and canonicalizes whitespace in four fields across four rows.
+Classification joins the nonblank `Class`, `Clan`, and `Group` fields in
+hierarchy order using ` > `, collapsing exact repeated components while
+preserving their first occurrence. This changes exactly 101 records. The 72
+results equal to the placeholder `Unknown` remain searchable source values but
+do not render a **Class** row. Blank source values remain null: 31 weights, 96
+years, 10 countries, and 12 composite classifications. Of the 3,187 numeric
+weights, one is an affirmatively reported zero. The exact public Monnig slice
+has SHA-256 `fa847d6affe38e784051e48479a6cb0da1d6e33fc7cf1ca8d4621baf0f893ad7`.
+Monnig receives no MetBull mapping, projection, lineage, comparison, current
+fact, custody, or ownership claim.
 
 Fletcher corrections begin in the private accepted source-first evidence, not
 in this public repository. A corrected release must re-adjudicate exact source
@@ -259,11 +286,12 @@ accepted snapshot has 80,224 rows and SHA-256
 `1e22fb5cac0e46628e73e74f2ad3dac15240fd247ccffa621bf89539c5b18d68`.
 It is joined only through an already reviewed positive `meteoriteCode`; current
 name, class, place, year, or mass similarity never creates or changes a mapping.
-The resulting schema-1 public sidecar has SHA-256
-`18ee18a7396c06d928a30580efc1dfa2c585c0446ae85796b42ce85e44b0ac0e`.
+The resulting schema-2 public sidecar has SHA-256
+`e180e4268c4fd82f2388110e6479aadceed31f876e88b55618dd4e21d1d549c6`.
 
-The sidecar covers the complete 14,234-card specimen partition. Exactly 11,859
-cards from 7,736 parents map to 2,548 Official codes, and 2,375 remain unmapped.
+The sidecar covers the complete 17,452-card specimen partition. Exactly 11,859
+cards from 7,736 parents map to 2,548 Official codes, and 5,593 remain unmapped.
+The 3,218 Monnig cards are all explicitly unmapped and source-only.
 Every mapped event object contains only current Official name, status, fall
 code, year, place, and classification. Official mass, latitude, longitude, and
 comments are excluded, as is the raw CSV. Classification is contextual after
@@ -288,25 +316,26 @@ For fall/find display, `Y` renders `Fall` and empty renders `Find`. Exceptional
 These are event categories, not mapping confidence. `Nd`
 occurs in the acquired source but is absent from the current used-code set and
 public allowlist; future use must fail until explicitly reviewed.
-The private receipt and exhaustive audit paths are
-`data/private/metbull-current-context-2026-09-12/acquisition.json` and
-`data/private/metbull-current-context-2026-09-12/specimen-card-audit.json`.
-The audit SHA-256 is
-`f705358e9d80a08cd09194f7d0cd3e68c2ded3540a073796fb5d99b1269e8d41`.
-Its private-generation assignment digest is
-`131daf40b44e07e71de896ad9d6e375e03931e33af4a2e8e7a152d8ebbff8150`;
-it binds ordered card route/mapping assignments to full Official-row hashes.
-The sidecar exposes this digest value as provenance but never exposes the row
-hashes or assignment tuples.
+The receipt and accepted pre-Monnig private assignment audit remain in the
+private archive and are not distributed. That audit covers 14,234 cards, as
+declared by sidecar `assignmentAuditCardCount`, and explicitly excludes the
+3,218 newly public-bound Monnig cards. Its private-generation assignment digest
+is `131daf40b44e07e71de896ad9d6e375e03931e33af4a2e8e7a152d8ebbff8150`;
+it binds those 14,234 ordered card route/mapping assignments to full
+Official-row hashes. The sidecar exposes the digest and count as provenance but
+never exposes the row hashes or assignment tuples.
 
 The separate `METBULL_PUBLIC_CARD_BINDINGS_SHA256` runtime digest is
-`cd49c34ca0539ca94e95d1677c724bf8ebe7ce635c92f080fc8cea0f6eefe48d`.
-It covers all 14,234 ordered public card keys, routes, parent IDs, projected
+`d35d1ed4fb52e651eeb39cd2bc7e21a5c499a16bd98eed4af3a3d5c30b59e407`.
+It covers all 17,452 ordered public card keys, routes, parent IDs, projected
 positions, mapping statuses, meteorite codes, and canonical names. Runtime
 recomputation from the public catalog and projection catches route, status,
 code, or canonical-name drift before attaching current context. It is not a
 replacement for the private audit digest because it deliberately contains no
 Official-row hashes.
+The separate public-derived assignment regression hash
+`34232479172ffc30f094907cea97635f10067e8e0f210eb67f521c8afccfb5ac` is
+test-only and contains no private provenance.
 
 ## 8. Specimen Cards
 
@@ -329,7 +358,7 @@ become numeric comparison endpoints. A qualitative clause can enter the default
 source-listed view only through the closed schema-6 evidence variant.
 
 The current source-number release is deliberately catalog-specific. Four
-completed source audits reviewed all 14,234 specimen cards and accepted 5,058
+completed source audits reviewed the pre-Monnig 14,234-card specimen partition and accepted 5,058
 same-card numbers from six catalogs. Coverage is
 Farrington 1903 (232), Farrington 1916 (1,100), Reeds 1937 (2,988), Prior 1923
 (653), Tassin 1902 (84), and Merrill 1916 (1). The committed evidence objects
@@ -351,7 +380,7 @@ The generated schema-4 lineage and comparison layer is
 comparison review source are published beside it. Root-level `relationships`
 contain only same-inventory lineage, while `comparisonGroups` are non-lineage
 research candidates. The current artifact SHA-256 is
-`834b766339614485513d50e5efdcfac0c66b3a9871de73b8533f1978f459fbd2`.
+`ffad6fd5196a41548e6a7de717e7cc424f0fd9f5837a2c47f77b3fc53b92c229`.
 
 ### 9.1 Same inventory
 
@@ -404,7 +433,7 @@ Changing current Official name, classification, place, year, or fall code cannot
 change lineage JSON, IDs, evidence strength, grouping, or counts. The dedicated
 isolation test repeats the build with accepted, absent, and changed sidecars and
 locks the result to SHA-256
-`834b766339614485513d50e5efdcfac0c66b3a9871de73b8533f1978f459fbd2`.
+`ffad6fd5196a41548e6a7de717e7cc424f0fd9f5837a2c47f77b3fc53b92c229`.
 
 ### 9.3 Source-attested groups
 
@@ -599,8 +628,9 @@ source state.
 - [ ] Counts, masses, aggregates, representations, and totals retain distinct
   meanings.
 - [ ] Source facts are separate from MetBull identity review.
-- [ ] Current MetBull context is code-bound, every-card audited, and excluded
-  from lineage and specimen-fact generation.
+- [ ] Current MetBull context is code-bound and public-bound for every card;
+  the private Official-row audit covers only its declared card subset; context
+  remains excluded from lineage and specimen-fact generation.
 - [ ] Official mass, coordinates, comments, and the raw CSV remain private and
   absent from the public sidecar.
 - [ ] Card projections are positive allowlists over retained parents.

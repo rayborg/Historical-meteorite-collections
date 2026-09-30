@@ -62,6 +62,7 @@ function present(descriptor) {
   return app.presentHarmonizedCard(descriptor, {
     lineageEntries: lineageIndex.get(descriptor.parentRecord.id) || [],
     comparisonEntries: comparisonIndex.get(descriptor.parentRecord.id) || [],
+    registry,
   });
 }
 
@@ -196,7 +197,7 @@ test("every production display descriptor has the closed harmonized DTO and exac
   assert.deepEqual(counts, {
     "collection-observation": 6867,
     "projected-atomic-specimen": 8410,
-    "direct-specimen": 5824,
+    "direct-specimen": 9042,
     "source-observation": 3,
     "regional-observation": 84,
     "regional-event-observation": 353,
@@ -204,7 +205,7 @@ test("every production display descriptor has the closed harmonized DTO and exac
     "collection-representation-observation": 3447,
     "caption-observation": 250,
   });
-  assert.equal(descriptors.length, 25244);
+  assert.equal(descriptors.length, 28462);
 });
 
 test("specimens use Name while observation populated-name branches retain kind-specific labels", () => {
@@ -377,7 +378,7 @@ test("neutral specimen labels are identical visually and accessibly while note/s
   assert.deepEqual(present(observation).facts, expectedFacts(observation));
 });
 
-test("all 14,234 production specimen DTOs enforce the closed primary contract and notes boundary", () => {
+test("all 17,452 production specimen DTOs enforce the closed primary contract and notes boundary", () => {
   const census = { specimens: 0, mapped: 0, unmapped: 0, factRows: 0, noteCards: 0, noteRows: 0,
     lineageNoteCards: 0, comparisonNoteCards: 0 };
   const noteLabels = {};
@@ -416,7 +417,7 @@ test("all 14,234 production specimen DTOs enforce the closed primary contract an
     }
   }
   assert.deepEqual(census, {
-    specimens: 14234, mapped: 11859, unmapped: 2375, factRows: 116436, noteCards: 11798, noteRows: 32102,
+    specimens: 17452, mapped: 11859, unmapped: 5593, factRows: 132305, noteCards: 11798, noteRows: 32102,
     lineageNoteCards: 303, comparisonNoteCards: 1717,
   });
   for (const [label, count] of Object.entries(noteLabels)) {
@@ -487,7 +488,7 @@ test("all reviewed projected source catalog numbers render exact representative 
   assert.equal(present(shortnameOnly).identifier, "Hovey (1896)");
 
   const typed = descriptors.filter((descriptor) => expectedSourceIdentifier(descriptor, app.classifyHarmonizedCard(descriptor)));
-  assert.equal(typed.length, 13881);
+  assert.equal(typed.length, 17099);
   assert(typed.every((descriptor) => present(descriptor).identifier.includes(
     ` · ${expectedSourceIdentifier(descriptor, app.classifyHarmonizedCard(descriptor))}`)));
 });
@@ -508,7 +509,7 @@ test("all nine card kinds use only shortname, typed-identifier, or reviewed-numb
   assert.deepEqual(census, {
     "collection-observation": { shortname: 2219, typed: 4648, number: 0 },
     "projected-atomic-specimen": { shortname: 3111, typed: 241, number: 5058 },
-    "direct-specimen": { shortname: 38, typed: 5786, number: 0 },
+    "direct-specimen": { shortname: 38, typed: 9004, number: 0 },
     "source-observation": { shortname: 3, typed: 0, number: 0 },
     "regional-event-observation": { shortname: 247, typed: 106, number: 0 },
     "regional-observation": { shortname: 7, typed: 77, number: 0 },
@@ -553,6 +554,26 @@ test("field-aware availability removes only complete placeholders and preserves 
   assert(compoundFacts.every(({ label, value }) => app.isKnownCardFact(label, value)));
   assert(compoundFacts.some(({ value }) => value === "Date of fall unknown; found in 1842."));
   assert(compoundFacts.some(({ value }) => value === "locality unknown, probably Toluca, Mexico"));
+});
+
+test("Monnig classification collapses flow through card facts and searchable source records", () => {
+  const monnig = descriptors.filter(({ parentRecord }) => parentRecord.catalogId === "monnig-current");
+  assert.equal(monnig.length, 3218);
+  assert(monnig.every(({ parentRecord }) => {
+    const components = parentRecord.classification?.split(" > ") || [];
+    return new Set(components).size === components.length;
+  }));
+
+  const unknown = monnig.filter(({ parentRecord }) => parentRecord.classification === "Unknown");
+  assert.equal(unknown.length, 72);
+  assert(unknown.every((descriptor) => !present(descriptor).facts.some(({ label }) => label === "Class")));
+  assert(unknown.every(({ parentRecord }) => app.matchesSearch(parentRecord, "Unknown")));
+
+  const cr = monnig.filter(({ parentRecord }) =>
+    parentRecord.classification === "Carbonaceous Chondrite > CR");
+  assert.equal(cr.length, 21);
+  assert(cr.every((descriptor) => fact(present(descriptor), "Class") === "Carbonaceous Chondrite > CR"));
+  assert(cr.every(({ parentRecord }) => app.matchesSearch(parentRecord, "Carbonaceous Chondrite CR")));
 });
 
 test("specimen weight resolves exactly while lineage is available only in specimen notes", () => {
@@ -736,8 +757,8 @@ test("projection changes display-card multiplicity without changing parent resul
     query: "", catalog: null, min: null, max: null,
     lineageOnly: false, includeUnknownWeight: true, sort: app.DEFAULT_SORT
   };
-  assert.equal(app.filterRecords(records, filters, lineageIndex).length, 20241);
-  assert.equal(new Set(descriptors.map(({ parentRecord }) => parentRecord.id)).size, 20241);
+  assert.equal(app.filterRecords(records, filters, lineageIndex).length, 23459);
+  assert.equal(new Set(descriptors.map(({ parentRecord }) => parentRecord.id)).size, 23459);
   for (const descriptor of catalog.metadata.catalogs) {
     const parents = app.filterRecords(records, { ...filters, catalog: descriptor.id }, lineageIndex);
     assert.equal(parents.length, descriptor.recordCount, descriptor.id);
@@ -746,7 +767,7 @@ test("projection changes display-card multiplicity without changing parent resul
   }
 });
 
-test("default strict filter retains only the 14,062 source-listed-weight specimen cards", () => {
+test("default strict filter retains only the 17,249 source-listed-weight specimen cards", () => {
   const inclusive = app.filterSpecimenCardDescriptors(descriptors, {
     min: null, max: null, lineageOnly: false, includeUnknownWeight: true
   }, lineageIndex);
@@ -759,12 +780,12 @@ test("default strict filter retains only the 14,062 source-listed-weight specime
   const unknownSpecimens = inclusive.filter((descriptor) =>
     ["direct-specimen", "projected-atomic-specimen"].includes(app.classifyHarmonizedCard(descriptor)) &&
     !app.specimenCardDescriptorHasKnownWeight(descriptor));
-  assert.equal(inclusive.length, 25244);
-  assert.equal(weightedOnly.length, 14062);
-  assert.equal(defaultFiltered.length, 14062);
+  assert.equal(inclusive.length, 28462);
+  assert.equal(weightedOnly.length, 17249);
+  assert.equal(defaultFiltered.length, 17249);
   assert.deepEqual(defaultFiltered, weightedOnly);
-  assert.equal(app.WEIGHTED_DESCRIPTOR_COUNT, 14062);
-  assert.equal(unknownSpecimens.length, 172);
+  assert.equal(app.WEIGHTED_DESCRIPTOR_COUNT, 17249);
+  assert.equal(unknownSpecimens.length, 203);
   assert(weightedOnly.every((descriptor) => {
     const kind = app.classifyHarmonizedCard(descriptor);
     return ["direct-specimen", "projected-atomic-specimen"].includes(kind) &&
@@ -814,7 +835,7 @@ test("four-column eligibility requires a complete non-single specimen result set
   assert.doesNotMatch(appSource, /isFourColumnSpecimenResultSet\(visibleCards\)/u);
 });
 
-test("weight census is a closed 14,051 numeric, 11 qualitative, and 172 source-unlisted specimen partition", () => {
+test("weight census is a closed 17,238 numeric, 11 qualitative, and 203 source-unlisted specimen partition", () => {
   const specimens = descriptors.filter((descriptor) =>
     ["direct-specimen", "projected-atomic-specimen"].includes(app.classifyHarmonizedCard(descriptor)));
   const numeric = specimens.filter((descriptor) => app.specimenCardDescriptorMasses(descriptor).length > 0);
@@ -824,10 +845,10 @@ test("weight census is a closed 14,051 numeric, 11 qualitative, and 172 source-u
   const notIndividual = descriptors.filter((descriptor) => app.classifyHarmonizedCard(descriptor) === "source-observation");
   assert.deepEqual({ specimens: specimens.length, numeric: numeric.length, qualitative: qualitative.length,
     sourceUnlisted: sourceUnlisted.length, notIndividual: notIndividual.length },
-  { specimens: 14234, numeric: 14051, qualitative: 11, sourceUnlisted: 172, notIndividual: 3 });
+  { specimens: 17452, numeric: 17238, qualitative: 11, sourceUnlisted: 203, notIndividual: 3 });
   assert.equal(app.filterSpecimenCardDescriptors(specimens, {
     min: 0, max: null, lineageOnly: false, includeUnknownWeight: true,
-  }, lineageIndex).length, 14051);
+  }, lineageIndex).length, 17238);
   assert.deepEqual(qualitative.map(({ parentRecord, projected, sourcePosition }) =>
     projected ? `${parentRecord.id}--specimen-${sourcePosition + 1}` : parentRecord.id).sort(), [
     "obs-014fa351-665c-4bcb-b83f-3610f0ff425c--specimen-5",
@@ -922,22 +943,22 @@ test("accessible shell, responsive breakpoints, approved cache, and immutable da
   assert.match(styles, /\.record-meta dt \{[^}]*font-size: \.6rem;/u);
   assert.match(styles, /\.record-meta dd \{[^}]*font-size: \.8rem;/u);
   assert.doesNotMatch(styles, /\.record-meta dt \{[^}]*overflow-wrap: anywhere;/u);
-  assert.equal(app.CACHE_VERSION, "20260921-specimen-field-contract-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260921-specimen-field-contract-1");
+  assert.equal(app.CACHE_VERSION, "20260930-monnig-current-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260930-monnig-current-1");
   for (const document of [html, catalogsHtml]) {
-    assert.match(document, /styles\.css\?v=20260921-specimen-field-contract-1/u);
-    assert.match(document, /app\.js\?v=20260921-specimen-field-contract-1/u);
+    assert.match(document, /styles\.css\?v=20260930-monnig-current-1/u);
+    assert.match(document, /app\.js\?v=20260930-monnig-current-1/u);
   }
-  assert.match(catalogsHtml, /catalogs\.js\?v=20260921-specimen-field-contract-1/u);
+  assert.match(catalogsHtml, /catalogs\.js\?v=20260930-monnig-current-1/u);
   assert.deepEqual({
     catalog: sha256(catalogText),
     projections: sha256(projectionText),
     lineages: sha256(lineageText),
     reviews: sha256(reviewText),
   }, {
-    catalog: "3c23d1c2653bc893819a605c7c0e5e6db7b63a17cd3ab66ab104c2772391dbe7",
-    projections: "de553de6c7be4fa1d57e5efc50cc843a6f1e03e364e8ea8115d71506aa6ed16e",
-    lineages: "834b766339614485513d50e5efdcfac0c66b3a9871de73b8533f1978f459fbd2",
+    catalog: "6829c71f8cb15517fe1335336bec6a86065f2f31cdc780534b67b632707953e6",
+    projections: "bb417aa0d967fda4857cf27a637dee8f5c78ed4b7fc6d467f6f763ecdfa68edc",
+    lineages: "ffad6fd5196a41548e6a7de717e7cc424f0fd9f5837a2c47f77b3fc53b92c229",
     reviews: "32580c887d4e26a7c22950c95e2b8629de12a60c3f307708c1ea76e33fb31938",
   });
 });

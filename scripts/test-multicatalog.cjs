@@ -221,8 +221,8 @@ test("runtime fixture projection validates with exact legacy model-aware shapes"
   });
 });
 
-test("schema 15 public fixture carries all closed data models", () => {
-  assert.equal(publicFixture.metadata.schemaVersion, 15);
+test("schema 16 public fixture carries all closed data models", () => {
+  assert.equal(publicFixture.metadata.schemaVersion, 16);
   assert.deepEqual(publicFixture.metadata.catalogs.slice(-5).map(({ id, recordModel }) => [id, recordModel]), [
     ["antarctic-1980", "appendix-specimen"],
     ["haag-2003", "caption-observation-fact"],
@@ -242,7 +242,7 @@ test("schema 15 public fixture carries all closed data models", () => {
     .map(({ typeNumber }) => typeNumber), [95, 96]);
 });
 
-test("caption observations validate as a closed schema-15 model with earlier-record relations", () => {
+test("caption observations validate as a closed schema-16 model with earlier-record relations", () => {
   const valid = clone(publicFixture);
   assert.equal(app.validateCatalog(valid), valid);
   const captionRecords = publicFixture.records.filter(({ catalogId }) => catalogId === "haag-2003");
@@ -326,7 +326,7 @@ test("caption cards search source facts but never acquire specimen weight semant
     noHeadingDto.identifier), { label: "Source catalog record", value: "Haag (2003) · Caption observation 2" });
 });
 
-test("schema 15 permits individualFindLocation only as an optional specimen fact", () => {
+test("schema 16 permits individualFindLocation only as an optional specimen fact", () => {
   const located = clone(fixture);
   const specimen = located.records.find(({ id }) => id === "huss-h27-3");
   assert.equal(specimen.individualFindLocation, "32-19-13");
@@ -1137,8 +1137,8 @@ test("URL filters default to strict specimens and canonicalize the explicit incl
     unit: "observations",
     status: "Showing 60 of 23,217 display cards from 18,217 matching source observations."
   });
-  assert.equal(app.CACHE_VERSION, "20260921-specimen-field-contract-1");
-  assert.equal(app.ASSET_CACHE_VERSION, "20260921-specimen-field-contract-1");
+  assert.equal(app.CACHE_VERSION, "20260930-monnig-current-1");
+  assert.equal(app.ASSET_CACHE_VERSION, "20260930-monnig-current-1");
   assert.match(html, new RegExp(`styles\\.css\\?v=${app.ASSET_CACHE_VERSION}`));
   assert.match(html, new RegExp(`app\\.js\\?v=${app.ASSET_CACHE_VERSION}`));
 });

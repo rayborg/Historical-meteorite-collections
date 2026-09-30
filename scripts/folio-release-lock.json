@@ -313,6 +313,13 @@
       "basisUrl": null,
       "pageIds": []
     },
+    "monnig-current": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "basis": null,
+      "basisUrl": null,
+      "pageIds": []
+    },
     "nininger-1933": {
       "displayPolicy": "display",
       "rightsStatus": "no-copyright-us",

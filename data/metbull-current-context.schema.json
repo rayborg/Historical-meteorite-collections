@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:hmc:schema:metbull-current-context:1",
+  "$id": "urn:hmc:schema:metbull-current-context:2",
   "title": "Current Meteoritical Bulletin context for public specimen cards",
   "type": "object",
   "additionalProperties": false,
@@ -28,10 +28,10 @@
         "projectionSha256", "projectionCount", "lineageSchemaVersion", "lineageSha256", "cardCount", "directCardCount",
         "mappedDirectCardCount", "unmappedDirectCardCount", "projectedCardCount", "mappedProjectedCardCount",
         "unmappedProjectedCardCount", "mappedCardCount", "unmappedCardCount", "mappedParentCount",
-        "usedMeteoriteCodeCount", "cardAssignmentsSha256"
+        "usedMeteoriteCodeCount", "assignmentAuditCardCount", "cardAssignmentsSha256"
       ],
       "properties": {
-        "schemaVersion": { "const": 1 },
+        "schemaVersion": { "const": 2 },
         "scope": { "const": "current-metbull-context-for-specimen-cards" },
         "acquiredAt": { "const": "2026-09-13T00:55:27Z" },
         "sourceUrl": { "const": "https://www.lpi.usra.edu/meteor/metbull.php?sea=&sfor=names&stype=contains&valids=1&lrec=100000&csv=1" },
@@ -47,25 +47,26 @@
             "Relict": { "const": 100 }
           }
         },
-        "catalogSchemaVersion": { "const": 15 },
-        "catalogSha256": { "const": "3c23d1c2653bc893819a605c7c0e5e6db7b63a17cd3ab66ab104c2772391dbe7" },
-        "catalogRecordCount": { "const": 20241 },
+        "catalogSchemaVersion": { "const": 16 },
+        "catalogSha256": { "const": "6829c71f8cb15517fe1335336bec6a86065f2f31cdc780534b67b632707953e6" },
+        "catalogRecordCount": { "const": 23459 },
         "projectionSchemaVersion": { "const": 6 },
-        "projectionSha256": { "const": "de553de6c7be4fa1d57e5efc50cc843a6f1e03e364e8ea8115d71506aa6ed16e" },
+        "projectionSha256": { "const": "bb417aa0d967fda4857cf27a637dee8f5c78ed4b7fc6d467f6f763ecdfa68edc" },
         "projectionCount": { "const": 3407 },
         "lineageSchemaVersion": { "const": 4 },
-        "lineageSha256": { "const": "834b766339614485513d50e5efdcfac0c66b3a9871de73b8533f1978f459fbd2" },
-        "cardCount": { "const": 14234 },
-        "directCardCount": { "const": 5824 },
+        "lineageSha256": { "const": "ffad6fd5196a41548e6a7de717e7cc424f0fd9f5837a2c47f77b3fc53b92c229" },
+        "cardCount": { "const": 17452 },
+        "directCardCount": { "const": 9042 },
         "mappedDirectCardCount": { "const": 5653 },
-        "unmappedDirectCardCount": { "const": 171 },
+        "unmappedDirectCardCount": { "const": 3389 },
         "projectedCardCount": { "const": 8410 },
         "mappedProjectedCardCount": { "const": 6206 },
         "unmappedProjectedCardCount": { "const": 2204 },
         "mappedCardCount": { "const": 11859 },
-        "unmappedCardCount": { "const": 2375 },
+        "unmappedCardCount": { "const": 5593 },
         "mappedParentCount": { "const": 7736 },
         "usedMeteoriteCodeCount": { "const": 2548 },
+        "assignmentAuditCardCount": { "const": 14234 },
         "cardAssignmentsSha256": { "const": "131daf40b44e07e71de896ad9d6e375e03931e33af4a2e8e7a152d8ebbff8150" }
       }
     },

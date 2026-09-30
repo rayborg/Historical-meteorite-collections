@@ -39,12 +39,12 @@ const response = (text = sidecarText, ok = true) => ({ ok, text: async () => tex
 test("standalone and runtime validators reconstruct the locked complete assignment partition", async () => {
   const validated = await validateMetbullCurrentContextFiles();
   const assignments = app.reconstructMetbullCardAssignments(sidecar, rawDescriptors);
-  assert.equal(validated.assignments.length, 14234);
+  assert.equal(validated.assignments.length, 17452);
   assert.equal(app.validateMetbullCurrentContext(sidecar, rawDescriptors, {
     catalogSha256: sha256(catalogText), projectionSha256: sha256(projectionText), lineageSha256: sha256(lineageText),
   }), true);
-  assert.equal(assignments.length, 14234);
-  assert.equal(new Set(assignments.map(({ cardKey }) => cardKey)).size, 14234);
+  assert.equal(assignments.length, 17452);
+  assert.equal(new Set(assignments.map(({ cardKey }) => cardKey)).size, 17452);
   assert.deepEqual({
     direct: assignments.filter(({ route }) => route === "direct").length,
     mappedDirect: assignments.filter(({ route, status }) => route === "direct" && status === "mapped").length,
@@ -54,15 +54,18 @@ test("standalone and runtime validators reconstruct the locked complete assignme
     unmapped: assignments.filter(({ status }) => status === "unmapped").length,
     mappedParents: new Set(assignments.filter(({ status }) => status === "mapped").map(({ parentRecordId }) => parentRecordId)).size,
     codes: new Set(assignments.filter(({ status }) => status === "mapped").map(({ meteoriteCode }) => meteoriteCode)).size,
-  }, { direct: 5824, mappedDirect: 5653, projected: 8410, mappedProjected: 6206,
-    mapped: 11859, unmapped: 2375, mappedParents: 7736, codes: 2548 });
+  }, { direct: 9042, mappedDirect: 5653, projected: 8410, mappedProjected: 6206,
+    mapped: 11859, unmapped: 5593, mappedParents: 7736, codes: 2548 });
+  assert.equal(sidecar.metadata.schemaVersion, 2);
+  assert.equal(sidecar.metadata.assignmentAuditCardCount, 14234);
   assert.equal(sidecar.metadata.cardAssignmentsSha256, "131daf40b44e07e71de896ad9d6e375e03931e33af4a2e8e7a152d8ebbff8150");
   assert.equal(app.metbullPublicCardBindingsSha256(rawDescriptors),
-    "cd49c34ca0539ca94e95d1677c724bf8ebe7ce635c92f080fc8cea0f6eefe48d");
-  assert.equal(jsonSha256(assignments), "353acee9c5b38e6c65a0f531746d9616db98fa17b27cd4e7673065181be1e2cb");
+    "d35d1ed4fb52e651eeb39cd2bc7e21a5c499a16bd98eed4af3a3d5c30b59e407");
+  assert.equal(jsonSha256(assignments), "34232479172ffc30f094907cea97635f10067e8e0f210eb67f521c8afccfb5ac");
+  assert.notEqual(jsonSha256(assignments), sidecar.metadata.cardAssignmentsSha256);
 });
 
-test("assignment digest rejects valid-looking direct and projection identity swaps", () => {
+test("public binding digest rejects valid-looking direct and projection identity swaps", () => {
   for (const projected of [false, true]) {
     const changed = structuredClone(rawDescriptors);
     const candidates = changed.filter((descriptor) => descriptor.projected === projected &&
@@ -82,6 +85,7 @@ test("schema and runtime contracts are closed against extras, unsafe text, stale
   assert.equal(schema.additionalProperties, false);
   assert.equal(schema.$defs.metadata.additionalProperties, false);
   assert.equal(schema.$defs.meteorite.additionalProperties, false);
+  assert.equal(schema.$id, "urn:hmc:schema:metbull-current-context:2");
   assert.equal(schema.properties.meteorites.minProperties, 2548);
   assert.equal(schema.properties.meteorites.maxProperties, 2548);
   const mutations = [
@@ -89,6 +93,8 @@ test("schema and runtime contracts are closed against extras, unsafe text, stale
     (value) => { value.metadata.extra = true; },
     (value) => { value.metadata.catalogSha256 = "0".repeat(64); },
     (value) => { value.metadata.mappedCardCount += 1; },
+    (value) => { value.metadata.assignmentAuditCardCount = 17452; },
+    (value) => { value.metadata.cardAssignmentsSha256 = jsonSha256(app.reconstructMetbullCardAssignments(value, rawDescriptors)); },
     (value) => { value.metadata.cardAssignmentsSha256 = "0".repeat(64); },
     (value) => { value.meteorites["5"].extra = "forged"; },
     (value) => { value.meteorites["5"].name = "<img src=x onerror=alert(1)>"; },
@@ -108,14 +114,14 @@ test("schema and runtime contracts are closed against extras, unsafe text, stale
 
 test("loader applies all current context or returns one complete source-only fallback", async () => {
   const valid = await app.loadMetbullCurrentContext(rawDescriptors, async (url, options) => {
-    assert.equal(url, "./data/metbull-current-context.json?v=20260921-specimen-field-contract-1");
+    assert.equal(url, "./data/metbull-current-context.json?v=20260930-monnig-current-1");
     assert.deepEqual(options, { cache: "no-cache" });
     return response();
   }, { sha256: async (text) => sha256(text), catalogSha256: app.CATALOG_SHA256,
     projectionSha256: app.PROJECTION_SHA256, lineageSha256: app.LINEAGE_SHA256 });
   assert.equal(valid.valid, true);
   assert.equal(valid.index.size, 11859);
-  assert.equal(valid.assignments.length, 14234);
+  assert.equal(valid.assignments.length, 17452);
 
   const malformed = structuredClone(sidecar);
   malformed.meteorites["5"].classification = "<script>alert(1)</script>";
@@ -140,12 +146,12 @@ test("presenter applies current values through neutral fields and moves source d
   });
   const notes = presentation.map((entry) => [entry[0], entry[5]]).filter((entry) => entry[1].length);
   assert.equal(specimenDescriptors.filter(({ currentMetbull }) => currentMetbull).length, 11859);
-  assert.equal(specimenDescriptors.filter(({ currentMetbull }) => !currentMetbull).length, 2375);
+  assert.equal(specimenDescriptors.filter(({ currentMetbull }) => !currentMetbull).length, 5593);
   assert.equal(specimenDescriptors.filter(({ currentMetbull }) => currentMetbull?.year).length, 11850);
-  assert.equal(presentation.reduce((count, entry) => count + entry[4].length, 0), 82575);
+  assert.equal(presentation.reduce((count, entry) => count + entry[4].length, 0), 98444);
   assert.equal(notes.length, 11798);
   assert.equal(notes.reduce((count, entry) => count + entry[1].length, 0), 32102);
-  assert.equal(jsonSha256(presentation), "0d5e9b3fe67f419826c90d9b140be7b3276197ef9b60e228b533f0c948d914b7");
+  assert.equal(jsonSha256(presentation), "41bd9732a9ba24b83416f0be373fc38d0f1e074c02b7a256209a0a472a0e4b9a");
   assert.equal(jsonSha256(notes), "99adbc9db7753f560548964d78bb241b9fb265f409e846aa1be59f350843b5a1");
 
   const allende = specimenDescriptors.find(({ parentRecord }) => parentRecord.designation === "H103.11");
@@ -160,7 +166,7 @@ test("presenter applies current values through neutral fields and moves source d
     { label: "Year / date", value: "1969" },
   ]);
   assert.deepEqual(dto.catalogNotes, [{ label: "Source class", value: "Stone. Carbonaceous chondrite, Type III" }]);
-  assert.equal(sha256(catalogText), "3c23d1c2653bc893819a605c7c0e5e6db7b63a17cd3ab66ab104c2772391dbe7");
+  assert.equal(sha256(catalogText), "6829c71f8cb15517fe1335336bec6a86065f2f31cdc780534b67b632707953e6");
 });
 
 test("fall/find codes use documented MetBull categories and current fields contain no mass or coordinate claims", () => {
@@ -277,7 +283,7 @@ test("official heading links are complete and remain absent from fallback and ob
     .includes(app.classifyHarmonizedCard(descriptor)));
   assert.equal(mapped.filter((descriptor) => app.presentHarmonizedCard(descriptor).headingUrl ===
     app.metbullUrlForCode(descriptor.currentMetbull.meteoriteCode)).length, 11859);
-  assert.equal(unmatched.filter((descriptor) => app.presentHarmonizedCard(descriptor).headingUrl === null).length, 2375);
+  assert.equal(unmatched.filter((descriptor) => app.presentHarmonizedCard(descriptor).headingUrl === null).length, 5593);
   assert.equal(observations.filter((descriptor) => app.presentHarmonizedCard(descriptor).headingUrl === null).length, 11010);
   assert.match(source, /officialLink\.href = dto\.headingUrl;/u);
   assert.match(source, /officialLink\.textContent = dto\.headingName;/u);

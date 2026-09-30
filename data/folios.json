@@ -401,6 +401,11 @@
       "rightsStatus": "undetermined",
       "pages": []
     },
+    "monnig-current": {
+      "displayPolicy": "blocked",
+      "rightsStatus": "undetermined",
+      "pages": []
+    },
     "nininger-1933": {
       "displayPolicy": "display",
       "rightsStatus": "no-copyright-us",
